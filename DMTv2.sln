@@ -17,6 +17,28 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLib", "00.NLib\NLib\NLib.c
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLib.Reports", "00.NLib\NLib.Reports\NLib.Reports.csproj", "{5879D92A-F850-4A70-8D88-99D29F6A46F3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99.Tools", "99.Tools", "{F46B6CD8-40ED-4CCB-A71B-16737D42CCAF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.VSIX", "01.VSIX", "{C3A3E044-AB53-4F9D-B3AA-8EA78E7BC08C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.RFREADER", "02.RFREADER", "{679D1294-4B7B-414B-BF10-45F8A5C812D7}"
+	ProjectSection(SolutionItems) = preProject
+		99.Tools\02.RFREADER\ICTransfer.exe = 99.Tools\02.RFREADER\ICTransfer.exe
+		99.Tools\02.RFREADER\MasterCom.dll = 99.Tools\02.RFREADER\MasterCom.dll
+		99.Tools\02.RFREADER\MasterRD.dll = 99.Tools\02.RFREADER\MasterRD.dll
+		99.Tools\02.RFREADER\SL600 test.txt = 99.Tools\02.RFREADER\SL600 test.txt
+		99.Tools\02.RFREADER\SL_Paper.dll = 99.Tools\02.RFREADER\SL_Paper.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReportViewer", "ReportViewer", "{4D2D824C-239D-412E-BF53-6E6D24EB61BB}"
+	ProjectSection(SolutionItems) = preProject
+		99.Tools\01.VSIX\ReportViewer\Microsoft.DataTools.ReportingServices.z01 = 99.Tools\01.VSIX\ReportViewer\Microsoft.DataTools.ReportingServices.z01
+		99.Tools\01.VSIX\ReportViewer\Microsoft.DataTools.ReportingServices.z02 = 99.Tools\01.VSIX\ReportViewer\Microsoft.DataTools.ReportingServices.z02
+		99.Tools\01.VSIX\ReportViewer\Microsoft.DataTools.ReportingServices.zip = 99.Tools\01.VSIX\ReportViewer\Microsoft.DataTools.ReportingServices.zip
+		99.Tools\01.VSIX\ReportViewer\Microsoft.RdlcDesigner.vsix = 99.Tools\01.VSIX\ReportViewer\Microsoft.RdlcDesigner.vsix
+		99.Tools\01.VSIX\ReportViewer\note.txt = 99.Tools\01.VSIX\ReportViewer\note.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +60,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{41A9D6C0-C833-403F-9BC1-EECDC246A428} = {2631F465-25BD-488C-BDB2-6DE2B4FEFF0D}
 		{5879D92A-F850-4A70-8D88-99D29F6A46F3} = {2631F465-25BD-488C-BDB2-6DE2B4FEFF0D}
+		{C3A3E044-AB53-4F9D-B3AA-8EA78E7BC08C} = {F46B6CD8-40ED-4CCB-A71B-16737D42CCAF}
+		{679D1294-4B7B-414B-BF10-45F8A5C812D7} = {F46B6CD8-40ED-4CCB-A71B-16737D42CCAF}
+		{4D2D824C-239D-412E-BF53-6E6D24EB61BB} = {C3A3E044-AB53-4F9D-B3AA-8EA78E7BC08C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BFB056C-BEA2-46BD-B006-6BD410AF18BC}
