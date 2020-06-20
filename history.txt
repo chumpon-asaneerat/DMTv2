@@ -17,8 +17,9 @@ Update 2020-06-21 #7
 Update 2020-06-21 #6
 - 
 
+[commited]
 Update 2020-06-21 #5
-- 
+- Add DMT.Controls project -> merge DMT.Reports/DMT.Controls and DMT.Pages project.
 
 [commited]
 Update 2020-06-21 #5
