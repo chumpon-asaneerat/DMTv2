@@ -20,8 +20,9 @@ Update 2020-06-21 #6
 Update 2020-06-21 #5
 - 
 
+[commited]
 Update 2020-06-21 #5
-- 
+- Add DMT.Models project -> merge DMT.Object.Models and DMT.Data.Service project.
 
 [commited]
 Update 2020-06-21 #4
