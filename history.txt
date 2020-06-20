@@ -1,0 +1,1029 @@
+--------------------------------------------------------------------------------------------
+Update 2020-06-21 #11
+- 
+
+Update 2020-06-21 #10
+- 
+
+Update 2020-06-21 #9
+- 
+
+Update 2020-06-21 #8
+- 
+
+Update 2020-06-21 #7
+- 
+
+Update 2020-06-21 #6
+- 
+
+Update 2020-06-21 #5
+- 
+
+Update 2020-06-21 #5
+- 
+
+Update 2020-06-21 #4
+- 
+
+Update 2020-06-21 #3
+- 
+
+Update 2020-06-21 #2
+- 
+
+[commited]
+Update 2020-06-21 #1
+- Create/Prepare new Solution DMTv2.
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-06-20 #14
+- Prepare history.txt #2.
+
+[commited]
+Update 2020-06-20 #13
+- Prepare history.txt.
+
+[commited]
+Update 2020-06-20 #12
+- Add Tools for test RF Reader.
+- Add Test instruction for RF Reader.
+
+[commited]
+Update 2020-06-20 #11
+- Nlib.Wpf.Controls.Sample - Add Example ScrollViewer with overflow ListBox.
+
+[commited]
+Update 2020-06-20 #10
+- Nlib.Wpf.Controls - Add SquareControl (Aspect ratio) attemp #1.
+
+[commited]
+Update 2020-06-20 #9
+- Update DMT.Networks.Tcp project #4 - update AssemblyInfo.cs file.
+
+[commited]
+Update 2020-06-20 #8
+- Update DMT.Networks.Tcp project #3.
+- Add DMTNetworkBase class. 
+- Add DMTNetworkClientBase class.
+- Add DMTNetworkServerBase class.
+- Add NetworkUtils class.
+
+[commited]
+Update 2020-06-20 #7
+- Update DMT.Networks.Tcp project #2.
+- TCPServerSample/TCPClientSample project set reference to DMT.Networks.Tcp project.
+
+[commited]
+Update 2020-06-20 #6
+- Add DMT.Networks.Tcp project.
+
+[commited]
+Update 2020-06-20 #5
+- reload WebSocketServerSample/WebSocketClientSample project.
+- WebSocketServerSample project - update code to ignore boardcase error when server is closed.
+- WebSocketClientSample project - add code to auto reconnect.
+
+[commited]
+Update 2020-06-20 #4
+- Change all fundXXX controls/pages to creditXXX controls/pages.
+
+[commited]
+Update 2020-06-20 #3
+- Update NLib.Wpf.Controls.Sample project #2 - Add related reference assemblies.
+
+[commited]
+Update 2020-06-20 #2
+- Add NLib.Wpf.Controls.Sample project.
+
+[commited]
+Update 2020-06-20 #1
+- Update history.txt.
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-06-19 #10
+- Update todo.txt.
+
+[commited]
+Update 2020-06-19 #9
+- unload ReflectionSample project.
+- recompile all projects.
+
+[commited]
+Update 2020-06-19 #8
+- Update NLib project - PeropertyMapName related class update code to supports .NET 4.0 (comment out).
+
+[commited]
+Update 2020-06-19 #7
+- Update ReflectionSample project #6 - move all PeropertyMapName related class to NLib project.
+- Update NLib project - PeropertyMapName related class change some class to intenal access.
+
+[commited]
+Update 2020-06-19 #6
+- Update ReflectionSample project #5 - update assign logic check mismatch map name.
+- Update ReflectionSample project #5 - update assign logic check mismatch propety's type.
+
+[commited]
+Update 2020-06-19 #5
+- Update ReflectionSample project #4 - rename classes.
+
+[commited]
+Update 2020-06-19 #4
+- Prepare today history.txt.
+
+[commited]
+Update 2020-06-19 #3
+- Update NLib.Wpf.Controls project - Update AssemblyInfo.cs file.
+
+[commited]
+Update 2020-06-19 #2
+- Update NLib.Wpf.Controls project - add Themes->Generic.xaml.
+- NLib.Wpf.Controls add TileButton.
+
+[commited]
+Update 2020-06-19 #1
+- Add NLib.Wpf.Controls project.
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-06-18 #22
+- Set TCPServerSample project output path to TCPSample.
+- Set TCPClientSample project output path to TCPSample.
+- Recompile all projects.
+
+[commited]
+Update 2020-06-18 #21
+- Prepare tomorrow history.txt.
+
+[commited]
+Update 2020-06-18 #20
+- unload TaskSample project.
+
+[commited]
+Update 2020-06-18 #19
+- unload WpfButtonUISample project.
+
+[commited]
+Update 2020-06-18 #18
+- Update ReflectionSample project #3 - work. required some logic to track unassigned map attribute.
+
+[commited]
+Update 2020-06-18 #17
+- Update ReflectionSample project #2.
+
+[commited]
+Update 2020-06-18 #16
+- reload WpfButtonUISample project.
+- DMT.Controls project add Themes->generic.xaml, Style->ImageButtonStyle.xaml (comment out code).
+
+[commited]
+Update 2020-06-18 #15
+- Remove unused images from DMT.Plaza.Config.App project.
+- Remove unused images from DMT.Plaza.Simulator.App project.
+- Remove unused images from DMT.Controls project.
+- Remove unused images from DMT.Pages project.
+
+[commited]
+Update 2020-06-18 #14
+- Add ReflectionSample project.
+- Add TaskSample project.
+- Add TCPServerSample project.
+- Add TCPClientSample project.
+
+[commited]
+Update 2020-06-18 #13
+- all test projects unloaded.
+- tesr full recompile.
+
+[commited]
+Update 2020-06-18 #12
+- unload some test projects.
+- tesr full recompile.
+
+[commited]
+Update 2020-06-18 #11
+- unload some test projects.
+- reload DMT.TOD.App.
+- reload DMT.TA.App.
+- reload DMT.Plaza.Config.App.
+- reload DMT.Plaza.Simulatpr.App.
+
+[commited]
+Update 2020-06-18 #10
+- Reload DMT.Plaza.Windows.Service project and test compile.
+- Recheck controls project - DMT.Controls.
+- Recheck controls project - DMT.Pages.
+- fixed reference in DMT.Pages project.
+
+[commited]
+Update 2020-06-18 #9
+- Recheck DMT.Operations project.
+- Recheck DMT.Data.Services project (rename from DMT.Data.Models project).
+- Move extension methods classes from DMT.Operations project to DMT.Data.Services project.
+
+[commited]
+Update 2020-06-18 #8
+- Remove DMT.ACC.App project.
+- Move DMT.Plaza.Windows.Service project in to App folder.
+- Recheck App project - DMT.Plaza.Windows.Service.
+- Recheck App project - DMT.TOD.App.
+- Recheck App project - DMT.TA.App.
+- Recheck App project - DMT.Plaza.Config.App.
+- Recheck App project - DMT.Plaza.Simulatpr.App.
+
+[commited]
+Update 2020-06-18 #7
+- Recheck test project - WpfLayoutSample.
+- Recheck test project - SL600SmartCardReaderSample.
+- Recheck test project - LocalDbServerFunctionTest.
+- Recheck test project - WebSocketServerSample.
+- Recheck test project - WebSocketClientSample.
+
+[commited]
+Update 2020-06-18 #6
+- Recheck test project - OwinSelfHostServerSample.
+- Recheck test project - GenericSingeltonSample.
+- Recheck test project - GenericSingeltonWPFSample.
+- Recheck test project - WpfButtonUISample.
+- Recheck test project - WpfListViewUISample.
+- Recheck test project - AvalonDockAndEditSample.
+
+[commited]
+Update 2020-06-18 #5
+- Recheck controls project - DMT.Reports.
+- Recheck test project - SqlLiteSample.
+- Recheck test project - LiteDbSample.
+- Recheck test project - ReportViewerSample.
+- Recheck test project - ReportViewerSample2.
+
+[commited]
+Update 2020-06-18 #4
+- Remove all projects to restructures.
+- DMT.Report.Models project removed and merge into DMT.Object.Models project.
+
+[commited]
+Update 2020-06-18 #3
+- Rename DMT.Data.Service project to DMT.Operations project.
+- Update relatead projects reference.
+
+[commited]
+Update 2020-06-18 #2
+- Update WebSocketServerSample project #2.
+- Update WebSocketClientSample project #2.
+
+[commited]
+Update 2020-06-18 #1
+- Add WebSocketServerSample project.
+- Add WebSocketClientSample project.
+- Update start up object of app properties in variaus projects.
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-06-17 #21
+- Add websocket-sharp.dll in reference folder.
+
+[commited]
+Update 2020-06-17 #20
+- Update LocalServer create table (SupervisorShift/CollectorShift/CollectorLane).
+
+[commited]
+Update 2020-06-17 #19
+- Update SqlLiteSamlple project - Add DateTime Query (LINQ) sample code #4 multiple table ForeignKey.
+- Implements Domain Model - CollectorLane add ForeignKey.
+- Implements Domain Model - SupervisorShift add ForeignKey.
+- Implements Domain Model - CollectorShift add ForeignKey.
+
+[commited]
+Update 2020-06-17 #18
+- Update SqlLiteSamlple project - Add DateTime Query (LINQ) sample code #3 multiple table ForeignKey.
+
+[commited]
+Update 2020-06-17 #17
+- Implements Domain Model - Plaza/Lane add ExpandableObjectConverter.
+- Implements Domain Model - User add ExpandableObjectConverter.
+
+[commited]
+Update 2020-06-17 #16
+- Implements Domain Model - CollectorLane/SupervisorShift/CollectorShift ForeignKey attemp #1.
+
+[commited]
+Update 2020-06-17 #15
+- Implements Domain Model - CollectorLane add static method Gets.
+- Implements Domain Model - SupervisorShift add static method Gets.
+- Implements Domain Model - CollectorShift add static method Gets.
+
+[commited]
+Update 2020-06-17 #14
+- Implements LocalServer method register table (SupervisorShift/CollectorShift/CollectorLane).
+
+[commited]
+Update 2020-06-17 #13
+- Implements Domain Model - CollectorLane.
+- Implements Domain Model - SupervisorShift #2.
+- Implements Domain Model - CollectorShift #2.
+
+[commited]
+Update 2020-06-17 #12
+- Update commment.
+
+[commited]
+Update 2020-06-17 #11
+- Implements Domain Model - Config.
+- Implements Domain Model - Config add static methods (Create, Exists, Save, Gets, Get).
+- Implements LocalServer method for Config (Gets, Get).
+- Implements LocalServer method for init configs.
+- Implements Configs constant class.
+
+[commited]
+Update 2020-06-17 #10
+- Update SqlLiteSamlple project - Add DateTime Query (LINQ) sample code #2 null date.
+
+[commited]
+Update 2020-06-17 #9
+- Update SqlLiteSamlple project - Add DateTime Query (LINQ) sample code.
+
+[commited]
+Update 2020-06-17 #8
+- Implements Domain Model - SupervisorShift.
+- Implements Domain Model - CollectorShift.
+
+[commited]
+Update 2020-06-17 #7
+- Implements Domain Model - Role add static methods (Create, Exists, Save, Gets, Get).
+- Implements Domain Model - User add static methods (Create, Exists, Save, Gets, Get).
+- Implements Domain Model - User add static methods (GetByUserId, GetByUserName, GetByCardId).
+- Implements LocalServer method for Role/User (Gets, Get).
+- Update LocalDbServerFunctionTest project #5.
+
+[commited]
+Update 2020-06-17 #6
+- Implements Domain Model - Role.
+- Implements Domain Model - User.
+
+[commited]
+Update 2020-06-17 #5
+- Implements Domain Model - Lane.
+- Implements Domain static methods for TSB/Plaza (Gets, Get).
+- Implements Domain static methods for Lane (Create, Exists, Save, Gets, Get).
+- Implements LocalServer method for TSB/Plaza/Lane (Gets, Get).
+- Update LocalDbServerFunctionTest project #4.
+
+[commited]
+Update 2020-06-17 #4
+- Implements Domain static methods for TSB/Plaza (Create, Exists, Save).
+- Implements LocalServer method for TSB/Plaza (Exists, Save).
+- Update LocalDbServerFunctionTest project #3.
+
+[commited]
+Update 2020-06-17 #3
+- Update LocalDbServerFunctionTest project #2 - Save TSB with Plaza as children.
+
+[commited]
+Update 2020-06-17 #2
+- Add LocalDbServerFunctionTest project.
+
+[commited]
+Update 2020-06-17 #1
+- DMT.Data.Services add reference to RestSharp.dll.
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-06-16 #11
+- Implements Data Models convert to/from Object and Report Models #4.
+
+[commited]
+Update 2020-06-16 #10
+- Implements Data Models convert to/from Object and Report Models #3.
+
+[commited]
+Update 2020-06-16 #9
+- Implements Data Models convert to/from Object and Report Models #2.
+
+[commited]
+Update 2020-06-16 #8
+- Implements Data Models convert to/from Object and Report Models #1.
+
+[commited]
+Update 2020-06-16 #7
+- Update WpfLayoutSample project #8.
+
+[commited]
+Update 2020-06-16 #6
+- Update WpfLayoutSample project #7.
+
+[commited]
+Update 2020-06-16 #5
+- Update WpfLayoutSample project #6.
+
+[commited]
+Update 2020-06-16 #4
+- Fixed commit.
+
+[commited]
+Update 2020-06-16 #3
+- Update SL600SmartCardReaderSample project #2 (SThe Smart card resource manager is not running).
+
+[commited]
+Update 2020-06-16 #2
+- Add SL600SmartCardReaderSample project (SThe Smart card resource manager is not running).
+
+[commited]
+Update 2020-06-16 #1
+- Update todo.txt #1.
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-06-15 #14
+- Update WpfLayoutSample project #5.
+
+[commited]
+Update 2020-06-15 #13
+- Update WpfLayoutSample project #4.
+
+[commited]
+Update 2020-06-15 #12
+- Update WpfLayoutSample project #3.
+
+[commited]
+Update 2020-06-15 #11
+- Update WpfLayoutSample project #2.
+
+[commited]
+Update 2020-06-15 #10
+- Addd WpfLayoutSample project.
+
+[commited]
+Update 2020-06-15 #9
+- Update WpfButtonUISample project #2 (add implements of ImageButton).
+
+[commited]
+Update 2020-06-15 #8
+- Update WpfButtonUISample project #2 (add images).
+
+[commited]
+Update 2020-06-15 #7
+- Merge all Windows Services projects to Plaza Windows Services.
+- Remove unused AppConsts.
+- Update DMT.Data.Services project.
+- Update DMT.Plaza.Config.App project.
+
+[commited]
+Update 2020-06-15 #6
+- Set Windows Services projects Auto Generate redirect binding flag to true.
+- Disable Windows Services projects App.config.xml's runtime section.
+
+[commited]
+Update 2020-06-15 #5
+- Update AppConsts for All Windows Services WebServer.
+- Update WebServer (Windows Services class) used port number form AppConsts.
+
+[commited]
+Update 2020-06-15 #4
+- Move all lodal database class to windows service projects.
+- Update references in changed projects.
+
+[commited]
+Update 2020-06-15 #3
+- Rewrite all windows service with implements WebServer.
+- Fixed runtime dll conflict in Microsoft.Owin and Newtonsoft.json
+
+[commited]
+Update 2020-06-15 #2
+- Add PlazaOperations/TODOperations/TAOperations class.
+
+[commited]
+Update 2020-06-15 #1
+- Add DMT.Plaza.Windows.Services project.
+- Update AppConsts for Plaza Windows Services.
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-06-14 #2
+- DMT.Core updte AppConsts for DMT.ACC.App.
+- Update DMT.ACC.App used Program information from AppConsts class.
+
+[commited]
+Update 2020-06-14 #1
+- Update Nlib -> NServiceMonitor class (in WindowServiceController.cs) add method FindServiceController.
+- ServiceOperations -> init service monitor in constructor instead inline variable.
+- DMT.Plaza.Config.App -> Add basic implements of install/uninstall/check windows services.
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-06-13 #6
+- DMT.Core add AppConsts and related class.
+- Update all project to used Program information from AppConsts class.
+
+[commited]
+Update 2020-06-13 #5
+- DMT.Plaza.Config.App - Prepare Ribbon layout #8.
+
+[commited]
+Update 2020-06-13 #4
+- Move ServiceOperations.cs from DMT.Core to DMT.Data.Services.
+
+[commited]
+Update 2020-06-13 #3
+- Update DMT.Core -> ServiceOperations.cs update services's executable file name.
+
+[commited]
+Update 2020-06-13 #2
+- Rename DMT.TOD.Data.Services to DMT.TOD.Windows.Services and add icon.
+- Rename DMT.TA.Data.Services to DMT.TA.Windows.Services and add icon.
+
+[commited]
+Update 2020-06-13 #1
+- Restructure/Rename all projects in solution.
+- Add DMT.Report.Models project.
+- Update DMT.Report.Models project AssemblyInfo.cs file.
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-06-12 #15
+- Update all project AssemblyInfo.cs file.
+
+[commited]
+Update 2020-06-12 #14
+- Restructure/Rename all projects in solution.
+- Add DMT.Data.Models project.
+
+[commited]
+Update 2020-06-12 #13
+- DMT.Plaza.Config.App - Prepare Ribbon layout #7.
+
+[commited]
+Update 2020-06-12 #12
+- DMT.Plaza.Config.App - Prepare Ribbon layout #6.
+
+[commited]
+Update 2020-06-12 #11
+- Add Plaza Network images in DMT.Control project.
+- Add Networks images in DMT.Plaza.Config.App.
+- Add Networks images in DMT.Plaza.Simulator.App.
+
+[commited]
+Update 2020-06-12 #10
+- Add Reports images in DMT.Plaza.Config.App.
+- Add Reports images in DMT.Plaza.Simulator.App.
+- DMT.Plaza.Config.App - Prepare Ribbon layout #5.
+
+[commited]
+Update 2020-06-12 #9
+- Add Toll and Users images in DMT.Plaza.Config.App.
+- Add Toll and Users images in DMT.Plaza.Simulator.App.
+- DMT.Plaza.Config.App - Prepare Ribbon layout #4.
+
+[commited]
+Update 2020-06-12 #8
+- DMT.Plaza.Config.App - Prepare Ribbon layout #3.
+
+[commited]
+Update 2020-06-12 #7
+- DMT.Plaza.Config.App - Prepare Ribbon layout #2.
+
+[commited]
+Update 2020-06-12 #6
+- Add Configs images in DMT.Plaza.Config.App.
+- Add Configs images in DMT.Plaza.Simulator.App.
+- DMT.Plaza.Config.App - Prepare Ribbon layout #1.
+
+[commited]
+Update 2020-06-12 #5
+- Update SqlLiteSamlple project - remove db file (the always copy setting make overwrite every time app build).
+
+[commited]
+Update 2020-06-12 #4
+- Update SqlLiteSamlple project - change from standard ADO.Net to SQLite-Net-PCL (native).
+- Remove all SQLite ADO.Net reference assemblies.
+
+[commited]
+Update 2020-06-12 #3
+- Update LiteDBSample project #2.
+
+[commited]
+Update 2020-06-12 #2
+- Update LiteDBSample project #1.
+
+[commited]
+Update 2020-06-12 #1
+- Update AvalonDockAndEditSample project.
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-06-11 #5
+- Add AvalonDockAndEditSample project.
+
+[commited]
+Update 2020-06-11 #4
+- Implements ServiceOperations rename classes for proper understanding.
+
+[commited]
+Update 2020-06-11 #3
+- Implements ServiceOperations for scan method (check service installation).
+
+[commited]
+Update 2020-06-11 #2
+- DMT.Core project add ServiceOperations class.
+- Implements ServiceOperations for handle windows service install/uninstall.
+
+[commited]
+Update 2020-06-11 #1
+- Add server images in DMT.Plaza.Config.App.
+- Add server images in DMT.Plaza.Simulator.App.
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-06-10 #17
+- Prepare history.txt.
+
+[commited]
+Update 2020-06-10 #16
+- Add Smartcard hardware images in DMT.Controls.
+- Add Smartcard hardware images in DMT.Plaza.Config.App.
+- Add Smartcard hardware images in DMT.Plaza.Simulator.App.
+
+[commited]
+Update 2020-06-10 #15
+- Update WpfButtonUISample project #1.
+
+[commited]
+Update 2020-06-10 #14
+- Update ReportViewerSample2 project change logo position and size.
+
+[commited]
+Update 2020-06-10 #13
+- DMT.Reports project add Images folder and logo image.
+
+[commited]
+Update 2020-06-10 #12
+- Add WpfButtonUISample project.
+- Add WpfListViewUISample project.
+
+[commited]
+Update 2020-06-10 #11
+- Remove unused files from DMT.Smartcard project.
+
+[commited]
+Update 2020-06-10 #10
+- Add DMT.Smartcard project.
+
+[commited]
+Update 2020-06-10 #9
+- Prepare Images/Icons in DMT.Controls project.
+
+[commited]
+Update 2020-06-10 #8
+- Set all project platform target to 'Any CPU' and unchecked Prefer 32-bit.
+
+[commited]
+Update 2020-06-10 #7
+- ReportViewerSample2 project change "main" to "DataSet1" in ReportManager (temporary).
+
+[commited]
+Update 2020-06-10 #6
+- DMT.Plaza.Config.App project setup ribbon window and related control.
+- DMT.Plaza.Simulator.App project setup ribbon window and related control.
+
+[commited]
+Update 2020-06-10 #5
+- Update solution's file removed.
+
+[commited]
+Update 2020-06-10 #4
+- Update VS option->document setting to save file as unicode.
+
+[commited]
+Update 2020-06-10 #3
+- Add note.to.kik.txt
+
+[commited]
+Update 2020-06-10 #2
+- Update references for DMT.Plaza.Config.App and DMT.Plaza.Simulator.App.
+- Change image folder for ReportViewerSample2 into project folder.
+
+[commited]
+Update 2020-06-10 #1
+- Add assemblies for Ribbon Controls and Xceed Wpf Extended Toolkits.
+
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-06-09 #19
+- Update todo.txt #2.
+
+[commited]
+Update 2020-06-09 #18
+- Update todo.txt.
+
+[commited]
+Update 2020-06-09 #17
+- Add DMT.Plaza.Simulator.App project.
+- Set all DMT applications to run as single instance.
+
+[commited]
+Update 2020-06-09 #16
+- Implements HeaderUser GUI layout.
+- Implements PlazaHeader GUI layout.
+- Implements AccountHeader GUI layout.
+
+[commited]
+Update 2020-06-09 #15
+- Implements HeaderDateTime GUI layout.
+- Implements HeaderLogo GUI layout.
+- Implements HeaderShift GUI layout.
+- Implements HeaderPlaza GUI layout.
+- Implements HeaderSupervisor GUI layout.
+
+[commited]
+Update 2020-06-09 #14
+- Implements SignInWindow GUI layout.
+- Implements SignInPage GUI layout.
+
+[commited]
+Update 2020-06-09 #13
+- Add sample structure for report datasource (criteria and item)/report file.
+
+[commited]
+Update 2020-06-09 #12
+- Add DMT.Reports project.
+- Move extension methods for report viewer control to DMT.Reports project.
+- Move TA ReportManager to DMT.Reports project.
+- Move TOD ReportManager to DMT.Reports project.
+
+[commited]
+Update 2020-06-09 #11
+- Update ReportViewerSample2 #2
+- Update extension methods for report viewer control.
+- Add TA ReportManager.
+- Add TOD ReportManager.
+
+[commited]
+Update 2020-06-09 #10
+- Update ReportViewerSample2
+- Add extension methods for export excel from report viewer control.
+
+[commited]
+Update 2020-06-09 #9
+- Update gitignore and remove executable folder.
+
+[commited]
+Update 2020-06-09 #8
+- Update gitignore and remove executable folder.
+
+[commited]
+Update 2020-06-09 #7
+- DMT.Plaza.Config app project. Remove ribbon controls (has bug in RibbonWindow Title).
+
+[commited]
+Update 2020-06-09 #6
+- All application projects add app.manifest file for supports windows form dpi aware.
+
+[commited]
+Update 2020-06-09 #5
+- Add DMT.Plaza.Config app project.
+
+[commited]
+Update 2020-06-09 #4
+- Add SignInPage (page).
+- Add TA MainMenu (page).
+- Add TOD MainMenu (page).
+
+[commited]
+Update 2020-06-09 #3
+- Add TA - PlazaRequestExchangePage (page).
+- Add TA - PlazaCouponReceivedPage (page).
+- Add TA - PlazaFundReceivedPage (page).
+
+[commited]
+Update 2020-06-09 #2
+- Add TA - CollectorFundSummaryPage (page).
+- Add TA - CollectorReturnCouponPage (page).
+- Add TA - CollectorBorrowCouponPage (page).
+
+[commited]
+Update 2020-06-09 #1
+- restructure namespace.
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-06-08 #14
+- Add SignIn - SignInWindow (window).
+
+[commited]
+Update 2020-06-08 #13
+- Add TA - PlazaReceivedFundWindow (window).
+
+[commited]
+Update 2020-06-08 #12
+- Add TA - PlazaStockSummaryWindow (window).
+
+[commited]
+Update 2020-06-08 #11
+- Add TOD - BOJWindow (window).
+- Add TOD - EOJWindow (window).
+
+[commited]
+Update 2020-06-08 #10
+- Add TA - PlazaFundRequestExchangeWindow (window).
+- Add TA - PlazaFundUpdateExchangeWindow (window).
+
+[commited]
+Update 2020-06-08 #9
+- Add TA - CollectorFundBorrowWindow (window).
+- Add TA - CollectorFundReturnWindow (window).
+
+[commited]
+Update 2020-06-08 #8
+- Add TA - CollectorFundSummaryView control.
+- Add TA - CollectorCouponBorrowEntry control.
+- Add TA - CollectorCouponReturnEntry control.
+
+[commited]
+Update 2020-06-08 #7
+- Add TA - PlazaCouponEntry control.
+- Add TA - PlazaFundEntry control.
+- Format code for all controls and remove unused code.
+
+[commited]
+Update 2020-06-08 #6
+- Add TA - PlazaFundView control.
+- Add TA - PlazaCouponView control.
+- Add TA - PlazaRequestExchangeView control.
+- Add TA - AccountRequestExchangeView control.
+
+[commited]
+Update 2020-06-08 #5
+- Add TOD - OtherEntry control.
+- Add TOD - LaneView control.
+- Restructure folder for revenue entry.
+
+[commited]
+Update 2020-06-08 #4
+- Add TOD - RevenueEntry control.
+- Add TOD - EMVEntry control.
+- Add TOD - QRCodeEntry control.
+- Add TOD - CouponUsageEntry control.
+- Add TOD - CouponReveunuEntry control.
+
+[commited]
+Update 2020-06-08 #3
+- Add TOD - ShiftView Control.
+
+[commited]
+Update 2020-06-08 #2
+- Add Header - PlazaHeader Control.
+- Add Header - AccountHeader Control.
+
+[commited]
+Update 2020-06-08 #1
+- Add Generic Singelton Class (WPF) sample project.
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-06-07 #5
+- Add Generic Singelton Class sample project.
+
+[commited]
+Update 2020-06-07 #4
+- rebuild all executables.
+
+[commited]
+Update 2020-06-07 #3
+- Update .gitignore.
+
+[commited]
+Update 2020-06-07 #2
+- Update .gitignore.
+
+[commited]
+Update 2020-06-07 #1
+- Update sample for LiteDB.
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-06-06 #2
+- Add OwinSelfHostServer sample project
+
+[commited]
+Update 2020-06-06 #1
+- Test deploy report sample app to new PC (deployment testing).
+- Update todo.txt
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-06-05 #14
+- Update todo.txt #2.
+
+[commited]
+Update 2020-06-05 #13
+- Update todo.txt #1.
+
+[commited]
+Update 2020-06-05 #12
+- Add ReportViewer sample2 project (used NLib.Reports).
+- Add ReportViewer sample2 project post build script. (required).
+
+[commited]
+Update 2020-06-05 #11
+- Change NLib project target framework to 4.6.
+
+[commited]
+Update 2020-06-05 #10
+- Add NLib.Reports project and change target framework to 4.6.
+
+[commited]
+Update 2020-06-05 #9
+- Add NLib project.
+
+[commited]
+Update 2020-06-05 #8
+- Add LiteDB assembly in references folder.
+
+[commited]
+Update 2020-06-05 #7
+- Add ReportViewer sample project.
+- Add ReportViewer sample project post build script. (required).
+
+[commited]
+Update 2020-06-05 #6
+- Update SQLLite sample code.
+- Add SQLLite sample project post build script. (required).
+
+[commited]
+Update 2020-06-05 #5
+- Add SQLLite sample project.
+- Add LiteDB sample project.
+- Change ouput folder (all projects).
+
+[commited]
+Update 2020-06-05 #4
+- Add Self Host Microsoft WebApi and Owin assemblies in references folder.
+
+[commited]
+Update 2020-06-05 #3
+- Add RestSharp assembly in references folder.
+
+[commited]
+Update 2020-06-05 #2
+- Add report viewer assemblies in references folder.
+
+[commited]
+Update 2020-06-05 #1
+- Add report viewer related f5c.
+- Update gitignore
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-06-04 #3
+- DMT.Models add DMTModelBase abstract class.
+
+[commited]
+Update 2020-06-04 #2
+- DMT.Core add NJson extension methods.
+
+[commited]
+Update 2020-06-04 #1
+- DMT.Core add DateTime extension methods.
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-06-03 #2
+- Add DMT TOD App project.
+- Add DMT TA App project.
+- Add DMT ACC App project.
+
+[commited]
+Update 2020-06-03 #1
+- Add TOD Data Service project (windows service)
+- Add TA Data Service project (windows service)
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-05-30 #6
+- Add 03.Windows.Service solution folder (preparing).
+
+[commited]
+Update 2020-05-30 #5
+- Add DMT.Controls project.
+- Add DMT.Pages project.
+
+[commited]
+Update 2020-05-30 #4
+- Add DMT.Models project.
+- Add DMT.Services project.
+
+[commited]
+Update 2020-05-30 #3
+- Add DMT.Core project.
+
+[commited]
+Update 2020-05-30 #2
+- Add history.txt
+- Add todo.txt
+
+[commited]
+Update 2020-05-30 #1
+- Add empty solution.
+--------------------------------------------------------------------------------------------
