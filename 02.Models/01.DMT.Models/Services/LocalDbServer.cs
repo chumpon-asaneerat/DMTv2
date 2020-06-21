@@ -12,7 +12,7 @@ using SQLiteNetExtensions.Attributes;
 using SQLiteNetExtensions.Extensions;
 using NLib.IO;
 using System.Runtime.CompilerServices;
-using DMT.Models;
+using DMT.Models.Domains;
 
 #endregion
 
@@ -141,12 +141,12 @@ namespace DMT.Services
             item.TSBId = "311";
             item.TSBNameEN = "DIN DAENG";
             item.TSBNameTH = "ดินแดง";
-            item.Plazas = new List<Plaza>() 
-            { 
-                new Plaza() { 
-                    PlazaId = "3101", 
-                    PlazaNameEN = "DIN DAENG 1", 
-                    PlazaNameTH = "ดินแดง 1", 
+            item.Plazas = new List<Plaza>()
+            {
+                new Plaza() {
+                    PlazaId = "3101",
+                    PlazaNameEN = "DIN DAENG 1",
+                    PlazaNameTH = "ดินแดง 1",
                     Direction = "IN",
                     Lanes = new List<Lane>()
                     {
@@ -156,10 +156,10 @@ namespace DMT.Services
                         new Lane() { LaneId = 4, LaneType = "ETC", LaneAbbr = "DD04" }
                     }
                 },
-                new Plaza() { 
-                    PlazaId = "3102", 
-                    PlazaNameEN = "DIN DAENG 2", 
-                    PlazaNameTH = "ดินแดง 2", 
+                new Plaza() {
+                    PlazaId = "3102",
+                    PlazaNameEN = "DIN DAENG 2",
+                    PlazaNameTH = "ดินแดง 2",
                     Direction = "OUT",
                     Lanes = new List<Lane>()
                     {
@@ -181,10 +181,10 @@ namespace DMT.Services
             item.TSBNameTH = "สุทธิสาร";
             item.Plazas = new List<Plaza>()
             {
-                new Plaza() { 
-                    PlazaId = "3103", 
-                    PlazaNameEN = "SUTHISARN", 
-                    PlazaNameTH = "สุทธิสาร", 
+                new Plaza() {
+                    PlazaId = "3103",
+                    PlazaNameEN = "SUTHISARN",
+                    PlazaNameTH = "สุทธิสาร",
                     Direction = "",
                     Lanes = new List<Lane>()
                     {
@@ -201,12 +201,12 @@ namespace DMT.Services
             item.TSBId = "313";
             item.TSBNameEN = "LAD PRAO";
             item.TSBNameTH = "ลาดพร้าว";
-            item.Plazas = new List<Plaza>() 
+            item.Plazas = new List<Plaza>()
             {
-                new Plaza() { 
-                    PlazaId = "3104", 
-                    PlazaNameEN = "LAD PRAO INBOUND", 
-                    PlazaNameTH = "ลาดพร้าว ขาเข้า", 
+                new Plaza() {
+                    PlazaId = "3104",
+                    PlazaNameEN = "LAD PRAO INBOUND",
+                    PlazaNameTH = "ลาดพร้าว ขาเข้า",
                     Direction = "IN",
                     Lanes = new List<Lane>()
                     {
@@ -216,9 +216,9 @@ namespace DMT.Services
                         new Lane() { LaneId = 4, LaneType = "?", LaneAbbr = "LP04" }
                     }
                 },
-                new Plaza() { 
-                    PlazaId = "3105", 
-                    PlazaNameEN = "LAD PRAO OUTBOUND", 
+                new Plaza() {
+                    PlazaId = "3105",
+                    PlazaNameEN = "LAD PRAO OUTBOUND",
                     PlazaNameTH = "ลาดพร้าว ขาออก",
                     Direction = "OUT" ,
                     Lanes = new List<Lane>()
@@ -238,17 +238,17 @@ namespace DMT.Services
             item.TSBNameTH = "รัชดาภิเษก";
             item.Plazas = new List<Plaza>()
             {
-                new Plaza() { 
-                    PlazaId = "3106", 
-                    PlazaNameEN = "RATCHADA PHISEK 1", 
-                    PlazaNameTH = "รัชดาภิเษก 1", 
-                    Direction = "IN" 
+                new Plaza() {
+                    PlazaId = "3106",
+                    PlazaNameEN = "RATCHADA PHISEK 1",
+                    PlazaNameTH = "รัชดาภิเษก 1",
+                    Direction = "IN"
                 },
-                new Plaza() { 
-                    PlazaId = "3107", 
-                    PlazaNameEN = "RATCHADA PHISEK 2", 
-                    PlazaNameTH = "รัชดาภิเษก 2", 
-                    Direction = "OUT" 
+                new Plaza() {
+                    PlazaId = "3107",
+                    PlazaNameEN = "RATCHADA PHISEK 2",
+                    PlazaNameTH = "รัชดาภิเษก 2",
+                    Direction = "OUT"
                 }
             };
             if (!TSB.Exists(this.Db, item)) TSB.Save(this.Db, item);
@@ -260,11 +260,11 @@ namespace DMT.Services
             item.TSBNameTH = "บางเขน";
             item.Plazas = new List<Plaza>()
             {
-                new Plaza() { 
-                    PlazaId = "3108", 
-                    PlazaNameEN = "BANGKHEN", 
-                    PlazaNameTH = "บางเขน", 
-                    Direction = "" 
+                new Plaza() {
+                    PlazaId = "3108",
+                    PlazaNameEN = "BANGKHEN",
+                    PlazaNameTH = "บางเขน",
+                    Direction = ""
                 }
             };
             if (!TSB.Exists(this.Db, item)) TSB.Save(this.Db, item);
@@ -276,17 +276,17 @@ namespace DMT.Services
             item.TSBNameTH = "แจ้งวัฒนะ";
             item.Plazas = new List<Plaza>()
             {
-                new Plaza() { 
-                    PlazaId = "3109", 
-                    PlazaNameEN = "CHANGEWATTANA 1", 
-                    PlazaNameTH = "แจ้งวัฒนะ 1", 
-                    Direction = "IN" 
+                new Plaza() {
+                    PlazaId = "3109",
+                    PlazaNameEN = "CHANGEWATTANA 1",
+                    PlazaNameTH = "แจ้งวัฒนะ 1",
+                    Direction = "IN"
                 },
-                new Plaza() { 
-                    PlazaId = "3110", 
-                    PlazaNameEN = "CHANGEWATTANA 2", 
-                    PlazaNameTH = "แจ้งวัฒนะ 2", 
-                    Direction = "OUT" 
+                new Plaza() {
+                    PlazaId = "3110",
+                    PlazaNameEN = "CHANGEWATTANA 2",
+                    PlazaNameTH = "แจ้งวัฒนะ 2",
+                    Direction = "OUT"
                 }
             };
             if (!TSB.Exists(this.Db, item)) TSB.Save(this.Db, item);
@@ -298,17 +298,17 @@ namespace DMT.Services
             item.TSBNameTH = "หลักสี่";
             item.Plazas = new List<Plaza>()
             {
-                new Plaza() { 
-                    PlazaId = "3111", 
-                    PlazaNameEN = "LAKSI INBOUND", 
-                    PlazaNameTH = "หลักสี่ ขาเข้า", 
-                    Direction = "IN" 
+                new Plaza() {
+                    PlazaId = "3111",
+                    PlazaNameEN = "LAKSI INBOUND",
+                    PlazaNameTH = "หลักสี่ ขาเข้า",
+                    Direction = "IN"
                 },
-                new Plaza() { 
-                    PlazaId = "3112", 
-                    PlazaNameEN = "LAKSI OUTBOUND", 
-                    PlazaNameTH = "หลักสี่ ขาออก", 
-                    Direction = "OUT" 
+                new Plaza() {
+                    PlazaId = "3112",
+                    PlazaNameEN = "LAKSI OUTBOUND",
+                    PlazaNameTH = "หลักสี่ ขาออก",
+                    Direction = "OUT"
                 }
             };
             if (!TSB.Exists(this.Db, item)) TSB.Save(this.Db, item);
@@ -320,17 +320,17 @@ namespace DMT.Services
             item.TSBNameTH = "ดอนเมือง";
             item.Plazas = new List<Plaza>()
             {
-                new Plaza() { 
-                    PlazaId = "3113", 
-                    PlazaNameEN = "DON MUANG 1", 
-                    PlazaNameTH = "ดอนเมือง 1", 
-                    Direction = "IN" 
+                new Plaza() {
+                    PlazaId = "3113",
+                    PlazaNameEN = "DON MUANG 1",
+                    PlazaNameTH = "ดอนเมือง 1",
+                    Direction = "IN"
                 },
-                new Plaza() { 
-                    PlazaId = "3114", 
-                    PlazaNameEN = "DON MUANG 2", 
-                    PlazaNameTH = "ดอนเมือง 2", 
-                    Direction = "OUT" 
+                new Plaza() {
+                    PlazaId = "3114",
+                    PlazaNameEN = "DON MUANG 2",
+                    PlazaNameTH = "ดอนเมือง 2",
+                    Direction = "OUT"
                 }
             };
             if (!TSB.Exists(this.Db, item)) TSB.Save(this.Db, item);
@@ -342,17 +342,17 @@ namespace DMT.Services
             item.TSBNameTH = "อนุสรน์สถาน";
             item.Plazas = new List<Plaza>()
             {
-                new Plaza() { 
+                new Plaza() {
                     PlazaId = "3115",
-                    PlazaNameEN = "ANUSORN SATHAN 1", 
-                    PlazaNameTH = "อนุสรน์สถาน 1", 
-                    Direction = "IN" 
+                    PlazaNameEN = "ANUSORN SATHAN 1",
+                    PlazaNameTH = "อนุสรน์สถาน 1",
+                    Direction = "IN"
                 },
-                new Plaza() { 
-                    PlazaId = "3116", 
-                    PlazaNameEN = "ANUSORN SATHAN 2", 
-                    PlazaNameTH = "อนุสรน์สถาน 2", 
-                    Direction = "OUT" 
+                new Plaza() {
+                    PlazaId = "3116",
+                    PlazaNameEN = "ANUSORN SATHAN 2",
+                    PlazaNameTH = "อนุสรน์สถาน 2",
+                    Direction = "OUT"
                 }
             };
             if (!TSB.Exists(this.Db, item)) TSB.Save(this.Db, item);
@@ -568,7 +568,7 @@ namespace DMT.Services
 
         #endregion
 
-        #region Public Methods
+        #region Public Methods (Start/Shutdown)
 
         /// <summary>
         /// Start.
@@ -580,7 +580,13 @@ namespace DMT.Services
                 lock (typeof(LocalDbServer))
                 {
                     string path = Path.Combine("./", FileName);
-                    Db = new SQLiteConnection(path, storeDateTimeAsTicks: true);
+                    Db = new SQLiteConnection(path,
+                        SQLiteOpenFlags.Create |
+                        SQLiteOpenFlags.SharedCache |
+                        SQLiteOpenFlags.ReadWrite |
+                        SQLiteOpenFlags.FullMutex,
+                        storeDateTimeAsTicks: true);
+                    Db.BusyTimeout = new TimeSpan(0, 0, 5); // set busy timeout.
                     InitTables();
                 }
             }
@@ -599,85 +605,202 @@ namespace DMT.Services
 
         #endregion
 
-        #region Public Methods
+        #region Models(Domain) Public Methods 
 
         // TSB
-        public bool Exists(TSB value) { return TSB.Exists(this.Db, value); }
-        public void Save(TSB value) { TSB.Save(this.Db, value); }
+        public bool Exists(TSB value)
+        {
+            lock (this)
+            {
+                return TSB.Exists(this.Db, value);
+            }
+        }
+        public void Save(TSB value)
+        {
+            lock (this)
+            {
+                TSB.Save(this.Db, value);
+            }
+        }
         public List<TSB> GetTSBs(bool recursive = false)
         {
-            return TSB.Gets(this.Db, recursive);
+            lock (this)
+            {
+                return TSB.Gets(this.Db, recursive);
+            }
         }
         public TSB GetTSB(string tsbId, bool recursive = false)
         {
-            return TSB.Get(this.Db, tsbId, recursive);
+            lock (this)
+            {
+                return TSB.Get(this.Db, tsbId, recursive);
+            }
         }
         // Plaza
-        public bool Exists(Plaza value) { return Plaza.Exists(this.Db, value); }
-        public void Save(Plaza value) { Plaza.Save(this.Db, value); }
+        public bool Exists(Plaza value)
+        {
+            lock (this)
+            {
+                return Plaza.Exists(this.Db, value);
+            }
+        }
+        public void Save(Plaza value)
+        {
+            lock (this)
+            {
+                Plaza.Save(this.Db, value);
+            }
+        }
         public List<Plaza> GetPlazas(bool recursive = false)
         {
-            return Plaza.Gets(this.Db, recursive);
+            lock (this)
+            {
+                return Plaza.Gets(this.Db, recursive);
+            }
         }
         public Plaza GetPlaza(string plazaId, bool recursive = false)
         {
-            return Plaza.Get(this.Db, plazaId, recursive);
+            lock (this)
+            {
+                return Plaza.Get(this.Db, plazaId, recursive);
+            }
         }
         // Lane
-        public bool Exists(Lane value) { return Lane.Exists(this.Db, value); }
-        public void Save(Lane value) { Lane.Save(this.Db, value); }
-        public List<Lane> GetLanes(bool recursive = false) 
-        { 
-            return Lane.Gets(this.Db, recursive); 
+        public bool Exists(Lane value)
+        {
+            lock (this)
+            {
+                return Lane.Exists(this.Db, value);
+            }
         }
-        public Lane GetLane(string plazaId, int laneId, bool recursive = false) 
-        { 
-            return Lane.Get(this.Db, plazaId, laneId, recursive); 
+        public void Save(Lane value)
+        {
+            lock (this)
+            {
+                Lane.Save(this.Db, value);
+            }
+        }
+        public List<Lane> GetLanes(bool recursive = false)
+        {
+            lock (this)
+            {
+                return Lane.Gets(this.Db, recursive);
+            }
+        }
+        public Lane GetLane(string plazaId, int laneId, bool recursive = false)
+        {
+            lock (this)
+            {
+                return Lane.Get(this.Db, plazaId, laneId, recursive);
+            }
         }
         // Role
-        public bool Exists(Role value) { return Role.Exists(this.Db, value); }
-        public void Save(Role value) { Role.Save(this.Db, value); }
+        public bool Exists(Role value)
+        {
+            lock (this)
+            {
+                return Role.Exists(this.Db, value);
+            }
+        }
+        public void Save(Role value)
+        {
+            lock (this)
+            {
+                Role.Save(this.Db, value);
+            }
+        }
         public List<Role> GetRoles(bool recursive = false)
         {
-            return Role.Gets(this.Db, recursive);
+            lock (this)
+            {
+                return Role.Gets(this.Db, recursive);
+            }
         }
         public Role GetRole(string roleId, bool recursive = false)
         {
-            return Role.Get(this.Db, roleId, recursive);
+            lock (this)
+            {
+                return Role.Get(this.Db, roleId, recursive);
+            }
         }
         // User
-        public bool Exists(User value) { return User.Exists(this.Db, value); }
-        public void Save(User value) { User.Save(this.Db, value); }
+        public bool Exists(User value)
+        {
+            lock (this)
+            {
+                return User.Exists(this.Db, value);
+            }
+        }
+        public void Save(User value)
+        {
+            lock (this)
+            {
+                User.Save(this.Db, value);
+            }
+        }
         public List<User> GetUsers(bool recursive = false)
         {
-            return User.Gets(this.Db, recursive);
+            lock (this)
+            {
+                return User.Gets(this.Db, recursive);
+            }
         }
         public User Get(string userId, bool recursive = false)
         {
-            return User.Get(this.Db, userId, recursive);
+            lock (this)
+            {
+                return User.Get(this.Db, userId, recursive);
+            }
         }
         public User LogInByUserId(string userId, string password, bool recursive = false)
         {
-            return User.GetByUserId(this.Db, userId, password, recursive);
+            lock (this)
+            {
+                return User.GetByUserId(this.Db, userId, password, recursive);
+            }
         }
         public User LogInByUserName(string userName, string password, bool recursive = false)
         {
-            return User.GetByUserName(this.Db, userName, password, recursive);
+            lock (this)
+            {
+                return User.GetByUserName(this.Db, userName, password, recursive);
+            }
         }
         public User LogInByCardId(string cardId, bool recursive = false)
         {
-            return User.GetByCardId(this.Db, cardId, recursive);
+            lock (this)
+            {
+                return User.GetByCardId(this.Db, cardId, recursive);
+            }
         }
         // Configs
-        public bool Exists(Config value) { return Config.Exists(this.Db, value); }
-        public void Save(Config value) { Config.Save(this.Db, value); }
+        public bool Exists(Config value)
+        {
+            lock (this)
+            {
+                return Config.Exists(this.Db, value);
+            }
+        }
+        public void Save(Config value)
+        {
+            lock (this)
+            {
+                Config.Save(this.Db, value);
+            }
+        }
         public List<Config> GetConfigs(bool recursive = false)
         {
-            return Config.Gets(this.Db, recursive);
+            lock (this)
+            {
+                return Config.Gets(this.Db, recursive);
+            }
         }
         public Config GetConfig(string key, bool recursive = false)
         {
-            return Config.Get(this.Db, key, recursive);
+            lock (this)
+            {
+                return Config.Get(this.Db, key, recursive);
+            }
         }
 
         #endregion

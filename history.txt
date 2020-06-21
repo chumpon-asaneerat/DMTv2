@@ -8,8 +8,9 @@ Update 2020-06-21 #10
 Update 2020-06-21 #9
 - 
 
+[commited]
 Update 2020-06-21 #8
-- 
+- Sync code with DMTv2 (All domain classes and LocalServer class).
 
 [commited]
 Update 2020-06-21 #7
