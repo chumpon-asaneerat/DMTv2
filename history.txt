@@ -1,13 +1,23 @@
 --------------------------------------------------------------------------------------------
-Update 2020-06-21 #11
+Update 2020-06-22 #5
 - 
 
-Update 2020-06-21 #10
+Update 2020-06-22 #4
 - 
 
-Update 2020-06-21 #9
+Update 2020-06-22 #3
 - 
 
+[commited]
+Update 2020-06-22 #2
+- Restructure projects.
+- Add references assemblies.
+
+[commited]
+Update 2020-06-22 #1
+- Remove (comment out) The Models(Domain) public methods.
+
+--------------------------------------------------------------------------------------------
 [commited]
 Update 2020-06-21 #8
 - Sync code with DMTv2 (All domain classes and LocalServer class).

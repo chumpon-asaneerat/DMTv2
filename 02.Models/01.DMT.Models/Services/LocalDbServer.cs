@@ -12,7 +12,7 @@ using SQLiteNetExtensions.Attributes;
 using SQLiteNetExtensions.Extensions;
 using NLib.IO;
 using System.Runtime.CompilerServices;
-using DMT.Models.Domains;
+using DMT.Models;
 
 #endregion
 
@@ -605,8 +605,8 @@ namespace DMT.Services
 
         #endregion
 
-        #region Models(Domain) Public Methods 
-
+        #region Models(Domain) Public Methods (may be not required).
+        /*
         // TSB
         public bool Exists(TSB value)
         {
@@ -802,7 +802,7 @@ namespace DMT.Services
                 return Config.Get(this.Db, key, recursive);
             }
         }
-
+        */
         #endregion
 
         #region Public Properties

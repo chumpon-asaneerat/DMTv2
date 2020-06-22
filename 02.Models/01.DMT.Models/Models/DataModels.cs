@@ -8,7 +8,7 @@ using SQLiteNetExtensions.Extensions;
 using System.ComponentModel;
 using DMT.Services;
 
-namespace DMT.Models.Domains
+namespace DMT.Models
 {
     #region Objects
 
