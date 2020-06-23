@@ -3,24 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DMT.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="80" 
-             d:DesignWidth="80"
-             DataContext="{Binding RelativeSource={RelativeSource Self}}">
-    <Grid>
-        <Button x:Name="buttonHost" 
-                HorizontalContentAlignment="Stretch"
-                VerticalContentAlignment="Stretch"
-                Foreground="{Binding Foreground}"
-                Background="{Binding Background}">
-            <DockPanel x:Name="dockHost" Margin="5">
-                <Image Name="img"
-                       DockPanel.Dock="Left"
-                       Height="{Binding ActualHeight, ElementName=dockHost}"
-                       Width="{Binding ActualHeight, ElementName=dockHost}"
-                       Source="{Binding ImageSource}"/>
-                <Grid DockPanel.Dock="Left" Width="5" />
-            </DockPanel>
-        </Button>
-    </Grid>
+             d:DesignWidth="80">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type local:ImageButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type local:ImageButton}">
+                        <Grid>
+                            <Button HorizontalContentAlignment="Stretch"
+                                    VerticalContentAlignment="Stretch"
+                                    Foreground="{Binding Foreground}"
+                                    Background="{Binding Background}">
+                                <DockPanel Margin="5">
+                                    <Image Name="img"
+                                           DockPanel.Dock="Left"
+                                           Height="{Binding ActualHeight}"
+                                           Width="{Binding ActualHeight}"
+                                           Source="{Binding ImageSource}"/>
+                                    <Grid DockPanel.Dock="Left" Width="5" />
+                                </DockPanel>
+                            </Button>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
 </UserControl>

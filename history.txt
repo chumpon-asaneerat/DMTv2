@@ -8,8 +8,10 @@ Update 2020-06-23 #14
 Update 2020-06-23 #13
 - 
 
+[commited]
 Update 2020-06-23 #12
-- 
+- DMT.Controls project - Unused MenuButton Control (not work).
+- DMT.Controls project - Unused ImageButton Control (not work).
 
 [commited]
 Update 2020-06-23 #11

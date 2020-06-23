@@ -61,6 +61,9 @@
     <Compile Include="Common\MenuButton.xaml.cs">
       <DependentUpon>MenuButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\MenuGroupCaption.xaml.cs">
+      <DependentUpon>MenuGroupCaption.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Header\Elements\HeaderSupervisor.xaml.cs">
       <DependentUpon>HeaderSupervisor.xaml</DependentUpon>
     </Compile>
@@ -237,6 +240,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Common\MenuButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\MenuGroupCaption.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
