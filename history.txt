@@ -29,8 +29,10 @@ Update 2020-06-23 #7
 Update 2020-06-23 #6
 - 
 
+[commited]
 Update 2020-06-23 #5
-- 
+- Add App.config in Models project and Window Service project.
+- Update some compile note.
 
 [commited]
 Update 2020-06-23 #4
