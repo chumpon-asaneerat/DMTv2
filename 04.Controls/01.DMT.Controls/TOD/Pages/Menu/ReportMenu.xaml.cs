@@ -6,7 +6,7 @@ using System.Windows.Controls;
 using NLib;
 using NLib.Services;
 
-namespace DMT.Pages.TOD.Menu
+namespace DMT.TOD.Pages.Menu
 {
     /// <summary>
     /// Interaction logic for ReportMenu.xaml

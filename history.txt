@@ -5,8 +5,11 @@ Update 2020-06-23 #15
 Update 2020-06-23 #14
 - 
 
+[commited]
 Update 2020-06-23 #13
-- 
+- DMT.Controls project - Update MainMenu and ReportMenu
+- TOD App project - Set Startup page MainMenu.
+- TA App project - Set Startup page MainMenu.
 
 [commited]
 Update 2020-06-23 #12

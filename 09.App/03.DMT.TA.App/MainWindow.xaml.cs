@@ -41,7 +41,7 @@ namespace DMT
             PageContentManager.Instance.OnTick += new EventHandler(Instance_OnTick);
             PageContentManager.Instance.Start();
             // Init Main Menu
-            //PageContentManager.Instance.Current = new TA.Pages.MainMenu();
+            PageContentManager.Instance.Current = new TA.Pages.Menu.MainMenu();
         }
 
         private void Window_Unloaded(object sender, RoutedEventArgs e)

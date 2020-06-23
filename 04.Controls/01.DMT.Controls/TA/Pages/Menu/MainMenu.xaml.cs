@@ -13,7 +13,7 @@ using NLib;
 
 #endregion
 
-namespace DMT.Pages.TA.Menu
+namespace DMT.TA.Pages.Menu
 {
     /// <summary>
     /// Interaction logic for TODMainMenu.xaml
