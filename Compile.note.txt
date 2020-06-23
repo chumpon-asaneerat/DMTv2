@@ -1,5 +1,11 @@
-Note: 2020-06-23
+Note: 2020-06-23 #1
 - Found some .NET bug in solve assembly.
   When Rebuild required special rebuild on Windows service project again and
   Test run to make sure the Auto Generate Binding Redirect fully compile output.
   For more information see: https://nickcraver.com/blog/2020/02/11/binding-redirects/
+
+
+Note: 2020-06-23 #2
+- Remove some reference assemblies from windows service project and comment out assemblyBinding
+  in app.config seem to solve problem but if anything not work see #1 and try to fixd on
+  each project one by one.

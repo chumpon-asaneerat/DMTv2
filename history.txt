@@ -23,8 +23,11 @@ Update 2020-06-23 #9
 Update 2020-06-23 #8
 - 
 
+[commited]
 Update 2020-06-23 #7
-- 
+- Remove some reference assemblies from windows service project and comment out assemblyBinding
+  in app.config seem to solve problem.
+- Update compile note.
 
 [commited]
 Update 2020-06-23 #6

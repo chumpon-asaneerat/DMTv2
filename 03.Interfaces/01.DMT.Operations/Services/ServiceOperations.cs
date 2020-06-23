@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 using RestSharp;
 using NLib.ServiceProcess;
@@ -53,14 +54,12 @@ namespace DMT.Services
         static PlazaOperations()
         {
             // Required for HTTPS.
-            /*
             ServicePointManager.SecurityProtocol = 
                 SecurityProtocolType.Tls12 | 
                 SecurityProtocolType.Tls11 | 
                 SecurityProtocolType.Tls |
                 (SecurityProtocolType)768 | (SecurityProtocolType)3072 |
                 SecurityProtocolType.SystemDefault;
-            */
         }
 
         #endregion
