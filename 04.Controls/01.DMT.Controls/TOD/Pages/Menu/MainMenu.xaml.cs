@@ -1,0 +1,245 @@
+﻿
+#region Using
+
+using System.Windows;
+using System.Windows.Controls;
+
+using NLib.Services;
+
+using System;
+using System.Collections.Generic;
+
+using NLib;
+
+#endregion
+
+namespace DMT.Pages.TOD
+{
+    /// <summary>
+    /// Interaction logic for TODMainMenu.xaml
+    /// </summary>
+    public partial class MainMenu : UserControl
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public MainMenu()
+        {
+            InitializeComponent();
+        }
+
+        #endregion
+
+        #region Button (Menu) Command Handlers
+
+        private void beginJob_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            var signinWin = new Windows.SignInWindow();
+            signinWin.Owner = Application.Current.MainWindow;
+            if (signinWin.ShowDialog() == false)
+            {
+                return;
+            }
+            // Begin of Job Page
+            Windows.TOD.Job.BOJWindow jobWindow = new Windows.TOD.Job.BOJWindow();
+            jobWindow.Owner = Application.Current.MainWindow;
+            if (jobWindow.ShowDialog() == false)
+            {
+                return;
+            }
+            */
+        }
+
+        private void endJob_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            var signinWin = new Windows.SignInWindow();
+            signinWin.Owner = Application.Current.MainWindow;
+            if (signinWin.ShowDialog() == false)
+            {
+                return;
+            }
+            // End of Job Page
+            var page = new Job.EOJPage();
+            // setup
+            page.Setup(Models.Job.FindJob("14077"));
+            PageContentManager.Instance.Current = page;
+            */
+        }
+
+        private void revEntry_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            var signinWin = new Windows.SignInWindow();
+            signinWin.Owner = Application.Current.MainWindow;
+            if (signinWin.ShowDialog() == false)
+            {
+                return;
+            }
+            // Revenue Entry
+            var page = new Revenue.RevenueDateSelectionPage();
+            // setup
+            Models.RevenueEntry entry = new Models.RevenueEntry();
+            page.Setup(Models.Job.FindJob("14077"), entry);
+            PageContentManager.Instance.Current = page;
+            */
+        }
+
+        private void reprintRevSlip_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            var signinWin = new Windows.SignInWindow();
+            signinWin.Owner = Application.Current.MainWindow;
+            if (signinWin.ShowDialog() == false)
+            {
+                return;
+            }
+            var search = new Windows.TOD.Reports.RevenueSlipSearchWindow();
+            search.Owner = Application.Current.MainWindow;
+            if (search.ShowDialog() == false)
+            {
+                return;
+            }
+            // Revenue Slip Preview
+            var page = new Reports.RevenueSlipPreview();
+            page.MenuPage = this;
+            PageContentManager.Instance.Current = page;
+            */
+        }
+
+        private void changeShift_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            var signinWin = new Windows.SignInWindow();
+            signinWin.Owner = Application.Current.MainWindow;
+            if (signinWin.ShowDialog() == false)
+            {
+                return;
+            }
+            // Change Shift
+            var page = new TollAdmin.ChangeShiftPage();
+            // setup
+            page.Setup(Models.Job.FindJob("14077"));
+            PageContentManager.Instance.Current = page;
+            */
+        }
+
+        private void reportMenu_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            var signinWin = new Windows.SignInWindow();
+            signinWin.Owner = Application.Current.MainWindow;
+            if (signinWin.ShowDialog() == false)
+            {
+                return;
+            }
+            var page = new TOD.ReportMenu();
+            PageContentManager.Instance.Current = page;
+            */
+        }
+
+        private void logout_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            var signinWin = new Windows.SignInWindow();
+            signinWin.Owner = Application.Current.MainWindow;
+            if (signinWin.ShowDialog() == false)
+            {
+                return;
+            }
+            */
+        }
+
+
+        private void emvQRCode_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            var signinWin = new Windows.SignInWindow();
+            signinWin.Owner = Application.Current.MainWindow;
+            if (signinWin.ShowDialog() == false)
+            {
+                return;
+            }
+            var page = new DMT.Pages.TOD.Job.EMVQRCode();
+            List<Models.EMVQRCode> emvQRs = new List<Models.EMVQRCode>();
+            Models.EMVQRCode emvQR;
+
+            emvQR = new Models.EMVQRCode();
+            emvQR.Type = "EMV";
+            emvQR.DateQR = new DateTime(2020, 3, 16, 18, 50, 11);
+            emvQR.StaffId = "14055";
+            emvQR.LaneId = 1;
+            emvQR.ApprovalCode = "459564";
+            emvQR.Qty = 100;
+            emvQRs.Add(emvQR);
+
+            emvQR = new Models.EMVQRCode();
+            emvQR.Type = "EMV";
+            emvQR.DateQR = new DateTime(2020, 3, 16, 23, 15, 24);
+            emvQR.StaffId = "14147";
+            emvQR.LaneId = 3;
+            emvQR.ApprovalCode = "485564";
+            emvQR.Qty = 170;
+            emvQRs.Add(emvQR);
+
+            emvQR = new Models.EMVQRCode();
+            emvQR.Type = "QR Code";
+            emvQR.DateQR = new DateTime(2020, 3, 17, 12, 1, 47);
+            emvQR.StaffId = "12562";
+            emvQR.LaneId = 2;
+            emvQR.ApprovalCode = "459564";
+            emvQR.Qty = 100;
+            emvQRs.Add(emvQR);
+
+            page.Setup(emvQRs);
+
+            PageContentManager.Instance.Current = page;
+            */
+        }
+
+        private void loginList_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            var signinWin = new Windows.SignInWindow();
+            signinWin.Owner = Application.Current.MainWindow;
+            if (signinWin.ShowDialog() == false)
+            {
+                return;
+            }
+            var page = new DMT.Pages.TOD.Job.LoginListPage();
+            List<Models.Lane> Lanes = new List<Models.Lane>();
+            Models.Lane lane;
+
+            lane = new Models.Lane();
+            lane.Begin = new DateTime(2020, 3, 16, 18, 50, 11);
+            lane.End = new DateTime(2020, 3, 17, 10, 00, 11);
+            lane.StaffId = "14055";
+            lane.StaffName = "นางวิภา สวัสดิวัฒน์";
+            Lanes.Add(lane);
+
+            lane = new Models.Lane();
+            lane.Begin = new DateTime(2020, 3, 16, 23, 15, 24);
+            lane.End = new DateTime(2020, 3, 17, 08, 00, 11);
+            lane.StaffId = "14147";
+            lane.StaffName = "นางสาว แก้วใส ฟ้ารุ่งโรจณ์";
+            Lanes.Add(lane);
+
+            lane = new Models.Lane();
+            lane.Begin = new DateTime(2020, 3, 17, 12, 1, 47);
+            lane.End = new DateTime(2020, 3, 17, 08, 30, 00);
+            lane.StaffId = "12562";
+            lane.StaffName = "นาย ภักดี อมรรุ่งโรจน์";
+            Lanes.Add(lane);
+           
+            page.Setup(Lanes);
+
+            PageContentManager.Instance.Current = page;
+            */
+        }
+
+        #endregion
+    }
+}
