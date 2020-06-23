@@ -88,6 +88,12 @@
     <Compile Include="TA\Controls\Collector\Coupon\View\CouponReturnView.xaml.cs">
       <DependentUpon>CouponReturnView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TA\Menu\MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Menu\ReportMenu.xaml.cs">
+      <DependentUpon>ReportMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TA\Windows\Collector\Credit\CollectorCreditBorrowWindow.xaml.cs">
       <DependentUpon>CollectorCreditBorrowWindow.xaml</DependentUpon>
     </Compile>
@@ -267,6 +273,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="TA\Controls\Collector\Coupon\View\CouponReturnView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Menu\MainMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Menu\ReportMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
