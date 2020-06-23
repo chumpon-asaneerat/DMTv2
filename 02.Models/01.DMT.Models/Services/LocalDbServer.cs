@@ -596,6 +596,16 @@ namespace DMT.Services
             {
                 lock (typeof(LocalDbServer))
                 {
+                    // ---------------------------------------------------------------
+                    // NOTE:
+                    // ---------------------------------------------------------------
+                    // If Exception due to version mismatch here
+                    // Please rebuild only this project and try again
+                    // VS Should Solve mismatch version properly (maybe)
+                    // See: https://nickcraver.com/blog/2020/02/11/binding-redirects/
+                    // for more information.
+                    // ---------------------------------------------------------------
+
                     string path = Path.Combine(LocalFolder, FileName);
                     Db = new SQLiteConnection(path,
                         SQLiteOpenFlags.Create |

@@ -26,8 +26,9 @@ Update 2020-06-23 #8
 Update 2020-06-23 #7
 - 
 
+[commited]
 Update 2020-06-23 #6
-- 
+- Add comment in LocalDbServer.Start method (this is the point that error occur).
 
 [commited]
 Update 2020-06-23 #5
