@@ -1,9 +1,49 @@
 --------------------------------------------------------------------------------------------
+Update 2020-06-23 #15
+- 
+
+Update 2020-06-23 #14
+- 
+
+Update 2020-06-23 #13
+- 
+
+Update 2020-06-23 #12
+- 
+
+Update 2020-06-23 #11
+- 
+
+Update 2020-06-23 #10
+- 
+
+Update 2020-06-23 #9
+- 
+
+Update 2020-06-23 #8
+- 
+
+Update 2020-06-23 #7
+- 
+
+Update 2020-06-23 #6
+- 
+
+Update 2020-06-23 #5
+- 
+
+Update 2020-06-23 #4
+- 
+
 Update 2020-06-23 #3
 - 
 
+[commited]
 Update 2020-06-23 #2
-- 
+- Restructure Controls folder #2.
+- Add RouteConsts.cs file.
+- Cleanup bin folders.
+- Re compile all projects.
 
 [commited]
 Update 2020-06-23 #1

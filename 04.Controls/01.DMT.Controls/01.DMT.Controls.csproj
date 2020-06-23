@@ -379,7 +379,16 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Config\Controls\" />
+    <Folder Include="Config\Pages\" />
+    <Folder Include="Config\Windows\" />
+    <Folder Include="Simulator\Controls\" />
+    <Folder Include="Simulator\Pages\" />
+    <Folder Include="Simulator\Windows\" />
+    <Folder Include="TA\Pages\" />
+    <Folder Include="TOD\Pages\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Background\snartcard.png" />
     <Resource Include="Images\Logo\tollway.png" />
