@@ -20,8 +20,12 @@ Update 2020-06-23 #10
 Update 2020-06-23 #9
 - 
 
+[commited]
 Update 2020-06-23 #8
-- 
+- Portd TOD app project from v1.
+- Portd TA app project from v1.
+- Portd Config app project from v1.
+- Recompile all projects.
 
 [commited]
 Update 2020-06-23 #7
