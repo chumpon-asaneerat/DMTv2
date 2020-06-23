@@ -11,34 +11,380 @@
                   VerticalScrollBarVisibility="Auto"
                   HorizontalContentAlignment="Center"
                   VerticalContentAlignment="Center">
-        <Grid>
+        <Grid HorizontalAlignment="Center"
+              VerticalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="50"/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="1" Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <!-- COL 1 -->
-                    <ColumnDefinition Width="Auto" />
-                    <!-- SEPERATOR -->
-                    <ColumnDefinition Width="5" />
-                    <!-- COL 2 -->
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1" Grid.Row="1"
+              Margin="5 0 5 5">
                 <Grid.RowDefinitions>
-                    <!-- ROW 1 -->
-                    <RowDefinition Height="Auto" />
-                    <!-- SEPERATOR -->
-                    <RowDefinition Height="5" />
-                    <!-- ROW 2-->
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="140"/>
                 </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="350"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" 
+                       FontSize="28"
+                       Foreground="WhiteSmoke"
+                       Background="DarkOrange"
+                       HorizontalAlignment="Stretch" 
+                       VerticalAlignment="Center"
+                       TextAlignment="Center"
+                       Text="ผลัดงาน"/>
+                <Button x:Name="beginJob" 
+                        Grid.Column="0" 
+                        Grid.Row="1" 
+                        Margin="0 0 5 0"
+                        Background="DarkOrange"
+                        Foreground="WhiteSmoke" 
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        Click="beginJob_Click">
+                    <DockPanel>
+                        <Image DockPanel.Dock="Left" 
+                               Height="80"
+                               Width="80"
+                               Margin="40,5,5,5"
+                               Source="/DMT.Controls;component/Images/Menu/begin_of_job.png" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                        <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                            <TextBlock FontSize="28" 
+                                       HorizontalAlignment="Center"
+                                       Text="เปิดผลัดงาน"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                                <!--
+                                <Run Text="เปิดผลัดงาน" />
+                                <LineBreak />
+                                <Run Text="เปิดผลัดงาน 2" />
+                                -->
+                            </TextBlock>
+                            <Grid Height="10" />
+                            <TextBlock FontSize="14"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="เปิดผลัดงาน"/>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+                <Button x:Name="endJob"
+                    Grid.Column="2" Grid.Row="1" 
+                    Margin="0 0 0 0"
+                    Background="DarkOrange"
+                    Foreground="WhiteSmoke" Click="endJob_Click">
+                    <DockPanel>
+                        <Grid DockPanel.Dock="Left"
+                          Margin="5">
+                            <Image Height="50"
+                                Width="50"
+                                Source="/DMT.Controls;component/Images/Menu/end_of_job.png" 
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center" />
+                        </Grid>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="28" 
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="ปิดผลัดงาน"/>
+                            <Grid Height="10" />
+                            <TextBlock FontSize="14"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="ปิดผลัดงาน"/>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="2" Grid.Row="1"
+              Margin="5 0 5 5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="140"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="350"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" 
+                       FontSize="28"
+                       Foreground="WhiteSmoke"
+                       Background="RoyalBlue"
+                       HorizontalAlignment="Stretch" 
+                       VerticalAlignment="Center"
+                       TextAlignment="Center"
+                       Text="รายได้"/>
+                <Button x:Name="revEntry" 
+                        Grid.Column="0" 
+                        Grid.Row="1" 
+                        Margin="0 0 5 0"
+                        Background="RoyalBlue"
+                        Foreground="WhiteSmoke"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        Click="revEntry_Click">
+                    <DockPanel>
+                        <Image DockPanel.Dock="Left" 
+                               Height="80"
+                               Width="80"
+                               Margin="40,5,5,5"
+                               Source="/DMT.Controls;component/Images/Menu/reventry.png" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                        <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                            <TextBlock FontSize="28" 
+                                       HorizontalAlignment="Center"
+                                       Text="ป้อนรายได้"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                            </TextBlock>
+                            <Grid Height="10" />
+                            <TextBlock FontSize="14"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="ป้อนรายได้"/>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+                <Button x:Name="reprintRevSlip" 
+                        Grid.Column="1" Grid.Row="1" 
+                        Margin="0 0 0 0"
+                        Background="RoyalBlue"
+                        Foreground="WhiteSmoke"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        Click="reprintRevSlip_Click">
+                    <DockPanel>
+                        <Image DockPanel.Dock="Left" 
+                               Height="80"
+                               Width="80"
+                               Margin="40,5,5,5"
+                               Source="/DMT.Controls;component/Images/Menu/report1.png" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                        <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                            <TextBlock FontSize="28" 
+                                       HorizontalAlignment="Center"
+                                       Text="ใบนำส่งเงิน"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                            </TextBlock>
+                            <Grid Height="10" />
+                            <TextBlock FontSize="14"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="ใบนำส่งเงิน"/>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2"
+              Margin="5 0 5 5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="140"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="350"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" 
+                       FontSize="28"
+                       Foreground="WhiteSmoke"
+                       Background="ForestGreen"
+                       HorizontalAlignment="Stretch" 
+                       VerticalAlignment="Center"
+                       TextAlignment="Center"
+                       Text="Toll Admin"/>
+                <Button x:Name="changeShift" 
+                        Grid.Column="0" 
+                        Grid.Row="1" 
+                        Margin="0 0 5 0"
+                        Background="ForestGreen"
+                        Foreground="WhiteSmoke"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        Click="changeShift_Click">
+                    <DockPanel>
+                        <Image DockPanel.Dock="Left" 
+                               Height="80"
+                               Width="80"
+                               Margin="40,5,5,5"
+                               Source="/DMT.Controls;component/Images/Menu/clock.png" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                        <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                            <TextBlock FontSize="28" 
+                                       HorizontalAlignment="Center"
+                                       Text="เปลี่ยนผลัด"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                            </TextBlock>
+                            <Grid Height="10" />
+                            <TextBlock FontSize="14"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="เปลี่ยนผลัด"/>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+                <Button x:Name="reportMenu" 
+                        Grid.Column="1" 
+                        Grid.Row="1" 
+                        Margin="0 0 0 0"
+                        Background="ForestGreen"
+                        Foreground="WhiteSmoke"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        Click="reportMenu_Click">
+                    <DockPanel>
+                        <Image DockPanel.Dock="Left" 
+                               Height="80"
+                               Width="80"
+                               Margin="40,5,5,5"
+                               Source="/DMT.Controls;component/Images/Menu/report1.png" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                        <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                            <TextBlock FontSize="28" 
+                                       HorizontalAlignment="Center"
+                                       Text="รายงานต่าง ๆ"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                            </TextBlock>
+                            <Grid Height="10" />
+                            <TextBlock FontSize="14"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="รายงานต่าง ๆ"/>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+                <Button x:Name="emvQRCode"
+                    Grid.Column="3" Grid.Row="1" 
+                    Margin="0 0 5 0"
+                    Background="ForestGreen"
+                    Foreground="WhiteSmoke" Click="emvQRCode_Click">
+                    <DockPanel>
+
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="28" 
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="EMV /QR Code"/>
+                            <Grid Height="10" />
+                            <TextBlock FontSize="14"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="EMV /QR Code"/>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+                <Button x:Name="loginList"
+                    Grid.Column="4" Grid.Row="1" 
+                    Margin="0 0 0 0"
+                    Background="ForestGreen"
+                    Foreground="WhiteSmoke" 
+                    Click="loginList_Click">
+                    <DockPanel>
+
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="28" 
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="รายชื่อการเข้างาน"/>
+                            <Grid Height="10" />
+                            <TextBlock FontSize="14"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="รายชื่อการเข้างาน"/>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="2" Grid.Row="2"
+              Margin="5 0 5 0"
+              Visibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="140"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="350"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" 
+                       FontSize="28"
+                       Foreground="WhiteSmoke"
+                       Background="Indigo"
+                       HorizontalAlignment="Stretch" 
+                       VerticalAlignment="Center"
+                       TextAlignment="Center"
+                       Text="ระบบ"/>
+                <Button x:Name="logout"
+                    Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                    Margin="0 0 0 0"
+                    Background="Indigo"
+                    Foreground="WhiteSmoke" Click="logout_Click">
+                    <DockPanel>
+                        <Grid DockPanel.Dock="Left"
+                          Margin="5">
+                            <Image Height="50"
+                                Width="50"
+                                Source="/DMT.Controls;component/Images/Menu/logout.png" 
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center" />
+                        </Grid>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="28" 
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="ออกจากระบบ"/>
+                            <Grid Height="10" />
+                            <TextBlock FontSize="14"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Text="ออกจากระบบ"/>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
             </Grid>
         </Grid>
     </ScrollViewer>

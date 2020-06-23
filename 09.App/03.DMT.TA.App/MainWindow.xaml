@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ctrl="clr-namespace:DMT.Controls;assembly=DMT.Controls"
         mc:Ignorable="d"
         Title="DMT - Toll Admin" 
         Icon="app.ico"
@@ -14,9 +15,7 @@
         Unloaded="Window_Unloaded">
     <Grid Background="DimGray">
         <DockPanel>
-            <!--
-            <ctrl:PlazaInfo DockPanel.Dock="Top" Height="100"></ctrl:PlazaInfo>
-            -->
+            <ctrl:AccountHeader DockPanel.Dock="Top" Height="100"></ctrl:AccountHeader>
             <ContentPresenter x:Name="container"/>
         </DockPanel>
     </Grid>
