@@ -1,13 +1,17 @@
 --------------------------------------------------------------------------------------------
-Update 2020-06-22 #5
+Update 2020-06-23 #3
 - 
 
-Update 2020-06-22 #4
+Update 2020-06-23 #2
 - 
 
-Update 2020-06-22 #3
-- 
+[commited]
+Update 2020-06-23 #1
+- Restructure Controls folder.
+- Add DMTModelBase.cs file.
+- Sync Domain classes from v1.
 
+--------------------------------------------------------------------------------------------
 [commited]
 Update 2020-06-22 #2
 - Restructure projects.
