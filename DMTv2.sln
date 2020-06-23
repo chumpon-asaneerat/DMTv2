@@ -59,6 +59,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Interfaces", "03.Interfa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.DMT.Operations", "03.Interfaces\01.DMT.Operations\01.DMT.Operations.csproj", "{0040F19E-4885-4267-9404-61C8DC150F5F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.DMT.Plaza.Windows.Services", "09.App\01.DMT.Plaza.Windows.Services\01.DMT.Plaza.Windows.Services.csproj", "{0B6AA1E6-3657-43ED-8297-4ED57A076209}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{0040F19E-4885-4267-9404-61C8DC150F5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0040F19E-4885-4267-9404-61C8DC150F5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0040F19E-4885-4267-9404-61C8DC150F5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B6AA1E6-3657-43ED-8297-4ED57A076209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B6AA1E6-3657-43ED-8297-4ED57A076209}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B6AA1E6-3657-43ED-8297-4ED57A076209}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B6AA1E6-3657-43ED-8297-4ED57A076209}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -108,6 +114,7 @@ Global
 		{7D584F0A-920F-4BE1-8652-3527FD7A5C27} = {707C6726-0547-4B0A-910B-99288C2D59CF}
 		{AEED7B1C-4E56-4D44-BBD1-A936BE653D4D} = {BB1CB701-50CA-47E0-821C-0784411EEE2E}
 		{0040F19E-4885-4267-9404-61C8DC150F5F} = {6660AE27-C43F-4A31-A336-86A504EDDBB4}
+		{0B6AA1E6-3657-43ED-8297-4ED57A076209} = {34695A19-B2CE-4D84-ABC4-AFFB9E431B78}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BFB056C-BEA2-46BD-B006-6BD410AF18BC}

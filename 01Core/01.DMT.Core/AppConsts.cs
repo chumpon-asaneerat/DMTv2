@@ -66,6 +66,8 @@ namespace DMT
 
                 public static class LocaWebServer
                 {
+                    public static string Protocol = "http";
+                    public static string HostName = "localhost";
                     public static int PortNumber = 9000;
                 }
             }
