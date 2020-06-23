@@ -1,0 +1,4 @@
+Note: 2020-06-23
+- Found some .NET bug in solve assembly.
+  When Rebuild required special rebuild on Windows service project again and
+  Test run to make sure the Auto Generate Binding Redirect fully compile output.

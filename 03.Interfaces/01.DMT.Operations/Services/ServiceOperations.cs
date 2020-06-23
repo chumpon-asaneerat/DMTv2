@@ -11,12 +11,12 @@ using NLib.ServiceProcess;
 
 namespace DMT.Services
 {
-    #region DMTServiceInstalledStatus
+    #region InstalledStatus
 
     /// <summary>
     /// The DMT Window Service Installed Status class.
     /// </summary>
-    public class DMTServiceInstalledStatus
+    public class InstalledStatus
     {
         #region Public properties
 
@@ -45,7 +45,57 @@ namespace DMT.Services
     /// </summary>
     public class PlazaOperations
     {
+        #region Static Constructor.
+
+        /// <summary>
+        /// Static Constructor
+        /// </summary>
+        static PlazaOperations()
+        {
+            // Required for HTTPS.
+            /*
+            ServicePointManager.SecurityProtocol = 
+                SecurityProtocolType.Tls12 | 
+                SecurityProtocolType.Tls11 | 
+                SecurityProtocolType.Tls |
+                (SecurityProtocolType)768 | (SecurityProtocolType)3072 |
+                SecurityProtocolType.SystemDefault;
+            */
+        }
+
+        #endregion
+
         #region Public Methods
+
+        public string BeginJob()
+        {
+            var host = this.BaseAddress;
+            var client = new RestClient(host);
+            var request = new RestRequest(RouteConsts.Job.BeginJob.Url, Method.POST);
+            request.RequestFormat = DataFormat.Json;
+            request.AddJsonBody(new { Name = "User 1" });
+
+            var response = client.Execute(request);
+            return (null != response) ? response.Content : "No response.";
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Gets Base Address.
+        /// </summary>
+        public string BaseAddress
+        {
+            get
+            {
+                return string.Format(@"{0}://{1}:{2}/",
+                    AppConsts.WindowsService.Plaza.LocaWebServer.Protocol,
+                    AppConsts.WindowsService.Plaza.LocaWebServer.HostName,
+                    AppConsts.WindowsService.Plaza.LocaWebServer.PortNumber);
+            }
+        }
 
         #endregion
     }
@@ -164,9 +214,9 @@ namespace DMT.Services
         /// Checks services installed status.
         /// </summary>
         /// <returns>Returns ServiceStatus instance.</returns>
-        public DMTServiceInstalledStatus CheckInstalled()
+        public InstalledStatus CheckInstalled()
         {
-            DMTServiceInstalledStatus result = new DMTServiceInstalledStatus();
+            InstalledStatus result = new InstalledStatus();
             result.ServiceCount = 0;
             result.InstalledCount = 0;
             result.PlazaLocalServiceInstalled = false;
