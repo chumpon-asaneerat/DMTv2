@@ -9,6 +9,29 @@
              Loaded="UserControl_Loaded"
              Unloaded="UserControl_Unloaded">
     <Grid>
-            
+        <ListView x:Name="listView" FontSize="18" ItemsSource="{Binding}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="วันที่" 
+                                    DisplayMemberBinding="{Binding Path=DateString}" 
+                                    Width="80"/>
+                    <GridViewColumn Header="เวลา" 
+                                    DisplayMemberBinding="{Binding Path=TimeString}" 
+                                    Width="80"/>
+                    <GridViewColumn Header="รหัสพนักงาน" 
+                                    DisplayMemberBinding="{Binding Path=StaffId}" 
+                                    Width="80"/>
+                    <GridViewColumn Header="ชื่อพนักงาน" 
+                                    DisplayMemberBinding="{Binding Path=StaffName}" 
+                                    Width="250"/>
+                    <GridViewColumn Header="ประเภทคูปอง" 
+                                    DisplayMemberBinding="{Binding Path=Type}" 
+                                    Width="150"/>
+                    <GridViewColumn Header="จำนวนเล่ม" 
+                                    DisplayMemberBinding="{Binding Path=Count}" 
+                                    Width="80"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>

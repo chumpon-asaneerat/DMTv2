@@ -43,7 +43,7 @@
                                                 VerticalAlignment="Center"
                                                 HorizontalContentAlignment="Center"
                                                 VerticalContentAlignment="Center"
-                                                Foreground="{Binding ReceivedBagColor}"
+                                                Foreground="Red"
                                                 Width="100"
                                                 Click="cmdReceivedBag_Click"/>
                                         <Button x:Name="cmdReceived"
