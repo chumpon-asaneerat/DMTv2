@@ -96,7 +96,7 @@
                     BorderThickness="1"
                     Background="Silver">
                 <Grid>
-                    <ctrl:LaneView x:Name="grid"/>
+                    <ctrl:Lane2View x:Name="grid"/>
                 </Grid>
             </Border>
         </StackPanel>
