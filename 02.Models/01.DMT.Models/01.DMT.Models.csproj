@@ -90,6 +90,7 @@
     <Compile Include="ExtensionMethods\ModelExtensionMethods.cs" />
     <Compile Include="Models\DataModels.cs" />
     <Compile Include="Models\DMTModelBase.cs" />
+    <Compile Include="Models\NTables.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LocalDbServer.cs" />
   </ItemGroup>
