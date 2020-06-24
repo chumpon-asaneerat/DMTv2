@@ -14,6 +14,11 @@ namespace DMT.TA.Controls.Collector.Coupon
         {
             InitializeComponent();
         }
+        private void cmdReturn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         /*
         public void Setup(List<Models.Coupon> coupons)
         {

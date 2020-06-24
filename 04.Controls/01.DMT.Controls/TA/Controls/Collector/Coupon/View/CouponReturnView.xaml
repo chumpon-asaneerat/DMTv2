@@ -17,32 +17,29 @@
                                     Width="80"/>
                     <GridViewColumn Header="รหัสพนักงาน" 
                                     DisplayMemberBinding="{Binding Path=StaffId}" 
-                                    Width="250"/>
+                                    Width="100"/>
                     <GridViewColumn Header="ชือพนักงาน" 
                                     DisplayMemberBinding="{Binding Path=StaffName}" 
-                                    Width="150"/>
+                                    Width="250"/>
+                    <!--
                     <GridViewColumn Header="ประเภทคูปอง" 
                                     DisplayMemberBinding="{Binding Path=Type}" 
                                     Width="150"/>
+                    -->
                     <GridViewColumn Header="จำนวนเล่ม" 
                                     DisplayMemberBinding="{Binding Path=Count}" 
                                     Width="80"/>
-                    <GridViewColumn Header="จำนวนคืน" 
+                    <GridViewColumn Header="" 
                                     Width="250">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal"
                                             Margin="3"
                                             VerticalAlignment="Center">
-                                    <Grid Width="5"/>
-                                    <TextBox x:Name="txtReturn" 
-                                            Width="100"/>
-                                    <Grid Width="5"/>
                                     <Button x:Name="cmdReturn" 
                                             Content="คืน" 
                                             CommandParameter="{Binding}"
-                                            Width="100"/>
-                                    <Grid Width="5"/>
+                                            Width="100" Click="cmdReturn_Click"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>

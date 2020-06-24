@@ -170,7 +170,11 @@ namespace DMT.TA.Controls.Collector.Credit.View
             }
             */
         }
-            
-        //public event System.EventHandler ItemChanged;
-    }
+
+        private void cmdReceivedBag_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+            //public event System.EventHandler ItemChanged;
+        }
 }

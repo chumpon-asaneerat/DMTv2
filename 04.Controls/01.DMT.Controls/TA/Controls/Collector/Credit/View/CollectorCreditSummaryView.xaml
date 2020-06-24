@@ -17,10 +17,11 @@
                         <Border BorderBrush="Black" 
                                 BorderThickness="1" 
                                 CornerRadius="1"
-                                Margin="5">
-                            <StackPanel Orientation="Vertical"
-                                        Margin="3">
-                                <Border Background="CornflowerBlue">
+                                Margin="5"
+                                Width="300">
+                            <DockPanel Margin="3">
+                                <Border Background="CornflowerBlue"
+                                        DockPanel.Dock="Top">
                                     <TextBlock Margin="3"
                                                FontSize="18"                                               
                                                Foreground="WhiteSmoke"
@@ -29,47 +30,72 @@
                                                TextAlignment="Center"
                                                Text="{Binding Path=Description}"/>
                                 </Border>
-                                <TextBlock FontSize="20"
-                                           Foreground="Yellow"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"
-                                           TextAlignment="Center">
-                                    <Run Text="ID: " />
-                                    <Run Text="{Binding StaffId}" />
-                                </TextBlock>
-                                <TextBlock FontSize="24"
-                                           Foreground="GreenYellow"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"
-                                           TextAlignment="Center">
-                                    <Run Text="ยืมแล้ว" />
-                                    <Run Text="{Binding Path=BHTTotal, StringFormat={}{0:N0}}" />
-                                </TextBlock>
-                                <StackPanel Orientation="Horizontal"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center">
-                                    <Button x:Name="cmdReceived"
-                                            Content="ยืมเงิน"
-                                            Margin="3"
-                                            FontSize="14"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            HorizontalContentAlignment="Center"
-                                            VerticalContentAlignment="Center"
-                                            Width="100"
-                                            Click="cmdReceived_Click"/>
-                                    <Button x:Name="cmdReturn"
-                                            Content="คืนเงิน"
-                                            Margin="3"
-                                            FontSize="14"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            HorizontalContentAlignment="Center"
-                                            VerticalContentAlignment="Center"
-                                            Width="100"
-                                            Click="cmdReturn_Click"/>
-                                </StackPanel>
-                            </StackPanel>
+                                <DockPanel>
+                                    <StackPanel Orientation="Vertical"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                 DockPanel.Dock="Right">
+                                        <Button x:Name="cmdReceivedBag"
+                                                Content="รับถุงเงิน"
+                                                Margin="3"
+                                                FontSize="14"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                HorizontalContentAlignment="Center"
+                                                VerticalContentAlignment="Center"
+                                                Foreground="{Binding ReceivedBagColor}"
+                                                Width="100"
+                                                Click="cmdReceivedBag_Click"/>
+                                        <Button x:Name="cmdReceived"
+                                                Content="ยืมเงิน"
+                                                Margin="3"
+                                                FontSize="14"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                HorizontalContentAlignment="Center"
+                                                VerticalContentAlignment="Center"
+                                                Width="100"
+                                                Click="cmdReceived_Click"/>
+                                        <Button x:Name="cmdReturn"
+                                                Content="คืนเงิน"
+                                                Margin="3"
+                                                FontSize="14"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                HorizontalContentAlignment="Center"
+                                                VerticalContentAlignment="Center"
+                                                Width="100"
+                                                Click="cmdReturn_Click"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock FontSize="20"
+                                                   Foreground="Yellow"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   TextAlignment="Center">
+                                            <Run Text="ID: " />
+                                            <Run Text="{Binding StaffId}" />
+                                        </TextBlock>
+                                        <TextBlock FontSize="20"
+                                                   Foreground="Yellow"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   TextAlignment="Center">
+                                            <Run Text="เลขถึงงิน: " />
+                                            <Run Text="{Binding BagNo}" />
+                                        </TextBlock>
+                                        <TextBlock FontSize="24"
+                                                   Foreground="GreenYellow"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   TextAlignment="Center">
+                                            <Run Text="ยืมแล้ว" />
+                                            <Run Text="{Binding Path=BHTTotal, StringFormat={}{0:N0}}" />
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DockPanel>
+
+                            </DockPanel>
                         </Border>
                     </DataTemplate>
                 </Setter.Value>

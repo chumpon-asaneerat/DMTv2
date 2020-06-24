@@ -15,7 +15,7 @@ namespace DMT.TA.Controls.Collector.Coupon
             InitializeComponent();
         }
 
-        private void cmdDelete_Click(object sender, RoutedEventArgs e)
+        private void cmdPrint_Click(object sender, RoutedEventArgs e)
         {
 
         }
