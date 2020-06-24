@@ -37,8 +37,9 @@ Update 2020-06-24 #4
 Update 2020-06-24 #3
 - 
 
+[commited]
 Update 2020-06-24 #2
-- 
+- TOD App project update Pages User Control and link code #2.
 
 [commited]
 Update 2020-06-24 #1

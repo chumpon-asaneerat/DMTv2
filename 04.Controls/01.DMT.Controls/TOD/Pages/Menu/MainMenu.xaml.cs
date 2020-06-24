@@ -5,10 +5,7 @@ using System.Windows.Controls;
 
 using NLib.Services;
 
-using System;
-using System.Collections.Generic;
-
-using NLib;
+using DMT.Windows;
 
 #endregion
 
@@ -35,7 +32,7 @@ namespace DMT.TOD.Pages.Menu
 
         private void beginJob_Click(object sender, RoutedEventArgs e)
         {
-            var signinWin = new DMT.Windows.SignInWindow();
+            var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
             if (signinWin.ShowDialog() == false)
             {
@@ -52,14 +49,14 @@ namespace DMT.TOD.Pages.Menu
 
         private void endJob_Click(object sender, RoutedEventArgs e)
         {
-            var signinWin = new DMT.Windows.SignInWindow();
+            var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
             if (signinWin.ShowDialog() == false)
             {
                 return;
             }
             // End of Job Page
-            var page = new TOD.Pages.Job.EOJPage();
+            var page = new Job.EOJPage();
             // setup
             //page.Setup(Models.Job.FindJob("14077"));
             PageContentManager.Instance.Current = page;
@@ -67,32 +64,29 @@ namespace DMT.TOD.Pages.Menu
 
         private void revEntry_Click(object sender, RoutedEventArgs e)
         {
-            var signinWin = new DMT.Windows.SignInWindow();
+            var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
             if (signinWin.ShowDialog() == false)
             {
                 return;
             }
-            /*
             // Revenue Entry
             var page = new Revenue.RevenueDateSelectionPage();
             // setup
-            Models.RevenueEntry entry = new Models.RevenueEntry();
-            page.Setup(Models.Job.FindJob("14077"), entry);
+            //Models.RevenueEntry entry = new Models.RevenueEntry();
+            //page.Setup(Models.Job.FindJob("14077"), entry);
             PageContentManager.Instance.Current = page;
-            */
         }
 
         private void reprintRevSlip_Click(object sender, RoutedEventArgs e)
         {
-            var signinWin = new DMT.Windows.SignInWindow();
+            var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
             if (signinWin.ShowDialog() == false)
             {
                 return;
             }
-            /*
-            var search = new Windows.TOD.Reports.RevenueSlipSearchWindow();
+            var search = new Windows.Reports.RevenueSlipSearchWindow();
             search.Owner = Application.Current.MainWindow;
             if (search.ShowDialog() == false)
             {
@@ -102,7 +96,6 @@ namespace DMT.TOD.Pages.Menu
             var page = new Reports.RevenueSlipPreview();
             page.MenuPage = this;
             PageContentManager.Instance.Current = page;
-            */
         }
 
         private void changeShift_Click(object sender, RoutedEventArgs e)
@@ -113,13 +106,11 @@ namespace DMT.TOD.Pages.Menu
             {
                 return;
             }
-            /*
             // Change Shift
             var page = new TollAdmin.ChangeShiftPage();
             // setup
-            page.Setup(Models.Job.FindJob("14077"));
+            //page.Setup(Models.Job.FindJob("14077"));
             PageContentManager.Instance.Current = page;
-            */
         }
 
         private void reportMenu_Click(object sender, RoutedEventArgs e)
@@ -130,7 +121,7 @@ namespace DMT.TOD.Pages.Menu
             {
                 return;
             }
-            var page = new TOD.Pages.Menu.ReportMenu();
+            var page = new ReportMenu();
             PageContentManager.Instance.Current = page;
         }
 
@@ -146,7 +137,6 @@ namespace DMT.TOD.Pages.Menu
             */
         }
 
-
         private void emvQRCode_Click(object sender, RoutedEventArgs e)
         {
             var signinWin = new DMT.Windows.SignInWindow();
@@ -157,6 +147,7 @@ namespace DMT.TOD.Pages.Menu
             }
             /*
             var page = new DMT.Pages.TOD.Job.EMVQRCode();
+
             List<Models.EMVQRCode> emvQRs = new List<Models.EMVQRCode>();
             Models.EMVQRCode emvQR;
 
@@ -188,7 +179,6 @@ namespace DMT.TOD.Pages.Menu
             emvQRs.Add(emvQR);
 
             page.Setup(emvQRs);
-
             PageContentManager.Instance.Current = page;
             */
         }
