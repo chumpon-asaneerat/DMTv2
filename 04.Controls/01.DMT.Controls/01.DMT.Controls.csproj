@@ -696,6 +696,16 @@
     <Resource Include="Images\Button\Rejected2.png" />
     <Resource Include="Images\Button\Reset.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Clear.png" />
+    <Resource Include="Images\Button\Clear2.png" />
+    <Resource Include="Images\Button\Clear3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\search.png" />
+    <Resource Include="Images\Button\search2.png" />
+    <Resource Include="Images\Button\search3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
