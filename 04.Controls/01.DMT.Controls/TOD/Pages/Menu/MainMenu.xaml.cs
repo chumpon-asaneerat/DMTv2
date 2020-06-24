@@ -192,6 +192,8 @@ namespace DMT.TOD.Pages.Menu
             {
                 return;
             }
+            var page = new DMT.TOD.Pages.Job.LoginListPage();
+            PageContentManager.Instance.Current = page;
 
             /*
             var page = new DMT.Pages.TOD.Job.LoginListPage();

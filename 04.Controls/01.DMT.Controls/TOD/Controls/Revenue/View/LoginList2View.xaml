@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="DMT.TOD.Controls.Revenue.View.LoginList2View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" 
+             d:DesignWidth="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="listView" FontSize="18" ItemsSource="{Binding}" Grid.Column="1" 
+                                    SelectionMode="Extended"
+                                    AlternatingRowBackground="AntiqueWhite"
+                                    AutoGenerateColumns="False"
+                                    CanUserAddRows="False"
+                                    CanUserDeleteRows="False"
+                                    FontWeight="Normal" FontFamily="Tahoma" 
+                                    HorizontalGridLinesBrush="Silver" 
+                                    VerticalGridLinesBrush="Silver"
+                                    HorizontalContentAlignment="Left" 
+                                    ScrollViewer.CanContentScroll="True" 
+                                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                    SelectedCellsChanged="listView_SelectedCellsChanged" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path= StaffId , Mode= OneWay}" Header="รหัสพนักงาน" IsReadOnly="True" Width="120" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path= StaffName , Mode= OneWay}" Header="ชื่อพนักงาน"  IsReadOnly="True" Width="250" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path= BeginDateString , Mode= OneWay}" Header="วัน/เวลา เปิดการทำงาน"   IsReadOnly="True" Width="200" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+            
+        </DataGrid>
+        <DataGrid x:Name="listViewUse" FontSize="18" ItemsSource="{Binding}" Grid.Column="3"
+                                    SelectionMode="Extended"
+                                    AlternatingRowBackground="AntiqueWhite"
+                                    AutoGenerateColumns="False"
+                                    CanUserAddRows="False"
+                                    CanUserDeleteRows="False"
+                                    FontWeight="Normal" FontFamily="Tahoma" 
+                                    HorizontalGridLinesBrush="Silver" 
+                                    VerticalGridLinesBrush="Silver"
+                                    HorizontalContentAlignment="Left" 
+                                    ScrollViewer.CanContentScroll="True" 
+                                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                    ScrollViewer.HorizontalScrollBarVisibility="Auto" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path= JobNo , Mode= OneWay}" Header="Job No" IsReadOnly="True" Width="80" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path= StaffId , Mode= OneWay}" Header="รหัสพนักงาน" IsReadOnly="True" Width="120" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path= BeginDateString , Mode= OneWay}" Header="วันเวลาเริ่มปฎิบัติงาน"   IsReadOnly="True" Width="200" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path= EndDateString , Mode= OneWay}" Header="วันเวลาเลิกปฎิบัติงาน"   IsReadOnly="True" Width="200" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path= LaneId , Mode= OneWay}" Header="เลน"   IsReadOnly="True" Width="80" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path= DateTODDateString , Mode= OneWay}" Header="วันเวลาทำ TOD"   IsReadOnly="True" Width="200" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</UserControl>

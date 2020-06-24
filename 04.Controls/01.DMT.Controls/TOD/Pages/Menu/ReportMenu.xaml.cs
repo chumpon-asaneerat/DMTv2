@@ -27,8 +27,8 @@ namespace DMT.TOD.Pages.Menu
 
         private void revSlip_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            var search = new Windows.TOD.Reports.RevenueSlipSearchWindow();
+            
+            var search = new DMT.Windows.SignInWindow();
             search.Owner = Application.Current.MainWindow;
             if (search.ShowDialog() == false)
             {
@@ -38,31 +38,31 @@ namespace DMT.TOD.Pages.Menu
             var page = new Reports.RevenueSlipPreview();
             page.MenuPage = this;
             PageContentManager.Instance.Current = page;
-            */
         }
 
         private void revSummary_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            var search = new Windows.TOD.Reports.RevenueSummarySearchWindow();
-            search.Owner = Application.Current.MainWindow;
-            if (search.ShowDialog() == false)
+
+            var signinWin = new DMT.Windows.SignInWindow();
+            signinWin.Owner = Application.Current.MainWindow;
+            if (signinWin.ShowDialog() == false)
             {
                 return;
             }
+
             // Daily Revenue Summary Preview
             var page = new Reports.DailyRevenueSummaryPreview();
             PageContentManager.Instance.Current = page;
-            */
+            
         }
 
         private void backHome_Click(object sender, RoutedEventArgs e)
         {
-            /*
+
             // Main Menu Page
-            var page = new TOD.MainMenu();
+            var page = new Menu.MainMenu();
             PageContentManager.Instance.Current = page;
-            */
+            
         }
     }
 }
