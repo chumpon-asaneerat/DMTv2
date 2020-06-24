@@ -1,5 +1,4 @@
-﻿
-#region Using
+﻿#region Using
 
 using System.Windows;
 using System.Windows.Controls;
@@ -42,15 +41,13 @@ namespace DMT.TOD.Pages.Menu
             {
                 return;
             }
-            /*
             // Begin of Job Page
-            Windows.TOD.Job.BOJWindow jobWindow = new Windows.TOD.Job.BOJWindow();
+            var jobWindow = new Windows.Job.BOJWindow();
             jobWindow.Owner = Application.Current.MainWindow;
             if (jobWindow.ShowDialog() == false)
             {
                 return;
             }
-            */
         }
 
         private void endJob_Click(object sender, RoutedEventArgs e)
@@ -61,13 +58,11 @@ namespace DMT.TOD.Pages.Menu
             {
                 return;
             }
-            /*
             // End of Job Page
-            var page = new Job.EOJPage();
+            var page = new TOD.Pages.Job.EOJPage();
             // setup
-            page.Setup(Models.Job.FindJob("14077"));
+            //page.Setup(Models.Job.FindJob("14077"));
             PageContentManager.Instance.Current = page;
-            */
         }
 
         private void revEntry_Click(object sender, RoutedEventArgs e)

@@ -128,11 +128,29 @@
     <Compile Include="TA\Windows\Plaza\PlazaStockSummaryWindow.xaml.cs">
       <DependentUpon>PlazaStockSummaryWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TOD\Pages\Job\EOJPage.xaml.cs">
+      <DependentUpon>EOJPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TOD\Pages\Menu\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="TOD\Pages\Menu\ReportMenu.xaml.cs">
       <DependentUpon>ReportMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TOD\Pages\Reports\DailyRevenueSummaryPreview.xaml.cs">
+      <DependentUpon>DailyRevenueSummaryPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TOD\Pages\Reports\RevenueSlipPreview.xaml.cs">
+      <DependentUpon>RevenueSlipPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TOD\Pages\Revenue\RevenueDateSelectionPage.xaml.cs">
+      <DependentUpon>RevenueDateSelectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TOD\Pages\Revenue\RevenueEntryPage.xaml.cs">
+      <DependentUpon>RevenueEntryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TOD\Pages\TollAdmin\ChangeShiftPage.xaml.cs">
+      <DependentUpon>ChangeShiftPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TOD\Windows\Reports\RevenueSlipSearchWindow1.xaml.cs">
       <DependentUpon>RevenueSlipSearchWindow1.xaml</DependentUpon>
@@ -331,11 +349,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="TOD\Pages\Job\EOJPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="TOD\Pages\Menu\MainMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="TOD\Pages\Menu\ReportMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TOD\Pages\Reports\DailyRevenueSummaryPreview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TOD\Pages\Reports\RevenueSlipPreview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TOD\Pages\Revenue\RevenueDateSelectionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TOD\Pages\Revenue\RevenueEntryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TOD\Pages\TollAdmin\ChangeShiftPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -453,6 +495,12 @@
     <Resource Include="Images\Menu\report1.png" />
     <Resource Include="Images\Menu\reventry.png" />
     <Resource Include="Images\Menu\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Reports\all_plaza_fund.jpg" />
+    <Resource Include="Images\Reports\สรุปรวมนำส่งรายไดรายวัน.jpg" />
+    <Resource Include="Images\Reports\สรุปเงินยิมทอน.jpg" />
+    <Resource Include="Images\Reports\ใบนำส่งรายได้รวม2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
