@@ -36,9 +36,9 @@ namespace DMT.TA.Pages.Menu
 
         private void plazaReceivedReturnFund_Click(object sender, RoutedEventArgs e)
         {
-            /*
             try
             {
+                /*
                 // Plaza Fund Received
                 var page = new TA.Plaza.PlazaFundReceivedReturnPage();
 
@@ -61,6 +61,9 @@ namespace DMT.TA.Pages.Menu
                 funds.Add(fund);
 
                 page.Setup(plaza, funds);
+                */
+
+                var page = new DMT.TA.Pages.Plaza.PlazaCouponReceivedReturnPage();
 
                 PageContentManager.Instance.Current = page;
             }
@@ -68,38 +71,36 @@ namespace DMT.TA.Pages.Menu
             {
                 //Console.WriteLine("Refresh data error.");
             }
-            */
         }
 
         private void exchangeBankNote_Click(object sender, RoutedEventArgs e)
         {
-            /*
+            
             try
             {
                 // Exchange Fund Page.
-                var page = new Pages.TA.Exchange.PlazaRequestExchangePage();
-
+                var page = new Pages.Exchange.PlazaRequestExchangePage();
+                /*
                 BindingList<Models.FundExchange> items = new BindingList<Models.FundExchange>();
 
                 page.Setup(plaza, items);
-
+                */
                 PageContentManager.Instance.Current = page;
             }
             catch (Exception)
             {
                 //Console.WriteLine("Refresh data error.");
             }
-            */
         }
 
         private void plazaReceivedCoupon_Click(object sender, RoutedEventArgs e)
         {
-            /*
+            
             try
             {
                 
-                var page = new DMT.Pages.TA.Coupon.CouponReturnPage();
-
+                var page = new Pages.Coupon.CouponReturnPage();
+                /*
                 List<Models.Coupon35> coupons = new List<Models.Coupon35>();
                 List<Models.CouponUser35> couponUs = new List<Models.CouponUser35>();
                 List<Models.Coupon80> coupons80 = new List<Models.Coupon80>();
@@ -406,6 +407,7 @@ namespace DMT.TA.Pages.Menu
 
 
                 page.Setup(coupons, couponUs, coupons80, couponsU80);
+                */
                 PageContentManager.Instance.Current = page;
 
             }
@@ -413,11 +415,15 @@ namespace DMT.TA.Pages.Menu
             {
                 //Console.WriteLine("Refresh data error.");
             }
-            */
         }
 
         private void plazaAllStock_Click(object sender, RoutedEventArgs e)
         {
+            var win = new Windows.Plaza.PlazaStockSummaryWindow();
+            if (win.ShowDialog() == false)
+            {
+                return;
+            }
             /*
             var win = new Windows.TA.Plaza.PlazaStockWindow();
             win.Owner = Application.Current.MainWindow;
@@ -458,11 +464,11 @@ namespace DMT.TA.Pages.Menu
 
         private void collectorFund_Click(object sender, RoutedEventArgs e)
         {
-            /*
             try
             {
-                var page = new TA.Collector.CollectorFundViewPage();
-
+                var page = new Collector.CollectorFundViewPage();
+                PageContentManager.Instance.Current = page;
+                /*
                 Models.FundEntry plazaFund = new Models.FundEntry();
                 plazaFund.Description = "เงินยืม-ทอน (ด่าน)";
                 plazaFund.HasRemark = false;
@@ -552,31 +558,34 @@ namespace DMT.TA.Pages.Menu
                 page.Setup(plazaFund, funds);
 
                 PageContentManager.Instance.Current = page;
+                */
             }
             catch (Exception)
             {
                 //Console.WriteLine("Refresh data error.");
             }
-            */
+            
         }
 
         private void collectorFundReport_Click(object sender, RoutedEventArgs e)
         {
-            /*
+            
             try
             {
-                var page = new TA.Reports.CollectorFundSummaryReportPage();
+                var page = new Reports.CollectorFundSummaryReportPage();
                 PageContentManager.Instance.Current = page;
             }
             catch (Exception)
             {
                 //Console.WriteLine("Refresh data error.");
             }
-            */
+
         }
 
         private void collectorReveivedCoupon_Click(object sender, RoutedEventArgs e)
         {
+            var page = new Coupon.ReceivedCouponPage();
+            PageContentManager.Instance.Current = page;
             /*
             try
             {
@@ -626,6 +635,8 @@ namespace DMT.TA.Pages.Menu
 
         private void collectorReturnCoupon_Click(object sender, RoutedEventArgs e)
         {
+            var page = new Coupon.ReturnCouponPage();
+            PageContentManager.Instance.Current = page;
             /*
             try
             {
@@ -675,7 +686,7 @@ namespace DMT.TA.Pages.Menu
 
         private void logout_Click(object sender, RoutedEventArgs e)
         {  
-            //PageContentManager.Instance.Current = new TA.SignInPage();
+            PageContentManager.Instance.Current = new DMT.Pages.SignInPage();
         }
 
         #endregion

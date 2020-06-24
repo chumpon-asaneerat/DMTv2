@@ -91,11 +91,35 @@
     <Compile Include="TA\Controls\Collector\Coupon\View\CouponReturnView.xaml.cs">
       <DependentUpon>CouponReturnView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TA\Pages\Collector\CollectorFundViewPage.xaml.cs">
+      <DependentUpon>CollectorFundViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Pages\Coupon\CouponReturnPage.xaml.cs">
+      <DependentUpon>CouponReturnPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Pages\Coupon\ReceivedCouponPage.xaml.cs">
+      <DependentUpon>ReceivedCouponPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Pages\Coupon\ReturnCouponPage.xaml.cs">
+      <DependentUpon>ReturnCouponPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Pages\Exchange\PlazaRequestExchangePage.xaml.cs">
+      <DependentUpon>PlazaRequestExchangePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TA\Pages\Menu\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="TA\Pages\Menu\ReportMenu.xaml.cs">
       <DependentUpon>ReportMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Pages\Plaza\PlazaCouponReceivedReturnPage.xaml.cs">
+      <DependentUpon>PlazaCouponReceivedReturnPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Pages\Plaza\PlazaFundReceivedReturnPage.xaml.cs">
+      <DependentUpon>PlazaFundReceivedReturnPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Pages\Reports\CollectorFundSummaryReportPage.xaml.cs">
+      <DependentUpon>CollectorFundSummaryReportPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TA\Windows\Collector\Credit\CollectorCreditBorrowWindow.xaml.cs">
       <DependentUpon>CollectorCreditBorrowWindow.xaml</DependentUpon>
@@ -117,6 +141,15 @@
     </Compile>
     <Compile Include="TA\Controls\Exchange\View\PlazaRequestExchangeView.xaml.cs">
       <DependentUpon>PlazaRequestExchangeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Windows\Coupon\CouponEditWindow.xaml.cs">
+      <DependentUpon>CouponEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Windows\Coupon\CouponReportWindow.xaml.cs">
+      <DependentUpon>CouponReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Windows\Coupon\CouponReturnWindow.xaml.cs">
+      <DependentUpon>CouponReturnWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TA\Windows\Exchange\ExchangeWindowMode.cs" />
     <Compile Include="TA\Controls\Plaza\View\PlazaCouponView.xaml.cs">
@@ -319,11 +352,43 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="TA\Pages\Collector\CollectorFundViewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Pages\Coupon\CouponReturnPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Pages\Coupon\ReceivedCouponPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Pages\Coupon\ReturnCouponPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Pages\Exchange\PlazaRequestExchangePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="TA\Pages\Menu\MainMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="TA\Pages\Menu\ReportMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Pages\Plaza\PlazaCouponReceivedReturnPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Pages\Plaza\PlazaFundReceivedReturnPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Pages\Reports\CollectorFundSummaryReportPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -362,6 +427,18 @@
     <Page Include="TA\Controls\Plaza\View\PlazaFundView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TA\Windows\Coupon\CouponEditWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Windows\Coupon\CouponReportWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Windows\Coupon\CouponReturnWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="TA\Windows\Plaza\PlazaStockSummaryWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
