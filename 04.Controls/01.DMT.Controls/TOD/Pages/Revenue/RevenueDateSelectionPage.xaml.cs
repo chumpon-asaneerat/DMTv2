@@ -17,10 +17,17 @@ namespace DMT.TOD.Pages.Revenue
     /// </summary>
     public partial class RevenueDateSelectionPage : UserControl
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public RevenueDateSelectionPage()
         {
             InitializeComponent();
         }
+
+        #endregion
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
         {
@@ -31,12 +38,10 @@ namespace DMT.TOD.Pages.Revenue
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
-            /*
             // Revenue Entry Page
-            var page = new TOD.Revenue.RevenueEntryPage();
+            var page = new RevenueEntryPage();
             PageContentManager.Instance.Current = page;
-            page.Setup(_job, _entry);
-            */
+            //page.Setup(_job, _entry);
         }
         /*
         private Models.Job _job;

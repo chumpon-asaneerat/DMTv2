@@ -128,6 +128,12 @@
     <Compile Include="TA\Windows\Plaza\PlazaStockSummaryWindow.xaml.cs">
       <DependentUpon>PlazaStockSummaryWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TOD\Controls\Revenue\Entry\TrafficEntry.xaml.cs">
+      <DependentUpon>TrafficEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TOD\Controls\Revenue\View\EMVQRCodeView.xaml.cs">
+      <DependentUpon>EMVQRCodeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TOD\Pages\Job\EOJPage.xaml.cs">
       <DependentUpon>EOJPage.xaml</DependentUpon>
     </Compile>
@@ -151,6 +157,9 @@
     </Compile>
     <Compile Include="TOD\Pages\TollAdmin\ChangeShiftPage.xaml.cs">
       <DependentUpon>ChangeShiftPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TOD\Pages\TollAdmin\EMVQRCodePage.xaml.cs">
+      <DependentUpon>EMVQRCodePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TOD\Windows\Reports\RevenueSlipSearchWindow1.xaml.cs">
       <DependentUpon>RevenueSlipSearchWindow1.xaml</DependentUpon>
@@ -349,6 +358,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="TOD\Controls\Revenue\Entry\TrafficEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TOD\Controls\Revenue\View\EMVQRCodeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TOD\Pages\Job\EOJPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -380,6 +397,10 @@
     <Page Include="TOD\Pages\TollAdmin\ChangeShiftPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TOD\Pages\TollAdmin\EMVQRCodePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TOD\Windows\Reports\RevenueSlipSearchWindow1.xaml">
       <SubType>Designer</SubType>

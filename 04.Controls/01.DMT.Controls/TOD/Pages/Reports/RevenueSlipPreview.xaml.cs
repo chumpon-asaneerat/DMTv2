@@ -17,10 +17,17 @@ namespace DMT.TOD.Pages.Reports
     /// </summary>
     public partial class RevenueSlipPreview : UserControl
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public RevenueSlipPreview()
         {
             InitializeComponent();
         }
+
+        #endregion
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
         {

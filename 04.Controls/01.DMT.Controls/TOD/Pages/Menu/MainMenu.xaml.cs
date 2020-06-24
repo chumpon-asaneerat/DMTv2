@@ -145,9 +145,9 @@ namespace DMT.TOD.Pages.Menu
             {
                 return;
             }
-            /*
-            var page = new DMT.Pages.TOD.Job.EMVQRCode();
+            var page = new TollAdmin.EMVQRCodePage();
 
+            /*
             List<Models.EMVQRCode> emvQRs = new List<Models.EMVQRCode>();
             Models.EMVQRCode emvQR;
 
@@ -179,19 +179,21 @@ namespace DMT.TOD.Pages.Menu
             emvQRs.Add(emvQR);
 
             page.Setup(emvQRs);
-            PageContentManager.Instance.Current = page;
             */
+
+            PageContentManager.Instance.Current = page;
         }
 
         private void loginList_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            var signinWin = new Windows.SignInWindow();
+            var signinWin = new DMT.Windows.SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
             if (signinWin.ShowDialog() == false)
             {
                 return;
             }
+
+            /*
             var page = new DMT.Pages.TOD.Job.LoginListPage();
             List<Models.Lane> Lanes = new List<Models.Lane>();
             Models.Lane lane;

@@ -13,10 +13,17 @@ namespace DMT.TOD.Pages.Menu
     /// </summary>
     public partial class ReportMenu : UserControl
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public ReportMenu()
         {
             InitializeComponent();
         }
+
+        #endregion
 
         private void revSlip_Click(object sender, RoutedEventArgs e)
         {

@@ -17,10 +17,17 @@ namespace DMT.TOD.Pages.TollAdmin
     /// </summary>
     public partial class ChangeShiftPage : UserControl
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public ChangeShiftPage()
         {
             InitializeComponent();
         }
+
+        #endregion
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
         {

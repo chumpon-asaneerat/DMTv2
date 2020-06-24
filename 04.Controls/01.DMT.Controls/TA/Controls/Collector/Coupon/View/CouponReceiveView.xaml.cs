@@ -10,10 +10,17 @@ namespace DMT.TA.Controls.Collector.Coupon
     /// </summary>
     public partial class CouponReceiveView : UserControl
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public CouponReceiveView()
         {
             InitializeComponent();
         }
+
+        #endregion
 
         private void cmdPrint_Click(object sender, RoutedEventArgs e)
         {

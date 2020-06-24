@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="450" 
-             d:DesignWidth="800"
+             d:DesignHeight="220"
+             d:DesignWidth="300"             
              Loaded="UserControl_Loaded"
              Unloaded="UserControl_Unloaded">
     <Grid>
@@ -28,20 +28,55 @@
                                Text="EMV"
                                Width="110"/>
                 </Border>
+                <Border DockPanel.Dock="Bottom">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#7F323232" Offset="0"/>
+                            <GradientStop Color="#7FAAAAAA" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="19*"/>
+                            <RowDefinition Height="9*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Margin="10,2,0,2"
+                               VerticalAlignment="Center"
+                               Text="จำนวนรวม : " HorizontalAlignment="Left" Width="88"/>
+                        <TextBox Name="txtQty"  Height="23" 
+                                Text="" Margin="102,2,0,2" HorizontalAlignment="Left" Width="100"/>
+                        <TextBlock Margin="213,2,0,2"
+                               VerticalAlignment="Center"
+                               Text="รายการ" HorizontalAlignment="Left" Width="90"/>
+
+                        <TextBlock Margin="392,0,0,2"
+                               VerticalAlignment="Bottom"
+                               Text="ยอดเงินรวม : "  HorizontalAlignment="Left" Width="98"/>
+                        <TextBox Name="txtTotal"  Height="23" 
+                                Text="" Margin="493,2,0,2" HorizontalAlignment="Left"  Width="100"/>
+                        <TextBlock Margin="601,2,0,2"
+                               VerticalAlignment="Center"
+                               Text="บาท" HorizontalAlignment="Left" Width="50"/>
+                    </Grid>
+                </Border>
                 <Grid>
-                    <ListView x:Name="listView" FontSize="18">
+                    <ListView x:Name="listView" FontSize="18" ItemsSource="{Binding}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Approval Code" 
-                                                Width="150"/>
+                                    DisplayMemberBinding="{Binding Path=ApprovalCode}" 
+                                    Width="150"/>
                                 <GridViewColumn Header="วันที่" 
-                                                Width="150"/>
+                                    DisplayMemberBinding="{Binding Path=DateQRDateString}" 
+                                    Width="200"/>
                                 <GridViewColumn Header="จำนวนเงิน" 
-                                                Width="150"/>
+                                    DisplayMemberBinding="{Binding Path=Qty}" 
+                                    Width="150"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
                 </Grid>
+
             </DockPanel>
         </Border>
     </Grid>

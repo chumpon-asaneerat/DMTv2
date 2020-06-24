@@ -10,10 +10,18 @@ namespace DMT.TA.Controls.Collector.Coupon
     /// </summary>
     public partial class CouponReturnView : UserControl
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public CouponReturnView()
         {
             InitializeComponent();
         }
+
+        #endregion
+
         private void cmdReturn_Click(object sender, RoutedEventArgs e)
         {
 

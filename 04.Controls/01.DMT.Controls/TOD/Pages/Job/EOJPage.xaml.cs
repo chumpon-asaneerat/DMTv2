@@ -18,10 +18,17 @@ namespace DMT.TOD.Pages.Job
     /// </summary>
     public partial class EOJPage : UserControl
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public EOJPage()
         {
             InitializeComponent();
         }
+
+        #endregion
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
