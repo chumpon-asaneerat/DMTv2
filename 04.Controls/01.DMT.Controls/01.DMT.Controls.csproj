@@ -621,6 +621,61 @@
     <Resource Include="Images\Reports\สรุปเงินยิมทอน.jpg" />
     <Resource Include="Images\Reports\ใบนำส่งรายได้รวม2.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Cancel.png" />
+    <Resource Include="Images\Button\Cancel2.png" />
+    <Resource Include="Images\Button\OK.png" />
+    <Resource Include="Images\Button\OK2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Button.png" />
+    <Resource Include="Images\Button\Button2.png" />
+    <Resource Include="Images\Button\Button3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Button4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\baht.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Button5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Save2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Money.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Money2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Back2.png" />
+    <Resource Include="Images\Button\Back3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Printer.png" />
+    <Resource Include="Images\Button\Printer2.png" />
+    <Resource Include="Images\Button\Printer3.png" />
+    <Resource Include="Images\Button\Printer4.png" />
+    <Resource Include="Images\Button\Return.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Stop.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

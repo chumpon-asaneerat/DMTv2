@@ -39,18 +39,44 @@
                 </Border>
                 <StackPanel Orientation="Horizontal"
                             DockPanel.Dock="Bottom"                            
-                            HorizontalAlignment="Center">
+                            HorizontalAlignment="Left" Height="60">
+                    <Grid Width="5"></Grid>
+
                     <Button x:Name="addCollector"
-                            Content="เพิ่มพนักงาน" 
+                            DockPanel.Dock="Left"
                             Margin="2"
-                            FontSize="18"
+                            Foreground="White"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            HorizontalContentAlignment="Center"
-                            VerticalContentAlignment="Center"
-                            Height="45"
-                            Width="200"
-                            Click="addCollector_Click"/>
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Height="50"
+                            Width="220"
+                            Click="addCollector_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                        </Button.Background>
+                        <DockPanel>
+                            <Grid Width="5"></Grid>
+                            <Image DockPanel.Dock="Left" 
+                               Height="50"
+                               Width="50"
+                               Source="/DMT.Controls;component/Images/Button/User.png" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                            <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                                <TextBlock FontSize="20" 
+                                       HorizontalAlignment="Center"
+                                       Text="เพิ่มพนักงาน"
+                                       FontWeight="Bold"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                                </TextBlock>
+                                <Grid Height="10" />
+                            </StackPanel>
+                        </DockPanel>
+                    </Button>
                 </StackPanel>
                 <ctrl:PlazaFundEntry x:Name="plaza"
                                 FontSize="16"
@@ -60,20 +86,44 @@
         </Border>
         <Border DockPanel.Dock="Bottom"
                 BorderThickness="1"
-                BorderBrush="Silver">
+                BorderBrush="Silver" Height="60">
             <DockPanel>
-                <Button x:Name="cmdCancel" 
-                                DockPanel.Dock="Right"
-                                Margin="2"
-                                FontSize="18"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                HorizontalContentAlignment="Center"
-                                VerticalContentAlignment="Center"
-                                Content="กลับสู่หน้าจอหลัก"
-                                Height="45"
-                                Width="200"
-                                Click="cmdCancel_Click"/>
+                <Grid Width="5"></Grid>
+                <Button x:Name="cmdCancel"
+                            DockPanel.Dock="Right"
+                            Margin="2"
+                            Foreground="White"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Height="50"
+                            Width="220"
+                            Click="cmdCancel_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                    </Button.Background>
+                    <DockPanel>
+                        <Grid Width="5"></Grid>
+                        <Image DockPanel.Dock="Left" 
+                               Height="50"
+                               Width="50"
+                               Source="/DMT.Controls;component/Images/Button/Home.png" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                        <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                            <TextBlock FontSize="20" 
+                                       HorizontalAlignment="Center"
+                                       Text="กลับสู่หน้าจอหลัก"
+                                       FontWeight="Bold"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                            </TextBlock>
+                            <Grid Height="10" />
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
                 <Grid />
             </DockPanel>
         </Border>

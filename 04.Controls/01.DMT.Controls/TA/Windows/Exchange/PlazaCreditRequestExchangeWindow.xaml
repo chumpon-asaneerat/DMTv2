@@ -17,45 +17,111 @@
     <Grid Margin="15">
         <DockPanel>
             <DockPanel DockPanel.Dock="Bottom"
-                       Margin="5">
-                <Button x:Name="cmdOk" 
-                        DockPanel.Dock="Right"
-                        Margin="2"
-                        FontSize="18"
+                       Margin="5" Height="60">
+                <Button x:Name="cmdOk"
+                            DockPanel.Dock="Right"
+                        Foreground="White"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        HorizontalContentAlignment="Center"
-                        VerticalContentAlignment="Center"
-                        Content="บันทึก"
-                        Height="45"
-                        Width="150"
-                        Click="cmdOk_Click"/>
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Height="50"
+                            Width="220"
+                        Click="cmdOk_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                    </Button.Background>
+                    <DockPanel>
+                        <Grid Width="5"></Grid>
+                        <Image DockPanel.Dock="Left" 
+                               Height="50"
+                               Width="50"
+                               Source="/DMT.Controls;component/Images/Button/Save2.png" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                        <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                            <TextBlock FontSize="20" 
+                                       HorizontalAlignment="Center"
+                                       Text="บันทึก"
+                                       FontWeight="Bold"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                            </TextBlock>
+                            <Grid Height="10" />
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
                 <Grid Width="20"/>
-                <Button x:Name="cmdCancelRequest" 
-                        DockPanel.Dock="Right"
-                        Margin="2"
-                        FontSize="18"
+                <Button x:Name="cmdCancelRequest"
+                            DockPanel.Dock="Right"
+                        Foreground="White"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        HorizontalContentAlignment="Center"
-                        VerticalContentAlignment="Center"
-                        Content="ยกเลิกคำร้อง"
-                        Height="45"
-                        Width="150"
-                        Click="cmdCancelRequest_Click"/>
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Height="50"
+                            Width="220"
+                        Click="cmdCancelRequest_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                    </Button.Background>
+                    <DockPanel>
+                        <Grid Width="5"></Grid>
+                        <Image DockPanel.Dock="Left" 
+                               Height="50"
+                               Width="50"
+                               Source="/DMT.Controls;component/Images/Button/Close.png" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                        <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                            <TextBlock FontSize="20" 
+                                       HorizontalAlignment="Center"
+                                       Text="ยกเลิกคำร้อง"
+                                       FontWeight="Bold"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                            </TextBlock>
+                            <Grid Height="10" />
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
                 <Grid Width="20"/>
-                <Button x:Name="cmdClose" 
-                        DockPanel.Dock="Left"
-                        Margin="2"
-                        FontSize="18"
+                <Button x:Name="cmdClose"
+                            DockPanel.Dock="Left"
+                        Foreground="White"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        HorizontalContentAlignment="Center"
-                        VerticalContentAlignment="Center"
-                        Content="ปิด"
-                        Height="45"                        
-                        Width="150"
-                        Click="cmdClose_Click"/>
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Height="50"
+                            Width="220"
+                        Click="cmdClose_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                    </Button.Background>
+                    <DockPanel>
+                        <Grid Width="5"></Grid>
+                        <Image DockPanel.Dock="Left" 
+                               Height="50"
+                               Width="50"
+                               Source="/DMT.Controls;component/Images/Button/Stop.png" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                        <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                            <TextBlock FontSize="20" 
+                                       HorizontalAlignment="Center"
+                                       Text="ปิด"
+                                       FontWeight="Bold"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                            </TextBlock>
+                            <Grid Height="10" />
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
                 <Grid />
             </DockPanel>
             <Grid>

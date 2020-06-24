@@ -25,7 +25,7 @@ namespace DMT.TA.Pages.Coupon
             PageContentManager.Instance.Current = page;
         }
 
-        private void cmdOk_Click(object sender, RoutedEventArgs e)
+        private void cmdOK_Click(object sender, RoutedEventArgs e)
         {
             // Main Menu Page
             var page = new Menu.MainMenu();

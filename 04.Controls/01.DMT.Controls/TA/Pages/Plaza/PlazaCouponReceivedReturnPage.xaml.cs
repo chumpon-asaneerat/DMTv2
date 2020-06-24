@@ -18,7 +18,7 @@ namespace DMT.TA.Pages.Plaza
             InitializeComponent();
         }
 
-        private void cmdOk_Click(object sender, RoutedEventArgs e)
+        private void cmdOK_Click(object sender, RoutedEventArgs e)
         {
             // Main Menu Page
             var page = new Menu.MainMenu();

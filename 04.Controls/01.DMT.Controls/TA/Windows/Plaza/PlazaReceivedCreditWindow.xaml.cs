@@ -23,7 +23,7 @@ namespace DMT.TA.Windows.Plaza
         #endregion
 
 
-        private void cmdOk_Click(object sender, RoutedEventArgs e)
+        private void cmdOK_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
         }

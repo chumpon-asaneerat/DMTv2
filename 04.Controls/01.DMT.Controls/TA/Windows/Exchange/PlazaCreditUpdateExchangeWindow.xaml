@@ -17,32 +17,77 @@
     <Grid Margin="15">
         <DockPanel>
             <DockPanel DockPanel.Dock="Bottom"
-                       Margin="5">
-                <Button x:Name="cmdSaveExchange" 
-                        DockPanel.Dock="Right"
-                        Margin="2"
-                        FontSize="18"
+                       Margin="5" Height="60">
+                <Grid Width="5" DockPanel.Dock="Right"></Grid>
+                <Button x:Name="cmdSaveExchange"
+                            DockPanel.Dock="Right"
+                        Foreground="White"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        HorizontalContentAlignment="Center"
-                        VerticalContentAlignment="Center"
-                        Content="แลกเปลี่ยนเงิน"
-                        Height="45"
-                        Width="150"
-                        Click="cmdSaveExchange_Click"/>
-                <Grid Width="20"/>
-                <Button x:Name="cmdCancel" 
-                        DockPanel.Dock="Left"
-                        Margin="2"
-                        FontSize="18"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Height="50"
+                            Width="220"
+                        Click="cmdSaveExchange_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                    </Button.Background>
+                    <DockPanel>
+                        <Grid Width="5"></Grid>
+                        <Image DockPanel.Dock="Left" 
+                               Height="50"
+                               Width="50"
+                               Source="/DMT.Controls;component/Images/Button/Money2.png" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                        <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                            <TextBlock FontSize="20" 
+                                       HorizontalAlignment="Center"
+                                       Text="แลกเปลี่ยนเงิน"
+                                       FontWeight="Bold"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                            </TextBlock>
+                            <Grid Height="10" />
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+                <Grid Width="5" DockPanel.Dock="Left"></Grid>
+                <Button x:Name="cmdCancel"
+                            DockPanel.Dock="Left"
+                        Foreground="White"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        HorizontalContentAlignment="Center"
-                        VerticalContentAlignment="Center"
-                        Content="ยกเลิก"
-                        Height="45"
-                        Width="150"
-                        Click="cmdCancel_Click"/>
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Height="50"
+                            Width="220"
+                        Click="cmdCancel_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                    </Button.Background>
+                    <DockPanel>
+                        <Grid Width="5"></Grid>
+                        <Image DockPanel.Dock="Left" 
+                               Height="50"
+                               Width="50"
+                               Source="/DMT.Controls;component/Images/Button/Cancel2.png" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                        <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                            <TextBlock FontSize="20" 
+                                       HorizontalAlignment="Center"
+                                       Text="ยกเลิก"
+                                       FontWeight="Bold"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                            </TextBlock>
+                            <Grid Height="10" />
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
                 <Grid />
             </DockPanel>
             <Grid>

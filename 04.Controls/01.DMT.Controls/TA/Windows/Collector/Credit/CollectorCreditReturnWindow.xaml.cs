@@ -26,7 +26,7 @@ namespace DMT.TA.Windows.Collector.Credit
 
         #endregion
 
-        private void cmdOk_Click(object sender, RoutedEventArgs e)
+        private void cmdOK_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
         }

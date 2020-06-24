@@ -58,12 +58,67 @@
               Grid.Column="2"
               Margin="5">
             <StackPanel Margin="5 0">
-                <Grid Height="20" />
-                <Button x:Name="cmdOK" 
-                        Height="22" Click="cmdOK_Click">OK</Button>
+                <Grid Height="5" />
+                <Button x:Name="cmdOK"
+                        Foreground="White"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        Click="cmdOK_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                    </Button.Background>
+                    <DockPanel>
+                        <Grid Width="5"></Grid>
+                        <Image DockPanel.Dock="Left" 
+                               Height="50"
+                               Width="50"
+                               Source="/DMT.Controls;component/Images/Button/OK.png" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                        <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                            <TextBlock FontSize="20" 
+                                       HorizontalAlignment="Center"
+                                       Text="OK"
+                                       FontWeight="Bold"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                            </TextBlock>
+                            <Grid Height="10" />
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
                 <Grid Height="5"/>
                 <Button x:Name="cmdCancel" 
-                        Height="22" Click="cmdCancel_Click">Cancel</Button>
+                        Foreground="White"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        Click="cmdCancel_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                    </Button.Background>
+                    <DockPanel>
+                        <Grid Width="5"></Grid>
+                        <Image DockPanel.Dock="Left" 
+                               Height="50"
+                               Width="50"
+                               Source="/DMT.Controls;component/Images/Button/Cancel.png" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                        <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                            <TextBlock FontSize="20" 
+                                       HorizontalAlignment="Center"
+                                       Text="Cancel"
+                                       FontWeight="Bold"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                            </TextBlock>
+                            <Grid Height="10" />
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+                <Grid Height="5"/>
             </StackPanel>
         </Grid>
     </Grid>
