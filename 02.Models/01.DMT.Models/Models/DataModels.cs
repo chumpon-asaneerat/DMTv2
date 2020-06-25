@@ -24,7 +24,7 @@ namespace DMT.Models
     /// The TSB Data Model class.
     /// </summary>
     //[Table("TSB")]
-    public class TSB : DMTModelBase
+    public class TSB : NTable<TSB>
     {
         #region Intenral Variables
 
@@ -127,6 +127,7 @@ namespace DMT.Models
             }
         }
 
+        [JsonIgnore]
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Plaza> Plazas { get; set; }
 
@@ -134,75 +135,6 @@ namespace DMT.Models
 
         #region Static Methods
 
-        private static object sync = new object();
-
-        /// <summary>
-        /// Create new instance.
-        /// </summary>
-        /// <returns>Returns new instance</returns>
-        public static TSB Create()
-        {
-            return new TSB() { Plazas = new List<Plaza>() };
-        }
-        /// <summary>
-        /// Checks is item is already exists in database.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="value">The item to checks.</param>
-        /// <returns>Returns true if item is already in database.</returns>
-        internal static bool Exists(SQLiteConnection db, TSB value)
-        {
-            lock (sync)
-            {
-                if (null == db || null == value) return false;
-                var item = (from p in db.Table<TSB>()
-                            where p.TSBId == value.TSBId
-                            select p).FirstOrDefault();
-                return (null != item);
-            }
-
-        }
-        /// <summary>
-        /// Save.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="value">The item to save to database.</param>
-        internal static void Save(SQLiteConnection db, TSB value)
-        {
-            lock (sync)
-            {
-                if (null == db || null == value) return;
-                if (!Exists(db, value))
-                {
-                    db.Insert(value);
-                }
-                else db.Update(value);
-                // save children.
-                if (null != value.Plazas)
-                {
-                    foreach (var plaza in value.Plazas)
-                    {
-                        Plaza.Save(db, plaza);
-                    }
-                }
-                // udpate all children item
-                db.UpdateWithChildren(value);
-            }
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        internal static List<TSB> Gets(SQLiteConnection db, bool recursive = false)
-        {
-            lock (sync)
-            {
-                if (null == db) return new List<TSB>();
-                return db.GetAllWithChildren<TSB>(recursive: recursive);
-            }
-        }
         /// <summary>
         /// Gets by Id
         /// </summary>
@@ -221,48 +153,6 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <returns>Returns number of rows deleted.</returns>
-        internal static int DeleteAll(SQLiteConnection db)
-        {
-            lock (sync)
-            {
-                if (null == db) return 0;
-                return db.DeleteAll<TSB>();
-            }
-        }
-        /// <summary>
-        /// Checks is item is already exists in database.
-        /// </summary>
-        /// <param name="value">The item to checks.</param>
-        /// <returns>Returns true if item is already in database.</returns>
-        public static bool Exists(TSB value)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Exists(db, value);
-        }
-        /// <summary>
-        /// Save.
-        /// </summary>
-        /// <param name="value">The item to save to database.</param>
-        public static void Save(TSB value)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            Save(db, value);
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        public static List<TSB> Gets(bool recursive = false)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Gets(db, recursive);
-        }
-        /// <summary>
         /// Gets by Id
         /// </summary>
         /// <param name="TSBId">The TSBId.</param>
@@ -272,15 +162,6 @@ namespace DMT.Models
         {
             SQLiteConnection db = LocalDbServer.Instance.Db;
             return Get(db, TSBId, recursive);
-        }
-        /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <returns>Returns number of rows deleted.</returns>
-        public static int DeleteAll()
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return DeleteAll(db);
         }
 
         #endregion
@@ -294,7 +175,7 @@ namespace DMT.Models
     /// The Plaza Data Model class.
     /// </summary>
     //[Table("Plaza")]
-    public class Plaza : DMTModelBase
+    public class Plaza : NTable<Plaza>
     {
         #region Intenral Variables
 
@@ -357,6 +238,7 @@ namespace DMT.Models
             }
         }
 
+        [JsonIgnore]
         [TypeConverter(typeof(ExpandableObjectConverter))]
         [ManyToOne(CascadeOperations = CascadeOperation.CascadeRead, ReadOnly = true)]
         public TSB TSB { get; set; }
@@ -424,6 +306,7 @@ namespace DMT.Models
             }
         }
 
+        [JsonIgnore]
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Lane> Lanes { get; set; }
 
@@ -431,74 +314,6 @@ namespace DMT.Models
 
         #region Static Methods
 
-        private static object sync = new object();
-
-        /// <summary>
-        /// Create new instance.
-        /// </summary>
-        /// <returns>Returns new instance</returns>
-        public static Plaza Create()
-        {
-            return new Plaza() { Lanes = new List<Lane>() };
-        }
-        /// <summary>
-        /// Checks is item is already exists in database.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="value">The item to checks.</param>
-        /// <returns>Returns true if item is already in database.</returns>
-        internal static bool Exists(SQLiteConnection db, Plaza value)
-        {
-            lock (sync)
-            {
-                if (null == db || null == value) return false;
-                var item = (from p in db.Table<Plaza>()
-                            where p.PlazaId == value.PlazaId
-                            select p).FirstOrDefault();
-                return (null != item);
-            }
-        }
-        /// <summary>
-        /// Save.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="value">The item to save to database.</param>
-        internal static void Save(SQLiteConnection db, Plaza value)
-        {
-            lock (sync)
-            {
-                if (null == db || null == value) return;
-                if (!Exists(db, value))
-                {
-                    db.Insert(value);
-                }
-                else db.Update(value);
-                // save children.
-                if (null != value.Lanes)
-                {
-                    foreach (var lane in value.Lanes)
-                    {
-                        Lane.Save(db, lane);
-                    }
-                }
-                // udpate all children item
-                db.UpdateWithChildren(value);
-            }
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        internal static List<Plaza> Gets(SQLiteConnection db, bool recursive = false)
-        {
-            lock (sync)
-            {
-                if (null == db) return new List<Plaza>();
-                return db.GetAllWithChildren<Plaza>(recursive: recursive);
-            }
-        }
         /// <summary>
         /// Gets by Id
         /// </summary>
@@ -517,48 +332,6 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <returns>Returns number of rows deleted.</returns>
-        internal static int DeleteAll(SQLiteConnection db)
-        {
-            lock (sync)
-            {
-                if (null == db) return 0;
-                return db.DeleteAll<Plaza>();
-            }
-        }
-        /// <summary>
-        /// Checks is item is already exists in database.
-        /// </summary>
-        /// <param name="value">The item to checks.</param>
-        /// <returns>Returns true if item is already in database.</returns>
-        public static bool Exists(Plaza value)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Exists(db, value);
-        }
-        /// <summary>
-        /// Save.
-        /// </summary>
-        /// <param name="value">The item to save to database.</param>
-        public static void Save(Plaza value)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            Save(db, value);
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        public static List<Plaza> Gets(bool recursive = false)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Gets(db, recursive);
-        }
-        /// <summary>
         /// Gets by Id
         /// </summary>
         /// <param name="PlazaId">The PlazaId.</param>
@@ -568,15 +341,6 @@ namespace DMT.Models
         {
             SQLiteConnection db = LocalDbServer.Instance.Db;
             return Get(db, PlazaId, recursive);
-        }
-        /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <returns>Returns number of rows deleted.</returns>
-        public static int DeleteAll()
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return DeleteAll(db);
         }
 
         #endregion
@@ -590,7 +354,7 @@ namespace DMT.Models
     /// The Shift Data Model class.
     /// </summary>
     //[Table("Shift")]
-    public class Shift : DMTModelBase
+    public class Shift : NTable<Shift>
     {
         #region Intenral Variables
 
@@ -676,66 +440,6 @@ namespace DMT.Models
 
         #region Static Methods
 
-        private static object sync = new object();
-
-        /// <summary>
-        /// Create new instance.
-        /// </summary>
-        /// <returns>Returns new instance</returns>
-        public static Shift Create()
-        {
-            return new Shift() { };
-        }
-        /// <summary>
-        /// Checks is item is already exists in database.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="value">The item to checks.</param>
-        /// <returns>Returns true if item is already in database.</returns>
-        internal static bool Exists(SQLiteConnection db, Shift value)
-        {
-            lock (sync)
-            {
-                if (null == db || null == value) return false;
-                var item = (from p in db.Table<Shift>()
-                            where p.ShiftId == value.ShiftId
-                            select p).FirstOrDefault();
-                return (null != item);
-            }
-
-        }
-        /// <summary>
-        /// Save.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="value">The item to save to database.</param>
-        internal static void Save(SQLiteConnection db, Shift value)
-        {
-            lock (sync)
-            {
-                if (null == db || null == value) return;
-                if (!Exists(db, value))
-                {
-                    db.Insert(value);
-                }
-                else db.Update(value);
-                // udpate
-                db.Update(value);
-            }
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <returns>Returns List of all records</returns>
-        internal static List<Shift> Gets(SQLiteConnection db)
-        {
-            lock (sync)
-            {
-                if (null == db) return new List<Shift>();
-                return db.Table<Shift>().ToList();
-            }
-        }
         /// <summary>
         /// Gets by Id
         /// </summary>
@@ -752,47 +456,6 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <returns>Returns number of rows deleted.</returns>
-        internal static int DeleteAll(SQLiteConnection db)
-        {
-            lock (sync)
-            {
-                if (null == db) return 0;
-                return db.DeleteAll<Shift>();
-            }
-        }
-        /// <summary>
-        /// Checks is item is already exists in database.
-        /// </summary>
-        /// <param name="value">The item to checks.</param>
-        /// <returns>Returns true if item is already in database.</returns>
-        public static bool Exists(Shift value)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Exists(db, value);
-        }
-        /// <summary>
-        /// Save.
-        /// </summary>
-        /// <param name="value">The item to save to database.</param>
-        public static void Save(Shift value)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            Save(db, value);
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <returns>Returns List of all records</returns>
-        public static List<Shift> Gets()
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Gets(db);
-        }
-        /// <summary>
         /// Gets by Id
         /// </summary>
         /// <param name="shiftId">The shiftId.</param>
@@ -801,15 +464,6 @@ namespace DMT.Models
         {
             SQLiteConnection db = LocalDbServer.Instance.Db;
             return Get(db, shiftId);
-        }
-        /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <returns>Returns number of rows deleted.</returns>
-        public static int DeleteAll()
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return DeleteAll(db);
         }
 
         #endregion
@@ -823,7 +477,7 @@ namespace DMT.Models
     /// The Lane Data Model class.
     /// </summary>
     //[Table("Lane")]
-    public class Lane : DMTModelBase
+    public class Lane : NTable<Lane>
     {
         #region Intenral Variables
 
@@ -946,6 +600,7 @@ namespace DMT.Models
             }
         }
 
+        [JsonIgnore]
         [TypeConverter(typeof(ExpandableObjectConverter))]
         [ManyToOne(CascadeOperations = CascadeOperation.CascadeRead, ReadOnly = true)]
         public Plaza Plaza { get; set; }
@@ -954,64 +609,6 @@ namespace DMT.Models
 
         #region Static Methods
 
-        private static object sync = new object();
-
-        /// <summary>
-        /// Create new instance.
-        /// </summary>
-        /// <returns>Returns new instance</returns>
-        public static Lane Create()
-        {
-            return new Lane() { };
-        }
-        /// <summary>
-        /// Checks is item is already exists in database.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="value">The item to checks.</param>
-        /// <returns>Returns true if item is already in database.</returns>
-        internal static bool Exists(SQLiteConnection db, Lane value)
-        {
-            lock (sync)
-            {
-                if (null == db || null == value) return false;
-                var item = (from p in db.Table<Lane>()
-                            where p.PlazaId == value.PlazaId && p.LaneId == value.LaneId
-                            select p).FirstOrDefault();
-                return (null != item);
-            }
-        }
-        /// <summary>
-        /// Save.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="value">The item to save to database.</param>
-        internal static void Save(SQLiteConnection db, Lane value)
-        {
-            lock (sync)
-            {
-                if (null == db || null == value) return;
-                if (!Exists(db, value))
-                {
-                    db.Insert(value);
-                }
-                else db.Update(value);
-            }
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        internal static List<Lane> Gets(SQLiteConnection db, bool recursive = false)
-        {
-            lock (sync)
-            {
-                if (null == db) return new List<Lane>();
-                return db.GetAllWithChildren<Lane>(recursive: recursive);
-            }
-        }
         /// <summary>
         /// Gets by Id
         /// </summary>
@@ -1032,48 +629,6 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <returns>Returns number of rows deleted.</returns>
-        internal static int DeleteAll(SQLiteConnection db)
-        {
-            lock (sync)
-            {
-                if (null == db) return 0;
-                return db.DeleteAll<Lane>();
-            }
-        }
-        /// <summary>
-        /// Checks is item is already exists in database.
-        /// </summary>
-        /// <param name="value">The item to checks.</param>
-        /// <returns>Returns true if item is already in database.</returns>
-        public static bool Exists(Lane value)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Exists(db, value);
-        }
-        /// <summary>
-        /// Save.
-        /// </summary>
-        /// <param name="value">The item to save to database.</param>
-        public static void Save(Lane value)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            Save(db, value);
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        public static List<Lane> Gets(bool recursive = false)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Gets(db, recursive);
-        }
-        /// <summary>
         /// Gets by Id
         /// </summary>
         /// <param name="PlazaId">The PlazaId.</param>
@@ -1084,15 +639,6 @@ namespace DMT.Models
         {
             SQLiteConnection db = LocalDbServer.Instance.Db;
             return Get(db, PlazaId, LaneId, recursive);
-        }
-        /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <returns>Returns number of rows deleted.</returns>
-        public static int DeleteAll()
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return DeleteAll(db);
         }
 
         #endregion
@@ -1106,7 +652,7 @@ namespace DMT.Models
     /// The Role Data Model Class.
     /// </summary>
     //[Table("Role")]
-    public class Role : DMTModelBase
+    public class Role : NTable<Role>
     {
         #region Intenral Variables
 
@@ -1166,6 +712,7 @@ namespace DMT.Models
             }
         }
 
+        [JsonIgnore]
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<User> Users { get; set; }
 
@@ -1173,74 +720,6 @@ namespace DMT.Models
 
         #region Static Methods
 
-        private static object sync = new object();
-
-        /// <summary>
-        /// Create new instance.
-        /// </summary>
-        /// <returns>Returns new instance</returns>
-        public static Role Create()
-        {
-            return new Role() { Users = new List<User>() };
-        }
-        /// <summary>
-        /// Checks is item is already exists in database.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="value">The item to checks.</param>
-        /// <returns>Returns true if item is already in database.</returns>
-        internal static bool Exists(SQLiteConnection db, Role value)
-        {
-            lock (sync)
-            {
-                if (null == db || null == value) return false;
-                var item = (from p in db.Table<Role>()
-                            where p.RoleId == value.RoleId
-                            select p).FirstOrDefault();
-                return (null != item);
-            }
-        }
-        /// <summary>
-        /// Save.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="value">The item to save to database.</param>
-        internal static void Save(SQLiteConnection db, Role value)
-        {
-            lock (sync)
-            {
-                if (null == db || null == value) return;
-                if (!Exists(db, value))
-                {
-                    db.Insert(value);
-                }
-                else db.Update(value);
-                // save children.
-                if (null != value.Users)
-                {
-                    foreach (var user in value.Users)
-                    {
-                        User.Save(db, user);
-                    }
-                }
-                // udpate all children item
-                db.UpdateWithChildren(value);
-            }
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        internal static List<Role> Gets(SQLiteConnection db, bool recursive = false)
-        {
-            lock (sync)
-            {
-                if (null == db) return new List<Role>();
-                return db.GetAllWithChildren<Role>(recursive: recursive);
-            }
-        }
         /// <summary>
         /// Gets by Id
         /// </summary>
@@ -1259,48 +738,6 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <returns>Returns number of rows deleted.</returns>
-        internal static int DeleteAll(SQLiteConnection db)
-        {
-            lock (sync)
-            {
-                if (null == db) return 0;
-                return db.DeleteAll<Role>();
-            }
-        }
-        /// <summary>
-        /// Checks is item is already exists in database.
-        /// </summary>
-        /// <param name="value">The item to checks.</param>
-        /// <returns>Returns true if item is already in database.</returns>
-        public static bool Exists(Role value)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Exists(db, value);
-        }
-        /// <summary>
-        /// Save.
-        /// </summary>
-        /// <param name="value">The item to save to database.</param>
-        public static void Save(Role value)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            Save(db, value);
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        public static List<Role> Gets(bool recursive = false)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Gets(db, recursive);
-        }
-        /// <summary>
         /// Gets by Id
         /// </summary>
         /// <param name="RoleId">The RoleId.</param>
@@ -1310,15 +747,6 @@ namespace DMT.Models
         {
             SQLiteConnection db = LocalDbServer.Instance.Db;
             return Get(db, RoleId, recursive);
-        }
-        /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <returns>Returns number of rows deleted.</returns>
-        public static int DeleteAll()
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return DeleteAll(db);
         }
 
         #endregion
@@ -1332,7 +760,7 @@ namespace DMT.Models
     /// The User Data Model Class.
     /// </summary>
     //[Table("User")]
-    public class User : DMTModelBase
+    public class User : NTable<User>
     {
         #region Intenral Variables
 
@@ -1504,6 +932,7 @@ namespace DMT.Models
             }
         }
 
+        [JsonIgnore]
         [TypeConverter(typeof(ExpandableObjectConverter))]
         [ManyToOne(CascadeOperations = CascadeOperation.CascadeRead, ReadOnly = true)]
         public Role Role { get; set; }
@@ -1512,64 +941,6 @@ namespace DMT.Models
 
         #region Static Methods
 
-        private static object sync = new object();
-
-        /// <summary>
-        /// Create new instance.
-        /// </summary>
-        /// <returns>Returns new instance</returns>
-        public static User Create()
-        {
-            return new User() { };
-        }
-        /// <summary>
-        /// Checks is item is already exists in database.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="value">The item to checks.</param>
-        /// <returns>Returns true if item is already in database.</returns>
-        internal static bool Exists(SQLiteConnection db, User value)
-        {
-            lock (sync)
-            {
-                if (null == db || null == value) return false;
-                var item = (from p in db.Table<User>()
-                            where p.UserId == value.UserId
-                            select p).FirstOrDefault();
-                return (null != item);
-            }
-        }
-        /// <summary>
-        /// Save.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="value">The item to save to database.</param>
-        internal static void Save(SQLiteConnection db, User value)
-        {
-            lock (sync)
-            {
-                if (null == db || null == value) return;
-                if (!Exists(db, value))
-                {
-                    db.Insert(value);
-                }
-                else db.Update(value);
-            }
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        internal static List<User> Gets(SQLiteConnection db, bool recursive = false)
-        {
-            lock (sync)
-            {
-                if (null == db) return new List<User>();
-                return db.GetAllWithChildren<User>(recursive: recursive);
-            }
-        }
         /// <summary>
         /// Gets by Id without password.
         /// </summary>
@@ -1641,48 +1012,6 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <returns>Returns number of rows deleted.</returns>
-        internal static int DeleteAll(SQLiteConnection db)
-        {
-            lock (sync)
-            {
-                if (null == db) return 0;
-                return db.DeleteAll<User>();
-            }
-        }
-        /// <summary>
-        /// Checks is item is already exists in database.
-        /// </summary>
-        /// <param name="value">The item to checks.</param>
-        /// <returns>Returns true if item is already in database.</returns>
-        public static bool Exists(User value)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Exists(db, value);
-        }
-        /// <summary>
-        /// Save.
-        /// </summary>
-        /// <param name="value">The item to save to database.</param>
-        public static void Save(User value)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            Save(db, value);
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        public static List<User> Gets(bool recursive = false)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Gets(db, recursive);
-        }
-        /// <summary>
         /// Gets by Id
         /// </summary>
         /// <param name="UserId">The UserId.</param>
@@ -1731,15 +1060,6 @@ namespace DMT.Models
             SQLiteConnection db = LocalDbServer.Instance.Db;
             return GetByCardId(db, cardId, recursive);
         }
-        /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <returns>Returns number of rows deleted.</returns>
-        public static int DeleteAll()
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return DeleteAll(db);
-        }
 
         #endregion
     }
@@ -1752,7 +1072,7 @@ namespace DMT.Models
     /// The Config Data Model Class.
     /// </summary>
     [Table("Config")]
-    public class Config : DMTModelBase
+    public class Config : NTable<Config>
     {
         #region Intenral Variables
 
@@ -1817,64 +1137,6 @@ namespace DMT.Models
 
         #region Static Methods
 
-        private static object sync = new object();
-
-        /// <summary>
-        /// Create new instance.
-        /// </summary>
-        /// <returns>Returns new instance</returns>
-        public static Config Create()
-        {
-            return new Config() { };
-        }
-        /// <summary>
-        /// Checks is item is already exists in database.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="value">The item to checks.</param>
-        /// <returns>Returns true if item is already in database.</returns>
-        internal static bool Exists(SQLiteConnection db, Config value)
-        {
-            lock (sync)
-            {
-                if (null == db || null == value) return false;
-                var item = (from p in db.Table<Config>()
-                            where p.Key == value.Key
-                            select p).FirstOrDefault();
-                return (null != item);
-            }
-        }
-        /// <summary>
-        /// Save.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="value">The item to save to database.</param>
-        internal static void Save(SQLiteConnection db, Config value)
-        {
-            lock (sync)
-            {
-                if (null == db || null == value) return;
-                if (!Exists(db, value))
-                {
-                    db.Insert(value);
-                }
-                else db.Update(value);
-            }
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        internal static List<Config> Gets(SQLiteConnection db, bool recursive = false)
-        {
-            lock (sync)
-            {
-                if (null == db) return new List<Config>();
-                return db.GetAllWithChildren<Config>(recursive: recursive);
-            }
-        }
         /// <summary>
         /// Gets by Key.
         /// </summary>
@@ -1893,48 +1155,6 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <returns>Returns number of rows deleted.</returns>
-        internal static int DeleteAll(SQLiteConnection db)
-        {
-            lock (sync)
-            {
-                if (null == db) return 0;
-                return db.DeleteAll<Config>();
-            }
-        }
-        /// <summary>
-        /// Checks is item is already exists in database.
-        /// </summary>
-        /// <param name="value">The item to checks.</param>
-        /// <returns>Returns true if item is already in database.</returns>
-        public static bool Exists(Config value)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Exists(db, value);
-        }
-        /// <summary>
-        /// Save.
-        /// </summary>
-        /// <param name="value">The item to save to database.</param>
-        public static void Save(Config value)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            Save(db, value);
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        public static List<Config> Gets(bool recursive = false)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Gets(db, recursive);
-        }
-        /// <summary>
         /// Gets by Id
         /// </summary>
         /// <param name="key">The key.</param>
@@ -1944,15 +1164,6 @@ namespace DMT.Models
         {
             SQLiteConnection db = LocalDbServer.Instance.Db;
             return Get(db, key, recursive);
-        }
-        /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <returns>Returns number of rows deleted.</returns>
-        public static int DeleteAll()
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return DeleteAll(db);
         }
 
         #endregion
@@ -1966,7 +1177,7 @@ namespace DMT.Models
     /// The SupervisorShift Data Model Class.
     /// </summary>
     //[Table("SupervisorShift")]
-    public class SupervisorShift : DMTModelBase
+    public class SupervisorShift : NTable<SupervisorShift>
     {
         #region Intenral Variables
 
@@ -2051,6 +1262,7 @@ namespace DMT.Models
             }
         }
 
+        [JsonIgnore]
         [TypeConverter(typeof(ExpandableObjectConverter))]
         [OneToOne(foreignKey: "SupervisorId", CascadeOperations = CascadeOperation.All)]
         public User User { get; set; }
@@ -2094,63 +1306,6 @@ namespace DMT.Models
 
         #region Static Methods
 
-        private static object sync = new object();
-
-        /// <summary>
-        /// Create new instance.
-        /// </summary>
-        /// <returns>Returns new instance</returns>
-        public static SupervisorShift Create()
-        {
-            return new SupervisorShift() { };
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        internal static List<SupervisorShift> Gets(SQLiteConnection db, bool recursive = false)
-        {
-            lock (sync)
-            {
-                if (null == db) return new List<SupervisorShift>();
-                return db.GetAllWithChildren<SupervisorShift>(recursive: recursive);
-            }
-        }
-        /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <returns>Returns number of rows deleted.</returns>
-        internal static int DeleteAll(SQLiteConnection db)
-        {
-            lock (sync)
-            {
-                if (null == db) return 0;
-                return db.DeleteAll<SupervisorShift>();
-            }
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        public static List<SupervisorShift> Gets(bool recursive = false)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Gets(db, recursive);
-        }
-        /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <returns>Returns number of rows deleted.</returns>
-        public static int DeleteAll()
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return DeleteAll(db);
-        }
-
         #endregion
     }
 
@@ -2162,7 +1317,7 @@ namespace DMT.Models
     /// The CollectorJob Data Model Class.
     /// </summary>
     //[Table("CollectorJob")]
-    public class CollectorJob : DMTModelBase
+    public class CollectorJob : NTable<CollectorJob>
     {
         #region Intenral Variables
 
@@ -2267,6 +1422,8 @@ namespace DMT.Models
                 }
             }
         }
+
+        [JsonIgnore]
         [TypeConverter(typeof(ExpandableObjectConverter))]
         [OneToOne(foreignKey: "CollectorId", CascadeOperations = CascadeOperation.All)]
         public User User { get; set; }
@@ -2310,116 +1467,6 @@ namespace DMT.Models
 
         #region Static Methods
 
-        private static object sync = new object();
-
-        /// <summary>
-        /// Create new instance.
-        /// </summary>
-        /// <returns>Returns new instance</returns>
-        public static CollectorJob Create()
-        {
-            return new CollectorJob() { };
-        }
-        /// <summary>
-        /// Checks is item is already exists in database.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="value">The item to checks.</param>
-        /// <returns>Returns true if item is already in database.</returns>
-        internal static bool Exists(SQLiteConnection db, CollectorJob value)
-        {
-            lock (sync)
-            {
-                if (null == db || null == value) return false;
-                var item = (from p in db.Table<CollectorJob>()
-                            where p.JobId == value.JobId
-                            select p).FirstOrDefault();
-                return (null != item);
-            }
-        }
-        /// <summary>
-        /// Save.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="value">The item to save to database.</param>
-        internal static void Save(SQLiteConnection db, CollectorJob value)
-        {
-            lock (sync)
-            {
-                if (null == db || null == value) return;
-                if (!Exists(db, value))
-                {
-                    db.Insert(value);
-                }
-                else db.Update(value);
-            }
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        internal static List<CollectorJob> Gets(SQLiteConnection db, bool recursive = false)
-        {
-            lock (sync)
-            {
-                if (null == db) return new List<CollectorJob>();
-                return db.GetAllWithChildren<CollectorJob>(recursive: recursive);
-            }
-        }
-        /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <returns>Returns number of rows deleted.</returns>
-        internal static int DeleteAll(SQLiteConnection db)
-        {
-            lock (sync)
-            {
-                if (null == db) return 0;
-                return db.DeleteAll<CollectorJob>();
-            }
-        }
-        /// <summary>
-        /// Checks is item is already exists in database.
-        /// </summary>
-        /// <param name="value">The item to checks.</param>
-        /// <returns>Returns true if item is already in database.</returns>
-        public static bool Exists(CollectorJob value)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Exists(db, value);
-        }
-        /// <summary>
-        /// Save.
-        /// </summary>
-        /// <param name="value">The item to save to database.</param>
-        public static void Save(CollectorJob value)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            Save(db, value);
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        public static List<CollectorJob> Gets(bool recursive = false)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Gets(db, recursive);
-        }
-        /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <returns>Returns number of rows deleted.</returns>
-        public static int DeleteAll()
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return DeleteAll(db);
-        }
-
         #endregion
     }
 
@@ -2431,7 +1478,7 @@ namespace DMT.Models
     /// The CollectorShift Data Model Class.
     /// </summary>
     //[Table("CollectorShift")]
-    public class CollectorShift : DMTModelBase
+    public class CollectorShift : NTable<CollectorShift>
     {
         #region Intenral Variables
 
@@ -2515,6 +1562,8 @@ namespace DMT.Models
                 }
             }
         }
+
+        [JsonIgnore]
         [TypeConverter(typeof(ExpandableObjectConverter))]
         [OneToOne(foreignKey: "CollectorId", CascadeOperations = CascadeOperation.All)]
         public User User { get; set; }
@@ -2558,63 +1607,6 @@ namespace DMT.Models
 
         #region Static Methods
 
-        private static object sync = new object();
-
-        /// <summary>
-        /// Create new instance.
-        /// </summary>
-        /// <returns>Returns new instance</returns>
-        public static CollectorShift Create()
-        {
-            return new CollectorShift() { };
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        internal static List<CollectorShift> Gets(SQLiteConnection db, bool recursive = false)
-        {
-            lock (sync)
-            {
-                if (null == db) return new List<CollectorShift>();
-                return db.GetAllWithChildren<CollectorShift>(recursive: recursive);
-            }
-        }
-        /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <returns>Returns number of rows deleted.</returns>
-        internal static int DeleteAll(SQLiteConnection db)
-        {
-            lock (sync)
-            {
-                if (null == db) return 0;
-                return db.DeleteAll<CollectorShift>();
-            }
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        public static List<CollectorShift> Gets(bool recursive = false)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Gets(db, recursive);
-        }
-        /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <returns>Returns number of rows deleted.</returns>
-        public static int DeleteAll()
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return DeleteAll(db);
-        }
-
         #endregion
     }
 
@@ -2625,7 +1617,7 @@ namespace DMT.Models
     /// <summary>
     /// The CollectorLane Data Model Class.
     /// </summary>
-    public class CollectorLane : DMTModelBase
+    public class CollectorLane : NTable<CollectorLane>
     {
         #region Intenral Variables
 
@@ -2711,6 +1703,7 @@ namespace DMT.Models
             }
         }
 
+        [JsonIgnore]
         [TypeConverter(typeof(ExpandableObjectConverter))]
         [OneToOne(foreignKey: "CollectorId", CascadeOperations = CascadeOperation.All)]
         public User User { get; set; }
@@ -2771,63 +1764,6 @@ namespace DMT.Models
 
         #region Static Methods
 
-        private static object sync = new object();
-
-        /// <summary>
-        /// Create new instance.
-        /// </summary>
-        /// <returns>Returns new instance</returns>
-        public static CollectorLane Create()
-        {
-            return new CollectorLane() { };
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        internal static List<CollectorLane> Gets(SQLiteConnection db, bool recursive = false)
-        {
-            lock (sync)
-            {
-                if (null == db) return new List<CollectorLane>();
-                return db.GetAllWithChildren<CollectorLane>(recursive: recursive);
-            }
-        }
-        /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <returns>Returns number of rows deleted.</returns>
-        internal static int DeleteAll(SQLiteConnection db)
-        {
-            lock (sync)
-            {
-                if (null == db) return 0;
-                return db.DeleteAll<CollectorLane>();
-            }
-        }
-        /// <summary>
-        /// Gets All.
-        /// </summary>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns List of all records</returns>
-        public static List<CollectorLane> Gets(bool recursive = false)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Gets(db, recursive);
-        }
-        /// <summary>
-        /// Delete All.
-        /// </summary>
-        /// <returns>Returns number of rows deleted.</returns>
-        public static int DeleteAll()
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return DeleteAll(db);
-        }
-
         #endregion
     }
 
@@ -2839,7 +1775,7 @@ namespace DMT.Models
     /// The RevenueEntry class.
     /// </summary>
     //[Table("RevenueEntry")]
-    public class RevenueEntry : DMTModelBase
+    public class RevenueEntry : NTable<RevenueEntry>
     {
         #region Intenral Variables
 
@@ -3010,6 +1946,7 @@ namespace DMT.Models
             }
         }
 
+        [JsonIgnore]
         [TypeConverter(typeof(ExpandableObjectConverter))]
         [OneToOne(foreignKey: "ShiftId", CascadeOperations = CascadeOperation.All)]
         public Shift Shift { get; set; }
@@ -3055,6 +1992,7 @@ namespace DMT.Models
             }
         }
 
+        [JsonIgnore]
         [TypeConverter(typeof(ExpandableObjectConverter))]
         [OneToOne(foreignKey: "CollectorId", CascadeOperations = CascadeOperation.All)]
         public User User { get; set; }

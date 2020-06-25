@@ -1,42 +1,63 @@
 --------------------------------------------------------------------------------------------
-Update 2020-06-25 #15
+Update 2020-06-26 #5
 - 
 
-Update 2020-06-25 #14
+Update 2020-06-26 #4
 - 
 
-Update 2020-06-25 #13
+Update 2020-06-26 #3
 - 
 
-Update 2020-06-25 #12
+Update 2020-06-26 #2
 - 
 
+Update 2020-06-26 #1
+- 
+
+--------------------------------------------------------------------------------------------
+[commited]
 Update 2020-06-25 #11
-- 
+- Prepare history.txt
+- sync code and recompile all.
 
+[commited]
 Update 2020-06-25 #10
-- 
+- LocalServer InitXXX methods (change the way to update child relationship).
 
+[commited]
 Update 2020-06-25 #9
-- 
+- Update RouteConst.cs.
+- Update JobController code - add GetUser.
+- Update Simulator code for test GetUser.
+- Update all model classes - inherited from NTable<T> and remove duplicated static methods.
 
+[commited]
 Update 2020-06-25 #8
-- 
+- Add NRestClient.cs file.
+- Implements NRestClient class.
 
+[commited]
 Update 2020-06-25 #7
-- 
+- Update NTables.cs file - ported NTable/NTable<T> class from v1.
 
+[commited]
 Update 2020-06-25 #6
-- 
+- Update Nlib PeropertyMapNameExtensionMethods class update AssignTo method (change type checking).
+- Update Nlib PeropertyMapNameExtensionMethods class add CloneTo method.
 
+[commited]
 Update 2020-06-25 #5
-- 
+- Update NJson extension methods class fixed bug in FromJson method.
+- Update NJson extension methods - FromJson method set default(T) to default.
 
+[commited]
 Update 2020-06-25 #4
-- 
+- Update DMTModelBase.cs from v1.
+- Rmove unused using DMTModelBase.cs
 
+[commited]
 Update 2020-06-25 #3
-- 
+- Update todo.txt from v1.
 
 [commited]
 Update 2020-06-25 #2

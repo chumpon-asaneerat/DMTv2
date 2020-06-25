@@ -48,9 +48,17 @@ namespace DMT
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            /*
             string result = Services.DMTServiceOperations.Instance.Plaza.BeginJob();
             //Console.WriteLine(result);
             MessageBox.Show(result);
+            */
+            var user = Models.User.Create();
+            user.UserId = "99001";
+            var ret = Services.DMTServiceOperations.Instance.Plaza.GetUser(user);
+            if (null != ret)
+                MessageBox.Show("Found :" + ret.UserName);
+            else MessageBox.Show("User not Found");
         }
     }
 }

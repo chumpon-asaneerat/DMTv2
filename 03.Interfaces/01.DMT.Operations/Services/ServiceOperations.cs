@@ -66,6 +66,13 @@ namespace DMT.Services
 
         #region Public Methods
 
+        public Models.User GetUser(Models.User user)
+        {
+            var ret = NRestClient.Create(port: 9000).Execute<Models.User>(
+                RouteConsts.Job.GetUser.Url, user);
+            return ret;
+        }
+
         public string BeginJob()
         {
             var host = this.BaseAddress;
