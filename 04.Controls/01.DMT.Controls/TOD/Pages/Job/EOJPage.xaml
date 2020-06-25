@@ -123,6 +123,7 @@
                         </StackPanel>
                     </DockPanel>
                 </Button>
+                <Grid Width="5" DockPanel.Dock="Right"></Grid>
                 <Button x:Name="cmdCancel"
                             DockPanel.Dock="Right"
                         Foreground="White"

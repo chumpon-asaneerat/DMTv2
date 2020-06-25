@@ -82,7 +82,6 @@
                                 </StackPanel>
                             </DockPanel>
                         </Button>
-
                         <Grid />
                     </DockPanel>
                 </Border>

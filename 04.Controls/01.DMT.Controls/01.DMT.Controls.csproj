@@ -599,6 +599,8 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Background\snartcard.png" />
+    <Resource Include="Images\Button\EndWork.png" />
+    <Resource Include="Images\Button\Rejected2.png" />
     <Resource Include="Images\Logo\tollway.png" />
   </ItemGroup>
   <ItemGroup>
@@ -677,9 +679,6 @@
     <Resource Include="Images\Button\Stop.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Button\EndWork.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Button\Refresh.png" />
     <Resource Include="Images\Button\Refresh2.png" />
     <Resource Include="Images\Button\Refresh3.png" />
@@ -693,7 +692,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Button\Rejected.png" />
-    <Resource Include="Images\Button\Rejected2.png" />
     <Resource Include="Images\Button\Reset.png" />
   </ItemGroup>
   <ItemGroup>
@@ -705,6 +703,24 @@
     <Resource Include="Images\Button\search.png" />
     <Resource Include="Images\Button\search2.png" />
     <Resource Include="Images\Button\search3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Rejected3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Rejected4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Approved5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Rejected5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\EndWork2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\finish.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

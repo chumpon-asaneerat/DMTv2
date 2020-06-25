@@ -8,7 +8,7 @@
              d:DesignHeight="450" 
              d:DesignWidth="800">
     <DockPanel Margin="5">
-        <Grid DockPanel.Dock="Bottom">
+        <Grid DockPanel.Dock="Bottom" Height="60">
             <Border BorderBrush="Silver" 
                     BorderThickness="1"
                     Background="Silver">
@@ -19,17 +19,7 @@
                                VerticalAlignment="Center"
                                TextAlignment="Right"
                                Text="ผลัดถัดไปคือ"/>
-                    <Button x:Name="cmdOk" 
-                            DockPanel.Dock="Right"
-                            Margin="2"
-                            FontSize="18"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            HorizontalContentAlignment="Center"
-                            VerticalContentAlignment="Center"
-                            Content="ยืนยันการเปลี่ยนผลัด"
-                            Height="45"
-                            Width="200" Click="cmdOk_Click"/>
+                    
                     <ComboBox FontSize="18"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"
@@ -41,17 +31,79 @@
                         <ComboBoxItem Content="2"/>
                         <ComboBoxItem Content="3"/>
                     </ComboBox>
-                    <Button x:Name="cmdCancel" 
+                    <DockPanel DockPanel.Dock="Right">
+                        <Grid Width="5" DockPanel.Dock="Right"></Grid>
+                        <Button x:Name="cmdOK"
                             DockPanel.Dock="Right"
-                            Margin="2"
-                            FontSize="18"
-                            HorizontalAlignment="Center"
+                        Foreground="White"
+                        HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            HorizontalContentAlignment="Center"
-                            VerticalContentAlignment="Center"
-                            Content="ยกเลิกการเปลี่ยนผลัด"
-                            Height="45"
-                            Width="200" Click="cmdCancel_Click"/>
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Height="50"
+                            Width="220"
+                        Click="cmdOk_Click">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                            </Button.Background>
+                            <DockPanel>
+                                <Grid Width="5"></Grid>
+                                <Image DockPanel.Dock="Left" 
+                               Height="50"
+                               Width="50"
+                               Source="/DMT.Controls;component/Images/Button/Approved2.png" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                                <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                                    <TextBlock FontSize="16" 
+                                       HorizontalAlignment="Center"
+                                       Text="ยืนยันการเปลี่ยนผลัด"
+                                       FontWeight="Bold"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                                    </TextBlock>
+                                    <Grid Height="10" />
+                                </StackPanel>
+                            </DockPanel>
+                        </Button>
+                        <Grid Width="5" DockPanel.Dock="Right"></Grid>
+                        <Button x:Name="cmdCancel"
+                            DockPanel.Dock="Right"
+                        Foreground="White"
+                        HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Height="50"
+                            Width="220"
+                        Click="cmdCancel_Click">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                            </Button.Background>
+                            <DockPanel>
+                                <Grid Width="5"></Grid>
+                                <Image DockPanel.Dock="Left" 
+                               Height="50"
+                               Width="50"
+                               Source="/DMT.Controls;component/Images/Button/Rejected4.png" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                                <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                                    <TextBlock FontSize="16" 
+                                       HorizontalAlignment="Center"
+                                       Text="ยกเลิกการเปลี่ยนผลัด"
+                                       FontWeight="Bold"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                                    </TextBlock>
+                                    <Grid Height="10" />
+                                </StackPanel>
+                            </DockPanel>
+                        </Button>
+                        <Grid />
+                    </DockPanel>
                     <Grid />
                 </DockPanel>
             </Border>
