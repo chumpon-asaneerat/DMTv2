@@ -15,7 +15,7 @@
         Unloaded="Window_Unloaded">
     <Grid Background="DimGray">
         <DockPanel>
-            <ctrl:PlazaHeader DockPanel.Dock="Top" Height="100"></ctrl:PlazaHeader>
+            <ctrl:PlazaHeaderTOD DockPanel.Dock="Top" Height="100"></ctrl:PlazaHeaderTOD>
             <ContentPresenter x:Name="container"/>
         </DockPanel>
     </Grid>

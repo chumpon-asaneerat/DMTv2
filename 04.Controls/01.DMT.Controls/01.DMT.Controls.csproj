@@ -64,6 +64,9 @@
     <Compile Include="Common\MenuGroupCaption.xaml.cs">
       <DependentUpon>MenuGroupCaption.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Header\Elements\HeaderPlazaTOD.xaml.cs">
+      <DependentUpon>HeaderPlazaTOD.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Header\Elements\HeaderSupervisor.xaml.cs">
       <DependentUpon>HeaderSupervisor.xaml</DependentUpon>
     </Compile>
@@ -81,6 +84,9 @@
     </Compile>
     <Compile Include="Header\Elements\HeaderUser.xaml.cs">
       <DependentUpon>HeaderUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Header\PlazaHeaderTOD.xaml.cs">
+      <DependentUpon>PlazaHeaderTOD.xaml</DependentUpon>
     </Compile>
     <Compile Include="SignIn\Pages\SignInPage.xaml.cs">
       <DependentUpon>SignInPage.xaml</DependentUpon>
@@ -316,6 +322,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Header\Elements\HeaderPlazaTOD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Header\Elements\HeaderSupervisor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -339,6 +349,10 @@
     <Page Include="Header\Elements\HeaderUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Header\PlazaHeaderTOD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="SignIn\Pages\SignInPage.xaml">
       <SubType>Designer</SubType>
@@ -721,6 +735,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Button\finish.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Approve.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button\Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Reports\ใบนำส่งเงิน 2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

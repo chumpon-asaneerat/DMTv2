@@ -29,7 +29,7 @@
                                Text="QR Code"
                                Width="110"/>
                 </Border>
-                <Border DockPanel.Dock="Bottom">
+                <Border DockPanel.Dock="Bottom" Height="60">
                     <Border.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#7F323232" Offset="0"/>
@@ -37,28 +37,61 @@
                         </LinearGradientBrush>
                     </Border.Background>
                     <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="19*"/>
-                            <RowDefinition Height="9*"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Margin="10,2,0,2"
+                        <TextBlock Margin="10,22,0,22"
                                VerticalAlignment="Center"
-                               Text="จำนวนรวม : " HorizontalAlignment="Left" Width="88"/>
+                               Text="จำนวนรวม : " HorizontalAlignment="Left" Width="80"/>
                         <TextBox Name="txtQty"  Height="23" 
-                                Text="" Margin="102,2,0,2" HorizontalAlignment="Left" Width="100"/>
-                        <TextBlock Margin="213,2,0,2"
-
+                                Text="" Margin="89,18,0,18" HorizontalAlignment="Left" Width="80"/>
+                        <TextBlock Margin="178,22,0,22"
                                VerticalAlignment="Center"
-                               Text="รายการ" HorizontalAlignment="Left" Width="90"/>
+                               Text="รายการ" HorizontalAlignment="Left" Width="55"/>
 
-                        <TextBlock Margin="392,0,0,2"
-                               VerticalAlignment="Bottom"
-                               Text="ยอดเงินรวม : "  HorizontalAlignment="Left" Width="98"/>
+                        <TextBlock Margin="239,22,0,22"
+                               VerticalAlignment="Center"
+                               Text="ยอดเงินรวม : "  HorizontalAlignment="Left" Width="80"/>
                         <TextBox Name="txtTotal"  Height="23" 
-                                Text="" Margin="493,2,0,2" HorizontalAlignment="Left"  Width="100"/>
-                        <TextBlock Margin="601,2,0,2"
+                                Text="" Margin="323,18,0,18" HorizontalAlignment="Left"  Width="80"/>
+                        <TextBlock Margin="411,22,0,22"
                                VerticalAlignment="Center"
                                Text="บาท" HorizontalAlignment="Left" Width="50"/>
+
+
+                        <DockPanel DockPanel.Dock="Right" HorizontalAlignment="Right" Height="60">
+                            <Grid Width="5" DockPanel.Dock="Right" HorizontalAlignment="Right"></Grid>
+                            <Button x:Name="cmdOK"
+                            DockPanel.Dock="Right"
+                        Foreground="White"
+                        HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Height="50"
+                            Width="220">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                                </Button.Background>
+                                <DockPanel>
+                                    <Grid Width="5"></Grid>
+                                    <Image DockPanel.Dock="Left" 
+                               Height="50"
+                               Width="50"
+                               Source="/DMT.Controls;component/Images/Button/Printer3.png" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                                    <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                                        <TextBlock FontSize="16" 
+                                       HorizontalAlignment="Center"
+                                       Text="พิมพ์รายการ QR Code"
+                                       FontWeight="Bold"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                                        </TextBlock>
+                                        <Grid Height="10" />
+                                    </StackPanel>
+                                </DockPanel>
+                            </Button>
+                        </DockPanel>
                     </Grid>
                 </Border>
 

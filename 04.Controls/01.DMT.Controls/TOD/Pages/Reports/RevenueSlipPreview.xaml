@@ -27,14 +27,14 @@
                         <Image DockPanel.Dock="Left" 
                                Height="50"
                                Width="50"
-                               Source="/DMT.Controls;component/Images/Button/OK2.png" 
+                               Source="/DMT.Controls;component/Images/Button/Approve.png" 
                                HorizontalAlignment="Center" 
                                VerticalAlignment="Center" />
                         <StackPanel Orientation="Vertical"
                                     VerticalAlignment="Center">
                             <TextBlock FontSize="20" 
                                        HorizontalAlignment="Center"
-                                       Text="ตกลง"
+                                       Text="ยืนยัน นำส่งรายได้"
                                        FontWeight="Bold"
                                        TextAlignment="Center"
                                        TextWrapping="Wrap">
@@ -62,14 +62,14 @@
                         <Image DockPanel.Dock="Left" 
                                Height="50"
                                Width="50"
-                               Source="/DMT.Controls;component/Images/Button/Cancel2.png" 
+                               Source="/DMT.Controls;component/Images/Button/Edit.png" 
                                HorizontalAlignment="Center" 
                                VerticalAlignment="Center" />
                         <StackPanel Orientation="Vertical"
                                     VerticalAlignment="Center">
                             <TextBlock FontSize="20" 
                                        HorizontalAlignment="Center"
-                                       Text="ยกเลิก"
+                                       Text="แก้ไข"
                                        FontWeight="Bold"
                                        TextAlignment="Center"
                                        TextWrapping="Wrap">
@@ -82,7 +82,7 @@
             </DockPanel>
         </DockPanel>
         <ScrollViewer>
-            <Image Source="/DMT.Controls;component/Images/Reports/ใบนำส่งรายได้รวม2.jpg" />
+            <Image Source="/DMT.Controls;component/Images/Reports/ใบนำส่งเงิน 2.png" />
         </ScrollViewer>
     </DockPanel>
 </UserControl>
