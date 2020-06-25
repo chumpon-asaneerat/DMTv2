@@ -29,8 +29,10 @@ Update 2020-06-25 #7
 Update 2020-06-25 #6
 - 
 
+[commited]
 Update 2020-06-25 #5
-- 
+- Update NJson extension methods class fixed bug in FromJson method.
+- Update NJson extension methods - FromJson method set default(T) to default.
 
 [commited]
 Update 2020-06-25 #4
