@@ -17,8 +17,13 @@ Update 2020-06-25 #11
 Update 2020-06-25 #10
 - 
 
+[commited]
 Update 2020-06-25 #9
-- 
+- Update RouteConst.cs.
+- Update JobController code - add GetUser.
+- Update Simulator code for test GetUser.
+- Update all model classes - inherited from NTable<T> and remove duplicated static methods.
+
 
 [commited]
 Update 2020-06-25 #8
