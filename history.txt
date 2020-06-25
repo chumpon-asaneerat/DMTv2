@@ -14,8 +14,9 @@ Update 2020-06-25 #12
 Update 2020-06-25 #11
 - 
 
+[commited]
 Update 2020-06-25 #10
-- 
+- LocalServer InitXXX methods (change the way to update child relationship).
 
 [commited]
 Update 2020-06-25 #9
@@ -23,7 +24,6 @@ Update 2020-06-25 #9
 - Update JobController code - add GetUser.
 - Update Simulator code for test GetUser.
 - Update all model classes - inherited from NTable<T> and remove duplicated static methods.
-
 
 [commited]
 Update 2020-06-25 #8

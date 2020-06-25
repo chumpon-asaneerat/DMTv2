@@ -128,6 +128,13 @@ namespace DMT.Services
         private void InitTables()
         {
             if (null == Db) return;
+
+            // Set Default connection 
+            // (be careful to make sure that we only has single database
+            // for all domain otherwise call static method with user connnection
+            // in each domain class instead omit connection version).
+            NTable.Default = Db;
+
             Db.CreateTable<TSB>();
             Db.CreateTable<Plaza>();
 
@@ -197,7 +204,17 @@ namespace DMT.Services
                     }
                 }
             };
-            if (!TSB.Exists(this.Db, item)) TSB.Save(this.Db, item);
+            if (!TSB.Exists(item)) TSB.Save(item);
+            item.Plazas.ForEach(plaza =>
+            {
+                Plaza.Save(plaza);
+                if (null != plaza.Lanes)
+                {
+                    plaza.Lanes.ForEach(lane => { Lane.Save(lane); });
+                }
+                Plaza.UpdateWithChildren(plaza);
+            });
+            TSB.UpdateWithChildren(item);
 
             item = new TSB();
             item.NetworkId = "31";
@@ -219,7 +236,17 @@ namespace DMT.Services
                     }
                 }
             };
-            if (!TSB.Exists(this.Db, item)) TSB.Save(this.Db, item);
+            if (!TSB.Exists(item)) TSB.Save(item);
+            item.Plazas.ForEach(plaza =>
+            {
+                Plaza.Save(plaza);
+                if (null != plaza.Lanes)
+                {
+                    plaza.Lanes.ForEach(lane => { Lane.Save(lane); });
+                }
+                Plaza.UpdateWithChildren(plaza);
+            });
+            TSB.UpdateWithChildren(item);
 
             item = new TSB();
             item.NetworkId = "31";
@@ -254,7 +281,17 @@ namespace DMT.Services
                     }
                 }
             };
-            if (!TSB.Exists(this.Db, item)) TSB.Save(this.Db, item);
+            if (!TSB.Exists(item)) TSB.Save(item);
+            item.Plazas.ForEach(plaza =>
+            {
+                Plaza.Save(plaza);
+                if (null != plaza.Lanes)
+                {
+                    plaza.Lanes.ForEach(lane => { Lane.Save(lane); });
+                }
+                Plaza.UpdateWithChildren(plaza);
+            });
+            TSB.UpdateWithChildren(item);
 
             item = new TSB();
             item.NetworkId = "31";
@@ -276,7 +313,24 @@ namespace DMT.Services
                     Direction = "OUT"
                 }
             };
-            if (!TSB.Exists(this.Db, item)) TSB.Save(this.Db, item);
+            if (!TSB.Exists(item))
+            {
+                TSB.Save(item);
+                if (null != item.Plazas)
+                {
+                    item.Plazas.ForEach(plaza =>
+                    {
+                        Plaza.Save(plaza);
+                        if (null != plaza.Lanes)
+                        {
+                            plaza.Lanes.ForEach(lane => { Lane.Save(lane); });
+                        }
+                        Plaza.UpdateWithChildren(plaza);
+                    });
+                }
+
+                TSB.UpdateWithChildren(item);
+            }
 
             item = new TSB();
             item.NetworkId = "31";
@@ -292,7 +346,24 @@ namespace DMT.Services
                     Direction = ""
                 }
             };
-            if (!TSB.Exists(this.Db, item)) TSB.Save(this.Db, item);
+            if (!TSB.Exists(item))
+            {
+                TSB.Save(item);
+                if (null != item.Plazas)
+                {
+                    item.Plazas.ForEach(plaza =>
+                    {
+                        Plaza.Save(plaza);
+                        if (null != plaza.Lanes)
+                        {
+                            plaza.Lanes.ForEach(lane => { Lane.Save(lane); });
+                        }
+                        Plaza.UpdateWithChildren(plaza);
+                    });
+                }
+
+                TSB.UpdateWithChildren(item);
+            }
 
             item = new TSB();
             item.NetworkId = "31";
@@ -314,7 +385,24 @@ namespace DMT.Services
                     Direction = "OUT"
                 }
             };
-            if (!TSB.Exists(this.Db, item)) TSB.Save(this.Db, item);
+            if (!TSB.Exists(item))
+            {
+                TSB.Save(item);
+                if (null != item.Plazas)
+                {
+                    item.Plazas.ForEach(plaza =>
+                    {
+                        Plaza.Save(plaza);
+                        if (null != plaza.Lanes)
+                        {
+                            plaza.Lanes.ForEach(lane => { Lane.Save(lane); });
+                        }
+                        Plaza.UpdateWithChildren(plaza);
+                    });
+                }
+
+                TSB.UpdateWithChildren(item);
+            }
 
             item = new TSB();
             item.NetworkId = "31";
@@ -336,7 +424,24 @@ namespace DMT.Services
                     Direction = "OUT"
                 }
             };
-            if (!TSB.Exists(this.Db, item)) TSB.Save(this.Db, item);
+            if (!TSB.Exists(item))
+            {
+                TSB.Save(item);
+                if (null != item.Plazas)
+                {
+                    item.Plazas.ForEach(plaza =>
+                    {
+                        Plaza.Save(plaza);
+                        if (null != plaza.Lanes)
+                        {
+                            plaza.Lanes.ForEach(lane => { Lane.Save(lane); });
+                        }
+                        Plaza.UpdateWithChildren(plaza);
+                    });
+                }
+
+                TSB.UpdateWithChildren(item);
+            }
 
             item = new TSB();
             item.NetworkId = "31";
@@ -358,7 +463,24 @@ namespace DMT.Services
                     Direction = "OUT"
                 }
             };
-            if (!TSB.Exists(this.Db, item)) TSB.Save(this.Db, item);
+            if (!TSB.Exists(item))
+            {
+                TSB.Save(item);
+                if (null != item.Plazas)
+                {
+                    item.Plazas.ForEach(plaza =>
+                    {
+                        Plaza.Save(plaza);
+                        if (null != plaza.Lanes)
+                        {
+                            plaza.Lanes.ForEach(lane => { Lane.Save(lane); });
+                        }
+                        Plaza.UpdateWithChildren(plaza);
+                    });
+                }
+
+                TSB.UpdateWithChildren(item);
+            }
 
             item = new TSB();
             item.NetworkId = "31";
@@ -380,7 +502,24 @@ namespace DMT.Services
                     Direction = "OUT"
                 }
             };
-            if (!TSB.Exists(this.Db, item)) TSB.Save(this.Db, item);
+            if (!TSB.Exists(item))
+            {
+                TSB.Save(item);
+                if (null != item.Plazas)
+                {
+                    item.Plazas.ForEach(plaza =>
+                    {
+                        Plaza.Save(plaza);
+                        if (null != plaza.Lanes)
+                        {
+                            plaza.Lanes.ForEach(lane => { Lane.Save(lane); });
+                        }
+                        Plaza.UpdateWithChildren(plaza);
+                    });
+                }
+
+                TSB.UpdateWithChildren(item);
+            }
         }
 
         private void InitRoleAndUsers()
@@ -404,7 +543,15 @@ namespace DMT.Services
                     }
                 }
             };
-            if (!Role.Exists(this.Db, item)) Role.Save(this.Db, item);
+            if (!Role.Exists(item))
+            {
+                Role.Save(item);
+                if (null != item.Users)
+                {
+                    item.Users.ForEach(user => User.Save(user));
+                }
+                Role.UpdateWithChildren(item);
+            }
             item = new Role()
             {
                 RoleId = "ADMIN",
@@ -422,7 +569,15 @@ namespace DMT.Services
                     }
                 }
             };
-            if (!Role.Exists(this.Db, item)) Role.Save(this.Db, item);
+            if (!Role.Exists(item))
+            {
+                Role.Save(item);
+                if (null != item.Users)
+                {
+                    item.Users.ForEach(user => User.Save(user));
+                }
+                Role.UpdateWithChildren(item);
+            }
             item = new Role()
             {
                 RoleId = "AUDIT",
@@ -449,7 +604,15 @@ namespace DMT.Services
                     }
                 }
             };
-            if (!Role.Exists(this.Db, item)) Role.Save(this.Db, item);
+            if (!Role.Exists(item))
+            {
+                Role.Save(item);
+                if (null != item.Users)
+                {
+                    item.Users.ForEach(user => User.Save(user));
+                }
+                Role.UpdateWithChildren(item);
+            }
             item = new Role()
             {
                 RoleId = "SUPERVISOR",
@@ -494,7 +657,15 @@ namespace DMT.Services
                     }
                 }
             };
-            if (!Role.Exists(this.Db, item)) Role.Save(this.Db, item);
+            if (!Role.Exists(item))
+            {
+                Role.Save(item);
+                if (null != item.Users)
+                {
+                    item.Users.ForEach(user => User.Save(user));
+                }
+                Role.UpdateWithChildren(item);
+            }
             item = new Role()
             {
                 RoleId = "COLLECTOR",
@@ -566,7 +737,15 @@ namespace DMT.Services
                     },
                 }
             };
-            if (!Role.Exists(this.Db, item)) Role.Save(this.Db, item);
+            if (!Role.Exists(item))
+            {
+                Role.Save(item);
+                if (null != item.Users)
+                {
+                    item.Users.ForEach(user => User.Save(user));
+                }
+                Role.UpdateWithChildren(item);
+            }
         }
 
         private void InitConfigs()
@@ -575,20 +754,20 @@ namespace DMT.Services
             Config item;
             // for send to Data Center.
             item = new Config() { Key = Configs.DC.network, Value = "4" };
-            if (!Config.Exists(this.Db, item)) Config.Save(this.Db, item);
+            if (!Config.Exists(item)) Config.Save(item);
             item = new Config() { Key = Configs.DC.tsb, Value = "97" };
-            if (!Config.Exists(this.Db, item)) Config.Save(this.Db, item);
+            if (!Config.Exists(item)) Config.Save(item);
             item = new Config() { Key = Configs.DC.terminal, Value = "49701" };
-            if (!Config.Exists(this.Db, item)) Config.Save(this.Db, item);
+            if (!Config.Exists(item)) Config.Save(item);
             // for application
             item = new Config() { Key = Configs.App.TSBId, Value = "" };
-            if (!Config.Exists(this.Db, item)) Config.Save(this.Db, item);
+            if (!Config.Exists(item)) Config.Save(item);
             item = new Config() { Key = Configs.App.PlazaId, Value = "" };
-            if (!Config.Exists(this.Db, item)) Config.Save(this.Db, item);
+            if (!Config.Exists(item)) Config.Save(item);
             item = new Config() { Key = Configs.App.SupervisorId, Value = "" };
-            if (!Config.Exists(this.Db, item)) Config.Save(this.Db, item);
+            if (!Config.Exists(item)) Config.Save(item);
             item = new Config() { Key = Configs.App.ShiftId, Value = "" };
-            if (!Config.Exists(this.Db, item)) Config.Save(this.Db, item);
+            if (!Config.Exists(item)) Config.Save(item);
         }
 
         #endregion
