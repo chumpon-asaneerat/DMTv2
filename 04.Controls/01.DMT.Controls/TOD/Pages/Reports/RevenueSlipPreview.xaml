@@ -82,7 +82,7 @@
             </DockPanel>
         </DockPanel>
         <ScrollViewer>
-            <Image Source="/DMT.Controls;component/Images/Reports/ใบนำส่งเงิน 2.png" />
+            <Image Source="/DMT.Controls;component/Images/Reports/ใบนำส่งเงิน2.jpg" />
         </ScrollViewer>
     </DockPanel>
 </UserControl>

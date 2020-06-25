@@ -743,7 +743,7 @@
     <Resource Include="Images\Button\Edit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Reports\ใบนำส่งเงิน 2.png" />
+    <Resource Include="Images\Reports\ใบนำส่งเงิน2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
