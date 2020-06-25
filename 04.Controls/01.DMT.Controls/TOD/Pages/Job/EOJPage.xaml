@@ -100,7 +100,7 @@
                             Width="220"
                         Click="cmdOk_Click">
                     <Button.Background>
-                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button4.png"/>
                     </Button.Background>
                     <DockPanel>
                         <Grid Width="5"></Grid>

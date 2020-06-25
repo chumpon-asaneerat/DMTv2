@@ -85,9 +85,6 @@
     <Compile Include="Header\Elements\HeaderUser.xaml.cs">
       <DependentUpon>HeaderUser.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Header\PlazaHeaderTOD.xaml.cs">
-      <DependentUpon>PlazaHeaderTOD.xaml</DependentUpon>
-    </Compile>
     <Compile Include="SignIn\Pages\SignInPage.xaml.cs">
       <DependentUpon>SignInPage.xaml</DependentUpon>
     </Compile>
@@ -349,10 +346,6 @@
     <Page Include="Header\Elements\HeaderUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Header\PlazaHeaderTOD.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="SignIn\Pages\SignInPage.xaml">
       <SubType>Designer</SubType>
