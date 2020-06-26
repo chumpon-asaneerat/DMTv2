@@ -26,3 +26,8 @@ Controllers:
   - BeginShift(TSBId, ShiftId, UserId) -> For Collector Only.
   - EndShift(TSBId, ShiftId, UserId) -> For Collector Only.
   - GetAttendances(TSBId, UserId, Begin, End) => returns List<LaneAttendance> -> Find Lane Attendances between begin/end time.
+
+- RevenueController
+  [TOD]
+  - Save(TSBId, RevenueEntry)
+  - Search(TSBId, UserId, Date) returns RevenueEntry.
