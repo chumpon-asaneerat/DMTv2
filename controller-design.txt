@@ -15,3 +15,14 @@ Controllers:
   - GetSupervisors() => returns List<User> with rule Supervisor
   - GetCollectors() => returns List<User> with rule Collector
 
+- SupervisorController
+  [TOD]
+  - ChangeShift(TSBId, ShiftId, UserId) -> Supervisor Only.
+  [TA]
+  - SetupCredit(Credit) ???
+
+- CollectorController
+  [TOD]
+  - BeginShift(TSBId, ShiftId, UserId) -> For Collector Only.
+  - EndShift(TSBId, ShiftId, UserId) -> For Collector Only.
+  - GetAttendances(TSBId, UserId, Begin, End) => returns List<LaneAttendance> -> Find Lane Attendances between begin/end time.
