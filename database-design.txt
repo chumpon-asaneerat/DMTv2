@@ -31,3 +31,14 @@ TABLES
   - RoleId [PK] (string MaxLength(20))
   - NameEN (string MaxLength(50))
   - NameTH (string MaxLength(50))
+
+- User
+  - UserId [PK] (string MaxLength(10))
+  - RoleId (string MaxLength(20))
+  - NameEN (string MaxLength(100))
+  - NameTH (string MaxLength(100))
+  - UserName (string MaxLength(20))
+  - Password (string MaxLength(20))
+  - CardId (string MaxLength(20))
+  - Status int -> (Active = 1/Inactive = 0/etc..)
+  - LastUpdate (DateTime) -> last time sync from DC
