@@ -88,3 +88,11 @@ LaneAttendance
   - PkId [PK] (string MaxLength(30), Guid.NewID)
   - ExchangeId (string MaxLength(20))
   - RequestDate (Date)
+
+- RevenueEntry
+  - RevPkId [PK] (string MaxLength(30), Guid.NewID)
+  - EntryDate (Date)
+  - RevenueDate (Date)
+  - TSBId (string MaxLength(10))
+  - ShiftId (int)
+  - UserId (string MaxLength(10))
