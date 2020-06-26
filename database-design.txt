@@ -79,3 +79,7 @@ LaneAttendance
   - NameEN (string MaxLength(50))
   - NameTH (string MaxLength(50))
   - Value (decimal) -> BHT value used for calculate factor.
+
+- Credit
+
+- Coupon
