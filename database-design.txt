@@ -99,3 +99,9 @@ LaneAttendance
 
 - RevenueGroup
   - 
+
+- RevenueGroupItem
+  - RevPkId [PK] (string MaxLength(30), Guid.NewID)
+  - SeqId (int) ???
+  - Category (string MaxLength(20)) => Traffic/Other/CouponUsage/CouponSold
+  - 
