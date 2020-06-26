@@ -71,3 +71,11 @@ LaneAttendance
   - Begin (DateTime)
   - End (DateTime)
   - LastUpdate (DateTime) -> last time sync from DC
+
+- AssetType
+  - PkId [PK] (int auto)
+  - AssetTypeId (string MaxLength(10))
+  - Category (string MaxLength(20)) -> Cash/Voucher.
+  - NameEN (string MaxLength(50))
+  - NameTH (string MaxLength(50))
+  - Value (decimal) -> BHT value used for calculate factor.
