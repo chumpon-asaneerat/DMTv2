@@ -26,3 +26,8 @@ TABLES
   - ShiftId [PK] (int)
   - NameEN (string MaxLength(50))
   - NameTH (string MaxLength(50))
+
+- Role
+  - RoleId [PK] (string MaxLength(20))
+  - NameEN (string MaxLength(50))
+  - NameTH (string MaxLength(50))
