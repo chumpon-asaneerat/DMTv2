@@ -92,10 +92,15 @@ namespace DMT.TOD.Pages.Menu
             {
                 return;
             }
+
+            var page = new Revenue.RevenueDateSelectionPage();
+            PageContentManager.Instance.Current = page;
+            /*
             // Revenue Slip Preview
             var page = new Reports.RevenueSlipPreview();
             page.MenuPage = this;
             PageContentManager.Instance.Current = page;
+            */
         }
 
         private void changeShift_Click(object sender, RoutedEventArgs e)

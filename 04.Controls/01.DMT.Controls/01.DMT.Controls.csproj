@@ -164,6 +164,9 @@
     <Compile Include="TA\Windows\Plaza\PlazaStockSummaryWindow.xaml.cs">
       <DependentUpon>PlazaStockSummaryWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TOD\Controls\Revenue\Entry\CouponDMTEntry.xaml.cs">
+      <DependentUpon>CouponDMTEntry.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TOD\Controls\Revenue\Entry\TrafficEntry.xaml.cs">
       <DependentUpon>TrafficEntry.xaml</DependentUpon>
     </Compile>
@@ -448,6 +451,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="TA\Windows\Plaza\PlazaStockSummaryWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TOD\Controls\Revenue\Entry\CouponDMTEntry.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

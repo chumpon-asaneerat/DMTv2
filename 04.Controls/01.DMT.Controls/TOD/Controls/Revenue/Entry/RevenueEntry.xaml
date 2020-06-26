@@ -41,6 +41,13 @@
                                      TextAlignment="Center"
                                      Text="{Binding BagNo}"/>
                             <Grid Width="10" />
+                            <TextBlock Text="หมายเลขเข็มขัดนิรภัย" 
+                                       Foreground="WhiteSmoke"/>
+                            <Grid Width="10" />
+                            <TextBox Width="200"
+                                     TextAlignment="Center"
+                                     Text="{Binding BagNo}"/>
+                            <Grid Width="10" />
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="1"
@@ -53,17 +60,27 @@
                     </Grid>
                     <Grid Grid.Column="2"  Grid.Row="1"
                           VerticalAlignment="Top">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="290"/>
+                            <RowDefinition Height="201"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
                         <local:OtherEntry x:Name="otherRevenue" 
                                           Grid.Row="0"
                                           Background="CornflowerBlue"                                          
                                           Foreground="WhiteSmoke"
                                           Margin="3" />
+                        <local:CouponRevenueEntry x:Name="couponRevenue" 
+                                                  Grid.Row="1"
+                                                  Background="DarkRed"
+                                                  Foreground="WhiteSmoke"
+                                                  Margin="3"/>
                     </Grid>
                     <Grid Grid.Column="3" Grid.Row="1"
                           VerticalAlignment="Top">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="290"/>
-                            <RowDefinition Height="170"/>
+                            <RowDefinition Height="201"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <local:CouponUsageEntry x:Name="couponUsage" 
@@ -71,7 +88,7 @@
                                                 Background="DarkRed"
                                                 Foreground="WhiteSmoke"
                                                 Margin="3"/>
-                        <local:CouponRevenueEntry x:Name="couponRevenue" 
+                        <local:CouponDMTEntry x:Name="couponDMT" 
                                                   Grid.Row="1"
                                                   Background="DarkRed"
                                                   Foreground="WhiteSmoke"

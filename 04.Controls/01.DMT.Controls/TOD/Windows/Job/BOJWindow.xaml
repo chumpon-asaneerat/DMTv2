@@ -166,9 +166,9 @@
                  HorizontalAlignment="Left"
                  VerticalAlignment="Center"
                  Width="220">
-            <ComboBoxItem Content="1"/>
-            <ComboBoxItem Content="2"/>
-            <ComboBoxItem Content="3"/>
+            <ComboBoxItem Content="เช้า"/>
+            <ComboBoxItem Content="บ่าย"/>
+            <ComboBoxItem Content="ดึก"/>
         </ComboBox>
         <DockPanel Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="3"
                    HorizontalAlignment="Stretch"

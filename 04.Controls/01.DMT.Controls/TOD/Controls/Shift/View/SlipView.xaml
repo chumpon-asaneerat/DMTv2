@@ -16,9 +16,11 @@
                     <GridViewColumn Header="ชื่อพนักงาน" 
                                     DisplayMemberBinding="{Binding Path=StaffName}" 
                                     Width="150"/>
+                    <!--
                     <GridViewColumn Header="ถุงเงิน" 
                                     DisplayMemberBinding="{Binding Path=BagNo}" 
                                     Width="70"/>
+                    -->
                 </GridView>
             </ListView.View>
         </ListView>
