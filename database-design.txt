@@ -60,3 +60,14 @@ CollectorShift
   - Begin (DateTime)
   - End (DateTime)
   - LastUpdate (DateTime) -> last time sync from DC
+
+LaneAttendance
+  - PkId [PK] (string MaxLength(30), Guid.NewID)
+  - PlazaId (string MaxLength(10))
+  - TSBId (string MaxLength(10))
+  - LaneId (string MaxLength(10))
+  - JobId (string MaxLength(10))
+  - UserId (string MaxLength(10))
+  - Begin (DateTime)
+  - End (DateTime)
+  - LastUpdate (DateTime) -> last time sync from DC
