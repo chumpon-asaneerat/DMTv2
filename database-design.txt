@@ -83,3 +83,8 @@ LaneAttendance
 - Credit
 
 - Coupon
+
+- Exchange (Transaction)
+  - PkId [PK] (string MaxLength(30), Guid.NewID)
+  - ExchangeId (string MaxLength(20))
+  - RequestDate (Date)

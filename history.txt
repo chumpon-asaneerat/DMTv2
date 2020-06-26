@@ -8,8 +8,9 @@ Update 2020-06-26 #19
 Update 2020-06-26 #18
 - 
 
+[commited]
 Update 2020-06-26 #17
-- 
+- Add database-design.txt #12
 
 [commited]
 Update 2020-06-26 #16
