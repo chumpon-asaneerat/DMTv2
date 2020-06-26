@@ -21,3 +21,8 @@ TABLES
   - TSBId (string MaxLength(10))
   - LaneType (string MaxLength(10)) -> (MTC/etc..)
   - LaneAbbr (string MaxLength(10))
+
+- Shift
+  - ShiftId [PK] (int)
+  - NameEN (string MaxLength(50))
+  - NameTH (string MaxLength(50))
