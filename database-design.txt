@@ -13,3 +13,11 @@ TABLES
   - NameEN (string MaxLength(100))
   - NameTH (string MaxLength(100))
   - Direction (string MaxLength(10))
+
+- Lane
+  - PkId [PK] (string MaxLength(30), Guid.NewID)
+  - LandId (string MaxLength(10))
+  - PlazaId (string MaxLength(10))
+  - TSBId (string MaxLength(10))
+  - LaneType (string MaxLength(10)) -> (MTC/etc..)
+  - LaneAbbr (string MaxLength(10))
