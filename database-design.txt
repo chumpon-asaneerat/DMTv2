@@ -96,3 +96,6 @@ LaneAttendance
   - TSBId (string MaxLength(10))
   - ShiftId (int)
   - UserId (string MaxLength(10))
+
+- RevenueGroup
+  - 
