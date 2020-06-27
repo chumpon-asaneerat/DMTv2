@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Threading;
 
@@ -280,6 +281,16 @@ namespace DMT.Smartcard
     /// </summary>
     public class SL600USBApi
     {
+        internal class UnmanagedFunctionNameAttribute : Attribute
+        {
+            public string Name { get; private set; }
+            public UnmanagedFunctionNameAttribute(string name)
+            {
+                Name = name;
+            }
+        }
+        private const CallingConvention DelegatesCallingConversion = CallingConvention.StdCall;
+
 
     }
 
