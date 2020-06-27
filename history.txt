@@ -41,13 +41,11 @@ Update 2020-06-27 #3
 Update 2020-06-27 #2
 - 
 
+[commited]
 Update 2020-06-27 #1
-- 
+- Update SL600USBApi class #1.
 
 --------------------------------------------------------------------------------------------
-Update 2020-06-26 #22
--
-
 [commited]
 Update 2020-06-26 #21
 - Add database-design.txt #15
