@@ -70,7 +70,7 @@ namespace DMT.Models
 
         #endregion
 
-        #region Used Default Connection
+        #region Used Custom Connection
 
         /// <summary>
         /// Checks is item is already exists in database.
