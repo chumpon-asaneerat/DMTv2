@@ -49,7 +49,7 @@ namespace DMT.Models
     #region NTable<T>
 
     /// <summary>
-    /// The NTable<T> abstract class.
+    /// The NTable (Generic) abstract class.
     /// </summary>
     /// <typeparam name="T">The Target Class.</typeparam>
     public abstract class NTable<T> : NTable
