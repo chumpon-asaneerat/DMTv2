@@ -87,9 +87,21 @@ namespace DMT
                 public const string Url = Shift.Url + @"/" + Name;
             }
 
+            public static class ChangeShift
+            {
+                public const string Name = "ChangeShift";
+                public const string Url = Shift.Url + @"/" + Name;
+            }
+
             public static class GetCurrent
             {
                 public const string Name = "GetCurrent";
+                public const string Url = Shift.Url + @"/" + Name;
+            }
+
+            public static class Create
+            {
+                public const string Name = "Create";
                 public const string Url = Shift.Url + @"/" + Name;
             }
         }

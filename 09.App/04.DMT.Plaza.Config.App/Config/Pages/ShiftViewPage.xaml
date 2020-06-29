@@ -27,10 +27,10 @@
                                     DisplayMemberBinding="{Binding Path=ShiftId}"
                                     Width="100"/>
                         <GridViewColumn Header="ชื่อกะ (อังกฤษ)" 
-                                    DisplayMemberBinding="{Binding Path=NameEN}" 
+                                    DisplayMemberBinding="{Binding Path=ShiftNameEN}" 
                                     Width="150"/>
                         <GridViewColumn Header="ชื่อกะ (ไทย)" 
-                                    DisplayMemberBinding="{Binding Path=NameTH}" 
+                                    DisplayMemberBinding="{Binding Path=ShiftNameTH}" 
                                     Width="150"/>
                     </GridView>
                 </ListView.View>

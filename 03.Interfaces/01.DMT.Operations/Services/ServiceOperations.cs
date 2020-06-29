@@ -233,14 +233,28 @@ namespace DMT.Services
                 return ret;
             }
 
-            public void ChangeShift(Shift value)
+            public void ChangeShift(TSBShift shift)
             {
-                if (null == value) return;
+                if (null == shift) return;
+                NRestClient.Create(port: 9000).Execute(
+                    RouteConsts.Shift.ChangeShift.Url, shift);
             }
 
-            public Shift GetCurrent()
+            public TSBShift Create(Shift shift, User supervisor)
             {
-                Shift ret = Shift.Create();
+                var ret = NRestClient.Create(port: 9000).Execute<TSBShift>(
+                    RouteConsts.Shift.Create.Url, 
+                    new TSBShiftCreate() 
+                    { 
+                        Shift = shift, User = supervisor 
+                    });
+                return ret;
+            }
+
+            public TSBShift GetCurrent()
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<TSBShift>(
+                    RouteConsts.Shift.GetCurrent.Url, new { });
                 return ret;
             }
 

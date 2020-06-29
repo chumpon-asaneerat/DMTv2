@@ -10,6 +10,7 @@ using NLib.Services;
 
 using DMT.Models;
 using DMT.Services;
+using NLib.Reflection;
 
 #endregion
 
@@ -52,7 +53,9 @@ namespace DMT.TOD.Pages.TollAdmin
             Shift shift = cbShifts.SelectedItem as Shift;
             if (null != shift)
             {
-                ops.Shifts.ChangeShift(shift);
+                TSBShift inst = ops.Shifts.Create(shift, _user);
+                if (null != inst) shift.AssignTo(inst);
+                ops.Shifts.ChangeShift(inst);
             }
             // Main Menu Page
             var page = new Menu.MainMenu();

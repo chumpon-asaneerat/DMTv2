@@ -17,8 +17,28 @@ namespace DMT.Services
         [ActionName(RouteConsts.Shift.GetShifts.Name)]
         public List<Shift> GetShifts()
         {
-            var results = Shift.Gets();
-            return results;
+            return Shift.Gets();
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Shift.GetCurrent.Name)]
+        public TSBShift GetCurrent()
+        {
+            return TSBShift.GetCurrent();
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Shift.ChangeShift.Name)]
+        public void ChangeShift(TSBShift shift)
+        {
+            TSBShift.ChangeShift(shift);
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Shift.Create.Name)]
+        public TSBShift Create(TSBShiftCreate value)
+        {
+            return TSBShift.Create(value.Shift, value.User);
         }
     }
 }

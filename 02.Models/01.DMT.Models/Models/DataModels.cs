@@ -177,14 +177,14 @@ namespace DMT.Models
                 // inactive all TSBs
                 string cmd = string.Empty;
                 cmd += "UPDATE TSB ";
-                cmd += "   SET Active = ?";
-                NQuery.Execute(cmd, false);
+                cmd += "   SET Active = 0";
+                NQuery.Execute(cmd);
                 // Set active TSB
                 cmd = string.Empty;
                 cmd += "UPDATE TSB ";
-                cmd += "   SET Active = ? ";
+                cmd += "   SET Active = 1 ";
                 cmd += " WHERE TSBId = ? ";
-                NQuery.Execute(cmd, true, tsbId);
+                NQuery.Execute(cmd, tsbId);
             }
         }
 
@@ -195,8 +195,9 @@ namespace DMT.Models
                 // inactive all TSBs
                 string cmd = string.Empty;
                 cmd += "SELECT * FROM TSB ";
-                cmd += " WHERE Active = ?";
-                return NQuery.Query<TSB>(cmd, true).FirstOrDefault();
+                cmd += " WHERE Active = 1 ";
+                var results = NQuery.Query<TSB>(cmd, true);
+                return (null != results) ? results.FirstOrDefault() : null;
             }
         }
 
@@ -626,7 +627,7 @@ namespace DMT.Models
     }
 
     #endregion
-    
+
     #region Shift
 
     /// <summary>
@@ -638,8 +639,8 @@ namespace DMT.Models
         #region Intenral Variables
 
         private int _ShiftId = 0;
-        private string _NameTH = string.Empty;
-        private string _NameEN = string.Empty;
+        private string _ShiftNameTH = string.Empty;
+        private string _ShiftNameEN = string.Empty;
 
         #endregion
 
@@ -678,19 +679,19 @@ namespace DMT.Models
         /// Gets or sets Name TH.
         /// </summary>
         [MaxLength(50)]
-        [PeropertyMapName("NameTH")]
-        public string NameTH
+        [PeropertyMapName("ShiftNameTH")]
+        public string ShiftNameTH
         {
             get
             {
-                return _NameTH;
+                return _ShiftNameTH;
             }
             set
             {
-                if (_NameTH != value)
+                if (_ShiftNameTH != value)
                 {
-                    _NameTH = value;
-                    this.RaiseChanged("NameTH");
+                    _ShiftNameTH = value;
+                    this.RaiseChanged("ShiftNameTH");
                 }
             }
         }
@@ -698,19 +699,19 @@ namespace DMT.Models
         /// Gets or sets Name EN.
         /// </summary>
         [MaxLength(50)]
-        [PeropertyMapName("NameEN")]
-        public string NameEN
+        [PeropertyMapName("ShiftNameEN")]
+        public string ShiftNameEN
         {
             get
             {
-                return _NameEN;
+                return _ShiftNameEN;
             }
             set
             {
-                if (_NameEN != value)
+                if (_ShiftNameEN != value)
                 {
-                    _NameEN = value;
-                    this.RaiseChanged("NameEN");
+                    _ShiftNameEN = value;
+                    this.RaiseChanged("ShiftNameEN");
                 }
             }
         }
@@ -870,6 +871,7 @@ namespace DMT.Models
         #endregion
 
         #region Public Proprties
+
         /// <summary>
         /// Gets or sets UserId
         /// </summary>
@@ -1187,6 +1189,368 @@ namespace DMT.Models
     }
 
     #endregion
+
+    #region TSBShift
+
+    //[Table("TSBShift")]
+    public class TSBShift : NTable<TSBShift>
+    {
+        #region Intenral Variables
+
+        private int _TSBShiftId = 0;
+        private string _TSBId = string.Empty;
+        private string _TSBNameEN = string.Empty;
+        private string _TSBNameTH = string.Empty;
+        private int _ShiftId = 0;
+        private string _ShiftNameTH = string.Empty;
+        private string _ShiftNameEN = string.Empty;
+        private string _UserId = string.Empty;
+        private string _FullNameEN = string.Empty;
+        private string _FullNameTH = string.Empty;
+
+        private DateTime _Begin = DateTime.MinValue;
+        private DateTime _End = DateTime.MinValue;
+
+        private int _Status = 0;
+        private DateTime _LastUpdate = DateTime.MinValue;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public TSBShift() : base() { }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets PK Id.
+        /// </summary>
+        [PrimaryKey, AutoIncrement]
+        [PeropertyMapName("TSBShiftId")]
+        public int TSBShiftId
+        {
+            get
+            {
+                return _TSBShiftId;
+            }
+            set
+            {
+                if (_TSBShiftId != value)
+                {
+                    _TSBShiftId = value;
+                    this.RaiseChanged("TSBShiftId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets TSBId.
+        /// </summary>
+        [MaxLength(10)]
+        [PeropertyMapName("TSBId")]
+        public string TSBId
+        {
+            get
+            {
+                return _TSBId;
+            }
+            set
+            {
+                if (_TSBId != value)
+                {
+                    _TSBId = value;
+                    this.RaiseChanged("TSBId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets TSBNameEN.
+        /// </summary>
+        [MaxLength(100)]
+        [PeropertyMapName("TSBNameEN")]
+        public string TSBNameEN
+        {
+            get
+            {
+                return _TSBNameEN;
+            }
+            set
+            {
+                if (_TSBNameEN != value)
+                {
+                    _TSBNameEN = value;
+                    this.RaiseChanged("TSBNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets TSBNameTH.
+        /// </summary>
+        [MaxLength(100)]
+        [PeropertyMapName("TSBNameTH")]
+        public string TSBNameTH
+        {
+            get
+            {
+                return _TSBNameTH;
+            }
+            set
+            {
+                if (_TSBNameTH != value)
+                {
+                    _TSBNameTH = value;
+                    this.RaiseChanged("TSBNameTH");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets ShiftId.
+        /// </summary>
+        [PeropertyMapName("ShiftId")]
+        public int ShiftId
+        {
+            get
+            {
+                return _ShiftId;
+            }
+            set
+            {
+                if (_ShiftId != value)
+                {
+                    _ShiftId = value;
+                    this.RaiseChanged("ShiftId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Name TH.
+        /// </summary>
+        [MaxLength(50)]
+        [PeropertyMapName("ShiftNameTH")]
+        public string ShiftNameTH
+        {
+            get
+            {
+                return _ShiftNameTH;
+            }
+            set
+            {
+                if (_ShiftNameTH != value)
+                {
+                    _ShiftNameTH = value;
+                    this.RaiseChanged("ShiftNameTH");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Name EN.
+        /// </summary>
+        [MaxLength(50)]
+        [PeropertyMapName("ShiftNameEN")]
+        public string ShiftNameEN
+        {
+            get
+            {
+                return _ShiftNameEN;
+            }
+            set
+            {
+                if (_ShiftNameEN != value)
+                {
+                    _ShiftNameEN = value;
+                    this.RaiseChanged("ShiftNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets UserId
+        /// </summary>
+        [MaxLength(10)]
+        [PeropertyMapName("UserId")]
+        public string UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+            set
+            {
+                if (_UserId != value)
+                {
+                    _UserId = value;
+                    this.RaiseChanged("UserId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets FullNameEN
+        /// </summary>
+        [MaxLength(100)]
+        [PeropertyMapName("FullNameEN")]
+        public string FullNameEN
+        {
+            get
+            {
+                return _FullNameEN;
+            }
+            set
+            {
+                if (_FullNameEN != value)
+                {
+                    _FullNameEN = value;
+                    this.RaiseChanged("FullNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets FullNameTH
+        /// </summary>
+        [MaxLength(100)]
+        [PeropertyMapName("FullNameTH")]
+        public string FullNameTH
+        {
+            get
+            {
+                return _FullNameTH;
+            }
+            set
+            {
+                if (_FullNameTH != value)
+                {
+                    _FullNameTH = value;
+                    this.RaiseChanged("FullNameTH");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Begin Date.
+        /// </summary>
+        [PeropertyMapName("Begin")]
+        public DateTime Begin
+        {
+            get { return _Begin; }
+            set
+            {
+                if (_Begin != value)
+                {
+                    _Begin = value;
+                    // Raise event.
+                    RaiseChanged("Begin");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets End Date.
+        /// </summary>
+        [PeropertyMapName("End")]
+        public DateTime End
+        {
+            get { return _End; }
+            set
+            {
+                if (_End != value)
+                {
+                    _End = value;
+                    // Raise event.
+                    RaiseChanged("End");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
+        /// </summary>
+        [PeropertyMapName("Status")]
+        public int Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                if (_Status != value)
+                {
+                    _Status = value;
+                    this.RaiseChanged("Status");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets LastUpdated (Sync to DC).
+        /// </summary>
+        [PeropertyMapName("LastUpdate")]
+        public DateTime LastUpdate
+        {
+            get { return _LastUpdate; }
+            set
+            {
+                if (_LastUpdate != value)
+                {
+                    _LastUpdate = value;
+                    this.RaiseChanged("LastUpdate");
+                }
+            }
+        }
+
+        #endregion
+
+        #region Static Methods
+
+        public static TSBShift Create(Shift shift, User supervisor)
+        {
+            TSBShift inst = Create();
+            TSB tsb = TSB.GetCurrent();
+            if (null != tsb) tsb.AssignTo(inst);
+            if (null != shift) shift.AssignTo(inst);
+            if (null != supervisor) supervisor.AssignTo(inst);
+            return inst;
+        }
+
+        public static void ChangeShift(TSBShift shift)
+        {
+            lock (sync)
+            {
+                if (null == shift) return;
+                var last = GetCurrent();
+                if (null != last)
+                {
+                    // End shift.
+                    last.End = DateTime.Now;
+                    Save(last);
+                }
+                // Begin new shift.
+                shift.Begin = DateTime.Now;
+                Save(shift);
+            }
+        }
+
+        public static TSBShift GetCurrent()
+        {
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM TSBShift ";
+                cmd += " WHERE End = ? ";
+                return NQuery.Query<TSBShift>(cmd, DateTime.MinValue).FirstOrDefault();
+            }
+        }
+
+        #endregion
+    }
+
+    public class TSBShiftCreate
+    {
+        public Shift Shift { get; set; }
+        public User User { get; set; }
+    }
+
+    #endregion
+
+
 
     public class PlazaInfo
     {

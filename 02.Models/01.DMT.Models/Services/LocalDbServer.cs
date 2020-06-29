@@ -129,13 +129,6 @@ namespace DMT.Services
         {
             if (null == Db) return;
 
-            // Set Default connection 
-            // (be careful to make sure that we only has single database
-            // for all domain otherwise call static method with user connnection
-            // in each domain class instead omit connection version).
-            NTable.Default = Db;
-            NQuery.Default = Db;
-
             Db.CreateTable<TSB>();
             Db.CreateTable<Plaza>();
             Db.CreateTable<Lane>();
@@ -147,14 +140,13 @@ namespace DMT.Services
 
             Db.CreateTable<Config>();
 
+            Db.CreateTable<TSBShift>();
+            
             /*
-
             Db.CreateTable<SupervisorShift>();
-
             Db.CreateTable<CollectorJob>();
             Db.CreateTable<CollectorShift>();
             Db.CreateTable<CollectorLane>();
-
             Db.CreateTable<RevenueEntry>();
             */
 
@@ -627,22 +619,22 @@ namespace DMT.Services
             item = new Shift()
             {
                 ShiftId = 1,
-                NameEN = "Morning",
-                NameTH = "เช้า"
+                ShiftNameEN = "Morning",
+                ShiftNameTH = "เช้า"
             };
             if (!Shift.Exists(item)) Shift.Save(item);
             item = new Shift()
             {
                 ShiftId = 2,
-                NameEN = "Afternoon",
-                NameTH = "บ่าย"
+                ShiftNameEN = "Afternoon",
+                ShiftNameTH = "บ่าย"
             };
             if (!Shift.Exists(item)) Shift.Save(item);
             item = new Shift()
             {
                 ShiftId = 3,
-                NameEN = "Midnight",
-                NameTH = "ดึก"
+                ShiftNameEN = "Midnight",
+                ShiftNameTH = "ดึก"
             };
             if (!Shift.Exists(item)) Shift.Save(item);
         }
@@ -944,6 +936,15 @@ namespace DMT.Services
                         SQLiteOpenFlags.FullMutex,
                         storeDateTimeAsTicks: true);
                     Db.BusyTimeout = new TimeSpan(0, 0, 5); // set busy timeout.
+
+
+                    // Set Default connection 
+                    // (be careful to make sure that we only has single database
+                    // for all domain otherwise call static method with user connnection
+                    // in each domain class instead omit connection version).
+                    NTable.Default = Db;
+                    NQuery.Default = Db;
+
                     InitTables();
                 }
             }

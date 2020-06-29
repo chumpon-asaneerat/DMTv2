@@ -21,7 +21,7 @@
                                Text="ผลัดถัดไปคือ"/>
                     <ComboBox x:Name="cbShifts"
                               FontSize="18"
-                              DisplayMemberPath="NameTH"
+                              DisplayMemberPath="ShiftNameTH"
                               SelectedValuePath="ShiftId"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"
