@@ -712,13 +712,6 @@ namespace DMT.Models
 
     #endregion
 
-
-
-
-    /*
-
-
-
     #region Role
 
     /// <summary>
@@ -730,7 +723,8 @@ namespace DMT.Models
         #region Intenral Variables
 
         private string _RoleId = string.Empty;
-        private string _RoleName = string.Empty;
+        private string _RoleNameEN = string.Empty;
+        private string _RoleNameTH = string.Empty;
 
         #endregion
 
@@ -740,6 +734,19 @@ namespace DMT.Models
         /// Constructor.
         /// </summary>
         public Role() : base() { }
+
+        #endregion
+
+        #region Public Methods
+
+        public List<User> GetUsers()
+        {
+            return User.FindByRole(RoleId);
+        }
+        public List<User> GetUsers(int status)
+        {
+            return User.FindByRole(RoleId, status);
+        }
 
         #endregion
 
@@ -765,62 +772,49 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets or sets RoleName
+        /// Gets or sets RoleNameEN
         /// </summary>
         [MaxLength(50)]
-        [PeropertyMapName("RoleName")]
-        public string RoleName
+        [PeropertyMapName("RoleNameEN")]
+        public string RoleNameEN
         {
             get
             {
-                return _RoleName;
+                return _RoleNameEN;
             }
             set
             {
-                if (_RoleName != value)
+                if (_RoleNameEN != value)
                 {
-                    _RoleName = value;
-                    this.RaiseChanged("RoleName");
+                    _RoleNameEN = value;
+                    this.RaiseChanged("RoleNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets RoleNameTH
+        /// </summary>
+        [MaxLength(50)]
+        [PeropertyMapName("RoleNameTH")]
+        public string RoleNameTH
+        {
+            get
+            {
+                return _RoleNameTH;
+            }
+            set
+            {
+                if (_RoleNameTH != value)
+                {
+                    _RoleNameTH = value;
+                    this.RaiseChanged("RoleNameTH");
                 }
             }
         }
 
-        [JsonIgnore]
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<User> Users { get; set; }
-
         #endregion
 
         #region Static Methods
-
-        /// <summary>
-        /// Gets by Id
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="RoleId">The RoleId.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns found record.</returns>
-        internal static Role Get(SQLiteConnection db, string RoleId, bool recursive = false)
-        {
-            lock (sync)
-            {
-                if (null == db) return null;
-                return db.GetAllWithChildren<Role>(
-                    p => p.RoleId == RoleId,
-                    recursive: recursive).FirstOrDefault();
-            }
-        }
-        /// <summary>
-        /// Gets by Id
-        /// </summary>
-        /// <param name="RoleId">The RoleId.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns found record.</returns>
-        public static Role Get(string RoleId, bool recursive = false)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Get(db, RoleId, recursive);
-        }
 
         #endregion
     }
@@ -845,6 +839,9 @@ namespace DMT.Models
         private string _CardId = string.Empty;
         private string _RoleId = string.Empty;
 
+        private int _Status = 1;
+        private DateTime _LastUpdate = DateTime.MinValue;
+
         #endregion
 
         #region Constructor
@@ -853,6 +850,10 @@ namespace DMT.Models
         /// Constructor.
         /// </summary>
         public User() : base() { }
+
+        #endregion
+
+        #region Public Methods
 
         #endregion
 
@@ -877,7 +878,6 @@ namespace DMT.Models
                 }
             }
         }
-
         /// <summary>
         /// Gets or sets FullNameEN
         /// </summary>
@@ -898,7 +898,6 @@ namespace DMT.Models
                 }
             }
         }
-
         /// <summary>
         /// Gets or sets FullNameTH
         /// </summary>
@@ -919,12 +918,10 @@ namespace DMT.Models
                 }
             }
         }
-
-
         /// <summary>
         /// Gets or sets UserName
         /// </summary>
-        [MaxLength(20)]
+        [MaxLength(50)]
         [PeropertyMapName("UserName")]
         public string UserName
         {
@@ -941,7 +938,6 @@ namespace DMT.Models
                 }
             }
         }
-
         /// <summary>
         /// Gets or sets Password
         /// </summary>
@@ -962,11 +958,10 @@ namespace DMT.Models
                 }
             }
         }
-
         /// <summary>
         /// Gets or sets CardId
         /// </summary>
-        [MaxLength(10)]
+        [MaxLength(20)]
         [PeropertyMapName("CardId")]
         public string CardId
         {
@@ -983,11 +978,11 @@ namespace DMT.Models
                 }
             }
         }
-
         /// <summary>
         /// Gets or sets RoleId
         /// </summary>
-        [ForeignKey(typeof(Role)), MaxLength(10)]
+        //[ForeignKey(typeof(Role)), MaxLength(10)]
+        [MaxLength(20)]
         [PeropertyMapName("RoleId")]
         public string RoleId
         {
@@ -1004,33 +999,70 @@ namespace DMT.Models
                 }
             }
         }
-
-        [JsonIgnore]
-        [TypeConverter(typeof(ExpandableObjectConverter))]
-        [ManyToOne(CascadeOperations = CascadeOperation.CascadeRead, ReadOnly = true)]
-        public Role Role { get; set; }
+        /// <summary>
+        /// Gets or sets Status (1 = Active, 0 = Inactive, etc..)
+        /// </summary>
+        [PeropertyMapName("Status")]
+        public int Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                if (_Status != value)
+                {
+                    _Status = value;
+                    this.RaiseChanged("Status");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets LastUpdated (Sync to DC).
+        /// </summary>
+        [PeropertyMapName("LastUpdate")]
+        public DateTime LastUpdate
+        {
+            get { return _LastUpdate; }
+            set
+            {
+                if (_LastUpdate != value)
+                {
+                    _LastUpdate = value;
+                    this.RaiseChanged("LastUpdate");
+                }
+            }
+        }
 
         #endregion
 
         #region Static Methods
 
-        /// <summary>
-        /// Gets by Id without password.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="UserId">The UserId.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns found record.</returns>
-        internal static User Get(SQLiteConnection db, string UserId, bool recursive = false)
+        public static List<User> FindByRole(string roleId)
         {
             lock (sync)
             {
-                if (null == db) return null;
-                return db.GetAllWithChildren<User>(
-                    p => p.UserId == UserId,
-                    recursive: recursive).FirstOrDefault();
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM User ";
+                cmd += " WHERE RoleId = ?";
+                return NQuery.Query<User>(cmd, roleId);
             }
         }
+
+        public static List<User> FindByRole(string roleId, int status)
+        {
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM User ";
+                cmd += " WHERE RoleId = ? ";
+                cmd += "   AND Status = ? ";
+                return NQuery.Query<User>(cmd, roleId, status);
+            }
+        }
+
+        /*
         /// <summary>
         /// Gets by UserId and password.
         /// </summary>
@@ -1039,7 +1071,7 @@ namespace DMT.Models
         /// /// <param name="password">The password.</param>
         /// <param name="recursive">True for load related nested children.</param>
         /// <returns>Returns found record.</returns>
-        internal static User GetByUserId(SQLiteConnection db, string UserId, string password, bool recursive = false)
+        public static User GetByUserId(SQLiteConnection db, string UserId, string password, bool recursive = false)
         {
             lock (sync)
             {
@@ -1057,7 +1089,7 @@ namespace DMT.Models
         /// /// <param name="password">The password.</param>
         /// <param name="recursive">True for load related nested children.</param>
         /// <returns>Returns found record.</returns>
-        internal static User GetByUserName(SQLiteConnection db, string userName, string password, bool recursive = false)
+        public static User GetByUserName(SQLiteConnection db, string userName, string password, bool recursive = false)
         {
             lock (sync)
             {
@@ -1074,7 +1106,7 @@ namespace DMT.Models
         /// <param name="cardId">The cardId.</param>
         /// <param name="recursive">True for load related nested children.</param>
         /// <returns>Returns found record.</returns>
-        internal static User GetByCardId(SQLiteConnection db, string cardId, bool recursive = false)
+        public static User GetByCardId(SQLiteConnection db, string cardId, bool recursive = false)
         {
             lock (sync)
             {
@@ -1083,17 +1115,6 @@ namespace DMT.Models
                     p => p.CardId == cardId,
                     recursive: recursive).FirstOrDefault();
             }
-        }
-        /// <summary>
-        /// Gets by Id
-        /// </summary>
-        /// <param name="UserId">The UserId.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns found record.</returns>
-        public static User Get(string UserId, bool recursive = false)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Get(db, UserId, recursive);
         }
         /// <summary>
         /// Gets by UserId and password.
@@ -1133,11 +1154,20 @@ namespace DMT.Models
             SQLiteConnection db = LocalDbServer.Instance.Db;
             return GetByCardId(db, cardId, recursive);
         }
+        */
 
         #endregion
     }
 
     #endregion
+
+
+
+
+    /*
+
+
+
 
     #region Config
 

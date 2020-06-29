@@ -109,6 +109,20 @@ namespace DMT.Services
             return ret;
         }
 
+        public List<Role> GetRoles()
+        {
+            var ret = NRestClient.Create(port: 9000).Execute<List<Role>>(
+                RouteConsts.TSB.GetRoles.Url, new { });
+            return ret;
+        }
+
+        public List<User> GetUsers(Role role)
+        {
+            var ret = NRestClient.Create(port: 9000).Execute<List<User>>(
+                RouteConsts.TSB.GetUsers.Url, role);
+            return ret;
+        }
+
         /*
         public string BeginJob()
         {

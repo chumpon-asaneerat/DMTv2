@@ -45,12 +45,13 @@ namespace DMT.Config.Pages
         #endregion
 
         private PlazaOperations ops = Services.DMTServiceOperations.Instance.Plaza;
+        private List<RoleItem> items = new List<RoleItem>();
 
         #region Loaded/Unloaded
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-
+            RefreshTree();
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
@@ -59,5 +60,53 @@ namespace DMT.Config.Pages
         }
 
         #endregion
+
+        #region Private Methods
+
+        private void RefreshTree()
+        {
+            tree.ItemsSource = null;
+
+            items.Clear();
+            var roles = ops.GetRoles();
+            roles.ForEach(role =>
+            {
+                RoleItem item = role.CloneTo<RoleItem>();
+                items.Add(item);
+                var users = ops.GetUsers(item);
+                if (null != users)
+                {
+                    users.ForEach(user =>
+                    {
+                        UserItem uItem = user.CloneTo<UserItem>();
+                        item.Users.Add(uItem);
+                    });
+                }
+            });
+
+            tree.ItemsSource = items;
+        }
+
+        #endregion
+
+        #region TreeView Handler
+
+        private void tree_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            pgrid.SelectedObject = e.NewValue;
+        }
+
+        #endregion
     }
+
+    public class RoleItem : Role
+    {
+        public RoleItem()
+        {
+            this.Users = new ObservableCollection<UserItem>();
+        }
+        public ObservableCollection<UserItem> Users { get; set; }
+    }
+
+    public class UserItem : User { }
 }

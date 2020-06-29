@@ -16,7 +16,43 @@
             <ColumnDefinition Width="5" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0"></Grid>
+        <TreeView x:Name="tree"
+                  Grid.Column="0"
+                  SelectedItemChanged="tree_SelectedItemChanged">
+            <TreeView.Resources>
+                <HierarchicalDataTemplate DataType="{x:Type self:RoleItem}" 
+                                          ItemsSource="{Binding Users}">
+                    <StackPanel Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <!--
+                        <Image Source="/WpfTutorialSamples;component/Images/group.png" Margin="0,0,5,0" />
+                        -->
+                        <TextBlock>
+                            <Run Text="{Binding RoleId}" />
+                            <Run Text=" - " />
+                            <Run Text="{Binding RoleNameTH}" />
+                            <Run Text=" (" />
+                            <Run Text="{Binding RoleNameEN}" />
+                            <Run Text=")" />
+                        </TextBlock>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+                <DataTemplate DataType="{x:Type self:UserItem}">
+                    <StackPanel Orientation="Horizontal">
+                        <!--
+                        <Image Source="/WpfTutorialSamples;component/Images/user.png" Margin="0,0,5,0" />
+                        -->
+                        <TextBlock>
+                            <Run Text="{Binding FullNameTH}" />
+                            <Run Text=" - " />
+                            <Run Text=" (" />
+                            <Run Text="{Binding UserId}" />
+                            <Run Text=")" />
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </TreeView.Resources>
+        </TreeView>
         <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"/>
         <Grid Grid.Column="2">
             <xceed:PropertyGrid x:Name="pgrid">

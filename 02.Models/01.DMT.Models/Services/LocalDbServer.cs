@@ -142,10 +142,10 @@ namespace DMT.Services
 
             Db.CreateTable<Shift>();
 
-
-            /*
             Db.CreateTable<Role>();
             Db.CreateTable<User>();
+
+            /*
             Db.CreateTable<Config>();
 
             Db.CreateTable<SupervisorShift>();
@@ -648,230 +648,244 @@ namespace DMT.Services
 
         private void InitRoleAndUsers()
         {
-            /*
             if (null == Db) return;
             Role item;
+            User user;
             item = new Role()
             {
                 RoleId = "QFREE",
-                RoleName = "QFree",
-                Users = new List<User>()
-                {
-                    new User()
-                    {
-                        UserId = "99001",
-                        FullNameEN = "QFree User 1",
-                        FullNameTH = "QFree User 1",
-                        UserName = "qfree1",
-                        Password = "1234",
-                        CardId = ""
-                    }
-                }
+                RoleNameEN = "QFree",
+                RoleNameTH = "คิวฟรี"
             };
-            if (!Role.Exists(item))
+            if (!Role.Exists(item)) Role.Save(item);
+
+            user = new User()
             {
-                Role.Save(item);
-                if (null != item.Users)
-                {
-                    item.Users.ForEach(user => User.Save(user));
-                }
-                Role.UpdateWithChildren(item);
-            }
+                UserId = "99001",
+                FullNameEN = "QFree User 1",
+                FullNameTH = "QFree User 1",
+                UserName = "qfree1",
+                Password = "1234",
+                CardId = "",
+                Status = 1,
+                RoleId = item.RoleId
+            };
+            if (!User.Exists(user)) User.Save(user);
+
+
             item = new Role()
             {
                 RoleId = "ADMIN",
-                RoleName = "Administrator",
-                Users = new List<User>()
-                {
-                    new User()
-                    {
-                        UserId = "99901",
-                        FullNameEN = "Admin 1",
-                        FullNameTH = "Admin 1",
-                        UserName = "admin1",
-                        Password = "1234",
-                        CardId = ""
-                    }
-                }
+                RoleNameEN = "Administrator",
+                RoleNameTH = "ผู้ดูแลระบบ"
             };
-            if (!Role.Exists(item))
+            if (!Role.Exists(item)) Role.Save(item);
+
+            user = new User()
             {
-                Role.Save(item);
-                if (null != item.Users)
-                {
-                    item.Users.ForEach(user => User.Save(user));
-                }
-                Role.UpdateWithChildren(item);
-            }
+                UserId = "99901",
+                FullNameEN = "Admin 1",
+                FullNameTH = "Admin 1",
+                UserName = "admin1",
+                Password = "1234",
+                CardId = "",
+                Status = 1,
+                RoleId = item.RoleId
+            };
+            if (!User.Exists(user)) User.Save(user);
+
             item = new Role()
             {
                 RoleId = "AUDIT",
-                RoleName = "Auditor",
-                Users = new List<User>()
-                {
-                    new User()
-                    {
-                        UserId = "85020",
-                        FullNameEN = "audit1",
-                        FullNameTH = "audit1",
-                        UserName = "audit1",
-                        Password = "1234",
-                        CardId = ""
-                    },
-                    new User()
-                    {
-                        UserId = "65401",
-                        FullNameEN = "นาย สมชาย ตุยเอียว",
-                        FullNameTH = "นาย สมชาย ตุยเอียว",
-                        UserName = "audit2",
-                        Password = "1234",
-                        CardId = ""
-                    }
-                }
+                RoleNameEN = "Auditor",
+                RoleNameTH = "ผู้ตรวจสอบ"
             };
-            if (!Role.Exists(item))
+            if (!Role.Exists(item)) Role.Save(item);
+
+            user = new User()
             {
-                Role.Save(item);
-                if (null != item.Users)
-                {
-                    item.Users.ForEach(user => User.Save(user));
-                }
-                Role.UpdateWithChildren(item);
-            }
+                UserId = "85020",
+                FullNameEN = "audit1",
+                FullNameTH = "audit1",
+                UserName = "audit1",
+                Password = "1234",
+                CardId = "",
+                Status = 1,
+                RoleId = item.RoleId
+            };
+            if (!User.Exists(user)) User.Save(user);
+
+            user = new User()
+            {
+                UserId = "65401",
+                FullNameEN = "นาย สมชาย ตุยเอียว",
+                FullNameTH = "นาย สมชาย ตุยเอียว",
+                UserName = "audit2",
+                Password = "1234",
+                CardId = "",
+                Status = 1,
+                RoleId = item.RoleId
+            };
+            if (!User.Exists(user)) User.Save(user);
+
             item = new Role()
             {
                 RoleId = "SUPERVISOR",
-                RoleName = "Supervisor",
-                Users = new List<User>()
-                {
-                    new User()
-                    {
-                        UserId = "13566",
-                        FullNameEN = "นาย ผจญ สุดศิริ",
-                        FullNameTH = "นาย ผจญ สุดศิริ",
-                        UserName = "sup1",
-                        Password = "1234",
-                        CardId = ""
-                    },
-                    new User()
-                    {
-                        UserId = "26855",
-                        FullNameEN = "นวย วิรชัย ขำหิรัญ",
-                        FullNameTH = "นวย วิรชัย ขำหิรัญ",
-                        UserName = "sup2",
-                        Password = "1234",
-                        CardId = ""
-                    },
-                    new User()
-                    {
-                        UserId = "30242",
-                        FullNameEN = "นาย บุญส่ง บุญปลื้ม",
-                        FullNameTH = "นาย บุญส่ง บุญปลื้ม",
-                        UserName = "sup3",
-                        Password = "1234",
-                        CardId = ""
-                    },
-                    new User()
-                    {
-                        UserId = "76333",
-                        FullNameEN = "นาย สมบูรณ์ สบายดี",
-                        FullNameTH = "นาย สมบูรณ์ สบายดี",
-                        UserName = "sup4",
-                        Password = "1234",
-                        CardId = ""
-                    }
-                }
+                RoleNameEN = "Supervisor",
+                RoleNameTH = "หัวหน้ากะ"
             };
-            if (!Role.Exists(item))
+            if (!Role.Exists(item)) Role.Save(item);
+
+            user = new User()
             {
-                Role.Save(item);
-                if (null != item.Users)
-                {
-                    item.Users.ForEach(user => User.Save(user));
-                }
-                Role.UpdateWithChildren(item);
-            }
+                UserId = "13566",
+                FullNameEN = "นาย ผจญ สุดศิริ",
+                FullNameTH = "นาย ผจญ สุดศิริ",
+                UserName = "sup1",
+                Password = "1234",
+                CardId = "",
+                Status = 1,
+                RoleId = item.RoleId
+            };
+            if (!User.Exists(user)) User.Save(user);
+
+            user = new User()
+            {
+                UserId = "26855",
+                FullNameEN = "นวย วิรชัย ขำหิรัญ",
+                FullNameTH = "นวย วิรชัย ขำหิรัญ",
+                UserName = "sup2",
+                Password = "1234",
+                CardId = "",
+                Status = 1,
+                RoleId = item.RoleId
+            };
+            if (!User.Exists(user)) User.Save(user);
+
+            user = new User()
+            {
+                UserId = "30242",
+                FullNameEN = "นาย บุญส่ง บุญปลื้ม",
+                FullNameTH = "นาย บุญส่ง บุญปลื้ม",
+                UserName = "sup3",
+                Password = "1234",
+                CardId = "",
+                Status = 1,
+                RoleId = item.RoleId
+            };
+            if (!User.Exists(user)) User.Save(user);
+
+            user = new User()
+            {
+                UserId = "76333",
+                FullNameEN = "นาย สมบูรณ์ สบายดี",
+                FullNameTH = "นาย สมบูรณ์ สบายดี",
+                UserName = "sup4",
+                Password = "1234",
+                CardId = "",
+                Status = 1,
+                RoleId = item.RoleId
+            };
+            if (!User.Exists(user)) User.Save(user);
+
             item = new Role()
             {
                 RoleId = "COLLECTOR",
-                RoleName = "Collector",
-                Users = new List<User>()
-                {
-                    new User()
-                    {
-                        UserId = "14211",
-                        FullNameEN = "นาย ภักดี อมรรุ่งโรจน์",
-                        FullNameTH = "นาย ภักดี อมรรุ่งโรจน์",
-                        UserName = "user1",
-                        Password = "1234",
-                        CardId = ""
-                    },
-                    new User()
-                    {
-                        UserId = "14124",
-                        FullNameEN = "นางสาว แก้วใส ฟ้ารุ่งโรจณ์",
-                        FullNameTH = "นางสาว แก้วใส ฟ้ารุ่งโรจณ์",
-                        UserName = "user2",
-                        Password = "1234",
-                        CardId = ""
-                    },
-                    new User()
-                    {
-                        UserId = "14055",
-                        FullNameEN = "นางวิภา สวัสดิวัฒน์",
-                        FullNameTH = "นางวิภา สวัสดิวัฒน์",
-                        UserName = "user3",
-                        Password = "1234",
-                        CardId = ""
-                    },
-                    new User()
-                    {
-                        UserId = "14321",
-                        FullNameEN = "นาย สุเทพ เหมัน",
-                        FullNameTH = "นาย สุเทพ เหมัน",
-                        UserName = "user4",
-                        Password = "1234",
-                        CardId = ""
-                    },
-                    new User()
-                    {
-                        UserId = "14477",
-                        FullNameEN = "นาย ศิริลักษณ์ วงษาหาร",
-                        FullNameTH = "นาย ศิริลักษณ์ วงษาหาร",
-                        UserName = "user5",
-                        Password = "1234",
-                        CardId = ""
-                    },
-                    new User()
-                    {
-                        UserId = "14566",
-                        FullNameEN = "นางสาว สุณิสา อีนูน",
-                        FullNameTH = "นางสาว สุณิสา อีนูน",
-                        UserName = "user6",
-                        Password = "1234",
-                        CardId = ""
-                    },
-                    new User()
-                    {
-                        UserId = "15097",
-                        FullNameEN = "นาง วาสนา ชาญวิเศษ",
-                        FullNameTH = "นาง วาสนา ชาญวิเศษ",
-                        UserName = "user7",
-                        Password = "1234",
-                        CardId = ""
-                    },
-                }
+                RoleNameEN = "Collector",
+                RoleNameTH = "พนักงาน"
             };
-            if (!Role.Exists(item))
+            if (!Role.Exists(item)) Role.Save(item);
+
+            user = new User()
             {
-                Role.Save(item);
-                if (null != item.Users)
-                {
-                    item.Users.ForEach(user => User.Save(user));
-                }
-                Role.UpdateWithChildren(item);
-            }
-            */
+                UserId = "14211",
+                FullNameEN = "นาย ภักดี อมรรุ่งโรจน์",
+                FullNameTH = "นาย ภักดี อมรรุ่งโรจน์",
+                UserName = "user1",
+                Password = "1234",
+                CardId = "",
+                Status = 1,
+                RoleId = item.RoleId
+            };
+            if (!User.Exists(user)) User.Save(user);
+
+            user = new User()
+            {
+                UserId = "14124",
+                FullNameEN = "นางสาว แก้วใส ฟ้ารุ่งโรจณ์",
+                FullNameTH = "นางสาว แก้วใส ฟ้ารุ่งโรจณ์",
+                UserName = "user2",
+                Password = "1234",
+                CardId = "",
+                Status = 1,
+                RoleId = item.RoleId
+            };
+            if (!User.Exists(user)) User.Save(user);
+
+            user = new User()
+            {
+                UserId = "14055",
+                FullNameEN = "นางวิภา สวัสดิวัฒน์",
+                FullNameTH = "นางวิภา สวัสดิวัฒน์",
+                UserName = "user3",
+                Password = "1234",
+                CardId = "",
+                Status = 1,
+                RoleId = item.RoleId
+            };
+            if (!User.Exists(user)) User.Save(user);
+
+            user = new User()
+            {
+                UserId = "14321",
+                FullNameEN = "นาย สุเทพ เหมัน",
+                FullNameTH = "นาย สุเทพ เหมัน",
+                UserName = "user4",
+                Password = "1234",
+                CardId = "",
+                Status = 1,
+                RoleId = item.RoleId
+            };
+            if (!User.Exists(user)) User.Save(user);
+
+            user = new User()
+            {
+                UserId = "14477",
+                FullNameEN = "นาย ศิริลักษณ์ วงษาหาร",
+                FullNameTH = "นาย ศิริลักษณ์ วงษาหาร",
+                UserName = "user5",
+                Password = "1234",
+                CardId = "",
+                Status = 1,
+                RoleId = item.RoleId
+            };
+            if (!User.Exists(user)) User.Save(user);
+
+            user = new User()
+            {
+                UserId = "14566",
+                FullNameEN = "นางสาว สุณิสา อีนูน",
+                FullNameTH = "นางสาว สุณิสา อีนูน",
+                UserName = "user6",
+                Password = "1234",
+                CardId = "",
+                Status = 1,
+                RoleId = item.RoleId
+            };
+            if (!User.Exists(user)) User.Save(user);
+
+            user = new User()
+            {
+                UserId = "15097",
+                FullNameEN = "นาง วาสนา ชาญวิเศษ",
+                FullNameTH = "นาง วาสนา ชาญวิเศษ",
+                UserName = "user7",
+                Password = "1234",
+                CardId = "",
+                Status = 1,
+                RoleId = item.RoleId
+            };
+            if (!User.Exists(user)) User.Save(user);
         }
 
         private void InitConfigs()

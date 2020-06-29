@@ -1,21 +1,21 @@
 ---------------------------------------------------------------------------------------------
 TABLES
 ------
-- TSB
+- TSB - OK
   - TSBId [PK] (string MaxLength(10)) - OK
   - NetworkId (string MaxLength(10)) - OK
   - TSBNameEN (string MaxLength(100)) - OK
   - TSBNameTH (string MaxLength(100)) - OK
   - Active (bool) - (new) - OK
 
-- Plaza
+- Plaza - OK
   - PlazaId [PK] (string MaxLength(10)) - OK
   - TSBId (string MaxLength(10)) - OK
   - PlazaNameEN (string MaxLength(100)) - OK
   - PlazaNameTH (string MaxLength(100)) - OK
   - Direction (string MaxLength(10)) - OK
 
-- Lane
+- Lane - OK
   - PkId [PK] (int auto) - OK
   - LandId (string MaxLength(10)) - OK
   - PlazaId (string MaxLength(10)) - OK
@@ -23,26 +23,26 @@ TABLES
   - LaneType (string MaxLength(10)) -> (MTC/etc..) - OK
   - LaneAbbr (string MaxLength(10)) - OK
 
-- Shift
+- Shift - OK
   - ShiftId [PK] (int) - OK
   - NameEN (string MaxLength(50)) - OK
   - NameTH (string MaxLength(50)) - OK
 
-- Role
-  - RoleId [PK] (string MaxLength(20))
-  - NameEN (string MaxLength(50))
-  - NameTH (string MaxLength(50))
+- Role - OK
+  - RoleId [PK] (string MaxLength(20)) - OK
+  - RoleNameEN (string MaxLength(50)) - OK
+  - RoleNameTH (string MaxLength(50)) - OK
 
-- User
-  - UserId [PK] (string MaxLength(10))
-  - RoleId (string MaxLength(20))
-  - NameEN (string MaxLength(100))
-  - NameTH (string MaxLength(100))
-  - UserName (string MaxLength(20))
-  - Password (string MaxLength(20))
-  - CardId (string MaxLength(20))
-  - Status int -> (Active = 1/Inactive = 0/etc..)
-  - LastUpdate (DateTime) -> last time sync from DC
+- User - OK
+  - UserId [PK] (string MaxLength(10)) - OK
+  - RoleId (string MaxLength(20)) - OK
+  - FullNameEN (string MaxLength(100)) - OK
+  - FullNameTH (string MaxLength(100)) - OK
+  - UserName (string MaxLength(50)) - OK
+  - Password (string MaxLength(20)) - OK
+  - CardId (string MaxLength(20)) - OK
+  - Status int -> (Active = 1/Inactive = 0/etc..) - OK
+  - LastUpdate (DateTime) -> last time sync from DC - OK
 
 SupervisorShift
   - PkId [PK] (string MaxLength(30), Guid.NewID)

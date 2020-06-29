@@ -41,6 +41,16 @@ namespace DMT
                 public const string Name = "GetShifts";
                 public const string Url = TSB.Url + @"/" + Name;
             }
+            public static class GetRoles
+            {
+                public const string Name = "GetRoles";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
+            public static class GetUsers
+            {
+                public const string Name = "GetUsers";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
         }
 
         public static class Job

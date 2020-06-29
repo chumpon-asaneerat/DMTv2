@@ -32,6 +32,7 @@ namespace DMT.Services
             return oUser;
         }
         */
+        /*
         [HttpPost]
         [ActionName(RouteConsts.Job.BeginJob.Name)]
         public string BeginJob([FromBody] Collector collector)
@@ -44,5 +45,6 @@ namespace DMT.Services
         {
             return collector.Name + " is End Job";
         }
+        */
     }
 }
