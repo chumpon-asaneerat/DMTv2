@@ -14,8 +14,10 @@ Update 2020-06-29 #7
 Update 2020-06-29 #6
 - 
 
+[commited]
 Update 2020-06-29 #5
-- 
+- Update NQuery class and Remove NQuery<T> class.
+- Reimplements models and local db server #3.
 
 [commited]
 Update 2020-06-29 #4

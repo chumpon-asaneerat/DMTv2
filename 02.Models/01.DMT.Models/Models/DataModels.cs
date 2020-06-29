@@ -45,6 +45,20 @@ namespace DMT.Models
 
         #endregion
 
+        #region Public Methods
+
+        public List<Plaza> GetPlazas()
+        {
+            return Plaza.GetTSBPlazas(this);
+        }
+
+        public List<Plaza> GetLanes()
+        {
+            return Lane.GetTSBLanes(this);
+        }
+
+        #endregion
+
         #region Public Proprties
 
         /// <summary>
@@ -127,7 +141,6 @@ namespace DMT.Models
                 }
             }
         }
-
         /// <summary>
         /// Gets or sets is active TSB.
         /// </summary>
@@ -147,10 +160,6 @@ namespace DMT.Models
                 }
             }
         }
-
-        [JsonIgnore]
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<Plaza> Plazas { get; set; }
 
         #endregion
 
@@ -189,6 +198,7 @@ namespace DMT.Models
         #endregion
 
         #region Public Proprties
+
         /// <summary>
         /// Gets or sets PlazaId
         /// </summary>
@@ -212,7 +222,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets TSBId
         /// </summary>
-        [ForeignKey(typeof(TSB)), MaxLength(10)]
+        //[ForeignKey(typeof(TSB)), MaxLength(10)]
+        [MaxLength(10)]
         [PeropertyMapName("TSBId")]
         public string TSBId
         {
@@ -229,12 +240,6 @@ namespace DMT.Models
                 }
             }
         }
-
-        [JsonIgnore]
-        [TypeConverter(typeof(ExpandableObjectConverter))]
-        [ManyToOne(CascadeOperations = CascadeOperation.CascadeRead, ReadOnly = true)]
-        public TSB TSB { get; set; }
-
         /// <summary>
         /// Gets or sets PlazaNameEN
         /// </summary>
@@ -255,7 +260,6 @@ namespace DMT.Models
                 }
             }
         }
-
         /// <summary>
         /// Gets or sets PlazaNameTH
         /// </summary>
@@ -276,7 +280,6 @@ namespace DMT.Models
                 }
             }
         }
-
         /// <summary>
         /// Gets or sets Direction
         /// </summary>
@@ -298,13 +301,28 @@ namespace DMT.Models
             }
         }
 
-        [JsonIgnore]
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<Lane> Lanes { get; set; }
-
         #endregion
 
         #region Static Methods
+
+        public static List<Plaza> GetTSBPlazas(TSB value)
+        {
+            lock (sync)
+            {
+                if (null == value) return new List<Plaza>();
+                return GetTSBPlazas(value.TSBId);
+            }
+        }
+        public static List<Plaza> GetTSBPlazas(string tsbId)
+        {
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM Plaza ";
+                cmd += " WHERE TSBId = ?";
+                return NQuery.Query<Plaza>(cmd, tsbId);
+            }
+        }
 
         #endregion
     }
@@ -339,6 +357,7 @@ namespace DMT.Models
         #endregion
 
         #region Public Proprties
+
         /// <summary>
         /// Gets or sets LanePkId
         /// </summary>
@@ -422,7 +441,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PlazaId
         /// </summary>
-        [ForeignKey(typeof(TSB)), MaxLength(10)]
+        //[ForeignKey(typeof(TSB)), MaxLength(10)]
+        [MaxLength(10)]
         [PeropertyMapName("PlazaId")]
         public string PlazaId
         {
@@ -440,14 +460,28 @@ namespace DMT.Models
             }
         }
 
-        [JsonIgnore]
-        [TypeConverter(typeof(ExpandableObjectConverter))]
-        [ManyToOne(CascadeOperations = CascadeOperation.CascadeRead, ReadOnly = true)]
-        public Plaza Plaza { get; set; }
-
         #endregion
 
         #region Static Methods
+
+        public static List<Plaza> GetTSBLanes(TSB value)
+        {
+            lock (sync)
+            {
+                if (null == value) return new List<Plaza>();
+                return GetTSBLanes(value.TSBId);
+            }
+        }
+        public static List<Plaza> GetTSBLanes(string tsbId)
+        {
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM Lane ";
+                cmd += " WHERE TSBId = ?";
+                return NQuery.Query<Plaza>(cmd, tsbId);
+            }
+        }
 
         /*
         /// <summary>
