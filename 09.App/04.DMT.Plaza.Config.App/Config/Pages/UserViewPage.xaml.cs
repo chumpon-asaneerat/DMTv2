@@ -44,7 +44,7 @@ namespace DMT.Config.Pages
 
         #endregion
 
-        private PlazaOperations ops = Services.DMTServiceOperations.Instance.Plaza;
+        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
         private List<RoleItem> items = new List<RoleItem>();
 
         #region Loaded/Unloaded
@@ -68,12 +68,12 @@ namespace DMT.Config.Pages
             tree.ItemsSource = null;
 
             items.Clear();
-            var roles = ops.GetRoles();
+            var roles = ops.TSB.GetRoles();
             roles.ForEach(role =>
             {
                 RoleItem item = role.CloneTo<RoleItem>();
                 items.Add(item);
-                var users = ops.GetUsers(item);
+                var users = ops.TSB.GetUsers(item);
                 if (null != users)
                 {
                     users.ForEach(user =>

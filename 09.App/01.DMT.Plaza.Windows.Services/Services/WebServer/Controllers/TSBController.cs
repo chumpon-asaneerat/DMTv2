@@ -13,10 +13,6 @@ namespace DMT.Services
 {
     public class TSBController : ApiController
     {
-        public TSBController()
-        {
-            Console.WriteLine("TSBController created.");
-        }
         [HttpPost]
         [ActionName(RouteConsts.TSB.GetTSBs.Name)]
         public List<TSB> GetTSBs()

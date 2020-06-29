@@ -56,9 +56,9 @@ namespace DMT.Services
         static PlazaOperations()
         {
             // Required for HTTPS.
-            ServicePointManager.SecurityProtocol = 
-                SecurityProtocolType.Tls12 | 
-                SecurityProtocolType.Tls11 | 
+            ServicePointManager.SecurityProtocol =
+                SecurityProtocolType.Tls12 |
+                SecurityProtocolType.Tls11 |
                 SecurityProtocolType.Tls |
                 (SecurityProtocolType)768 | (SecurityProtocolType)3072 |
                 SecurityProtocolType.SystemDefault;
@@ -66,62 +66,145 @@ namespace DMT.Services
 
         #endregion
 
-        #region Public Methods
+        #region Constructor
 
-        public List<TSB> GetTSBs()
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public PlazaOperations()
         {
-            var ret = NRestClient.Create(port: 9000).Execute<List<TSB>>(
-                RouteConsts.TSB.GetTSBs.Url, new { });
-            return ret;
+            TSB = new TSBOprations();
+            Users = new UserOperations();
         }
 
-        public List<Plaza> GetTSBPlazas(TSB tsb)
+        #endregion
+
+        #region Public Properties
+
+        public TSBOprations TSB { get; private set; }
+        public UserOperations Users { get; private set; }
+
+        #endregion
+
+        #region TSBOprations class
+
+        /// <summary>
+        /// The TSBOprations class.
+        /// </summary>
+        public class TSBOprations
         {
-            var ret = NRestClient.Create(port: 9000).Execute<List<Plaza>>(
-                RouteConsts.TSB.GetTSBPlazas.Url, tsb);
-            return ret;
+            #region Constructor
+
+            /// <summary>
+            /// Constructor.
+            /// </summary>
+            internal TSBOprations() { }
+
+            #endregion
+
+            #region Public Methods
+
+            public List<TSB> GetTSBs()
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<TSB>>(
+                    RouteConsts.TSB.GetTSBs.Url, new { });
+                return ret;
+            }
+
+            public List<Plaza> GetTSBPlazas(TSB tsb)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<Plaza>>(
+                    RouteConsts.TSB.GetTSBPlazas.Url, tsb);
+                return ret;
+            }
+
+            public List<Lane> GetTSBLanes(TSB tsb)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<Lane>>(
+                    RouteConsts.TSB.GetTSBLanes.Url, tsb);
+                return ret;
+            }
+
+            public List<Lane> GetPlazaLanes(Plaza plaza)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<Lane>>(
+                    RouteConsts.TSB.GetPlazaLanes.Url, plaza);
+                return ret;
+            }
+
+            public void SetActive(TSB tsb)
+            {
+                NRestClient.Create(port: 9000).Execute(
+                    RouteConsts.TSB.SetActive.Url, tsb);
+            }
+
+            public List<Shift> GetShifts()
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<Shift>>(
+                    RouteConsts.TSB.GetShifts.Url, new { });
+                return ret;
+            }
+
+            public List<Role> GetRoles()
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<Role>>(
+                    RouteConsts.TSB.GetRoles.Url, new { });
+                return ret;
+            }
+
+            public List<User> GetUsers(Role role)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<User>>(
+                    RouteConsts.TSB.GetUsers.Url, role);
+                return ret;
+            }
         }
 
-        public List<Lane> GetTSBLanes(TSB tsb)
+        #endregion
+
+        #region UserOperations class
+
+        /// <summary>
+        /// The UserOperations class.
+        /// </summary>
+        public class UserOperations
         {
-            var ret = NRestClient.Create(port: 9000).Execute<List<Lane>>(
-                RouteConsts.TSB.GetTSBLanes.Url, tsb);
-            return ret;
+            #region Constructor
+
+            /// <summary>
+            /// Constructor.
+            /// </summary>
+            internal UserOperations() { }
+
+            #endregion
+
+            #region Public Methods
+
+            public User GetByCardId(Search.Users.ByCardId value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<User>(
+                    RouteConsts.User.GetByCardId.Url, value);
+                return ret;
+            }
+
+            public User GetById(Search.Users.ById value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<User>(
+                    RouteConsts.User.GetById.Url, value);
+                return ret;
+            }
+
+            public User GetByLogIn(Search.Users.ByLogIn value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<User>(
+                    RouteConsts.User.GetByLogIn.Url, value);
+                return ret;
+            }
+
+            #endregion
         }
 
-        public List<Lane> GetPlazaLanes(Plaza plaza)
-        {
-            var ret = NRestClient.Create(port: 9000).Execute<List<Lane>>(
-                RouteConsts.TSB.GetPlazaLanes.Url, plaza);
-            return ret;
-        }
-
-        public void SetActive(TSB tsb)
-        {
-            NRestClient.Create(port: 9000).Execute(
-                RouteConsts.TSB.SetActive.Url, tsb);
-        }
-
-        public List<Shift> GetShifts()
-        {
-            var ret = NRestClient.Create(port: 9000).Execute<List<Shift>>(
-                RouteConsts.TSB.GetShifts.Url, new { });
-            return ret;
-        }
-
-        public List<Role> GetRoles()
-        {
-            var ret = NRestClient.Create(port: 9000).Execute<List<Role>>(
-                RouteConsts.TSB.GetRoles.Url, new { });
-            return ret;
-        }
-
-        public List<User> GetUsers(Role role)
-        {
-            var ret = NRestClient.Create(port: 9000).Execute<List<User>>(
-                RouteConsts.TSB.GetUsers.Url, role);
-            return ret;
-        }
+        #endregion
 
         /*
         public string BeginJob()

@@ -34,6 +34,7 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
+            signinWin.Setup("COLLECTOR");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -47,25 +48,11 @@ namespace DMT.TOD.Pages.Menu
             }
         }
 
-        private void endJob_Click(object sender, RoutedEventArgs e)
-        {
-            var signinWin = new SignInWindow();
-            signinWin.Owner = Application.Current.MainWindow;
-            if (signinWin.ShowDialog() == false)
-            {
-                return;
-            }
-            // End of Job Page
-            var page = new Job.EOJPage();
-            // setup
-            //page.Setup(Models.Job.FindJob("14077"));
-            PageContentManager.Instance.Current = page;
-        }
-
         private void revEntry_Click(object sender, RoutedEventArgs e)
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
+            signinWin.Setup("COLLECTOR");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -82,6 +69,7 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
+            signinWin.Setup("COLLECTOR");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -107,6 +95,7 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new DMT.Windows.SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
+            signinWin.Setup("SUPERVISOR");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -122,6 +111,7 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new DMT.Windows.SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
+            signinWin.Setup("SUPERVISOR", "COLLECTOR");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -130,22 +120,11 @@ namespace DMT.TOD.Pages.Menu
             PageContentManager.Instance.Current = page;
         }
 
-        private void logout_Click(object sender, RoutedEventArgs e)
-        {
-            /*
-            var signinWin = new Windows.SignInWindow();
-            signinWin.Owner = Application.Current.MainWindow;
-            if (signinWin.ShowDialog() == false)
-            {
-                return;
-            }
-            */
-        }
-
         private void emvQRCode_Click(object sender, RoutedEventArgs e)
         {
             var signinWin = new DMT.Windows.SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
+            signinWin.Setup("SUPERVISOR", "COLLECTOR");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -193,6 +172,7 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new DMT.Windows.SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
+            signinWin.Setup("SUPERVISOR", "COLLECTOR");
             if (signinWin.ShowDialog() == false)
             {
                 return;

@@ -53,26 +53,26 @@ namespace DMT
             }
         }
 
-        public static class Users
+        public static class User
         {
-            public const string Url = RouteConsts.Url + @"/Users";
+            public const string Url = RouteConsts.Url + @"/User";
 
             public static class GetById
             {
                 public const string Name = "GetById";
-                public const string Url = Job.Url + @"/" + Name;
+                public const string Url = User.Url + @"/" + Name;
             }
 
             public static class GetByCardId
             {
                 public const string Name = "GetByCardId";
-                public const string Url = Job.Url + @"/" + Name;
+                public const string Url = User.Url + @"/" + Name;
             }
 
             public static class GetByLogIn
             {
                 public const string Name = "GetByLogIn";
-                public const string Url = Job.Url + @"/" + Name;
+                public const string Url = User.Url + @"/" + Name;
             }
         }
 

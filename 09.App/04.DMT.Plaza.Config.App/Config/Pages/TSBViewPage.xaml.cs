@@ -43,7 +43,7 @@ namespace DMT.Config.Pages
 
         #endregion
 
-        private PlazaOperations ops = Services.DMTServiceOperations.Instance.Plaza;
+        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
         private List<TSBItem> items = new List<TSBItem>();
 
         #region Loaded/Unloaded
@@ -64,19 +64,19 @@ namespace DMT.Config.Pages
             tree.ItemsSource = null;
 
             items.Clear();
-            var tsbs = ops.GetTSBs();
+            var tsbs = ops.TSB.GetTSBs();
             tsbs.ForEach(tsb =>
             {
                 TSBItem item = tsb.CloneTo<TSBItem>();
                 items.Add(item);
-                var plazas = ops.GetTSBPlazas(item);
+                var plazas = ops.TSB.GetTSBPlazas(item);
                 if (null != plazas)
                 {
                     plazas.ForEach(plaza =>
                     {
                         PlazaItem pItem = plaza.CloneTo<PlazaItem>();
                         item.Plazas.Add(pItem);
-                        var lanes = ops.GetPlazaLanes(plaza);
+                        var lanes = ops.TSB.GetPlazaLanes(plaza);
                         if (null != lanes)
                         {
                             lanes.ForEach(lane =>
@@ -100,7 +100,7 @@ namespace DMT.Config.Pages
             var item = (sender as Button).DataContext;
             if (null != item && item is TSBItem)
             {
-                ops.SetActive(item as TSB);
+                ops.TSB.SetActive(item as TSB);
                 RefreshTree();
             }
         }

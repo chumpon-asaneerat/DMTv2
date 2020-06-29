@@ -40,7 +40,7 @@
                            FontSize="18"
                            Text="กรุณาระบุรหัสพนักงาน 5 หลัก"/>
                 <Grid Height="5" />
-                <TextBox x:Name="txtCardId" 
+                <TextBox x:Name="txtUserId" 
                          FontSize="18"
                          Text=""/>
                 <Grid Height="5" />

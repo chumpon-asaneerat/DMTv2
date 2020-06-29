@@ -43,7 +43,7 @@ namespace DMT.Config.Pages
 
         #endregion
 
-        private PlazaOperations ops = Services.DMTServiceOperations.Instance.Plaza;
+        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
 
         #region Loaded/Unloaded
 
@@ -70,7 +70,7 @@ namespace DMT.Config.Pages
 
         private void RefreshList()
         {
-            listView.ItemsSource = ops.GetShifts();
+            listView.ItemsSource = ops.TSB.GetShifts();
         }
     }
 }

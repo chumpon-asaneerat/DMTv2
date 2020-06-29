@@ -14,10 +14,6 @@ namespace DMT.Services
 {
     public class JobController : ApiController
     {
-        public JobController()
-        {
-            Console.WriteLine("JobController created");
-        }
         /*
         [HttpPost]
         [ActionName(RouteConsts.Job.GetUser.Name)]
