@@ -1062,112 +1062,43 @@ namespace DMT.Models
             }
         }
 
-        /*
         /// <summary>
         /// Gets by UserId and password.
         /// </summary>
-        /// <param name="db">The connection.</param>
         /// <param name="UserId">The UserId.</param>
         /// /// <param name="password">The password.</param>
-        /// <param name="recursive">True for load related nested children.</param>
         /// <returns>Returns found record.</returns>
-        public static User GetByUserId(SQLiteConnection db, string UserId, string password, bool recursive = false)
+        public static User GetByUserId(string UserId, string password)
         {
             lock (sync)
             {
-                if (null == db) return null;
-                return db.GetAllWithChildren<User>(
-                    p => p.UserId == UserId && p.Password == password,
-                    recursive: recursive).FirstOrDefault();
-            }
-        }
-        /// <summary>
-        /// Gets by UserName and password.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="userName">The userName.</param>
-        /// /// <param name="password">The password.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns found record.</returns>
-        public static User GetByUserName(SQLiteConnection db, string userName, string password, bool recursive = false)
-        {
-            lock (sync)
-            {
-                if (null == db) return null;
-                return db.GetAllWithChildren<User>(
-                    p => p.UserName == userName && p.Password == password,
-                    recursive: recursive).FirstOrDefault();
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM User ";
+                cmd += " WHERE UserId = ? ";
+                cmd += "   AND Password = ? ";
+                return NQuery.Query<User>(cmd, UserId, password).FirstOrDefault();
             }
         }
         /// <summary>
         /// Gets by CardId
         /// </summary>
-        /// <param name="db">The connection.</param>
         /// <param name="cardId">The cardId.</param>
-        /// <param name="recursive">True for load related nested children.</param>
         /// <returns>Returns found record.</returns>
-        public static User GetByCardId(SQLiteConnection db, string cardId, bool recursive = false)
+        public static User GetByCardId(string cardId)
         {
             lock (sync)
             {
-                if (null == db) return null;
-                return db.GetAllWithChildren<User>(
-                    p => p.CardId == cardId,
-                    recursive: recursive).FirstOrDefault();
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM User ";
+                cmd += " WHERE CardId = ? ";
+                return NQuery.Query<User>(cmd, cardId).FirstOrDefault();
             }
         }
-        /// <summary>
-        /// Gets by UserId and password.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="UserId">The UserId.</param>
-        /// /// <param name="password">The password.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns found record.</returns>
-        public static User GetByUserId(string UserId, string password, bool recursive = false)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return GetByUserId(db, UserId, password, recursive);
-        }
-        /// <summary>
-        /// Gets by UserName and password.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="userName">The userName.</param>
-        /// /// <param name="password">The password.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns found record.</returns>
-        public static User GetByUserName(string userName, string password, bool recursive = false)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return GetByUserName(db, userName, password, recursive);
-        }
-        /// <summary>
-        /// Gets by CardId
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="cardId">The cardId.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns found record.</returns>
-        public static User GetByCardId(string cardId, bool recursive = false)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return GetByCardId(db, cardId, recursive);
-        }
-        */
 
         #endregion
     }
 
     #endregion
-
-
-
-
-    /*
-
-
-
 
     #region Config
 
@@ -1197,7 +1128,7 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Key
         /// </summary>
-        [PrimaryKey, MaxLength(20)]
+        [PrimaryKey, MaxLength(30)]
         [PeropertyMapName("Key")]
         public string Key
         {
@@ -1240,39 +1171,65 @@ namespace DMT.Models
 
         #region Static Methods
 
-        /// <summary>
-        /// Gets by Key.
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="key">The key.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns found record.</returns>
-        internal static Config Get(SQLiteConnection db, string key, bool recursive = false)
-        {
-            lock (sync)
-            {
-                if (null == db) return null;
-                return db.GetAllWithChildren<Config>(
-                    p => p.Key == key,
-                    recursive: recursive).FirstOrDefault();
-            }
-        }
-        /// <summary>
-        /// Gets by Id
-        /// </summary>
-        /// <param name="key">The key.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns found record.</returns>
-        public static Config Get(string key, bool recursive = false)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Get(db, key, recursive);
-        }
-
         #endregion
     }
 
     #endregion
+
+    public class Current
+    {
+        
+    }
+
+    public static class Search
+    {
+        public static class Users
+        {
+            public class ByCardId : NSearch<ByCardId>
+            {
+                public string CardId { get; set; }
+                
+                public static ByCardId Create(string cardId) 
+                {
+                    var ret = new ByCardId();
+                    ret.CardId = cardId;
+                    return ret;
+                }
+            }
+
+            public class ByLogIn : NSearch<ByLogIn>
+            {
+                public string UserId { get; set; }
+                public string Password { get; set; }
+
+                public static ByLogIn Create(string userId, string pwd)
+                {
+                    var ret = new ByLogIn();
+                    ret.UserId = userId;
+                    ret.Password = pwd;
+                    return ret;
+                }
+            }
+
+            public class ById : NSearch<ById>
+            {
+                public string UserId { get; set; }
+
+                public static ById Create(string userId)
+                {
+                    var ret = new ById();
+                    ret.UserId = userId;
+                    return ret;
+                }
+            }
+        }
+    }
+
+    /*
+
+
+
+
 
     #region SupervisorShift
 

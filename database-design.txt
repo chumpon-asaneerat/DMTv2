@@ -44,6 +44,10 @@ TABLES
   - Status int -> (Active = 1/Inactive = 0/etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK
 
+- Config - OK
+  - Key [PK] (string MaxLength(30)) - OK
+  - Value [PK] (string MaxLength(100)) - OK
+
 SupervisorShift
   - PkId [PK] (string MaxLength(30), Guid.NewID)
   - TSBId (string MaxLength(10))

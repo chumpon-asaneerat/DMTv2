@@ -145,8 +145,9 @@ namespace DMT.Services
             Db.CreateTable<Role>();
             Db.CreateTable<User>();
 
-            /*
             Db.CreateTable<Config>();
+
+            /*
 
             Db.CreateTable<SupervisorShift>();
 
@@ -890,7 +891,6 @@ namespace DMT.Services
 
         private void InitConfigs()
         {
-            /*
             if (null == Db) return;
             Config item;
             // for send to Data Center.
@@ -909,7 +909,6 @@ namespace DMT.Services
             if (!Config.Exists(item)) Config.Save(item);
             item = new Config() { Key = Configs.App.ShiftId, Value = "" };
             if (!Config.Exists(item)) Config.Save(item);
-            */
         }
 
         #endregion
