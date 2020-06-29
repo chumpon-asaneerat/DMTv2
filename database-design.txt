@@ -16,12 +16,12 @@ TABLES
   - Direction (string MaxLength(10)) - OK
 
 - Lane
-  - PkId [PK] (string MaxLength(30), Guid.NewID)
-  - LandId (string MaxLength(10))
-  - PlazaId (string MaxLength(10))
-  - TSBId (string MaxLength(10))
-  - LaneType (string MaxLength(10)) -> (MTC/etc..)
-  - LaneAbbr (string MaxLength(10))
+  - PkId [PK] (int auto) - OK
+  - LandId (string MaxLength(10)) - OK
+  - PlazaId (string MaxLength(10)) - OK
+  - TSBId (string MaxLength(10)) - OK
+  - LaneType (string MaxLength(10)) -> (MTC/etc..) - OK
+  - LaneAbbr (string MaxLength(10)) - OK
 
 - Shift
   - ShiftId [PK] (int)

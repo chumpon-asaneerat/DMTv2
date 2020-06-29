@@ -339,11 +339,13 @@ namespace DMT.Models
     {
         #region Intenral Variables
 
-        private int _LanePkId = 0;
-        private int _LaneId = 0;
+        private int _PkId = 0;
+        private int _LaneNo = 0;
+        private string _LaneId = string.Empty;
         private string _LaneType = string.Empty;
         private string _LaneAbbr = string.Empty;
         private string _PlazaId = string.Empty;
+        private string _TSBId = string.Empty;
 
         #endregion
 
@@ -362,19 +364,38 @@ namespace DMT.Models
         /// Gets or sets LanePkId
         /// </summary>
         [PrimaryKey, AutoIncrement]
-        [PeropertyMapName("LanePkId")]
-        public int LanePkId
+        [PeropertyMapName("PkId")]
+        public int PkId
         {
             get
             {
-                return _LanePkId;
+                return _PkId;
             }
             set
             {
-                if (_LanePkId != value)
+                if (_PkId != value)
                 {
-                    _LanePkId = value;
-                    this.RaiseChanged("LanePkId");
+                    _PkId = value;
+                    this.RaiseChanged("PkId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Lane No.
+        /// </summary>
+        [PeropertyMapName("LaneNo")]
+        public int LaneNo
+        {
+            get
+            {
+                return _LaneNo;
+            }
+            set
+            {
+                if (_LaneNo != value)
+                {
+                    _LaneNo = value;
+                    this.RaiseChanged("LaneNo");
                 }
             }
         }
@@ -383,7 +404,7 @@ namespace DMT.Models
         /// </summary>
         [MaxLength(10)]
         [PeropertyMapName("LaneId")]
-        public int LaneId
+        public string LaneId
         {
             get
             {
@@ -395,6 +416,48 @@ namespace DMT.Models
                 {
                     _LaneId = value;
                     this.RaiseChanged("LaneId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets PlazaId
+        /// </summary>
+        //[ForeignKey(typeof(TSB)), MaxLength(10)]
+        [MaxLength(10)]
+        [PeropertyMapName("TSBId")]
+        public string TSBId
+        {
+            get
+            {
+                return _TSBId;
+            }
+            set
+            {
+                if (_TSBId != value)
+                {
+                    _TSBId = value;
+                    this.RaiseChanged("TSBId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets PlazaId
+        /// </summary>
+        //[ForeignKey(typeof(Plaza)), MaxLength(10)]
+        [MaxLength(10)]
+        [PeropertyMapName("PlazaId")]
+        public string PlazaId
+        {
+            get
+            {
+                return _PlazaId;
+            }
+            set
+            {
+                if (_PlazaId != value)
+                {
+                    _PlazaId = value;
+                    this.RaiseChanged("PlazaId");
                 }
             }
         }
@@ -435,27 +498,6 @@ namespace DMT.Models
                 {
                     _LaneAbbr = value;
                     this.RaiseChanged("LaneAbbr");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets PlazaId
-        /// </summary>
-        //[ForeignKey(typeof(TSB)), MaxLength(10)]
-        [MaxLength(10)]
-        [PeropertyMapName("PlazaId")]
-        public string PlazaId
-        {
-            get
-            {
-                return _PlazaId;
-            }
-            set
-            {
-                if (_PlazaId != value)
-                {
-                    _PlazaId = value;
-                    this.RaiseChanged("PlazaId");
                 }
             }
         }
