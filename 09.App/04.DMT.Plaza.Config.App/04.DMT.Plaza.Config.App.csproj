@@ -84,7 +84,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Config\Pages\ShiftView.xaml">
+    <Page Include="Config\Pages\ShiftViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -92,7 +92,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Config\Pages\UserView.xaml">
+    <Page Include="Config\Pages\UserViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -104,14 +104,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Config\Pages\ShiftView.xaml.cs">
-      <DependentUpon>ShiftView.xaml</DependentUpon>
+    <Compile Include="Config\Pages\ShiftViewPage.xaml.cs">
+      <DependentUpon>ShiftViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Config\Pages\TSBViewPage.xaml.cs">
       <DependentUpon>TSBViewPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Config\Pages\UserView.xaml.cs">
-      <DependentUpon>UserView.xaml</DependentUpon>
+    <Compile Include="Config\Pages\UserViewPage.xaml.cs">
+      <DependentUpon>UserViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -207,6 +207,9 @@
   <ItemGroup>
     <Folder Include="Config\Controls\" />
     <Folder Include="Config\Windows\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Clock\clock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

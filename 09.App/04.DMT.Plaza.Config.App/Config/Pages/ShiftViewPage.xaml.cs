@@ -24,20 +24,19 @@ using System.Runtime.InteropServices;
 
 #endregion
 
-
 namespace DMT.Config.Pages
 {
     /// <summary>
-    /// Interaction logic for UserView.xaml
+    /// Interaction logic for ShiftViewPage.xaml
     /// </summary>
-    public partial class UserView : UserControl
+    public partial class ShiftViewPage : UserControl
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public UserView()
+        public ShiftViewPage()
         {
             InitializeComponent();
         }
@@ -50,7 +49,7 @@ namespace DMT.Config.Pages
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-
+            RefreshList();
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
@@ -59,5 +58,19 @@ namespace DMT.Config.Pages
         }
 
         #endregion
+
+        #region ListView Handler
+
+        private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            pgrid.SelectedObject = listView.SelectedItem;
+        }
+
+        #endregion
+
+        private void RefreshList()
+        {
+            listView.ItemsSource = ops.GetShifts();
+        }
     }
 }

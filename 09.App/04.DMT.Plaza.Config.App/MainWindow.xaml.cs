@@ -104,9 +104,14 @@ namespace DMT
             PageContentManager.Instance.Current = new Config.Pages.TSBViewPage();
         }
 
-        private void cmdStafView_Click(object sender, RoutedEventArgs e)
+        private void cmdUserView_Click(object sender, RoutedEventArgs e)
         {
+            PageContentManager.Instance.Current = new Config.Pages.UserViewPage();
+        }
 
+        private void cmdShiftView_Click(object sender, RoutedEventArgs e)
+        {
+            PageContentManager.Instance.Current = new Config.Pages.ShiftViewPage();
         }
 
         #endregion

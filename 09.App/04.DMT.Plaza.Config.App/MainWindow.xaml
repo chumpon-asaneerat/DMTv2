@@ -44,10 +44,10 @@
                             <Image Source="Images/Networks/plaza_network1.png" />
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
-                    <Fluent:Button x:Name="cmdStafView" 
+                    <Fluent:Button x:Name="cmdUserView" 
                                    Header="User View"
                                    Width="75"
-                                   Click="cmdStafView_Click">
+                                   Click="cmdUserView_Click">
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/users/users.ico" />
                         </Fluent:Button.LargeIcon>
@@ -55,11 +55,12 @@
                 </Fluent:RibbonGroupBox>
                 <!-- Group - TOD -->
                 <Fluent:RibbonGroupBox Header="Toll of Duty">
-                    <Fluent:Button x:Name="cmdUserView"
-                                   Header="User View"
-                                   Width="75">
+                    <Fluent:Button x:Name="cmdShiftView"
+                                   Header="Shift View"
+                                   Width="75"
+                                   Click="cmdShiftView_Click">
                         <Fluent:Button.LargeIcon>
-                            <Image Source="Images/Networks/plaza_network2.png" />
+                            <Image Source="Images/Clock/clock.png" />
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
                     <!--

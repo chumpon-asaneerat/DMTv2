@@ -24,19 +24,20 @@ using System.Runtime.InteropServices;
 
 #endregion
 
+
 namespace DMT.Config.Pages
 {
     /// <summary>
-    /// Interaction logic for ShiftView.xaml
+    /// Interaction logic for UserViewPage.xaml
     /// </summary>
-    public partial class ShiftView : UserControl
+    public partial class UserViewPage : UserControl
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public ShiftView()
+        public UserViewPage()
         {
             InitializeComponent();
         }
