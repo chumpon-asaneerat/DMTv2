@@ -135,6 +135,7 @@ namespace DMT.Services
             // in each domain class instead omit connection version).
             NTable.Default = Db;
 
+            /*
             Db.CreateTable<TSB>();
             Db.CreateTable<Plaza>();
 
@@ -153,6 +154,7 @@ namespace DMT.Services
             Db.CreateTable<CollectorLane>();
 
             Db.CreateTable<RevenueEntry>();
+            */
 
             InitDefaults();
         }
@@ -166,6 +168,7 @@ namespace DMT.Services
 
         private void InitTSBAndPlazaAndLanes()
         {
+            /*
             if (null == Db) return;
             TSB item;
             item = new TSB();
@@ -520,10 +523,12 @@ namespace DMT.Services
 
                 TSB.UpdateWithChildren(item);
             }
+            */
         }
 
         private void InitRoleAndUsers()
         {
+            /*
             if (null == Db) return;
             Role item;
             item = new Role()
@@ -746,10 +751,12 @@ namespace DMT.Services
                 }
                 Role.UpdateWithChildren(item);
             }
+            */
         }
 
         private void InitConfigs()
         {
+            /*
             if (null == Db) return;
             Config item;
             // for send to Data Center.
@@ -768,6 +775,7 @@ namespace DMT.Services
             if (!Config.Exists(item)) Config.Save(item);
             item = new Config() { Key = Configs.App.ShiftId, Value = "" };
             if (!Config.Exists(item)) Config.Save(item);
+            */
         }
 
         #endregion
@@ -817,206 +825,6 @@ namespace DMT.Services
             Db = null;
         }
 
-        #endregion
-
-        #region Models(Domain) Public Methods (may be not required).
-        /*
-        // TSB
-        public bool Exists(TSB value)
-        {
-            lock (this)
-            {
-                return TSB.Exists(this.Db, value);
-            }
-        }
-        public void Save(TSB value)
-        {
-            lock (this)
-            {
-                TSB.Save(this.Db, value);
-            }
-        }
-        public List<TSB> GetTSBs(bool recursive = false)
-        {
-            lock (this)
-            {
-                return TSB.Gets(this.Db, recursive);
-            }
-        }
-        public TSB GetTSB(string tsbId, bool recursive = false)
-        {
-            lock (this)
-            {
-                return TSB.Get(this.Db, tsbId, recursive);
-            }
-        }
-        // Plaza
-        public bool Exists(Plaza value)
-        {
-            lock (this)
-            {
-                return Plaza.Exists(this.Db, value);
-            }
-        }
-        public void Save(Plaza value)
-        {
-            lock (this)
-            {
-                Plaza.Save(this.Db, value);
-            }
-        }
-        public List<Plaza> GetPlazas(bool recursive = false)
-        {
-            lock (this)
-            {
-                return Plaza.Gets(this.Db, recursive);
-            }
-        }
-        public Plaza GetPlaza(string plazaId, bool recursive = false)
-        {
-            lock (this)
-            {
-                return Plaza.Get(this.Db, plazaId, recursive);
-            }
-        }
-        // Lane
-        public bool Exists(Lane value)
-        {
-            lock (this)
-            {
-                return Lane.Exists(this.Db, value);
-            }
-        }
-        public void Save(Lane value)
-        {
-            lock (this)
-            {
-                Lane.Save(this.Db, value);
-            }
-        }
-        public List<Lane> GetLanes(bool recursive = false)
-        {
-            lock (this)
-            {
-                return Lane.Gets(this.Db, recursive);
-            }
-        }
-        public Lane GetLane(string plazaId, int laneId, bool recursive = false)
-        {
-            lock (this)
-            {
-                return Lane.Get(this.Db, plazaId, laneId, recursive);
-            }
-        }
-        // Role
-        public bool Exists(Role value)
-        {
-            lock (this)
-            {
-                return Role.Exists(this.Db, value);
-            }
-        }
-        public void Save(Role value)
-        {
-            lock (this)
-            {
-                Role.Save(this.Db, value);
-            }
-        }
-        public List<Role> GetRoles(bool recursive = false)
-        {
-            lock (this)
-            {
-                return Role.Gets(this.Db, recursive);
-            }
-        }
-        public Role GetRole(string roleId, bool recursive = false)
-        {
-            lock (this)
-            {
-                return Role.Get(this.Db, roleId, recursive);
-            }
-        }
-        // User
-        public bool Exists(User value)
-        {
-            lock (this)
-            {
-                return User.Exists(this.Db, value);
-            }
-        }
-        public void Save(User value)
-        {
-            lock (this)
-            {
-                User.Save(this.Db, value);
-            }
-        }
-        public List<User> GetUsers(bool recursive = false)
-        {
-            lock (this)
-            {
-                return User.Gets(this.Db, recursive);
-            }
-        }
-        public User Get(string userId, bool recursive = false)
-        {
-            lock (this)
-            {
-                return User.Get(this.Db, userId, recursive);
-            }
-        }
-        public User LogInByUserId(string userId, string password, bool recursive = false)
-        {
-            lock (this)
-            {
-                return User.GetByUserId(this.Db, userId, password, recursive);
-            }
-        }
-        public User LogInByUserName(string userName, string password, bool recursive = false)
-        {
-            lock (this)
-            {
-                return User.GetByUserName(this.Db, userName, password, recursive);
-            }
-        }
-        public User LogInByCardId(string cardId, bool recursive = false)
-        {
-            lock (this)
-            {
-                return User.GetByCardId(this.Db, cardId, recursive);
-            }
-        }
-        // Configs
-        public bool Exists(Config value)
-        {
-            lock (this)
-            {
-                return Config.Exists(this.Db, value);
-            }
-        }
-        public void Save(Config value)
-        {
-            lock (this)
-            {
-                Config.Save(this.Db, value);
-            }
-        }
-        public List<Config> GetConfigs(bool recursive = false)
-        {
-            lock (this)
-            {
-                return Config.Gets(this.Db, recursive);
-            }
-        }
-        public Config GetConfig(string key, bool recursive = false)
-        {
-            lock (this)
-            {
-                return Config.Get(this.Db, key, recursive);
-            }
-        }
-        */
         #endregion
 
         #region Public Properties
