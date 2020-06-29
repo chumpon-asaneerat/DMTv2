@@ -27,7 +27,7 @@
                     <Fluent:Button Header="Green"
                                    Width="100">
                         <Fluent:Button.LargeIcon>
-                            <Image Source="Images/GreenLarge.png" />
+                            <Image Source="Images/toll-clipart.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
                     <!--

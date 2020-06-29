@@ -44,6 +44,8 @@ namespace DMT.Pages
 
         private void cmdOK_Click(object sender, RoutedEventArgs e)
         {
+            txtMsg.Text = string.Empty;
+
             string userId = txtUserId.Text.Trim();
             string pwd = txtPassword.Password.Trim();
             if (string.IsNullOrWhiteSpace(userId))
@@ -64,8 +66,11 @@ namespace DMT.Pages
             if (null == user || _roles.IndexOf(user.RoleId) == -1)
             {
                 Console.WriteLine("LogIn Failed");
+                txtMsg.Text = "LogIn Failed";
+
                 txtUserId.SelectAll();
                 txtUserId.Focus();
+
                 return;
             }
 

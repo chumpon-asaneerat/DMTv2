@@ -165,5 +165,12 @@
     <Folder Include="Simulator\Controls\" />
     <Folder Include="Simulator\Windows\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Lane.jpg" />
+    <Resource Include="Images\lane2.jpg" />
+    <Resource Include="Images\Lane3.jpg" />
+    <Resource Include="Images\toll-clipart.jpg" />
+    <Resource Include="Images\tool.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

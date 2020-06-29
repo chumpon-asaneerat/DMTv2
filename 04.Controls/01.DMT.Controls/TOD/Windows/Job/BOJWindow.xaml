@@ -167,6 +167,8 @@
                   SelectedValuePath="ShiftId"
                   HorizontalAlignment="Left"
                   VerticalAlignment="Center"
+                  HorizontalContentAlignment="Center"
+                  VerticalContentAlignment="Center"
                   Width="220">
             <!--
             <ComboBoxItem Content="เช้า"/>

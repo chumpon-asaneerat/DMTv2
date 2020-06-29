@@ -88,6 +88,13 @@
                         <Grid Height="5"/>
                     </StackPanel>
                 </Grid>
+                <StackPanel  Grid.Row="2"
+                     Grid.Column="1"
+                     Margin="5">
+                    <TextBlock Name="txtMsg" Foreground="Red" 
+                           FontSize="20" TextAlignment="Center" FontWeight="ExtraBold"
+                           Text=""/>
+                </StackPanel>
             </Grid>
         </Border>
     </Grid>
