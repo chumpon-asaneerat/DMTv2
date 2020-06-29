@@ -4,15 +4,15 @@ TABLES
 - TSB
   - TSBId [PK] (string MaxLength(10)) - OK
   - NetworkId (string MaxLength(10)) - OK
-  - NameEN (string MaxLength(100)) - OK
-  - NameTH (string MaxLength(100)) - OK
+  - TSBNameEN (string MaxLength(100)) - OK
+  - TSBNameTH (string MaxLength(100)) - OK
   - Active (bool) - (new) - OK
 
 - Plaza
   - PlazaId [PK] (string MaxLength(10)) - OK
   - TSBId (string MaxLength(10)) - OK
-  - NameEN (string MaxLength(100)) - OK
-  - NameTH (string MaxLength(100)) - OK
+  - PlazaNameEN (string MaxLength(100)) - OK
+  - PlazaNameTH (string MaxLength(100)) - OK
   - Direction (string MaxLength(10)) - OK
 
 - Lane
@@ -24,9 +24,9 @@ TABLES
   - LaneAbbr (string MaxLength(10)) - OK
 
 - Shift
-  - ShiftId [PK] (int)
-  - NameEN (string MaxLength(50))
-  - NameTH (string MaxLength(50))
+  - ShiftId [PK] (int) - OK
+  - NameEN (string MaxLength(50)) - OK
+  - NameTH (string MaxLength(50)) - OK
 
 - Role
   - RoleId [PK] (string MaxLength(20))

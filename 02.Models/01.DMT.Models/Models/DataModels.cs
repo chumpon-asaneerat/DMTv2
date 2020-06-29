@@ -614,8 +614,7 @@ namespace DMT.Models
     }
 
     #endregion
-    /*
-
+    
     #region Shift
 
     /// <summary>
@@ -666,7 +665,7 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Name TH.
         /// </summary>
-        [MaxLength(10)]
+        [MaxLength(50)]
         [PeropertyMapName("NameTH")]
         public string NameTH
         {
@@ -686,7 +685,7 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Name EN.
         /// </summary>
-        [MaxLength(10)]
+        [MaxLength(50)]
         [PeropertyMapName("NameEN")]
         public string NameEN
         {
@@ -708,36 +707,16 @@ namespace DMT.Models
 
         #region Static Methods
 
-        /// <summary>
-        /// Gets by Id
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="shiftId">The TSBId.</param>
-        /// <returns>Returns found record.</returns>
-        internal static Shift Get(SQLiteConnection db, int shiftId)
-        {
-            lock (sync)
-            {
-                if (null == db) return null;
-                return db.GetAllWithChildren<Shift>(
-                    p => p.ShiftId == shiftId).FirstOrDefault();
-            }
-        }
-        /// <summary>
-        /// Gets by Id
-        /// </summary>
-        /// <param name="shiftId">The shiftId.</param>
-        /// <returns>Returns found record.</returns>
-        public static Shift Get(int shiftId)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Get(db, shiftId);
-        }
-
         #endregion
     }
 
     #endregion
+
+
+
+
+    /*
+
 
 
     #region Role

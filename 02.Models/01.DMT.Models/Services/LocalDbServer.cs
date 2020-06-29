@@ -140,10 +140,10 @@ namespace DMT.Services
             Db.CreateTable<Plaza>();
             Db.CreateTable<Lane>();
 
-            /*
             Db.CreateTable<Shift>();
 
 
+            /*
             Db.CreateTable<Role>();
             Db.CreateTable<User>();
             Db.CreateTable<Config>();
@@ -163,6 +163,7 @@ namespace DMT.Services
         private void InitDefaults()
         {
             InitTSBAndPlazaAndLanes();
+            InitShifts();
             InitRoleAndUsers();
             InitConfigs();
         }
@@ -170,12 +171,6 @@ namespace DMT.Services
         private void InitTSBAndPlazaAndLanes()
         {
             if (null == Db) return;
-
-            // Set Default connection 
-            // (be careful to make sure that we only has single database
-            // for all domain otherwise call static method with user connnection
-            // in each domain class instead omit connection version).
-            NTable.Default = Db;
 
             if (Db.Table<TSB>().Count() > 0) return; // already exists.
 
@@ -619,6 +614,36 @@ namespace DMT.Services
                 TSBId = item.TSBId
             };
             if (!Plaza.Exists(plaza)) Plaza.Save(plaza);
+        }
+
+        private void InitShifts()
+        {
+            if (null == Db) return;
+
+            if (Db.Table<Shift>().Count() > 0) return; // already exists.
+
+            Shift item;
+            item = new Shift()
+            {
+                ShiftId = 1,
+                NameEN = "Morning",
+                NameTH = "เช้า"
+            };
+            if (!Shift.Exists(item)) Shift.Save(item);
+            item = new Shift()
+            {
+                ShiftId = 2,
+                NameEN = "Afternoon",
+                NameTH = "บ่าย"
+            };
+            if (!Shift.Exists(item)) Shift.Save(item);
+            item = new Shift()
+            {
+                ShiftId = 3,
+                NameEN = "Midnight",
+                NameTH = "ดึก"
+            };
+            if (!Shift.Exists(item)) Shift.Save(item);
         }
 
         private void InitRoleAndUsers()

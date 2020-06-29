@@ -14,8 +14,9 @@ Update 2020-06-29 #12
 Update 2020-06-29 #11
 - 
 
+[commited]
 Update 2020-06-29 #10
-- 
+- Reimplements models and local db server #8.
 
 [commited]
 Update 2020-06-29 #9
