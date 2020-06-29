@@ -52,10 +52,7 @@ namespace DMT.Services
 
     #endregion
 
-
-    // Required to replace new LocalDbServer here.
-
-    #region LobalDbServer Implements - remove later.
+    #region LobalDbServer
 
     /// <summary>
     /// Local Database Server.
@@ -919,6 +916,42 @@ namespace DMT.Services
         /// </summary>
         public void Start()
         {
+            if (null == Db)
+            {
+                lock (typeof(LocalDbServer))
+                {
+                    // ---------------------------------------------------------------
+                    // NOTE:
+                    // ---------------------------------------------------------------
+                    // If Exception due to version mismatch here
+                    // Please rebuild only this project and try again
+                    // VS Should Solve mismatch version properly (maybe)
+                    // See: https://nickcraver.com/blog/2020/02/11/binding-redirects/
+                    // for more information.
+                    // ---------------------------------------------------------------
+
+                    string path = Path.Combine(LocalFolder, FileName);
+                    Db = new SQLiteConnection(path,
+                        SQLiteOpenFlags.Create |
+                        SQLiteOpenFlags.SharedCache |
+                        SQLiteOpenFlags.ReadWrite |
+                        SQLiteOpenFlags.FullMutex,
+                        storeDateTimeAsTicks: true);
+                    Db.BusyTimeout = new TimeSpan(0, 0, 5); // set busy timeout.
+
+
+                    // Set Default connection 
+                    // (be careful to make sure that we only has single database
+                    // for all domain otherwise call static method with user connnection
+                    // in each domain class instead omit connection version).
+                    NTable.Default = Db;
+                    NQuery.Default = Db;
+
+                    InitTables();
+                }
+            }
+
+            /*
             MethodBase med = MethodBase.GetCurrentMethod();
             if (null == Db)
             {
@@ -964,11 +997,12 @@ namespace DMT.Services
                     }
                 }
             }
+            */
         }
-        /// <summary>
-        /// Shutdown.
-        /// </summary>
-        public void Shutdown()
+            /// <summary>
+            /// Shutdown.
+            /// </summary>
+            public void Shutdown()
         {
             if (null != Db)
             {
