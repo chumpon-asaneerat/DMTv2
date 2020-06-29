@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:xceed="http://schemas.xceed.com/wpf/xaml/toolkit"
-             xmlns:model="clr-namespace:DMT.Models;assembly=DMT.Models"
              xmlns:self="clr-namespace:DMT.Config.Pages"
              mc:Ignorable="d" 
              d:DesignHeight="450" 

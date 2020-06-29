@@ -102,6 +102,13 @@ namespace DMT.Services
                 RouteConsts.TSB.SetActive.Url, tsb);
         }
 
+        public List<Shift> GetShifts()
+        {
+            var ret = NRestClient.Create(port: 9000).Execute<List<Shift>>(
+                RouteConsts.TSB.GetShifts.Url, new { });
+            return ret;
+        }
+
         /*
         public string BeginJob()
         {

@@ -55,5 +55,13 @@ namespace DMT.Services
         {
             value.SetActive();
         }
+
+        [HttpPost]
+        [ActionName(RouteConsts.TSB.GetShifts.Name)]
+        public List<Shift> GetShifts()
+        {
+            var results = Shift.Gets();
+            return results;
+        }
     }
 }
