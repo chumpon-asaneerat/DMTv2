@@ -5,25 +5,33 @@ using System.Linq;
 using System.Web.Http;
 using NLib.Reflection;
 
+using DMT.Models;
+using System;
+
 #endregion
 
 namespace DMT.Services
 {
     public class JobController : ApiController
     {
+        public JobController()
+        {
+            Console.WriteLine("JobController created");
+        }
+        /*
         [HttpPost]
         [ActionName(RouteConsts.Job.GetUser.Name)]
-        public Models.User GetUser([FromBody] Models.User user)
+        public User GetUser([FromBody] User user)
         {
-            Models.User oUser = null;
-            var dUser = Models.User.Get(user.UserId);
+            User oUser = null;
+            var dUser = User.Get(user.UserId);
             if (null != dUser)
             {
                 oUser = dUser.CloneTo<Models.User>();
             }
             return oUser;
         }
-
+        */
         [HttpPost]
         [ActionName(RouteConsts.Job.BeginJob.Name)]
         public string BeginJob([FromBody] Collector collector)

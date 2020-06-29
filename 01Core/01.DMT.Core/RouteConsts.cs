@@ -7,6 +7,32 @@ namespace DMT
     {
         public const string Url = @"api";
 
+        public static class TSB
+        {
+            public const string Url = RouteConsts.Url + @"/TSB";
+
+            public static class GetTSBs
+            {
+                public const string Name = "GetTSBs";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
+            public static class GetTSBPlazas
+            {
+                public const string Name = "GetTSBPlazas";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
+            public static class GetTSBLanes
+            {
+                public const string Name = "GetTSBLanes";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
+            public static class GetPlazaLanes
+            {
+                public const string Name = "GetPlazaLanes";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
+        }
+
         public static class Job
         {
             public const string Url = RouteConsts.Url + @"/Job";

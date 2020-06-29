@@ -113,6 +113,7 @@
     </Compile>
     <Compile Include="Services\WebServer\Controllers\JobController.cs" />
     <Compile Include="Services\WebServer\Controllers\SupervisorController.cs" />
+    <Compile Include="Services\WebServer\Controllers\TSBController.cs" />
     <Compile Include="Services\WebServer\LocalDatabaseWebServer.cs" />
   </ItemGroup>
   <ItemGroup>

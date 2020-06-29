@@ -52,7 +52,7 @@ namespace DMT.Models
             return Plaza.GetTSBPlazas(this);
         }
 
-        public List<Plaza> GetLanes()
+        public List<Lane> GetLanes()
         {
             return Lane.GetTSBLanes(this);
         }
@@ -165,6 +165,17 @@ namespace DMT.Models
 
         #region Static Methods
 
+        public static List<Plaza> SetActive(string tsbId)
+        {
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM Plaza ";
+                cmd += " WHERE TSBId = ?";
+                return NQuery.Query<Plaza>(cmd, tsbId);
+            }
+        }
+
         #endregion
     }
 
@@ -194,6 +205,15 @@ namespace DMT.Models
         /// Constructor.
         /// </summary>
         public Plaza() : base() { }
+
+        #endregion
+
+        #region Public Methods
+
+        public List<Lane> GetLanes()
+        {
+            return Lane.GetPlazaLanes(this);
+        }
 
         #endregion
 
@@ -506,22 +526,41 @@ namespace DMT.Models
 
         #region Static Methods
 
-        public static List<Plaza> GetTSBLanes(TSB value)
+        public static List<Lane> GetTSBLanes(TSB value)
         {
             lock (sync)
             {
-                if (null == value) return new List<Plaza>();
+                if (null == value) return new List<Lane>();
                 return GetTSBLanes(value.TSBId);
             }
         }
-        public static List<Plaza> GetTSBLanes(string tsbId)
+        public static List<Lane> GetTSBLanes(string tsbId)
         {
             lock (sync)
             {
                 string cmd = string.Empty;
                 cmd += "SELECT * FROM Lane ";
                 cmd += " WHERE TSBId = ?";
-                return NQuery.Query<Plaza>(cmd, tsbId);
+                return NQuery.Query<Lane>(cmd, tsbId);
+            }
+        }
+        public static List<Lane> GetPlazaLanes(Plaza value)
+        {
+            lock (sync)
+            {
+                if (null == value) return new List<Lane>();
+                return GetPlazaLanes(value.TSBId, value.PlazaId);
+            }
+        }
+        public static List<Lane> GetPlazaLanes(string tsbId, string plazaId)
+        {
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM Lane ";
+                cmd += " WHERE TSBId = ?";
+                cmd += "   AND PlazaId = ?";
+                return NQuery.Query<Lane>(cmd, tsbId, plazaId);
             }
         }
 

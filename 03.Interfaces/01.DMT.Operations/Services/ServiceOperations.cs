@@ -8,6 +8,8 @@ using System.Net;
 using RestSharp;
 using NLib.ServiceProcess;
 
+using DMT.Models;
+
 #endregion
 
 namespace DMT.Services
@@ -66,13 +68,35 @@ namespace DMT.Services
 
         #region Public Methods
 
-        public Models.User GetUser(Models.User user)
+        public List<TSB> GetTSBs()
         {
-            var ret = NRestClient.Create(port: 9000).Execute<Models.User>(
-                RouteConsts.Job.GetUser.Url, user);
+            var ret = NRestClient.Create(port: 9000).Execute<List<TSB>>(
+                RouteConsts.TSB.GetTSBs.Url, new { });
             return ret;
         }
 
+        public List<Plaza> GetTSBPlazas(TSB tsb)
+        {
+            var ret = NRestClient.Create(port: 9000).Execute<List<Plaza>>(
+                RouteConsts.TSB.GetTSBPlazas.Url, tsb);
+            return ret;
+        }
+
+        public List<Lane> GetTSBLanes(TSB tsb)
+        {
+            var ret = NRestClient.Create(port: 9000).Execute<List<Lane>>(
+                RouteConsts.TSB.GetTSBLanes.Url, tsb);
+            return ret;
+        }
+
+        public List<Lane> GetPlazaLanes(Plaza plaza)
+        {
+            var ret = NRestClient.Create(port: 9000).Execute<List<Lane>>(
+                RouteConsts.TSB.GetPlazaLanes.Url, plaza);
+            return ret;
+        }
+
+        /*
         public string BeginJob()
         {
             var host = this.BaseAddress;
@@ -84,6 +108,7 @@ namespace DMT.Services
             var response = client.Execute(request);
             return (null != response) ? response.Content : "No response.";
         }
+        */
 
         #endregion
 

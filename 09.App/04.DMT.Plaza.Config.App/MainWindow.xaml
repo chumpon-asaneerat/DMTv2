@@ -25,8 +25,10 @@
             <Fluent:RibbonTabItem Header="Local Data Service">
                 <!-- Group - Local URI -->
                 <Fluent:RibbonGroupBox Header="Data Service">
-                    <Fluent:Button Header="Setup URI (local)"
-                                   Width="75">
+                    <Fluent:Button x:Name="cmdSetupLocalUri" 
+                                   Header="Setup URI (local)"
+                                   Width="75"
+                                   Click="cmdSetupLocalUri_Click">
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/Configs/config_01.png"/>
                         </Fluent:Button.LargeIcon>
@@ -34,14 +36,18 @@
                 </Fluent:RibbonGroupBox>
                 <!-- Group - Master -->
                 <Fluent:RibbonGroupBox Header="Master Data">
-                    <Fluent:Button Header="Plaza Manage"
-                                   Width="75">
+                    <Fluent:Button x:Name="cmdTSBManage" 
+                                   Header="TSB Manage"
+                                   Width="75"
+                                   Click="cmdTSBManage_Click">
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/Networks/plaza_network1.png" />
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
-                    <Fluent:Button Header="Staff Manage"
-                                   Width="75">
+                    <Fluent:Button x:Name="cmdStafView" 
+                                   Header="Staff View"
+                                   Width="75"
+                                   Click="cmdStafView_Click">
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/users/users.ico" />
                         </Fluent:Button.LargeIcon>
@@ -136,8 +142,8 @@
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
-        <Grid>
-            <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <ContentPresenter x:Name="container"/>
         </Grid>
     </Grid>
 </Fluent:RibbonWindow>

@@ -134,6 +134,7 @@ namespace DMT.Services
             // for all domain otherwise call static method with user connnection
             // in each domain class instead omit connection version).
             NTable.Default = Db;
+            NQuery.Default = Db;
 
             Db.CreateTable<TSB>();
             Db.CreateTable<Plaza>();
@@ -204,6 +205,7 @@ namespace DMT.Services
                 LaneId = "DD01",
                 LaneType = "MTC",
                 LaneAbbr = "DD01",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
@@ -213,6 +215,7 @@ namespace DMT.Services
                 LaneId = "DD02",
                 LaneType = "MTC",
                 LaneAbbr = "DD02",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
@@ -222,6 +225,7 @@ namespace DMT.Services
                 LaneId = "DD03",
                 LaneType = "A/M",
                 LaneAbbr = "DD03",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
@@ -231,6 +235,7 @@ namespace DMT.Services
                 LaneId = "DD04",
                 LaneType = "ETC",
                 LaneAbbr = "DD04",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
@@ -250,6 +255,7 @@ namespace DMT.Services
                 LaneId = "DD11", 
                 LaneType = "?", 
                 LaneAbbr = "DD11",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
@@ -259,6 +265,7 @@ namespace DMT.Services
                 LaneId = "DD12",
                 LaneType = "?",
                 LaneAbbr = "DD12",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
@@ -268,6 +275,7 @@ namespace DMT.Services
                 LaneId = "DD13",
                 LaneType = "?",
                 LaneAbbr = "DD13",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
@@ -277,6 +285,7 @@ namespace DMT.Services
                 LaneId = "DD14",
                 LaneType = "?",
                 LaneAbbr = "DD14",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
@@ -286,6 +295,7 @@ namespace DMT.Services
                 LaneId = "DD15",
                 LaneType = "?",
                 LaneAbbr = "DD15",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
@@ -295,6 +305,7 @@ namespace DMT.Services
                 LaneId = "DD16",
                 LaneType = "?",
                 LaneAbbr = "DD16",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
@@ -324,6 +335,7 @@ namespace DMT.Services
                 LaneId = "SS01",
                 LaneType = "?",
                 LaneAbbr = "SS01",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
@@ -333,6 +345,7 @@ namespace DMT.Services
                 LaneId = "SS02",
                 LaneType = "?",
                 LaneAbbr = "SS02",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
@@ -342,6 +355,7 @@ namespace DMT.Services
                 LaneId = "SS03",
                 LaneType = "?",
                 LaneAbbr = "SS03",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
@@ -371,6 +385,7 @@ namespace DMT.Services
                 LaneId = "LP01",
                 LaneType = "?",
                 LaneAbbr = "LP01",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
@@ -380,6 +395,7 @@ namespace DMT.Services
                 LaneId = "LP02",
                 LaneType = "?",
                 LaneAbbr = "LP02",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
@@ -389,6 +405,7 @@ namespace DMT.Services
                 LaneId = "LP03",
                 LaneType = "?",
                 LaneAbbr = "LP03",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
@@ -398,6 +415,7 @@ namespace DMT.Services
                 LaneId = "LP04",
                 LaneType = "?",
                 LaneAbbr = "LP04",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
@@ -418,6 +436,7 @@ namespace DMT.Services
                 LaneId = "LP21",
                 LaneType = "?",
                 LaneAbbr = "LP21",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
@@ -428,6 +447,7 @@ namespace DMT.Services
                 LaneId = "LP22",
                 LaneType = "?",
                 LaneAbbr = "LP22",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
