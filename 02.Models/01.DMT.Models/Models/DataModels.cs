@@ -57,6 +57,11 @@ namespace DMT.Models
             return Lane.GetTSBLanes(this);
         }
 
+        public void SetActive()
+        {
+            TSB.SetActive(this.TSBId);
+        }
+
         #endregion
 
         #region Public Proprties
@@ -165,14 +170,21 @@ namespace DMT.Models
 
         #region Static Methods
 
-        public static List<Plaza> SetActive(string tsbId)
+        public static void SetActive(string tsbId)
         {
             lock (sync)
             {
+                // inactive all TSBs
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM Plaza ";
-                cmd += " WHERE TSBId = ?";
-                return NQuery.Query<Plaza>(cmd, tsbId);
+                cmd += "UPDATE TSB ";
+                cmd += "   SET Active = ?";
+                NQuery.Execute(cmd, false);
+                // Set active TSB
+                cmd = string.Empty;
+                cmd += "UPDATE TSB ";
+                cmd += "   SET Active = ? ";
+                cmd += " WHERE TSBId = ? ";
+                NQuery.Execute(cmd, true, tsbId);
             }
         }
 

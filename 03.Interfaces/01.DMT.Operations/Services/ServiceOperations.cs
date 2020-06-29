@@ -96,6 +96,12 @@ namespace DMT.Services
             return ret;
         }
 
+        public void SetActive(TSB tsb)
+        {
+            NRestClient.Create(port: 9000).Execute(
+                RouteConsts.TSB.SetActive.Url, tsb);
+        }
+
         /*
         public string BeginJob()
         {

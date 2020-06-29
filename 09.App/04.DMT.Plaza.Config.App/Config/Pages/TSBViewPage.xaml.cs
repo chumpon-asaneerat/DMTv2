@@ -50,6 +50,20 @@ namespace DMT.Config.Pages
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            RefreshTree();
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+        }
+
+        #endregion
+
+        private void RefreshTree()
+        {
+            tree.ItemsSource = null;
+
+            items.Clear();
             var tsbs = ops.GetTSBs();
             tsbs.ForEach(tsb =>
             {
@@ -58,7 +72,7 @@ namespace DMT.Config.Pages
                 var plazas = ops.GetTSBPlazas(item);
                 if (null != plazas)
                 {
-                    plazas.ForEach(plaza => 
+                    plazas.ForEach(plaza =>
                     {
                         PlazaItem pItem = plaza.CloneTo<PlazaItem>();
                         item.Plazas.Add(pItem);
@@ -78,9 +92,16 @@ namespace DMT.Config.Pages
             tree.ItemsSource = items;
         }
 
-        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
-        {
+        #region Set Active
 
+        private void cmdSetActiveTSB_Click(object sender, RoutedEventArgs e)
+        {
+            var item = (sender as Button).DataContext;
+            if (null != item && item is TSBItem)
+            {
+                ops.SetActive(item as TSB);
+                RefreshTree();
+            }
         }
 
         #endregion
@@ -91,6 +112,12 @@ namespace DMT.Config.Pages
         public TSBItem()
         {
             Plazas = new ObservableCollection<PlazaItem>();
+        }
+
+        public string IsActive 
+        {
+            get { return (this.Active) ? "[A]" : ""; }
+            set { }
         }
         public ObservableCollection<PlazaItem> Plazas { get; set; }
     }

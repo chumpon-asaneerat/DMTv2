@@ -74,13 +74,11 @@ namespace DMT.Models
         /// <summary>
         /// Execute Non Query.
         /// </summary>
-        /// <typeparam name="T">The Target Class.</typeparam>
         /// <param name="db">The connection.</param>
         /// <param name="query">The query string.</param>
         /// <param name="args">The query arguments.</param>
         /// <returns>Returns effected row(s) count.</returns>
-        public static int Execute<T>(SQLiteConnection db, string query, params object[] args)
-            where T : new()
+        public static int Execute(SQLiteConnection db, string query, params object[] args)
         {
             lock (sync)
             {
@@ -94,7 +92,6 @@ namespace DMT.Models
         /// <summary>
         /// Execute Non Query.
         /// </summary>
-        /// <typeparam name="T">The Target Class.</typeparam>
         /// <param name="query">The query string.</param>
         /// <param name="args">The query arguments.</param>
         /// <returns>Returns effected row(s) count.</returns>
@@ -103,7 +100,7 @@ namespace DMT.Models
             lock (sync)
             {
                 SQLiteConnection db = Default;
-                return Execute<T>(db, query, args);
+                return Execute(db, query, args);
             }
         }
 

@@ -48,5 +48,12 @@ namespace DMT.Services
             var results = value.GetLanes();
             return results;
         }
+
+        [HttpPost]
+        [ActionName(RouteConsts.TSB.SetActive.Name)]
+        public void SetActive([FromBody] TSB value)
+        {
+            value.SetActive();
+        }
     }
 }
