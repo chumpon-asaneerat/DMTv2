@@ -95,6 +95,9 @@ namespace DMT.Services
         /// </summary>
         public class TSBOprations
         {
+            private DateTime LastUpdated = DateTime.MinValue;
+            private TSB _current = null;
+
             #region Constructor
 
             /// <summary>
@@ -142,9 +145,16 @@ namespace DMT.Services
 
             public TSB GetCurrent()
             {
-                var ret = NRestClient.Create(port: 9000).Execute<TSB>(
-                    RouteConsts.TSB.GetCurrent.Url, new { });
-                return ret;
+                TSB ret = _current;
+                TimeSpan ts = DateTime.Now - LastUpdated;
+                if (ts.TotalMinutes >= 1)
+                {
+                    _current = NRestClient.Create(port: 9000).Execute<TSB>(
+                        RouteConsts.TSB.GetCurrent.Url, new { });
+
+                    LastUpdated = DateTime.Now;
+                }                
+                return _current;
             }
         }
 
@@ -215,6 +225,9 @@ namespace DMT.Services
         /// </summary>
         public class ShiftOperations
         {
+            private DateTime LastUpdated = DateTime.MinValue;
+            private TSBShift _current = null;
+
             #region Constructor
 
             /// <summary>
@@ -238,6 +251,9 @@ namespace DMT.Services
                 if (null == shift) return;
                 NRestClient.Create(port: 9000).Execute(
                     RouteConsts.Shift.ChangeShift.Url, shift);
+                
+                // reset last update for reload new shirt.
+                LastUpdated = DateTime.MinValue;
             }
 
             public TSBShift Create(Shift shift, User supervisor)
@@ -253,9 +269,16 @@ namespace DMT.Services
 
             public TSBShift GetCurrent()
             {
-                var ret = NRestClient.Create(port: 9000).Execute<TSBShift>(
-                    RouteConsts.Shift.GetCurrent.Url, new { });
-                return ret;
+                TimeSpan ts = DateTime.Now - LastUpdated;
+                if (ts.TotalMinutes >= 1)
+                {
+                    _current = NRestClient.Create(port: 9000).Execute<TSBShift>(
+                        RouteConsts.Shift.GetCurrent.Url, new { });
+
+                    LastUpdated = DateTime.Now;
+                }
+                return _current;
+
             }
 
             #endregion

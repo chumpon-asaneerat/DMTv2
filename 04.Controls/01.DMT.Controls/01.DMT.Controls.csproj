@@ -64,9 +64,6 @@
     <Compile Include="Common\MenuGroupCaption.xaml.cs">
       <DependentUpon>MenuGroupCaption.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Header\Elements\HeaderPlazaTOD.xaml.cs">
-      <DependentUpon>HeaderPlazaTOD.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Header\Elements\HeaderSupervisor.xaml.cs">
       <DependentUpon>HeaderSupervisor.xaml</DependentUpon>
     </Compile>
@@ -325,10 +322,6 @@
     <Page Include="Common\MenuGroupCaption.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Header\Elements\HeaderPlazaTOD.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Header\Elements\HeaderSupervisor.xaml">
       <SubType>Designer</SubType>
