@@ -188,6 +188,18 @@ namespace DMT.Models
             }
         }
 
+        public static TSB GetCurrent()
+        {
+            lock (sync)
+            {
+                // inactive all TSBs
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM TSB ";
+                cmd += " WHERE Active = ?";
+                return NQuery.Query<TSB>(cmd, true).FirstOrDefault();
+            }
+        }
+
         #endregion
     }
 
@@ -1176,9 +1188,11 @@ namespace DMT.Models
 
     #endregion
 
-    public class Current
+    public class PlazaInfo
     {
-        
+        public TSB TSB { get; set; }
+        public User Supervisor { get; set; }
+        public Shift Shift { get; set; }
     }
 
     public static class Search

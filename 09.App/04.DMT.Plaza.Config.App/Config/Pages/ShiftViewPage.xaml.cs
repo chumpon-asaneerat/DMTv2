@@ -70,7 +70,7 @@ namespace DMT.Config.Pages
 
         private void RefreshList()
         {
-            listView.ItemsSource = ops.TSB.GetShifts();
+            listView.ItemsSource = ops.Shifts.GetShifts();
         }
     }
 }

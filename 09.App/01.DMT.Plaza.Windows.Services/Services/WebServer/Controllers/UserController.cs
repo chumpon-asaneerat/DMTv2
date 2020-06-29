@@ -13,9 +13,21 @@ namespace DMT.Services
 {
     public class UserController : ApiController
     {
-        public UserController()
+        [HttpPost]
+        [ActionName(RouteConsts.User.GetRoles.Name)]
+        public List<Role> GetRoles()
         {
-            Console.WriteLine("UserController created.");
+            var results = Role.Gets();
+            return results;
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.User.GetUsers.Name)]
+        public List<User> GetUsers(Role value)
+        {
+            int status = 1; // active only
+            var results = value.GetUsers(status);
+            return results;
         }
 
         [HttpPost]

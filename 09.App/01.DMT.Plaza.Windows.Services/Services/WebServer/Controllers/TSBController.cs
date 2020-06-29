@@ -53,27 +53,10 @@ namespace DMT.Services
         }
 
         [HttpPost]
-        [ActionName(RouteConsts.TSB.GetShifts.Name)]
-        public List<Shift> GetShifts()
+        [ActionName(RouteConsts.TSB.GetCurrent.Name)]
+        public TSB GetCurrent()
         {
-            var results = Shift.Gets();
-            return results;
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.TSB.GetRoles.Name)]
-        public List<Role> GetRoles()
-        {
-            var results = Role.Gets();
-            return results;
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.TSB.GetUsers.Name)]
-        public List<User> GetUsers(Role value)
-        {
-            int status = 1; // active only
-            var results = value.GetUsers(status);
+            var results = TSB.GetCurrent();
             return results;
         }
     }

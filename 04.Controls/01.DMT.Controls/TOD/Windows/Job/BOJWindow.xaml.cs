@@ -48,6 +48,12 @@ namespace DMT.TOD.Windows.Job
                 cbShift.Focus();
                 return;
             }
+            Shift shift = cbShift.SelectedItem as Shift;
+            if (null != shift)
+            {
+
+            }
+
             DialogResult = true;
         }
 
@@ -62,8 +68,9 @@ namespace DMT.TOD.Windows.Job
             if (null != _user)
             {
                 DateTime dt = DateTime.Now;
-                cbShift.ItemsSource = ops.TSB.GetShifts();
-
+                cbShift.ItemsSource = ops.Shifts.GetShifts();
+                var tsb = ops.TSB.GetCurrent();
+                txtPlaza.Text = tsb.TSBNameTH;
                 txtDate.Text = dt.ToThaiDateString();
                 txtTime.Text = dt.ToThaiTimeString();
                 txtID.Text = _user.UserId;

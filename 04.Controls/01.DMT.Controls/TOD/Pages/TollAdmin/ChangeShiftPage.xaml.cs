@@ -44,6 +44,16 @@ namespace DMT.TOD.Pages.TollAdmin
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
+            if (cbShifts.SelectedIndex == -1)
+            {
+                cbShifts.Focus();
+                return;
+            }
+            Shift shift = cbShifts.SelectedItem as Shift;
+            if (null != shift)
+            {
+                ops.Shifts.ChangeShift(shift);
+            }
             // Main Menu Page
             var page = new Menu.MainMenu();
             PageContentManager.Instance.Current = page;
@@ -55,7 +65,7 @@ namespace DMT.TOD.Pages.TollAdmin
             if (null != _user)
             {
                 DateTime dt = DateTime.Now;
-                cbShifts.ItemsSource = ops.TSB.GetShifts();
+                cbShifts.ItemsSource = ops.Shifts.GetShifts();
                 // setup lane view.
                 //grid.setup()
             }

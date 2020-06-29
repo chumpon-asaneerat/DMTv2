@@ -901,6 +901,7 @@ namespace DMT.Services
             item = new Config() { Key = Configs.DC.terminal, Value = "49701" };
             if (!Config.Exists(item)) Config.Save(item);
             // for application
+            /*
             item = new Config() { Key = Configs.App.TSBId, Value = "" };
             if (!Config.Exists(item)) Config.Save(item);
             item = new Config() { Key = Configs.App.PlazaId, Value = "" };
@@ -909,6 +910,7 @@ namespace DMT.Services
             if (!Config.Exists(item)) Config.Save(item);
             item = new Config() { Key = Configs.App.ShiftId, Value = "" };
             if (!Config.Exists(item)) Config.Save(item);
+            */
         }
 
         #endregion

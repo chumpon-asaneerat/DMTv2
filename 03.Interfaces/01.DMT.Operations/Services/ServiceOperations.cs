@@ -75,6 +75,7 @@ namespace DMT.Services
         {
             TSB = new TSBOprations();
             Users = new UserOperations();
+            Shifts = new ShiftOperations();
         }
 
         #endregion
@@ -83,10 +84,11 @@ namespace DMT.Services
 
         public TSBOprations TSB { get; private set; }
         public UserOperations Users { get; private set; }
+        public ShiftOperations Shifts { get; private set; }
 
         #endregion
 
-        #region TSBOprations class
+        #region TSBOprations
 
         /// <summary>
         /// The TSBOprations class.
@@ -138,31 +140,17 @@ namespace DMT.Services
                     RouteConsts.TSB.SetActive.Url, tsb);
             }
 
-            public List<Shift> GetShifts()
+            public TSB GetCurrent()
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<Shift>>(
-                    RouteConsts.TSB.GetShifts.Url, new { });
-                return ret;
-            }
-
-            public List<Role> GetRoles()
-            {
-                var ret = NRestClient.Create(port: 9000).Execute<List<Role>>(
-                    RouteConsts.TSB.GetRoles.Url, new { });
-                return ret;
-            }
-
-            public List<User> GetUsers(Role role)
-            {
-                var ret = NRestClient.Create(port: 9000).Execute<List<User>>(
-                    RouteConsts.TSB.GetUsers.Url, role);
+                var ret = NRestClient.Create(port: 9000).Execute<TSB>(
+                    RouteConsts.TSB.GetCurrent.Url, new { });
                 return ret;
             }
         }
 
         #endregion
 
-        #region UserOperations class
+        #region UserOperations
 
         /// <summary>
         /// The UserOperations class.
@@ -179,6 +167,20 @@ namespace DMT.Services
             #endregion
 
             #region Public Methods
+
+            public List<Role> GetRoles()
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<Role>>(
+                    RouteConsts.User.GetRoles.Url, new { });
+                return ret;
+            }
+
+            public List<User> GetUsers(Role role)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<User>>(
+                    RouteConsts.User.GetUsers.Url, role);
+                return ret;
+            }
 
             public User GetByCardId(Search.Users.ByCardId value)
             {
@@ -198,6 +200,47 @@ namespace DMT.Services
             {
                 var ret = NRestClient.Create(port: 9000).Execute<User>(
                     RouteConsts.User.GetByLogIn.Url, value);
+                return ret;
+            }
+
+            #endregion
+        }
+
+        #endregion
+
+        #region ShiftOperations
+
+        /// <summary>
+        /// The ShiftOperations class.
+        /// </summary>
+        public class ShiftOperations
+        {
+            #region Constructor
+
+            /// <summary>
+            /// Constructor.
+            /// </summary>
+            internal ShiftOperations() { }
+
+            #endregion
+
+            #region Public Methods
+
+            public List<Shift> GetShifts()
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<Shift>>(
+                    RouteConsts.Shift.GetShifts.Url, new { });
+                return ret;
+            }
+
+            public void ChangeShift(Shift value)
+            {
+                if (null == value) return;
+            }
+
+            public Shift GetCurrent()
+            {
+                Shift ret = Shift.Create();
                 return ret;
             }
 

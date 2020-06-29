@@ -36,19 +36,9 @@ namespace DMT
                 public const string Name = "SetActive";
                 public const string Url = TSB.Url + @"/" + Name;
             }
-            public static class GetShifts
+            public static class GetCurrent
             {
-                public const string Name = "GetShifts";
-                public const string Url = TSB.Url + @"/" + Name;
-            }
-            public static class GetRoles
-            {
-                public const string Name = "GetRoles";
-                public const string Url = TSB.Url + @"/" + Name;
-            }
-            public static class GetUsers
-            {
-                public const string Name = "GetUsers";
+                public const string Name = "GetCurrent";
                 public const string Url = TSB.Url + @"/" + Name;
             }
         }
@@ -56,6 +46,17 @@ namespace DMT
         public static class User
         {
             public const string Url = RouteConsts.Url + @"/User";
+
+            public static class GetRoles
+            {
+                public const string Name = "GetRoles";
+                public const string Url = User.Url + @"/" + Name;
+            }
+            public static class GetUsers
+            {
+                public const string Name = "GetUsers";
+                public const string Url = User.Url + @"/" + Name;
+            }
 
             public static class GetById
             {
@@ -73,6 +74,23 @@ namespace DMT
             {
                 public const string Name = "GetByLogIn";
                 public const string Url = User.Url + @"/" + Name;
+            }
+        }
+
+        public static class Shift
+        {
+            public const string Url = RouteConsts.Url + @"/Shift";
+
+            public static class GetShifts
+            {
+                public const string Name = "GetShifts";
+                public const string Url = Shift.Url + @"/" + Name;
+            }
+
+            public static class GetCurrent
+            {
+                public const string Name = "GetCurrent";
+                public const string Url = Shift.Url + @"/" + Name;
             }
         }
 
