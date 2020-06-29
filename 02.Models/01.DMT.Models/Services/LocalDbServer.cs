@@ -13,6 +13,8 @@ using SQLiteNetExtensions.Extensions;
 using NLib.IO;
 using System.Runtime.CompilerServices;
 using DMT.Models;
+using System.Reflection;
+using NLib;
 
 #endregion
 
@@ -917,38 +919,49 @@ namespace DMT.Services
         /// </summary>
         public void Start()
         {
+            MethodBase med = MethodBase.GetCurrentMethod();
             if (null == Db)
             {
                 lock (typeof(LocalDbServer))
                 {
-                    // ---------------------------------------------------------------
-                    // NOTE:
-                    // ---------------------------------------------------------------
-                    // If Exception due to version mismatch here
-                    // Please rebuild only this project and try again
-                    // VS Should Solve mismatch version properly (maybe)
-                    // See: https://nickcraver.com/blog/2020/02/11/binding-redirects/
-                    // for more information.
-                    // ---------------------------------------------------------------
+                    try
+                    {
+                        // ---------------------------------------------------------------
+                        // NOTE:
+                        // ---------------------------------------------------------------
+                        // If Exception due to version mismatch here
+                        // Please rebuild only this project and try again
+                        // VS Should Solve mismatch version properly (maybe)
+                        // See: https://nickcraver.com/blog/2020/02/11/binding-redirects/
+                        // for more information.
+                        // ---------------------------------------------------------------
 
-                    string path = Path.Combine(LocalFolder, FileName);
-                    Db = new SQLiteConnection(path,
-                        SQLiteOpenFlags.Create |
-                        SQLiteOpenFlags.SharedCache |
-                        SQLiteOpenFlags.ReadWrite |
-                        SQLiteOpenFlags.FullMutex,
-                        storeDateTimeAsTicks: true);
-                    Db.BusyTimeout = new TimeSpan(0, 0, 5); // set busy timeout.
+                        string path = Path.Combine(LocalFolder, FileName);
+                        Db = new SQLiteConnection(path,
+                            SQLiteOpenFlags.Create |
+                            SQLiteOpenFlags.SharedCache |
+                            SQLiteOpenFlags.ReadWrite |
+                            SQLiteOpenFlags.FullMutex,
+                            storeDateTimeAsTicks: true);
+                        Db.BusyTimeout = new TimeSpan(0, 0, 5); // set busy timeout.
+                    }
+                    catch (Exception ex)
+                    {
+                        med.Err(ex);
+                        Db = null;
+                    }
 
+                    if (null != Db)
+                    {
+                        // Set Default connection 
+                        // (be careful to make sure that we only has single database
+                        // for all domain otherwise call static method with user connnection
+                        // in each domain class instead omit connection version).
+                        NTable.Default = Db;
+                        NQuery.Default = Db;
 
-                    // Set Default connection 
-                    // (be careful to make sure that we only has single database
-                    // for all domain otherwise call static method with user connnection
-                    // in each domain class instead omit connection version).
-                    NTable.Default = Db;
-                    NQuery.Default = Db;
-
-                    InitTables();
+                        InitTables();
+                    }
                 }
             }
         }
