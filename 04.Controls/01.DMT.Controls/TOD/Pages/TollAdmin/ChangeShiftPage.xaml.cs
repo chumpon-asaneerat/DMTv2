@@ -8,6 +8,9 @@ using System.Windows.Controls;
 using NLib;
 using NLib.Services;
 
+using DMT.Models;
+using DMT.Services;
+
 #endregion
 
 namespace DMT.TOD.Pages.TollAdmin
@@ -29,6 +32,9 @@ namespace DMT.TOD.Pages.TollAdmin
 
         #endregion
 
+        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private User _user = null;
+
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
         {
             // Main Menu Page
@@ -42,14 +48,17 @@ namespace DMT.TOD.Pages.TollAdmin
             var page = new Menu.MainMenu();
             PageContentManager.Instance.Current = page;
         }
-        /*
-        private Models.Job _job;
 
-        public void Setup(Models.Job job) 
+        public void Setup(User user)
         {
-            _job = job;
-            grid.Setup(_job.Lanes);
+            _user = user;
+            if (null != _user)
+            {
+                DateTime dt = DateTime.Now;
+                cbShifts.ItemsSource = ops.TSB.GetShifts();
+                // setup lane view.
+                //grid.setup()
+            }
         }
-        */
     }
 }

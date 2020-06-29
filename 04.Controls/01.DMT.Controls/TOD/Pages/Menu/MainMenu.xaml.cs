@@ -103,10 +103,12 @@ namespace DMT.TOD.Pages.Menu
             {
                 return;
             }
+            var user = signinWin.User;
+
             // Change Shift
             var page = new TollAdmin.ChangeShiftPage();
             // setup
-            //page.Setup(Models.Job.FindJob("14077"));
+            page.Setup(user);
             PageContentManager.Instance.Current = page;
         }
 

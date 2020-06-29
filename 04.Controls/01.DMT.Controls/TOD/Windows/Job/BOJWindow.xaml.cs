@@ -1,6 +1,5 @@
 ﻿#region Using
 
-using DMT.Models;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -44,7 +43,11 @@ namespace DMT.TOD.Windows.Job
 
         private void cmdOK_Click(object sender, RoutedEventArgs e)
         {
-            //Models.Job.BeginJob("14077", "นายเอนก หอมจรูง", 2);
+            if (cbShift.SelectedIndex == -1)
+            {
+                cbShift.Focus();
+                return;
+            }
             DialogResult = true;
         }
 
@@ -59,6 +62,8 @@ namespace DMT.TOD.Windows.Job
             if (null != _user)
             {
                 DateTime dt = DateTime.Now;
+                cbShift.ItemsSource = ops.TSB.GetShifts();
+
                 txtDate.Text = dt.ToThaiDateString();
                 txtTime.Text = dt.ToThaiTimeString();
                 txtID.Text = _user.UserId;
