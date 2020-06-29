@@ -90,6 +90,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Simulator\Pages\LaneAttendancePage.xaml.cs">
+      <DependentUpon>LaneAttendancePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindow.xaml.cs">
@@ -144,6 +147,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Simulator\Pages\LaneAttendancePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="app.ico" />
@@ -156,7 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Simulator\Controls\" />
-    <Folder Include="Simulator\Pages\" />
     <Folder Include="Simulator\Windows\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

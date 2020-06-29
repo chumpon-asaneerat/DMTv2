@@ -19,61 +19,30 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Fluent:Ribbon Grid.Row="0"
-                       IsQuickAccessToolBarVisible="True"
-                       IsQuickAccessToolBarMenuDropDownVisible="True">
-            <!-- Backstage -->
-            <Fluent:Ribbon.Menu>
-                <Fluent:Backstage Header="HOT">
-                    <Fluent:BackstageTabControl>
-                        <Fluent:BackstageTabItem Header="New" />
-                        <Fluent:BackstageTabItem Header="Print" />
-                        <Fluent:Button Header="Blue" />
-                    </Fluent:BackstageTabControl>
-                </Fluent:Backstage>
-            </Fluent:Ribbon.Menu>
-
-            <!-- Quick Access Toolbar Items -->
-            <Fluent:Ribbon.QuickAccessItems>
-                <!--Use Content or Target Property to set QAT item-->
-                <Fluent:QuickAccessMenuItem IsChecked="true">
-                    <Fluent:Button Header="Pink">
-                        <Fluent:Button.Icon>
-                            <Image Source="Images/Green.png" />
-                        </Fluent:Button.Icon>
-                    </Fluent:Button>
-                </Fluent:QuickAccessMenuItem>
-                <!-- You Can Just Bind with Any Control -->
-                <!--
-                <Fluent:QuickAccessMenuItem Target="{Binding ElementName=buttonGreen}" />
-                -->
-            </Fluent:Ribbon.QuickAccessItems>
-
+                       IsQuickAccessToolBarVisible="False"
+                       IsQuickAccessToolBarMenuDropDownVisible="False">
             <!-- Tabs -->
-            <Fluent:RibbonTabItem Header="Home">
-                <Fluent:RibbonGroupBox Header="Group">
+            <Fluent:RibbonTabItem Header="Lane">
+                <Fluent:RibbonGroupBox Header="Attendance ">
                     <Fluent:Button Header="Green"
-                                   Width="100" Click="Button_Click">
-                        <Fluent:Button.Icon>
-                            <Image Source="Images/Green.png" />
-                        </Fluent:Button.Icon>
+                                   Width="100">
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/GreenLarge.png" />
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
+                    <!--
                     <Fluent:Button Header="Grey"
                                    Width="100">
-                        <Fluent:Button.Icon>
-                            <Image Source="Images/Gray.png"/>
-                        </Fluent:Button.Icon>
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/GrayLarge.png" />
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
+                    -->
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
-        <Grid>
-            <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <ContentPresenter x:Name="container"/>
         </Grid>
     </Grid>
 </Fluent:RibbonWindow>

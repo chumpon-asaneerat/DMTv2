@@ -24,6 +24,7 @@
             <!-- Tab - Local Data Service -->
             <Fluent:RibbonTabItem Header="Local Data Service">
                 <!-- Group - Local URI -->
+                <!--
                 <Fluent:RibbonGroupBox Header="Data Service">
                     <Fluent:Button x:Name="cmdSetupLocalUri" 
                                    Header="Setup URI (local)"
@@ -34,6 +35,7 @@
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
                 </Fluent:RibbonGroupBox>
+                -->
                 <!-- Group - Master -->
                 <Fluent:RibbonGroupBox Header="Master Data">
                     <Fluent:Button x:Name="cmdTSBManage" 
