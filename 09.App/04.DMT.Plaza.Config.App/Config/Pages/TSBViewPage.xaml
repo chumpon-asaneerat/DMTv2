@@ -18,7 +18,8 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <TreeView x:Name="tree"
-                  Grid.Column="0">
+                  Grid.Column="0"
+                  SelectedItemChanged="tree_SelectedItemChanged">
             <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type self:TSBItem}" 
                                           ItemsSource="{Binding Plazas}">
@@ -79,13 +80,7 @@
         </TreeView>
         <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"/>
         <Grid Grid.Column="2">
-            <xceed:PropertyGrid x:Name="pgridTSB"
-                                Visibility="Hidden">
-                
-            </xceed:PropertyGrid>
-            <xceed:PropertyGrid x:Name="pgridPlaza"
-                                Visibility="Hidden">
-
+            <xceed:PropertyGrid x:Name="pgrid">
             </xceed:PropertyGrid>
         </Grid>
     </Grid>

@@ -92,16 +92,26 @@ namespace DMT.Config.Pages
             tree.ItemsSource = items;
         }
 
-        #region Set Active
+        #region Button Handler
 
         private void cmdSetActiveTSB_Click(object sender, RoutedEventArgs e)
         {
+            // Set Active.
             var item = (sender as Button).DataContext;
             if (null != item && item is TSBItem)
             {
                 ops.SetActive(item as TSB);
                 RefreshTree();
             }
+        }
+
+        #endregion
+
+        #region TreeView Handler
+
+        private void tree_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            pgrid.SelectedObject = e.NewValue;
         }
 
         #endregion
