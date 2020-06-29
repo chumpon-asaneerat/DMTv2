@@ -36,6 +36,7 @@ namespace DMT.Pages
 
         private List<string> _roles = new List<string>();
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private User _user = null;
 
         #endregion
 
@@ -67,6 +68,9 @@ namespace DMT.Pages
                 txtUserId.Focus();
                 return;
             }
+
+            _user = user;
+
             // Init Main Menu
             PageContentManager.Instance.Current = new TA.Pages.Menu.MainMenu();
         }
@@ -80,6 +84,8 @@ namespace DMT.Pages
             _roles.Clear();
             _roles.AddRange(roles);
         }
+
+        public User User { get { return _user; } }
 
         #endregion
     }

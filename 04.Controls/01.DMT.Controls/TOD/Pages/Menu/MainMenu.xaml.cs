@@ -39,9 +39,12 @@ namespace DMT.TOD.Pages.Menu
             {
                 return;
             }
+            var user = signinWin.User;
+
             // Begin of Job Page
             var jobWindow = new Windows.Job.BOJWindow();
             jobWindow.Owner = Application.Current.MainWindow;
+            jobWindow.Setup(user);
             if (jobWindow.ShowDialog() == false)
             {
                 return;

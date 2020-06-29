@@ -33,6 +33,7 @@ namespace DMT.Windows
 
         private List<string> _roles = new List<string>();
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private User _user = null;
 
         #endregion
 
@@ -64,7 +65,7 @@ namespace DMT.Windows
                 txtUserId.Focus();
                 return;
             }
-
+            _user = user;
             this.DialogResult = true;
         }
 
@@ -82,6 +83,8 @@ namespace DMT.Windows
             _roles.Clear();
             _roles.AddRange(roles);
         }
+
+        public User User { get { return _user;} }
 
         #endregion
     }
