@@ -48,24 +48,6 @@ TABLES
   - Key [PK] (string MaxLength(30)) - OK
   - Value [PK] (string MaxLength(100)) - OK
 
-SupervisorShift
-  - PkId [PK] (string MaxLength(30), Guid.NewID)
-  - TSBId (string MaxLength(10))
-  - ShiftId (int)
-  - UserId (string MaxLength(10))
-  - Begin (DateTime)
-  - End (DateTime)
-  - LastUpdate (DateTime) -> last time sync from DC
-
-CollectorShift
-  - PkId [PK] (string MaxLength(30), Guid.NewID)
-  - TSBId (string MaxLength(10))
-  - ShiftId (int)
-  - UserId (string MaxLength(10))
-  - Begin (DateTime)
-  - End (DateTime)
-  - LastUpdate (DateTime) -> last time sync from DC
-
 LaneAttendance
   - PkId [PK] (string MaxLength(30), Guid.NewID)
   - PlazaId (string MaxLength(10))

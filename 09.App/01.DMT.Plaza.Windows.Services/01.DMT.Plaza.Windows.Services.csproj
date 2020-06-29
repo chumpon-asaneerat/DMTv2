@@ -112,6 +112,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Services\WebServer\Controllers\JobController.cs" />
+    <Compile Include="Services\WebServer\Controllers\LaneController.cs" />
     <Compile Include="Services\WebServer\Controllers\ShiftController.cs" />
     <Compile Include="Services\WebServer\Controllers\SupervisorController.cs" />
     <Compile Include="Services\WebServer\Controllers\TSBController.cs" />

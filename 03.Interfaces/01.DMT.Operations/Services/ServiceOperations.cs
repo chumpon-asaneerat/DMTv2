@@ -76,6 +76,8 @@ namespace DMT.Services
             TSB = new TSBOprations();
             Users = new UserOperations();
             Shifts = new ShiftOperations();
+            Jobs = new JobOperations();
+            Lanes = new LaneOperations();
         }
 
         #endregion
@@ -85,6 +87,8 @@ namespace DMT.Services
         public TSBOprations TSB { get; private set; }
         public UserOperations Users { get; private set; }
         public ShiftOperations Shifts { get; private set; }
+        public JobOperations Jobs { get; private set; }
+        public LaneOperations Lanes { get; private set; }
 
         #endregion
 
@@ -286,19 +290,70 @@ namespace DMT.Services
 
         #endregion
 
-        /*
-        public string BeginJob()
-        {
-            var host = this.BaseAddress;
-            var client = new RestClient(host);
-            var request = new RestRequest(RouteConsts.Job.BeginJob.Url, Method.POST);
-            request.RequestFormat = DataFormat.Json;
-            request.AddJsonBody(new { Name = "User 1" });
+        #region JobOperations
 
-            var response = client.Execute(request);
-            return (null != response) ? response.Content : "No response.";
+        public class JobOperations
+        {
+            #region Constructor
+
+            /// <summary>
+            /// Constructor.
+            /// </summary>
+            internal JobOperations() { }
+
+            #endregion
+
+            #region Public Methods
+
+            public UserShift Create(Shift shift, User supervisor)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<UserShift>(
+                    RouteConsts.Job.Create.Url,
+                    new UserShiftCreate()
+                    {
+                        Shift = shift,
+                        User = supervisor
+                    });
+                return ret;
+            }
+
+            #endregion
         }
-        */
+
+        #endregion
+
+        #region LaneOperations
+
+        public class LaneOperations
+        {
+            #region Constructor
+
+            /// <summary>
+            /// Constructor.
+            /// </summary>
+            internal LaneOperations() { }
+
+            #endregion
+
+            #region Public Methods
+
+            public LaneAttendance Create(Shift shift, Lane lane, User supervisor)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<LaneAttendance>(
+                    RouteConsts.Lane.Create.Url,
+                    new LaneAttendanceCreate()
+                    {
+                        Shift = shift,
+                        Lane = lane,
+                        User = supervisor
+                    });
+                return ret;
+            }
+
+            #endregion
+        }
+
+        #endregion
 
         #endregion
 

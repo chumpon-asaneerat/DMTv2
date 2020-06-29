@@ -38,6 +38,7 @@ namespace DMT.Services
         [ActionName(RouteConsts.Shift.Create.Name)]
         public TSBShift Create(TSBShiftCreate value)
         {
+            if (null == value) return null;
             return TSBShift.Create(value.Shift, value.User);
         }
     }

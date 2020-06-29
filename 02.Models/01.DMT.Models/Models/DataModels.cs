@@ -13,6 +13,7 @@ using DMT.Services;
 using Newtonsoft.Json;
 using NLib;
 using NLib.Reflection;
+using NLib.Controls.Utils;
 
 #endregion
 
@@ -588,40 +589,6 @@ namespace DMT.Models
                 return NQuery.Query<Lane>(cmd, tsbId, plazaId);
             }
         }
-
-        /*
-        /// <summary>
-        /// Gets by Id
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="PlazaId">The PlazaId.</param>
-        /// <param name="LaneId">The LaneId.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns found record.</returns>
-        internal static Lane Get(SQLiteConnection db, string PlazaId, int LaneId, bool recursive = false)
-        {
-            lock (sync)
-            {
-                if (null == db) return null;
-                return db.GetAllWithChildren<Lane>(
-                    p => p.PlazaId == PlazaId &&
-                    p.LaneId == LaneId,
-                    recursive: recursive).FirstOrDefault();
-            }
-        }
-        /// <summary>
-        /// Gets by Id
-        /// </summary>
-        /// <param name="PlazaId">The PlazaId.</param>
-        /// <param name="LaneId">The LaneId.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns found record.</returns>
-        public static Lane Get(string PlazaId, int LaneId, bool recursive = false)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Get(db, PlazaId, LaneId, recursive);
-        }
-        */
 
         #endregion
     }
@@ -1910,14 +1877,350 @@ namespace DMT.Models
 
     #endregion
 
+    #region LaneAttendance
 
-
-    public class PlazaInfo
+    /// <summary>
+    /// The LaneAttendance Data Model Class.
+    /// </summary>
+    //[Table("LaneAttendance")]
+    public class LaneAttendance : NTable<LaneAttendance>
     {
-        public TSB TSB { get; set; }
-        public User Supervisor { get; set; }
-        public Shift Shift { get; set; }
+        #region Intenral Variables
+
+        private string _PKId = string.Empty;
+
+        private string _TSBId = string.Empty;
+        private string _TSBNameEN = string.Empty;
+        private string _TSBNameTH = string.Empty;
+        private int _ShiftId = 0;
+        private string _ShiftNameTH = string.Empty;
+        private string _ShiftNameEN = string.Empty;
+        private int _LaneNo = 0;
+        private string _LaneId = string.Empty;
+        private string _UserId = string.Empty;
+        private string _FullNameEN = string.Empty;
+        private string _FullNameTH = string.Empty;
+
+        private DateTime _Begin = DateTime.MinValue;
+        private DateTime _End = DateTime.MinValue;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public LaneAttendance() : base()
+        {
+            this.PKId = Guid.NewGuid().ToString();
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets PKId
+        /// </summary>
+        [PrimaryKey, MaxLength(30)]
+        [PeropertyMapName("PKId")]
+        public string PKId
+        {
+            get
+            {
+                return _PKId;
+            }
+            set
+            {
+                if (_PKId != value)
+                {
+                    _PKId = value;
+                    this.RaiseChanged("PKId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets TSBId.
+        /// </summary>
+        [MaxLength(10)]
+        [PeropertyMapName("TSBId")]
+        public string TSBId
+        {
+            get
+            {
+                return _TSBId;
+            }
+            set
+            {
+                if (_TSBId != value)
+                {
+                    _TSBId = value;
+                    this.RaiseChanged("TSBId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets TSBNameEN.
+        /// </summary>
+        [MaxLength(100)]
+        [PeropertyMapName("TSBNameEN")]
+        public string TSBNameEN
+        {
+            get
+            {
+                return _TSBNameEN;
+            }
+            set
+            {
+                if (_TSBNameEN != value)
+                {
+                    _TSBNameEN = value;
+                    this.RaiseChanged("TSBNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets TSBNameTH.
+        /// </summary>
+        [MaxLength(100)]
+        [PeropertyMapName("TSBNameTH")]
+        public string TSBNameTH
+        {
+            get
+            {
+                return _TSBNameTH;
+            }
+            set
+            {
+                if (_TSBNameTH != value)
+                {
+                    _TSBNameTH = value;
+                    this.RaiseChanged("TSBNameTH");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets ShiftId.
+        /// </summary>
+        [PeropertyMapName("ShiftId")]
+        public int ShiftId
+        {
+            get
+            {
+                return _ShiftId;
+            }
+            set
+            {
+                if (_ShiftId != value)
+                {
+                    _ShiftId = value;
+                    this.RaiseChanged("ShiftId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Name TH.
+        /// </summary>
+        [MaxLength(50)]
+        [PeropertyMapName("ShiftNameTH")]
+        public string ShiftNameTH
+        {
+            get
+            {
+                return _ShiftNameTH;
+            }
+            set
+            {
+                if (_ShiftNameTH != value)
+                {
+                    _ShiftNameTH = value;
+                    this.RaiseChanged("ShiftNameTH");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Name EN.
+        /// </summary>
+        [MaxLength(50)]
+        [PeropertyMapName("ShiftNameEN")]
+        public string ShiftNameEN
+        {
+            get
+            {
+                return _ShiftNameEN;
+            }
+            set
+            {
+                if (_ShiftNameEN != value)
+                {
+                    _ShiftNameEN = value;
+                    this.RaiseChanged("ShiftNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Lane No.
+        /// </summary>
+        [PeropertyMapName("LaneNo")]
+        public int LaneNo
+        {
+            get
+            {
+                return _LaneNo;
+            }
+            set
+            {
+                if (_LaneNo != value)
+                {
+                    _LaneNo = value;
+                    this.RaiseChanged("LaneNo");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets LaneId
+        /// </summary>
+        [MaxLength(10)]
+        [PeropertyMapName("LaneId")]
+        public string LaneId
+        {
+            get
+            {
+                return _LaneId;
+            }
+            set
+            {
+                if (_LaneId != value)
+                {
+                    _LaneId = value;
+                    this.RaiseChanged("LaneId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets UserId
+        /// </summary>
+        [MaxLength(10)]
+        [PeropertyMapName("UserId")]
+        public string UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+            set
+            {
+                if (_UserId != value)
+                {
+                    _UserId = value;
+                    this.RaiseChanged("UserId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets FullNameEN
+        /// </summary>
+        [MaxLength(100)]
+        [PeropertyMapName("FullNameEN")]
+        public string FullNameEN
+        {
+            get
+            {
+                return _FullNameEN;
+            }
+            set
+            {
+                if (_FullNameEN != value)
+                {
+                    _FullNameEN = value;
+                    this.RaiseChanged("FullNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets FullNameTH
+        /// </summary>
+        [MaxLength(100)]
+        [PeropertyMapName("FullNameTH")]
+        public string FullNameTH
+        {
+            get
+            {
+                return _FullNameTH;
+            }
+            set
+            {
+                if (_FullNameTH != value)
+                {
+                    _FullNameTH = value;
+                    this.RaiseChanged("FullNameTH");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Begin Date.
+        /// </summary>
+        [PeropertyMapName("Begin")]
+        public DateTime Begin
+        {
+            get { return _Begin; }
+            set
+            {
+                if (_Begin != value)
+                {
+                    _Begin = value;
+                    // Raise event.
+                    RaiseChanged("Begin");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets End Date.
+        /// </summary>
+        [PeropertyMapName("End")]
+        public DateTime End
+        {
+            get { return _End; }
+            set
+            {
+                if (_End != value)
+                {
+                    _End = value;
+                    // Raise event.
+                    RaiseChanged("End");
+                }
+            }
+        }
+
+        #endregion
+
+        #region Static Methods
+
+        public static LaneAttendance Create(Shift shift, Lane lane, User supervisor)
+        {
+            LaneAttendance inst = Create();
+            TSB tsb = TSB.GetCurrent();
+            if (null != tsb) tsb.AssignTo(inst);
+            if (null != shift) shift.AssignTo(inst);
+            if (null != lane) lane.AssignTo(inst);
+            if (null != supervisor) supervisor.AssignTo(inst);
+            return inst;
+        }
+
+        #endregion
     }
+
+    public class LaneAttendanceCreate
+    {
+        public Shift Shift { get; set; }
+        public Lane Lane { get; set; }
+        public User User { get; set; }
+    }
+
+    #endregion
+
+    #region Search nested classes.
 
     public static class Search
     {
@@ -1963,609 +2266,10 @@ namespace DMT.Models
         }
     }
 
+    #endregion
+
+
     /*
-
-
-
-
-
-    #region SupervisorShift
-
-    /// <summary>
-    /// The SupervisorShift Data Model Class.
-    /// </summary>
-    //[Table("SupervisorShift")]
-    public class SupervisorShift : NTable<SupervisorShift>
-    {
-        #region Intenral Variables
-
-        private int _SupervisorShiftId = 0;
-        private string _PlazaId = string.Empty;
-        private string _SupervisorId = string.Empty;
-        private DateTime _Begin = DateTime.MinValue;
-        private DateTime _End = DateTime.MinValue;
-
-        #endregion
-
-        #region Constructor
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        public SupervisorShift() : base() { }
-
-        #endregion
-
-        #region Public Properties
-        /// <summary>
-        /// Gets or sets SupervisorShiftId
-        /// </summary>
-        [PrimaryKey, AutoIncrement]
-        [PeropertyMapName("SupervisorShiftId")]
-        public int SupervisorShiftId
-        {
-            get
-            {
-                return _SupervisorShiftId;
-            }
-            set
-            {
-                if (_SupervisorShiftId != value)
-                {
-                    _SupervisorShiftId = value;
-                    this.RaiseChanged("SupervisorShiftId");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets PlazaId
-        /// </summary>
-        [MaxLength(10)]
-        [PeropertyMapName("PlazaId")]
-        public string PlazaId
-        {
-            get
-            {
-                return _PlazaId;
-            }
-            set
-            {
-                if (_PlazaId != value)
-                {
-                    _PlazaId = value;
-                    this.RaiseChanged("PlazaId");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets SupervisorId
-        /// </summary>
-        [ForeignKey(typeof(User), Name = "UserId"), MaxLength(10)]
-        [PeropertyMapName("SupervisorId")]
-        public string SupervisorId
-        {
-            get
-            {
-                return _SupervisorId;
-            }
-            set
-            {
-                if (_SupervisorId != value)
-                {
-                    _SupervisorId = value;
-                    this.RaiseChanged("SupervisorId");
-                }
-            }
-        }
-
-        [JsonIgnore]
-        [TypeConverter(typeof(ExpandableObjectConverter))]
-        [OneToOne(foreignKey: "SupervisorId", CascadeOperations = CascadeOperation.All)]
-        public User User { get; set; }
-
-        /// <summary>
-        /// Gets or sets Begin Date.
-        /// </summary>
-        [PeropertyMapName("Begin")]
-        public DateTime Begin
-        {
-            get { return _Begin; }
-            set
-            {
-                if (_Begin != value)
-                {
-                    _Begin = value;
-                    // Raise event.
-                    RaiseChanged("Begin");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets End Date.
-        /// </summary>
-        [PeropertyMapName("End")]
-        public DateTime End
-        {
-            get { return _End; }
-            set
-            {
-                if (_End != value)
-                {
-                    _End = value;
-                    // Raise event.
-                    RaiseChanged("End");
-                }
-            }
-        }
-
-        #endregion
-
-        #region Static Methods
-
-        #endregion
-    }
-
-    #endregion
-
-    #region CollectorJob
-
-    /// <summary>
-    /// The CollectorJob Data Model Class.
-    /// </summary>
-    //[Table("CollectorJob")]
-    public class CollectorJob : NTable<CollectorJob>
-    {
-        #region Intenral Variables
-
-        private int _JobId = 0;
-        private int _ShiftId = 0;
-        private string _PlazaId = string.Empty;
-        private string _CollectorId = string.Empty;
-        private DateTime _Begin = DateTime.MinValue;
-        private DateTime _End = DateTime.MinValue;
-
-        #endregion
-
-        #region Constructor
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        public CollectorJob() : base() { }
-
-        #endregion
-
-        #region Public Properties
-
-        /// <summary>
-        /// Gets or sets CollectorShiftId
-        /// </summary>
-        [PrimaryKey, AutoIncrement]
-        [PeropertyMapName("JobId")]
-        public int JobId
-        {
-            get
-            {
-                return _JobId;
-            }
-            set
-            {
-                if (_JobId != value)
-                {
-                    _JobId = value;
-                    this.RaiseChanged("JobId");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets ShiftId
-        /// </summary>
-        [PeropertyMapName("ShiftId")]
-        public int ShiftId
-        {
-            get
-            {
-                return _ShiftId;
-            }
-            set
-            {
-                if (_ShiftId != value)
-                {
-                    _ShiftId = value;
-                    this.RaiseChanged("ShiftId");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets PlazaId
-        /// </summary>
-        [MaxLength(10)]
-        [PeropertyMapName("PlazaId")]
-        public string PlazaId
-        {
-            get
-            {
-                return _PlazaId;
-            }
-            set
-            {
-                if (_PlazaId != value)
-                {
-                    _PlazaId = value;
-                    this.RaiseChanged("PlazaId");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets CollectorId
-        /// </summary>
-        [ForeignKey(typeof(User), Name = "UserId"), MaxLength(10)]
-        [PeropertyMapName("CollectorId")]
-        public string CollectorId
-        {
-            get
-            {
-                return _CollectorId;
-            }
-            set
-            {
-                if (_CollectorId != value)
-                {
-                    _CollectorId = value;
-                    this.RaiseChanged("CollectorId");
-                }
-            }
-        }
-
-        [JsonIgnore]
-        [TypeConverter(typeof(ExpandableObjectConverter))]
-        [OneToOne(foreignKey: "CollectorId", CascadeOperations = CascadeOperation.All)]
-        public User User { get; set; }
-
-        /// <summary>
-        /// Gets or sets Begin Date.
-        /// </summary>
-        [PeropertyMapName("Begin")]
-        public DateTime Begin
-        {
-            get { return _Begin; }
-            set
-            {
-                if (_Begin != value)
-                {
-                    _Begin = value;
-                    // Raise event.
-                    RaiseChanged("Begin");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets End Date.
-        /// </summary>
-        [PeropertyMapName("End")]
-        public DateTime End
-        {
-            get { return _End; }
-            set
-            {
-                if (_End != value)
-                {
-                    _End = value;
-                    // Raise event.
-                    RaiseChanged("End");
-                }
-            }
-        }
-
-        #endregion
-
-        #region Static Methods
-
-        #endregion
-    }
-
-    #endregion
-
-    #region CollectorShift
-
-    /// <summary>
-    /// The CollectorShift Data Model Class.
-    /// </summary>
-    //[Table("CollectorShift")]
-    public class CollectorShift : NTable<CollectorShift>
-    {
-        #region Intenral Variables
-
-        private int _CollectorShiftId = 0;
-        private string _PlazaId = string.Empty;
-        private string _CollectorId = string.Empty;
-        private DateTime _Begin = DateTime.MinValue;
-        private DateTime _End = DateTime.MinValue;
-
-        #endregion
-
-        #region Constructor
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        public CollectorShift() : base() { }
-
-        #endregion
-
-        #region Public Properties
-        /// <summary>
-        /// Gets or sets CollectorShiftId
-        /// </summary>
-        [PrimaryKey, AutoIncrement]
-        [PeropertyMapName("CollectorShiftId")]
-        public int CollectorShiftId
-        {
-            get
-            {
-                return _CollectorShiftId;
-            }
-            set
-            {
-                if (_CollectorShiftId != value)
-                {
-                    _CollectorShiftId = value;
-                    this.RaiseChanged("CollectorShiftId");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets PlazaId
-        /// </summary>
-        [MaxLength(10)]
-        [PeropertyMapName("PlazaId")]
-        public string PlazaId
-        {
-            get
-            {
-                return _PlazaId;
-            }
-            set
-            {
-                if (_PlazaId != value)
-                {
-                    _PlazaId = value;
-                    this.RaiseChanged("PlazaId");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets CollectorId
-        /// </summary>
-        [ForeignKey(typeof(User), Name = "UserId"), MaxLength(10)]
-        [PeropertyMapName("CollectorId")]
-        public string CollectorId
-        {
-            get
-            {
-                return _CollectorId;
-            }
-            set
-            {
-                if (_CollectorId != value)
-                {
-                    _CollectorId = value;
-                    this.RaiseChanged("CollectorId");
-                }
-            }
-        }
-
-        [JsonIgnore]
-        [TypeConverter(typeof(ExpandableObjectConverter))]
-        [OneToOne(foreignKey: "CollectorId", CascadeOperations = CascadeOperation.All)]
-        public User User { get; set; }
-
-        /// <summary>
-        /// Gets or sets Begin Date.
-        /// </summary>
-        [PeropertyMapName("Begin")]
-        public DateTime Begin
-        {
-            get { return _Begin; }
-            set
-            {
-                if (_Begin != value)
-                {
-                    _Begin = value;
-                    // Raise event.
-                    RaiseChanged("Begin");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets End Date.
-        /// </summary>
-        [PeropertyMapName("End")]
-        public DateTime End
-        {
-            get { return _End; }
-            set
-            {
-                if (_End != value)
-                {
-                    _End = value;
-                    // Raise event.
-                    RaiseChanged("End");
-                }
-            }
-        }
-
-        #endregion
-
-        #region Static Methods
-
-        #endregion
-    }
-
-    #endregion
-
-    #region CollectorLane
-
-    /// <summary>
-    /// The CollectorLane Data Model Class.
-    /// </summary>
-    public class CollectorLane : NTable<CollectorLane>
-    {
-        #region Intenral Variables
-
-        private int _CollectorShiftId = 0;
-        private string _PlazaId = string.Empty;
-        private string _CollectorId = string.Empty;
-        private int _LaneId = 0;
-        private DateTime _Begin = DateTime.MinValue;
-        private DateTime _End = DateTime.MinValue;
-
-        #endregion
-
-        #region Constructor
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        public CollectorLane() : base() { }
-
-        #endregion
-
-        #region Public Properties
-
-        /// <summary>
-        /// Gets or sets CollectorShiftId
-        /// </summary>
-        [PrimaryKey, AutoIncrement]
-        [PeropertyMapName("CollectorShiftId")]
-        public int CollectorShiftId
-        {
-            get
-            {
-                return _CollectorShiftId;
-            }
-            set
-            {
-                if (_CollectorShiftId != value)
-                {
-                    _CollectorShiftId = value;
-                    this.RaiseChanged("CollectorShiftId");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets PlazaId
-        /// </summary>
-        [MaxLength(10)]
-        [PeropertyMapName("PlazaId")]
-        public string PlazaId
-        {
-            get
-            {
-                return _PlazaId;
-            }
-            set
-            {
-                if (_PlazaId != value)
-                {
-                    _PlazaId = value;
-                    this.RaiseChanged("PlazaId");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets CollectorId
-        /// </summary>
-        [ForeignKey(typeof(User), Name = "UserId"), MaxLength(10)]
-        [PeropertyMapName("CollectorId")]
-        public string CollectorId
-        {
-            get
-            {
-                return _CollectorId;
-            }
-            set
-            {
-                if (_CollectorId != value)
-                {
-                    _CollectorId = value;
-                    this.RaiseChanged("CollectorId");
-                }
-            }
-        }
-
-        [JsonIgnore]
-        [TypeConverter(typeof(ExpandableObjectConverter))]
-        [OneToOne(foreignKey: "CollectorId", CascadeOperations = CascadeOperation.All)]
-        public User User { get; set; }
-
-        [PeropertyMapName("LaneId")]
-        public int LaneId
-        {
-            get
-            {
-                return _LaneId;
-            }
-            set
-            {
-                if (_LaneId != value)
-                {
-                    _LaneId = value;
-                    this.RaiseChanged("LaneId");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets Begin Date.
-        /// </summary>
-        [PeropertyMapName("Begin")]
-        public DateTime Begin
-        {
-            get { return _Begin; }
-            set
-            {
-                if (_Begin != value)
-                {
-                    _Begin = value;
-                    // Raise event.
-                    RaiseChanged("Begin");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets End Date.
-        /// </summary>
-        [PeropertyMapName("End")]
-        public DateTime End
-        {
-            get { return _End; }
-            set
-            {
-                if (_End != value)
-                {
-                    _End = value;
-                    // Raise event.
-                    RaiseChanged("End");
-                }
-            }
-        }
-
-        #endregion
-
-        #region Static Methods
-
-        #endregion
-    }
-
-    #endregion
 
     #region Revenue Entry
 

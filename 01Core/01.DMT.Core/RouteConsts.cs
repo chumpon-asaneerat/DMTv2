@@ -122,10 +122,21 @@ namespace DMT
                 public const string Url = Job.Url + @"/" + Name;
             }
 
-            public static class EndJob
+            public static class Create
             {
-                public const string Name = "EndJob";
+                public const string Name = "Create";
                 public const string Url = Job.Url + @"/" + Name;
+            }
+        }
+
+        public static class Lane
+        {
+            public const string Url = RouteConsts.Url + @"/Lane";
+
+            public static class Create
+            {
+                public const string Name = "Create";
+                public const string Url = Lane.Url + @"/" + Name;
             }
         }
     }

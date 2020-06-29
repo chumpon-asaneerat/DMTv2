@@ -14,20 +14,13 @@ namespace DMT.Services
 {
     public class JobController : ApiController
     {
-        /*
         [HttpPost]
-        [ActionName(RouteConsts.Job.GetUser.Name)]
-        public User GetUser([FromBody] User user)
+        [ActionName(RouteConsts.Job.Create.Name)]
+        public UserShift Create([FromBody] UserShiftCreate value)
         {
-            User oUser = null;
-            var dUser = User.Get(user.UserId);
-            if (null != dUser)
-            {
-                oUser = dUser.CloneTo<Models.User>();
-            }
-            return oUser;
+            if (null == value) return null;
+            return UserShift.Create(value.Shift, value.User);
         }
-        */
         /*
         [HttpPost]
         [ActionName(RouteConsts.Job.BeginJob.Name)]
