@@ -183,5 +183,10 @@
   <ItemGroup>
     <Resource Include="Images\Networks\plaza_network2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Config\Controls\" />
+    <Folder Include="Config\Pages\" />
+    <Folder Include="Config\Windows\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

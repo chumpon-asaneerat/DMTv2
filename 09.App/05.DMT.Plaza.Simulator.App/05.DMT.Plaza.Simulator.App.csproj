@@ -154,5 +154,10 @@
     <Resource Include="Images\Green.png" />
     <Resource Include="Images\GreenLarge.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Simulator\Controls\" />
+    <Folder Include="Simulator\Pages\" />
+    <Folder Include="Simulator\Windows\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
