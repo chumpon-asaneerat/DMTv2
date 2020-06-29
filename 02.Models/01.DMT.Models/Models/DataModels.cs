@@ -18,7 +18,6 @@ using NLib.Reflection;
 
 namespace DMT.Models
 {
-    /*
     #region TSB
 
     /// <summary>
@@ -33,6 +32,7 @@ namespace DMT.Models
         private string _NetworkId = string.Empty;
         private string _TSBNameEN = string.Empty;
         private string _TSBNameTH = string.Empty;
+        private bool _Active = false;
 
         #endregion
 
@@ -128,6 +128,26 @@ namespace DMT.Models
             }
         }
 
+        /// <summary>
+        /// Gets or sets is active TSB.
+        /// </summary>
+        [PeropertyMapName("Active")]
+        public bool Active
+        {
+            get
+            {
+                return _Active;
+            }
+            set
+            {
+                if (_Active != value)
+                {
+                    _Active = value;
+                    this.RaiseChanged("Active");
+                }
+            }
+        }
+
         [JsonIgnore]
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Plaza> Plazas { get; set; }
@@ -135,35 +155,6 @@ namespace DMT.Models
         #endregion
 
         #region Static Methods
-
-        /// <summary>
-        /// Gets by Id
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="TSBId">The TSBId.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns found record.</returns>
-        internal static TSB Get(SQLiteConnection db, string TSBId, bool recursive = false)
-        {
-            lock (sync)
-            {
-                if (null == db) return null;
-                return db.GetAllWithChildren<TSB>(
-                    p => p.TSBId == TSBId,
-                    recursive: recursive).FirstOrDefault();
-            }
-        }
-        /// <summary>
-        /// Gets by Id
-        /// </summary>
-        /// <param name="TSBId">The TSBId.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns found record.</returns>
-        public static TSB Get(string TSBId, bool recursive = false)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Get(db, TSBId, recursive);
-        }
 
         #endregion
     }
@@ -315,158 +306,6 @@ namespace DMT.Models
 
         #region Static Methods
 
-        /// <summary>
-        /// Gets by Id
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="PlazaId">The PlazaId.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns found record.</returns>
-        internal static Plaza Get(SQLiteConnection db, string PlazaId, bool recursive = false)
-        {
-            lock (sync)
-            {
-                if (null == db) return null;
-                return db.GetAllWithChildren<Plaza>(
-                    p => p.PlazaId == PlazaId,
-                    recursive: recursive).FirstOrDefault();
-            }
-        }
-        /// <summary>
-        /// Gets by Id
-        /// </summary>
-        /// <param name="PlazaId">The PlazaId.</param>
-        /// <param name="recursive">True for load related nested children.</param>
-        /// <returns>Returns found record.</returns>
-        public static Plaza Get(string PlazaId, bool recursive = false)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Get(db, PlazaId, recursive);
-        }
-
-        #endregion
-    }
-
-    #endregion
-
-    #region Shift
-
-    /// <summary>
-    /// The Shift Data Model class.
-    /// </summary>
-    //[Table("Shift")]
-    public class Shift : NTable<Shift>
-    {
-        #region Intenral Variables
-
-        private int _ShiftId = 0;
-        private string _NameTH = string.Empty;
-        private string _NameEN = string.Empty;
-
-        #endregion
-
-        #region Constructor
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        public Shift() : base() { }
-
-        #endregion
-
-        #region Public Proprties
-
-        /// <summary>
-        /// Gets or sets ShiftId.
-        /// </summary>
-        [PrimaryKey]
-        [PeropertyMapName("ShiftId")]
-        public int ShiftId
-        {
-            get
-            {
-                return _ShiftId;
-            }
-            set
-            {
-                if (_ShiftId != value)
-                {
-                    _ShiftId = value;
-                    this.RaiseChanged("ShiftId");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets Name TH.
-        /// </summary>
-        [MaxLength(10)]
-        [PeropertyMapName("NameTH")]
-        public string NameTH
-        {
-            get
-            {
-                return _NameTH;
-            }
-            set
-            {
-                if (_NameTH != value)
-                {
-                    _NameTH = value;
-                    this.RaiseChanged("NameTH");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets Name EN.
-        /// </summary>
-        [MaxLength(10)]
-        [PeropertyMapName("NameEN")]
-        public string NameEN
-        {
-            get
-            {
-                return _NameEN;
-            }
-            set
-            {
-                if (_NameEN != value)
-                {
-                    _NameEN = value;
-                    this.RaiseChanged("NameEN");
-                }
-            }
-        }
-
-        #endregion
-
-        #region Static Methods
-
-        /// <summary>
-        /// Gets by Id
-        /// </summary>
-        /// <param name="db">The connection.</param>
-        /// <param name="shiftId">The TSBId.</param>
-        /// <returns>Returns found record.</returns>
-        internal static Shift Get(SQLiteConnection db, int shiftId)
-        {
-            lock (sync)
-            {
-                if (null == db) return null;
-                return db.GetAllWithChildren<Shift>(
-                    p => p.ShiftId == shiftId).FirstOrDefault();
-            }
-        }
-        /// <summary>
-        /// Gets by Id
-        /// </summary>
-        /// <param name="shiftId">The shiftId.</param>
-        /// <returns>Returns found record.</returns>
-        public static Shift Get(int shiftId)
-        {
-            SQLiteConnection db = LocalDbServer.Instance.Db;
-            return Get(db, shiftId);
-        }
-
         #endregion
     }
 
@@ -610,6 +449,7 @@ namespace DMT.Models
 
         #region Static Methods
 
+        /*
         /// <summary>
         /// Gets by Id
         /// </summary>
@@ -641,11 +481,137 @@ namespace DMT.Models
             SQLiteConnection db = LocalDbServer.Instance.Db;
             return Get(db, PlazaId, LaneId, recursive);
         }
+        */
 
         #endregion
     }
 
     #endregion
+    /*
+
+    #region Shift
+
+    /// <summary>
+    /// The Shift Data Model class.
+    /// </summary>
+    //[Table("Shift")]
+    public class Shift : NTable<Shift>
+    {
+        #region Intenral Variables
+
+        private int _ShiftId = 0;
+        private string _NameTH = string.Empty;
+        private string _NameEN = string.Empty;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public Shift() : base() { }
+
+        #endregion
+
+        #region Public Proprties
+
+        /// <summary>
+        /// Gets or sets ShiftId.
+        /// </summary>
+        [PrimaryKey]
+        [PeropertyMapName("ShiftId")]
+        public int ShiftId
+        {
+            get
+            {
+                return _ShiftId;
+            }
+            set
+            {
+                if (_ShiftId != value)
+                {
+                    _ShiftId = value;
+                    this.RaiseChanged("ShiftId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Name TH.
+        /// </summary>
+        [MaxLength(10)]
+        [PeropertyMapName("NameTH")]
+        public string NameTH
+        {
+            get
+            {
+                return _NameTH;
+            }
+            set
+            {
+                if (_NameTH != value)
+                {
+                    _NameTH = value;
+                    this.RaiseChanged("NameTH");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Name EN.
+        /// </summary>
+        [MaxLength(10)]
+        [PeropertyMapName("NameEN")]
+        public string NameEN
+        {
+            get
+            {
+                return _NameEN;
+            }
+            set
+            {
+                if (_NameEN != value)
+                {
+                    _NameEN = value;
+                    this.RaiseChanged("NameEN");
+                }
+            }
+        }
+
+        #endregion
+
+        #region Static Methods
+
+        /// <summary>
+        /// Gets by Id
+        /// </summary>
+        /// <param name="db">The connection.</param>
+        /// <param name="shiftId">The TSBId.</param>
+        /// <returns>Returns found record.</returns>
+        internal static Shift Get(SQLiteConnection db, int shiftId)
+        {
+            lock (sync)
+            {
+                if (null == db) return null;
+                return db.GetAllWithChildren<Shift>(
+                    p => p.ShiftId == shiftId).FirstOrDefault();
+            }
+        }
+        /// <summary>
+        /// Gets by Id
+        /// </summary>
+        /// <param name="shiftId">The shiftId.</param>
+        /// <returns>Returns found record.</returns>
+        public static Shift Get(int shiftId)
+        {
+            SQLiteConnection db = LocalDbServer.Instance.Db;
+            return Get(db, shiftId);
+        }
+
+        #endregion
+    }
+
+    #endregion
+
 
     #region Role
 
