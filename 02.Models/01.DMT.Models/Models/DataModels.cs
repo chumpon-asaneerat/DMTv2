@@ -1903,6 +1903,8 @@ namespace DMT.Models
 
         private string _PKId = string.Empty;
 
+        private string _JobId = string.Empty;
+
         private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
         private string _TSBNameTH = string.Empty;
@@ -1952,6 +1954,26 @@ namespace DMT.Models
                 {
                     _PKId = value;
                     this.RaiseChanged("PKId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets JobId
+        /// </summary>
+        [MaxLength(20)]
+        [PeropertyMapName("JobId")]
+        public string JobId
+        {
+            get
+            {
+                return _JobId;
+            }
+            set
+            {
+                if (_JobId != value)
+                {
+                    _JobId = value;
+                    this.RaiseChanged("JobId");
                 }
             }
         }

@@ -83,6 +83,7 @@ TABLES
 
 - LaneAttendance - OK
   - PkId [PK] (string MaxLength(30), Guid.NewID) - OK
+  - JobId (string MaxLength(20)) -> custom id from DMT. - OK
   - TSBId (string MaxLength(10)) - OK
   - TSBNameEN (string MaxLength(100)) - OK
   - TSBNameTH (string MaxLength(100)) - OK
