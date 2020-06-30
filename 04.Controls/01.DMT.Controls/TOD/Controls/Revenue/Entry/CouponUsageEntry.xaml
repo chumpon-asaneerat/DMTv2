@@ -58,7 +58,7 @@
                                Width="40"/>
                         <TextBox Margin="2"
                                  TextAlignment="Right"
-                                 Text="{Binding BHT30}"
+                                 Text="{Binding CouponUsageBHT30}"
                                  Width="50"/>
                     </DockPanel>
                     <!-- 35 BHT -->
@@ -75,7 +75,7 @@
                                Width="40"/>
                         <TextBox Margin="2"
                                  TextAlignment="Right"
-                                 Text="{Binding BHT35}"
+                                 Text="{Binding CouponUsageBHT35}"
                                  Width="50"/>
                     </DockPanel>
                     <!-- 75 BHT -->
@@ -92,7 +92,7 @@
                                Width="40"/>
                         <TextBox Margin="2"
                                  TextAlignment="Right"
-                                 Text="{Binding BHT75}"
+                                 Text="{Binding CouponUsageBHT75}"
                                  Width="50"/>
                     </DockPanel>
                     <!-- 80 BHT -->
@@ -109,7 +109,7 @@
                                Width="40"/>
                         <TextBox Margin="2"
                                  TextAlignment="Right"
-                                 Text="{Binding BHT80}"
+                                 Text="{Binding CouponUsageBHT80}"
                                  Width="50"/>
                     </DockPanel>
                     <!-- Total BHT -->

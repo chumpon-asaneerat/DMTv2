@@ -45,7 +45,7 @@
                                    Width="40"/>
                         <TextBox Margin="2"
                                  TextAlignment="Right"
-                                 Text="{Binding BHTTotal}"
+                                 Text="{Binding OtherBHTTotal}"
                                  Width="90"/>
                     </DockPanel>
                     <Grid Height="5"/>
@@ -63,7 +63,7 @@
                                  AcceptsReturn="True"
                                  TextWrapping="Wrap"
                                  VerticalScrollBarVisibility="Auto"
-                                 Text="{Binding Remark}"/>
+                                 Text="{Binding OtherRemark}"/>
                     </StackPanel>
                     <Grid Height="5"/>
                 </StackPanel>

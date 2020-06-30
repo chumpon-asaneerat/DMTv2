@@ -51,7 +51,7 @@
                              DockPanel.Dock="Right"
                              TextAlignment="Right"
                              IsEnabled="False"
-                             Text="{Binding BHT35Total}"
+                             Text="{Binding CouponSoldBHT35Total}"
                              Width="90"/>
                         <TextBlock Margin="2"
                                DockPanel.Dock="Right" 
@@ -60,7 +60,7 @@
                                Width="40"/>
                         <TextBox Margin="2"
                              TextAlignment="Right"
-                             Text="{Binding BHT35}"
+                             Text="{Binding CouponSoldBHT35}"
                              Width="50"/>
                     </DockPanel>
                     <!-- 80 BHT -->
@@ -79,7 +79,7 @@
                              DockPanel.Dock="Right"
                              TextAlignment="Right"
                              IsEnabled="False"
-                             Text="{Binding BHT80Total}"
+                             Text="{Binding CouponSoldBHT80Total}"
                                  Width="90"/>
                         <TextBlock Margin="2"
                                DockPanel.Dock="Right" 
@@ -88,7 +88,7 @@
                                Width="40"/>
                         <TextBox Margin="2"
                             TextAlignment="Right"
-                            Text="{Binding BHT80}"
+                            Text="{Binding CouponSoldBHT80}"
                             Width="50"/>
                     </DockPanel>
                 </StackPanel>

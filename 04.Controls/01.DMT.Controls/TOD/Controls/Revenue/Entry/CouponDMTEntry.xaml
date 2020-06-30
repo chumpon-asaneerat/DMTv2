@@ -59,7 +59,7 @@
                                Width="40"/>
                         <TextBox Margin="2"
                                  TextAlignment="Right"
-                                 Text="{Binding FreePass}"
+                                 Text="{Binding FreePassUsageClassA}"
                                  Width="50"/>
                     </DockPanel>
                     <!-- Count Total -->
@@ -76,7 +76,7 @@
                                Width="40"/>
                         <TextBox Margin="2"
                                  TextAlignment="Right"
-                                 Text="{Binding CntTotal}"
+                                 Text="{Binding FreePassUsageOther}"
                                  
                                  Width="50"/>
 
