@@ -49,6 +49,7 @@ namespace DMT.Simulator.Pages
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            RefreshLanes();
             RefreshUsers();
         }
 
@@ -60,6 +61,7 @@ namespace DMT.Simulator.Pages
         #endregion
 
         private List<UserItem> users = new List<UserItem>();
+        private List<LaneItem> lanes = new List<LaneItem>();
 
         private void RefreshUsers()
         {
@@ -76,7 +78,7 @@ namespace DMT.Simulator.Pages
                     {
                         usrs.ForEach(usr => 
                         {
-                            UserItem inst = new UserItem();
+                            var inst = new UserItem();
                             inst.RuleNameTH = role.RoleNameTH;
                             usr.AssignTo(inst);
                             users.Add(inst);
@@ -88,9 +90,38 @@ namespace DMT.Simulator.Pages
             lstUsers.ItemsSource = users;
         }
 
+        private void RefreshLanes()
+        {
+            lvLanes.ItemsSource = null;
+
+            lanes.Clear();
+            var tsb = ops.TSB.GetCurrent();
+            if (null != tsb)
+            {
+                var tsbLanes = ops.TSB.GetTSBLanes(tsb);
+                if (null != tsbLanes)
+                {
+                    tsbLanes.ForEach(tsbLane => 
+                    {
+                        var inst = new LaneItem();
+
+                        tsbLane.AssignTo(inst);
+                        lanes.Add(inst);
+                    });
+                }
+            }
+
+            lvLanes.ItemsSource = lanes;
+        }
+
         public class UserItem : User
         {
             public string RuleNameTH { get; set; }
+        }
+
+        public class LaneItem : Lane
+        {
+
         }
     }
 }
