@@ -18,8 +18,9 @@ Update 2020-06-30 #13
 Update 2020-06-30 #12
 - 
 
+[commited]
 Update 2020-06-30 #11
-- 
+- Update simulator project - temp remove card images.
 
 [commited]
 Update 2020-06-30 #10
