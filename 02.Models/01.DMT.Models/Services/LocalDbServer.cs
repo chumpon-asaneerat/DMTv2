@@ -144,13 +144,7 @@ namespace DMT.Services
 
             Db.CreateTable<LaneAttendance>();
 
-            /*
-            Db.CreateTable<SupervisorShift>();
-            Db.CreateTable<CollectorJob>();
-            Db.CreateTable<CollectorShift>();
-            Db.CreateTable<CollectorLane>();
             Db.CreateTable<RevenueEntry>();
-            */
 
             InitDefaults();
         }

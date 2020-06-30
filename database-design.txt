@@ -96,58 +96,58 @@ TABLES
   - Status int -> (1 = Sync, 0 = Unsync, etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK
 
-- RevenueEntry
-  - RevPkId [PK] (string MaxLength(30), Guid.NewID)
-  - RevenueId (string MaxLength(20)) -> custom id from DMT.
-  - EntryDate (Date)
-  - RevenueDate (Date)
-  - TSBId (string MaxLength(10))
-  - TSBNameEN (string MaxLength(100))
-  - TSBNameTH (string MaxLength(100))
-  - ShiftId (int)
-  - ShiftNameEN (string MaxLength(50))
-  - ShiftNameTH (string MaxLength(50))
-  - UserId (string MaxLength(10))
-  - FullNameEN (string MaxLength(100))
-  - FullNameTH (string MaxLength(100))
-  - BagNo (string MaxLength(10))
-  - BeltNo (string MaxLength(20))
+- RevenueEntry - OK
+  - PKId [PK] (string MaxLength(30), Guid.NewID) - OK
+  - RevenueId (string MaxLength(20)) -> custom id from DMT. - OK
+  - EntryDate (Date) - OK
+  - RevenueDate (Date) - OK
+  - TSBId (string MaxLength(10)) - OK
+  - TSBNameEN (string MaxLength(100)) - OK
+  - TSBNameTH (string MaxLength(100)) - OK
+  - ShiftId (int) - OK
+  - ShiftNameEN (string MaxLength(50)) - OK
+  - ShiftNameTH (string MaxLength(50)) - OK
+  - UserId (string MaxLength(10)) - OK
+  - FullNameEN (string MaxLength(100)) - OK
+  - FullNameTH (string MaxLength(100)) - OK
+  - BagNo (string MaxLength(10)) - OK
+  - BeltNo (string MaxLength(20)) - OK
 
-  - TrafficST25 (int)
-  - TrafficST50 (int)
-  - TrafficBHT1 (int)
-  - TrafficBHT2 (int)
-  - TrafficBHT5 (int)
-  - TrafficBHT10 (int)
-  - TrafficBHT20 (int)
-  - TrafficBHT50 (int)
-  - TrafficBHT100 (int)
-  - TrafficBHT500 (int)
-  - TrafficBHT1000 (int)
-  - TrafficBHTTotal (decimal) -> supports ST
-  - TrafficRemark (string MaxLength(255))
+  - TrafficST25 (int) - OK
+  - TrafficST50 (int) - OK
+  - TrafficBHT1 (int) - OK
+  - TrafficBHT2 (int) - OK
+  - TrafficBHT5 (int) - OK
+  - TrafficBHT10 (int) - OK
+  - TrafficBHT20 (int) - OK
+  - TrafficBHT50 (int) - OK
+  - TrafficBHT100 (int) - OK
+  - TrafficBHT500 (int) - OK
+  - TrafficBHT1000 (int) - OK
+  - TrafficBHTTotal (decimal) -> supports ST - OK
+  - TrafficRemark (string MaxLength(255)) - OK
 
-  - OtherBHTTotal (decimal) > supports ST
-  - OtherRemark (string MaxLength(255))
+  - OtherBHTTotal (decimal) > supports ST - OK
+  - OtherRemark (string MaxLength(255)) - OK
 
-  - CouponUsageBHT30 (int)
-  - CouponUsageBHT35 (int)
-  - CouponUsageBHT75 (int)
-  - CouponUsageBHT80 (int)
+  - CouponUsageBHT30 (int) - OK
+  - CouponUsageBHT35 (int) - OK
+  - CouponUsageBHT75 (int) - OK
+  - CouponUsageBHT80 (int) - OK
 
-  - FreePassUsageClassA (int)
-  - FreePassUsageOther (int)
+  - FreePassUsageClassA (int) - OK
+  - FreePassUsageOther (int) - OK
 
-  - CouponSoldBHT35 (int)
-  - CouponSoldBHT35Factor (decimal)
-  - CouponSoldBHT80 (int)
-  - CouponSoldBHT80Factor (decimal)
-  - CouponSoldBHT35Total (decimal) -> in BHT
-  - CouponSoldBHT80Total (decimal) -> in BHT
-  - CouponSoldBHTTotal (decimal) -> in BHT
+  - CouponSoldBHT35 (int) - OK
+  - CouponSoldBHT35Factor (decimal) - OK
+  - CouponSoldBHT80 (int) - OK
+  - CouponSoldBHT80Factor (decimal) - OK
+  - CouponSoldBHT35Total (decimal) -> in BHT - OK
+  - CouponSoldBHT80Total (decimal) -> in BHT - OK
+  - CouponSoldBHTTotal (decimal) -> in BHT - OK
 
-  - Status int -> (1 = Sync, 0 = Unsync, etc..)
-  - LastUpdate (DateTime) -> last time sync from DC
+  - Status int -> (1 = Sync, 0 = Unsync, etc..) - OK
+  - LastUpdate (DateTime) -> last time sync from DC - OK
 
 - AssetType
   - PkId [PK] (int auto)
