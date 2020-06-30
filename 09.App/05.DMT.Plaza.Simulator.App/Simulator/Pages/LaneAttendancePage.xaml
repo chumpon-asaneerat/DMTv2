@@ -70,25 +70,94 @@
             <ListBox x:Name="lstUsers"
                      FontSize="18"
                      ItemsSource="{Binding}"
-                     Background="Transparent">
+                     Background="Transparent"
+                     VirtualizingPanel.IsVirtualizing="True"
+                     VirtualizingPanel.VirtualizationMode="Recycling"
+                     VirtualizingPanel.IsContainerVirtualizable="True">
                 <ListBox.Resources>
                     <Style TargetType="{x:Type ListBox}">
                         <!-- Set the ItemTemplate of the ListBox to a DataTemplate which explains how to display an object of type BitmapImage. -->
                         <Setter Property="ItemTemplate">
                             <Setter.Value>
                                 <DataTemplate>
-                                    <Border x:Name="border" 
-                                            Margin="3"
-                                            BorderBrush="Black"
-                                            BorderThickness="1"
-                                            CornerRadius="1"
-                                            Width="250"
-                                            Height="150">
-                                        <Border.Background>
-                                            <ImageBrush ImageSource="/DMT.Plaza.Simulator.App;component/Images/Cards/Card-Black.png" />
-                                        </Border.Background>
-                                    </Border>
+                                    <Grid Margin="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="250" />
+                                            <ColumnDefinition Width="100" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="50" />
+                                            <RowDefinition Height="80" />
+                                            <RowDefinition Height="40" />
+                                        </Grid.RowDefinitions>
+                                        <Border x:Name="border"
+                                                Grid.Row="0"
+                                                Grid.RowSpan="3"
+                                                Grid.Column="0"
+                                                Width="250"
+                                                Height="150"
+                                                Margin="0"
+                                                CornerRadius="1">
+                                            <Border.Background>
+                                                <ImageBrush ImageSource="/DMT.Plaza.Simulator.App;component/Images/Cards/Card-Black.png" />
+                                            </Border.Background>
+                                        </Border>
+                                        <!-- UserId and Full Name -->
+                                        <StackPanel Grid.Row="1"
+                                                    Grid.Column="0"
+                                                    Orientation="Vertical"
+                                                    Margin="20"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch">
+                                            <TextBlock Text="{Binding UserId}" 
+                                                       FontSize="15"
+                                                       FontWeight="Bold"/>
+                                            <TextBlock Text="{Binding FullNameTH}"
+                                                       FontSize="15"
+                                                       FontWeight="Bold"/>
+                                        </StackPanel>
+                                        <!-- Role Name -->
+                                        <TextBlock Grid.Row="2"
+                                                   Grid.Column="0"
+                                                   Margin="10 0"
+                                                   Text="{Binding RuleNameTH}" 
+                                                   FontSize="15"
+                                                   FontWeight="Bold"
+                                                   Foreground="WhiteSmoke"
+                                                   TextAlignment="Center"/>
+                                        <StackPanel Grid.Row="0"
+                                                    Grid.RowSpan="3"
+                                                    Grid.Column="1"
+                                                    Margin="0 10"
+                                                    Orientation="Vertical">
+                                            <Button Margin="2" Content="Begin Shift" />
+                                            <Button Margin="2" Content="End Shift" />
+                                            <Button Margin="2" Content="Begin Job" />
+                                            <Button Margin="2" Content="End Job" />
+                                        </StackPanel>
+                                    </Grid>
                                     <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding Path=RoleId}" Value="QFREE">
+                                            <Setter TargetName="border" Property="Background">
+                                                <Setter.Value>
+                                                    <ImageBrush ImageSource="/DMT.Plaza.Simulator.App;component/Images/Cards/Card-Gray.png" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Path=RoleId}" Value="ADMIN">
+                                            <Setter TargetName="border" Property="Background">
+                                                <Setter.Value>
+                                                    <ImageBrush ImageSource="/DMT.Plaza.Simulator.App;component/Images/Cards/Card-Purple.png" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Path=RoleId}" Value="AUDIT">
+                                            <Setter TargetName="border" Property="Background">
+                                                <Setter.Value>
+                                                    <ImageBrush ImageSource="/DMT.Plaza.Simulator.App;component/Images/Cards/Card-Red.png" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
                                         <DataTrigger Binding="{Binding Path=RoleId}" Value="COLLECTOR">
                                             <Setter TargetName="border" Property="Background">
                                                 <Setter.Value>
@@ -104,7 +173,7 @@
                                             </Setter>
                                         </DataTrigger>
                                     </DataTemplate.Triggers>
-                                    <!-- 
+                                    <!--
                                     <Border Margin="5"
                                             BorderBrush="Black"
                                             BorderThickness="1"
