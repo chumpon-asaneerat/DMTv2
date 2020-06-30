@@ -11,6 +11,9 @@ using DMT.Models;
 
 namespace DMT.Services
 {
+    /// <summary>
+    /// The controller for manage Shift and TSBShift (Supervisor shift).
+    /// </summary>
     public class ShiftController : ApiController
     {
         [HttpPost]

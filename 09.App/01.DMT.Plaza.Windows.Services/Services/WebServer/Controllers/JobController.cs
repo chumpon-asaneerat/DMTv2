@@ -12,6 +12,10 @@ using System;
 
 namespace DMT.Services
 {
+    /// <summary>
+    /// The controller for handle Collector Begin Job (start TOD shift) and
+    /// Get List of Lane Attendance on specificed Job (between Begin to End).
+    /// </summary>
     public class JobController : ApiController
     {
         [HttpPost]

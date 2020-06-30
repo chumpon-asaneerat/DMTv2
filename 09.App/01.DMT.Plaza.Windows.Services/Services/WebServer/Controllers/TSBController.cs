@@ -11,6 +11,9 @@ using DMT.Models;
 
 namespace DMT.Services
 {
+    /// <summary>
+    /// The controller for manage common data on TSB, Plaza and Lane.
+    /// </summary>
     public class TSBController : ApiController
     {
         [HttpPost]

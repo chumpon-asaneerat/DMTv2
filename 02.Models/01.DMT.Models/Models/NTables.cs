@@ -256,8 +256,11 @@ namespace DMT.Models
         /// <returns>Returns List of all records</returns>
         public static List<T> Gets(bool recursive = false)
         {
-            SQLiteConnection db = Default;
-            return Gets(db, recursive);
+            lock (sync)
+            {
+                SQLiteConnection db = Default;
+                return Gets(db, recursive);
+            }
         }
         /// <summary>
         /// Gets by Id.

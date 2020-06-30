@@ -17,6 +17,7 @@ TABLES
 
 - Lane - OK
   - PkId [PK] (int auto) - OK
+  - LandId (int) - OK
   - LandId (string MaxLength(10)) - OK
   - PlazaId (string MaxLength(10)) - OK
   - TSBId (string MaxLength(10)) - OK
@@ -25,8 +26,8 @@ TABLES
 
 - Shift - OK
   - ShiftId [PK] (int) - OK
-  - NameEN (string MaxLength(50)) - OK
-  - NameTH (string MaxLength(50)) - OK
+  - ShiftNameEN (string MaxLength(50)) - OK
+  - ShiftNameTH (string MaxLength(50)) - OK
 
 - Role - OK
   - RoleId [PK] (string MaxLength(20)) - OK
@@ -48,16 +49,52 @@ TABLES
   - Key [PK] (string MaxLength(30)) - OK
   - Value [PK] (string MaxLength(100)) - OK
 
-LaneAttendance
-  - PkId [PK] (string MaxLength(30), Guid.NewID)
-  - PlazaId (string MaxLength(10))
-  - TSBId (string MaxLength(10))
-  - LaneId (string MaxLength(10))
-  - JobId (string MaxLength(10))
-  - UserId (string MaxLength(10))
-  - Begin (DateTime)
-  - End (DateTime)
-  - LastUpdate (DateTime) -> last time sync from DC
+- TSBShift - OK
+  - TSBShiftId [PK] (int, Auto) - OK
+  - TSBId (string MaxLength(10)) - OK
+  - TSBNameEN (string MaxLength(100)) - OK
+  - TSBNameTH (string MaxLength(100)) - OK
+  - ShiftId (int) - OK
+  - ShiftNameEN (string MaxLength(50)) - OK
+  - ShiftNameTH (string MaxLength(50)) - OK
+  - UserId (string MaxLength(10)) - OK
+  - FullNameEN (string MaxLength(100)) - OK
+  - FullNameTH (string MaxLength(100)) - OK
+  - Begin (DateTime) - OK
+  - End (DateTime) - OK
+  - Status int -> (1 = Sync, 0 = Unsync, etc..) - OK
+  - LastUpdate (DateTime) -> last time sync from DC - OK
+
+- UserShift - OK
+  - UserShiftId [PK] (int, Auto) - OK
+  - TSBId (string MaxLength(10)) - OK
+  - TSBNameEN (string MaxLength(100)) - OK
+  - TSBNameTH (string MaxLength(100)) - OK
+  - ShiftId (int) - OK
+  - ShiftNameEN (string MaxLength(50)) - OK
+  - ShiftNameTH (string MaxLength(50)) - OK
+  - UserId (string MaxLength(10)) - OK
+  - FullNameEN (string MaxLength(100)) - OK
+  - FullNameTH (string MaxLength(100)) - OK
+  - Begin (DateTime) - OK
+  - End (DateTime) - OK
+  - Status int -> (1 = Sync, 0 = Unsync, etc..) - OK
+  - LastUpdate (DateTime) -> last time sync from DC - OK
+
+- LaneAttendance - OK
+  - PkId [PK] (string MaxLength(30), Guid.NewID) - OK
+  - TSBId (string MaxLength(10)) - OK
+  - TSBNameEN (string MaxLength(100)) - OK
+  - TSBNameTH (string MaxLength(100)) - OK
+  - LandId (int) - OK
+  - LaneId (string MaxLength(10)) - OK
+  - UserId (string MaxLength(10)) - OK
+  - FullNameEN (string MaxLength(100)) - OK
+  - FullNameTH (string MaxLength(100)) - OK
+  - Begin (DateTime) - OK
+  - End (DateTime) - OK
+  - Status int -> (1 = Sync, 0 = Unsync, etc..) - OK
+  - LastUpdate (DateTime) -> last time sync from DC - OK
 
 - AssetType
   - PkId [PK] (int auto)

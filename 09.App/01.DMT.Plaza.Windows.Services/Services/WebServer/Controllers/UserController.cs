@@ -11,6 +11,9 @@ using DMT.Models;
 
 namespace DMT.Services
 {
+    /// <summary>
+    /// The controller for manage users and roles.
+    /// </summary>
     public class UserController : ApiController
     {
         [HttpPost]

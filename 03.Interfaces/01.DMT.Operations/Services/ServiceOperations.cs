@@ -45,6 +45,7 @@ namespace DMT.Services
 
     /// <summary>
     /// Plaza Operations class.
+    /// Main class that common all operations into properties.
     /// </summary>
     public class PlazaOperations
     {
@@ -92,10 +93,13 @@ namespace DMT.Services
 
         #endregion
 
+        #region Operation classes
+
         #region TSBOprations
 
         /// <summary>
         /// The TSBOprations class.
+        /// Used for Manage TSB, Plaza and Lane's operation(s).
         /// </summary>
         public class TSBOprations
         {
@@ -160,6 +164,8 @@ namespace DMT.Services
                 }                
                 return _current;
             }
+
+            #endregion
         }
 
         #endregion
@@ -168,6 +174,7 @@ namespace DMT.Services
 
         /// <summary>
         /// The UserOperations class.
+        /// Used for Manage User and Role's operation(s).
         /// </summary>
         public class UserOperations
         {
@@ -222,10 +229,11 @@ namespace DMT.Services
 
         #endregion
 
-        #region ShiftOperations
+        #region ShiftOperations (Supervisor Shift)
 
         /// <summary>
         /// The ShiftOperations class.
+        /// Used for Manage Supervisor's Shift operation(s).
         /// </summary>
         public class ShiftOperations
         {
@@ -290,8 +298,12 @@ namespace DMT.Services
 
         #endregion
 
-        #region JobOperations
+        #region JobOperations (Collector TOD Shift)
 
+        /// <summary>
+        /// The Collector Job Operation class.
+        /// Used for manage when TOD user begin job (shift).
+        /// </summary>
         public class JobOperations
         {
             #region Constructor
@@ -322,8 +334,12 @@ namespace DMT.Services
 
         #endregion
 
-        #region LaneOperations
+        #region LaneOperations (Used for Lane Attendance/Leave)
 
+        /// <summary>
+        /// The LaneOperations class.
+        /// Used for manage Lane Attendance operation(s).
+        /// </summary>
         public class LaneOperations
         {
             #region Constructor

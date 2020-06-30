@@ -12,6 +12,9 @@ using System;
 
 namespace DMT.Services
 {
+    /// <summary>
+    /// The controller for handle Lane Attendance (Attendance/Leave).
+    /// </summary>
     public class LaneController : ApiController
     {
         [HttpPost]
