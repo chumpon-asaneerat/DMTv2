@@ -52,6 +52,7 @@ namespace DMT
                 public const string Name = "GetRoles";
                 public const string Url = User.Url + @"/" + Name;
             }
+
             public static class GetUsers
             {
                 public const string Name = "GetUsers";

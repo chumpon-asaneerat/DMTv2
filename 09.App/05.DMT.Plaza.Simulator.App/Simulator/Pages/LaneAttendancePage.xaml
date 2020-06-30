@@ -77,6 +77,34 @@
                         <Setter Property="ItemTemplate">
                             <Setter.Value>
                                 <DataTemplate>
+                                    <Border x:Name="border" 
+                                            Margin="3"
+                                            BorderBrush="Black"
+                                            BorderThickness="1"
+                                            CornerRadius="1"
+                                            Width="250"
+                                            Height="150">
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="/DMT.Plaza.Simulator.App;component/Images/Cards/Card-Black.png" />
+                                        </Border.Background>
+                                    </Border>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding Path=RoleId}" Value="COLLECTOR">
+                                            <Setter TargetName="border" Property="Background">
+                                                <Setter.Value>
+                                                    <ImageBrush ImageSource="/DMT.Plaza.Simulator.App;component/Images/Cards/Card-Blue.png" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Path=RoleId}" Value="SUPERVISOR">
+                                            <Setter TargetName="border" Property="Background">
+                                                <Setter.Value>
+                                                    <ImageBrush ImageSource="/DMT.Plaza.Simulator.App;component/Images/Cards/Card-Green.png" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                    <!-- 
                                     <Border Margin="5"
                                             BorderBrush="Black"
                                             BorderThickness="1"
@@ -131,6 +159,7 @@
                                             </StackPanel>
                                         </StackPanel>
                                     </Border>
+                                    -->
                                 </DataTemplate>
                             </Setter.Value>
                         </Setter>

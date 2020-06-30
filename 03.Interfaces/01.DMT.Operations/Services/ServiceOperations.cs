@@ -9,6 +9,7 @@ using RestSharp;
 using NLib.ServiceProcess;
 
 using DMT.Models;
+using System.Runtime.InteropServices;
 
 #endregion
 
@@ -197,7 +198,7 @@ namespace DMT.Services
             }
 
             public List<User> GetUsers(Role role)
-            {
+            {                
                 var ret = NRestClient.Create(port: 9000).Execute<List<User>>(
                     RouteConsts.User.GetUsers.Url, role);
                 return ret;

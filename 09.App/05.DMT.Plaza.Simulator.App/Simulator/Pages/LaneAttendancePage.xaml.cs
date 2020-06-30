@@ -49,7 +49,7 @@ namespace DMT.Simulator.Pages
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-
+            RefreshUsers();
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
@@ -58,5 +58,39 @@ namespace DMT.Simulator.Pages
         }
 
         #endregion
+
+        private List<UserItem> users = new List<UserItem>();
+
+        private void RefreshUsers()
+        {
+            lstUsers.ItemsSource = null;
+
+            users.Clear();
+            var roles = ops.Users.GetRoles();
+            if (null != roles)
+            {
+                roles.ForEach(role =>
+                {
+                    var usrs = ops.Users.GetUsers(role);
+                    if (null != usrs)
+                    {
+                        usrs.ForEach(usr => 
+                        {
+                            UserItem inst = new UserItem();
+                            inst.RuleNameTH = role.RoleNameTH;
+                            usr.AssignTo(inst);
+                            users.Add(inst);
+                        });
+                    }
+                });
+            }
+
+            lstUsers.ItemsSource = users;
+        }
+
+        public class UserItem : User
+        {
+            public string RuleNameTH { get; set; }
+        }
     }
 }
