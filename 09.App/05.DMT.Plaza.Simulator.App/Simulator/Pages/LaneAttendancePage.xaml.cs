@@ -79,7 +79,7 @@ namespace DMT.Simulator.Pages
                         usrs.ForEach(usr => 
                         {
                             var inst = new UserItem();
-                            inst.RuleNameTH = role.RoleNameTH;
+                            inst.RoleNameTH = role.RoleNameTH;
                             usr.AssignTo(inst);
                             users.Add(inst);
                         });
@@ -116,12 +116,13 @@ namespace DMT.Simulator.Pages
 
         public class UserItem : User
         {
-            public string RuleNameTH { get; set; }
+            public string RoleNameTH { get; set; }
         }
 
         public class LaneItem : Lane
         {
-
+            public string UserId { get; set; }
+            public string FullNameTH { get; set; }
         }
     }
 }

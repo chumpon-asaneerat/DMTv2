@@ -20,6 +20,13 @@
                       ItemsSource="{Binding}">
                 <ListView.View>
                     <GridView>
+                        <GridViewColumn Width="100"
+                                        Header="เลน"
+                                        DisplayMemberBinding="{Binding Path=LaneId}" />
+                        <GridViewColumn Width="100"
+                                        Header="ประเภทเลน"
+                                        DisplayMemberBinding="{Binding Path=LaneType}" />
+
                         <GridViewColumn Width="80"
                                         Header="วันที่"
                                         DisplayMemberBinding="{Binding Path=DateString}" />
@@ -28,10 +35,11 @@
                                         DisplayMemberBinding="{Binding Path=TimeString}" />
                         <GridViewColumn Width="80"
                                         Header="รหัสพนักงาน"
-                                        DisplayMemberBinding="{Binding Path=StaffId}" />
+                                        DisplayMemberBinding="{Binding Path=UserId}" />
                         <GridViewColumn Width="250"
                                         Header="ชื่อพนักงาน"
-                                        DisplayMemberBinding="{Binding Path=StaffName}" />
+                                        DisplayMemberBinding="{Binding Path=UserName}" />
+                        <!--
                         <GridViewColumn Width="150"
                                         Header="จำนวนเงิน"
                                         DisplayMemberBinding="{Binding Path=BHTTotal}" />
@@ -61,6 +69,7 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
+                        -->
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -120,7 +129,7 @@
                                         <TextBlock Grid.Row="2"
                                                    Grid.Column="0"
                                                    Margin="10 0"
-                                                   Text="{Binding RuleNameTH}" 
+                                                   Text="{Binding RoleNameTH}" 
                                                    FontSize="15"
                                                    FontWeight="Bold"
                                                    Foreground="WhiteSmoke"
