@@ -124,21 +124,27 @@ TABLES
   - TrafficBHT100 (int)
   - TrafficBHT500 (int)
   - TrafficBHT1000 (int)
-  - TrafficBHTTotal (decimal)
-  - OtherBHTTotal (decimal)
+  - TrafficBHTTotal (decimal) -> supports ST
+  - TrafficRemark (string MaxLength(255))
+
+  - OtherBHTTotal (decimal) > supports ST
+  - OtherRemark (string MaxLength(255))
 
   - CouponUsageBHT30 (int)
   - CouponUsageBHT35 (int)
   - CouponUsageBHT75 (int)
   - CouponUsageBHT80 (int)
-  - CouponUsageFreePassA (int)
-  - CouponUsageFreePassOther (int)
+
+  - FreePassUsageClassA (int)
+  - FreePassUsageOther (int)
 
   - CouponSoldBHT35 (int)
+  - CouponSoldBHT35Factor (decimal)
   - CouponSoldBHT80 (int)
-  - CouponSoldBHT35Total (int)
-  - CouponSoldBHT80Total (int)
-  - CouponSoldBHTTotal (int)
+  - CouponSoldBHT80Factor (decimal)
+  - CouponSoldBHT35Total (decimal) -> in BHT
+  - CouponSoldBHT80Total (decimal) -> in BHT
+  - CouponSoldBHTTotal (decimal) -> in BHT
 
   - Status int -> (1 = Sync, 0 = Unsync, etc..)
   - LastUpdate (DateTime) -> last time sync from DC
