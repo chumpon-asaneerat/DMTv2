@@ -26,7 +26,7 @@
                 <Fluent:RibbonGroupBox Header="Attendance ">
                     <Fluent:Button x:Name="cmdLaneAttend"
                                    Width="100"
-                                   Header="Lane Attend/Leave"
+                                   Header="Attend/Leave"
                                    Click="cmdLaneAttend_Click">
                         <Fluent:Button.LargeIcon>
                             <Image HorizontalAlignment="Stretch"
@@ -38,12 +38,12 @@
                 <Fluent:RibbonGroupBox Header="Users">
                     <Fluent:Button x:Name="cmdUserView"
                                    Width="100"
-                                   Header="User View"
+                                   Header="Users"
                                    Click="cmdUserView_Click">
                         <Fluent:Button.LargeIcon>
                             <Image HorizontalAlignment="Stretch"
                                    VerticalAlignment="Stretch"
-                                   Source="Images/Lanes/toll-clipart.jpg" />
+                                   Source="Images/Users/online-user.png" />
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
                 </Fluent:RibbonGroupBox>
