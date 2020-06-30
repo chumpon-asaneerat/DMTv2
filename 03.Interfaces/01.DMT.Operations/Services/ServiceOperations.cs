@@ -337,13 +337,12 @@ namespace DMT.Services
 
             #region Public Methods
 
-            public LaneAttendance Create(Shift shift, Lane lane, User supervisor)
+            public LaneAttendance Create(Lane lane, User supervisor)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<LaneAttendance>(
                     RouteConsts.Lane.Create.Url,
                     new LaneAttendanceCreate()
                     {
-                        Shift = shift,
                         Lane = lane,
                         User = supervisor
                     });

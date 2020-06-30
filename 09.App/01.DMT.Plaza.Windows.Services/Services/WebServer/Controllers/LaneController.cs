@@ -19,7 +19,7 @@ namespace DMT.Services
         public LaneAttendance Create([FromBody] LaneAttendanceCreate value)
         {
             if (null == value) return null;
-            return LaneAttendance.Create(value.Shift, value.Lane, value.User);
+            return LaneAttendance.Create(value.Lane, value.User);
         }
     }
 }

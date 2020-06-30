@@ -8,12 +8,11 @@ using SQLite;
 using SQLiteNetExtensions.Attributes;
 using SQLiteNetExtensions.Extensions;
 using System.ComponentModel;
-using DMT.Services;
+
 // required for JsonIgnore.
 using Newtonsoft.Json;
 using NLib;
 using NLib.Reflection;
-using NLib.Controls.Utils;
 
 #endregion
 
@@ -1892,9 +1891,7 @@ namespace DMT.Models
         private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
         private string _TSBNameTH = string.Empty;
-        private int _ShiftId = 0;
-        private string _ShiftNameTH = string.Empty;
-        private string _ShiftNameEN = string.Empty;
+
         private int _LaneNo = 0;
         private string _LaneId = string.Empty;
         private string _UserId = string.Empty;
@@ -1903,6 +1900,9 @@ namespace DMT.Models
 
         private DateTime _Begin = DateTime.MinValue;
         private DateTime _End = DateTime.MinValue;
+
+        private int _Status = 0;
+        private DateTime _LastUpdate = DateTime.MinValue;
 
         #endregion
 
@@ -1997,65 +1997,6 @@ namespace DMT.Models
                 {
                     _TSBNameTH = value;
                     this.RaiseChanged("TSBNameTH");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets ShiftId.
-        /// </summary>
-        [PeropertyMapName("ShiftId")]
-        public int ShiftId
-        {
-            get
-            {
-                return _ShiftId;
-            }
-            set
-            {
-                if (_ShiftId != value)
-                {
-                    _ShiftId = value;
-                    this.RaiseChanged("ShiftId");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets Name TH.
-        /// </summary>
-        [MaxLength(50)]
-        [PeropertyMapName("ShiftNameTH")]
-        public string ShiftNameTH
-        {
-            get
-            {
-                return _ShiftNameTH;
-            }
-            set
-            {
-                if (_ShiftNameTH != value)
-                {
-                    _ShiftNameTH = value;
-                    this.RaiseChanged("ShiftNameTH");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets Name EN.
-        /// </summary>
-        [MaxLength(50)]
-        [PeropertyMapName("ShiftNameEN")]
-        public string ShiftNameEN
-        {
-            get
-            {
-                return _ShiftNameEN;
-            }
-            set
-            {
-                if (_ShiftNameEN != value)
-                {
-                    _ShiftNameEN = value;
-                    this.RaiseChanged("ShiftNameEN");
                 }
             }
         }
@@ -2192,17 +2133,51 @@ namespace DMT.Models
                 }
             }
         }
+        /// <summary>
+        /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
+        /// </summary>
+        [PeropertyMapName("Status")]
+        public int Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                if (_Status != value)
+                {
+                    _Status = value;
+                    this.RaiseChanged("Status");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets LastUpdated (Sync to DC).
+        /// </summary>
+        [PeropertyMapName("LastUpdate")]
+        public DateTime LastUpdate
+        {
+            get { return _LastUpdate; }
+            set
+            {
+                if (_LastUpdate != value)
+                {
+                    _LastUpdate = value;
+                    this.RaiseChanged("LastUpdate");
+                }
+            }
+        }
 
         #endregion
 
         #region Static Methods
 
-        public static LaneAttendance Create(Shift shift, Lane lane, User supervisor)
+        public static LaneAttendance Create(Lane lane, User supervisor)
         {
             LaneAttendance inst = Create();
             TSB tsb = TSB.GetCurrent();
             if (null != tsb) tsb.AssignTo(inst);
-            if (null != shift) shift.AssignTo(inst);
             if (null != lane) lane.AssignTo(inst);
             if (null != supervisor) supervisor.AssignTo(inst);
             return inst;
@@ -2213,7 +2188,6 @@ namespace DMT.Models
 
     public class LaneAttendanceCreate
     {
-        public Shift Shift { get; set; }
         public Lane Lane { get; set; }
         public User User { get; set; }
     }
