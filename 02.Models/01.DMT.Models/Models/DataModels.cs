@@ -1836,12 +1836,12 @@ namespace DMT.Models
             return inst;
         }
 
-        public static bool BeginShift(UserShift shift)
+        public static bool BeginJob(UserShift shift)
         {
             lock (sync)
             {
                 if (null == shift) return false;
-                var last = GetCurrent();
+                var last = GetCurrent(shift.UserId);
                 if (null != last)
                 {
                     // not enter revenue entry.
@@ -1854,14 +1854,29 @@ namespace DMT.Models
             }
         }
 
-        public static UserShift GetCurrent()
+        public static void EndJob(UserShift shift)
+        {
+            lock (sync)
+            {
+                if (null == shift) return;
+                // End shift.
+                shift.End = DateTime.Now;
+                Save(shift);
+            }
+        }
+
+        public static UserShift GetCurrent(string userId)
         {
             lock (sync)
             {
                 string cmd = string.Empty;
                 cmd += "SELECT * FROM UserShift ";
-                cmd += " WHERE End = ? ";
-                return NQuery.Query<UserShift>(cmd, DateTime.MinValue).FirstOrDefault();
+                cmd += " WHERE UserId = ? ";
+                cmd += "   AND End = ? ";
+                return NQuery.Query<UserShift>(
+                    cmd, 
+                    userId, 
+                    DateTime.MinValue).FirstOrDefault();
             }
         }
 

@@ -6,6 +6,8 @@ using System.Windows;
 
 using DMT.Models;
 using DMT.Services;
+using NLib.Reflection;
+
 
 #endregion
 
@@ -51,7 +53,14 @@ namespace DMT.TOD.Windows.Job
             Shift shift = cbShift.SelectedItem as Shift;
             if (null != shift)
             {
-
+                UserShift inst = ops.Jobs.Create(shift, _user);
+                if (null != inst) shift.AssignTo(inst);
+                bool success = ops.Jobs.BeginJob(inst);
+                if (!success)
+                {
+                    // Some job is open required to enter revenue entry first.
+                    MessageBox.Show(this, "ไม่สามารถเปิดกะใหม่ได้ เนื่องจาก ยังมีกะที่ยังไม่ป้อนรายได้");
+                }
             }
 
             DialogResult = true;

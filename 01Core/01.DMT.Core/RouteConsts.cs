@@ -110,15 +110,27 @@ namespace DMT
         {
             public const string Url = RouteConsts.Url + @"/Job";
 
-            public static class GetUser
+            public static class GetUsers
             {
-                public const string Name = "GetUser";
+                public const string Name = "GetUsers";
                 public const string Url = Job.Url + @"/" + Name;
             }
 
             public static class BeginJob
             {
                 public const string Name = "BeginJob";
+                public const string Url = Job.Url + @"/" + Name;
+            }
+
+            public static class EndJob
+            {
+                public const string Name = "EndJob";
+                public const string Url = Job.Url + @"/" + Name;
+            }
+
+            public static class GetCurrent
+            {
+                public const string Name = "GetCurrent";
                 public const string Url = Job.Url + @"/" + Name;
             }
 

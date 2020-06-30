@@ -258,16 +258,6 @@ namespace DMT.Services
                 return ret;
             }
 
-            public void ChangeShift(TSBShift shift)
-            {
-                if (null == shift) return;
-                NRestClient.Create(port: 9000).Execute(
-                    RouteConsts.Shift.ChangeShift.Url, shift);
-                
-                // reset last update for reload new shirt.
-                LastUpdated = DateTime.MinValue;
-            }
-
             public TSBShift Create(Shift shift, User supervisor)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<TSBShift>(
@@ -291,6 +281,16 @@ namespace DMT.Services
                 }
                 return _current;
 
+            }
+
+            public void ChangeShift(TSBShift shift)
+            {
+                if (null == shift) return;
+                NRestClient.Create(port: 9000).Execute(
+                    RouteConsts.Shift.ChangeShift.Url, shift);
+
+                // reset last update for reload new shirt.
+                LastUpdated = DateTime.MinValue;
             }
 
             #endregion
@@ -317,16 +317,36 @@ namespace DMT.Services
 
             #region Public Methods
 
-            public UserShift Create(Shift shift, User supervisor)
+            public UserShift Create(Shift shift, User collector)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<UserShift>(
                     RouteConsts.Job.Create.Url,
                     new UserShiftCreate()
                     {
                         Shift = shift,
-                        User = supervisor
+                        User = collector
                     });
                 return ret;
+            }
+
+            public UserShift GetCurrent(User user)
+            {
+                return NRestClient.Create(port: 9000).Execute<UserShift>(
+                    RouteConsts.Job.GetCurrent.Url, user);
+            }
+
+            public bool BeginJob(UserShift shift)
+            {
+                if (null == shift) return false;
+                return NRestClient.Create(port: 9000).Execute<bool>(
+                    RouteConsts.Job.BeginJob.Url, shift);
+            }
+
+            public void EndJob(UserShift shift)
+            {
+                if (null == shift) return;
+                NRestClient.Create(port: 9000).Execute(
+                    RouteConsts.Job.EndJob.Url, shift);
             }
 
             #endregion

@@ -19,6 +19,11 @@
         <TreeView x:Name="tree"
                   Grid.Column="0"
                   SelectedItemChanged="tree_SelectedItemChanged">
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="IsExpanded" Value="True" />
+                </Style>
+            </TreeView.ItemContainerStyle>
             <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type self:RoleItem}" 
                                           ItemsSource="{Binding Users}">

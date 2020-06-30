@@ -25,13 +25,32 @@ namespace DMT.Services
             if (null == value) return null;
             return UserShift.Create(value.Shift, value.User);
         }
-        /*
+
+
+        [HttpPost]
+        [ActionName(RouteConsts.Job.GetCurrent.Name)]
+        public UserShift GetCurrent([FromBody] User value)
+        {
+            if (null == value) return null;
+            return UserShift.GetCurrent(value.UserId);
+        }
+
         [HttpPost]
         [ActionName(RouteConsts.Job.BeginJob.Name)]
-        public string BeginJob([FromBody] Collector collector)
+        public bool BeginJob(UserShift value)
         {
-            return collector.Name + " is Begin Job";
+            if (null == value) return false;
+            return UserShift.BeginJob(value);
         }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Job.EndJob.Name)]
+        public void EndJob(UserShift value)
+        {
+            if (null == value) return;
+            UserShift.EndJob(value);
+        }
+        /*
         [HttpPost]
         [ActionName(RouteConsts.Job.EndJob.Name)]
         public string EndJob([FromBody] Collector collector)
