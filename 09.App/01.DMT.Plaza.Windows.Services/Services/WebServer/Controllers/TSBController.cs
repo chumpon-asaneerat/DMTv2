@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web.Http;
 
 using DMT.Models;
+using DMT.Models.ExtensionMethods;
 
 #endregion
 
@@ -36,6 +37,7 @@ namespace DMT.Services
         [ActionName(RouteConsts.TSB.GetTSBLanes.Name)]
         public List<Lane> GetTSBLanes([FromBody] TSB value)
         {
+            if (null == value) return new List<Lane>();
             var results = value.GetLanes();
             return results;
         }
@@ -52,6 +54,7 @@ namespace DMT.Services
         [ActionName(RouteConsts.TSB.SetActive.Name)]
         public void SetActive([FromBody] TSB value)
         {
+            if (null == value) return;
             value.SetActive();
         }
 

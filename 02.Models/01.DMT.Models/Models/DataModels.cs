@@ -48,25 +48,6 @@ namespace DMT.Models
 
         #endregion
 
-        #region Public Methods
-
-        public List<Plaza> GetPlazas()
-        {
-            return Plaza.GetTSBPlazas(this);
-        }
-
-        public List<Lane> GetLanes()
-        {
-            return Lane.GetTSBLanes(this);
-        }
-
-        public void SetActive()
-        {
-            TSB.SetActive(this.TSBId);
-        }
-
-        #endregion
-
         #region Public Proprties
 
         /// <summary>
@@ -271,15 +252,6 @@ namespace DMT.Models
         /// Constructor.
         /// </summary>
         public Plaza() : base() { }
-
-        #endregion
-
-        #region Public Methods
-
-        public List<Lane> GetLanes()
-        {
-            return Lane.GetPlazaLanes(this);
-        }
 
         #endregion
 
@@ -833,19 +805,6 @@ namespace DMT.Models
 
         #endregion
 
-        #region Public Methods
-
-        public List<User> GetUsers()
-        {
-            return User.FindByRole(RoleId);
-        }
-        public List<User> GetUsers(int status)
-        {
-            return User.FindByRole(RoleId, status);
-        }
-
-        #endregion
-
         #region Public Proprties
 
         /// <summary>
@@ -982,10 +941,6 @@ namespace DMT.Models
         /// Constructor.
         /// </summary>
         public User() : base() { }
-
-        #endregion
-
-        #region Public Methods
 
         #endregion
 
@@ -1393,6 +1348,7 @@ namespace DMT.Models
         #endregion
 
         #region Public Properties
+
         /// <summary>
         /// Gets or sets Key
         /// </summary>
@@ -1413,7 +1369,6 @@ namespace DMT.Models
                 }
             }
         }
-
         /// <summary>
         /// Gets or sets Value
         /// </summary>
