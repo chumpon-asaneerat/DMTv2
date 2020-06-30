@@ -17,7 +17,10 @@
         <Grid Grid.Column="0">
             <ListView x:Name="lvLanes"
                       FontSize="18"
-                      ItemsSource="{Binding}">
+                      ItemsSource="{Binding}"
+                      VirtualizingPanel.IsVirtualizing="True"
+                      VirtualizingPanel.VirtualizationMode="Recycling"
+                      VirtualizingPanel.IsVirtualizingWhenGrouping="True">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Width="100"
@@ -81,8 +84,7 @@
                      ItemsSource="{Binding}"
                      Background="Transparent"
                      VirtualizingPanel.IsVirtualizing="True"
-                     VirtualizingPanel.VirtualizationMode="Recycling"
-                     VirtualizingPanel.IsContainerVirtualizable="True">
+                     VirtualizingPanel.VirtualizationMode="Recycling">
                 <ListBox.Resources>
                     <Style TargetType="{x:Type ListBox}">
                         <!-- Set the ItemTemplate of the ListBox to a DataTemplate which explains how to display an object of type BitmapImage. -->
