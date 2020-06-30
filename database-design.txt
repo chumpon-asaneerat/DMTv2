@@ -97,6 +97,23 @@ TABLES
   - Status int -> (1 = Sync, 0 = Unsync, etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK
 
+- LanePayment
+  - PkId [PK] (string MaxLength(30), Guid.NewID)
+  - TSBId (string MaxLength(10))
+  - TSBNameEN (string MaxLength(100))
+  - TSBNameTH (string MaxLength(100))
+  - LandId (int)
+  - LaneId (string MaxLength(10))
+  - UserId (string MaxLength(10))
+  - FullNameEN (string MaxLength(100))
+  - FullNameTH (string MaxLength(100))
+  - PaymentType (string MaxLength(30)) -> (EMV/QR Code)
+  - PaymentDate (DateTime)
+  - ApproveCode (string MaxLength(30))
+  - Amount (decimal)
+  - Status int -> (1 = Sync, 0 = Unsync, etc..)
+  - LastUpdate (DateTime) -> last time sync from DC
+
 - RevenueEntry - OK
   - PKId [PK] (string MaxLength(30), Guid.NewID) - OK
   - RevenueId (string MaxLength(20)) -> custom id from DMT. - OK
@@ -149,6 +166,11 @@ TABLES
 
   - Status int -> (1 = Sync, 0 = Unsync, etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK
+
+
+
+
+
 
 - AssetType
   - PkId [PK] (int auto)
