@@ -10,7 +10,7 @@
              mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="500" />
+            <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="5" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
@@ -30,16 +30,16 @@
                                         Header="ประเภทเลน"
                                         DisplayMemberBinding="{Binding Path=LaneType}" />
 
-                        <GridViewColumn Width="80"
+                        <GridViewColumn Width="120"
                                         Header="วันที่"
                                         DisplayMemberBinding="{Binding Path=DateString}" />
-                        <GridViewColumn Width="80"
+                        <GridViewColumn Width="120"
                                         Header="เวลา"
                                         DisplayMemberBinding="{Binding Path=TimeString}" />
-                        <GridViewColumn Width="80"
+                        <GridViewColumn Width="120"
                                         Header="รหัสพนักงาน"
                                         DisplayMemberBinding="{Binding Path=UserId}" />
-                        <GridViewColumn Width="250"
+                        <GridViewColumn Width="300"
                                         Header="ชื่อพนักงาน"
                                         DisplayMemberBinding="{Binding Path=UserName}" />
                         <!--
