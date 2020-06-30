@@ -1,9 +1,31 @@
 --------------------------------------------------------------------------------------------
+Update 2020-07-01 #2
+- 
+
+Update 2020-07-01 #1
+- 
+
+--------------------------------------------------------------------------------------------
+Update 2020-06-30 #15
+- 
+
+Update 2020-06-30 #14
+- 
+
+Update 2020-06-30 #13
+- 
+
+Update 2020-06-30 #12
+- 
+
 Update 2020-06-30 #11
 - 
 
+[commited]
 Update 2020-06-30 #10
-- 
+- Reimplements models and local db server #30.
+- Update app.manifest for windows services app.
+- Update simulator project - add card images and organize folders.
 
 [commited]
 Update 2020-06-30 #9
