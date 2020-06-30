@@ -93,6 +93,9 @@
     <Compile Include="Simulator\Pages\LaneAttendancePage.xaml.cs">
       <DependentUpon>LaneAttendancePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Simulator\Pages\UserViewPage.xaml.cs">
+      <DependentUpon>UserViewPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindow.xaml.cs">
@@ -148,6 +151,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Simulator\Pages\LaneAttendancePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Simulator\Pages\UserViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

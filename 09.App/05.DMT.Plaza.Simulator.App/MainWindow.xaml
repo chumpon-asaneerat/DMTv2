@@ -35,6 +35,18 @@
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
                 </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Header="Users">
+                    <Fluent:Button x:Name="cmdUserView"
+                                   Width="100"
+                                   Header="User View"
+                                   Click="cmdUserView_Click">
+                        <Fluent:Button.LargeIcon>
+                            <Image HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch"
+                                   Source="Images/Lanes/toll-clipart.jpg" />
+                        </Fluent:Button.LargeIcon>
+                    </Fluent:Button>
+                </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
         <Grid Grid.Row="1">

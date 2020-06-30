@@ -92,6 +92,11 @@ namespace DMT
             PageContentManager.Instance.Current = new Simulator.Pages.LaneAttendancePage();
         }
 
+        private void cmdUserView_Click(object sender, RoutedEventArgs e)
+        {
+            PageContentManager.Instance.Current = new Simulator.Pages.UserViewPage();
+        }
+
         #endregion
     }
 }
