@@ -7,6 +7,8 @@ TABLES
   - TSBNameEN (string MaxLength(100)) - OK
   - TSBNameTH (string MaxLength(100)) - OK
   - Active (bool) - (new) - OK
+  - Status int -> (Active = 1/Inactive = 0/etc..) - OK
+  - LastUpdate (DateTime) -> last time sync from DC - OK
 
 - Plaza - OK
   - PlazaId [PK] (string MaxLength(10)) - OK
@@ -14,6 +16,8 @@ TABLES
   - PlazaNameEN (string MaxLength(100)) - OK
   - PlazaNameTH (string MaxLength(100)) - OK
   - Direction (string MaxLength(10)) - OK
+  - Status int -> (Active = 1/Inactive = 0/etc..) - OK
+  - LastUpdate (DateTime) -> last time sync from DC - OK
 
 - Lane - OK
   - PkId [PK] (int auto) - OK
@@ -23,6 +27,8 @@ TABLES
   - TSBId (string MaxLength(10)) - OK
   - LaneType (string MaxLength(10)) -> (MTC/etc..) - OK
   - LaneAbbr (string MaxLength(10)) - OK
+  - Status int -> (Active = 1/Inactive = 0/etc..) - OK
+  - LastUpdate (DateTime) -> last time sync from DC - OK
 
 - Shift - OK
   - ShiftId [PK] (int) - OK
@@ -33,6 +39,8 @@ TABLES
   - RoleId [PK] (string MaxLength(20)) - OK
   - RoleNameEN (string MaxLength(50)) - OK
   - RoleNameTH (string MaxLength(50)) - OK
+  - Status int -> (Active = 1/Inactive = 0/etc..) - OK
+  - LastUpdate (DateTime) -> last time sync from DC - OK
 
 - User - OK
   - UserId [PK] (string MaxLength(10)) - OK
@@ -45,9 +53,16 @@ TABLES
   - Status int -> (Active = 1/Inactive = 0/etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK
 
+- Payment - OK
+  - PaymentId [PK] (string MaxLength(20)) -> (EMV/QR Code) - OK
+  - PaymentNameEN (string MaxLength(10)) - OK
+  - PaymentNameTH (string MaxLength(10)) - OK
+  - Status int -> (Active = 1/Inactive = 0/etc..) - OK
+  - LastUpdate (DateTime) -> last time sync from DC - OK
+
 - Config - OK
   - Key [PK] (string MaxLength(30)) - OK
-  - Value [PK] (string MaxLength(100)) - OK
+  - Value (string MaxLength(100)) - OK
 
 - TSBShift - OK
   - TSBShiftId [PK] (int, Auto) - OK
@@ -97,7 +112,7 @@ TABLES
   - Status int -> (1 = Sync, 0 = Unsync, etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK
 
-- LanePayment
+- LanePayment - OK
   - PkId [PK] (string MaxLength(30), Guid.NewID) - OK
   - ApproveCode (string MaxLength(20)) - OK
   - TSBId (string MaxLength(10)) - OK
@@ -108,7 +123,9 @@ TABLES
   - UserId (string MaxLength(10)) - OK
   - FullNameEN (string MaxLength(100)) - OK
   - FullNameTH (string MaxLength(100)) - OK
-  - PaymentType (string MaxLength(20)) -> (EMV/QR Code) - OK
+  - PaymentId (string MaxLength(20)) -> (EMV/QR Code) - OK
+  - PaymentNameEN (string MaxLength(10)) - OK
+  - PaymentNameTH (string MaxLength(10)) - OK
   - PaymentDate (DateTime) - OK
   - Amount (decimal) - OK
   - Status int -> (1 = Sync, 0 = Unsync, etc..) - OK

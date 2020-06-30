@@ -137,6 +137,8 @@ namespace DMT.Services
             Db.CreateTable<Role>();
             Db.CreateTable<User>();
 
+            Db.CreateTable<Payment>();
+
             Db.CreateTable<Config>();
 
             Db.CreateTable<TSBShift>();
@@ -155,6 +157,7 @@ namespace DMT.Services
             InitTSBAndPlazaAndLanes();
             InitShifts();
             InitRoleAndUsers();
+            InitPayments();
             InitConfigs();
         }
 
@@ -876,6 +879,27 @@ namespace DMT.Services
                 RoleId = item.RoleId
             };
             if (!User.Exists(user)) User.Save(user);
+        }
+
+        private void InitPayments()
+        {
+            if (null == Db) return;
+            Payment item;
+            // for send to Data Center.
+            item = new Payment() 
+            { 
+                PaymentId = "EMV", 
+                PaymentNameEN = "EMV",
+                PaymentNameTH = "อีเอ็มวี"
+            };
+            if (!Payment.Exists(item)) Payment.Save(item);
+            item = new Payment() 
+            {
+                PaymentId = "QRCODE",
+                PaymentNameEN = "QR Code",
+                PaymentNameTH = "คิวอาร์ โค้ด"
+            };
+            if (!Payment.Exists(item)) Payment.Save(item);
         }
 
         private void InitConfigs()
