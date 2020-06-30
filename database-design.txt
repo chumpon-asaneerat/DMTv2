@@ -96,6 +96,50 @@ TABLES
   - Status int -> (1 = Sync, 0 = Unsync, etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK
 
+- RevenueEntry
+  - RevPkId [PK] (string MaxLength(30), Guid.NewID)
+  - RevenueId (string MaxLength(20)) -> custom id from DMT.
+  - EntryDate (Date)
+  - RevenueDate (Date)
+  - TSBId (string MaxLength(10))
+  - TSBNameEN (string MaxLength(100))
+  - TSBNameTH (string MaxLength(100))
+  - ShiftId (int)
+  - ShiftNameEN (string MaxLength(50))
+  - ShiftNameTH (string MaxLength(50))
+  - UserId (string MaxLength(10))
+  - FullNameEN (string MaxLength(100))
+  - FullNameTH (string MaxLength(100))
+  - BagNo (string MaxLength(10))
+  - BeltNo (string MaxLength(20))
+
+  - TrafficST25 (int)
+  - TrafficST50 (int)
+  - TrafficBHT1 (int)
+  - TrafficBHT5 (int)
+  - TrafficBHT10 (int)
+  - TrafficBHT20 (int)
+  - TrafficBHT50 (int)
+  - TrafficBHT100 (int)
+  - TrafficBHT500 (int)
+  - TrafficBHT1000 (int)
+  - TrafficBHTTotal (decimal)
+  - OtherBHTTotal (decimal)
+
+  - CouponUsage-XXX (int)
+  - CouponUsage-XXX (int)
+  - CouponUsage-XXX (int)
+  - CouponUsage-XXX (int)
+  - CouponUsage-XXX (int)
+
+  - CouponSold-XXX (int)
+  - CouponSold-XXX (int)
+  - CouponSold-XXX (int)
+  - CouponSold-XXX (int)
+  - CouponSold-XXX (int)
+  - Status int -> (1 = Sync, 0 = Unsync, etc..)
+  - LastUpdate (DateTime) -> last time sync from DC
+
 - AssetType
   - PkId [PK] (int auto)
   - AssetTypeId (string MaxLength(10))
@@ -112,14 +156,6 @@ TABLES
   - PkId [PK] (string MaxLength(30), Guid.NewID)
   - ExchangeId (string MaxLength(20))
   - RequestDate (Date)
-
-- RevenueEntry
-  - RevPkId [PK] (string MaxLength(30), Guid.NewID)
-  - EntryDate (Date)
-  - RevenueDate (Date)
-  - TSBId (string MaxLength(10))
-  - ShiftId (int)
-  - UserId (string MaxLength(10))
 
 - RevenueGroup
   - 

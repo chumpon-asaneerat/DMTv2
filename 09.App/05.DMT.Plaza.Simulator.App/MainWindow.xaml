@@ -24,10 +24,14 @@
             <!-- Tabs -->
             <Fluent:RibbonTabItem Header="Lane">
                 <Fluent:RibbonGroupBox Header="Attendance ">
-                    <Fluent:Button Header="Green"
-                                   Width="100">
+                    <Fluent:Button x:Name="cmdLaneAttend"
+                                   Header="Lane Attend/Leave"
+                                   Width="100"
+                                   Click="cmdLaneAttend_Click">
                         <Fluent:Button.LargeIcon>
-                            <Image Source="Images/toll-clipart.jpg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            <Image Source="Images/toll-clipart.jpg" 
+                                   HorizontalAlignment="Stretch" 
+                                   VerticalAlignment="Stretch"/>
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
                     <!--

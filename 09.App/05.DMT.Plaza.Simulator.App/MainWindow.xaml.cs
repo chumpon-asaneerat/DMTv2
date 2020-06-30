@@ -87,23 +87,11 @@ namespace DMT
 
         #region Button Handlers
 
-        #endregion
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void cmdLaneAttend_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            string result = Services.DMTServiceOperations.Instance.Plaza.BeginJob();
-            //Console.WriteLine(result);
-            MessageBox.Show(result);
-            */
-            /*
-            var user = Models.User.Create();
-            user.UserId = "99001";
-            var ret = Services.DMTServiceOperations.Instance.Plaza.GetUser(user);
-            if (null != ret)
-                MessageBox.Show("Found :" + ret.UserName);
-            else MessageBox.Show("User not Found");
-            */
+            PageContentManager.Instance.Current = new Simulator.Pages.LaneAttendancePage();
         }
+
+        #endregion
     }
 }
