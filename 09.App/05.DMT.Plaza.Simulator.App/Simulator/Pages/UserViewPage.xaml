@@ -19,6 +19,7 @@
             <ListBox x:Name="lstUsers"
                      FontSize="18"
                      ItemsSource="{Binding}"
+                     SelectionMode="Single"
                      Background="Transparent"
                      VirtualizingPanel.IsVirtualizing="True"
                      VirtualizingPanel.VirtualizationMode="Recycling"

@@ -44,6 +44,8 @@ namespace DMT.Simulator.Pages
         #endregion
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private UserItem currentUser = null;
+        private LaneItem currentLane = null;
 
         #region Loaded/Unloaderd
 
@@ -56,6 +58,31 @@ namespace DMT.Simulator.Pages
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        #endregion
+
+        #region ListView Handlers
+
+        private void lvLanes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            currentLane = lvLanes.SelectedItem as LaneItem;
+            if (null != currentLane)
+            {
+
+            }
+        }
+
+        #endregion
+
+        #region ListBox Handlers
+
+        private void lstUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            currentUser = lstUsers.SelectedItem as UserItem;
+            if (null != currentUser)
+            {
+            }
         }
 
         #endregion

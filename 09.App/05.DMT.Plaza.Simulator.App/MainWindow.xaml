@@ -25,35 +25,29 @@
             <Fluent:RibbonTabItem Header="Home">
                 <Fluent:RibbonGroupBox Header="Lane">
                     <Fluent:Button x:Name="cmdLaneActivity"
-                                   Width="100"
+                                   Width="75"
                                    Header="Lane Activity"
                                    Click="cmdLaneActivity_Click">
                         <Fluent:Button.LargeIcon>
-                            <Image HorizontalAlignment="Stretch"
-                                   VerticalAlignment="Stretch"
-                                   Source="Images/Lanes/toll-clipart.jpg" />
+                            <Image Source="Images/Lanes/toll-clipart.jpg" />
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
                 </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox Header="Users">
                     <Fluent:Button x:Name="cmdUserView"
-                                   Width="100"
+                                   Width="75"
                                    Header="View users"
                                    Click="cmdUserView_Click">
                         <Fluent:Button.LargeIcon>
-                            <Image HorizontalAlignment="Stretch"
-                                   VerticalAlignment="Stretch"
-                                   Source="Images/Users/online-user.png" />
+                            <Image Source="Images/Users/online-user.png" />
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
                     <Fluent:Button x:Name="cmdSupervisorView"
-                                   Width="100"
+                                   Width="75"
                                    Header="Supervisor Task"
                                    Click="cmdSupervisorView_Click">
                         <Fluent:Button.LargeIcon>
-                            <Image HorizontalAlignment="Stretch"
-                                   VerticalAlignment="Stretch"
-                                   Source="Images/Users/red-user.png" />
+                            <Image Source="Images/Users/red-user.png" />
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
                 </Fluent:RibbonGroupBox>
