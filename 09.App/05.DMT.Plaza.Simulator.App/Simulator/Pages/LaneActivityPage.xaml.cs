@@ -27,16 +27,16 @@ using System.Runtime.InteropServices;
 namespace DMT.Simulator.Pages
 {
     /// <summary>
-    /// Interaction logic for LaneAttendancePage.xaml
+    /// Interaction logic for LaneActivityPage.xaml
     /// </summary>
-    public partial class LaneAttendancePage : UserControl
+    public partial class LaneActivityPage : UserControl
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public LaneAttendancePage()
+        public LaneActivityPage()
         {
             InitializeComponent();
         }
@@ -68,23 +68,20 @@ namespace DMT.Simulator.Pages
             lstUsers.ItemsSource = null;
 
             users.Clear();
-            var roles = ops.Users.GetRoles();
-            if (null != roles)
+            var role = ops.Users.GetRole(Search.Roles.ById.Create("COLLECTOR"));
+            if (null != role)
             {
-                roles.ForEach(role =>
+                var usrs = ops.Users.GetUsers(role);
+                if (null != usrs)
                 {
-                    var usrs = ops.Users.GetUsers(role);
-                    if (null != usrs)
+                    usrs.ForEach(usr => 
                     {
-                        usrs.ForEach(usr => 
-                        {
-                            var inst = new UserItem();
-                            inst.RoleNameTH = role.RoleNameTH;
-                            usr.AssignTo(inst);
-                            users.Add(inst);
-                        });
-                    }
-                });
+                        var inst = new UserItem();
+                        inst.RoleNameTH = role.RoleNameTH;
+                        usr.AssignTo(inst);
+                        users.Add(inst);
+                    });
+                }
             }
 
             lstUsers.ItemsSource = users;

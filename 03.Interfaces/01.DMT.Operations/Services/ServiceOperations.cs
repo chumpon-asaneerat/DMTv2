@@ -190,6 +190,13 @@ namespace DMT.Services
 
             #region Public Methods
 
+            public Role GetRole(Search.Roles.ById value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<Role>(
+                    RouteConsts.User.GetRole.Url, value);
+                return ret;
+            }
+
             public List<Role> GetRoles()
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<Role>>(

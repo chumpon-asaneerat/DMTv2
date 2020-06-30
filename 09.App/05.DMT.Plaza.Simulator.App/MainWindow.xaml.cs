@@ -87,14 +87,19 @@ namespace DMT
 
         #region Button Handlers
 
-        private void cmdLaneAttend_Click(object sender, RoutedEventArgs e)
+        private void cmdLaneActivity_Click(object sender, RoutedEventArgs e)
         {
-            PageContentManager.Instance.Current = new Simulator.Pages.LaneAttendancePage();
+            PageContentManager.Instance.Current = new Simulator.Pages.LaneActivityPage();
         }
 
         private void cmdUserView_Click(object sender, RoutedEventArgs e)
         {
             PageContentManager.Instance.Current = new Simulator.Pages.UserViewPage();
+        }
+
+        private void cmdSupervisorView_Click(object sender, RoutedEventArgs e)
+        {
+            PageContentManager.Instance.Current = new Simulator.Pages.SupervisorTaskPage();
         }
 
         #endregion

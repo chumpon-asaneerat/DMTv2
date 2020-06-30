@@ -17,6 +17,14 @@ namespace DMT.Services
     public class UserController : ApiController
     {
         [HttpPost]
+        [ActionName(RouteConsts.User.GetRole.Name)]
+        public Role GetRole([FromBody] Search.Roles.ById value)
+        {
+            var results = Role.Get(value.RoleId);
+            return results;
+        }
+
+        [HttpPost]
         [ActionName(RouteConsts.User.GetRoles.Name)]
         public List<Role> GetRoles()
         {

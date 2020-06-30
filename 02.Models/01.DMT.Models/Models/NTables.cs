@@ -273,7 +273,7 @@ namespace DMT.Models
             lock (sync)
             {
                 SQLiteConnection db = Default;
-                return Get(Id, recursive);
+                return Get(db, Id, recursive);
             }
         }
         /// <summary>

@@ -90,8 +90,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Simulator\Pages\LaneAttendancePage.xaml.cs">
-      <DependentUpon>LaneAttendancePage.xaml</DependentUpon>
+    <Compile Include="Simulator\Pages\LaneActivityPage.xaml.cs">
+      <DependentUpon>LaneActivityPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Simulator\Pages\SupervisorTaskPage.xaml.cs">
+      <DependentUpon>SupervisorTaskPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Simulator\Pages\UserViewPage.xaml.cs">
       <DependentUpon>UserViewPage.xaml</DependentUpon>
@@ -150,7 +153,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Simulator\Pages\LaneAttendancePage.xaml">
+    <Page Include="Simulator\Pages\LaneActivityPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Simulator\Pages\SupervisorTaskPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -186,6 +193,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Users\online-user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Users\red-user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

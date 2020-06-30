@@ -47,6 +47,12 @@ namespace DMT
         {
             public const string Url = RouteConsts.Url + @"/User";
 
+            public static class GetRole
+            {
+                public const string Name = "GetRole";
+                public const string Url = User.Url + @"/" + Name;
+            }
+
             public static class GetRoles
             {
                 public const string Name = "GetRoles";

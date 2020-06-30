@@ -3176,6 +3176,20 @@ namespace DMT.Models
 
     public static class Search
     {
+        public static class Roles
+        {
+            public class ById : NSearch<ById>
+            {
+                public string RoleId { get; set; }
+
+                public static ById Create(string roleId)
+                {
+                    var ret = new ById();
+                    ret.RoleId = roleId;
+                    return ret;
+                }
+            }
+        }
         public static class Users
         {
             public class ByCardId : NSearch<ByCardId>
