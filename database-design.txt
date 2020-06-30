@@ -116,6 +116,7 @@ TABLES
   - TrafficST25 (int)
   - TrafficST50 (int)
   - TrafficBHT1 (int)
+  - TrafficBHT2 (int)
   - TrafficBHT5 (int)
   - TrafficBHT10 (int)
   - TrafficBHT20 (int)
@@ -126,17 +127,19 @@ TABLES
   - TrafficBHTTotal (decimal)
   - OtherBHTTotal (decimal)
 
-  - CouponUsage-XXX (int)
-  - CouponUsage-XXX (int)
-  - CouponUsage-XXX (int)
-  - CouponUsage-XXX (int)
-  - CouponUsage-XXX (int)
+  - CouponUsageBHT30 (int)
+  - CouponUsageBHT35 (int)
+  - CouponUsageBHT75 (int)
+  - CouponUsageBHT80 (int)
+  - CouponUsageFreePassA (int)
+  - CouponUsageFreePassOther (int)
 
-  - CouponSold-XXX (int)
-  - CouponSold-XXX (int)
-  - CouponSold-XXX (int)
-  - CouponSold-XXX (int)
-  - CouponSold-XXX (int)
+  - CouponSoldBHT35 (int)
+  - CouponSoldBHT80 (int)
+  - CouponSoldBHT35Total (int)
+  - CouponSoldBHT80Total (int)
+  - CouponSoldBHTTotal (int)
+
   - Status int -> (1 = Sync, 0 = Unsync, etc..)
   - LastUpdate (DateTime) -> last time sync from DC
 
