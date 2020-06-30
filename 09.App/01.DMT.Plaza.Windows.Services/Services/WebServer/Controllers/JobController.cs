@@ -1,12 +1,13 @@
 ﻿#region Using
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using NLib.Reflection;
 
 using DMT.Models;
-using System;
+using DMT.Models.ExtensionMethods;
 
 #endregion
 
@@ -50,13 +51,5 @@ namespace DMT.Services
             if (null == value) return;
             UserShift.EndJob(value);
         }
-        /*
-        [HttpPost]
-        [ActionName(RouteConsts.Job.EndJob.Name)]
-        public string EndJob([FromBody] Collector collector)
-        {
-            return collector.Name + " is End Job";
-        }
-        */
     }
 }

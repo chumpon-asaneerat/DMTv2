@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
+using DMT.Models;
+using DMT.Models.ExtensionMethods;
+
+
 #endregion
 
 namespace DMT.Services

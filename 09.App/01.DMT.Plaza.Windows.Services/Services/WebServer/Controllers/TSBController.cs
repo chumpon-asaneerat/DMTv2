@@ -29,6 +29,7 @@ namespace DMT.Services
         [ActionName(RouteConsts.TSB.GetTSBPlazas.Name)]
         public List<Plaza> GetTSBPlazas([FromBody] TSB value)
         {
+            if (null == value) return new List<Plaza>();
             var results = value.GetPlazas();
             return results;
         }
@@ -46,6 +47,7 @@ namespace DMT.Services
         [ActionName(RouteConsts.TSB.GetPlazaLanes.Name)]
         public List<Lane> GetPlazaLanes([FromBody] Plaza value)
         {
+            if (null == value) return new List<Lane>();
             var results = value.GetLanes();
             return results;
         }

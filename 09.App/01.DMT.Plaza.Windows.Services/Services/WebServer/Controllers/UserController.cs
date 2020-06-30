@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web.Http;
 
 using DMT.Models;
+using DMT.Models.ExtensionMethods;
 
 #endregion
 
@@ -20,6 +21,7 @@ namespace DMT.Services
         [ActionName(RouteConsts.User.GetRole.Name)]
         public Role GetRole([FromBody] Search.Roles.ById value)
         {
+            if (null == value) return null;
             var results = Role.Get(value.RoleId);
             return results;
         }
@@ -36,6 +38,7 @@ namespace DMT.Services
         [ActionName(RouteConsts.User.GetUsers.Name)]
         public List<User> GetUsers(Role value)
         {
+            if (null == value) return new List<User>();
             int status = 1; // active only
             var results = value.GetUsers(status);
             return results;
@@ -45,6 +48,7 @@ namespace DMT.Services
         [ActionName(RouteConsts.User.GetById.Name)]
         public User GetById([FromBody] Search.Users.ById value)
         {
+            if (null == value) return null;
             return Models.User.Get(value.UserId);
         }
 
@@ -52,6 +56,7 @@ namespace DMT.Services
         [ActionName(RouteConsts.User.GetByCardId.Name)]
         public User GetByCardId([FromBody] Search.Users.ByCardId value)
         {
+            if (null == value) return null;
             return Models.User.GetByCardId(value.CardId);
         }
 
@@ -59,6 +64,7 @@ namespace DMT.Services
         [ActionName(RouteConsts.User.GetByLogIn.Name)]
         public User GetByLogIn([FromBody] Search.Users.ByLogIn value)
         {
+            if (null == value) return null;
             return Models.User.GetByUserId(value.UserId, value.Password);
         }
     }
