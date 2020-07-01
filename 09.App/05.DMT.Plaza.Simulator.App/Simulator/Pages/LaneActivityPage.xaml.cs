@@ -312,26 +312,18 @@ namespace DMT.Simulator.Pages
 
             var attd = ops.Lanes.CreateAttendance(currentLane, currentUser);
 
-            string sDT = jobDate.Value.Value.ToString("yyyy-MM-dd HH:mm:ss.fff",
-                System.Globalization.DateTimeFormatInfo.InvariantInfo);
-            DateTime dt;
-            if (DateTime.TryParseExact(sDT, "yyyy-MM-dd HH:mm:ss.fff",
-                System.Globalization.DateTimeFormatInfo.InvariantInfo,
-                System.Globalization.DateTimeStyles.None, out dt))
-            {
-                Console.WriteLine(dt);
+            DateTime dt = jobDate.Value.Value.ToLocalTime();
+            // Set Begin Job date.
+            attd.Begin = dt;
+            ops.Lanes.SaveAttendance(attd);
+            // Set Attendance
+            currentLane.Attendance = attd;
 
-                attd.Begin = jobDate.Value.Value;
-                ops.Lanes.SaveAttendance(attd);
-                // Set Attendance
-                currentLane.Attendance = attd;
+            // update list views
+            RefreshLaneAttendances();
+            RefreshLanePayments();
 
-                // update list views
-                RefreshLaneAttendances();
-                RefreshLanePayments();
-
-                RefreshUI();
-            }
+            RefreshUI();
         }
 
         private void cmdEndJob_Click(object sender, RoutedEventArgs e)
@@ -342,8 +334,9 @@ namespace DMT.Simulator.Pages
             var attd = currentLane.Attendance;
             if (null != attd)
             {
+                DateTime dt = jobDate.Value.Value.ToLocalTime();
                 // Set End Job date.
-                attd.End = jobDate.Value.Value;
+                attd.End = dt;
                 // Save to database.
                 ops.Lanes.SaveAttendance(attd);
             }
