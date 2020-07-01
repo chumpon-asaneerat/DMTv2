@@ -124,13 +124,13 @@ namespace DMT.Simulator.Pages
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             // Set CultureInfo for DateTimePicker.
-            //shiftDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
-            shiftDate.CultureInfo = System.Globalization.CultureInfo.CurrentUICulture;
+            shiftDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
+            //shiftDate.CultureInfo = System.Globalization.CultureInfo.CurrentUICulture;
             shiftDate.DefaultValue = DateTime.Now;
             shiftDate.GotFocus += ShiftDate_GotFocus;
 
-            //jobDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
-            jobDate.CultureInfo = System.Globalization.CultureInfo.CurrentUICulture;
+            jobDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
+            //jobDate.CultureInfo = System.Globalization.CultureInfo.CurrentUICulture;
             jobDate.DefaultValue = DateTime.Now;
             jobDate.GotFocus += JobDate_GotFocus;
 
@@ -343,7 +343,8 @@ namespace DMT.Simulator.Pages
 
             //DateTime dt = shiftDate.Value.Value.ToLocalTime();
             DateTime dt = shiftDate.Value.Value;
-            inst.Begin = dt.ToUniversalTime();
+            //inst.Begin = dt.ToUniversalTime();            
+            inst.Begin = DateTime.UtcNow;
             ops.Jobs.BeginJob(inst);
 
             RefreshUsers();
@@ -360,7 +361,8 @@ namespace DMT.Simulator.Pages
 
             //DateTime dt = shiftDate.Value.Value.ToLocalTime();
             DateTime dt = shiftDate.Value.Value;
-            currentUser.Shift.End = dt.ToUniversalTime();
+            //currentUser.Shift.End = dt.ToUniversalTime();
+            currentUser.Shift.End = DateTime.UtcNow;
 
             ops.Jobs.EndJob(currentUser.Shift);
             
@@ -380,7 +382,9 @@ namespace DMT.Simulator.Pages
 
             DateTime dt = jobDate.Value.Value.ToLocalTime();
             // Set Begin Job date.
-            attd.Begin = dt;
+            //attd.Begin = dt;
+            attd.Begin = DateTime.UtcNow;
+
             ops.Lanes.SaveAttendance(attd);
             // Set Attendance
             currentLane.Attendance = attd;
@@ -402,7 +406,9 @@ namespace DMT.Simulator.Pages
             {
                 DateTime dt = jobDate.Value.Value.ToLocalTime();
                 // Set End Job date.
-                attd.End = dt;
+                //attd.End = dt;
+                attd.End = DateTime.UtcNow;
+
                 // Save to database.
                 ops.Lanes.SaveAttendance(attd);
             }
