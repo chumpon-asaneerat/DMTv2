@@ -2,8 +2,10 @@
 Update 2020-07-01 #24
 - 
 
+[commited]
 Update 2020-07-01 #23
-- 
+- Reimplements models and local db server #57.
+- Still has date time problem with DateTimePicker control.
 
 [commited]
 Update 2020-07-01 #22

@@ -45,7 +45,30 @@ namespace DMT.Simulator.Pages
 
         public class UserItem : User
         {
+            private UserShift _Shift = null;
+
             public string RoleNameTH { get; set; }
+            public UserShift Shift
+            {
+                get { return _Shift; }
+                set
+                {
+                    _Shift = value;
+                    RaiseChanged("BeginDateString");
+                    RaiseChanged("BeginTimeString");
+                }
+            }
+
+            public string BeginDateString
+            {
+                get { return (null != Shift) ? Shift.BeginDateString : string.Empty; }
+                set { }
+            }
+            public string BeginTimeString
+            {
+                get { return (null != Shift) ? Shift.BeginTimeString : string.Empty; }
+                set { }
+            }
         }
 
         public class LaneItem : Lane
@@ -101,6 +124,17 @@ namespace DMT.Simulator.Pages
             lstUsers.ItemsSource = users;
         }
 
+        private void RefreshUserShifts(UserItem user)
+        {
+            lvUserShifts.ItemsSource = null;
+
+            if (null == user) return;
+
+            var userShifts = ops.Jobs.GetUserShifts(user);
+
+            lvUserShifts.ItemsSource = userShifts;
+        }
+
         #endregion
 
         #region ListBox Handler(s)
@@ -109,6 +143,8 @@ namespace DMT.Simulator.Pages
         {
             var item = lstUsers.SelectedItem as UserItem;
             pgrid.SelectedObject = item;
+
+            RefreshUserShifts(item);
         }
 
         #endregion

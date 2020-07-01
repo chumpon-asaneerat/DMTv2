@@ -358,6 +358,13 @@ namespace DMT.Services
                     RouteConsts.Job.EndJob.Url, shift);
             }
 
+            public List<UserShift> GetUserShifts(User collector)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<UserShift>>(
+                    RouteConsts.Job.GetUserShifts.Url, collector);
+                return ret;
+            }
+
             #endregion
         }
 

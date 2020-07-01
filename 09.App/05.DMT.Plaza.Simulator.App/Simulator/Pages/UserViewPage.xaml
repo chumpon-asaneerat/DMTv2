@@ -16,7 +16,13 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
             <ListBox x:Name="lstUsers"
+                     Grid.Row="0"
                      FontSize="18"
                      ItemsSource="{Binding}"
                      SelectionMode="Single"
@@ -125,6 +131,43 @@
                     </Style>
                 </ListBox.Resources>
             </ListBox>
+            <GridSplitter Grid.Row="1"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          ResizeDirection="Rows" />
+            <Grid Grid.Row="2">
+                <ListView x:Name="lvUserShifts"
+                                  Grid.Row="0"
+                                  FontSize="18"
+                                  SelectionMode="Single"
+                                  ItemsSource="{Binding}"
+                                  VirtualizingPanel.IsVirtualizing="True"
+                                  VirtualizingPanel.VirtualizationMode="Recycling"
+                                  VirtualizingPanel.IsVirtualizingWhenGrouping="True">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="120"
+                                                    Header="รหัสพนักงาน"
+                                                    DisplayMemberBinding="{Binding Path=UserId}" />
+                            <GridViewColumn Width="300"
+                                                    Header="ชื่อพนักงาน"
+                                                    DisplayMemberBinding="{Binding Path=FullNameTH}" />
+                            <GridViewColumn Width="120"
+                                                    Header="วันที่เริ่ม"
+                                                    DisplayMemberBinding="{Binding Path=BeginDateString}" />
+                            <GridViewColumn Width="120"
+                                                    Header="เวลาที่เริ่ม"
+                                                    DisplayMemberBinding="{Binding Path=BeginTimeString}" />
+                            <GridViewColumn Width="120"
+                                                    Header="วันที่สิ้นสุด"
+                                                    DisplayMemberBinding="{Binding Path=EndDateString}" />
+                            <GridViewColumn Width="120"
+                                                    Header="เวลาที่สิ้นสุด"
+                                                    DisplayMemberBinding="{Binding Path=EndTimeString}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
         </Grid>
         <GridSplitter Grid.Column="1"
                       HorizontalAlignment="Stretch"

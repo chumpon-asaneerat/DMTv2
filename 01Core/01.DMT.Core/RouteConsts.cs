@@ -146,6 +146,12 @@ namespace DMT
                 public const string Name = "Create";
                 public const string Url = Job.Url + @"/" + Name;
             }
+
+            public static class GetUserShifts
+            {
+                public const string Name = "GetUserShifts";
+                public const string Url = Job.Url + @"/" + Name;
+            }
         }
 
         public static class Lane

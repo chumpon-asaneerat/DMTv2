@@ -37,7 +37,7 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.Job.BeginJob.Name)]
-        public bool BeginJob(UserShift shift)
+        public bool BeginJob([FromBody] UserShift shift)
         {
             if (null == shift) return false;
             return UserShift.BeginJob(shift);
@@ -45,10 +45,18 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.Job.EndJob.Name)]
-        public void EndJob(UserShift shift)
+        public void EndJob([FromBody] UserShift shift)
         {
             if (null == shift) return;
             UserShift.EndJob(shift);
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Job.GetUserShifts.Name)]
+        public List<UserShift> GetUserShifts([FromBody] User value)
+        {
+            if (null == value) return new List<UserShift>();
+            return UserShift.GetUserShifts(value.UserId);
         }
     }
 }

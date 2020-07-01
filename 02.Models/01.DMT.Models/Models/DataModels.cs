@@ -2249,6 +2249,19 @@ namespace DMT.Models
             }
         }
 
+        public static List<UserShift> GetUserShifts(string userId)
+        {
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM UserShift ";
+                cmd += " WHERE UserId = ? ";
+                return NQuery.Query<UserShift>(
+                    cmd,
+                    userId).ToList();
+            }
+        }
+
         #endregion
     }
 

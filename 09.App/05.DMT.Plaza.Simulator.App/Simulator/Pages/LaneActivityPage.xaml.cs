@@ -124,10 +124,15 @@ namespace DMT.Simulator.Pages
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             // Set CultureInfo for DateTimePicker.
-            shiftDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
-            //shiftDate.CultureInfo = System.Globalization.CultureInfo.CurrentUICulture;
-            jobDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
-            //jobDate.CultureInfo = System.Globalization.CultureInfo.CurrentUICulture;
+            //shiftDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
+            shiftDate.CultureInfo = System.Globalization.CultureInfo.CurrentUICulture;
+            shiftDate.DefaultValue = DateTime.Now;
+            shiftDate.GotFocus += ShiftDate_GotFocus;
+
+            //jobDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
+            jobDate.CultureInfo = System.Globalization.CultureInfo.CurrentUICulture;
+            jobDate.DefaultValue = DateTime.Now;
+            jobDate.GotFocus += JobDate_GotFocus;
 
             RefreshLanes();
             RefreshUsers();
@@ -268,6 +273,20 @@ namespace DMT.Simulator.Pages
 
         #endregion
 
+        #region DateTimePicker Handlers
+
+        private void ShiftDate_GotFocus(object sender, RoutedEventArgs e)
+        {
+            shiftDate.DefaultValue = DateTime.Now;
+        }
+
+        private void JobDate_GotFocus(object sender, RoutedEventArgs e)
+        {
+            jobDate.DefaultValue = DateTime.Now;
+        }
+
+        #endregion
+
         #region ListView Handlers
 
         private void lvLanes_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -315,13 +334,16 @@ namespace DMT.Simulator.Pages
 
         private void cmdBeginShift_Click(object sender, RoutedEventArgs e)
         {
+            if (!shiftDate.Value.HasValue) return;
+
             if (null == currentUser) return;
             var shift = (cbShifts.SelectedItem as Shift);
             if (null == shift) return;
             var inst = ops.Jobs.Create(shift, currentUser);
 
-            DateTime dt = shiftDate.Value.Value.ToLocalTime();
-            inst.Begin = dt;
+            //DateTime dt = shiftDate.Value.Value.ToLocalTime();
+            DateTime dt = shiftDate.Value.Value;
+            inst.Begin = dt.ToUniversalTime();
             ops.Jobs.BeginJob(inst);
 
             RefreshUsers();
@@ -333,9 +355,12 @@ namespace DMT.Simulator.Pages
         {
             if (null == currentUser) return;
             if (null == currentUser.Shift) return;
-            
-            DateTime dt = shiftDate.Value.Value.ToLocalTime();
-            currentUser.Shift.End = dt;
+
+            if (!shiftDate.Value.HasValue) return;
+
+            //DateTime dt = shiftDate.Value.Value.ToLocalTime();
+            DateTime dt = shiftDate.Value.Value;
+            currentUser.Shift.End = dt.ToUniversalTime();
 
             ops.Jobs.EndJob(currentUser.Shift);
             
