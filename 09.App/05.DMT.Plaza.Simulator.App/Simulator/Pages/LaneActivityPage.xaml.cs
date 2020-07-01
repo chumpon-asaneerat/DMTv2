@@ -102,8 +102,10 @@ namespace DMT.Simulator.Pages
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             // Set CultureInfo for DateTimePicker.
-            shiftDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
-            jobDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
+            //shiftDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
+            shiftDate.CultureInfo = System.Globalization.CultureInfo.CurrentUICulture;
+            //jobDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
+            jobDate.CultureInfo = System.Globalization.CultureInfo.CurrentUICulture;
 
             RefreshLanes();
             RefreshUsers();

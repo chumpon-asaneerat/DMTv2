@@ -1651,6 +1651,8 @@ namespace DMT.Models
                     _Begin = value;
                     // Raise event.
                     RaiseChanged("Begin");
+                    RaiseChanged("BeginDateString");
+                    RaiseChanged("BeginTimeString");
                 }
             }
         }
@@ -1668,8 +1670,66 @@ namespace DMT.Models
                     _End = value;
                     // Raise event.
                     RaiseChanged("End");
+                    RaiseChanged("EndDateString");
+                    RaiseChanged("EndTimeString");
                 }
             }
+        }
+        /// <summary>
+        /// Gets Begin Date String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string BeginDateString
+        {
+            get
+            {
+                var ret = (this.Begin == DateTime.MinValue) ? "" : this.Begin.ToThaiDateTimeString("dd/MM/yyyy");
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets End Date String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string EndDateString
+        {
+            get
+            {
+                var ret = (this.End == DateTime.MinValue) ? "" : this.End.ToThaiDateTimeString("dd/MM/yyyy");
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets Begin Time String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string BeginTimeString
+        {
+            get
+            {
+                var ret = (this.Begin == DateTime.MinValue) ? "" : this.Begin.ToThaiTimeString();
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets End Time String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string EndTimeString
+        {
+            get
+            {
+                var ret = (this.End == DateTime.MinValue) ? "" : this.End.ToThaiTimeString();
+                return ret;
+            }
+            set { }
         }
         /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
@@ -2011,6 +2071,8 @@ namespace DMT.Models
                     _Begin = value;
                     // Raise event.
                     RaiseChanged("Begin");
+                    RaiseChanged("BeginDateString");
+                    RaiseChanged("BeginTimeString");
                 }
             }
         }
@@ -2028,8 +2090,66 @@ namespace DMT.Models
                     _End = value;
                     // Raise event.
                     RaiseChanged("End");
+                    RaiseChanged("EndDateString");
+                    RaiseChanged("EndTimeString");
                 }
             }
+        }
+        /// <summary>
+        /// Gets Begin Date String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string BeginDateString
+        {
+            get
+            {
+                var ret = (this.Begin == DateTime.MinValue) ? "" : this.Begin.ToThaiDateTimeString("dd/MM/yyyy");
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets End Date String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string EndDateString
+        {
+            get
+            {
+                var ret = (this.End == DateTime.MinValue) ? "" : this.End.ToThaiDateTimeString("dd/MM/yyyy");
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets Begin Time String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string BeginTimeString
+        {
+            get
+            {
+                var ret = (this.Begin == DateTime.MinValue) ? "" : this.Begin.ToThaiTimeString();
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets End Time String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string EndTimeString
+        {
+            get
+            {
+                var ret = (this.End == DateTime.MinValue) ? "" : this.End.ToThaiTimeString();
+                return ret;
+            }
+            set { }
         }
         /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
@@ -2395,6 +2515,8 @@ namespace DMT.Models
                     _Begin = value;
                     // Raise event.
                     RaiseChanged("Begin");
+                    RaiseChanged("BeginDateString");
+                    RaiseChanged("BeginTimeString");
                 }
             }
         }
@@ -2412,8 +2534,66 @@ namespace DMT.Models
                     _End = value;
                     // Raise event.
                     RaiseChanged("End");
+                    RaiseChanged("EndDateString");
+                    RaiseChanged("EndTimeString");
                 }
             }
+        }
+        /// <summary>
+        /// Gets Begin Date String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string BeginDateString
+        {
+            get
+            {
+                var ret = (this.Begin == DateTime.MinValue) ? "" : this.Begin.ToThaiDateTimeString("dd/MM/yyyy");
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets End Date String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string EndDateString
+        {
+            get
+            {
+                var ret = (this.End == DateTime.MinValue) ? "" : this.End.ToThaiDateTimeString("dd/MM/yyyy");
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets Begin Time String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string BeginTimeString
+        {
+            get
+            {
+                var ret = (this.Begin == DateTime.MinValue) ? "" : this.Begin.ToThaiTimeString();
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets End Time String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string EndTimeString
+        {
+            get
+            {
+                var ret = (this.End == DateTime.MinValue) ? "" : this.End.ToThaiTimeString();
+                return ret;
+            }
+            set { }
         }
         /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
@@ -2862,8 +3042,38 @@ namespace DMT.Models
                     _PaymentDate = value;
                     // Raise event.
                     RaiseChanged("PaymentDate");
+                    RaiseChanged("PaymentDateString");
+                    RaiseChanged("PaymentTimeString");
                 }
             }
+        }
+        /// <summary>
+        /// Gets Begin Date String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string PaymentDateString
+        {
+            get
+            {
+                var ret = (this.PaymentDate == DateTime.MinValue) ? "" : this.PaymentDate.ToThaiDateTimeString("dd/MM/yyyy");
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets Begin Time String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string PaymentTimeString
+        {
+            get
+            {
+                var ret = (this.PaymentDate == DateTime.MinValue) ? "" : this.PaymentDate.ToThaiTimeString();
+                return ret;
+            }
+            set { }
         }
         /// <summary>
         /// Gets or sets Amount.

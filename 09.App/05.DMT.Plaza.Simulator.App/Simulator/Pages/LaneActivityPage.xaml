@@ -120,10 +120,16 @@
                                                     DisplayMemberBinding="{Binding Path=JobId}" />
                                     <GridViewColumn Width="120"
                                                     Header="วันที่เริ่ม"
-                                                    DisplayMemberBinding="{Binding Path=Begin}" />
+                                                    DisplayMemberBinding="{Binding Path=BeginDateString}" />
+                                    <GridViewColumn Width="120"
+                                                    Header="เวลาที่เริ่ม"
+                                                    DisplayMemberBinding="{Binding Path=BeginTimeString}" />
                                     <GridViewColumn Width="120"
                                                     Header="วันที่สิ้นสุด"
-                                                    DisplayMemberBinding="{Binding Path=End}" />
+                                                    DisplayMemberBinding="{Binding Path=EndDateString}" />
+                                    <GridViewColumn Width="120"
+                                                    Header="เวลาที่สิ้นสุด"
+                                                    DisplayMemberBinding="{Binding Path=EndTimeString}" />
                                     <GridViewColumn Width="120"
                                                     Header="รหัสพนักงาน"
                                                     DisplayMemberBinding="{Binding Path=UserId}" />
@@ -165,10 +171,16 @@
                                                     DisplayMemberBinding="{Binding Path=JobId}" />
                                     <GridViewColumn Width="120"
                                                     Header="วันที่เริ่ม"
-                                                    DisplayMemberBinding="{Binding Path=Begin}" />
+                                                    DisplayMemberBinding="{Binding Path=BeginDateString}" />
+                                    <GridViewColumn Width="120"
+                                                    Header="เวลาที่เริ่ม"
+                                                    DisplayMemberBinding="{Binding Path=BeginTimeString}" />
                                     <GridViewColumn Width="120"
                                                     Header="วันที่สิ้นสุด"
-                                                    DisplayMemberBinding="{Binding Path=End}" />
+                                                    DisplayMemberBinding="{Binding Path=EndDateString}" />
+                                    <GridViewColumn Width="120"
+                                                    Header="เวลาที่สิ้นสุด"
+                                                    DisplayMemberBinding="{Binding Path=EndTimeString}" />
                                     <GridViewColumn Width="120"
                                                     Header="รหัสพนักงาน"
                                                     DisplayMemberBinding="{Binding Path=UserId}" />
