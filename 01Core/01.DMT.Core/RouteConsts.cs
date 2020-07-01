@@ -152,9 +152,51 @@ namespace DMT
         {
             public const string Url = RouteConsts.Url + @"/Lane";
 
-            public static class Create
+            public static class CreateAttendance
             {
-                public const string Name = "Create";
+                public const string Name = "CreateAttendance";
+                public const string Url = Lane.Url + @"/" + Name;
+            }
+
+            public static class CreatePayment
+            {
+                public const string Name = "CreatePayment";
+                public const string Url = Lane.Url + @"/" + Name;
+            }
+
+            public static class SaveAttendance
+            {
+                public const string Name = "SaveAttendance";
+                public const string Url = Lane.Url + @"/" + Name;
+            }
+
+            public static class SavePayment
+            {
+                public const string Name = "SavePayment";
+                public const string Url = Lane.Url + @"/" + Name;
+            }
+
+            public static class GetAttendancesByDate
+            {
+                public const string Name = "GetAttendancesByDate";
+                public const string Url = Lane.Url + @"/" + Name;
+            }
+
+            public static class GetAttendancesByShift
+            {
+                public const string Name = "GetAttendancesByShift";
+                public const string Url = Lane.Url + @"/" + Name;
+            }
+
+            public static class GetPaymentsByDate
+            {
+                public const string Name = "GetPaymentsByDate";
+                public const string Url = Lane.Url + @"/" + Name;
+            }
+
+            public static class GetPaymentsByShift
+            {
+                public const string Name = "GetPaymentsByShift";
                 public const string Url = Lane.Url + @"/" + Name;
             }
         }

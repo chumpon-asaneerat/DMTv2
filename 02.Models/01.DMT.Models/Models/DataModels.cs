@@ -2463,6 +2463,44 @@ namespace DMT.Models
             return inst;
         }
 
+        public static List<LaneAttendance> Search(UserShift shift)
+        {
+            if (null == shift) return Search(date);
+            lock (sync)
+            {
+                /*
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM LanePayment ";
+                cmd += " WHERE UserId = ? ";
+                cmd += "   AND End = ? ";
+                return NQuery.Query<UserShift>(
+                    cmd,
+                    userId,
+                    DateTime.MinValue).FirstOrDefault();
+                */
+                return null;
+            }
+        }
+
+        public static List<LaneAttendance> Search(DateTime date)
+        {
+            if (null == date || date == DateTime.MinValue) return new List<LaneAttendance>();
+            lock (sync)
+            {
+                /*
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM LanePayment ";
+                cmd += " WHERE UserId = ? ";
+                cmd += "   AND End = ? ";
+                return NQuery.Query<UserShift>(
+                    cmd,
+                    userId,
+                    DateTime.MinValue).FirstOrDefault();
+                */
+                return null;
+            }
+        }
+
         #endregion
     }
 
@@ -2865,6 +2903,44 @@ namespace DMT.Models
             if (null != lane) lane.AssignTo(inst);
             if (null != collector) collector.AssignTo(inst);
             return inst;
+        }
+
+        public static List<LanePayment> Search(UserShift shift)
+        {
+            if (null == shift) return new List<LanePayment>();
+            lock (sync)
+            {
+                /*
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM LanePayment ";
+                cmd += " WHERE UserId = ? ";
+                cmd += "   AND End = ? ";
+                return NQuery.Query<UserShift>(
+                    cmd,
+                    userId,
+                    DateTime.MinValue).FirstOrDefault();
+                */
+                return null;
+            }
+        }
+
+        public static List<LanePayment> Search(DateTime date)
+        {
+            if (null == date || date == DateTime.MinValue) return new List<LanePayment>();
+            lock (sync)
+            {
+                /*
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM LanePayment ";
+                cmd += " WHERE UserId = ? ";
+                cmd += "   AND End = ? ";
+                return NQuery.Query<UserShift>(
+                    cmd,
+                    userId,
+                    DateTime.MinValue).FirstOrDefault();
+                */
+                return null;
+            }
         }
 
         #endregion
@@ -3837,6 +3913,7 @@ namespace DMT.Models
                 }
             }
         }
+
         public static class Users
         {
             public class ByCardId : NSearch<ByCardId>
@@ -3874,6 +3951,63 @@ namespace DMT.Models
                     var ret = new ById();
                     ret.UserId = userId;
                     return ret;
+                }
+            }
+        }
+
+        public static class Lanes
+        {
+            public static class Attendances
+            {
+                public class ByDate : NSearch<ByDate>
+                {
+                    public DateTime Date { get; set; }
+
+                    public static ByDate Create(DateTime date)
+                    {
+                        var ret = new ByDate();
+                        ret.Date = date;
+                        return ret;
+                    }
+                }
+
+                public class ByShift : NSearch<ByShift>
+                {
+                    public UserShift Shift { get; set; }
+
+                    public static ByShift Create(UserShift shift)
+                    {
+                        var ret = new ByShift();
+                        ret.Shift = shift;
+                        return ret;
+                    }
+                }
+            }
+
+            public static class Payments
+            {
+                public class ByDate : NSearch<ByDate>
+                {
+                    public DateTime Date { get; set; }
+
+                    public static ByDate Create(DateTime date)
+                    {
+                        var ret = new ByDate();
+                        ret.Date = date;
+                        return ret;
+                    }
+                }
+
+                public class ByShift : NSearch<ByShift>
+                {
+                    public UserShift Shift { get; set; }
+
+                    public static ByShift Create(UserShift shift)
+                    {
+                        var ret = new ByShift();
+                        ret.Shift = shift;
+                        return ret;
+                    }
                 }
             }
         }
