@@ -182,9 +182,21 @@ namespace DMT
                 public const string Url = Lane.Url + @"/" + Name;
             }
 
-            public static class GetAttendancesByShift
+            public static class GetAttendancesByUserShift
             {
-                public const string Name = "GetAttendancesByShift";
+                public const string Name = "GetAttendancesByUserShift";
+                public const string Url = Lane.Url + @"/" + Name;
+            }
+
+            public static class GetAttendancesByLane
+            {
+                public const string Name = "GetAttendancesByLane";
+                public const string Url = Lane.Url + @"/" + Name;
+            }
+
+            public static class GetCurrentAttendancesByLane
+            {
+                public const string Name = "GetCurrentAttendancesByLane";
                 public const string Url = Lane.Url + @"/" + Name;
             }
 
@@ -194,9 +206,21 @@ namespace DMT
                 public const string Url = Lane.Url + @"/" + Name;
             }
 
-            public static class GetPaymentsByShift
+            public static class GetPaymentsByUserShift
             {
-                public const string Name = "GetPaymentsByShift";
+                public const string Name = "GetPaymentsByUserShift";
+                public const string Url = Lane.Url + @"/" + Name;
+            }
+
+            public static class GetPaymentsByLane
+            {
+                public const string Name = "GetPaymentsByLane";
+                public const string Url = Lane.Url + @"/" + Name;
+            }
+
+            public static class GetCurrentPaymentsByLane
+            {
+                public const string Name = "GetCurrentPaymentsByLane";
                 public const string Url = Lane.Url + @"/" + Name;
             }
         }

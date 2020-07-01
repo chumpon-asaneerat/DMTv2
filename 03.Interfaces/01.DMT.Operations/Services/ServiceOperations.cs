@@ -394,7 +394,45 @@ namespace DMT.Services
                 return ret;
             }
 
-            public LaneAttendance CreatePayment(Lane lane, User supervisor, 
+            public void SaveAttendance(LaneAttendance value)
+            {
+                NRestClient.Create(port: 9000).Execute(
+                    RouteConsts.Lane.SaveAttendance.Url, value);
+            }
+
+            public List<LaneAttendance> GetAttendancesByDate(
+                Search.Lanes.Attendances.ByDate value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<LaneAttendance>>(
+                    RouteConsts.Lane.GetAttendancesByDate.Url, value);
+                return ret;
+            }
+
+            public List<LaneAttendance> GetAttendancesByUserShift(
+                Search.Lanes.Attendances.ByUserShift value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<LaneAttendance>>(
+                    RouteConsts.Lane.GetAttendancesByUserShift.Url, value);
+                return ret;
+            }
+
+            public List<LaneAttendance> GetAttendancesByLane(
+                Search.Lanes.Attendances.ByLane value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<LaneAttendance>>(
+                    RouteConsts.Lane.GetAttendancesByLane.Url, value);
+                return ret;
+            }
+
+            public LaneAttendance GetCurrentAttendancesByLane(
+                Search.Lanes.Current.AttendanceByLane value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<LaneAttendance>(
+                    RouteConsts.Lane.GetCurrentAttendancesByLane.Url, value);
+                return ret;
+            }
+
+            public LaneAttendance CreatePayment(Lane lane, User supervisor,
                 Payment payment, DateTime date, decimal amount)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<LaneAttendance>(
@@ -410,32 +448,10 @@ namespace DMT.Services
                 return ret;
             }
 
-            public void SaveAttendance(LaneAttendance value)
-            {
-                NRestClient.Create(port: 9000).Execute(
-                    RouteConsts.Lane.SaveAttendance.Url, value);
-            }
-
             public void SavePayment(LanePayment value)
             {
                 NRestClient.Create(port: 9000).Execute(
                     RouteConsts.Lane.SavePayment.Url, value);
-            }
-
-            public List<LaneAttendance> GetAttendancesByDate(
-                Search.Lanes.Attendances.ByDate value)
-            {
-                var ret = NRestClient.Create(port: 9000).Execute<List<LaneAttendance>>(
-                    RouteConsts.Lane.GetAttendancesByDate.Url, value);
-                return ret;
-            }
-
-            public List<LaneAttendance> GetAttendancesByShift(
-                Search.Lanes.Attendances.ByShift value)
-            {
-                var ret = NRestClient.Create(port: 9000).Execute<List<LaneAttendance>>(
-                    RouteConsts.Lane.GetAttendancesByShift.Url, value);
-                return ret;
             }
 
             public List<LanePayment> GetPaymentsByDate(
@@ -446,11 +462,27 @@ namespace DMT.Services
                 return ret;
             }
 
-            public List<LanePayment> GetPaymentsByShift(
-                Search.Lanes.Payments.ByShift value)
+            public List<LanePayment> GetPaymentsByUserShift(
+                Search.Lanes.Attendances.ByUserShift value)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<LanePayment>>(
-                    RouteConsts.Lane.GetPaymentsByShift.Url, value);
+                    RouteConsts.Lane.GetPaymentsByUserShift.Url, value);
+                return ret;
+            }
+
+            public List<LanePayment> GetPaymentsByLane(
+                Search.Lanes.Attendances.ByLane value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<LanePayment>>(
+                    RouteConsts.Lane.GetPaymentsByLane.Url, value);
+                return ret;
+            }
+
+            public LanePayment GetCurrentPaymentsByLane(
+                Search.Lanes.Current.PaymentByLane value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<LanePayment>(
+                    RouteConsts.Lane.GetCurrentPaymentsByLane.Url, value);
                 return ret;
             }
 

@@ -70,11 +70,27 @@ namespace DMT.Services
         }
 
         [HttpPost]
-        [ActionName(RouteConsts.Lane.GetAttendancesByShift.Name)]
-        public List<LaneAttendance> GetAttendancesByDate([FromBody] Search.Lanes.Attendances.ByShift value)
+        [ActionName(RouteConsts.Lane.GetAttendancesByUserShift.Name)]
+        public List<LaneAttendance> GetAttendancesByUserShift([FromBody] Search.Lanes.Attendances.ByUserShift value)
         {
             if (null == value) return new List<LaneAttendance>();
             return LaneAttendance.Search(value.Shift);
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Lane.GetAttendancesByLane.Name)]
+        public List<LaneAttendance> GetAttendancesByLane([FromBody] Search.Lanes.Attendances.ByLane value)
+        {
+            if (null == value) return new List<LaneAttendance>();
+            return LaneAttendance.Search(value.Lane);
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Lane.GetCurrentAttendancesByLane.Name)]
+        public LaneAttendance GetCurrentAttendancesByLane([FromBody] Search.Lanes.Current.AttendanceByLane value)
+        {
+            if (null == value) return null;
+            return LaneAttendance.GetCurrentByLane(value.Lane);
         }
 
         [HttpPost]
@@ -86,11 +102,27 @@ namespace DMT.Services
         }
 
         [HttpPost]
-        [ActionName(RouteConsts.Lane.GetPaymentsByShift.Name)]
-        public List<LanePayment> GetPaymentsByDate([FromBody] Search.Lanes.Payments.ByShift value)
+        [ActionName(RouteConsts.Lane.GetPaymentsByUserShift.Name)]
+        public List<LanePayment> GetPaymentsByUserShifts([FromBody] Search.Lanes.Payments.ByUserShift value)
         {
             if (null == value) return new List<LanePayment>();
             return LanePayment.Search(value.Shift);
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Lane.GetPaymentsByLane.Name)]
+        public List<LanePayment> GetPaymentsByLane([FromBody] Search.Lanes.Payments.ByLane value)
+        {
+            if (null == value) return new List<LanePayment>();
+            return LanePayment.Search(value.Lane);
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Lane.GetCurrentPaymentsByLane.Name)]
+        public LanePayment GetCurrentPaymentsByLane([FromBody] Search.Lanes.Current.PaymentByLane value)
+        {
+            if (null == value) return null;
+            return LanePayment.GetCurrentByLane(value.Lane);
         }
     }
 }

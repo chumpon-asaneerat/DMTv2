@@ -196,10 +196,10 @@ namespace DMT.Simulator.Pages
                     tsbLanes.ForEach(tsbLane =>
                     {
                         var inst = new LaneItem();
-
-                        //ops.Lanes.GetAttendancesByDate
-
                         tsbLane.AssignTo(inst);
+                        // find Attendance.
+                        var search = Search.Lanes.Current.AttendanceByLane.Create(tsbLane);
+                        inst.Attendance =  ops.Lanes.GetCurrentAttendancesByLane(search);
                         lanes.Add(inst);
                     });
                 }
@@ -215,6 +215,12 @@ namespace DMT.Simulator.Pages
             //var tsbshift = ops.Shifts.GetCurrent();
             //var userShifts = ops.Shifts.GetUserShift(tsbshift);
             //var items = ops.Lanes.GetAttendancesByShift();
+            if (null == currentLane) return;
+
+            lvAttendances.ItemsSource = null;
+
+            var search = Search.Lanes.Attendances.ByLane.Create(currentLane);
+            lvAttendances.ItemsSource = ops.Lanes.GetAttendancesByLane(search);
         }
 
         private void RefreshLanePayments()
@@ -231,6 +237,10 @@ namespace DMT.Simulator.Pages
         private void lvLanes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             currentLane = lvLanes.SelectedItem as LaneItem;
+            
+            RefreshLaneAttendances();
+            RefreshLanePayments();
+
             RefreshUI();
         }
 
@@ -300,14 +310,32 @@ namespace DMT.Simulator.Pages
             // Set Attendance
             currentLane.Attendance = attd;
 
+            // update list views
+            RefreshLaneAttendances();
+            RefreshLanePayments();
+
             RefreshUI();
         }
 
         private void cmdEndJob_Click(object sender, RoutedEventArgs e)
         {
             if (null == currentLane) return;
+            if (!jobDate.Value.HasValue) return;
+
+            var attd = currentLane.Attendance;
+            if (null != attd)
+            {
+                // Set End Job date.
+                attd.End = jobDate.Value.Value;
+                // Save to database.
+                ops.Lanes.SaveAttendance(attd);
+            }
             // Clear Attendance
             currentLane.Attendance = null;
+
+            // update list views
+            RefreshLaneAttendances();
+            RefreshLanePayments();
 
             RefreshUI();
         }

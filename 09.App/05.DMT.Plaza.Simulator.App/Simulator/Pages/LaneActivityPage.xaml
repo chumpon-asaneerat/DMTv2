@@ -102,7 +102,37 @@
                                     Click="cmdRefreshAttendences_Click" />
                             <Grid />
                         </DockPanel>
-                        <Grid />
+                        <ListView x:Name="lvAttendances"
+                                  Grid.Row="0"
+                                  FontSize="18"
+                                  SelectionMode="Single"
+                                  ItemsSource="{Binding}"
+                                  VirtualizingPanel.IsVirtualizing="True"
+                                  VirtualizingPanel.VirtualizationMode="Recycling"
+                                  VirtualizingPanel.IsVirtualizingWhenGrouping="True">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Width="100"
+                                                    Header="เลน"
+                                                    DisplayMemberBinding="{Binding Path=LaneId}" />
+                                    <GridViewColumn Width="100"
+                                                    Header="เลน"
+                                                    DisplayMemberBinding="{Binding Path=JobId}" />
+                                    <GridViewColumn Width="120"
+                                                    Header="วันที่เริ่ม"
+                                                    DisplayMemberBinding="{Binding Path=Begin}" />
+                                    <GridViewColumn Width="120"
+                                                    Header="วันที่สิ้นสุด"
+                                                    DisplayMemberBinding="{Binding Path=End}" />
+                                    <GridViewColumn Width="120"
+                                                    Header="รหัสพนักงาน"
+                                                    DisplayMemberBinding="{Binding Path=UserId}" />
+                                    <GridViewColumn Width="300"
+                                                    Header="ชื่อพนักงาน"
+                                                    DisplayMemberBinding="{Binding Path=FullNameTH}" />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
                     </DockPanel>
                 </TabItem>
                 <TabItem Header="Payment">
@@ -117,7 +147,37 @@
                                     Click="cmdRefreshPayments_Click" />
                             <Grid />
                         </DockPanel>
-                        <Grid />
+                        <ListView x:Name="lvPayments"
+                                  Grid.Row="0"
+                                  FontSize="18"
+                                  SelectionMode="Single"
+                                  ItemsSource="{Binding}"
+                                  VirtualizingPanel.IsVirtualizing="True"
+                                  VirtualizingPanel.VirtualizationMode="Recycling"
+                                  VirtualizingPanel.IsVirtualizingWhenGrouping="True">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Width="100"
+                                                    Header="เลน"
+                                                    DisplayMemberBinding="{Binding Path=LaneId}" />
+                                    <GridViewColumn Width="100"
+                                                    Header="เลน"
+                                                    DisplayMemberBinding="{Binding Path=JobId}" />
+                                    <GridViewColumn Width="120"
+                                                    Header="วันที่เริ่ม"
+                                                    DisplayMemberBinding="{Binding Path=Begin}" />
+                                    <GridViewColumn Width="120"
+                                                    Header="วันที่สิ้นสุด"
+                                                    DisplayMemberBinding="{Binding Path=End}" />
+                                    <GridViewColumn Width="120"
+                                                    Header="รหัสพนักงาน"
+                                                    DisplayMemberBinding="{Binding Path=UserId}" />
+                                    <GridViewColumn Width="300"
+                                                    Header="ชื่อพนักงาน"
+                                                    DisplayMemberBinding="{Binding Path=FullNameTH}" />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
                     </DockPanel>
                 </TabItem>
             </TabControl>
@@ -265,7 +325,7 @@
                                       DisplayMemberPath="ShiftNameTH"
                                       SelectedValuePath="ShiftId"
                                       FontSize="12"
-                                      SelectionChanged="cbShifts_SelectionChanged"/>
+                                      SelectionChanged="cbShifts_SelectionChanged" />
                         </DockPanel>
                     </StackPanel>
                     <StackPanel DockPanel.Dock="Top">

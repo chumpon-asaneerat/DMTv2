@@ -13,6 +13,8 @@ using System.ComponentModel;
 using Newtonsoft.Json;
 using NLib;
 using NLib.Reflection;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.CodeDom;
 
 #endregion
 
@@ -2480,6 +2482,36 @@ namespace DMT.Models
             }
         }
 
+        public static List<LaneAttendance> Search(Lane lane)
+        {
+            if (null == lane) return new List<LaneAttendance>();
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM LaneAttendance ";
+                cmd += " WHERE LaneId = ? ";
+                return NQuery.Query<LaneAttendance>(
+                    cmd,
+                    lane.LaneId).ToList();
+            }
+        }
+
+        public static LaneAttendance GetCurrentByLane(Lane lane)
+        {
+            if (null == lane) return null;
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM LaneAttendance ";
+                cmd += " WHERE LaneId = ? ";
+                cmd += "   AND End = ? ";
+                return NQuery.Query<LaneAttendance>(
+                    cmd,
+                    lane.LaneId,
+                    DateTime.MinValue).FirstOrDefault();
+            }
+        }
+
         public static List<LaneAttendance> Search(DateTime date)
         {
             if (null == date || date == DateTime.MinValue) return new List<LaneAttendance>();
@@ -2918,6 +2950,36 @@ namespace DMT.Models
                     shift.Begin,
                     shift.End,
                     DateTime.MinValue).ToList();
+            }
+        }
+
+        public static List<LanePayment> Search(Lane lane)
+        {
+            if (null == lane) return new List<LanePayment>();
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM LanePayment ";
+                cmd += " WHERE LaneId = ? ";
+                return NQuery.Query<LanePayment>(
+                    cmd,
+                    lane.LaneId).ToList();
+            }
+        }
+
+        public static LanePayment GetCurrentByLane(Lane lane)
+        {
+            if (null == lane) return null;
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM LanePayment ";
+                cmd += " WHERE LaneId = ? ";
+                cmd += "   AND End = ? ";
+                return NQuery.Query<LanePayment>(
+                    cmd,
+                    lane.LaneId,
+                    DateTime.MinValue).FirstOrDefault();
             }
         }
 
@@ -3954,6 +4016,33 @@ namespace DMT.Models
 
         public static class Lanes
         {
+            public static class Current
+            {
+                public class AttendanceByLane : NSearch<AttendanceByLane>
+                {
+                    public Lane Lane { get; set; }
+
+                    public static AttendanceByLane Create(Lane lane)
+                    {
+                        var ret = new AttendanceByLane();
+                        ret.Lane = lane;
+                        return ret;
+                    }
+                }
+
+                public class PaymentByLane : NSearch<PaymentByLane>
+                {
+                    public Lane Lane { get; set; }
+
+                    public static PaymentByLane Create(Lane lane)
+                    {
+                        var ret = new PaymentByLane();
+                        ret.Lane = lane;
+                        return ret;
+                    }
+                }
+            }
+
             public static class Attendances
             {
                 public class ByDate : NSearch<ByDate>
@@ -3968,14 +4057,26 @@ namespace DMT.Models
                     }
                 }
 
-                public class ByShift : NSearch<ByShift>
+                public class ByUserShift : NSearch<ByUserShift>
                 {
                     public UserShift Shift { get; set; }
 
-                    public static ByShift Create(UserShift shift)
+                    public static ByUserShift Create(UserShift shift)
                     {
-                        var ret = new ByShift();
+                        var ret = new ByUserShift();
                         ret.Shift = shift;
+                        return ret;
+                    }
+                }
+
+                public class ByLane : NSearch<ByLane>
+                {
+                    public Lane Lane { get; set; }
+
+                    public static ByLane Create(Lane lane)
+                    {
+                        var ret = new ByLane();
+                        ret.Lane = lane;
                         return ret;
                     }
                 }
@@ -3995,14 +4096,26 @@ namespace DMT.Models
                     }
                 }
 
-                public class ByShift : NSearch<ByShift>
+                public class ByUserShift : NSearch<ByUserShift>
                 {
                     public UserShift Shift { get; set; }
 
-                    public static ByShift Create(UserShift shift)
+                    public static ByUserShift Create(UserShift shift)
                     {
-                        var ret = new ByShift();
+                        var ret = new ByUserShift();
                         ret.Shift = shift;
+                        return ret;
+                    }
+                }
+
+                public class ByLane : NSearch<ByLane>
+                {
+                    public Lane Lane { get; set; }
+
+                    public static ByLane Create(Lane lane)
+                    {
+                        var ret = new ByLane();
+                        ret.Lane = lane;
                         return ret;
                     }
                 }
