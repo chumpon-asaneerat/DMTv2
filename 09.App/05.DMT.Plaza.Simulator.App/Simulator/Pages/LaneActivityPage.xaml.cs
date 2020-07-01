@@ -21,6 +21,7 @@ using System.Collections.ObjectModel;
 using NLib.Reflection;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using System.Runtime.InteropServices;
+using System.Net;
 
 #endregion
 
@@ -46,16 +47,50 @@ namespace DMT.Simulator.Pages
         public class UserItem : User
         {
             public string RoleNameTH { get; set; }
+            public UserShift Shift { get; set; }
         }
 
         public class LaneItem : Lane
         {
-            public string UserId { get; set; }
-            public string FullNameTH { get; set; }
+            private LaneAttendance _Attendance = null;
+
+            public LaneAttendance Attendance
+            {
+                get { return _Attendance;  }
+                set
+                {
+                    _Attendance = value;
+                    RaiseChanged("UserId");
+                    RaiseChanged("FullNameTH");
+                    RaiseChanged("BeginDateString");
+                    RaiseChanged("BeginTimeString");
+                }
+            }
+            public string UserId 
+            {
+                get { return (Attendance != null) ? Attendance.UserId : string.Empty; }
+                set { }
+            }
+            public string FullNameTH 
+            {
+                get { return (Attendance != null) ? Attendance.FullNameTH : string.Empty; }
+                set { }
+            }
+            public string BeginDateString
+            {
+                get { return (Attendance != null) ? Attendance.Begin.ToThaiDateString() : string.Empty; }
+                set { }
+            }
+            public string BeginTimeString
+            {
+                get { return (Attendance != null) ? Attendance.Begin.ToThaiTimeString() : string.Empty; }
+                set { }
+            }
         }
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
 
+        private List<Shift> shifts = new List<Shift>();
         private List<UserItem> users = new List<UserItem>();
         private List<LaneItem> lanes = new List<LaneItem>();
 
@@ -68,6 +103,7 @@ namespace DMT.Simulator.Pages
         {
             RefreshLanes();
             RefreshUsers();
+            RefreshShifts();
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
@@ -86,8 +122,10 @@ namespace DMT.Simulator.Pages
             if (null == currentUser) return;
             gridTools.IsEnabled = true;
 
-            var shift = ops.Jobs.GetCurrent(currentUser);
-            if (null == shift)
+            // Find UserShift.
+            currentUser.Shift = ops.Jobs.GetCurrent(currentUser);
+
+            if (null == currentUser.Shift)
             {
                 shiftDate.IsEnabled = true;
                 cmdBeginShift.IsEnabled = true;
@@ -103,10 +141,19 @@ namespace DMT.Simulator.Pages
                 cmdBeginShift.IsEnabled = false;
                 cmdEndShift.IsEnabled = true;
 
-                jobDate.IsEnabled = false;
-                cmdBeginJob.IsEnabled = false;
-                cmdEndJob.IsEnabled = false;
+                jobDate.IsEnabled = true;
+                cmdBeginJob.IsEnabled = (null == currentLane.Attendance) ? true : false;
+                cmdEndJob.IsEnabled = !cmdBeginJob.IsEnabled;
             }
+        }
+
+        private void RefreshShifts()
+        {
+            cbShifts.ItemsSource = null;
+
+            shifts = ops.Shifts.GetShifts();
+
+            cbShifts.ItemsSource = shifts;
         }
 
         private void RefreshUsers()
@@ -149,6 +196,8 @@ namespace DMT.Simulator.Pages
                     tsbLanes.ForEach(tsbLane =>
                     {
                         var inst = new LaneItem();
+
+                        //ops.Lanes.GetAttendancesByDate
 
                         tsbLane.AssignTo(inst);
                         lanes.Add(inst);
@@ -197,6 +246,15 @@ namespace DMT.Simulator.Pages
 
         #endregion
 
+        #region ComboBox Handler(s)
+
+        private void cbShifts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        #endregion
+
         #region Button Handler(s)
 
         private void cmdRefreshAttendences_Click(object sender, RoutedEventArgs e)
@@ -211,27 +269,47 @@ namespace DMT.Simulator.Pages
 
         private void cmdBeginShift_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            var tsbshift = ops.Shifts.GetCurrent();
-            Shift shift = Shift.Create();
-            var inst = ops.Jobs.Create();
-            ops.Jobs.BeginJob();
-            */
+            if (null == currentUser) return;
+            var shift = (cbShifts.SelectedItem as Shift);
+            if (null == shift) return;
+            var inst = ops.Jobs.Create(shift, currentUser);
+            ops.Jobs.BeginJob(inst);
+
+            RefreshUI();
         }
 
         private void cmdEndShift_Click(object sender, RoutedEventArgs e)
         {
+            if (null == currentUser) return;
+            if (null == currentUser.Shift) return;
+            ops.Jobs.EndJob(currentUser.Shift);
 
+            RefreshUI();
         }
 
         private void cmdBeginJob_Click(object sender, RoutedEventArgs e)
         {
+            if (null == currentLane) return;
+            if (null == currentUser) return;
+            if (!jobDate.Value.HasValue) return;
+            if (null != currentLane.Attendance) return; // has attendance.
 
+            var attd = ops.Lanes.CreateAttendance(currentLane, currentUser);
+            attd.Begin = jobDate.Value.Value;
+            ops.Lanes.SaveAttendance(attd);
+            // Set Attendance
+            currentLane.Attendance = attd;
+
+            RefreshUI();
         }
 
         private void cmdEndJob_Click(object sender, RoutedEventArgs e)
         {
+            if (null == currentLane) return;
+            // Clear Attendance
+            currentLane.Attendance = null;
 
+            RefreshUI();
         }
 
         #endregion

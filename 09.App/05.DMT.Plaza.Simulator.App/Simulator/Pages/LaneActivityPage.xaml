@@ -41,16 +41,16 @@
 
                         <GridViewColumn Width="120"
                                         Header="วันที่"
-                                        DisplayMemberBinding="{Binding Path=DateString}" />
+                                        DisplayMemberBinding="{Binding Path=BeginDateString}" />
                         <GridViewColumn Width="120"
                                         Header="เวลา"
-                                        DisplayMemberBinding="{Binding Path=TimeString}" />
+                                        DisplayMemberBinding="{Binding Path=BeginTimeString}" />
                         <GridViewColumn Width="120"
                                         Header="รหัสพนักงาน"
                                         DisplayMemberBinding="{Binding Path=UserId}" />
                         <GridViewColumn Width="300"
                                         Header="ชื่อพนักงาน"
-                                        DisplayMemberBinding="{Binding Path=UserName}" />
+                                        DisplayMemberBinding="{Binding Path=FullNameTH}" />
                         <!--
                         <GridViewColumn Width="150"
                                         Header="จำนวนเงิน"
@@ -259,9 +259,22 @@
                             <TextBlock Margin="3"
                                        FontSize="16"
                                        DockPanel.Dock="Left"
+                                       Text="Shift:" />
+                            <ComboBox x:Name="cbShifts"
+                                      Margin="3"
+                                      DisplayMemberPath="ShiftNameTH"
+                                      SelectedValuePath="ShiftId"
+                                      FontSize="12"
+                                      SelectionChanged="cbShifts_SelectionChanged"/>
+                        </DockPanel>
+                    </StackPanel>
+                    <StackPanel DockPanel.Dock="Top">
+                        <DockPanel LastChildFill="True">
+                            <TextBlock Margin="3"
+                                       FontSize="16"
+                                       DockPanel.Dock="Left"
                                        Text="Date:" />
-                            <xceed:DateTimePicker x:Name="shiftDate"
-                                                  Margin="3"/>
+                            <xceed:DateTimePicker x:Name="shiftDate" Margin="3" />
                         </DockPanel>
                     </StackPanel>
                     <StackPanel Margin="2"
@@ -295,8 +308,7 @@
                                        FontSize="16"
                                        DockPanel.Dock="Left"
                                        Text="Date:" />
-                            <xceed:DateTimePicker x:Name="jobDate"
-                                                  Margin="3"/>
+                            <xceed:DateTimePicker x:Name="jobDate" Margin="3" />
                         </DockPanel>
                     </StackPanel>
                     <StackPanel Margin="2"
