@@ -101,6 +101,10 @@ namespace DMT.Simulator.Pages
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            // Set CultureInfo for DateTimePicker.
+            shiftDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
+            jobDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
+
             RefreshLanes();
             RefreshUsers();
             RefreshShifts();
@@ -305,6 +309,7 @@ namespace DMT.Simulator.Pages
             if (null != currentLane.Attendance) return; // has attendance.
 
             var attd = ops.Lanes.CreateAttendance(currentLane, currentUser);
+
             attd.Begin = jobDate.Value.Value;
             ops.Lanes.SaveAttendance(attd);
             // Set Attendance
