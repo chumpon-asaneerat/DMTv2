@@ -126,7 +126,9 @@
                 </ListBox.Resources>
             </ListBox>
         </Grid>
-        <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" />
+        <GridSplitter Grid.Column="1"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch" />
         <Grid Grid.Column="2">
             <xceed:PropertyGrid x:Name="pgrid" />
         </Grid>

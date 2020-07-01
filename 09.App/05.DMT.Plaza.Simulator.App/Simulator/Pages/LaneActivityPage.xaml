@@ -15,7 +15,13 @@
             <ColumnDefinition Width="285" />
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
             <ListView x:Name="lvLanes"
+                      Grid.Row="0"
                       FontSize="18"
                       SelectionMode="Single"
                       ItemsSource="{Binding}"
@@ -78,10 +84,45 @@
                     </GridView>
                 </ListView.View>
             </ListView>
+            <GridSplitter Grid.Row="1"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch"
+                          ResizeDirection="Rows" />
+            <TabControl Grid.Row="2">
+                <TabItem Header="Attend/Leave">
+                    <DockPanel LastChildFill="True">
+                        <DockPanel Margin="2"
+                                   DockPanel.Dock="Top"
+                                   LastChildFill="True">
+                            <Button x:Name="cmdRefreshAttendences" Content="Refresh" />
+                            <Grid/>
+                        </DockPanel>
+                        <Grid />
+                    </DockPanel>
+                </TabItem>
+                <TabItem Header="Payment">
+                    <DockPanel LastChildFill="True">
+                        <DockPanel Margin="2"
+                                   DockPanel.Dock="Top"
+                                   LastChildFill="True">
+                            <Button x:Name="cmdRefreshPayments" Content="Refresh" />
+                            <Grid/>
+                        </DockPanel>
+                        <Grid />
+                    </DockPanel>
+                </TabItem>
+            </TabControl>
         </Grid>
-        <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" />
+        <GridSplitter Grid.Column="1"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch" />
         <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
             <ListBox x:Name="lstUsers"
+                     Grid.Row="0"
                      FontSize="18"
                      ItemsSource="{Binding}"
                      Background="Transparent"
@@ -190,6 +231,11 @@
                     </Style>
                 </ListBox.Resources>
             </ListBox>
+            <Grid x:Name="gridTools"
+                  Grid.Row="1"
+                  Height="250">
+                <!-- Control center. -->
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>
