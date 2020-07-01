@@ -958,7 +958,7 @@ namespace DMT.Services
                             SQLiteOpenFlags.SharedCache |
                             SQLiteOpenFlags.ReadWrite |
                             SQLiteOpenFlags.FullMutex,
-                            storeDateTimeAsTicks: true);
+                            storeDateTimeAsTicks: false);
                         Db.BusyTimeout = new TimeSpan(0, 0, 5); // set busy timeout.
                     }
                     catch (Exception ex)

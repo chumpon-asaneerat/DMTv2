@@ -16,6 +16,13 @@ Update 2020-07-02 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-07-01 #25
+- Reimplements models and local db server #58.
+- Change connection options storeDateTimeAsTicks = false.
+- Check problem when save row each time the datatime will convert to UTC (- timezone offset) 
+  and when save again datatime will convert to UTC (- timezone offset) again.
+
+[commited]
 Update 2020-07-01 #24
 - Reimplements models and local db server #58.
 - Still has date time problem with DateTimePicker control.

@@ -97,7 +97,7 @@ TABLES
   - LastUpdate (DateTime) -> last time sync from DC - OK
 
 - LaneAttendance - OK
-  - PkId [PK] (string MaxLength(30), Guid.NewID) - OK
+  - PkId [PK] (Guid.NewID) - OK
   - JobId (string MaxLength(20)) -> custom id from DMT. - OK
   - TSBId (string MaxLength(10)) - OK
   - TSBNameEN (string MaxLength(100)) - OK
@@ -113,7 +113,7 @@ TABLES
   - LastUpdate (DateTime) -> last time sync from DC - OK
 
 - LanePayment - OK
-  - PkId [PK] (string MaxLength(30), Guid.NewID) - OK
+  - PkId [PK] (Guid.NewID) - OK
   - ApproveCode (string MaxLength(20)) - OK
   - TSBId (string MaxLength(10)) - OK
   - TSBNameEN (string MaxLength(100)) - OK
@@ -132,7 +132,7 @@ TABLES
   - LastUpdate (DateTime) -> last time sync from DC - OK
 
 - RevenueEntry - OK
-  - PKId [PK] (string MaxLength(30), Guid.NewID) - OK
+  - PKId [PK] (Guid.NewID) - OK
   - RevenueId (string MaxLength(20)) -> custom id from DMT. - OK
   - EntryDate (Date) - OK
   - RevenueDate (Date) - OK

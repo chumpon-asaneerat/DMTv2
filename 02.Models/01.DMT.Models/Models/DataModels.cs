@@ -2283,7 +2283,7 @@ namespace DMT.Models
     {
         #region Intenral Variables
 
-        private string _PKId = string.Empty;
+        private Guid _PKId = Guid.NewGuid();
 
         private string _JobId = string.Empty;
 
@@ -2312,7 +2312,6 @@ namespace DMT.Models
         /// </summary>
         public LaneAttendance() : base()
         {
-            this.PKId = Guid.NewGuid().ToString();
         }
 
         #endregion
@@ -2322,9 +2321,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PKId
         /// </summary>
-        [PrimaryKey, MaxLength(30)]
+        [PrimaryKey]
         [PeropertyMapName("PKId")]
-        public string PKId
+        public Guid PKId
         {
             get
             {
@@ -2746,7 +2745,7 @@ namespace DMT.Models
     {
         #region Intenral Variables
 
-        private string _PKId = string.Empty;
+        private Guid _PKId = Guid.NewGuid();
 
         private string _ApproveCode = string.Empty;
 
@@ -2779,7 +2778,6 @@ namespace DMT.Models
         /// </summary>
         public LanePayment() : base()
         {
-            this.PKId = Guid.NewGuid().ToString();
         }
 
         #endregion
@@ -2789,9 +2787,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PKId
         /// </summary>
-        [PrimaryKey, MaxLength(30)]
+        [PrimaryKey]
         [PeropertyMapName("PKId")]
-        public string PKId
+        public Guid PKId
         {
             get
             {
@@ -3250,7 +3248,7 @@ namespace DMT.Models
     {
         #region Intenral Variables
 
-        private string _PKId = string.Empty;
+        private Guid _PKId = Guid.NewGuid();
         private DateTime _EntryDate = DateTime.MinValue;
         private DateTime _RevenueDate = DateTime.MinValue;
         private string _RevenueId = string.Empty;
@@ -3315,7 +3313,6 @@ namespace DMT.Models
         /// </summary>
         public RevenueEntry() : base() 
         {
-            this.PKId = Guid.NewGuid().ToString();
         }
 
         #endregion
@@ -3371,9 +3368,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PKId
         /// </summary>
-        [PrimaryKey, MaxLength(30)]
+        [PrimaryKey]
         [PeropertyMapName("PKId")]
-        public string PKId
+        public Guid PKId
         {
             get
             {

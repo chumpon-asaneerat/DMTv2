@@ -344,7 +344,7 @@ namespace DMT.Simulator.Pages
             //DateTime dt = shiftDate.Value.Value.ToLocalTime();
             DateTime dt = shiftDate.Value.Value;
             //inst.Begin = dt.ToUniversalTime();            
-            inst.Begin = DateTime.UtcNow;
+            inst.Begin = DateTime.Now;
             ops.Jobs.BeginJob(inst);
 
             RefreshUsers();
@@ -362,7 +362,7 @@ namespace DMT.Simulator.Pages
             //DateTime dt = shiftDate.Value.Value.ToLocalTime();
             DateTime dt = shiftDate.Value.Value;
             //currentUser.Shift.End = dt.ToUniversalTime();
-            currentUser.Shift.End = DateTime.UtcNow;
+            currentUser.Shift.End = DateTime.Now;
 
             ops.Jobs.EndJob(currentUser.Shift);
             
@@ -383,7 +383,7 @@ namespace DMT.Simulator.Pages
             DateTime dt = jobDate.Value.Value.ToLocalTime();
             // Set Begin Job date.
             //attd.Begin = dt;
-            attd.Begin = DateTime.UtcNow;
+            attd.Begin = DateTime.Now;
 
             ops.Lanes.SaveAttendance(attd);
             // Set Attendance
@@ -407,7 +407,7 @@ namespace DMT.Simulator.Pages
                 DateTime dt = jobDate.Value.Value.ToLocalTime();
                 // Set End Job date.
                 //attd.End = dt;
-                attd.End = DateTime.UtcNow;
+                attd.End = DateTime.Now;
 
                 // Save to database.
                 ops.Lanes.SaveAttendance(attd);
