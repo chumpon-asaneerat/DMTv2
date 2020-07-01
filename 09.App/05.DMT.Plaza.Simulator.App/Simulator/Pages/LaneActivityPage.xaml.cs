@@ -319,6 +319,9 @@ namespace DMT.Simulator.Pages
             var shift = (cbShifts.SelectedItem as Shift);
             if (null == shift) return;
             var inst = ops.Jobs.Create(shift, currentUser);
+
+            DateTime dt = shiftDate.Value.Value.ToLocalTime();
+            inst.Begin = dt;
             ops.Jobs.BeginJob(inst);
 
             RefreshUsers();
@@ -330,6 +333,10 @@ namespace DMT.Simulator.Pages
         {
             if (null == currentUser) return;
             if (null == currentUser.Shift) return;
+            
+            DateTime dt = shiftDate.Value.Value.ToLocalTime();
+            currentUser.Shift.End = dt;
+
             ops.Jobs.EndJob(currentUser.Shift);
             
             RefreshUsers();

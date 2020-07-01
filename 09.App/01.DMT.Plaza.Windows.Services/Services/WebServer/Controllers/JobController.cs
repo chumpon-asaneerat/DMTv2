@@ -27,7 +27,6 @@ namespace DMT.Services
             return UserShift.Create(value.Shift, value.User);
         }
 
-
         [HttpPost]
         [ActionName(RouteConsts.Job.GetCurrent.Name)]
         public UserShift GetCurrent([FromBody] User value)
@@ -38,18 +37,18 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.Job.BeginJob.Name)]
-        public bool BeginJob(UserShift value)
+        public bool BeginJob(UserShift shift)
         {
-            if (null == value) return false;
-            return UserShift.BeginJob(value);
+            if (null == shift) return false;
+            return UserShift.BeginJob(shift);
         }
 
         [HttpPost]
         [ActionName(RouteConsts.Job.EndJob.Name)]
-        public void EndJob(UserShift value)
+        public void EndJob(UserShift shift)
         {
-            if (null == value) return;
-            UserShift.EndJob(value);
+            if (null == shift) return;
+            UserShift.EndJob(shift);
         }
     }
 }

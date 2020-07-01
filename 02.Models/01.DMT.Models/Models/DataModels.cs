@@ -2213,7 +2213,9 @@ namespace DMT.Models
                     return false;
                 }
                 // Begin new shift.
-                shift.Begin = DateTime.Now;
+                if (shift.Begin == DateTime.MinValue)
+                    shift.Begin = DateTime.Now;
+
                 Save(shift);
                 return true;
             }
@@ -2225,7 +2227,9 @@ namespace DMT.Models
             {
                 if (null == shift) return;
                 // End shift.
-                shift.End = DateTime.Now;
+                if (shift.End == DateTime.MinValue)
+                    shift.End = DateTime.Now;
+
                 Save(shift);
             }
         }
