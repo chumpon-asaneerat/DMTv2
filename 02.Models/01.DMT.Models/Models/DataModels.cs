@@ -2465,20 +2465,18 @@ namespace DMT.Models
 
         public static List<LaneAttendance> Search(UserShift shift)
         {
-            if (null == shift) return Search(date);
+            if (null == shift) return new List<LaneAttendance>();
             lock (sync)
             {
-                /*
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM LanePayment ";
-                cmd += " WHERE UserId = ? ";
-                cmd += "   AND End = ? ";
-                return NQuery.Query<UserShift>(
+                cmd += "SELECT * FROM LaneAttendance ";
+                cmd += " WHERE Begin >= ? ";
+                cmd += "   AND End <= ? ";
+                return NQuery.Query<LaneAttendance>(
                     cmd,
-                    userId,
-                    DateTime.MinValue).FirstOrDefault();
-                */
-                return null;
+                    shift.Begin,
+                    shift.End,
+                    DateTime.MinValue).ToList();
             }
         }
 
@@ -2487,17 +2485,14 @@ namespace DMT.Models
             if (null == date || date == DateTime.MinValue) return new List<LaneAttendance>();
             lock (sync)
             {
-                /*
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM LanePayment ";
-                cmd += " WHERE UserId = ? ";
-                cmd += "   AND End = ? ";
-                return NQuery.Query<UserShift>(
+                cmd += "SELECT * FROM LaneAttendance ";
+                cmd += " WHERE Begin >= ? ";
+                cmd += "   AND End <= ? ";
+                return NQuery.Query<LaneAttendance>(
                     cmd,
-                    userId,
-                    DateTime.MinValue).FirstOrDefault();
-                */
-                return null;
+                    date,
+                    DateTime.MinValue).ToList();
             }
         }
 
@@ -2895,13 +2890,17 @@ namespace DMT.Models
 
         #region Static Methods
 
-        public static LanePayment Create(Lane lane, User collector)
+        public static LanePayment Create(Lane lane, User collector,
+            Payment payment, DateTime date, decimal amount)
         {
             LanePayment inst = Create();
             TSB tsb = TSB.GetCurrent();
             if (null != tsb) tsb.AssignTo(inst);
             if (null != lane) lane.AssignTo(inst);
             if (null != collector) collector.AssignTo(inst);
+            if (null != payment) payment.AssignTo(inst);
+            inst.PaymentDate = date;
+            inst.Amount = amount;
             return inst;
         }
 
@@ -2910,17 +2909,15 @@ namespace DMT.Models
             if (null == shift) return new List<LanePayment>();
             lock (sync)
             {
-                /*
                 string cmd = string.Empty;
                 cmd += "SELECT * FROM LanePayment ";
-                cmd += " WHERE UserId = ? ";
-                cmd += "   AND End = ? ";
-                return NQuery.Query<UserShift>(
+                cmd += " WHERE Begin >= ? ";
+                cmd += "   AND End <= ? ";
+                return NQuery.Query<LanePayment>(
                     cmd,
-                    userId,
-                    DateTime.MinValue).FirstOrDefault();
-                */
-                return null;
+                    shift.Begin,
+                    shift.End,
+                    DateTime.MinValue).ToList();
             }
         }
 
@@ -2929,17 +2926,14 @@ namespace DMT.Models
             if (null == date || date == DateTime.MinValue) return new List<LanePayment>();
             lock (sync)
             {
-                /*
                 string cmd = string.Empty;
                 cmd += "SELECT * FROM LanePayment ";
-                cmd += " WHERE UserId = ? ";
-                cmd += "   AND End = ? ";
-                return NQuery.Query<UserShift>(
+                cmd += " WHERE Begin >= ? ";
+                cmd += "   AND End <= ? ";
+                return NQuery.Query<LanePayment>(
                     cmd,
-                    userId,
-                    DateTime.MinValue).FirstOrDefault();
-                */
-                return null;
+                    date,
+                    DateTime.MinValue).ToList();
             }
         }
 
@@ -2950,6 +2944,9 @@ namespace DMT.Models
     {
         public Lane Lane { get; set; }
         public User User { get; set; }
+        public Payment Payment { get; set; }
+        public DateTime Date { get; set; }
+        public decimal Amount { get; set; }
     }
 
     #endregion

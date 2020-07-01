@@ -31,7 +31,8 @@ namespace DMT.Services
         public LanePayment Create([FromBody] LanePaymentCreate value)
         {
             if (null == value) return null;
-            return LanePayment.Create(value.Lane, value.User);
+            return LanePayment.Create(value.Lane, value.User, 
+                value.Payment, value.Date, value.Amount);
         }
 
         [HttpPost]
