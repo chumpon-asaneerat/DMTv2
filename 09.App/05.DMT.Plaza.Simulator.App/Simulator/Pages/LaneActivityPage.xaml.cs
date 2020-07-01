@@ -43,9 +43,24 @@ namespace DMT.Simulator.Pages
 
         #endregion
 
+        public class UserItem : User
+        {
+            public string RoleNameTH { get; set; }
+        }
+
+        public class LaneItem : Lane
+        {
+            public string UserId { get; set; }
+            public string FullNameTH { get; set; }
+        }
+
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
-        private UserItem currentUser = null;
+
+        private List<UserItem> users = new List<UserItem>();
+        private List<LaneItem> lanes = new List<LaneItem>();
+
         private LaneItem currentLane = null;
+        private UserItem currentUser = null;
 
         #region Loaded/Unloaderd
 
@@ -62,33 +77,37 @@ namespace DMT.Simulator.Pages
 
         #endregion
 
-        #region ListView Handlers
+        #region Private Methods
 
-        private void lvLanes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void RefreshUI()
         {
-            currentLane = lvLanes.SelectedItem as LaneItem;
-            if (null != currentLane)
-            {
+            gridTools.IsEnabled = false;
+            if (null == currentLane) return;
+            if (null == currentUser) return;
+            gridTools.IsEnabled = true;
 
+            var shift = ops.Jobs.GetCurrent(currentUser);
+            if (null == shift)
+            {
+                shiftDate.IsEnabled = true;
+                cmdBeginShift.IsEnabled = true;
+                cmdEndShift.IsEnabled = false;
+
+                jobDate.IsEnabled = false;
+                cmdBeginJob.IsEnabled = false;
+                cmdEndJob.IsEnabled = false;
+            }
+            else
+            {
+                shiftDate.IsEnabled = true;
+                cmdBeginShift.IsEnabled = false;
+                cmdEndShift.IsEnabled = true;
+
+                jobDate.IsEnabled = false;
+                cmdBeginJob.IsEnabled = false;
+                cmdEndJob.IsEnabled = false;
             }
         }
-
-        #endregion
-
-        #region ListBox Handlers
-
-        private void lstUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            currentUser = lstUsers.SelectedItem as UserItem;
-            if (null != currentUser)
-            {
-            }
-        }
-
-        #endregion
-
-        private List<UserItem> users = new List<UserItem>();
-        private List<LaneItem> lanes = new List<LaneItem>();
 
         private void RefreshUsers()
         {
@@ -101,7 +120,7 @@ namespace DMT.Simulator.Pages
                 var usrs = ops.Users.GetUsers(role);
                 if (null != usrs)
                 {
-                    usrs.ForEach(usr => 
+                    usrs.ForEach(usr =>
                     {
                         var inst = new UserItem();
                         inst.RoleNameTH = role.RoleNameTH;
@@ -112,6 +131,8 @@ namespace DMT.Simulator.Pages
             }
 
             lstUsers.ItemsSource = users;
+
+            RefreshUI();
         }
 
         private void RefreshLanes()
@@ -125,7 +146,7 @@ namespace DMT.Simulator.Pages
                 var tsbLanes = ops.TSB.GetTSBLanes(tsb);
                 if (null != tsbLanes)
                 {
-                    tsbLanes.ForEach(tsbLane => 
+                    tsbLanes.ForEach(tsbLane =>
                     {
                         var inst = new LaneItem();
 
@@ -136,17 +157,83 @@ namespace DMT.Simulator.Pages
             }
 
             lvLanes.ItemsSource = lanes;
+
+            RefreshUI();
         }
 
-        public class UserItem : User
+        private void RefreshLaneAttendances()
         {
-            public string RoleNameTH { get; set; }
+            //var tsbshift = ops.Shifts.GetCurrent();
+            //var userShifts = ops.Shifts.GetUserShift(tsbshift);
+            //var items = ops.Lanes.GetAttendancesByShift();
         }
 
-        public class LaneItem : Lane
+        private void RefreshLanePayments()
         {
-            public string UserId { get; set; }
-            public string FullNameTH { get; set; }
+            //var tsbshift = ops.Shifts.GetCurrent();
+            //var userShifts = ops.Shifts.GetUserShift(tsbshift);
+            //var items = ops.Lanes.GetPaymentsByShift();
         }
+
+        #endregion
+
+        #region ListView Handlers
+
+        private void lvLanes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            currentLane = lvLanes.SelectedItem as LaneItem;
+            RefreshUI();
+        }
+
+        #endregion
+
+        #region ListBox Handlers
+
+        private void lstUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            currentUser = lstUsers.SelectedItem as UserItem;
+            RefreshUI();
+        }
+
+        #endregion
+
+        #region Button Handler(s)
+
+        private void cmdRefreshAttendences_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshLaneAttendances();
+        }
+
+        private void cmdRefreshPayments_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshLanePayments();
+        }
+
+        private void cmdBeginShift_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            var tsbshift = ops.Shifts.GetCurrent();
+            Shift shift = Shift.Create();
+            var inst = ops.Jobs.Create();
+            ops.Jobs.BeginJob();
+            */
+        }
+
+        private void cmdEndShift_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cmdBeginJob_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cmdEndJob_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        #endregion
     }
 }

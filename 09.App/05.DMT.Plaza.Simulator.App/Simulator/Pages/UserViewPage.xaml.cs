@@ -43,7 +43,20 @@ namespace DMT.Simulator.Pages
 
         #endregion
 
+        public class UserItem : User
+        {
+            public string RoleNameTH { get; set; }
+        }
+
+        public class LaneItem : Lane
+        {
+            public string UserId { get; set; }
+            public string FullNameTH { get; set; }
+        }
+
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+
+        private List<UserItem> users = new List<UserItem>();
 
         #region Loaded/Unloaderd
 
@@ -59,17 +72,7 @@ namespace DMT.Simulator.Pages
 
         #endregion
 
-        #region ListBox Handler(s)
-
-        private void lstUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var item = lstUsers.SelectedItem as UserItem;
-            pgrid.SelectedObject = item;
-        }
-
-        #endregion
-
-        private List<UserItem> users = new List<UserItem>();
+        #region Private Methods
 
         private void RefreshUsers()
         {
@@ -98,15 +101,20 @@ namespace DMT.Simulator.Pages
             lstUsers.ItemsSource = users;
         }
 
-        public class UserItem : User
+        #endregion
+
+        #region ListBox Handler(s)
+
+        private void lstUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            public string RoleNameTH { get; set; }
+            var item = lstUsers.SelectedItem as UserItem;
+            pgrid.SelectedObject = item;
         }
 
-        public class LaneItem : Lane
-        {
-            public string UserId { get; set; }
-            public string FullNameTH { get; set; }
-        }
+        #endregion
+
+        #region Button Handler(s)
+
+        #endregion
     }
 }
