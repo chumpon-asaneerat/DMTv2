@@ -240,7 +240,7 @@
                                         <!-- UserId and Full Name -->
                                         <StackPanel Grid.Row="1"
                                                     Grid.Column="0"
-                                                    Margin="20,30,0,0"
+                                                    Margin="20,20,0,0"
                                                     HorizontalAlignment="Stretch"
                                                     VerticalAlignment="Stretch"
                                                     Orientation="Vertical">
@@ -248,6 +248,15 @@
                                                        FontSize="18"
                                                        FontWeight="Bold" />
                                             <TextBlock Text="{Binding FullNameTH}" FontSize="14" />
+                                            <Grid Height="2"/>
+                                            <TextBlock FontSize="8">
+                                                <Run Text="วันที่เริ่ม: "/>
+                                                <Run Text="{Binding BeginDateString}"/>
+                                            </TextBlock>
+                                            <TextBlock FontSize="8">
+                                                <Run Text="เวลาเริ่ม: "/>
+                                                <Run Text="{Binding BeginTimeString}"/>
+                                            </TextBlock>
                                         </StackPanel>
                                         <!-- Role Name -->
                                         <TextBlock Grid.Row="2"

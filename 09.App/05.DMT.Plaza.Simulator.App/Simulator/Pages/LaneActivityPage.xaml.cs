@@ -46,8 +46,30 @@ namespace DMT.Simulator.Pages
 
         public class UserItem : User
         {
+            private UserShift _Shift = null;
+
             public string RoleNameTH { get; set; }
-            public UserShift Shift { get; set; }
+            public UserShift Shift 
+            {
+                get { return _Shift;  }
+                set
+                {
+                    _Shift = value;
+                    RaiseChanged("BeginDateString");
+                    RaiseChanged("BeginTimeString");
+                }
+            }
+
+            public string BeginDateString
+            {
+                get { return (null != Shift) ? Shift.BeginDateString : string.Empty; }
+                set { }
+            }
+            public string BeginTimeString
+            {
+                get { return (null != Shift) ? Shift.BeginTimeString : string.Empty; }
+                set { }
+            }
         }
 
         public class LaneItem : Lane
@@ -102,10 +124,10 @@ namespace DMT.Simulator.Pages
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             // Set CultureInfo for DateTimePicker.
-            //shiftDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
-            shiftDate.CultureInfo = System.Globalization.CultureInfo.CurrentUICulture;
-            //jobDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
-            jobDate.CultureInfo = System.Globalization.CultureInfo.CurrentUICulture;
+            shiftDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
+            //shiftDate.CultureInfo = System.Globalization.CultureInfo.CurrentUICulture;
+            jobDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
+            //jobDate.CultureInfo = System.Globalization.CultureInfo.CurrentUICulture;
 
             RefreshLanes();
             RefreshUsers();
@@ -124,7 +146,6 @@ namespace DMT.Simulator.Pages
         private void RefreshUI()
         {
             gridTools.IsEnabled = false;
-            if (null == currentLane) return;
             if (null == currentUser) return;
             gridTools.IsEnabled = true;
 
@@ -146,6 +167,13 @@ namespace DMT.Simulator.Pages
                 shiftDate.IsEnabled = true;
                 cmdBeginShift.IsEnabled = false;
                 cmdEndShift.IsEnabled = true;
+
+                // Dislable all job begin/end controls.
+                jobDate.IsEnabled = false;
+                cmdBeginJob.IsEnabled = false;
+                cmdEndJob.IsEnabled = false;
+
+                if (null == currentLane) return;
 
                 jobDate.IsEnabled = true;
                 cmdBeginJob.IsEnabled = (null == currentLane.Attendance) ? true : false;
@@ -178,6 +206,8 @@ namespace DMT.Simulator.Pages
                         var inst = new UserItem();
                         inst.RoleNameTH = role.RoleNameTH;
                         usr.AssignTo(inst);
+                        // load user shift.
+                        inst.Shift = ops.Jobs.GetCurrent(usr);
                         users.Add(inst);
                     });
                 }
@@ -291,6 +321,8 @@ namespace DMT.Simulator.Pages
             var inst = ops.Jobs.Create(shift, currentUser);
             ops.Jobs.BeginJob(inst);
 
+            RefreshUsers();
+
             RefreshUI();
         }
 
@@ -299,6 +331,8 @@ namespace DMT.Simulator.Pages
             if (null == currentUser) return;
             if (null == currentUser.Shift) return;
             ops.Jobs.EndJob(currentUser.Shift);
+            
+            RefreshUsers();
 
             RefreshUI();
         }
