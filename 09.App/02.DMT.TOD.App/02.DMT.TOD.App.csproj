@@ -130,7 +130,7 @@
       <Project>{0040f19e-4885-4267-9404-61c8dc150f5f}</Project>
       <Name>01.DMT.Operations</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\04.Controls\01.DMT.Controls\01.DMT.Controls.csproj">
+    <ProjectReference Include="..\..\05.Controls\01.DMT.Controls\01.DMT.Controls.csproj">
       <Project>{aeed7b1c-4e56-4d44-bbd1-a936be653d4d}</Project>
       <Name>02.DMT.Controls</Name>
     </ProjectReference>
