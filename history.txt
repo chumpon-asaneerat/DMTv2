@@ -11,8 +11,9 @@ Update 2020-07-03 #8
 Update 2020-07-03 #7
 - 
 
+[commited]
 Update 2020-07-03 #6
-- 
+- Add SQLite.Net.DateTimeOffset.Attributes.dll in references folders.
 
 [commited]
 Update 2020-07-03 #5
