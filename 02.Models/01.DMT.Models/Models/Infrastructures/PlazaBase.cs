@@ -14,8 +14,15 @@ using NLib;
 using NLib.Reflection;
 
 #endregion
+
 namespace DMT.Models
 {
+    #region PlazaBase<T>
+
+    /// <summary>
+    /// The Plaza Base Data Model abstract class.
+    /// </summary>
+    /// <typeparam name="T">The target class type.</typeparam>
     public abstract class PlazaBase<T> : TSBBase<T>
         where T : NTable, new()
     {
@@ -132,4 +139,6 @@ namespace DMT.Models
 
         #endregion
     }
+
+    #endregion
 }

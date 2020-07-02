@@ -100,6 +100,7 @@
     <Compile Include="Models\Common\NQyeries.cs" />
     <Compile Include="Models\Common\NSearch.cs" />
     <Compile Include="Models\Common\NTables.cs" />
+    <Compile Include="Models\Infrastructures\LaneBase.cs" />
     <Compile Include="Models\Infrastructures\PlazaBase.cs" />
     <Compile Include="Models\Infrastructures\TSBBase.cs" />
     <Compile Include="Models\LaneActivities\Payment.cs" />

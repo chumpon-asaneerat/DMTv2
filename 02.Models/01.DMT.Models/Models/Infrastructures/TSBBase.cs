@@ -22,6 +22,7 @@ namespace DMT.Models
     /// <summary>
     /// The TSB Base Data Model abstract class.
     /// </summary>
+    /// <typeparam name="T">The target class type.</typeparam>
     public abstract class TSBBase<T> : NTable<T>
         where T : NTable, new()
     {
