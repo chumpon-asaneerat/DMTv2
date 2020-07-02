@@ -62,6 +62,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Web.Server", "03.Web.Ser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.DMT.Local.WebServer", "03.Web.Server\01.DMT.Local.WebServer\01.DMT.Local.WebServer.csproj", "{6EB3BCEA-B7D7-4C5D-812E-E3AAB7292AA0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.DMT.Local.Web.Client", "04.Web.Client\01.DMT.Local.Web.Client\01.DMT.Local.Web.Client.csproj", "{0040F19E-4885-4267-9404-61C8DC150F5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +94,10 @@ Global
 		{6EB3BCEA-B7D7-4C5D-812E-E3AAB7292AA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EB3BCEA-B7D7-4C5D-812E-E3AAB7292AA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EB3BCEA-B7D7-4C5D-812E-E3AAB7292AA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0040F19E-4885-4267-9404-61C8DC150F5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0040F19E-4885-4267-9404-61C8DC150F5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0040F19E-4885-4267-9404-61C8DC150F5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0040F19E-4885-4267-9404-61C8DC150F5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -106,6 +112,7 @@ Global
 		{5148ED2A-41FA-409C-BB41-36806D98BF81} = {E919342E-35FF-47EA-ACEB-D38EB96AC064}
 		{7D584F0A-920F-4BE1-8652-3527FD7A5C27} = {707C6726-0547-4B0A-910B-99288C2D59CF}
 		{6EB3BCEA-B7D7-4C5D-812E-E3AAB7292AA0} = {33BB3FBD-AA5E-423E-8A4E-C13B31C59613}
+		{0040F19E-4885-4267-9404-61C8DC150F5F} = {6660AE27-C43F-4A31-A336-86A504EDDBB4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BFB056C-BEA2-46BD-B006-6BD410AF18BC}

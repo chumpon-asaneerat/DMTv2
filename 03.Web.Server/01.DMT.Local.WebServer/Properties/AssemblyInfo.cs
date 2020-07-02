@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DMT.Local.WebServer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("DMT local web server library")]
+[assembly: AssemblyDescription("The DMT local web server library")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DMT.Local.WebServer")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("Softbase Co., Ltd.")]
+[assembly: AssemblyProduct("The DMT local web server library")]
+[assembly: AssemblyCopyright("Copyright ©Softbase Co., Ltd. 2020")]
+[assembly: AssemblyTrademark("The DMT local web server library")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
