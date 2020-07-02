@@ -30,12 +30,13 @@ Update 2020-07-03 #1
 - 
 
 --------------------------------------------------------------------------------------------
+[commited]
 Update 2020-07-02 #16
-- 
+- Implements partial nested class #2 - Services->PlazaOperations (in Web.Client project).
 
 [commited]
 Update 2020-07-02 #15
-- Test Implements search partial nested class #1.
+- Implements partial nested class #1 - Models->Search (in Models project).
 
 [commited]
 Update 2020-07-02 #14

@@ -57,6 +57,12 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\NRestClient.cs" />
+    <Compile Include="Services\Operations\PlazaOperations.base.cs" />
+    <Compile Include="Services\Operations\PlazaOperations.Job.cs" />
+    <Compile Include="Services\Operations\PlazaOperations.Lane.cs" />
+    <Compile Include="Services\Operations\PlazaOperations.Shift.cs" />
+    <Compile Include="Services\Operations\PlazaOperations.TSB.cs" />
+    <Compile Include="Services\Operations\PlazaOperations.User.cs" />
     <Compile Include="Services\ServiceOperations.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +82,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>REM xcopy "$(SolutionDir)References\SqlServerTypes\*.*" "$(TargetDir)\SqlServerTypes\*.*" /Y/D/E
