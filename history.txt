@@ -51,8 +51,9 @@ Update 2020-07-02 #11
 Update 2020-07-02 #10
 - 
 
+[commited]
 Update 2020-07-02 #9
-- 
+- Restructure solution folders #5.
 
 [commited]
 Update 2020-07-02 #8

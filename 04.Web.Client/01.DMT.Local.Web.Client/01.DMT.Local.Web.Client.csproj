@@ -56,10 +56,6 @@
     <Compile Include="Services\ServiceOperations.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\00.NLib\NLib.Reports\NLib.Reports.csproj">
-      <Project>{5879d92a-f850-4a70-8d88-99d29f6a46f3}</Project>
-      <Name>NLib.Reports</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\00.NLib\NLib\NLib.csproj">
       <Project>{41a9d6c0-c833-403f-9bc1-eecdc246a428}</Project>
       <Name>NLib</Name>
@@ -72,6 +68,9 @@
       <Project>{7d584f0a-920f-4be1-8652-3527fd7a5c27}</Project>
       <Name>01.DMT.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
