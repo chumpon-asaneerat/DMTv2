@@ -23,8 +23,10 @@ Update 2020-07-03 #4
 Update 2020-07-03 #3
 - 
 
+[commited]
 Update 2020-07-03 #2
-- 
+- Reimplements models and local db server #61.
+  - Add PlazaBase<T> and Update Plaza.
 
 [commited]
 Update 2020-07-03 #1
