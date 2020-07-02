@@ -132,7 +132,7 @@
     </ProjectReference>
     <ProjectReference Include="..\..\06.Controls\01.DMT.Controls\01.DMT.Controls.csproj">
       <Project>{aeed7b1c-4e56-4d44-bbd1-a936be653d4d}</Project>
-      <Name>02.DMT.Controls</Name>
+      <Name>01.DMT.Controls</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
