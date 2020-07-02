@@ -31,6 +31,10 @@ Update 2020-07-03 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-07-02 #17
+- Remove unused dlls in references folder.
+
+[commited]
 Update 2020-07-02 #16
 - Implements partial nested class #2 - Services->PlazaOperations (in Web.Client project).
 
