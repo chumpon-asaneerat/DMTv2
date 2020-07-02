@@ -94,11 +94,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExtensionMethods\ModelExtensionMethods.cs" />
+    <Compile Include="Models\Config.cs" />
     <Compile Include="Models\DataModels.cs" />
-    <Compile Include="Models\DMTModelBase.cs" />
-    <Compile Include="Models\NQyeries.cs" />
-    <Compile Include="Models\NSearch.cs" />
-    <Compile Include="Models\NTables.cs" />
+    <Compile Include="Models\Common\DMTModelBase.cs" />
+    <Compile Include="Models\Common\NQyeries.cs" />
+    <Compile Include="Models\Common\NSearch.cs" />
+    <Compile Include="Models\Common\NTables.cs" />
+    <Compile Include="Models\Lane.cs" />
+    <Compile Include="Models\Plaza.cs" />
+    <Compile Include="Models\RevenueEntry.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Shift.cs" />
+    <Compile Include="Models\TSB.cs" />
+    <Compile Include="Models\TSBShift.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserShift.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LocalDbServer.cs" />
   </ItemGroup>
