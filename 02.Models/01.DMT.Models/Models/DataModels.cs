@@ -17,9 +17,65 @@ using NLib.Reflection;
 
 namespace DMT.Models
 {
-    #region Search nested classes.
+    #region Search nested classes
 
-    public static class Search
+    public partial class Search
+    {
+        // for test.
+        public partial class Options { }
+    }
+
+    partial class Search
+    {
+        // for test.
+        partial class Options 
+        {
+            public class ById 
+            {
+                public int Id { get; set; }
+
+                public static ById Create(int id)
+                {
+                    var inst = new ById();
+                    inst.Id = id;
+                    return inst;
+                }
+            }
+        }
+    }
+
+    partial class Search
+    {
+        // for test.
+        partial class Options
+        {
+            public class ByCode
+            {
+                public string Code { get; set; }
+
+                public static ByCode Create(string code)
+                {
+                    var inst = new ByCode();
+                    inst.Code = code;
+                    return inst;
+                }
+            }
+        }
+    }
+
+    public class Test 
+    { 
+        public static void Run()
+        {
+            var optById = Search.Options.ById.Create(123);
+            if (null != optById) Console.WriteLine(optById.Id);
+
+            var optByCode = Search.Options.ByCode.Create("mycoe");
+            if (null != optByCode) Console.WriteLine(optByCode.Code);
+        }
+    }
+
+    partial class Search
     {
         public static class Roles
         {
@@ -35,7 +91,10 @@ namespace DMT.Models
                 }
             }
         }
-
+    }
+    
+    partial class Search
+    {
         public static class Users
         {
             public class ByCardId : NSearch<ByCardId>
@@ -76,7 +135,10 @@ namespace DMT.Models
                 }
             }
         }
+    }
 
+    partial class Search
+    {
         public static class Lanes
         {
             public static class Current

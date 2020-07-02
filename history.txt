@@ -33,8 +33,9 @@ Update 2020-07-03 #1
 Update 2020-07-02 #16
 - 
 
+[commited]
 Update 2020-07-02 #15
-- 
+- Test Implements search partial nested class #1.
 
 [commited]
 Update 2020-07-02 #14
