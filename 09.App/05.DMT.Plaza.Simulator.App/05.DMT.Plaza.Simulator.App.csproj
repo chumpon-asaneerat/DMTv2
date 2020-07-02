@@ -58,9 +58,6 @@
     <Reference Include="Microsoft.Xaml.Behaviors">
       <HintPath>..\..\References\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp">
-      <HintPath>..\..\References\RestSharp.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -143,9 +140,9 @@
       <Project>{7d584f0a-920f-4be1-8652-3527fd7a5c27}</Project>
       <Name>01.DMT.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\03.Interfaces\01.DMT.Operations\01.DMT.Operations.csproj">
+    <ProjectReference Include="..\..\04.Web.Client\01.DMT.Local.Web.Client\01.DMT.Local.Web.Client.csproj">
       <Project>{0040f19e-4885-4267-9404-61c8dc150f5f}</Project>
-      <Name>01.DMT.Operations</Name>
+      <Name>01.DMT.Local.Web.Client</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
