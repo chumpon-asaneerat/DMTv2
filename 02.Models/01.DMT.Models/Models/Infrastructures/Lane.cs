@@ -28,6 +28,7 @@ namespace DMT.Models
         #region Intenral Variables
 
         private int _PkId = 0;
+        private int _LaneNo = 0;
         private string _LaneType = string.Empty;
         private string _LaneAbbr = string.Empty;
 
@@ -64,6 +65,25 @@ namespace DMT.Models
                 {
                     _PkId = value;
                     this.RaiseChanged("PkId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Lane No.
+        /// </summary>
+        [PeropertyMapName("LaneNo")]
+        public int LaneNo
+        {
+            get
+            {
+                return _LaneNo;
+            }
+            set
+            {
+                if (_LaneNo != value)
+                {
+                    _LaneNo = value;
+                    this.RaiseChanged("LaneNo");
                 }
             }
         }

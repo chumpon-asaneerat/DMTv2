@@ -28,7 +28,6 @@ namespace DMT.Models
     {
         #region Intenral Variables
 
-        private int _LaneNo = 0;
         private string _LaneId = string.Empty;
 
         #endregion
@@ -44,25 +43,6 @@ namespace DMT.Models
 
         #region Public Proprties
 
-        /// <summary>
-        /// Gets or sets Lane No.
-        /// </summary>
-        [PeropertyMapName("LaneNo")]
-        public int LaneNo
-        {
-            get
-            {
-                return _LaneNo;
-            }
-            set
-            {
-                if (_LaneNo != value)
-                {
-                    _LaneNo = value;
-                    this.RaiseChanged("LaneNo");
-                }
-            }
-        }
         /// <summary>
         /// Gets or sets LaneId
         /// </summary>

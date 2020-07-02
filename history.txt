@@ -14,8 +14,10 @@ Update 2020-07-03 #7
 Update 2020-07-03 #6
 - 
 
+[commited]
 Update 2020-07-03 #5
-- 
+- Reimplements models and local db server #64.
+  - Recheck design (TSBBase/PlazaBase/LaneBase) #2.
 
 [commited]
 Update 2020-07-03 #4

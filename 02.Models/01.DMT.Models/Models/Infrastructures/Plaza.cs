@@ -27,6 +27,8 @@ namespace DMT.Models
     {
         #region Intenral Variables
 
+        private string _PlazaNameEN = string.Empty;
+        private string _PlazaNameTH = string.Empty;
         private string _Direction = string.Empty;
 
         private int _Status = 0;
@@ -54,6 +56,46 @@ namespace DMT.Models
         {
             get { return base.PlazaId; }
             set { base.PlazaId = value; }
+        }
+        /// <summary>
+        /// Gets or sets PlazaNameEN
+        /// </summary>
+        [MaxLength(100)]
+        [PeropertyMapName("PlazaNameEN")]
+        public string PlazaNameEN
+        {
+            get
+            {
+                return _PlazaNameEN;
+            }
+            set
+            {
+                if (_PlazaNameEN != value)
+                {
+                    _PlazaNameEN = value;
+                    this.RaiseChanged("PlazaNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets PlazaNameTH
+        /// </summary>
+        [MaxLength(100)]
+        [PeropertyMapName("PlazaNameTH")]
+        public string PlazaNameTH
+        {
+            get
+            {
+                return _PlazaNameTH;
+            }
+            set
+            {
+                if (_PlazaNameTH != value)
+                {
+                    _PlazaNameTH = value;
+                    this.RaiseChanged("PlazaNameTH");
+                }
+            }
         }
         /// <summary>
         /// Gets or sets Direction

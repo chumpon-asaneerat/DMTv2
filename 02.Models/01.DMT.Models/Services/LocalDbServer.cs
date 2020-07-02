@@ -446,6 +446,7 @@ namespace DMT.Services
                 LaneId = "LP23",
                 LaneType = "?",
                 LaneAbbr = "LP23",
+                TSBId = item.TSBId,
                 PlazaId = plaza.PlazaId
             };
             if (!Lane.Exists(lane)) Lane.Save(lane);
