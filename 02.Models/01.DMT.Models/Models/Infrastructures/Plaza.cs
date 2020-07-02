@@ -25,12 +25,91 @@ namespace DMT.Models
     //[Table("Plaza")]
     public class Plaza : PlazaBase<Plaza>
     {
+        #region Intenral Variables
+
+        private string _Direction = string.Empty;
+
+        private int _Status = 0;
+        private DateTime _LastUpdate = DateTime.MinValue;
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
         public Plaza() : base() { }
+
+        #endregion
+
+        #region Public Proprties
+
+        /// <summary>
+        /// Gets or sets PlazaId.
+        /// </summary>
+        [PrimaryKey, MaxLength(10)]
+        [PeropertyMapName("PlazaId")]
+        public new string PlazaId
+        {
+            get { return base.PlazaId; }
+            set { base.PlazaId = value; }
+        }
+        /// <summary>
+        /// Gets or sets Direction
+        /// </summary>
+        [MaxLength(10)]
+        [PeropertyMapName("Direction")]
+        public string Direction
+        {
+            get
+            {
+                return _Direction;
+            }
+            set
+            {
+                if (_Direction != value)
+                {
+                    _Direction = value;
+                    this.RaiseChanged("Direction");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
+        /// </summary>
+        [PeropertyMapName("Status")]
+        public int Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                if (_Status != value)
+                {
+                    _Status = value;
+                    this.RaiseChanged("Status");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets LastUpdated (Sync to DC).
+        /// </summary>
+        [PeropertyMapName("LastUpdate")]
+        public DateTime LastUpdate
+        {
+            get { return _LastUpdate; }
+            set
+            {
+                if (_LastUpdate != value)
+                {
+                    _LastUpdate = value;
+                    this.RaiseChanged("LastUpdate");
+                }
+            }
+        }
 
         #endregion
 

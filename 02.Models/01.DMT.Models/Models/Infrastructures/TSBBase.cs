@@ -29,13 +29,8 @@ namespace DMT.Models
         #region Intenral Variables
 
         private string _TSBId = string.Empty;
-        private string _NetworkId = string.Empty;
         private string _TSBNameEN = string.Empty;
         private string _TSBNameTH = string.Empty;
-        private bool _Active = false;
-
-        private int _Status = 0;
-        private DateTime _LastUpdate = DateTime.MinValue;
 
         #endregion
 
@@ -53,7 +48,7 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets TSBId.
         /// </summary>
-        [PrimaryKey, MaxLength(10)]
+        [MaxLength(10)]
         [PeropertyMapName("TSBId")]
         public string TSBId
         {
@@ -107,60 +102,6 @@ namespace DMT.Models
                 {
                     _TSBNameTH = value;
                     this.RaiseChanged("TSBNameTH");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets is active TSB.
-        /// </summary>
-        [PeropertyMapName("Active")]
-        public bool Active
-        {
-            get
-            {
-                return _Active;
-            }
-            set
-            {
-                if (_Active != value)
-                {
-                    _Active = value;
-                    this.RaiseChanged("Active");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
-        /// </summary>
-        [PeropertyMapName("Status")]
-        public int Status
-        {
-            get
-            {
-                return _Status;
-            }
-            set
-            {
-                if (_Status != value)
-                {
-                    _Status = value;
-                    this.RaiseChanged("Status");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets LastUpdated (Sync to DC).
-        /// </summary>
-        [PeropertyMapName("LastUpdate")]
-        public DateTime LastUpdate
-        {
-            get { return _LastUpdate; }
-            set
-            {
-                if (_LastUpdate != value)
-                {
-                    _LastUpdate = value;
-                    this.RaiseChanged("LastUpdate");
                 }
             }
         }

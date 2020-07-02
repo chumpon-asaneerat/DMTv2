@@ -31,7 +31,6 @@ namespace DMT.Models
         private string _PlazaId = string.Empty;
         private string _PlazaNameEN = string.Empty;
         private string _PlazaNameTH = string.Empty;
-        private string _Direction = string.Empty;
 
         #endregion
 
@@ -49,7 +48,7 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PlazaId
         /// </summary>
-        [PrimaryKey, MaxLength(10)]
+        [MaxLength(10)]
         [PeropertyMapName("PlazaId")]
         public string PlazaId
         {
@@ -65,16 +64,6 @@ namespace DMT.Models
                     this.RaiseChanged("PlazaId");
                 }
             }
-        }
-        /// <summary>
-        /// Gets or sets TSBId
-        /// </summary>
-        [MaxLength(10)]
-        [PeropertyMapName("TSBId")]
-        public new string TSBId
-        {
-            get { return base.TSBId; }
-            set { base.TSBId = value; }
         }
         /// <summary>
         /// Gets or sets PlazaNameEN
@@ -113,26 +102,6 @@ namespace DMT.Models
                 {
                     _PlazaNameTH = value;
                     this.RaiseChanged("PlazaNameTH");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets Direction
-        /// </summary>
-        [MaxLength(10)]
-        [PeropertyMapName("Direction")]
-        public string Direction
-        {
-            get
-            {
-                return _Direction;
-            }
-            set
-            {
-                if (_Direction != value)
-                {
-                    _Direction = value;
-                    this.RaiseChanged("Direction");
                 }
             }
         }
