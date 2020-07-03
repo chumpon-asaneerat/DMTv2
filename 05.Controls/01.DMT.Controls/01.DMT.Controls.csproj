@@ -305,9 +305,9 @@
       <Project>{7d584f0a-920f-4be1-8652-3527fd7a5c27}</Project>
       <Name>01.DMT.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\03.Local.WebService\02.DMT.Local.Web.Client\02.DMT.Local.Web.Client.csproj">
+    <ProjectReference Include="..\..\03.Local.WebService\02.DMT.Local.WebClient\02.DMT.Local.WebClient.csproj">
       <Project>{0040f19e-4885-4267-9404-61c8dc150f5f}</Project>
-      <Name>02.DMT.Local.Web.Client</Name>
+      <Name>02.DMT.Local.WebClient</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

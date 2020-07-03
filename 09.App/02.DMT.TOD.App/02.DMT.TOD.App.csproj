@@ -126,11 +126,11 @@
       <Project>{7d584f0a-920f-4be1-8652-3527fd7a5c27}</Project>
       <Name>01.DMT.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\04.Web.Client\01.DMT.Local.Web.Client\01.DMT.Local.Web.Client.csproj">
+    <ProjectReference Include="..\..\03.Local.WebService\02.DMT.Local.WebClient\02.DMT.Local.WebClient.csproj">
       <Project>{0040f19e-4885-4267-9404-61c8dc150f5f}</Project>
-      <Name>01.DMT.Local.Web.Client</Name>
+      <Name>02.DMT.Local.WebClient</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\06.Controls\01.DMT.Controls\01.DMT.Controls.csproj">
+    <ProjectReference Include="..\..\05.Controls\01.DMT.Controls\01.DMT.Controls.csproj">
       <Project>{aeed7b1c-4e56-4d44-bbd1-a936be653d4d}</Project>
       <Name>01.DMT.Controls</Name>
     </ProjectReference>
