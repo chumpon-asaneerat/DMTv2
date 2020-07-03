@@ -80,6 +80,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10.Tests", "10.Tests", "{34
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.SQLite.Net.Wpf.Sample", "10.Tests\01.SQLite.Net.Wpf.Sample\01.SQLite.Net.Wpf.Sample.csproj", "{EC7E4CDF-4B08-4CA2-9F67-0AAA316D75E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.DMT.Smartcard.IPC.Server", "01Core\03.DMT.Smartcard.IPC.Server\03.DMT.Smartcard.IPC.Server.csproj", "{1ED667D9-A376-4E03-A8D0-D62E2E9E3B08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -142,6 +144,10 @@ Global
 		{EC7E4CDF-4B08-4CA2-9F67-0AAA316D75E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC7E4CDF-4B08-4CA2-9F67-0AAA316D75E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC7E4CDF-4B08-4CA2-9F67-0AAA316D75E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ED667D9-A376-4E03-A8D0-D62E2E9E3B08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ED667D9-A376-4E03-A8D0-D62E2E9E3B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ED667D9-A376-4E03-A8D0-D62E2E9E3B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ED667D9-A376-4E03-A8D0-D62E2E9E3B08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -164,6 +170,7 @@ Global
 		{5BB93B6E-6478-43CE-9067-53502E606002} = {34695A19-B2CE-4D84-ABC4-AFFB9E431B78}
 		{FF8B1C83-92EA-47D8-B4D4-C4E646F1A20C} = {34695A19-B2CE-4D84-ABC4-AFFB9E431B78}
 		{EC7E4CDF-4B08-4CA2-9F67-0AAA316D75E4} = {340AD3B3-A936-47DE-B5CE-369A279619D1}
+		{1ED667D9-A376-4E03-A8D0-D62E2E9E3B08} = {E919342E-35FF-47EA-ACEB-D38EB96AC064}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BFB056C-BEA2-46BD-B006-6BD410AF18BC}

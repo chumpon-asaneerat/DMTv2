@@ -14,8 +14,9 @@ Update 2020-07-03 #12
 Update 2020-07-03 #11
 - 
 
+[commited]
 Update 2020-07-03 #10
-- 
+- Add DMT.Smartcard.IPC.Server project.
 
 [commited]
 Update 2020-07-03 #9
