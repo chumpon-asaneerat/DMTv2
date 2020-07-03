@@ -356,11 +356,7 @@
                                        DockPanel.Dock="Left"
                                        Text="Date:" />
                             <xceed:DateTimePicker x:Name="shiftDate"
-                                                  Margin="3"
-                                                  Format="Custom"
-                                                  FormatString="yyyy-MM-dd HH:mm:ss"
-                                                  TimeFormat="Custom"
-                                                  TimeFormatString="HH:mm:ss"/>
+                                                  Margin="3"/>
                         </DockPanel>
                     </StackPanel>
                     <StackPanel Margin="2"
@@ -395,11 +391,7 @@
                                        DockPanel.Dock="Left"
                                        Text="Date:" />
                             <xceed:DateTimePicker x:Name="jobDate"
-                                                  Margin="3"
-                                                  Format="Custom"
-                                                  FormatString="yyyy-MM-dd HH:mm:ss"
-                                                  TimeFormat="Custom"
-                                                  TimeFormatString="HH:mm:ss"/>
+                                                  Margin="3"/>
                         </DockPanel>
                     </StackPanel>
                     <StackPanel Margin="2"

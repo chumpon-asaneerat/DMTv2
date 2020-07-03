@@ -123,16 +123,21 @@ namespace DMT.Simulator.Pages
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            // Set CultureInfo for DateTimePicker.
-            shiftDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
-            //shiftDate.CultureInfo = System.Globalization.CultureInfo.CurrentUICulture;
-            shiftDate.DefaultValue = DateTime.Now;
-            shiftDate.GotFocus += ShiftDate_GotFocus;
+            shiftDate.Format = Xceed.Wpf.Toolkit.DateTimeFormat.Custom;
+            shiftDate.FormatString = "yyyy-MM-dd HH:mm:ss.fff";
+            shiftDate.TimeFormat = Xceed.Wpf.Toolkit.DateTimeFormat.Custom;
+            shiftDate.TimeFormatString = "HH:mm:ss.fff";
 
-            jobDate.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
-            //jobDate.CultureInfo = System.Globalization.CultureInfo.CurrentUICulture;
+            shiftDate.DefaultValue = DateTime.Now;
+            shiftDate.Value = DateTime.Now;
+
+            jobDate.Format = Xceed.Wpf.Toolkit.DateTimeFormat.Custom;
+            jobDate.FormatString = "yyyy-MM-dd HH:mm:ss.fff";
+            jobDate.TimeFormat = Xceed.Wpf.Toolkit.DateTimeFormat.Custom;
+            jobDate.TimeFormatString = "HH:mm:ss.fff";
+
             jobDate.DefaultValue = DateTime.Now;
-            jobDate.GotFocus += JobDate_GotFocus;
+            jobDate.Value = DateTime.Now;
 
             RefreshLanes();
             RefreshUsers();
@@ -275,16 +280,6 @@ namespace DMT.Simulator.Pages
 
         #region DateTimePicker Handlers
 
-        private void ShiftDate_GotFocus(object sender, RoutedEventArgs e)
-        {
-            shiftDate.DefaultValue = DateTime.Now;
-        }
-
-        private void JobDate_GotFocus(object sender, RoutedEventArgs e)
-        {
-            jobDate.DefaultValue = DateTime.Now;
-        }
-
         #endregion
 
         #region ListView Handlers
@@ -341,10 +336,8 @@ namespace DMT.Simulator.Pages
             if (null == shift) return;
             var inst = ops.Jobs.Create(shift, currentUser);
 
-            //DateTime dt = shiftDate.Value.Value.ToLocalTime();
             DateTime dt = shiftDate.Value.Value;
-            //inst.Begin = dt.ToUniversalTime();            
-            inst.Begin = DateTime.Now;
+            inst.Begin = dt;
             ops.Jobs.BeginJob(inst);
 
             RefreshUsers();
@@ -359,10 +352,8 @@ namespace DMT.Simulator.Pages
 
             if (!shiftDate.Value.HasValue) return;
 
-            //DateTime dt = shiftDate.Value.Value.ToLocalTime();
             DateTime dt = shiftDate.Value.Value;
-            //currentUser.Shift.End = dt.ToUniversalTime();
-            currentUser.Shift.End = DateTime.Now;
+            currentUser.Shift.End = dt;
 
             ops.Jobs.EndJob(currentUser.Shift);
             
@@ -380,10 +371,9 @@ namespace DMT.Simulator.Pages
 
             var attd = ops.Lanes.CreateAttendance(currentLane, currentUser);
 
-            DateTime dt = jobDate.Value.Value.ToLocalTime();
+            DateTime dt = jobDate.Value.Value;
             // Set Begin Job date.
-            //attd.Begin = dt;
-            attd.Begin = DateTime.Now;
+            attd.Begin = dt;
 
             ops.Lanes.SaveAttendance(attd);
             // Set Attendance
@@ -404,10 +394,9 @@ namespace DMT.Simulator.Pages
             var attd = currentLane.Attendance;
             if (null != attd)
             {
-                DateTime dt = jobDate.Value.Value.ToLocalTime();
+                DateTime dt = jobDate.Value.Value;
                 // Set End Job date.
-                //attd.End = dt;
-                attd.End = DateTime.Now;
+                attd.End = dt;
 
                 // Save to database.
                 ops.Lanes.SaveAttendance(attd);
