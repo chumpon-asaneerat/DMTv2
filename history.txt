@@ -11,8 +11,12 @@ Update 2020-07-04 #8
 Update 2020-07-04 #7
 - 
 
+[commited]
 Update 2020-07-04 #6
-- 
+- DMT.Models refactor part 2 #2.
+  - NTable<T> change static method Gets to GetAllWithChildren.
+  - NTable<T> change static method Get to GetWithChildren.
+  - NTable<T> change static method Delete to DeleteWithChildren.
 
 [commited]
 Update 2020-07-04 #5

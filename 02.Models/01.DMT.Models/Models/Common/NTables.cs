@@ -134,12 +134,12 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets All.
+        /// Get All with children.
         /// </summary>
         /// <param name="db">The connection.</param>
         /// <param name="recursive">True for load related nested children.</param>
         /// <returns>Returns List of all records</returns>
-        public static List<T> Gets(SQLiteConnection db, bool recursive = false)
+        public static List<T> GetAllWithChildren(SQLiteConnection db, bool recursive = false)
         {
             lock (sync)
             {
@@ -148,13 +148,13 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets by Id.
+        /// Gets by Id with children.
         /// </summary>
         /// <param name="db">The connection.</param>
         /// <param name="Id">The Id (primary key).</param>
         /// <param name="recursive">True for load related nested children.</param>
         /// <returns>Returns found record.</returns>
-        public static T Get(SQLiteConnection db, object Id, bool recursive = false)
+        public static T GetWithChildren(SQLiteConnection db, object Id, bool recursive = false)
         {
             lock (sync)
             {
@@ -193,17 +193,17 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Delete by Id.
+        /// Delete by Id with children.
         /// </summary>
         /// <param name="db">The connection.</param>
         /// <param name="Id">The Id (primary key).</param>
         /// <param name="recursive">True for load related nested children.</param>
-        public static void Delete(SQLiteConnection db, object Id, bool recursive = false)
+        public static void DeleteWithChildren(SQLiteConnection db, object Id, bool recursive = false)
         {
             lock (sync)
             {
                 if (null == db || null == Id) return;
-                T inst = Get(db, Id, recursive);
+                T inst = GetWithChildren(db, Id, recursive);
                 db.Delete(inst, recursive);
             }
         }
@@ -250,30 +250,30 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets All.
+        /// Gets All with children.
         /// </summary>
         /// <param name="recursive">True for load related nested children.</param>
         /// <returns>Returns List of all records</returns>
-        public static List<T> Gets(bool recursive = false)
+        public static List<T> GetAllWithChildren(bool recursive = false)
         {
             lock (sync)
             {
                 SQLiteConnection db = Default;
-                return Gets(db, recursive);
+                return GetAllWithChildren(db, recursive);
             }
         }
         /// <summary>
-        /// Gets by Id.
+        /// Gets by Id with children.
         /// </summary>
         /// <param name="Id">The Id (primary key).</param>
         /// <param name="recursive">True for load related nested children.</param>
         /// <returns>Returns found record.</returns>
-        public static T Get(object Id, bool recursive = false)
+        public static T GetWithChildren(object Id, bool recursive = false)
         {
             lock (sync)
             {
                 SQLiteConnection db = Default;
-                return Get(db, Id, recursive);
+                return GetWithChildren(db, Id, recursive);
             }
         }
         /// <summary>
@@ -289,16 +289,16 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Delete by Id.
+        /// Delete by Id with children.
         /// </summary>
         /// <param name="Id">The Id (primary key).</param>
         /// <param name="recursive">True for load related nested children.</param>
-        public static void Delete(object Id, bool recursive = false)
+        public static void DeleteWithChildren(object Id, bool recursive = false)
         {
             lock (sync)
             {
                 SQLiteConnection db = Default;
-                Delete(db, recursive);
+                DeleteWithChildren(db, recursive);
             }
         }
 
