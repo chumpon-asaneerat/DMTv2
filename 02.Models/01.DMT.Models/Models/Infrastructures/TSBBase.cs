@@ -29,6 +29,8 @@ namespace DMT.Models
         #region Intenral Variables
 
         private string _TSBId = string.Empty;
+        //private string _TSBNameEN = string.Empty;
+        //private string _TSBNameTH = string.Empty;
 
         #endregion
 
@@ -63,6 +65,48 @@ namespace DMT.Models
                 }
             }
         }
+        /*
+        /// <summary>
+        /// Gets or sets TSBNameEN.
+        /// </summary>
+        [MaxLength(100)]
+        [PeropertyMapName("TSBNameEN")]
+        public string TSBNameEN
+        {
+            get
+            {
+                return _TSBNameEN;
+            }
+            set
+            {
+                if (_TSBNameEN != value)
+                {
+                    _TSBNameEN = value;
+                    this.RaiseChanged("TSBNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets TSBNameTH.
+        /// </summary>
+        [MaxLength(100)]
+        [PeropertyMapName("TSBNameTH")]
+        public string TSBNameTH
+        {
+            get
+            {
+                return _TSBNameTH;
+            }
+            set
+            {
+                if (_TSBNameTH != value)
+                {
+                    _TSBNameTH = value;
+                    this.RaiseChanged("TSBNameTH");
+                }
+            }
+        }
+        */
 
         #endregion
 
