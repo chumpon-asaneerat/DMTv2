@@ -2,8 +2,10 @@
 Update 2020-07-03 #15
 - 
 
+[commited]
 Update 2020-07-03 #14
-- 
+- Date Column fixed #3 - date problem solved.
+- recompile all projects.
 
 [commited]
 Update 2020-07-03 #13
