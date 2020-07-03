@@ -26,8 +26,13 @@ Update 2020-07-04 #3
 Update 2020-07-04 #2
 - 
 
+[commited]
 Update 2020-07-04 #1
-- 
+- Restructures solution.
+  - Add DMT.Networks proejct.
+  - Merge DMT.Local.WebServer and DMT.Local.WebClient folder to DMT.Local.WebService.
+  - Add DMT.SmartCard.IPC.Server project in SmartcardIPC Folder.
+  - Update related reference(s) in DMT.Plaza.Windows.Services.
 
 --------------------------------------------------------------------------------------------
 [commited]

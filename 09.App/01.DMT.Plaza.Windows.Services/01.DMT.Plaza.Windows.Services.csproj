@@ -96,7 +96,7 @@
       <Project>{7d584f0a-920f-4be1-8652-3527fd7a5c27}</Project>
       <Name>01.DMT.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\03.Web.Server\01.DMT.Local.WebServer\01.DMT.Local.WebServer.csproj">
+    <ProjectReference Include="..\..\03.Local.WebService\01.DMT.Local.WebServer\01.DMT.Local.WebServer.csproj">
       <Project>{6eb3bcea-b7d7-4c5d-812e-e3aab7292aa0}</Project>
       <Name>01.DMT.Local.WebServer</Name>
     </ProjectReference>
