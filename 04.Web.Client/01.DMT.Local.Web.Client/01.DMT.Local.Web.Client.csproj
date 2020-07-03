@@ -44,6 +44,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\References\RestSharp.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp.Serializers.NewtonsoftJson">
+      <HintPath>..\..\References\RestSharp.Serializers.NewtonsoftJson.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite.Net.DateTimeOffset.Attributes">
+      <HintPath>..\..\References\SQLite.Net.DateTimeOffset.Attributes.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
