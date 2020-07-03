@@ -65,6 +65,10 @@ namespace DMT.Models
         }
 
         #endregion
+
+        #region Static Methods
+
+        #endregion
     }
 
     #endregion

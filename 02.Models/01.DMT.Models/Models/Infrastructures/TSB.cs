@@ -23,10 +23,11 @@ namespace DMT.Models
     /// The TSB Data Model class.
     /// </summary>
     //[Table("TSB")]
-    public class TSB : TSBBase<TSB>
+    public class TSB : NTable<TSB>
     {
         #region Intenral Variables
 
+        private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
         private string _TSBNameTH = string.Empty;
         private string _NetworkId = string.Empty;
@@ -53,10 +54,20 @@ namespace DMT.Models
         /// </summary>
         [PrimaryKey, MaxLength(10)]
         [PeropertyMapName("TSBId")]
-        public new string TSBId
+        public string TSBId
         {
-            get { return base.TSBId; }
-            set { base.TSBId = value;  }
+            get
+            {
+                return _TSBId;
+            }
+            set
+            {
+                if (_TSBId != value)
+                {
+                    _TSBId = value;
+                    this.RaiseChanged("TSBId");
+                }
+            }
         }
         /// <summary>
         /// Gets or sets NetworkId.
