@@ -1,6 +1,8 @@
 ﻿#region Using
 
 //using System.Net;
+
+using Newtonsoft.Json.Serialization;
 using RestSharp;
 //using RestSharp.Authenticators;
 
@@ -76,6 +78,9 @@ namespace DMT.Services
         {
             string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
             var client = new RestClient(BaseUrl);
+
+            _client.AddHandler("application/json", () => Newtonsoft.Json.JsonSerializer.CreateDefault());
+
             var request = new RestRequest(actionUrl, Method.POST);
             request.RequestFormat = DataFormat.Json;
             if (null != pObj)
