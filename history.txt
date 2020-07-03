@@ -20,8 +20,11 @@ Update 2020-07-04 #5
 Update 2020-07-04 #4
 - 
 
+[commited]
 Update 2020-07-04 #3
-- 
+- Restructures solution.
+  - Update related reference(s) in DMT.Plaza.Config.App.
+  - Update related reference(s) in DMT.Plaza.Simulator.App.
 
 [commited]
 Update 2020-07-04 #2
