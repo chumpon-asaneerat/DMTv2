@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Globalization;
 
 using DMT.Models;
 using DMT.Services;
@@ -119,10 +120,13 @@ namespace DMT.Simulator.Pages
         private LaneItem currentLane = null;
         private UserItem currentUser = null;
 
+        private CultureInfo culture = new CultureInfo("th-TH");
+
         #region Loaded/Unloaderd
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            shiftDate.CultureInfo = culture;
             shiftDate.Format = Xceed.Wpf.Toolkit.DateTimeFormat.Custom;
             shiftDate.FormatString = "yyyy-MM-dd HH:mm:ss.fff";
             shiftDate.TimeFormat = Xceed.Wpf.Toolkit.DateTimeFormat.Custom;
@@ -130,11 +134,14 @@ namespace DMT.Simulator.Pages
 
             shiftDate.DefaultValue = DateTime.Now;
             shiftDate.Value = DateTime.Now;
+            shiftDate.GotFocus += ShiftDate_GotFocus;
 
+            jobDate.CultureInfo = culture;
             jobDate.Format = Xceed.Wpf.Toolkit.DateTimeFormat.Custom;
             jobDate.FormatString = "yyyy-MM-dd HH:mm:ss.fff";
             jobDate.TimeFormat = Xceed.Wpf.Toolkit.DateTimeFormat.Custom;
             jobDate.TimeFormatString = "HH:mm:ss.fff";
+            jobDate.GotFocus += JobDate_GotFocus;
 
             jobDate.DefaultValue = DateTime.Now;
             jobDate.Value = DateTime.Now;
@@ -279,6 +286,16 @@ namespace DMT.Simulator.Pages
         #endregion
 
         #region DateTimePicker Handlers
+
+        private void JobDate_GotFocus(object sender, RoutedEventArgs e)
+        {
+            jobDate.Value = DateTime.Now;
+        }
+
+        private void ShiftDate_GotFocus(object sender, RoutedEventArgs e)
+        {
+            shiftDate.Value = DateTime.Now;
+        }
 
         #endregion
 
