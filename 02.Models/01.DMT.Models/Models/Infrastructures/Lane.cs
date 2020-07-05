@@ -34,7 +34,12 @@ namespace DMT.Models
         private string _LaneAbbr = string.Empty;
 
         private string _TSBId = string.Empty;
+        private string _TSBNameEN = string.Empty;
+        private string _TSBNameTH = string.Empty;
+
         private string _PlazaId = string.Empty;
+        private string _PlazaNameEN = string.Empty;
+        private string _PlazaNameTH = string.Empty;
 
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
@@ -172,6 +177,46 @@ namespace DMT.Models
             }
         }
         /// <summary>
+        /// Gets or sets TSBNameEN.
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("TSBNameEN")]
+        public virtual string TSBNameEN
+        {
+            get
+            {
+                return _TSBNameEN;
+            }
+            set
+            {
+                if (_TSBNameEN != value)
+                {
+                    _TSBNameEN = value;
+                    this.RaiseChanged("TSBNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets TSBNameTH.
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("TSBNameTH")]
+        public virtual string TSBNameTH
+        {
+            get
+            {
+                return _TSBNameTH;
+            }
+            set
+            {
+                if (_TSBNameTH != value)
+                {
+                    _TSBNameTH = value;
+                    this.RaiseChanged("TSBNameTH");
+                }
+            }
+        }
+        /// <summary>
         /// Gets or sets PlazaId.
         /// </summary>
         [MaxLength(10)]
@@ -191,6 +236,47 @@ namespace DMT.Models
                 }
             }
         }
+        /// <summary>
+        /// Gets or sets PlazaNameEN
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("PlazaNameEN")]
+        public virtual string PlazaNameEN
+        {
+            get
+            {
+                return _PlazaNameEN;
+            }
+            set
+            {
+                if (_PlazaNameEN != value)
+                {
+                    _PlazaNameEN = value;
+                    this.RaiseChanged("PlazaNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets PlazaNameTH
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("PlazaNameTH")]
+        public virtual string PlazaNameTH
+        {
+            get
+            {
+                return _PlazaNameTH;
+            }
+            set
+            {
+                if (_PlazaNameTH != value)
+                {
+                    _PlazaNameTH = value;
+                    this.RaiseChanged("PlazaNameTH");
+                }
+            }
+        }
+
         /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
@@ -229,6 +315,54 @@ namespace DMT.Models
 
         #endregion
 
+        #region Internal Class
+
+        internal class FKs : Lane
+        {
+            /// <summary>
+            /// Gets or sets TSBNameEN.
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("TSBNameEN")]
+            public override string TSBNameEN
+            {
+                get { return base.TSBNameEN; }
+                set { base.TSBNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets TSBNameTH.
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("TSBNameTH")]
+            public override string TSBNameTH
+            {
+                get { return base.TSBNameTH; }
+                set { base.TSBNameTH = value; }
+            }
+            /// <summary>
+            /// Gets or sets PlazaNameEN
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("PlazaNameEN")]
+            public override string PlazaNameEN
+            {
+                get { return base.PlazaNameEN; }
+                set { base.PlazaNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets PlazaNameTH
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("PlazaNameTH")]
+            public override string PlazaNameTH
+            {
+                get { return base.PlazaNameTH; }
+                set { base.PlazaNameTH = value; }
+            }
+        }
+
+        #endregion
+
         #region Static Methods
 
         public static List<Lane> Gets(SQLiteConnection db)
@@ -237,8 +371,15 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM Lane ";
-                return NQuery.Query<Lane>(cmd);
+                cmd += "SELECT Lane.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+                cmd += "  FROM Lane, Plaza, TSB ";
+                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
+                cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+                var results = NQuery.Query<FKs>(cmd).ToList<Lane>();
+                return results;
             }
         }
         public static List<Lane> Gets()
@@ -255,9 +396,15 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM Lane ";
-                cmd += " WHERE LaneId = ? ";
-                return NQuery.Query<Lane>(cmd, laneId).FirstOrDefault();
+                cmd += "SELECT Lane.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+                cmd += "  FROM Lane, Plaza, TSB ";
+                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
+                cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND Lane.LaneId = ? ";
+                return NQuery.Query<FKs>(cmd, laneId).FirstOrDefault<Lane>();
             }
         }
         public static Lane Get(string laneId)
@@ -282,9 +429,15 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM Lane ";
-                cmd += " WHERE TSBId = ?";
-                return NQuery.Query<Lane>(cmd, tsbId);
+                cmd += "SELECT Lane.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+                cmd += "  FROM Lane, Plaza, TSB ";
+                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
+                cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND Lane.TSBId = ? ";
+                return NQuery.Query<FKs>(cmd, tsbId).ToList<Lane>();
             }
         }
         public static List<Lane> GetPlazaLanes(Plaza value)
@@ -300,10 +453,16 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM Lane ";
-                cmd += " WHERE TSBId = ?";
-                cmd += "   AND PlazaId = ?";
-                return NQuery.Query<Lane>(cmd, tsbId, plazaId);
+                cmd += "SELECT Lane.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+                cmd += "  FROM Lane, Plaza, TSB ";
+                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
+                cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND Lane.TSBId = ? ";
+                cmd += "   AND Lane.PlazaId = ? ";
+                return NQuery.Query<FKs>(cmd, tsbId, plazaId).ToList<Lane>();
             }
         }
 

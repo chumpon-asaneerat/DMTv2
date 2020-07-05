@@ -33,6 +33,8 @@ namespace DMT.Models
         private string _Direction = string.Empty;
 
         private string _TSBId = string.Empty;
+        private string _TSBNameEN = string.Empty;
+        private string _TSBNameTH = string.Empty;
 
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
@@ -151,6 +153,46 @@ namespace DMT.Models
             }
         }
         /// <summary>
+        /// Gets or sets TSBNameEN.
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("TSBNameEN")]
+        public virtual string TSBNameEN
+        {
+            get
+            {
+                return _TSBNameEN;
+            }
+            set
+            {
+                if (_TSBNameEN != value)
+                {
+                    _TSBNameEN = value;
+                    this.RaiseChanged("TSBNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets TSBNameTH.
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("TSBNameTH")]
+        public virtual string TSBNameTH
+        {
+            get
+            {
+                return _TSBNameTH;
+            }
+            set
+            {
+                if (_TSBNameTH != value)
+                {
+                    _TSBNameTH = value;
+                    this.RaiseChanged("TSBNameTH");
+                }
+            }
+        }
+        /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
         [PeropertyMapName("Status")]
@@ -188,6 +230,34 @@ namespace DMT.Models
 
         #endregion
 
+        #region Internal Class
+
+        internal class FKs : Plaza
+        {
+            /// <summary>
+            /// Gets or sets TSBNameEN.
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("TSBNameEN")]
+            public override string TSBNameEN
+            {
+                get { return base.TSBNameEN; }
+                set { base.TSBNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets TSBNameTH.
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("TSBNameTH")]
+            public override string TSBNameTH
+            {
+                get { return base.TSBNameTH; }
+                set { base.TSBNameTH = value; }
+            }
+        }
+
+        #endregion
+
         #region Static Methods
 
         public static List<Plaza> Gets(SQLiteConnection db)
@@ -196,8 +266,12 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM Plaza ";
-                return NQuery.Query<Plaza>(cmd);
+                cmd += "SELECT Plaza.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "  FROM Plaza, TSB ";
+                cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
+                var results = NQuery.Query<FKs>(cmd).ToList<Plaza>();
+                return results;
             }
         }
         public static List<Plaza> Gets()
@@ -214,9 +288,12 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM Plaza ";
-                cmd += " WHERE PlazaId = ? ";
-                return NQuery.Query<Plaza>(cmd, plazaId).FirstOrDefault();
+                cmd += "SELECT Plaza.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "  FROM Plaza, TSB ";
+                cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND Plaza.PlazaId = ? ";
+                return NQuery.Query<FKs>(cmd, plazaId).FirstOrDefault<Plaza>();
             }
         }
         public static Plaza Get(string plazaId)
@@ -241,9 +318,12 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM Plaza ";
-                cmd += " WHERE TSBId = ?";
-                return NQuery.Query<Plaza>(cmd, tsbId);
+                cmd += "SELECT Plaza.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "  FROM Plaza, TSB ";
+                cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND Plaza.TSBId = ? ";
+                return NQuery.Query<FKs>(cmd, tsbId).ToList<Plaza>();
             }
         }
 

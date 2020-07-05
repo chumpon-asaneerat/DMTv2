@@ -2,8 +2,9 @@
 Update 2020-07-06 #5
 - 
 
+[commited]
 Update 2020-07-06 #4
-- 
+- DMT.Models refactor part 2 #11.
 
 [commited]
 Update 2020-07-06 #3

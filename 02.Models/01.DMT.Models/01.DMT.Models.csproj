@@ -121,9 +121,6 @@
     <Compile Include="Models\Common\NQueries.cs" />
     <Compile Include="Models\Common\NSearch.cs" />
     <Compile Include="Models\Common\NTables.cs" />
-    <None Include="Models\Infrastructures\LaneBase.cs" />
-    <None Include="Models\Infrastructures\PlazaBase.cs" />
-    <None Include="Models\Infrastructures\TSBBase.cs" />
     <Compile Include="Models\LaneActivities\Payment.cs" />
     <Compile Include="Models\Infrastructures\Lane.cs" />
     <Compile Include="Models\Infrastructures\Plaza.cs" />
