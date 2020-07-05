@@ -194,14 +194,9 @@ namespace DMT.Models
             if (null == db) return new List<TSB>();
             lock (sync)
             {
-                string tableName = "TSB";
-
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM ?";
-                var parameters = new object[] { tableName };
-
-                var insts = NQuery.Query<TSB>(cmd, parameters);
-                return insts;
+                cmd += "SELECT * FROM TSB ";
+                return NQuery.Query<TSB>(cmd);
             }
         }
         public static List<TSB> Gets()
@@ -210,6 +205,25 @@ namespace DMT.Models
             {
                 SQLiteConnection db = Default;
                 return Gets(db);
+            }
+        }
+        public static TSB Get(SQLiteConnection db, string tsbId)
+        {
+            if (null == db) return null;
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM TSB ";
+                cmd += " WHERE TSBId = ? ";
+                return NQuery.Query<TSB>(cmd, tsbId).FirstOrDefault();
+            }
+        }
+        public static TSB Get(string tsbId)
+        {
+            lock (sync)
+            {
+                SQLiteConnection db = Default;
+                return Get(db, tsbId);
             }
         }
 
@@ -225,6 +239,7 @@ namespace DMT.Models
                 return (null != results) ? results.FirstOrDefault() : null;
             }
         }
+
         public static void SetActive(string tsbId)
         {
             lock (sync)

@@ -109,6 +109,46 @@ namespace DMT.Models
 
         #region Static Methods
 
+
+        public static List<Shift> Gets(SQLiteConnection db)
+        {
+            if (null == db) return new List<Shift>();
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM Shift ";
+                return NQuery.Query<Shift>(cmd);
+            }
+        }
+        public static List<Shift> Gets()
+        {
+            lock (sync)
+            {
+                SQLiteConnection db = Default;
+                return Gets(db);
+            }
+        }
+
+        public static Shift Get(SQLiteConnection db, string shiftId)
+        {
+            if (null == db) return null;
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM Shift ";
+                cmd += " WHERE ShiftId = ? ";
+                return NQuery.Query<Shift>(cmd, shiftId).FirstOrDefault();
+            }
+        }
+        public static Shift Get(string shiftId)
+        {
+            lock (sync)
+            {
+                SQLiteConnection db = Default;
+                return Get(db, shiftId);
+            }
+        }
+
         #endregion
     }
 

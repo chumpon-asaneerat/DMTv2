@@ -23,13 +23,16 @@ namespace DMT.Models
     /// The Plaza Data Model class.
     /// </summary>
     //[Table("Plaza")]
-    public class Plaza : PlazaBase<Plaza>
+    public class Plaza : NTable<Plaza>
     {
         #region Intenral Variables
 
+        private string _PlazaId = string.Empty;
         private string _PlazaNameEN = string.Empty;
         private string _PlazaNameTH = string.Empty;
         private string _Direction = string.Empty;
+
+        private string _TSBId = string.Empty;
 
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
@@ -52,10 +55,20 @@ namespace DMT.Models
         /// </summary>
         [PrimaryKey, MaxLength(10)]
         [PeropertyMapName("PlazaId")]
-        public new string PlazaId
+        public string PlazaId
         {
-            get { return base.PlazaId; }
-            set { base.PlazaId = value; }
+            get
+            {
+                return _PlazaId;
+            }
+            set
+            {
+                if (_PlazaId != value)
+                {
+                    _PlazaId = value;
+                    this.RaiseChanged("PlazaId");
+                }
+            }
         }
         /// <summary>
         /// Gets or sets PlazaNameEN
@@ -118,6 +131,26 @@ namespace DMT.Models
             }
         }
         /// <summary>
+        /// Gets or sets TSBId.
+        /// </summary>
+        [MaxLength(10)]
+        [PeropertyMapName("TSBId")]
+        public string TSBId
+        {
+            get
+            {
+                return _TSBId;
+            }
+            set
+            {
+                if (_TSBId != value)
+                {
+                    _TSBId = value;
+                    this.RaiseChanged("TSBId");
+                }
+            }
+        }
+        /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
         [PeropertyMapName("Status")]
@@ -156,6 +189,44 @@ namespace DMT.Models
         #endregion
 
         #region Static Methods
+
+        public static List<Plaza> Gets(SQLiteConnection db)
+        {
+            if (null == db) return new List<Plaza>();
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM Plaza ";
+                return NQuery.Query<Plaza>(cmd);
+            }
+        }
+        public static List<Plaza> Gets()
+        {
+            lock (sync)
+            {
+                SQLiteConnection db = Default;
+                return Gets(db);
+            }
+        }
+        public static Plaza Get(SQLiteConnection db, string plazaId)
+        {
+            if (null == db) return null;
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM Plaza ";
+                cmd += " WHERE PlazaId = ? ";
+                return NQuery.Query<Plaza>(cmd, plazaId).FirstOrDefault();
+            }
+        }
+        public static Plaza Get(string plazaId)
+        {
+            lock (sync)
+            {
+                SQLiteConnection db = Default;
+                return Get(db, plazaId);
+            }
+        }
 
         public static List<Plaza> GetTSBPlazas(TSB value)
         {

@@ -147,6 +147,45 @@ namespace DMT.Models
 
         #region Static Methods
 
+        public static List<Role> Gets(SQLiteConnection db)
+        {
+            if (null == db) return new List<Role>();
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM Role ";
+                return NQuery.Query<Role>(cmd);
+            }
+        }
+        public static List<Role> Gets()
+        {
+            lock (sync)
+            {
+                SQLiteConnection db = Default;
+                return Gets(db);
+            }
+        }
+
+        public static Role Get(SQLiteConnection db, string roleId)
+        {
+            if (null == db) return null;
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM Role ";
+                cmd += " WHERE RoleId = ? ";
+                return NQuery.Query<Role>(cmd, roleId).FirstOrDefault();
+            }
+        }
+        public static Role Get(string roleId)
+        {
+            lock (sync)
+            {
+                SQLiteConnection db = Default;
+                return Get(db, roleId);
+            }
+        }
+
         #endregion
     }
 

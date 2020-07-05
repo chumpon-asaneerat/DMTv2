@@ -23,14 +23,18 @@ namespace DMT.Models
     /// The Lane Data Model class.
     /// </summary>
     //[Table("Lane")]
-    public class Lane : LaneBase<Lane>
+    public class Lane : NTable<Lane>
     {
         #region Intenral Variables
 
         private int _PkId = 0;
         private int _LaneNo = 0;
+        private string _LaneId = string.Empty;
         private string _LaneType = string.Empty;
         private string _LaneAbbr = string.Empty;
+
+        private string _TSBId = string.Empty;
+        private string _PlazaId = string.Empty;
 
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
@@ -90,6 +94,26 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets LaneType
         /// </summary>
+        /// <summary>
+        /// Gets or sets LaneId
+        /// </summary>
+        [MaxLength(10)]
+        [PeropertyMapName("LaneId")]
+        public string LaneId
+        {
+            get
+            {
+                return _LaneId;
+            }
+            set
+            {
+                if (_LaneId != value)
+                {
+                    _LaneId = value;
+                    this.RaiseChanged("LaneId");
+                }
+            }
+        }
         [MaxLength(10)]
         [PeropertyMapName("LaneType")]
         public string LaneType
@@ -124,6 +148,46 @@ namespace DMT.Models
                 {
                     _LaneAbbr = value;
                     this.RaiseChanged("LaneAbbr");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets TSBId.
+        /// </summary>
+        [MaxLength(10)]
+        [PeropertyMapName("TSBId")]
+        public string TSBId
+        {
+            get
+            {
+                return _TSBId;
+            }
+            set
+            {
+                if (_TSBId != value)
+                {
+                    _TSBId = value;
+                    this.RaiseChanged("TSBId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets PlazaId.
+        /// </summary>
+        [MaxLength(10)]
+        [PeropertyMapName("PlazaId")]
+        public string PlazaId
+        {
+            get
+            {
+                return _PlazaId;
+            }
+            set
+            {
+                if (_PlazaId != value)
+                {
+                    _PlazaId = value;
+                    this.RaiseChanged("PlazaId");
                 }
             }
         }
@@ -166,6 +230,44 @@ namespace DMT.Models
         #endregion
 
         #region Static Methods
+
+        public static List<Lane> Gets(SQLiteConnection db)
+        {
+            if (null == db) return new List<Lane>();
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM Lane ";
+                return NQuery.Query<Lane>(cmd);
+            }
+        }
+        public static List<Lane> Gets()
+        {
+            lock (sync)
+            {
+                SQLiteConnection db = Default;
+                return Gets(db);
+            }
+        }
+        public static Lane Get(SQLiteConnection db, string laneId)
+        {
+            if (null == db) return null;
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM Lane ";
+                cmd += " WHERE LaneId = ? ";
+                return NQuery.Query<Lane>(cmd, laneId).FirstOrDefault();
+            }
+        }
+        public static Lane Get(string laneId)
+        {
+            lock (sync)
+            {
+                SQLiteConnection db = Default;
+                return Get(db, laneId);
+            }
+        }
 
         public static List<Lane> GetTSBLanes(TSB value)
         {
