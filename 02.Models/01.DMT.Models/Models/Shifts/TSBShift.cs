@@ -26,8 +26,14 @@ namespace DMT.Models
 
         private int _TSBShiftId = 0;
         private string _TSBId = string.Empty;
+        
         private int _ShiftId = 0;
+        private string _ShiftNameTH = string.Empty;
+        private string _ShiftNameEN = string.Empty;
+
         private string _UserId = string.Empty;
+        private string _FullNameEN = string.Empty;
+        private string _FullNameTH = string.Empty;
 
         private DateTime _Begin = DateTime.MinValue;
         private DateTime _End = DateTime.MinValue;
@@ -108,6 +114,46 @@ namespace DMT.Models
             }
         }
         /// <summary>
+        /// Gets or sets Name TH.
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("ShiftNameTH")]
+        public virtual string ShiftNameTH
+        {
+            get
+            {
+                return _ShiftNameTH;
+            }
+            set
+            {
+                if (_ShiftNameTH != value)
+                {
+                    _ShiftNameTH = value;
+                    this.RaiseChanged("ShiftNameTH");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Name EN.
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("ShiftNameEN")]
+        public virtual string ShiftNameEN
+        {
+            get
+            {
+                return _ShiftNameEN;
+            }
+            set
+            {
+                if (_ShiftNameEN != value)
+                {
+                    _ShiftNameEN = value;
+                    this.RaiseChanged("ShiftNameEN");
+                }
+            }
+        }
+        /// <summary>
         /// Gets or sets UserId
         /// </summary>
         [MaxLength(10)]
@@ -124,6 +170,46 @@ namespace DMT.Models
                 {
                     _UserId = value;
                     this.RaiseChanged("UserId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets FullNameEN
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("FullNameEN")]
+        public virtual string FullNameEN
+        {
+            get
+            {
+                return _FullNameEN;
+            }
+            set
+            {
+                if (_FullNameEN != value)
+                {
+                    _FullNameEN = value;
+                    this.RaiseChanged("FullNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets FullNameTH
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("FullNameTH")]
+        public virtual string FullNameTH
+        {
+            get
+            {
+                return _FullNameTH;
+            }
+            set
+            {
+                if (_FullNameTH != value)
+                {
+                    _FullNameTH = value;
+                    this.RaiseChanged("FullNameTH");
                 }
             }
         }
@@ -259,6 +345,54 @@ namespace DMT.Models
 
         #endregion
 
+        #region Internal Class
+
+        internal class Query : TSBShift
+        {
+            /// <summary>
+            /// Gets or sets Name TH.
+            /// </summary>
+            [MaxLength(50)]
+            [PeropertyMapName("ShiftNameTH")]
+            public override string ShiftNameTH
+            {
+                get { return base.ShiftNameTH; }
+                set { base.ShiftNameTH = value; }
+            }
+            /// <summary>
+            /// Gets or sets Name EN.
+            /// </summary>
+            [MaxLength(50)]
+            [PeropertyMapName("ShiftNameEN")]
+            public override string ShiftNameEN
+            {
+                get { return base.ShiftNameEN; }
+                set { base.ShiftNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets FullNameEN
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("FullNameEN")]
+            public override string FullNameEN
+            {
+                get { return base.FullNameEN; }
+                set { base.FullNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets FullNameTH
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("FullNameTH")]
+            public override string FullNameTH
+            {
+                get { return base.FullNameTH; }
+                set { base.FullNameTH = value; }
+            }
+        }
+
+        #endregion
+
         #region Static Methods
 
         public static TSBShift Create(Shift shift, User supervisor)
@@ -294,9 +428,15 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM TSBShift ";
-                cmd += " WHERE End = ? ";
-                return NQuery.Query<TSBShift>(cmd, DateTime.MinValue).FirstOrDefault();
+                cmd += "SELECT TSBShift.* ";
+                cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
+                cmd += "     , User.FullNameEN, User.FullNameTH ";
+                cmd += "  FROM TSBShift, Shift, User ";
+                cmd += " WHERE TSBShift.ShiftId = Shift.ShiftId ";
+                cmd += "   AND TSBShift.UserId = User.UserId ";
+                cmd += "   AND End = ? ";
+                var results = NQuery.Query<TSBShift.Query>(cmd, DateTime.MinValue).FirstOrDefault();
+                return results as TSBShift;
             }
         }
 

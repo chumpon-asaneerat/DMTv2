@@ -109,7 +109,6 @@ namespace DMT.Models
 
         #region Static Methods
 
-
         public static List<Shift> Gets(SQLiteConnection db)
         {
             if (null == db) return new List<Shift>();
