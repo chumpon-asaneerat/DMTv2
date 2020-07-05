@@ -38,6 +38,10 @@ namespace DMT.Models
         private string _TSBNameEN = string.Empty;
         private string _TSBNameTH = string.Empty;
 
+        private string _PlazaId = string.Empty;
+        private string _PlazaNameEN = string.Empty;
+        private string _PlazaNameTH = string.Empty;
+
         private int _ShiftId = 0;
         private string _ShiftNameTH = string.Empty;
         private string _ShiftNameEN = string.Empty;
@@ -252,6 +256,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region TSB
+
         /// <summary>
         /// Gets or sets TSBId.
         /// </summary>
@@ -275,9 +284,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets TSBNameEN.
         /// </summary>
-        [MaxLength(100)]
+        [Ignore]
         [PeropertyMapName("TSBNameEN")]
-        public string TSBNameEN
+        public virtual string TSBNameEN
         {
             get
             {
@@ -295,9 +304,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets TSBNameTH.
         /// </summary>
-        [MaxLength(100)]
+        [Ignore]
         [PeropertyMapName("TSBNameTH")]
-        public string TSBNameTH
+        public virtual string TSBNameTH
         {
             get
             {
@@ -312,6 +321,76 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region Plaza
+
+        /// <summary>
+        /// Gets or sets PlazaId.
+        /// </summary>
+        [MaxLength(10)]
+        [PeropertyMapName("PlazaId")]
+        public string PlazaId
+        {
+            get
+            {
+                return _PlazaId;
+            }
+            set
+            {
+                if (_PlazaId != value)
+                {
+                    _PlazaId = value;
+                    this.RaiseChanged("PlazaId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets PlazaNameEN
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("PlazaNameEN")]
+        public virtual string PlazaNameEN
+        {
+            get
+            {
+                return _PlazaNameEN;
+            }
+            set
+            {
+                if (_PlazaNameEN != value)
+                {
+                    _PlazaNameEN = value;
+                    this.RaiseChanged("PlazaNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets PlazaNameTH
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("PlazaNameTH")]
+        public virtual string PlazaNameTH
+        {
+            get
+            {
+                return _PlazaNameTH;
+            }
+            set
+            {
+                if (_PlazaNameTH != value)
+                {
+                    _PlazaNameTH = value;
+                    this.RaiseChanged("PlazaNameTH");
+                }
+            }
+        }
+
+        #endregion
+
+        #region Shift
+
         /// <summary>
         /// Gets or sets ShiftId.
         /// </summary>
@@ -334,9 +413,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Name TH.
         /// </summary>
-        [MaxLength(50)]
+        [Ignore]
         [PeropertyMapName("ShiftNameTH")]
-        public string ShiftNameTH
+        public virtual string ShiftNameTH
         {
             get
             {
@@ -354,9 +433,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Name EN.
         /// </summary>
-        [MaxLength(50)]
+        [Ignore]
         [PeropertyMapName("ShiftNameEN")]
-        public string ShiftNameEN
+        public virtual string ShiftNameEN
         {
             get
             {
@@ -371,6 +450,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region User
+
         /// <summary>
         /// Gets or sets UserId
         /// </summary>
@@ -394,9 +478,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets FullNameEN
         /// </summary>
-        [MaxLength(100)]
+        [Ignore]
         [PeropertyMapName("FullNameEN")]
-        public string FullNameEN
+        public virtual string FullNameEN
         {
             get
             {
@@ -414,9 +498,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets FullNameTH
         /// </summary>
-        [MaxLength(100)]
+        [Ignore]
         [PeropertyMapName("FullNameTH")]
-        public string FullNameTH
+        public virtual string FullNameTH
         {
             get
             {
@@ -948,6 +1032,168 @@ namespace DMT.Models
         }
 
         #endregion
+
+        #endregion
+
+        #region Internal Class
+
+        internal class FKs : RevenueEntry
+        {
+            #region TSB
+
+            /// <summary>
+            /// Gets or sets TSBNameEN.
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("TSBNameEN")]
+            public override string TSBNameEN
+            {
+                get { return base.TSBNameEN; }
+                set { base.TSBNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets TSBNameTH.
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("TSBNameTH")]
+            public override string TSBNameTH
+            {
+                get { return base.TSBNameTH; }
+                set { base.TSBNameTH = value; }
+            }
+
+            #endregion
+
+            #region Plaza
+
+            /// <summary>
+            /// Gets or sets PlazaNameEN
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("PlazaNameEN")]
+            public override string PlazaNameEN
+            {
+                get { return base.PlazaNameEN; }
+                set { base.PlazaNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets PlazaNameTH
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("PlazaNameTH")]
+            public override string PlazaNameTH
+            {
+                get { return base.PlazaNameTH; }
+                set { base.PlazaNameTH = value; }
+            }
+
+            #endregion
+
+            #region Shift
+
+            /// <summary>
+            /// Gets or sets Name TH.
+            /// </summary>
+            [MaxLength(50)]
+            [PeropertyMapName("ShiftNameTH")]
+            public override string ShiftNameTH
+            {
+                get { return base.ShiftNameTH; }
+                set { base.ShiftNameTH = value; }
+            }
+            /// <summary>
+            /// Gets or sets Name EN.
+            /// </summary>
+            [MaxLength(50)]
+            [PeropertyMapName("ShiftNameEN")]
+            public override string ShiftNameEN
+            {
+                get { return base.ShiftNameEN; }
+                set { base.ShiftNameEN = value; }
+            }
+
+            #endregion
+
+            #region User
+
+            /// <summary>
+            /// Gets or sets FullNameEN
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("FullNameEN")]
+            public override string FullNameEN
+            {
+                get { return base.FullNameEN; }
+                set { base.FullNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets FullNameTH
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("FullNameTH")]
+            public override string FullNameTH
+            {
+                get { return base.FullNameTH; }
+                set { base.FullNameTH = value; }
+            }
+
+            #endregion
+        }
+
+        #endregion
+
+        #region Static Methods
+
+        public static List<RevenueEntry> Gets()
+        {
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT RevenueEntry.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+                cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
+                cmd += "     , User.FullNameEN, User.FullNameTH ";
+                cmd += "  FROM RevenueEntry, TSB, Plaza, Shift, User ";
+                cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND RevenueEntry.TSBId = TSB.TSBId ";
+                cmd += "   AND RevenueEntry.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND RevenueEntry.UserId = User.UserId ";
+                cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
+                return NQuery.Query<FKs>(cmd).ToList<RevenueEntry>();
+            }
+        }
+
+        public static List<RevenueEntry> FindByRevnueDate(DateTime begin, DateTime end)
+        {
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT RevenueEntry.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+                cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
+                cmd += "     , User.FullNameEN, User.FullNameTH ";
+                cmd += "  FROM RevenueEntry, TSB, Plaza, Shift, User ";
+                cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND RevenueEntry.TSBId = TSB.TSBId ";
+                cmd += "   AND RevenueEntry.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND RevenueEntry.UserId = User.UserId ";
+                cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
+                cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
+                cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
+                cmd += "   AND RevenueEntry.RevDate >= ? ";
+                cmd += "   AND RevenueEntry.RevDate <= ? ";
+                return NQuery.Query<FKs>(cmd, begin, end).ToList<RevenueEntry>();
+            }
+        }
+
+        public static List<RevenueEntry> FindByRevnueDate(DateTime date)
+        {
+            DateTime begin = date.Date;
+            DateTime end = date.Date.AddDays(1).AddMilliseconds(-1);
+            return FindByRevnueDate(begin, end);
+        }
 
         #endregion
     }
