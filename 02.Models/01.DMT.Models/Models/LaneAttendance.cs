@@ -62,6 +62,8 @@ namespace DMT.Models
 
         #region Public Properties
 
+        #region Common
+
         /// <summary>
         /// Gets or sets PKId
         /// </summary>
@@ -102,6 +104,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region TSB
+
         /// <summary>
         /// Gets or sets TSBId.
         /// </summary>
@@ -162,6 +169,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region Lane
+
         /// <summary>
         /// Gets or sets Lane No.
         /// </summary>
@@ -201,6 +213,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region User
+
         /// <summary>
         /// Gets or sets UserId
         /// </summary>
@@ -261,6 +278,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region Begin/End
+
         /// <summary>
         /// Gets or sets Begin Date.
         /// </summary>
@@ -355,6 +377,11 @@ namespace DMT.Models
             }
             set { }
         }
+
+        #endregion
+
+        #region Status (DC)
+
         /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
@@ -393,6 +420,8 @@ namespace DMT.Models
 
         #endregion
 
+        #endregion
+
         #region Static Methods
 
         public static LaneAttendance Create(Lane lane, User supervisor)
@@ -404,7 +433,6 @@ namespace DMT.Models
             if (null != supervisor) supervisor.AssignTo(inst);
             return inst;
         }
-
         public static List<LaneAttendance> Search(UserShift shift)
         {
             if (null == shift) return new List<LaneAttendance>();
@@ -421,7 +449,6 @@ namespace DMT.Models
                     DateTime.MinValue).ToList();
             }
         }
-
         public static List<LaneAttendance> Search(Lane lane)
         {
             if (null == lane) return new List<LaneAttendance>();
@@ -435,7 +462,6 @@ namespace DMT.Models
                     lane.LaneId).ToList();
             }
         }
-
         public static LaneAttendance GetCurrentByLane(Lane lane)
         {
             if (null == lane) return null;
@@ -451,7 +477,6 @@ namespace DMT.Models
                     DateTime.MinValue).FirstOrDefault();
             }
         }
-
         public static List<LaneAttendance> Search(DateTime date)
         {
             if (null == date || date == DateTime.MinValue) return new List<LaneAttendance>();

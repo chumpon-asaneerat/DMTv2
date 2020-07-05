@@ -31,6 +31,9 @@ namespace DMT.Models
         private string _ShiftNameTH = string.Empty;
         private string _ShiftNameEN = string.Empty;
 
+        private int _Status = 0;
+        private DateTime _LastUpdate = DateTime.MinValue;
+
         #endregion
 
         #region Constructor
@@ -43,6 +46,8 @@ namespace DMT.Models
         #endregion
 
         #region Public Proprties
+
+        #region Common
 
         /// <summary>
         /// Gets or sets ShiftId.
@@ -107,6 +112,48 @@ namespace DMT.Models
 
         #endregion
 
+        #region Status (DC)
+
+        /// <summary>
+        /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
+        /// </summary>
+        [PeropertyMapName("Status")]
+        public int Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                if (_Status != value)
+                {
+                    _Status = value;
+                    this.RaiseChanged("Status");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets LastUpdated (Sync to DC).
+        /// </summary>
+        [PeropertyMapName("LastUpdate")]
+        public DateTime LastUpdate
+        {
+            get { return _LastUpdate; }
+            set
+            {
+                if (_LastUpdate != value)
+                {
+                    _LastUpdate = value;
+                    this.RaiseChanged("LastUpdate");
+                }
+            }
+        }
+
+        #endregion
+
+        #endregion
+
         #region Static Methods
 
         public static List<Shift> Gets(SQLiteConnection db)
@@ -127,7 +174,6 @@ namespace DMT.Models
                 return Gets(db);
             }
         }
-
         public static Shift Get(SQLiteConnection db, string shiftId)
         {
             if (null == db) return null;

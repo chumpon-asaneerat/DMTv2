@@ -52,6 +52,8 @@ namespace DMT.Models
 
         #region Public Proprties
 
+        #region Common
+
         /// <summary>
         /// Gets or sets PlazaId.
         /// </summary>
@@ -132,6 +134,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region TSB
+
         /// <summary>
         /// Gets or sets TSBId.
         /// </summary>
@@ -192,6 +199,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region Status (DC)
+
         /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
@@ -230,10 +242,14 @@ namespace DMT.Models
 
         #endregion
 
+        #endregion
+
         #region Internal Class
 
         internal class FKs : Plaza
         {
+            #region TSB
+
             /// <summary>
             /// Gets or sets TSBNameEN.
             /// </summary>
@@ -254,6 +270,8 @@ namespace DMT.Models
                 get { return base.TSBNameTH; }
                 set { base.TSBNameTH = value; }
             }
+
+            #endregion
         }
 
         #endregion
@@ -270,8 +288,7 @@ namespace DMT.Models
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "  FROM Plaza, TSB ";
                 cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
-                var results = NQuery.Query<FKs>(cmd).ToList<Plaza>();
-                return results;
+                return NQuery.Query<FKs>(cmd).ToList<Plaza>();
             }
         }
         public static List<Plaza> Gets()
@@ -304,7 +321,6 @@ namespace DMT.Models
                 return Get(db, plazaId);
             }
         }
-
         public static List<Plaza> GetTSBPlazas(TSB value)
         {
             lock (sync)

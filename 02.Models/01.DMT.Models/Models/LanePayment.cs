@@ -66,6 +66,8 @@ namespace DMT.Models
 
         #region Public Properties
 
+        #region Common
+
         /// <summary>
         /// Gets or sets PKId
         /// </summary>
@@ -106,6 +108,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region TSB
+
         /// <summary>
         /// Gets or sets TSBId.
         /// </summary>
@@ -166,6 +173,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region Lane
+
         /// <summary>
         /// Gets or sets Lane No.
         /// </summary>
@@ -205,6 +217,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region User
+
         /// <summary>
         /// Gets or sets UserId
         /// </summary>
@@ -265,6 +282,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region Payment
+
         /// <summary>
         /// Gets or sets PaymentId
         /// </summary>
@@ -325,6 +347,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region Payment Date and Amount
+
         /// <summary>
         /// Gets or sets Payment Date.
         /// </summary>
@@ -389,6 +416,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region Status (DC)
+
         /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
@@ -427,6 +459,8 @@ namespace DMT.Models
 
         #endregion
 
+        #endregion
+
         #region Static Methods
 
         public static LanePayment Create(Lane lane, User collector,
@@ -442,7 +476,6 @@ namespace DMT.Models
             inst.Amount = amount;
             return inst;
         }
-
         public static List<LanePayment> Search(UserShift shift)
         {
             if (null == shift) return new List<LanePayment>();
@@ -459,7 +492,6 @@ namespace DMT.Models
                     DateTime.MinValue).ToList();
             }
         }
-
         public static List<LanePayment> Search(Lane lane)
         {
             if (null == lane) return new List<LanePayment>();
@@ -473,7 +505,6 @@ namespace DMT.Models
                     lane.LaneId).ToList();
             }
         }
-
         public static LanePayment GetCurrentByLane(Lane lane)
         {
             if (null == lane) return null;
@@ -489,7 +520,6 @@ namespace DMT.Models
                     DateTime.MinValue).FirstOrDefault();
             }
         }
-
         public static List<LanePayment> Search(DateTime date)
         {
             if (null == date || date == DateTime.MinValue) return new List<LanePayment>();

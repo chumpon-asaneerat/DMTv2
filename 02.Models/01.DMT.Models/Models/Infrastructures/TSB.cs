@@ -50,6 +50,8 @@ namespace DMT.Models
 
         #region Public Proprties
 
+        #region Common
+
         /// <summary>
         /// Gets or sets TSBId.
         /// </summary>
@@ -149,6 +151,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region Status (DC)
+
         /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
@@ -184,6 +191,8 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
 
         #endregion
 
@@ -226,7 +235,6 @@ namespace DMT.Models
                 return Get(db, tsbId);
             }
         }
-
         public static TSB GetCurrent()
         {
             lock (sync)
@@ -239,7 +247,6 @@ namespace DMT.Models
                 return (null != results) ? results.FirstOrDefault() : null;
             }
         }
-
         public static void SetActive(string tsbId)
         {
             lock (sync)

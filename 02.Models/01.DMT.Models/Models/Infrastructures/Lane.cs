@@ -319,6 +319,8 @@ namespace DMT.Models
 
         internal class FKs : Lane
         {
+            #region TSB
+
             /// <summary>
             /// Gets or sets TSBNameEN.
             /// </summary>
@@ -339,6 +341,11 @@ namespace DMT.Models
                 get { return base.TSBNameTH; }
                 set { base.TSBNameTH = value; }
             }
+
+            #endregion
+
+            #region Plaza
+
             /// <summary>
             /// Gets or sets PlazaNameEN
             /// </summary>
@@ -359,6 +366,8 @@ namespace DMT.Models
                 get { return base.PlazaNameTH; }
                 set { base.PlazaNameTH = value; }
             }
+
+            #endregion
         }
 
         #endregion
@@ -378,8 +387,7 @@ namespace DMT.Models
                 cmd += " WHERE Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND Plaza.TSBId = TSB.TSBId ";
                 cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-                var results = NQuery.Query<FKs>(cmd).ToList<Lane>();
-                return results;
+                return NQuery.Query<FKs>(cmd).ToList<Lane>();
             }
         }
         public static List<Lane> Gets()

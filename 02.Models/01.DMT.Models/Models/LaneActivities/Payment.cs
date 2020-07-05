@@ -47,6 +47,8 @@ namespace DMT.Models
 
         #region Public Proprties
 
+        #region Common
+
         /// <summary>
         /// Gets or sets PaymentId
         /// </summary>
@@ -107,6 +109,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region Status (DC)
+
         /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
@@ -145,7 +152,28 @@ namespace DMT.Models
 
         #endregion
 
+        #endregion
+
         #region Static Methods
+
+        public static List<Payment> Gets(SQLiteConnection db)
+        {
+            if (null == db) return new List<Payment>();
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM Payment ";
+                return NQuery.Query<Payment>(cmd);
+            }
+        }
+        public static List<Payment> Gets()
+        {
+            lock (sync)
+            {
+                SQLiteConnection db = Default;
+                return Gets(db);
+            }
+        }
 
         #endregion
     }

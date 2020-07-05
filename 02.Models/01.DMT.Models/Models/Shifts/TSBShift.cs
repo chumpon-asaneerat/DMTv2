@@ -25,8 +25,11 @@ namespace DMT.Models
         #region Intenral Variables
 
         private int _TSBShiftId = 0;
+
         private string _TSBId = string.Empty;
-        
+        private string _TSBNameEN = string.Empty;
+        private string _TSBNameTH = string.Empty;
+
         private int _ShiftId = 0;
         private string _ShiftNameTH = string.Empty;
         private string _ShiftNameEN = string.Empty;
@@ -54,6 +57,8 @@ namespace DMT.Models
 
         #region Public Properties
 
+        #region Common
+
         /// <summary>
         /// Gets or sets PK Id.
         /// </summary>
@@ -74,6 +79,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region TSB
+
         /// <summary>
         /// Gets or sets TSBId.
         /// </summary>
@@ -94,6 +104,51 @@ namespace DMT.Models
                 }
             }
         }
+        /// <summary>
+        /// Gets or sets TSBNameEN.
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("TSBNameEN")]
+        public virtual string TSBNameEN
+        {
+            get
+            {
+                return _TSBNameEN;
+            }
+            set
+            {
+                if (_TSBNameEN != value)
+                {
+                    _TSBNameEN = value;
+                    this.RaiseChanged("TSBNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets TSBNameTH.
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("TSBNameTH")]
+        public virtual string TSBNameTH
+        {
+            get
+            {
+                return _TSBNameTH;
+            }
+            set
+            {
+                if (_TSBNameTH != value)
+                {
+                    _TSBNameTH = value;
+                    this.RaiseChanged("TSBNameTH");
+                }
+            }
+        }
+
+        #endregion
+
+        #region Shift
+
         /// <summary>
         /// Gets or sets ShiftId.
         /// </summary>
@@ -153,6 +208,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region User
+
         /// <summary>
         /// Gets or sets UserId
         /// </summary>
@@ -213,6 +273,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region Begin/End
+
         /// <summary>
         /// Gets or sets Begin Date.
         /// </summary>
@@ -307,9 +372,15 @@ namespace DMT.Models
             }
             set { }
         }
+
+        #endregion
+
+        #region Status (DC)
+
         /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
+        /// 
         [PeropertyMapName("Status")]
         public int Status
         {
@@ -345,10 +416,39 @@ namespace DMT.Models
 
         #endregion
 
+        #endregion
+
         #region Internal Class
 
         internal class FKs : TSBShift
         {
+            #region TSB
+
+            /// <summary>
+            /// Gets or sets TSBNameEN.
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("TSBNameEN")]
+            public override string TSBNameEN
+            {
+                get { return base.TSBNameEN; }
+                set { base.TSBNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets TSBNameTH.
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("TSBNameTH")]
+            public override string TSBNameTH
+            {
+                get { return base.TSBNameTH; }
+                set { base.TSBNameTH = value; }
+            }
+
+            #endregion
+
+            #region Shift
+
             /// <summary>
             /// Gets or sets Name TH.
             /// </summary>
@@ -369,6 +469,11 @@ namespace DMT.Models
                 get { return base.ShiftNameEN; }
                 set { base.ShiftNameEN = value; }
             }
+
+            #endregion
+
+            #region User
+
             /// <summary>
             /// Gets or sets FullNameEN
             /// </summary>
@@ -389,6 +494,8 @@ namespace DMT.Models
                 get { return base.FullNameTH; }
                 set { base.FullNameTH = value; }
             }
+
+            #endregion
         }
 
         #endregion
@@ -429,14 +536,15 @@ namespace DMT.Models
             {
                 string cmd = string.Empty;
                 cmd += "SELECT TSBShift.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
                 cmd += "  FROM TSBShift, Shift, User ";
                 cmd += " WHERE TSBShift.ShiftId = Shift.ShiftId ";
                 cmd += "   AND TSBShift.UserId = User.UserId ";
+                cmd += "   AND TSBShift.TSBId = TSB.TSBId ";
                 cmd += "   AND End = ? ";
-                var results = NQuery.Query<FKs>(cmd, DateTime.MinValue).FirstOrDefault<TSBShift>();
-                return results;
+                return NQuery.Query<FKs>(cmd, DateTime.MinValue).FirstOrDefault<TSBShift>();
             }
         }
 

@@ -54,6 +54,8 @@ namespace DMT.Models
 
         #region Public Proprties
 
+        #region Common
+
         /// <summary>
         /// Gets or sets UserId
         /// </summary>
@@ -174,6 +176,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region Role
+
         /// <summary>
         /// Gets or sets RoleId
         /// </summary>
@@ -235,6 +242,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region Status (DC)
+
         /// <summary>
         /// Gets or sets Status (1 = Active, 0 = Inactive, etc..)
         /// </summary>
@@ -270,6 +282,8 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
 
         #endregion
 
@@ -314,8 +328,7 @@ namespace DMT.Models
                 cmd += "     , Role.RoleNameEN, Role.RoleNameTH ";
                 cmd += "  FROM User, Role ";
                 cmd += " WHERE User.RoleId = Role.RoleId ";
-                var results = NQuery.Query<FKs>(cmd).ToList<User>();
-                return results;
+                return NQuery.Query<FKs>(cmd).ToList<User>();
             }
         }
         public static List<User> Gets()

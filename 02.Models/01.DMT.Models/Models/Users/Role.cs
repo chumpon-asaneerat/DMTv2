@@ -47,6 +47,8 @@ namespace DMT.Models
 
         #region Public Proprties
 
+        #region Common
+
         /// <summary>
         /// Gets or sets RoleId
         /// </summary>
@@ -107,6 +109,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region Status (DC)
+
         /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
@@ -145,6 +152,8 @@ namespace DMT.Models
 
         #endregion
 
+        #endregion
+
         #region Static Methods
 
         public static List<Role> Gets(SQLiteConnection db)
@@ -165,7 +174,6 @@ namespace DMT.Models
                 return Gets(db);
             }
         }
-
         public static Role Get(SQLiteConnection db, string roleId)
         {
             if (null == db) return null;

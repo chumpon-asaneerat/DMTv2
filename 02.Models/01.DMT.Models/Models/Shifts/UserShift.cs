@@ -25,9 +25,18 @@ namespace DMT.Models
         #region Intenral Variables
 
         private int _UserShiftId = 0;
+
         private string _TSBId = string.Empty;
+        private string _TSBNameEN = string.Empty;
+        private string _TSBNameTH = string.Empty;
+
         private int _ShiftId = 0;
+        private string _ShiftNameTH = string.Empty;
+        private string _ShiftNameEN = string.Empty;
+
         private string _UserId = string.Empty;
+        private string _FullNameEN = string.Empty;
+        private string _FullNameTH = string.Empty;
 
         private DateTime _Begin = DateTime.MinValue;
         private DateTime _End = DateTime.MinValue;
@@ -47,6 +56,8 @@ namespace DMT.Models
         #endregion
 
         #region Public Properties
+
+        #region Common
 
         /// <summary>
         /// Gets or sets PK Id.
@@ -68,6 +79,11 @@ namespace DMT.Models
                 }
             }
         }
+
+        #endregion
+
+        #region TSB
+
         /// <summary>
         /// Gets or sets TSBId.
         /// </summary>
@@ -89,6 +105,51 @@ namespace DMT.Models
             }
         }
         /// <summary>
+        /// Gets or sets TSBNameEN.
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("TSBNameEN")]
+        public virtual string TSBNameEN
+        {
+            get
+            {
+                return _TSBNameEN;
+            }
+            set
+            {
+                if (_TSBNameEN != value)
+                {
+                    _TSBNameEN = value;
+                    this.RaiseChanged("TSBNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets TSBNameTH.
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("TSBNameTH")]
+        public virtual string TSBNameTH
+        {
+            get
+            {
+                return _TSBNameTH;
+            }
+            set
+            {
+                if (_TSBNameTH != value)
+                {
+                    _TSBNameTH = value;
+                    this.RaiseChanged("TSBNameTH");
+                }
+            }
+        }
+
+        #endregion
+
+        #region Shift
+
+        /// <summary>
         /// Gets or sets ShiftId.
         /// </summary>
         [PeropertyMapName("ShiftId")]
@@ -107,6 +168,51 @@ namespace DMT.Models
                 }
             }
         }
+        /// <summary>
+        /// Gets or sets Name TH.
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("ShiftNameTH")]
+        public virtual string ShiftNameTH
+        {
+            get
+            {
+                return _ShiftNameTH;
+            }
+            set
+            {
+                if (_ShiftNameTH != value)
+                {
+                    _ShiftNameTH = value;
+                    this.RaiseChanged("ShiftNameTH");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Name EN.
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("ShiftNameEN")]
+        public virtual string ShiftNameEN
+        {
+            get
+            {
+                return _ShiftNameEN;
+            }
+            set
+            {
+                if (_ShiftNameEN != value)
+                {
+                    _ShiftNameEN = value;
+                    this.RaiseChanged("ShiftNameEN");
+                }
+            }
+        }
+
+        #endregion
+
+        #region User
+
         /// <summary>
         /// Gets or sets UserId
         /// </summary>
@@ -127,6 +233,51 @@ namespace DMT.Models
                 }
             }
         }
+        /// <summary>
+        /// Gets or sets FullNameEN
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("FullNameEN")]
+        public virtual string FullNameEN
+        {
+            get
+            {
+                return _FullNameEN;
+            }
+            set
+            {
+                if (_FullNameEN != value)
+                {
+                    _FullNameEN = value;
+                    this.RaiseChanged("FullNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets FullNameTH
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("FullNameTH")]
+        public virtual string FullNameTH
+        {
+            get
+            {
+                return _FullNameTH;
+            }
+            set
+            {
+                if (_FullNameTH != value)
+                {
+                    _FullNameTH = value;
+                    this.RaiseChanged("FullNameTH");
+                }
+            }
+        }
+
+        #endregion
+
+        #region Begin/End
+
         /// <summary>
         /// Gets or sets Begin Date.
         /// </summary>
@@ -221,6 +372,11 @@ namespace DMT.Models
             }
             set { }
         }
+
+        #endregion
+
+        #region Status (DC)
+
         /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
@@ -255,6 +411,90 @@ namespace DMT.Models
                     this.RaiseChanged("LastUpdate");
                 }
             }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Internal Class
+
+        internal class FKs : UserShift
+        {
+            #region TSB
+
+            /// <summary>
+            /// Gets or sets TSBNameEN.
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("TSBNameEN")]
+            public override string TSBNameEN
+            {
+                get { return base.TSBNameEN; }
+                set { base.TSBNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets TSBNameTH.
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("TSBNameTH")]
+            public override string TSBNameTH
+            {
+                get { return base.TSBNameTH; }
+                set { base.TSBNameTH = value; }
+            }
+
+            #endregion
+
+            #region Shift
+
+            /// <summary>
+            /// Gets or sets Name TH.
+            /// </summary>
+            [MaxLength(50)]
+            [PeropertyMapName("ShiftNameTH")]
+            public override string ShiftNameTH
+            {
+                get { return base.ShiftNameTH; }
+                set { base.ShiftNameTH = value; }
+            }
+            /// <summary>
+            /// Gets or sets Name EN.
+            /// </summary>
+            [MaxLength(50)]
+            [PeropertyMapName("ShiftNameEN")]
+            public override string ShiftNameEN
+            {
+                get { return base.ShiftNameEN; }
+                set { base.ShiftNameEN = value; }
+            }
+
+            #endregion
+
+            #region User
+
+            /// <summary>
+            /// Gets or sets FullNameEN
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("FullNameEN")]
+            public override string FullNameEN
+            {
+                get { return base.FullNameEN; }
+                set { base.FullNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets FullNameTH
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("FullNameTH")]
+            public override string FullNameTH
+            {
+                get { return base.FullNameTH; }
+                set { base.FullNameTH = value; }
+            }
+
+            #endregion
         }
 
         #endregion
@@ -309,13 +549,16 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM UserShift ";
-                cmd += " WHERE UserId = ? ";
-                cmd += "   AND End = ? ";
-                return NQuery.Query<UserShift>(
-                    cmd,
-                    userId,
-                    DateTime.MinValue).FirstOrDefault();
+                cmd += "SELECT UserShift.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
+                cmd += "     , User.FullNameEN, User.FullNameTH ";
+                cmd += "  FROM UserShift, Shift, User, TSB ";
+                cmd += " WHERE UserShift.ShiftId = Shift.ShiftId ";
+                cmd += "   AND UserShift.UserId = User.UserId ";
+                cmd += "   AND UserShift.TSBId = TSB.TSBId ";
+                cmd += "   AND UserShift.End = ? ";
+                return NQuery.Query<FKs>(cmd, DateTime.MinValue).FirstOrDefault<UserShift>();
             }
         }
 
@@ -324,11 +567,16 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM UserShift ";
-                cmd += " WHERE UserId = ? ";
-                return NQuery.Query<UserShift>(
-                    cmd,
-                    userId).ToList();
+                cmd += "SELECT UserShift.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
+                cmd += "     , User.FullNameEN, User.FullNameTH ";
+                cmd += "  FROM UserShift, Shift, User, TSB ";
+                cmd += " WHERE UserShift.ShiftId = Shift.ShiftId ";
+                cmd += "   AND UserShift.UserId = User.UserId ";
+                cmd += "   AND UserShift.TSBId = TSB.TSBId ";
+                cmd += "   AND UserShift.UserId = ? ";
+                return NQuery.Query<FKs>(cmd, userId).ToList<UserShift>();
             }
         }
 
