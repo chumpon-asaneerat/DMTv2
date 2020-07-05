@@ -93,11 +93,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="OldModels\Models\Common\DMTModelBase.cs" />
+    <None Include="OldModels\Models\Common\NQueries.cs" />
+    <None Include="OldModels\Models\Common\NSearch.cs" />
+    <None Include="OldModels\Models\Common\NTables.cs" />
+    <None Include="OldModels\Models\Configuration\Config.cs" />
+    <None Include="OldModels\Models\DataModels.cs" />
+    <None Include="OldModels\Models\Infrastructures\Lane.cs" />
+    <None Include="OldModels\Models\Infrastructures\LaneBase.cs" />
+    <None Include="OldModels\Models\Infrastructures\Plaza.cs" />
+    <None Include="OldModels\Models\Infrastructures\PlazaBase.cs" />
+    <None Include="OldModels\Models\Infrastructures\TSB.cs" />
+    <None Include="OldModels\Models\Infrastructures\TSBBase.cs" />
+    <None Include="OldModels\Models\LaneActivities\Payment.cs" />
+    <None Include="OldModels\Models\LaneAttendance.cs" />
+    <None Include="OldModels\Models\LanePayment.cs" />
+    <None Include="OldModels\Models\Shifts\Shift.cs" />
+    <None Include="OldModels\Models\Shifts\TSBShift.cs" />
+    <None Include="OldModels\Models\Shifts\UserShift.cs" />
+    <None Include="OldModels\Models\Transactions\RevenueEntry.cs" />
+    <None Include="OldModels\Models\Users\Role.cs" />
+    <None Include="OldModels\Models\Users\User.cs" />
     <Compile Include="ExtensionMethods\ModelExtensionMethods.cs" />
     <Compile Include="Models\Configuration\Config.cs" />
     <Compile Include="Models\DataModels.cs" />
     <Compile Include="Models\Common\DMTModelBase.cs" />
-    <Compile Include="Models\Common\NQyeries.cs" />
+    <Compile Include="Models\Common\NQueries.cs" />
     <Compile Include="Models\Common\NSearch.cs" />
     <Compile Include="Models\Common\NTables.cs" />
     <Compile Include="Models\Infrastructures\LaneBase.cs" />

@@ -23,8 +23,9 @@ Update 2020-07-05 #4
 Update 2020-07-05 #3
 - 
 
+[commited]
 Update 2020-07-05 #2
-- 
+- DMT.Models refactor part 2 #4. - Backup all models in OldModels folder (mark action to none).
 
 [commited]
 Update 2020-07-05 #1
