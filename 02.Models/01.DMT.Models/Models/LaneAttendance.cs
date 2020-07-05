@@ -35,8 +35,9 @@ namespace DMT.Models
         private string _TSBNameEN = string.Empty;
         private string _TSBNameTH = string.Empty;
 
-        private int _LaneNo = 0;
         private string _LaneId = string.Empty;
+        private int _LaneNo = 0;
+
         private string _UserId = string.Empty;
         private string _FullNameEN = string.Empty;
         private string _FullNameTH = string.Empty;
@@ -132,9 +133,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets TSBNameEN.
         /// </summary>
-        [MaxLength(100)]
+        [Ignore]
         [PeropertyMapName("TSBNameEN")]
-        public string TSBNameEN
+        public virtual string TSBNameEN
         {
             get
             {
@@ -152,9 +153,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets TSBNameTH.
         /// </summary>
-        [MaxLength(100)]
+        [Ignore]
         [PeropertyMapName("TSBNameTH")]
-        public string TSBNameTH
+        public virtual string TSBNameTH
         {
             get
             {
@@ -175,25 +176,6 @@ namespace DMT.Models
         #region Lane
 
         /// <summary>
-        /// Gets or sets Lane No.
-        /// </summary>
-        [PeropertyMapName("LaneNo")]
-        public int LaneNo
-        {
-            get
-            {
-                return _LaneNo;
-            }
-            set
-            {
-                if (_LaneNo != value)
-                {
-                    _LaneNo = value;
-                    this.RaiseChanged("LaneNo");
-                }
-            }
-        }
-        /// <summary>
         /// Gets or sets LaneId
         /// </summary>
         [MaxLength(10)]
@@ -210,6 +192,26 @@ namespace DMT.Models
                 {
                     _LaneId = value;
                     this.RaiseChanged("LaneId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Lane No.
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("LaneNo")]
+        public virtual int LaneNo
+        {
+            get
+            {
+                return _LaneNo;
+            }
+            set
+            {
+                if (_LaneNo != value)
+                {
+                    _LaneNo = value;
+                    this.RaiseChanged("LaneNo");
                 }
             }
         }
@@ -241,9 +243,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets FullNameEN
         /// </summary>
-        [MaxLength(100)]
+        [Ignore]
         [PeropertyMapName("FullNameEN")]
-        public string FullNameEN
+        public virtual string FullNameEN
         {
             get
             {
@@ -261,9 +263,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets FullNameTH
         /// </summary>
-        [MaxLength(100)]
+        [Ignore]
         [PeropertyMapName("FullNameTH")]
-        public string FullNameTH
+        public virtual string FullNameTH
         {
             get
             {
@@ -419,6 +421,77 @@ namespace DMT.Models
         }
 
         #endregion
+
+        #endregion
+
+        #region Internal Class
+
+        internal class FKs : LaneAttendance
+        {
+            #region TSB
+
+            /// <summary>
+            /// Gets or sets TSBNameEN.
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("TSBNameEN")]
+            public override string TSBNameEN
+            {
+                get { return base.TSBNameEN; }
+                set { base.TSBNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets TSBNameTH.
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("TSBNameTH")]
+            public override string TSBNameTH
+            {
+                get { return base.TSBNameTH; }
+                set { base.TSBNameTH = value; }
+            }
+
+            #endregion
+
+            #region Lane
+
+            /// <summary>
+            /// Gets or set Lane No.
+            /// </summary>
+            [PeropertyMapName("LaneNo")]
+            public override int LaneNo
+            {
+                get { return base.LaneNo; }
+                set { base.LaneNo = value; }
+            }
+
+            #endregion
+
+            #region User
+
+            /// <summary>
+            /// Gets or sets FullNameEN
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("FullNameEN")]
+            public override string FullNameEN
+            {
+                get { return base.FullNameEN; }
+                set { base.FullNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets FullNameTH
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("FullNameTH")]
+            public override string FullNameTH
+            {
+                get { return base.FullNameTH; }
+                set { base.FullNameTH = value; }
+            }
+
+            #endregion
+        }
 
         #endregion
 
