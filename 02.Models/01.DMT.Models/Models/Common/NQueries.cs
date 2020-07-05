@@ -28,6 +28,11 @@ namespace DMT.Models
         #region Static Variables and Properties
 
         /// <summary>
+        /// Gets empty object array.
+        /// </summary>
+        public static readonly object[] Empty = new object[] { };
+
+        /// <summary>
         /// sync object used for lock concurrent access.
         /// </summary>
         protected static object sync = new object();

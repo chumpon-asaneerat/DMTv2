@@ -12,6 +12,7 @@ using SQLiteNetExtensions.Extensions;
 using Newtonsoft.Json;
 using NLib;
 using NLib.Reflection;
+using System.Data.SqlClient;
 
 #endregion
 
@@ -188,6 +189,42 @@ namespace DMT.Models
 
         #region Static Methods
 
+        public static List<TSB> Gets(SQLiteConnection db)
+        {
+            if (null == db) return new List<TSB>();
+            lock (sync)
+            {
+                string tableName = "TSB";
+
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM ?";
+                var parameters = new object[] { tableName };
+
+                var insts = NQuery.Query<TSB>(cmd, parameters);
+                return insts;
+            }
+        }
+        public static List<TSB> Gets()
+        {
+            lock (sync)
+            {
+                SQLiteConnection db = Default;
+                return Gets(db);
+            }
+        }
+
+        public static TSB GetCurrent()
+        {
+            lock (sync)
+            {
+                // inactive all TSBs
+                string cmd = string.Empty;
+                cmd += "SELECT * FROM TSB ";
+                cmd += " WHERE Active = 1 ";
+                var results = NQuery.Query<TSB>(cmd);
+                return (null != results) ? results.FirstOrDefault() : null;
+            }
+        }
         public static void SetActive(string tsbId)
         {
             lock (sync)
@@ -203,19 +240,6 @@ namespace DMT.Models
                 cmd += "   SET Active = 1 ";
                 cmd += " WHERE TSBId = ? ";
                 NQuery.Execute(cmd, tsbId);
-            }
-        }
-
-        public static TSB GetCurrent()
-        {
-            lock (sync)
-            {
-                // inactive all TSBs
-                string cmd = string.Empty;
-                cmd += "SELECT * FROM TSB ";
-                cmd += " WHERE Active = 1 ";
-                var results = NQuery.Query<TSB>(cmd, true);
-                return (null != results) ? results.FirstOrDefault() : null;
             }
         }
 
