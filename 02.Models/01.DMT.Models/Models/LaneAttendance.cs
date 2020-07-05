@@ -512,14 +512,21 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM LaneAttendance ";
-                cmd += " WHERE Begin >= ? ";
-                cmd += "   AND End <= ? ";
-                return NQuery.Query<LaneAttendance>(
-                    cmd,
-                    shift.Begin,
-                    shift.End,
-                    DateTime.MinValue).ToList();
+
+                cmd += "SELECT LaneAttendance.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Lane.LaneNo ";
+                cmd += "     , User.FullNameEN, User.FullNameTH ";
+                cmd += "  FROM LaneAttendance, Lane, User ";
+                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
+                cmd += "   AND LaneAttendance.UserId = User.UserId ";
+                cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneAttendance.Begin >= ? ";
+                cmd += "   AND LaneAttendance.End = ? ";
+
+                return NQuery.Query<FKs>(cmd, shift.Begin, shift.End,
+                    DateTime.MinValue).ToList<LaneAttendance>();
             }
         }
         public static List<LaneAttendance> Search(Lane lane)
@@ -528,11 +535,17 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM LaneAttendance ";
-                cmd += " WHERE LaneId = ? ";
-                return NQuery.Query<LaneAttendance>(
-                    cmd,
-                    lane.LaneId).ToList();
+                cmd += "SELECT LaneAttendance.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Lane.LaneNo ";
+                cmd += "     , User.FullNameEN, User.FullNameTH ";
+                cmd += "  FROM LaneAttendance, Lane, User ";
+                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
+                cmd += "   AND LaneAttendance.UserId = User.UserId ";
+                cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneId = ? ";
+                return NQuery.Query<FKs>(cmd, lane.LaneId).ToList<LaneAttendance>();
             }
         }
         public static LaneAttendance GetCurrentByLane(Lane lane)
@@ -541,13 +554,19 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM LaneAttendance ";
-                cmd += " WHERE LaneId = ? ";
+                cmd += "SELECT LaneAttendance.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Lane.LaneNo ";
+                cmd += "     , User.FullNameEN, User.FullNameTH ";
+                cmd += "  FROM LaneAttendance, Lane, User ";
+                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
+                cmd += "   AND LaneAttendance.UserId = User.UserId ";
+                cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneId = ? ";
                 cmd += "   AND End = ? ";
-                return NQuery.Query<LaneAttendance>(
-                    cmd,
-                    lane.LaneId,
-                    DateTime.MinValue).FirstOrDefault();
+                return NQuery.Query<FKs>(cmd, lane.LaneId,
+                    DateTime.MinValue).FirstOrDefault<LaneAttendance>();
             }
         }
         public static List<LaneAttendance> Search(DateTime date)
@@ -556,13 +575,19 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM LaneAttendance ";
-                cmd += " WHERE Begin >= ? ";
+                cmd += "SELECT LaneAttendance.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Lane.LaneNo ";
+                cmd += "     , User.FullNameEN, User.FullNameTH ";
+                cmd += "  FROM LaneAttendance, Lane, User ";
+                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
+                cmd += "   AND LaneAttendance.UserId = User.UserId ";
+                cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
+                cmd += "   AND Begin >= ? ";
                 cmd += "   AND End <= ? ";
-                return NQuery.Query<LaneAttendance>(
-                    cmd,
-                    date,
-                    DateTime.MinValue).ToList();
+                return NQuery.Query<FKs>(cmd, date,
+                    DateTime.MinValue).ToList<LaneAttendance>();
             }
         }
 
