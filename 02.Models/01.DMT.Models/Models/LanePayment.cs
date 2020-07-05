@@ -579,14 +579,21 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM LanePayment ";
-                cmd += " WHERE Begin >= ? ";
-                cmd += "   AND End <= ? ";
-                return NQuery.Query<LanePayment>(
-                    cmd,
-                    shift.Begin,
-                    shift.End,
-                    DateTime.MinValue).ToList();
+                cmd += "SELECT LanePayment.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Lane.LaneNo ";
+                cmd += "     , User.FullNameEN, User.FullNameTH ";
+                cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
+                cmd += "  FROM LanePayment, Lane, User, Payment ";
+                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
+                cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
+                cmd += "   AND LanePayment.UserId = User.UserId ";
+                cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
+                cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
+                cmd += "   AND LanePayment.Begin >= ? ";
+                cmd += "   AND LanePayment.End <= ? ";
+                return NQuery.Query<FKs>(cmd, shift.Begin, shift.End,
+                    DateTime.MinValue).ToList<LanePayment>();
             }
         }
         public static List<LanePayment> Search(Lane lane)
@@ -595,11 +602,19 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM LanePayment ";
-                cmd += " WHERE LaneId = ? ";
-                return NQuery.Query<LanePayment>(
-                    cmd,
-                    lane.LaneId).ToList();
+                cmd += "SELECT LanePayment.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Lane.LaneNo ";
+                cmd += "     , User.FullNameEN, User.FullNameTH ";
+                cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
+                cmd += "  FROM LanePayment, Lane, User, Payment ";
+                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
+                cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
+                cmd += "   AND LanePayment.UserId = User.UserId ";
+                cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
+                cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
+                cmd += "   AND LanePayment.LaneId = ? ";
+                return NQuery.Query<FKs>(cmd, lane.LaneId).ToList<LanePayment>();
             }
         }
         public static LanePayment GetCurrentByLane(Lane lane)
@@ -608,13 +623,21 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM LanePayment ";
-                cmd += " WHERE LaneId = ? ";
-                cmd += "   AND End = ? ";
-                return NQuery.Query<LanePayment>(
-                    cmd,
-                    lane.LaneId,
-                    DateTime.MinValue).FirstOrDefault();
+                cmd += "SELECT LanePayment.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Lane.LaneNo ";
+                cmd += "     , User.FullNameEN, User.FullNameTH ";
+                cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
+                cmd += "  FROM LanePayment, Lane, User, Payment ";
+                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
+                cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
+                cmd += "   AND LanePayment.UserId = User.UserId ";
+                cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
+                cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
+                cmd += "   AND LanePayment.LaneId = ? ";
+                cmd += "   AND LanePayment.End = ? ";
+                return NQuery.Query<FKs>(cmd,lane.LaneId,
+                    DateTime.MinValue).FirstOrDefault<LanePayment>();
             }
         }
         public static List<LanePayment> Search(DateTime date)
@@ -623,13 +646,21 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM LanePayment ";
-                cmd += " WHERE Begin >= ? ";
-                cmd += "   AND End <= ? ";
-                return NQuery.Query<LanePayment>(
-                    cmd,
-                    date,
-                    DateTime.MinValue).ToList();
+                cmd += "SELECT LanePayment.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Lane.LaneNo ";
+                cmd += "     , User.FullNameEN, User.FullNameTH ";
+                cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
+                cmd += "  FROM LanePayment, Lane, User, Payment ";
+                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
+                cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
+                cmd += "   AND LanePayment.UserId = User.UserId ";
+                cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
+                cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
+                cmd += " WHERE LanePayment.Begin >= ? ";
+                cmd += "   AND LanePayment.End <= ? ";
+                return NQuery.Query<FKs>(cmd, date,
+                    DateTime.MinValue).ToList<LanePayment>();
             }
         }
 

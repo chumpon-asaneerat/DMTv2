@@ -544,7 +544,7 @@ namespace DMT.Models
                 cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
                 cmd += "   AND LaneAttendance.UserId = User.UserId ";
                 cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
-                cmd += "   AND LaneId = ? ";
+                cmd += "   AND LaneAttendance.LaneId = ? ";
                 return NQuery.Query<FKs>(cmd, lane.LaneId).ToList<LaneAttendance>();
             }
         }
@@ -563,8 +563,8 @@ namespace DMT.Models
                 cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
                 cmd += "   AND LaneAttendance.UserId = User.UserId ";
                 cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
-                cmd += "   AND LaneId = ? ";
-                cmd += "   AND End = ? ";
+                cmd += "   AND LaneAttendance.LaneId = ? ";
+                cmd += "   AND LaneAttendance.End = ? ";
                 return NQuery.Query<FKs>(cmd, lane.LaneId,
                     DateTime.MinValue).FirstOrDefault<LaneAttendance>();
             }
@@ -584,8 +584,8 @@ namespace DMT.Models
                 cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
                 cmd += "   AND LaneAttendance.UserId = User.UserId ";
                 cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
-                cmd += "   AND Begin >= ? ";
-                cmd += "   AND End <= ? ";
+                cmd += "   AND LaneAttendance.Begin >= ? ";
+                cmd += "   AND LaneAttendance.End <= ? ";
                 return NQuery.Query<FKs>(cmd, date,
                     DateTime.MinValue).ToList<LaneAttendance>();
             }
