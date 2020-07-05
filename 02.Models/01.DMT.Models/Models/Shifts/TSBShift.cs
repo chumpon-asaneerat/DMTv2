@@ -26,14 +26,8 @@ namespace DMT.Models
 
         private int _TSBShiftId = 0;
         private string _TSBId = string.Empty;
-        private string _TSBNameEN = string.Empty;
-        private string _TSBNameTH = string.Empty;
         private int _ShiftId = 0;
-        private string _ShiftNameTH = string.Empty;
-        private string _ShiftNameEN = string.Empty;
         private string _UserId = string.Empty;
-        private string _FullNameEN = string.Empty;
-        private string _FullNameTH = string.Empty;
 
         private DateTime _Begin = DateTime.MinValue;
         private DateTime _End = DateTime.MinValue;
@@ -95,46 +89,6 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets or sets TSBNameEN.
-        /// </summary>
-        [MaxLength(100)]
-        [PeropertyMapName("TSBNameEN")]
-        public string TSBNameEN
-        {
-            get
-            {
-                return _TSBNameEN;
-            }
-            set
-            {
-                if (_TSBNameEN != value)
-                {
-                    _TSBNameEN = value;
-                    this.RaiseChanged("TSBNameEN");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets TSBNameTH.
-        /// </summary>
-        [MaxLength(100)]
-        [PeropertyMapName("TSBNameTH")]
-        public string TSBNameTH
-        {
-            get
-            {
-                return _TSBNameTH;
-            }
-            set
-            {
-                if (_TSBNameTH != value)
-                {
-                    _TSBNameTH = value;
-                    this.RaiseChanged("TSBNameTH");
-                }
-            }
-        }
-        /// <summary>
         /// Gets or sets ShiftId.
         /// </summary>
         [PeropertyMapName("ShiftId")]
@@ -150,46 +104,6 @@ namespace DMT.Models
                 {
                     _ShiftId = value;
                     this.RaiseChanged("ShiftId");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets Name TH.
-        /// </summary>
-        [MaxLength(50)]
-        [PeropertyMapName("ShiftNameTH")]
-        public string ShiftNameTH
-        {
-            get
-            {
-                return _ShiftNameTH;
-            }
-            set
-            {
-                if (_ShiftNameTH != value)
-                {
-                    _ShiftNameTH = value;
-                    this.RaiseChanged("ShiftNameTH");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets Name EN.
-        /// </summary>
-        [MaxLength(50)]
-        [PeropertyMapName("ShiftNameEN")]
-        public string ShiftNameEN
-        {
-            get
-            {
-                return _ShiftNameEN;
-            }
-            set
-            {
-                if (_ShiftNameEN != value)
-                {
-                    _ShiftNameEN = value;
-                    this.RaiseChanged("ShiftNameEN");
                 }
             }
         }
@@ -210,46 +124,6 @@ namespace DMT.Models
                 {
                     _UserId = value;
                     this.RaiseChanged("UserId");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets FullNameEN
-        /// </summary>
-        [MaxLength(100)]
-        [PeropertyMapName("FullNameEN")]
-        public string FullNameEN
-        {
-            get
-            {
-                return _FullNameEN;
-            }
-            set
-            {
-                if (_FullNameEN != value)
-                {
-                    _FullNameEN = value;
-                    this.RaiseChanged("FullNameEN");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets FullNameTH
-        /// </summary>
-        [MaxLength(100)]
-        [PeropertyMapName("FullNameTH")]
-        public string FullNameTH
-        {
-            get
-            {
-                return _FullNameTH;
-            }
-            set
-            {
-                if (_FullNameTH != value)
-                {
-                    _FullNameTH = value;
-                    this.RaiseChanged("FullNameTH");
                 }
             }
         }
