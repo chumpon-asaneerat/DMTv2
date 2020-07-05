@@ -33,7 +33,10 @@ namespace DMT.Models
         private string _UserName = string.Empty;
         private string _Password = string.Empty;
         private string _CardId = string.Empty;
+
         private string _RoleId = string.Empty;
+        private string _RoleNameEN = string.Empty;
+        private string _RoleNameTH = string.Empty;
 
         private int _Status = 1;
         private DateTime _LastUpdate = DateTime.MinValue;
@@ -193,6 +196,46 @@ namespace DMT.Models
             }
         }
         /// <summary>
+        /// Gets or sets RoleNameEN
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("RoleNameEN")]
+        public virtual string RoleNameEN
+        {
+            get
+            {
+                return _RoleNameEN;
+            }
+            set
+            {
+                if (_RoleNameEN != value)
+                {
+                    _RoleNameEN = value;
+                    this.RaiseChanged("RoleNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets RoleNameTH
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("RoleNameTH")]
+        public virtual string RoleNameTH
+        {
+            get
+            {
+                return _RoleNameTH;
+            }
+            set
+            {
+                if (_RoleNameTH != value)
+                {
+                    _RoleNameTH = value;
+                    this.RaiseChanged("RoleNameTH");
+                }
+            }
+        }
+        /// <summary>
         /// Gets or sets Status (1 = Active, 0 = Inactive, etc..)
         /// </summary>
         [PeropertyMapName("Status")]
@@ -230,17 +273,66 @@ namespace DMT.Models
 
         #endregion
 
+        #region Internal Class
+
+        internal class Query : User
+        {
+            /// <summary>
+            /// Gets or sets RoleNameEN
+            /// </summary>
+            [MaxLength(50)]
+            [PeropertyMapName("RoleNameEN")]
+            public override string RoleNameEN
+            {
+                get { return base.RoleNameEN; }
+                set { base.RoleNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets RoleNameTH
+            /// </summary>
+            [MaxLength(50)]
+            [PeropertyMapName("RoleNameTH")]
+            public override string RoleNameTH
+            {
+                get { return base.RoleNameTH; }
+                set { base.RoleNameTH = value; }
+            }
+        }
+
+        #endregion
+
         #region Static Methods
 
         public static List<User> Gets(SQLiteConnection db)
         {
-            if (null == db) return new List<User>();
+            List<User> insts = new List<User>();
+            if (null == db) return insts;
             lock (sync)
             {
+                string cmd = string.Empty;
+                cmd += "SELECT User.* ";
+                cmd += "     , Role.RoleNameEN, Role.RoleNameTH ";
+                cmd += "  FROM User, Role ";
+                cmd += " WHERE User.RoleId = Role.RoleId ";
+                var results = NQuery.Query<Query>(cmd).ToList<User>();
+                /*
+                if (null != results)
+                {                    
+                    results.ForEach(result =>
+                    {
+                        var inst = result as User;
+                        insts.Add(inst);
+
+                    });
+                }
+                */
+                return results;
+                /*
                 string cmd = string.Empty;
                 cmd += "SELECT * FROM User ";
                 var insts = NQuery.Query<User>(cmd);
                 return insts;
+                */
             }
         }
         public static List<User> Gets()
@@ -258,9 +350,11 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM User ";
-                cmd += " WHERE UserId = ? ";
-                return NQuery.Query<User>(cmd, userId).FirstOrDefault();
+                cmd += "SELECT User.* ";
+                cmd += "     , Role.RoleNameEN, Role.RoleNameTH ";
+                cmd += "  FROM User, Role ";
+                cmd += " WHERE User.RoleId = Role.RoleId ";
+                return NQuery.Query<Query>(cmd, userId).FirstOrDefault<User>();
             }
         }
         public static User Get(string userId)
@@ -277,9 +371,12 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM User ";
-                cmd += " WHERE RoleId = ?";
-                return NQuery.Query<User>(cmd, roleId);
+                cmd += "SELECT User.* ";
+                cmd += "     , Role.RoleNameEN, Role.RoleNameTH ";
+                cmd += "  FROM User, Role ";
+                cmd += " WHERE User.RoleId = Role.RoleId ";
+                cmd += "   AND User.RoleId = ? ";
+                return NQuery.Query<Query>(cmd, roleId).ToList<User>();
             }
         }
 
@@ -288,10 +385,13 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM User ";
-                cmd += " WHERE RoleId = ? ";
-                cmd += "   AND Status = ? ";
-                return NQuery.Query<User>(cmd, roleId, status);
+                cmd += "SELECT User.* ";
+                cmd += "     , Role.RoleNameEN, Role.RoleNameTH ";
+                cmd += "  FROM User, Role ";
+                cmd += " WHERE User.RoleId = Role.RoleId ";
+                cmd += "   AND User.RoleId = ? ";
+                cmd += "   AND User.Status = ? ";
+                return NQuery.Query<Query>(cmd, roleId, status).ToList<User>();
             }
         }
 
@@ -306,10 +406,13 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM User ";
-                cmd += " WHERE UserId = ? ";
-                cmd += "   AND Password = ? ";
-                return NQuery.Query<User>(cmd, UserId, password).FirstOrDefault();
+                cmd += "SELECT User.* ";
+                cmd += "     , Role.RoleNameEN, Role.RoleNameTH ";
+                cmd += "  FROM User, Role ";
+                cmd += " WHERE User.RoleId = Role.RoleId ";
+                cmd += "   AND User.UserId = ? ";
+                cmd += "   AND User.Password = ? ";
+                return NQuery.Query<Query>(cmd, UserId, password).FirstOrDefault<User>();
             }
         }
         /// <summary>
@@ -322,9 +425,12 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT * FROM User ";
-                cmd += " WHERE CardId = ? ";
-                return NQuery.Query<User>(cmd, cardId).FirstOrDefault();
+                cmd += "SELECT User.* ";
+                cmd += "     , Role.RoleNameEN, Role.RoleNameTH ";
+                cmd += "  FROM User, Role ";
+                cmd += " WHERE User.RoleId = Role.RoleId ";
+                cmd += "   AND CardId = ? ";
+                return NQuery.Query<Query>(cmd, cardId).FirstOrDefault<User>();
             }
         }
 

@@ -47,7 +47,6 @@ namespace DMT.Simulator.Pages
         {
             private UserShift _Shift = null;
 
-            public string RoleNameTH { get; set; }
             public UserShift Shift
             {
                 get { return _Shift; }
@@ -113,7 +112,6 @@ namespace DMT.Simulator.Pages
                         usrs.ForEach(usr =>
                         {
                             var inst = new UserItem();
-                            inst.RoleNameTH = role.RoleNameTH;
                             usr.AssignTo(inst);
                             users.Add(inst);
                         });

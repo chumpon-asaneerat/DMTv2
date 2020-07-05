@@ -435,8 +435,8 @@ namespace DMT.Models
                 cmd += " WHERE TSBShift.ShiftId = Shift.ShiftId ";
                 cmd += "   AND TSBShift.UserId = User.UserId ";
                 cmd += "   AND End = ? ";
-                var results = NQuery.Query<TSBShift.Query>(cmd, DateTime.MinValue).FirstOrDefault();
-                return results as TSBShift;
+                var results = NQuery.Query<Query>(cmd, DateTime.MinValue).FirstOrDefault<TSBShift>();
+                return results;
             }
         }
 
