@@ -557,8 +557,10 @@ namespace DMT.Models
                 cmd += " WHERE UserShift.ShiftId = Shift.ShiftId ";
                 cmd += "   AND UserShift.UserId = User.UserId ";
                 cmd += "   AND UserShift.TSBId = TSB.TSBId ";
+                cmd += "   AND UserShift.UserId = ? ";
                 cmd += "   AND UserShift.End = ? ";
-                return NQuery.Query<FKs>(cmd, DateTime.MinValue).FirstOrDefault<UserShift>();
+                return NQuery.Query<FKs>(cmd, userId, 
+                    DateTime.MinValue).FirstOrDefault<UserShift>();
             }
         }
 

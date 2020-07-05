@@ -539,11 +539,11 @@ namespace DMT.Models
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM TSBShift, Shift, User ";
+                cmd += "  FROM TSBShift, TSB, Shift, User ";
                 cmd += " WHERE TSBShift.ShiftId = Shift.ShiftId ";
                 cmd += "   AND TSBShift.UserId = User.UserId ";
                 cmd += "   AND TSBShift.TSBId = TSB.TSBId ";
-                cmd += "   AND End = ? ";
+                cmd += "   AND TSBShift.End = ? ";
                 return NQuery.Query<FKs>(cmd, DateTime.MinValue).FirstOrDefault<TSBShift>();
             }
         }

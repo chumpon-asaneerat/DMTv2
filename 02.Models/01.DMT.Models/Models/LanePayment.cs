@@ -584,7 +584,7 @@ namespace DMT.Models
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
                 cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
-                cmd += "  FROM LanePayment, Lane, User, Payment ";
+                cmd += "  FROM LanePayment, TSB, Lane, User, Payment ";
                 cmd += " WHERE Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
                 cmd += "   AND LanePayment.UserId = User.UserId ";
@@ -607,7 +607,7 @@ namespace DMT.Models
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
                 cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
-                cmd += "  FROM LanePayment, Lane, User, Payment ";
+                cmd += "  FROM LanePayment, TSB, Lane, User, Payment ";
                 cmd += " WHERE Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
                 cmd += "   AND LanePayment.UserId = User.UserId ";
@@ -628,7 +628,7 @@ namespace DMT.Models
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
                 cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
-                cmd += "  FROM LanePayment, Lane, User, Payment ";
+                cmd += "  FROM LanePayment, TSB, Lane, User, Payment ";
                 cmd += " WHERE Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
                 cmd += "   AND LanePayment.UserId = User.UserId ";
@@ -651,7 +651,7 @@ namespace DMT.Models
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
                 cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
-                cmd += "  FROM LanePayment, Lane, User, Payment ";
+                cmd += "  FROM LanePayment, TSB, Lane, User, Payment ";
                 cmd += " WHERE Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
                 cmd += "   AND LanePayment.UserId = User.UserId ";

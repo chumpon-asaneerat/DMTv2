@@ -517,7 +517,7 @@ namespace DMT.Models
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM LaneAttendance, Lane, User ";
+                cmd += "  FROM LaneAttendance, TSB, Lane, User ";
                 cmd += " WHERE Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
                 cmd += "   AND LaneAttendance.UserId = User.UserId ";
@@ -539,7 +539,7 @@ namespace DMT.Models
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM LaneAttendance, Lane, User ";
+                cmd += "  FROM LaneAttendance, TSB, Lane, User ";
                 cmd += " WHERE Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
                 cmd += "   AND LaneAttendance.UserId = User.UserId ";
@@ -558,7 +558,7 @@ namespace DMT.Models
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM LaneAttendance, Lane, User ";
+                cmd += "  FROM LaneAttendance, TSB, Lane, User ";
                 cmd += " WHERE Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
                 cmd += "   AND LaneAttendance.UserId = User.UserId ";
@@ -579,7 +579,7 @@ namespace DMT.Models
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM LaneAttendance, Lane, User ";
+                cmd += "  FROM LaneAttendance, TSB, Lane, User ";
                 cmd += " WHERE Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
                 cmd += "   AND LaneAttendance.UserId = User.UserId ";
