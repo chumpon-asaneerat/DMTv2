@@ -347,7 +347,7 @@ namespace DMT.Models
 
         #region Internal Class
 
-        internal class Query : TSBShift
+        internal class FKs : TSBShift
         {
             /// <summary>
             /// Gets or sets Name TH.
@@ -435,7 +435,7 @@ namespace DMT.Models
                 cmd += " WHERE TSBShift.ShiftId = Shift.ShiftId ";
                 cmd += "   AND TSBShift.UserId = User.UserId ";
                 cmd += "   AND End = ? ";
-                var results = NQuery.Query<Query>(cmd, DateTime.MinValue).FirstOrDefault<TSBShift>();
+                var results = NQuery.Query<FKs>(cmd, DateTime.MinValue).FirstOrDefault<TSBShift>();
                 return results;
             }
         }
