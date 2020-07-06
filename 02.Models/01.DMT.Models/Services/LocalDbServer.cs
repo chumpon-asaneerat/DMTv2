@@ -143,6 +143,7 @@ namespace DMT.Services
 
             Db.CreateTable<TSBShift>();
             Db.CreateTable<UserShift>();
+            Db.CreateTable<UserShiftRevenue>();
 
             Db.CreateTable<LaneAttendance>();
             Db.CreateTable<LanePayment>();
