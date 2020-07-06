@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-using NLib;
+using DMT.Models;
+using DMT.Services;
 using NLib.Services;
+using NLib.Reflection;
 
 #endregion
 
@@ -29,6 +31,11 @@ namespace DMT.TOD.Pages.TollAdmin
 
         #endregion
 
+        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private User _user = null;
+
+        #region Button Handlers
+
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
             // Main Menu Page
@@ -43,11 +50,14 @@ namespace DMT.TOD.Pages.TollAdmin
             PageContentManager.Instance.Current = page;
         }
 
-        /*
-        public void Setup(List<Models.EMVQRCode> emvQR)
+        #endregion
+
+        public void Setup(User user)
         {
-            grid.Setup(emvQR);
+            _user = user;
+            if (null != _user)
+            {
+            }
         }
-        */
     }
 }

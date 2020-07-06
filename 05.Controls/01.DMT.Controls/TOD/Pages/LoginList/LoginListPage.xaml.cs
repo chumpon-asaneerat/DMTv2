@@ -1,10 +1,16 @@
-﻿using System;
+﻿#region Using
+
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-using NLib;
+using DMT.Models;
+using DMT.Services;
 using NLib.Services;
+using NLib.Reflection;
+
+#endregion
 
 namespace DMT.TOD.Pages.Job
 {
@@ -13,10 +19,22 @@ namespace DMT.TOD.Pages.Job
     /// </summary>
     public partial class LoginListPage : UserControl
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public LoginListPage()
         {
             InitializeComponent();
         }
+
+        #endregion
+
+        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private User _user = null;
+
+        #region Button Handlers
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
@@ -30,17 +48,13 @@ namespace DMT.TOD.Pages.Job
 
         }
 
+        #endregion
 
-        public void Setup(List<Models.Lane> lanes)
+        public void Setup(User user)
         {
-            if (null != lanes)
+            _user = user;
+            if (null != _user)
             {
-               
-                grid.Setup(lanes);
-            }
-            else
-            {
-
             }
         }
     }

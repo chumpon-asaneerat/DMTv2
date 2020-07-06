@@ -206,8 +206,8 @@
     <Compile Include="TOD\Pages\TollAdmin\EMVQRCodePage.xaml.cs">
       <DependentUpon>EMVQRCodePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TOD\Windows\Reports\RevenueSlipSearchWindow1.xaml.cs">
-      <DependentUpon>RevenueSlipSearchWindow1.xaml</DependentUpon>
+    <Compile Include="TOD\Windows\Reports\RevenueSlipSearchWindow.xaml.cs">
+      <DependentUpon>RevenueSlipSearchWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TOD\Windows\Reports\RevenueSummarySearchWindow.xaml.cs">
       <DependentUpon>RevenueSummarySearchWindow.xaml</DependentUpon>
@@ -511,7 +511,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TOD\Windows\Reports\RevenueSlipSearchWindow1.xaml">
+    <Page Include="TOD\Windows\Reports\RevenueSlipSearchWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

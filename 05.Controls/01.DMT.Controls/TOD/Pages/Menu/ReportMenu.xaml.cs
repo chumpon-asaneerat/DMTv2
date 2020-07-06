@@ -1,10 +1,16 @@
-﻿using System;
+﻿#region Using
+
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-using NLib;
+using DMT.Models;
+using DMT.Services;
 using NLib.Services;
+using NLib.Reflection;
+
+#endregion
 
 namespace DMT.TOD.Pages.Menu
 {
@@ -24,6 +30,11 @@ namespace DMT.TOD.Pages.Menu
         }
 
         #endregion
+
+        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private User _user = null;
+
+        #region Button Handlers
 
         private void revSlip_Click(object sender, RoutedEventArgs e)
         {
@@ -59,6 +70,16 @@ namespace DMT.TOD.Pages.Menu
             var page = new Menu.MainMenu();
             PageContentManager.Instance.Current = page;
             
+        }
+
+        #endregion
+
+        public void Setup(User user)
+        {
+            _user = user;
+            if (null != _user)
+            {
+            }
         }
     }
 }

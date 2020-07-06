@@ -60,11 +60,12 @@ namespace DMT.TOD.Pages.Menu
             {
                 return;
             }
+            var user = signinWin.User;
+
             // Revenue Entry
             var page = new Revenue.RevenueDateSelectionPage();
             // setup
-            //Models.RevenueEntry entry = new Models.RevenueEntry();
-            //page.Setup(Models.Job.FindJob("14077"), entry);
+            page.Setup(user);
             PageContentManager.Instance.Current = page;
         }
 
@@ -83,20 +84,18 @@ namespace DMT.TOD.Pages.Menu
             {
                 return;
             }
+            var user = signinWin.User;
 
-            var page = new Revenue.RevenueDateSelectionPage();
-            PageContentManager.Instance.Current = page;
-            /*
             // Revenue Slip Preview
-            var page = new Reports.RevenueSlipPreview();
-            page.MenuPage = this;
+            var page = new Revenue.RevenueDateSelectionPage();
+            // setup
+            page.Setup(user);
             PageContentManager.Instance.Current = page;
-            */
         }
 
         private void changeShift_Click(object sender, RoutedEventArgs e)
         {
-            var signinWin = new DMT.Windows.SignInWindow();
+            var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
             signinWin.Setup("SUPERVISOR");
             if (signinWin.ShowDialog() == false)
@@ -114,108 +113,52 @@ namespace DMT.TOD.Pages.Menu
 
         private void reportMenu_Click(object sender, RoutedEventArgs e)
         {
-            var signinWin = new DMT.Windows.SignInWindow();
+            var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
             signinWin.Setup("SUPERVISOR", "COLLECTOR");
             if (signinWin.ShowDialog() == false)
             {
                 return;
             }
+            var user = signinWin.User;
+
+            // Report Main Menu
             var page = new ReportMenu();
+            // setup
+            page.Setup(user);
             PageContentManager.Instance.Current = page;
         }
 
         private void emvQRCode_Click(object sender, RoutedEventArgs e)
         {
-            var signinWin = new DMT.Windows.SignInWindow();
+            var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
             signinWin.Setup("SUPERVISOR", "COLLECTOR");
             if (signinWin.ShowDialog() == false)
             {
                 return;
             }
+            var user = signinWin.User;
+
             var page = new TollAdmin.EMVQRCodePage();
-
-            /*
-            List<Models.EMVQRCode> emvQRs = new List<Models.EMVQRCode>();
-            Models.EMVQRCode emvQR;
-
-            emvQR = new Models.EMVQRCode();
-            emvQR.Type = "EMV";
-            emvQR.DateQR = new DateTime(2020, 3, 16, 18, 50, 11);
-            emvQR.StaffId = "14055";
-            emvQR.LaneId = 1;
-            emvQR.ApprovalCode = "459564";
-            emvQR.Qty = 100;
-            emvQRs.Add(emvQR);
-
-            emvQR = new Models.EMVQRCode();
-            emvQR.Type = "EMV";
-            emvQR.DateQR = new DateTime(2020, 3, 16, 23, 15, 24);
-            emvQR.StaffId = "14147";
-            emvQR.LaneId = 3;
-            emvQR.ApprovalCode = "485564";
-            emvQR.Qty = 170;
-            emvQRs.Add(emvQR);
-
-            emvQR = new Models.EMVQRCode();
-            emvQR.Type = "QR Code";
-            emvQR.DateQR = new DateTime(2020, 3, 17, 12, 1, 47);
-            emvQR.StaffId = "12562";
-            emvQR.LaneId = 2;
-            emvQR.ApprovalCode = "459564";
-            emvQR.Qty = 100;
-            emvQRs.Add(emvQR);
-
-            page.Setup(emvQRs);
-            */
-
+            page.Setup(user);
             PageContentManager.Instance.Current = page;
         }
 
         private void loginList_Click(object sender, RoutedEventArgs e)
         {
-            var signinWin = new DMT.Windows.SignInWindow();
+            var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
             signinWin.Setup("SUPERVISOR", "COLLECTOR");
             if (signinWin.ShowDialog() == false)
             {
                 return;
             }
-            var page = new DMT.TOD.Pages.Job.LoginListPage();
+            var user = signinWin.User;
+
+            var page = new Job.LoginListPage();
+            page.Setup(user);
             PageContentManager.Instance.Current = page;
-
-            /*
-            var page = new DMT.Pages.TOD.Job.LoginListPage();
-            
-            List<Models.Lane> Lanes = new List<Models.Lane>();
-            Models.Lane lane;
-
-            lane = new Models.Lane();
-            lane.Begin = new DateTime(2020, 3, 16, 18, 50, 11);
-            lane.End = new DateTime(2020, 3, 17, 10, 00, 11);
-            lane.StaffId = "14055";
-            lane.StaffName = "นางวิภา สวัสดิวัฒน์";
-            Lanes.Add(lane);
-
-            lane = new Models.Lane();
-            lane.Begin = new DateTime(2020, 3, 16, 23, 15, 24);
-            lane.End = new DateTime(2020, 3, 17, 08, 00, 11);
-            lane.StaffId = "14147";
-            lane.StaffName = "นางสาว แก้วใส ฟ้ารุ่งโรจณ์";
-            Lanes.Add(lane);
-
-            lane = new Models.Lane();
-            lane.Begin = new DateTime(2020, 3, 17, 12, 1, 47);
-            lane.End = new DateTime(2020, 3, 17, 08, 30, 00);
-            lane.StaffId = "12562";
-            lane.StaffName = "นาย ภักดี อมรรุ่งโรจน์";
-            Lanes.Add(lane);
-           
-            page.Setup(Lanes);
-
-            PageContentManager.Instance.Current = page;
-            */
         }
 
         #endregion
