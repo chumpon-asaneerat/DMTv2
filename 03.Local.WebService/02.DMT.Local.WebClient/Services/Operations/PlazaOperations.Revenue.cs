@@ -78,9 +78,9 @@ namespace DMT.Services
                 NRestClient.Create(port: 9000).Execute(
                     RouteConsts.Revenue.SavePlazaRevenue.Url, value);
             }
-            public void SaveRevenue(RevenueEntry value)
+            public string SaveRevenue(RevenueEntry value)
             {
-                NRestClient.Create(port: 9000).Execute(
+                return NRestClient.Create(port: 9000).Execute<string>(
                     RouteConsts.Revenue.SaveRevenue.Url, value);
             }
 

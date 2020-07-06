@@ -35,6 +35,7 @@ namespace DMT.TOD.Pages.Revenue
 
         private UserShift _userShift = null;
         private Plaza _plaza = null;
+        private UserShiftRevenue _plazaRevenue = null;
         private List<LaneAttendance> _laneActivities = null;
 
         private DateTime _entryDate = DateTime.MinValue;
@@ -50,7 +51,7 @@ namespace DMT.TOD.Pages.Revenue
             var page = new Reports.RevenueSlipPreview();
             page.MenuPage = new Menu.MainMenu(); // Set MenPage to main menu.
             page.CallerPage = this; // Set CallerPage for click back.
-            page.Setup(_userShift, _plaza, _laneActivities,
+            page.Setup(_userShift, _plaza, _plazaRevenue, _laneActivities,
                 _entryDate, _revDate, _revenueEntry);
             PageContentManager.Instance.Current = page;
         }
@@ -65,14 +66,16 @@ namespace DMT.TOD.Pages.Revenue
         #endregion
 
         public void Setup(UserShift userShift, Plaza plaza,
+            UserShiftRevenue plazaRevenue,
             List<LaneAttendance> laneActivities,
             DateTime entryDate, DateTime revDate)
         {
             _userShift = userShift;
             _plaza = plaza;
+            _plazaRevenue = plazaRevenue;
             _laneActivities = laneActivities;
 
-            if (null == _userShift || null == plaza)
+            if (null == _userShift || null == plaza || null == _plazaRevenue)
             {
                 _entryDate = DateTime.MinValue;
                 _revDate = DateTime.MinValue;

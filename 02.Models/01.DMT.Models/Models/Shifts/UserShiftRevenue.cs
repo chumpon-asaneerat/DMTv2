@@ -12,6 +12,7 @@ using SQLiteNetExtensions.Extensions;
 using Newtonsoft.Json;
 using NLib;
 using NLib.Reflection;
+using Microsoft.Win32;
 
 #endregion
 
@@ -591,6 +592,7 @@ namespace DMT.Models
 
         public static UserShiftRevenue CreatePlazaRevenue(UserShift shift, Plaza plaza)
         {
+            if (null == shift || null == plaza) return null;
             UserShiftRevenue inst = new UserShiftRevenue();
             plaza.AssignTo(inst);
             shift.AssignTo(inst);
@@ -602,6 +604,7 @@ namespace DMT.Models
         {
             lock (sync)
             {
+                if (null == value) return;
                 value.RevenueDate = revenueDate;
                 value.RevenueId = revenueId;
                 // save.
@@ -613,6 +616,7 @@ namespace DMT.Models
         {
             lock (sync)
             {
+                if (null == shift || null == plaza) return null;
                 string cmd = string.Empty;
                 cmd += "SELECT UserShiftRevenue.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
@@ -620,7 +624,7 @@ namespace DMT.Models
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
                 cmd += "  FROM UserShiftRevenue, TSB, Plaza, Shift, User, UserShift ";
                 cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
-                cmd += "   AND UserShift.ShiftId = TSBShiftShiftId ";
+                cmd += "   AND UserShift.ShiftId = Shift.ShiftId ";
                 cmd += "   AND UserShiftRevenue.ShiftId = Shift.ShiftId ";
                 cmd += "   AND UserShiftRevenue.UserId = User.UserId ";
                 cmd += "   AND UserShiftRevenue.TSBId = TSB.TSBId ";

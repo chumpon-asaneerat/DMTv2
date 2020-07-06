@@ -32,11 +32,15 @@ namespace DMT.TOD.Pages.Revenue
         #endregion
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
-        private User _user = null;
-        private UserShift _userShift = null;
+
         private DateTime _entryDT = DateTime.MinValue;
         private DateTime _revDT = DateTime.MinValue;
+
+        private UserShift _userShift = null;
+        private UserShiftRevenue _plazaRevenue = null;
         private List<LaneAttendance> _laneActivities = null;
+
+        private User _user = null;
 
         #region Button Handlers
 
@@ -59,7 +63,45 @@ namespace DMT.TOD.Pages.Revenue
                 cbPlazas.Focus();
                 return;
             }
-            page.Setup(_userShift, plaza, _laneActivities, _entryDT, _revDT);
+
+            bool isNew = false;
+            var revops = Search.Revenues.PlazaShift.Create(_userShift, plaza);
+            _plazaRevenue = ops.Revenue.GetRevenueShift(revops);
+            if (null == _plazaRevenue)
+            {
+                // Create new if not found.
+                _plazaRevenue = ops.Revenue.CreateRevenueShift(revops);
+                isNew = true;
+            }
+
+            if (null != _plazaRevenue)
+            {
+                if (_plazaRevenue.RevenueDate != DateTime.MinValue)
+                {
+                    MessageBox.Show("กะของพนักงานนี้ ถูกป้อนรายได้แล้ว");
+                    return;
+                }
+                if (null == _laneActivities || _laneActivities.Count <= 0)
+                {
+                    MessageBox.Show("ไม่พบข้อมูลเลนที่ยังไม่ถูกป้อนรายได้");
+                    return;
+                }
+            }
+            else
+            {
+                if (isNew)
+                {
+                    MessageBox.Show("ไม่สามารถสร้างรายการสำหรับจัดเก็บผลัดรายได้.");
+                }
+                else
+                {
+                    MessageBox.Show("กะนี้ถูกจัดเก็บรายได้แล้ว.");
+                }
+                return;
+            }
+
+
+            page.Setup(_userShift, plaza, _plazaRevenue, _laneActivities, _entryDT, _revDT);
 
             PageContentManager.Instance.Current = page;
         }
@@ -97,42 +139,30 @@ namespace DMT.TOD.Pages.Revenue
                 // get selected plaza
                 var plaza = cbPlazas.SelectedItem as Plaza;
 
+                _revDT = _userShift.Begin.Date; // get date part from UserShift.Begin
+                txtRevDate.Text = _revDT.ToThaiDateTimeString("dd/MM/yyyy");
+
+                // get all lanes information.
+                var search = Search.Lanes.Attendances.ByUserShift.Create(_userShift, plaza, DateTime.MinValue);
+                _laneActivities = ops.Lanes.GetAttendancesByUserShift(search);
+                if (null == _laneActivities || _laneActivities.Count <= 0)
+                {
+                    // no data.
+                    grid.DataContext = null;
+                }
+                else
+                {
+                    grid.DataContext = _laneActivities;
+                }
+
                 if (null != plaza)
                 {
-
+                    return;
                 }
-                else
-                {
-                    MessageBox.Show("กรุณาเลือกด่านที่ต้องการป้อนรายได้");
-                }
-                /*
-                if (_userShift.RevenueDate == DateTime.MinValue)
-                {
-                    _revDT = _userShift.Begin.Date; // get date part from UserShift.Begin
-                    txtRevDate.Text = _revDT.ToThaiDateTimeString("dd/MM/yyyy");
-
-                    // get all lanes information.
-                    var search = Search.Lanes.Attendances.ByUserShift.Create(_userShift, plaza, DateTime.MinValue);
-                    _laneActivities = ops.Lanes.GetAttendancesByUserShift(search);
-                    if (null == _laneActivities || _laneActivities.Count <= 0)
-                    {
-                        // no data.
-                        grid.DataContext = null;
-                    }
-                    else
-                    {
-                        grid.DataContext = _laneActivities;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("กะของพนักงานนี้ ถูกป้อนรายได้แล้ว");
-                }
-                */
             }
             else
             {
-                MessageBox.Show("ไม่พบกะของพนักงาน");
+                //MessageBox.Show("ไม่พบกะของพนักงาน");
             }
         }
 

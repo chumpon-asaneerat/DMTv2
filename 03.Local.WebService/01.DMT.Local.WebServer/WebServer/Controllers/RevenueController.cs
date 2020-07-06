@@ -41,9 +41,9 @@ namespace DMT.Services
         }
         [HttpPost]
         [ActionName(RouteConsts.Revenue.SaveRevenue.Name)]
-        public void SaveRevenue([FromBody] RevenueEntry value)
+        public string SaveRevenue([FromBody] RevenueEntry value)
         {
-            if (null == value) return;
+            if (null == value) return string.Empty;
             if (value.PKId == Guid.Empty)
             {
                 value.PKId = Guid.NewGuid();
@@ -57,6 +57,7 @@ namespace DMT.Services
                 }
             }
             RevenueEntry.Save(value);
+            return value.RevenueId;
         }
     }
 }

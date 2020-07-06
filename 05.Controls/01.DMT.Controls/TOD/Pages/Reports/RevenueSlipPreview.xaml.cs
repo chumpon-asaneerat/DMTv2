@@ -37,6 +37,7 @@ namespace DMT.TOD.Pages.Reports
 
         private UserShift _userShift = null;
         private Plaza _plaza = null;
+        private UserShiftRevenue _plazaRevenue = null;
         private List<LaneAttendance> _laneActivities = null;
 
 
@@ -62,19 +63,23 @@ namespace DMT.TOD.Pages.Reports
                 MessageBox.Show("Entry Date or Revenue Date is not set.");
                 return;
             }
-            /*
+
             // update save data
-            ops.Revenue.SaveRevenue(_revenueEntry);
-            // sync key to user shift object.
-            _userShift.RevenueDate = _revenueEntry.RevenueDate;
-            _userShift.RevenueId = _revenueEntry.RevenueId;
+            string revId = ops.Revenue.SaveRevenue(_revenueEntry);
+            if (null != _plazaRevenue)
+            {
+                // save revenue shift (for plaza)
+                var saveOpt = Search.Revenues.SaveRevenueShift.Create(_plazaRevenue,
+                    revId, _revenueEntry.RevenueDate);
+                ops.Revenue.SaveRevenueShift(saveOpt);
+            }
             // sync key to lane attendance list.
             if (null != _laneActivities)
             {
                 _laneActivities.ForEach(lane =>
                 {
                     lane.RevenueDate = _revenueEntry.RevenueDate;
-                    lane.RevenueId = _revenueEntry.RevenueId;
+                    lane.RevenueId = revId;
                     ops.Lanes.SaveAttendance(lane);
                 });
             }
@@ -90,8 +95,6 @@ namespace DMT.TOD.Pages.Reports
 
             // print reports.
             this.rptViewer.Print();
-            */
-
 
             // Main Report Page
             var page = (null != this.MenuPage) ? this.MenuPage : new Menu.ReportMenu();
@@ -132,25 +135,29 @@ namespace DMT.TOD.Pages.Reports
         }
 
         public void Setup(UserShift userShift, Plaza plaza,
+            UserShiftRevenue plazaRevenue,
             List<LaneAttendance> laneActivities,
             DateTime entryDate, DateTime revDate, 
             Models.RevenueEntry revenueEntry)
         {
             _userShift = userShift;
             _plaza = plaza;
+            _plazaRevenue = plazaRevenue;
             _laneActivities = laneActivities;
             _entryDate = entryDate;
             _revDate = revDate;
             _revenueEntry = revenueEntry;
-            if (null == _userShift || null == _plaza || null == _revenueEntry)
+            if (null == _userShift || null == _plaza || null == _plazaRevenue || 
+                null == _revenueEntry)
             {
-                // No data.
+                // some of parameter(s) is null.
             }
             else
             {
                 // update object properties.
                 _plaza.AssignTo(_revenueEntry); // assigned plaza name (EN/TH)
                 _userShift.AssignTo(_revenueEntry); // assigned user full name (EN/TH)
+
                 // assigned date after sync object(s) to RevenueEntry.
                 _revenueEntry.EntryDate = _entryDate; // assigned Entry date.
                 _revenueEntry.RevenueDate = _revDate; // assigned Revenue date.
