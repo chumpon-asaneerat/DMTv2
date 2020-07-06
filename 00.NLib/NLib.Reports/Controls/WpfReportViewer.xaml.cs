@@ -27,7 +27,7 @@ using NLib.Reports.Rdlc;
 using System.Drawing.Printing;
 using System.Printing;
 
-namespace NLib.Controls
+namespace NLib.Wpf.Controls
 {
     /// <summary>
     /// Interaction logic for WpfReportViewer.xaml
