@@ -11,13 +11,11 @@ Update 2020-07-07 #3
 Update 2020-07-07 #2
 - 
 
+[commited]
 Update 2020-07-07 #1
-- 
+- Update smartcard lib performance tuning #1.
 
 --------------------------------------------------------------------------------------------
-Update 2020-07-06 #30
-- 
-
 [commited]
 Update 2020-07-06 #29
 - DMT.Models refactor part 2 #33.

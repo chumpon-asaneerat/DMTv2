@@ -2287,11 +2287,11 @@ namespace DMT.Smartcard
         public override byte[] Reset()
         {
             SDK.RFSetAntennaMode(ICDev, false);
-            Thread.Sleep(50);
+            Sleep(50);
             SDK.RFInitType(ICDev, (byte)'A');
-            Thread.Sleep(50);
+            Sleep(50);
             SDK.RFSetAntennaMode(ICDev, true);
-            Thread.Sleep(50);
+            Sleep(50);
             return SDK.RFResetTypeA(ICDev, 0);
         }
 
@@ -2302,11 +2302,17 @@ namespace DMT.Smartcard
 
         public void DoEvents()
         {
-            try 
-            { 
+            try
+            {
                 System.Windows.Forms.Application.DoEvents();
             }
             catch { }
+        }
+
+        public void Sleep(int ms)
+        {
+            //Thread.Sleep(ms);
+            DoEvents();
         }
 
         public override bool IsCardExist()
@@ -2358,8 +2364,7 @@ namespace DMT.Smartcard
                 {
                     //Console.WriteLine("RFRequest failed.");
                 }
-                Thread.Sleep(50);
-                DoEvents();
+                Sleep(50);
             }
             finally
             {
@@ -2368,9 +2373,10 @@ namespace DMT.Smartcard
             return status;
         }
 
-        private int RFAntiCollAndSelect()
+        private int RFAntiCollAndSelect(out byte[] buffers)
         {
             int status = 0;
+            buffers = null;
             // for RFAntiColl/RFSelect
             var serialNoPtr = Marshal.AllocHGlobal(SL600SDK.MAX_RF_BUFFER);
             var serialNoLenPtr = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(byte)));
@@ -2384,8 +2390,7 @@ namespace DMT.Smartcard
                 {
                     //Console.WriteLine("RFAntiColl failed.");
                 }
-                Thread.Sleep(50);
-                DoEvents();
+                Sleep(50);
                 if (status == 0)
                 {
                     // adjust size to actual size.
@@ -2395,8 +2400,12 @@ namespace DMT.Smartcard
                     {
                         //Console.WriteLine("RFSelect failed.");
                     }
-                    Thread.Sleep(50);
-                    DoEvents();
+                    if (status == 0)
+                    {
+                        buffers = new byte[snrSize];
+                        Marshal.Copy(serialNoPtr, buffers, 0, snrSize);
+                    }
+                    Sleep(50);
                 }
             }
             finally
@@ -2429,10 +2438,9 @@ namespace DMT.Smartcard
                 status = SDK.RFM1Authentication2(ICDev, mode, block_abs, secureKeyPtr);
                 if (status != 0)
                 {
-                    //Console.WriteLine("RFM1Authentication2 failed.");
+                    Console.WriteLine("RFM1Authentication2 failed.");
                 }
-                Thread.Sleep(50);
-                DoEvents();
+                Sleep(50);
             }
             finally
             {
@@ -2452,8 +2460,7 @@ namespace DMT.Smartcard
             try
             {
                 status = SDK.RFM1Read(ICDev, blockNo, dataPtr, dataLenPtr);
-                Thread.Sleep(50);
-                DoEvents();
+                Sleep(50);
                 if (status != 0)
                 {
                     //Console.WriteLine("RFM1Read failed.");
@@ -2494,9 +2501,18 @@ namespace DMT.Smartcard
             return result;
         }
 
-        public class ReadCardResult
+        public class ReadCardSerialResult
         {
             public int status { get; set; }
+
+            public byte[] RawSerialNo { get; set; }
+            public string SerialNo { get; set; }
+        }
+
+        public class ReadCardBlockResult
+        {
+            public int status { get; set; }
+
             public byte[] RawBlock0 { get; set; }
             public string Block0 { get; set; }
             public byte[] RawBlock1 { get; set; }
@@ -2507,34 +2523,63 @@ namespace DMT.Smartcard
             public string Block3 { get; set; }
         }
 
-        public ReadCardResult ReadCard(byte[] key, bool STDMode = true, bool KeyA = true)
+
+        public ReadCardSerialResult ReadCardSerial(bool STDMode = true)
         {
-            ReadCardResult result = new ReadCardResult();
+            ReadCardSerialResult result = new ReadCardSerialResult();
             try
             {
                 int status = 0;
                 try
                 {
                     SDK.RFSetAntennaMode(ICDev, false);
-                    Thread.Sleep(50);
-                    DoEvents();
-                    
+                    Sleep(50);
+
                     SDK.RFInitType(ICDev, (byte)'A');
-                    Thread.Sleep(50);
-                    DoEvents();
-                    
+                    Sleep(50);
+
                     SDK.RFSetAntennaMode(ICDev, true);
-                    Thread.Sleep(50);
-                    DoEvents();
+                    Sleep(50);
 
                     status = RFRequest(STDMode);
-                    if (status == 0) status = RFAntiCollAndSelect();
-                    
-                    // mode = 0x61 (KeyA), mode = 0x62 (KeyB)
-                    byte mode = (KeyA) ? (byte)0x61 : (byte)0x62;                    
-                    if (status == 0) status = RFM1Authentication2(key, mode);
 
                     byte[] buffers = null;
+                    if (status == 0) status = RFAntiCollAndSelect(out buffers);
+                    if (buffers != null)
+                    {
+                        result.RawSerialNo = buffers;
+                        result.SerialNo = BufferToString(buffers);
+                    }
+
+                    result.status = status;
+                }
+                finally
+                {
+
+                }
+            }
+            catch (SL600Exception)
+            {
+                result.status = -1;
+            }
+            return result;
+        }
+
+        public ReadCardBlockResult ReadCardBlock(byte[] key = null,
+            bool STDMode = true, bool KeyA = true)
+        {
+            ReadCardBlockResult result = new ReadCardBlockResult();
+            try
+            {
+                int status = 0;
+                try
+                {
+                    byte[] buffers = null;
+
+                    // mode = 0x61 (KeyA), mode = 0x62 (KeyB)
+                    byte mode = (KeyA) ? (byte)0x61 : (byte)0x62;
+                    if (status == 0) status = RFM1Authentication2(key, mode);
+
                     if (status == 0)
                     {
                         status = RFM1Read(out buffers, 0);
@@ -2872,15 +2917,39 @@ namespace DMT.Smartcard
 
     #endregion
 
-    #region SmartcardService
+    #region EventHandlers and EventArgs.
 
-    public delegate void M1CardReadEventHandler(object sender, M1CardReadEventArgs e);
+    public delegate void M1CardReadSerialEventHandler(object sender, M1CardReadSerialEventArgs e);
 
-    public class M1CardReadEventArgs
+    public class M1CardReadSerialEventArgs
     {
         #region Constructor
 
-        internal M1CardReadEventArgs(Sl600SmartCardReader.ReadCardResult value) : base()
+        internal M1CardReadSerialEventArgs(Sl600SmartCardReader.ReadCardSerialResult value) : base()
+        {
+            status = value.status;
+            RawSerialNo = value.RawSerialNo;
+            SerialNo = value.SerialNo;
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        public int status { get; set; }
+        public byte[] RawSerialNo { get; set; }
+        public string SerialNo { get; set; }
+
+        #endregion
+    }
+
+    public delegate void M1CardReadBlockEventHandler(object sender, M1CardReadBlockEventArgs e);
+
+    public class M1CardReadBlockEventArgs
+    {
+        #region Constructor
+
+        internal M1CardReadBlockEventArgs(Sl600SmartCardReader.ReadCardBlockResult value) : base()
         {
             status = value.status;
             RawBlock0 = value.RawBlock0;
@@ -2898,6 +2967,8 @@ namespace DMT.Smartcard
         #region Public Properties
 
         public int status { get; set; }
+        public byte[] RawSerialNo { get; set; }
+        public string SerialNo { get; set; }
         public byte[] RawBlock0 { get; set; }
         public string Block0 { get; set; }
         public byte[] RawBlock1 { get; set; }
@@ -2909,6 +2980,10 @@ namespace DMT.Smartcard
 
         #endregion
     }
+
+    #endregion
+
+    #region SmartcardService
 
     /// <summary>
     /// The Smartcard Service class.
@@ -2925,7 +3000,9 @@ namespace DMT.Smartcard
         private static Sl600SmartCardReader reader = null;
         private static DispatcherTimer timer = null;
 
-        private static Sl600SmartCardReader.ReadCardResult _last = null;
+        public static bool ReadSerialNoOnly = false;
+        private static Sl600SmartCardReader.ReadCardSerialResult _lastSN = null;
+        private static Sl600SmartCardReader.ReadCardBlockResult _lastData = null;
 
         #endregion
 
@@ -2956,33 +3033,51 @@ namespace DMT.Smartcard
                 if (reader.IsCardExist())
                 {
                     //SL600SDK.DefaultKey
-                    var result = reader.ReadCard(SecureKey);
-                    if (null != result && result.status == 0)
+                    var snResult = reader.ReadCardSerial(/*true*/);
+                    if (null != snResult && snResult.status == 0)
                     {
-                        if (null == _last ||
-                            (null != _last &&
-                            _last.Block0 != result.Block0 &&
-                            _last.Block1 != result.Block1 &&
-                            _last.Block2 != result.Block2 &&
-                            _last.Block3 != result.Block3))
+                        if (null == _lastSN ||
+                            _lastSN.SerialNo != snResult.SerialNo)
                         {
-                            // Raise event if last read value is not same card.
-                            if (null != OnCardRead)
+                            if (null != OnCardReadSerial)
                             {
-                                OnCardRead.Invoke(null, new M1CardReadEventArgs(result));
+                                OnCardReadSerial.Invoke(null, new M1CardReadSerialEventArgs(snResult));
                             }
-                            _last = result;
+                            _lastSN = snResult;
+
+                            if (!ReadSerialNoOnly)
+                            {
+                                var dataResult = reader.ReadCardBlock(SecureKey/*, true, true*/);
+                                if (null == _lastData ||
+                                    (null != _lastData &&
+                                    _lastData.Block0 != dataResult.Block0 &&
+                                    _lastData.Block1 != dataResult.Block1 &&
+                                    _lastData.Block2 != dataResult.Block2 &&
+                                    _lastData.Block3 != dataResult.Block3))
+                                {
+                                    // Raise event if last read value is not same card.
+                                    if (null != OnCardReadBlock)
+                                    {
+                                        OnCardReadBlock.Invoke(null, new M1CardReadBlockEventArgs(dataResult));
+                                    }
+                                    _lastData = dataResult;
+                                }
+                            }
                         }
                     }
                 }
                 else
                 {
                     // reset last read card.
-                    if (null != OnIdle)
+                    if (null != _lastSN || null != _lastData)
                     {
-                        OnIdle.Invoke(null, EventArgs.Empty);
+                        if (null != OnIdle)
+                        {
+                            OnIdle.Invoke(null, EventArgs.Empty);
+                        }
+                        _lastSN = null;
+                        _lastData = null;
                     }
-                    _last = null;
                 }
             }
 
@@ -3043,9 +3138,13 @@ namespace DMT.Smartcard
         #region Public events
 
         /// <summary>
-        /// OnCardRead Event Handler.
+        /// OnCardReadSerial Event Handler.
         /// </summary>
-        public static event M1CardReadEventHandler OnCardRead;
+        public static event M1CardReadSerialEventHandler OnCardReadSerial;
+        /// <summary>
+        /// OnCardReadBlock Event Handler.
+        /// </summary>
+        public static event M1CardReadBlockEventHandler OnCardReadBlock;
         /// <summary>
         /// OnIdle Event Handler
         /// </summary>
