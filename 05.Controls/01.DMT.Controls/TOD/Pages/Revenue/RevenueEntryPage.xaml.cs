@@ -33,6 +33,7 @@ namespace DMT.TOD.Pages.Revenue
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
         private UserShift _userShift = null;
+        private Plaza _plaza = null;
         private DateTime _entryDate = DateTime.MinValue;
         private DateTime _revDate = DateTime.MinValue;
         private Models.RevenueEntry _revenueEntry = null;
@@ -57,19 +58,25 @@ namespace DMT.TOD.Pages.Revenue
 
         #endregion
 
-        public void Setup(UserShift userShift, 
+        public void Setup(UserShift userShift, Plaza plaza,
             DateTime entryDate, DateTime revDate)
         {
             _userShift = userShift;
-            if (null == _userShift)
+            _plaza = plaza;
+
+            if (null == _userShift || null == plaza)
             {
                 _entryDate = DateTime.MinValue;
                 _revDate = DateTime.MinValue;
 
                 txtRevDate.Text = string.Empty;
+                txtPlazaName.Text = string.Empty;
+
                 txtShiftName.Text = string.Empty;
+
                 txtUserId.Text = string.Empty;
                 txtUserName.Text = string.Empty;
+
                 revEntry.DataContext = null;
             }
             else
@@ -78,11 +85,17 @@ namespace DMT.TOD.Pages.Revenue
                 _revDate = revDate;
 
                 txtRevDate.Text = _revDate.ToThaiDateTimeString("dd/MM/yyyy");
+                txtPlazaName.Text = _plaza.PlazaNameTH;
+
                 txtShiftName.Text = _userShift.ShiftNameTH;
+                
                 txtUserId.Text = _userShift.UserId;
                 txtUserName.Text = _userShift.FullNameTH;
 
                 _revenueEntry = new Models.RevenueEntry();
+                // assigned plaza.
+                _revenueEntry.PlazaId = _plaza.PlazaId;
+
                 revEntry.DataContext = _revenueEntry;
             }
         }

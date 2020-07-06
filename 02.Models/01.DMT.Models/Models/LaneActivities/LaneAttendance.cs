@@ -600,7 +600,7 @@ namespace DMT.Models
             if (null != supervisor) supervisor.AssignTo(inst);
             return inst;
         }
-        public static List<LaneAttendance> Search(UserShift shift)
+        public static List<LaneAttendance> Search(UserShift shift, Plaza plaza)
         {
             if (null == shift) return new List<LaneAttendance>();
             lock (sync)
@@ -624,14 +624,30 @@ namespace DMT.Models
                 cmd += "   AND (LaneAttendance.Begin >= ? AND LaneAttendance.Begin <= ?)";
                 cmd += "   AND ((LaneAttendance.End >= ? AND LaneAttendance.End <= ?) " +
                     "        OR  LaneAttendance.End = ?)";
+                if (null != plaza)
+                {
+                    cmd += "   AND LaneAttendance.PlazaId = ? ";
+                }
 
                 DateTime end = (shift.End == DateTime.MinValue) ? DateTime.Now : shift.End;
 
-                return NQuery.Query<FKs>(cmd,
-                    shift.UserId,
-                    shift.Begin, end,
-                    shift.Begin, end,
-                    DateTime.MinValue).ToList<LaneAttendance>();
+                if (null != plaza)
+                {
+                    return NQuery.Query<FKs>(cmd,
+                        shift.UserId,
+                        shift.Begin, end,
+                        shift.Begin, end,
+                        DateTime.MinValue,
+                        plaza.PlazaId).ToList<LaneAttendance>();
+                }
+                else
+                {
+                    return NQuery.Query<FKs>(cmd,
+                        shift.UserId,
+                        shift.Begin, end,
+                        shift.Begin, end,
+                        DateTime.MinValue).ToList<LaneAttendance>();
+                }
             }
         }
         public static List<LaneAttendance> Search(Lane lane)

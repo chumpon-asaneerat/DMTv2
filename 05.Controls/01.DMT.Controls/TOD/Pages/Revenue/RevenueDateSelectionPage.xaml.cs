@@ -50,49 +50,93 @@ namespace DMT.TOD.Pages.Revenue
         {
             // Revenue Entry Page
             var page = new RevenueEntryPage();
+
+            var plaza = cbPlazas.SelectedItem as Plaza;
+            if (null == plaza)
+            {
+                MessageBox.Show("กรุณาเลือกด่านของรายได้");
+                cbPlazas.Focus();
+                return;
+            }
+            page.Setup(_userShift, plaza, _entryDT, _revDT);
+
             PageContentManager.Instance.Current = page;
-            page.Setup(_userShift, _entryDT, _revDT);
         }
 
         #endregion
 
+        #region Combobox Handlers
+
+        private void cbPlazas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Load related lane data.
+            RefreshLanes();
+        }
+
+        #endregion
+
+        private void LoadPlazas()
+        {
+            cbPlazas.ItemsSource = null;
+
+            List<Models.Plaza> plazas = new List<Plaza>();
+            var tsb = ops.TSB.GetCurrent();
+            if (null != tsb)
+            {
+                plazas = ops.TSB.GetTSBPlazas(tsb);
+            }
+
+            cbPlazas.ItemsSource = plazas;
+        }
+
+        private void RefreshLanes()
+        {
+            if (null != _userShift)
+            {
+                if (_userShift.RevenueDate == DateTime.MinValue)
+                {
+                    _revDT = _userShift.Begin.Date; // get date part from UserShift.Begin
+                    txtRevDate.Text = _revDT.ToThaiDateTimeString("dd/MM/yyyy");
+
+                    // get selected plaza
+                    var plaza = cbPlazas.SelectedItem as Plaza;
+                    // get all lanes information.
+                    var search = Search.Lanes.Attendances.ByUserShift.Create(_userShift, plaza);
+                    var laneActivities = ops.Lanes.GetAttendancesByUserShift(search);
+                    if (null == laneActivities || laneActivities.Count <= 0)
+                    {
+                        // no data.
+                        grid.DataContext = null;
+                    }
+                    else
+                    {
+                        grid.DataContext = laneActivities;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("กะของพนักงานนี้ ถูกป้อนรายได้แล้ว");
+                }
+            }
+            else
+            {
+                MessageBox.Show("ไม่พบกะของพนักงาน");
+            }
+        }
+
         public void Setup(User user)
         {
+            LoadPlazas();
+
             _user = user;
             if (null != _user)
             {
                 _entryDT = DateTime.Now;
                 txtEntryDate.Text = _entryDT.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
-
+                // Find user shift.
                 _userShift = ops.Jobs.GetCurrent(_user);
-                if (null != _userShift)
-                {
-                    if (_userShift.RevenueDate == DateTime.MinValue)
-                    {
-                        _revDT = _userShift.Begin.Date; // get date part from UserShift.Begin
-                        txtRevDate.Text = _revDT.ToThaiDateTimeString("dd/MM/yyyy");
-
-                        var search = Search.Lanes.Attendances.ByUserShift.Create(_userShift);
-                        var laneActivities = ops.Lanes.GetAttendancesByUserShift(search);
-                        if (null == laneActivities || laneActivities.Count <= 0)
-                        {
-                            // no data.
-                            grid.DataContext = null;
-                        }
-                        else
-                        {
-                            grid.DataContext = laneActivities;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("กะของพนักงานนี้ ถูกป้อนรายได้แล้ว");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("ไม่พบกะของพนักงาน");
-                }
+                // Load related lane data.
+                RefreshLanes();
             }
         }
     }
