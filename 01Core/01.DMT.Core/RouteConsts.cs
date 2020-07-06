@@ -238,19 +238,19 @@ namespace DMT
             public static class CreatePlazaRevenue
             {
                 public const string Name = "CreatePlazaRevenue";
-                public const string Url = Job.Url + @"/" + Name;
+                public const string Url = Revenue.Url + @"/" + Name;
             }
 
             public static class GetPlazaRevenue
             {
                 public const string Name = "GetPlazaRevenue";
-                public const string Url = Job.Url + @"/" + Name;
+                public const string Url = Revenue.Url + @"/" + Name;
             }
 
             public static class SavePlazaRevenue
             {
                 public const string Name = "SavePlazaRevenue";
-                public const string Url = Job.Url + @"/" + Name;
+                public const string Url = Revenue.Url + @"/" + Name;
             }
 
             public static class SaveRevenue

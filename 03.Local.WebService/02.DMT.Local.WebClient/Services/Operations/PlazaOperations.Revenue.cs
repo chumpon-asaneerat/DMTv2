@@ -63,6 +63,21 @@ namespace DMT.Services
 
             #region Public Methods
 
+            public UserShiftRevenue CreateRevenueShift(Search.Revenues.PlazaShift value)
+            {
+                return NRestClient.Create(port: 9000).Execute<UserShiftRevenue>(
+                    RouteConsts.Revenue.CreatePlazaRevenue.Url, value);
+            }
+            public UserShiftRevenue GetRevenueShift(Search.Revenues.PlazaShift value)
+            {
+                return NRestClient.Create(port: 9000).Execute<UserShiftRevenue>(
+                    RouteConsts.Revenue.GetPlazaRevenue.Url, value);
+            }
+            public void SaveRevenueShift(Search.Revenues.SaveRevenueShift value)
+            {
+                NRestClient.Create(port: 9000).Execute(
+                    RouteConsts.Revenue.SavePlazaRevenue.Url, value);
+            }
             public void SaveRevenue(RevenueEntry value)
             {
                 NRestClient.Create(port: 9000).Execute(
