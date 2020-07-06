@@ -61,6 +61,7 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -71,6 +72,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -83,6 +85,9 @@
     <Compile Include="Controls\Rdlc\RdlcExtensionMethods.cs" />
     <Compile Include="Controls\Rdlc\RdlcMessageService.cs" />
     <Compile Include="Controls\Rdlc\ReportViewerExtensionMethods.cs" />
+    <Compile Include="Controls\WpfReportViewer.xaml.cs">
+      <DependentUpon>WpfReportViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\Rdlc\LocalReportPageSettings.cs" />
     <Compile Include="Reports\Rdlc\LocalReportRenderer.cs" />
@@ -96,6 +101,12 @@
       <Project>{41a9d6c0-c833-403f-9bc1-eecdc246a428}</Project>
       <Name>NLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\WpfReportViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

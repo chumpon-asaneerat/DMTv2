@@ -33,6 +33,7 @@ namespace DMT.TOD.Pages.Reports
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
         private UserShift _userShift = null;
+        private Plaza _plaza = null;
         private DateTime _entryDate = DateTime.MinValue;
         private DateTime _revDate = DateTime.MinValue;
         private Models.RevenueEntry _revenueEntry = null;
@@ -42,7 +43,7 @@ namespace DMT.TOD.Pages.Reports
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
         {
             // Main Report Page
-            var page = (null != this.MenuPage) ? this.MenuPage : new Menu.ReportMenu();
+            var page = (null != this.CallerPage) ? this.CallerPage : new Menu.ReportMenu();
             PageContentManager.Instance.Current = page;
         }
 
@@ -56,15 +57,18 @@ namespace DMT.TOD.Pages.Reports
         #endregion
 
         public ContentControl MenuPage { get; set; }
+        public ContentControl CallerPage { get; set; }
 
-        public void Setup(UserShift userShift, DateTime entryDate, DateTime revDate, 
+        public void Setup(UserShift userShift, Plaza plaza,
+            DateTime entryDate, DateTime revDate, 
             Models.RevenueEntry revenueEntry)
         {
             _userShift = userShift;
+            _plaza = plaza;
             _entryDate = entryDate;
             _revDate = revDate;
             _revenueEntry = revenueEntry;
-            if (null == _userShift || null == _revenueEntry)
+            if (null == _userShift || null == _plaza || null == _revenueEntry)
             {
                 // No data.
             }
