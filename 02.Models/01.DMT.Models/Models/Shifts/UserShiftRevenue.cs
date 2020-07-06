@@ -589,6 +589,19 @@ namespace DMT.Models
 
         #region Static Methods
 
+        public static void SavePlazaRevenue(UserShift shift, Plaza plaza,
+            DateTime revenueDate)
+        {
+
+        }
+
+        public static UserShiftRevenue GetPlazaRevenue(UserShift shift, Plaza plaza)
+        {
+            UserShiftRevenue inst = null;
+
+            return inst;
+        }
+
         #endregion
     }
 }

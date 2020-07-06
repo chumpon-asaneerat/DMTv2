@@ -62,6 +62,7 @@ namespace DMT.TOD.Pages.Reports
                 MessageBox.Show("Entry Date or Revenue Date is not set.");
                 return;
             }
+            /*
             // update save data
             ops.Revenue.SaveRevenue(_revenueEntry);
             // sync key to user shift object.
@@ -89,6 +90,7 @@ namespace DMT.TOD.Pages.Reports
 
             // print reports.
             this.rptViewer.Print();
+            */
 
 
             // Main Report Page

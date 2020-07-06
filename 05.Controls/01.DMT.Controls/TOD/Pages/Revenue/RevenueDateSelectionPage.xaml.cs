@@ -94,13 +94,23 @@ namespace DMT.TOD.Pages.Revenue
         {
             if (null != _userShift)
             {
+                // get selected plaza
+                var plaza = cbPlazas.SelectedItem as Plaza;
+
+                if (null != plaza)
+                {
+
+                }
+                else
+                {
+                    MessageBox.Show("กรุณาเลือกด่านที่ต้องการป้อนรายได้");
+                }
+                /*
                 if (_userShift.RevenueDate == DateTime.MinValue)
                 {
                     _revDT = _userShift.Begin.Date; // get date part from UserShift.Begin
                     txtRevDate.Text = _revDT.ToThaiDateTimeString("dd/MM/yyyy");
 
-                    // get selected plaza
-                    var plaza = cbPlazas.SelectedItem as Plaza;
                     // get all lanes information.
                     var search = Search.Lanes.Attendances.ByUserShift.Create(_userShift, plaza, DateTime.MinValue);
                     _laneActivities = ops.Lanes.GetAttendancesByUserShift(search);
@@ -118,6 +128,7 @@ namespace DMT.TOD.Pages.Revenue
                 {
                     MessageBox.Show("กะของพนักงานนี้ ถูกป้อนรายได้แล้ว");
                 }
+                */
             }
             else
             {
