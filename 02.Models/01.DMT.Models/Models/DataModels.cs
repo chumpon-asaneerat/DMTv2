@@ -199,12 +199,15 @@ namespace DMT.Models
                 {
                     public UserShift Shift { get; set; }
                     public Plaza Plaza { get; set; }
+                    public DateTime RevenueDate { get; set; }
 
-                    public static ByUserShift Create(UserShift shift, Plaza plaza)
+                    public static ByUserShift Create(UserShift shift, Plaza plaza,
+                        DateTime revenueDate)
                     {
                         var ret = new ByUserShift();
                         ret.Shift = shift;
                         ret.Plaza = plaza;
+                        ret.RevenueDate = revenueDate;
                         return ret;
                     }
                 }

@@ -36,6 +36,7 @@ namespace DMT.TOD.Pages.Revenue
         private UserShift _userShift = null;
         private DateTime _entryDT = DateTime.MinValue;
         private DateTime _revDT = DateTime.MinValue;
+        private List<LaneAttendance> _laneActivities = null;
 
         #region Button Handlers
 
@@ -58,7 +59,7 @@ namespace DMT.TOD.Pages.Revenue
                 cbPlazas.Focus();
                 return;
             }
-            page.Setup(_userShift, plaza, _entryDT, _revDT);
+            page.Setup(_userShift, plaza, _laneActivities, _entryDT, _revDT);
 
             PageContentManager.Instance.Current = page;
         }
@@ -101,16 +102,16 @@ namespace DMT.TOD.Pages.Revenue
                     // get selected plaza
                     var plaza = cbPlazas.SelectedItem as Plaza;
                     // get all lanes information.
-                    var search = Search.Lanes.Attendances.ByUserShift.Create(_userShift, plaza);
-                    var laneActivities = ops.Lanes.GetAttendancesByUserShift(search);
-                    if (null == laneActivities || laneActivities.Count <= 0)
+                    var search = Search.Lanes.Attendances.ByUserShift.Create(_userShift, plaza, DateTime.MinValue);
+                    _laneActivities = ops.Lanes.GetAttendancesByUserShift(search);
+                    if (null == _laneActivities || _laneActivities.Count <= 0)
                     {
                         // no data.
                         grid.DataContext = null;
                     }
                     else
                     {
-                        grid.DataContext = laneActivities;
+                        grid.DataContext = _laneActivities;
                     }
                 }
                 else

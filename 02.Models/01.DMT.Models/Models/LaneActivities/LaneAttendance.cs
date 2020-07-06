@@ -49,6 +49,9 @@ namespace DMT.Models
         private DateTime _Begin = DateTime.MinValue;
         private DateTime _End = DateTime.MinValue;
 
+        private string _RevenueId = string.Empty;
+        private DateTime _RevenueDate = DateTime.MinValue;
+
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
 
@@ -451,6 +454,46 @@ namespace DMT.Models
 
         #endregion
 
+        #region Revenue
+
+        /// <summary>
+        /// Gets or sets Revenue Date.
+        /// </summary>
+        [PeropertyMapName("RevenueDate")]
+        public DateTime RevenueDate
+        {
+            get { return _RevenueDate; }
+            set
+            {
+                if (_RevenueDate != value)
+                {
+                    _RevenueDate = value;
+                    // Raise event.
+                    this.RaiseChanged("RevenueDate");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets RevenueId.
+        /// </summary>
+        [MaxLength(20)]
+        [PeropertyMapName("RevenueId")]
+        public string RevenueId
+        {
+            get { return _RevenueId; }
+            set
+            {
+                if (_RevenueId != value)
+                {
+                    _RevenueId = value;
+                    // Raise event.
+                    this.RaiseChanged("RevenueId");
+                }
+            }
+        }
+
+        #endregion
+
         #region Status (DC)
 
         /// <summary>
@@ -600,7 +643,8 @@ namespace DMT.Models
             if (null != supervisor) supervisor.AssignTo(inst);
             return inst;
         }
-        public static List<LaneAttendance> Search(UserShift shift, Plaza plaza)
+        public static List<LaneAttendance> Search(UserShift shift, Plaza plaza, 
+            DateTime revenueDate)
         {
             if (null == shift) return new List<LaneAttendance>();
             lock (sync)
@@ -629,6 +673,16 @@ namespace DMT.Models
                     cmd += "   AND LaneAttendance.PlazaId = ? ";
                 }
 
+                if (revenueDate == DateTime.MinValue)
+                {
+                    cmd += "   AND (LaneAttendance.RevenueDate IS NULL ";
+                    cmd += "        OR LaneAttendance.RevenueDate = ?) ";
+                }
+                else
+                {
+                    cmd += "   AND LaneAttendance.RevenueDate = ? ";
+                }
+
                 DateTime end = (shift.End == DateTime.MinValue) ? DateTime.Now : shift.End;
 
                 if (null != plaza)
@@ -638,7 +692,8 @@ namespace DMT.Models
                         shift.Begin, end,
                         shift.Begin, end,
                         DateTime.MinValue,
-                        plaza.PlazaId).ToList<LaneAttendance>();
+                        plaza.PlazaId,
+                        revenueDate).ToList<LaneAttendance>();
                 }
                 else
                 {
@@ -646,7 +701,8 @@ namespace DMT.Models
                         shift.UserId,
                         shift.Begin, end,
                         shift.Begin, end,
-                        DateTime.MinValue).ToList<LaneAttendance>();
+                        DateTime.MinValue,
+                        revenueDate).ToList<LaneAttendance>();
                 }
             }
         }

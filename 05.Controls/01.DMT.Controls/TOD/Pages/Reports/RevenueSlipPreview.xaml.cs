@@ -34,10 +34,15 @@ namespace DMT.TOD.Pages.Reports
         #endregion
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+
         private UserShift _userShift = null;
         private Plaza _plaza = null;
+        private List<LaneAttendance> _laneActivities = null;
+
+
         private DateTime _entryDate = DateTime.MinValue;
         private DateTime _revDate = DateTime.MinValue;
+
         private Models.RevenueEntry _revenueEntry = null;
 
         #region Button Handlers
@@ -51,16 +56,32 @@ namespace DMT.TOD.Pages.Reports
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
+            if (_revenueEntry.RevenueDate == DateTime.MinValue ||
+                _revenueEntry.EntryDate == DateTime.MinValue)
+            {
+                MessageBox.Show("Entry Date or Revenue Date is not set.");
+                return;
+            }
             // update save data
             ops.Revenue.SaveRevenue(_revenueEntry);
             // sync key to user shift object.
             _userShift.RevenueDate = _revenueEntry.RevenueDate;
             _userShift.RevenueId = _revenueEntry.RevenueId;
+            // sync key to lane attendance list.
+            if (null != _laneActivities)
+            {
+                _laneActivities.ForEach(lane =>
+                {
+                    lane.RevenueDate = _revenueEntry.RevenueDate;
+                    lane.RevenueId = _revenueEntry.RevenueId;
+                    ops.Lanes.SaveAttendance(lane);
+                });
+            }
 
             // get all lanes information.
-            var search = Search.Lanes.Attendances.ByUserShift.Create(_userShift, null);
-            var laneActivities = ops.Lanes.GetAttendancesByUserShift(search);
-            if (null == laneActivities || laneActivities.Count == 0)
+            var search = Search.Lanes.Attendances.ByUserShift.Create(_userShift, null, DateTime.MinValue);
+            var existActivities = ops.Lanes.GetAttendancesByUserShift(search);
+            if (null == existActivities || existActivities.Count == 0)
             {
                 // no lane activitie in user shift.
                 ops.Jobs.EndJob(_userShift); // End user job(shift).
@@ -109,11 +130,13 @@ namespace DMT.TOD.Pages.Reports
         }
 
         public void Setup(UserShift userShift, Plaza plaza,
+            List<LaneAttendance> laneActivities,
             DateTime entryDate, DateTime revDate, 
             Models.RevenueEntry revenueEntry)
         {
             _userShift = userShift;
             _plaza = plaza;
+            _laneActivities = laneActivities;
             _entryDate = entryDate;
             _revDate = revDate;
             _revenueEntry = revenueEntry;
@@ -124,10 +147,11 @@ namespace DMT.TOD.Pages.Reports
             else
             {
                 // update object properties.
-                _revenueEntry.EntryDate = _entryDate; // assigned Entry date.
-                _revenueEntry.RevenueDate = _revDate; // assigned Revenue date.
                 _plaza.AssignTo(_revenueEntry); // assigned plaza name (EN/TH)
                 _userShift.AssignTo(_revenueEntry); // assigned user full name (EN/TH)
+                // assigned date after sync object(s) to RevenueEntry.
+                _revenueEntry.EntryDate = _entryDate; // assigned Entry date.
+                _revenueEntry.RevenueDate = _revDate; // assigned Revenue date.
 
                 var model = GetReportModel();
                 if (null == model ||
