@@ -13,6 +13,33 @@ using Microsoft.Reporting.WinForms;
 
 namespace NLib.Reports.Rdlc
 {
+    public static class RdlcReportUtils
+    {
+        /// <summary>
+        /// Get Embeded Report stream.
+        /// </summary>
+        /// <param name="assembly">The assembly that has embedded report.</param>
+        /// <param name="embededReportName">
+        /// The full namespace of the rdcl report (inclide extension) 
+        /// and the report should be set as embeded resource.
+        /// </param>
+        /// <returns>Returns the rdlc report stream.</returns>
+        public static Stream GetEmbededReport(Assembly assembly, string embededReportName)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+            Stream stream = null;
+            if (null != assembly)
+            {
+                try { stream = assembly.GetManifestResourceStream(embededReportName); }
+                catch (Exception ex)
+                {
+                    med.Err(ex);
+                }
+            }
+            return stream;
+        }
+    }
+
     #region RdlcReportManager
 
     /// <summary>
@@ -32,6 +59,7 @@ namespace NLib.Reports.Rdlc
         /// <returns>Returns the rdlc report stream.</returns>
         public Stream GetEmbededReport(string embededReportName)
         {
+            /*
             MethodBase med = MethodBase.GetCurrentMethod();
             Assembly assembly = this.GetType().Assembly;
             Stream stream = null;
@@ -43,7 +71,9 @@ namespace NLib.Reports.Rdlc
                     med.Err(ex);
                 }
             }
-            return stream;
+            */
+            return RdlcReportUtils.GetEmbededReport(this.GetType().Assembly, 
+                embededReportName);
         }
 
         #endregion

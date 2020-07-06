@@ -33,14 +33,14 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.Shift.ChangeShift.Name)]
-        public void ChangeShift(TSBShift shift)
+        public void ChangeShift([FromBody] TSBShift shift)
         {
             TSBShift.ChangeShift(shift);
         }
 
         [HttpPost]
         [ActionName(RouteConsts.Shift.Create.Name)]
-        public TSBShift Create(TSBShiftCreate value)
+        public TSBShift Create([FromBody] TSBShiftCreate value)
         {
             if (null == value) return null;
             return TSBShift.Create(value.Shift, value.User);

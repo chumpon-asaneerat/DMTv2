@@ -9,6 +9,8 @@ using DMT.Models;
 using DMT.Services;
 using NLib.Services;
 using NLib.Reflection;
+using NLib.Reports.Rdlc;
+using System.Reflection;
 
 #endregion
 
@@ -49,6 +51,25 @@ namespace DMT.TOD.Pages.Reports
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
+            // update save data
+            ops.Revenue.SaveRevenue(_revenueEntry);
+            // sync key to user shift object.
+            _userShift.RevenueDate = _revenueEntry.RevenueDate;
+            _userShift.RevenueId = _revenueEntry.RevenueId;
+
+            // get all lanes information.
+            var search = Search.Lanes.Attendances.ByUserShift.Create(_userShift, null);
+            var laneActivities = ops.Lanes.GetAttendancesByUserShift(search);
+            if (null == laneActivities || laneActivities.Count == 0)
+            {
+                // no lane activitie in user shift.
+                ops.Jobs.EndJob(_userShift); // End user job(shift).
+            }
+
+            // print reports.
+            this.rptViewer.Print();
+
+
             // Main Report Page
             var page = (null != this.MenuPage) ? this.MenuPage : new Menu.ReportMenu();
             PageContentManager.Instance.Current = page;
@@ -58,6 +79,34 @@ namespace DMT.TOD.Pages.Reports
 
         public ContentControl MenuPage { get; set; }
         public ContentControl CallerPage { get; set; }
+
+        private RdlcReportModel GetReportModel()
+        {
+            Assembly assembly = this.GetType().Assembly;
+            RdlcReportModel inst = new RdlcReportModel();
+            inst.Definition.EmbededReportName = "DMT.TOD.Pages.Reports.RevenueSlip.rdlc";
+            inst.Definition.RdlcInstance = RdlcReportUtils.GetEmbededReport(assembly, 
+                inst.Definition.EmbededReportName);
+            // clear reprot datasource.
+            inst.DataSources.Clear();
+
+            List<RevenueEntry> items = new List<RevenueEntry>();
+            if (null != _revenueEntry) items.Add(_revenueEntry);
+
+            // assign new data source
+            RdlcReportDataSource mainDS = new RdlcReportDataSource();
+            mainDS.Name = "main"; // the datasource name in the rdlc report.
+            mainDS.Items = items; // setup data source
+            // Add to datasources
+            inst.DataSources.Add(mainDS);
+
+            // Add parameters (if required).
+            //DateTime today = DateTime.Now;
+            //string printDate = today.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+            //inst.Parameters.Add(RdlcReportParameter.Create("PrintDate", printDate));
+
+            return inst;
+        }
 
         public void Setup(UserShift userShift, Plaza plaza,
             DateTime entryDate, DateTime revDate, 
@@ -74,7 +123,25 @@ namespace DMT.TOD.Pages.Reports
             }
             else
             {
+                // update object properties.
+                _revenueEntry.EntryDate = _entryDate; // assigned Entry date.
+                _revenueEntry.RevenueDate = _revDate; // assigned Revenue date.
+                _plaza.AssignTo(_revenueEntry); // assigned plaza name (EN/TH)
+                _userShift.AssignTo(_revenueEntry); // assigned user full name (EN/TH)
 
+                var model = GetReportModel();
+                if (null == model ||
+                    null == model.DataSources || model.DataSources.Count <= 0 ||
+                    null == model.DataSources[0] || null == model.DataSources[0].Items)
+                {
+                    MessageBox.Show("No result found.");
+                    this.rptViewer.ClearReport();
+                }
+                else
+                {
+                    this.rptViewer.LoadReport(model);
+                }
+                
             }
         }
     }

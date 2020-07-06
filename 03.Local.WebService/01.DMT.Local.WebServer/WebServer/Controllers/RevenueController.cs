@@ -20,7 +20,7 @@ namespace DMT.Services
     {
         [HttpPost]
         [ActionName(RouteConsts.Revenue.SaveRevenue.Name)]
-        public void SaveRevenue(RevenueEntry value)
+        public void SaveRevenue([FromBody] RevenueEntry value)
         {
             if (null == value) return;
             if (value.PKId == Guid.Empty)
