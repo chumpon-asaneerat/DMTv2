@@ -22,8 +22,8 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto" MinWidth="365"/>
+                <ColumnDefinition Width="Auto" MinWidth="1055"/>
                 <ColumnDefinition Width="50"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1" Grid.Row="1"
@@ -33,7 +33,6 @@
                     <RowDefinition Height="140"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="350"/>
                     <ColumnDefinition Width="350"/>
                 </Grid.ColumnDefinitions>
 
@@ -85,15 +84,15 @@
                     </DockPanel>
                 </Button>
             </Grid>
-            <Grid Grid.Column="2" Grid.Row="1"
+            <Grid Grid.Column="2" Grid.Row="1" 
               Margin="5 0 5 5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="140"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="350"/>
-                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="350*"/>
+                    <ColumnDefinition Width="350*"/>
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" 
@@ -215,7 +214,7 @@
                                     VerticalAlignment="Center">
                             <TextBlock FontSize="28" 
                                        HorizontalAlignment="Center"
-                                       Text="เปลี่ยนกะ"
+                                       Text="หัวหน้าเปลี่ยนกะ"
                                        TextAlignment="Center"
                                        TextWrapping="Wrap">
                             </TextBlock>
@@ -224,7 +223,7 @@
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    TextWrapping="Wrap"
-                                   Text="เปลี่ยนกะ"/>
+                                   Text="หัวหน้าเปลี่ยนกะ"/>
                         </StackPanel>
                     </DockPanel>
                 </Button>

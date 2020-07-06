@@ -72,7 +72,7 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("COLLECTOR");
+            signinWin.Setup("SUPERVISOR");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -177,7 +177,7 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new DMT.Windows.SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("SUPERVISOR", "COLLECTOR");
+            signinWin.Setup("SUPERVISOR");
             if (signinWin.ShowDialog() == false)
             {
                 return;
