@@ -46,7 +46,7 @@
                             <Grid Width="10" />
                             <TextBox Width="200"
                                      TextAlignment="Center"
-                                     Text="{Binding BagNo}"/>
+                                     Text="{Binding BeltNo}"/>
                             <Grid Width="10" />
                         </StackPanel>
                     </Grid>
@@ -95,19 +95,7 @@
                                                   Margin="3"/>
                     </Grid>
                 </Grid>
-                <!--
-                <local:BagEntry x:Name="bagTraffic" 
-                            Background="ForestGreen"
-                            Foreground="WhiteSmoke"
-                            Width="400" Margin="3"/>
-                -->
             </TabItem>
-            <!--
-            <TabItem Header="การใช้คูปอง"
-                     HorizontalAlignment="Center"
-                     VerticalAlignment="Center">
-            </TabItem>
-            -->
             <TabItem Header="QR Code"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center">

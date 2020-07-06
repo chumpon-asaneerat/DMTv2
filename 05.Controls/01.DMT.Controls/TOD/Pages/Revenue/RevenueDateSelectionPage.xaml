@@ -93,7 +93,7 @@
                 <TextBlock FontSize="18"
                            Foreground="WhiteSmoke"
                            Margin="5"
-                           Text="กรุณาเลือกวันที่ของรายได้"
+                           Text="วันที่ของรายได้"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center"/>
             </Border>
@@ -107,13 +107,11 @@
                            Text="วันที่ป้อนรายได้"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center"/>
-                    <TextBox x:Name="entryDate"
+                    <TextBlock x:Name="txtEntryDate"
                              FontSize="18"
                              Margin="5"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
-                             HorizontalContentAlignment="Center"
-                             VerticalContentAlignment="Center"
                              Width="220"
                              Text="2020/03/17 09:22:44"/>
                     <TextBlock FontSize="18"
@@ -122,7 +120,7 @@
                            Text="วันที่ของรายได้"                   
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center"/>
-                    <TextBlock x:Name="revDate" FontSize="18"
+                    <TextBlock x:Name="txtRevDate" FontSize="18"
                            Foreground="Black"
                            Margin="5"
                            Text="2020/03/17"

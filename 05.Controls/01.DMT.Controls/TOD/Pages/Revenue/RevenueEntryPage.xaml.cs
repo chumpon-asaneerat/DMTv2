@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-using NLib;
+using DMT.Models;
+using DMT.Services;
 using NLib.Services;
+using NLib.Reflection;
 
 #endregion
 
@@ -29,17 +31,13 @@ namespace DMT.TOD.Pages.Revenue
 
         #endregion
 
-        /*
-        private Models.Job _job;
-        private Models.RevenueEntry _entry;
+        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private UserShift _userShift = null;
+        private DateTime _entryDate = DateTime.MinValue;
+        private DateTime _revDate = DateTime.MinValue;
+        private Models.RevenueEntry _revenueEntry = null;
 
-        public void Setup(Models.Job job, Models.RevenueEntry entry)
-        {
-            _job = job;
-            _entry = entry;
-            revEntry.Setup(_job, _entry);
-        }
-        */
+        #region Button Handlers
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
@@ -55,6 +53,38 @@ namespace DMT.TOD.Pages.Revenue
             // Main Menu Page
             var page = new Menu.MainMenu();
             PageContentManager.Instance.Current = page;
+        }
+
+        #endregion
+
+        public void Setup(UserShift userShift, 
+            DateTime entryDate, DateTime revDate)
+        {
+            _userShift = userShift;
+            if (null == _userShift)
+            {
+                _entryDate = DateTime.MinValue;
+                _revDate = DateTime.MinValue;
+
+                txtRevDate.Text = string.Empty;
+                txtShiftName.Text = string.Empty;
+                txtUserId.Text = string.Empty;
+                txtUserName.Text = string.Empty;
+                revEntry.DataContext = null;
+            }
+            else
+            {
+                _entryDate = entryDate;
+                _revDate = revDate;
+
+                txtRevDate.Text = _revDate.ToThaiDateTimeString("dd/MM/yyyy");
+                txtShiftName.Text = _userShift.ShiftNameTH;
+                txtUserId.Text = _userShift.UserId;
+                txtUserName.Text = _userShift.FullNameTH;
+
+                _revenueEntry = new Models.RevenueEntry();
+                revEntry.DataContext = _revenueEntry;
+            }
         }
     }
 }

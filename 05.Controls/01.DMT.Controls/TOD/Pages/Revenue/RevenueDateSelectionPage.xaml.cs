@@ -33,6 +33,9 @@ namespace DMT.TOD.Pages.Revenue
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
         private User _user = null;
+        private UserShift _userShift = null;
+        private DateTime _entryDT = DateTime.MinValue;
+        private DateTime _revDT = DateTime.MinValue;
 
         #region Button Handlers
 
@@ -48,7 +51,7 @@ namespace DMT.TOD.Pages.Revenue
             // Revenue Entry Page
             var page = new RevenueEntryPage();
             PageContentManager.Instance.Current = page;
-            //page.Setup(_job, _entry);
+            page.Setup(_userShift, _entryDT, _revDT);
         }
 
         #endregion
@@ -58,16 +61,38 @@ namespace DMT.TOD.Pages.Revenue
             _user = user;
             if (null != _user)
             {
-                /*
-                DateTime dt = DateTime.Now;
-                cbShift.ItemsSource = ops.Shifts.GetShifts();
-                var tsb = ops.TSB.GetCurrent();
-                txtPlaza.Text = tsb.TSBNameTH;
-                txtDate.Text = dt.ToThaiDateString();
-                txtTime.Text = dt.ToThaiTimeString();
-                txtID.Text = _user.UserId;
-                txtName.Text = _user.FullNameTH;
-                */
+                _entryDT = DateTime.Now;
+                txtEntryDate.Text = _entryDT.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+
+                _userShift = ops.Jobs.GetCurrent(_user);
+                if (null != _userShift)
+                {
+                    if (_userShift.RevenueDate == DateTime.MinValue)
+                    {
+                        _revDT = _userShift.Begin.Date; // get date part from UserShift.Begin
+                        txtRevDate.Text = _revDT.ToThaiDateTimeString("dd/MM/yyyy");
+
+                        var search = Search.Lanes.Attendances.ByUserShift.Create(_userShift);
+                        var laneActivities = ops.Lanes.GetAttendancesByUserShift(search);
+                        if (null == laneActivities || laneActivities.Count <= 0)
+                        {
+                            // no data.
+                            grid.DataContext = null;
+                        }
+                        else
+                        {
+                            grid.DataContext = laneActivities;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("กะของพนักงานนี้ ถูกป้อนรายได้แล้ว");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("ไม่พบกะของพนักงาน");
+                }
             }
         }
     }

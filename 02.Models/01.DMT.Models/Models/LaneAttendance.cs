@@ -522,10 +522,17 @@ namespace DMT.Models
                 cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
                 cmd += "   AND LaneAttendance.UserId = User.UserId ";
                 cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
-                cmd += "   AND LaneAttendance.Begin >= ? ";
-                cmd += "   AND LaneAttendance.End = ? ";
+                cmd += "   AND LaneAttendance.UserId = ? ";
+                cmd += "   AND (LaneAttendance.Begin >= ? AND LaneAttendance.Begin <= ?)";
+                cmd += "   AND ((LaneAttendance.End >= ? AND LaneAttendance.End <= ?) " +
+                    "        OR  LaneAttendance.End = ?)";
 
-                return NQuery.Query<FKs>(cmd, shift.Begin, shift.End,
+                DateTime end = (shift.End == DateTime.MinValue) ? DateTime.Now : shift.End;
+
+                return NQuery.Query<FKs>(cmd,
+                    shift.UserId,
+                    shift.Begin, end,
+                    shift.Begin, end,
                     DateTime.MinValue).ToList<LaneAttendance>();
             }
         }

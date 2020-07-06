@@ -17,6 +17,19 @@ using NLib.Reflection;
 
 namespace DMT.Models
 {
+    #region Enums
+
+    /*
+    public enum RevenuDateEnum
+    {
+        All,
+        HasRevenueDate,
+        NoRevenueDate
+    }
+    */
+
+    #endregion
+
     #region Search nested classes
 
     public partial class Search
