@@ -43,8 +43,8 @@ namespace DMT.TOD.Pages.Revenue
         {
             // Slip Preview
             var page = new Reports.RevenueSlipPreview();
-            // back to main menu.
-            page.MenuPage = new Menu.MainMenu();
+            page.MenuPage = new Menu.MainMenu(); // Set MenPage to main menu.
+            page.Setup(_userShift, _entryDate, _revDate, _revenueEntry);
             PageContentManager.Instance.Current = page;
         }
 
