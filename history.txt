@@ -14,8 +14,9 @@ Update 2020-07-06 #22
 Update 2020-07-06 #21
 - 
 
+[commited]
 Update 2020-07-06 #20
-- 
+- Add SmartCard test project #2.
 
 [commited]
 Update 2020-07-06 #19

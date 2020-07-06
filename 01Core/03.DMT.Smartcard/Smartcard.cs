@@ -2300,6 +2300,15 @@ namespace DMT.Smartcard
             return SDK.RFCOSCommand(ICDev, command);
         }
 
+        public void DoEvents()
+        {
+            try 
+            { 
+                System.Windows.Forms.Application.DoEvents();
+            }
+            catch { }
+        }
+
         public override bool IsCardExist()
         {
             try
@@ -2350,6 +2359,7 @@ namespace DMT.Smartcard
                     //Console.WriteLine("RFRequest failed.");
                 }
                 Thread.Sleep(50);
+                DoEvents();
             }
             finally
             {
@@ -2375,6 +2385,7 @@ namespace DMT.Smartcard
                     //Console.WriteLine("RFAntiColl failed.");
                 }
                 Thread.Sleep(50);
+                DoEvents();
                 if (status == 0)
                 {
                     // adjust size to actual size.
@@ -2385,6 +2396,7 @@ namespace DMT.Smartcard
                         //Console.WriteLine("RFSelect failed.");
                     }
                     Thread.Sleep(50);
+                    DoEvents();
                 }
             }
             finally
@@ -2417,9 +2429,10 @@ namespace DMT.Smartcard
                 status = SDK.RFM1Authentication2(ICDev, mode, block_abs, secureKeyPtr);
                 if (status != 0)
                 {
-                    Console.WriteLine("RFM1Authentication2 failed.");
+                    //Console.WriteLine("RFM1Authentication2 failed.");
                 }
                 Thread.Sleep(50);
+                DoEvents();
             }
             finally
             {
@@ -2440,6 +2453,7 @@ namespace DMT.Smartcard
             {
                 status = SDK.RFM1Read(ICDev, blockNo, dataPtr, dataLenPtr);
                 Thread.Sleep(50);
+                DoEvents();
                 if (status != 0)
                 {
                     //Console.WriteLine("RFM1Read failed.");
@@ -2503,15 +2517,23 @@ namespace DMT.Smartcard
                 {
                     SDK.RFSetAntennaMode(ICDev, false);
                     Thread.Sleep(50);
+                    DoEvents();
+                    
                     SDK.RFInitType(ICDev, (byte)'A');
                     Thread.Sleep(50);
+                    DoEvents();
+                    
                     SDK.RFSetAntennaMode(ICDev, true);
                     Thread.Sleep(50);
+                    DoEvents();
+
                     status = RFRequest(STDMode);
                     if (status == 0) status = RFAntiCollAndSelect();
+                    
                     // mode = 0x61 (KeyA), mode = 0x62 (KeyB)
-                    byte mode = (KeyA) ? (byte)0x61 : (byte)0x62;
+                    byte mode = (KeyA) ? (byte)0x61 : (byte)0x62;                    
                     if (status == 0) status = RFM1Authentication2(key, mode);
+
                     byte[] buffers = null;
                     if (status == 0)
                     {
