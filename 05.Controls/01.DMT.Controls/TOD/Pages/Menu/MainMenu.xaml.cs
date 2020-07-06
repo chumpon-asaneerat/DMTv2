@@ -177,7 +177,7 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new DMT.Windows.SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("SUPERVISOR");
+            signinWin.Setup("SUPERVISOR", "COLLECTOR");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -187,6 +187,7 @@ namespace DMT.TOD.Pages.Menu
 
             /*
             var page = new DMT.Pages.TOD.Job.LoginListPage();
+            
             List<Models.Lane> Lanes = new List<Models.Lane>();
             Models.Lane lane;
 
