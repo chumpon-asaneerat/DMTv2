@@ -589,17 +589,46 @@ namespace DMT.Models
 
         #region Static Methods
 
-        public static void SavePlazaRevenue(UserShift shift, Plaza plaza,
-            DateTime revenueDate)
+        public static UserShiftRevenue CreatePlazaRevenue(UserShift shift, Plaza plaza)
         {
+            UserShiftRevenue inst = new UserShiftRevenue();
+            plaza.AssignTo(inst);
+            shift.AssignTo(inst);
+            return inst;
+        }
 
+        public static void SavePlazaRevenue(UserShiftRevenue value,
+            DateTime revenueDate, string revenueId)
+        {
+            lock (sync)
+            {
+                value.RevenueDate = revenueDate;
+                value.RevenueId = revenueId;
+                // save.
+                Save(value);
+            }
         }
 
         public static UserShiftRevenue GetPlazaRevenue(UserShift shift, Plaza plaza)
         {
-            UserShiftRevenue inst = null;
-
-            return inst;
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT UserShiftRevenue.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
+                cmd += "     , User.FullNameEN, User.FullNameTH ";
+                cmd += "  FROM UserShiftRevenue, TSB, Plaza, Shift, User, UserShift ";
+                cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND UserShift.ShiftId = TSBShiftShiftId ";
+                cmd += "   AND UserShiftRevenue.ShiftId = Shift.ShiftId ";
+                cmd += "   AND UserShiftRevenue.UserId = User.UserId ";
+                cmd += "   AND UserShiftRevenue.TSBId = TSB.TSBId ";
+                cmd += "   AND UserShiftRevenue.UserShiftId = ? ";
+                cmd += "   AND UserShiftRevenue.PlazaId = ? ";
+                return NQuery.Query<FKs>(cmd, shift.UserShiftId,
+                    plaza.PlazaId).FirstOrDefault<UserShiftRevenue>();
+            }
         }
 
         #endregion

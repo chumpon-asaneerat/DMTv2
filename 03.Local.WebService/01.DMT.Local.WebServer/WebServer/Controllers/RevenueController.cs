@@ -19,6 +19,27 @@ namespace DMT.Services
     public class RevenueController : ApiController
     {
         [HttpPost]
+        [ActionName(RouteConsts.Revenue.CreatePlazaRevenue.Name)]
+        public UserShiftRevenue CreateRevenueShift([FromBody] Search.Revenues.PlazaShift value)
+        {
+            if (null == value) return null;
+            return UserShiftRevenue.CreatePlazaRevenue(value.Shift, value.Plaza);
+        }
+        [HttpPost]
+        [ActionName(RouteConsts.Revenue.GetPlazaRevenue.Name)]
+        public UserShiftRevenue GetRevenueShift([FromBody] Search.Revenues.PlazaShift value)
+        {
+            if (null == value) return null;
+            return UserShiftRevenue.GetPlazaRevenue(value.Shift, value.Plaza);
+        }
+        [HttpPost]
+        [ActionName(RouteConsts.Revenue.SavePlazaRevenue.Name)]
+        public void SaveRevenueShift([FromBody] Search.Revenues.SaveRevenueShift value)
+        {
+            if (null == value) return;
+            UserShiftRevenue.SavePlazaRevenue(value.RevenueShift, value.RevenueDate, value.RevenueId);
+        }
+        [HttpPost]
         [ActionName(RouteConsts.Revenue.SaveRevenue.Name)]
         public void SaveRevenue([FromBody] RevenueEntry value)
         {
