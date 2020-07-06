@@ -41,6 +41,8 @@ namespace DMT.Models
         private DateTime _Begin = DateTime.MinValue;
         private DateTime _End = DateTime.MinValue;
 
+        private DateTime _RevenueDate = DateTime.MinValue;
+
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
 
@@ -368,6 +370,58 @@ namespace DMT.Models
             get
             {
                 var ret = (this.End == DateTime.MinValue) ? "" : this.End.ToThaiTimeString();
+                return ret;
+            }
+            set { }
+        }
+
+        #endregion
+
+        #region RevenueDate
+
+        /// <summary>
+        /// Gets or sets Revenue Date.
+        /// </summary>
+        [PeropertyMapName("RevenueDate")]
+        public DateTime RevenueDate
+        {
+            get { return _RevenueDate; }
+            set
+            {
+                if (_RevenueDate != value)
+                {
+                    _RevenueDate = value;
+                    // Raise event.
+                    RaiseChanged("RevenueDate");
+                    RaiseChanged("RevenueDateString");
+                    RaiseChanged("RevenueTimeString");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets Revenue Date String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string RevenueDateString
+        {
+            get
+            {
+                var ret = (this.RevenueDate == DateTime.MinValue) ? "" : this.RevenueDate.ToThaiDateTimeString("dd/MM/yyyy");
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets Revenue Time String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string RevenueTimeString
+        {
+            get
+            {
+                var ret = (this.RevenueDate == DateTime.MinValue) ? "" : this.RevenueDate.ToThaiTimeString();
                 return ret;
             }
             set { }

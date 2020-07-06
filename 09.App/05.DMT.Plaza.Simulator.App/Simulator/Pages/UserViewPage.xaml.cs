@@ -101,6 +101,7 @@ namespace DMT.Simulator.Pages
             lstUsers.ItemsSource = null;
 
             users.Clear();
+            /*
             var roles = ops.Users.GetRoles();
             if (null != roles)
             {
@@ -118,7 +119,21 @@ namespace DMT.Simulator.Pages
                     }
                 });
             }
-
+            */
+            var role = ops.Users.GetRole(Search.Roles.ById.Create("COLLECTOR"));
+            if (null != role)
+            {
+                var usrs = ops.Users.GetUsers(role);
+                if (null != usrs)
+                {
+                    usrs.ForEach(usr =>
+                    {
+                        var inst = new UserItem();
+                        usr.AssignTo(inst);
+                        users.Add(inst);
+                    });
+                }
+            }
             lstUsers.ItemsSource = users;
         }
 
