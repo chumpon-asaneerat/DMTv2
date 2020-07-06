@@ -124,8 +124,8 @@
     <Compile Include="Models\LaneActivities\Payment.cs" />
     <Compile Include="Models\Infrastructures\Lane.cs" />
     <Compile Include="Models\Infrastructures\Plaza.cs" />
-    <Compile Include="Models\LaneAttendance.cs" />
-    <Compile Include="Models\LanePayment.cs" />
+    <Compile Include="Models\LaneActivities\LaneAttendance.cs" />
+    <Compile Include="Models\LaneActivities\LanePayment.cs" />
     <Compile Include="Models\Transactions\RevenueEntry.cs" />
     <Compile Include="Models\Users\Role.cs" />
     <Compile Include="Models\Shifts\Shift.cs" />

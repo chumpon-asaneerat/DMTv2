@@ -17,23 +17,27 @@ using NLib.Reflection;
 
 namespace DMT.Models
 {
-    #region LaneAttendance
+    #region LanePayment
 
     /// <summary>
-    /// The LaneAttendance Data Model Class.
+    /// The LanePayment Data Model Class.
     /// </summary>
-    //[Table("LaneAttendance")]
-    public class LaneAttendance : NTable<LaneAttendance>
+    //[Table("LanePayment")]
+    public class LanePayment : NTable<LanePayment>
     {
         #region Intenral Variables
 
         private Guid _PKId = Guid.NewGuid();
 
-        private string _JobId = string.Empty;
+        private string _ApproveCode = string.Empty;
 
         private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
         private string _TSBNameTH = string.Empty;
+
+        private string _PlazaId = string.Empty;
+        private string _PlazaNameEN = string.Empty;
+        private string _PlazaNameTH = string.Empty;
 
         private string _LaneId = string.Empty;
         private int _LaneNo = 0;
@@ -42,8 +46,12 @@ namespace DMT.Models
         private string _FullNameEN = string.Empty;
         private string _FullNameTH = string.Empty;
 
-        private DateTime _Begin = DateTime.MinValue;
-        private DateTime _End = DateTime.MinValue;
+        private string _PaymentId = string.Empty;
+        private string _PaymentNameEN = string.Empty;
+        private string _PaymentNameTH = string.Empty;
+
+        private DateTime _PaymentDate = DateTime.MinValue;
+        private decimal _Amount = decimal.Zero;
 
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
@@ -55,7 +63,7 @@ namespace DMT.Models
         /// <summary>
         /// Constructor.
         /// </summary>
-        public LaneAttendance() : base()
+        public LanePayment() : base()
         {
         }
 
@@ -86,22 +94,22 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets or sets JobId
+        /// Gets or sets Approve Code.
         /// </summary>
         [MaxLength(20)]
-        [PeropertyMapName("JobId")]
-        public string JobId
+        [PeropertyMapName("ApproveCode")]
+        public string ApproveCode
         {
             get
             {
-                return _JobId;
+                return _ApproveCode;
             }
             set
             {
-                if (_JobId != value)
+                if (_ApproveCode != value)
                 {
-                    _JobId = value;
-                    this.RaiseChanged("JobId");
+                    _ApproveCode = value;
+                    this.RaiseChanged("ApproveCode");
                 }
             }
         }
@@ -173,12 +181,77 @@ namespace DMT.Models
 
         #endregion
 
+        #region Plaza
+
+        /// <summary>
+        /// Gets or sets PlazaId.
+        /// </summary>
+        [MaxLength(10)]
+        [PeropertyMapName("PlazaId")]
+        public string PlazaId
+        {
+            get
+            {
+                return _PlazaId;
+            }
+            set
+            {
+                if (_PlazaId != value)
+                {
+                    _PlazaId = value;
+                    this.RaiseChanged("PlazaId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets PlazaNameEN
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("PlazaNameEN")]
+        public virtual string PlazaNameEN
+        {
+            get
+            {
+                return _PlazaNameEN;
+            }
+            set
+            {
+                if (_PlazaNameEN != value)
+                {
+                    _PlazaNameEN = value;
+                    this.RaiseChanged("PlazaNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets PlazaNameTH
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("PlazaNameTH")]
+        public virtual string PlazaNameTH
+        {
+            get
+            {
+                return _PlazaNameTH;
+            }
+            set
+            {
+                if (_PlazaNameTH != value)
+                {
+                    _PlazaNameTH = value;
+                    this.RaiseChanged("PlazaNameTH");
+                }
+            }
+        }
+
+        #endregion
+
         #region Lane
 
         /// <summary>
         /// Gets or sets LaneId
         /// </summary>
-        [MaxLength(10)]
+        [Ignore]
         [PeropertyMapName("LaneId")]
         public string LaneId
         {
@@ -198,7 +271,6 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Lane No.
         /// </summary>
-        [Ignore]
         [PeropertyMapName("LaneNo")]
         public virtual int LaneNo
         {
@@ -283,43 +355,89 @@ namespace DMT.Models
 
         #endregion
 
-        #region Begin/End
+        #region Payment
 
         /// <summary>
-        /// Gets or sets Begin Date.
+        /// Gets or sets PaymentId
         /// </summary>
-        [PeropertyMapName("Begin")]
-        public DateTime Begin
+        [MaxLength(20)]
+        [PeropertyMapName("PaymentId")]
+        public string PaymentId
         {
-            get { return _Begin; }
+            get
+            {
+                return _PaymentId;
+            }
             set
             {
-                if (_Begin != value)
+                if (_PaymentId != value)
                 {
-                    _Begin = value;
-                    // Raise event.
-                    RaiseChanged("Begin");
-                    RaiseChanged("BeginDateString");
-                    RaiseChanged("BeginTimeString");
+                    _PaymentId = value;
+                    this.RaiseChanged("PaymentId");
                 }
             }
         }
         /// <summary>
-        /// Gets or sets End Date.
+        /// Gets or sets PaymentNameEN
         /// </summary>
-        [PeropertyMapName("End")]
-        public DateTime End
+        [Ignore]
+        [PeropertyMapName("PaymentNameEN")]
+        public virtual string PaymentNameEN
         {
-            get { return _End; }
+            get
+            {
+                return _PaymentNameEN;
+            }
             set
             {
-                if (_End != value)
+                if (_PaymentNameEN != value)
                 {
-                    _End = value;
+                    _PaymentNameEN = value;
+                    this.RaiseChanged("PaymentNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets PaymentNameTH
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("PaymentNameTH")]
+        public virtual string PaymentNameTH
+        {
+            get
+            {
+                return _PaymentNameTH;
+            }
+            set
+            {
+                if (_PaymentNameTH != value)
+                {
+                    _PaymentNameTH = value;
+                    this.RaiseChanged("PaymentNameTH");
+                }
+            }
+        }
+
+        #endregion
+
+        #region Payment Date and Amount
+
+        /// <summary>
+        /// Gets or sets Payment Date.
+        /// </summary>
+        [PeropertyMapName("PaymentDate")]
+        public DateTime PaymentDate
+        {
+            get { return _PaymentDate; }
+            set
+            {
+                if (_PaymentDate != value)
+                {
+                    _PaymentDate = value;
                     // Raise event.
-                    RaiseChanged("End");
-                    RaiseChanged("EndDateString");
-                    RaiseChanged("EndTimeString");
+                    RaiseChanged("PaymentDate");
+                    RaiseChanged("PaymentDateString");
+                    RaiseChanged("PaymentTimeString");
                 }
             }
         }
@@ -328,25 +446,11 @@ namespace DMT.Models
         /// </summary>
         [JsonIgnore]
         [Ignore]
-        public string BeginDateString
+        public string PaymentDateString
         {
             get
             {
-                var ret = (this.Begin == DateTime.MinValue) ? "" : this.Begin.ToThaiDateTimeString("dd/MM/yyyy");
-                return ret;
-            }
-            set { }
-        }
-        /// <summary>
-        /// Gets End Date String.
-        /// </summary>
-        [JsonIgnore]
-        [Ignore]
-        public string EndDateString
-        {
-            get
-            {
-                var ret = (this.End == DateTime.MinValue) ? "" : this.End.ToThaiDateTimeString("dd/MM/yyyy");
+                var ret = (this.PaymentDate == DateTime.MinValue) ? "" : this.PaymentDate.ToThaiDateTimeString("dd/MM/yyyy");
                 return ret;
             }
             set { }
@@ -356,28 +460,31 @@ namespace DMT.Models
         /// </summary>
         [JsonIgnore]
         [Ignore]
-        public string BeginTimeString
+        public string PaymentTimeString
         {
             get
             {
-                var ret = (this.Begin == DateTime.MinValue) ? "" : this.Begin.ToThaiTimeString();
+                var ret = (this.PaymentDate == DateTime.MinValue) ? "" : this.PaymentDate.ToThaiTimeString();
                 return ret;
             }
             set { }
         }
         /// <summary>
-        /// Gets End Time String.
+        /// Gets or sets Amount.
         /// </summary>
-        [JsonIgnore]
-        [Ignore]
-        public string EndTimeString
+        [PeropertyMapName("Amount")]
+        public decimal Amount
         {
-            get
+            get { return _Amount; }
+            set
             {
-                var ret = (this.End == DateTime.MinValue) ? "" : this.End.ToThaiTimeString();
-                return ret;
+                if (_Amount != value)
+                {
+                    _Amount = value;
+                    // Raise event.
+                    RaiseChanged("Amount");
+                }
             }
-            set { }
         }
 
         #endregion
@@ -426,7 +533,7 @@ namespace DMT.Models
 
         #region Internal Class
 
-        internal class FKs : LaneAttendance
+        internal class FKs : LanePayment
         {
             #region TSB
 
@@ -449,6 +556,31 @@ namespace DMT.Models
             {
                 get { return base.TSBNameTH; }
                 set { base.TSBNameTH = value; }
+            }
+
+            #endregion
+
+            #region Plaza
+
+            /// <summary>
+            /// Gets or sets PlazaNameEN
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("PlazaNameEN")]
+            public override string PlazaNameEN
+            {
+                get { return base.PlazaNameEN; }
+                set { base.PlazaNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets PlazaNameTH
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("PlazaNameTH")]
+            public override string PlazaNameTH
+            {
+                get { return base.PlazaNameTH; }
+                set { base.PlazaNameTH = value; }
             }
 
             #endregion
@@ -491,120 +623,167 @@ namespace DMT.Models
             }
 
             #endregion
+
+            #region Payment
+
+            /// <summary>
+            /// Gets or sets PaymentNameEN
+            /// </summary>
+            [MaxLength(50)]
+            [PeropertyMapName("PaymentNameEN")]
+            public override string PaymentNameEN
+            {
+                get { return base.PaymentNameEN; }
+                set { base.PaymentNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets PaymentNameTH
+            /// </summary>
+            [MaxLength(50)]
+            [PeropertyMapName("PaymentNameTH")]
+            public override string PaymentNameTH
+            {
+                get { return base.PaymentNameTH; }
+                set { base.PaymentNameTH = value; }
+            }
+
+            #endregion
         }
 
         #endregion
 
         #region Static Methods
 
-        public static LaneAttendance Create(Lane lane, User supervisor)
+        public static LanePayment Create(Lane lane, User collector,
+            Payment payment, DateTime date, decimal amount)
         {
-            LaneAttendance inst = Create();
+            LanePayment inst = Create();
             TSB tsb = TSB.GetCurrent();
             if (null != tsb) tsb.AssignTo(inst);
             if (null != lane) lane.AssignTo(inst);
-            if (null != supervisor) supervisor.AssignTo(inst);
+            if (null != collector) collector.AssignTo(inst);
+            if (null != payment) payment.AssignTo(inst);
+            inst.PaymentDate = date;
+            inst.Amount = amount;
             return inst;
         }
-        public static List<LaneAttendance> Search(UserShift shift)
+        public static List<LanePayment> Search(UserShift shift)
         {
-            if (null == shift) return new List<LaneAttendance>();
+            if (null == shift) return new List<LanePayment>();
             lock (sync)
             {
                 string cmd = string.Empty;
-
-                cmd += "SELECT LaneAttendance.* ";
+                cmd += "SELECT LanePayment.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM LaneAttendance, TSB, Lane, User ";
+                cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
+                cmd += "  FROM LanePayment, TSB, Plaza, Lane, User, Payment ";
                 cmd += " WHERE Lane.TSBId = TSB.TSBId ";
-                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
-                cmd += "   AND LaneAttendance.UserId = User.UserId ";
-                cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
-                cmd += "   AND LaneAttendance.UserId = ? ";
-                cmd += "   AND (LaneAttendance.Begin >= ? AND LaneAttendance.Begin <= ?)";
-                cmd += "   AND ((LaneAttendance.End >= ? AND LaneAttendance.End <= ?) " +
-                    "        OR  LaneAttendance.End = ?)";
-
-                DateTime end = (shift.End == DateTime.MinValue) ? DateTime.Now : shift.End;
-
-                return NQuery.Query<FKs>(cmd,
-                    shift.UserId,
-                    shift.Begin, end,
-                    shift.Begin, end,
-                    DateTime.MinValue).ToList<LaneAttendance>();
+                cmd += "   AND Plaza.TSBId = Plaza.TSBId ";
+                cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
+                cmd += "   AND LanePayment.UserId = User.UserId ";
+                cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
+                cmd += "   AND LanePayment.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
+                cmd += "   AND LanePayment.Begin >= ? ";
+                cmd += "   AND LanePayment.End <= ? ";
+                return NQuery.Query<FKs>(cmd, shift.Begin, shift.End,
+                    DateTime.MinValue).ToList<LanePayment>();
             }
         }
-        public static List<LaneAttendance> Search(Lane lane)
+        public static List<LanePayment> Search(Lane lane)
         {
-            if (null == lane) return new List<LaneAttendance>();
+            if (null == lane) return new List<LanePayment>();
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT LaneAttendance.* ";
+                cmd += "SELECT LanePayment.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM LaneAttendance, TSB, Lane, User ";
+                cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
+                cmd += "  FROM LanePayment, TSB, Plaza, Lane, User, Payment ";
                 cmd += " WHERE Lane.TSBId = TSB.TSBId ";
-                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
-                cmd += "   AND LaneAttendance.UserId = User.UserId ";
-                cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
-                cmd += "   AND LaneAttendance.LaneId = ? ";
-                return NQuery.Query<FKs>(cmd, lane.LaneId).ToList<LaneAttendance>();
+                cmd += "   AND Plaza.TSBId = Plaza.TSBId ";
+                cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
+                cmd += "   AND LanePayment.UserId = User.UserId ";
+                cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
+                cmd += "   AND LanePayment.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
+                cmd += "   AND LanePayment.LaneId = ? ";
+                return NQuery.Query<FKs>(cmd, lane.LaneId).ToList<LanePayment>();
             }
         }
-        public static LaneAttendance GetCurrentByLane(Lane lane)
+        public static LanePayment GetCurrentByLane(Lane lane)
         {
             if (null == lane) return null;
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT LaneAttendance.* ";
+                cmd += "SELECT LanePayment.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM LaneAttendance, TSB, Lane, User ";
+                cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
+                cmd += "  FROM LanePayment, TSB, Plaza, Lane, User, Payment ";
                 cmd += " WHERE Lane.TSBId = TSB.TSBId ";
-                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
-                cmd += "   AND LaneAttendance.UserId = User.UserId ";
-                cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
-                cmd += "   AND LaneAttendance.LaneId = ? ";
-                cmd += "   AND LaneAttendance.End = ? ";
-                return NQuery.Query<FKs>(cmd, lane.LaneId,
-                    DateTime.MinValue).FirstOrDefault<LaneAttendance>();
+                cmd += "   AND Plaza.TSBId = Plaza.TSBId ";
+                cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
+                cmd += "   AND LanePayment.UserId = User.UserId ";
+                cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
+                cmd += "   AND LanePayment.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
+                cmd += "   AND LanePayment.LaneId = ? ";
+                cmd += "   AND LanePayment.End = ? ";
+                return NQuery.Query<FKs>(cmd,lane.LaneId,
+                    DateTime.MinValue).FirstOrDefault<LanePayment>();
             }
         }
-        public static List<LaneAttendance> Search(DateTime date)
+        public static List<LanePayment> Search(DateTime date)
         {
-            if (null == date || date == DateTime.MinValue) return new List<LaneAttendance>();
+            if (null == date || date == DateTime.MinValue) return new List<LanePayment>();
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT LaneAttendance.* ";
+                cmd += "SELECT LanePayment.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM LaneAttendance, TSB, Lane, User ";
+                cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
+                cmd += "  FROM LanePayment, TSB, Plaza, Lane, User, Payment ";
                 cmd += " WHERE Lane.TSBId = TSB.TSBId ";
-                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
-                cmd += "   AND LaneAttendance.UserId = User.UserId ";
-                cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
-                cmd += "   AND LaneAttendance.Begin >= ? ";
-                cmd += "   AND LaneAttendance.End <= ? ";
+                cmd += "   AND Plaza.TSBId = Plaza.TSBId ";
+                cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
+                cmd += "   AND LanePayment.UserId = User.UserId ";
+                cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
+                cmd += "   AND LanePayment.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
+                cmd += " WHERE LanePayment.Begin >= ? ";
+                cmd += "   AND LanePayment.End <= ? ";
                 return NQuery.Query<FKs>(cmd, date,
-                    DateTime.MinValue).ToList<LaneAttendance>();
+                    DateTime.MinValue).ToList<LanePayment>();
             }
         }
 
         #endregion
     }
 
-    public class LaneAttendanceCreate
+    public class LanePaymentCreate
     {
         public Lane Lane { get; set; }
         public User User { get; set; }
+        public Payment Payment { get; set; }
+        public DateTime Date { get; set; }
+        public decimal Amount { get; set; }
     }
 
     #endregion

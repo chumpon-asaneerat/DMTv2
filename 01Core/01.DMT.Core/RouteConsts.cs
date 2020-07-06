@@ -230,5 +230,16 @@ namespace DMT
                 public const string Url = Lane.Url + @"/" + Name;
             }
         }
+
+        public static class Revenue
+        {
+            public const string Url = RouteConsts.Url + @"/Revenue";
+
+            public static class SaveRevenue
+            {
+                public const string Name = "SaveRevenue";
+                public const string Url = Revenue.Url + @"/" + Name;
+            }
+        }
     }
 }
