@@ -41,6 +41,7 @@ namespace DMT.Models
         private DateTime _Begin = DateTime.MinValue;
         private DateTime _End = DateTime.MinValue;
 
+        private string _RevenueId = string.Empty;
         private DateTime _RevenueDate = DateTime.MinValue;
 
         private int _Status = 0;
@@ -377,8 +378,26 @@ namespace DMT.Models
 
         #endregion
 
-        #region RevenueDate
+        #region Revenue
 
+        /// <summary>
+        /// Gets or sets RevenueId.
+        /// </summary>
+        [MaxLength(20)]
+        [PeropertyMapName("RevenueId")]
+        public string RevenueId
+        {
+            get { return _RevenueId; }
+            set
+            {
+                if (_RevenueId != value)
+                {
+                    _RevenueId = value;
+                    // Raise event.
+                    this.RaiseChanged("RevenueId");
+                }
+            }
+        }
         /// <summary>
         /// Gets or sets Revenue Date.
         /// </summary>
