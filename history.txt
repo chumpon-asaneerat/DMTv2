@@ -11,8 +11,12 @@ Update 2020-07-08 #3
 Update 2020-07-08 #2
 - 
 
+[commited]
 Update 2020-07-08 #1
-- 
+- Note: 
+  - Revenue Slip required LaneList, Start (first lane start), End (last lane end)
+    so in query required to order by date.
+  - Revenu Selection required show Lane plaza description (new column required).
 
 --------------------------------------------------------------------------------------------
 [commited]
