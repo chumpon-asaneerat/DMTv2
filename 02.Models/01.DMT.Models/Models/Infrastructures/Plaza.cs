@@ -246,7 +246,7 @@ namespace DMT.Models
 
         #region Internal Class
 
-        internal class FKs : Plaza
+        public class FKs : Plaza
         {
             #region TSB
 
@@ -272,6 +272,17 @@ namespace DMT.Models
             }
 
             #endregion
+
+            #region Public Methods
+
+            public Plaza ToPlaza()
+            {
+                Plaza inst = new Plaza();
+                this.AssignTo(inst); // set all properties to new instance.
+                return inst;
+            }
+
+            #endregion
         }
 
         #endregion
@@ -288,7 +299,18 @@ namespace DMT.Models
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "  FROM Plaza, TSB ";
                 cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
-                return NQuery.Query<FKs>(cmd).ToList<Plaza>();
+
+                var rets = NQuery.Query<FKs>(cmd).ToList();
+                var results = new List<Plaza>();
+                if (null != rets)
+                {
+                    rets.ForEach(ret =>
+                    {
+                        results.Add(ret.ToPlaza());
+                    });
+                }
+
+                return results;
             }
         }
         public static List<Plaza> Gets()
@@ -310,7 +332,8 @@ namespace DMT.Models
                 cmd += "  FROM Plaza, TSB ";
                 cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
                 cmd += "   AND Plaza.PlazaId = ? ";
-                return NQuery.Query<FKs>(cmd, plazaId).FirstOrDefault<Plaza>();
+                var ret = NQuery.Query<FKs>(cmd, plazaId).FirstOrDefault();
+                return (null != ret) ? ret.ToPlaza() : null;
             }
         }
         public static Plaza Get(string plazaId)
@@ -339,7 +362,17 @@ namespace DMT.Models
                 cmd += "  FROM Plaza, TSB ";
                 cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
                 cmd += "   AND Plaza.TSBId = ? ";
-                return NQuery.Query<FKs>(cmd, tsbId).ToList<Plaza>();
+
+                var rets = NQuery.Query<FKs>(cmd, tsbId).ToList();
+                var results = new List<Plaza>();
+                if (null != rets)
+                {
+                    rets.ForEach(ret =>
+                    {
+                        results.Add(ret.ToPlaza());
+                    });
+                }
+                return results;
             }
         }
 
