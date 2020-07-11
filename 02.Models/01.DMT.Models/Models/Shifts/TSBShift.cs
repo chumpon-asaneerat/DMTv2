@@ -420,7 +420,6 @@ namespace DMT.Models
 
         #region Internal Class
 
-        [Table("TSBShift")]
         public class FKs : TSBShift
         {
             #region TSB
@@ -497,6 +496,17 @@ namespace DMT.Models
             }
 
             #endregion
+
+            #region Public Methods
+
+            public TSBShift ToTSBShift()
+            {
+                TSBShift inst = new TSBShift();
+                this.AssignTo(inst); // set all properties to new instance.
+                return inst;
+            }
+
+            #endregion
         }
 
         #endregion
@@ -519,10 +529,7 @@ namespace DMT.Models
             {
                 if (null == shift) return;
                 
-                var lastFK = GetCurrent();
-                // create new item for work with actual table.
-                TSBShift last = new TSBShift();
-                lastFK.AssignTo(last); // set all properties to new instance.
+                var last = GetCurrent();
 
                 if (null != last)
                 {
@@ -530,14 +537,9 @@ namespace DMT.Models
                     last.End = DateTime.Now;
                     Save(last);
                 }
-
-                // create new item for work with actual table.
-                TSBShift shf = new TSBShift();
-                shift.AssignTo(shf); // set all properties to new instance.
-
                 // Begin new shift.
                 shift.Begin = DateTime.Now;
-                Save(shf);
+                Save(shift);
             }
         }
 
@@ -555,7 +557,8 @@ namespace DMT.Models
                 cmd += "   AND TSBShift.UserId = User.UserId ";
                 cmd += "   AND TSBShift.TSBId = TSB.TSBId ";
                 cmd += "   AND TSBShift.End = ? ";
-                return NQuery.Query<FKs>(cmd, DateTime.MinValue).FirstOrDefault<TSBShift>();
+                var ret = NQuery.Query<FKs>(cmd, DateTime.MinValue).FirstOrDefault();
+                return  ret.ToTSBShift();
             }
         }
 
