@@ -23,8 +23,14 @@ Update 2020-07-11 #4
 Update 2020-07-11 #3
 - 
 
+[commited]
 Update 2020-07-11 #2
-- 
+- Remind Bug Note: 
+  - Change Shift not work propery need to checked.
+  - Slip Summary Report error when open report screen so need to debug code.
+  - Revenue Slip required LaneList, Start (first lane start), End (last lane end)
+    so in query required to order by date.
+  - Revenue Selection required show Lane plaza description (new column required).
 
 [commited]
 Update 2020-07-11 #1
