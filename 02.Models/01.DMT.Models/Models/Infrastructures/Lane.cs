@@ -317,7 +317,7 @@ namespace DMT.Models
 
         #region Internal Class
 
-        internal class FKs : Lane
+        public class FKs : Lane
         {
             #region TSB
 
@@ -368,6 +368,17 @@ namespace DMT.Models
             }
 
             #endregion
+
+            #region Public Methods
+
+            public Lane ToLane()
+            {
+                Lane inst = new Lane();
+                this.AssignTo(inst); // set all properties to new instance.
+                return inst;
+            }
+
+            #endregion
         }
 
         #endregion
@@ -387,7 +398,18 @@ namespace DMT.Models
                 cmd += " WHERE Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND Plaza.TSBId = TSB.TSBId ";
                 cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-                return NQuery.Query<FKs>(cmd).ToList<Lane>();
+
+                var rets = NQuery.Query<FKs>(cmd).ToList();
+                var results = new List<Lane>();
+                if (null != rets)
+                {
+                    rets.ForEach(ret =>
+                    {
+                        results.Add(ret.ToLane());
+                    });
+                }
+
+                return results;
             }
         }
         public static List<Lane> Gets()
@@ -412,7 +434,9 @@ namespace DMT.Models
                 cmd += "   AND Plaza.TSBId = TSB.TSBId ";
                 cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
                 cmd += "   AND Lane.LaneId = ? ";
-                return NQuery.Query<FKs>(cmd, laneId).FirstOrDefault<Lane>();
+
+                var ret = NQuery.Query<FKs>(cmd, laneId).FirstOrDefault();
+                return (null != ret) ? ret.ToLane() : null;
             }
         }
         public static Lane Get(string laneId)
@@ -470,7 +494,17 @@ namespace DMT.Models
                 cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
                 cmd += "   AND Lane.TSBId = ? ";
                 cmd += "   AND Lane.PlazaId = ? ";
-                return NQuery.Query<FKs>(cmd, tsbId, plazaId).ToList<Lane>();
+
+                var rets = NQuery.Query<FKs>(cmd, tsbId, plazaId).ToList();
+                var results = new List<Lane>();
+                if (null != rets)
+                {
+                    rets.ForEach(ret =>
+                    {
+                        results.Add(ret.ToLane());
+                    });
+                }
+                return results;
             }
         }
 

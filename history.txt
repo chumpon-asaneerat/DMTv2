@@ -5,8 +5,15 @@ Update 2020-07-11 #10
 Update 2020-07-11 #9
 - 
 
+[commited]
 Update 2020-07-11 #8
-- 
+- Update Lant FKs class.
+  - Make as public class (required to reflection).
+  - Add method ToLant.
+- Lant static methods.
+  - Gets now returns exact type and add null check logic.
+  - Get now returns exact type and add null check logic.
+  - GetTSBLanes now returns exact type and add null check logic.
 
 [commited]
 Update 2020-07-11 #7
