@@ -14,8 +14,14 @@ Update 2020-07-11 #7
 Update 2020-07-11 #6
 - 
 
+[commited]
 Update 2020-07-11 #5
-- 
+- Update UserShift FKs class.
+  - Make as public class (required to reflection).
+  - Add method ToUserShift.
+- UserShift static methods.
+  - GetCurrent now returns exact type.
+  - GetUserShifts now returns exact type.
 
 [commited]
 Update 2020-07-11 #4

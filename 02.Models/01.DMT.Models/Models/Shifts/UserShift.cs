@@ -419,7 +419,7 @@ namespace DMT.Models
 
         #region Internal Class
 
-        internal class FKs : UserShift
+        public class FKs : UserShift
         {
             #region TSB
 
@@ -495,6 +495,17 @@ namespace DMT.Models
             }
 
             #endregion
+
+            #region Public Methods
+
+            public UserShift ToUserShift()
+            {
+                UserShift inst = new UserShift();
+                this.AssignTo(inst); // set all properties to new instance.
+                return inst;
+            }
+
+            #endregion
         }
 
         #endregion
@@ -559,8 +570,9 @@ namespace DMT.Models
                 cmd += "   AND UserShift.TSBId = TSB.TSBId ";
                 cmd += "   AND UserShift.UserId = ? ";
                 cmd += "   AND UserShift.End = ? ";
-                return NQuery.Query<FKs>(cmd, userId, 
-                    DateTime.MinValue).FirstOrDefault<UserShift>();
+                var ret = NQuery.Query<FKs>(cmd, userId,
+                    DateTime.MinValue).FirstOrDefault();
+                return ret.ToUserShift();
             }
         }
 
@@ -578,7 +590,15 @@ namespace DMT.Models
                 cmd += "   AND UserShift.UserId = User.UserId ";
                 cmd += "   AND UserShift.TSBId = TSB.TSBId ";
                 cmd += "   AND UserShift.UserId = ? ";
-                return NQuery.Query<FKs>(cmd, userId).ToList<UserShift>();
+
+                var rets = NQuery.Query<FKs>(cmd, userId).ToList();
+                var results = new List<UserShift>();
+                rets.ForEach(ret =>
+                {
+                    results.Add(ret.ToUserShift());
+                });
+
+                return results;
             }
         }
 
