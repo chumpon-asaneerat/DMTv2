@@ -420,7 +420,8 @@ namespace DMT.Models
 
         #region Internal Class
 
-        internal class FKs : TSBShift
+        [Table("TSBShift")]
+        public class FKs : TSBShift
         {
             #region TSB
 
@@ -517,16 +518,26 @@ namespace DMT.Models
             lock (sync)
             {
                 if (null == shift) return;
-                var last = GetCurrent();
+                
+                var lastFK = GetCurrent();
+                // create new item for work with actual table.
+                TSBShift last = new TSBShift();
+                lastFK.AssignTo(last); // set all properties to new instance.
+
                 if (null != last)
                 {
                     // End shift.
                     last.End = DateTime.Now;
                     Save(last);
                 }
+
+                // create new item for work with actual table.
+                TSBShift shf = new TSBShift();
+                shift.AssignTo(shf); // set all properties to new instance.
+
                 // Begin new shift.
                 shift.Begin = DateTime.Now;
-                Save(shift);
+                Save(shf);
             }
         }
 

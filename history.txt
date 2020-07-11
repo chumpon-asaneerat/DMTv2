@@ -20,8 +20,10 @@ Update 2020-07-11 #5
 Update 2020-07-11 #4
 - 
 
+[commited]
 Update 2020-07-11 #3
-- 
+- Bug Fixed: 
+  - Change Shift now work but need to refactor code.
 
 [commited]
 Update 2020-07-11 #2
