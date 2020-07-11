@@ -483,7 +483,7 @@ namespace DMT.Models
 
         #region Internal Class
 
-        internal class FKs : UserShiftRevenue
+        public class FKs : UserShiftRevenue
         {
             #region TSB
 
@@ -584,6 +584,17 @@ namespace DMT.Models
             }
 
             #endregion
+
+            #region Public Methods
+
+            public UserShiftRevenue ToUserShiftRevenue()
+            {
+                UserShiftRevenue inst = new UserShiftRevenue();
+                this.AssignTo(inst); // set all properties to new instance.
+                return inst;
+            }
+
+            #endregion
         }
 
         #endregion
@@ -630,8 +641,9 @@ namespace DMT.Models
                 cmd += "   AND UserShiftRevenue.TSBId = TSB.TSBId ";
                 cmd += "   AND UserShiftRevenue.UserShiftId = ? ";
                 cmd += "   AND UserShiftRevenue.PlazaId = ? ";
-                return NQuery.Query<FKs>(cmd, shift.UserShiftId,
-                    plaza.PlazaId).FirstOrDefault<UserShiftRevenue>();
+                var ret = NQuery.Query<FKs>(cmd, shift.UserShiftId,
+                    plaza.PlazaId).FirstOrDefault();
+                return (null != ret) ? ret.ToUserShiftRevenue() : null;
             }
         }
 

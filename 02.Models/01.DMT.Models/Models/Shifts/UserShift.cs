@@ -572,7 +572,7 @@ namespace DMT.Models
                 cmd += "   AND UserShift.End = ? ";
                 var ret = NQuery.Query<FKs>(cmd, userId,
                     DateTime.MinValue).FirstOrDefault();
-                return ret.ToUserShift();
+                return (null != ret) ? ret.ToUserShift() : null;
             }
         }
 
@@ -593,10 +593,13 @@ namespace DMT.Models
 
                 var rets = NQuery.Query<FKs>(cmd, userId).ToList();
                 var results = new List<UserShift>();
-                rets.ForEach(ret =>
+                if (null != rets)
                 {
-                    results.Add(ret.ToUserShift());
-                });
+                    rets.ForEach(ret =>
+                    {
+                        results.Add(ret.ToUserShift());
+                    });
+                }
 
                 return results;
             }

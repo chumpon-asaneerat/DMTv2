@@ -558,7 +558,7 @@ namespace DMT.Models
                 cmd += "   AND TSBShift.TSBId = TSB.TSBId ";
                 cmd += "   AND TSBShift.End = ? ";
                 var ret = NQuery.Query<FKs>(cmd, DateTime.MinValue).FirstOrDefault();
-                return  ret.ToTSBShift();
+                return (null != ret) ? ret.ToTSBShift() : null;
             }
         }
 

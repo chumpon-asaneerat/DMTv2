@@ -11,8 +11,16 @@ Update 2020-07-11 #8
 Update 2020-07-11 #7
 - 
 
+[commited]
 Update 2020-07-11 #6
-- 
+- Update UserShiftRevenue FKs class.
+  - Make as public class (required to reflection).
+  - Add method ToUserShiftRevenue.
+- UserShiftRevenue static methods.
+  - GetPlazaRevenue now returns exact type.
+- TSBShift static methods add null check logic.
+- UserShift static methods add null check logic.
+
 
 [commited]
 Update 2020-07-11 #5
