@@ -289,8 +289,10 @@ namespace DMT.Models
 
         #region Internal Class
 
-        internal class FKs : User
+        public class FKs : User
         {
+            #region Role
+
             /// <summary>
             /// Gets or sets RoleNameEN
             /// </summary>
@@ -311,6 +313,19 @@ namespace DMT.Models
                 get { return base.RoleNameTH; }
                 set { base.RoleNameTH = value; }
             }
+
+            #endregion
+
+            #region Public Methods
+
+            public User ToUser()
+            {
+                User inst = new User();
+                this.AssignTo(inst); // set all properties to new instance.
+                return inst;
+            }
+
+            #endregion
         }
 
         #endregion
@@ -328,7 +343,18 @@ namespace DMT.Models
                 cmd += "     , Role.RoleNameEN, Role.RoleNameTH ";
                 cmd += "  FROM User, Role ";
                 cmd += " WHERE User.RoleId = Role.RoleId ";
-                return NQuery.Query<FKs>(cmd).ToList<User>();
+
+                var rets = NQuery.Query<FKs>(cmd).ToList();
+                var results = new List<User>();
+                if (null != rets)
+                {
+                    rets.ForEach(ret =>
+                    {
+                        results.Add(ret.ToUser());
+                    });
+                }
+
+                return results;
             }
         }
         public static List<User> Gets()
@@ -350,7 +376,9 @@ namespace DMT.Models
                 cmd += "     , Role.RoleNameEN, Role.RoleNameTH ";
                 cmd += "  FROM User, Role ";
                 cmd += " WHERE User.RoleId = Role.RoleId ";
-                return NQuery.Query<FKs>(cmd, userId).FirstOrDefault<User>();
+
+                var ret = NQuery.Query<FKs>(cmd, userId).FirstOrDefault();
+                return (null != ret) ? ret.ToUser() : null;
             }
         }
         public static User Get(string userId)
@@ -372,7 +400,18 @@ namespace DMT.Models
                 cmd += "  FROM User, Role ";
                 cmd += " WHERE User.RoleId = Role.RoleId ";
                 cmd += "   AND User.RoleId = ? ";
-                return NQuery.Query<FKs>(cmd, roleId).ToList<User>();
+
+                var rets = NQuery.Query<FKs>(cmd, roleId).ToList();
+                var results = new List<User>();
+                if (null != rets)
+                {
+                    rets.ForEach(ret =>
+                    {
+                        results.Add(ret.ToUser());
+                    });
+                }
+
+                return results;
             }
         }
 
@@ -387,17 +426,28 @@ namespace DMT.Models
                 cmd += " WHERE User.RoleId = Role.RoleId ";
                 cmd += "   AND User.RoleId = ? ";
                 cmd += "   AND User.Status = ? ";
-                return NQuery.Query<FKs>(cmd, roleId, status).ToList<User>();
+
+                var rets = NQuery.Query<FKs>(cmd, roleId, status).ToList();
+                var results = new List<User>();
+                if (null != rets)
+                {
+                    rets.ForEach(ret =>
+                    {
+                        results.Add(ret.ToUser());
+                    });
+                }
+
+                return results;
             }
         }
 
         /// <summary>
         /// Gets by UserId and password.
         /// </summary>
-        /// <param name="UserId">The UserId.</param>
+        /// <param name="userId">The UserId.</param>
         /// /// <param name="password">The password.</param>
         /// <returns>Returns found record.</returns>
-        public static User GetByUserId(string UserId, string password)
+        public static User GetByUserId(string userId, string password)
         {
             lock (sync)
             {
@@ -408,7 +458,9 @@ namespace DMT.Models
                 cmd += " WHERE User.RoleId = Role.RoleId ";
                 cmd += "   AND User.UserId = ? ";
                 cmd += "   AND User.Password = ? ";
-                return NQuery.Query<FKs>(cmd, UserId, password).FirstOrDefault<User>();
+
+                var ret = NQuery.Query<FKs>(cmd, userId, password).FirstOrDefault();
+                return (null != ret) ? ret.ToUser() : null;
             }
         }
         /// <summary>
@@ -426,7 +478,9 @@ namespace DMT.Models
                 cmd += "  FROM User, Role ";
                 cmd += " WHERE User.RoleId = Role.RoleId ";
                 cmd += "   AND CardId = ? ";
-                return NQuery.Query<FKs>(cmd, cardId).FirstOrDefault<User>();
+
+                var ret = NQuery.Query<FKs>(cmd, cardId).FirstOrDefault();
+                return (null != ret) ? ret.ToUser() : null;
             }
         }
 

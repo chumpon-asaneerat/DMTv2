@@ -1,33 +1,30 @@
 --------------------------------------------------------------------------------------------
-Update 2020-07-12 #5
-- 
-
-Update 2020-07-12 #4
-- 
-
-Update 2020-07-12 #3
-- 
-
 Update 2020-07-12 #2
 - 
 
+[commited]
 Update 2020-07-12 #1
-- 
+- Update User FKs class.
+  - Make as public class (required to reflection).
+  - Add method ToUser.
+- User static methods.
+  - Gets now returns exact type and add null check logic.
+  - Get now returns exact type and add null check logic.
+  - FindByRole now returns exact type and add null check logic.
+  - GetByUserId now returns exact type and add null check logic.
+  - GetByCardId now returns exact type and add null check logic.
 
 --------------------------------------------------------------------------------------------
-Update 2020-07-11 #10
-- 
-
 [commited]
 Update 2020-07-11 #9
 - Prepare history.txt.
 
 [commited]
 Update 2020-07-11 #8
-- Update Lant FKs class.
+- Update Lane FKs class.
   - Make as public class (required to reflection).
-  - Add method ToLant.
-- Lant static methods.
+  - Add method ToLane.
+- Lane static methods.
   - Gets now returns exact type and add null check logic.
   - Get now returns exact type and add null check logic.
   - GetTSBLanes now returns exact type and add null check logic.
