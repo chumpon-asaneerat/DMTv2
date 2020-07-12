@@ -26,9 +26,12 @@
                                     DisplayMemberBinding="{Binding Path=Type}" 
                                     Width="150"/>
                     -->
-                    <GridViewColumn Header="จำนวนเล่ม" 
+                    <GridViewColumn Header="จำนวนเล่ม (35 บาท)" 
                                     DisplayMemberBinding="{Binding Path=Count}" 
-                                    Width="80"/>
+                                    Width="150"/>
+                    <GridViewColumn Header="จำนวนเล่ม (80 บาท)" 
+                                    DisplayMemberBinding="{Binding Path=Count80}" 
+                                    Width="150"/>
                     <GridViewColumn Header="" 
                                     Width="150">
                         <GridViewColumn.CellTemplate>

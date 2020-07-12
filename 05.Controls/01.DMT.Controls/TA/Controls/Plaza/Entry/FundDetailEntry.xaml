@@ -1,0 +1,110 @@
+﻿<UserControl x:Class="DMT.TA.Controls.Plaza.Entry.FundDetailEntry"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="150" 
+             d:DesignWidth="320">
+    <Grid>
+        <!--
+        <Grid.Effect>
+            <DropShadowEffect ShadowDepth="1" />
+        </Grid.Effect>
+        -->
+        <Border BorderBrush="AliceBlue" 
+                BorderThickness="1">
+            <DockPanel>
+                <!-- Description -->
+                <Border DockPanel.Dock="Top">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#7F323232" Offset="0"/>
+                            <GradientStop Color="#7FAAAAAA" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <TextBlock Margin="2"
+                               DockPanel.Dock="Left" 
+                               TextAlignment="Center"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Text="{Binding DescriptionDetail}"/>
+                </Border>
+                <StackPanel Orientation="Vertical" Margin="10 5 10 5">
+                    <!-- Seperator -->
+                    <Grid Height="5"/>
+                    <!-- 1 BHT -->
+                    <DockPanel Margin="5 0 5 0">
+                        <TextBlock Margin="2"
+                               DockPanel.Dock="Left" 
+                               TextAlignment="Right"
+                               Text="จำนวนเงินขอแลกเปลี่ยน"
+                               Width="150"/>
+                        <TextBlock Margin="2" 
+                                   DockPanel.Dock="Right"  
+                                   TextAlignment="Left" 
+                                   Text="บาท" 
+                                   Width="25"/>
+                        <TextBox Margin="2"
+                             TextAlignment="Right"
+                             Text="{Binding EXCHANGE}"
+                                 Width="90"/>
+                    </DockPanel>
+                    <!-- 2 BHT -->
+                    <DockPanel Margin="5 0 5 0">
+                        <TextBlock Margin="2"
+                               DockPanel.Dock="Left" 
+                               TextAlignment="Right"
+                               Text="จำนวนเงินขอยืมเพิ่ม"
+                               Width="150"/>
+                        <TextBlock Margin="2" 
+                                   DockPanel.Dock="Right"  
+                                   TextAlignment="Left" 
+                                   Text="บาท" 
+                                   Width="25"/>
+                        <TextBox Margin="2"
+                             TextAlignment="Right"
+                             Text="{Binding BORROW}"
+                                 Width="90"/>
+                    </DockPanel>
+                    <!-- 5 BHT -->
+                    <DockPanel Margin="5 0 5 0">
+                        <TextBlock Margin="2" 
+                               DockPanel.Dock="Left"  
+                               TextAlignment="Right" 
+                               Text="จำนวนเงินหมุนเวียน" 
+                               Width="150"/>
+                        <TextBlock Margin="2" 
+                                   DockPanel.Dock="Right"  
+                                   TextAlignment="Left" 
+                                   Text="บาท" 
+                                   Width="25"/>
+                        <TextBox Margin="2"
+                             TextAlignment="Right"
+                             Text="{Binding REVOLVINGFUNDS}"
+                                 Width="90"/>
+                    </DockPanel>
+                    <Grid Height="5"></Grid>
+                    <DockPanel Margin="5 0 5 0">
+                        <TextBlock Margin="2" 
+                            DockPanel.Dock="Left"  
+                            TextAlignment="Right" 
+                            Text="จำนวนเงินรวม" 
+                            Width="150"/>
+                        <TextBlock Margin="2" 
+                                   DockPanel.Dock="Right"  
+                                   TextAlignment="Left" 
+                                   Text="บาท" 
+                                   Width="25"/>
+                        <TextBox Margin="2"
+                            TextAlignment="Right"
+                                 IsEnabled="False"
+                            Text="{Binding TOTALAMOUNT}"
+                                 Width="90"/>
+
+                    </DockPanel>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+    </Grid>
+</UserControl>

@@ -73,9 +73,9 @@
                                        TextAlignment="Center"
                                        TextWrapping="Wrap">
                                 <!--
-                                <Run Text="เปิดผลัดงาน" />
+                                <Run Text="เปิดกะงาน" />
                                 <LineBreak />
-                                <Run Text="เปิดผลัดงาน 2" />
+                                <Run Text="เปิดกะงาน 2" />
                                 -->
                             </TextBlock>
                             <Grid Height="10" />

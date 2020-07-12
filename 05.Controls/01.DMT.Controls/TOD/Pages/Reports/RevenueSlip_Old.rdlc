@@ -287,7 +287,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>วันที่เริ่มต้นผลัด</Value>
+                <Value>วันที่เริ่มต้นกะ</Value>
                 <Style>
                   <FontFamily>Tahoma</FontFamily>
                 </Style>
@@ -319,7 +319,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>วันที่สิ้นสุดผลัด</Value>
+                <Value>วันที่สิ้นสุดกะ</Value>
                 <Style>
                   <FontFamily>Tahoma</FontFamily>
                 </Style>

@@ -12,10 +12,10 @@
         <ListView x:Name="listView" FontSize="18" ItemsSource="{Binding}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="เริ่มต้นผลัด" 
+                    <GridViewColumn Header="เริ่มต้นกะ" 
                                     DisplayMemberBinding="{Binding Path=BeginDateString}" 
                                     Width="200"/>
-                    <GridViewColumn Header="สิ้นสุดผลัด" 
+                    <GridViewColumn Header="สิ้นสุดกะ" 
                                     DisplayMemberBinding="{Binding Path=EndDateString}" 
                                     Width="200"/>
                     <GridViewColumn Header="รหัสพนักงาน" 

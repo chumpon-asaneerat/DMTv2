@@ -91,6 +91,21 @@
     <Compile Include="TA\Controls\Collector\Coupon\View\CouponReturnView.xaml.cs">
       <DependentUpon>CouponReturnView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TA\Controls\Plaza\Entry\FundDetailEntry.xaml.cs">
+      <DependentUpon>FundDetailEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Controls\Plaza\Entry\LoanMoney2Entry.xaml.cs">
+      <DependentUpon>LoanMoney2Entry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Controls\Plaza\Entry\LoanMoneyEntry.xaml.cs">
+      <DependentUpon>LoanMoneyEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Controls\Plaza\View\FundPlaza2View.xaml.cs">
+      <DependentUpon>FundPlaza2View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Controls\Plaza\View\FundPlaza3View.xaml.cs">
+      <DependentUpon>FundPlaza3View.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TA\Pages\Collector\CollectorFundViewPage.xaml.cs">
       <DependentUpon>CollectorFundViewPage.xaml</DependentUpon>
     </Compile>
@@ -117,6 +132,12 @@
     </Compile>
     <Compile Include="TA\Pages\Plaza\PlazaFundReceivedReturnPage.xaml.cs">
       <DependentUpon>PlazaFundReceivedReturnPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Pages\Plaza\PlazaReceivedFundReturnPage.xaml.cs">
+      <DependentUpon>PlazaReceivedFundReturnPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Pages\Plaza\PlazaReceivedReturnPage.xaml.cs">
+      <DependentUpon>PlazaReceivedReturnPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TA\Pages\Reports\CollectorFundSummaryReportPage.xaml.cs">
       <DependentUpon>CollectorFundSummaryReportPage.xaml</DependentUpon>
@@ -362,6 +383,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="TA\Controls\Plaza\Entry\FundDetailEntry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Controls\Plaza\Entry\LoanMoney2Entry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Controls\Plaza\Entry\LoanMoneyEntry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Controls\Plaza\View\FundPlaza2View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Controls\Plaza\View\FundPlaza3View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="TA\Pages\Collector\CollectorFundViewPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -395,6 +436,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="TA\Pages\Plaza\PlazaFundReceivedReturnPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Pages\Plaza\PlazaReceivedFundReturnPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Pages\Plaza\PlazaReceivedReturnPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

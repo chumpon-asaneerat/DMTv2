@@ -151,7 +151,7 @@
                            VerticalAlignment="Center"
                            FontSize="18"
                            Foreground="WhiteSmoke"
-                           Text="รายการผลัดที่ยังไม่ได้ทำการป้อนรายได้" />
+                           Text="รายการกะที่ยังไม่ได้ทำการป้อนรายได้" />
             </Border>
             <Border BorderBrush="Silver"
                     BorderThickness="1"

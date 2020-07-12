@@ -34,48 +34,9 @@ namespace DMT.TA.Pages.Menu
 
         #region Button (Menu) Command Handlers
 
-        private void plazaReceivedReturnFund_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                /*
-                // Plaza Fund Received
-                var page = new TA.Plaza.PlazaFundReceivedReturnPage();
-
-                BindingList<Models.FundEntry> funds = new BindingList<Models.FundEntry>();
-                Models.FundEntry fund;
-
-                fund = new Models.FundEntry();
-                fund.Date = new DateTime(2020, 3, 12, 09, 05, 00);
-                fund.StaffId = "14055";
-                fund.StaffName = "นางวิภา สวัสดิวัฒน์";
-                fund.BHT1 = 10;
-                fund.BHT2 = 10;
-                fund.BHT5 = 10;
-                fund.BHT10c = 10;
-                fund.BHT20 = 10;
-                fund.BHT50 = 10;
-                fund.BHT100 = 10;
-                fund.BHT500 = 10;
-                fund.BHT1000 = 10;
-                funds.Add(fund);
-
-                page.Setup(plaza, funds);
-                */
-
-                var page = new DMT.TA.Pages.Plaza.PlazaCouponReceivedReturnPage();
-
-                PageContentManager.Instance.Current = page;
-            }
-            catch (Exception)
-            {
-                //Console.WriteLine("Refresh data error.");
-            }
-        }
-
         private void exchangeBankNote_Click(object sender, RoutedEventArgs e)
         {
-            
+
             try
             {
                 // Exchange Fund Page.
@@ -95,10 +56,10 @@ namespace DMT.TA.Pages.Menu
 
         private void plazaReceivedCoupon_Click(object sender, RoutedEventArgs e)
         {
-            
+
             try
             {
-                
+
                 var page = new Pages.Coupon.CouponReturnPage();
                 /*
                 List<Models.Coupon35> coupons = new List<Models.Coupon35>();
@@ -417,49 +378,84 @@ namespace DMT.TA.Pages.Menu
             }
         }
 
-        private void plazaAllStock_Click(object sender, RoutedEventArgs e)
+        private void plazaReceivedReturnFund_Click(object sender, RoutedEventArgs e)
         {
-            var win = new Windows.Plaza.PlazaStockSummaryWindow();
-            if (win.ShowDialog() == false)
-            {
-                return;
-            }
-            /*
-            var win = new Windows.TA.Plaza.PlazaStockWindow();
-            win.Owner = Application.Current.MainWindow;
-
-            Models.FundEntry fund = new Models.FundEntry();
-            fund.Description = "เงินยืมทอน";
-            fund.HasRemark = false;
-            fund.BHT1 = 100;
-            fund.BHT2 = 100;
-            fund.BHT5 = 100;
-            fund.BHT10c = 100;
-            fund.BHT20 = 100;
-            fund.BHT50 = 100;
-            fund.BHT100 = 100;
-            fund.BHT500 = 100;
-            fund.BHT1000 = 100;
-
-            Models.CouponEntry coupon = new Models.CouponEntry();
-            coupon.Description = "คุปอง";
-            coupon.BHT35 = 32;
-            coupon.BHT80 = 43;
-            win.Setup(fund, coupon);
-
-            if (win.ShowDialog() == false)
-            {
-                return;
-            }
             try
             {
+                /*
+                // Plaza Fund Received
+                var page = new TA.Plaza.PlazaFundReceivedReturnPage();
 
+                BindingList<Models.FundEntry> funds = new BindingList<Models.FundEntry>();
+                Models.FundEntry fund;
+
+                fund = new Models.FundEntry();
+                fund.Date = new DateTime(2020, 3, 12, 09, 05, 00);
+                fund.StaffId = "14055";
+                fund.StaffName = "นางวิภา สวัสดิวัฒน์";
+                fund.BHT1 = 10;
+                fund.BHT2 = 10;
+                fund.BHT5 = 10;
+                fund.BHT10c = 10;
+                fund.BHT20 = 10;
+                fund.BHT50 = 10;
+                fund.BHT100 = 10;
+                fund.BHT500 = 10;
+                fund.BHT1000 = 10;
+                funds.Add(fund);
+
+                page.Setup(plaza, funds);
+                */
+
+                var page = new DMT.TA.Pages.Plaza.PlazaCouponReceivedReturnPage();
+
+                PageContentManager.Instance.Current = page;
             }
             catch (Exception)
             {
                 //Console.WriteLine("Refresh data error.");
             }
-            */
+        }
+
+        private void refundBankNote_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Plaza Fund Received
+                var page = new DMT.TA.Pages.Plaza.PlazaReceivedReturnPage();
+
+                PageContentManager.Instance.Current = page;
+            }
+            catch (Exception)
+            {
+                //Console.WriteLine("Refresh data error.");
+            }
+        }
+
+        private void plazaAllCoupon_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void exchangeMoney_Click(object sender, RoutedEventArgs e)
+        {
+            var page = new DMT.TA.Pages.Plaza.PlazaReceivedFundReturnPage();
+
+            PageContentManager.Instance.Current = page;
+        }
+
+        private void collectorFundReport_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var page = new Reports.CollectorFundSummaryReportPage();
+                PageContentManager.Instance.Current = page;
+            }
+            catch (Exception)
+            {
+                //Console.WriteLine("Refresh data error.");
+            }
+
         }
 
         private void collectorFund_Click(object sender, RoutedEventArgs e)
@@ -567,21 +563,6 @@ namespace DMT.TA.Pages.Menu
             
         }
 
-        private void collectorFundReport_Click(object sender, RoutedEventArgs e)
-        {
-            
-            try
-            {
-                var page = new Reports.CollectorFundSummaryReportPage();
-                PageContentManager.Instance.Current = page;
-            }
-            catch (Exception)
-            {
-                //Console.WriteLine("Refresh data error.");
-            }
-
-        }
-
         private void collectorReveivedCoupon_Click(object sender, RoutedEventArgs e)
         {
             var page = new Coupon.ReceivedCouponPage();
@@ -633,6 +614,11 @@ namespace DMT.TA.Pages.Menu
             */
         }
 
+        private void changeBorrowingHistory_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void collectorReturnCoupon_Click(object sender, RoutedEventArgs e)
         {
             var page = new Coupon.ReturnCouponPage();
@@ -676,6 +662,51 @@ namespace DMT.TA.Pages.Menu
                 page.Setup(coupons);
 
                 PageContentManager.Instance.Current = page;
+            }
+            catch (Exception)
+            {
+                //Console.WriteLine("Refresh data error.");
+            }
+            */
+        }
+
+        private void plazaAllStock_Click(object sender, RoutedEventArgs e)
+        {
+            var win = new Windows.Plaza.PlazaStockSummaryWindow();
+            if (win.ShowDialog() == false)
+            {
+                return;
+            }
+            /*
+            var win = new Windows.TA.Plaza.PlazaStockWindow();
+            win.Owner = Application.Current.MainWindow;
+
+            Models.FundEntry fund = new Models.FundEntry();
+            fund.Description = "เงินยืมทอน";
+            fund.HasRemark = false;
+            fund.BHT1 = 100;
+            fund.BHT2 = 100;
+            fund.BHT5 = 100;
+            fund.BHT10c = 100;
+            fund.BHT20 = 100;
+            fund.BHT50 = 100;
+            fund.BHT100 = 100;
+            fund.BHT500 = 100;
+            fund.BHT1000 = 100;
+
+            Models.CouponEntry coupon = new Models.CouponEntry();
+            coupon.Description = "คุปอง";
+            coupon.BHT35 = 32;
+            coupon.BHT80 = 43;
+            win.Setup(fund, coupon);
+
+            if (win.ShowDialog() == false)
+            {
+                return;
+            }
+            try
+            {
+
             }
             catch (Exception)
             {

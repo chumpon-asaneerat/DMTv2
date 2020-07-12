@@ -54,13 +54,6 @@
                         VerticalContentAlignment="Stretch"
                         Click="beginJob_Click">
                     <DockPanel>
-                        <Image DockPanel.Dock="Left" 
-                               Height="80"
-                               Width="80"
-                               Margin="40,5,5,5"
-                               Source="/DMT.Controls;component/Images/Menu/begin_of_job.png" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center" />
                         <StackPanel Orientation="Vertical"
                                     VerticalAlignment="Center">
                             <TextBlock FontSize="28" 
@@ -69,9 +62,9 @@
                                        TextAlignment="Center"
                                        TextWrapping="Wrap">
                                 <!--
-                                <Run Text="เปิดผลัดงาน" />
+                                <Run Text="เปิดกะงาน" />
                                 <LineBreak />
-                                <Run Text="เปิดผลัดงาน 2" />
+                                <Run Text="เปิดกะงาน 2" />
                                 -->
                             </TextBlock>
                             <Grid Height="10" />
@@ -113,13 +106,6 @@
                         VerticalContentAlignment="Stretch"
                         Click="revEntry_Click">
                     <DockPanel>
-                        <Image DockPanel.Dock="Left" 
-                               Height="80"
-                               Width="80"
-                               Margin="40,5,5,5"
-                               Source="/DMT.Controls;component/Images/Menu/reventry.png" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center" />
                         <StackPanel Orientation="Vertical"
                                     VerticalAlignment="Center">
                             <TextBlock FontSize="28" 
@@ -146,13 +132,6 @@
                         VerticalContentAlignment="Stretch"
                         Click="reprintRevSlip_Click">
                     <DockPanel>
-                        <Image DockPanel.Dock="Left" 
-                               Height="80"
-                               Width="80"
-                               Margin="40,5,5,5"
-                               Source="/DMT.Controls;component/Images/Menu/report1.png" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center" />
                         <StackPanel Orientation="Vertical"
                                     VerticalAlignment="Center">
                             <TextBlock FontSize="28" 
@@ -203,13 +182,6 @@
                         VerticalContentAlignment="Stretch"
                         Click="changeShift_Click">
                     <DockPanel>
-                        <Image DockPanel.Dock="Left" 
-                               Height="80"
-                               Width="80"
-                               Margin="40,5,5,5"
-                               Source="/DMT.Controls;component/Images/Menu/clock.png" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center" />
                         <StackPanel Orientation="Vertical"
                                     VerticalAlignment="Center">
                             <TextBlock FontSize="28" 
@@ -237,13 +209,6 @@
                         VerticalContentAlignment="Stretch"
                         Click="reportMenu_Click">
                     <DockPanel>
-                        <Image DockPanel.Dock="Left" 
-                               Height="80"
-                               Width="80"
-                               Margin="40,5,5,5"
-                               Source="/DMT.Controls;component/Images/Menu/report1.png" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center" />
                         <StackPanel Orientation="Vertical"
                                     VerticalAlignment="Center">
                             <TextBlock FontSize="28" 

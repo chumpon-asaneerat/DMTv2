@@ -24,9 +24,12 @@
                     <GridViewColumn Header="ชื่อพนักงาน" 
                                     DisplayMemberBinding="{Binding Path=StaffName}" 
                                     Width="250"/>
-                    <GridViewColumn Header="จำนวนเงิน" 
+                    <GridViewColumn Header="ขอแลก" 
                                     DisplayMemberBinding="{Binding Path=BHTTotal}" 
-                                    Width="150"/>
+                                    Width="100"/>
+                    <GridViewColumn Header="ขอเบิก" 
+                                    DisplayMemberBinding="{Binding Path=TOTALAMOUNT}" 
+                                    Width="100"/>
                     <GridViewColumn Header="สถานะ" 
                                     DisplayMemberBinding="{Binding Path=Status}" 
                                     Width="150"/>

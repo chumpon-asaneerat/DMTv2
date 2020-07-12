@@ -91,7 +91,7 @@ namespace DMT.TOD.Pages.Revenue
             {
                 if (isNew)
                 {
-                    MessageBox.Show("ไม่สามารถสร้างรายการสำหรับจัดเก็บผลัดรายได้.");
+                    MessageBox.Show("ไม่สามารถสร้างรายการสำหรับจัดเก็บกะรายได้.");
                 }
                 else
                 {
