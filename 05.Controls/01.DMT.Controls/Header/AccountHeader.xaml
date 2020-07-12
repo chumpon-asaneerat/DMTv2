@@ -22,11 +22,13 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="170"/>
             </Grid.ColumnDefinitions>
             <ctrl:HeaderLogo x:Name="hdrLogo" Grid.Column="0" />
-            <ctrl:HeaderUser x:Name="hdrUser" Grid.Column="1" />
-            <ctrl:HeaderDateTime x:Name="hdrDateTime" Grid.Column="2" />
+            <ctrl:HeaderPlaza x:Name="hdrPlaza" Grid.Column="1" />
+            <ctrl:HeaderSupervisor x:Name="hdrSupervisor" Grid.Column="2" />
+            <ctrl:HeaderDateTime x:Name="hdrDateTime" Grid.Column="3" />
         </Grid>
     </Grid>
 </UserControl>

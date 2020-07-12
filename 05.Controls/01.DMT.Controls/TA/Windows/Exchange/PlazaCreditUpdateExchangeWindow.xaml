@@ -12,7 +12,7 @@
         VerticalAlignment="Center" 
         WindowStartupLocation="CenterOwner"
         Height="580" 
-        Width="1000"
+        Width="1100"
         Background="DimGray">
     <Grid Margin="15">
         <DockPanel>
@@ -99,6 +99,8 @@
                     <ColumnDefinition Width="10" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="10" />
                 </Grid.ColumnDefinitions>
                 <ctrl:PlazaFundEntry x:Name="requestEntry"
                                 Grid.Column="1"
@@ -122,8 +124,18 @@
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center">
                 </Grid>
-                <ctrl:PlazaFundEntry x:Name="exchangeEntry"
+                <ctrl:PlazaFundEntry x:Name="trueReciveEntry"
                                 Grid.Column="5"
+                                FontSize="16"
+                                Background="Orange"
+                                Foreground="WhiteSmoke"/>
+                <Grid Grid.Column="6"
+                      Margin="5"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center">
+                </Grid>
+                <ctrl:PlazaFundEntry x:Name="exchangeEntry"
+                                Grid.Column="7"
                                 FontSize="16"
                                 Background="DarkRed"
                                 Foreground="WhiteSmoke"/>

@@ -16,6 +16,14 @@
         Background="DimGray">
     <Grid Margin="15">
         <DockPanel>
+            <Border DockPanel.Dock="Top">
+                <TextBlock x:Name="txtDescription" Margin="2" FontSize="40" FontWeight="Bold" Foreground="White" 
+                               DockPanel.Dock="Left" 
+                               TextAlignment="Center"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Text="{Binding Description}"/>
+            </Border>
             <DockPanel DockPanel.Dock="Bottom" Height="60">
                 <Grid Width="5" DockPanel.Dock="Right"></Grid>
                 <Button x:Name="cmdOK"

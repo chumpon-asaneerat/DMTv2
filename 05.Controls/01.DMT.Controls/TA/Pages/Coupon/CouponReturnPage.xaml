@@ -113,10 +113,16 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height ="50" />
+                    <RowDefinition Height ="40" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height ="45" />
                 </Grid.RowDefinitions>
-                <DataGrid x:Name="listView" FontSize="18" ItemsSource="{Binding}" Grid.Column="1" Grid.Row="1"
+                <TextBox x:Name="txtNewCouponCode35" Margin="5,7,0,0" Grid.Column="1" Grid.Row="1" 
+                         HorizontalAlignment="Left" 
+                         TextWrapping="Wrap" 
+                         FontSize="18" 
+                         VerticalAlignment="Top" Width="180"/>
+                <DataGrid x:Name="listView" FontSize="18" ItemsSource="{Binding}" Grid.Column="1" Grid.Row="2"
                                     SelectionMode="Extended"
                                     AlternatingRowBackground="AntiqueWhite"
                                     AutoGenerateColumns="False"
@@ -140,7 +146,7 @@
                         </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-                <DataGrid x:Name="listViewUse" FontSize="18" ItemsSource="{Binding}" Grid.Column="3" Grid.Row="1"
+                <DataGrid x:Name="listViewUse" FontSize="18" ItemsSource="{Binding}" Grid.Column="3" Grid.Row="2"
                                     SelectionMode="Extended"
                                     AlternatingRowBackground="AntiqueWhite"
                                     AutoGenerateColumns="False"
@@ -164,7 +170,7 @@
                         </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button Name="btnNext35"  Grid.Column="2" Grid.Row="1"
+                <Button Name="btnNext35"  Grid.Column="2" Grid.Row="2"
                         HorizontalAlignment="Left" 
                         Margin="10,120,0,0" 
                         VerticalAlignment="Top" 
@@ -176,7 +182,7 @@
                                 HorizontalAlignment="Center" 
                                 VerticalAlignment="Center" Source="/DMT.Controls;component/Images/Button/next.png" />
                 </Button>
-                <Button Name="btnBack35"  Grid.Column="2" Grid.Row="1"
+                <Button Name="btnBack35"  Grid.Column="2" Grid.Row="2"
                         HorizontalAlignment="Left" 
                         Margin="10,220,0,0" 
                         VerticalAlignment="Top" 
@@ -188,7 +194,12 @@
                                 HorizontalAlignment="Center" 
                                 VerticalAlignment="Center" Source="/DMT.Controls;component/Images/Button/back.png" />
                 </Button>
-                <DataGrid x:Name="listView80" FontSize="18" ItemsSource="{Binding}" Grid.Column="5" Grid.Row="1"
+                <TextBox x:Name="txtNewCouponCode80" Margin="10,7,0,0" Grid.Column="5" Grid.Row="1" 
+                         HorizontalAlignment="Left" 
+                         TextWrapping="Wrap" 
+                         FontSize="18" 
+                         VerticalAlignment="Top" Width="180"/>
+                <DataGrid x:Name="listView80" FontSize="18" ItemsSource="{Binding}" Grid.Column="5" Grid.Row="2"
                            AlternatingRowBackground="AntiqueWhite"
                                     AutoGenerateColumns="False"
                                     CanUserAddRows="False"
@@ -211,7 +222,7 @@
                         </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-                <DataGrid x:Name="listViewUse80" FontSize="18" ItemsSource="{Binding}" Grid.Column="7" Grid.Row="1"
+                <DataGrid x:Name="listViewUse80" FontSize="18" ItemsSource="{Binding}" Grid.Column="7" Grid.Row="2"
                                     AlternatingRowBackground="AntiqueWhite"
                                     AutoGenerateColumns="False"
                                     CanUserAddRows="False"
@@ -234,7 +245,7 @@
                         </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button Name="btnNext80"  Grid.Column="6" Grid.Row="1"
+                <Button Name="btnNext80"  Grid.Column="6" Grid.Row="2"
                         HorizontalAlignment="Left" 
                         Margin="10,120,0,0" 
                         VerticalAlignment="Top" 
@@ -246,7 +257,7 @@
                                 HorizontalAlignment="Center" 
                                 VerticalAlignment="Center" Source="/DMT.Controls;component/Images/Button/next.png" />
                 </Button>
-                <Button Name="btnBack80"  Grid.Column="6" Grid.Row="1"
+                <Button Name="btnBack80"  Grid.Column="6" Grid.Row="2"
                         HorizontalAlignment="Left" 
                         Margin="10,220,0,0" 
                         VerticalAlignment="Top" 
@@ -284,11 +295,11 @@
                     FontFamily="Tahoma" 
                     HorizontalAlignment="Center" Margin="6,5,4,0" 
                     VerticalAlignment="Top" 
-                    Width="70" Grid.Row="2" />
+                    Width="70" Grid.Row="3" />
                 <TextBox 
                     Name="txtCoupon35"
                     Grid.Column="1" 
-                    Grid.Row="2" 
+                    Grid.Row="3" 
                     FontSize="25" 
                     FontWeight="Normal" 
                     FontFamily="Tahoma" 
@@ -301,7 +312,7 @@
                 <TextBox 
                     Name="txtCouponU35"
                     Grid.Column="3" 
-                    Grid.Row="2" 
+                    Grid.Row="3" 
                     FontSize="25" 
                     FontWeight="Normal" 
                     FontFamily="Tahoma" 
@@ -316,7 +327,7 @@
                 <TextBox 
                     Name="txtCoupon80"
                     Grid.Column="5" 
-                    Grid.Row="2" 
+                    Grid.Row="3" 
                     FontSize="25" 
                     FontWeight="Normal" 
                     FontFamily="Tahoma" 
@@ -331,7 +342,7 @@
                 <TextBox 
                     Name="txtCouponU80"
                     Grid.Column="7" 
-                    Grid.Row="2" 
+                    Grid.Row="3" 
                     FontSize="25" 
                     FontWeight="Normal" 
                     FontFamily="Tahoma" 
@@ -349,7 +360,7 @@
                     FontFamily="Tahoma" 
                     HorizontalAlignment="Left" Margin="137,5,0,0" 
                     VerticalAlignment="Top" 
-                    Width="50" Grid.Row="2" Grid.Column="1" />
+                    Width="50" Grid.Row="3" Grid.Column="1" />
                 <Label Content="เล่ม" 
                     FontSize="20" 
                     Foreground="White"
@@ -357,7 +368,7 @@
                     FontFamily="Tahoma" 
                     HorizontalAlignment="Left" Margin="137,5,0,0" 
                     VerticalAlignment="Top" 
-                    Width="50" Grid.Row="2" Grid.Column="3" />
+                    Width="50" Grid.Row="3" Grid.Column="3" />
                 <Label Content="เล่ม" 
                     FontSize="20" 
                     Foreground="White"
@@ -365,7 +376,7 @@
                     FontFamily="Tahoma" 
                     HorizontalAlignment="Left" Margin="137,5,0,0" 
                     VerticalAlignment="Top" 
-                    Width="50" Grid.Row="2" Grid.Column="5" />
+                    Width="50" Grid.Row="3" Grid.Column="5" />
                 <Label Content="เล่ม" 
                     FontSize="20" 
                     Foreground="White"
@@ -373,7 +384,7 @@
                     FontFamily="Tahoma" 
                     HorizontalAlignment="Left" Margin="137,5,0,0" 
                     VerticalAlignment="Top" 
-                    Width="50" Grid.Row="2" Grid.Column="7" />
+                    Width="50" Grid.Row="3" Grid.Column="7" />
             </Grid>
         </StackPanel>
 

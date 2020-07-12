@@ -61,30 +61,75 @@
                     BorderThickness="1"
                     Background="Silver">
                 <DockPanel>
-                    <Button x:Name="cmdAppend" 
+                    <Button x:Name="cmdAppend"
                             DockPanel.Dock="Left"
-                            Margin="2"
-                            FontSize="18"
-                            HorizontalAlignment="Center"
+                        Foreground="White"
+                        HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            HorizontalContentAlignment="Center"
-                            VerticalContentAlignment="Center"
-                            Content="คืนเงินยืมทอน"
-                            Height="45"
-                            Width="200"
-                            Click="cmdAppend_Click"/>
-                    <Button x:Name="cmdCancel" 
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Height="50"
+                            Width="220"
+                        Click="cmdAppend_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                        </Button.Background>
+                        <DockPanel>
+                            <Grid Width="5"></Grid>
+                            <Image DockPanel.Dock="Left" 
+                               Height="50"
+                               Width="50"
+                               Source="/DMT.Controls;component/Images/Button/Money.png" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                            <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                                <TextBlock FontSize="20" 
+                                       HorizontalAlignment="Center"
+                                       Text="คืนเงินยืมทอน"
+                                       FontWeight="Bold"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                                </TextBlock>
+                                <Grid Height="10" />
+                            </StackPanel>
+                        </DockPanel>
+                    </Button>
+                    <Button x:Name="cmdCancel"
                             DockPanel.Dock="Right"
                             Margin="2"
-                            FontSize="18"
+                            Foreground="White"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            HorizontalContentAlignment="Center"
-                            VerticalContentAlignment="Center"
-                            Content="กลับสู่หน้าจอหลัก"
-                            Height="45"
-                            Width="200"
-                            Click="cmdCancel_Click"/>
+                            HorizontalContentAlignment="Stretch"
+                            VerticalContentAlignment="Stretch"
+                            Height="50"
+                            Width="220"
+                            Click="cmdCancel_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                        </Button.Background>
+                        <DockPanel>
+                            <Grid Width="5"></Grid>
+                            <Image DockPanel.Dock="Left" 
+                               Height="50"
+                               Width="50"
+                               Source="/DMT.Controls;component/Images/Button/Home.png" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" />
+                            <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                                <TextBlock FontSize="20" 
+                                       HorizontalAlignment="Center"
+                                       Text="กลับสู่หน้าจอหลัก"
+                                       FontWeight="Bold"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                                </TextBlock>
+                                <Grid Height="10" />
+                            </StackPanel>
+                        </DockPanel>
+                    </Button>
                     <Grid />
                 </DockPanel>
             </Border>

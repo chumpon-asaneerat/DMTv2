@@ -163,6 +163,9 @@
     <Compile Include="TA\Controls\Exchange\View\PlazaRequestExchangeView.xaml.cs">
       <DependentUpon>PlazaRequestExchangeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TA\Windows\Collector\Credit\MessageWindow.xaml.cs">
+      <DependentUpon>MessageWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TA\Windows\Coupon\CouponEditWindow.xaml.cs">
       <DependentUpon>CouponEditWindow.xaml</DependentUpon>
     </Compile>
@@ -486,6 +489,10 @@
     <Page Include="TA\Controls\Plaza\View\PlazaFundView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TA\Windows\Collector\Credit\MessageWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="TA\Windows\Coupon\CouponEditWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

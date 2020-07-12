@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-         xmlns:ctrl="clr-namespace:DMT.TA.Controls.Plaza.Entry"
+        xmlns:ctrl="clr-namespace:DMT.TA.Controls.Plaza.Entry"
         mc:Ignorable="d"
         Title="เช็คยอดด่าน" 
         ResizeMode="NoResize" 
@@ -68,11 +68,22 @@
                                 Foreground="WhiteSmoke"
                                 Width="300"/>
                 <Grid Width="5"/>
-                <ctrl:PlazaCouponEntry x:Name="couponEntry"
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="150"/>
+                    </Grid.RowDefinitions>
+                    <ctrl:PlazaCouponEntry x:Name="couponEntry"
                                        FontSize="16"
                                        Background="DarkRed"
                                        Foreground="WhiteSmoke"
                                        Width="300"/>
+                    <ctrl:LoanMoney2Entry x:Name="loanMoneyEntry" Grid.Row="1"
+                                       FontSize="16"
+                                       Background="Orange"
+                                       Foreground="WhiteSmoke"
+                                       Width="300"/>
+                </Grid>
                 <Grid Width="5"/>
             </StackPanel>
         </DockPanel>
