@@ -6,7 +6,7 @@
              xmlns:ctrl="clr-namespace:DMT.TA.Controls.Plaza.Entry"
              xmlns:ctrl2="clr-namespace:DMT.TA.Controls.Plaza.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450"
+             d:DesignHeight="700"
              d:DesignWidth="800">
     <DockPanel Margin="5">
         <Border DockPanel.Dock="Left"
@@ -38,10 +38,21 @@
                                    Width="200"/>
                     </StackPanel>
                 </Border>
-                <ctrl:PlazaFundEntry x:Name="plaza"
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="150"/>
+                    </Grid.RowDefinitions>
+                    <ctrl:PlazaFundEntry x:Name="plaza" Margin="0 0 0 5"
                                 FontSize="16"
                                 Background="Orange"
                                 Foreground="WhiteSmoke"/>
+                    <ctrl:LoanMoney2Entry x:Name="loanEntry" Grid.Row="2"
+                                Grid.Column="5"
+                                FontSize="16"
+                                Background="Orange"
+                                Foreground="WhiteSmoke" />
+                </Grid>
             </DockPanel>
         </Border>
         <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom">

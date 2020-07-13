@@ -110,7 +110,6 @@
                 <ctrl:PlazaFundEntry x:Name="sumEntry"
                                 Grid.Column="3"
                                 FontSize="16"
-                                IsEnabled="False"
                                 Background="Orange"
                                 Foreground="WhiteSmoke"/>
             </Grid>

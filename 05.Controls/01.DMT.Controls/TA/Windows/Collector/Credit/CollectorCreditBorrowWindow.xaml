@@ -59,8 +59,8 @@
                                VerticalAlignment="Center"
                                TextAlignment="Right"
                                Foreground="WhiteSmoke"
-                               Text="เลขที่ถุงเงิน:"
-                               Width="100"/>
+                               Text="หมายเลขถุงเงิน:"
+                               Width="110"/>
                     <Grid Width="5"/>
                     <TextBox x:Name="txtBagNo"
                              FontSize="18"

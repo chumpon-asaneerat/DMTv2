@@ -12,7 +12,7 @@
         VerticalAlignment="Center" 
         WindowStartupLocation="CenterOwner"
         Height="580" 
-        Width="1100"
+        Width="1300"
         Background="DimGray">
     <Grid Margin="15">
         <DockPanel>

@@ -32,14 +32,14 @@
                             <Image DockPanel.Dock="Left" 
                                Height="50"
                                Width="50"
-                               Source="/DMT.Controls;component/Images/Button/OK2.png" 
+                               Source="/DMT.Controls;component/Images/Button/Home.png" 
                                HorizontalAlignment="Center" 
                                VerticalAlignment="Center" />
                             <StackPanel Orientation="Vertical"
                                     VerticalAlignment="Center">
                                 <TextBlock FontSize="20" 
                                        HorizontalAlignment="Center"
-                                       Text="ตกลง"
+                                       Text="กลับสู่หน้าจอหลัก"
                                        FontWeight="Bold"
                                        TextAlignment="Center"
                                        TextWrapping="Wrap">
@@ -48,42 +48,6 @@
                             </StackPanel>
                         </DockPanel>
                     </Button>
-                    <Grid Width="5" DockPanel.Dock="Right"></Grid>
-                    <Button x:Name="cmdCancel"
-                            DockPanel.Dock="Right"
-                        Foreground="White"
-                        HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            HorizontalContentAlignment="Stretch"
-                            VerticalContentAlignment="Stretch"
-                            Height="50"
-                            Width="220"
-                        Click="cmdCancel_Click">
-                        <Button.Background>
-                            <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
-                        </Button.Background>
-                        <DockPanel>
-                            <Grid Width="5"></Grid>
-                            <Image DockPanel.Dock="Left" 
-                               Height="50"
-                               Width="50"
-                               Source="/DMT.Controls;component/Images/Button/Cancel2.png" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center" />
-                            <StackPanel Orientation="Vertical"
-                                    VerticalAlignment="Center">
-                                <TextBlock FontSize="20" 
-                                       HorizontalAlignment="Center"
-                                       Text="ยกเลิก"
-                                       FontWeight="Bold"
-                                       TextAlignment="Center"
-                                       TextWrapping="Wrap">
-                                </TextBlock>
-                                <Grid Height="10" />
-                            </StackPanel>
-                        </DockPanel>
-                    </Button>
-
                     <Grid />
                 </DockPanel>
             </Border>

@@ -24,11 +24,14 @@
                     <GridViewColumn Header="ชื่อพนักงาน" 
                                     DisplayMemberBinding="{Binding Path=StaffName}" 
                                     Width="250"/>
-                    <GridViewColumn Header="ขอแลก" 
-                                    DisplayMemberBinding="{Binding Path=BHTTotal}" 
+                    <GridViewColumn Header="เงินขอแลก" 
+                                    DisplayMemberBinding="{Binding Path=ExchangeAmount}" 
                                     Width="100"/>
-                    <GridViewColumn Header="ขอเบิก" 
-                                    DisplayMemberBinding="{Binding Path=TOTALAMOUNT}" 
+                    <GridViewColumn Header="เงินยืมเพิ่ม" 
+                                    DisplayMemberBinding="{Binding Path=BORROWAmount}" 
+                                    Width="100"/>
+                    <GridViewColumn Header="เพิ่มวงเงิน" 
+                                    DisplayMemberBinding="{Binding Path=REVOLVINGFUNDSAmount}" 
                                     Width="100"/>
                     <GridViewColumn Header="สถานะ" 
                                     DisplayMemberBinding="{Binding Path=Status}" 
