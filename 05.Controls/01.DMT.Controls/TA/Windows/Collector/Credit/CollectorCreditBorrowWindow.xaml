@@ -179,8 +179,7 @@
             </DockPanel>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="187*"/>
-                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10" />
@@ -196,7 +195,7 @@
                                 FontSize="16"
                                 IsEnabled="False"
                                 Background="CornflowerBlue"
-                                Foreground="WhiteSmoke" Grid.RowSpan="2"/>
+                                Foreground="WhiteSmoke" />
                 <Grid Grid.Column="2"
                       Margin="15,223,15,151"
                       HorizontalAlignment="Center"
@@ -206,19 +205,13 @@
                                 Grid.Column="3"
                                 FontSize="16"
                                 Background="DarkRed"
-                                Foreground="WhiteSmoke" Grid.RowSpan="2"/>
+                                Foreground="WhiteSmoke" />
                 <Grid Grid.Column="4"
                       Margin="15,223,15,151"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center">
                 </Grid>
                 <ctrl:PlazaFundEntry x:Name="sumEntry" Margin="0 0 0 5"
-                                Grid.Column="5"
-                                FontSize="16"
-                                IsEnabled="False"
-                                Background="Orange"
-                                Foreground="WhiteSmoke" />
-                <ctrl:LoanMoneyEntry x:Name="loanEntry" Grid.Row="2"
                                 Grid.Column="5"
                                 FontSize="16"
                                 IsEnabled="False"

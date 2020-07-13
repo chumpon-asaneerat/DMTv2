@@ -225,7 +225,7 @@
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    TextWrapping="Wrap"
-                                   Text="ประวัติ การยืมเงินทอน"/>
+                                   Text="ประวัติ แลกเงินยืมทอน"/>
                         </StackPanel>
                     </DockPanel>
                 </Button>
