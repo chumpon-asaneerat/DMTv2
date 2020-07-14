@@ -1,4 +1,10 @@
 --------------------------------------------------------------------------------------------
+Update 2020-07-15 #17
+- 
+
+Update 2020-07-15 #16
+- 
+
 Update 2020-07-15 #15
 - 
 
@@ -23,6 +29,13 @@ Update 2020-07-15 #9
 Update 2020-07-15 #8
 - 
 
+[commited]
+Update 2020-07-15 #7 (TAv1)
+- Fixed history.txt format 2.
+
+[commited]
+Update 2020-07-15 #6 (TAv1)
+- Fixed history.txt format.
 [commited]
 Update 2020-07-15 #7 (master)
 - Fixed history.txt #2.
