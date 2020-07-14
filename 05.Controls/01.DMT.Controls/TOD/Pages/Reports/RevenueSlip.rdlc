@@ -4243,6 +4243,14 @@
           <DataField>EntryDate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
+        <Field Name="EntryDateString">
+          <DataField>EntryDateString</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EntryDateTimeString">
+          <DataField>EntryDateTimeString</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="FreePassUsageClassA">
           <DataField>FreePassUsageClassA</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -4257,6 +4265,10 @@
         </Field>
         <Field Name="FullNameTH">
           <DataField>FullNameTH</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Lanes">
+          <DataField>Lanes</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="LastUpdate">
@@ -4291,8 +4303,48 @@
           <DataField>RevenueDate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
+        <Field Name="RevenueDateString">
+          <DataField>RevenueDateString</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RevenueDateTimeString">
+          <DataField>RevenueDateTimeString</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="RevenueId">
           <DataField>RevenueId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShiftBegin">
+          <DataField>ShiftBegin</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ShiftBeginDateString">
+          <DataField>ShiftBeginDateString</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShiftBeginDateTimeString">
+          <DataField>ShiftBeginDateTimeString</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShiftBeginTimeString">
+          <DataField>ShiftBeginTimeString</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShiftEnd">
+          <DataField>ShiftEnd</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ShiftEndDateString">
+          <DataField>ShiftEndDateString</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShiftEndDateTimeString">
+          <DataField>ShiftEndDateTimeString</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ShiftEndTimeString">
+          <DataField>ShiftEndTimeString</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="ShiftId">
@@ -4310,6 +4362,18 @@
         <Field Name="Status">
           <DataField>Status</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SupervisorId">
+          <DataField>SupervisorId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SupervisorNameEN">
+          <DataField>SupervisorNameEN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SupervisorNameTH">
+          <DataField>SupervisorNameTH</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="TrafficBHT1">
           <DataField>TrafficBHT1</DataField>

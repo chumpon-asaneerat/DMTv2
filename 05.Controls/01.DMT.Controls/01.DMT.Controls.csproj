@@ -307,6 +307,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="TOD\Pages\Reports\RevenueSlipSum.rdlc" />
     <EmbeddedResource Include="TOD\Pages\Reports\RevenueSlip.rdlc" />
     <EmbeddedResource Include="TOD\Pages\Reports\RevenueSlip_Old.rdlc" />
     <None Include="Properties\DataSources\DMT.Models.RevenueEntry.datasource" />

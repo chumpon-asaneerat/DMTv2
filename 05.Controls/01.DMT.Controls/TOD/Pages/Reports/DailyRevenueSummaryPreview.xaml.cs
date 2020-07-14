@@ -70,7 +70,7 @@ namespace DMT.TOD.Pages.Reports
         {
             Assembly assembly = this.GetType().Assembly;
             RdlcReportModel inst = new RdlcReportModel();
-            inst.Definition.EmbededReportName = "DMT.TOD.Pages.Reports.RevenueSlip.rdlc";
+            inst.Definition.EmbededReportName = "DMT.TOD.Pages.Reports.RevenueSlipSum.rdlc";
             inst.Definition.RdlcInstance = RdlcReportUtils.GetEmbededReport(assembly,
                 inst.Definition.EmbededReportName);
             // clear reprot datasource.

@@ -194,6 +194,34 @@ namespace DMT.Models
             }
         }
         /// <summary>
+        /// Gets Entry Date String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string EntryDateString
+        {
+            get
+            {
+                var ret = (this._EntryDate == DateTime.MinValue) ? "" : this._EntryDate.ToThaiDateTimeString("dd/MM/yyyy");
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets Entry DateTime String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string EntryDateTimeString
+        {
+            get
+            {
+                var ret = (this._EntryDate == DateTime.MinValue) ? "" : this._EntryDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
         /// Gets or sets Revenue Date.
         /// </summary>
         [PeropertyMapName("RevenueDate")]
@@ -207,8 +235,38 @@ namespace DMT.Models
                     _RevenueDate = value;
                     // Raise event.
                     this.RaiseChanged("RevenueDate");
+                    this.RaiseChanged("RevenueDateString");
+                    this.RaiseChanged("RevenueDateTimeString");
                 }
             }
+        }
+        /// <summary>
+        /// Gets Revenue Date String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string RevenueDateString
+        {
+            get
+            {
+                var ret = (this._RevenueDate == DateTime.MinValue) ? "" : this._RevenueDate.ToThaiDateTimeString("dd/MM/yyyy");
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets Revenue DateTime String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string RevenueDateTimeString
+        {
+            get
+            {
+                var ret = (this._RevenueDate == DateTime.MinValue) ? "" : this._RevenueDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+                return ret;
+            }
+            set { }
         }
         /// <summary>
         /// Gets or sets RevenueId.
@@ -368,6 +426,34 @@ namespace DMT.Models
             get
             {
                 var ret = (this.ShiftEnd == DateTime.MinValue) ? "" : this.ShiftEnd.ToThaiTimeString();
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets Shift Begin DateTime String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string ShiftBeginDateTimeString
+        {
+            get
+            {
+                var ret = (this.ShiftBegin == DateTime.MinValue) ? "" : this.ShiftBegin.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets Shift End DateTime String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string ShiftEndDateTimeString
+        {
+            get
+            {
+                var ret = (this.ShiftEnd == DateTime.MinValue) ? "" : this.ShiftEnd.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
                 return ret;
             }
             set { }
