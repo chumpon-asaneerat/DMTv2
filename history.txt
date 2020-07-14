@@ -26,8 +26,9 @@ Update 2020-07-15 #10
 Update 2020-07-15 #9
 - 
 
-Update 2020-07-15 #8
-- 
+[commited]
+Update 2020-07-15 #8 (master)
+- Merget from TAv1
 
 [commited]
 Update 2020-07-15 #7 (TAv1)
