@@ -34,6 +34,10 @@ namespace DMT.Models
         private string _BagNo = string.Empty;
         private string _BeltNo = string.Empty;
 
+        private string _Lanes = string.Empty;
+        private DateTime _ShiftBegin = DateTime.MinValue;
+        private DateTime _ShiftEnd = DateTime.MinValue;
+
         private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
         private string _TSBNameTH = string.Empty;
@@ -49,6 +53,10 @@ namespace DMT.Models
         private string _UserId = string.Empty;
         private string _FullNameEN = string.Empty;
         private string _FullNameTH = string.Empty;
+
+        private string _SupervisorId = string.Empty;
+        private string _SupervisorNameEN = string.Empty;
+        private string _SupervisorNameTH = string.Empty;
 
         // Traffic
         private int _TrafficST25 = 0;
@@ -253,6 +261,58 @@ namespace DMT.Models
                     _BeltNo = value;
                     // Raise event.
                     this.RaiseChanged("BeltNo");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Lane Lists.
+        /// </summary>
+        [MaxLength(100)]
+        [PeropertyMapName("Lanes")]
+        public string Lanes
+        {
+            get { return _Lanes; }
+            set
+            {
+                if (_Lanes != value)
+                {
+                    _Lanes = value;
+                    // Raise event.
+                    this.RaiseChanged("Lanes");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Shift Begin.
+        /// </summary>
+        [PeropertyMapName("ShiftBegin")]
+        public DateTime ShiftBegin
+        {
+            get { return _ShiftBegin; }
+            set
+            {
+                if (_ShiftBegin != value)
+                {
+                    _ShiftBegin = value;
+                    // Raise event.
+                    this.RaiseChanged("ShiftBegin");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Shift End.
+        /// </summary>
+        [PeropertyMapName("ShiftEnd")]
+        public DateTime ShiftEnd
+        {
+            get { return _ShiftEnd; }
+            set
+            {
+                if (_ShiftEnd != value)
+                {
+                    _ShiftEnd = value;
+                    // Raise event.
+                    this.RaiseChanged("ShiftEnd");
                 }
             }
         }
@@ -512,6 +572,71 @@ namespace DMT.Models
                 {
                     _FullNameTH = value;
                     this.RaiseChanged("FullNameTH");
+                }
+            }
+        }
+
+        #endregion
+
+        #region Supervisor
+
+        /// <summary>
+        /// Gets or sets UserId
+        /// </summary>
+        [MaxLength(10)]
+        [PeropertyMapName("SupervisorId")]
+        public string SupervisorId
+        {
+            get
+            {
+                return _SupervisorId;
+            }
+            set
+            {
+                if (_SupervisorId != value)
+                {
+                    _SupervisorId = value;
+                    this.RaiseChanged("SupervisorId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets SupervisorNameEN
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("SupervisorNameEN")]
+        public virtual string SupervisorNameEN
+        {
+            get
+            {
+                return _SupervisorNameEN;
+            }
+            set
+            {
+                if (_SupervisorNameEN != value)
+                {
+                    _SupervisorNameEN = value;
+                    this.RaiseChanged("SupervisorNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets SupervisorNameTH
+        /// </summary>
+        [Ignore]
+        [PeropertyMapName("SupervisorNameTH")]
+        public virtual string SupervisorNameTH
+        {
+            get
+            {
+                return _SupervisorNameTH;
+            }
+            set
+            {
+                if (_SupervisorNameTH != value)
+                {
+                    _SupervisorNameTH = value;
+                    this.RaiseChanged("SupervisorNameTH");
                 }
             }
         }
@@ -1037,7 +1162,7 @@ namespace DMT.Models
 
         #region Internal Class
 
-        internal class FKs : RevenueEntry
+        public class FKs : RevenueEntry
         {
             #region TSB
 
@@ -1138,6 +1263,42 @@ namespace DMT.Models
             }
 
             #endregion
+
+            #region Supervisor
+
+            /// <summary>
+            /// Gets or sets SupervisorNameEN
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("SupervisorNameEN")]
+            public override string SupervisorNameEN
+            {
+                get { return base.SupervisorNameEN; }
+                set { base.SupervisorNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets SupervisorNameTH
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("SupervisorNameTH")]
+            public override string SupervisorNameTH
+            {
+                get { return base.SupervisorNameTH; }
+                set { base.SupervisorNameTH = value; }
+            }
+
+            #endregion
+
+            #region Public Methods
+
+            public RevenueEntry ToRevenueEntry()
+            {
+                RevenueEntry inst = new RevenueEntry();
+                this.AssignTo(inst); // set all properties to new instance.
+                return inst;
+            }
+
+            #endregion
         }
 
         #endregion
@@ -1154,13 +1315,27 @@ namespace DMT.Models
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM RevenueEntry, TSB, Plaza, Shift, User ";
+                cmd += "     , Sup.FullNameEN AS SupervisorNameEN ";
+                cmd += "     , Sup.FullNameTH AS SupervisorNameTH ";
+                cmd += "  FROM RevenueEntry, TSB, Plaza, Shift, User, User as Sup ";
                 cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
                 cmd += "   AND RevenueEntry.TSBId = TSB.TSBId ";
                 cmd += "   AND RevenueEntry.PlazaId = Plaza.PlazaId ";
                 cmd += "   AND RevenueEntry.UserId = User.UserId ";
+                cmd += "   AND RevenueEntry.SupervisorId = Sup.UserId ";
                 cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
-                return NQuery.Query<FKs>(cmd).ToList<RevenueEntry>();
+
+                var rets = NQuery.Query<FKs>(cmd).ToList();
+                var results = new List<RevenueEntry>();
+                if (null != rets)
+                {
+                    rets.ForEach(ret =>
+                    {
+                        results.Add(ret.ToRevenueEntry());
+                    });
+                }
+
+                return results;
             }
         }
 
@@ -1174,17 +1349,31 @@ namespace DMT.Models
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM RevenueEntry, TSB, Plaza, Shift, User ";
+                cmd += "     , Sup.FullNameEN AS SupervisorNameEN ";
+                cmd += "     , Sup.FullNameTH AS SupervisorNameTH ";
+                cmd += "  FROM RevenueEntry, TSB, Plaza, Shift, User, User as Sup ";
                 cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
                 cmd += "   AND RevenueEntry.TSBId = TSB.TSBId ";
                 cmd += "   AND RevenueEntry.PlazaId = Plaza.PlazaId ";
                 cmd += "   AND RevenueEntry.UserId = User.UserId ";
+                cmd += "   AND RevenueEntry.SupervisorId = Sup.UserId ";
                 cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
                 cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
                 cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
                 cmd += "   AND RevenueEntry.RevDate >= ? ";
                 cmd += "   AND RevenueEntry.RevDate <= ? ";
-                return NQuery.Query<FKs>(cmd, begin, end).ToList<RevenueEntry>();
+
+                var rets = NQuery.Query<FKs>(cmd, begin, end).ToList();
+                var results = new List<RevenueEntry>();
+                if (null != rets)
+                {
+                    rets.ForEach(ret =>
+                    {
+                        results.Add(ret.ToRevenueEntry());
+                    });
+                }
+
+                return results;
             }
         }
 
