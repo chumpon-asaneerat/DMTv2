@@ -40,7 +40,7 @@ namespace DMT.Controls.Header
             UpdateUI();
 
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(10);
+            timer.Interval = TimeSpan.FromSeconds(2);
             timer.Tick += timer_Tick;
             timer.Start();
         }
@@ -58,6 +58,16 @@ namespace DMT.Controls.Header
 
         private void UpdateUI()
         {
+            if (null != TAApp.User.Current)
+            {
+                txtUserId.Text = "รหัสผู้ใช้งาน: " + TAApp.User.Current.UserId;
+                txtUserame.Text = "ชื่อผู้ใช้งาน: " + TAApp.User.Current.FullNameTH;
+            }
+            else
+            {
+                txtUserId.Text = "รหัสผู้ใช้งาน: ";
+                txtUserame.Text = "ชื่อผู้ใช้งาน: ";
+            }
         }
 
         void timer_Tick(object sender, EventArgs e)

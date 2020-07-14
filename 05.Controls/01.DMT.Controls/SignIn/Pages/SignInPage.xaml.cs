@@ -76,6 +76,7 @@ namespace DMT.Pages
 
             _user = user;
 
+            Controls.TAApp.User.Current = _user;
             // Init Main Menu
             PageContentManager.Instance.Current = new TA.Pages.Menu.MainMenu();
         }

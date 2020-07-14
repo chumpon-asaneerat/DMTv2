@@ -30,17 +30,17 @@ Update 2020-07-15 #1
 - 
 
 --------------------------------------------------------------------------------------------
-Update 2020-07-14 #15
-- 
-
-Update 2020-07-14 #14
-- 
-
-Update 2020-07-14 #13
-- 
-
+[commited]
 Update 2020-07-14 #12
-- 
+- Update TA #1
+  - Update HeaderUser control.
+  - Update AccountHeader control.
+  - Add CurrentTA static nested class.
+  - Update TA MainManu.
+  - Update TOD MainManu.
+  - Update SignInPage (used for TA only).
+  - Change HeaderSupervisor timer from 10s to 5s
+  - Change HeaderUser timer from 50s to 2s
 
 [commited]
 Update 2020-07-14 #11

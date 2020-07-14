@@ -115,7 +115,7 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("SUPERVISOR", "COLLECTOR");
+            signinWin.Setup("SUPERVISOR", "AUDIT", "ADMIN", "QFREE");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -133,7 +133,7 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("SUPERVISOR", "COLLECTOR");
+            signinWin.Setup("SUPERVISOR", "COLLECTOR", "AUDIT", "ADMIN", "QFREE");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -149,7 +149,7 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("SUPERVISOR", "COLLECTOR");
+            signinWin.Setup("SUPERVISOR", "COLLECTOR", "AUDIT", "ADMIN", "QFREE");
             if (signinWin.ShowDialog() == false)
             {
                 return;

@@ -33,15 +33,17 @@ namespace DMT
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // Start app manager.
-            //DMTPlazaManager.Instance.Start();
             // Initial Page Content Manager
             PageContentManager.Instance.ContentChanged += new EventHandler(Instance_ContentChanged);
             PageContentManager.Instance.StatusUpdated += new StatusMessageEventHandler(Instance_StatusUpdated);
             PageContentManager.Instance.OnTick += new EventHandler(Instance_OnTick);
             PageContentManager.Instance.Start();
             // Init Main Menu
-            PageContentManager.Instance.Current = new TA.Pages.Menu.MainMenu();
+            //PageContentManager.Instance.Current = new TA.Pages.Menu.MainMenu();
+            // Init Sign In
+            var page = new Pages.SignInPage();
+            page.Setup("SUPERVISOR", "AUDIT", "ADMIN", "QFREE");
+            PageContentManager.Instance.Current = page;
         }
 
         private void Window_Unloaded(object sender, RoutedEventArgs e)
@@ -51,8 +53,6 @@ namespace DMT
             PageContentManager.Instance.OnTick -= new EventHandler(Instance_OnTick);
             PageContentManager.Instance.StatusUpdated -= new StatusMessageEventHandler(Instance_StatusUpdated);
             PageContentManager.Instance.ContentChanged -= new EventHandler(Instance_ContentChanged);
-            // Shutdown app manager.
-            //DMTPlazaManager.Instance.Shutdown();
         }
 
         #endregion

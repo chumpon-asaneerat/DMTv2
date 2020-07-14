@@ -716,8 +716,11 @@ namespace DMT.TA.Pages.Menu
 
         private void logout_Click(object sender, RoutedEventArgs e)
         {
+            // When enter Sign In Screen reset current user.
+            DMT.Controls.TAApp.User.Current = null;
+
             var page = new DMT.Pages.SignInPage();
-            page.Setup("SUPERVISOR");
+            page.Setup("SUPERVISOR", "AUDIT", "ADMIN", "QFREE");
             PageContentManager.Instance.Current = page;
         }
 
