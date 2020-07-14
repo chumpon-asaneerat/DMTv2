@@ -26,8 +26,11 @@ Update 2020-07-15 #3
 Update 2020-07-15 #2
 - 
 
+[commited]
 Update 2020-07-15 #1
-- 
+- Update TA #2
+  - Implement TSBCredit Model #1.
+  - Implement UserCredit Model #1.
 
 --------------------------------------------------------------------------------------------
 [commited]
