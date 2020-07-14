@@ -46,6 +46,8 @@ namespace DMT.TOD.Pages.Reports
 
         private Models.RevenueEntry _revenueEntry = null;
 
+        private bool isNew = false;
+
         #region Button Handlers
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
@@ -62,42 +64,11 @@ namespace DMT.TOD.Pages.Reports
                 MessageBox.Show("Revenue Entry is not found.");
                 return;
             }
-            if (_revenueEntry.RevenueDate == DateTime.MinValue ||
-                _revenueEntry.EntryDate == DateTime.MinValue)
-            {
-                MessageBox.Show("Entry Date or Revenue Date is not set.");
-                return;
-            }
 
-            // update save data
-            string revId = ops.Revenue.SaveRevenue(_revenueEntry);
-            if (null != _plazaRevenue)
+            if (isNew)
             {
-                // save revenue shift (for plaza)
-                var saveOpt = Search.Revenues.SaveRevenueShift.Create(_plazaRevenue,
-                    revId, _revenueEntry.RevenueDate);
-                ops.Revenue.SaveRevenueShift(saveOpt);
+                SaveRevenueEntry();
             }
-            // sync key to lane attendance list.
-            if (null != _laneActivities)
-            {
-                _laneActivities.ForEach(lane =>
-                {
-                    lane.RevenueDate = _revenueEntry.RevenueDate;
-                    lane.RevenueId = revId;
-                    ops.Lanes.SaveAttendance(lane);
-                });
-            }
-
-            // get all lanes information.
-            var search = Search.Lanes.Attendances.ByUserShift.Create(_userShift, null, DateTime.MinValue);
-            var existActivities = ops.Lanes.GetAttendancesByUserShift(search);
-            if (null == existActivities || existActivities.Count == 0)
-            {
-                // no lane activitie in user shift.
-                ops.Jobs.EndJob(_userShift); // End user job(shift).
-            }
-
             // print reports.
             this.rptViewer.Print();
 
@@ -202,6 +173,47 @@ namespace DMT.TOD.Pages.Reports
             }
         }
 
+        private void SaveRevenueEntry()
+        {
+            // Save information if is new entry.
+
+            if (_revenueEntry.RevenueDate == DateTime.MinValue ||
+                _revenueEntry.EntryDate == DateTime.MinValue)
+            {
+                MessageBox.Show("Entry Date or Revenue Date is not set.");
+                return;
+            }
+
+            // update save data
+            string revId = ops.Revenue.SaveRevenue(_revenueEntry);
+            if (null != _plazaRevenue)
+            {
+                // save revenue shift (for plaza)
+                var saveOpt = Search.Revenues.SaveRevenueShift.Create(_plazaRevenue,
+                    revId, _revenueEntry.RevenueDate);
+                ops.Revenue.SaveRevenueShift(saveOpt);
+            }
+            // sync key to lane attendance list.
+            if (null != _laneActivities)
+            {
+                _laneActivities.ForEach(lane =>
+                {
+                    lane.RevenueDate = _revenueEntry.RevenueDate;
+                    lane.RevenueId = revId;
+                    ops.Lanes.SaveAttendance(lane);
+                });
+            }
+
+            // get all lanes information.
+            var search = Search.Lanes.Attendances.ByUserShift.Create(_userShift, null, DateTime.MinValue);
+            var existActivities = ops.Lanes.GetAttendancesByUserShift(search);
+            if (null == existActivities || existActivities.Count == 0)
+            {
+                // no lane activitie in user shift.
+                ops.Jobs.EndJob(_userShift); // End user job(shift).
+            }
+        }
+
         public void Setup(UserShift userShift, Plaza plaza,
             UserShiftRevenue plazaRevenue,
             List<LaneAttendance> laneActivities,
@@ -222,7 +234,18 @@ namespace DMT.TOD.Pages.Reports
                     _revenueEntry.EntryDate == DateTime.MinValue ||
                     _revenueEntry.RevenueDate == DateTime.MinValue)
                 {
+                    isNew = true;
                     InitNewReport();
+
+                    txtOK.Text = "ยืนยัน นำส่งรายได้";
+                    txtCancel.Text = "แก้ไข";
+                }
+                else
+                {
+                    isNew = false;
+
+                    txtOK.Text = "พิมพ์ ใบสำส่งรายได้";
+                    txtCancel.Text = "ยกเลิก";
                 }
             }
 

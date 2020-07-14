@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web.Http;
 
 using DMT.Models;
@@ -58,6 +59,14 @@ namespace DMT.Services
             }
             RevenueEntry.Save(value);
             return value.RevenueId;
+        }
+        [HttpPost]
+        [ActionName(RouteConsts.Revenue.GetRevenues.Name)]
+        public List<RevenueEntry> GetRevenues([FromBody] DateTime value)
+        {
+            if (value == DateTime.MinValue) return new List<RevenueEntry>();
+
+            return RevenueEntry.FindByRevnueDate(value);
         }
     }
 }

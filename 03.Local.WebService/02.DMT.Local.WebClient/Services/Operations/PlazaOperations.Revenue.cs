@@ -83,6 +83,11 @@ namespace DMT.Services
                 return NRestClient.Create(port: 9000).Execute<string>(
                     RouteConsts.Revenue.SaveRevenue.Url, value);
             }
+            public List<RevenueEntry> GetRevenues(DateTime value)
+            {
+                return NRestClient.Create(port: 9000).Execute<List<RevenueEntry>>(
+                    RouteConsts.Revenue.GetRevenues.Url, value);
+            }
 
             #endregion
         }

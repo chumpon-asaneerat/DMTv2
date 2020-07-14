@@ -258,6 +258,12 @@ namespace DMT
                 public const string Name = "SaveRevenue";
                 public const string Url = Revenue.Url + @"/" + Name;
             }
+
+            public static class GetRevenues
+            {
+                public const string Name = "GetRevenues";
+                public const string Url = Revenue.Url + @"/" + Name;
+            }
         }
     }
 }

@@ -36,6 +36,7 @@
                                Source="/DMT.Controls;component/Images/Button/Approve.png" />
                         <StackPanel VerticalAlignment="Center" Orientation="Vertical">
                             <TextBlock HorizontalAlignment="Center"
+                                       x:Name="txtOK"
                                        FontSize="20"
                                        Text="ยืนยัน นำส่งรายได้"
                                        FontWeight="Bold"
@@ -70,6 +71,7 @@
                         <StackPanel VerticalAlignment="Center" Orientation="Vertical">
                             <TextBlock HorizontalAlignment="Center"
                                        FontSize="20"
+                                       x:Name="txtCancel"
                                        Text="แก้ไข"
                                        FontWeight="Bold"
                                        TextAlignment="Center"

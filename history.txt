@@ -11,9 +11,15 @@ Update 2020-07-14 #9
 Update 2020-07-14 #8
 - 
 
+[commited]
 Update 2020-07-14 #7
-- 
-
+- Update RevenueEntry Model #5.
+  - RevenueSlipPreview update code for check save only new entry for used later when
+    call from report menu.
+  - Update revenue controller to get revenue list by revenue date.
+  - Update RevenueOperations add GetRevenues method.
+  - Update route consts.
+  
 [commited]
 Update 2020-07-14 #6
 - Update RevenueEntry Model #4.
