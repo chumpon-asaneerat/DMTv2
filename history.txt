@@ -11,12 +11,14 @@ Update 2020-07-15 #8
 Update 2020-07-15 #7
 - 
 
+[commited]
 Update 2020-07-15 #6
-- 
+- Fixed history.txt format.
 
 [commited]
 Update 2020-07-15 #5 (TAv1)
 - Split new Branch to TAv1 (2nd attemp).
+
 [commited]
 Update 2020-07-15 #5 (master)
 - Split new Branch to TAv1 (2nd attemp).
