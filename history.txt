@@ -8,8 +8,9 @@ Update 2020-07-14 #4
 Update 2020-07-14 #3
 - 
 
+[commited]
 Update 2020-07-14 #2
-- 
+- Fixed bug in TA MainMenu Page to call SingnIn Page.
 
 [commited]
 Update 2020-07-14 #1

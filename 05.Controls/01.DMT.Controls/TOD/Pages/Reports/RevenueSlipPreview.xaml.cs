@@ -57,6 +57,11 @@ namespace DMT.TOD.Pages.Reports
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
+            if (null == _revenueEntry)
+            {
+                MessageBox.Show("Revenue Entry is not found.");
+                return;
+            }
             if (_revenueEntry.RevenueDate == DateTime.MinValue ||
                 _revenueEntry.EntryDate == DateTime.MinValue)
             {

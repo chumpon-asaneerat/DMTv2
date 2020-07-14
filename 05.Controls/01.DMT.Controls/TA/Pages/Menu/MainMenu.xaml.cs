@@ -59,7 +59,6 @@ namespace DMT.TA.Pages.Menu
 
             try
             {
-
                 var page = new Pages.Coupon.CouponReturnPage();
                 /*
                 List<Models.Coupon35> coupons = new List<Models.Coupon35>();
@@ -716,8 +715,10 @@ namespace DMT.TA.Pages.Menu
         }
 
         private void logout_Click(object sender, RoutedEventArgs e)
-        {  
-            PageContentManager.Instance.Current = new DMT.Pages.SignInPage();
+        {
+            var page = new DMT.Pages.SignInPage();
+            page.Setup("SUPERVISOR");
+            PageContentManager.Instance.Current = page;
         }
 
         #endregion
