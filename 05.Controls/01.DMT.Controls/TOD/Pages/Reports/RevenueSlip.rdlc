@@ -3875,8 +3875,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>FreePassUsageOther</rd:DefaultName>
-            <Top>0.70186in</Top>
-            <Left>1.34873in</Left>
+            <Top>0.71062in</Top>
+            <Left>1.33522in</Left>
             <Height>0.25in</Height>
             <Width>1in</Width>
             <ZIndex>8</ZIndex>
@@ -3962,6 +3962,7 @@
                 <Style>
                   <FontFamily>Tahoma</FontFamily>
                   <FontSize>11pt</FontSize>
+                  <Format>n0</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -4125,7 +4126,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Sum(Fields!Lanes.Value, "main")</Value>
+                <Value>=First(Fields!Lanes.Value, "main")</Value>
                 <Style>
                   <FontFamily>Tahoma</FontFamily>
                   <FontSize>11pt</FontSize>

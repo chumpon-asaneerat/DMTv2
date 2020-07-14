@@ -149,7 +149,7 @@ namespace DMT.TOD.Pages.Reports
                 lanes.ForEach(laneNo =>
                 {
                     laneList += laneNo.ToString();
-                    if (iCnt < iMax) laneList += ", ";
+                    if (iCnt < iMax - 1) laneList += ", ";
                     iCnt++;
                 });
 

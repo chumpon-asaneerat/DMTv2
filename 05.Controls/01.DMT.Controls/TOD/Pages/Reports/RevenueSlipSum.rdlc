@@ -1549,7 +1549,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1586,7 +1585,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1623,7 +1621,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1660,7 +1657,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1697,7 +1693,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1734,7 +1729,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1771,7 +1765,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1808,19 +1801,18 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="CouponSoldBHT35Total">
+                    <Textbox Name="FreePassUsageClassA">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!CouponSoldBHT35Total.Value</Value>
+                              <Value>=Fields!FreePassUsageClassA.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1833,7 +1825,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>CouponSoldBHT35Total</rd:DefaultName>
+                      <rd:DefaultName>FreePassUsageClassA</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1845,19 +1837,18 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="CouponSoldBHT80Total">
+                    <Textbox Name="FreePassUsageOther">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!CouponSoldBHT80Total.Value</Value>
+                              <Value>=Fields!FreePassUsageOther.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1870,7 +1861,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>CouponSoldBHT80Total</rd:DefaultName>
+                      <rd:DefaultName>FreePassUsageOther</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1926,7 +1917,7 @@
         <Top>0.0375in</Top>
         <Left>0.06333in</Left>
         <Height>0.8in</Height>
-        <Width>10.89792in</Width>
+        <Width>10.89784in</Width>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -2094,7 +2085,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox33</rd:DefaultName>
           <Top>1.35573in</Top>
-          <Left>3.46629in</Left>
+          <Left>2.96629in</Left>
           <Height>0.27291in</Height>
           <Width>0.5in</Width>
           <ZIndex>4</ZIndex>
@@ -2130,7 +2121,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox33</rd:DefaultName>
           <Top>1.35573in</Top>
-          <Left>6.03421in</Left>
+          <Left>6.04671in</Left>
           <Height>0.27291in</Height>
           <Width>1in</Width>
           <ZIndex>5</ZIndex>
@@ -2151,7 +2142,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=First(Fields!ShiftNameTH.Value, "main")</Value>
+                  <Value>=First(Fields!PlazaNameTH.Value, "main")</Value>
                   <Style>
                     <FontFamily>Tahoma</FontFamily>
                     <FontSize>14pt</FontSize>
@@ -2163,9 +2154,9 @@
           </Paragraphs>
           <rd:DefaultName>ShiftNameTH</rd:DefaultName>
           <Top>1.35573in</Top>
-          <Left>3.99824in</Left>
+          <Left>3.49407in</Left>
           <Height>0.27291in</Height>
-          <Width>1.5in</Width>
+          <Width>2.49848in</Width>
           <ZIndex>6</ZIndex>
           <Style>
             <Border>
