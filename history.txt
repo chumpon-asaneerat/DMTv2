@@ -1,9 +1,34 @@
 --------------------------------------------------------------------------------------------
+Update 2020-07-14 #11
+- 
+
+Update 2020-07-14 #10
+- 
+
+Update 2020-07-14 #9
+- 
+
+Update 2020-07-14 #8
+- 
+
+Update 2020-07-14 #7
+- 
+
+Update 2020-07-14 #6
+- 
+
 Update 2020-07-14 #5
 - 
 
+[commited]
 Update 2020-07-14 #4
-- 
+- Update RevenueEntry Model #2.
+  - TSBShift add BeginDateTimeString/EndDateTimeString
+  - UserShift add BeginDateTimeString/EndDateTimeString
+  - RevenueEntry add ShiftBeginDateString/ShiftEndDateString
+  - RevenueEntry add ShiftBeginTimeString/ShiftEndTimeString
+  - RevenueEntry add ShiftBeginDateTimeString/ShiftEndDateTimeString
+  - UserShiftRevenue add RevenueDateTimeString/RevenueDateTimeString
 
 [commited]
 Update 2020-07-14 #3

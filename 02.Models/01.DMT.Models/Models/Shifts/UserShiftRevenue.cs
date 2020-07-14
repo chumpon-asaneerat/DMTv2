@@ -405,6 +405,7 @@ namespace DMT.Models
                     RaiseChanged("RevenueDate");
                     RaiseChanged("RevenueDateString");
                     RaiseChanged("RevenueTimeString");
+                    RaiseChanged("RevenueDateTimeString");
                 }
             }
         }
@@ -432,6 +433,17 @@ namespace DMT.Models
             get
             {
                 var ret = (this.RevenueDate == DateTime.MinValue) ? "" : this.RevenueDate.ToThaiTimeString();
+                return ret;
+            }
+            set { }
+        }
+        [JsonIgnore]
+        [Ignore]
+        public string RevenueDateTimeString
+        {
+            get
+            {
+                var ret = (this.RevenueDate == DateTime.MinValue) ? "" : this.RevenueDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
                 return ret;
             }
             set { }

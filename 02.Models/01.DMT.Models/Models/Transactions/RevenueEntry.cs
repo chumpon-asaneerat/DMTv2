@@ -316,6 +316,62 @@ namespace DMT.Models
                 }
             }
         }
+        /// <summary>
+        /// Gets Shift Begin Date String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string ShiftBeginDateString
+        {
+            get
+            {
+                var ret = (this.ShiftBegin == DateTime.MinValue) ? "" : this.ShiftBegin.ToThaiDateTimeString("dd/MM/yyyy");
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets Shift End Date String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string ShiftEndDateString
+        {
+            get
+            {
+                var ret = (this.ShiftEnd == DateTime.MinValue) ? "" : this.ShiftEnd.ToThaiDateTimeString("dd/MM/yyyy");
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets Shift Begin Time String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string ShiftBeginTimeString
+        {
+            get
+            {
+                var ret = (this.ShiftBegin == DateTime.MinValue) ? "" : this.ShiftBegin.ToThaiTimeString();
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets Shift End Time String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string ShiftEndTimeString
+        {
+            get
+            {
+                var ret = (this.ShiftEnd == DateTime.MinValue) ? "" : this.ShiftEnd.ToThaiTimeString();
+                return ret;
+            }
+            set { }
+        }
 
         #endregion
 

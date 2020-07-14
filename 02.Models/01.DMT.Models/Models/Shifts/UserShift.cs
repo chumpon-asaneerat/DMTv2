@@ -294,6 +294,7 @@ namespace DMT.Models
                     RaiseChanged("Begin");
                     RaiseChanged("BeginDateString");
                     RaiseChanged("BeginTimeString");
+                    RaiseChanged("BeginDateTimeString");
                 }
             }
         }
@@ -313,6 +314,7 @@ namespace DMT.Models
                     RaiseChanged("End");
                     RaiseChanged("EndDateString");
                     RaiseChanged("EndTimeString");
+                    RaiseChanged("EndDateTimeString");
                 }
             }
         }
@@ -368,6 +370,31 @@ namespace DMT.Models
             get
             {
                 var ret = (this.End == DateTime.MinValue) ? "" : this.End.ToThaiTimeString();
+                return ret;
+            }
+            set { }
+        }
+        [JsonIgnore]
+        [Ignore]
+        public string BeginDateTimeString
+        {
+            get
+            {
+                var ret = (this.Begin == DateTime.MinValue) ? "" : this.Begin.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets End Time String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string EndDateTimeString
+        {
+            get
+            {
+                var ret = (this.End == DateTime.MinValue) ? "" : this.End.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
                 return ret;
             }
             set { }
