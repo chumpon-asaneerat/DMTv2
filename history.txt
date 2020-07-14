@@ -1,4 +1,19 @@
 --------------------------------------------------------------------------------------------
+Update 2020-07-15 #15
+- 
+
+Update 2020-07-15 #14
+- 
+
+Update 2020-07-15 #13
+- 
+
+Update 2020-07-15 #12
+- 
+
+Update 2020-07-15 #11
+- 
+
 Update 2020-07-15 #10
 - 
 
@@ -8,11 +23,12 @@ Update 2020-07-15 #9
 Update 2020-07-15 #8
 - 
 
-Update 2020-07-15 #7
-- 
+[commited]
+Update 2020-07-15 #7 (master)
+- Fixed history.txt #2.
 
 [commited]
-Update 2020-07-15 #6
+Update 2020-07-15 #6 (master)
 - Fixed history.txt when merge from master.
 
 [commited]
