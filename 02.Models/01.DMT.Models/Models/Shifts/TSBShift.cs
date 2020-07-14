@@ -581,6 +581,7 @@ namespace DMT.Models
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
                 cmd += "  FROM TSBShift, TSB, Shift, User ";
                 cmd += " WHERE TSBShift.ShiftId = Shift.ShiftId ";
+                cmd += "   AND TSB.Active = 1 ";
                 cmd += "   AND TSBShift.UserId = User.UserId ";
                 cmd += "   AND TSBShift.TSBId = TSB.TSBId ";
                 cmd += "   AND TSBShift.End = ? ";

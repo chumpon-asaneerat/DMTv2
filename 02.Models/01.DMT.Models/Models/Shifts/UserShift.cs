@@ -593,6 +593,7 @@ namespace DMT.Models
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
                 cmd += "  FROM UserShift, Shift, User, TSB ";
                 cmd += " WHERE UserShift.ShiftId = Shift.ShiftId ";
+                cmd += "   AND TSB.Active = 1 ";
                 cmd += "   AND UserShift.UserId = User.UserId ";
                 cmd += "   AND UserShift.TSBId = TSB.TSBId ";
                 cmd += "   AND UserShift.UserId = ? ";
@@ -614,6 +615,7 @@ namespace DMT.Models
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
                 cmd += "  FROM UserShift, Shift, User, TSB ";
                 cmd += " WHERE UserShift.ShiftId = Shift.ShiftId ";
+                cmd += "   AND TSB.Active = 1 ";
                 cmd += "   AND UserShift.UserId = User.UserId ";
                 cmd += "   AND UserShift.TSBId = TSB.TSBId ";
                 cmd += "   AND UserShift.UserId = ? ";
