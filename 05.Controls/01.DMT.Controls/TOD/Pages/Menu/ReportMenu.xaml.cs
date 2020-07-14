@@ -40,6 +40,7 @@ namespace DMT.TOD.Pages.Menu
         {
             var search = new DMT.TOD.Windows.Reports.RevenueSlipSearchWindow();
             search.Owner = Application.Current.MainWindow;
+            search.Setup(_user);
             if (search.ShowDialog() == false)
             {
                 return;
@@ -64,22 +65,27 @@ namespace DMT.TOD.Pages.Menu
         {
             var search = new DMT.TOD.Windows.Reports.RevenueSummarySearchWindow();
             search.Owner = Application.Current.MainWindow;
+            search.Setup(_user);
             if (search.ShowDialog() == false)
             {
                 return;
             }
+            var revenues = search.Revenues;
+
             // Daily Revenue Summary Preview
             var page = new Reports.DailyRevenueSummaryPreview();
+            page.MenuPage = this;
+            page.CallerPage = this; // Set CallerPage for click back.
+
+            page.Setup(revenues);
             PageContentManager.Instance.Current = page;
         }
 
         private void backHome_Click(object sender, RoutedEventArgs e)
         {
-
             // Main Menu Page
             var page = new Menu.MainMenu();
             PageContentManager.Instance.Current = page;
-            
         }
 
         #endregion

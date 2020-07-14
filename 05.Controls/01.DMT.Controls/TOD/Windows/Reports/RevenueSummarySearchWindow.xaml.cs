@@ -9,6 +9,7 @@ using DMT.Models;
 using DMT.Services;
 using NLib.Services;
 using NLib.Reflection;
+using System.Runtime.Remoting;
 
 #endregion
 
@@ -33,6 +34,7 @@ namespace DMT.TOD.Windows.Reports
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
         private User _user = null;
+        private List<Models.RevenueEntry> _revenues = null;
 
         #region Loaded
 
@@ -57,12 +59,26 @@ namespace DMT.TOD.Windows.Reports
 
         #endregion
 
+        #region Date Change Handler
+
+        private void dtDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _revenues = ops.Revenue.GetRevenues(dtDate.SelectedDate.Value);
+        }
+
+        #endregion
+
         public void Setup(User user)
         {
             _user = user;
             if (null != _user)
             {
             }
+        }
+
+        public List<Models.RevenueEntry> Revenues
+        {
+            get { return _revenues; }
         }
     }
 }

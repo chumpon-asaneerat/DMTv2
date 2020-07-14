@@ -5,8 +5,12 @@ Update 2020-07-14 #11
 Update 2020-07-14 #10
 - 
 
+[commited]
 Update 2020-07-14 #9
-- 
+- Update RevenueEntry Model #7.
+  - Update RevenueSlipSearchWindow -> implements get revenue entry by date.
+  - Update Report Menu -> implement logic to call show Slip Summary Report.
+  - Update DailyRevenueSummaryPreview -> implement report model and printing logic.
 
 [commited]
 Update 2020-07-14 #8
