@@ -17,11 +17,13 @@ Update 2020-07-15 #6
 Update 2020-07-15 #5
 - 
 
-Update 2020-07-15 #4
-- 
+[commited]
+Update 2020-07-15 #4 (TAv1)
+- Checks TAv1 Branch.
 
-Update 2020-07-15 #3
-- 
+[commited]
+Update 2020-07-15 #3 (master)
+- Split new Branch to TAv1
 
 [commited]
 Update 2020-07-15 #2
