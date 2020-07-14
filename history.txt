@@ -17,8 +17,11 @@ Update 2020-07-14 #7
 Update 2020-07-14 #6
 - 
 
+[commited]
 Update 2020-07-14 #5
-- 
+- Update RevenueEntry Model #3.
+  - RevenueDateSelectionPage - binding to ShiftBeginDateString, ShiftEndDateTimeString
+  - LaneAttendance add ShiftBeginDateTimeString/ShiftEndDateTimeString
 
 [commited]
 Update 2020-07-14 #4
