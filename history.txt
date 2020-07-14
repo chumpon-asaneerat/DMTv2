@@ -23,8 +23,10 @@ Update 2020-07-15 #4
 Update 2020-07-15 #3
 - 
 
+[commited]
 Update 2020-07-15 #2
-- 
+- Update TA #3
+  - Change Transactions folder to Revenues folder.
 
 [commited]
 Update 2020-07-15 #1
