@@ -139,6 +139,69 @@ namespace DMT.TOD.Pages.Reports
             return inst;
         }
 
+        private void InitNewReport()
+        {
+            if (null == _userShift || null == _plaza || null == _plazaRevenue ||
+                null == _revenueEntry ||
+                null == _laneActivities || _laneActivities.Count <= 0)
+            {
+                // some of parameter(s) is null.
+                Console.WriteLine("some of parameter(s) is null.");
+            }
+            else
+            {
+                // Find begin/end of revenue.
+                DateTime begin = DateTime.MinValue;
+                DateTime end = DateTime.MinValue;
+
+                // create lane list.
+                List<int> lanes = new List<int>();
+                _laneActivities.ForEach(laneAct =>
+                {
+                    if (begin == DateTime.MinValue || laneAct.Begin < begin)
+                    {
+                        begin = laneAct.Begin;
+                    }
+                    if (end == DateTime.MinValue || laneAct.End > end)
+                    {
+                        end = laneAct.End;
+                    }
+
+                    if (!lanes.Contains(laneAct.LaneNo))
+                    {
+                        lanes.Add(laneAct.LaneNo);
+                    }
+                });
+                int iCnt = 0;
+                int iMax = lanes.Count;
+                string laneList = string.Empty;
+                lanes.ForEach(laneNo =>
+                {
+                    laneList += laneNo.ToString();
+                    if (iCnt < iMax) laneList += ", ";
+                    iCnt++;
+                });
+
+                // update object properties.
+                _plaza.AssignTo(_revenueEntry); // assigned plaza name (EN/TH)
+                _userShift.AssignTo(_revenueEntry); // assigned user full name (EN/TH)
+
+                // assigned date after sync object(s) to RevenueEntry.
+                _revenueEntry.EntryDate = _entryDate; // assigned Entry date.
+                _revenueEntry.RevenueDate = _revDate; // assigned Revenue date.
+
+                _revenueEntry.Lanes = laneList.Trim();
+                _revenueEntry.ShiftBegin = begin;
+                _revenueEntry.ShiftEnd = end;
+
+                // assign supervisor.
+                var sup = ops.Shifts.GetCurrent();
+                _revenueEntry.SupervisorId = sup.UserId;
+                _revenueEntry.SupervisorNameEN = sup.FullNameEN;
+                _revenueEntry.SupervisorNameTH = sup.FullNameTH;
+            }
+        }
+
         public void Setup(UserShift userShift, Plaza plaza,
             UserShiftRevenue plazaRevenue,
             List<LaneAttendance> laneActivities,
@@ -152,34 +215,28 @@ namespace DMT.TOD.Pages.Reports
             _entryDate = entryDate;
             _revDate = revDate;
             _revenueEntry = revenueEntry;
-            if (null == _userShift || null == _plaza || null == _plazaRevenue || 
-                null == _revenueEntry)
+
+            if (null != _revenueEntry)
             {
-                // some of parameter(s) is null.
+                if (_revenueEntry.RevenueId == string.Empty ||
+                    _revenueEntry.EntryDate == DateTime.MinValue ||
+                    _revenueEntry.RevenueDate == DateTime.MinValue)
+                {
+                    InitNewReport();
+                }
+            }
+
+            var model = GetReportModel();
+            if (null == model ||
+                null == model.DataSources || model.DataSources.Count <= 0 ||
+                null == model.DataSources[0] || null == model.DataSources[0].Items)
+            {
+                MessageBox.Show("No result found.");
+                this.rptViewer.ClearReport();
             }
             else
             {
-                // update object properties.
-                _plaza.AssignTo(_revenueEntry); // assigned plaza name (EN/TH)
-                _userShift.AssignTo(_revenueEntry); // assigned user full name (EN/TH)
-
-                // assigned date after sync object(s) to RevenueEntry.
-                _revenueEntry.EntryDate = _entryDate; // assigned Entry date.
-                _revenueEntry.RevenueDate = _revDate; // assigned Revenue date.
-
-                var model = GetReportModel();
-                if (null == model ||
-                    null == model.DataSources || model.DataSources.Count <= 0 ||
-                    null == model.DataSources[0] || null == model.DataSources[0].Items)
-                {
-                    MessageBox.Show("No result found.");
-                    this.rptViewer.ClearReport();
-                }
-                else
-                {
-                    this.rptViewer.LoadReport(model);
-                }
-                
+                this.rptViewer.LoadReport(model);
             }
         }
     }

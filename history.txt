@@ -14,8 +14,10 @@ Update 2020-07-14 #8
 Update 2020-07-14 #7
 - 
 
+[commited]
 Update 2020-07-14 #6
-- 
+- Update RevenueEntry Model #4.
+  - RevenueSlipPreview update code for set lane list, shift begin/end and supervisor info.
 
 [commited]
 Update 2020-07-14 #5
