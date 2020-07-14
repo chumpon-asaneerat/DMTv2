@@ -25,11 +25,18 @@ namespace DMT.TOD.Controls.Shift.View
             InitializeComponent();
         }
 
-        /*
-        public void Setup(List<Models.RevenueSlip> slips)
+        public void Setup(List<Models.RevenueEntry> revenues)
         {
-            listView.ItemsSource = slips;
+            listView.ItemsSource = null;
+            listView.ItemsSource = revenues;
         }
-        */
+
+        public Models.RevenueEntry SelectedEntry
+        {
+            get
+            {
+                return listView.SelectedItem as Models.RevenueEntry;
+            }
+        }
     }
 }

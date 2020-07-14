@@ -1416,8 +1416,8 @@ namespace DMT.Models
                 cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
                 cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
                 cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
-                cmd += "   AND RevenueEntry.RevDate >= ? ";
-                cmd += "   AND RevenueEntry.RevDate <= ? ";
+                cmd += "   AND RevenueEntry.RevenueDate >= ? ";
+                cmd += "   AND RevenueEntry.RevenueDate <= ? ";
 
                 var rets = NQuery.Query<FKs>(cmd, begin, end).ToList();
                 var results = new List<RevenueEntry>();

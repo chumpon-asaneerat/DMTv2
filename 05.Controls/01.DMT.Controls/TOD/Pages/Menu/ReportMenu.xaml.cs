@@ -44,9 +44,19 @@ namespace DMT.TOD.Pages.Menu
             {
                 return;
             }
+            Models.RevenueEntry revenueEntry = search.SelectedEntry;
+
+            if (null == revenueEntry)
+            {
+                MessageBox.Show("กรุณาเลือกรายการที่ต้องการเเรียกดูใบนำส่งรายได้");
+                return;
+            }
             // Revenue Slip Preview
             var page = new Reports.RevenueSlipPreview();
             page.MenuPage = this;
+            page.CallerPage = this; // Set CallerPage for click back.
+            page.Setup(null, null, null, null,
+                DateTime.MinValue, DateTime.MinValue, revenueEntry);
             PageContentManager.Instance.Current = page;
         }
 

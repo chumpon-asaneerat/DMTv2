@@ -57,11 +57,29 @@ namespace DMT.TOD.Windows.Reports
 
         #endregion
 
+        #region Date Change Handler
+
+        private void dtDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var items = ops.Revenue.GetRevenues(dtDate.SelectedDate.Value);
+            grid.Setup(items);
+        }
+
+        #endregion
+
         public void Setup(User user)
         {
             _user = user;
             if (null != _user)
             {
+            }
+        }
+
+        public Models.RevenueEntry SelectedEntry
+        {
+            get
+            {
+                return grid.SelectedEntry;
             }
         }
     }

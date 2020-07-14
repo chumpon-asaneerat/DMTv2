@@ -8,8 +8,14 @@ Update 2020-07-14 #10
 Update 2020-07-14 #9
 - 
 
+[commited]
 Update 2020-07-14 #8
-- 
+- Update RevenueEntry Model #6.
+  - Update RevenueEntry model -> fixed query misspell column name.
+  - Update ShiftView control -> Binding properties and add public property.
+  - Update RevenueSlipSearchWindow -> Bind to Revenue Entry.
+  - Update RevenueSlipPreview -> add auto change text button when call via RevenuEntry menu
+    or From report Manu.
 
 [commited]
 Update 2020-07-14 #7

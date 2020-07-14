@@ -244,7 +244,7 @@ namespace DMT.TOD.Pages.Reports
                 {
                     isNew = false;
 
-                    txtOK.Text = "พิมพ์ ใบสำส่งรายได้";
+                    txtOK.Text = "พิมพ์";
                     txtCancel.Text = "ยกเลิก";
                 }
             }
