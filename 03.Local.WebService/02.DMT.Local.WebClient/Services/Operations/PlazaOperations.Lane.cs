@@ -112,6 +112,13 @@ namespace DMT.Services
                 return ret;
             }
 
+            public List<LaneAttendance> GetAllNotHasRevenueEntry()
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<LaneAttendance>>(
+                    RouteConsts.Lane.GetAllNotHasRevenueEntry.Url, null);
+                return ret;
+            }
+
             public LaneAttendance CreatePayment(Lane lane, User supervisor,
                 Payment payment, DateTime date, decimal amount)
             {

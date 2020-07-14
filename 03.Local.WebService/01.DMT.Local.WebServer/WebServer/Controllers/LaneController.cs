@@ -94,6 +94,13 @@ namespace DMT.Services
         }
 
         [HttpPost]
+        [ActionName(RouteConsts.Lane.GetAllNotHasRevenueEntry.Name)]
+        public List<LaneAttendance> GetAllNotHasRevenueEntry()
+        {
+            return LaneAttendance.GetAllNotHasRevenueEntry();
+        }
+
+        [HttpPost]
         [ActionName(RouteConsts.Lane.GetPaymentsByDate.Name)]
         public List<LanePayment> GetPaymentsByDate([FromBody] Search.Lanes.Payments.ByDate value)
         {

@@ -40,11 +40,9 @@ namespace DMT.TOD.Controls.Revenue.View
 
         #endregion
 
-        /*
-        public void Setup(List<Models.Lane> lanes)
+        public void Setup(List<Models.LaneAttendance> lanes)
         {
             listView.ItemsSource = lanes;
         }
-        */
     }
 }

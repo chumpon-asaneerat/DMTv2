@@ -806,6 +806,32 @@ namespace DMT.Models
                     DateTime.MinValue).ToList<LaneAttendance>();
             }
         }
+        public static List<LaneAttendance> GetAllNotHasRevenueEntry()
+        {
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT LaneAttendance.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+                cmd += "     , Lane.LaneNo ";
+                cmd += "     , User.FullNameEN, User.FullNameTH ";
+                cmd += "  FROM LaneAttendance, TSB, Plaza, Lane, User ";
+                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
+                cmd += "   AND TSB.Active = 1 ";
+                cmd += "   AND Plaza.TSBId = Plaza.TSBId ";
+                cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
+                cmd += "   AND LaneAttendance.UserId = User.UserId ";
+                cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneAttendance.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND (LaneAttendance.RevenueDate = ?";
+                cmd += "    OR  LaneAttendance.RevenueId IS NULL ";
+                cmd += "    OR  LaneAttendance.RevenueId = ?)";
+                return NQuery.Query<FKs>(cmd, DateTime.MinValue,
+                    string.Empty).ToList<LaneAttendance>();
+            }
+        }
 
         #endregion
     }

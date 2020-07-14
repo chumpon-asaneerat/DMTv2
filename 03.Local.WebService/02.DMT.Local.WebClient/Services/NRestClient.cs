@@ -74,7 +74,7 @@ namespace DMT.Services
         /// Returns instance of TReturn object if success. Otherwise return null.
         /// </returns>
         public TReturn Execute<TReturn>(string apiUrl,
-            object pObj)
+            object pObj = null)
         {
             string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
             var client = new RestClient(BaseUrl);
@@ -101,7 +101,7 @@ namespace DMT.Services
         /// <param name="apiUrl">The action api url.</param>
         /// <param name="pObj">The parameter.</param>
         public void Execute(string apiUrl,
-            object pObj)
+            object pObj = null)
         {
             string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
             var client = new RestClient(BaseUrl);

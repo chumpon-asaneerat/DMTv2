@@ -148,11 +148,11 @@ namespace DMT.TOD.Pages.Revenue
                 if (null == _laneActivities || _laneActivities.Count <= 0)
                 {
                     // no data.
-                    grid.DataContext = null;
+                    grid.Setup(null);
                 }
                 else
                 {
-                    grid.DataContext = _laneActivities;
+                    grid.Setup(_laneActivities);
                 }
 
                 if (null != plaza)

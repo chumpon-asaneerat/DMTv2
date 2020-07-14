@@ -206,6 +206,12 @@ namespace DMT
                 public const string Url = Lane.Url + @"/" + Name;
             }
 
+            public static class GetAllNotHasRevenueEntry
+            {
+                public const string Name = "GetAllNotHasRevenueEntry";
+                public const string Url = Lane.Url + @"/" + Name;
+            }
+
             public static class GetPaymentsByDate
             {
                 public const string Name = "GetPaymentsByDate";

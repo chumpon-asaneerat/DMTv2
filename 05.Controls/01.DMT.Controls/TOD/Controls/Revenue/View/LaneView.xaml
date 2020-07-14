@@ -13,15 +13,20 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="วัน/เวลา เปิดการทำงาน" 
-                                    DisplayMemberBinding="{Binding Path=BeginDateString}" 
-                                    Width="200"/>
-
+                                    DisplayMemberBinding="{Binding Path=BeginDateTimeString}" 
+                                    Width="220"/>
+                    <GridViewColumn Header="วัน/เวลา จบการทำงาน" 
+                                    DisplayMemberBinding="{Binding Path=EndDateTimeString}" 
+                                    Width="220"/>
                     <GridViewColumn Header="รหัสพนักงาน" 
-                                    DisplayMemberBinding="{Binding Path=StaffId}" 
+                                    DisplayMemberBinding="{Binding Path=UserId}" 
                                     Width="100"/>
                     <GridViewColumn Header="ชื่อพนักงาน" 
-                                    DisplayMemberBinding="{Binding Path=StaffName}" 
+                                    DisplayMemberBinding="{Binding Path=FullNameEN}" 
                                     Width="250"/>
+                    <GridViewColumn Header="เลน" 
+                                    DisplayMemberBinding="{Binding Path=LaneId}" 
+                                    Width="150"/>
                 </GridView>
             </ListView.View>
         </ListView>

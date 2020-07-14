@@ -36,6 +36,8 @@ namespace DMT.TOD.Pages.TollAdmin
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
         private User _user = null;
 
+        private List<LaneAttendance> _laneActivities = null;
+
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
         {
             // Main Menu Page
@@ -62,6 +64,21 @@ namespace DMT.TOD.Pages.TollAdmin
             PageContentManager.Instance.Current = page;
         }
 
+        private void RefreshLanes()
+        {
+            // get all lanes information.
+            _laneActivities = ops.Lanes.GetAllNotHasRevenueEntry();
+            if (null == _laneActivities || _laneActivities.Count <= 0)
+            {
+                // no data.
+                grid.Setup(null);
+            }
+            else
+            {
+                grid.Setup(_laneActivities);
+            }
+        }
+
         public void Setup(User user)
         {
             _user = user;
@@ -69,8 +86,8 @@ namespace DMT.TOD.Pages.TollAdmin
             {
                 DateTime dt = DateTime.Now;
                 cbShifts.ItemsSource = ops.Shifts.GetShifts();
-                // setup lane view.
-                //grid.setup()
+                // Load related lane data.
+                RefreshLanes();
             }
         }
     }

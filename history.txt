@@ -2,8 +2,17 @@
 Update 2020-07-14 #11
 - 
 
+[commited]
 Update 2020-07-14 #10
-- 
+- Update RevenueEntry Model #8.
+  - Update ChangeShift show all lane activities that not enter revenue.
+  - Update RevenueDateSelection - change layout from stackpanel to dockpanel.
+  - Update ChangeShift - change layout from stackpanel to dockpanel.
+  - Update LaneView - Update binding columns.
+  - Update Lane2View - Update binding columns.
+  - LaneAttendance add static method GetAllNotHasRevenueEntry.
+  - Plaza Operation (Lane) - add GetAllNotHasRevenueEntry.
+  - Controller (Lane) - add GetAllNotHasRevenueEntry.
 
 [commited]
 Update 2020-07-14 #9
