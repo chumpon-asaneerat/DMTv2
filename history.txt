@@ -23,8 +23,10 @@ Update 2020-07-15 #11
 Update 2020-07-15 #10
 - 
 
+[commited]
 Update 2020-07-15 #9
-- 
+- Add history.TA.txt
+- LogInList Update#1.
 
 [commited]
 Update 2020-07-15 #8 (master)
