@@ -78,6 +78,14 @@ namespace DMT.Services
         }
 
         [HttpPost]
+        [ActionName(RouteConsts.Lane.GetAllAttendancesByUserShift.Name)]
+        public List<LaneAttendance> GetAllAttendancesByUserShift([FromBody] UserShift value)
+        {
+            if (null == value) return new List<LaneAttendance>();
+            return LaneAttendance.Search(value);
+        }
+
+        [HttpPost]
         [ActionName(RouteConsts.Lane.GetAttendancesByLane.Name)]
         public List<LaneAttendance> GetAttendancesByLane([FromBody] Search.Lanes.Attendances.ByLane value)
         {

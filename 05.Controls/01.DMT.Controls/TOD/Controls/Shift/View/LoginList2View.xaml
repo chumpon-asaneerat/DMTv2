@@ -17,7 +17,13 @@
             <ColumnDefinition Width="10" />
         </Grid.ColumnDefinitions>
         <ListView x:Name="lstUsers" FontSize="18" ItemsSource="{Binding}"
-                  Grid.Column="1">
+                  Grid.Column="1"
+                  SelectionChanged="lstUsers_SelectionChanged">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="รหัสพนักงาน" 
@@ -30,17 +36,27 @@
                                     DisplayMemberBinding="{Binding Path=BeginDateTimeString}" 
                                     Width="220"/>
                     <GridViewColumn Header="กะ" 
-                                    DisplayMemberBinding="{Binding Path=ShiftNameTH}" 
-                                    Width="150"/>
+                                    Width="80">
+                        <GridViewColumn.CellTemplate >
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=ShiftNameTH}" TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
         <ListView x:Name="lstLaneJobs" FontSize="18" ItemsSource="{Binding}"
-                  Grid.Column="1">
+                  Grid.Column="3">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Job No" 
-                                    DisplayMemberBinding="{Binding Path=JobNo}" 
+                                    DisplayMemberBinding="{Binding Path=JobId}" 
                                     Width="100"/>
                     <GridViewColumn Header="รหัสพนักงาน" 
                                     DisplayMemberBinding="{Binding Path=UserId}" 
@@ -51,10 +67,15 @@
                     <GridViewColumn Header="วันเวลาเลิกปฎิบัติงาน" 
                                     DisplayMemberBinding="{Binding Path=EndDateTimeString}" 
                                     Width="220"/>
-                    <GridViewColumn Header="เลน" 
-                                    DisplayMemberBinding="{Binding Path=LaneNo}" 
-                                    Width="80"/>
-                    <GridViewColumn Header="ชื่วันเวลาทำ TOD" 
+                    <GridViewColumn Header="เลน"
+                                    Width="80">
+                        <GridViewColumn.CellTemplate >
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=LaneNo}" TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="วันเวลาทำ TOD" 
                                     DisplayMemberBinding="{Binding Path=RevenueDateTimeString}" 
                                     Width="250"/>
                 </GridView>

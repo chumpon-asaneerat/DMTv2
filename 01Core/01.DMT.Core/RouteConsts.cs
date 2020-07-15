@@ -200,6 +200,12 @@ namespace DMT
                 public const string Url = Lane.Url + @"/" + Name;
             }
 
+            public static class GetAllAttendancesByUserShift
+            {
+                public const string Name = "GetAllAttendancesByUserShift";
+                public const string Url = Lane.Url + @"/" + Name;
+            }
+
             public static class GetAttendancesByLane
             {
                 public const string Name = "GetAttendancesByLane";

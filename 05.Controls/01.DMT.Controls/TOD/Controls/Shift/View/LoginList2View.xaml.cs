@@ -51,8 +51,29 @@ namespace DMT.TOD.Controls.Revenue.View
 
         #endregion
 
+        #region ListView Handlers
+
+        private void lstUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = lstUsers.SelectedItem as UserShift;
+            RefreshLane(item);
+        }
+
+        #endregion
+
+        private void RefreshLane(UserShift userShift)
+        {
+            lstLaneJobs.ItemsSource = null;
+            if (null == userShift) return;
+
+            var lanes = ops.Lanes.GetAllAttendancesByUserShift(userShift);
+            lstLaneJobs.ItemsSource = lanes;
+        }
+
         public void RefreshUsers() 
         {
+            lstLaneJobs.ItemsSource = null;
+
             lstUsers.ItemsSource = null;
 
             _userShifts = ops.Jobs.GetUnCloseUserShifts();

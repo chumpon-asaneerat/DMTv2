@@ -96,6 +96,14 @@ namespace DMT.Services
                 return ret;
             }
 
+            public List<LaneAttendance> GetAllAttendancesByUserShift(
+                UserShift value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<LaneAttendance>>(
+                    RouteConsts.Lane.GetAllAttendancesByUserShift.Url, value);
+                return ret;
+            }
+
             public List<LaneAttendance> GetAttendancesByLane(
                 Search.Lanes.Attendances.ByLane value)
             {
