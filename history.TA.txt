@@ -10,6 +10,10 @@ Update 2020-07-16 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-07-15 #2 (TA)
+- Recheck merge from original/master #1 (OK).
+
+[commited]
 Update 2020-07-15 #1 (TA)
 - Prepare history.TA.txt.
 - Merge from original/master #1.
