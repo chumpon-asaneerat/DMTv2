@@ -43,6 +43,7 @@ namespace DMT.TOD.Controls.Revenue.View
 
         #endregion
 
+        /*
         private void listView_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             try
@@ -68,7 +69,7 @@ namespace DMT.TOD.Controls.Revenue.View
                 MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
+        */
 
         public void Setup(List<Models.Lane> lanes) 
         {
