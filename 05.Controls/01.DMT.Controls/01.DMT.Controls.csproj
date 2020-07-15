@@ -198,7 +198,7 @@
     <Compile Include="TOD\Controls\Revenue\View\Lane2View.xaml.cs">
       <DependentUpon>Lane2View.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TOD\Controls\Revenue\View\LoginList2View.xaml.cs">
+    <Compile Include="TOD\Controls\Shift\View\LoginList2View.xaml.cs">
       <DependentUpon>LoginList2View.xaml</DependentUpon>
     </Compile>
     <Compile Include="TOD\Pages\Job\EOJPage.xaml.cs">
@@ -528,7 +528,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="TOD\Controls\Revenue\View\LoginList2View.xaml">
+    <Page Include="TOD\Controls\Shift\View\LoginList2View.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

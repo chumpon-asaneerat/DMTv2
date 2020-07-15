@@ -45,24 +45,16 @@ namespace DMT.TOD.Pages.Job
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
         {
-            RefreshUsers();
+            grid.RefreshUsers();
         }
 
         #endregion
 
-        private void RefreshUsers()
-        {
-
-        }
-
-
         public void Setup(User user)
         {
             _user = user;
-            if (null != _user)
-            {
-                RefreshUsers();
-            }
+            grid.Setup(_user);
+            grid.RefreshUsers();
         }
     }
 }

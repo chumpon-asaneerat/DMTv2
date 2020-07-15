@@ -1,32 +1,37 @@
 --------------------------------------------------------------------------------------------
-Update 2020-07-15 #17
+Update 2020-07-16 #3
 - 
 
-Update 2020-07-15 #16
+Update 2020-07-16 #2
 - 
 
-Update 2020-07-15 #15
+Update 2020-07-16 #1
 - 
 
+--------------------------------------------------------------------------------------------
 Update 2020-07-15 #14
 - 
 
+[commited]
 Update 2020-07-15 #13
-- 
+- Remove history.TA.txt
 
+[commited]
 Update 2020-07-15 #12
-- 
+- Prepare history.txt
 
+[commited]
 Update 2020-07-15 #11
-- 
+- LogInList Update #3.
 
+[commited]
 Update 2020-07-15 #10
-- 
+- LogInList Update #2.
 
 [commited]
 Update 2020-07-15 #9
 - Add history.TA.txt
-- LogInList Update#1.
+- LogInList Update #1.
 
 [commited]
 Update 2020-07-15 #8 (master)

@@ -497,8 +497,38 @@ namespace DMT.Models
                     _RevenueDate = value;
                     // Raise event.
                     this.RaiseChanged("RevenueDate");
+                    this.RaiseChanged("RevenueDateString");
+                    this.RaiseChanged("RevenueDateTimeString");
                 }
             }
+        }
+        /// <summary>
+        /// Gets Revenue Date String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string RevenueDateString
+        {
+            get
+            {
+                var ret = (this.RevenueDate == DateTime.MinValue) ? "" : this.RevenueDate.ToThaiDateTimeString("dd/MM/yyyy");
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets Revenue Date Time String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string RevenueDateTimeString
+        {
+            get
+            {
+                var ret = (this.RevenueDate == DateTime.MinValue) ? "" : this.RevenueDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+                return ret;
+            }
+            set { }
         }
         /// <summary>
         /// Gets or sets RevenueId.
@@ -731,6 +761,40 @@ namespace DMT.Models
                         DateTime.MinValue,
                         revenueDate).ToList<LaneAttendance>();
                 }
+            }
+        }
+        public static List<LaneAttendance> Search(UserShift shift)
+        {
+            if (null == shift) return new List<LaneAttendance>();
+            lock (sync)
+            {
+                string cmd = string.Empty;
+
+                cmd += "SELECT LaneAttendance.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+                cmd += "     , Lane.LaneNo ";
+                cmd += "     , User.FullNameEN, User.FullNameTH ";
+                cmd += "  FROM LaneAttendance, TSB, Plaza, Lane, User ";
+                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
+                cmd += "   AND Plaza.TSBId = Plaza.TSBId ";
+                cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
+                cmd += "   AND LaneAttendance.UserId = User.UserId ";
+                cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneAttendance.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND LaneAttendance.UserId = ? ";
+                cmd += "   AND (LaneAttendance.Begin >= ? AND LaneAttendance.Begin <= ?)";
+                cmd += "   AND ((LaneAttendance.End >= ? AND LaneAttendance.End <= ?) " +
+                    "        OR  LaneAttendance.End = ?)";
+
+                DateTime end = (shift.End == DateTime.MinValue) ? DateTime.Now : shift.End;
+
+                return NQuery.Query<FKs>(cmd,
+                    shift.UserId,
+                    shift.Begin, end,
+                    shift.Begin, end,
+                    DateTime.MinValue).ToList<LaneAttendance>();
             }
         }
         public static List<LaneAttendance> Search(Lane lane)

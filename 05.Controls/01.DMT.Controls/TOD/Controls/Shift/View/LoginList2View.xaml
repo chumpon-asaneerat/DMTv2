@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="DMT.TOD.Controls.Revenue.View.LoginList2View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             d:DesignHeight="450"
+             d:DesignWidth="1000"
+             mc:Ignorable="d"
+             Loaded="UserControl_Loaded"
+             Unloaded="UserControl_Unloaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="lstUsers" FontSize="18" ItemsSource="{Binding}"
+                  Grid.Column="1"
+                  SelectionChanged="lstUsers_SelectionChanged">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="รหัสพนักงาน" 
+                                    DisplayMemberBinding="{Binding Path=UserId}" 
+                                    Width="100"/>
+                    <GridViewColumn Header="ชื่อพนักงาน" 
+                                    DisplayMemberBinding="{Binding Path=FullNameEN}" 
+                                    Width="250"/>
+                    <GridViewColumn Header="วัน/เวลา เปิดการทำงาน" 
+                                    DisplayMemberBinding="{Binding Path=BeginDateTimeString}" 
+                                    Width="220"/>
+                    <GridViewColumn Header="กะ" 
+                                    Width="80">
+                        <GridViewColumn.CellTemplate >
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=ShiftNameTH}" TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="lstLaneJobs" FontSize="18" ItemsSource="{Binding}"
+                  Grid.Column="3">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Job No" 
+                                    DisplayMemberBinding="{Binding Path=JobId}" 
+                                    Width="100"/>
+                    <GridViewColumn Header="รหัสพนักงาน" 
+                                    DisplayMemberBinding="{Binding Path=UserId}" 
+                                    Width="100"/>
+                    <GridViewColumn Header="วันเวลาเริ่มปฎิบัติงาน" 
+                                    DisplayMemberBinding="{Binding Path=BeginDateTimeString}" 
+                                    Width="220"/>
+                    <GridViewColumn Header="วันเวลาเลิกปฎิบัติงาน" 
+                                    DisplayMemberBinding="{Binding Path=EndDateTimeString}" 
+                                    Width="220"/>
+                    <GridViewColumn Header="เลน"
+                                    Width="80">
+                        <GridViewColumn.CellTemplate >
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=LaneNo}" TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="วันเวลาทำ TOD" 
+                                    DisplayMemberBinding="{Binding Path=RevenueDateTimeString}" 
+                                    Width="250"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>
