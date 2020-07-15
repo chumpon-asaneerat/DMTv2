@@ -152,6 +152,12 @@ namespace DMT
                 public const string Name = "GetUserShifts";
                 public const string Url = Job.Url + @"/" + Name;
             }
+
+            public static class GetUnCloseUserShifts
+            {
+                public const string Name = "GetUnCloseUserShifts";
+                public const string Url = Job.Url + @"/" + Name;
+            }
         }
 
         public static class Lane

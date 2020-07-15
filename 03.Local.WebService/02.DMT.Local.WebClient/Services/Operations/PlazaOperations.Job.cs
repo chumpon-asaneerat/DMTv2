@@ -101,6 +101,13 @@ namespace DMT.Services
                 return ret;
             }
 
+            public List<UserShift> GetUnCloseUserShifts()
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<UserShift>>(
+                    RouteConsts.Job.GetUnCloseUserShifts.Url);
+                return ret;
+            }
+
             #endregion
         }
 

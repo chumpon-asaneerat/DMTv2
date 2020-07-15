@@ -58,5 +58,12 @@ namespace DMT.Services
             if (null == value) return new List<UserShift>();
             return UserShift.GetUserShifts(value.UserId);
         }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Job.GetUnCloseUserShifts.Name)]
+        public List<UserShift> GetUnCloseUserShifts()
+        {
+            return UserShift.GetUnCloseUserShifts();
+        }
     }
 }

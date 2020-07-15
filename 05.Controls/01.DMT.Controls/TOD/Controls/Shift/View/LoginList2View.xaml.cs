@@ -12,19 +12,20 @@ using NLib.Reflection;
 
 #endregion
 
-namespace DMT.TOD.Pages.Job
+
+namespace DMT.TOD.Controls.Revenue.View
 {
     /// <summary>
-    /// Interaction logic for LoginListPage.xaml
+    /// Interaction logic for LaneView.xaml
     /// </summary>
-    public partial class LoginListPage : UserControl
+    public partial class LoginList2View : UserControl
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public LoginListPage()
+        public LoginList2View()
         {
             InitializeComponent();
         }
@@ -34,27 +35,34 @@ namespace DMT.TOD.Pages.Job
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
         private User _user = null;
 
-        #region Button Handlers
+        private List<UserShift> _userShifts = null;
 
-        private void cmdOk_Click(object sender, RoutedEventArgs e)
+        #region Loaded/Unloaded
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            // Main Menu Page
-            var page = new Menu.MainMenu();
-            PageContentManager.Instance.Current = page;
+            RefreshUsers();
         }
 
-        private void cmdCancel_Click(object sender, RoutedEventArgs e)
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
-            grid.RefreshUsers();
+
         }
 
         #endregion
 
+        public void RefreshUsers() 
+        {
+            lstUsers.ItemsSource = null;
+
+            _userShifts = ops.Jobs.GetUnCloseUserShifts();
+
+            lstUsers.ItemsSource = _userShifts;
+        }
+
         public void Setup(User user)
         {
             _user = user;
-            grid.Setup(_user);
-            grid.RefreshUsers();
         }
     }
 }

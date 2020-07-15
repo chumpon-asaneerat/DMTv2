@@ -634,6 +634,36 @@ namespace DMT.Models
             }
         }
 
+        public static List<UserShift> GetUnCloseUserShifts()
+        {
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT UserShift.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
+                cmd += "     , User.FullNameEN, User.FullNameTH ";
+                cmd += "  FROM UserShift, Shift, User, TSB ";
+                cmd += " WHERE UserShift.ShiftId = Shift.ShiftId ";
+                cmd += "   AND TSB.Active = 1 ";
+                cmd += "   AND UserShift.UserId = User.UserId ";
+                cmd += "   AND UserShift.TSBId = TSB.TSBId ";
+                cmd += "   AND UserShift.End = ? ";
+
+                var rets = NQuery.Query<FKs>(cmd, DateTime.MinValue).ToList();
+                var results = new List<UserShift>();
+                if (null != rets)
+                {
+                    rets.ForEach(ret =>
+                    {
+                        results.Add(ret.ToUserShift());
+                    });
+                }
+
+                return results;
+            }
+        }
+
         #endregion
     }
 
