@@ -54,8 +54,11 @@ Update 2020-07-16 #29 (TA)
 Update 2020-07-16 #28 (TA)
 - 
 
+[commited]
 Update 2020-07-16 #27 (TA)
-- 
+- Check merge to origin/master (OK).
+- Implements TA model class #17.
+  - Eable Table creation for TSB Credit process.
 
 [commited]
 Update 2020-07-16 #26 (TA)
