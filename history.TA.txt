@@ -1,12 +1,32 @@
 --------------------------------------------------------------------------------------------
+Update 2020-07-16 #25 (TA)
+- 
+
+Update 2020-07-16 #24 (TA)
+- 
+
+Update 2020-07-16 #23 (TA)
+- 
+
+Update 2020-07-16 #22 (TA)
+- 
+
+Update 2020-07-16 #21 (TA)
+- 
+
 Update 2020-07-16 #20 (TA)
 - 
 
 Update 2020-07-16 #19 (TA)
 - 
 
+[commited]
 Update 2020-07-16 #18 (TA)
-- 
+- Config add Category/Description in all properties.
+- TSB add Category/Description/ReadOnly in all properties.
+- Plaza add Category/Description/ReadOnly in all properties.
+- LaneGroup add Category/Description/ReadOnly in all properties.
+- Lane add Category/Description/ReadOnly in all properties.
 
 [commited]
 Update 2020-07-16 #17 (TA)

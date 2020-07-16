@@ -12,6 +12,7 @@ using SQLiteNetExtensions.Extensions;
 using Newtonsoft.Json;
 using NLib;
 using NLib.Reflection;
+using System.ComponentModel;
 
 #endregion
 
@@ -46,6 +47,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Key
         /// </summary>
+        [Category("Common")]
+        [Description("Gets or sets Key")]
         [PrimaryKey, MaxLength(30)]
         [PeropertyMapName("Key")]
         public string Key
@@ -66,6 +69,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Value
         /// </summary>
+        [Category("Common")]
+        [Description("Gets or sets Value")]
         [MaxLength(100)]
         [PeropertyMapName("Value")]
         public string Value

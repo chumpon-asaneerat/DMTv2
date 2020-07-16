@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using NLib;
 using NLib.Reflection;
 using System.Data.SqlClient;
+using System.ComponentModel;
 
 #endregion
 
@@ -55,6 +56,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets TSBId.
         /// </summary>
+        [Category("Common")]
+        [Description("Gets or sets TSBId.")]
         [PrimaryKey, MaxLength(10)]
         [PeropertyMapName("TSBId")]
         public string TSBId
@@ -75,6 +78,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets NetworkId.
         /// </summary>
+        [Category("Common")]
+        [Description("Gets or sets NetworkId.")]
         [MaxLength(10)]
         [PeropertyMapName("NetworkId")]
         public string NetworkId
@@ -95,6 +100,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets TSBNameEN.
         /// </summary>
+        [Category("Common")]
+        [Description("Gets or sets TSBNameEN.")]
         [MaxLength(100)]
         [PeropertyMapName("TSBNameEN")]
         public string TSBNameEN
@@ -115,6 +122,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets TSBNameTH.
         /// </summary>
+        [Category("Common")]
+        [Description("Gets or sets TSBNameTH.")]
         [MaxLength(100)]
         [PeropertyMapName("TSBNameTH")]
         public string TSBNameTH
@@ -135,6 +144,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets is active TSB.
         /// </summary>
+        [Category("Common")]
+        [Description("Gets or sets is active TSB.")]
+        [ReadOnly(true)]
         [PeropertyMapName("Active")]
         public bool Active
         {
@@ -159,6 +171,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
+        [Category("DataCenter")]
+        [Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
+        [ReadOnly(true)]
         [PeropertyMapName("Status")]
         public int Status
         {
@@ -178,6 +193,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets LastUpdated (Sync to DC).
         /// </summary>
+        [Category("DataCenter")]
+        [Description("Gets or sets LastUpdated (Sync to DC).")]
+        [ReadOnly(true)]
         [PeropertyMapName("LastUpdate")]
         public DateTime LastUpdate
         {
