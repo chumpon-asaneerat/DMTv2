@@ -118,7 +118,9 @@
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    TextWrapping="Wrap">
-                                <Run Text="หัวหน้า ขายคูปอง" />
+                                   <Run Text="หัวหน้า" />
+                                        <LineBreak />
+                                   <Run Text="ขายคูปอง" />
                             </TextBlock>
                         </StackPanel>
                     </DockPanel>
@@ -191,8 +193,11 @@
                             <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
-                                   TextWrapping="Wrap"
-                                   Text="ประวัติ การขายคูปอง"/>
+                                   TextWrapping="Wrap">
+                            <Run Text="ประวัติ" />
+                            <LineBreak />
+                            <Run Text="การขายคูปอง" />
+                            </TextBlock>
                         </StackPanel>
                     </DockPanel>
                 </Button>
@@ -329,8 +334,9 @@
                             <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
-                                   TextWrapping="Wrap"
-                                   Text="เงินยืมทอน"/>
+                                   TextWrapping="Wrap">
+                            <Run Text="เงินยืมทอน" />
+                            </TextBlock>
                         </StackPanel>
                     </DockPanel>
                 </Button>
@@ -364,8 +370,9 @@
                             <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
-                                   TextWrapping="Wrap"
-                                   Text="รับคูปอง"/>
+                                   TextWrapping="Wrap">
+                            <Run Text="รับคูปอง" />
+                            </TextBlock>
                         </StackPanel>
                     </DockPanel>
                 </Button>
@@ -399,8 +406,11 @@
                             <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
-                                   TextWrapping="Wrap"
-                                   Text="ประวัติ แลกเงินยืมทอน"/>
+                                   TextWrapping="Wrap">
+                            <Run Text="ประวัติ" />
+                            <LineBreak />
+                            <Run Text="แลกเงินยืมทอน" />
+                            </TextBlock>
                         </StackPanel>
                     </DockPanel>
                 </Button>
@@ -434,8 +444,9 @@
                             <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
-                                   TextWrapping="Wrap"
-                                   Text="คืนคูปอง"/>
+                                   TextWrapping="Wrap">
+                            <Run Text="คืนคูปอง" />
+                            </TextBlock>
                         </StackPanel>
                     </DockPanel>
                 </Button>
@@ -470,8 +481,9 @@
                             <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
-                                   TextWrapping="Wrap"
-                                   Text="เช็คยอดด่าน"/>
+                                   TextWrapping="Wrap">
+                            <Run Text="เช็คยอดด่าน" />
+                            </TextBlock>
                         </StackPanel>
                     </DockPanel>
                 </Button>
@@ -505,8 +517,9 @@
                             <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
-                                   TextWrapping="Wrap"
-                                   Text="ออกจากระบบ"/>
+                                   TextWrapping="Wrap">
+                            <Run Text="ออกจากระบบ" />
+                            </TextBlock>
                         </StackPanel>
                     </DockPanel>
                 </Button>
