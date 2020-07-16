@@ -12,6 +12,7 @@ using SQLiteNetExtensions.Extensions;
 using Newtonsoft.Json;
 using NLib;
 using NLib.Reflection;
+using System.ComponentModel;
 
 #endregion
 
@@ -76,6 +77,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PKId
         /// </summary>
+        [Category("Common")]
+        [Description("Gets or sets PKId")]
+        [ReadOnly(true)]
         [PrimaryKey]
         [PeropertyMapName("PKId")]
         public Guid PKId
@@ -96,6 +100,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Approve Code.
         /// </summary>
+        [Category("Common")]
+        [Description("Gets or sets Approve Code.")]
+        //[ReadOnly(true)]
         [MaxLength(20)]
         [PeropertyMapName("ApproveCode")]
         public string ApproveCode
@@ -121,6 +128,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets TSBId.
         /// </summary>
+        [Category("TSB")]
+        [Description("Gets or sets TSBId.")]
+        [ReadOnly(true)]
         [MaxLength(10)]
         [PeropertyMapName("TSBId")]
         public string TSBId
@@ -141,6 +151,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets TSBNameEN.
         /// </summary>
+        [Category("TSB")]
+        [Description("Gets or sets TSBNameEN.")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("TSBNameEN")]
         public virtual string TSBNameEN
@@ -161,6 +174,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets TSBNameTH.
         /// </summary>
+        [Category("TSB")]
+        [Description("Gets or sets TSBNameTH.")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("TSBNameTH")]
         public virtual string TSBNameTH
@@ -186,6 +202,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PlazaId.
         /// </summary>
+        [Category("Plaza")]
+        [Description("Gets or sets PlazaId.")]
+        [ReadOnly(true)]
         [MaxLength(10)]
         [PeropertyMapName("PlazaId")]
         public string PlazaId
@@ -206,6 +225,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PlazaNameEN
         /// </summary>
+        [Category("Plaza")]
+        [Description("Gets or sets PlazaNameEN")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("PlazaNameEN")]
         public virtual string PlazaNameEN
@@ -226,6 +248,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PlazaNameTH
         /// </summary>
+        [Category("Plaza")]
+        [Description("Gets or sets PlazaNameTH")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("PlazaNameTH")]
         public virtual string PlazaNameTH
@@ -251,6 +276,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets LaneId
         /// </summary>
+        [Category("Lane")]
+        [Description("Gets or sets LaneId")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("LaneId")]
         public string LaneId
@@ -271,6 +299,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Lane No.
         /// </summary>
+        [Category("Lane")]
+        [Description("Gets or sets Lane No.")]
+        [ReadOnly(true)]
         [PeropertyMapName("LaneNo")]
         public virtual int LaneNo
         {
@@ -295,6 +326,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets UserId
         /// </summary>
+        [Category("User")]
+        [Description("Gets or sets UserId.")]
+        [ReadOnly(true)]
         [MaxLength(10)]
         [PeropertyMapName("UserId")]
         public string UserId
@@ -315,6 +349,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets FullNameEN
         /// </summary>
+        [Category("User")]
+        [Description("Gets or sets User FullName EN.")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("FullNameEN")]
         public virtual string FullNameEN
@@ -360,6 +397,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PaymentId
         /// </summary>
+        [Category("Payment")]
+        [Description("Gets or sets PaymentId")]
+        [ReadOnly(true)]
         [MaxLength(20)]
         [PeropertyMapName("PaymentId")]
         public string PaymentId
@@ -380,6 +420,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PaymentNameEN
         /// </summary>
+        [Category("Payment")]
+        [Description("Gets or sets PaymentNameEN")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("PaymentNameEN")]
         public virtual string PaymentNameEN
@@ -400,6 +443,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PaymentNameTH
         /// </summary>
+        [Category("Payment")]
+        [Description("Gets or sets PaymentNameTH")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("PaymentNameTH")]
         public virtual string PaymentNameTH
@@ -425,6 +471,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Payment Date.
         /// </summary>
+        [Category("Payment")]
+        [Description("Gets or sets Payment Date.")]
+        [ReadOnly(true)]
         [PeropertyMapName("PaymentDate")]
         public DateTime PaymentDate
         {
@@ -442,8 +491,11 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets Begin Date String.
+        /// Gets Payment Date String.
         /// </summary>
+        [Category("Payment")]
+        [Description("Gets Payment Date String.")]
+        [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
         public string PaymentDateString
@@ -456,8 +508,11 @@ namespace DMT.Models
             set { }
         }
         /// <summary>
-        /// Gets Begin Time String.
+        /// Gets Payment Time String.
         /// </summary>
+        [Category("Payment")]
+        [Description("Gets Payment Time String.")]
+        [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
         public string PaymentTimeString
@@ -472,6 +527,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Amount.
         /// </summary>
+        [Category("Payment")]
+        [Description("Gets or sets Amount.")]
+        [ReadOnly(true)]
         [PeropertyMapName("Amount")]
         public decimal Amount
         {
@@ -494,6 +552,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
+        [Category("DataCenter")]
+        [Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
+        [ReadOnly(true)]
         [PeropertyMapName("Status")]
         public int Status
         {
@@ -513,6 +574,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets LastUpdated (Sync to DC).
         /// </summary>
+        [Category("DataCenter")]
+        [Description("Gets or sets LastUpdated (Sync to DC).")]
+        [ReadOnly(true)]
         [PeropertyMapName("LastUpdate")]
         public DateTime LastUpdate
         {

@@ -12,6 +12,7 @@ using SQLiteNetExtensions.Extensions;
 using Newtonsoft.Json;
 using NLib;
 using NLib.Reflection;
+using System.ComponentModel;
 
 #endregion
 
@@ -52,6 +53,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PaymentId
         /// </summary>
+        [Category("Payment")]
+        [Description("Gets or sets PaymentId")]
+        [ReadOnly(true)]
         [PrimaryKey, MaxLength(20)]
         [PeropertyMapName("PaymentId")]
         public string PaymentId
@@ -72,6 +76,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PaymentNameEN
         /// </summary>
+        [Category("Payment")]
+        [Description("Gets or sets PaymentNameEN")]
         [MaxLength(50)]
         [PeropertyMapName("PaymentNameEN")]
         public string PaymentNameEN
@@ -92,6 +98,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PaymentNameTH
         /// </summary>
+        [Category("Payment")]
+        [Description("Gets or sets PaymentNameTH")]
         [MaxLength(50)]
         [PeropertyMapName("PaymentNameTH")]
         public string PaymentNameTH
@@ -117,6 +125,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
+        [Category("DataCenter")]
+        [Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
+        [ReadOnly(true)]
         [PeropertyMapName("Status")]
         public int Status
         {
@@ -136,6 +147,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets LastUpdated (Sync to DC).
         /// </summary>
+        [Category("DataCenter")]
+        [Description("Gets or sets LastUpdated (Sync to DC).")]
+        [ReadOnly(true)]
         [PeropertyMapName("LastUpdate")]
         public DateTime LastUpdate
         {

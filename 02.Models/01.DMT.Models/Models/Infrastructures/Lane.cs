@@ -326,7 +326,7 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
-        [Category("Lane")]
+        [Category("DataCenter")]
         [Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
         [ReadOnly(true)]
         [PeropertyMapName("Status")]
@@ -348,7 +348,7 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets LastUpdated (Sync to DC).
         /// </summary>
-        [Category("Lane")]
+        [Category("DataCenter")]
         [Description("Gets or sets LastUpdated (Sync to DC).")]
         [ReadOnly(true)]
         [PeropertyMapName("LastUpdate")]

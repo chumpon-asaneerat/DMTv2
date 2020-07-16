@@ -12,6 +12,7 @@ using SQLiteNetExtensions.Extensions;
 using Newtonsoft.Json;
 using NLib;
 using NLib.Reflection;
+using System.ComponentModel;
 
 #endregion
 
@@ -62,6 +63,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PK Id.
         /// </summary>
+        [Category("Common")]
+        [Description("Gets or sets PK Id.")]
+        [ReadOnly(true)]
         [PrimaryKey, AutoIncrement]
         [PeropertyMapName("TSBShiftId")]
         public int TSBShiftId
@@ -87,6 +91,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets TSBId.
         /// </summary>
+        [Category("TSB")]
+        [Description("Gets or sets TSBId.")]
+        [ReadOnly(true)]
         [MaxLength(10)]
         [PeropertyMapName("TSBId")]
         public string TSBId
@@ -107,6 +114,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets TSBNameEN.
         /// </summary>
+        [Category("TSB")]
+        [Description("Gets or sets TSBNameEN.")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("TSBNameEN")]
         public virtual string TSBNameEN
@@ -127,6 +137,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets TSBNameTH.
         /// </summary>
+        [Category("TSB")]
+        [Description("Gets or sets TSBNameTH.")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("TSBNameTH")]
         public virtual string TSBNameTH
@@ -152,6 +165,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets ShiftId.
         /// </summary>
+        [Category("Shift")]
+        [Description("Gets or sets ShiftId.")]
+        [ReadOnly(true)]
         [PeropertyMapName("ShiftId")]
         public int ShiftId
         {
@@ -171,6 +187,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Name TH.
         /// </summary>
+        [Category("Shift")]
+        [Description("Gets or sets Name TH.")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("ShiftNameTH")]
         public virtual string ShiftNameTH
@@ -191,6 +210,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Name EN.
         /// </summary>
+        [Category("Shift")]
+        [Description("Gets or sets Name EN.")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("ShiftNameEN")]
         public virtual string ShiftNameEN
@@ -216,6 +238,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets UserId
         /// </summary>
+        [Category("User")]
+        [Description("Gets or sets UserId.")]
+        [ReadOnly(true)]
         [MaxLength(10)]
         [PeropertyMapName("UserId")]
         public string UserId
@@ -236,6 +261,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets FullNameEN
         /// </summary>
+        [Category("User")]
+        [Description("Gets or sets User FullName EN.")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("FullNameEN")]
         public virtual string FullNameEN
@@ -256,6 +284,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets FullNameTH
         /// </summary>
+        [Category("User")]
+        [Description("Gets or sets User FullName TH.")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("FullNameTH")]
         public virtual string FullNameTH
@@ -281,6 +312,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Begin Date.
         /// </summary>
+        [Category("Shift")]
+        [Description("Gets or sets Begin Date.")]
+        [ReadOnly(true)]
         [PeropertyMapName("Begin")]
         public DateTime Begin
         {
@@ -301,6 +335,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets End Date.
         /// </summary>
+        [Category("Shift")]
+        [Description("Gets or sets End Date.")]
+        [ReadOnly(true)]
         [PeropertyMapName("End")]
         public DateTime End
         {
@@ -321,6 +358,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets Begin Date String.
         /// </summary>
+        [Category("Shift")]
+        [Description("Gets Begin Date String.")]
+        [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
         public string BeginDateString
@@ -335,6 +375,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets End Date String.
         /// </summary>
+        [Category("Shift")]
+        [Description("Gets End Date String.")]
+        [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
         public string EndDateString
@@ -349,6 +392,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets Begin Time String.
         /// </summary>
+        [Category("Shift")]
+        [Description("Gets Begin Time String.")]
+        [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
         public string BeginTimeString
@@ -363,6 +409,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets End Time String.
         /// </summary>
+        [Category("Shift")]
+        [Description("Gets End Time String.")]
+        [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
         public string EndTimeString
@@ -374,6 +423,12 @@ namespace DMT.Models
             }
             set { }
         }
+        /// <summary>
+        /// Gets or sets Begin Date Time String..
+        /// </summary>
+        [Category("Shift")]
+        [Description("Gets or sets Begin Date Time String.")]
+        [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
         public string BeginDateTimeString
@@ -386,8 +441,11 @@ namespace DMT.Models
             set { }
         }
         /// <summary>
-        /// Gets End Time String.
+        /// Gets End Date Time String.
         /// </summary>
+        [Category("Shift")]
+        [Description("Gets End Date Time String.")]
+        [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
         public string EndDateTimeString
@@ -408,6 +466,9 @@ namespace DMT.Models
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
         /// 
+        [Category("DataCenter")]
+        [Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
+        [ReadOnly(true)]
         [PeropertyMapName("Status")]
         public int Status
         {
@@ -427,6 +488,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets LastUpdated (Sync to DC).
         /// </summary>
+        [Category("DataCenter")]
+        [Description("Gets or sets LastUpdated (Sync to DC).")]
+        [ReadOnly(true)]
         [PeropertyMapName("LastUpdate")]
         public DateTime LastUpdate
         {

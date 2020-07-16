@@ -12,6 +12,7 @@ using SQLiteNetExtensions.Extensions;
 using Newtonsoft.Json;
 using NLib;
 using NLib.Reflection;
+using System.ComponentModel;
 
 #endregion
 
@@ -52,6 +53,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets ShiftId.
         /// </summary>
+        [Category("Common")]
+        [Description("Gets or sets ShiftId.")]
         [PrimaryKey]
         [PeropertyMapName("ShiftId")]
         public int ShiftId
@@ -72,6 +75,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Name TH.
         /// </summary>
+        [Category("Common")]
+        [Description("Gets or sets Name TH.")]
         [MaxLength(50)]
         [PeropertyMapName("ShiftNameTH")]
         public string ShiftNameTH
@@ -92,6 +97,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Name EN.
         /// </summary>
+        [Category("Common")]
+        [Description("Gets or sets Name EN.")]
         [MaxLength(50)]
         [PeropertyMapName("ShiftNameEN")]
         public string ShiftNameEN
@@ -117,6 +124,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
+        [Category("DataCenter")]
+        [Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
+        [ReadOnly(true)]
         [PeropertyMapName("Status")]
         public int Status
         {
@@ -136,6 +146,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets LastUpdated (Sync to DC).
         /// </summary>
+        [Category("DataCenter")]
+        [Description("Gets or sets LastUpdated (Sync to DC).")]
+        [ReadOnly(true)]
         [PeropertyMapName("LastUpdate")]
         public DateTime LastUpdate
         {

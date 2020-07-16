@@ -12,6 +12,7 @@ using SQLiteNetExtensions.Extensions;
 using Newtonsoft.Json;
 using NLib;
 using NLib.Reflection;
+using System.ComponentModel;
 
 #endregion
 
@@ -75,6 +76,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PKId
         /// </summary>
+        [Category("Common")]
+        [Description("Gets or sets PKId")]
+        [ReadOnly(true)]
         [PrimaryKey]
         [PeropertyMapName("PKId")]
         public Guid PKId
@@ -95,6 +99,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets JobId
         /// </summary>
+        [Category("Common")]
+        [Description("Gets or sets JobId")]
+        [ReadOnly(true)]
         [MaxLength(20)]
         [PeropertyMapName("JobId")]
         public string JobId
@@ -120,6 +127,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets TSBId.
         /// </summary>
+        [Category("TSB")]
+        [Description("Gets or sets TSBId.")]
+        [ReadOnly(true)]
         [MaxLength(10)]
         [PeropertyMapName("TSBId")]
         public string TSBId
@@ -140,6 +150,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets TSBNameEN.
         /// </summary>
+        [Category("TSB")]
+        [Description("Gets or sets TSBNameEN.")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("TSBNameEN")]
         public virtual string TSBNameEN
@@ -160,6 +173,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets TSBNameTH.
         /// </summary>
+        [Category("TSB")]
+        [Description("Gets or sets TSBNameTH.")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("TSBNameTH")]
         public virtual string TSBNameTH
@@ -185,6 +201,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PlazaId.
         /// </summary>
+        [Category("Plaza")]
+        [Description("Gets or sets PlazaId.")]
+        [ReadOnly(true)]
         [MaxLength(10)]
         [PeropertyMapName("PlazaId")]
         public string PlazaId
@@ -205,6 +224,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PlazaNameEN
         /// </summary>
+        [Category("Plaza")]
+        [Description("Gets or sets PlazaNameEN")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("PlazaNameEN")]
         public virtual string PlazaNameEN
@@ -225,6 +247,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets PlazaNameTH
         /// </summary>
+        [Category("Plaza")]
+        [Description("Gets or sets PlazaNameTH")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("PlazaNameTH")]
         public virtual string PlazaNameTH
@@ -250,6 +275,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets LaneId
         /// </summary>
+        [Category("Lane")]
+        [Description("Gets or sets LaneId")]
+        [ReadOnly(true)]
         [MaxLength(10)]
         [PeropertyMapName("LaneId")]
         public string LaneId
@@ -270,6 +298,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Lane No.
         /// </summary>
+        [Category("Lane")]
+        [Description("Gets or sets Lane No.")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("LaneNo")]
         public virtual int LaneNo
@@ -295,6 +326,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets UserId
         /// </summary>
+        [Category("User")]
+        [Description("Gets or sets UserId.")]
+        [ReadOnly(true)]
         [MaxLength(10)]
         [PeropertyMapName("UserId")]
         public string UserId
@@ -315,6 +349,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets FullNameEN
         /// </summary>
+        [Category("User")]
+        [Description("Gets or sets User FullName EN.")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("FullNameEN")]
         public virtual string FullNameEN
@@ -360,6 +397,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Begin Date.
         /// </summary>
+        [Category("Shift")]
+        [Description("Gets or sets Begin Date.")]
+        [ReadOnly(true)]
         [PeropertyMapName("Begin")]
         public DateTime Begin
         {
@@ -380,6 +420,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets End Date.
         /// </summary>
+        [Category("Shift")]
+        [Description("Gets or sets End Date.")]
+        [ReadOnly(true)]
         [PeropertyMapName("End")]
         public DateTime End
         {
@@ -400,6 +443,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets Begin Date String.
         /// </summary>
+        [Category("Shift")]
+        [Description("Gets Begin Date String.")]
+        [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
         public string BeginDateString
@@ -414,6 +460,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets End Date String.
         /// </summary>
+        [Category("Shift")]
+        [Description("Gets End Date String.")]
+        [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
         public string EndDateString
@@ -428,6 +477,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets Begin Time String.
         /// </summary>
+        [Category("Shift")]
+        [Description("Gets Begin Time String.")]
+        [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
         public string BeginTimeString
@@ -442,6 +494,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets End Time String.
         /// </summary>
+        [Category("Shift")]
+        [Description("Gets End Time String.")]
+        [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
         public string EndTimeString
@@ -453,6 +508,12 @@ namespace DMT.Models
             }
             set { }
         }
+        /// <summary>
+        /// Gets or sets Begin Date Time String.
+        /// </summary>
+        [Category("Shift")]
+        [Description("Gets or sets Begin Date Time String.")]
+        [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
         public string BeginDateTimeString
@@ -465,8 +526,11 @@ namespace DMT.Models
             set { }
         }
         /// <summary>
-        /// Gets End Time String.
+        /// Gets or sets End Date Time String.
         /// </summary>
+        [Category("Shift")]
+        [Description("Gets or sets End Date Time String.")]
+        [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
         public string EndDateTimeString
@@ -556,6 +620,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
+        [Category("DataCenter")]
+        [Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
+        [ReadOnly(true)]
         [PeropertyMapName("Status")]
         public int Status
         {
@@ -575,6 +642,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets LastUpdated (Sync to DC).
         /// </summary>
+        [Category("DataCenter")]
+        [Description("Gets or sets LastUpdated (Sync to DC).")]
+        [ReadOnly(true)]
         [PeropertyMapName("LastUpdate")]
         public DateTime LastUpdate
         {
