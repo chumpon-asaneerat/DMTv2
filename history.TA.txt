@@ -8,8 +8,10 @@ Update 2020-07-16 #14
 Update 2020-07-16 #13
 - 
 
+[commited]
 Update 2020-07-16 #12
-- 
+- Implements TA model class #10.
+  - Temporary disable Table creation for TSB Credit process.
 
 [commited]
 Update 2020-07-16 #11
