@@ -14,8 +14,10 @@ Update 2020-07-16 #17 (TA)
 Update 2020-07-16 #16 (TA)
 - 
 
+[commited]
 Update 2020-07-16 #15 (TA)
-- 
+- Implements TOD model class #1.
+  - Add LaneGroup class.
 
 [commited]
 Update 2020-07-16 #14 (TA)

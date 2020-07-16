@@ -17,21 +17,19 @@ using NLib.Reflection;
 
 namespace DMT.Models
 {
-    #region Lane
+    #region LaneGroup
 
     /// <summary>
-    /// The Lane Data Model class.
+    /// The LaneGroup Data Model class.
     /// </summary>
-    //[Table("Lane")]
-    public class Lane : NTable<Lane>
+    //[Table("LaneGroup")]
+    public class LaneGroup : NTable<LaneGroup>
     {
-        #region Intenral Variables
+        #region Internal Variable
 
-        private int _PkId = 0;
-        private int _LaneNo = 0;
-        private string _LaneId = string.Empty;
-        private string _LaneType = string.Empty;
-        private string _LaneAbbr = string.Empty;
+        private int _GroupPkId = 0;
+        private string _GroupNameEN = string.Empty;
+        private string _GroupNameTH = string.Empty;
 
         private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
@@ -51,110 +49,71 @@ namespace DMT.Models
         /// <summary>
         /// Constructor.
         /// </summary>
-        public Lane() : base() { }
+        public LaneGroup() : base() { }
 
         #endregion
 
-        #region Public Proprties
+        #region Public Properties
 
         #region Common
 
         /// <summary>
-        /// Gets or sets LanePkId
+        /// Gets or sets Group Pk Id
         /// </summary>
         [PrimaryKey, AutoIncrement]
-        [PeropertyMapName("PkId")]
-        public int PkId
+        [PeropertyMapName("GroupPkId")]
+        public int GroupPkId
         {
             get
             {
-                return _PkId;
+                return _GroupPkId;
             }
             set
             {
-                if (_PkId != value)
+                if (_GroupPkId != value)
                 {
-                    _PkId = value;
-                    this.RaiseChanged("PkId");
+                    _GroupPkId = value;
+                    this.RaiseChanged("GroupPkId");
                 }
             }
         }
         /// <summary>
-        /// Gets or sets Lane No.
+        /// Gets or sets GroupNameEN
         /// </summary>
-        [PeropertyMapName("LaneNo")]
-        public int LaneNo
+        [MaxLength(100)]
+        [PeropertyMapName("GroupNameEN")]
+        public string GroupNameEN
         {
             get
             {
-                return _LaneNo;
+                return _GroupNameEN;
             }
             set
             {
-                if (_LaneNo != value)
+                if (_GroupNameEN != value)
                 {
-                    _LaneNo = value;
-                    this.RaiseChanged("LaneNo");
+                    _GroupNameEN = value;
+                    this.RaiseChanged("GroupNameEN");
                 }
             }
         }
         /// <summary>
-        /// Gets or sets LaneId
+        /// Gets or sets GroupNameTH
         /// </summary>
-        [MaxLength(10)]
-        [PeropertyMapName("LaneId")]
-        public string LaneId
+        [MaxLength(100)]
+        [PeropertyMapName("GroupNameTH")]
+        public string GroupNameTH
         {
             get
             {
-                return _LaneId;
+                return _GroupNameTH;
             }
             set
             {
-                if (_LaneId != value)
+                if (_GroupNameTH != value)
                 {
-                    _LaneId = value;
-                    this.RaiseChanged("LaneId");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets LaneType
-        /// </summary>
-        [MaxLength(10)]
-        [PeropertyMapName("LaneType")]
-        public string LaneType
-        {
-            get
-            {
-                return _LaneType;
-            }
-            set
-            {
-                if (_LaneType != value)
-                {
-                    _LaneType = value;
-                    this.RaiseChanged("LaneType");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets LaneAbbr
-        /// </summary>
-        [MaxLength(10)]
-        [PeropertyMapName("LaneAbbr")]
-        public string LaneAbbr
-        {
-            get
-            {
-                return _LaneAbbr;
-            }
-            set
-            {
-                if (_LaneAbbr != value)
-                {
-                    _LaneAbbr = value;
-                    this.RaiseChanged("LaneAbbr");
+                    _GroupNameTH = value;
+                    this.RaiseChanged("GroupNameTH");
                 }
             }
         }
@@ -335,7 +294,7 @@ namespace DMT.Models
 
         #region Internal Class
 
-        public class FKs : Lane
+        public class FKs : LaneGroup
         {
             #region TSB
 
@@ -389,9 +348,9 @@ namespace DMT.Models
 
             #region Public Methods
 
-            public Lane ToLane()
+            public LaneGroup ToLaneGroup()
             {
-                Lane inst = new Lane();
+                LaneGroup inst = new LaneGroup();
                 this.AssignTo(inst); // set all properties to new instance.
                 return inst;
             }
@@ -402,129 +361,6 @@ namespace DMT.Models
         #endregion
 
         #region Static Methods
-
-        public static List<Lane> Gets(SQLiteConnection db)
-        {
-            if (null == db) return new List<Lane>();
-            lock (sync)
-            {
-                string cmd = string.Empty;
-                cmd += "SELECT Lane.* ";
-                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-                cmd += "  FROM Lane, Plaza, TSB ";
-                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
-                cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-                cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-
-                var rets = NQuery.Query<FKs>(cmd).ToList();
-                var results = new List<Lane>();
-                if (null != rets)
-                {
-                    rets.ForEach(ret =>
-                    {
-                        results.Add(ret.ToLane());
-                    });
-                }
-
-                return results;
-            }
-        }
-        public static List<Lane> Gets()
-        {
-            lock (sync)
-            {
-                SQLiteConnection db = Default;
-                return Gets(db);
-            }
-        }
-        public static Lane Get(SQLiteConnection db, string laneId)
-        {
-            if (null == db) return null;
-            lock (sync)
-            {
-                string cmd = string.Empty;
-                cmd += "SELECT Lane.* ";
-                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-                cmd += "  FROM Lane, Plaza, TSB ";
-                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
-                cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-                cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-                cmd += "   AND Lane.LaneId = ? ";
-
-                var ret = NQuery.Query<FKs>(cmd, laneId).FirstOrDefault();
-                return (null != ret) ? ret.ToLane() : null;
-            }
-        }
-        public static Lane Get(string laneId)
-        {
-            lock (sync)
-            {
-                SQLiteConnection db = Default;
-                return Get(db, laneId);
-            }
-        }
-
-        public static List<Lane> GetTSBLanes(TSB value)
-        {
-            lock (sync)
-            {
-                if (null == value) return new List<Lane>();
-                return GetTSBLanes(value.TSBId);
-            }
-        }
-        public static List<Lane> GetTSBLanes(string tsbId)
-        {
-            lock (sync)
-            {
-                string cmd = string.Empty;
-                cmd += "SELECT Lane.* ";
-                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-                cmd += "  FROM Lane, Plaza, TSB ";
-                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
-                cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-                cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-                cmd += "   AND Lane.TSBId = ? ";
-                return NQuery.Query<FKs>(cmd, tsbId).ToList<Lane>();
-            }
-        }
-        public static List<Lane> GetPlazaLanes(Plaza value)
-        {
-            lock (sync)
-            {
-                if (null == value) return new List<Lane>();
-                return GetPlazaLanes(value.TSBId, value.PlazaId);
-            }
-        }
-        public static List<Lane> GetPlazaLanes(string tsbId, string plazaId)
-        {
-            lock (sync)
-            {
-                string cmd = string.Empty;
-                cmd += "SELECT Lane.* ";
-                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-                cmd += "  FROM Lane, Plaza, TSB ";
-                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
-                cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-                cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-                cmd += "   AND Lane.TSBId = ? ";
-                cmd += "   AND Lane.PlazaId = ? ";
-
-                var rets = NQuery.Query<FKs>(cmd, tsbId, plazaId).ToList();
-                var results = new List<Lane>();
-                if (null != rets)
-                {
-                    rets.ForEach(ret =>
-                    {
-                        results.Add(ret.ToLane());
-                    });
-                }
-                return results;
-            }
-        }
 
         #endregion
     }
