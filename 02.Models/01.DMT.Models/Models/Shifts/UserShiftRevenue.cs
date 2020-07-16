@@ -419,7 +419,7 @@ namespace DMT.Models
         /// </summary>
         [Category("Revenue")]
         [Description("Gets or sets RevenueId.")]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         [MaxLength(20)]
         [PeropertyMapName("RevenueId")]
         public string RevenueId
@@ -440,7 +440,7 @@ namespace DMT.Models
         /// </summary>
         [Category("Revenue")]
         [Description("Gets or sets Revenue Date.")]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         [PeropertyMapName("RevenueDate")]
         public DateTime RevenueDate
         {

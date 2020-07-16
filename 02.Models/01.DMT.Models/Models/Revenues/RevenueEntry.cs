@@ -185,7 +185,7 @@ namespace DMT.Models
         /// </summary>
         [Category("Revenue")]
         [Description("Gets or sets Entry Date.")]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         [PeropertyMapName("EntryDate")]
         public DateTime EntryDate
         {
@@ -239,7 +239,7 @@ namespace DMT.Models
         /// </summary>
         [Category("Revenue")]
         [Description("Gets or sets Revenue Date.")]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         [PeropertyMapName("RevenueDate")]
         public DateTime RevenueDate
         {
@@ -295,7 +295,7 @@ namespace DMT.Models
         /// </summary>
         [Category("Revenue")]
         [Description("Gets or sets RevenueId.")]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         [MaxLength(20)]
         [PeropertyMapName("RevenueId")]
         public string RevenueId
@@ -316,7 +316,7 @@ namespace DMT.Models
         /// </summary>
         [Category("Revenue")]
         [Description("Gets or sets Bag Number.")]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         [MaxLength(10)]
         [PeropertyMapName("BagNo")]
         public string BagNo
@@ -337,7 +337,7 @@ namespace DMT.Models
         /// </summary>
         [Category("Revenue")]
         [Description("Gets or sets Belt Number.")]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         [MaxLength(20)]
         [PeropertyMapName("BeltNo")]
         public string BeltNo
@@ -358,7 +358,7 @@ namespace DMT.Models
         /// </summary>
         [Category("Revenue")]
         [Description("Gets or sets Lane Lists.")]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         [MaxLength(100)]
         [PeropertyMapName("Lanes")]
         public string Lanes
@@ -379,7 +379,7 @@ namespace DMT.Models
         /// </summary>
         [Category("Revenue")]
         [Description("Gets or sets Shift Begin.")]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         [PeropertyMapName("ShiftBegin")]
         public DateTime ShiftBegin
         {
@@ -399,7 +399,7 @@ namespace DMT.Models
         /// </summary>
         [Category("Revenue")]
         [Description(" Gets or sets Shift End.")]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         [PeropertyMapName("ShiftEnd")]
         public DateTime ShiftEnd
         {

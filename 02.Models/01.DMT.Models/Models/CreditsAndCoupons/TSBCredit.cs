@@ -475,7 +475,7 @@ namespace DMT.Models
         /// </summary>
         [Category("Coin/Bill")]
         [Description("Gets or sets total value in baht.")]
-        [ReadOnly(false)]
+        [ReadOnly(true)]
         [PeropertyMapName("BHTTotal")]
         public decimal BHTTotal
         {

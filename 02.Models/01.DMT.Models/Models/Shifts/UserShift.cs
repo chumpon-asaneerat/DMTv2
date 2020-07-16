@@ -314,7 +314,7 @@ namespace DMT.Models
         /// </summary>
         [Category("Shift")]
         [Description("Gets or sets Begin Date.")]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         [PeropertyMapName("Begin")]
         public DateTime Begin
         {
@@ -337,7 +337,7 @@ namespace DMT.Models
         /// </summary>
         [Category("Shift")]
         [Description("Gets or sets End Date.")]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         [PeropertyMapName("End")]
         public DateTime End
         {

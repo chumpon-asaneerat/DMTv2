@@ -12,6 +12,7 @@ using SQLiteNetExtensions.Extensions;
 using Newtonsoft.Json;
 using NLib;
 using NLib.Reflection;
+using System.ComponentModel;
 
 #endregion
 
@@ -52,6 +53,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets RoleId
         /// </summary>
+        [Category("Role")]
+        [Description("Gets or sets RoleId")]
+        [ReadOnly(true)]
         [PrimaryKey, MaxLength(20)]
         [PeropertyMapName("RoleId")]
         public string RoleId
@@ -72,6 +76,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets RoleNameEN
         /// </summary>
+        [Category("Role")]
+        [Description("Gets or sets RoleNameEN")]
         [MaxLength(50)]
         [PeropertyMapName("RoleNameEN")]
         public string RoleNameEN
@@ -92,6 +98,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets RoleNameTH
         /// </summary>
+        [Category("Role")]
+        [Description("Gets or sets RoleNameTH")]
         [MaxLength(50)]
         [PeropertyMapName("RoleNameTH")]
         public string RoleNameTH
@@ -117,6 +125,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
+        [Category("DataCenter")]
+        [Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
+        [ReadOnly(true)]
         [PeropertyMapName("Status")]
         public int Status
         {
@@ -136,6 +147,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets LastUpdated (Sync to DC).
         /// </summary>
+        [Category("DataCenter")]
+        [Description("Gets or sets LastUpdated (Sync to DC).")]
+        [ReadOnly(true)]
         [PeropertyMapName("LastUpdate")]
         public DateTime LastUpdate
         {

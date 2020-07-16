@@ -473,7 +473,7 @@ namespace DMT.Models
         /// </summary>
         [Category("Payment")]
         [Description("Gets or sets Payment Date.")]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         [PeropertyMapName("PaymentDate")]
         public DateTime PaymentDate
         {
@@ -529,7 +529,7 @@ namespace DMT.Models
         /// </summary>
         [Category("Payment")]
         [Description("Gets or sets Amount.")]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         [PeropertyMapName("Amount")]
         public decimal Amount
         {

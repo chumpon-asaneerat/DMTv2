@@ -12,6 +12,7 @@ using SQLiteNetExtensions.Extensions;
 using Newtonsoft.Json;
 using NLib;
 using NLib.Reflection;
+using System.ComponentModel;
 
 #endregion
 
@@ -59,6 +60,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets UserId
         /// </summary>
+        [Category("User")]
+        [Description("Gets or sets UserId")]
         [PrimaryKey, MaxLength(10)]
         [PeropertyMapName("UserId")]
         public string UserId
@@ -79,6 +82,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets FullNameEN
         /// </summary>
+        [Category("User")]
+        [Description("Gets or sets FullNameEN")]
         [MaxLength(100)]
         [PeropertyMapName("FullNameEN")]
         public string FullNameEN
@@ -99,6 +104,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets FullNameTH
         /// </summary>
+        [Category("User")]
+        [Description("Gets or sets FullNameTH")]
         [MaxLength(100)]
         [PeropertyMapName("FullNameTH")]
         public string FullNameTH
@@ -119,6 +126,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets UserName
         /// </summary>
+        [Category("User")]
+        [Description("Gets or sets UserName")]
         [MaxLength(50)]
         [PeropertyMapName("UserName")]
         public string UserName
@@ -139,6 +148,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Password
         /// </summary>
+        [Category("User")]
+        [Description("Gets or sets Password")]
         [MaxLength(20)]
         [PeropertyMapName("Password")]
         public string Password
@@ -159,6 +170,8 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets CardId
         /// </summary>
+        [Category("User")]
+        [Description("Gets or sets CardId")]
         [MaxLength(20)]
         [PeropertyMapName("CardId")]
         public string CardId
@@ -185,6 +198,9 @@ namespace DMT.Models
         /// Gets or sets RoleId
         /// </summary>
         //[ForeignKey(typeof(Role)), MaxLength(10)]
+        [Category("Role")]
+        [Description("Gets or sets RoleId")]
+        [ReadOnly(true)]
         [MaxLength(20)]
         [PeropertyMapName("RoleId")]
         public string RoleId
@@ -205,6 +221,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets RoleNameEN
         /// </summary>
+        [Category("Role")]
+        [Description("Gets or sets RoleNameEN")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("RoleNameEN")]
         public virtual string RoleNameEN
@@ -225,6 +244,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets RoleNameTH
         /// </summary>
+        [Category("Role")]
+        [Description("Gets or sets RoleNameTH")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("RoleNameTH")]
         public virtual string RoleNameTH
@@ -250,6 +272,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Status (1 = Active, 0 = Inactive, etc..)
         /// </summary>
+        [Category("DataCenter")]
+        [Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
+        [ReadOnly(true)]
         [PeropertyMapName("Status")]
         public int Status
         {
@@ -269,6 +294,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets LastUpdated (Sync to DC).
         /// </summary>
+        [Category("DataCenter")]
+        [Description("Gets or sets LastUpdated (Sync to DC).")]
+        [ReadOnly(true)]
         [PeropertyMapName("LastUpdate")]
         public DateTime LastUpdate
         {

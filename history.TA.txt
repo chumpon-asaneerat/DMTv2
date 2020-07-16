@@ -14,8 +14,26 @@ Update 2020-07-16 #22 (TA)
 Update 2020-07-16 #21 (TA)
 - 
 
+[commited]
 Update 2020-07-16 #20 (TA)
-- 
+- Recheck Config model (OK).
+- Recheck TSB model (OK).
+- Recheck Plaza model (OK).
+- Recheck LaneGroup model (OK).
+- Recheck Lane model (OK).
+- Recheck Shift model (OK).
+- Recheck TSBShift model (OK).
+- Recheck UserShift model (OK).
+- Recheck UserShiftRevenue model (OK).
+- Recheck Payment model (OK).
+- Recheck Role model (OK).
+- Recheck User model (OK).
+- Recheck LaneAttendance model (OK).
+- Recheck LanePayment model (OK).
+- Recheck RevenueEntry model (OK).
+- Recheck TSBBalance model (OK).
+- Recheck TSBCredit model (OK).
+- Recheck UserCredit model (OK).
 
 [commited]
 Update 2020-07-16 #19 (TA)

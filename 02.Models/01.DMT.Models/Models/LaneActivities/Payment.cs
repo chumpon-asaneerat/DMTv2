@@ -55,7 +55,7 @@ namespace DMT.Models
         /// </summary>
         [Category("Payment")]
         [Description("Gets or sets PaymentId")]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         [PrimaryKey, MaxLength(20)]
         [PeropertyMapName("PaymentId")]
         public string PaymentId

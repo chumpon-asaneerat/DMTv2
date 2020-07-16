@@ -372,6 +372,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets FullNameTH
         /// </summary>
+        [Category("User")]
+        [Description("Gets or sets User FullName TH.")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("FullNameTH")]
         public virtual string FullNameTH
@@ -399,7 +402,7 @@ namespace DMT.Models
         /// </summary>
         [Category("Shift")]
         [Description("Gets or sets Begin Date.")]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         [PeropertyMapName("Begin")]
         public DateTime Begin
         {
@@ -422,7 +425,7 @@ namespace DMT.Models
         /// </summary>
         [Category("Shift")]
         [Description("Gets or sets End Date.")]
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         [PeropertyMapName("End")]
         public DateTime End
         {
@@ -550,6 +553,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets Revenue Date.
         /// </summary>
+        [Category("Revenue")]
+        [Description("Gets or sets Revenue Date.")]
+        //[ReadOnly(true)]
         [PeropertyMapName("RevenueDate")]
         public DateTime RevenueDate
         {
@@ -569,6 +575,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets Revenue Date String.
         /// </summary>
+        [Category("Revenue")]
+        [Description("Gets Revenue Date String.")]
+        [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
         public string RevenueDateString
@@ -583,6 +592,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets Revenue Date Time String.
         /// </summary>
+        [Category("Revenue")]
+        [Description("Gets Revenue Date Time String.")]
+        [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
         public string RevenueDateTimeString
@@ -597,6 +609,9 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets RevenueId.
         /// </summary>
+        [Category("Revenue")]
+        [Description("Gets or sets RevenueId.")]
+        //[ReadOnly(true)]
         [MaxLength(20)]
         [PeropertyMapName("RevenueId")]
         public string RevenueId
