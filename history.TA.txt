@@ -14,8 +14,13 @@ Update 2020-07-16 #7
 Update 2020-07-16 #6
 - 
 
+[commited]
 Update 2020-07-16 #5
-- 
+- Add WebSocketServerSample project.
+- Add WebSocketClientSample project.
+- Add LocalWebServerFunctionTest project.
+- Add LocalWebServerFunctionTest project.
+- Add LocalDbServerFunctionTest.
 
 [commited]
 Update 2020-07-16 #4
