@@ -17,6 +17,12 @@ using NLib.Reflection;
 
 namespace DMT.Models
 {
+    public enum UserCreditTransactionType
+    {
+        Borrow = 1,
+        Return = 2,
+    }
+
     #region UserCredit
 
     /// <summary>
@@ -29,6 +35,7 @@ namespace DMT.Models
 
         private Guid _PKId = Guid.NewGuid();
         private DateTime _TransactionDate = DateTime.MinValue;
+        private UserCreditTransactionType _TransactionType = UserCreditTransactionType.Borrow;
 
         private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
@@ -161,6 +168,23 @@ namespace DMT.Models
                 return ret;
             }
             set { }
+        }
+        /// <summary>
+        /// Gets or sets Transaction Type.
+        /// </summary>
+        [PeropertyMapName("TransactionType")]
+        public UserCreditTransactionType TransactionType
+        {
+            get { return _TransactionType; }
+            set
+            {
+                if (_TransactionType != value)
+                {
+                    _TransactionType = value;
+                    // Raise event.
+                    this.RaiseChanged("TransactionType");
+                }
+            }
         }
 
         #endregion
@@ -636,6 +660,152 @@ namespace DMT.Models
         #endregion
 
         #region Static Methods
+
+        public static UserCredit Create(User user, TSB tsb)
+        {
+            lock (sync)
+            {
+                if (null == user || null == tsb) return null;
+                UserCredit inst = Create();
+
+                inst.TSBId = tsb.TSBId;
+                inst.TSBNameEN = tsb.TSBNameEN;
+                inst.TSBNameTH = tsb.TSBNameTH;
+
+                inst.UserId = user.UserId;
+                inst.FullNameEN = user.FullNameEN;
+                inst.FullNameTH = user.FullNameTH;
+
+                return inst;
+            }
+        }
+
+        public static UserCredit Create(User user)
+        {
+            lock (sync)
+            {
+                if (null == user) return null;
+
+                TSB tsb = TSB.GetCurrent();
+                if (null == tsb) return null; // active tsb not found.
+
+                UserCredit inst = Create();
+
+                inst.TSBId = tsb.TSBId;
+                inst.TSBNameEN = tsb.TSBNameEN;
+                inst.TSBNameTH = tsb.TSBNameTH;
+
+                inst.UserId = user.UserId;
+                inst.FullNameEN = user.FullNameEN;
+                inst.FullNameTH = user.FullNameTH;
+
+                return inst;
+            }
+        }
+
+        public static void Borrow(UserCredit credit, TSBBalance balance)
+        {
+            lock (sync)
+            {
+                if (null == credit || null == balance) return;
+                if (null == Default) return;
+                int sign = -1;
+                try
+                {
+                    Default.BeginTransaction();
+
+                    credit.PKId = Guid.NewGuid(); // always create new.
+                    credit.TransactionDate = DateTime.Now;
+                    credit.TransactionType = UserCreditTransactionType.Borrow;
+
+                    balance.ST25 += sign * credit.ST25;
+                    balance.ST50 += sign * credit.ST50;
+                    balance.BHT1 += sign * credit.BHT1;
+                    balance.BHT2 += sign * credit.BHT2;
+                    balance.BHT5 += sign * credit.BHT5;
+                    balance.BHT10 += sign * credit.BHT10;
+                    balance.BHT20 += sign * credit.BHT20;
+                    balance.BHT50 += sign * credit.BHT50;
+                    balance.BHT100 += sign * credit.BHT100;
+                    balance.BHT500 += sign * credit.BHT500;
+                    balance.BHT1000 += sign * credit.BHT1000;
+
+                    Save(credit);
+                    TSBBalance.Save(balance);
+
+                    Default.Commit();
+                }
+                catch
+                {
+                    Default.Rollback();
+                }
+            }
+        }
+
+        public static void Return(UserCredit credit, TSBBalance balance)
+        {
+            lock (sync)
+            {
+                if (null == credit || null == balance) return;
+                if (null == Default) return;
+                int sign = 1;
+                try
+                {
+                    Default.BeginTransaction();
+
+                    credit.PKId = Guid.NewGuid(); // always create new.
+                    credit.TransactionDate = DateTime.Now;
+                    credit.TransactionType = UserCreditTransactionType.Return;
+
+                    balance.ST25 += sign * credit.ST25;
+                    balance.ST50 += sign * credit.ST50;
+                    balance.BHT1 += sign * credit.BHT1;
+                    balance.BHT2 += sign * credit.BHT2;
+                    balance.BHT5 += sign * credit.BHT5;
+                    balance.BHT10 += sign * credit.BHT10;
+                    balance.BHT20 += sign * credit.BHT20;
+                    balance.BHT50 += sign * credit.BHT50;
+                    balance.BHT100 += sign * credit.BHT100;
+                    balance.BHT500 += sign * credit.BHT500;
+                    balance.BHT1000 += sign * credit.BHT1000;
+
+                    Save(credit);
+                    TSBBalance.Save(balance);
+
+                    Default.Commit();
+                }
+                catch
+                {
+                    Default.Rollback();
+                }
+            }
+        }
+
+        public static List<UserCredit> GetUserCredits(TSB tsb)
+        {
+            lock (sync)
+            {
+                if (null == tsb) return new List<UserCredit>();
+
+                string cmd = string.Empty;
+                cmd += "SELECT UserCredit.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "  FROM UserCredit, TSB ";
+                cmd += " WHERE UserCredit.TSBId = TSB.TSBId ";
+                cmd += "   AND UserCredit.TSBId = ? ";
+
+                var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
+                var results = new List<UserCredit>();
+                if (null != rets)
+                {
+                    rets.ForEach(ret =>
+                    {
+                        results.Add(ret.ToUserCredit());
+                    });
+                }
+                return results;
+            }
+        }
 
         #endregion
     }

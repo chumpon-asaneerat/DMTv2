@@ -14,8 +14,14 @@ Update 2020-07-16 #12
 Update 2020-07-16 #11
 - 
 
+[commited]
 Update 2020-07-16 #10
-- 
+- Implements TA model class #8.
+  - TSBBalance implement Create static method.
+  - TSBBalance implement Borrow static method.
+  - TSBBalance implement Return static method.
+  - TSBBalance implement GetUserCredits static method.
+  - Updete LocalDbServerFunctionTest - UserCredit Borrow/Return #3.
 
 [commited]
 Update 2020-07-16 #9
