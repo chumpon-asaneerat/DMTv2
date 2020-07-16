@@ -5,13 +5,11 @@ Update 2020-07-16 #3
 Update 2020-07-16 #2
 - 
 
+[commited]
 Update 2020-07-16 #1
-- 
+- Merge from origin/TAv1 #1
 
 --------------------------------------------------------------------------------------------
-Update 2020-07-15 #15
-- 
-
 [commited]
 Update 2020-07-15 #14
 - Recheck merge origin/master -> TAv1 (OK).
