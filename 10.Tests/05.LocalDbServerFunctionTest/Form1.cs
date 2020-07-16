@@ -125,7 +125,9 @@ namespace LocalDbServerFunctionTest
 
         private void button8_Click(object sender, EventArgs e)
         {
-            if (null != dgUserCredit.SelectedRows && null != dgUserCredit.SelectedRows[0])
+            if (null != dgUserCredit.SelectedRows &&
+                dgUserCredit.SelectedRows.Count > 0 &&
+                null != dgUserCredit.SelectedRows[0])
             {
                 var tsbBalance = pgTSBBalance.SelectedObject as TSBBalance;
                 var usrCredit = dgUserCredit.SelectedRows[0].DataBoundItem as UserCredit;

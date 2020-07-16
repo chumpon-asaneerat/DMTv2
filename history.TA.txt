@@ -11,8 +11,16 @@ Update 2020-07-16 #18 (TA)
 Update 2020-07-16 #17 (TA)
 - 
 
+[commited]
 Update 2020-07-16 #16 (TA)
-- 
+- Implements TA model class #12.
+  - TSBBalance add AdditionBHTTotal (borrow) property.
+  - TSBBalance add UserBHTTotal (borrow) property.
+  - TSBBalance update calc method.
+  - TSBBalance add Category in all properties.
+  - TSBCredit add Category in all properties.
+  - UserCredit add Category in all properties.
+  - Updete LocalDbServerFunctionTest - Add check grid selection #5.
 
 [commited]
 Update 2020-07-16 #15 (TA)

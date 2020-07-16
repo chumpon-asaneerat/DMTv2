@@ -55,6 +55,10 @@
             this.cbUsers = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.dgUserCredit = new System.Windows.Forms.DataGridView();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.splitter3 = new System.Windows.Forms.Splitter();
             this.panel6 = new System.Windows.Forms.Panel();
             this.pgTSBBalance = new System.Windows.Forms.PropertyGrid();
@@ -64,10 +68,6 @@
             this.lbActiveTSB3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
-            this.dgUserCredit = new System.Windows.Forms.DataGridView();
-            this.button8 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -80,11 +80,11 @@
             this.panel12.SuspendLayout();
             this.panel11.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgUserCredit)).BeginInit();
+            this.panel13.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgUserCredit)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -358,6 +358,50 @@
             this.tabPage5.Text = "Transaction";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // dgUserCredit
+            // 
+            this.dgUserCredit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgUserCredit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgUserCredit.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgUserCredit.Location = new System.Drawing.Point(3, 40);
+            this.dgUserCredit.MultiSelect = false;
+            this.dgUserCredit.Name = "dgUserCredit";
+            this.dgUserCredit.RowHeadersWidth = 51;
+            this.dgUserCredit.RowTemplate.Height = 24;
+            this.dgUserCredit.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgUserCredit.Size = new System.Drawing.Size(521, 433);
+            this.dgUserCredit.TabIndex = 2;
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.button8);
+            this.panel13.Controls.Add(this.button7);
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel13.Location = new System.Drawing.Point(3, 3);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(521, 37);
+            this.panel13.TabIndex = 1;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(124, 3);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(115, 28);
+            this.button8.TabIndex = 4;
+            this.button8.Text = "Undo";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(3, 3);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(115, 28);
+            this.button7.TabIndex = 3;
+            this.button7.Text = "Refresh";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // splitter3
             // 
             this.splitter3.Location = new System.Drawing.Point(388, 71);
@@ -442,47 +486,6 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // panel13
-            // 
-            this.panel13.Controls.Add(this.button8);
-            this.panel13.Controls.Add(this.button7);
-            this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel13.Location = new System.Drawing.Point(3, 3);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(521, 37);
-            this.panel13.TabIndex = 1;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(3, 3);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(115, 28);
-            this.button7.TabIndex = 3;
-            this.button7.Text = "Refresh";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // dgUserCredit
-            // 
-            this.dgUserCredit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgUserCredit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgUserCredit.Location = new System.Drawing.Point(3, 40);
-            this.dgUserCredit.Name = "dgUserCredit";
-            this.dgUserCredit.RowHeadersWidth = 51;
-            this.dgUserCredit.RowTemplate.Height = 24;
-            this.dgUserCredit.Size = new System.Drawing.Size(521, 433);
-            this.dgUserCredit.TabIndex = 2;
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(124, 3);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(115, 28);
-            this.button8.TabIndex = 4;
-            this.button8.Text = "Undo";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -507,12 +510,12 @@
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgUserCredit)).EndInit();
+            this.panel13.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel13.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgUserCredit)).EndInit();
             this.ResumeLayout(false);
 
         }
