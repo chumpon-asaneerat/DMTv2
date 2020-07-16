@@ -17,26 +17,21 @@ using NLib.Reflection;
 
 namespace DMT.Models
 {
-    #region UserCredit
+    #region TSBBalance
 
     /// <summary>
-    /// The UserCredit Data Model class.
+    /// The TSBBalance Data Model class.
     /// </summary>
-    //[Table("UserCredit")]
-    public class UserCredit : NTable<UserCredit>
+    //[Table("TSBBalance")]
+    public class TSBBalance : NTable<TSBBalance>
     {
         #region Internal Variables
 
         private Guid _PKId = Guid.NewGuid();
-        private DateTime _TransactionDate = DateTime.MinValue;
 
         private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
         private string _TSBNameTH = string.Empty;
-
-        private string _UserId = string.Empty;
-        private string _FullNameEN = string.Empty;
-        private string _FullNameTH = string.Empty;
 
         // Coin/Bill
         private int _ST25 = 0;
@@ -53,6 +48,12 @@ namespace DMT.Models
         private decimal _BHTTotal = decimal.Zero;
         private string _Remark = "";
 
+        // Coupon 
+        private int _CouponBHT35 = 0;
+        private int _CouponBHT80 = 0;
+        private decimal _CouponTotal = decimal.Zero;
+        private decimal _CouponBHTTotal = decimal.Zero;
+
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
 
@@ -63,7 +64,7 @@ namespace DMT.Models
         /// <summary>
         /// Constructor.
         /// </summary>
-        public UserCredit() : base() { }
+        public TSBBalance() : base() { }
 
         #endregion
 
@@ -87,6 +88,12 @@ namespace DMT.Models
             _BHTTotal = total;
             // Raise event.
             this.RaiseChanged("BHTTotal");
+        }
+
+        private void CalcCouponTotal()
+        {
+            _CouponTotal = _CouponBHT35 + _CouponBHT80;
+            this.RaiseChanged("CouponTotal");
         }
 
         #endregion
@@ -114,51 +121,6 @@ namespace DMT.Models
                     this.RaiseChanged("PKId");
                 }
             }
-        }
-        /// <summary>
-        /// Gets or sets Transaction Date.
-        /// </summary>
-        [PeropertyMapName("TransactionDate")]
-        public DateTime TransactionDate
-        {
-            get { return _TransactionDate; }
-            set
-            {
-                if (_TransactionDate != value)
-                {
-                    _TransactionDate = value;
-                    // Raise event.
-                    this.RaiseChanged("TransactionDate");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets Transaction Date String.
-        /// </summary>
-        [JsonIgnore]
-        [Ignore]
-        public string EntryDateString
-        {
-            get
-            {
-                var ret = (this.TransactionDate == DateTime.MinValue) ? "" : this.TransactionDate.ToThaiDateTimeString("dd/MM/yyyy");
-                return ret;
-            }
-            set { }
-        }
-        /// <summary>
-        /// Gets Transaction DateTime String.
-        /// </summary>
-        [JsonIgnore]
-        [Ignore]
-        public string EntryDateTimeString
-        {
-            get
-            {
-                var ret = (this.TransactionDate == DateTime.MinValue) ? "" : this.TransactionDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
-                return ret;
-            }
-            set { }
         }
 
         #endregion
@@ -222,71 +184,6 @@ namespace DMT.Models
                 {
                     _TSBNameTH = value;
                     this.RaiseChanged("TSBNameTH");
-                }
-            }
-        }
-
-        #endregion
-
-        #region User
-
-        /// <summary>
-        /// Gets or sets UserId
-        /// </summary>
-        [MaxLength(10)]
-        [PeropertyMapName("UserId")]
-        public string UserId
-        {
-            get
-            {
-                return _UserId;
-            }
-            set
-            {
-                if (_UserId != value)
-                {
-                    _UserId = value;
-                    this.RaiseChanged("UserId");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets FullNameEN
-        /// </summary>
-        [Ignore]
-        [PeropertyMapName("FullNameEN")]
-        public virtual string FullNameEN
-        {
-            get
-            {
-                return _FullNameEN;
-            }
-            set
-            {
-                if (_FullNameEN != value)
-                {
-                    _FullNameEN = value;
-                    this.RaiseChanged("FullNameEN");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets FullNameTH
-        /// </summary>
-        [Ignore]
-        [PeropertyMapName("FullNameTH")]
-        public virtual string FullNameTH
-        {
-            get
-            {
-                return _FullNameTH;
-            }
-            set
-            {
-                if (_FullNameTH != value)
-                {
-                    _FullNameTH = value;
-                    this.RaiseChanged("FullNameTH");
                 }
             }
         }
@@ -523,6 +420,76 @@ namespace DMT.Models
 
         #endregion
 
+        #region Coupon 
+
+        /// <summary>
+        /// Gets or sets number of 35 BHT coupon.
+        /// </summary>
+        [PeropertyMapName("CouponBHT35")]
+        public int CouponBHT35
+        {
+            get { return _CouponBHT35; }
+            set
+            {
+                if (_CouponBHT35 != value)
+                {
+                    _CouponBHT35 = value;
+                    CalcCouponTotal();
+                    // Raise event.
+                    this.RaiseChanged("CouponBHT35");
+
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets number of 80 BHT coupon.
+        /// </summary>
+        [PeropertyMapName("CouponBHT80")]
+        public int CouponBHT80
+        {
+            get { return _CouponBHT80; }
+            set
+            {
+                if (_CouponBHT80 != value)
+                {
+                    _CouponBHT80 = value;
+                    CalcCouponTotal();
+                    // Raise event.
+                    this.RaiseChanged("CouponBHT80");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets calculate coupon total (book count).
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        [PeropertyMapName("CouponTotal")]
+        public decimal CouponTotal
+        {
+            get { return _CouponTotal; }
+            set { }
+        }
+        /// <summary>
+        /// Gets or sets total value in baht.
+        /// </summary>
+        [PeropertyMapName("CouponBHTTotal")]
+        public decimal CouponBHTTotal
+        {
+            get { return _CouponBHTTotal; }
+            set
+            {
+                if (_CouponBHTTotal != value)
+                {
+                    _CouponBHTTotal = value;
+                    // Raise event.
+                    this.RaiseChanged("CouponBHTTotal");
+                }
+            }
+        }
+
+        #endregion
+
         #region Status (DC)
 
         /// <summary>
@@ -567,7 +534,7 @@ namespace DMT.Models
 
         #region Internal Class
 
-        public class FKs : UserCredit
+        public class FKs : TSBBalance
         {
             #region TSB
 
@@ -594,36 +561,11 @@ namespace DMT.Models
 
             #endregion
 
-            #region User
-
-            /// <summary>
-            /// Gets or sets FullNameEN
-            /// </summary>
-            [MaxLength(100)]
-            [PeropertyMapName("FullNameEN")]
-            public override string FullNameEN
-            {
-                get { return base.FullNameEN; }
-                set { base.FullNameEN = value; }
-            }
-            /// <summary>
-            /// Gets or sets FullNameTH
-            /// </summary>
-            [MaxLength(100)]
-            [PeropertyMapName("FullNameTH")]
-            public override string FullNameTH
-            {
-                get { return base.FullNameTH; }
-                set { base.FullNameTH = value; }
-            }
-
-            #endregion
-
             #region Public Methods
 
-            public UserCredit ToUserCredit()
+            public TSBBalance ToTSBBalance()
             {
-                UserCredit inst = new UserCredit();
+                TSBBalance inst = new TSBBalance();
                 this.AssignTo(inst); // set all properties to new instance.
                 return inst;
             }

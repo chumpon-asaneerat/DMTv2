@@ -11,8 +11,13 @@ Update 2020-07-16 #8
 Update 2020-07-16 #7
 - 
 
+[commited]
 Update 2020-07-16 #6
-- 
+- Implements TA model class #5.
+  - Change folder from Credits to CreditsAndCoupons
+  - Update TSBCredit -> change properties entry date/datetime to transaction date/datetime (string).
+  - Update UserCredit -> change properties entry date/datetime to transaction date/datetime (string).
+  - Add TSBBalance class.
 
 [commited]
 Update 2020-07-16 #5

@@ -125,6 +125,8 @@ namespace DMT.Models
                     _TransactionDate = value;
                     // Raise event.
                     this.RaiseChanged("TransactionDate");
+                    this.RaiseChanged("TransactionDateString");
+                    this.RaiseChanged("TransactionDateTimeString");
                 }
             }
         }
@@ -133,7 +135,7 @@ namespace DMT.Models
         /// </summary>
         [JsonIgnore]
         [Ignore]
-        public string EntryDateString
+        public string TransactionDateString
         {
             get
             {
@@ -147,7 +149,7 @@ namespace DMT.Models
         /// </summary>
         [JsonIgnore]
         [Ignore]
-        public string EntryDateTimeString
+        public string TransactionDateTimeString
         {
             get
             {

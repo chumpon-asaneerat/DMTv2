@@ -95,8 +95,9 @@
   <ItemGroup>
     <Compile Include="ExtensionMethods\ModelExtensionMethods.cs" />
     <Compile Include="Models\Configuration\Config.cs" />
-    <Compile Include="Models\Credits\UserCredit.cs" />
-    <Compile Include="Models\Credits\TSBCredit.cs" />
+    <Compile Include="Models\CreditsAndCoupons\TSBBalance.cs" />
+    <Compile Include="Models\CreditsAndCoupons\UserCredit.cs" />
+    <Compile Include="Models\CreditsAndCoupons\TSBCredit.cs" />
     <Compile Include="Models\DataModels.cs" />
     <Compile Include="Models\Common\DMTModelBase.cs" />
     <Compile Include="Models\Common\NQueries.cs" />
