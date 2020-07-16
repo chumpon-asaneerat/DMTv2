@@ -46,11 +46,19 @@ Update 2020-07-15 #7 (TAv1)
 - Fixed history.txt format 2.
 
 [commited]
+Update 2020-07-15 #7 (master)
+- Fixed history.txt #2.
+
+[commited]
 Update 2020-07-15 #6 (TAv1)
 - Fixed history.txt format.
 [commited]
 Update 2020-07-15 #7 (master)
 - Fixed history.txt #2.
+
+[commited]
+Update 2020-07-15 #6 (master)
+- Fixed history.txt when merge from master.
 
 [commited]
 Update 2020-07-15 #6 (master)
