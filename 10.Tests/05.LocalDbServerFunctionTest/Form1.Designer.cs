@@ -48,6 +48,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.pgTSBBalance = new System.Windows.Forms.PropertyGrid();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -56,6 +58,7 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -155,6 +158,7 @@
             // panel6
             // 
             this.panel6.Controls.Add(this.pgTSBBalance);
+            this.panel6.Controls.Add(this.panel10);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel6.Location = new System.Drawing.Point(0, 71);
             this.panel6.Name = "panel6";
@@ -244,8 +248,27 @@
             this.pgTSBBalance.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pgTSBBalance.Location = new System.Drawing.Point(0, 0);
             this.pgTSBBalance.Name = "pgTSBBalance";
-            this.pgTSBBalance.Size = new System.Drawing.Size(388, 505);
+            this.pgTSBBalance.Size = new System.Drawing.Size(388, 469);
             this.pgTSBBalance.TabIndex = 0;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.button4);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel10.Location = new System.Drawing.Point(0, 469);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(388, 36);
+            this.panel10.TabIndex = 1;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(3, 3);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(115, 28);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "Save";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Form1
             // 
@@ -265,6 +288,7 @@
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -291,6 +315,8 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PropertyGrid pgTSBBalance;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button button4;
     }
 }
 

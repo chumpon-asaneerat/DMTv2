@@ -596,14 +596,31 @@ namespace DMT.Models
         /// <returns>Returns TSB balance. If TSB not found returns null.</returns>
         public static TSBBalance GetCurrent(TSB tsb)
         {
+            if (null == tsb) return null;
             lock (sync)
             {
-                TSBBalance ret = null;
-                if (null != tsb)
-                {
+                string cmd = string.Empty;
+                cmd += "SELECT TSBBalance.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "  FROM TSBBalance, TSB ";
+                cmd += " WHERE TSBBalance.TSBId = TSB.TSBId ";
+                cmd += "   AND TSBBalance.TSBId = ? ";
 
+                var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
+                if (null == ret)
+                {
+                    TSBBalance inst = Create();
+                    // assigned TSB info.
+                    inst.TSBId = tsb.TSBId;
+                    inst.TSBNameEN = tsb.TSBNameEN;
+                    inst.TSBNameTH = tsb.TSBNameTH;
+                    Save(inst);
+                    return inst;
                 }
-                return ret;
+                else
+                {
+                    return ret.ToTSBBalance();
+                }
             }
         }
 

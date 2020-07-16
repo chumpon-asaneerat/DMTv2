@@ -51,7 +51,16 @@ namespace LocalDbServerFunctionTest
         private void button3_Click(object sender, EventArgs e)
         {
             // Credits/Coupons - refresh
-            //pgTSBBalance.SelectedObject = TSBBalance.GetCurrent();
+            pgTSBBalance.SelectedObject = TSBBalance.GetCurrent();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var inst = pgTSBBalance.SelectedObject as TSBBalance;
+            if (null != inst)
+            {
+                TSBBalance.Save(inst);
+            }
         }
     }
 }
