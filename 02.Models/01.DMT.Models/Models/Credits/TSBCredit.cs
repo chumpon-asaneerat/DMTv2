@@ -17,15 +17,6 @@ using NLib.Reflection;
 
 namespace DMT.Models
 {
-    #region Enum
-
-    public enum TSBCreditTransactionType : int
-    {
-        Init = 1
-    }
-
-    #endregion
-
     #region TSBCredit
 
     /// <summary>
@@ -35,8 +26,6 @@ namespace DMT.Models
     public class TSBCredit : NTable<TSBCredit>
     {
         #region Internal Variables
-
-        private TSBCreditTransactionType _transType = TSBCreditTransactionType.Init;
 
         private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
@@ -98,26 +87,6 @@ namespace DMT.Models
         #region Public Properties
 
         #region Common
-
-        /// <summary>
-        /// Gets or sets TransactionType.
-        /// </summary>
-        [PeropertyMapName("TransactionType")]
-        public TSBCreditTransactionType TransactionType
-        {
-            get
-            {
-                return _transType;
-            }
-            set
-            {
-                if (_transType != value)
-                {
-                    _transType = value;
-                    this.RaiseChanged("TransactionType");
-                }
-            }
-        }
 
         #endregion
 
