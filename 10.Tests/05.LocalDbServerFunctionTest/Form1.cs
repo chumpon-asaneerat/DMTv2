@@ -101,14 +101,14 @@ namespace LocalDbServerFunctionTest
             {
                 // Borrow.
                 UserCredit.Borrow(usrCredit, tsbBalance);
-                // refresh
+                // refresh balance
                 pgTSBBalance.SelectedObject = TSBBalance.GetCurrent();
             }
             else if (rbReturn.Checked)
             {
                 // Return.
                 UserCredit.Return(usrCredit, tsbBalance);
-                // refresh
+                // refresh balance
                 pgTSBBalance.SelectedObject = TSBBalance.GetCurrent();
             }
         }
@@ -119,7 +119,25 @@ namespace LocalDbServerFunctionTest
             dgUserCredit.DataSource = null;
 
             var tsb = TSB.GetCurrent();
+            // refresh grid
             dgUserCredit.DataSource = UserCredit.GetUserCredits(tsb);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (null != dgUserCredit.SelectedRows && null != dgUserCredit.SelectedRows[0])
+            {
+                var tsbBalance = pgTSBBalance.SelectedObject as TSBBalance;
+                var usrCredit = dgUserCredit.SelectedRows[0].DataBoundItem as UserCredit;
+                if (null == tsbBalance || null == usrCredit) return;
+
+                UserCredit.Undo(usrCredit, tsbBalance);
+                // refresh balance
+                pgTSBBalance.SelectedObject = TSBBalance.GetCurrent();
+                // refresh grid
+                var tsb = TSB.GetCurrent();
+                dgUserCredit.DataSource = UserCredit.GetUserCredits(tsb);
+            }
         }
     }
 }

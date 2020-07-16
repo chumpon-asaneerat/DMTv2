@@ -11,8 +11,11 @@ Update 2020-07-16 #13
 Update 2020-07-16 #12
 - 
 
+[commited]
 Update 2020-07-16 #11
-- 
+- Implements TA model class #9.
+  - TSBBalance implement Undo static method.
+  - Updete LocalDbServerFunctionTest - UserCredit Undo #4.
 
 [commited]
 Update 2020-07-16 #10

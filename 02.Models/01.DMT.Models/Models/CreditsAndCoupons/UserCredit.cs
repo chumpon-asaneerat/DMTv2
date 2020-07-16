@@ -21,6 +21,7 @@ namespace DMT.Models
     {
         Borrow = 1,
         Return = 2,
+        Undo = 3
     }
 
     #region UserCredit
@@ -36,6 +37,8 @@ namespace DMT.Models
         private Guid _PKId = Guid.NewGuid();
         private DateTime _TransactionDate = DateTime.MinValue;
         private UserCreditTransactionType _TransactionType = UserCreditTransactionType.Borrow;
+
+        private Guid _RefId = Guid.Empty; // for undo.
 
         private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
@@ -183,6 +186,25 @@ namespace DMT.Models
                     _TransactionType = value;
                     // Raise event.
                     this.RaiseChanged("TransactionType");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets RefId
+        /// </summary>
+        [PeropertyMapName("RefId")]
+        public Guid RefId
+        {
+            get
+            {
+                return _RefId;
+            }
+            set
+            {
+                if (_RefId != value)
+                {
+                    _RefId = value;
+                    this.RaiseChanged("RefId");
                 }
             }
         }
@@ -756,6 +778,55 @@ namespace DMT.Models
                     credit.PKId = Guid.NewGuid(); // always create new.
                     credit.TransactionDate = DateTime.Now;
                     credit.TransactionType = UserCreditTransactionType.Return;
+
+                    balance.ST25 += sign * credit.ST25;
+                    balance.ST50 += sign * credit.ST50;
+                    balance.BHT1 += sign * credit.BHT1;
+                    balance.BHT2 += sign * credit.BHT2;
+                    balance.BHT5 += sign * credit.BHT5;
+                    balance.BHT10 += sign * credit.BHT10;
+                    balance.BHT20 += sign * credit.BHT20;
+                    balance.BHT50 += sign * credit.BHT50;
+                    balance.BHT100 += sign * credit.BHT100;
+                    balance.BHT500 += sign * credit.BHT500;
+                    balance.BHT1000 += sign * credit.BHT1000;
+
+                    Save(credit);
+                    TSBBalance.Save(balance);
+
+                    Default.Commit();
+                }
+                catch
+                {
+                    Default.Rollback();
+                }
+            }
+        }
+
+        public static void Undo(UserCredit credit, TSBBalance balance)
+        {
+            lock (sync)
+            {
+                if (null == credit || null == balance) return;
+                if (null == Default) return;
+                int sign = 0;
+                if (credit.TransactionType == UserCreditTransactionType.Borrow)
+                {
+                    sign = 1;
+                }
+                else if (credit.TransactionType == UserCreditTransactionType.Return)
+                {
+                    sign = -1;
+                }
+                if (sign == 0) return; // not allow other type.
+                try
+                {
+                    Default.BeginTransaction();
+
+                    credit.RefId = credit.PKId; // set reference id.
+                    credit.PKId = Guid.NewGuid(); // always create new.
+                    credit.TransactionDate = DateTime.Now;
+                    credit.TransactionType = UserCreditTransactionType.Undo;
 
                     balance.ST25 += sign * credit.ST25;
                     balance.ST50 += sign * credit.ST50;
