@@ -1,15 +1,90 @@
 --------------------------------------------------------------------------------------------
+Update 2020-07-17 #15 (TA)
+- 
+
+Update 2020-07-17 #14 (TA)
+- 
+
+Update 2020-07-17 #13 (TA)
+- 
+
+Update 2020-07-17 #12 (TA)
+- 
+
+Update 2020-07-17 #11 (TA)
+- 
+
+Update 2020-07-17 #10 (TA)
+- 
+
+Update 2020-07-17 #9 (TA)
+- 
+
+Update 2020-07-17 #8 (TA)
+- 
+
+Update 2020-07-17 #7 (TA)
+- 
+
+Update 2020-07-17 #6 (TA)
+- 
+
+Update 2020-07-17 #5 (TA)
+- 
+
+Update 2020-07-17 #4 (TA)
+- 
+
+Update 2020-07-17 #3 (TA)
+- 
+
+Update 2020-07-17 #2 (TA)
+- 
+
+Update 2020-07-17 #1 (TA)
+- 
+
+--------------------------------------------------------------------------------------------
+Update 2020-07-16 #30 (TA)
+- 
+
+Update 2020-07-16 #29 (TA)
+- 
+
+Update 2020-07-16 #28 (TA)
+- 
+
+Update 2020-07-16 #27 (TA)
+- 
+
+[commited]
+Update 2020-07-16 #26 (TA)
+- Implements TA model class #16.
+  - Temporary disable Table creation for TSB Credit process.
+  - Note: 
+    - Required MaxBalance for TSBBalance.
+    - Addition not include in MaxBalance.
+    - Addition required transaction table.
+    - Account requied to enter as Total BHT so program required to convert back to coin/bill unit.
+
+[commited]
 Update 2020-07-16 #25 (TA)
-- 
+- Implements TA model class #15.
+  - Add TSBCreditTransaction class.
+  - Add UserCreditTransaction class.
 
+[commited]
 Update 2020-07-16 #24 (TA)
-- 
+- prepare history.TA.txt
 
+[commited]
 Update 2020-07-16 #23 (TA)
-- 
+- Implements TA model class #14.
+  - Eable Table creation for TSB Credit process.
 
+[commited]
 Update 2020-07-16 #22 (TA)
-- 
+- Check merge to origin/master (OK).
 
 [commited]
 Update 2020-07-16 #21 (TA)
