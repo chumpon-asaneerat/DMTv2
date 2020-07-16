@@ -57,8 +57,15 @@ Update 2020-07-16 #28 (TA)
 Update 2020-07-16 #27 (TA)
 - 
 
+[commited]
 Update 2020-07-16 #26 (TA)
-- 
+- Implements TA model class #16.
+  - Temporary disable Table creation for TSB Credit process.
+  - Note: 
+    - Required MaxBalance for TSBBalance.
+    - Addition not include in MaxBalance.
+    - Addition required transaction table.
+    - Account requied to enter as Total BHT so program required to convert back to coin/bill unit.
 
 [commited]
 Update 2020-07-16 #25 (TA)
