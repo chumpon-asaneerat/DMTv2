@@ -5,8 +5,11 @@ Update 2020-07-16 #10
 Update 2020-07-16 #9
 - 
 
+[commited]
 Update 2020-07-16 #8
-- 
+- Implements TA model class #6.
+  - TSBBalance implement GetCurrent static methods #1.
+  - Updete LocalDbServerFunctionTest - TSB Balance #1.
 
 [commited]
 Update 2020-07-16 #7

@@ -27,7 +27,7 @@ namespace DMT.Models
     {
         #region Internal Variables
 
-        private Guid _PKId = Guid.NewGuid();
+        private int _TSBBalanceId = 0;
 
         private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
@@ -103,22 +103,22 @@ namespace DMT.Models
         #region Common
 
         /// <summary>
-        /// Gets or sets PKId
+        /// Gets or sets TSBBalanceId
         /// </summary>
-        [PrimaryKey]
-        [PeropertyMapName("PKId")]
-        public Guid PKId
+        [PrimaryKey, AutoIncrement]
+        [PeropertyMapName("TSBBalanceId")]
+        public int TSBBalanceId
         {
             get
             {
-                return _PKId;
+                return _TSBBalanceId;
             }
             set
             {
-                if (_PKId != value)
+                if (_TSBBalanceId != value)
                 {
-                    _PKId = value;
-                    this.RaiseChanged("PKId");
+                    _TSBBalanceId = value;
+                    this.RaiseChanged("TSBBalanceId");
                 }
             }
         }
@@ -576,6 +576,36 @@ namespace DMT.Models
         #endregion
 
         #region Static Methods
+
+        /// <summary>
+        /// Gets Active TSB Balance.
+        /// </summary>
+        /// <returns>Returns Current Active TSB balance. If not found returns null.</returns>
+        public static TSBBalance GetCurrent()
+        {
+            lock (sync)
+            { 
+                var tsb = TSB.GetCurrent();
+                return GetCurrent(tsb);
+            }
+        }
+        /// <summary>
+        /// Gets TSB Balance.
+        /// </summary>
+        /// <param name="tsb">The target TSB to get balance.</param>
+        /// <returns>Returns TSB balance. If TSB not found returns null.</returns>
+        public static TSBBalance GetCurrent(TSB tsb)
+        {
+            lock (sync)
+            {
+                TSBBalance ret = null;
+                if (null != tsb)
+                {
+
+                }
+                return ret;
+            }
+        }
 
         #endregion
     }
