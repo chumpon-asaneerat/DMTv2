@@ -6,7 +6,7 @@
              xmlns:common="clr-namespace:DMT.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="750" 
-             d:DesignWidth="1200">
+             d:DesignWidth="1500">
     <ScrollViewer HorizontalScrollBarVisibility="Auto"
                   VerticalScrollBarVisibility="Auto"
                   HorizontalContentAlignment="Center"
@@ -14,22 +14,22 @@
         <Grid HorizontalAlignment="Center"
               VerticalAlignment="Center">
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="20"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="20"/>
                 <ColumnDefinition Width="Auto" MinWidth="365"/>
-                <ColumnDefinition Width="Auto" MinWidth="1055"/>
-                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="Auto" MinWidth="1100"/>
+                <ColumnDefinition Width="20"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1" Grid.Row="1"
               Margin="5 0 5 5">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="75"/>
                     <RowDefinition Height="140"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -37,7 +37,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" 
-                       FontSize="28"
+                       FontSize="48"
                        Foreground="WhiteSmoke"
                        Background="DarkOrange"
                        HorizontalAlignment="Stretch" 
@@ -48,15 +48,35 @@
                         Grid.Column="0" 
                         Grid.Row="1" Grid.ColumnSpan="2"
                         Margin="0 0 0 0"
-                        Background="DarkOrange"
-                        Foreground="WhiteSmoke" 
+
                         HorizontalContentAlignment="Stretch"
                         VerticalContentAlignment="Stretch"
                         Click="beginJob_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="DarkOrange"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="DarkRed"/>
+                                    <Setter Property="Foreground" Value="WhiteSmoke"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
                     <DockPanel>
                         <StackPanel Orientation="Vertical"
                                     VerticalAlignment="Center">
-                            <TextBlock FontSize="28" 
+                            <TextBlock FontSize="42" 
                                        HorizontalAlignment="Center"
                                        Text="เปิดกะ"
                                        TextAlignment="Center"
@@ -67,12 +87,7 @@
                                 <Run Text="เปิดกะงาน 2" />
                                 -->
                             </TextBlock>
-                            <Grid Height="10" />
-                            <TextBlock FontSize="14"
-                                   HorizontalAlignment="Center"
-                                   TextAlignment="Center"
-                                   TextWrapping="Wrap"
-                                   Text="เปิดกะ"/>
+
                         </StackPanel>
                     </DockPanel>
                 </Button>
@@ -80,7 +95,7 @@
             <Grid Grid.Column="2" Grid.Row="1" 
               Margin="5 0 5 5">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="75"/>
                     <RowDefinition Height="140"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -89,7 +104,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" 
-                       FontSize="28"
+                       FontSize="48"
                        Foreground="WhiteSmoke"
                        Background="RoyalBlue"
                        HorizontalAlignment="Stretch" 
@@ -100,52 +115,78 @@
                         Grid.Column="0" 
                         Grid.Row="1" 
                         Margin="0 0 5 0"
-                        Background="RoyalBlue"
-                        Foreground="WhiteSmoke"
                         HorizontalContentAlignment="Stretch"
                         VerticalContentAlignment="Stretch"
                         Click="revEntry_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="RoyalBlue"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="DarkBlue"/>
+                                    <Setter Property="Foreground" Value="WhiteSmoke"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
                     <DockPanel>
                         <StackPanel Orientation="Vertical"
                                     VerticalAlignment="Center">
-                            <TextBlock FontSize="28" 
+                            <TextBlock FontSize="42" 
                                        HorizontalAlignment="Center"
                                        Text="นำส่งรายได้"
                                        TextAlignment="Center"
                                        TextWrapping="Wrap">
                             </TextBlock>
-                            <Grid Height="10" />
-                            <TextBlock FontSize="14"
-                                   HorizontalAlignment="Center"
-                                   TextAlignment="Center"
-                                   TextWrapping="Wrap"
-                                   Text="พนักงานเก็บค่าผ่านทาง"/>
                         </StackPanel>
                     </DockPanel>
                 </Button>
                 <Button x:Name="reprintRevSlip" 
                         Grid.Column="1" Grid.Row="1" 
                         Margin="0 0 0 0"
-                        Background="RoyalBlue"
-                        Foreground="WhiteSmoke"
                         HorizontalContentAlignment="Stretch"
                         VerticalContentAlignment="Stretch"
                         Click="reprintRevSlip_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="RoyalBlue"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="DarkBlue"/>
+                                    <Setter Property="Foreground" Value="WhiteSmoke"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
                     <DockPanel>
                         <StackPanel Orientation="Vertical"
                                     VerticalAlignment="Center">
-                            <TextBlock FontSize="28" 
+                            <TextBlock FontSize="42" 
                                        HorizontalAlignment="Center"
                                        Text="นำส่งรายได้ย้อนหลัง"
                                        TextAlignment="Center"
                                        TextWrapping="Wrap">
                             </TextBlock>
-                            <Grid Height="10" />
-                            <TextBlock FontSize="14"
-                                   HorizontalAlignment="Center"
-                                   TextAlignment="Center"
-                                   TextWrapping="Wrap"
-                                   Text="หัวหน้าพนักงานเก็บค่าผ่านทาง"/>
                         </StackPanel>
                     </DockPanel>
                 </Button>
@@ -153,19 +194,19 @@
             <Grid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2"
               Margin="5 0 5 5">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="75"/>
                     <RowDefinition Height="140"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="350"/>
-                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="360"/>
+                    <ColumnDefinition Width="360"/>
                     <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="350"/>
-                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="360"/>
+                    <ColumnDefinition Width="360"/>
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" 
-                       FontSize="28"
+                       FontSize="48"
                        Foreground="WhiteSmoke"
                        Background="ForestGreen"
                        HorizontalAlignment="Stretch" 
@@ -176,26 +217,39 @@
                         Grid.Column="0" 
                         Grid.Row="1" 
                         Margin="0 0 5 0"
-                        Background="ForestGreen"
-                        Foreground="WhiteSmoke"
                         HorizontalContentAlignment="Stretch"
                         VerticalContentAlignment="Stretch"
                         Click="changeShift_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="ForestGreen"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="DarkGreen"/>
+                                    <Setter Property="Foreground" Value="WhiteSmoke"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
                     <DockPanel>
                         <StackPanel Orientation="Vertical"
                                     VerticalAlignment="Center">
-                            <TextBlock FontSize="28" 
+                            <TextBlock FontSize="42" 
                                        HorizontalAlignment="Center"
                                        Text="หัวหน้าเปลี่ยนกะ"
                                        TextAlignment="Center"
                                        TextWrapping="Wrap">
                             </TextBlock>
-                            <Grid Height="10" />
-                            <TextBlock FontSize="14"
-                                   HorizontalAlignment="Center"
-                                   TextAlignment="Center"
-                                   TextWrapping="Wrap"
-                                   Text="หัวหน้าเปลี่ยนกะ"/>
                         </StackPanel>
                     </DockPanel>
                 </Button>
@@ -203,44 +257,70 @@
                         Grid.Column="1" 
                         Grid.Row="1" 
                         Margin="0 0 0 0"
-                        Background="ForestGreen"
-                        Foreground="WhiteSmoke"
                         HorizontalContentAlignment="Stretch"
                         VerticalContentAlignment="Stretch"
                         Click="reportMenu_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="ForestGreen"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="DarkGreen"/>
+                                    <Setter Property="Foreground" Value="WhiteSmoke"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
                     <DockPanel>
                         <StackPanel Orientation="Vertical"
                                     VerticalAlignment="Center">
-                            <TextBlock FontSize="28" 
+                            <TextBlock FontSize="42" 
                                        HorizontalAlignment="Center"
                                        Text="รายงานต่าง ๆ"
                                        TextAlignment="Center"
                                        TextWrapping="Wrap">
                             </TextBlock>
-                            <Grid Height="10" />
-                            <TextBlock FontSize="14"
-                                   HorizontalAlignment="Center"
-                                   TextAlignment="Center"
-                                   TextWrapping="Wrap"
-                                   Text="รายงานต่าง ๆ"/>
                         </StackPanel>
                     </DockPanel>
                 </Button>
                 <Button x:Name="emvQRCode"
                     Grid.Column="3" Grid.Row="1" 
                     Margin="0 0 5 0"
-                    Background="ForestGreen"
-                    Foreground="WhiteSmoke" Click="emvQRCode_Click">
+                        Click="emvQRCode_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="ForestGreen"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="DarkGreen"/>
+                                    <Setter Property="Foreground" Value="WhiteSmoke"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
                     <DockPanel>
-
                         <StackPanel Orientation="Vertical">
-                            <TextBlock FontSize="28" 
-                                   HorizontalAlignment="Center"
-                                   TextAlignment="Center"
-                                   TextWrapping="Wrap"
-                                   Text="EMV /QR Code"/>
-                            <Grid Height="10" />
-                            <TextBlock FontSize="14"
+                            <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    TextWrapping="Wrap"
@@ -251,19 +331,31 @@
                 <Button x:Name="loginList"
                     Grid.Column="4" Grid.Row="1" 
                     Margin="0 0 0 0"
-                    Background="ForestGreen"
-                    Foreground="WhiteSmoke" 
                     Click="loginList_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="ForestGreen"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="DarkGreen"/>
+                                    <Setter Property="Foreground" Value="WhiteSmoke"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
                     <DockPanel>
-
                         <StackPanel Orientation="Vertical">
-                            <TextBlock FontSize="28" 
-                                   HorizontalAlignment="Center"
-                                   TextAlignment="Center"
-                                   TextWrapping="Wrap"
-                                   Text="รายชื่อพนักงานเข้ากะ"/>
-                            <Grid Height="10" />
-                            <TextBlock FontSize="14"
+                            <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    TextWrapping="Wrap"
