@@ -17,8 +17,11 @@ Update 2020-07-16 #6
 Update 2020-07-16 #5
 - 
 
+[commited]
 Update 2020-07-16 #4
-- 
+- Implements TA model class #4.
+  - Update TSBCredit -> add pk (Guid) and transaction date.
+  - Update UserCredit -> add pk (Guid) and transaction date.
 
 [commited]
 Update 2020-07-16 #3

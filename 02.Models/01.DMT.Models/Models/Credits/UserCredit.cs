@@ -27,6 +27,9 @@ namespace DMT.Models
     {
         #region Internal Variables
 
+        private Guid _PKId = Guid.NewGuid();
+        private DateTime _TransactionDate = DateTime.MinValue;
+
         private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
         private string _TSBNameTH = string.Empty;
@@ -91,6 +94,72 @@ namespace DMT.Models
         #region Public Properties
 
         #region Common
+
+        /// <summary>
+        /// Gets or sets PKId
+        /// </summary>
+        [PrimaryKey]
+        [PeropertyMapName("PKId")]
+        public Guid PKId
+        {
+            get
+            {
+                return _PKId;
+            }
+            set
+            {
+                if (_PKId != value)
+                {
+                    _PKId = value;
+                    this.RaiseChanged("PKId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Transaction Date.
+        /// </summary>
+        [PeropertyMapName("TransactionDate")]
+        public DateTime TransactionDate
+        {
+            get { return _TransactionDate; }
+            set
+            {
+                if (_TransactionDate != value)
+                {
+                    _TransactionDate = value;
+                    // Raise event.
+                    this.RaiseChanged("TransactionDate");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets Transaction Date String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string EntryDateString
+        {
+            get
+            {
+                var ret = (this.TransactionDate == DateTime.MinValue) ? "" : this.TransactionDate.ToThaiDateTimeString("dd/MM/yyyy");
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets Transaction DateTime String.
+        /// </summary>
+        [JsonIgnore]
+        [Ignore]
+        public string EntryDateTimeString
+        {
+            get
+            {
+                var ret = (this.TransactionDate == DateTime.MinValue) ? "" : this.TransactionDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+                return ret;
+            }
+            set { }
+        }
 
         #endregion
 
