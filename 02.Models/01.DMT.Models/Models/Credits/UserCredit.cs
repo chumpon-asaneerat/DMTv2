@@ -35,6 +35,21 @@ namespace DMT.Models
         private string _FullNameEN = string.Empty;
         private string _FullNameTH = string.Empty;
 
+        // Coin/Bill
+        private int _ST25 = 0;
+        private int _ST50 = 0;
+        private int _BHT1 = 0;
+        private int _BHT2 = 0;
+        private int _BHT5 = 0;
+        private int _BHT10 = 0;
+        private int _BHT20 = 0;
+        private int _BHT50 = 0;
+        private int _BHT100 = 0;
+        private int _BHT500 = 0;
+        private int _BHT1000 = 0;
+        private decimal _BHTTotal = decimal.Zero;
+        private string _Remark = "";
+
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
 
@@ -46,6 +61,30 @@ namespace DMT.Models
         /// Constructor.
         /// </summary>
         public UserCredit() : base() { }
+
+        #endregion
+
+        #region Private Methods
+
+        private void CalcTotal()
+        {
+            decimal total = 0;
+            total += Convert.ToDecimal(_ST25 * (decimal).25);
+            total += Convert.ToDecimal(_ST50 * (decimal).50);
+            total += _BHT1 * 1;
+            total += _BHT2 * 2;
+            total += _BHT5 * 5;
+            total += _BHT10 * 10;
+            total += _BHT20 * 20;
+            total += _BHT50 * 50;
+            total += _BHT100 * 100;
+            total += _BHT500 * 500;
+            total += _BHT1000 * 1000;
+
+            _BHTTotal = total;
+            // Raise event.
+            this.RaiseChanged("BHTTotal");
+        }
 
         #endregion
 
@@ -179,6 +218,236 @@ namespace DMT.Models
                 {
                     _FullNameTH = value;
                     this.RaiseChanged("FullNameTH");
+                }
+            }
+        }
+
+        #endregion
+
+        #region Coin/Bill
+
+        /// <summary>
+        /// Gets or sets number of .25 baht coin.
+        /// </summary>
+        [PeropertyMapName("ST25")]
+        public int ST25
+        {
+            get { return _ST25; }
+            set
+            {
+                if (_ST25 != value)
+                {
+                    _ST25 = value;
+                    CalcTotal();
+                    // Raise event.
+                    this.RaiseChanged("ST25");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets number of .50 baht coin.
+        /// </summary>
+        [PeropertyMapName("ST50")]
+        public int ST50
+        {
+            get { return _ST50; }
+            set
+            {
+                if (_ST50 != value)
+                {
+                    _ST50 = value;
+                    CalcTotal();
+                    // Raise event.
+                    this.RaiseChanged("ST50");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets number of 1 baht coin.
+        /// </summary>
+        [PeropertyMapName("BHT1")]
+        public int BHT1
+        {
+            get { return _BHT1; }
+            set
+            {
+                if (_BHT1 != value)
+                {
+                    _BHT1 = value;
+                    CalcTotal();
+                    // Raise event.
+                    this.RaiseChanged("BHT1BHT1");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets number of 2 baht coin.
+        /// </summary>
+        [PeropertyMapName("BHT2")]
+        public int BHT2
+        {
+            get { return _BHT2; }
+            set
+            {
+                if (_BHT2 != value)
+                {
+                    _BHT2 = value;
+                    CalcTotal();
+                    // Raise event.
+                    this.RaiseChanged("BHT2");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets number of 5 baht coin.
+        /// </summary>
+        [PeropertyMapName("BHT5")]
+        public int BHT5
+        {
+            get { return _BHT5; }
+            set
+            {
+                if (_BHT5 != value)
+                {
+                    _BHT5 = value;
+                    CalcTotal();
+                    // Raise event.
+                    this.RaiseChanged("BHT5");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets number of 10 baht coin.
+        /// </summary>
+        [PeropertyMapName("BHT10")]
+        public int BHT10
+        {
+            get { return _BHT10; }
+            set
+            {
+                if (_BHT10 != value)
+                {
+                    _BHT10 = value;
+                    CalcTotal();
+                    // Raise event.
+                    this.RaiseChanged("BHT10");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets number of 20 baht bill.
+        /// </summary>
+        [PeropertyMapName("BHT20")]
+        public int BHT20
+        {
+            get { return _BHT20; }
+            set
+            {
+                if (_BHT20 != value)
+                {
+                    _BHT20 = value;
+                    CalcTotal();
+                    // Raise event.
+                    this.RaiseChanged("BHT20");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets number of 50 baht bill.
+        /// </summary>
+        [PeropertyMapName("BHT50")]
+        public int BHT50
+        {
+            get { return _BHT50; }
+            set
+            {
+                if (_BHT50 != value)
+                {
+                    _BHT50 = value;
+                    CalcTotal();
+                    // Raise event.
+                    this.RaiseChanged("BHT50");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets number of 100 baht bill.
+        /// </summary>
+        [PeropertyMapName("BHT100")]
+        public int BHT100
+        {
+            get { return _BHT100; }
+            set
+            {
+                if (_BHT100 != value)
+                {
+                    _BHT100 = value;
+                    CalcTotal();
+                    // Raise event.
+                    this.RaiseChanged("BHT100");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets number of 500 baht bill.
+        /// </summary>
+        [PeropertyMapName("BHT500")]
+        public int BHT500
+        {
+            get { return _BHT500; }
+            set
+            {
+                if (_BHT500 != value)
+                {
+                    _BHT500 = value;
+                    CalcTotal();
+                    // Raise event.
+                    this.RaiseChanged("BHT500");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets number of 1000 baht bill.
+        /// </summary>
+        [PeropertyMapName("BHT1000")]
+        public int BHT1000
+        {
+            get { return _BHT1000; }
+            set
+            {
+                if (_BHT1000 != value)
+                {
+                    _BHT1000 = value;
+                    CalcTotal();
+                    // Raise event.
+                    this.RaiseChanged("BHT1000");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets total value in baht.
+        /// </summary>
+        [PeropertyMapName("BHTTotal")]
+        public decimal BHTTotal
+        {
+            get { return _BHTTotal; }
+            set { }
+        }
+        /// <summary>
+        /// Gets or sets  Remark.
+        /// </summary>
+        [MaxLength(255)]
+        [PeropertyMapName("Remark")]
+        public string Remark
+        {
+            get { return _Remark; }
+            set
+            {
+                if (_Remark != value)
+                {
+                    _Remark = value;
+                    // Raise event.
+                    this.RaiseChanged("Remark");
                 }
             }
         }

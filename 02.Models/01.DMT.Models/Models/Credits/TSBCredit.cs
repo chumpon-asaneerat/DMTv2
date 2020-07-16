@@ -71,6 +71,30 @@ namespace DMT.Models
 
         #endregion
 
+        #region Private Methods
+
+        private void CalcTotal()
+        {
+            decimal total = 0;
+            total += Convert.ToDecimal(_ST25 * (decimal).25);
+            total += Convert.ToDecimal(_ST50 * (decimal).50);
+            total += _BHT1 * 1;
+            total += _BHT2 * 2;
+            total += _BHT5 * 5;
+            total += _BHT10 * 10;
+            total += _BHT20 * 20;
+            total += _BHT50 * 50;
+            total += _BHT100 * 100;
+            total += _BHT500 * 500;
+            total += _BHT1000 * 1000;
+
+            _BHTTotal = total;
+            // Raise event.
+            this.RaiseChanged("BHTTotal");
+        }
+
+        #endregion
+
         #region Public Properties
 
         #region Common
@@ -93,30 +117,6 @@ namespace DMT.Models
                     this.RaiseChanged("TransactionType");
                 }
             }
-        }
-
-        #endregion
-
-        #region Private Methods
-
-        private void CalcTotal()
-        {
-            decimal total = 0;
-            total += Convert.ToDecimal(_ST25 * (decimal).25);
-            total += Convert.ToDecimal(_ST50 * (decimal).50);
-            total += _BHT1 * 1;
-            total += _BHT2 * 2;
-            total += _BHT5 * 5;
-            total += _BHT10 * 10;
-            total += _BHT20 * 20;
-            total += _BHT50 * 50;
-            total += _BHT100 * 100;
-            total += _BHT500 * 500;
-            total += _BHT1000 * 1000;
-
-            _BHTTotal = total;
-            // Raise event.
-            this.RaiseChanged("BHTTotal");
         }
 
         #endregion
