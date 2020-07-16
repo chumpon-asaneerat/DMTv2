@@ -60,8 +60,11 @@ Update 2020-07-16 #27 (TA)
 Update 2020-07-16 #26 (TA)
 - 
 
+[commited]
 Update 2020-07-16 #25 (TA)
-- 
+- Implements TA model class #15.
+  - Add TSBCreditTransaction class.
+  - Add UserCreditTransaction class.
 
 [commited]
 Update 2020-07-16 #24 (TA)
