@@ -93,9 +93,11 @@ namespace DMT.Models
         #region Common
 
         /// <summary>
-        /// Gets or sets PKId
+        /// Gets or sets PKId.
         /// </summary>
         [Category("Common")]
+        [Description("Gets or sets PKId.")]
+        [ReadOnly(true)]
         [PrimaryKey]
         [PeropertyMapName("PKId")]
         public Guid PKId
@@ -117,6 +119,8 @@ namespace DMT.Models
         /// Gets or sets Transaction Date.
         /// </summary>
         [Category("Common")]
+        [Description("Gets or sets Transaction Date.")]
+        [ReadOnly(true)]
         [PeropertyMapName("TransactionDate")]
         public DateTime TransactionDate
         {
@@ -137,6 +141,8 @@ namespace DMT.Models
         /// Gets Transaction Date String.
         /// </summary>
         [Category("Common")]
+        [Description("Gets Transaction Date String.")]
+        [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
         public string TransactionDateString
@@ -152,6 +158,8 @@ namespace DMT.Models
         /// Gets Transaction DateTime String.
         /// </summary>
         [Category("Common")]
+        [Description("Gets Transaction DateTime String.")]
+        [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
         public string TransactionDateTimeString
@@ -172,6 +180,8 @@ namespace DMT.Models
         /// Gets or sets TSBId.
         /// </summary>
         [Category("TSB")]
+        [Description("Gets or sets TSBId.")]
+        [ReadOnly(true)]
         [MaxLength(10)]
         [PeropertyMapName("TSBId")]
         public string TSBId
@@ -193,6 +203,8 @@ namespace DMT.Models
         /// Gets or sets TSBNameEN.
         /// </summary>
         [Category("TSB")]
+        [Description("Gets or sets TSBNameEN.")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("TSBNameEN")]
         public virtual string TSBNameEN
@@ -214,6 +226,8 @@ namespace DMT.Models
         /// Gets or sets TSBNameTH.
         /// </summary>
         [Category("TSB")]
+        [Description("Gets or sets TSBNameTH.")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("TSBNameTH")]
         public virtual string TSBNameTH
@@ -240,6 +254,7 @@ namespace DMT.Models
         /// Gets or sets number of .25 baht coin.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of .25 baht coin.")]
         [PeropertyMapName("ST25")]
         public int ST25
         {
@@ -259,6 +274,7 @@ namespace DMT.Models
         /// Gets or sets number of .50 baht coin.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of .50 baht coin.")]
         [PeropertyMapName("ST50")]
         public int ST50
         {
@@ -278,6 +294,7 @@ namespace DMT.Models
         /// Gets or sets number of 1 baht coin.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of 1 baht coin.")]
         [PeropertyMapName("BHT1")]
         public int BHT1
         {
@@ -297,6 +314,7 @@ namespace DMT.Models
         /// Gets or sets number of 2 baht coin.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of 2 baht coin.")]
         [PeropertyMapName("BHT2")]
         public int BHT2
         {
@@ -316,6 +334,7 @@ namespace DMT.Models
         /// Gets or sets number of 5 baht coin.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of 5 baht coin.")]
         [PeropertyMapName("BHT5")]
         public int BHT5
         {
@@ -335,6 +354,7 @@ namespace DMT.Models
         /// Gets or sets number of 10 baht coin.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of 10 baht coin.")]
         [PeropertyMapName("BHT10")]
         public int BHT10
         {
@@ -354,6 +374,7 @@ namespace DMT.Models
         /// Gets or sets number of 20 baht bill.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of 20 baht bill.")]
         [PeropertyMapName("BHT20")]
         public int BHT20
         {
@@ -373,6 +394,7 @@ namespace DMT.Models
         /// Gets or sets number of 50 baht bill.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of 50 baht bill.")]
         [PeropertyMapName("BHT50")]
         public int BHT50
         {
@@ -392,6 +414,7 @@ namespace DMT.Models
         /// Gets or sets number of 100 baht bill.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of 100 baht bill.")]
         [PeropertyMapName("BHT100")]
         public int BHT100
         {
@@ -411,6 +434,7 @@ namespace DMT.Models
         /// Gets or sets number of 500 baht bill.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of 500 baht bill.")]
         [PeropertyMapName("BHT500")]
         public int BHT500
         {
@@ -430,6 +454,7 @@ namespace DMT.Models
         /// Gets or sets number of 1000 baht bill.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of 1000 baht bill.")]
         [PeropertyMapName("BHT1000")]
         public int BHT1000
         {
@@ -449,6 +474,8 @@ namespace DMT.Models
         /// Gets or sets total value in baht.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets total value in baht.")]
+        [ReadOnly(false)]
         [PeropertyMapName("BHTTotal")]
         public decimal BHTTotal
         {
@@ -459,6 +486,7 @@ namespace DMT.Models
         /// Gets or sets  Remark.
         /// </summary>
         [Category("Remark")]
+        [Description("Gets or sets  Remark.")]
         [MaxLength(255)]
         [PeropertyMapName("Remark")]
         public string Remark
@@ -483,6 +511,8 @@ namespace DMT.Models
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
         [Category("DataCenter")]
+        [Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
+        [ReadOnly(true)]
         [PeropertyMapName("Status")]
         public int Status
         {
@@ -503,6 +533,8 @@ namespace DMT.Models
         /// Gets or sets LastUpdated (Sync to DC).
         /// </summary>
         [Category("DataCenter")]
+        [Description("Gets or sets LastUpdated (Sync to DC).")]
+        [ReadOnly(true)]
         [PeropertyMapName("LastUpdate")]
         public DateTime LastUpdate
         {

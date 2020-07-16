@@ -117,6 +117,8 @@ namespace DMT.Models
         /// Gets or sets TSBBalanceId
         /// </summary>
         [Category("Common")]
+        [Description(" Gets or sets TSBBalanceId")]
+        [ReadOnly(true)]
         [PrimaryKey, AutoIncrement]
         [PeropertyMapName("TSBBalanceId")]
         public int TSBBalanceId
@@ -143,6 +145,8 @@ namespace DMT.Models
         /// Gets or sets TSBId.
         /// </summary>
         [Category("TSB")]
+        [Description("Gets or sets TSBId.")]
+        [ReadOnly(true)]
         [MaxLength(10)]
         [PeropertyMapName("TSBId")]
         public string TSBId
@@ -164,6 +168,8 @@ namespace DMT.Models
         /// Gets or sets TSBNameEN.
         /// </summary>
         [Category("TSB")]
+        [Description("Gets or sets TSBNameEN.")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("TSBNameEN")]
         public virtual string TSBNameEN
@@ -185,6 +191,8 @@ namespace DMT.Models
         /// Gets or sets TSBNameTH.
         /// </summary>
         [Category("TSB")]
+        [Description("Gets or sets TSBNameTH.")]
+        [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("TSBNameTH")]
         public virtual string TSBNameTH
@@ -211,6 +219,7 @@ namespace DMT.Models
         /// Gets or sets number of .25 baht coin.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of .25 baht coin.")]
         [PeropertyMapName("ST25")]
         public int ST25
         {
@@ -230,6 +239,7 @@ namespace DMT.Models
         /// Gets or sets number of .50 baht coin.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of .50 baht coin.")]
         [PeropertyMapName("ST50")]
         public int ST50
         {
@@ -249,6 +259,7 @@ namespace DMT.Models
         /// Gets or sets number of 1 baht coin.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of 1 baht coin.")]
         [PeropertyMapName("BHT1")]
         public int BHT1
         {
@@ -268,6 +279,7 @@ namespace DMT.Models
         /// Gets or sets number of 2 baht coin.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of 2 baht coin.")]
         [PeropertyMapName("BHT2")]
         public int BHT2
         {
@@ -287,6 +299,7 @@ namespace DMT.Models
         /// Gets or sets number of 5 baht coin.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of 5 baht coin.")]
         [PeropertyMapName("BHT5")]
         public int BHT5
         {
@@ -306,6 +319,7 @@ namespace DMT.Models
         /// Gets or sets number of 10 baht coin.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of 10 baht coin.")]
         [PeropertyMapName("BHT10")]
         public int BHT10
         {
@@ -325,6 +339,7 @@ namespace DMT.Models
         /// Gets or sets number of 20 baht bill.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of 20 baht bill.")]
         [PeropertyMapName("BHT20")]
         public int BHT20
         {
@@ -344,6 +359,7 @@ namespace DMT.Models
         /// Gets or sets number of 50 baht bill.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of 50 baht bill.")]
         [PeropertyMapName("BHT50")]
         public int BHT50
         {
@@ -363,6 +379,7 @@ namespace DMT.Models
         /// Gets or sets number of 100 baht bill.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of 100 baht bill.")]
         [PeropertyMapName("BHT100")]
         public int BHT100
         {
@@ -382,6 +399,7 @@ namespace DMT.Models
         /// Gets or sets number of 500 baht bill.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of 500 baht bill.")]
         [PeropertyMapName("BHT500")]
         public int BHT500
         {
@@ -401,6 +419,7 @@ namespace DMT.Models
         /// Gets or sets number of 1000 baht bill.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets number of 1000 baht bill.")]
         [PeropertyMapName("BHT1000")]
         public int BHT1000
         {
@@ -420,6 +439,8 @@ namespace DMT.Models
         /// Gets or sets total value in baht.
         /// </summary>
         [Category("Coin/Bill")]
+        [Description("Gets or sets total value in baht.")]
+        [ReadOnly(true)]
         //[Ignore]
         //[JsonIgnore]
         [PeropertyMapName("BHTTotal")]
@@ -432,6 +453,7 @@ namespace DMT.Models
         /// Gets or sets  Remark.
         /// </summary>
         [Category("Renark")]
+        [Description("Gets or sets  Remark.")]
         [MaxLength(255)]
         [PeropertyMapName("Remark")]
         public string Remark
@@ -456,6 +478,7 @@ namespace DMT.Models
         /// Gets or sets number of 35 BHT coupon.
         /// </summary>
         [Category("Coupon")]
+        [Description("Gets or sets number of 35 BHT coupon.")]
         [PeropertyMapName("CouponBHT35")]
         public int CouponBHT35
         {
@@ -476,6 +499,7 @@ namespace DMT.Models
         /// Gets or sets number of 80 BHT coupon.
         /// </summary>
         [Category("Coupon")]
+        [Description("Gets or sets number of 80 BHT coupon.")]
         [PeropertyMapName("CouponBHT80")]
         public int CouponBHT80
         {
@@ -495,6 +519,8 @@ namespace DMT.Models
         /// Gets calculate coupon total (book count).
         /// </summary>
         [Category("Coupon")]
+        [Description("Gets calculate coupon total (book count).")]
+        [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
         [PeropertyMapName("CouponTotal")]
@@ -507,6 +533,8 @@ namespace DMT.Models
         /// Gets or sets total value in baht.
         /// </summary>
         [Category("Coupon")]
+        [Description("Gets or sets total value in baht.")]
+        [ReadOnly(true)]
         [PeropertyMapName("CouponBHTTotal")]
         public decimal CouponBHTTotal
         {
@@ -530,6 +558,7 @@ namespace DMT.Models
         /// Gets or sets additional borrow in baht.
         /// </summary>
         [Category("Borrow")]
+        [Description("Gets or sets additional borrow in baht.")]
         [PeropertyMapName("AdditionalBHTTotal")]
         public decimal AdditionalBHTTotal
         {
@@ -549,6 +578,8 @@ namespace DMT.Models
         /// Gets or sets all user borrow in baht.
         /// </summary>
         [Category("Borrow")]
+        [Description("Gets or sets all user borrow in baht.")]
+        [ReadOnly(true)]
         [PeropertyMapName("UserBHTTotal")]
         public decimal UserBHTTotal
         {
@@ -573,6 +604,8 @@ namespace DMT.Models
         /// Gets or sets TSB Total (From total calc coin/bill + additional + user borrow).
         /// </summary>
         [Category("Summary")]
+        [Description("Gets or sets TSB Total (From total calc coin/bill + additional + user borrow).")]
+        [ReadOnly(true)]
         //[Ignore]
         //[JsonIgnore]
         [PeropertyMapName("TSBBHTTotal")]
@@ -590,6 +623,8 @@ namespace DMT.Models
         /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
         /// </summary>
         [Category("DataCenter")]
+        [Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
+        [ReadOnly(true)]
         [PeropertyMapName("Status")]
         public int Status
         {
@@ -610,6 +645,8 @@ namespace DMT.Models
         /// Gets or sets LastUpdated (Sync to DC).
         /// </summary>
         [Category("DataCenter")]
+        [Description("Gets or sets LastUpdated (Sync to DC).")]
+        [ReadOnly(true)]
         [PeropertyMapName("LastUpdate")]
         public DateTime LastUpdate
         {

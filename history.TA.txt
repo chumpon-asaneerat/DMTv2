@@ -8,8 +8,11 @@ Update 2020-07-16 #19 (TA)
 Update 2020-07-16 #18 (TA)
 - 
 
+[commited]
 Update 2020-07-16 #17 (TA)
-- 
+  - TSBBalance add Description/ReadOnly/Browsable in all properties.
+  - TSBCredit add Description/ReadOnly/Browsable in all properties.
+  - UserCredit add Description/ReadOnly/Browsable in all properties.
 
 [commited]
 Update 2020-07-16 #16 (TA)
