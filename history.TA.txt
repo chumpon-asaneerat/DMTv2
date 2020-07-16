@@ -5,22 +5,23 @@ Update 2020-07-16 #15
 Update 2020-07-16 #14
 - 
 
-Update 2020-07-16 #13
-- 
+[commited]
+Update 2020-07-16 #13 (TA)
+- Check merge to origin/master (OK).
 
 [commited]
-Update 2020-07-16 #12
+Update 2020-07-16 #12 (TA)
 - Implements TA model class #10.
   - Temporary disable Table creation for TSB Credit process.
 
 [commited]
-Update 2020-07-16 #11
+Update 2020-07-16 #11 (TA)
 - Implements TA model class #9.
   - TSBBalance implement Undo static method.
   - Updete LocalDbServerFunctionTest - UserCredit Undo #4.
 
 [commited]
-Update 2020-07-16 #10
+Update 2020-07-16 #10 (TA)
 - Implements TA model class #8.
   - TSBBalance implement Create static method.
   - TSBBalance implement Borrow static method.
@@ -29,23 +30,23 @@ Update 2020-07-16 #10
   - Updete LocalDbServerFunctionTest - UserCredit Borrow/Return #3.
 
 [commited]
-Update 2020-07-16 #9
+Update 2020-07-16 #9 (TA)
 - Implements TA model class #7.
   - TSBBalance implement GetCurrent static methods #2.
   - Updete LocalDbServerFunctionTest - TSB Balance #2.
 
 [commited]
-Update 2020-07-16 #8
+Update 2020-07-16 #8 (TA)
 - Implements TA model class #6.
   - TSBBalance implement GetCurrent static methods #1.
   - Updete LocalDbServerFunctionTest - TSB Balance #1.
 
 [commited]
-Update 2020-07-16 #7
+Update 2020-07-16 #7 (TA)
 - Recheck merge from original/master -> Change menu font and highlight (OK).
 
 [commited]
-Update 2020-07-16 #6
+Update 2020-07-16 #6 (TA)
 - Implements TA model class #5.
   - Change folder from Credits to CreditsAndCoupons
   - Update TSBCredit -> change properties entry date/datetime to transaction date/datetime (string).
@@ -53,7 +54,7 @@ Update 2020-07-16 #6
   - Add TSBBalance class.
 
 [commited]
-Update 2020-07-16 #5
+Update 2020-07-16 #5 (TA)
 - Add WebSocketServerSample project.
 - Add WebSocketClientSample project.
 - Add LocalWebServerFunctionTest project.
@@ -61,23 +62,23 @@ Update 2020-07-16 #5
 - Add LocalDbServerFunctionTest.
 
 [commited]
-Update 2020-07-16 #4
+Update 2020-07-16 #4 (TA)
 - Implements TA model class #4.
   - Update TSBCredit -> add pk (Guid) and transaction date.
   - Update UserCredit -> add pk (Guid) and transaction date.
 
 [commited]
-Update 2020-07-16 #3
+Update 2020-07-16 #3 (TA)
 - Implements TA model class #3.
   - Update TSBCredit -> remove enum.
 
 [commited]
-Update 2020-07-16 #2
+Update 2020-07-16 #2 (TA)
 - Implements TA model class #2.
   - Update UserCredit -> add coin/bill related properties.
 
 [commited]
-Update 2020-07-16 #1
+Update 2020-07-16 #1 (TA)
 - Implements TA model class #1.
   - Update TSBCredit -> add coin/bill related properties.
 
