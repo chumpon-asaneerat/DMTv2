@@ -1,9 +1,26 @@
 --------------------------------------------------------------------------------------------
-Update 2020-07-16 #15
+Update 2020-07-16 #20 (TA)
 - 
 
-Update 2020-07-16 #14
+Update 2020-07-16 #19 (TA)
 - 
+
+Update 2020-07-16 #18 (TA)
+- 
+
+Update 2020-07-16 #17 (TA)
+- 
+
+Update 2020-07-16 #16 (TA)
+- 
+
+Update 2020-07-16 #15 (TA)
+- 
+
+[commited]
+Update 2020-07-16 #14 (TA)
+- Implements TA model class #11.
+  - Enable Table creation for TSB Credit process.
 
 [commited]
 Update 2020-07-16 #13 (TA)
