@@ -65,7 +65,6 @@ namespace DMT.Services
         public List<RevenueEntry> GetRevenues([FromBody] DateTime value)
         {
             if (value == DateTime.MinValue) return new List<RevenueEntry>();
-
             return RevenueEntry.FindByRevnueDate(value);
         }
     }

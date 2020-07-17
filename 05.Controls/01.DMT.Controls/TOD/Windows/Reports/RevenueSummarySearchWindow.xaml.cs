@@ -35,12 +35,13 @@ namespace DMT.TOD.Windows.Reports
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
         private User _user = null;
         private List<Models.RevenueEntry> _revenues = null;
+        private bool loaded = false;
 
         #region Loaded
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            dtDate.SelectedDate = DateTime.Today;
+            
         }
 
         #endregion
@@ -63,16 +64,26 @@ namespace DMT.TOD.Windows.Reports
 
         private void dtDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            _revenues = ops.Revenue.GetRevenues(dtDate.SelectedDate.Value);
+            UpdateSource();
         }
 
         #endregion
 
+        private void UpdateSource()
+        {
+            if (!loaded) return;
+            if (!dtDate.SelectedDate.HasValue) return;
+            _revenues = ops.Revenue.GetRevenues(dtDate.SelectedDate.Value);
+        }
+
         public void Setup(User user)
         {
             _user = user;
+            dtDate.SelectedDate = DateTime.Today;
             if (null != _user)
             {
+                loaded = true;
+                UpdateSource();
             }
         }
 
