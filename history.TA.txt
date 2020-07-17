@@ -20,8 +20,11 @@ Update 2020-07-17 #10 (TA)
 Update 2020-07-17 #9 (TA)
 - 
 
+[commited]
 Update 2020-07-17 #8 (TA)
-- 
+- Implements TA/TOD model class #24.
+  - Implements LaneAttendance/LanePayment #1.
+  - Update LaneAttendance/LanePayment Queries related to LaneGroup.
 
 [commited]
 Update 2020-07-17 #7 (TA)

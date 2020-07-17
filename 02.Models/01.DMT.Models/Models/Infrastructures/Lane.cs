@@ -330,7 +330,7 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets GroupPkId.
         /// </summary>
-        [Category("Plaza")]
+        [Category("Lane Group")]
         [Description("Gets or sets GroupPkId.")]
         [ReadOnly(true)]
         [PeropertyMapName("GroupPkId")]
@@ -352,7 +352,7 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets GroupNameEN
         /// </summary>
-        [Category("Plaza")]
+        [Category("Lane Group")]
         [Description("Gets or sets GroupNameEN")]
         [ReadOnly(true)]
         [Ignore]
@@ -375,7 +375,7 @@ namespace DMT.Models
         /// <summary>
         /// Gets or sets GroupNameTH
         /// </summary>
-        [Category("Plaza")]
+        [Category("Lane Group")]
         [Description("Gets or sets GroupNameTH")]
         [ReadOnly(true)]
         [Ignore]

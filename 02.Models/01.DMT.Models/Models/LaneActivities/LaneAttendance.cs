@@ -40,6 +40,10 @@ namespace DMT.Models
         private string _PlazaNameEN = string.Empty;
         private string _PlazaNameTH = string.Empty;
 
+        private int _GroupPkId = 0;
+        private string _GroupNameEN = string.Empty;
+        private string _GroupNameTH = string.Empty;
+
         private string _LaneId = string.Empty;
         private int _LaneNo = 0;
 
@@ -264,6 +268,79 @@ namespace DMT.Models
                 {
                     _PlazaNameTH = value;
                     this.RaiseChanged("PlazaNameTH");
+                }
+            }
+        }
+
+        #endregion
+
+        #region LaneGroup
+
+        /// <summary>
+        /// Gets or sets GroupPkId.
+        /// </summary>
+        [Category("Lane Group")]
+        [Description("Gets or sets GroupPkId.")]
+        [ReadOnly(true)]
+        [PeropertyMapName("GroupPkId")]
+        public int GroupPkId
+        {
+            get
+            {
+                return _GroupPkId;
+            }
+            set
+            {
+                if (_GroupPkId != value)
+                {
+                    _GroupPkId = value;
+                    this.RaiseChanged("GroupPkId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets GroupNameEN
+        /// </summary>
+        [Category("Lane Group")]
+        [Description("Gets or sets GroupNameEN")]
+        [ReadOnly(true)]
+        [Ignore]
+        [PeropertyMapName("GroupNameEN")]
+        public virtual string GroupNameEN
+        {
+            get
+            {
+                return _GroupNameEN;
+            }
+            set
+            {
+                if (_GroupNameEN != value)
+                {
+                    _GroupNameEN = value;
+                    this.RaiseChanged("GroupNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets GroupNameTH
+        /// </summary>
+        [Category("Lane Group")]
+        [Description("Gets or sets GroupNameTH")]
+        [ReadOnly(true)]
+        [Ignore]
+        [PeropertyMapName("GroupNameTH")]
+        public virtual string GroupNameTH
+        {
+            get
+            {
+                return _GroupNameTH;
+            }
+            set
+            {
+                if (_GroupNameTH != value)
+                {
+                    _GroupNameTH = value;
+                    this.RaiseChanged("GroupNameTH");
                 }
             }
         }
@@ -732,6 +809,31 @@ namespace DMT.Models
 
             #endregion
 
+            #region LaneGroup
+
+            /// <summary>
+            /// Gets or sets GroupNameEN
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("GroupNameEN")]
+            public override string GroupNameEN
+            {
+                get { return base.GroupNameEN; }
+                set { base.GroupNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets GroupNameTH
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("GroupNameTH")]
+            public override string GroupNameTH
+            {
+                get { return base.GroupNameTH; }
+                set { base.GroupNameTH = value; }
+            }
+
+            #endregion
+
             #region Lane
 
             /// <summary>
@@ -796,16 +898,21 @@ namespace DMT.Models
                 cmd += "SELECT LaneAttendance.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+                cmd += "     , LaneGroup.GroupNameEN, LaneGroup.GroupNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM LaneAttendance, TSB, Plaza, Lane, User ";
-                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
-                cmd += "   AND Plaza.TSBId = Plaza.TSBId ";
+                cmd += "  FROM LaneAttendance, TSB, Plaza, LaneGroup, Lane, User ";
+                cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
-                cmd += "   AND LaneAttendance.UserId = User.UserId ";
+                cmd += "   AND Lane.GroupPkId = LaneGroup.GroupPkId ";
                 cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
                 cmd += "   AND LaneAttendance.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND LaneAttendance.GroupPkId = Lane.GroupPkId ";
+                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
+                cmd += "   AND LaneAttendance.UserId = User.UserId ";
                 cmd += "   AND LaneAttendance.UserId = ? ";
                 cmd += "   AND (LaneAttendance.Begin >= ? AND LaneAttendance.Begin <= ?)";
                 cmd += "   AND ((LaneAttendance.End >= ? AND LaneAttendance.End <= ?) " +
@@ -858,16 +965,21 @@ namespace DMT.Models
                 cmd += "SELECT LaneAttendance.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+                cmd += "     , LaneGroup.GroupNameEN, LaneGroup.GroupNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM LaneAttendance, TSB, Plaza, Lane, User ";
-                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
-                cmd += "   AND Plaza.TSBId = Plaza.TSBId ";
+                cmd += "  FROM LaneAttendance, TSB, Plaza, LaneGroup, Lane, User ";
+                cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
-                cmd += "   AND LaneAttendance.UserId = User.UserId ";
+                cmd += "   AND Lane.GroupPkId = LaneGroup.GroupPkId ";
                 cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
                 cmd += "   AND LaneAttendance.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND LaneAttendance.GroupPkId = Lane.GroupPkId ";
+                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
+                cmd += "   AND LaneAttendance.UserId = User.UserId ";
                 cmd += "   AND LaneAttendance.UserId = ? ";
                 cmd += "   AND (LaneAttendance.Begin >= ? AND LaneAttendance.Begin <= ?)";
                 cmd += "   AND ((LaneAttendance.End >= ? AND LaneAttendance.End <= ?) " +
@@ -891,16 +1003,21 @@ namespace DMT.Models
                 cmd += "SELECT LaneAttendance.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+                cmd += "     , LaneGroup.GroupNameEN, LaneGroup.GroupNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM LaneAttendance, TSB, Plaza, Lane, User ";
-                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
-                cmd += "   AND Plaza.TSBId = Plaza.TSBId ";
+                cmd += "  FROM LaneAttendance, TSB, Plaza, LaneGroup, Lane, User ";
+                cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
-                cmd += "   AND LaneAttendance.UserId = User.UserId ";
+                cmd += "   AND Lane.GroupPkId = LaneGroup.GroupPkId ";
                 cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
                 cmd += "   AND LaneAttendance.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND LaneAttendance.GroupPkId = Lane.GroupPkId ";
+                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
+                cmd += "   AND LaneAttendance.UserId = User.UserId ";
                 cmd += "   AND LaneAttendance.LaneId = ? ";
                 return NQuery.Query<FKs>(cmd, lane.LaneId).ToList<LaneAttendance>();
             }
@@ -914,16 +1031,21 @@ namespace DMT.Models
                 cmd += "SELECT LaneAttendance.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+                cmd += "     , LaneGroup.GroupNameEN, LaneGroup.GroupNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM LaneAttendance, TSB, Plaza, Lane, User ";
-                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
-                cmd += "   AND Plaza.TSBId = Plaza.TSBId ";
+                cmd += "  FROM LaneAttendance, TSB, Plaza, LaneGroup, Lane, User ";
+                cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
-                cmd += "   AND LaneAttendance.UserId = User.UserId ";
+                cmd += "   AND Lane.GroupPkId = LaneGroup.GroupPkId ";
                 cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
                 cmd += "   AND LaneAttendance.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND LaneAttendance.GroupPkId = Lane.GroupPkId ";
+                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
+                cmd += "   AND LaneAttendance.UserId = User.UserId ";
                 cmd += "   AND LaneAttendance.LaneId = ? ";
                 cmd += "   AND LaneAttendance.End = ? ";
                 return NQuery.Query<FKs>(cmd, lane.LaneId,
@@ -939,16 +1061,21 @@ namespace DMT.Models
                 cmd += "SELECT LaneAttendance.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+                cmd += "     , LaneGroup.GroupNameEN, LaneGroup.GroupNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM LaneAttendance, TSB, Plaza, Lane, User ";
-                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
-                cmd += "   AND Plaza.TSBId = Plaza.TSBId ";
+                cmd += "  FROM LaneAttendance, TSB, Plaza, LaneGroup, Lane, User ";
+                cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
-                cmd += "   AND LaneAttendance.UserId = User.UserId ";
+                cmd += "   AND Lane.GroupPkId = LaneGroup.GroupPkId ";
                 cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
                 cmd += "   AND LaneAttendance.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND LaneAttendance.GroupPkId = Lane.GroupPkId ";
+                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
+                cmd += "   AND LaneAttendance.UserId = User.UserId ";
                 cmd += "   AND LaneAttendance.Begin >= ? ";
                 cmd += "   AND LaneAttendance.End <= ? ";
                 return NQuery.Query<FKs>(cmd, date,
@@ -963,17 +1090,22 @@ namespace DMT.Models
                 cmd += "SELECT LaneAttendance.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+                cmd += "     , LaneGroup.GroupNameEN, LaneGroup.GroupNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM LaneAttendance, TSB, Plaza, Lane, User ";
-                cmd += " WHERE Lane.TSBId = TSB.TSBId ";
-                cmd += "   AND TSB.Active = 1 ";
-                cmd += "   AND Plaza.TSBId = Plaza.TSBId ";
+                cmd += "  FROM LaneAttendance, TSB, Plaza, LaneGroup, Lane, User ";
+                cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
-                cmd += "   AND LaneAttendance.UserId = User.UserId ";
+                cmd += "   AND Lane.GroupPkId = LaneGroup.GroupPkId ";
                 cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
                 cmd += "   AND LaneAttendance.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND LaneAttendance.GroupPkId = Lane.GroupPkId ";
+                cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
+                cmd += "   AND LaneAttendance.UserId = User.UserId ";
+                cmd += "   AND TSB.Active = 1 ";
                 cmd += "   AND (LaneAttendance.RevenueDate = ?";
                 cmd += "    OR  LaneAttendance.RevenueId IS NULL ";
                 cmd += "    OR  LaneAttendance.RevenueId = ?)";
