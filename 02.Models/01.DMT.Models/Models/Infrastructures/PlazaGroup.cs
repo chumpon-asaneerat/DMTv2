@@ -18,27 +18,24 @@ using System.ComponentModel;
 
 namespace DMT.Models
 {
-    #region LaneGroup
+    #region PlazaGroup
 
     /// <summary>
-    /// The LaneGroup Data Model class.
+    /// The PlazaGroup Data Model class.
     /// </summary>
-    //[Table("LaneGroup")]
-    public class LaneGroup : NTable<LaneGroup>
+    //[Table("Plaza")]
+    public class PlazaGroup : NTable<PlazaGroup>
     {
-        #region Internal Variable
+        #region Intenral Variables
 
-        private int _GroupPkId = 0;
-        private string _GroupNameEN = string.Empty;
-        private string _GroupNameTH = string.Empty;
+        private string _PlazaGroupId = string.Empty;
+        private string _PlazaGroupNameEN = string.Empty;
+        private string _PlazaGroupNameTH = string.Empty;
+        private string _Direction = string.Empty;
 
         private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
         private string _TSBNameTH = string.Empty;
-
-        private string _PlazaId = string.Empty;
-        private string _PlazaNameEN = string.Empty;
-        private string _PlazaNameTH = string.Empty;
 
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
@@ -50,78 +47,99 @@ namespace DMT.Models
         /// <summary>
         /// Constructor.
         /// </summary>
-        public LaneGroup() : base() { }
+        public PlazaGroup() : base() { }
 
         #endregion
 
-        #region Public Properties
+        #region Public Proprties
 
         #region Common
 
         /// <summary>
-        /// Gets or sets Group Pk Id
+        /// Gets or sets PlazaId.
         /// </summary>
-        [Category("Group")]
-        [Description("Gets or sets Group Pk Id")]
-        [ReadOnly(true)]
-        [PrimaryKey, AutoIncrement]
-        [PeropertyMapName("GroupPkId")]
-        public int GroupPkId
+        [Category("Plaza Group")]
+        [Description("Gets or sets PlazaId.")]
+        [PrimaryKey, MaxLength(10)]
+        [PeropertyMapName("PlazaGroupId")]
+        public string PlazaGroupId
         {
             get
             {
-                return _GroupPkId;
+                return _PlazaGroupId;
             }
             set
             {
-                if (_GroupPkId != value)
+                if (_PlazaGroupId != value)
                 {
-                    _GroupPkId = value;
-                    this.RaiseChanged("GroupPkId");
+                    _PlazaGroupId = value;
+                    this.RaiseChanged("PlazaGroupId");
                 }
             }
         }
         /// <summary>
-        /// Gets or sets GroupNameEN
+        /// Gets or sets PlazaGrpupNameEN
         /// </summary>
-        [Category("Group")]
-        [Description("Gets or sets GroupNameEN")]
+        [Category("Plaza Group")]
+        [Description("Gets or sets PlazaGrpupNameEN")]
         [MaxLength(100)]
-        [PeropertyMapName("GroupNameEN")]
-        public string GroupNameEN
+        [PeropertyMapName("PlazaGrpupNameEN")]
+        public string PlazaGrpupNameEN
         {
             get
             {
-                return _GroupNameEN;
+                return _PlazaGroupNameEN;
             }
             set
             {
-                if (_GroupNameEN != value)
+                if (_PlazaGroupNameEN != value)
                 {
-                    _GroupNameEN = value;
-                    this.RaiseChanged("GroupNameEN");
+                    _PlazaGroupNameEN = value;
+                    this.RaiseChanged("PlazaGrpupNameEN");
                 }
             }
         }
         /// <summary>
-        /// Gets or sets GroupNameTH
+        /// Gets or sets PlazaGrpupNameTH
         /// </summary>
-        [Category("Group")]
-        [Description("Gets or sets GroupNameTH")]
+        [Category("Plaza Group")]
+        [Description("Gets or sets PlazaGrpupNameTH")]
         [MaxLength(100)]
-        [PeropertyMapName("GroupNameTH")]
-        public string GroupNameTH
+        [PeropertyMapName("PlazaGrpupNameTH")]
+        public string PlazaGrpupNameTH
         {
             get
             {
-                return _GroupNameTH;
+                return _PlazaGroupNameTH;
             }
             set
             {
-                if (_GroupNameTH != value)
+                if (_PlazaGroupNameTH != value)
                 {
-                    _GroupNameTH = value;
-                    this.RaiseChanged("GroupNameTH");
+                    _PlazaGroupNameTH = value;
+                    this.RaiseChanged("PlazaGrpupNameTH");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Direction
+        /// </summary>
+        [Category("Plaza Group")]
+        [Description("Gets or sets Direction")]
+        [MaxLength(10)]
+        [PeropertyMapName("Direction")]
+        public string Direction
+        {
+            get
+            {
+                return _Direction;
+            }
+            set
+            {
+                if (_Direction != value)
+                {
+                    _Direction = value;
+                    this.RaiseChanged("Direction");
                 }
             }
         }
@@ -134,7 +152,7 @@ namespace DMT.Models
         /// Gets or sets TSBId.
         /// </summary>
         [Category("TSB")]
-        [Description(" Gets or sets TSBId.")]
+        [Description("Gets or sets TSBId.")]
         [ReadOnly(true)]
         [MaxLength(10)]
         [PeropertyMapName("TSBId")]
@@ -202,80 +220,6 @@ namespace DMT.Models
 
         #endregion
 
-        #region Plaza
-
-        /// <summary>
-        /// Gets or sets PlazaId.
-        /// </summary>
-        [Category("Plaza")]
-        [Description("Gets or sets PlazaId.")]
-        [ReadOnly(true)]
-        [MaxLength(10)]
-        [PeropertyMapName("PlazaId")]
-        public string PlazaId
-        {
-            get
-            {
-                return _PlazaId;
-            }
-            set
-            {
-                if (_PlazaId != value)
-                {
-                    _PlazaId = value;
-                    this.RaiseChanged("PlazaId");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets PlazaNameEN
-        /// </summary>
-        [Category("Plaza")]
-        [Description("Gets or sets PlazaNameEN")]
-        [ReadOnly(true)]
-        [Ignore]
-        [PeropertyMapName("PlazaNameEN")]
-        public virtual string PlazaNameEN
-        {
-            get
-            {
-                return _PlazaNameEN;
-            }
-            set
-            {
-                if (_PlazaNameEN != value)
-                {
-                    _PlazaNameEN = value;
-                    this.RaiseChanged("PlazaNameEN");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets PlazaNameTH
-        /// </summary>
-        [Category("Plaza")]
-        [Description("Gets or sets PlazaNameTH")]
-        [ReadOnly(true)]
-        [Ignore]
-        [PeropertyMapName("PlazaNameTH")]
-        public virtual string PlazaNameTH
-        {
-            get
-            {
-                return _PlazaNameTH;
-            }
-            set
-            {
-                if (_PlazaNameTH != value)
-                {
-                    _PlazaNameTH = value;
-                    this.RaiseChanged("PlazaNameTH");
-                }
-            }
-        }
-
-        #endregion
-
         #region Status (DC)
 
         /// <summary>
@@ -326,7 +270,7 @@ namespace DMT.Models
 
         #region Internal Class
 
-        public class FKs : LaneGroup
+        public class FKs : PlazaGroup
         {
             #region TSB
 
@@ -353,36 +297,11 @@ namespace DMT.Models
 
             #endregion
 
-            #region Plaza
-
-            /// <summary>
-            /// Gets or sets PlazaNameEN
-            /// </summary>
-            [MaxLength(100)]
-            [PeropertyMapName("PlazaNameEN")]
-            public override string PlazaNameEN
-            {
-                get { return base.PlazaNameEN; }
-                set { base.PlazaNameEN = value; }
-            }
-            /// <summary>
-            /// Gets or sets PlazaNameTH
-            /// </summary>
-            [MaxLength(100)]
-            [PeropertyMapName("PlazaNameTH")]
-            public override string PlazaNameTH
-            {
-                get { return base.PlazaNameTH; }
-                set { base.PlazaNameTH = value; }
-            }
-
-            #endregion
-
             #region Public Methods
 
-            public LaneGroup ToLaneGroup()
+            public PlazaGroup ToPlazaGroup()
             {
-                LaneGroup inst = new LaneGroup();
+                PlazaGroup inst = new PlazaGroup();
                 this.AssignTo(inst); // set all properties to new instance.
                 return inst;
             }
@@ -394,34 +313,31 @@ namespace DMT.Models
 
         #region Static Methods
 
-        public static List<LaneGroup> Gets(SQLiteConnection db)
+        public static List<PlazaGroup> Gets(SQLiteConnection db)
         {
-            if (null == db) return new List<LaneGroup>();
+            if (null == db) return new List<PlazaGroup>();
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT LaneGroup.* ";
+                cmd += "SELECT PlazaGroup.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-                cmd += "  FROM LaneGroup, Plaza, TSB ";
-                cmd += " WHERE LaneGroup.TSBId = TSB.TSBId ";
-                cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-                cmd += "   AND LaneGroup.PlazaId = Plaza.PlazaId ";
+                cmd += "  FROM PlazaGroup, TSB ";
+                cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
 
                 var rets = NQuery.Query<FKs>(cmd).ToList();
-                var results = new List<LaneGroup>();
+                var results = new List<PlazaGroup>();
                 if (null != rets)
                 {
                     rets.ForEach(ret =>
                     {
-                        results.Add(ret.ToLaneGroup());
+                        results.Add(ret.ToPlazaGroup());
                     });
                 }
 
                 return results;
             }
         }
-        public static List<LaneGroup> Gets()
+        public static List<PlazaGroup> Gets()
         {
             lock (sync)
             {
@@ -429,31 +345,58 @@ namespace DMT.Models
                 return Gets(db);
             }
         }
-        public static LaneGroup Get(SQLiteConnection db, string groupPkId)
+        public static PlazaGroup Get(SQLiteConnection db, string plazaGroupId)
         {
             if (null == db) return null;
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT LaneGroup.* ";
+                cmd += "SELECT PlazaGroup.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-                cmd += "  FROM LaneGroup, Plaza, TSB ";
-                cmd += " WHERE LaneGroup.TSBId = TSB.TSBId ";
-                cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-                cmd += "   AND LaneGroup.PlazaId = Plaza.PlazaId ";
-                cmd += "   AND LaneGroup.GroupPkId = ? ";
-
-                var ret = NQuery.Query<FKs>(cmd, groupPkId).FirstOrDefault();
-                return (null != ret) ? ret.ToLaneGroup() : null;
+                cmd += "  FROM PlazaGroup, TSB ";
+                cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
+                cmd += "   AND PlazaGroup.PlazaGroupId = ? ";
+                var ret = NQuery.Query<FKs>(cmd, plazaGroupId).FirstOrDefault();
+                return (null != ret) ? ret.ToPlazaGroup() : null;
             }
         }
-        public static LaneGroup Get(string groupPkId)
+        public static PlazaGroup Get(string plazaGroupId)
         {
             lock (sync)
             {
                 SQLiteConnection db = Default;
-                return Get(db, groupPkId);
+                return Get(db, plazaGroupId);
+            }
+        }
+        public static List<PlazaGroup> GetTSBPlazaGroups(TSB value)
+        {
+            lock (sync)
+            {
+                if (null == value) return new List<PlazaGroup>();
+                return GetTSBPlazaGroups(value.TSBId);
+            }
+        }
+        public static List<PlazaGroup> GetTSBPlazaGroups(string tsbId)
+        {
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT PlazaGroup.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "  FROM PlazaGroup, TSB ";
+                cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
+                cmd += "   AND PlazaGroup.TSBId = ? ";
+
+                var rets = NQuery.Query<FKs>(cmd, tsbId).ToList();
+                var results = new List<PlazaGroup>();
+                if (null != rets)
+                {
+                    rets.ForEach(ret =>
+                    {
+                        results.Add(ret.ToPlazaGroup());
+                    });
+                }
+                return results;
             }
         }
 
