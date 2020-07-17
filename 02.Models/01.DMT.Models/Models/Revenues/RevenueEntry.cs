@@ -36,7 +36,7 @@ namespace DMT.Models
         private string _BeltNo = string.Empty;
 
         private string _Lanes = string.Empty;
-        private string _PlazaGroups = string.Empty;
+        private string _PlazaNames = string.Empty;
 
         private DateTime _ShiftBegin = DateTime.MinValue;
         private DateTime _ShiftEnd = DateTime.MinValue;
@@ -378,23 +378,23 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets or sets PlazaGroups Lists.
+        /// Gets or sets Plaza Names Lists.
         /// </summary>
         [Category("Revenue")]
-        [Description("Gets or sets PlazaGroups Lists.")]
+        [Description("Gets or sets Plaza Names Lists.")]
         //[ReadOnly(true)]
         [MaxLength(100)]
-        [PeropertyMapName("PlazaGroups")]
-        public string PlazaGroups
+        [PeropertyMapName("PlazaNames")]
+        public string PlazaNames
         {
-            get { return _PlazaGroups; }
+            get { return _PlazaNames; }
             set
             {
-                if (_PlazaGroups != value)
+                if (_PlazaNames != value)
                 {
-                    _PlazaGroups = value;
+                    _PlazaNames = value;
                     // Raise event.
-                    this.RaiseChanged("PlazaGroups");
+                    this.RaiseChanged("PlazaNames");
                 }
             }
         }

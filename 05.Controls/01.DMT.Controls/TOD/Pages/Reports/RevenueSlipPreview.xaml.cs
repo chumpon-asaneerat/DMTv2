@@ -36,7 +36,7 @@ namespace DMT.TOD.Pages.Reports
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
 
         private UserShift _userShift = null;
-        private Plaza _plaza = null;
+        private PlazaGroup _plazaGroup = null;
         private UserShiftRevenue _plazaRevenue = null;
         private List<LaneAttendance> _laneActivities = null;
 
@@ -112,7 +112,7 @@ namespace DMT.TOD.Pages.Reports
 
         private void InitNewReport()
         {
-            if (null == _userShift || null == _plaza || null == _plazaRevenue ||
+            if (null == _userShift || null == _plazaGroup || null == _plazaRevenue ||
                 null == _revenueEntry ||
                 null == _laneActivities || _laneActivities.Count <= 0)
             {
@@ -154,7 +154,7 @@ namespace DMT.TOD.Pages.Reports
                 });
 
                 // update object properties.
-                _plaza.AssignTo(_revenueEntry); // assigned plaza name (EN/TH)
+                _plazaGroup.AssignTo(_revenueEntry); // assigned plaza group name (EN/TH)
                 _userShift.AssignTo(_revenueEntry); // assigned user full name (EN/TH)
 
                 // assigned date after sync object(s) to RevenueEntry.
@@ -214,14 +214,14 @@ namespace DMT.TOD.Pages.Reports
             }
         }
 
-        public void Setup(UserShift userShift, Plaza plaza,
+        public void Setup(UserShift userShift, PlazaGroup plazaGroup,
             UserShiftRevenue plazaRevenue,
             List<LaneAttendance> laneActivities,
             DateTime entryDate, DateTime revDate, 
             Models.RevenueEntry revenueEntry)
         {
             _userShift = userShift;
-            _plaza = plaza;
+            _plazaGroup = plazaGroup;
             _plazaRevenue = plazaRevenue;
             _laneActivities = laneActivities;
             _entryDate = entryDate;

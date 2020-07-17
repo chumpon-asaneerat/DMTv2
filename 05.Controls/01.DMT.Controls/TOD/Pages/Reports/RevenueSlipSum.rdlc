@@ -1873,7 +1873,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -2142,7 +2141,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=First(Fields!PlazaNameTH.Value, "main")</Value>
+                  <Value>=First(Fields!PlazaGroupNameTH.Value, "main")</Value>
                   <Style>
                     <FontFamily>Tahoma</FontFamily>
                     <FontSize>14pt</FontSize>
@@ -2666,6 +2665,10 @@
           <DataField>CouponUsageBHT80</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="Direction">
+          <DataField>Direction</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="EntryDate">
           <DataField>EntryDate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
@@ -2714,16 +2717,20 @@
           <DataField>PKId</DataField>
           <rd:TypeName>System.Guid</rd:TypeName>
         </Field>
-        <Field Name="PlazaId">
-          <DataField>PlazaId</DataField>
+        <Field Name="PlazaGroupId">
+          <DataField>PlazaGroupId</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="PlazaNameEN">
-          <DataField>PlazaNameEN</DataField>
+        <Field Name="PlazaGroupNameEN">
+          <DataField>PlazaGroupNameEN</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="PlazaNameTH">
-          <DataField>PlazaNameTH</DataField>
+        <Field Name="PlazaGroupNameTH">
+          <DataField>PlazaGroupNameTH</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PlazaNames">
+          <DataField>PlazaNames</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="RevenueDate">

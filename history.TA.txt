@@ -32,8 +32,13 @@ Update 2020-07-18 #6 (TA)
 Update 2020-07-18 #5 (TA)
 - 
 
+[commited]
 Update 2020-07-18 #4 (TA)
-- 
+- Implements TA/TOD model class #46.
+  - Remove RevenueSlip_Old.rdlc
+  - Update RevenueSlip.rdlc
+  - Update RevenueSlipSum.rdlc
+  - RevenueSlipPreview change all access from Plaza to PlazaGroup.
 
 [commited]
 Update 2020-07-18 #3 (TA)
