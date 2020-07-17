@@ -129,50 +129,50 @@ namespace DMT
             }
         }
 
-        public static class Job
+        public static class UserShift
         {
-            public const string Url = RouteConsts.Url + @"/Job";
+            public const string Url = RouteConsts.Url + @"/UserShift";
 
             public static class GetUsers
             {
                 public const string Name = "GetUsers";
-                public const string Url = Job.Url + @"/" + Name;
+                public const string Url = UserShift.Url + @"/" + Name;
             }
 
-            public static class BeginJob
+            public static class BeginUserShift
             {
-                public const string Name = "BeginJob";
-                public const string Url = Job.Url + @"/" + Name;
+                public const string Name = "BeginUserShift";
+                public const string Url = UserShift.Url + @"/" + Name;
             }
 
-            public static class EndJob
+            public static class EndUserShift
             {
-                public const string Name = "EndJob";
-                public const string Url = Job.Url + @"/" + Name;
+                public const string Name = "EndUserShift";
+                public const string Url = UserShift.Url + @"/" + Name;
             }
 
             public static class GetCurrent
             {
                 public const string Name = "GetCurrent";
-                public const string Url = Job.Url + @"/" + Name;
+                public const string Url = UserShift.Url + @"/" + Name;
             }
 
             public static class Create
             {
                 public const string Name = "Create";
-                public const string Url = Job.Url + @"/" + Name;
+                public const string Url = UserShift.Url + @"/" + Name;
             }
 
             public static class GetUserShifts
             {
                 public const string Name = "GetUserShifts";
-                public const string Url = Job.Url + @"/" + Name;
+                public const string Url = UserShift.Url + @"/" + Name;
             }
 
             public static class GetUnCloseUserShifts
             {
                 public const string Name = "GetUnCloseUserShifts";
-                public const string Url = Job.Url + @"/" + Name;
+                public const string Url = UserShift.Url + @"/" + Name;
             }
         }
 

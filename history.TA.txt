@@ -5,8 +5,11 @@ Update 2020-07-17 #21 (TA)
 Update 2020-07-17 #20 (TA)
 - 
 
+[commited]
 Update 2020-07-17 #19 (TA)
-- 
+- Implements TA/TOD model class #33.
+  - RouteConsts change Job class to UserShift class.
+  - Change method BeginJob/EndJob to BeginUserShift/EndUserShift.
 
 [commited]
 Update 2020-07-17 #18 (TA)
