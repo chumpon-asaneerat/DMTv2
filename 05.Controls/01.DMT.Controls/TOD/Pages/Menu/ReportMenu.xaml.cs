@@ -56,7 +56,7 @@ namespace DMT.TOD.Pages.Menu
             var page = new Reports.RevenueSlipPreview();
             page.MenuPage = this;
             page.CallerPage = this; // Set CallerPage for click back.
-            page.Setup(null, null, null, null,
+            page.Setup(_user, null, null, null, null,
                 DateTime.MinValue, DateTime.MinValue, revenueEntry);
             PageContentManager.Instance.Current = page;
         }

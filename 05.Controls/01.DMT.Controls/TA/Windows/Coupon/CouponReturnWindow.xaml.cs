@@ -98,7 +98,7 @@ namespace DMT.TA.Windows.Coupon
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message.ToString(), "DMT - Toll Admin", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -125,7 +125,7 @@ namespace DMT.TA.Windows.Coupon
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message.ToString(), "DMT - Toll Admin", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -151,7 +151,7 @@ namespace DMT.TA.Windows.Coupon
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message.ToString(), "DMT - Toll Admin", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -178,7 +178,7 @@ namespace DMT.TA.Windows.Coupon
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message.ToString(), "DMT - Toll Admin", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

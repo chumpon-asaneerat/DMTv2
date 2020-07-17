@@ -36,11 +36,11 @@ namespace DMT.TOD.Pages.Revenue
         private DateTime _entryDT = DateTime.MinValue;
         private DateTime _revDT = DateTime.MinValue;
 
+        private User _user = null;
         private UserShift _userShift = null;
         private UserShiftRevenue _plazaRevenue = null;
         private List<LaneAttendance> _laneActivities = null;
 
-        private User _user = null;
 
         #region Button Handlers
 
@@ -59,7 +59,7 @@ namespace DMT.TOD.Pages.Revenue
             var plazaGroup = cbPlazas.SelectedItem as PlazaGroup;
             if (null == plazaGroup)
             {
-                MessageBox.Show("กรุณาเลือกด่านของรายได้");
+                MessageBox.Show("กรุณาเลือกด่านของรายได้", "DMT - Tour of Duty");
                 cbPlazas.Focus();
                 return;
             }
@@ -78,12 +78,12 @@ namespace DMT.TOD.Pages.Revenue
             {
                 if (_plazaRevenue.RevenueDate != DateTime.MinValue)
                 {
-                    MessageBox.Show("กะของพนักงานนี้ ถูกป้อนรายได้แล้ว");
+                    MessageBox.Show("กะของพนักงานนี้ ถูกป้อนรายได้แล้ว", "DMT - Tour of Duty");
                     return;
                 }
                 if (null == _laneActivities || _laneActivities.Count <= 0)
                 {
-                    MessageBox.Show("ไม่พบข้อมูลเลนที่ยังไม่ถูกป้อนรายได้");
+                    MessageBox.Show("ไม่พบข้อมูลเลนที่ยังไม่ถูกป้อนรายได้", "DMT - Tour of Duty");
                     return;
                 }
             }
@@ -91,17 +91,18 @@ namespace DMT.TOD.Pages.Revenue
             {
                 if (isNew)
                 {
-                    MessageBox.Show("ไม่สามารถสร้างรายการสำหรับจัดเก็บกะรายได้.");
+                    MessageBox.Show("ไม่สามารถสร้างรายการสำหรับจัดเก็บกะรายได้.", "DMT - Tour of Duty");
                 }
                 else
                 {
-                    MessageBox.Show("กะนี้ถูกจัดเก็บรายได้แล้ว.");
+                    MessageBox.Show("กะนี้ถูกจัดเก็บรายได้แล้ว.", "DMT - Tour of Duty");
                 }
                 return;
             }
 
 
-            page.Setup(_userShift, plazaGroup, _plazaRevenue, _laneActivities, _entryDT, _revDT);
+            page.Setup(_user, _userShift, plazaGroup, _plazaRevenue, 
+                _laneActivities, _entryDT, _revDT);
 
             PageContentManager.Instance.Current = page;
         }
@@ -162,7 +163,7 @@ namespace DMT.TOD.Pages.Revenue
             }
             else
             {
-                //MessageBox.Show("ไม่พบกะของพนักงาน");
+                //MessageBox.Show("ไม่พบกะของพนักงาน", "DMT - Tour of Duty");
             }
         }
 

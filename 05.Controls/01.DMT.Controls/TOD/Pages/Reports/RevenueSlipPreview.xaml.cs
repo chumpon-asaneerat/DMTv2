@@ -35,6 +35,7 @@ namespace DMT.TOD.Pages.Reports
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
 
+        private User _user = null;
         private UserShift _userShift = null;
         private PlazaGroup _plazaGroup = null;
         private UserShiftRevenue _plazaRevenue = null;
@@ -61,17 +62,56 @@ namespace DMT.TOD.Pages.Reports
         {
             if (null == _revenueEntry)
             {
-                MessageBox.Show("Revenue Entry is not found.");
+                MessageBox.Show("Revenue Entry is not found.",
+                    "DMT - Tour of Duty");
                 return;
             }
 
             if (isNew)
             {
-                SaveRevenueEntry();
-            }
-            // print reports.
-            this.rptViewer.Print();
+                bool hasActivitied = SaveRevenueEntry();
+                
+                if (_revenueEntry.RevenueDate != DateTime.MinValue &&
+                    _revenueEntry.EntryDate != DateTime.MinValue)
+                {
+                    // print reports only date exists.
+                    this.rptViewer.Print();
+                }
 
+                if (!hasActivitied || null == _user)
+                {
+                    GoMainMenu();
+                    return;
+                }
+                if (MessageBox.Show("กะปัจจุบันยังป้อนรายได้ไม่ครับ ต้องการป้อนรายได้ตอหรือไม่ ?",
+                    "DMT - Tour of Duty", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    GoRevenuEntry();
+                }
+                else
+                {
+                    GoMainMenu();
+                }
+            }
+            else
+            {
+                // print reports.
+                this.rptViewer.Print();
+                GoMainMenu();
+            }
+        }
+
+        private void GoRevenuEntry()
+        {
+            // Revenue Entry Page
+            var page = new Revenue.RevenueDateSelectionPage();
+            // setup
+            page.Setup(_user);
+            PageContentManager.Instance.Current = page;
+        }
+
+        private void GoMainMenu()
+        {
             // Main Report Page
             var page = (null != this.MenuPage) ? this.MenuPage : new Menu.ReportMenu();
             PageContentManager.Instance.Current = page;
@@ -173,15 +213,16 @@ namespace DMT.TOD.Pages.Reports
             }
         }
 
-        private void SaveRevenueEntry()
+        private bool SaveRevenueEntry()
         {
             // Save information if is new entry.
 
             if (_revenueEntry.RevenueDate == DateTime.MinValue ||
                 _revenueEntry.EntryDate == DateTime.MinValue)
             {
-                MessageBox.Show("Entry Date or Revenue Date is not set.");
-                return;
+                MessageBox.Show("Entry Date or Revenue Date is not set.",
+                    "DMT - Tour of Duty");
+                return false;
             }
 
             // update save data
@@ -211,15 +252,22 @@ namespace DMT.TOD.Pages.Reports
             {
                 // no lane activitie in user shift.
                 ops.UserShifts.EndUserShift(_userShift); // End user job(shift).
+
+                return false;
+            }
+            else 
+            {
+                return true;
             }
         }
 
-        public void Setup(UserShift userShift, PlazaGroup plazaGroup,
+        public void Setup(User user, UserShift userShift, PlazaGroup plazaGroup,
             UserShiftRevenue plazaRevenue,
             List<LaneAttendance> laneActivities,
             DateTime entryDate, DateTime revDate, 
             Models.RevenueEntry revenueEntry)
         {
+            _user = user;
             _userShift = userShift;
             _plazaGroup = plazaGroup;
             _plazaRevenue = plazaRevenue;
@@ -254,7 +302,7 @@ namespace DMT.TOD.Pages.Reports
                 null == model.DataSources || model.DataSources.Count <= 0 ||
                 null == model.DataSources[0] || null == model.DataSources[0].Items)
             {
-                MessageBox.Show("No result found.");
+                MessageBox.Show("No result found.", "DMT - Tour of Duty");
                 this.rptViewer.ClearReport();
             }
             else

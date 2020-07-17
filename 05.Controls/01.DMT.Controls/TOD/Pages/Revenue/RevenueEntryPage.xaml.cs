@@ -33,6 +33,7 @@ namespace DMT.TOD.Pages.Revenue
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
 
+        private User _user = null;
         private UserShift _userShift = null;
         private PlazaGroup _plazaGroup = null;
         private UserShiftRevenue _plazaRevenue = null;
@@ -51,7 +52,7 @@ namespace DMT.TOD.Pages.Revenue
             var page = new Reports.RevenueSlipPreview();
             page.MenuPage = new Menu.MainMenu(); // Set MenPage to main menu.
             page.CallerPage = this; // Set CallerPage for click back.
-            page.Setup(_userShift, _plazaGroup, _plazaRevenue, _laneActivities,
+            page.Setup(_user, _userShift, _plazaGroup, _plazaRevenue, _laneActivities,
                 _entryDate, _revDate, _revenueEntry);
             PageContentManager.Instance.Current = page;
         }
@@ -65,11 +66,12 @@ namespace DMT.TOD.Pages.Revenue
 
         #endregion
 
-        public void Setup(UserShift userShift, PlazaGroup plazaGroup,
+        public void Setup(User user, UserShift userShift, PlazaGroup plazaGroup,
             UserShiftRevenue plazaRevenue,
             List<LaneAttendance> laneActivities,
             DateTime entryDate, DateTime revDate)
         {
+            _user = user;
             _userShift = userShift;
             _plazaGroup = plazaGroup;
             _plazaRevenue = plazaRevenue;

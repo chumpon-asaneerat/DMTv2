@@ -2141,7 +2141,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=First(Fields!PlazaGroupNameTH.Value, "main")</Value>
+                  <Value>=First(Fields!TSBNameTH.Value, "main")</Value>
                   <Style>
                     <FontFamily>Tahoma</FontFamily>
                     <FontSize>14pt</FontSize>

@@ -23,8 +23,24 @@ Update 2020-07-18 #9 (TA)
 Update 2020-07-18 #8 (TA)
 - 
 
+[commited]
 Update 2020-07-18 #7 (TA)
-- 
+- Implements TA/TOD model class #50.
+  - Update MessageBox's Caption
+  - Revenu Entry after print when some revenu still not enter auto popup to let user choose to
+    enter the rest without goto main menu.
+  - TOD Operation Test (Change Active TSB to TSB that has 2 Plaza Group.).
+    - Supervisor Change Shift (no shift exist) - OK.
+    - Collector Begin Shift - OK.
+    - Collector Begin Lane Job - OK.
+    - Collector End Lane Job - OK.
+    - Collector Begin Shift - (Shift exists so cannot Begin new shift) OK.
+    - Revenue entry date selection show PlazaGroup in combobox - OK.
+    - Revenue entry slip - display PlazaGroupNameTH - OK.
+    - Report Revenue entry slip (reprint) - OK.
+    - Report Revenue Daily Summary - OK.
+    - Supervisor Change Shift (shift exist) - OK.
+    - Collector Begin Shift - (Exist Shift already close by enter revenu entry or force End Shift) OK.
 
 [commited]
 Update 2020-07-18 #6 (TA)

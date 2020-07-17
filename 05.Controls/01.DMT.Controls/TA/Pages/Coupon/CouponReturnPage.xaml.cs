@@ -94,7 +94,7 @@ namespace DMT.TA.Pages.Coupon
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message.ToString(), "DMT - Toll Admin", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -121,7 +121,7 @@ namespace DMT.TA.Pages.Coupon
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message.ToString(), "DMT - Toll Admin", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -147,7 +147,7 @@ namespace DMT.TA.Pages.Coupon
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message.ToString(), "DMT - Toll Admin", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -174,7 +174,7 @@ namespace DMT.TA.Pages.Coupon
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message.ToString(), "DMT - Toll Admin", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         #endregion

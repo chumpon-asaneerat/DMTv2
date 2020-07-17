@@ -133,11 +133,11 @@ namespace DMT
             var status = DMTServiceOperations.Instance.CheckInstalled();
             if (status.PlazaLocalServiceInstalled)
             {
-                MessageBox.Show("Plaza Sercice installed and running");
+                MessageBox.Show("Plaza Sercice installed and running", "DMT - Config");
             }
             else
             {
-                MessageBox.Show("Plaza Sercice is not installed or stopped");
+                MessageBox.Show("Plaza Sercice is not installed or stopped", "DMT - Config");
             }
         }
 

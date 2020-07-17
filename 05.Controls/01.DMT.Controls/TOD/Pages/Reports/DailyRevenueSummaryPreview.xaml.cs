@@ -104,7 +104,7 @@ namespace DMT.TOD.Pages.Reports
                     null == model.DataSources || model.DataSources.Count <= 0 ||
                     null == model.DataSources[0] || null == model.DataSources[0].Items)
                 {
-                    MessageBox.Show("No result found.");
+                    MessageBox.Show("No result found.", "DMT - Tour of Duty");
                     this.rptViewer.ClearReport();
                 }
                 else
