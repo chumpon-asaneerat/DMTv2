@@ -51,6 +51,27 @@
                         <GridViewColumn Width="300"
                                         Header="ชื่อพนักงาน"
                                         DisplayMemberBinding="{Binding Path=FullNameTH}" />
+                        <GridViewColumn Width="250" Header="User">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="3"
+                                                VerticalAlignment="Center"
+                                                Orientation="Horizontal">
+                                        <Grid Width="5" />
+                                        <Button x:Name="cmdEdit"
+                                                Width="100"
+                                                Content="แก้ไข"
+                                                CommandParameter="{Binding}" />
+                                        <Grid Width="5" />
+                                        <Button x:Name="cmdExchange"
+                                                Width="100"
+                                                Content="รับแลก"
+                                                CommandParameter="{Binding}" />
+                                        <Grid Width="5" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                         <!--
                         <GridViewColumn Width="150"
                                         Header="จำนวนเงิน"
@@ -248,14 +269,14 @@
                                                        FontSize="18"
                                                        FontWeight="Bold" />
                                             <TextBlock Text="{Binding FullNameTH}" FontSize="14" />
-                                            <Grid Height="2"/>
+                                            <Grid Height="2" />
                                             <TextBlock FontSize="8">
-                                                <Run Text="วันที่เริ่ม: "/>
-                                                <Run Text="{Binding BeginDateString}"/>
+                                                <Run Text="วันที่เริ่ม: " />
+                                                <Run Text="{Binding BeginDateString}" />
                                             </TextBlock>
                                             <TextBlock FontSize="8">
-                                                <Run Text="เวลาเริ่ม: "/>
-                                                <Run Text="{Binding BeginTimeString}"/>
+                                                <Run Text="เวลาเริ่ม: " />
+                                                <Run Text="{Binding BeginTimeString}" />
                                             </TextBlock>
                                         </StackPanel>
                                         <!-- Role Name -->
@@ -355,8 +376,7 @@
                                        FontSize="16"
                                        DockPanel.Dock="Left"
                                        Text="Date:" />
-                            <xceed:DateTimePicker x:Name="shiftDate"
-                                                  Margin="3"/>
+                            <xceed:DateTimePicker x:Name="shiftDate" Margin="3" />
                         </DockPanel>
                     </StackPanel>
                     <StackPanel Margin="2"
@@ -390,8 +410,7 @@
                                        FontSize="16"
                                        DockPanel.Dock="Left"
                                        Text="Date:" />
-                            <xceed:DateTimePicker x:Name="jobDate"
-                                                  Margin="3"/>
+                            <xceed:DateTimePicker x:Name="jobDate" Margin="3" />
                         </DockPanel>
                     </StackPanel>
                     <StackPanel Margin="2"

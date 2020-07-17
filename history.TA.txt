@@ -46,6 +46,12 @@ Update 2020-07-18 #1 (TA)
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-07-17 #33 (TA)
+- Implements TA/TOD model class #41.
+  - Simulator
+    - LaneActivityPage update UI #1.
+
+[commited]
 Update 2020-07-17 #32 (TA)
 - Implements TA/TOD model class #40.
   - Simulator
