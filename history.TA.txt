@@ -11,8 +11,12 @@ Update 2020-07-17 #13 (TA)
 Update 2020-07-17 #12 (TA)
 - 
 
+[commited]
 Update 2020-07-17 #11 (TA)
-- 
+- Implements TA/TOD model class #27.
+  - Update Lane (add PlazaGroup relation).
+  - Update Lane Update queries.
+  - Add static methods to Get Lanes by PlazaGroup.
 
 [commited]
 Update 2020-07-17 #10 (TA)
