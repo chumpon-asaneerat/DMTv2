@@ -886,7 +886,7 @@ namespace DMT.Models
                 cmd += "   AND Plaza.TSBId = TSB.TSBId ";
                 cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
                 cmd += "   AND Lane.TSBId = TSB.TSBId ";
-                cmd += "   AND Lane.PlazaGroupId = LaneGroup.PlazaGroupId ";
+                cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
                 cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
                 cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
                 cmd += "   AND LanePayment.PlazaGroupId = PlazaGroup.PlazaGroupId ";
@@ -918,7 +918,7 @@ namespace DMT.Models
                 cmd += "   AND Plaza.TSBId = TSB.TSBId ";
                 cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
                 cmd += "   AND Lane.TSBId = TSB.TSBId ";
-                cmd += "   AND Lane.PlazaGroupId = LaneGroup.PlazaGroupId ";
+                cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
                 cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
                 cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
                 cmd += "   AND LanePayment.PlazaGroupId = PlazaGroup.PlazaGroupId ";
@@ -948,7 +948,7 @@ namespace DMT.Models
                 cmd += "   AND Plaza.TSBId = TSB.TSBId ";
                 cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
                 cmd += "   AND Lane.TSBId = TSB.TSBId ";
-                cmd += "   AND Lane.PlazaGroupId = LaneGroup.PlazaGroupId ";
+                cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
                 cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
                 cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
                 cmd += "   AND LanePayment.PlazaGroupId = PlazaGroup.PlazaGroupId ";
@@ -980,7 +980,7 @@ namespace DMT.Models
                 cmd += "   AND Plaza.TSBId = TSB.TSBId ";
                 cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
                 cmd += "   AND Lane.TSBId = TSB.TSBId ";
-                cmd += "   AND Lane.PlazaGroupId = LaneGroup.PlazaGroupId ";
+                cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
                 cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
                 cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
                 cmd += "   AND LanePayment.PlazaGroupId = PlazaGroup.PlazaGroupId ";

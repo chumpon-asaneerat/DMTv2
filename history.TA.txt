@@ -48,8 +48,11 @@ Update 2020-07-18 #1 (TA)
 Update 2020-07-17 #30 (TA)
 - 
 
+[commited]
 Update 2020-07-17 #29 (TA)
-- 
+- Implements TA/TOD model class #38.
+  - LaneAttendance fixed incorrect queries (LaneGroup is not exist anymore).
+  - LanePayment fixed incorrect queries (LaneGroup is not exist anymore).
 
 [commited]
 Update 2020-07-17 #28 (TA)
