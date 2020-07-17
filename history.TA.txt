@@ -14,8 +14,9 @@ Update 2020-07-17 #18 (TA)
 Update 2020-07-17 #17 (TA)
 - 
 
+[commited]
 Update 2020-07-17 #16 (TA)
-- 
+- Check merge to origin/master (OK).
 
 [commited]
 Update 2020-07-17 #15 (TA)
