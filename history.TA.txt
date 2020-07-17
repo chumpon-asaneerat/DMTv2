@@ -5,8 +5,13 @@ Update 2020-07-17 #15 (TA)
 Update 2020-07-17 #14 (TA)
 - 
 
+[commited]
 Update 2020-07-17 #13 (TA)
-- 
+- Implements TA/TOD model class #29.
+  - Update LaneAttendance (add PlazaGroup relation).
+  - Update LaneAttendance Update queries.
+  - Update LanePayment (add PlazaGroup relation).
+  - Update LanePayment Update queries.
 
 [commited]
 Update 2020-07-17 #12 (TA)
