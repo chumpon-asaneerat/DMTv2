@@ -54,8 +54,11 @@ Update 2020-07-17 #29 (TA)
 Update 2020-07-17 #28 (TA)
 - 
 
+[commited]
 Update 2020-07-17 #27 (TA)
-- 
+- Implements TA/TOD model class #38.
+  - DMT.Controls
+    - Premanent remove EOSPage and EOSWindow.
 
 [commited]
 Update 2020-07-17 #26 (TA)
