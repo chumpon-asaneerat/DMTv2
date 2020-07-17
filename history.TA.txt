@@ -8,8 +8,11 @@ Update 2020-07-17 #14 (TA)
 Update 2020-07-17 #13 (TA)
 - 
 
+[commited]
 Update 2020-07-17 #12 (TA)
-- 
+- Implements TA/TOD model class #28.
+  - Update UserShiftRevenue (add PlazaGroup relation).
+  - Update UserShiftRevenue Update queries.
 
 [commited]
 Update 2020-07-17 #11 (TA)

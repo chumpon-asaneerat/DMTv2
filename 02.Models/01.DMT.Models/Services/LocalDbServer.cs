@@ -129,8 +129,8 @@ namespace DMT.Services
             if (null == Db) return;
 
             Db.CreateTable<TSB>();
+            Db.CreateTable<PlazaGroup>();
             Db.CreateTable<Plaza>();
-            Db.CreateTable<LaneGroup>();
             Db.CreateTable<Lane>();
 
             Db.CreateTable<Shift>();
