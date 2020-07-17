@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,8 @@ namespace DMT.Simulator.Pages
         {
             private UserShift _Shift = null;
 
+            [Category("Shift")]
+            [Browsable(false)]
             public UserShift Shift 
             {
                 get { return _Shift;  }
@@ -60,11 +63,16 @@ namespace DMT.Simulator.Pages
                 }
             }
 
+            [Category("Shift")]
+            [ReadOnly(true)]
             public string BeginDateString
             {
                 get { return (null != Shift) ? Shift.BeginDateString : string.Empty; }
                 set { }
             }
+
+            [Category("Shift")]
+            [ReadOnly(true)]
             public string BeginTimeString
             {
                 get { return (null != Shift) ? Shift.BeginTimeString : string.Empty; }
@@ -76,6 +84,8 @@ namespace DMT.Simulator.Pages
         {
             private LaneAttendance _Attendance = null;
 
+            [Category("Activity")]
+            [Browsable(false)]
             public LaneAttendance Attendance
             {
                 get { return _Attendance;  }
@@ -88,21 +98,29 @@ namespace DMT.Simulator.Pages
                     RaiseChanged("BeginTimeString");
                 }
             }
+            [Category("User")]
+            [ReadOnly(true)]
             public string UserId 
             {
                 get { return (Attendance != null) ? Attendance.UserId : string.Empty; }
                 set { }
             }
+            [Category("User")]
+            [ReadOnly(true)]
             public string FullNameTH 
             {
                 get { return (Attendance != null) ? Attendance.FullNameTH : string.Empty; }
                 set { }
             }
+            [Category("Lane Job")]
+            [ReadOnly(true)]
             public string BeginDateString
             {
                 get { return (Attendance != null) ? Attendance.Begin.ToThaiDateString() : string.Empty; }
                 set { }
             }
+            [Category("Lane Job")]
+            [ReadOnly(true)]
             public string BeginTimeString
             {
                 get { return (Attendance != null) ? Attendance.Begin.ToThaiTimeString() : string.Empty; }
@@ -285,14 +303,14 @@ namespace DMT.Simulator.Pages
 
         #region DateTimePicker Handlers
 
-        private void JobDate_GotFocus(object sender, RoutedEventArgs e)
-        {
-            jobDate.Value = DateTime.Now;
-        }
-
         private void ShiftDate_GotFocus(object sender, RoutedEventArgs e)
         {
             shiftDate.Value = DateTime.Now;
+        }
+
+        private void JobDate_GotFocus(object sender, RoutedEventArgs e)
+        {
+            jobDate.Value = DateTime.Now;
         }
 
         #endregion

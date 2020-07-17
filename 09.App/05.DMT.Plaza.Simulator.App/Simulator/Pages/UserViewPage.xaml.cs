@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,6 +48,8 @@ namespace DMT.Simulator.Pages
         {
             private UserShift _Shift = null;
 
+            [Category("Shift")]
+            [Browsable(false)]
             public UserShift Shift
             {
                 get { return _Shift; }
@@ -58,11 +61,15 @@ namespace DMT.Simulator.Pages
                 }
             }
 
+            [Category("Shift")]
+            [ReadOnly(true)]
             public string BeginDateString
             {
                 get { return (null != Shift) ? Shift.BeginDateString : string.Empty; }
                 set { }
             }
+            [Category("Shift")]
+            [ReadOnly(true)]
             public string BeginTimeString
             {
                 get { return (null != Shift) ? Shift.BeginTimeString : string.Empty; }
@@ -72,7 +79,11 @@ namespace DMT.Simulator.Pages
 
         public class LaneItem : Lane
         {
+            [Category("User")]
+            [ReadOnly(true)]
             public string UserId { get; set; }
+            [Category("User")]
+            [ReadOnly(true)]
             public string FullNameTH { get; set; }
         }
 

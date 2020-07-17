@@ -46,6 +46,13 @@ Update 2020-07-18 #1 (TA)
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-07-17 #32 (TA)
+- Implements TA/TOD model class #40.
+  - Simulator
+    - UserViewPage add Category/Browsable/Readonly attribute in internal class.
+    - LaneActivityPage add Category/Browsable/Readonly attribute in internal class.
+
+[commited]
 Update 2020-07-17 #31 (TA)
 - Check merge to origin/master (OK).
 
