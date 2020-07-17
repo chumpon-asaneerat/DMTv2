@@ -1,9 +1,26 @@
 --------------------------------------------------------------------------------------------
+Update 2020-07-17 #25 (TA)
+- 
+
+Update 2020-07-17 #24 (TA)
+- 
+
+Update 2020-07-17 #23 (TA)
+- 
+
+Update 2020-07-17 #22 (TA)
+- 
+
 Update 2020-07-17 #21 (TA)
 - 
 
+[commited]
 Update 2020-07-17 #20 (TA)
-- 
+- Implements TA/TOD model class #34.
+  - UserShift rename static method BeginJob to BeginUserShift.
+  - UserShift rename static method EndJob to EndUserShift.
+  - Rename JobController to UserShiftController.
+  - Update UserShiftController method match all new method name.
 
 [commited]
 Update 2020-07-17 #19 (TA)

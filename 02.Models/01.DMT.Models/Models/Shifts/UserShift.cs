@@ -614,7 +614,7 @@ namespace DMT.Models
             return inst;
         }
 
-        public static bool BeginJob(UserShift shift)
+        public static bool BeginUserShift(UserShift shift)
         {
             lock (sync)
             {
@@ -634,7 +634,7 @@ namespace DMT.Models
             }
         }
 
-        public static void EndJob(UserShift shift)
+        public static void EndUserShift(UserShift shift)
         {
             lock (sync)
             {

@@ -14,13 +14,13 @@ using DMT.Models.ExtensionMethods;
 namespace DMT.Services
 {
     /// <summary>
-    /// The controller for handle Collector Begin Job (start TOD shift) and
-    /// Get List of Lane Attendance on specificed Job (between Begin to End).
+    /// The controller for handle Collector Begin UserShift (start TOD shift) and
+    /// Get List of Lane Attendance on specificed UserShift (between Begin to End).
     /// </summary>
-    public class JobController : ApiController
+    public class UserShiftController : ApiController
     {
         [HttpPost]
-        [ActionName(RouteConsts.Job.Create.Name)]
+        [ActionName(RouteConsts.UserShift.Create.Name)]
         public UserShift Create([FromBody] UserShiftCreate value)
         {
             if (null == value) return null;
@@ -28,7 +28,7 @@ namespace DMT.Services
         }
 
         [HttpPost]
-        [ActionName(RouteConsts.Job.GetCurrent.Name)]
+        [ActionName(RouteConsts.UserShift.GetCurrent.Name)]
         public UserShift GetCurrent([FromBody] User value)
         {
             if (null == value) return null;
@@ -36,23 +36,23 @@ namespace DMT.Services
         }
 
         [HttpPost]
-        [ActionName(RouteConsts.Job.BeginJob.Name)]
-        public bool BeginJob([FromBody] UserShift shift)
+        [ActionName(RouteConsts.UserShift.BeginUserShift.Name)]
+        public bool BeginUserShift([FromBody] UserShift shift)
         {
             if (null == shift) return false;
-            return UserShift.BeginJob(shift);
+            return UserShift.BeginUserShift(shift);
         }
 
         [HttpPost]
-        [ActionName(RouteConsts.Job.EndJob.Name)]
-        public void EndJob([FromBody] UserShift shift)
+        [ActionName(RouteConsts.UserShift.EndUserShift.Name)]
+        public void EndUserShift([FromBody] UserShift shift)
         {
             if (null == shift) return;
-            UserShift.EndJob(shift);
+            UserShift.EndUserShift(shift);
         }
 
         [HttpPost]
-        [ActionName(RouteConsts.Job.GetUserShifts.Name)]
+        [ActionName(RouteConsts.UserShift.GetUserShifts.Name)]
         public List<UserShift> GetUserShifts([FromBody] User value)
         {
             if (null == value) return new List<UserShift>();
@@ -60,7 +60,7 @@ namespace DMT.Services
         }
 
         [HttpPost]
-        [ActionName(RouteConsts.Job.GetUnCloseUserShifts.Name)]
+        [ActionName(RouteConsts.UserShift.GetUnCloseUserShifts.Name)]
         public List<UserShift> GetUnCloseUserShifts()
         {
             return UserShift.GetUnCloseUserShifts();
