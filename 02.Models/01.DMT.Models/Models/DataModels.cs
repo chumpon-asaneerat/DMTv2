@@ -273,13 +273,13 @@ namespace DMT.Models
             public class PlazaShift : NSearch<PlazaShift>
             {
                 public UserShift Shift { get; set; }
-                public Plaza Plaza { get; set; }
+                public PlazaGroup PlazaGroup { get; set; }
 
-                public static PlazaShift Create(UserShift shift, Plaza plaza)
+                public static PlazaShift Create(UserShift shift, PlazaGroup plazaGroup)
                 {
                     var ret = new PlazaShift();
                     ret.Shift = shift;
-                    ret.Plaza = plaza;
+                    ret.PlazaGroup = plazaGroup;
                     return ret;
                 }
             }

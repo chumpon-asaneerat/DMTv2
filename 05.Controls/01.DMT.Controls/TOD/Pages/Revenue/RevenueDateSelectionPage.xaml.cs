@@ -56,8 +56,8 @@ namespace DMT.TOD.Pages.Revenue
             // Revenue Entry Page
             var page = new RevenueEntryPage();
 
-            var plaza = cbPlazas.SelectedItem as Plaza;
-            if (null == plaza)
+            var plazaGroup = cbPlazas.SelectedItem as PlazaGroup;
+            if (null == plazaGroup)
             {
                 MessageBox.Show("กรุณาเลือกด่านของรายได้");
                 cbPlazas.Focus();
@@ -65,7 +65,7 @@ namespace DMT.TOD.Pages.Revenue
             }
 
             bool isNew = false;
-            var revops = Search.Revenues.PlazaShift.Create(_userShift, plaza);
+            var revops = Search.Revenues.PlazaShift.Create(_userShift, plazaGroup);
             _plazaRevenue = ops.Revenue.GetRevenueShift(revops);
             if (null == _plazaRevenue)
             {
@@ -101,7 +101,7 @@ namespace DMT.TOD.Pages.Revenue
             }
 
 
-            page.Setup(_userShift, plaza, _plazaRevenue, _laneActivities, _entryDT, _revDT);
+            page.Setup(_userShift, plazaGroup, _plazaRevenue, _laneActivities, _entryDT, _revDT);
 
             PageContentManager.Instance.Current = page;
         }
@@ -130,6 +130,10 @@ namespace DMT.TOD.Pages.Revenue
             }
 
             cbPlazas.ItemsSource = plazaGroups;
+            if (null != plazaGroups && plazaGroups.Count > 0)
+            {
+                cbPlazas.SelectedIndex = 0;
+            }
         }
 
         private void RefreshLanes()

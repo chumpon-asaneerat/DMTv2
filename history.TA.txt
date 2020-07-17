@@ -35,8 +35,16 @@ Update 2020-07-18 #5 (TA)
 Update 2020-07-18 #4 (TA)
 - 
 
+[commited]
 Update 2020-07-18 #3 (TA)
-- 
+- Implements TA/TOD model class #46.
+  - Update Search (PlazaShift) -> change parameter Plaza to PlazaGroup.
+  - Plaza Operation - UserShift -> GetRevenueShift change parameter Plaza to PlazaGroup.
+  - UserShiftRevenue - CreatePlazaRevenue change parameter Plaza to PlazaGroup.
+  - UserShiftRevenue - GetPlazaRevenue change parameter Plaza to PlazaGroup.
+  - RevenueController - CreatePlazaRevenue change parameter Plaza to PlazaGroup.
+  - RevenueController - GetPlazaRevenue change parameter Plaza to PlazaGroup.
+  - RevenueEntry - remove plaza related properties.
 
 [commited]
 Update 2020-07-18 #2 (TA)

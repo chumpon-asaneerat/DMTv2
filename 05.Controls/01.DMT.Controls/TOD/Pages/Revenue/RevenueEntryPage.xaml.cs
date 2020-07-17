@@ -34,7 +34,7 @@ namespace DMT.TOD.Pages.Revenue
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
 
         private UserShift _userShift = null;
-        private Plaza _plaza = null;
+        private PlazaGroup _plazaGroup = null;
         private UserShiftRevenue _plazaRevenue = null;
         private List<LaneAttendance> _laneActivities = null;
 
@@ -51,7 +51,7 @@ namespace DMT.TOD.Pages.Revenue
             var page = new Reports.RevenueSlipPreview();
             page.MenuPage = new Menu.MainMenu(); // Set MenPage to main menu.
             page.CallerPage = this; // Set CallerPage for click back.
-            page.Setup(_userShift, _plaza, _plazaRevenue, _laneActivities,
+            page.Setup(_userShift, _plazaGroup, _plazaRevenue, _laneActivities,
                 _entryDate, _revDate, _revenueEntry);
             PageContentManager.Instance.Current = page;
         }
@@ -65,17 +65,17 @@ namespace DMT.TOD.Pages.Revenue
 
         #endregion
 
-        public void Setup(UserShift userShift, Plaza plaza,
+        public void Setup(UserShift userShift, PlazaGroup plazaGroup,
             UserShiftRevenue plazaRevenue,
             List<LaneAttendance> laneActivities,
             DateTime entryDate, DateTime revDate)
         {
             _userShift = userShift;
-            _plaza = plaza;
+            _plazaGroup = plazaGroup;
             _plazaRevenue = plazaRevenue;
             _laneActivities = laneActivities;
 
-            if (null == _userShift || null == plaza || null == _plazaRevenue)
+            if (null == _userShift || null == _plazaGroup || null == _plazaRevenue)
             {
                 _entryDate = DateTime.MinValue;
                 _revDate = DateTime.MinValue;
@@ -96,7 +96,7 @@ namespace DMT.TOD.Pages.Revenue
                 _revDate = revDate;
 
                 txtRevDate.Text = _revDate.ToThaiDateTimeString("dd/MM/yyyy");
-                txtPlazaName.Text = _plaza.PlazaNameTH;
+                txtPlazaName.Text = _plazaGroup.PlazaGroupNameTH;
 
                 txtShiftName.Text = _userShift.ShiftNameTH;
                 
@@ -105,7 +105,7 @@ namespace DMT.TOD.Pages.Revenue
 
                 _revenueEntry = new Models.RevenueEntry();
                 // assigned plaza.
-                _revenueEntry.PlazaId = _plaza.PlazaId;
+                _revenueEntry.PlazaGroupId = _plazaGroup.PlazaGroupId;
 
                 revEntry.DataContext = _revenueEntry;
             }

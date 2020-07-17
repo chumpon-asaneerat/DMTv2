@@ -50,10 +50,6 @@ namespace DMT.Models
         private string _PlazaGroupNameTH = string.Empty;
         private string _Direction = string.Empty;
 
-        private string _PlazaId = string.Empty;
-        private string _PlazaNameEN = string.Empty;
-        private string _PlazaNameTH = string.Empty;
-
         private int _ShiftId = 0;
         private string _ShiftNameTH = string.Empty;
         private string _ShiftNameEN = string.Empty;
@@ -712,80 +708,6 @@ namespace DMT.Models
                 {
                     _Direction = value;
                     this.RaiseChanged("Direction");
-                }
-            }
-        }
-
-        #endregion
-
-        #region Plaza
-
-        /// <summary>
-        /// Gets or sets PlazaId.
-        /// </summary>
-        [Category("Plaza")]
-        [Description("Gets or sets PlazaId.")]
-        [ReadOnly(true)]
-        [MaxLength(10)]
-        [PeropertyMapName("PlazaId")]
-        public string PlazaId
-        {
-            get
-            {
-                return _PlazaId;
-            }
-            set
-            {
-                if (_PlazaId != value)
-                {
-                    _PlazaId = value;
-                    this.RaiseChanged("PlazaId");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets PlazaNameEN
-        /// </summary>
-        [Category("Plaza")]
-        [Description("Gets or sets PlazaNameEN")]
-        [ReadOnly(true)]
-        [Ignore]
-        [PeropertyMapName("PlazaNameEN")]
-        public virtual string PlazaNameEN
-        {
-            get
-            {
-                return _PlazaNameEN;
-            }
-            set
-            {
-                if (_PlazaNameEN != value)
-                {
-                    _PlazaNameEN = value;
-                    this.RaiseChanged("PlazaNameEN");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets PlazaNameTH
-        /// </summary>
-        [Category("Plaza")]
-        [Description("Gets or sets PlazaNameTH")]
-        [ReadOnly(true)]
-        [Ignore]
-        [PeropertyMapName("PlazaNameTH")]
-        public virtual string PlazaNameTH
-        {
-            get
-            {
-                return _PlazaNameTH;
-            }
-            set
-            {
-                if (_PlazaNameTH != value)
-                {
-                    _PlazaNameTH = value;
-                    this.RaiseChanged("PlazaNameTH");
                 }
             }
         }
@@ -1672,31 +1594,6 @@ namespace DMT.Models
 
             #endregion
 
-            #region Plaza
-
-            /// <summary>
-            /// Gets or sets PlazaNameEN
-            /// </summary>
-            [MaxLength(100)]
-            [PeropertyMapName("PlazaNameEN")]
-            public override string PlazaNameEN
-            {
-                get { return base.PlazaNameEN; }
-                set { base.PlazaNameEN = value; }
-            }
-            /// <summary>
-            /// Gets or sets PlazaNameTH
-            /// </summary>
-            [MaxLength(100)]
-            [PeropertyMapName("PlazaNameTH")]
-            public override string PlazaNameTH
-            {
-                get { return base.PlazaNameTH; }
-                set { base.PlazaNameTH = value; }
-            }
-
-            #endregion
-
             #region Shift
 
             /// <summary>
@@ -1796,18 +1693,14 @@ namespace DMT.Models
                 cmd += "SELECT RevenueEntry.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
                 cmd += "     , Sup.FullNameEN AS SupervisorNameEN ";
                 cmd += "     , Sup.FullNameTH AS SupervisorNameTH ";
-                cmd += "  FROM RevenueEntry, TSB, PlazaGroup, Plaza, Shift, User, User as Sup ";
+                cmd += "  FROM RevenueEntry, TSB, PlazaGroup, Shift, User, User as Sup ";
                 cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-                cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-                cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
                 cmd += "   AND RevenueEntry.TSBId = TSB.TSBId ";
                 cmd += "   AND RevenueEntry.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-                cmd += "   AND RevenueEntry.PlazaId = Plaza.PlazaId ";
                 cmd += "   AND RevenueEntry.UserId = User.UserId ";
                 cmd += "   AND RevenueEntry.SupervisorId = Sup.UserId ";
                 cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
@@ -1834,18 +1727,14 @@ namespace DMT.Models
                 cmd += "SELECT RevenueEntry.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
                 cmd += "     , Sup.FullNameEN AS SupervisorNameEN ";
                 cmd += "     , Sup.FullNameTH AS SupervisorNameTH ";
-                cmd += "  FROM RevenueEntry, TSB, PlazaGroup, Plaza, Shift, User, User as Sup ";
+                cmd += "  FROM RevenueEntry, TSB, PlazaGroup, Shift, User, User as Sup ";
                 cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-                cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-                cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
                 cmd += "   AND RevenueEntry.TSBId = TSB.TSBId ";
                 cmd += "   AND RevenueEntry.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-                cmd += "   AND RevenueEntry.PlazaId = Plaza.PlazaId ";
                 cmd += "   AND RevenueEntry.UserId = User.UserId ";
                 cmd += "   AND RevenueEntry.SupervisorId = Sup.UserId ";
                 cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";

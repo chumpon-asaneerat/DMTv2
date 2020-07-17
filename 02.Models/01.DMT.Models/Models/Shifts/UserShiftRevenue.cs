@@ -817,11 +817,11 @@ namespace DMT.Models
 
         #region Static Methods
 
-        public static UserShiftRevenue CreatePlazaRevenue(UserShift shift, Plaza plaza)
+        public static UserShiftRevenue CreatePlazaRevenue(UserShift shift, PlazaGroup plazaGroup)
         {
-            if (null == shift || null == plaza) return null;
+            if (null == shift || null == plazaGroup) return null;
             UserShiftRevenue inst = new UserShiftRevenue();
-            plaza.AssignTo(inst);
+            plazaGroup.AssignTo(inst);
             shift.AssignTo(inst);
             return inst;
         }
@@ -839,11 +839,11 @@ namespace DMT.Models
             }
         }
 
-        public static UserShiftRevenue GetPlazaRevenue(UserShift shift, Plaza plaza)
+        public static UserShiftRevenue GetPlazaRevenue(UserShift shift, PlazaGroup plazaGroup)
         {
             lock (sync)
             {
-                if (null == shift || null == plaza) return null;
+                if (null == shift || null == plazaGroup) return null;
                 string cmd = string.Empty;
                 cmd += "SELECT UserShiftRevenue.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
@@ -863,9 +863,9 @@ namespace DMT.Models
                 cmd += "   AND UserShiftRevenue.ShiftId = Shift.ShiftId ";
                 cmd += "   AND UserShiftRevenue.UserId = User.UserId ";
                 cmd += "   AND UserShiftRevenue.UserShiftId = ? ";
-                cmd += "   AND UserShiftRevenue.PlazaId = ? ";
+                cmd += "   AND UserShiftRevenue.PlazaGroupId = ? ";
                 var ret = NQuery.Query<FKs>(cmd, shift.UserShiftId,
-                    plaza.PlazaId).FirstOrDefault();
+                    plazaGroup.PlazaGroupId).FirstOrDefault();
                 return (null != ret) ? ret.ToUserShiftRevenue() : null;
             }
         }

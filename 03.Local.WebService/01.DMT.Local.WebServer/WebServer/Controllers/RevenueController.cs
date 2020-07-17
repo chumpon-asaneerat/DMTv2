@@ -24,14 +24,14 @@ namespace DMT.Services
         public UserShiftRevenue CreateRevenueShift([FromBody] Search.Revenues.PlazaShift value)
         {
             if (null == value) return null;
-            return UserShiftRevenue.CreatePlazaRevenue(value.Shift, value.Plaza);
+            return UserShiftRevenue.CreatePlazaRevenue(value.Shift, value.PlazaGroup);
         }
         [HttpPost]
         [ActionName(RouteConsts.Revenue.GetPlazaRevenue.Name)]
         public UserShiftRevenue GetRevenueShift([FromBody] Search.Revenues.PlazaShift value)
         {
             if (null == value) return null;
-            return UserShiftRevenue.GetPlazaRevenue(value.Shift, value.Plaza);
+            return UserShiftRevenue.GetPlazaRevenue(value.Shift, value.PlazaGroup);
         }
         [HttpPost]
         [ActionName(RouteConsts.Revenue.SavePlazaRevenue.Name)]
