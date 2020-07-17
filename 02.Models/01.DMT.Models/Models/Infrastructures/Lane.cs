@@ -42,6 +42,10 @@ namespace DMT.Models
         private string _PlazaNameEN = string.Empty;
         private string _PlazaNameTH = string.Empty;
 
+        private int _GroupPkId = 0;
+        private string _GroupNameEN = string.Empty;
+        private string _GroupNameTH = string.Empty;
+
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
 
@@ -321,6 +325,79 @@ namespace DMT.Models
 
         #endregion
 
+        #region LaneGroup
+
+        /// <summary>
+        /// Gets or sets GroupPkId.
+        /// </summary>
+        [Category("Plaza")]
+        [Description("Gets or sets GroupPkId.")]
+        [ReadOnly(true)]
+        [PeropertyMapName("GroupPkId")]
+        public int GroupPkId
+        {
+            get
+            {
+                return _GroupPkId;
+            }
+            set
+            {
+                if (_GroupPkId != value)
+                {
+                    _GroupPkId = value;
+                    this.RaiseChanged("GroupPkId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets GroupNameEN
+        /// </summary>
+        [Category("Plaza")]
+        [Description("Gets or sets GroupNameEN")]
+        [ReadOnly(true)]
+        [Ignore]
+        [PeropertyMapName("GroupNameEN")]
+        public virtual string GroupNameEN
+        {
+            get
+            {
+                return _GroupNameEN;
+            }
+            set
+            {
+                if (_GroupNameEN != value)
+                {
+                    _GroupNameEN = value;
+                    this.RaiseChanged("GroupNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets GroupNameTH
+        /// </summary>
+        [Category("Plaza")]
+        [Description("Gets or sets GroupNameTH")]
+        [ReadOnly(true)]
+        [Ignore]
+        [PeropertyMapName("GroupNameTH")]
+        public virtual string GroupNameTH
+        {
+            get
+            {
+                return _GroupNameTH;
+            }
+            set
+            {
+                if (_GroupNameTH != value)
+                {
+                    _GroupNameTH = value;
+                    this.RaiseChanged("GroupNameTH");
+                }
+            }
+        }
+
+        #endregion
+
         #region Status (DC)
 
         /// <summary>
@@ -423,6 +500,31 @@ namespace DMT.Models
 
             #endregion
 
+            #region LaneGroup
+
+            /// <summary>
+            /// Gets or sets GroupNameEN
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("GroupNameEN")]
+            public override string GroupNameEN
+            {
+                get { return base.GroupNameEN; }
+                set { base.GroupNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets GroupNameTH
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("GroupNameTH")]
+            public override string GroupNameTH
+            {
+                get { return base.GroupNameTH; }
+                set { base.GroupNameTH = value; }
+            }
+
+            #endregion
+
             #region Public Methods
 
             public Lane ToLane()
@@ -448,9 +550,15 @@ namespace DMT.Models
                 cmd += "SELECT Lane.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-                cmd += "  FROM Lane, Plaza, TSB ";
+                cmd += "     , LaneGroup.GroupNameEN, LaneGroup.GroupNameTH ";
+                cmd += "  FROM Lane, LaneGroup, Plaza, TSB ";
                 cmd += " WHERE Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND Lane.TSBId = TSB.TSBId ";
+                cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND Lane.GroupPkId = LaneGroup.GroupPkId ";
                 cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
 
                 var rets = NQuery.Query<FKs>(cmd).ToList();
@@ -483,9 +591,15 @@ namespace DMT.Models
                 cmd += "SELECT Lane.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-                cmd += "  FROM Lane, Plaza, TSB ";
+                cmd += "     , LaneGroup.GroupNameEN, LaneGroup.GroupNameTH ";
+                cmd += "  FROM Lane, LaneGroup, Plaza, TSB ";
                 cmd += " WHERE Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND Lane.TSBId = TSB.TSBId ";
+                cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND Lane.GroupPkId = LaneGroup.GroupPkId ";
                 cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
                 cmd += "   AND Lane.LaneId = ? ";
 
@@ -518,9 +632,15 @@ namespace DMT.Models
                 cmd += "SELECT Lane.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-                cmd += "  FROM Lane, Plaza, TSB ";
+                cmd += "     , LaneGroup.GroupNameEN, LaneGroup.GroupNameTH ";
+                cmd += "  FROM Lane, LaneGroup, Plaza, TSB ";
                 cmd += " WHERE Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND Lane.TSBId = TSB.TSBId ";
+                cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND Lane.GroupPkId = LaneGroup.GroupPkId ";
                 cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
                 cmd += "   AND Lane.TSBId = ? ";
                 return NQuery.Query<FKs>(cmd, tsbId).ToList<Lane>();
@@ -542,9 +662,15 @@ namespace DMT.Models
                 cmd += "SELECT Lane.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-                cmd += "  FROM Lane, Plaza, TSB ";
+                cmd += "     , LaneGroup.GroupNameEN, LaneGroup.GroupNameTH ";
+                cmd += "  FROM Lane, LaneGroup, Plaza, TSB ";
                 cmd += " WHERE Lane.TSBId = TSB.TSBId ";
                 cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND Lane.TSBId = TSB.TSBId ";
+                cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND Lane.GroupPkId = LaneGroup.GroupPkId ";
                 cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
                 cmd += "   AND Lane.TSBId = ? ";
                 cmd += "   AND Lane.PlazaId = ? ";

@@ -23,8 +23,11 @@ Update 2020-07-17 #9 (TA)
 Update 2020-07-17 #8 (TA)
 - 
 
+[commited]
 Update 2020-07-17 #7 (TA)
-- 
+- Implements TA/TOD model class #23.
+  - Implements LaneGroup #1.
+  - Update Lane Queries related to LaneGroup.
 
 [commited]
 Update 2020-07-17 #6 (TA)

@@ -130,6 +130,7 @@ namespace DMT.Services
 
             Db.CreateTable<TSB>();
             Db.CreateTable<Plaza>();
+            Db.CreateTable<LaneGroup>();
             Db.CreateTable<Lane>();
 
             Db.CreateTable<Shift>();

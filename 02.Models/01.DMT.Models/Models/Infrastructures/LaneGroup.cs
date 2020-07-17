@@ -394,6 +394,69 @@ namespace DMT.Models
 
         #region Static Methods
 
+        public static List<LaneGroup> Gets(SQLiteConnection db)
+        {
+            if (null == db) return new List<LaneGroup>();
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT LaneGroup.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+                cmd += "  FROM LaneGroup, Plaza, TSB ";
+                cmd += " WHERE LaneGroup.TSBId = TSB.TSBId ";
+                cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.PlazaId = Plaza.PlazaId ";
+
+                var rets = NQuery.Query<FKs>(cmd).ToList();
+                var results = new List<LaneGroup>();
+                if (null != rets)
+                {
+                    rets.ForEach(ret =>
+                    {
+                        results.Add(ret.ToLaneGroup());
+                    });
+                }
+
+                return results;
+            }
+        }
+        public static List<LaneGroup> Gets()
+        {
+            lock (sync)
+            {
+                SQLiteConnection db = Default;
+                return Gets(db);
+            }
+        }
+        public static LaneGroup Get(SQLiteConnection db, string groupPkId)
+        {
+            if (null == db) return null;
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT LaneGroup.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+                cmd += "  FROM LaneGroup, Plaza, TSB ";
+                cmd += " WHERE LaneGroup.TSBId = TSB.TSBId ";
+                cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND LaneGroup.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND LaneGroup.GroupPkId = ? ";
+
+                var ret = NQuery.Query<FKs>(cmd, groupPkId).FirstOrDefault();
+                return (null != ret) ? ret.ToLaneGroup() : null;
+            }
+        }
+        public static LaneGroup Get(string groupPkId)
+        {
+            lock (sync)
+            {
+                SQLiteConnection db = Default;
+                return Get(db, groupPkId);
+            }
+        }
+
         #endregion
     }
 
