@@ -45,8 +45,18 @@ Update 2020-07-18 #1 (TA)
 - 
 
 --------------------------------------------------------------------------------------------
-Update 2020-07-17 #30 (TA)
+Update 2020-07-17 #31 (TA)
 - 
+
+[commited]
+Update 2020-07-17 #30 (TA)
+- Implements TA/TOD model class #39.
+  - TOD Operation Test.
+    - Supervisor Change Shift (no shift exist) - OK.
+    - Collector Begin Shift - OK.
+    - Collector Begin Lane Job - OK.
+    - Collector End Lane Job - OK.
+    - Collector Begin Shift - (Shift exists so cannot Begin new shift) OK.
 
 [commited]
 Update 2020-07-17 #29 (TA)
