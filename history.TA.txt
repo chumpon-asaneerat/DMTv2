@@ -38,8 +38,10 @@ Update 2020-07-17 #4 (TA)
 Update 2020-07-17 #3 (TA)
 - 
 
+[commited]
 Update 2020-07-17 #2 (TA)
-- 
+- Implements TA model class #19.
+  - Update UserCreditTransaction class #1.
 
 [commited]
 Update 2020-07-17 #1 (TA)
