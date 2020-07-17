@@ -69,6 +69,20 @@
                                                 CommandParameter="{Binding}" />
                                         <Grid Width="5" />
                                     </StackPanel>
+                                    <!-- Triggers -->
+                                    <!--
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding PositionCode}" Value="QB">
+                                            <Setter TargetName="cmdEdit" Property="Foreground" Value="Blue" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding PositionCode}" Value="RB">
+                                            <Setter TargetName="cmdExchange" Property="Foreground" Value="Green" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding PositionCode}" Value="WR">
+                                            <Setter TargetName="cmdExchange" Property="Foreground" Value="Red" />
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                    -->
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
