@@ -46,6 +46,15 @@ Update 2020-07-18 #1 (TA)
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-07-17 #34 (TA)
+- Implements TA/TOD model class #42 (TA remind note below).
+  - Note: 
+    - Required MaxBalance for TSBBalance.
+    - Addition not include in MaxBalance.
+    - Addition required transaction table.
+    - Account requied to enter as Total BHT so program required to convert back to coin/bill unit.
+
+[commited]
 Update 2020-07-17 #33 (TA)
 - Implements TA/TOD model class #41.
   - Simulator
