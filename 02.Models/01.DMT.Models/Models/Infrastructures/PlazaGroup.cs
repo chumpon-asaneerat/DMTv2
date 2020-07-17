@@ -78,13 +78,13 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets or sets PlazaGrpupNameEN
+        /// Gets or sets PlazaGroupNameEN
         /// </summary>
         [Category("Plaza Group")]
-        [Description("Gets or sets PlazaGrpupNameEN")]
+        [Description("Gets or sets PlazaGroupNameEN")]
         [MaxLength(100)]
-        [PeropertyMapName("PlazaGrpupNameEN")]
-        public string PlazaGrpupNameEN
+        [PeropertyMapName("PlazaGroupNameEN")]
+        public string PlazaGroupNameEN
         {
             get
             {
@@ -95,18 +95,18 @@ namespace DMT.Models
                 if (_PlazaGroupNameEN != value)
                 {
                     _PlazaGroupNameEN = value;
-                    this.RaiseChanged("PlazaGrpupNameEN");
+                    this.RaiseChanged("PlazaGroupNameEN");
                 }
             }
         }
         /// <summary>
-        /// Gets or sets PlazaGrpupNameTH
+        /// Gets or sets PlazaGroupNameTH
         /// </summary>
         [Category("Plaza Group")]
-        [Description("Gets or sets PlazaGrpupNameTH")]
+        [Description("Gets or sets PlazaGroupNameTH")]
         [MaxLength(100)]
-        [PeropertyMapName("PlazaGrpupNameTH")]
-        public string PlazaGrpupNameTH
+        [PeropertyMapName("PlazaGroupNameTH")]
+        public string PlazaGroupNameTH
         {
             get
             {
@@ -117,7 +117,7 @@ namespace DMT.Models
                 if (_PlazaGroupNameTH != value)
                 {
                     _PlazaGroupNameTH = value;
-                    this.RaiseChanged("PlazaGrpupNameTH");
+                    this.RaiseChanged("PlazaGroupNameTH");
                 }
             }
         }
