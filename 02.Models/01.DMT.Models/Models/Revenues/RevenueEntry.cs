@@ -36,7 +36,7 @@ namespace DMT.Models
         private string _BeltNo = string.Empty;
 
         private string _Lanes = string.Empty;
-        private string _LaneGroups = string.Empty;
+        private string _PlazaGroups = string.Empty;
 
         private DateTime _ShiftBegin = DateTime.MinValue;
         private DateTime _ShiftEnd = DateTime.MinValue;
@@ -44,6 +44,11 @@ namespace DMT.Models
         private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
         private string _TSBNameTH = string.Empty;
+
+        private string _PlazaGroupId = string.Empty;
+        private string _PlazaGroupNameEN = string.Empty;
+        private string _PlazaGroupNameTH = string.Empty;
+        private string _Direction = string.Empty;
 
         private string _PlazaId = string.Empty;
         private string _PlazaNameEN = string.Empty;
@@ -377,23 +382,23 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets or sets LaneGroup Lists.
+        /// Gets or sets PlazaGroups Lists.
         /// </summary>
         [Category("Revenue")]
-        [Description("Gets or sets LaneGroup Lists.")]
+        [Description("Gets or sets PlazaGroups Lists.")]
         //[ReadOnly(true)]
         [MaxLength(100)]
-        [PeropertyMapName("LaneGroups")]
-        public string LaneGroups
+        [PeropertyMapName("PlazaGroups")]
+        public string PlazaGroups
         {
-            get { return _LaneGroups; }
+            get { return _PlazaGroups; }
             set
             {
-                if (_LaneGroups != value)
+                if (_PlazaGroups != value)
                 {
-                    _LaneGroups = value;
+                    _PlazaGroups = value;
                     // Raise event.
-                    this.RaiseChanged("LaneGroups");
+                    this.RaiseChanged("PlazaGroups");
                 }
             }
         }
@@ -610,6 +615,103 @@ namespace DMT.Models
                 {
                     _TSBNameTH = value;
                     this.RaiseChanged("TSBNameTH");
+                }
+            }
+        }
+
+        #endregion
+
+        #region PlazaGroup
+
+        /// <summary>
+        /// Gets or sets PlazaGroupId.
+        /// </summary>
+        [Category("Plaza Group")]
+        [Description("Gets or sets PlazaGroupId.")]
+        [ReadOnly(true)]
+        [MaxLength(10)]
+        [PeropertyMapName("PlazaGroupId")]
+        public string PlazaGroupId
+        {
+            get
+            {
+                return _PlazaGroupId;
+            }
+            set
+            {
+                if (_PlazaGroupId != value)
+                {
+                    _PlazaGroupId = value;
+                    this.RaiseChanged("PlazaGroupId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets PlazaGroupNameEN.
+        /// </summary>
+        [Category("Plaza Group")]
+        [Description("Gets or sets PlazaGroupNameEN.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [PeropertyMapName("PlazaGroupNameEN")]
+        public virtual string PlazaGroupNameEN
+        {
+            get
+            {
+                return _PlazaGroupNameEN;
+            }
+            set
+            {
+                if (_PlazaGroupNameEN != value)
+                {
+                    _PlazaGroupNameEN = value;
+                    this.RaiseChanged("PlazaGroupNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets PlazaGroupNameTH.
+        /// </summary>
+        [Category("Plaza Group")]
+        [Description("Gets or sets PlazaGroupNameTH.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [PeropertyMapName("PlazaGroupNameTH")]
+        public virtual string PlazaGroupNameTH
+        {
+            get
+            {
+                return _PlazaGroupNameTH;
+            }
+            set
+            {
+                if (_PlazaGroupNameTH != value)
+                {
+                    _PlazaGroupNameTH = value;
+                    this.RaiseChanged("PlazaGroupNameTH");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Direction.
+        /// </summary>
+        [Category("Plaza Group")]
+        [Description("Gets or sets Direction.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [PeropertyMapName("Direction")]
+        public virtual string Direction
+        {
+            get
+            {
+                return _Direction;
+            }
+            set
+            {
+                if (_Direction != value)
+                {
+                    _Direction = value;
+                    this.RaiseChanged("Direction");
                 }
             }
         }
@@ -1535,6 +1637,41 @@ namespace DMT.Models
 
             #endregion
 
+            #region PlazaGroup
+
+            /// <summary>
+            /// Gets or sets PlazaGroupNameEN.
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("PlazaGroupNameEN")]
+            public override string PlazaGroupNameEN
+            {
+                get { return base.PlazaGroupNameEN; }
+                set { base.PlazaGroupNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets PlazaGroupNameTH.
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("PlazaGroupNameTH")]
+            public override string PlazaGroupNameTH
+            {
+                get { return base.PlazaGroupNameTH; }
+                set { base.PlazaGroupNameTH = value; }
+            }
+            /// <summary>
+            /// Gets or sets Direction.
+            /// </summary>
+            [MaxLength(10)]
+            [PeropertyMapName("Direction")]
+            public override string Direction
+            {
+                get { return base.Direction; }
+                set { base.Direction = value; }
+            }
+
+            #endregion
+
             #region Plaza
 
             /// <summary>
@@ -1658,14 +1795,18 @@ namespace DMT.Models
                 string cmd = string.Empty;
                 cmd += "SELECT RevenueEntry.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, Plaza.Direction ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
                 cmd += "     , Sup.FullNameEN AS SupervisorNameEN ";
                 cmd += "     , Sup.FullNameTH AS SupervisorNameTH ";
-                cmd += "  FROM RevenueEntry, TSB, Plaza, Shift, User, User as Sup ";
-                cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
+                cmd += "  FROM RevenueEntry, TSB, PlazaGroup, Plaza, Shift, User, User as Sup ";
+                cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
+                cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
                 cmd += "   AND RevenueEntry.TSBId = TSB.TSBId ";
+                cmd += "   AND RevenueEntry.PlazaGroupId = PlazaGroup.PlazaGroupId ";
                 cmd += "   AND RevenueEntry.PlazaId = Plaza.PlazaId ";
                 cmd += "   AND RevenueEntry.UserId = User.UserId ";
                 cmd += "   AND RevenueEntry.SupervisorId = Sup.UserId ";
@@ -1692,14 +1833,18 @@ namespace DMT.Models
                 string cmd = string.Empty;
                 cmd += "SELECT RevenueEntry.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, Plaza.Direction ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
                 cmd += "     , Sup.FullNameEN AS SupervisorNameEN ";
                 cmd += "     , Sup.FullNameTH AS SupervisorNameTH ";
-                cmd += "  FROM RevenueEntry, TSB, Plaza, Shift, User, User as Sup ";
-                cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
+                cmd += "  FROM RevenueEntry, TSB, PlazaGroup, Plaza, Shift, User, User as Sup ";
+                cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
+                cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+                cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
                 cmd += "   AND RevenueEntry.TSBId = TSB.TSBId ";
+                cmd += "   AND RevenueEntry.PlazaGroupId = PlazaGroup.PlazaGroupId ";
                 cmd += "   AND RevenueEntry.PlazaId = Plaza.PlazaId ";
                 cmd += "   AND RevenueEntry.UserId = User.UserId ";
                 cmd += "   AND RevenueEntry.SupervisorId = Sup.UserId ";

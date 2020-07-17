@@ -1,9 +1,30 @@
 --------------------------------------------------------------------------------------------
+Update 2020-07-17 #21 (TA)
+- 
+
+Update 2020-07-17 #20 (TA)
+- 
+
+Update 2020-07-17 #19 (TA)
+- 
+
+Update 2020-07-17 #18 (TA)
+- 
+
+Update 2020-07-17 #17 (TA)
+- 
+
+Update 2020-07-17 #16 (TA)
+- 
+
 Update 2020-07-17 #15 (TA)
 - 
 
+[commited]
 Update 2020-07-17 #14 (TA)
-- 
+- Implements TA/TOD model class #30.
+  - Update RevenueEntry (add PlazaGroup relation).
+  - Update RevenueEntry Update queries.
 
 [commited]
 Update 2020-07-17 #13 (TA)
