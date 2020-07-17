@@ -11,8 +11,12 @@ Update 2020-07-17 #23 (TA)
 Update 2020-07-17 #22 (TA)
 - 
 
+[commited]
 Update 2020-07-17 #21 (TA)
-- 
+- Implements TA/TOD model class #35.
+  - Rename JobOperations to UserShiftOperations
+  - Update UserShiftOperations method match all new method name.
+  - Update LoginList2View update call new operation method name.
 
 [commited]
 Update 2020-07-17 #20 (TA)

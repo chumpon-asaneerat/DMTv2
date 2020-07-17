@@ -17,46 +17,46 @@ namespace DMT.Services
     {
         #region Internal Variables
 
-        private JobOperations _Job_Ops = null;
+        private UserShiftOperations _UserShift_Ops = null;
 
         #endregion
 
         #region Public Properties
 
         /// <summary>
-        /// Gets Jobs Operations.
+        /// Gets UserShift Operations.
         /// </summary>
-        public JobOperations Jobs
+        public UserShiftOperations UserShifts
         {
             get
             {
-                if (null == _Job_Ops)
+                if (null == _UserShift_Ops)
                 {
                     lock (this)
                     {
-                        _Job_Ops = new JobOperations();
+                        _UserShift_Ops = new UserShiftOperations();
                     }
                 }
-                return _Job_Ops;
+                return _UserShift_Ops;
             }
         }
 
         #endregion
 
-        #region JobOperations (Collector TOD Shift)
+        #region UserShiftOperations (Collector TOD Shift)
 
         /// <summary>
-        /// The Collector Job Operation class.
+        /// The Collector UserShift Operation class.
         /// Used for manage when TOD user begin job (shift).
         /// </summary>
-        public class JobOperations
+        public class UserShiftOperations
         {
             #region Constructor
 
             /// <summary>
             /// Constructor.
             /// </summary>
-            internal JobOperations() { }
+            internal UserShiftOperations() { }
 
             #endregion
 
@@ -65,7 +65,7 @@ namespace DMT.Services
             public UserShift Create(Shift shift, User collector)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<UserShift>(
-                    RouteConsts.Job.Create.Url,
+                    RouteConsts.UserShift.Create.Url,
                     new UserShiftCreate()
                     {
                         Shift = shift,
@@ -77,34 +77,34 @@ namespace DMT.Services
             public UserShift GetCurrent(User user)
             {
                 return NRestClient.Create(port: 9000).Execute<UserShift>(
-                    RouteConsts.Job.GetCurrent.Url, user);
+                    RouteConsts.UserShift.GetCurrent.Url, user);
             }
 
-            public bool BeginJob(UserShift shift)
+            public bool BeginUserShift(UserShift shift)
             {
                 if (null == shift) return false;
                 return NRestClient.Create(port: 9000).Execute<bool>(
-                    RouteConsts.Job.BeginJob.Url, shift);
+                    RouteConsts.UserShift.BeginUserShift.Url, shift);
             }
 
-            public void EndJob(UserShift shift)
+            public void EndUserShift(UserShift shift)
             {
                 if (null == shift) return;
                 NRestClient.Create(port: 9000).Execute(
-                    RouteConsts.Job.EndJob.Url, shift);
+                    RouteConsts.UserShift.EndUserShift.Url, shift);
             }
 
             public List<UserShift> GetUserShifts(User collector)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<UserShift>>(
-                    RouteConsts.Job.GetUserShifts.Url, collector);
+                    RouteConsts.UserShift.GetUserShifts.Url, collector);
                 return ret;
             }
 
             public List<UserShift> GetUnCloseUserShifts()
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<UserShift>>(
-                    RouteConsts.Job.GetUnCloseUserShifts.Url);
+                    RouteConsts.UserShift.GetUnCloseUserShifts.Url);
                 return ret;
             }
 

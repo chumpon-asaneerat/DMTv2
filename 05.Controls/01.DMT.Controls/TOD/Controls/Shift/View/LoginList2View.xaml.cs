@@ -76,7 +76,7 @@ namespace DMT.TOD.Controls.Revenue.View
 
             lstUsers.ItemsSource = null;
 
-            _userShifts = ops.Jobs.GetUnCloseUserShifts();
+            _userShifts = ops.UserShifts.GetUnCloseUserShifts();
 
             lstUsers.ItemsSource = _userShifts;
         }
