@@ -176,7 +176,7 @@ namespace DMT.TOD.Pages.Revenue
                 _entryDT = DateTime.Now;
                 txtEntryDate.Text = _entryDT.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
                 // Find user shift.
-                _userShift = ops.Jobs.GetCurrent(_user);
+                _userShift = ops.UserShifts.GetCurrent(_user);
                 // Load related lane data.
                 RefreshLanes();
             }

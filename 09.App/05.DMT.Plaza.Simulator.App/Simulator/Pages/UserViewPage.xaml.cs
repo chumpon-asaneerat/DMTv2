@@ -143,7 +143,7 @@ namespace DMT.Simulator.Pages
 
             if (null == user) return;
 
-            var userShifts = ops.Jobs.GetUserShifts(user);
+            var userShifts = ops.UserShifts.GetUserShifts(user);
 
             lvUserShifts.ItemsSource = userShifts;
         }

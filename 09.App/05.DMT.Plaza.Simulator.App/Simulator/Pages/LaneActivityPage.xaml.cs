@@ -166,7 +166,7 @@ namespace DMT.Simulator.Pages
             gridTools.IsEnabled = true;
 
             // Find UserShift.
-            currentUser.Shift = ops.Jobs.GetCurrent(currentUser);
+            currentUser.Shift = ops.UserShifts.GetCurrent(currentUser);
 
             if (null == currentUser.Shift)
             {
@@ -222,7 +222,7 @@ namespace DMT.Simulator.Pages
                         var inst = new UserItem();
                         usr.AssignTo(inst);
                         // load user shift.
-                        inst.Shift = ops.Jobs.GetCurrent(usr);
+                        inst.Shift = ops.UserShifts.GetCurrent(usr);
                         users.Add(inst);
                     });
                 }
@@ -349,11 +349,11 @@ namespace DMT.Simulator.Pages
             if (null == currentUser) return;
             var shift = (cbShifts.SelectedItem as Shift);
             if (null == shift) return;
-            var inst = ops.Jobs.Create(shift, currentUser);
+            var inst = ops.UserShifts.Create(shift, currentUser);
 
             DateTime dt = shiftDate.Value.Value;
             inst.Begin = dt;
-            ops.Jobs.BeginJob(inst);
+            ops.UserShifts.BeginUserShift(inst);
 
             RefreshUsers();
 
@@ -370,7 +370,7 @@ namespace DMT.Simulator.Pages
             DateTime dt = shiftDate.Value.Value;
             currentUser.Shift.End = dt;
 
-            ops.Jobs.EndJob(currentUser.Shift);
+            ops.UserShifts.EndUserShift(currentUser.Shift);
             
             RefreshUsers();
 

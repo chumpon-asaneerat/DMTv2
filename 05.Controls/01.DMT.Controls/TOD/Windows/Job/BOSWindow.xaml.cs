@@ -14,16 +14,16 @@ using NLib.Reflection;
 namespace DMT.TOD.Windows.Job
 {
     /// <summary>
-    /// Interaction logic for BOJWindow.xaml
+    /// Interaction logic for BOSWindow.xaml
     /// </summary>
-    public partial class BOJWindow : Window
+    public partial class BOSWindow : Window
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public BOJWindow()
+        public BOSWindow()
         {
             InitializeComponent();
         }
@@ -53,9 +53,9 @@ namespace DMT.TOD.Windows.Job
             Shift shift = cbShift.SelectedItem as Shift;
             if (null != shift)
             {
-                UserShift inst = ops.Jobs.Create(shift, _user);
+                UserShift inst = ops.UserShifts.Create(shift, _user);
                 if (null != inst) shift.AssignTo(inst);
-                bool success = ops.Jobs.BeginJob(inst);
+                bool success = ops.UserShifts.BeginUserShift(inst);
                 if (!success)
                 {
                     // Some job is open required to enter revenue entry first.

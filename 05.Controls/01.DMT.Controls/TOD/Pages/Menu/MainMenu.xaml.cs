@@ -30,7 +30,7 @@ namespace DMT.TOD.Pages.Menu
 
         #region Button (Menu) Command Handlers
 
-        private void beginJob_Click(object sender, RoutedEventArgs e)
+        private void beginUserShift_Click(object sender, RoutedEventArgs e)
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
@@ -42,7 +42,7 @@ namespace DMT.TOD.Pages.Menu
             var user = signinWin.User;
 
             // Begin of Job Page
-            var jobWindow = new Windows.Job.BOJWindow();
+            var jobWindow = new Windows.Job.BOSWindow();
             jobWindow.Owner = Application.Current.MainWindow;
             jobWindow.Setup(user);
             if (jobWindow.ShowDialog() == false)

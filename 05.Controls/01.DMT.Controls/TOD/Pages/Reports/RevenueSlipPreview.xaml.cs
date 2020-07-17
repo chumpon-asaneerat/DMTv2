@@ -210,7 +210,7 @@ namespace DMT.TOD.Pages.Reports
             if (null == existActivities || existActivities.Count == 0)
             {
                 // no lane activitie in user shift.
-                ops.Jobs.EndJob(_userShift); // End user job(shift).
+                ops.UserShifts.EndUserShift(_userShift); // End user job(shift).
             }
         }
 

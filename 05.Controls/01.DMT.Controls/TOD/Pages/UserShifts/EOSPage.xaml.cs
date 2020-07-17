@@ -11,19 +11,19 @@ using DMT.TOD.Windows.Job;
 
 #endregion
 
-namespace DMT.TOD.Pages.Job
+namespace DMT.TOD.Pages.UserShifts
 {
     /// <summary>
-    /// Interaction logic for EOJPage.xaml
+    /// Interaction logic for EOSPage .xaml
     /// </summary>
-    public partial class EOJPage : UserControl
+    public partial class EOSPage : UserControl
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public EOJPage()
+        public EOSPage()
         {
             InitializeComponent();
         }
@@ -33,7 +33,7 @@ namespace DMT.TOD.Pages.Job
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
             // Main Menu Page
-            EOJWindow win = new EOJWindow();
+            EOSWindow win = new EOSWindow();
             win.Owner = Application.Current.MainWindow;
             // setup
             //win.Job = _job;
@@ -54,31 +54,5 @@ namespace DMT.TOD.Pages.Job
             var page = new Menu.MainMenu();
             PageContentManager.Instance.Current = page;
         }
-
-        /*
-        private Models.Job _job;
-
-        public void Setup(Models.Job job)
-        {
-            _job = job;
-            if (null != _job)
-            {
-                txtJobDate.Text = _job.BeginDateString;
-                txtCollectorId.Text = _job.StaffId;
-                txtShiftId.Text = _job.ShiftId.ToString();
-                txtCollectorName.Text = _job.StaffName;
-
-                grid.Setup(_job.Lanes);
-            }
-            else
-            {
-                txtJobDate.Text = string.Empty;
-                txtShiftId.Text = string.Empty;
-                txtCollectorId.Text = string.Empty;
-                txtCollectorName.Text = string.Empty;
-            }
-        }
-
-        */
     }
 }

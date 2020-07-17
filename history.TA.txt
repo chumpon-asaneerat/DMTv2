@@ -60,8 +60,20 @@ Update 2020-07-17 #27 (TA)
 Update 2020-07-17 #26 (TA)
 - 
 
+[commited]
 Update 2020-07-17 #25 (TA)
-- 
+- Implements TA/TOD model class #37.
+  - DMT.Controls
+    - RevenueDateSelectionPage update call new operation method name.
+    - RevenueSlipPreview update call new operation method name.
+    - BOJWindow rename to BOSWindow.
+    - BOSWindow update call new operation method name.
+    - EOJWindow rename to EOSWindow.
+    - EOJPage rename to EOSPage.
+    - EOSPage change namespace from Jobs to UserShifts.
+  - Simulator
+    - LaneActivityPage update call new operation method name.
+    - UserViewPage update call new operation method name.
 
 [commited]
 Update 2020-07-17 #24 (TA)
@@ -69,7 +81,8 @@ Update 2020-07-17 #24 (TA)
 
 [commited]
 Update 2020-07-17 #23 (TA)
-- Rename PlazaOperations.Job.cs to PlazaOperations.UserShift.cs
+- Implements TA/TOD model class #36.
+  - Rename PlazaOperations.Job.cs to PlazaOperations.UserShift.cs
 
 [commited]
 Update 2020-07-17 #22 (TA)

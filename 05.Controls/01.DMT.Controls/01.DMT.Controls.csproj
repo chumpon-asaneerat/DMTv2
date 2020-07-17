@@ -201,8 +201,8 @@
     <Compile Include="TOD\Controls\Shift\View\LoginList2View.xaml.cs">
       <DependentUpon>LoginList2View.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TOD\Pages\Job\EOJPage.xaml.cs">
-      <DependentUpon>EOJPage.xaml</DependentUpon>
+    <Compile Include="TOD\Pages\UserShifts\EOSPage.xaml.cs">
+      <DependentUpon>EOSPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TOD\Pages\LoginList\LoginListPage.xaml.cs">
       <DependentUpon>LoginListPage.xaml</DependentUpon>
@@ -292,11 +292,11 @@
     <Compile Include="TA\Windows\Exchange\PlazaCreditUpdateExchangeWindow.xaml.cs">
       <DependentUpon>PlazaCreditUpdateExchangeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TOD\Windows\Job\BOJWindow.xaml.cs">
-      <DependentUpon>BOJWindow.xaml</DependentUpon>
+    <Compile Include="TOD\Windows\Job\BOSWindow.xaml.cs">
+      <DependentUpon>BOSWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TOD\Windows\Job\EOJWindow.xaml.cs">
-      <DependentUpon>EOJWindow.xaml</DependentUpon>
+    <Compile Include="TOD\Windows\Job\EOSWindow.xaml.cs">
+      <DependentUpon>EOSWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TA\Windows\Plaza\PlazaReceivedCreditWindow.xaml.cs">
       <DependentUpon>PlazaReceivedCreditWindow.xaml</DependentUpon>
@@ -532,7 +532,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="TOD\Pages\Job\EOJPage.xaml">
+    <Page Include="TOD\Pages\UserShifts\EOSPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -632,11 +632,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TOD\Windows\Job\BOJWindow.xaml">
+    <Page Include="TOD\Windows\Job\BOSWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TOD\Windows\Job\EOJWindow.xaml">
+    <Page Include="TOD\Windows\Job\EOSWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

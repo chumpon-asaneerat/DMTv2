@@ -11,14 +11,14 @@ namespace DMT.TOD.Windows.Job
     /// <summary>
     /// Interaction logic for EOJWindow.xaml
     /// </summary>
-    public partial class EOJWindow : Window
+    public partial class EOSWindow : Window
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public EOJWindow()
+        public EOSWindow()
         {
             InitializeComponent();
         }

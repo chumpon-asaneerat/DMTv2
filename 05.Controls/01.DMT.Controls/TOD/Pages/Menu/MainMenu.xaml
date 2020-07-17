@@ -44,14 +44,14 @@
                        VerticalAlignment="Center"
                        TextAlignment="Center"
                        Text="กะ"/>
-                <Button x:Name="beginJob" 
+                <Button x:Name="beginUserShift" 
                         Grid.Column="0" 
                         Grid.Row="1" Grid.ColumnSpan="2"
                         Margin="0 0 0 0"
 
                         HorizontalContentAlignment="Stretch"
                         VerticalContentAlignment="Stretch"
-                        Click="beginJob_Click">
+                        Click="beginUserShift_Click">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="DarkOrange"/>
