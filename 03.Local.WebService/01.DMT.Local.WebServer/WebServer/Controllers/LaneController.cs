@@ -74,7 +74,7 @@ namespace DMT.Services
         public List<LaneAttendance> GetAttendancesByUserShift([FromBody] Search.Lanes.Attendances.ByUserShift value)
         {
             if (null == value) return new List<LaneAttendance>();
-            return LaneAttendance.Search(value.Shift, value.Plaza, value.RevenueDate);
+            return LaneAttendance.Search(value.Shift, value.PlazaGroup, value.RevenueDate);
         }
 
         [HttpPost]

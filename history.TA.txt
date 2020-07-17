@@ -38,8 +38,14 @@ Update 2020-07-18 #4 (TA)
 Update 2020-07-18 #3 (TA)
 - 
 
+[commited]
 Update 2020-07-18 #2 (TA)
-- 
+- Implements TA/TOD model class #45.
+  - Update LaneController -> GetAllAttendancesByUserShift change parameter Plaza to PlazaGroup.
+  - Update Search (ByUserShift) -> change parameter Plaza to PlazaGroup.
+  - LaneAttendance -> Search change parameter Plaza to PlazaGroup.
+  - Plaza Operation - TSB implements GetTSBPlazaGroups.
+  - RevenueDateSelectionPage update code to show PlazaGroups in combobox (instead of Plazas).
 
 [commited]
 Update 2020-07-18 #1 (TA)

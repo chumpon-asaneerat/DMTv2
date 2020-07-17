@@ -80,6 +80,20 @@ namespace DMT.Services
                 return ret;
             }
 
+            public List<PlazaGroup> GetTSBPlazaGroups(TSB tsb)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<PlazaGroup>>(
+                    RouteConsts.TSB.GetTSBPlazaGroups.Url, tsb);
+                return ret;
+            }
+
+            public List<Lane> GetPlazaGroupLanes(PlazaGroup plazaGroup)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<Lane>>(
+                    RouteConsts.TSB.GetPlazaGroupLanes.Url, plazaGroup);
+                return ret;
+            }
+
             public List<Lane> GetTSBLanes(TSB tsb)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<Lane>>(

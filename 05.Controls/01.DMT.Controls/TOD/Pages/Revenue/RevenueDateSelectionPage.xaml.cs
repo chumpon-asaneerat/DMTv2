@@ -118,32 +118,33 @@ namespace DMT.TOD.Pages.Revenue
 
         #endregion
 
-        private void LoadPlazas()
+        private void LoadPlazaGroups()
         {
             cbPlazas.ItemsSource = null;
 
-            List<Models.Plaza> plazas = new List<Plaza>();
+            var plazaGroups = new List<PlazaGroup>();
             var tsb = ops.TSB.GetCurrent();
             if (null != tsb)
             {
-                plazas = ops.TSB.GetTSBPlazas(tsb);
+                plazaGroups = ops.TSB.GetTSBPlazaGroups(tsb);
             }
 
-            cbPlazas.ItemsSource = plazas;
+            cbPlazas.ItemsSource = plazaGroups;
         }
 
         private void RefreshLanes()
         {
             if (null != _userShift)
             {
-                // get selected plaza
-                var plaza = cbPlazas.SelectedItem as Plaza;
+                // get selected plaza group
+                var plazaGroup = cbPlazas.SelectedItem as PlazaGroup;
 
                 _revDT = _userShift.Begin.Date; // get date part from UserShift.Begin
                 txtRevDate.Text = _revDT.ToThaiDateTimeString("dd/MM/yyyy");
 
                 // get all lanes information.
-                var search = Search.Lanes.Attendances.ByUserShift.Create(_userShift, plaza, DateTime.MinValue);
+                var search = Search.Lanes.Attendances.ByUserShift.Create(
+                    _userShift, plazaGroup, DateTime.MinValue);
                 _laneActivities = ops.Lanes.GetAttendancesByUserShift(search);
                 if (null == _laneActivities || _laneActivities.Count <= 0)
                 {
@@ -154,11 +155,6 @@ namespace DMT.TOD.Pages.Revenue
                 {
                     grid.Setup(_laneActivities);
                 }
-
-                if (null != plaza)
-                {
-                    return;
-                }
             }
             else
             {
@@ -168,7 +164,7 @@ namespace DMT.TOD.Pages.Revenue
 
         public void Setup(User user)
         {
-            LoadPlazas();
+            LoadPlazaGroups();
 
             _user = user;
             if (null != _user)

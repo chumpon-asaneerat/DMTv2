@@ -198,15 +198,15 @@ namespace DMT.Models
                 public class ByUserShift : NSearch<ByUserShift>
                 {
                     public UserShift Shift { get; set; }
-                    public Plaza Plaza { get; set; }
+                    public PlazaGroup PlazaGroup { get; set; }
                     public DateTime RevenueDate { get; set; }
 
-                    public static ByUserShift Create(UserShift shift, Plaza plaza,
+                    public static ByUserShift Create(UserShift shift, PlazaGroup plazaGroup,
                         DateTime revenueDate)
                     {
                         var ret = new ByUserShift();
                         ret.Shift = shift;
-                        ret.Plaza = plaza;
+                        ret.PlazaGroup = plazaGroup;
                         ret.RevenueDate = revenueDate;
                         return ret;
                     }

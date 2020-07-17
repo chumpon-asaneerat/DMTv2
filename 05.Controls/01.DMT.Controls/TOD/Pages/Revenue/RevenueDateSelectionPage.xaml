@@ -139,7 +139,7 @@
                               Width="150"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"
-                              DisplayMemberPath="PlazaNameTH"
+                              DisplayMemberPath="PlazaGroupNameTH"
                               FontSize="18"
                               Foreground="Black"
                               SelectionChanged="cbPlazas_SelectionChanged" />
