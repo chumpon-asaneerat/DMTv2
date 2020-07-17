@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -123,12 +124,13 @@ namespace DMT.Config.Pages
         {
             Plazas = new ObservableCollection<PlazaItem>();
         }
-
+        [ReadOnly(true)]
         public string IsActive 
         {
             get { return (this.Active) ? "[A]" : ""; }
             set { }
         }
+        [Browsable(false)]
         public ObservableCollection<PlazaItem> Plazas { get; set; }
     }
 
@@ -140,6 +142,6 @@ namespace DMT.Config.Pages
         }
         public ObservableCollection<LaneItem> Lanes { get; set; }
     }
-
+    [Browsable(false)]
     public class LaneItem : Lane { }
 }

@@ -41,7 +41,7 @@ namespace DMT
                 public const string Name = "GetCurrent";
                 public const string Url = TSB.Url + @"/" + Name;
             }
-            // NEW!! 2020-07-17
+            // NEW!! 2020-07-17 - Not Implements.
             public static class GetTSBPlazaGroups
             {
                 public const string Name = "GetTSBPlazaGroups";

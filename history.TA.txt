@@ -8,8 +8,10 @@ Update 2020-07-17 #20 (TA)
 Update 2020-07-17 #19 (TA)
 - 
 
+[commited]
 Update 2020-07-17 #18 (TA)
-- 
+- Implements TA/TOD model class #33.
+  - Config App - Add property attibute in TSBViewPage.
 
 [commited]
 Update 2020-07-17 #17 (TA)
