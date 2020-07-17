@@ -41,6 +41,22 @@ namespace DMT
                 public const string Name = "GetCurrent";
                 public const string Url = TSB.Url + @"/" + Name;
             }
+            // NEW!! 2020-07-17
+            public static class GetTSBPlazaGroups
+            {
+                public const string Name = "GetTSBPlazaGroups";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
+            public static class GetPlazaGroupPlazas
+            {
+                public const string Name = "GetPlazaGroupPlazas";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
+            public static class GetPlazaGroupLanes
+            {
+                public const string Name = "GetPlazaGroupLanes";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
         }
 
         public static class User

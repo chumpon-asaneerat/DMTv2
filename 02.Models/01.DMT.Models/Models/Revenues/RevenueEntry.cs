@@ -1795,7 +1795,7 @@ namespace DMT.Models
                 string cmd = string.Empty;
                 cmd += "SELECT RevenueEntry.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, Plaza.Direction ";
+                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
@@ -1833,7 +1833,7 @@ namespace DMT.Models
                 string cmd = string.Empty;
                 cmd += "SELECT RevenueEntry.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, Plaza.Direction ";
+                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";

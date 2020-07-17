@@ -584,7 +584,7 @@ namespace DMT.Models
                 string cmd = string.Empty;
                 cmd += "SELECT Lane.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, Plaza.Direction ";
+                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "  FROM Lane, Plaza, PlazaGroup, TSB ";
                 cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
@@ -623,7 +623,7 @@ namespace DMT.Models
                 string cmd = string.Empty;
                 cmd += "SELECT Lane.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, Plaza.Direction ";
+                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "  FROM Lane, Plaza, PlazaGroup, TSB ";
                 cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
@@ -662,7 +662,7 @@ namespace DMT.Models
                 string cmd = string.Empty;
                 cmd += "SELECT Lane.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, Plaza.Direction ";
+                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "  FROM Lane, Plaza, PlazaGroup, TSB ";
                 cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
@@ -690,7 +690,7 @@ namespace DMT.Models
                 string cmd = string.Empty;
                 cmd += "SELECT Lane.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, Plaza.Direction ";
+                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "  FROM Lane, Plaza, PlazaGroup, TSB ";
                 cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
@@ -730,7 +730,7 @@ namespace DMT.Models
                 string cmd = string.Empty;
                 cmd += "SELECT Lane.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, Plaza.Direction ";
+                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "  FROM Lane, Plaza, PlazaGroup, TSB ";
                 cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";

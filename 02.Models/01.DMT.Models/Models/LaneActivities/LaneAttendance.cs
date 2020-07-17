@@ -932,7 +932,7 @@ namespace DMT.Models
 
                 cmd += "SELECT LaneAttendance.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, Plaza.Direction ";
+                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
@@ -999,7 +999,7 @@ namespace DMT.Models
 
                 cmd += "SELECT LaneAttendance.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, Plaza.Direction ";
+                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
@@ -1037,7 +1037,7 @@ namespace DMT.Models
                 string cmd = string.Empty;
                 cmd += "SELECT LaneAttendance.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, Plaza.Direction ";
+                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
@@ -1065,7 +1065,7 @@ namespace DMT.Models
                 string cmd = string.Empty;
                 cmd += "SELECT LaneAttendance.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, Plaza.Direction ";
+                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
@@ -1095,7 +1095,7 @@ namespace DMT.Models
                 string cmd = string.Empty;
                 cmd += "SELECT LaneAttendance.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, Plaza.Direction ";
+                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";
@@ -1124,7 +1124,7 @@ namespace DMT.Models
                 string cmd = string.Empty;
                 cmd += "SELECT LaneAttendance.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, Plaza.Direction ";
+                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
                 cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
                 cmd += "     , Lane.LaneNo ";
                 cmd += "     , User.FullNameEN, User.FullNameTH ";

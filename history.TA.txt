@@ -11,8 +11,16 @@ Update 2020-07-17 #19 (TA)
 Update 2020-07-17 #18 (TA)
 - 
 
+[commited]
 Update 2020-07-17 #17 (TA)
-- 
+- Implements TA/TOD model class #32.
+  - Fixed bug in queries.
+    - Plaza
+    - Lane
+    - UserShiftRevenue
+    - RevenueEntry
+    - LaneAttendance
+    - LanePayment
 
 [commited]
 Update 2020-07-17 #16 (TA)
