@@ -26,6 +26,24 @@ namespace DMT.Services
         }
 
         [HttpPost]
+        [ActionName(RouteConsts.TSB.GetTSBPlazaGroups.Name)]
+        public List<PlazaGroup> GetTSBPlazaGroups([FromBody] TSB value)
+        {
+            if (null == value) return new List<PlazaGroup>();
+            var results = PlazaGroup.GetTSBPlazaGroups(value);
+            return results;
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.TSB.GetPlazaGroupLanes.Name)]
+        public List<Lane> GetPlazaGroupLanes([FromBody] PlazaGroup value)
+        {
+            if (null == value) return new List<Lane>();
+            var results = Lane.GetPlazaGroupLanes(value);
+            return results;
+        }
+
+        [HttpPost]
         [ActionName(RouteConsts.TSB.GetTSBPlazas.Name)]
         public List<Plaza> GetTSBPlazas([FromBody] TSB value)
         {

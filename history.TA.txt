@@ -41,8 +41,12 @@ Update 2020-07-18 #3 (TA)
 Update 2020-07-18 #2 (TA)
 - 
 
+[commited]
 Update 2020-07-18 #1 (TA)
-- 
+- Implements TA/TOD model class #44.
+  - Rename JobController.cs to UserShiftController.cs
+  - TSBController implements GetTSBPlazaGroups.
+  - TSBController implements GetPlazaGroupLanes.
 
 --------------------------------------------------------------------------------------------
 [commited]
