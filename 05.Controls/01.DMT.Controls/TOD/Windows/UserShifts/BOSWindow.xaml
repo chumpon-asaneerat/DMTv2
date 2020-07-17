@@ -1,10 +1,10 @@
-﻿<Window x:Class="DMT.TOD.Windows.Job.EOSWindow"
+﻿<Window x:Class="DMT.TOD.Windows.UserShifts.BOSWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-       Title="บันทึกเวลาออกจากการปฏิบัติงาน" 
+       Title="บันทึกเวลาเข้าทำการปฏิบัติงาน" 
         Height="460" 
         Width="550"
         ResizeMode="NoResize" 
@@ -46,7 +46,7 @@
                        Foreground="WhiteSmoke"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
-                       Text="บันทึกเวลาออกจากการปฏิบัติงาน"/>
+                       Text="บันทึกเวลาเข้าทำการปฏิบัติงาน"/>
         </Border>
         <TextBlock Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3"
                    FontSize="20" 
@@ -55,7 +55,7 @@
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
                    TextAlignment="Left"
-                   Text="ใช้สำหรับบันทึกเวลาออกจากการปฏิบัติงาน"/>
+                   Text="ใช้สำหรับบันทึกเวลาเข้าทำการปฏิบัติงาน"/>
         <TextBlock Grid.Column="1" Grid.Row="3" 
                    Margin="5"
                    FontSize="20" 
@@ -81,7 +81,7 @@
                    Foreground="WhiteSmoke"
                    HorizontalAlignment="Right"
                    VerticalAlignment="Center"
-                   TextAlignment="Right"
+                   TextAlignment="Center"
                    Text="วันที่"/>
         <TextBox x:Name="txtDate"
                  Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2"
@@ -100,7 +100,7 @@
                    Foreground="WhiteSmoke"
                    HorizontalAlignment="Right"
                    VerticalAlignment="Center"
-                   TextAlignment="Right"
+                   TextAlignment="Center"
                    Text="เวลา"/>
         <TextBox x:Name="txtTime"
                  Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"
@@ -159,20 +159,27 @@
                    VerticalAlignment="Center"
                    TextAlignment="Right"
                    Text="กะ"/>
-        <TextBox x:Name="txtShiftId"
-                 Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="2"
-                 Margin="5"
-                 FontSize="20" 
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Center"
-                 TextAlignment="Center"
-                 Width="220"
-                 Foreground="WhiteSmoke"
-                 Background="RoyalBlue"
-                 Text="1"/>
+        <ComboBox x:Name="cbShift"
+                  Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="2"
+                  Margin="5"
+                  FontSize="20" 
+                  DisplayMemberPath="ShiftNameTH"
+                  SelectedValuePath="ShiftId"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Center"
+                  HorizontalContentAlignment="Center"
+                  VerticalContentAlignment="Center"
+                  Width="220">
+            <!--
+            <ComboBoxItem Content="เช้า"/>
+            <ComboBoxItem Content="บ่าย"/>
+            <ComboBoxItem Content="ดึก"/>
+            -->
+        </ComboBox>
         <DockPanel Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="3"
                    HorizontalAlignment="Stretch"
                    VerticalAlignment="Center" Height="60">
+
             <Button x:Name="cmdCancel"
                             DockPanel.Dock="Left"
                         Foreground="White"

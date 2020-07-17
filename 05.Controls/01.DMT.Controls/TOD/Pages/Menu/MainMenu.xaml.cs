@@ -42,7 +42,7 @@ namespace DMT.TOD.Pages.Menu
             var user = signinWin.User;
 
             // Begin of Job Page
-            var jobWindow = new Windows.Job.BOSWindow();
+            var jobWindow = new Windows.UserShifts.BOSWindow();
             jobWindow.Owner = Application.Current.MainWindow;
             jobWindow.Setup(user);
             if (jobWindow.ShowDialog() == false)

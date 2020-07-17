@@ -57,8 +57,13 @@ Update 2020-07-17 #28 (TA)
 Update 2020-07-17 #27 (TA)
 - 
 
+[commited]
 Update 2020-07-17 #26 (TA)
-- 
+- Implements TA/TOD model class #38.
+  - DMT.Controls
+    - BOSWindow and EOSWindow change namespace from Jobs to UserShift.
+    - Remove EOSPage.
+    - Remove EOSWindow.
 
 [commited]
 Update 2020-07-17 #25 (TA)

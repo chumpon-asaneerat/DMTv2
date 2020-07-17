@@ -11,7 +11,7 @@ using NLib.Reflection;
 
 #endregion
 
-namespace DMT.TOD.Windows.Job
+namespace DMT.TOD.Windows.UserShifts
 {
     /// <summary>
     /// Interaction logic for BOSWindow.xaml
