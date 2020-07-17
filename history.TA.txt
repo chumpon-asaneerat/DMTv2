@@ -17,8 +17,12 @@ Update 2020-07-17 #11 (TA)
 Update 2020-07-17 #10 (TA)
 - 
 
+[commited]
 Update 2020-07-17 #9 (TA)
-- 
+- Implements TA/TOD model class #25.
+  - Update UserShiftRevenue Queries.
+  - Update RevenueEntry Queries.
+  - Update RevenueEntry add property LaneGroups to keep list of lang group name (TH).
 
 [commited]
 Update 2020-07-17 #8 (TA)

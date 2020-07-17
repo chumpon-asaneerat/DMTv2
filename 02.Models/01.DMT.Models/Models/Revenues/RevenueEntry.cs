@@ -36,6 +36,8 @@ namespace DMT.Models
         private string _BeltNo = string.Empty;
 
         private string _Lanes = string.Empty;
+        private string _LaneGroups = string.Empty;
+
         private DateTime _ShiftBegin = DateTime.MinValue;
         private DateTime _ShiftEnd = DateTime.MinValue;
 
@@ -371,6 +373,27 @@ namespace DMT.Models
                     _Lanes = value;
                     // Raise event.
                     this.RaiseChanged("Lanes");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets LaneGroup Lists.
+        /// </summary>
+        [Category("Revenue")]
+        [Description("Gets or sets LaneGroup Lists.")]
+        //[ReadOnly(true)]
+        [MaxLength(100)]
+        [PeropertyMapName("LaneGroups")]
+        public string LaneGroups
+        {
+            get { return _LaneGroups; }
+            set
+            {
+                if (_LaneGroups != value)
+                {
+                    _LaneGroups = value;
+                    // Raise event.
+                    this.RaiseChanged("LaneGroups");
                 }
             }
         }
@@ -1680,8 +1703,6 @@ namespace DMT.Models
                 cmd += "   AND RevenueEntry.PlazaId = Plaza.PlazaId ";
                 cmd += "   AND RevenueEntry.UserId = User.UserId ";
                 cmd += "   AND RevenueEntry.SupervisorId = Sup.UserId ";
-                cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
-                cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
                 cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
                 cmd += "   AND RevenueEntry.RevenueDate >= ? ";
                 cmd += "   AND RevenueEntry.RevenueDate <= ? ";

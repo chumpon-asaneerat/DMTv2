@@ -715,9 +715,10 @@ namespace DMT.Models
                 cmd += "  FROM UserShiftRevenue, TSB, Plaza, Shift, User, UserShift ";
                 cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
                 cmd += "   AND UserShift.ShiftId = Shift.ShiftId ";
+                cmd += "   AND UserShiftRevenue.TSBId = TSB.TSBId ";
+                cmd += "   AND UserShiftRevenue.PlazaId = Plaza.PlazaId ";
                 cmd += "   AND UserShiftRevenue.ShiftId = Shift.ShiftId ";
                 cmd += "   AND UserShiftRevenue.UserId = User.UserId ";
-                cmd += "   AND UserShiftRevenue.TSBId = TSB.TSBId ";
                 cmd += "   AND UserShiftRevenue.UserShiftId = ? ";
                 cmd += "   AND UserShiftRevenue.PlazaId = ? ";
                 var ret = NQuery.Query<FKs>(cmd, shift.UserShiftId,
