@@ -17,8 +17,11 @@ Update 2020-07-18 #11 (TA)
 Update 2020-07-18 #10 (TA)
 - 
 
+[commited]
 Update 2020-07-18 #9 (TA)
-- 
+- Implements TA/TOD model class #51.
+  - Simulator
+    - LaneActivityPage - comment out xaml for GridViewColumn DataTempleate, Triggers.
 
 [commited]
 Update 2020-07-18 #8 (TA)

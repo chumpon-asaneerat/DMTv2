@@ -51,6 +51,7 @@
                         <GridViewColumn Width="300"
                                         Header="ชื่อพนักงาน"
                                         DisplayMemberBinding="{Binding Path=FullNameTH}" />
+                        <!--
                         <GridViewColumn Width="250" Header="User">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
@@ -69,8 +70,6 @@
                                                 CommandParameter="{Binding}" />
                                         <Grid Width="5" />
                                     </StackPanel>
-                                    <!-- Triggers -->
-                                    <!--
                                     <DataTemplate.Triggers>
                                         <DataTrigger Binding="{Binding PositionCode}" Value="QB">
                                             <Setter TargetName="cmdEdit" Property="Foreground" Value="Blue" />
@@ -82,37 +81,6 @@
                                             <Setter TargetName="cmdExchange" Property="Foreground" Value="Red" />
                                         </DataTrigger>
                                     </DataTemplate.Triggers>
-                                    -->
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <!--
-                        <GridViewColumn Width="150"
-                                        Header="จำนวนเงิน"
-                                        DisplayMemberBinding="{Binding Path=BHTTotal}" />
-                        <GridViewColumn Width="150"
-                                        Header="สถานะ"
-                                        DisplayMemberBinding="{Binding Path=Status}" />
-                        <GridViewColumn Width="250" Header="แก้ไข/รับแลก">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Margin="3"
-                                                VerticalAlignment="Center"
-                                                Orientation="Horizontal">
-                                        <Grid Width="5" />
-                                        <Button x:Name="cmdEdit"
-                                                Width="100"
-                                                Content="แก้ไข"
-                                                IsEnabled="{Binding Path=CanEdit}"
-                                                CommandParameter="{Binding}" />
-                                        <Grid Width="5" />
-                                        <Button x:Name="cmdExchange"
-                                                Width="100"
-                                                Content="รับแลก"
-                                                IsEnabled="{Binding Path=CanExchange}"
-                                                CommandParameter="{Binding}" />
-                                        <Grid Width="5" />
-                                    </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
