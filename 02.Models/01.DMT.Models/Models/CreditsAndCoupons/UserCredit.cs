@@ -794,7 +794,7 @@ namespace DMT.Models
                 return inst;
             }
         }
-
+        /*
         public static void Borrow(UserCredit credit, TSBCreditBalance balance)
         {
             lock (sync)
@@ -953,7 +953,7 @@ namespace DMT.Models
                 return results;
             }
         }
-
+        */
         #endregion
     }
 
