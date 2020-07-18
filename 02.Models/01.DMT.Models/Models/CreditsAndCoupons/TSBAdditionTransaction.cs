@@ -44,6 +44,11 @@ namespace DMT.Models
         private int _TransactionId = 0;
         private DateTime _TransactionDate = DateTime.MinValue;
         private TransactionTypes _TransactionType = TransactionTypes.Init;
+
+        private string _TSBId = string.Empty;
+        private string _TSBNameEN = string.Empty;
+        private string _TSBNameTH = string.Empty;
+
         // Additional Borrow
         private decimal _AdditionalBHTTotal = decimal.Zero;
 

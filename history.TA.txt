@@ -11,8 +11,10 @@ Update 2020-07-19 #18 (TA)
 Update 2020-07-19 #17 (TA)
 - 
 
+[commited]
 Update 2020-07-19 #16 (TA)
-- 
+- Implements TA/TOD model class #68.
+  - TSBAdditionTransaction re-implements #2.
 
 [commited]
 Update 2020-07-19 #15 (TA)
