@@ -18,10 +18,38 @@ using System.ComponentModel;
 
 namespace DMT.Models
 {
-    #region TSBCreditBalance
+    #region TSBCreditBalance (For Query only)
 
-    public class TSBCreditBalance
+    /// <summary>
+    /// The TSBCreditBalance Data Model class.
+    /// </summary>
+    //[Table("TSBCreditBalance")]
+    public class TSBCreditBalance : NTable<TSBCreditBalance>
     {
+        #region Internal Variables
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public TSBCreditBalance() : base() { }
+
+        #endregion
+
+        #region Public Properties
+
+        #endregion
+
+        #region Internal Class
+
+        #endregion
+
+        #region Static Methods
+
+        #endregion
     }
 
     #endregion

@@ -23,7 +23,7 @@ namespace DMT.Models
     /// <summary>
     /// The TSBCreditBalanceTransaction Data Model class.
     /// </summary>
-    //[Table("TSBBalance")]
+    //[Table("TSBCreditBalanceTransaction")]
     public class TSBCreditBalanceTransaction : NTable<TSBCreditBalanceTransaction>
     {
         #region Enum

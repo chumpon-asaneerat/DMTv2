@@ -96,6 +96,7 @@
     <Compile Include="ExtensionMethods\ModelExtensionMethods.cs" />
     <Compile Include="Models\Configuration\Config.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSBCouponBalance.cs" />
+    <Compile Include="Models\CreditsAndCoupons\TSBCouponBalanceTransaction.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSBCreditBalance.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSBCreditBalanceTransaction.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSBCreditTransaction.cs" />
