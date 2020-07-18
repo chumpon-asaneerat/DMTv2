@@ -886,6 +886,110 @@ namespace DMT.Models
 
             #endregion
 
+            #region Coin/Bill (runtime)
+
+            /// <summary>
+            /// Gets or sets number of .25 baht coin.
+            /// </summary>
+            [PeropertyMapName("ST25")]
+            public override int ST25
+            {
+                get { return base.ST25; }
+                set { base.ST25 = value; }
+            }
+            /// <summary>
+            /// Gets or sets number of .50 baht coin.
+            /// </summary>
+            [PeropertyMapName("ST50")]
+            public override int ST50
+            {
+                get { return base.ST50; }
+                set { base.ST50 = value; }
+            }
+            /// <summary>
+            /// Gets or sets number of 1 baht coin.
+            /// </summary>
+            [PeropertyMapName("BHT1")]
+            public override int BHT1
+            {
+                get { return base.BHT1; }
+                set { base.BHT1 = value; }
+            }
+            /// <summary>
+            /// Gets or sets number of 2 baht coin.
+            /// </summary>
+            [PeropertyMapName("BHT2")]
+            public override int BHT2
+            {
+                get { return base.BHT2; }
+                set { base.BHT2 = value; }
+            }
+            /// <summary>
+            /// Gets or sets number of 5 baht coin.
+            /// </summary>
+            [PeropertyMapName("BHT5")]
+            public override int BHT5
+            {
+                get { return base.BHT5; }
+                set { base.BHT5 = value; }
+            }
+            /// <summary>
+            /// Gets or sets number of 10 baht coin.
+            /// </summary>
+            [PeropertyMapName("BHT10")]
+            public override int BHT10
+            {
+                get { return base.BHT10; }
+                set { base.BHT10 = value; }
+            }
+            /// <summary>
+            /// Gets or sets number of 20 baht bill.
+            /// </summary>
+            [PeropertyMapName("BHT20")]
+            public override int BHT20
+            {
+                get { return base.BHT20; }
+                set { base.BHT20 = value; }
+            }
+            /// <summary>
+            /// Gets or sets number of 50 baht bill.
+            /// </summary>
+            [PeropertyMapName("BHT50")]
+            public override int BHT50
+            {
+                get { return base.BHT50; }
+                set { base.BHT50 = value; }
+            }
+            /// <summary>
+            /// Gets or sets number of 100 baht bill.
+            /// </summary>
+            [PeropertyMapName("BHT100")]
+            public override int BHT100
+            {
+                get { return base.BHT100; }
+                set { base.BHT100 = value; }
+            }
+            /// <summary>
+            /// Gets or sets number of 500 baht bill.
+            /// </summary>
+            [PeropertyMapName("BHT500")]
+            public override int BHT500
+            {
+                get { return base.BHT500; }
+                set { base.BHT500 = value; }
+            }
+            /// <summary>
+            /// Gets or sets number of 1000 baht bill.
+            /// </summary>
+            [PeropertyMapName("BHT1000")]
+            public override int BHT1000
+            {
+                get { return base.BHT1000; }
+                set { base.BHT1000 = value; }
+            }
+
+            #endregion
+
             #region Public Methods
 
             public TSBCreditBalance ToTSBCreditBalance()

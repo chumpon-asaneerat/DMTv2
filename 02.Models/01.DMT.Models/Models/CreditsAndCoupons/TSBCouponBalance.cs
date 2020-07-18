@@ -62,6 +62,12 @@ namespace DMT.Models
 
         #region Private Methods
 
+        private void CalcTSBCouponTotal()
+        {
+            _TSB_CouponTotal = _TSB_CouponBHT35 + _TSB_CouponBHT80;
+            this.RaiseChanged("TSB_CouponTotal");
+        }
+
         private void CalcCouponTotal()
         {
             _CouponTotal = _CouponBHT35 + _CouponBHT80;
@@ -174,15 +180,97 @@ namespace DMT.Models
 
         #endregion
 
-        #region Coupon 
+        #region Coupon (TSB)
 
         /// <summary>
         /// Gets or sets number of 35 BHT coupon.
         /// </summary>
         [Category("Coupon")]
         [Description("Gets or sets number of 35 BHT coupon.")]
+        [PeropertyMapName("TSB_CouponBHT35")]
+        public int TSB_CouponBHT35
+        {
+            get { return _TSB_CouponBHT35; }
+            set
+            {
+                if (_TSB_CouponBHT35 != value)
+                {
+                    _TSB_CouponBHT35 = value;
+                    CalcTSBCouponTotal();
+                    // Raise event.
+                    this.RaiseChanged("TSB_CouponBHT35");
+
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets number of 80 BHT coupon.
+        /// </summary>
+        [Category("Coupon")]
+        [Description("Gets or sets number of 80 BHT coupon.")]
+        [PeropertyMapName("CouponBHT80")]
+        public int TSB_CouponBHT80
+        {
+            get { return _TSB_CouponBHT80; }
+            set
+            {
+                if (_TSB_CouponBHT80 != value)
+                {
+                    _TSB_CouponBHT80 = value;
+                    CalcTSBCouponTotal();
+                    // Raise event.
+                    this.RaiseChanged("CouponBHT80");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets calculate coupon total (book count).
+        /// </summary>
+        [Category("Coupon")]
+        [Description("Gets calculate coupon total (book count).")]
+        [ReadOnly(true)]
+        [JsonIgnore]
+        [Ignore]
+        [PeropertyMapName("CouponTotal")]
+        public decimal TSB_CouponTotal
+        {
+            get { return _TSB_CouponTotal; }
+            set { }
+        }
+        /// <summary>
+        /// Gets or sets total value in baht.
+        /// </summary>
+        [Category("Coupon")]
+        [Description("Gets or sets total value in baht.")]
+        [ReadOnly(true)]
+        [PeropertyMapName("TSB_CouponBHTTotal")]
+        public decimal TSB_CouponBHTTotal
+        {
+            get { return _TSB_CouponBHTTotal; }
+            set
+            {
+                if (_TSB_CouponBHTTotal != value)
+                {
+                    _TSB_CouponBHTTotal = value;
+                    // Raise event.
+                    this.RaiseChanged("TSB_CouponBHTTotal");
+                }
+            }
+        }
+
+        #endregion
+
+        #region Coupon (runtime)
+
+        /// <summary>
+        /// Gets or sets number of 35 BHT coupon.
+        /// </summary>
+        [Category("Coupon")]
+        [Description("Gets or sets number of 35 BHT coupon.")]
+        [JsonIgnore]
+        [Ignore]
         [PeropertyMapName("CouponBHT35")]
-        public int CouponBHT35
+        public virtual int CouponBHT35
         {
             get { return _CouponBHT35; }
             set
@@ -202,8 +290,10 @@ namespace DMT.Models
         /// </summary>
         [Category("Coupon")]
         [Description("Gets or sets number of 80 BHT coupon.")]
+        [JsonIgnore]
+        [Ignore]
         [PeropertyMapName("CouponBHT80")]
-        public int CouponBHT80
+        public virtual int CouponBHT80
         {
             get { return _CouponBHT80; }
             set
@@ -237,8 +327,10 @@ namespace DMT.Models
         [Category("Coupon")]
         [Description("Gets or sets total value in baht.")]
         [ReadOnly(true)]
+        [JsonIgnore]
+        [Ignore]
         [PeropertyMapName("CouponBHTTotal")]
-        public decimal CouponBHTTotal
+        public virtual decimal CouponBHTTotal
         {
             get { return _CouponBHTTotal; }
             set
@@ -327,6 +419,38 @@ namespace DMT.Models
             {
                 get { return base.TSBNameTH; }
                 set { base.TSBNameTH = value; }
+            }
+
+            #endregion
+
+            #region Coupon (runtime)
+
+            /// <summary>
+            /// Gets or sets number of 35 BHT coupon.
+            /// </summary>
+            [PeropertyMapName("CouponBHT35")]
+            public override int CouponBHT35
+            {
+                get { return base.CouponBHT35; }
+                set { base.CouponBHT35 = value; }
+            }
+            /// <summary>
+            /// Gets or sets number of 80 BHT coupon.
+            /// </summary>
+            [PeropertyMapName("CouponBHT80")]
+            public override int CouponBHT80
+            {
+                get { return base.CouponBHT80; }
+                set { base.CouponBHT80 = value; }
+            }
+            /// <summary>
+            /// Gets or sets total value in baht.
+            /// </summary>
+            [PeropertyMapName("CouponBHTTotal")]
+            public override decimal CouponBHTTotal
+            {
+                get { return base.CouponBHTTotal; }
+                set { base.CouponBHTTotal = value; }
             }
 
             #endregion
