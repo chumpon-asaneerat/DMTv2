@@ -28,6 +28,10 @@ namespace DMT.Models
     {
         #region Internal Variables
 
+        private string _TSBId = string.Empty;
+        private string _TSBNameEN = string.Empty;
+        private string _TSBNameTH = string.Empty;
+
         #endregion
 
         #region Constructor

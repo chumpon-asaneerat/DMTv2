@@ -17,8 +17,11 @@ Update 2020-07-19 #16 (TA)
 Update 2020-07-19 #15 (TA)
 - 
 
+[commited]
 Update 2020-07-19 #14 (TA)
-- 
+- Implements TA/TOD model class #67.
+  - Rename TSBCreditBalanceTransaction to TSBCreditTransaction
+  - Rename TSBCouponBalanceTransaction to TSBCouponTransaction
 
 [commited]
 Update 2020-07-19 #13 (TA)

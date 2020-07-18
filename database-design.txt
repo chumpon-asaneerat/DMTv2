@@ -4,7 +4,7 @@ TABLES
 
 - TSBCreditBalance
 
-- TSBCreditBalanceTransaction
+- TSBCreditTransaction
   - TransactionId [PK] (int auto) - OK
   - TransactionDate (datetime) - OK
   - TransactionType (int) - OK (1 - init, 2 - return, 3 - received) - OK
@@ -31,7 +31,7 @@ TABLES
 - TSBCouponBalance
 
 
-- TSBCouponBalanceTransaction - OK
+- TSBCouponTransaction - OK
   - TransactionId [PK] (int auto) - OK
   - TransactionDate (datetime) - OK
   - TransactionType (int) - OK (1 - init, 2 - return, 3 - received) - OK

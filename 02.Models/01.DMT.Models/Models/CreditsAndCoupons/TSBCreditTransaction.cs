@@ -23,13 +23,24 @@ namespace DMT.Models
     /// <summary>
     /// The TSBCreditTransaction Data Model class.
     /// </summary>
-    //[Table("TSBCredit")]
+    //[Table("TSBCreditTransaction")]
     public class TSBCreditTransaction : NTable<TSBCreditTransaction>
     {
+        #region Enum
+        
+        public enum TransactionTypes
+        {
+            Init = 0,
+            Exchange = 1
+        }
+
+        #endregion
+
         #region Internal Variables
 
-        private Guid _PKId = Guid.NewGuid();
+        private int _TransactionId = 0;
         private DateTime _TransactionDate = DateTime.MinValue;
+        private TransactionTypes _TransactionType = TransactionTypes.Init;
 
         private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
@@ -48,7 +59,13 @@ namespace DMT.Models
         private int _BHT500 = 0;
         private int _BHT1000 = 0;
         private decimal _BHTTotal = decimal.Zero;
-        private string _Remark = "";
+
+        // Additional Borrow
+        private decimal _AdditionalBHTTotal = decimal.Zero;
+        // Collector Borrow
+        private decimal _UserBHTTotal = decimal.Zero;
+        // TSB Total.
+        private decimal _TSBBHTTotal = decimal.Zero;
 
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
@@ -82,8 +99,10 @@ namespace DMT.Models
             total += _BHT1000 * 1000;
 
             _BHTTotal = total;
+
+            _TSBBHTTotal = total + _AdditionalBHTTotal + _UserBHTTotal;
             // Raise event.
-            this.RaiseChanged("BHTTotal");
+            this.RaiseChanged("TSB_BHTTotal");
         }
 
         #endregion
@@ -93,25 +112,25 @@ namespace DMT.Models
         #region Common
 
         /// <summary>
-        /// Gets or sets PKId.
+        /// Gets or sets TransactionId
         /// </summary>
         [Category("Common")]
-        [Description("Gets or sets PKId.")]
+        [Description(" Gets or sets TransactionId")]
         [ReadOnly(true)]
-        [PrimaryKey]
-        [PeropertyMapName("PKId")]
-        public Guid PKId
+        [PrimaryKey, AutoIncrement]
+        [PeropertyMapName("TransactionId")]
+        public int TransactionId
         {
             get
             {
-                return _PKId;
+                return _TransactionId;
             }
             set
             {
-                if (_PKId != value)
+                if (_TransactionId != value)
                 {
-                    _PKId = value;
-                    this.RaiseChanged("PKId");
+                    _TransactionId = value;
+                    this.RaiseChanged("TransactionId");
                 }
             }
         }
@@ -119,21 +138,21 @@ namespace DMT.Models
         /// Gets or sets Transaction Date.
         /// </summary>
         [Category("Common")]
-        [Description("Gets or sets Transaction Date.")]
+        [Description(" Gets or sets Transaction Date")]
         [ReadOnly(true)]
         [PeropertyMapName("TransactionDate")]
         public DateTime TransactionDate
         {
-            get { return _TransactionDate; }
+            get
+            {
+                return _TransactionDate;
+            }
             set
             {
                 if (_TransactionDate != value)
                 {
                     _TransactionDate = value;
-                    // Raise event.
                     this.RaiseChanged("TransactionDate");
-                    this.RaiseChanged("TransactionDateString");
-                    this.RaiseChanged("TransactionDateTimeString");
                 }
             }
         }
@@ -155,10 +174,27 @@ namespace DMT.Models
             set { }
         }
         /// <summary>
-        /// Gets Transaction DateTime String.
+        /// Gets Transaction Time String.
         /// </summary>
         [Category("Common")]
-        [Description("Gets Transaction DateTime String.")]
+        [Description("Gets Transaction Time String.")]
+        [ReadOnly(true)]
+        [JsonIgnore]
+        [Ignore]
+        public string TransactionTimeString
+        {
+            get
+            {
+                var ret = (this.TransactionDate == DateTime.MinValue) ? "" : this.TransactionDate.ToThaiTimeString();
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets Transaction Date Time String.
+        /// </summary>
+        [Category("Common")]
+        [Description("Gets Transaction Date Time String.")]
         [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
@@ -170,6 +206,24 @@ namespace DMT.Models
                 return ret;
             }
             set { }
+        }
+        /// <summary>
+        /// Gets or sets Transaction Type.
+        /// </summary>
+        [Category("Common")]
+        [Description("Gets or sets Transaction Type.")]
+        [PeropertyMapName("TransactionType")]
+        public TransactionTypes TransactionType
+        {
+            get { return _TransactionType; }
+            set
+            {
+                if (_TransactionType != value)
+                {
+                    _TransactionType = value;
+                    this.RaiseChanged("TransactionType");
+                }
+            }
         }
 
         #endregion
@@ -476,31 +530,78 @@ namespace DMT.Models
         [Category("Coin/Bill")]
         [Description("Gets or sets total value in baht.")]
         [ReadOnly(true)]
+        [Ignore]
+        [JsonIgnore]
         [PeropertyMapName("BHTTotal")]
         public decimal BHTTotal
         {
             get { return _BHTTotal; }
             set { }
         }
+
+        #endregion
+
+        #region Additional/User Borrow and TSB BHT Total
+
         /// <summary>
-        /// Gets or sets  Remark.
+        /// Gets or sets additional borrow in baht.
         /// </summary>
-        [Category("Remark")]
-        [Description("Gets or sets  Remark.")]
-        [MaxLength(255)]
-        [PeropertyMapName("Remark")]
-        public string Remark
+        [Category("Borrow")]
+        [Description("Gets or sets additional borrow in baht.")]
+        [PeropertyMapName("AdditionalBHTTotal")]
+        public virtual decimal AdditionalBHTTotal
         {
-            get { return _Remark; }
+            get { return _AdditionalBHTTotal; }
             set
             {
-                if (_Remark != value)
+                if (_AdditionalBHTTotal != value)
                 {
-                    _Remark = value;
+                    _AdditionalBHTTotal = value;
+                    CalcTotal();
                     // Raise event.
-                    this.RaiseChanged("Remark");
+                    this.RaiseChanged("AdditionalBHTTotal");
                 }
             }
+        }
+        /// <summary>
+        /// Gets or sets all user borrow in baht.
+        /// </summary>
+        [Category("Borrow")]
+        [Description("Gets or sets all user borrow in baht.")]
+        [ReadOnly(true)]
+        [PeropertyMapName("UserBHTTotal")]
+        public virtual decimal UserBHTTotal
+        {
+            get { return _UserBHTTotal; }
+            set
+            {
+                if (_UserBHTTotal != value)
+                {
+                    _UserBHTTotal = value;
+                    CalcTotal();
+                    // Raise event.
+                    this.RaiseChanged("UserBHTTotal");
+                }
+            }
+        }
+
+        #endregion
+
+        #region TSB BHT Total
+
+        /// <summary>
+        /// Gets or sets TSB Total (From total calc coin/bill + additional + user borrow).
+        /// </summary>
+        [Category("Summary")]
+        [Description("Gets or sets TSB Total (From total calc coin/bill + additional + user borrow).")]
+        [ReadOnly(true)]
+        [Ignore]
+        [JsonIgnore]
+        [PeropertyMapName("TSBBHTTotal")]
+        public virtual decimal TSBBHTTotal
+        {
+            get { return _TSBBHTTotal; }
+            set{ }
         }
 
         #endregion
@@ -597,6 +698,51 @@ namespace DMT.Models
         #endregion
 
         #region Static Methods
+
+        /// <summary>
+        /// Gets Active TSB Balance.
+        /// </summary>
+        /// <returns>Returns Current Active TSB balance transaction. If not found returns null.</returns>
+        public static TSBCreditTransaction GetCurrent()
+        {
+            lock (sync)
+            { 
+                var tsb = TSB.GetCurrent();
+                return GetCurrent(tsb);
+            }
+        }
+        /// <summary>
+        /// Gets TSB Balance.
+        /// </summary>
+        /// <param name="tsb">The target TSB to get balance.</param>
+        /// <returns>Returns TSB balance transaction. If TSB not found returns null.</returns>
+        public static TSBCreditTransaction GetCurrent(TSB tsb)
+        {
+            if (null == tsb) return null;
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT TSBCreditTransaction.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "  FROM TSBCreditTransaction, TSB ";
+                cmd += " WHERE TSBCreditTransaction.TSBId = TSB.TSBId ";
+                cmd += "   AND TSBCreditTransaction.TSBId = ? ";
+
+                var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
+                if (null == ret)
+                {
+                    TSBCreditTransaction inst = Create();
+                    // assigned TSB info.
+                    tsb.AssignTo(inst);
+                    Save(inst);
+                    return inst;
+                }
+                else
+                {
+                    return ret.ToTSBCreditTransaction();
+                }
+            }
+        }
 
         #endregion
     }

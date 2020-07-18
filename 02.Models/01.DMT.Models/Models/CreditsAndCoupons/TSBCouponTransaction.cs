@@ -18,16 +18,16 @@ using System.ComponentModel;
 
 namespace DMT.Models
 {
-    #region TSBCreditBalanceTransaction
+    #region TSBCouponTransaction
 
     /// <summary>
-    /// The TSBCreditBalanceTransaction Data Model class.
+    /// The TSBCouponTransaction Data Model class.
     /// </summary>
-    //[Table("TSBCreditBalanceTransaction")]
-    public class TSBCreditBalanceTransaction : NTable<TSBCreditBalanceTransaction>
+    //[Table("TSBCouponTransaction")]
+    public class TSBCouponTransaction : NTable<TSBCouponTransaction>
     {
         #region Enum
-        
+
         public enum TransactionTypes
         {
             Init = 0,
@@ -46,26 +46,16 @@ namespace DMT.Models
         private string _TSBNameEN = string.Empty;
         private string _TSBNameTH = string.Empty;
 
-        // Coin/Bill
-        private int _ST25 = 0;
-        private int _ST50 = 0;
-        private int _BHT1 = 0;
-        private int _BHT2 = 0;
-        private int _BHT5 = 0;
-        private int _BHT10 = 0;
-        private int _BHT20 = 0;
-        private int _BHT50 = 0;
-        private int _BHT100 = 0;
-        private int _BHT500 = 0;
-        private int _BHT1000 = 0;
-        private decimal _BHTTotal = decimal.Zero;
+        // Coupon 
+        private decimal _CouponBHT35Factor = 665;
+        private decimal _CouponBHT80Factor = 1520;
+        private int _CouponBHT35 = 0;
+        private int _CouponBHT80 = 0;
+        private decimal _CouponBHT35Total = decimal.Zero;
+        private decimal _CouponBHT80Total = decimal.Zero;
 
-        // Additional Borrow
-        private decimal _AdditionalBHTTotal = decimal.Zero;
-        // Collector Borrow
-        private decimal _UserBHTTotal = decimal.Zero;
-        // TSB Total.
-        private decimal _TSBBHTTotal = decimal.Zero;
+        private int _CouponTotal = 0;
+        private decimal _CouponBHTTotal = decimal.Zero;
 
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
@@ -77,32 +67,28 @@ namespace DMT.Models
         /// <summary>
         /// Constructor.
         /// </summary>
-        public TSBCreditBalanceTransaction() : base() { }
+        public TSBCouponTransaction() : base() { }
 
         #endregion
 
         #region Private Methods
 
-        private void CalcTotal()
+        private void CalcCouponTotal()
         {
+            _CouponBHT35Total = Convert.ToDecimal(_CouponBHT35 * _CouponBHT35Factor);
+            _CouponBHT80Total = Convert.ToDecimal(_CouponBHT80 * _CouponBHT80Factor);
+            _CouponTotal = _CouponBHT35 + _CouponBHT80;
             decimal total = 0;
-            total += Convert.ToDecimal(_ST25 * (decimal).25);
-            total += Convert.ToDecimal(_ST50 * (decimal).50);
-            total += _BHT1 * 1;
-            total += _BHT2 * 2;
-            total += _BHT5 * 5;
-            total += _BHT10 * 10;
-            total += _BHT20 * 20;
-            total += _BHT50 * 50;
-            total += _BHT100 * 100;
-            total += _BHT500 * 500;
-            total += _BHT1000 * 1000;
+            total += _CouponBHT35Total;
+            total += _CouponBHT80Total;
+            _CouponBHTTotal = total;
 
-            _BHTTotal = total;
-
-            _TSBBHTTotal = total + _AdditionalBHTTotal + _UserBHTTotal;
             // Raise event.
-            this.RaiseChanged("TSB_BHTTotal");
+            this.RaiseChanged("CouponBHT35Total");
+            this.RaiseChanged("CouponBHT80Total");
+            this.RaiseChanged("CouponTotal");
+            this.RaiseChanged("CouponBHTTotal");
+
         }
 
         #endregion
@@ -302,306 +288,113 @@ namespace DMT.Models
 
         #endregion
 
-        #region Coin/Bill
+        #region Coupon
 
         /// <summary>
-        /// Gets or sets number of .25 baht coin.
+        /// Gets or sets number of 35 BHT coupon factor.
         /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of .25 baht coin.")]
-        [PeropertyMapName("ST25")]
-        public int ST25
+        [Category("Coupon")]
+        [Description("Gets or sets number of 35 BHT coupon factor.")]
+        [PeropertyMapName("CouponBHT35Factor")]
+        public decimal CouponBHT35Factor
         {
-            get { return _ST25; }
+            get { return _CouponBHT35Factor; }
             set
             {
-                if (_ST25 != value)
+                if (_CouponBHT35Factor != value)
                 {
-                    _ST25 = value;
-                    CalcTotal();
+                    _CouponBHT35Factor = value;
+                    CalcCouponTotal();
                     // Raise event.
-                    this.RaiseChanged("ST25");
+                    this.RaiseChanged("CouponBHT35Factor");
                 }
             }
         }
         /// <summary>
-        /// Gets or sets number of .50 baht coin.
+        /// Gets or sets number of 80 BHT coupon factor.
         /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of .50 baht coin.")]
-        [PeropertyMapName("ST50")]
-        public int ST50
+        [Category("Coupon")]
+        [Description("Gets or sets number of 80 BHT coupon factor.")]
+        [PeropertyMapName("CouponBHT80Factor")]
+        public decimal CouponBHT80Factor
         {
-            get { return _ST50; }
+            get { return _CouponBHT80Factor; }
             set
             {
-                if (_ST50 != value)
+                if (_CouponBHT80Factor != value)
                 {
-                    _ST50 = value;
-                    CalcTotal();
+                    _CouponBHT80Factor = value;
+                    CalcCouponTotal();
                     // Raise event.
-                    this.RaiseChanged("ST50");
+                    this.RaiseChanged("CouponBHT80Factor");
                 }
             }
         }
         /// <summary>
-        /// Gets or sets number of 1 baht coin.
+        /// Gets or sets number of 35 BHT coupon.
         /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of 1 baht coin.")]
-        [PeropertyMapName("BHT1")]
-        public int BHT1
+        [Category("Coupon")]
+        [Description("Gets or sets number of 35 BHT coupon.")]
+        [PeropertyMapName("CouponBHT35")]
+        public virtual int CouponBHT35
         {
-            get { return _BHT1; }
+            get { return _CouponBHT35; }
             set
             {
-                if (_BHT1 != value)
+                if (_CouponBHT35 != value)
                 {
-                    _BHT1 = value;
-                    CalcTotal();
+                    _CouponBHT35 = value;
+                    CalcCouponTotal();
                     // Raise event.
-                    this.RaiseChanged("BHT1");
+                    this.RaiseChanged("CouponBHT35");
+
                 }
             }
         }
         /// <summary>
-        /// Gets or sets number of 2 baht coin.
+        /// Gets or sets number of 80 BHT coupon.
         /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of 2 baht coin.")]
-        [PeropertyMapName("BHT2")]
-        public int BHT2
+        [Category("Coupon")]
+        [Description("Gets or sets number of 80 BHT coupon.")]
+        [PeropertyMapName("CouponBHT80")]
+        public virtual int CouponBHT80
         {
-            get { return _BHT2; }
+            get { return _CouponBHT80; }
             set
             {
-                if (_BHT2 != value)
+                if (_CouponBHT80 != value)
                 {
-                    _BHT2 = value;
-                    CalcTotal();
+                    _CouponBHT80 = value;
+                    CalcCouponTotal();
                     // Raise event.
-                    this.RaiseChanged("BHT2");
+                    this.RaiseChanged("CouponBHT80");
                 }
             }
         }
         /// <summary>
-        /// Gets or sets number of 5 baht coin.
+        /// Gets calculate coupon total (book count).
         /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of 5 baht coin.")]
-        [PeropertyMapName("BHT5")]
-        public int BHT5
+        [Category("Coupon")]
+        [Description("Gets calculate coupon total (book count).")]
+        [PeropertyMapName("CouponTotal")]
+        public int CouponTotal
         {
-            get { return _BHT5; }
-            set
-            {
-                if (_BHT5 != value)
-                {
-                    _BHT5 = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("BHT5");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets number of 10 baht coin.
-        /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of 10 baht coin.")]
-        [PeropertyMapName("BHT10")]
-        public int BHT10
-        {
-            get { return _BHT10; }
-            set
-            {
-                if (_BHT10 != value)
-                {
-                    _BHT10 = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("BHT10");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets number of 20 baht bill.
-        /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of 20 baht bill.")]
-        [PeropertyMapName("BHT20")]
-        public int BHT20
-        {
-            get { return _BHT20; }
-            set
-            {
-                if (_BHT20 != value)
-                {
-                    _BHT20 = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("BHT20");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets number of 50 baht bill.
-        /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of 50 baht bill.")]
-        [PeropertyMapName("BHT50")]
-        public int BHT50
-        {
-            get { return _BHT50; }
-            set
-            {
-                if (_BHT50 != value)
-                {
-                    _BHT50 = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("BHT50");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets number of 100 baht bill.
-        /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of 100 baht bill.")]
-        [PeropertyMapName("BHT100")]
-        public int BHT100
-        {
-            get { return _BHT100; }
-            set
-            {
-                if (_BHT100 != value)
-                {
-                    _BHT100 = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("BHT100");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets number of 500 baht bill.
-        /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of 500 baht bill.")]
-        [PeropertyMapName("BHT500")]
-        public int BHT500
-        {
-            get { return _BHT500; }
-            set
-            {
-                if (_BHT500 != value)
-                {
-                    _BHT500 = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("BHT500");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets number of 1000 baht bill.
-        /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of 1000 baht bill.")]
-        [PeropertyMapName("BHT1000")]
-        public int BHT1000
-        {
-            get { return _BHT1000; }
-            set
-            {
-                if (_BHT1000 != value)
-                {
-                    _BHT1000 = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("BHT1000");
-                }
-            }
+            get { return _CouponTotal; }
+            set { }
         }
         /// <summary>
         /// Gets or sets total value in baht.
         /// </summary>
-        [Category("Coin/Bill")]
+        [Category("Coupon")]
         [Description("Gets or sets total value in baht.")]
         [ReadOnly(true)]
-        [Ignore]
         [JsonIgnore]
-        [PeropertyMapName("BHTTotal")]
-        public decimal BHTTotal
+        [Ignore]
+        [PeropertyMapName("CouponBHTTotal")]
+        public decimal CouponBHTTotal
         {
-            get { return _BHTTotal; }
+            get { return _CouponBHTTotal; }
             set { }
-        }
-
-        #endregion
-
-        #region Additional/User Borrow and TSB BHT Total
-
-        /// <summary>
-        /// Gets or sets additional borrow in baht.
-        /// </summary>
-        [Category("Borrow")]
-        [Description("Gets or sets additional borrow in baht.")]
-        [PeropertyMapName("AdditionalBHTTotal")]
-        public virtual decimal AdditionalBHTTotal
-        {
-            get { return _AdditionalBHTTotal; }
-            set
-            {
-                if (_AdditionalBHTTotal != value)
-                {
-                    _AdditionalBHTTotal = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("AdditionalBHTTotal");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets all user borrow in baht.
-        /// </summary>
-        [Category("Borrow")]
-        [Description("Gets or sets all user borrow in baht.")]
-        [ReadOnly(true)]
-        [PeropertyMapName("UserBHTTotal")]
-        public virtual decimal UserBHTTotal
-        {
-            get { return _UserBHTTotal; }
-            set
-            {
-                if (_UserBHTTotal != value)
-                {
-                    _UserBHTTotal = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("UserBHTTotal");
-                }
-            }
-        }
-
-        #endregion
-
-        #region TSB BHT Total
-
-        /// <summary>
-        /// Gets or sets TSB Total (From total calc coin/bill + additional + user borrow).
-        /// </summary>
-        [Category("Summary")]
-        [Description("Gets or sets TSB Total (From total calc coin/bill + additional + user borrow).")]
-        [ReadOnly(true)]
-        [Ignore]
-        [JsonIgnore]
-        [PeropertyMapName("TSBBHTTotal")]
-        public virtual decimal TSBBHTTotal
-        {
-            get { return _TSBBHTTotal; }
-            set{ }
         }
 
         #endregion
@@ -656,7 +449,7 @@ namespace DMT.Models
 
         #region Internal Class
 
-        public class FKs : TSBCreditBalanceTransaction
+        public class FKs : TSBCouponTransaction
         {
             #region TSB
 
@@ -685,9 +478,9 @@ namespace DMT.Models
 
             #region Public Methods
 
-            public TSBCreditBalanceTransaction ToTSBCreditBalanceTransaction()
+            public TSBCouponTransaction ToTSBCouponTransaction()
             {
-                TSBCreditBalanceTransaction inst = new TSBCreditBalanceTransaction();
+                TSBCouponTransaction inst = new TSBCouponTransaction();
                 this.AssignTo(inst); // set all properties to new instance.
                 return inst;
             }
@@ -700,38 +493,40 @@ namespace DMT.Models
         #region Static Methods
 
         /// <summary>
-        /// Gets Active TSB Balance.
+        /// Gets Active TSB Coupon Balance.
         /// </summary>
-        /// <returns>Returns Current Active TSB balance transaction. If not found returns null.</returns>
-        public static TSBCreditBalanceTransaction GetCurrent()
+        /// <returns>
+        /// Returns Current Active TSB Coupon balance. If not found returns null.
+        /// </returns>
+        public static TSBCouponTransaction GetCurrent()
         {
             lock (sync)
-            { 
+            {
                 var tsb = TSB.GetCurrent();
                 return GetCurrent(tsb);
             }
         }
         /// <summary>
-        /// Gets TSB Balance.
+        /// Gets TSB Coupon Balance.
         /// </summary>
         /// <param name="tsb">The target TSB to get balance.</param>
-        /// <returns>Returns TSB balance transaction. If TSB not found returns null.</returns>
-        public static TSBCreditBalanceTransaction GetCurrent(TSB tsb)
+        /// <returns>Returns TSB Coupon balance. If TSB not found returns null.</returns>
+        public static TSBCouponTransaction GetCurrent(TSB tsb)
         {
             if (null == tsb) return null;
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT TSBCreditBalanceTransaction.* ";
+                cmd += "SELECT TSBCouponTransaction.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "  FROM TSBCreditBalanceTransaction, TSB ";
-                cmd += " WHERE TSBCreditBalanceTransaction.TSBId = TSB.TSBId ";
-                cmd += "   AND TSBCreditBalanceTransaction.TSBId = ? ";
+                cmd += "  FROM TSBCouponTransaction, TSB ";
+                cmd += " WHERE TSBCouponTransaction.TSBId = TSB.TSBId ";
+                cmd += "   AND TSBCouponTransaction.TSBId = ? ";
 
                 var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
                 if (null == ret)
                 {
-                    TSBCreditBalanceTransaction inst = Create();
+                    TSBCouponTransaction inst = Create();
                     // assigned TSB info.
                     tsb.AssignTo(inst);
                     Save(inst);
@@ -739,7 +534,7 @@ namespace DMT.Models
                 }
                 else
                 {
-                    return ret.ToTSBCreditBalanceTransaction();
+                    return ret.ToTSBCouponTransaction();
                 }
             }
         }
