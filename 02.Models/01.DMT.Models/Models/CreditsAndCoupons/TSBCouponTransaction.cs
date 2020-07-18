@@ -201,6 +201,7 @@ namespace DMT.Models
         /// </summary>
         [Category("Common")]
         [Description("Gets or sets Transaction Type.")]
+        [ReadOnly(true)]
         [PeropertyMapName("TransactionType")]
         public TransactionTypes TransactionType
         {
