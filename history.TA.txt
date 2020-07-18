@@ -39,9 +39,11 @@ Update 2020-07-18 #15 (TA)
 Update 2020-07-18 #14 (TA)
 - 
 
+[commited]
 Update 2020-07-18 #13 (TA)
-- 
+- Check merge to origin/master (OK).
 
+[commited]
 Update 2020-07-18 #12 (TA)
 - Prepare history.TA.txt.
 
