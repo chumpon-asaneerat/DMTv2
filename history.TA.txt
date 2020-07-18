@@ -34,6 +34,11 @@ Update 2020-07-19 #1 (TA)
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-07-18 #16 (TA)
+- Implements TA/TOD model class #53.
+  - Add sample code for check view exist in LocalDbServer.
+
+[commited]
 Update 2020-07-18 #15 (TA)
 - Check merge to origin/master (OK).
 
