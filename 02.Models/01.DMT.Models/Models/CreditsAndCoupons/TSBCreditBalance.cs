@@ -87,11 +87,6 @@ namespace DMT.Models
         
         private void CalcTSBTotal()
         {
-
-        }
-
-        private void CalcTotal()
-        {
             decimal total = 0;
             total += Convert.ToDecimal(_TSB_ST25 * (decimal).25);
             total += Convert.ToDecimal(_TSB_ST50 * (decimal).50);
@@ -106,11 +101,30 @@ namespace DMT.Models
             total += _TSB_BHT1000 * 1000;
 
             _TSB_BHTTotal = total;
+            // Raise event.
+            this.RaiseChanged("TSB_BHTTotal");
+        }
+
+        private void CalcTotal()
+        {
+            decimal total = 0;
+            total += Convert.ToDecimal(_ST25 * (decimal).25);
+            total += Convert.ToDecimal(_ST50 * (decimal).50);
+            total += _BHT1 * 1;
+            total += _BHT2 * 2;
+            total += _BHT5 * 5;
+            total += _BHT10 * 10;
+            total += _BHT20 * 20;
+            total += _BHT50 * 50;
+            total += _BHT100 * 100;
+            total += _BHT500 * 500;
+            total += _BHT1000 * 1000;
+
+            _BHTTotal = total;
 
             _TSBBHTTotal = total + _AdditionalBHTTotal + _UserBHTTotal;
             // Raise event.
-            this.RaiseChanged("BHTTotal");
-            this.RaiseChanged("TSBBHTTotal");
+            this.RaiseChanged("TSB_BHTTotal");
         }
 
         #endregion
@@ -447,8 +461,8 @@ namespace DMT.Models
         [Category("Coin/Bill")]
         [Description("Gets or sets total value in baht.")]
         [ReadOnly(true)]
-        //[Ignore]
-        //[JsonIgnore]
+        [Ignore]
+        [JsonIgnore]
         [PeropertyMapName("BHTTotal")]
         public decimal TSB_BHTTotal
         {
@@ -465,8 +479,11 @@ namespace DMT.Models
         /// </summary>
         [Category("Coin/Bill")]
         [Description("Gets or sets number of .25 baht coin.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [JsonIgnore]
         [PeropertyMapName("ST25")]
-        public int ST25
+        public virtual int ST25
         {
             get { return _ST25; }
             set
@@ -485,8 +502,11 @@ namespace DMT.Models
         /// </summary>
         [Category("Coin/Bill")]
         [Description("Gets or sets number of .50 baht coin.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [JsonIgnore]
         [PeropertyMapName("ST50")]
-        public int ST50
+        public virtual int ST50
         {
             get { return _ST50; }
             set
@@ -505,8 +525,11 @@ namespace DMT.Models
         /// </summary>
         [Category("Coin/Bill")]
         [Description("Gets or sets number of 1 baht coin.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [JsonIgnore]
         [PeropertyMapName("BHT1")]
-        public int BHT1
+        public virtual int BHT1
         {
             get { return _BHT1; }
             set
@@ -525,8 +548,11 @@ namespace DMT.Models
         /// </summary>
         [Category("Coin/Bill")]
         [Description("Gets or sets number of 2 baht coin.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [JsonIgnore]
         [PeropertyMapName("BHT2")]
-        public int BHT2
+        public virtual int BHT2
         {
             get { return _BHT2; }
             set
@@ -545,8 +571,11 @@ namespace DMT.Models
         /// </summary>
         [Category("Coin/Bill")]
         [Description("Gets or sets number of 5 baht coin.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [JsonIgnore]
         [PeropertyMapName("BHT5")]
-        public int BHT5
+        public virtual int BHT5
         {
             get { return _BHT5; }
             set
@@ -565,8 +594,11 @@ namespace DMT.Models
         /// </summary>
         [Category("Coin/Bill")]
         [Description("Gets or sets number of 10 baht coin.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [JsonIgnore]
         [PeropertyMapName("BHT10")]
-        public int BHT10
+        public virtual int BHT10
         {
             get { return _BHT10; }
             set
@@ -585,8 +617,11 @@ namespace DMT.Models
         /// </summary>
         [Category("Coin/Bill")]
         [Description("Gets or sets number of 20 baht bill.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [JsonIgnore]
         [PeropertyMapName("BHT20")]
-        public int BHT20
+        public virtual int BHT20
         {
             get { return _BHT20; }
             set
@@ -605,8 +640,11 @@ namespace DMT.Models
         /// </summary>
         [Category("Coin/Bill")]
         [Description("Gets or sets number of 50 baht bill.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [JsonIgnore]
         [PeropertyMapName("BHT50")]
-        public int BHT50
+        public virtual int BHT50
         {
             get { return _BHT50; }
             set
@@ -625,8 +663,11 @@ namespace DMT.Models
         /// </summary>
         [Category("Coin/Bill")]
         [Description("Gets or sets number of 100 baht bill.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [JsonIgnore]
         [PeropertyMapName("BHT100")]
-        public int BHT100
+        public virtual int BHT100
         {
             get { return _BHT100; }
             set
@@ -645,8 +686,11 @@ namespace DMT.Models
         /// </summary>
         [Category("Coin/Bill")]
         [Description("Gets or sets number of 500 baht bill.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [JsonIgnore]
         [PeropertyMapName("BHT500")]
-        public int BHT500
+        public virtual int BHT500
         {
             get { return _BHT500; }
             set
@@ -665,8 +709,11 @@ namespace DMT.Models
         /// </summary>
         [Category("Coin/Bill")]
         [Description("Gets or sets number of 1000 baht bill.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [JsonIgnore]
         [PeropertyMapName("BHT1000")]
-        public int BHT1000
+        public virtual int BHT1000
         {
             get { return _BHT1000; }
             set
@@ -686,10 +733,10 @@ namespace DMT.Models
         [Category("Coin/Bill")]
         [Description("Gets or sets total value in baht.")]
         [ReadOnly(true)]
-        //[Ignore]
-        //[JsonIgnore]
+        [Ignore]
+        [JsonIgnore]
         [PeropertyMapName("BHTTotal")]
-        public decimal BHTTotal
+        public virtual decimal BHTTotal
         {
             get { return _BHTTotal; }
             set { }
@@ -705,7 +752,7 @@ namespace DMT.Models
         [Category("Borrow")]
         [Description("Gets or sets additional borrow in baht.")]
         [PeropertyMapName("AdditionalBHTTotal")]
-        public decimal AdditionalBHTTotal
+        public virtual decimal AdditionalBHTTotal
         {
             get { return _AdditionalBHTTotal; }
             set
@@ -726,7 +773,7 @@ namespace DMT.Models
         [Description("Gets or sets all user borrow in baht.")]
         [ReadOnly(true)]
         [PeropertyMapName("UserBHTTotal")]
-        public decimal UserBHTTotal
+        public virtual decimal UserBHTTotal
         {
             get { return _UserBHTTotal; }
             set
@@ -751,10 +798,10 @@ namespace DMT.Models
         [Category("Summary")]
         [Description("Gets or sets TSB Total (From total calc coin/bill + additional + user borrow).")]
         [ReadOnly(true)]
-        //[Ignore]
-        //[JsonIgnore]
+        [Ignore]
+        [JsonIgnore]
         [PeropertyMapName("TSBBHTTotal")]
-        public decimal TSBBHTTotal
+        public virtual decimal TSBBHTTotal
         {
             get { return _TSBBHTTotal; }
             set{ }
