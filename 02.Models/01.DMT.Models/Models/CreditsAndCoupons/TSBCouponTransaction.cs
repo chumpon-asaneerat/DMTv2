@@ -377,6 +377,8 @@ namespace DMT.Models
         /// </summary>
         [Category("Coupon")]
         [Description("Gets calculate coupon total (book count).")]
+        [JsonIgnore]
+        [Ignore]
         [PeropertyMapName("CouponTotal")]
         public int CouponTotal
         {

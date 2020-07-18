@@ -51,6 +51,7 @@ namespace LocalDbServerFunctionTest
 
         private void button3_Click(object sender, EventArgs e)
         {
+            /*
             // Credits/Coupons - refresh
             pgTSBBalance.SelectedObject = TSBBalance.GetCurrent();
 
@@ -65,19 +66,23 @@ namespace LocalDbServerFunctionTest
             var users = User.FindByRole("COLLECTOR");
             cbUsers.DataSource = users;
             cbUsers.DisplayMember = "FullNameTH";
+            */
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            /*
             var inst = pgTSBBalance.SelectedObject as TSBBalance;
             if (null != inst)
             {
                 TSBBalance.Save(inst);
             }
+            */
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
+            /*
             // Create UserCredit
             var user = cbUsers.SelectedItem as User;
             if (null != user)
@@ -89,10 +94,12 @@ namespace LocalDbServerFunctionTest
             {
                 pgUserCredit.SelectedObject = null;
             }
+            */
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
+            /*
             var tsbBalance = pgTSBBalance.SelectedObject as TSBBalance;
             var usrCredit = pgUserCredit.SelectedObject as UserCredit;
             if (null == tsbBalance || null == usrCredit) return;
@@ -111,20 +118,24 @@ namespace LocalDbServerFunctionTest
                 // refresh balance
                 pgTSBBalance.SelectedObject = TSBBalance.GetCurrent();
             }
+            */
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
+            /*
             // Refresh Transaction.
             dgUserCredit.DataSource = null;
 
             var tsb = TSB.GetCurrent();
             // refresh grid
             dgUserCredit.DataSource = UserCredit.GetUserCredits(tsb);
+            */
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
+            /*
             if (null != dgUserCredit.SelectedRows &&
                 dgUserCredit.SelectedRows.Count > 0 &&
                 null != dgUserCredit.SelectedRows[0])
@@ -140,6 +151,7 @@ namespace LocalDbServerFunctionTest
                 var tsb = TSB.GetCurrent();
                 dgUserCredit.DataSource = UserCredit.GetUserCredits(tsb);
             }
+            */
         }
     }
 }
