@@ -47,7 +47,9 @@ namespace DMT.Models
         private int _BHT500 = 0;
         private int _BHT1000 = 0;
         private decimal _BHTTotal = decimal.Zero;
+        /*
         private string _Remark = "";
+        */
 
         // Coupon 
         private int _CouponBHT35 = 0;
@@ -449,6 +451,7 @@ namespace DMT.Models
             get { return _BHTTotal; }
             set { }
         }
+        /*
         /// <summary>
         /// Gets or sets  Remark.
         /// </summary>
@@ -469,6 +472,7 @@ namespace DMT.Models
                 }
             }
         }
+        */
 
         #endregion
 

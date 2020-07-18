@@ -29,8 +29,11 @@ Update 2020-07-19 #3 (TA)
 Update 2020-07-19 #2 (TA)
 - 
 
+[commited]
 Update 2020-07-19 #1 (TA)
-- 
+- Implements TA/TOD model class #54.
+  - TSBBalance - remove Remark proeprty.
+  - Update database-design.txt.
 
 --------------------------------------------------------------------------------------------
 [commited]

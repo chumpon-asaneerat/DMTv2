@@ -1,6 +1,46 @@
----------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 TABLES
 ------
+
+- TSBBalance
+  - TSBBalanceId [PK] (int auto)
+  - ST25 (int)
+  - ST50 (int)
+  - BHT1 (int)
+  - BHT2 (int)
+  - BHT5 (int)
+  - BHT10 (int)
+  - BHT20 (int)
+  - BHT50 (int)
+  - BHT100 (int)
+  - BHT500 (int)
+  - BHT1000 (int)
+  - BHTTotal (decimal)
+  - CouponBHT35 (int)
+  - CouponBHT80 (int)
+  - CouponTotal (decimal)
+  - CouponBHTTotal (decimal)
+  - AdditionalBHTTotal (decimal)
+  - UserBHTTotal (decimal)
+  - TSBBHTTotal (decimal)
+
+- TSBCredit
+
+- UserCredit
+
+- Coupon
+
+- Exchange (Transaction)
+  - PkId [PK] (string MaxLength(30), Guid.NewID)
+  - ExchangeId (string MaxLength(20))
+  - RequestDate (Date)
+
+
+
+
+
+
+
 - TSB - OK
   - TSBId [PK] (string MaxLength(10)) - OK
   - NetworkId (string MaxLength(10)) - OK
@@ -10,12 +50,21 @@ TABLES
   - Status int -> (Active = 1/Inactive = 0/etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK
 
+- PlazaGroup - OK
+  - PlazaId [PK] (string MaxLength(10)) - OK
+  - PlazaGroupId (string MaxLength(10)) - OK
+  - PlazaGroupNameEN (string MaxLength(100)) - OK
+  - PlazaGroupNameTH (string MaxLength(100)) - OK
+  - Direction (string MaxLength(10)) - OK
+  - Status int -> (Active = 1/Inactive = 0/etc..) - OK
+  - LastUpdate (DateTime) -> last time sync from DC - OK
+
 - Plaza - OK
   - PlazaId [PK] (string MaxLength(10)) - OK
   - TSBId (string MaxLength(10)) - OK
+  - PlazaGroupId (string MaxLength(10)) - OK
   - PlazaNameEN (string MaxLength(100)) - OK
   - PlazaNameTH (string MaxLength(100)) - OK
-  - Direction (string MaxLength(10)) - OK
   - Status int -> (Active = 1/Inactive = 0/etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK
 
@@ -23,10 +72,11 @@ TABLES
   - PkId [PK] (int auto) - OK
   - LandId (int) - OK
   - LandId (string MaxLength(10)) - OK
-  - PlazaId (string MaxLength(10)) - OK
-  - TSBId (string MaxLength(10)) - OK
   - LaneType (string MaxLength(10)) -> (MTC/etc..) - OK
   - LaneAbbr (string MaxLength(10)) - OK
+  - TSBId (string MaxLength(10)) - OK
+  - PlazaGroupId (string MaxLength(10)) - OK
+  - PlazaId (string MaxLength(10)) - OK
   - Status int -> (Active = 1/Inactive = 0/etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK
 
@@ -100,8 +150,8 @@ TABLES
   - PkId [PK] (Guid.NewID) - OK
   - JobId (string MaxLength(20)) -> custom id from DMT. - OK
   - TSBId (string MaxLength(10)) - OK
-  - TSBNameEN (string MaxLength(100)) - OK
-  - TSBNameTH (string MaxLength(100)) - OK
+  - PlazaGroupId (string MaxLength(10)) - OK
+  - PlazaId (string MaxLength(10)) - OK
   - LandId (int) - OK
   - LaneId (string MaxLength(10)) - OK
   - UserId (string MaxLength(10)) - OK
@@ -116,8 +166,8 @@ TABLES
   - PkId [PK] (Guid.NewID) - OK
   - ApproveCode (string MaxLength(20)) - OK
   - TSBId (string MaxLength(10)) - OK
-  - TSBNameEN (string MaxLength(100)) - OK
-  - TSBNameTH (string MaxLength(100)) - OK
+  - PlazaGroupId (string MaxLength(10)) - OK
+  - PlazaId (string MaxLength(10)) - OK
   - LandId (int) - OK
   - LaneId (string MaxLength(10)) - OK
   - UserId (string MaxLength(10)) - OK
@@ -137,8 +187,7 @@ TABLES
   - EntryDate (Date) - OK
   - RevenueDate (Date) - OK
   - TSBId (string MaxLength(10)) - OK
-  - TSBNameEN (string MaxLength(100)) - OK
-  - TSBNameTH (string MaxLength(100)) - OK
+  - PlazaGroupId (string MaxLength(10)) - OK
   - ShiftId (int) - OK
   - ShiftNameEN (string MaxLength(50)) - OK
   - ShiftNameTH (string MaxLength(50)) - OK
@@ -183,34 +232,3 @@ TABLES
 
   - Status int -> (1 = Sync, 0 = Unsync, etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK
-
-
-
-
-
-
-- AssetType
-  - PkId [PK] (int auto)
-  - AssetTypeId (string MaxLength(10))
-  - Category (string MaxLength(20)) -> Cash/Voucher.
-  - NameEN (string MaxLength(50))
-  - NameTH (string MaxLength(50))
-  - Value (decimal) -> BHT value used for calculate factor.
-
-- Credit
-
-- Coupon
-
-- Exchange (Transaction)
-  - PkId [PK] (string MaxLength(30), Guid.NewID)
-  - ExchangeId (string MaxLength(20))
-  - RequestDate (Date)
-
-- RevenueGroup
-  - 
-
-- RevenueGroupItem
-  - RevPkId [PK] (string MaxLength(30), Guid.NewID)
-  - SeqId (int) ???
-  - Category (string MaxLength(20)) => Traffic/Other/CouponUsage/CouponSold
-  - 
