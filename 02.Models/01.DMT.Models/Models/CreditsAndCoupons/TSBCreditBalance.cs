@@ -859,7 +859,7 @@ namespace DMT.Models
 
         #region Internal Class
 
-        public class FKs : TSBBalance
+        public class FKs : TSBCreditBalance
         {
             #region TSB
 
@@ -888,9 +888,9 @@ namespace DMT.Models
 
             #region Public Methods
 
-            public TSBBalance ToTSBBalance()
+            public TSBCreditBalance ToTSBCreditBalance()
             {
-                TSBBalance inst = new TSBBalance();
+                TSBCreditBalance inst = new TSBCreditBalance();
                 this.AssignTo(inst); // set all properties to new instance.
                 return inst;
             }
@@ -906,7 +906,7 @@ namespace DMT.Models
         /// Gets Active TSB Balance.
         /// </summary>
         /// <returns>Returns Current Active TSB balance. If not found returns null.</returns>
-        public static TSBBalance GetCurrent()
+        public static TSBCreditBalance GetCurrent()
         {
             lock (sync)
             { 
@@ -919,32 +919,30 @@ namespace DMT.Models
         /// </summary>
         /// <param name="tsb">The target TSB to get balance.</param>
         /// <returns>Returns TSB balance. If TSB not found returns null.</returns>
-        public static TSBBalance GetCurrent(TSB tsb)
+        public static TSBCreditBalance GetCurrent(TSB tsb)
         {
             if (null == tsb) return null;
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT TSBBalance.* ";
+                cmd += "SELECT TSBCreditBalance.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "  FROM TSBBalance, TSB ";
-                cmd += " WHERE TSBBalance.TSBId = TSB.TSBId ";
-                cmd += "   AND TSBBalance.TSBId = ? ";
+                cmd += "  FROM TSBCreditBalance, TSB ";
+                cmd += " WHERE TSBCreditBalance.TSBId = TSB.TSBId ";
+                cmd += "   AND TSBCreditBalance.TSBId = ? ";
 
                 var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
                 if (null == ret)
                 {
-                    TSBBalance inst = Create();
+                    TSBCreditBalance inst = Create();
                     // assigned TSB info.
-                    inst.TSBId = tsb.TSBId;
-                    inst.TSBNameEN = tsb.TSBNameEN;
-                    inst.TSBNameTH = tsb.TSBNameTH;
+                    tsb.AssignTo(inst);
                     Save(inst);
                     return inst;
                 }
                 else
                 {
-                    return ret.ToTSBBalance();
+                    return ret.ToTSBCreditBalance();
                 }
             }
         }

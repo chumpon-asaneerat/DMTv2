@@ -254,71 +254,6 @@ namespace DMT.Models
 
         #endregion
 
-        #region Additional/User Borrow and TSB BHT Total
-
-        /// <summary>
-        /// Gets or sets additional borrow in baht.
-        /// </summary>
-        [Category("Borrow")]
-        [Description("Gets or sets additional borrow in baht.")]
-        [PeropertyMapName("AdditionalBHTTotal")]
-        public decimal AdditionalBHTTotal
-        {
-            get { return _AdditionalBHTTotal; }
-            set
-            {
-                if (_AdditionalBHTTotal != value)
-                {
-                    _AdditionalBHTTotal = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("AdditionalBHTTotal");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets all user borrow in baht.
-        /// </summary>
-        [Category("Borrow")]
-        [Description("Gets or sets all user borrow in baht.")]
-        [ReadOnly(true)]
-        [PeropertyMapName("UserBHTTotal")]
-        public decimal UserBHTTotal
-        {
-            get { return _UserBHTTotal; }
-            set
-            {
-                if (_UserBHTTotal != value)
-                {
-                    _UserBHTTotal = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("UserBHTTotal");
-                }
-            }
-        }
-
-        #endregion
-
-        #region TSB BHT Total
-
-        /// <summary>
-        /// Gets or sets TSB Total (From total calc coin/bill + additional + user borrow).
-        /// </summary>
-        [Category("Summary")]
-        [Description("Gets or sets TSB Total (From total calc coin/bill + additional + user borrow).")]
-        [ReadOnly(true)]
-        //[Ignore]
-        //[JsonIgnore]
-        [PeropertyMapName("TSBBHTTotal")]
-        public decimal TSBBHTTotal
-        {
-            get { return _TSBBHTTotal; }
-            set { }
-        }
-
-        #endregion
-
         #region Status (DC)
 
         /// <summary>
@@ -369,7 +304,7 @@ namespace DMT.Models
 
         #region Internal Class
 
-        public class FKs : TSBBalance
+        public class FKs : TSBCouponBalance
         {
             #region TSB
 
@@ -398,9 +333,9 @@ namespace DMT.Models
 
             #region Public Methods
 
-            public TSBBalance ToTSBBalance()
+            public TSBCouponBalance ToTSBCouponBalance()
             {
-                TSBBalance inst = new TSBBalance();
+                TSBCouponBalance inst = new TSBCouponBalance();
                 this.AssignTo(inst); // set all properties to new instance.
                 return inst;
             }
@@ -413,10 +348,12 @@ namespace DMT.Models
         #region Static Methods
 
         /// <summary>
-        /// Gets Active TSB Balance.
+        /// Gets Active TSB Coupon Balance.
         /// </summary>
-        /// <returns>Returns Current Active TSB balance. If not found returns null.</returns>
-        public static TSBBalance GetCurrent()
+        /// <returns>
+        /// Returns Current Active TSB Coupon balance. If not found returns null.
+        /// </returns>
+        public static TSBCouponBalance GetCurrent()
         {
             lock (sync)
             {
@@ -425,36 +362,34 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets TSB Balance.
+        /// Gets TSB Coupon Balance.
         /// </summary>
         /// <param name="tsb">The target TSB to get balance.</param>
-        /// <returns>Returns TSB balance. If TSB not found returns null.</returns>
-        public static TSBBalance GetCurrent(TSB tsb)
+        /// <returns>Returns TSB Coupon balance. If TSB not found returns null.</returns>
+        public static TSBCouponBalance GetCurrent(TSB tsb)
         {
             if (null == tsb) return null;
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT TSBBalance.* ";
+                cmd += "SELECT TSBCouponBalance.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "  FROM TSBBalance, TSB ";
-                cmd += " WHERE TSBBalance.TSBId = TSB.TSBId ";
-                cmd += "   AND TSBBalance.TSBId = ? ";
+                cmd += "  FROM TSBCouponBalance, TSB ";
+                cmd += " WHERE TSBCouponBalance.TSBId = TSB.TSBId ";
+                cmd += "   AND TSBCouponBalance.TSBId = ? ";
 
                 var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
                 if (null == ret)
                 {
-                    TSBBalance inst = Create();
+                    TSBCouponBalance inst = Create();
                     // assigned TSB info.
-                    inst.TSBId = tsb.TSBId;
-                    inst.TSBNameEN = tsb.TSBNameEN;
-                    inst.TSBNameTH = tsb.TSBNameTH;
+                    tsb.AssignTo(inst);
                     Save(inst);
                     return inst;
                 }
                 else
                 {
-                    return ret.ToTSBBalance();
+                    return ret.ToTSBCouponBalance();
                 }
             }
         }
