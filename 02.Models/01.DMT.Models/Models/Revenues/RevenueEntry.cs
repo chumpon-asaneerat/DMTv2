@@ -993,7 +993,7 @@ namespace DMT.Models
                     _TrafficBHT1 = value;
                     CalcTrafficTotal();
                     // Raise event.
-                    this.RaiseChanged("TrafficBHT1BHT1");
+                    this.RaiseChanged("TrafficBHT1");
                 }
             }
         }

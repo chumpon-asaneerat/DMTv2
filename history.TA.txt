@@ -17,8 +17,19 @@ Update 2020-07-19 #7 (TA)
 Update 2020-07-19 #6 (TA)
 - 
 
+[commited]
 Update 2020-07-19 #5 (TA)
-- 
+- Implements TA/TOD model class #58.
+  - Rename TSBBalance to TSBCreditBalance
+  - Add TSBCouponBalance.
+  - Fixed mispell in raise event BHT1 in classes
+    - TSBCredit
+    - TSBCreditBalance
+    - TSBCouponBalance
+    - TSBCreditTransaction
+    - UserCredit
+    - UserCreditTransaction
+    - RevenueEntry
 
 [commited]
 Update 2020-07-19 #4 (TA)

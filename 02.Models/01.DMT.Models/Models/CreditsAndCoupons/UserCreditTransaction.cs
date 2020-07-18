@@ -429,7 +429,7 @@ namespace DMT.Models
                     _BHT1 = value;
                     CalcTotal();
                     // Raise event.
-                    this.RaiseChanged("BHT1BHT1");
+                    this.RaiseChanged("BHT1");
                 }
             }
         }

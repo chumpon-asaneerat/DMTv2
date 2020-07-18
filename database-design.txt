@@ -3,18 +3,18 @@ TABLES
 ------
 
 - TSBCreditBalance
-  - TSBCreditBalanceId [PK] (int auto)
-  - TSB_ST25 (int) -> init value
-  - TSB_ST50 (int) -> init value
-  - TSB_BHT1 (int) -> init value
-  - TSB_BHT2 (int) -> init value
-  - TSB_BHT5 (int) -> init value
-  - TSB_BHT10 (int) -> init value
-  - TSB_BHT20 (int) -> init value
-  - TSB_BHT50 (int) -> init value
-  - TSB_BHT100 (int) -> init value
-  - TSB_BHT500 (int) -> init value
-  - TSB_BHT1000 (int) -> init value
+  - TSBCreditBalanceId [PK] (int auto) - OK
+  - TSB_ST25 (int) -> init value - OK
+  - TSB_ST50 (int) -> init value - OK
+  - TSB_BHT1 (int) -> init value - OK
+  - TSB_BHT2 (int) -> init value - OK
+  - TSB_BHT5 (int) -> init value - OK
+  - TSB_BHT10 (int) -> init value - OK
+  - TSB_BHT20 (int) -> init value - OK
+  - TSB_BHT50 (int) -> init value - OK
+  - TSB_BHT100 (int) -> init value - OK
+  - TSB_BHT500 (int) -> init value - OK
+  - TSB_BHT1000 (int) -> init value - OK
 
     // readonly from query.
   - ST25 (int) -> calc from [init + user(-borrow/+return)]
