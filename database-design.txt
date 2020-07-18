@@ -4,25 +4,47 @@ TABLES
 
 - TSBBalance
   - TSBBalanceId [PK] (int auto)
-  - ST25 (int)
-  - ST50 (int)
-  - BHT1 (int)
-  - BHT2 (int)
-  - BHT5 (int)
-  - BHT10 (int)
-  - BHT20 (int)
-  - BHT50 (int)
-  - BHT100 (int)
-  - BHT500 (int)
-  - BHT1000 (int)
-  - BHTTotal (decimal)
-  - CouponBHT35 (int)
-  - CouponBHT80 (int)
-  - CouponTotal (decimal)
-  - CouponBHTTotal (decimal)
-  - AdditionalBHTTotal (decimal)
-  - UserBHTTotal (decimal)
-  - TSBBHTTotal (decimal)
+  - ST25 (int) -> init value
+  - ST50 (int) -> init value
+  - BHT1 (int) -> init value
+  - BHT2 (int) -> init value
+  - BHT5 (int) -> init value
+  - BHT10 (int) -> init value
+  - BHT20 (int) -> init value
+  - BHT50 (int) -> init value
+  - BHT100 (int) -> init value
+  - BHT500 (int) -> init value
+  - BHT1000 (int) -> init value
+
+  - CouponBHT35 (int) -> init value
+  - CouponBHT80 (int) -> init value
+
+
+  - CurrentST25 (int) -> calc from [init - user(borrow/return) + request]
+  - CurrentST50 (int) -> calc from [init - user(borrow/return) + request]
+  - CurrentBHT1 (int) -> calc from [init - user(borrow/return) + request]
+  - CurrentBHT2 (int) -> calc from [init - user(borrow/return) + request]
+  - CurrentBHT5 (int) -> calc from [init - user(borrow/return) + request]
+  - CurrentBHT10 (int) -> calc from [init - user(borrow/return) + request]
+  - CurrentBHT20 (int) -> calc from [init - user(borrow/return) + request]
+  - CurrentBHT50 (int) -> calc from [init - user(borrow/return) + request]
+  - CurrentBHT100 (int) -> calc from [init - user(borrow/return) + request]
+  - CurrentBHT500 (int) -> calc from [init - user(borrow/return) + request]
+  - CurrentBHT1000 (int) -> calc from [init - user(borrow/return) + request]
+
+  - CurrentCouponBHT35 (int) -> calc from [init - user(borrow/return) + request]
+  - CurrentCouponBHT80 (int) -> calc from [init - user(borrow/return) + request]
+
+
+  - BHTTotal (decimal) -> calc from [init - user(borrow/return) + request]
+  - CouponTotal (decimal) -> calc from [init - user(borrow/return) + request]
+  - CouponBHTTotal (decimal) -> calc from [init - user(borrow/return) + request]
+  - AdditionalBHTTotal (decimal) -> calc from [init - user(borrow/return) + request]
+  - UserBHTTotal (decimal) -> calc from [init - user(borrow/return) + request]
+  - TSBBHTTotal (decimal) -> calc from [init - user(borrow/return) + request]
+
+  - Status int -> (Active = 1/Inactive = 0/etc..) - OK
+  - LastUpdate (DateTime) -> last time sync from DC - OK
 
 - TSBCredit
 
