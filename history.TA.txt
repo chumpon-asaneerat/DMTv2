@@ -20,8 +20,11 @@ Update 2020-07-19 #6 (TA)
 Update 2020-07-19 #5 (TA)
 - 
 
+[commited]
 Update 2020-07-19 #4 (TA)
-- 
+- Implements TA/TOD model class #57.
+  - Update database-design.txt #4.
+  - UserShiftRevenue remove plaza related properties.
 
 [commited]
 Update 2020-07-19 #3 (TA)

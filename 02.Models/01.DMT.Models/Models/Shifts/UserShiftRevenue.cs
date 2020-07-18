@@ -36,11 +36,11 @@ namespace DMT.Models
         private string _PlazaGroupNameEN = string.Empty;
         private string _PlazaGroupNameTH = string.Empty;
         private string _Direction = string.Empty;
-
+        /*
         private string _PlazaId = string.Empty;
         private string _PlazaNameEN = string.Empty;
         private string _PlazaNameTH = string.Empty;
-
+        */
         private int _ShiftId = 0;
         private string _ShiftNameTH = string.Empty;
         private string _ShiftNameEN = string.Empty;
@@ -294,7 +294,7 @@ namespace DMT.Models
         #endregion
 
         #region Plaza
-
+        /*
         /// <summary>
         /// Gets or sets PlazaId.
         /// </summary>
@@ -364,7 +364,7 @@ namespace DMT.Models
                 }
             }
         }
-
+        */
         #endregion
 
         #region User
@@ -727,7 +727,7 @@ namespace DMT.Models
             #endregion
 
             #region Plaza
-
+            /*
             /// <summary>
             /// Gets or sets PlazaNameEN
             /// </summary>
@@ -748,7 +748,7 @@ namespace DMT.Models
                 get { return base.PlazaNameTH; }
                 set { base.PlazaNameTH = value; }
             }
-
+            */
             #endregion
 
             #region Shift
@@ -845,6 +845,7 @@ namespace DMT.Models
             {
                 if (null == shift || null == plazaGroup) return null;
                 string cmd = string.Empty;
+                /*
                 cmd += "SELECT UserShiftRevenue.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
                 cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
@@ -860,6 +861,22 @@ namespace DMT.Models
                 cmd += "   AND UserShiftRevenue.TSBId = TSB.TSBId ";
                 cmd += "   AND UserShiftRevenue.PlazaGroupId = PlazaGroup.PlazaGroupId ";
                 cmd += "   AND UserShiftRevenue.PlazaId = Plaza.PlazaId ";
+                cmd += "   AND UserShiftRevenue.ShiftId = Shift.ShiftId ";
+                cmd += "   AND UserShiftRevenue.UserId = User.UserId ";
+                cmd += "   AND UserShiftRevenue.UserShiftId = ? ";
+                cmd += "   AND UserShiftRevenue.PlazaGroupId = ? ";
+                */
+                cmd += "SELECT UserShiftRevenue.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
+                cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
+                cmd += "     , User.FullNameEN, User.FullNameTH ";
+                cmd += "  FROM UserShiftRevenue, TSB, PlazaGroup, Shift, User, UserShift ";
+                cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
+                cmd += "   AND UserShift.ShiftId = Shift.ShiftId ";
+                cmd += "   AND UserShift.UserId = User.UserId ";
+                cmd += "   AND UserShiftRevenue.TSBId = TSB.TSBId ";
+                cmd += "   AND UserShiftRevenue.PlazaGroupId = PlazaGroup.PlazaGroupId ";
                 cmd += "   AND UserShiftRevenue.ShiftId = Shift.ShiftId ";
                 cmd += "   AND UserShiftRevenue.UserId = User.UserId ";
                 cmd += "   AND UserShiftRevenue.UserShiftId = ? ";
