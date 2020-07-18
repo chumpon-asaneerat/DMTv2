@@ -83,7 +83,8 @@ namespace DMT.TOD.Pages.Reports
                     GoMainMenu();
                     return;
                 }
-                if (MessageBox.Show("กะปัจจุบันยังป้อนรายได้ไม่ครับ ต้องการป้อนรายได้ตอหรือไม่ ?",
+                if (MessageBox.Show(Application.Current.MainWindow,
+                    "กะปัจจุบันยังป้อนรายได้ไม่ครับ ต้องการป้อนรายได้ตอหรือไม่ ?",
                     "DMT - Tour of Duty", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     GoRevenuEntry();
