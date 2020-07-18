@@ -3,6 +3,8 @@ TABLES
 ------
 
 - TSBCreditBalance
+
+- TSBCreditBalanceTransaction
   - TransactionId [PK] (int auto) - OK
   - TransactionDate (datetime) - OK
   - TransactionType (int) - OK (1 - init, 2 - return, 3 - received) - OK
@@ -22,24 +24,22 @@ TABLES
   - Status int -> (Active = 1/Inactive = 0/etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK
 
-  - BHTTotal (decimal) -> calc from [init - UserBHTTotal + AdditionalBHTTotal]
   - AdditionalBHTTotal (decimal) -> calc from [request (type=additional)]
   - UserBHTTotal (decimal) -> calc from [user(+borrow/-return)] // invert sign
   - TSBBHTTotal (decimal) -> calc from [init AdditionalBHTTotal - UserBHTTotal]
 
 - TSBCouponBalance
-  - TSBCouponBalanceId [PK] (int auto)
-  - TSB_CouponBHT35 (int) -> init value
-  - TSB_CouponBHT80 (int) -> init value
-  - TSB_CouponTotal (decimal) -> init value
-  - TSB_CouponBHTTotal (decimal) -> init value
 
-  - CouponBHT35 (int) -> calc from [init - user(borrow/return) + request]
-  - CouponBHT80 (int) -> calc from [init - user(borrow/return) + request]
 
-  - CouponTotal (decimal) -> calc from [init - user(borrow/return) + request]
-  - CouponBHTTotal (decimal) -> calc from [init - user(borrow/return) + request]
-
+- TSBCouponBalanceTransaction - OK
+  - TransactionId [PK] (int auto) - OK
+  - TransactionDate (datetime) - OK
+  - TransactionType (int) - OK (1 - init, 2 - return, 3 - received) - OK
+  - TSBId (string MaxLength(10)) - OK
+  - CouponSoldBHT35Factor (decimal) - OK
+  - CouponBHT35 (int) - OK
+  - CouponSoldBHT80Factor (decimal) - OK
+  - CouponBHT80 (int) - OK
   - Status int -> (Active = 1/Inactive = 0/etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK
 
