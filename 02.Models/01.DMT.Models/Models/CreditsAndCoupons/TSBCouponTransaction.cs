@@ -58,6 +58,8 @@ namespace DMT.Models
         private int _CouponTotal = 0;
         private decimal _CouponBHTTotal = decimal.Zero;
 
+        private string _Remark = string.Empty;
+
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
 
@@ -398,6 +400,26 @@ namespace DMT.Models
         {
             get { return _CouponBHTTotal; }
             set { }
+        }
+        /// <summary>
+        /// Gets or sets Remark.
+        /// </summary>
+        [Category("Coupon")]
+        [Description("Gets or sets Remark.")]
+        [MaxLength(255)]
+        [PeropertyMapName("Remark")]
+        public string Remark
+        {
+            get { return _Remark; }
+            set
+            {
+                if (_Remark != value)
+                {
+                    _Remark = value;
+                    // Raise event.
+                    this.RaiseChanged("Remark");
+                }
+            }
         }
 
         #endregion

@@ -52,6 +52,8 @@ namespace DMT.Models
         // Additional Borrow
         private decimal _AdditionalBHTTotal = decimal.Zero;
 
+        private string _Remark = string.Empty;
+
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
 
@@ -280,6 +282,26 @@ namespace DMT.Models
                     _AdditionalBHTTotal = value;
                     // Raise event.
                     this.RaiseChanged("AdditionalBHTTotal");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Remark.
+        /// </summary>
+        [Category("Additional")]
+        [Description("Gets or sets Remark.")]
+        [MaxLength(255)]
+        [PeropertyMapName("Remark")]
+        public string Remark
+        {
+            get { return _Remark; }
+            set
+            {
+                if (_Remark != value)
+                {
+                    _Remark = value;
+                    // Raise event.
+                    this.RaiseChanged("Remark");
                 }
             }
         }

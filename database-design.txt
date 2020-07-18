@@ -19,6 +19,7 @@ TABLES
   - BHT100 (int) - OK
   - BHT500 (int) - OK
   - BHT1000 (int) - OK
+  - Remark (string MaxLength(255)) - OK
   - Status int -> (Active = 1/Inactive = 0/etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK
 
@@ -31,6 +32,7 @@ TABLES
   - CouponBHT35 (int) - OK
   - CouponSoldBHT80Factor (decimal) - OK
   - CouponBHT80 (int) - OK
+  - Remark (string MaxLength(255)) - OK
   - Status int -> (Active = 1/Inactive = 0/etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK
 
@@ -40,6 +42,7 @@ TABLES
   - TransactionType (int) - OK (1 - init, 2 - return, 3 - received) - OK
   - TSBId (string MaxLength(10)) - OK
   - AdditionalBHTTotal (decimal) - OK.
+  - Remark (string MaxLength(255)) - OK
   - Status int -> (Active = 1/Inactive = 0/etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK
 

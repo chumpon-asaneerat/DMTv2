@@ -63,6 +63,8 @@ namespace DMT.Models
         private int _BHT1000 = 0;
         private decimal _BHTTotal = decimal.Zero;
 
+        private string _Remark = string.Empty;
+
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
 
@@ -529,6 +531,26 @@ namespace DMT.Models
         {
             get { return _BHTTotal; }
             set { }
+        }
+        /// <summary>
+        /// Gets or sets Remark.
+        /// </summary>
+        [Category("Coin/Bill")]
+        [Description("Gets or sets Remark.")]
+        [MaxLength(255)]
+        [PeropertyMapName("Remark")]
+        public string Remark
+        {
+            get { return _Remark; }
+            set
+            {
+                if (_Remark != value)
+                {
+                    _Remark = value;
+                    // Raise event.
+                    this.RaiseChanged("Remark");
+                }
+            }
         }
 
         #endregion
