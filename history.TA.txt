@@ -26,8 +26,12 @@ Update 2020-07-19 #13 (TA)
 Update 2020-07-19 #12 (TA)
 - 
 
+[commited]
 Update 2020-07-19 #11 (TA)
-- 
+- Implements TA/TOD model class #64.
+  - TSBCreditBalance re-implements #5.
+  - Rename TSBCreditBalance to TSBCreditBalanceTransaction.
+  - Add TSBCreditBalance for Query only.
 
 [commited]
 Update 2020-07-19 #10 (TA)

@@ -3,39 +3,29 @@ TABLES
 ------
 
 - TSBCreditBalance
-  - TSBCreditBalanceId [PK] (int auto) - OK
-  - TSB_ST25 (int) -> init value - OK
-  - TSB_ST50 (int) -> init value - OK
-  - TSB_BHT1 (int) -> init value - OK
-  - TSB_BHT2 (int) -> init value - OK
-  - TSB_BHT5 (int) -> init value - OK
-  - TSB_BHT10 (int) -> init value - OK
-  - TSB_BHT20 (int) -> init value - OK
-  - TSB_BHT50 (int) -> init value - OK
-  - TSB_BHT100 (int) -> init value - OK
-  - TSB_BHT500 (int) -> init value - OK
-  - TSB_BHT1000 (int) -> init value - OK
+  - TransactionId [PK] (int auto) - OK
+  - TransactionDate (datetime) - OK
+  - TransactionType (int) - OK (1 - init, 2 - return, 3 - received) - OK
+  - TSBId (string MaxLength(10)) - OK
+  - ST25 (int) - OK
+  - ST50 (int) - OK
+  - BHT1 (int) - OK
+  - BHT2 (int) - OK
+  - BHT5 (int) - OK
+  - BHT10 (int) - OK
+  - BHT20 (int) - OK
+  - BHT50 (int) - OK
+  - BHT100 (int) - OK
+  - BHT500 (int) - OK
+  - BHT1000 (int) - OK
 
-    // readonly from query.
-  - ST25 (int) -> calc from [init + user(-borrow/+return)]
-  - ST50 (int) -> calc from [init + user(-borrow/+return)]
-  - BHT1 (int) -> calc from [init + user(-borrow/+return)]
-  - BHT2 (int) -> calc from [init + user(-borrow/+return)]
-  - BHT5 (int) -> calc from [init + user(-borrow/+return)]
-  - BHT10 (int) -> calc from [init + user(-borrow/+return)]
-  - BHT20 (int) -> calc from [init + user(-borrow/+return)]
-  - BHT50 (int) -> calc from [init + user(-borrow/+return)]
-  - BHT100 (int) -> calc from [init + user(-borrow/+return)]
-  - BHT500 (int) -> calc from [init + user(-borrow/+return)]
-  - BHT1000 (int) -> calc from [init + user(-borrow/+return)]
+  - Status int -> (Active = 1/Inactive = 0/etc..) - OK
+  - LastUpdate (DateTime) -> last time sync from DC - OK
 
   - BHTTotal (decimal) -> calc from [init - UserBHTTotal + AdditionalBHTTotal]
   - AdditionalBHTTotal (decimal) -> calc from [request (type=additional)]
   - UserBHTTotal (decimal) -> calc from [user(+borrow/-return)] // invert sign
   - TSBBHTTotal (decimal) -> calc from [init AdditionalBHTTotal - UserBHTTotal]
-
-  - Status int -> (Active = 1/Inactive = 0/etc..) - OK
-  - LastUpdate (DateTime) -> last time sync from DC - OK
 
 - TSBCouponBalance
   - TSBCouponBalanceId [PK] (int auto)
