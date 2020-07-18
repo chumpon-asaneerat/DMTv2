@@ -8,8 +8,11 @@ Update 2020-07-19 #10 (TA)
 Update 2020-07-19 #9 (TA)
 - 
 
+[commited]
 Update 2020-07-19 #8 (TA)
-- 
+- Implements TA/TOD model class #61.
+  - UserCredit re-implements #1.
+  - Update LocalServer init Table.
 
 [commited]
 Update 2020-07-19 #7 (TA)

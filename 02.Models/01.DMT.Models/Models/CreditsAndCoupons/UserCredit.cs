@@ -795,7 +795,7 @@ namespace DMT.Models
             }
         }
 
-        public static void Borrow(UserCredit credit, TSBBalance balance)
+        public static void Borrow(UserCredit credit, TSBCreditBalance balance)
         {
             lock (sync)
             {
@@ -825,7 +825,7 @@ namespace DMT.Models
                     balance.UserBHTTotal += -1 * sign * credit.BHTTotal;
 
                     Save(credit);
-                    TSBBalance.Save(balance);
+                    TSBCreditBalance.Save(balance);
 
                     Default.Commit();
                 }
@@ -836,7 +836,7 @@ namespace DMT.Models
             }
         }
 
-        public static void Return(UserCredit credit, TSBBalance balance)
+        public static void Return(UserCredit credit, TSBCreditBalance balance)
         {
             lock (sync)
             {
@@ -866,7 +866,7 @@ namespace DMT.Models
                     balance.UserBHTTotal += -1 * sign * credit.BHTTotal;
 
                     Save(credit);
-                    TSBBalance.Save(balance);
+                    TSBCreditBalance.Save(balance);
 
                     Default.Commit();
                 }
@@ -877,7 +877,7 @@ namespace DMT.Models
             }
         }
 
-        public static void Undo(UserCredit credit, TSBBalance balance)
+        public static void Undo(UserCredit credit, TSBCreditBalance balance)
         {
             lock (sync)
             {
@@ -917,7 +917,7 @@ namespace DMT.Models
                     balance.UserBHTTotal += -1 * sign * credit.BHTTotal;
 
                     Save(credit);
-                    TSBBalance.Save(balance);
+                    TSBCreditBalance.Save(balance);
 
                     Default.Commit();
                 }

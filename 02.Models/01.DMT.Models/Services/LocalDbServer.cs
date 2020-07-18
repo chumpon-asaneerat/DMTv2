@@ -151,11 +151,10 @@ namespace DMT.Services
 
 			Db.CreateTable<RevenueEntry>();
 
-			Db.CreateTable<TSBBalance>();
-			
+			Db.CreateTable<TSBCreditBalance>();
+			Db.CreateTable<TSBCouponBalance>();
 			//Db.CreateTable<TSBCredit>();
 			//Db.CreateTable<TSBCreditTransaction>();
-
 			//Db.CreateTable<UserCredit>();
 			//Db.CreateTable<UserCreditTransaction>();
 
