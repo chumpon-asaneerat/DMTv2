@@ -191,7 +191,7 @@ namespace DMT.Services
             item.TSBId = "311";
             item.TSBNameEN = "DIN DAENG";
             item.TSBNameTH = "ดินแดง";
-            item.Active = false;
+            item.Active = true;
             if (!TSB.Exists(item)) TSB.Save(item);
 
             #endregion
@@ -452,7 +452,7 @@ namespace DMT.Services
             item.TSBId = "313";
             item.TSBNameEN = "LAD PRAO";
             item.TSBNameTH = "ลาดพร้าว";
-            item.Active = true;
+            item.Active = false;
             if (!TSB.Exists(item)) TSB.Save(item);
 
             #endregion
