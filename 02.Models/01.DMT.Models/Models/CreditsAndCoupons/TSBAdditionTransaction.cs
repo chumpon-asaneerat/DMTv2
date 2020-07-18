@@ -18,21 +18,23 @@ using System.ComponentModel;
 
 namespace DMT.Models
 {
-    #region TSBCouponTransaction
+    #region TSBAdditionTransaction
 
     /// <summary>
-    /// The TSBCouponTransaction Data Model class.
+    /// The TSBAdditionTransaction Data Model class.
     /// </summary>
-    //[Table("TSBCouponTransaction")]
-    public class TSBCouponTransaction : NTable<TSBCouponTransaction>
+    //[Table("TSBAdditionTransaction")]
+    public class TSBAdditionTransaction : NTable<TSBAdditionTransaction>
     {
         #region Enum
 
         public enum TransactionTypes
         {
             Init = 0,
-            // received from account
-            Received = 1
+            // borrow from account after approved.
+            Borrow = 1,
+            // return to account after expired period.
+            Return = 2
         }
 
         #endregion
@@ -42,24 +44,12 @@ namespace DMT.Models
         private int _TransactionId = 0;
         private DateTime _TransactionDate = DateTime.MinValue;
         private TransactionTypes _TransactionType = TransactionTypes.Init;
-
-        private string _TSBId = string.Empty;
-        private string _TSBNameEN = string.Empty;
-        private string _TSBNameTH = string.Empty;
-
-        // Coupon 
-        private decimal _CouponBHT35Factor = 665;
-        private decimal _CouponBHT80Factor = 1520;
-        private int _CouponBHT35 = 0;
-        private int _CouponBHT80 = 0;
-        private decimal _CouponBHT35Total = decimal.Zero;
-        private decimal _CouponBHT80Total = decimal.Zero;
-
-        private int _CouponTotal = 0;
-        private decimal _CouponBHTTotal = decimal.Zero;
+        // Additional Borrow
+        private decimal _AdditionalBHTTotal = decimal.Zero;
 
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
+
 
         #endregion
 
@@ -68,29 +58,7 @@ namespace DMT.Models
         /// <summary>
         /// Constructor.
         /// </summary>
-        public TSBCouponTransaction() : base() { }
-
-        #endregion
-
-        #region Private Methods
-
-        private void CalcCouponTotal()
-        {
-            _CouponBHT35Total = Convert.ToDecimal(_CouponBHT35 * _CouponBHT35Factor);
-            _CouponBHT80Total = Convert.ToDecimal(_CouponBHT80 * _CouponBHT80Factor);
-            _CouponTotal = _CouponBHT35 + _CouponBHT80;
-            decimal total = 0;
-            total += _CouponBHT35Total;
-            total += _CouponBHT80Total;
-            _CouponBHTTotal = total;
-
-            // Raise event.
-            this.RaiseChanged("CouponBHT35Total");
-            this.RaiseChanged("CouponBHT80Total");
-            this.RaiseChanged("CouponTotal");
-            this.RaiseChanged("CouponBHTTotal");
-
-        }
+        public TSBAdditionTransaction() : base() { }
 
         #endregion
 
@@ -289,113 +257,26 @@ namespace DMT.Models
 
         #endregion
 
-        #region Coupon
+        #region Additional
 
         /// <summary>
-        /// Gets or sets number of 35 BHT coupon factor.
+        /// Gets or sets additional borrow in baht.
         /// </summary>
-        [Category("Coupon")]
-        [Description("Gets or sets number of 35 BHT coupon factor.")]
-        [PeropertyMapName("CouponBHT35Factor")]
-        public decimal CouponBHT35Factor
+        [Category("Additional")]
+        [Description("Gets or sets additional borrow/return in baht.")]
+        [PeropertyMapName("AdditionalBHTTotal")]
+        public virtual decimal AdditionalBHTTotal
         {
-            get { return _CouponBHT35Factor; }
+            get { return _AdditionalBHTTotal; }
             set
             {
-                if (_CouponBHT35Factor != value)
+                if (_AdditionalBHTTotal != value)
                 {
-                    _CouponBHT35Factor = value;
-                    CalcCouponTotal();
+                    _AdditionalBHTTotal = value;
                     // Raise event.
-                    this.RaiseChanged("CouponBHT35Factor");
+                    this.RaiseChanged("AdditionalBHTTotal");
                 }
             }
-        }
-        /// <summary>
-        /// Gets or sets number of 80 BHT coupon factor.
-        /// </summary>
-        [Category("Coupon")]
-        [Description("Gets or sets number of 80 BHT coupon factor.")]
-        [PeropertyMapName("CouponBHT80Factor")]
-        public decimal CouponBHT80Factor
-        {
-            get { return _CouponBHT80Factor; }
-            set
-            {
-                if (_CouponBHT80Factor != value)
-                {
-                    _CouponBHT80Factor = value;
-                    CalcCouponTotal();
-                    // Raise event.
-                    this.RaiseChanged("CouponBHT80Factor");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets number of 35 BHT coupon.
-        /// </summary>
-        [Category("Coupon")]
-        [Description("Gets or sets number of 35 BHT coupon.")]
-        [PeropertyMapName("CouponBHT35")]
-        public virtual int CouponBHT35
-        {
-            get { return _CouponBHT35; }
-            set
-            {
-                if (_CouponBHT35 != value)
-                {
-                    _CouponBHT35 = value;
-                    CalcCouponTotal();
-                    // Raise event.
-                    this.RaiseChanged("CouponBHT35");
-
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets number of 80 BHT coupon.
-        /// </summary>
-        [Category("Coupon")]
-        [Description("Gets or sets number of 80 BHT coupon.")]
-        [PeropertyMapName("CouponBHT80")]
-        public virtual int CouponBHT80
-        {
-            get { return _CouponBHT80; }
-            set
-            {
-                if (_CouponBHT80 != value)
-                {
-                    _CouponBHT80 = value;
-                    CalcCouponTotal();
-                    // Raise event.
-                    this.RaiseChanged("CouponBHT80");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets calculate coupon total (book count).
-        /// </summary>
-        [Category("Coupon")]
-        [Description("Gets calculate coupon total (book count).")]
-        [PeropertyMapName("CouponTotal")]
-        public int CouponTotal
-        {
-            get { return _CouponTotal; }
-            set { }
-        }
-        /// <summary>
-        /// Gets or sets total value in baht.
-        /// </summary>
-        [Category("Coupon")]
-        [Description("Gets or sets total value in baht.")]
-        [ReadOnly(true)]
-        [JsonIgnore]
-        [Ignore]
-        [PeropertyMapName("CouponBHTTotal")]
-        public decimal CouponBHTTotal
-        {
-            get { return _CouponBHTTotal; }
-            set { }
         }
 
         #endregion
@@ -450,7 +331,7 @@ namespace DMT.Models
 
         #region Internal Class
 
-        public class FKs : TSBCouponTransaction
+        public class FKs : TSBAdditionTransaction
         {
             #region TSB
 
@@ -479,9 +360,9 @@ namespace DMT.Models
 
             #region Public Methods
 
-            public TSBCouponTransaction ToTSBCouponTransaction()
+            public TSBAdditionTransaction ToTSBAdditionTransaction()
             {
-                TSBCouponTransaction inst = new TSBCouponTransaction();
+                TSBAdditionTransaction inst = new TSBAdditionTransaction();
                 this.AssignTo(inst); // set all properties to new instance.
                 return inst;
             }
@@ -494,12 +375,10 @@ namespace DMT.Models
         #region Static Methods
 
         /// <summary>
-        /// Gets Active TSB Coupon transactions.
+        /// Gets Active TSB Addition transactions.
         /// </summary>
-        /// <returns>
-        /// Returns Current Active TSB Coupon transactions. If not found returns null.
-        /// </returns>
-        public static TSBCouponTransaction GetCurrent()
+        /// <returns>Returns Current Active TSB Addition transactions. If not found returns null.</returns>
+        public static TSBAdditionTransaction GetCurrent()
         {
             lock (sync)
             {
@@ -508,26 +387,26 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets TSB Coupon transactions.
+        /// Gets TSB Addition transactions.
         /// </summary>
-        /// <param name="tsb">The target TSB to get coupon transaction.</param>
-        /// <returns>Returns TSB Coupon transactions. If TSB not found returns null.</returns>
-        public static TSBCouponTransaction GetCurrent(TSB tsb)
+        /// <param name="tsb">The target TSB to get transactions.</param>
+        /// <returns>Returns TSB Addition transactions. If TSB not found returns null.</returns>
+        public static TSBAdditionTransaction GetCurrent(TSB tsb)
         {
             if (null == tsb) return null;
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT TSBCouponTransaction.* ";
+                cmd += "SELECT TSBAdditionTransaction.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "  FROM TSBCouponTransaction, TSB ";
-                cmd += " WHERE TSBCouponTransaction.TSBId = TSB.TSBId ";
-                cmd += "   AND TSBCouponTransaction.TSBId = ? ";
+                cmd += "  FROM TSBAdditionTransaction, TSB ";
+                cmd += " WHERE TSBAdditionTransaction.TSBId = TSB.TSBId ";
+                cmd += "   AND TSBAdditionTransaction.TSBId = ? ";
 
                 var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
                 if (null == ret)
                 {
-                    TSBCouponTransaction inst = Create();
+                    TSBAdditionTransaction inst = Create();
                     // assigned TSB info.
                     tsb.AssignTo(inst);
                     Save(inst);
@@ -535,7 +414,7 @@ namespace DMT.Models
                 }
                 else
                 {
-                    return ret.ToTSBCouponTransaction();
+                    return ret.ToTSBAdditionTransaction();
                 }
             }
         }

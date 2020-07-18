@@ -1,8 +1,7 @@
 --------------------------------------------------------------------------------------------
 TABLES
 ------
-
-- TSBCreditBalance
+- TSBBalance
 
 - TSBCreditTransaction
   - TransactionId [PK] (int auto) - OK
@@ -20,16 +19,8 @@ TABLES
   - BHT100 (int) - OK
   - BHT500 (int) - OK
   - BHT1000 (int) - OK
-
   - Status int -> (Active = 1/Inactive = 0/etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK
-
-  - AdditionalBHTTotal (decimal) -> calc from [request (type=additional)]
-  - UserBHTTotal (decimal) -> calc from [user(+borrow/-return)] // invert sign
-  - TSBBHTTotal (decimal) -> calc from [init AdditionalBHTTotal - UserBHTTotal]
-
-- TSBCouponBalance
-
 
 - TSBCouponTransaction - OK
   - TransactionId [PK] (int auto) - OK
@@ -43,27 +34,16 @@ TABLES
   - Status int -> (Active = 1/Inactive = 0/etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK
 
-
-- TSBCreditTransaction (transaction)
-  - TransactionId [Guid] (int auto)
-  - TransactionDate (datetime)
-  - TransactionType (1 = init, 2 = adjust(overwrite), 3 = exchange(+/-))
-  - UserId string MaxLength(10) -> supervisor
-  - RefId string MaxLength(50) -> reference document.
-  - ST25 (int)
-  - ST50 (int)
-  - BHT1 (int)
-  - BHT2 (int)
-  - BHT5 (int)
-  - BHT10 (int)
-  - BHT20 (int)
-  - BHT50 (int)
-  - BHT100 (int)
-  - BHT500 (int)
-  - BHT1000 (int)
-
+- TSBAdditionTransaction
+  - TransactionId [PK] (int auto) - OK
+  - TransactionDate (datetime) - OK
+  - TransactionType (int) - OK (1 - init, 2 - return, 3 - received) - OK
+  - TSBId (string MaxLength(10)) - OK
+  - AdditionalBHTTotal (decimal) - OK.
   - Status int -> (Active = 1/Inactive = 0/etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK
+
+
 
 - UserCredit (summary on current shift)
   - UserCreditId [PK] (Guid)

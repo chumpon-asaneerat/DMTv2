@@ -31,7 +31,10 @@ namespace DMT.Models
         public enum TransactionTypes
         {
             Init = 0,
-            Exchange = 1
+            // received from exchange request.
+            Received = 1,
+            // return from exchange request.
+            Return = 2
         }
 
         #endregion
@@ -59,13 +62,6 @@ namespace DMT.Models
         private int _BHT500 = 0;
         private int _BHT1000 = 0;
         private decimal _BHTTotal = decimal.Zero;
-
-        // Additional Borrow
-        private decimal _AdditionalBHTTotal = decimal.Zero;
-        // Collector Borrow
-        private decimal _UserBHTTotal = decimal.Zero;
-        // TSB Total.
-        private decimal _TSBBHTTotal = decimal.Zero;
 
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
@@ -99,10 +95,6 @@ namespace DMT.Models
             total += _BHT1000 * 1000;
 
             _BHTTotal = total;
-
-            _TSBBHTTotal = total + _AdditionalBHTTotal + _UserBHTTotal;
-            // Raise event.
-            this.RaiseChanged("TSB_BHTTotal");
         }
 
         #endregion
@@ -541,71 +533,6 @@ namespace DMT.Models
 
         #endregion
 
-        #region Additional/User Borrow and TSB BHT Total
-
-        /// <summary>
-        /// Gets or sets additional borrow in baht.
-        /// </summary>
-        [Category("Borrow")]
-        [Description("Gets or sets additional borrow in baht.")]
-        [PeropertyMapName("AdditionalBHTTotal")]
-        public virtual decimal AdditionalBHTTotal
-        {
-            get { return _AdditionalBHTTotal; }
-            set
-            {
-                if (_AdditionalBHTTotal != value)
-                {
-                    _AdditionalBHTTotal = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("AdditionalBHTTotal");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets all user borrow in baht.
-        /// </summary>
-        [Category("Borrow")]
-        [Description("Gets or sets all user borrow in baht.")]
-        [ReadOnly(true)]
-        [PeropertyMapName("UserBHTTotal")]
-        public virtual decimal UserBHTTotal
-        {
-            get { return _UserBHTTotal; }
-            set
-            {
-                if (_UserBHTTotal != value)
-                {
-                    _UserBHTTotal = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("UserBHTTotal");
-                }
-            }
-        }
-
-        #endregion
-
-        #region TSB BHT Total
-
-        /// <summary>
-        /// Gets or sets TSB Total (From total calc coin/bill + additional + user borrow).
-        /// </summary>
-        [Category("Summary")]
-        [Description("Gets or sets TSB Total (From total calc coin/bill + additional + user borrow).")]
-        [ReadOnly(true)]
-        [Ignore]
-        [JsonIgnore]
-        [PeropertyMapName("TSBBHTTotal")]
-        public virtual decimal TSBBHTTotal
-        {
-            get { return _TSBBHTTotal; }
-            set{ }
-        }
-
-        #endregion
-
         #region Status (DC)
 
         /// <summary>
@@ -700,9 +627,9 @@ namespace DMT.Models
         #region Static Methods
 
         /// <summary>
-        /// Gets Active TSB Balance.
+        /// Gets Active TSB Credit transactions.
         /// </summary>
-        /// <returns>Returns Current Active TSB balance transaction. If not found returns null.</returns>
+        /// <returns>Returns Current Active TSB Credit transactions. If not found returns null.</returns>
         public static TSBCreditTransaction GetCurrent()
         {
             lock (sync)
@@ -712,10 +639,10 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets TSB Balance.
+        /// Gets TSB Credit transactions.
         /// </summary>
-        /// <param name="tsb">The target TSB to get balance.</param>
-        /// <returns>Returns TSB balance transaction. If TSB not found returns null.</returns>
+        /// <param name="tsb">The target TSB to get transactions.</param>
+        /// <returns>Returns TSB Credit transactions. If TSB not found returns null.</returns>
         public static TSBCreditTransaction GetCurrent(TSB tsb)
         {
             if (null == tsb) return null;

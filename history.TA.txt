@@ -14,8 +14,12 @@ Update 2020-07-19 #17 (TA)
 Update 2020-07-19 #16 (TA)
 - 
 
+[commited]
 Update 2020-07-19 #15 (TA)
-- 
+- Implements TA/TOD model class #68.
+  - Add TSBAdditionTransaction class.
+  - TSBCreditBalanceTransaction re-implements #3.
+  - TSBCouponTransaction re-implements #3.
 
 [commited]
 Update 2020-07-19 #14 (TA)
