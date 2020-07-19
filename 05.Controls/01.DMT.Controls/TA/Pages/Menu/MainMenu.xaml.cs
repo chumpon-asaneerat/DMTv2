@@ -34,9 +34,9 @@ namespace DMT.TA.Pages.Menu
 
         #region Button (Menu) Command Handlers
 
+        // Implement #1 ยืม/แลก เงินยืมทอบ ฝ่ายบัญชี
         private void exchangeBankNote_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
                 // Exchange Fund Page.
@@ -53,7 +53,7 @@ namespace DMT.TA.Pages.Menu
                 //Console.WriteLine("Refresh data error.");
             }
         }
-
+        // Not yet Implementations. หัวหน่าขายคูปอง
         private void plazaReceivedCoupon_Click(object sender, RoutedEventArgs e)
         {
 
@@ -376,38 +376,14 @@ namespace DMT.TA.Pages.Menu
                 //Console.WriteLine("Refresh data error.");
             }
         }
-
+        // Implement #1 ???
+        /*
         private void plazaReceivedReturnFund_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                /*
-                // Plaza Fund Received
-                var page = new TA.Plaza.PlazaFundReceivedReturnPage();
-
-                BindingList<Models.FundEntry> funds = new BindingList<Models.FundEntry>();
-                Models.FundEntry fund;
-
-                fund = new Models.FundEntry();
-                fund.Date = new DateTime(2020, 3, 12, 09, 05, 00);
-                fund.StaffId = "14055";
-                fund.StaffName = "นางวิภา สวัสดิวัฒน์";
-                fund.BHT1 = 10;
-                fund.BHT2 = 10;
-                fund.BHT5 = 10;
-                fund.BHT10c = 10;
-                fund.BHT20 = 10;
-                fund.BHT50 = 10;
-                fund.BHT100 = 10;
-                fund.BHT500 = 10;
-                fund.BHT1000 = 10;
-                funds.Add(fund);
-
-                page.Setup(plaza, funds);
-                */
-
                 var page = new DMT.TA.Pages.Plaza.PlazaCouponReceivedReturnPage();
-
+                page.RefreshPlazaInfo();
                 PageContentManager.Instance.Current = page;
             }
             catch (Exception)
@@ -415,14 +391,15 @@ namespace DMT.TA.Pages.Menu
                 //Console.WriteLine("Refresh data error.");
             }
         }
-
+        */
+        // Implement #1 คืนเงินยืมทอนฝ่ายบัญชี
         private void refundBankNote_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 // Plaza Fund Received
                 var page = new DMT.TA.Pages.Plaza.PlazaReceivedReturnPage();
-
+                page.RefreshPlazaInfo();
                 PageContentManager.Instance.Current = page;
             }
             catch (Exception)
@@ -430,19 +407,19 @@ namespace DMT.TA.Pages.Menu
                 //Console.WriteLine("Refresh data error.");
             }
         }
-        // NO Implementation
+        // NO Implementation ประวัติการขายคูปอง
         private void plazaAllCoupon_Click(object sender, RoutedEventArgs e)
         {
 
         }
-
+        // Implement #1 แลกเงินหมุนเวียนในด่าน
         private void exchangeMoney_Click(object sender, RoutedEventArgs e)
         {
             var page = new DMT.TA.Pages.Plaza.PlazaReceivedFundReturnPage();
-
+            page.RefreshPlazaInfo();
             PageContentManager.Instance.Current = page;
         }
-
+        // Implement #1 - no report (currently used image) รายงานสรุปการยืมเงินทอน
         private void collectorFundReport_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -456,104 +433,14 @@ namespace DMT.TA.Pages.Menu
             }
 
         }
-
+        // Implement #1 เงินยืมทอน (collector)
         private void collectorFund_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 var page = new Collector.CollectorFundViewPage();
+                page.RefreshPlazaInfo();
                 PageContentManager.Instance.Current = page;
-                /*
-                Models.FundEntry plazaFund = new Models.FundEntry();
-                plazaFund.Description = "เงินยืม-ทอน (ด่าน)";
-                plazaFund.HasRemark = false;
-
-                plazaFund.Date = new DateTime(2020, 3, 12, 09, 05, 00);
-                plazaFund.StaffId = "14055";
-                plazaFund.BHT1 = 1000;
-                plazaFund.BHT2 = 1000;
-                plazaFund.BHT5 = 1000;
-                plazaFund.BHT10c = 500;
-                plazaFund.BHT20 = 200;
-                plazaFund.BHT50 = 100;
-                plazaFund.BHT100 = 200;
-                plazaFund.BHT500 = 100;
-                plazaFund.BHT1000 = 100;
-
-                BindingList<Models.FundEntry> funds = new BindingList<Models.FundEntry>();
-                Models.FundEntry fund;
-                // Collector 1
-                fund = new Models.FundEntry();
-                fund.Description = "นาย สุเทพ เหมัน";
-                fund.Date = new DateTime(2020, 3, 17, 09, 05, 00);
-                fund.StaffId = "14321";
-                fund.Lane = 1;
-                fund.BHT1 = 50;
-                fund.BHT2 = 50;
-                fund.BHT5 = 40;
-                fund.BHT10c = 20;
-                fund.BHT20 = 10;
-                fund.BHT50 = 5;
-                fund.BHT100 = 18;
-                fund.BHT500 = 10;
-                fund.BHT1000 = 5;
-                funds.Add(fund);
-
-                // Collector 2
-                fund = new Models.FundEntry();
-                fund.Description = "นางสาว แก้วใส ฟ้ารุ่งโรจณ์";
-                fund.Date = new DateTime(2020, 3, 17, 09, 05, 00);
-                fund.StaffId = "13201";
-                fund.Lane = 4;
-                fund.BHT1 = 20;
-                fund.BHT2 = 15;
-                fund.BHT5 = 60;
-                fund.BHT10c = 45;
-                fund.BHT20 = 45;
-                fund.BHT50 = 5;
-                fund.BHT100 = 24;
-                fund.BHT500 = 10;
-                fund.BHT1000 = 5;
-                funds.Add(fund);
-
-                // Collector 3
-                fund = new Models.FundEntry();
-                fund.Description = "นางวิภา สวัสดิวัฒน์";
-                fund.Date = new DateTime(2020, 3, 17, 09, 05, 00);
-                fund.StaffId = "11559";
-                fund.Lane = 8;
-                fund.BHT1 = 20;
-                fund.BHT2 = 15;
-                fund.BHT5 = 20;
-                fund.BHT10c = 20;
-                fund.BHT20 = 10;
-                fund.BHT50 = 3;
-                fund.BHT100 = 21;
-                fund.BHT500 = 14;
-                fund.BHT1000 = 2;
-                funds.Add(fund);
-
-                // Collector 4
-                fund = new Models.FundEntry();
-                fund.Description = "นาย ภักดี อมรรุ่งโรจน์";
-                fund.Date = new DateTime(2020, 3, 17, 09, 05, 00);
-                fund.StaffId = "12866";
-                fund.Lane = 5;
-                fund.BHT1 = 0;
-                fund.BHT2 = 0;
-                fund.BHT5 = 0;
-                fund.BHT10c = 0;
-                fund.BHT20 = 0;
-                fund.BHT50 = 0;
-                fund.BHT100 = 0;
-                fund.BHT500 = 0;
-                fund.BHT1000 = 0;
-                funds.Add(fund);
-
-                page.Setup(plazaFund, funds);
-
-                PageContentManager.Instance.Current = page;
-                */
             }
             catch (Exception)
             {
@@ -561,7 +448,12 @@ namespace DMT.TA.Pages.Menu
             }
             
         }
+        // NO Implementation ประวัติการแลกเงินยืมทอน (collector)
+        private void changeBorrowingHistory_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+        // NO Implementation รับคูปอง (collector)
         private void collectorReveivedCoupon_Click(object sender, RoutedEventArgs e)
         {
             var page = new Coupon.ReceivedCouponPage();
@@ -612,12 +504,7 @@ namespace DMT.TA.Pages.Menu
             }
             */
         }
-
-        private void changeBorrowingHistory_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        // NO Implementation คืนคูปอง (collector)
         private void collectorReturnCoupon_Click(object sender, RoutedEventArgs e)
         {
             var page = new Coupon.ReturnCouponPage();
@@ -668,7 +555,7 @@ namespace DMT.TA.Pages.Menu
             }
             */
         }
-        // OK.
+        // OK. เช็คยอดด่าน
         private void plazaAllStock_Click(object sender, RoutedEventArgs e)
         {
             var win = new Windows.Plaza.PlazaStockSummaryWindow();
@@ -679,7 +566,7 @@ namespace DMT.TA.Pages.Menu
                 return;
             }
         }
-        // OK.
+        // OK. ออกจากระบบ
         private void logout_Click(object sender, RoutedEventArgs e)
         {
             // When enter Sign In Screen reset current user.

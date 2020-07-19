@@ -17,12 +17,19 @@ Update 2020-07-20 #11 (TA)
 Update 2020-07-20 #10 (TA)
 - 
 
+[commited]
 Update 2020-07-20 #9 (TA)
-- 
+- Implements TA/TOD model class #94.
+  - Implements PlazaCouponReceivedReturnPage #1.
+  - Implements PlazaFundReceivedReturnPage #1.
+  - Implements PlazaReceivedFundReturnPage #1.
+  - Implements PlazaReceivedReturnPage #1.
+  - Implements CollectorFundSummaryReportPage #1.
+  - Implements CollectorFundViewPage #1.
 
 [commited]
 Update 2020-07-20 #8 (TA)
-- Implements TA/TOD model class #92.
+- Implements TA/TOD model class #93.
   - Implements PlazaRequestExchangePage #1.
 
 [commited]

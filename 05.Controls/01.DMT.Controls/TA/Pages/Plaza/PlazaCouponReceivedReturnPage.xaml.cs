@@ -1,10 +1,19 @@
-﻿using System;
+﻿#region Using
+
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-using NLib;
+using DMT.Models;
+using DMT.Services;
 using NLib.Services;
+using NLib.Reflection;
+using NLib.Reports.Rdlc;
+using System.Reflection;
+
+#endregion
+
 
 namespace DMT.TA.Pages.Plaza
 {
@@ -13,10 +22,21 @@ namespace DMT.TA.Pages.Plaza
     /// </summary>
     public partial class PlazaCouponReceivedReturnPage : UserControl
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public PlazaCouponReceivedReturnPage()
         {
             InitializeComponent();
         }
+
+        #endregion
+
+        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+
+        #region Button Handlers
 
         private void cmdOK_Click(object sender, RoutedEventArgs e)
         {
@@ -31,6 +51,8 @@ namespace DMT.TA.Pages.Plaza
             var page = new Menu.MainMenu();
             PageContentManager.Instance.Current = page;
         }
+
+        #endregion
         /*
         public void Setup(List<Models.Coupon> coupons)
         {
@@ -48,5 +70,15 @@ namespace DMT.TA.Pages.Plaza
             plaza.IsEnabled = false;
         }
         */
+        public void RefreshPlazaInfo()
+        {
+            var tsbCoupon = ops.Coupons.GetCurrent();
+
+            this.DataContext = tsbCoupon;
+            tsbCoupon.Description = "คุปอง";
+            tsbCoupon.HasRemark = false;
+            plaza.IsEnabled = false;
+            plaza.DataContext = tsbCoupon;
+        }
     }
 }
