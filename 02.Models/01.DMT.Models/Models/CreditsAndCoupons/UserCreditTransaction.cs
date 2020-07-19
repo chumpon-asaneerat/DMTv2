@@ -997,10 +997,17 @@ namespace DMT.Models
                 string cmd = string.Empty;
                 cmd += "SELECT TSBCreditTransaction.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                //cmd += "     , UserCredit.PlazaGroupId, UserCredit.PlazaGroupNameEN, UserCredit.PlazaGroupNameTH ";
-                //cmd += "  FROM UserCreditTransaction, TSB, UserCredit ";
+                cmd += "     , UserCredit.PlazaGroupId, UserCredit.PlazaGroupNameEN, UserCredit.PlazaGroupNameTH ";
+                cmd += "     , UserCredit.UserId, UserCredit.FullNameEN, UserCredit.FullNameTH ";
+                cmd += "     , UserCredit.ST25, UserCredit.ST50 ";
+                cmd += "     , UserCredit.BHT1, UserCredit.BHT2, UserCredit.BHT5 ";
+                cmd += "     , UserCredit.BHT10, UserCredit.BHT20, UserCredit.BHT50 ";
+                cmd += "     , UserCredit.BHT100, UserCredit.BHT500, UserCredit.BHT1000 ";
+                cmd += "  FROM UserCreditTransaction, TSB, UserCredit ";
                 cmd += "  FROM UserCreditTransaction, TSB ";
                 cmd += " WHERE UserCreditTransaction.TSBId = TSB.TSBId ";
+                cmd += "   AND UserCredit.TSBId = TSB.TSBId ";
+                cmd += "   AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId ";
                 cmd += "   AND UserCreditTransaction.TSBId = ? ";
 
                 var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();

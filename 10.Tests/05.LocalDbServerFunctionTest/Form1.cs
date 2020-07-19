@@ -289,19 +289,22 @@ namespace LocalDbServerFunctionTest
 
         private void button6_Click(object sender, EventArgs e)
         {
-            /*
-            // Create UserCreditTransaction
+            // Create UserCredit
             var user = cbUsers.SelectedItem as User;
-            if (null != user)
+            var plazaGroup = cbPlazaGroups.SelectedItem as PlazaGroup;
+            var bagNo = txtBagNo.Text;
+            var beltNo = txtBeltNo.Text;
+            if (null != user && null != plazaGroup && 
+                !string.IsNullOrWhiteSpace(bagNo) &&
+                !string.IsNullOrWhiteSpace(beltNo))
             {
-                var usrCredit = UserCredit.Create(user);
+                var usrCredit = UserCredit.Create(user, plazaGroup, bagNo, beltNo);
                 pgUserCredit.SelectedObject = usrCredit;
             }
             else
             {
                 pgUserCredit.SelectedObject = null;
             }
-            */
         }
 
         private void button5_Click(object sender, EventArgs e)

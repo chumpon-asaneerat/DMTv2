@@ -111,6 +111,10 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.cbPlazaGroups = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtBagNo = new System.Windows.Forms.TextBox();
+            this.txtBeltNo = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -790,9 +794,9 @@
             // pgUserCredit
             // 
             this.pgUserCredit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pgUserCredit.Location = new System.Drawing.Point(0, 86);
+            this.pgUserCredit.Location = new System.Drawing.Point(0, 147);
             this.pgUserCredit.Name = "pgUserCredit";
-            this.pgUserCredit.Size = new System.Drawing.Size(510, 313);
+            this.pgUserCredit.Size = new System.Drawing.Size(510, 252);
             this.pgUserCredit.TabIndex = 3;
             // 
             // panel12
@@ -840,6 +844,10 @@
             // 
             // panel11
             // 
+            this.panel11.Controls.Add(this.txtBeltNo);
+            this.panel11.Controls.Add(this.label5);
+            this.panel11.Controls.Add(this.txtBagNo);
+            this.panel11.Controls.Add(this.label4);
             this.panel11.Controls.Add(this.cbPlazaGroups);
             this.panel11.Controls.Add(this.label3);
             this.panel11.Controls.Add(this.button6);
@@ -848,14 +856,14 @@
             this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel11.Location = new System.Drawing.Point(0, 0);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(510, 86);
+            this.panel11.Size = new System.Drawing.Size(510, 147);
             this.panel11.TabIndex = 0;
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(371, 38);
+            this.button6.Location = new System.Drawing.Point(381, 107);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(115, 28);
+            this.button6.Size = new System.Drawing.Size(117, 28);
             this.button6.TabIndex = 3;
             this.button6.Text = "Create";
             this.button6.UseVisualStyleBackColor = true;
@@ -993,7 +1001,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 41);
+            this.label3.Location = new System.Drawing.Point(8, 44);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 17);
             this.label3.TabIndex = 4;
@@ -1006,6 +1014,38 @@
             this.cbPlazaGroups.Name = "cbPlazaGroups";
             this.cbPlazaGroups.Size = new System.Drawing.Size(235, 24);
             this.cbPlazaGroups.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(40, 81);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 17);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Bag No";
+            // 
+            // txtBagNo
+            // 
+            this.txtBagNo.Location = new System.Drawing.Point(101, 78);
+            this.txtBagNo.Name = "txtBagNo";
+            this.txtBagNo.Size = new System.Drawing.Size(234, 22);
+            this.txtBagNo.TabIndex = 7;
+            // 
+            // txtBeltNo
+            // 
+            this.txtBeltNo.Location = new System.Drawing.Point(102, 110);
+            this.txtBeltNo.Name = "txtBeltNo";
+            this.txtBeltNo.Size = new System.Drawing.Size(234, 22);
+            this.txtBeltNo.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(41, 113);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 17);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Belt No";
             // 
             // Form1
             // 
@@ -1151,6 +1191,10 @@
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.ComboBox cbPlazaGroups;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtBeltNo;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtBagNo;
+        private System.Windows.Forms.Label label4;
     }
 }
 
