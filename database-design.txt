@@ -170,7 +170,8 @@ TABLES
   - FullNameEN (string MaxLength(100)) - OK
   - FullNameTH (string MaxLength(100)) - OK
   - UserName (string MaxLength(50)) - OK
-  - Password (string MaxLength(20)) - OK
+  - Password (string MaxLength(50)) - OK
+  - PasswordMD5 (string MaxLength(50)) - OK
   - CardId (string MaxLength(20)) - OK
   - Status int -> (Active = 1/Inactive = 0/etc..) - OK
   - LastUpdate (DateTime) -> last time sync from DC - OK

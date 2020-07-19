@@ -1,0 +1,40 @@
+
+
+// given, a password in a string
+string password = @"1234abcd";
+
+// byte array representation of that string
+byte[] encodedPassword = new UTF8Encoding().GetBytes(password);
+
+// need MD5 to calculate the hash
+byte[] hash = ((HashAlgorithm) CryptoConfig.CreateFromName("MD5")).ComputeHash(encodedPassword);
+
+// string representation (similar to UNIX format)
+string encoded = BitConverter.ToString(hash)
+   // without dashes
+   .Replace("-", string.Empty)
+   // make lowercase
+   .ToLower();
+
+// encoded contains the hash you want
+
+
+-------------------------------------------------------------------------------------------------
+
+string testString = "123";
+byte[] asciiBytes = ASCIIEncoding.ASCII.GetBytes(testString);
+byte[] hashedBytes = MD5CryptoServiceProvider.Create().ComputeHash(asciiBytes);
+string hashedString = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+// hashString == 202cb962ac59075b964b07152d234b70
+
+
+-------------------------------------------------------------------------------------------------
+
+// give me the same result as a PHP hash
+
+using (var md5 = MD5.Create())
+{
+    result = BitConverter.ToString(md5.ComputeHash(Encoding.UTF8.GetBytes(input)))
+        .Replace("-", string.Empty).ToLower();
+}
+

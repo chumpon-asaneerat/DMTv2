@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using NLib;
 using NLib.Reflection;
 using System.ComponentModel;
+using System.Security.Cryptography;
 
 #endregion
 
@@ -33,6 +34,7 @@ namespace DMT.Models
         private string _FullNameTH = string.Empty;
         private string _UserName = string.Empty;
         private string _Password = string.Empty;
+        private string _PasswordMD5 = string.Empty;
         private string _CardId = string.Empty;
 
         private string _RoleId = string.Empty;
@@ -150,7 +152,7 @@ namespace DMT.Models
         /// </summary>
         [Category("User")]
         [Description("Gets or sets Password")]
-        [MaxLength(20)]
+        [MaxLength(50)]
         [PeropertyMapName("Password")]
         public string Password
         {
@@ -164,6 +166,28 @@ namespace DMT.Models
                 {
                     _Password = value;
                     this.RaiseChanged("Password");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets MD5 Hash
+        /// </summary>
+        [Category("User")]
+        [Description("Gets or sets MD5 Hash")]
+        [MaxLength(50)]
+        [PeropertyMapName("PasswordMD5")]
+        public string PasswordMD5
+        {
+            get
+            {
+                return _PasswordMD5;
+            }
+            set
+            {
+                if (_PasswordMD5 != value)
+                {
+                    _PasswordMD5 = value;
+                    this.RaiseChanged("PasswordMD5");
                 }
             }
         }
