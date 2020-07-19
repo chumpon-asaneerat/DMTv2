@@ -64,9 +64,8 @@ namespace LocalDbServerFunctionTest
 
         private void button3_Click(object sender, EventArgs e)
         {
-            /*
-            // Credits/Coupons - refresh
-            pgTSBBalance.SelectedObject = TSBBalance.GetCurrent();
+            // TSBCreditBalance - refresh
+            pgTSBBalance.SelectedObject = TSBCreditBalance.GetCurrent();
 
             var tsb = TSB.GetCurrent();
             if (null != tsb)
@@ -79,7 +78,6 @@ namespace LocalDbServerFunctionTest
             var users = User.FindByRole("COLLECTOR");
             cbUsers.DataSource = users;
             cbUsers.DisplayMember = "FullNameTH";
-            */
         }
 
         #endregion

@@ -20,8 +20,11 @@ Update 2020-07-19 #25 (TA)
 Update 2020-07-19 #24 (TA)
 - 
 
+[commited]
 Update 2020-07-19 #23 (TA)
-- 
+- Implements TA/TOD model class #75.
+  - TSBCreditBalance re-implements #2.
+  - LocalDbServerFunctionTest re-implements #3.
 
 [commited]
 Update 2020-07-19 #22 (TA)
