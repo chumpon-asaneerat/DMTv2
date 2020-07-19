@@ -46,7 +46,7 @@ namespace DMT.Config.Pages
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-
+            RefreshTSBs();
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
@@ -55,5 +55,14 @@ namespace DMT.Config.Pages
         }
 
         #endregion
+
+        private void RefreshTSBs()
+        {
+            listView.ItemsSource = null;
+
+            var tsbs = ops.TSB.GetTSBs();
+
+            listView.ItemsSource = tsbs;
+        }
     }
 }
