@@ -59,15 +59,56 @@
             this.panel13 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.splitter3 = new System.Windows.Forms.Splitter();
             this.panel6 = new System.Windows.Forms.Panel();
             this.pgTSBBalance = new System.Windows.Forms.PropertyGrid();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbActiveTSB3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.tabControl3 = new System.Windows.Forms.TabControl();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.splitter3 = new System.Windows.Forms.Splitter();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.tabControl4 = new System.Windows.Forms.TabControl();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.pgTSBCredit = new System.Windows.Forms.PropertyGrid();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.button10 = new System.Windows.Forms.Button();
+            this.dgTSBCredit = new System.Windows.Forms.DataGridView();
+            this.tabControl5 = new System.Windows.Forms.TabControl();
+            this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.pgTSBCoupon = new System.Windows.Forms.PropertyGrid();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.button11 = new System.Windows.Forms.Button();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.button12 = new System.Windows.Forms.Button();
+            this.tabPage13 = new System.Windows.Forms.TabPage();
+            this.dgTSBCoupon = new System.Windows.Forms.DataGridView();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.button13 = new System.Windows.Forms.Button();
+            this.tabControl6 = new System.Windows.Forms.TabControl();
+            this.tabPage14 = new System.Windows.Forms.TabPage();
+            this.pgTSBAddition = new System.Windows.Forms.PropertyGrid();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.button14 = new System.Windows.Forms.Button();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.button15 = new System.Windows.Forms.Button();
+            this.tabPage15 = new System.Windows.Forms.TabPage();
+            this.dgTSBAddition = new System.Windows.Forms.DataGridView();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
+            this.button22 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -83,8 +124,33 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgUserCredit)).BeginInit();
             this.panel13.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel10.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.tabControl3.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            this.tabPage8.SuspendLayout();
+            this.tabPage9.SuspendLayout();
+            this.tabControl4.SuspendLayout();
+            this.tabPage10.SuspendLayout();
+            this.tabPage11.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel14.SuspendLayout();
+            this.panel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTSBCredit)).BeginInit();
+            this.tabControl5.SuspendLayout();
+            this.tabPage12.SuspendLayout();
+            this.panel16.SuspendLayout();
+            this.panel17.SuspendLayout();
+            this.tabPage13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTSBCoupon)).BeginInit();
+            this.panel18.SuspendLayout();
+            this.tabControl6.SuspendLayout();
+            this.tabPage14.SuspendLayout();
+            this.panel19.SuspendLayout();
+            this.panel20.SuspendLayout();
+            this.tabPage15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTSBAddition)).BeginInit();
+            this.panel21.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -213,15 +279,15 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.tabControl2);
             this.tabPage3.Controls.Add(this.splitter3);
+            this.tabPage3.Controls.Add(this.tabControl3);
             this.tabPage3.Controls.Add(this.panel6);
             this.tabPage3.Controls.Add(this.panel3);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(926, 576);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Credits/Coupons";
+            this.tabPage3.Text = "TSB Balance Transactions";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // tabControl2
@@ -229,10 +295,10 @@
             this.tabControl2.Controls.Add(this.tabPage4);
             this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl2.Location = new System.Drawing.Point(391, 71);
+            this.tabControl2.Location = new System.Drawing.Point(3, 3);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(535, 505);
+            this.tabControl2.Size = new System.Drawing.Size(524, 470);
             this.tabControl2.TabIndex = 6;
             // 
             // tabPage4
@@ -241,9 +307,9 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(527, 476);
+            this.tabPage4.Size = new System.Drawing.Size(516, 441);
             this.tabPage4.TabIndex = 0;
-            this.tabPage4.Text = "Borrow/Return";
+            this.tabPage4.Text = "Editor View";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // panel9
@@ -254,7 +320,7 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(3, 3);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(521, 470);
+            this.panel9.Size = new System.Drawing.Size(510, 435);
             this.panel9.TabIndex = 5;
             // 
             // pgUserCredit
@@ -262,7 +328,7 @@
             this.pgUserCredit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pgUserCredit.Location = new System.Drawing.Point(0, 37);
             this.pgUserCredit.Name = "pgUserCredit";
-            this.pgUserCredit.Size = new System.Drawing.Size(521, 397);
+            this.pgUserCredit.Size = new System.Drawing.Size(510, 362);
             this.pgUserCredit.TabIndex = 3;
             // 
             // panel12
@@ -271,9 +337,9 @@
             this.panel12.Controls.Add(this.button5);
             this.panel12.Controls.Add(this.rbBorrow);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel12.Location = new System.Drawing.Point(0, 434);
+            this.panel12.Location = new System.Drawing.Point(0, 399);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(521, 36);
+            this.panel12.Size = new System.Drawing.Size(510, 36);
             this.panel12.TabIndex = 2;
             // 
             // rbReturn
@@ -316,7 +382,7 @@
             this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel11.Location = new System.Drawing.Point(0, 0);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(521, 37);
+            this.panel11.Size = new System.Drawing.Size(510, 37);
             this.panel11.TabIndex = 0;
             // 
             // button6
@@ -353,9 +419,9 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(527, 476);
+            this.tabPage5.Size = new System.Drawing.Size(516, 441);
             this.tabPage5.TabIndex = 1;
-            this.tabPage5.Text = "Transaction";
+            this.tabPage5.Text = "Transaction View";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // dgUserCredit
@@ -369,7 +435,7 @@
             this.dgUserCredit.RowHeadersWidth = 51;
             this.dgUserCredit.RowTemplate.Height = 24;
             this.dgUserCredit.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgUserCredit.Size = new System.Drawing.Size(521, 433);
+            this.dgUserCredit.Size = new System.Drawing.Size(510, 398);
             this.dgUserCredit.TabIndex = 2;
             // 
             // panel13
@@ -379,7 +445,7 @@
             this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel13.Location = new System.Drawing.Point(3, 3);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(521, 37);
+            this.panel13.Size = new System.Drawing.Size(510, 37);
             this.panel13.TabIndex = 1;
             // 
             // button8
@@ -402,18 +468,9 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // splitter3
-            // 
-            this.splitter3.Location = new System.Drawing.Point(388, 71);
-            this.splitter3.Name = "splitter3";
-            this.splitter3.Size = new System.Drawing.Size(3, 505);
-            this.splitter3.TabIndex = 4;
-            this.splitter3.TabStop = false;
-            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.pgTSBBalance);
-            this.panel6.Controls.Add(this.panel10);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel6.Location = new System.Drawing.Point(0, 71);
             this.panel6.Name = "panel6";
@@ -425,27 +482,8 @@
             this.pgTSBBalance.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pgTSBBalance.Location = new System.Drawing.Point(0, 0);
             this.pgTSBBalance.Name = "pgTSBBalance";
-            this.pgTSBBalance.Size = new System.Drawing.Size(388, 469);
+            this.pgTSBBalance.Size = new System.Drawing.Size(388, 505);
             this.pgTSBBalance.TabIndex = 0;
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.button4);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel10.Location = new System.Drawing.Point(0, 469);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(388, 36);
-            this.panel10.TabIndex = 1;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(3, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(115, 28);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Save";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // panel3
             // 
@@ -486,6 +524,468 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // tabControl3
+            // 
+            this.tabControl3.Controls.Add(this.tabPage6);
+            this.tabControl3.Controls.Add(this.tabPage7);
+            this.tabControl3.Controls.Add(this.tabPage8);
+            this.tabControl3.Controls.Add(this.tabPage9);
+            this.tabControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl3.Location = new System.Drawing.Point(388, 71);
+            this.tabControl3.Name = "tabControl3";
+            this.tabControl3.SelectedIndex = 0;
+            this.tabControl3.Size = new System.Drawing.Size(538, 505);
+            this.tabControl3.TabIndex = 7;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.tabControl4);
+            this.tabPage6.Location = new System.Drawing.Point(4, 25);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(530, 476);
+            this.tabPage6.TabIndex = 0;
+            this.tabPage6.Text = "Credit";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.tabControl5);
+            this.tabPage7.Location = new System.Drawing.Point(4, 25);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(530, 476);
+            this.tabPage7.TabIndex = 1;
+            this.tabPage7.Text = "Coupon";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // splitter3
+            // 
+            this.splitter3.Location = new System.Drawing.Point(388, 71);
+            this.splitter3.Name = "splitter3";
+            this.splitter3.Size = new System.Drawing.Size(3, 505);
+            this.splitter3.TabIndex = 8;
+            this.splitter3.TabStop = false;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.tabControl6);
+            this.tabPage8.Location = new System.Drawing.Point(4, 25);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(530, 476);
+            this.tabPage8.TabIndex = 2;
+            this.tabPage8.Text = "Addition";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // tabPage9
+            // 
+            this.tabPage9.Controls.Add(this.tabControl2);
+            this.tabPage9.Location = new System.Drawing.Point(4, 25);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage9.Size = new System.Drawing.Size(530, 476);
+            this.tabPage9.TabIndex = 3;
+            this.tabPage9.Text = "User";
+            this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // tabControl4
+            // 
+            this.tabControl4.Controls.Add(this.tabPage10);
+            this.tabControl4.Controls.Add(this.tabPage11);
+            this.tabControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl4.Location = new System.Drawing.Point(3, 3);
+            this.tabControl4.Name = "tabControl4";
+            this.tabControl4.SelectedIndex = 0;
+            this.tabControl4.Size = new System.Drawing.Size(524, 470);
+            this.tabControl4.TabIndex = 0;
+            // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.pgTSBCredit);
+            this.tabPage10.Controls.Add(this.panel14);
+            this.tabPage10.Controls.Add(this.panel10);
+            this.tabPage10.Location = new System.Drawing.Point(4, 25);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage10.Size = new System.Drawing.Size(516, 441);
+            this.tabPage10.TabIndex = 0;
+            this.tabPage10.Text = "Editor View";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // tabPage11
+            // 
+            this.tabPage11.Controls.Add(this.dgTSBCredit);
+            this.tabPage11.Controls.Add(this.panel15);
+            this.tabPage11.Location = new System.Drawing.Point(4, 25);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage11.Size = new System.Drawing.Size(516, 441);
+            this.tabPage11.TabIndex = 1;
+            this.tabPage11.Text = "Transaction View";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.button18);
+            this.panel10.Controls.Add(this.button17);
+            this.panel10.Controls.Add(this.button4);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel10.Location = new System.Drawing.Point(3, 3);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(510, 40);
+            this.panel10.TabIndex = 0;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(3, 3);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(136, 32);
+            this.button4.TabIndex = 0;
+            this.button4.Text = "Init";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
+            // pgTSBCredit
+            // 
+            this.pgTSBCredit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pgTSBCredit.Location = new System.Drawing.Point(3, 43);
+            this.pgTSBCredit.Name = "pgTSBCredit";
+            this.pgTSBCredit.Size = new System.Drawing.Size(510, 351);
+            this.pgTSBCredit.TabIndex = 1;
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.button9);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel14.Location = new System.Drawing.Point(3, 394);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(510, 44);
+            this.panel14.TabIndex = 2;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(3, 5);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(136, 32);
+            this.button9.TabIndex = 0;
+            this.button9.Text = "Save";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // panel15
+            // 
+            this.panel15.Controls.Add(this.button10);
+            this.panel15.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel15.Location = new System.Drawing.Point(3, 3);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(510, 40);
+            this.panel15.TabIndex = 1;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(3, 3);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(136, 32);
+            this.button10.TabIndex = 0;
+            this.button10.Text = "Refresh";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // dgTSBCredit
+            // 
+            this.dgTSBCredit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTSBCredit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgTSBCredit.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgTSBCredit.Location = new System.Drawing.Point(3, 43);
+            this.dgTSBCredit.Name = "dgTSBCredit";
+            this.dgTSBCredit.RowHeadersWidth = 51;
+            this.dgTSBCredit.RowTemplate.Height = 24;
+            this.dgTSBCredit.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgTSBCredit.Size = new System.Drawing.Size(510, 395);
+            this.dgTSBCredit.TabIndex = 2;
+            // 
+            // tabControl5
+            // 
+            this.tabControl5.Controls.Add(this.tabPage12);
+            this.tabControl5.Controls.Add(this.tabPage13);
+            this.tabControl5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl5.Location = new System.Drawing.Point(3, 3);
+            this.tabControl5.Name = "tabControl5";
+            this.tabControl5.SelectedIndex = 0;
+            this.tabControl5.Size = new System.Drawing.Size(524, 470);
+            this.tabControl5.TabIndex = 1;
+            // 
+            // tabPage12
+            // 
+            this.tabPage12.Controls.Add(this.pgTSBCoupon);
+            this.tabPage12.Controls.Add(this.panel16);
+            this.tabPage12.Controls.Add(this.panel17);
+            this.tabPage12.Location = new System.Drawing.Point(4, 25);
+            this.tabPage12.Name = "tabPage12";
+            this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage12.Size = new System.Drawing.Size(516, 441);
+            this.tabPage12.TabIndex = 0;
+            this.tabPage12.Text = "Editor View";
+            this.tabPage12.UseVisualStyleBackColor = true;
+            // 
+            // pgTSBCoupon
+            // 
+            this.pgTSBCoupon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pgTSBCoupon.Location = new System.Drawing.Point(3, 43);
+            this.pgTSBCoupon.Name = "pgTSBCoupon";
+            this.pgTSBCoupon.Size = new System.Drawing.Size(510, 351);
+            this.pgTSBCoupon.TabIndex = 1;
+            // 
+            // panel16
+            // 
+            this.panel16.Controls.Add(this.button11);
+            this.panel16.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel16.Location = new System.Drawing.Point(3, 394);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(510, 44);
+            this.panel16.TabIndex = 2;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(3, 5);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(136, 32);
+            this.button11.TabIndex = 0;
+            this.button11.Text = "Save";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // panel17
+            // 
+            this.panel17.Controls.Add(this.button20);
+            this.panel17.Controls.Add(this.button12);
+            this.panel17.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel17.Location = new System.Drawing.Point(3, 3);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(510, 40);
+            this.panel17.TabIndex = 0;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(3, 3);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(136, 32);
+            this.button12.TabIndex = 0;
+            this.button12.Text = "Init";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // tabPage13
+            // 
+            this.tabPage13.Controls.Add(this.dgTSBCoupon);
+            this.tabPage13.Controls.Add(this.panel18);
+            this.tabPage13.Location = new System.Drawing.Point(4, 25);
+            this.tabPage13.Name = "tabPage13";
+            this.tabPage13.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage13.Size = new System.Drawing.Size(516, 441);
+            this.tabPage13.TabIndex = 1;
+            this.tabPage13.Text = "Transaction View";
+            this.tabPage13.UseVisualStyleBackColor = true;
+            // 
+            // dgTSBCoupon
+            // 
+            this.dgTSBCoupon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTSBCoupon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgTSBCoupon.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgTSBCoupon.Location = new System.Drawing.Point(3, 43);
+            this.dgTSBCoupon.Name = "dgTSBCoupon";
+            this.dgTSBCoupon.RowHeadersWidth = 51;
+            this.dgTSBCoupon.RowTemplate.Height = 24;
+            this.dgTSBCoupon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgTSBCoupon.Size = new System.Drawing.Size(510, 395);
+            this.dgTSBCoupon.TabIndex = 2;
+            // 
+            // panel18
+            // 
+            this.panel18.Controls.Add(this.button13);
+            this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel18.Location = new System.Drawing.Point(3, 3);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(510, 40);
+            this.panel18.TabIndex = 1;
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(3, 3);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(136, 32);
+            this.button13.TabIndex = 0;
+            this.button13.Text = "Refresh";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // tabControl6
+            // 
+            this.tabControl6.Controls.Add(this.tabPage14);
+            this.tabControl6.Controls.Add(this.tabPage15);
+            this.tabControl6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl6.Location = new System.Drawing.Point(3, 3);
+            this.tabControl6.Name = "tabControl6";
+            this.tabControl6.SelectedIndex = 0;
+            this.tabControl6.Size = new System.Drawing.Size(524, 470);
+            this.tabControl6.TabIndex = 1;
+            // 
+            // tabPage14
+            // 
+            this.tabPage14.Controls.Add(this.pgTSBAddition);
+            this.tabPage14.Controls.Add(this.panel19);
+            this.tabPage14.Controls.Add(this.panel20);
+            this.tabPage14.Location = new System.Drawing.Point(4, 25);
+            this.tabPage14.Name = "tabPage14";
+            this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage14.Size = new System.Drawing.Size(516, 441);
+            this.tabPage14.TabIndex = 0;
+            this.tabPage14.Text = "Editor View";
+            this.tabPage14.UseVisualStyleBackColor = true;
+            // 
+            // pgTSBAddition
+            // 
+            this.pgTSBAddition.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pgTSBAddition.Location = new System.Drawing.Point(3, 43);
+            this.pgTSBAddition.Name = "pgTSBAddition";
+            this.pgTSBAddition.Size = new System.Drawing.Size(510, 351);
+            this.pgTSBAddition.TabIndex = 1;
+            // 
+            // panel19
+            // 
+            this.panel19.Controls.Add(this.button14);
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel19.Location = new System.Drawing.Point(3, 394);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(510, 44);
+            this.panel19.TabIndex = 2;
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(3, 5);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(136, 32);
+            this.button14.TabIndex = 0;
+            this.button14.Text = "Save";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // panel20
+            // 
+            this.panel20.Controls.Add(this.button21);
+            this.panel20.Controls.Add(this.button22);
+            this.panel20.Controls.Add(this.button15);
+            this.panel20.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel20.Location = new System.Drawing.Point(3, 3);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(510, 40);
+            this.panel20.TabIndex = 0;
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(3, 3);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(136, 32);
+            this.button15.TabIndex = 0;
+            this.button15.Text = "Init";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // tabPage15
+            // 
+            this.tabPage15.Controls.Add(this.dgTSBAddition);
+            this.tabPage15.Controls.Add(this.panel21);
+            this.tabPage15.Location = new System.Drawing.Point(4, 25);
+            this.tabPage15.Name = "tabPage15";
+            this.tabPage15.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage15.Size = new System.Drawing.Size(516, 441);
+            this.tabPage15.TabIndex = 1;
+            this.tabPage15.Text = "Transaction View";
+            this.tabPage15.UseVisualStyleBackColor = true;
+            // 
+            // dgTSBAddition
+            // 
+            this.dgTSBAddition.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTSBAddition.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgTSBAddition.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgTSBAddition.Location = new System.Drawing.Point(3, 43);
+            this.dgTSBAddition.Name = "dgTSBAddition";
+            this.dgTSBAddition.RowHeadersWidth = 51;
+            this.dgTSBAddition.RowTemplate.Height = 24;
+            this.dgTSBAddition.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgTSBAddition.Size = new System.Drawing.Size(510, 395);
+            this.dgTSBAddition.TabIndex = 2;
+            // 
+            // panel21
+            // 
+            this.panel21.Controls.Add(this.button16);
+            this.panel21.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel21.Location = new System.Drawing.Point(3, 3);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(510, 40);
+            this.panel21.TabIndex = 1;
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(3, 3);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(136, 32);
+            this.button16.TabIndex = 0;
+            this.button16.Text = "Refresh";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(145, 3);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(136, 32);
+            this.button17.TabIndex = 1;
+            this.button17.Text = "Received";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(287, 3);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(136, 32);
+            this.button18.TabIndex = 2;
+            this.button18.Text = "Returns";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(145, 3);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(136, 32);
+            this.button20.TabIndex = 3;
+            this.button20.Text = "Received";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
+            // button21
+            // 
+            this.button21.Location = new System.Drawing.Point(287, 3);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(136, 32);
+            this.button21.TabIndex = 4;
+            this.button21.Text = "Return";
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
+            // 
+            // button22
+            // 
+            this.button22.Location = new System.Drawing.Point(145, 3);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(136, 32);
+            this.button22.TabIndex = 3;
+            this.button22.Text = "Borrow";
+            this.button22.UseVisualStyleBackColor = true;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -513,9 +1013,34 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgUserCredit)).EndInit();
             this.panel13.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.tabControl3.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage8.ResumeLayout(false);
+            this.tabPage9.ResumeLayout(false);
+            this.tabControl4.ResumeLayout(false);
+            this.tabPage10.ResumeLayout(false);
+            this.tabPage11.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
+            this.panel15.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgTSBCredit)).EndInit();
+            this.tabControl5.ResumeLayout(false);
+            this.tabPage12.ResumeLayout(false);
+            this.panel16.ResumeLayout(false);
+            this.panel17.ResumeLayout(false);
+            this.tabPage13.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgTSBCoupon)).EndInit();
+            this.panel18.ResumeLayout(false);
+            this.tabControl6.ResumeLayout(false);
+            this.tabPage14.ResumeLayout(false);
+            this.panel19.ResumeLayout(false);
+            this.panel20.ResumeLayout(false);
+            this.tabPage15.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgTSBAddition)).EndInit();
+            this.panel21.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -537,13 +1062,10 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Splitter splitter3;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PropertyGrid pgTSBBalance;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label lbActiveTSB3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel11;
@@ -562,6 +1084,50 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.DataGridView dgUserCredit;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Splitter splitter3;
+        private System.Windows.Forms.TabControl tabControl3;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.TabPage tabPage9;
+        private System.Windows.Forms.TabControl tabControl4;
+        private System.Windows.Forms.TabPage tabPage10;
+        private System.Windows.Forms.PropertyGrid pgTSBCredit;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.DataGridView dgTSBCredit;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.TabControl tabControl5;
+        private System.Windows.Forms.TabPage tabPage12;
+        private System.Windows.Forms.PropertyGrid pgTSBCoupon;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.TabPage tabPage13;
+        private System.Windows.Forms.DataGridView dgTSBCoupon;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.TabControl tabControl6;
+        private System.Windows.Forms.TabPage tabPage14;
+        private System.Windows.Forms.PropertyGrid pgTSBAddition;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.Button button21;
+        private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.TabPage tabPage15;
+        private System.Windows.Forms.DataGridView dgTSBAddition;
+        private System.Windows.Forms.Panel panel21;
+        private System.Windows.Forms.Button button16;
     }
 }
 

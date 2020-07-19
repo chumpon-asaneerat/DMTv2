@@ -26,13 +26,18 @@ Update 2020-07-19 #23 (TA)
 Update 2020-07-19 #22 (TA)
 - 
 
+[commited]
 Update 2020-07-19 #21 (TA)
-- 
+- Implements TA/TOD model class #73.
+  - LocalDbServerFunctionTest re-implements #2.
+  - TSBCreditTransaction re-implements #6.
+  - TSBCouponTransaction re-implements #7.
+  - TSBAdditionTransaction re-implements #5.
 
 [commited]
 Update 2020-07-19 #20 (TA)
 - Implements TA/TOD model class #72.
-  - TSBCreditBalanceTransaction re-implements #5.
+  - TSBCreditTransaction re-implements #5.
   - TSBCouponTransaction re-implements #6.
   - TSBAdditionTransaction re-implements #4.
 

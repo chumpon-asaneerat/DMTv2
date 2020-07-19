@@ -28,9 +28,9 @@ namespace DMT.Models
     {
         #region Enum
 
-        public enum TransactionTypes
+        public enum TransactionTypes : int
         {
-            Init = 0,
+            Initial = 0,
             // received from account
             Received = 1
         }
@@ -41,7 +41,7 @@ namespace DMT.Models
 
         private int _TransactionId = 0;
         private DateTime _TransactionDate = DateTime.MinValue;
-        private TransactionTypes _TransactionType = TransactionTypes.Init;
+        private TransactionTypes _TransactionType = TransactionTypes.Initial;
 
         private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
@@ -524,12 +524,12 @@ namespace DMT.Models
         /// <returns>
         /// Returns Current Active TSB Coupon transactions. If not found returns null.
         /// </returns>
-        public static TSBCouponTransaction GetCurrent()
+        public static List<TSBCouponTransaction> Gets()
         {
             lock (sync)
             {
                 var tsb = TSB.GetCurrent();
-                return GetCurrent(tsb);
+                return Gets(tsb);
             }
         }
         /// <summary>
@@ -537,7 +537,7 @@ namespace DMT.Models
         /// </summary>
         /// <param name="tsb">The target TSB to get coupon transaction.</param>
         /// <returns>Returns TSB Coupon transactions. If TSB not found returns null.</returns>
-        public static TSBCouponTransaction GetCurrent(TSB tsb)
+        public static List<TSBCouponTransaction> Gets(TSB tsb)
         {
             if (null == tsb) return null;
             lock (sync)
@@ -549,18 +549,19 @@ namespace DMT.Models
                 cmd += " WHERE TSBCouponTransaction.TSBId = TSB.TSBId ";
                 cmd += "   AND TSBCouponTransaction.TSBId = ? ";
 
-                var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
-                if (null == ret)
+                var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
+                if (null == rets)
                 {
-                    TSBCouponTransaction inst = Create();
-                    // assigned TSB info.
-                    tsb.AssignTo(inst);
-                    Save(inst);
-                    return inst;
+                    return new List<TSBCouponTransaction>();
                 }
                 else
                 {
-                    return ret.ToTSBCouponTransaction();
+                    var results = new List<TSBCouponTransaction>();
+                    rets.ForEach(ret =>
+                    {
+                        results.Add(ret.ToTSBCouponTransaction());
+                    });
+                    return results;
                 }
             }
         }

@@ -14,6 +14,7 @@ using System.Windows.Forms;
 
 using DMT.Models;
 using DMT.Services;
+using NLib.Reflection;
 /*
 using NLib.Controls.Utils;
 using SQLiteNetExtensions.Extensions;
@@ -23,10 +24,16 @@ namespace LocalDbServerFunctionTest
 {
     public partial class Form1 : Form
     {
+        #region Constructor
+
         public Form1()
         {
             InitializeComponent();
         }
+
+        #endregion
+
+        #region Loaded/Closing
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -37,6 +44,12 @@ namespace LocalDbServerFunctionTest
         {
             LocalDbServer.Instance.Shutdown();
         }
+
+        #endregion
+
+        #region TSB Balance - Credit/Coupon/Addition/User transaction
+
+        #region TSB Balance
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -68,6 +81,189 @@ namespace LocalDbServerFunctionTest
             cbUsers.DisplayMember = "FullNameTH";
             */
         }
+
+        #endregion
+
+        #region TSB Credit Transaction
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            // TSB Credit Transaction - Init
+            var inst = TSBCreditTransaction.Create();
+            inst.TransactionDate = DateTime.Now;
+            inst.TransactionType = TSBCreditTransaction.TransactionTypes.Initial;
+
+            pgTSBCredit.SelectedObject = inst;
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            // TSB Credit Transaction - Received (after request exchange success).
+            var inst = TSBCreditTransaction.Create();
+            inst.TransactionDate = DateTime.Now;
+            inst.TransactionType = TSBCreditTransaction.TransactionTypes.Received;
+
+            pgTSBCredit.SelectedObject = inst;
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            // TSB Credit Transaction - Returns (after request exchange success).
+            var inst = TSBCreditTransaction.Create();
+            inst.TransactionDate = DateTime.Now;
+            inst.TransactionType = TSBCreditTransaction.TransactionTypes.Returns;
+
+            pgTSBCredit.SelectedObject = inst;
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            // TSB Credit Transaction - Save.
+            var inst = pgTSBCredit.SelectedObject as TSBCreditTransaction;
+            var tsb = TSB.GetCurrent();
+            if (null == tsb)
+            {
+                return;
+            }
+            if (null != inst)
+            {
+                tsb.AssignTo(inst);
+                TSBCreditTransaction.Save(inst);
+            }
+            pgTSBCredit.SelectedObject = null;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            // TSB Credit Transaction - Refresh
+            dgTSBCredit.DataSource = null;
+            var tsb = TSB.GetCurrent();
+            if (null == tsb)
+            {
+                return;
+            }
+            dgTSBCredit.DataSource = TSBCreditTransaction.Gets(tsb);
+        }
+
+        #endregion
+
+        #region TSB Coupon Transaction
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            // TSB Coupon Transaction - Init
+            var inst = TSBCouponTransaction.Create();
+            inst.TransactionDate = DateTime.Now;
+            inst.TransactionType = TSBCouponTransaction.TransactionTypes.Initial;
+
+            pgTSBCoupon.SelectedObject = inst;
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            // TSB Coupon Transaction - Received
+            var inst = TSBCouponTransaction.Create();
+            inst.TransactionDate = DateTime.Now;
+            inst.TransactionType = TSBCouponTransaction.TransactionTypes.Received;
+
+            pgTSBCoupon.SelectedObject = inst;
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            // TSB Coupon Transaction - Save
+            var inst = pgTSBCoupon.SelectedObject as TSBCouponTransaction;
+            var tsb = TSB.GetCurrent();
+            if (null == tsb)
+            {
+                return;
+            }
+            if (null != inst)
+            {
+                tsb.AssignTo(inst);
+                TSBCouponTransaction.Save(inst);
+            }
+            pgTSBCoupon.SelectedObject = null;
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            // TSB Coupon Transaction - Refresh
+            dgTSBCoupon.DataSource = null;
+            var tsb = TSB.GetCurrent();
+            if (null == tsb)
+            {
+                return;
+            }
+            dgTSBCoupon.DataSource = TSBCouponTransaction.Gets(tsb);
+        }
+
+        #endregion
+
+        #region TSB Addition Transaction
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            // TSB Addition Transaction - Init
+            var inst = TSBAdditionTransaction.Create();
+            inst.TransactionDate = DateTime.Now;
+            inst.TransactionType = TSBAdditionTransaction.TransactionTypes.Initial;
+
+            pgTSBAddition.SelectedObject = inst;
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            // TSB Addition Transaction - Borrow
+            var inst = TSBAdditionTransaction.Create();
+            inst.TransactionDate = DateTime.Now;
+            inst.TransactionType = TSBAdditionTransaction.TransactionTypes.Borrow;
+
+            pgTSBAddition.SelectedObject = inst;
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            // TSB Addition Transaction - Returns
+            var inst = TSBAdditionTransaction.Create();
+            inst.TransactionDate = DateTime.Now;
+            inst.TransactionType = TSBAdditionTransaction.TransactionTypes.Returns;
+
+            pgTSBAddition.SelectedObject = inst;
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            // TSB Addition Transaction - Save
+            var inst = pgTSBAddition.SelectedObject as TSBAdditionTransaction;
+            var tsb = TSB.GetCurrent();
+            if (null == tsb)
+            {
+                return;
+            }
+            if (null != inst)
+            {
+                tsb.AssignTo(inst);
+                TSBAdditionTransaction.Save(inst);
+            }
+            pgTSBAddition.SelectedObject = null;
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            // TSB Addition Transaction - Refresh
+            dgTSBAddition.DataSource = null;
+            var tsb = TSB.GetCurrent();
+            if (null == tsb)
+            {
+                return;
+            }
+            dgTSBAddition.DataSource = TSBAdditionTransaction.Gets(tsb);
+        }
+
+        #endregion
+
+        #region User Credit Transaction
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -153,5 +349,9 @@ namespace LocalDbServerFunctionTest
             }
             */
         }
+
+        #endregion
+
+        #endregion
     }
 }

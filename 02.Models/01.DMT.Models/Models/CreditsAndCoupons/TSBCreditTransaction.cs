@@ -28,13 +28,13 @@ namespace DMT.Models
     {
         #region Enum
         
-        public enum TransactionTypes
+        public enum TransactionTypes : int
         {
-            Init = 0,
+            Initial = 0,
             // received from exchange request.
             Received = 1,
             // return from exchange request.
-            Return = 2
+            Returns = 2
         }
 
         #endregion
@@ -43,7 +43,7 @@ namespace DMT.Models
 
         private int _TransactionId = 0;
         private DateTime _TransactionDate = DateTime.MinValue;
-        private TransactionTypes _TransactionType = TransactionTypes.Init;
+        private TransactionTypes _TransactionType = TransactionTypes.Initial;
 
         private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
@@ -653,12 +653,12 @@ namespace DMT.Models
         /// Gets Active TSB Credit transactions.
         /// </summary>
         /// <returns>Returns Current Active TSB Credit transactions. If not found returns null.</returns>
-        public static TSBCreditTransaction GetCurrent()
+        public static List<TSBCreditTransaction> Gets()
         {
             lock (sync)
             { 
                 var tsb = TSB.GetCurrent();
-                return GetCurrent(tsb);
+                return Gets(tsb);
             }
         }
         /// <summary>
@@ -666,7 +666,7 @@ namespace DMT.Models
         /// </summary>
         /// <param name="tsb">The target TSB to get transactions.</param>
         /// <returns>Returns TSB Credit transactions. If TSB not found returns null.</returns>
-        public static TSBCreditTransaction GetCurrent(TSB tsb)
+        public static List<TSBCreditTransaction> Gets(TSB tsb)
         {
             if (null == tsb) return null;
             lock (sync)
@@ -678,18 +678,19 @@ namespace DMT.Models
                 cmd += " WHERE TSBCreditTransaction.TSBId = TSB.TSBId ";
                 cmd += "   AND TSBCreditTransaction.TSBId = ? ";
 
-                var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
-                if (null == ret)
+                var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
+                if (null == rets)
                 {
-                    TSBCreditTransaction inst = Create();
-                    // assigned TSB info.
-                    tsb.AssignTo(inst);
-                    Save(inst);
-                    return inst;
+                    return new List<TSBCreditTransaction>();
                 }
                 else
                 {
-                    return ret.ToTSBCreditTransaction();
+                    var results = new List<TSBCreditTransaction>();
+                    rets.ForEach(ret =>
+                    {
+                        results.Add(ret.ToTSBCreditTransaction());
+                    });
+                    return results;
                 }
             }
         }

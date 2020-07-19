@@ -28,13 +28,13 @@ namespace DMT.Models
     {
         #region Enum
 
-        public enum TransactionTypes
+        public enum TransactionTypes : int
         {
-            Init = 0,
+            Initial = 0,
             // borrow from account after approved.
             Borrow = 1,
             // return to account after expired period.
-            Return = 2
+            Returns = 2
         }
 
         #endregion
@@ -43,7 +43,7 @@ namespace DMT.Models
 
         private int _TransactionId = 0;
         private DateTime _TransactionDate = DateTime.MinValue;
-        private TransactionTypes _TransactionType = TransactionTypes.Init;
+        private TransactionTypes _TransactionType = TransactionTypes.Initial;
 
         private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
@@ -273,7 +273,7 @@ namespace DMT.Models
         [Category("Additional")]
         [Description("Gets or sets additional borrow/return in baht.")]
         [PeropertyMapName("AdditionalBHTTotal")]
-        public virtual decimal AdditionalBHTTotal
+        public decimal AdditionalBHTTotal
         {
             get { return _AdditionalBHTTotal; }
             set
@@ -406,12 +406,12 @@ namespace DMT.Models
         /// Gets Active TSB Addition transactions.
         /// </summary>
         /// <returns>Returns Current Active TSB Addition transactions. If not found returns null.</returns>
-        public static TSBAdditionTransaction GetCurrent()
+        public static List<TSBAdditionTransaction> Gets()
         {
             lock (sync)
             {
                 var tsb = TSB.GetCurrent();
-                return GetCurrent(tsb);
+                return Gets(tsb);
             }
         }
         /// <summary>
@@ -419,7 +419,7 @@ namespace DMT.Models
         /// </summary>
         /// <param name="tsb">The target TSB to get transactions.</param>
         /// <returns>Returns TSB Addition transactions. If TSB not found returns null.</returns>
-        public static TSBAdditionTransaction GetCurrent(TSB tsb)
+        public static List<TSBAdditionTransaction> Gets(TSB tsb)
         {
             if (null == tsb) return null;
             lock (sync)
@@ -431,18 +431,19 @@ namespace DMT.Models
                 cmd += " WHERE TSBAdditionTransaction.TSBId = TSB.TSBId ";
                 cmd += "   AND TSBAdditionTransaction.TSBId = ? ";
 
-                var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
-                if (null == ret)
+                var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
+                if (null == rets)
                 {
-                    TSBAdditionTransaction inst = Create();
-                    // assigned TSB info.
-                    tsb.AssignTo(inst);
-                    Save(inst);
-                    return inst;
+                    return new List<TSBAdditionTransaction>();
                 }
                 else
                 {
-                    return ret.ToTSBAdditionTransaction();
+                    var results = new List<TSBAdditionTransaction>();
+                    rets.ForEach(ret =>
+                    {
+                        results.Add(ret.ToTSBAdditionTransaction());
+                    });
+                    return results;
                 }
             }
         }
