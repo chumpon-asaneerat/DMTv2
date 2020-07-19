@@ -8,8 +8,10 @@ Update 2020-07-19 #39 (TA)
 Update 2020-07-19 #38 (TA)
 - 
 
+[commited]
 Update 2020-07-19 #37 (TA)
-- 
+- Implements TA/TOD model class #86.
+  - TSBCreditTransaction re-implements #7.
 
 [commited]
 Update 2020-07-19 #36 (TA)

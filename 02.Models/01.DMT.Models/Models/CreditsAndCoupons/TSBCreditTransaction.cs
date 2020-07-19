@@ -97,6 +97,9 @@ namespace DMT.Models
             total += _BHT1000 * 1000;
 
             _BHTTotal = total;
+
+            // Raise event.
+            this.RaiseChanged("BHTTotal");
         }
 
         #endregion
