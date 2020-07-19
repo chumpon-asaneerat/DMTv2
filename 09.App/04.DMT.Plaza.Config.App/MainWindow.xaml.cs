@@ -116,6 +116,20 @@ namespace DMT
 
         #endregion
 
+        #region Credit/Coupon
+
+        private void cmdTSBCreditView_Click(object sender, RoutedEventArgs e)
+        {
+            PageContentManager.Instance.Current = new Config.Pages.TSBCreditViewPage();
+        }
+
+        private void cmdTSBCouponView_Click(object sender, RoutedEventArgs e)
+        {
+            PageContentManager.Instance.Current = new Config.Pages.TSBCouponViewPage();
+        }
+
+        #endregion
+
         #region Windows Services (Install/Unstall/CheckStatus)
 
         private void cmdInstall_Click(object sender, RoutedEventArgs e)

@@ -1,18 +1,18 @@
 ﻿<Fluent:RibbonWindow x:Class="DMT.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:Fluent="urn:fluent-ribbon"
-        mc:Ignorable="d"
-        Title="DMT TOD/TA Plaza Config" 
-        Icon="app.ico"
-        Height="750" 
-        Width="1200" 
-        WindowStartupLocation="CenterScreen"
-        WindowState="Maximized"
-        Loaded="Window_Loaded" 
-        Unloaded="Window_Unloaded">
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:Fluent="urn:fluent-ribbon"
+                     Title="DMT TOD/TA Plaza Config"
+                     Width="1200"
+                     Height="750"
+                     Icon="app.ico"
+                     WindowStartupLocation="CenterScreen"
+                     WindowState="Maximized"
+                     Loaded="Window_Loaded"
+                     Unloaded="Window_Unloaded"
+                     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -26,7 +26,7 @@
                 <!-- Group - Local URI -->
                 <!--
                 <Fluent:RibbonGroupBox Header="Data Service">
-                    <Fluent:Button x:Name="cmdSetupLocalUri" 
+                    <Fluent:Button x:Name="cmdSetupLocalUri"
                                    Header="Setup URI (local)"
                                    Width="75"
                                    Click="cmdSetupLocalUri_Click">
@@ -38,17 +38,17 @@
                 -->
                 <!-- Group - Master -->
                 <Fluent:RibbonGroupBox Header="Master Data">
-                    <Fluent:Button x:Name="cmdTSBManage" 
-                                   Header="TSB Manage"
+                    <Fluent:Button x:Name="cmdTSBManage"
                                    Width="75"
+                                   Header="TSB Manage"
                                    Click="cmdTSBManage_Click">
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/Networks/plaza_network1.png" />
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
-                    <Fluent:Button x:Name="cmdUserView" 
-                                   Header="User View"
+                    <Fluent:Button x:Name="cmdUserView"
                                    Width="75"
+                                   Header="User View"
                                    Click="cmdUserView_Click">
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/users/users.ico" />
@@ -58,8 +58,8 @@
                 <!-- Group - TOD -->
                 <Fluent:RibbonGroupBox Header="Toll of Duty">
                     <Fluent:Button x:Name="cmdShiftView"
-                                   Header="Shift View"
                                    Width="75"
+                                   Header="Shift View"
                                    Click="cmdShiftView_Click">
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/Clock/clock.png" />
@@ -76,14 +76,18 @@
                 </Fluent:RibbonGroupBox>
                 <!-- Group - TA -->
                 <Fluent:RibbonGroupBox Header="Toll Admin">
-                    <Fluent:Button Header="Notes-Coins (Audit)"
-                                   Width="75">
+                    <Fluent:Button x:Name="cmdTSBCreditView"
+                                   Width="75"
+                                   Header="Notes-Coins (Audit)"
+                                   Click="cmdTSBCreditView_Click">
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/Toll/money.ico" />
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
-                    <Fluent:Button Header="Coupons (Audit)"
-                                   Width="75">
+                    <Fluent:Button x:Name="cmdTSBCouponView"
+                                   Width="75"
+                                   Header="Coupons (Audit)"
+                                   Click="cmdTSBCouponView_Click">
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/Reports/slip_06.png" />
                         </Fluent:Button.LargeIcon>
@@ -94,14 +98,12 @@
             <Fluent:RibbonTabItem Header="Data Center">
                 <!-- Group - Server URI -->
                 <Fluent:RibbonGroupBox Header="Server">
-                    <Fluent:Button Header="Setup URI (HQ)"
-                                   Width="75">
+                    <Fluent:Button Width="75" Header="Setup URI (HQ)">
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/Configs/config_02.png" />
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
-                    <Fluent:Button Header="Connection Status"
-                                   Width="75">
+                    <Fluent:Button Width="75" Header="Connection Status">
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/Networks/Network 1 Information.png" />
                         </Fluent:Button.LargeIcon>
@@ -113,24 +115,24 @@
                 <!-- Group - Local Windows Services (installed/uninstalled) -->
                 <Fluent:RibbonGroupBox Header="Services">
                     <Fluent:Button x:Name="cmdInstall"
-                                   Header="Start (Install)"
                                    Width="75"
+                                   Header="Start (Install)"
                                    Click="cmdInstall_Click">
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/Servers/install.png" />
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
                     <Fluent:Button x:Name="cmdUninstall"
-                                   Header="Stop (Uninstall)"
                                    Width="75"
+                                   Header="Stop (Uninstall)"
                                    Click="cmdUninstall_Click">
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/Servers/uninstall.png" />
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
                     <Fluent:Button x:Name="cmdCheckWindowServiceStatus"
-                                   Header="Check Status"
                                    Width="75"
+                                   Header="Check Status"
                                    Click="cmdCheckWindowServiceStatus_Click">
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/Servers/connected.ico" />
@@ -139,8 +141,7 @@
                 </Fluent:RibbonGroupBox>
                 <!-- Group - Device (smartcard) -->
                 <Fluent:RibbonGroupBox Header="Smartcard">
-                    <Fluent:Button Header="Smartcard device"
-                                   Width="75">
+                    <Fluent:Button Width="75" Header="Smartcard device">
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/Hardwares/CRU-67CL.png" />
                         </Fluent:Button.LargeIcon>
@@ -149,7 +150,7 @@
             </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
         <Grid Grid.Row="1">
-            <ContentPresenter x:Name="container"/>
+            <ContentPresenter x:Name="container" />
         </Grid>
     </Grid>
 </Fluent:RibbonWindow>

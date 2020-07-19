@@ -32,8 +32,13 @@ Update 2020-07-19 #31 (TA)
 Update 2020-07-19 #30 (TA)
 - 
 
+[commited]
 Update 2020-07-19 #29 (TA)
-- 
+- Implements TA/TOD model class #78.
+  - DMT.Plaza.Config.App
+    - Add TSBCreditViewPage.
+    - Add TSBCouponViewPage.
+    - Update MainWindow code.
 
 [commited]
 Update 2020-07-19 #28 (TA)
