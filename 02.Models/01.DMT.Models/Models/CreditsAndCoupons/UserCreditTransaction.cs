@@ -972,6 +972,54 @@ namespace DMT.Models
 
         #region Static Methods
 
+        /// <summary>
+        /// Gets Active TSB User Credit transactions.
+        /// </summary>
+        /// <returns>Returns Current Active TSB User Credit transactions. If not found returns null.</returns>
+        public static List<UserCreditTransaction> Gets()
+        {
+            lock (sync)
+            {
+                var tsb = TSB.GetCurrent();
+                return Gets(tsb);
+            }
+        }
+        /// <summary>
+        /// Gets User Credit transactions.
+        /// </summary>
+        /// <param name="tsb">The target TSB to get transactions.</param>
+        /// <returns>Returns User Credit transactions. If TSB not found returns null.</returns>
+        public static List<UserCreditTransaction> Gets(TSB tsb)
+        {
+            if (null == tsb) return null;
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT TSBCreditTransaction.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                //cmd += "     , UserCredit.PlazaGroupId, UserCredit.PlazaGroupNameEN, UserCredit.PlazaGroupNameTH ";
+                //cmd += "  FROM UserCreditTransaction, TSB, UserCredit ";
+                cmd += "  FROM UserCreditTransaction, TSB ";
+                cmd += " WHERE UserCreditTransaction.TSBId = TSB.TSBId ";
+                cmd += "   AND UserCreditTransaction.TSBId = ? ";
+
+                var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
+                if (null == rets)
+                {
+                    return new List<UserCreditTransaction>();
+                }
+                else
+                {
+                    var results = new List<UserCreditTransaction>();
+                    rets.ForEach(ret =>
+                    {
+                        results.Add(ret.ToUserCreditTransaction());
+                    });
+                    return results;
+                }
+            }
+        }
+
         /*
         public static UserCreditTransaction Create(User user, TSB tsb)
         {

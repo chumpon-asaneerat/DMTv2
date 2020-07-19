@@ -78,6 +78,19 @@ namespace LocalDbServerFunctionTest
             var users = User.FindByRole("COLLECTOR");
             cbUsers.DataSource = users;
             cbUsers.DisplayMember = "FullNameTH";
+
+            // load plaza groups
+            if (null != tsb)
+            {
+                var plazaGroups = PlazaGroup.GetTSBPlazaGroups(tsb.TSBId);
+                cbPlazaGroups.DataSource = plazaGroups;
+                cbPlazaGroups.DisplayMember = "PlazaGroupNameTH";
+            }
+            else
+            {
+                cbPlazaGroups.DataSource = null;
+                cbPlazaGroups.DisplayMember = "PlazaGroupNameTH";
+            }
         }
 
         #endregion
@@ -277,7 +290,7 @@ namespace LocalDbServerFunctionTest
         private void button6_Click(object sender, EventArgs e)
         {
             /*
-            // Create UserCredit
+            // Create UserCreditTransaction
             var user = cbUsers.SelectedItem as User;
             if (null != user)
             {

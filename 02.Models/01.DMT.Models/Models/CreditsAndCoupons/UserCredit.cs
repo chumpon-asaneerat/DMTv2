@@ -60,6 +60,21 @@ namespace DMT.Models
         private string _FullNameEN = string.Empty;
         private string _FullNameTH = string.Empty;
 
+        // Coin/Bill
+        private int _ST25 = 0;
+        private int _ST50 = 0;
+        private int _BHT1 = 0;
+        private int _BHT2 = 0;
+        private int _BHT5 = 0;
+        private int _BHT10 = 0;
+        private int _BHT20 = 0;
+        private int _BHT50 = 0;
+        private int _BHT100 = 0;
+        private int _BHT500 = 0;
+        private int _BHT1000 = 0;
+        private decimal _BHTTotal = decimal.Zero;
+        private string _Remark = "";
+
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
 
