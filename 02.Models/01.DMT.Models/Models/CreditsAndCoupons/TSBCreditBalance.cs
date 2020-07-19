@@ -97,7 +97,6 @@ namespace DMT.Models
 		[Description("Gets or sets HasRemark.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[JsonIgnore]
 		[PeropertyMapName("Description")]
 		public string Description
 		{
@@ -119,7 +118,6 @@ namespace DMT.Models
 		[Description("Gets or sets HasRemark.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[JsonIgnore]
 		[PeropertyMapName("HasRemark")]
 		public bool HasRemark
 		{
@@ -140,7 +138,6 @@ namespace DMT.Models
 		[Description("Gets or sets RemarkVisibility.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[JsonIgnore]
 		[PeropertyMapName("RemarkVisibility")]
 		public System.Windows.Visibility RemarkVisibility
 		{
@@ -159,7 +156,6 @@ namespace DMT.Models
 		[Description("Gets or sets TSBId.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[JsonIgnore]
 		[MaxLength(10)]
 		[PeropertyMapName("TSBId")]
 		public virtual string TSBId
@@ -235,7 +231,6 @@ namespace DMT.Models
 		[Description("Gets or sets number of .25 baht coin.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[JsonIgnore]
 		[PeropertyMapName("ST25")]
 		public virtual int ST25
 		{
@@ -258,7 +253,6 @@ namespace DMT.Models
 		[Description("Gets or sets number of .50 baht coin.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[JsonIgnore]
 		[PeropertyMapName("ST50")]
 		public virtual int ST50
 		{
@@ -281,7 +275,6 @@ namespace DMT.Models
 		[Description("Gets or sets number of 1 baht coin.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[JsonIgnore]
 		[PeropertyMapName("BHT1")]
 		public virtual int BHT1
 		{
@@ -304,7 +297,6 @@ namespace DMT.Models
 		[Description("Gets or sets number of 2 baht coin.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[JsonIgnore]
 		[PeropertyMapName("BHT2")]
 		public virtual int BHT2
 		{
@@ -327,7 +319,6 @@ namespace DMT.Models
 		[Description("Gets or sets number of 5 baht coin.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[JsonIgnore]
 		[PeropertyMapName("BHT5")]
 		public virtual int BHT5
 		{
@@ -350,7 +341,6 @@ namespace DMT.Models
 		[Description("Gets or sets number of 10 baht coin.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[JsonIgnore]
 		[PeropertyMapName("BHT10")]
 		public virtual int BHT10
 		{
@@ -373,7 +363,6 @@ namespace DMT.Models
 		[Description("Gets or sets number of 20 baht bill.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[JsonIgnore]
 		[PeropertyMapName("BHT20")]
 		public virtual int BHT20
 		{
@@ -396,7 +385,6 @@ namespace DMT.Models
 		[Description("Gets or sets number of 50 baht bill.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[JsonIgnore]
 		[PeropertyMapName("BHT50")]
 		public virtual int BHT50
 		{
@@ -419,7 +407,6 @@ namespace DMT.Models
 		[Description("Gets or sets number of 100 baht bill.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[JsonIgnore]
 		[PeropertyMapName("BHT100")]
 		public virtual int BHT100
 		{
@@ -442,7 +429,6 @@ namespace DMT.Models
 		[Description("Gets or sets number of 500 baht bill.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[JsonIgnore]
 		[PeropertyMapName("BHT500")]
 		public virtual int BHT500
 		{
@@ -465,7 +451,6 @@ namespace DMT.Models
 		[Description("Gets or sets number of 1000 baht bill.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[JsonIgnore]
 		[PeropertyMapName("BHT1000")]
 		public virtual int BHT1000
 		{
@@ -507,7 +492,6 @@ namespace DMT.Models
 		[Description("Gets or sets additional borrow/return in baht.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[JsonIgnore]
 		[PeropertyMapName("AdditionalBHTTotal")]
 		public virtual decimal AdditionalBHTTotal
 		{
@@ -529,7 +513,6 @@ namespace DMT.Models
 		[Description("Gets or sets users borrow/return in baht.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[JsonIgnore]
 		[PeropertyMapName("UserBHTTotal")]
 		public virtual decimal UserBHTTotal
 		{
@@ -929,7 +912,7 @@ namespace DMT.Models
 					 WHERE TSB.TSBId = ?
 				";
 				var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
-				return (null != ret) ? ret : null;
+				return (null != ret) ? ret.ToTSBCreditBalance() : null;
 			}
 		}
 		/// <summary>

@@ -322,6 +322,18 @@ namespace DMT
                 public const string Name = "SaveTransaction";
                 public const string Url = Credit.Url + @"/" + Name;
             }
+
+            public static class GetCurrent
+            {
+                public const string Name = "GetCurrent";
+                public const string Url = Credit.Url + @"/" + Name;
+            }
+
+            public static class GetTSBCurrent
+            {
+                public const string Name = "GetTSBCurrent";
+                public const string Url = Credit.Url + @"/" + Name;
+            }
         }
 
         public static class Coupon
@@ -346,6 +358,18 @@ namespace DMT
                 public const string Name = "SaveTransaction";
                 public const string Url = Coupon.Url + @"/" + Name;
             }
+
+            public static class GetCurrent
+            {
+                public const string Name = "GetCurrent";
+                public const string Url = Coupon.Url + @"/" + Name;
+            }
+
+            public static class GetTSBCurrent
+            {
+                public const string Name = "GetTSBCurrent";
+                public const string Url = Coupon.Url + @"/" + Name;
+            }
         }
 
         public static class Addition
@@ -368,6 +392,18 @@ namespace DMT
             public static class SaveTransaction
             {
                 public const string Name = "SaveTransaction";
+                public const string Url = Addition.Url + @"/" + Name;
+            }
+
+            public static class GetCurrent
+            {
+                public const string Name = "GetCurrent";
+                public const string Url = Addition.Url + @"/" + Name;
+            }
+
+            public static class GetTSBCurrent
+            {
+                public const string Name = "GetTSBCurrent";
                 public const string Url = Addition.Url + @"/" + Name;
             }
         }

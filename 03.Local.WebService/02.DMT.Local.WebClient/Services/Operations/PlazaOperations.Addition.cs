@@ -61,7 +61,7 @@ namespace DMT.Services
             public TSBAdditionTransaction GetCurrentInitial()
             {
                 var ret = NRestClient.Create(port: 9000).Execute<TSBAdditionTransaction>(
-                    RouteConsts.Addition.GetCurrentInitial.Url);
+                    RouteConsts.Addition.GetCurrentInitial.Url, new { });
                 return ret;
             }
 
@@ -77,6 +77,22 @@ namespace DMT.Services
                 NRestClient.Create(port: 9000).Execute(
                     RouteConsts.Addition.SaveTransaction.Url, value);
             }
+
+            /*
+            public TSAdditionBalance GetCurrent()
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<TSAdditionBalance>(
+                    RouteConsts.Addition.GetCurrent.Url, new { });
+                return ret;
+            }
+
+            public TSAdditionBalance GetTSBCurrent(TSB tsb)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<TSAdditionBalance>(
+                    RouteConsts.Addition.GetTSBCurrent.Url, tsb);
+                return ret;
+            }
+            */
 
             #endregion
         }

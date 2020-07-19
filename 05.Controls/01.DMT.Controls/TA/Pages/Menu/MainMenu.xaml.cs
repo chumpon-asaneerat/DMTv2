@@ -672,46 +672,12 @@ namespace DMT.TA.Pages.Menu
         private void plazaAllStock_Click(object sender, RoutedEventArgs e)
         {
             var win = new Windows.Plaza.PlazaStockSummaryWindow();
-            if (win.ShowDialog() == false)
-            {
-                return;
-            }
-            /*
-            var win = new Windows.TA.Plaza.PlazaStockWindow();
             win.Owner = Application.Current.MainWindow;
-
-            Models.FundEntry fund = new Models.FundEntry();
-            fund.Description = "เงินยืมทอน";
-            fund.HasRemark = false;
-            fund.BHT1 = 100;
-            fund.BHT2 = 100;
-            fund.BHT5 = 100;
-            fund.BHT10c = 100;
-            fund.BHT20 = 100;
-            fund.BHT50 = 100;
-            fund.BHT100 = 100;
-            fund.BHT500 = 100;
-            fund.BHT1000 = 100;
-
-            Models.CouponEntry coupon = new Models.CouponEntry();
-            coupon.Description = "คุปอง";
-            coupon.BHT35 = 32;
-            coupon.BHT80 = 43;
-            win.Setup(fund, coupon);
-
+            win.RefreshPlazaInfo();
             if (win.ShowDialog() == false)
             {
                 return;
             }
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-                //Console.WriteLine("Refresh data error.");
-            }
-            */
         }
 
         private void logout_Click(object sender, RoutedEventArgs e)

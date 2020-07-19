@@ -41,5 +41,19 @@ namespace DMT.Services
             }
             TSBCouponTransaction.Save(value);
         }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Coupon.GetCurrent.Name)]
+        public TSBCouponBalance GetCurrent()
+        {
+            return TSBCouponBalance.GetCurrent();
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Coupon.GetTSBCurrent.Name)]
+        public TSBCouponBalance GetTSBCurrent([FromBody] TSB tsb)
+        {
+            return TSBCouponBalance.GetCurrent(tsb);
+        }
     }
 }

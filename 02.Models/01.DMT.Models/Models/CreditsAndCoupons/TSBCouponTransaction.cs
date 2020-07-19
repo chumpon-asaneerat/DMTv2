@@ -32,7 +32,9 @@ namespace DMT.Models
         {
             Initial = 0,
             // received from account
-            Received = 1
+            Received = 1,
+            // Sold
+            Sold = 2
         }
 
         #endregion

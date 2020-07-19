@@ -29,11 +29,29 @@ Update 2020-07-20 #7 (TA)
 Update 2020-07-20 #6 (TA)
 - 
 
+[commited]
 Update 2020-07-20 #5 (TA)
-- 
+- Implements TA/TOD model class #90.
+  - Update route const.
+  - Implements Credit Controller #4.
+  - Implements Coupon Controller #4.
+  - Implements Addition Controller #4.
+  - Implements Credit Plaza Operations #4.
+  - Implements Coupon Plaza Operations #4.
+  - Implements Addition Plaza Operations #4.
+  - Update TSBCreditBalance remove JsonIgnore in required properties.
+  - Update TSBCouponBalance remove JsonIgnore in required properties.
 
+[commited]
 Update 2020-07-20 #4 (TA)
-- 
+- Implements TA/TOD model class #89.
+  - Update route const.
+  - Implements Credit Controller #3.
+  - Implements Coupon Controller #3.
+  - Implements Addition Controller #3.
+  - Implements Credit Plaza Operations #3.
+  - Implements Coupon Plaza Operations #3.
+  - Implements Addition Plaza Operations #3.
 
 [commited]
 Update 2020-07-20 #3 (TA)

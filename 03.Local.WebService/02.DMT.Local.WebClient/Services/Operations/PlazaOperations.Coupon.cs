@@ -61,7 +61,7 @@ namespace DMT.Services
             public TSBCouponTransaction GetCurrentInitial()
             {
                 var ret = NRestClient.Create(port: 9000).Execute<TSBCouponTransaction>(
-                    RouteConsts.Coupon.GetCurrentInitial.Url);
+                    RouteConsts.Coupon.GetCurrentInitial.Url, new { });
                 return ret;
             }
 
@@ -76,6 +76,20 @@ namespace DMT.Services
             {
                 NRestClient.Create(port: 9000).Execute(
                     RouteConsts.Coupon.SaveTransaction.Url, value);
+            }
+
+            public TSBCouponBalance GetCurrent()
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<TSBCouponBalance>(
+                    RouteConsts.Coupon.GetCurrent.Url, new { });
+                return ret;
+            }
+
+            public TSBCouponBalance GetTSBCurrent(TSB tsb)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<TSBCouponBalance>(
+                    RouteConsts.Coupon.GetTSBCurrent.Url, tsb);
+                return ret;
             }
 
             #endregion

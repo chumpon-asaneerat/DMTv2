@@ -61,7 +61,7 @@ namespace DMT.Services
             public TSBCreditTransaction GetCurrentInitial()
             {
                 var ret = NRestClient.Create(port: 9000).Execute<TSBCreditTransaction>(
-                    RouteConsts.Credit.GetCurrentInitial.Url);
+                    RouteConsts.Credit.GetCurrentInitial.Url, new { });
                 return ret;
             }
 
@@ -76,6 +76,20 @@ namespace DMT.Services
             {
                 NRestClient.Create(port: 9000).Execute(
                     RouteConsts.Credit.SaveTransaction.Url, value);
+            }
+
+            public TSBCreditBalance GetCurrent()
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<TSBCreditBalance>(
+                    RouteConsts.Credit.GetCurrent.Url, new { });
+                return ret;
+            }
+
+            public TSBCreditBalance GetTSBCurrent(TSB tsb)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<TSBCreditBalance>(
+                    RouteConsts.Credit.GetTSBCurrent.Url, tsb);
+                return ret;
             }
 
             #endregion

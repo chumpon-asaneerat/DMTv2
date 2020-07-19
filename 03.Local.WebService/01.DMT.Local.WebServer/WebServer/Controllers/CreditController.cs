@@ -41,5 +41,21 @@ namespace DMT.Services
             }
             TSBCreditTransaction.Save(value);
         }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Credit.GetCurrent.Name)]
+        public TSBCreditBalance GetCurrent()
+        {
+            var ret = TSBCreditBalance.GetCurrent();
+            return ret;
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Credit.GetTSBCurrent.Name)]
+        public TSBCreditBalance GetTSBCurrent([FromBody] TSB tsb)
+        {
+            var ret = TSBCreditBalance.GetCurrent(tsb);
+            return ret;
+        }
     }
 }
