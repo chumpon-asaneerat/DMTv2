@@ -40,7 +40,7 @@ namespace DMT.Controls.Header
             UpdateUI();
 
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(5);
+            timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
         }

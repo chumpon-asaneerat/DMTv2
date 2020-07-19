@@ -87,7 +87,7 @@ namespace DMT.Services
             public TSBShift GetCurrent()
             {
                 TimeSpan ts = DateTime.Now - LastUpdated;
-                if (ts.TotalMinutes >= 1)
+                if (ts.TotalSeconds >= 1)
                 {
                     _current = NRestClient.Create(port: 9000).Execute<TSBShift>(
                         RouteConsts.Shift.GetCurrent.Url, new { });

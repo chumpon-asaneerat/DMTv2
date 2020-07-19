@@ -118,7 +118,7 @@ namespace DMT.Services
             {
                 TSB ret = _current;
                 TimeSpan ts = DateTime.Now - LastUpdated;
-                if (ts.TotalMinutes >= 1)
+                if (ts.TotalSeconds >= 1)
                 {
                     _current = NRestClient.Create(port: 9000).Execute<TSB>(
                         RouteConsts.TSB.GetCurrent.Url, new { });

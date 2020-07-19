@@ -11,8 +11,16 @@ Update 2020-07-19 #28 (TA)
 Update 2020-07-19 #27 (TA)
 - 
 
+[commited]
 Update 2020-07-19 #26 (TA)
-- 
+- Implements TA/TOD model class #77.
+  - DMT.Local.WebClient
+    - Plaza Operations (Shift) reduce update time to 1s.
+    - Plaza Operations (TSB) reduce update time to 1s.
+  - DMT.Controls
+    - HeaderPlaza reduce update time to 1s.
+    - HeaderShift reduce update time to 1s.
+    - HeaderSupervisor reduce update time to 1s.
 
 [commited]
 Update 2020-07-19 #25 (TA)
