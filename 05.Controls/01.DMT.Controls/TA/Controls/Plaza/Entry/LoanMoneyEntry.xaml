@@ -48,7 +48,7 @@
                         <TextBox Margin="2"
                                  TextAlignment="Right"
                                  IsEnabled="False"
-                                 Text="{Binding RevolvingFunds}"
+                                 Text="{Binding RevolvingFunds, StringFormat=N0}"
                                  Width="90"/>
                     </DockPanel>
                     <!-- 2 BHT -->
@@ -66,7 +66,7 @@
                         <TextBox Margin="2"
                                  TextAlignment="Right"
                                  IsEnabled="False"
-                                 Text="{Binding LoanMoney}"
+                                 Text="{Binding LoanMoney, StringFormat=N0}"
                                  Width="90"/>
                     </DockPanel>
                     <!-- 5 BHT -->
@@ -84,7 +84,7 @@
                         <TextBox Margin="2"
                                  TextAlignment="Right"
                                  IsEnabled="False"
-                                 Text="{Binding LoanMoneyCabinet}"
+                                 Text="{Binding LoanMoneyCabinet, StringFormat=N0}"
                                  Width="90"/>
                     </DockPanel>
                 </StackPanel>

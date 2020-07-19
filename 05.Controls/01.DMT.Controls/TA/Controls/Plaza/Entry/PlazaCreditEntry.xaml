@@ -208,7 +208,7 @@
                         <TextBox Margin="2"
                                  TextAlignment="Right"
                                  IsEnabled="False"
-                                 Text="{Binding BHTTotal}"
+                                 Text="{Binding BHTTotal, StringFormat=N0}"
                                  Width="90"/>
 
                     </DockPanel>

@@ -28,7 +28,7 @@
                                TextAlignment="Center"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
-                               Text="{Binding Description}"/>
+                               Text="รายละเอียด"/>
                 </Border>
                 <StackPanel Orientation="Vertical" Margin="10 5 10 5">
                     <!-- Seperator -->
@@ -48,7 +48,7 @@
                         <TextBox Margin="2"
                                  TextAlignment="Right"
                                  IsEnabled="True"
-                                 Text="{Binding RevolvingFunds}"
+                                 Text="{Binding CreditFlowBHTTotal, StringFormat=N0}"
                                  Width="90"/>
                     </DockPanel>
 
@@ -66,7 +66,7 @@
                         <TextBox Margin="2"
                                  TextAlignment="Right"
                                  IsEnabled="True"
-                                 Text="{Binding LoanMoney}"
+                                 Text="{Binding AdditionalBHTTotal,StringFormat=N0}"
                                  Width="90"/>
                     </DockPanel>
 
@@ -84,7 +84,7 @@
                         <TextBox Margin="2"
                                  TextAlignment="Right"
                                  IsEnabled="True"
-                                 Text="{Binding LoanMoneyCabinet}"
+                                 Text="{Binding UserBHTTotal, StringFormat=N0}"
                                  Width="90"/>
                     </DockPanel>
                     <DockPanel Margin="5 0 5 0">
@@ -101,7 +101,7 @@
                         <TextBox Margin="2"
                                  TextAlignment="Right"
                                  IsEnabled="False"
-                                 Text="{Binding TotalAmount}"
+                                 Text="{Binding BHTTotal, StringFormat=N0}"
                                  Width="90"/>
                     </DockPanel>
                 </StackPanel>

@@ -47,7 +47,7 @@
                                    Width="25"/>
                         <TextBox Margin="2"
                              TextAlignment="Right"
-                             Text="{Binding EXCHANGE}"
+                             Text="{Binding EXCHANGE, StringFormat=N0}"
                                  Width="90"/>
                     </DockPanel>
                     <!-- 2 BHT -->
@@ -64,7 +64,7 @@
                                    Width="25"/>
                         <TextBox Margin="2"
                              TextAlignment="Right"
-                             Text="{Binding BORROW}"
+                             Text="{Binding BORROW, StringFormat=N0}"
                                  Width="90"/>
                     </DockPanel>
                     <!-- 5 BHT -->
@@ -81,7 +81,7 @@
                                    Width="25"/>
                         <TextBox Margin="2"
                              TextAlignment="Right"
-                             Text="{Binding REVOLVINGFUNDS}"
+                             Text="{Binding REVOLVINGFUNDS, StringFormat=N0}"
                                  Width="90"/>
                     </DockPanel>
                     <Grid Height="5"></Grid>
@@ -99,7 +99,7 @@
                         <TextBox Margin="2"
                             TextAlignment="Right"
                                  IsEnabled="False"
-                            Text="{Binding TOTALAMOUNT}"
+                            Text="{Binding TOTALAMOUNT, StringFormat=N0}"
                                  Width="90"/>
 
                     </DockPanel>

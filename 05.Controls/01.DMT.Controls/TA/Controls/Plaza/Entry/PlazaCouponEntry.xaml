@@ -99,7 +99,7 @@
                         <TextBox Margin="2"
                                  TextAlignment="Right"
                                  IsEnabled="False"
-                                 Text="{Binding CouponBHTTotal}"
+                                 Text="{Binding CouponBHTTotal, StringFormat=N0}"
                                  Width="90"/>
                     </DockPanel>
                     <Grid Height="5"/>

@@ -82,6 +82,9 @@ namespace DMT.Models
 			total += _BHT1000 * 1000;
 
 			_BHTTotal = total;
+
+			this.RaiseChanged("BHTTotal");
+			this.RaiseChanged("CreditFlowBHTTotal");
 		}
 
 		#endregion
@@ -479,6 +482,21 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[JsonIgnore]
+		[PeropertyMapName("CreditFlowBHTTotal")]
+		public decimal CreditFlowBHTTotal
+		{
+			get { return _AdditionalBHTTotal + _BHTTotal - _UserBHTTotal; }
+			set { }
+		}
+
+		/// <summary>
+		/// Gets or sets total (coin/bill) value in baht.
+		/// </summary>
+		[Category("Summary")]
+		[Description("Gets or sets total (coin/bill) value in baht.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[JsonIgnore]
 		[PeropertyMapName("BHTTotal")]
 		public decimal BHTTotal
 		{
@@ -503,6 +521,7 @@ namespace DMT.Models
 					_AdditionalBHTTotal = value;
 					// Raise event.
 					this.RaiseChanged("AdditionalBHTTotal");
+					this.RaiseChanged("CreditFlowBHTTotal");
 				}
 			}
 		}
@@ -524,6 +543,7 @@ namespace DMT.Models
 					_UserBHTTotal = value;
 					// Raise event.
 					this.RaiseChanged("UserBHTTotal");
+					this.RaiseChanged("CreditFlowBHTTotal");
 				}
 			}
 		}
@@ -912,7 +932,14 @@ namespace DMT.Models
 					 WHERE TSB.TSBId = ?
 				";
 				var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
-				return (null != ret) ? ret.ToTSBCreditBalance() : null;
+				var result = (null != ret) ? ret.ToTSBCreditBalance() : null;
+				if (null != result)
+				{
+					var addition = TSBAdditionBalance.GetCurrent();
+					result.AdditionalBHTTotal = (null != addition) ? addition.AdditionalBHTTotal : decimal.Zero;
+
+				}
+				return result;
 			}
 		}
 		/// <summary>

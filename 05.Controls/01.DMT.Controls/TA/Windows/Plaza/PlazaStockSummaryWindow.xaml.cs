@@ -51,11 +51,15 @@ namespace DMT.TA.Windows.Plaza
             tsbCredit.HasRemark = false;
             creditEntry.IsEnabled = false;
             creditEntry.DataContext = tsbCredit;
+
             var tsbCoupon = ops.Coupons.GetCurrent();
             tsbCoupon.Description = "คุปอง";
             tsbCoupon.HasRemark = false;
             couponEntry.IsEnabled = false;
             couponEntry.DataContext = tsbCoupon;
+
+            loanMoneyEntry.IsEnabled = false;
+            loanMoneyEntry.DataContext = tsbCredit;
         }
     }
 }

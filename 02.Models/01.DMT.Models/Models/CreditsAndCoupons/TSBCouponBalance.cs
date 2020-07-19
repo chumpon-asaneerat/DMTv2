@@ -373,6 +373,7 @@ namespace DMT.Models
 		#endregion
 
 		#region Static Methods
+
 		/// <summary>
 		/// Gets Active TSB Coupon balance.
 		/// </summary>
