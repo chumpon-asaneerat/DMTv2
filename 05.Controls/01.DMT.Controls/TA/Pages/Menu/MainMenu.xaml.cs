@@ -41,9 +41,9 @@ namespace DMT.TA.Pages.Menu
             {
                 // Exchange Fund Page.
                 var page = new Pages.Exchange.PlazaRequestExchangePage();
+                page.RefreshPlazaInfo();
                 /*
                 BindingList<Models.FundExchange> items = new BindingList<Models.FundExchange>();
-
                 page.Setup(plaza, items);
                 */
                 PageContentManager.Instance.Current = page;
@@ -430,7 +430,7 @@ namespace DMT.TA.Pages.Menu
                 //Console.WriteLine("Refresh data error.");
             }
         }
-
+        // NO Implementation
         private void plazaAllCoupon_Click(object sender, RoutedEventArgs e)
         {
 
@@ -668,7 +668,7 @@ namespace DMT.TA.Pages.Menu
             }
             */
         }
-
+        // OK.
         private void plazaAllStock_Click(object sender, RoutedEventArgs e)
         {
             var win = new Windows.Plaza.PlazaStockSummaryWindow();
@@ -679,7 +679,7 @@ namespace DMT.TA.Pages.Menu
                 return;
             }
         }
-
+        // OK.
         private void logout_Click(object sender, RoutedEventArgs e)
         {
             // When enter Sign In Screen reset current user.
