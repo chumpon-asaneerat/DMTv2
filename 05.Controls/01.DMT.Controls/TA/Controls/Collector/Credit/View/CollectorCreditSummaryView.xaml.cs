@@ -175,6 +175,6 @@ namespace DMT.TA.Controls.Collector.Credit.View
         {
         }
 
-            //public event System.EventHandler ItemChanged;
-        }
+        //public event System.EventHandler ItemChanged;
+    }
 }

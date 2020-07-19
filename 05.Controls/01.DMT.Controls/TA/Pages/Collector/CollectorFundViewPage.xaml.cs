@@ -19,10 +19,7 @@ namespace DMT.TA.Pages.Collector
             InitializeComponent();
         }
 
-        private void Grid_ItemChanged(object sender, EventArgs e)
-        {
 
-        }
         private void addCollector_Click(object sender, RoutedEventArgs e)
         {
             var win = new DMT.TA.Windows.Plaza.PlazaReceivedCreditWindow();
