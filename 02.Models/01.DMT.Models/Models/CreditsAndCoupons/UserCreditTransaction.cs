@@ -26,6 +26,17 @@ namespace DMT.Models
     //[Table("UserCredit")]
     public class UserCreditTransaction : NTable<UserCreditTransaction>
     {
+        #region Enum
+
+        public enum UserCreditTransactionType
+        {
+            Borrow = 1,
+            Return = 2,
+            Undo = 3
+        }
+
+        #endregion
+
         #region Internal Variables
 
         private Guid _PKId = Guid.NewGuid();

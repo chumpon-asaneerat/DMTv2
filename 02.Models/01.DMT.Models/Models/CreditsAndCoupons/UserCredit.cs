@@ -18,13 +18,6 @@ using System.ComponentModel;
 
 namespace DMT.Models
 {
-    public enum UserCreditTransactionType
-    {
-        Borrow = 1,
-        Return = 2,
-        Undo = 3
-    }
-
     #region UserCredit
 
     /// <summary>
@@ -33,36 +26,39 @@ namespace DMT.Models
     //[Table("UserCredit")]
     public class UserCredit : NTable<UserCredit>
     {
+        #region Enum
+
+        public enum StateTypes : int
+        {
+            Initial = 0,
+            // received bag
+            Received = 1,
+            // Returns all credit.
+            Completed = 2
+        }
+
+        #endregion
+
         #region Internal Variables
 
-        private Guid _PKId = Guid.NewGuid();
-        private DateTime _TransactionDate = DateTime.MinValue;
-        private UserCreditTransactionType _TransactionType = UserCreditTransactionType.Borrow;
-
-        private Guid _RefId = Guid.Empty; // for undo.
+        private int _UserCreditId = 0;
+        private DateTime _UserCreditDate = DateTime.MinValue;
+        private StateTypes _State = StateTypes.Initial;
+        private string _BagNo = string.Empty;
+        private string _BeltNo = string.Empty;
 
         private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
         private string _TSBNameTH = string.Empty;
 
+        private string _PlazaGroupId = string.Empty;
+        private string _PlazaGroupNameEN = string.Empty;
+        private string _PlazaGroupNameTH = string.Empty;
+        private string _Direction = string.Empty;
+
         private string _UserId = string.Empty;
         private string _FullNameEN = string.Empty;
         private string _FullNameTH = string.Empty;
-
-        // Coin/Bill
-        private int _ST25 = 0;
-        private int _ST50 = 0;
-        private int _BHT1 = 0;
-        private int _BHT2 = 0;
-        private int _BHT5 = 0;
-        private int _BHT10 = 0;
-        private int _BHT20 = 0;
-        private int _BHT50 = 0;
-        private int _BHT100 = 0;
-        private int _BHT500 = 0;
-        private int _BHT1000 = 0;
-        private decimal _BHTTotal = decimal.Zero;
-        private string _Remark = "";
 
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
@@ -78,152 +74,148 @@ namespace DMT.Models
 
         #endregion
 
-        #region Private Methods
-
-        private void CalcTotal()
-        {
-            decimal total = 0;
-            total += Convert.ToDecimal(_ST25 * (decimal).25);
-            total += Convert.ToDecimal(_ST50 * (decimal).50);
-            total += _BHT1 * 1;
-            total += _BHT2 * 2;
-            total += _BHT5 * 5;
-            total += _BHT10 * 10;
-            total += _BHT20 * 20;
-            total += _BHT50 * 50;
-            total += _BHT100 * 100;
-            total += _BHT500 * 500;
-            total += _BHT1000 * 1000;
-
-            _BHTTotal = total;
-            // Raise event.
-            this.RaiseChanged("BHTTotal");
-        }
-
-        #endregion
-
         #region Public Properties
 
         #region Common
 
         /// <summary>
-        /// Gets or sets PKId
+        /// Gets or sets UserCreditId
         /// </summary>
         [Category("Common")]
-        [Description("Gets or sets PKId")]
-        [PrimaryKey]
+        [Description("Gets or sets UserCreditId")]
+        [PrimaryKey, AutoIncrement]
         [ReadOnly(true)]
-        [PeropertyMapName("PKId")]
-        public Guid PKId
+        [PeropertyMapName("UserCreditId")]
+        public int UserCreditId
         {
             get
             {
-                return _PKId;
+                return _UserCreditId;
             }
             set
             {
-                if (_PKId != value)
+                if (_UserCreditId != value)
                 {
-                    _PKId = value;
-                    this.RaiseChanged("PKId");
+                    _UserCreditId = value;
+                    this.RaiseChanged("UserCreditId");
                 }
             }
         }
         /// <summary>
-        /// Gets or sets Transaction Date.
+        /// Gets or sets UserCredit Date.
         /// </summary>
         [Category("Common")]
-        [Description("Gets or sets Transaction Date.")]
+        [Description("Gets or sets UserCredit Date.")]
         [ReadOnly(true)]
-        [PeropertyMapName("TransactionDate")]
-        public DateTime TransactionDate
+        [PeropertyMapName("UserCreditDate")]
+        public DateTime UserCreditDate
         {
-            get { return _TransactionDate; }
+            get { return _UserCreditDate; }
             set
             {
-                if (_TransactionDate != value)
+                if (_UserCreditDate != value)
                 {
-                    _TransactionDate = value;
+                    _UserCreditDate = value;
                     // Raise event.
-                    this.RaiseChanged("TransactionDate");
-                    this.RaiseChanged("TransactionDateString");
-                    this.RaiseChanged("TransactionDateTimeString");
+                    this.RaiseChanged("UserCreditDate");
+                    this.RaiseChanged("UserCreditDateString");
+                    this.RaiseChanged("UserCreditDateTimeString");
                 }
             }
         }
         /// <summary>
-        /// Gets Transaction Date String.
+        /// Gets UserCredit Date String.
         /// </summary>
         [Category("Common")]
-        [Description("Gets Transaction Date String.")]
+        [Description("Gets UserCredit Date String.")]
         [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
-        public string TransactionDateString
+        public string UserCreditDateString
         {
             get
             {
-                var ret = (this.TransactionDate == DateTime.MinValue) ? "" : this.TransactionDate.ToThaiDateTimeString("dd/MM/yyyy");
+                var ret = (this.UserCreditDate == DateTime.MinValue) ? "" : this.UserCreditDate.ToThaiDateTimeString("dd/MM/yyyy");
                 return ret;
             }
             set { }
         }
         /// <summary>
-        /// Gets Transaction DateTime String.
+        /// Gets UserCredit DateTime String.
         /// </summary>
         [Category("Common")]
-        [Description("Gets Transaction DateTime String.")]
+        [Description("Gets UserCredit DateTime String.")]
         [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
-        public string TransactionDateTimeString
+        public string UserCreditDateTimeString
         {
             get
             {
-                var ret = (this.TransactionDate == DateTime.MinValue) ? "" : this.TransactionDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+                var ret = (this.UserCreditDate == DateTime.MinValue) ? "" : this.UserCreditDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
                 return ret;
             }
             set { }
         }
         /// <summary>
-        /// Gets or sets Transaction Type.
+        /// Gets or sets State.
         /// </summary>
         [Category("Common")]
-        [Description("Gets or sets Transaction Type.")]
+        [Description("Gets or sets State.")]
         [Browsable(false)]
-        [PeropertyMapName("TransactionType")]
-        public UserCreditTransactionType TransactionType
+        [PeropertyMapName("State")]
+        public StateTypes State
         {
-            get { return _TransactionType; }
+            get { return _State; }
             set
             {
-                if (_TransactionType != value)
+                if (_State != value)
                 {
-                    _TransactionType = value;
+                    _State = value;
                     // Raise event.
-                    this.RaiseChanged("TransactionType");
+                    this.RaiseChanged("State");
                 }
             }
         }
         /// <summary>
-        /// Gets or sets RefId
+        /// Gets or sets Bag Number.
         /// </summary>
         [Category("Common")]
-        [Description("Gets or sets RefId")]
-        [ReadOnly(true)]
-        [PeropertyMapName("RefId")]
-        public Guid RefId
+        [Description("Gets or sets Bag Number.")]
+        //[ReadOnly(true)]
+        [MaxLength(10)]
+        [PeropertyMapName("BagNo")]
+        public string BagNo
         {
-            get
-            {
-                return _RefId;
-            }
+            get { return _BagNo; }
             set
             {
-                if (_RefId != value)
+                if (_BagNo != value)
                 {
-                    _RefId = value;
-                    this.RaiseChanged("RefId");
+                    _BagNo = value;
+                    // Raise event.
+                    this.RaiseChanged("BagNo");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Belt Number.
+        /// </summary>
+        [Category("Common")]
+        [Description("Gets or sets Belt Number.")]
+        //[ReadOnly(true)]
+        [MaxLength(20)]
+        [PeropertyMapName("BeltNo")]
+        public string BeltNo
+        {
+            get { return _BeltNo; }
+            set
+            {
+                if (_BeltNo != value)
+                {
+                    _BeltNo = value;
+                    // Raise event.
+                    this.RaiseChanged("BeltNo");
                 }
             }
         }
@@ -304,6 +296,103 @@ namespace DMT.Models
 
         #endregion
 
+        #region PlazaGroup
+
+        /// <summary>
+        /// Gets or sets PlazaGroupId.
+        /// </summary>
+        [Category("Plaza Group")]
+        [Description("Gets or sets PlazaGroupId.")]
+        [ReadOnly(true)]
+        [MaxLength(10)]
+        [PeropertyMapName("PlazaGroupId")]
+        public string PlazaGroupId
+        {
+            get
+            {
+                return _PlazaGroupId;
+            }
+            set
+            {
+                if (_PlazaGroupId != value)
+                {
+                    _PlazaGroupId = value;
+                    this.RaiseChanged("PlazaGroupId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets PlazaGroupNameEN.
+        /// </summary>
+        [Category("Plaza Group")]
+        [Description("Gets or sets PlazaGroupNameEN.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [PeropertyMapName("PlazaGroupNameEN")]
+        public virtual string PlazaGroupNameEN
+        {
+            get
+            {
+                return _PlazaGroupNameEN;
+            }
+            set
+            {
+                if (_PlazaGroupNameEN != value)
+                {
+                    _PlazaGroupNameEN = value;
+                    this.RaiseChanged("PlazaGroupNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets PlazaGroupNameTH.
+        /// </summary>
+        [Category("Plaza Group")]
+        [Description("Gets or sets PlazaGroupNameTH.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [PeropertyMapName("PlazaGroupNameTH")]
+        public virtual string PlazaGroupNameTH
+        {
+            get
+            {
+                return _PlazaGroupNameTH;
+            }
+            set
+            {
+                if (_PlazaGroupNameTH != value)
+                {
+                    _PlazaGroupNameTH = value;
+                    this.RaiseChanged("PlazaGroupNameTH");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Direction.
+        /// </summary>
+        [Category("Plaza Group")]
+        [Description("Gets or sets Direction.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [PeropertyMapName("Direction")]
+        public virtual string Direction
+        {
+            get
+            {
+                return _Direction;
+            }
+            set
+            {
+                if (_Direction != value)
+                {
+                    _Direction = value;
+                    this.RaiseChanged("Direction");
+                }
+            }
+        }
+
+        #endregion
+
         #region User
 
         /// <summary>
@@ -372,263 +461,6 @@ namespace DMT.Models
                 {
                     _FullNameTH = value;
                     this.RaiseChanged("FullNameTH");
-                }
-            }
-        }
-
-        #endregion
-
-        #region Coin/Bill
-
-        /// <summary>
-        /// Gets or sets number of .25 baht coin.
-        /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of .25 baht coin.")]
-        [PeropertyMapName("ST25")]
-        public int ST25
-        {
-            get { return _ST25; }
-            set
-            {
-                if (_ST25 != value)
-                {
-                    _ST25 = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("ST25");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets number of .50 baht coin.
-        /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of .50 baht coin.")]
-        [PeropertyMapName("ST50")]
-        public int ST50
-        {
-            get { return _ST50; }
-            set
-            {
-                if (_ST50 != value)
-                {
-                    _ST50 = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("ST50");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets number of 1 baht coin.
-        /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of 1 baht coin.")]
-        [PeropertyMapName("BHT1")]
-        public int BHT1
-        {
-            get { return _BHT1; }
-            set
-            {
-                if (_BHT1 != value)
-                {
-                    _BHT1 = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("BHT1");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets number of 2 baht coin.
-        /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of 2 baht coin.")]
-        [PeropertyMapName("BHT2")]
-        public int BHT2
-        {
-            get { return _BHT2; }
-            set
-            {
-                if (_BHT2 != value)
-                {
-                    _BHT2 = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("BHT2");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets number of 5 baht coin.
-        /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of 5 baht coin.")]
-        [PeropertyMapName("BHT5")]
-        public int BHT5
-        {
-            get { return _BHT5; }
-            set
-            {
-                if (_BHT5 != value)
-                {
-                    _BHT5 = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("BHT5");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets number of 10 baht coin.
-        /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of 10 baht coin.")]
-        [PeropertyMapName("BHT10")]
-        public int BHT10
-        {
-            get { return _BHT10; }
-            set
-            {
-                if (_BHT10 != value)
-                {
-                    _BHT10 = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("BHT10");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets number of 20 baht bill.
-        /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of 20 baht bill.")]
-        [PeropertyMapName("BHT20")]
-        public int BHT20
-        {
-            get { return _BHT20; }
-            set
-            {
-                if (_BHT20 != value)
-                {
-                    _BHT20 = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("BHT20");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets number of 50 baht bill.
-        /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of 50 baht bill.")]
-        [PeropertyMapName("BHT50")]
-        public int BHT50
-        {
-            get { return _BHT50; }
-            set
-            {
-                if (_BHT50 != value)
-                {
-                    _BHT50 = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("BHT50");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets number of 100 baht bill.
-        /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of 100 baht bill.")]
-        [PeropertyMapName("BHT100")]
-        public int BHT100
-        {
-            get { return _BHT100; }
-            set
-            {
-                if (_BHT100 != value)
-                {
-                    _BHT100 = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("BHT100");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets number of 500 baht bill.
-        /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of 500 baht bill.")]
-        [PeropertyMapName("BHT500")]
-        public int BHT500
-        {
-            get { return _BHT500; }
-            set
-            {
-                if (_BHT500 != value)
-                {
-                    _BHT500 = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("BHT500");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets number of 1000 baht bill.
-        /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets number of 1000 baht bill.")]
-        [PeropertyMapName("BHT1000")]
-        public int BHT1000
-        {
-            get { return _BHT1000; }
-            set
-            {
-                if (_BHT1000 != value)
-                {
-                    _BHT1000 = value;
-                    CalcTotal();
-                    // Raise event.
-                    this.RaiseChanged("BHT1000");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets total value in baht.
-        /// </summary>
-        [Category("Coin/Bill")]
-        [Description("Gets or sets total value in baht.")]
-        [ReadOnly(true)]
-        [PeropertyMapName("BHTTotal")]
-        public decimal BHTTotal
-        {
-            get { return _BHTTotal; }
-            set { }
-        }
-        /// <summary>
-        /// Gets or sets  Remark.
-        /// </summary>
-        [Category("Remark")]
-        [Description("Gets or sets  Remark.")]
-        [MaxLength(255)]
-        [PeropertyMapName("Remark")]
-        public string Remark
-        {
-            get { return _Remark; }
-            set
-            {
-                if (_Remark != value)
-                {
-                    _Remark = value;
-                    // Raise event.
-                    this.RaiseChanged("Remark");
                 }
             }
         }
@@ -712,6 +544,41 @@ namespace DMT.Models
 
             #endregion
 
+            #region PlazaGroup
+
+            /// <summary>
+            /// Gets or sets PlazaGroupNameEN.
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("PlazaGroupNameEN")]
+            public override string PlazaGroupNameEN
+            {
+                get { return base.PlazaGroupNameEN; }
+                set { base.PlazaGroupNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets PlazaGroupNameTH.
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("PlazaGroupNameTH")]
+            public override string PlazaGroupNameTH
+            {
+                get { return base.PlazaGroupNameTH; }
+                set { base.PlazaGroupNameTH = value; }
+            }
+            /// <summary>
+            /// Gets or sets Direction.
+            /// </summary>
+            [MaxLength(10)]
+            [PeropertyMapName("Direction")]
+            public override string Direction
+            {
+                get { return base.Direction; }
+                set { base.Direction = value; }
+            }
+
+            #endregion
+
             #region User
 
             /// <summary>
@@ -753,47 +620,48 @@ namespace DMT.Models
 
         #region Static Methods
 
-        public static UserCredit Create(User user, TSB tsb)
+        public static UserCredit Create(User user, PlazaGroup plazaGroup, 
+            string bagNo, string beltNo)
         {
             lock (sync)
             {
-                if (null == user || null == tsb) return null;
+                if (null == user || null == plazaGroup) return null;
                 UserCredit inst = Create();
 
-                inst.TSBId = tsb.TSBId;
-                inst.TSBNameEN = tsb.TSBNameEN;
-                inst.TSBNameTH = tsb.TSBNameTH;
+                inst.TSBId = plazaGroup.TSBId;
+                inst.TSBNameEN = plazaGroup.TSBNameEN;
+                inst.TSBNameTH = plazaGroup.TSBNameTH;
+
+                inst.PlazaGroupId = plazaGroup.PlazaGroupId;
+                inst.PlazaGroupNameEN = plazaGroup.PlazaGroupNameEN;
+                inst.PlazaGroupNameTH = plazaGroup.PlazaGroupNameTH;
+                inst.Direction = plazaGroup.Direction;
 
                 inst.UserId = user.UserId;
                 inst.FullNameEN = user.FullNameEN;
                 inst.FullNameTH = user.FullNameTH;
 
+                inst.BagNo = bagNo;
+                inst.BeltNo = beltNo;
+
                 return inst;
             }
         }
 
-        public static UserCredit Create(User user)
+        public static void SaveCredit(UserCredit value)
         {
             lock (sync)
             {
-                if (null == user) return null;
-
-                TSB tsb = TSB.GetCurrent();
-                if (null == tsb) return null; // active tsb not found.
-
-                UserCredit inst = Create();
-
-                inst.TSBId = tsb.TSBId;
-                inst.TSBNameEN = tsb.TSBNameEN;
-                inst.TSBNameTH = tsb.TSBNameTH;
-
-                inst.UserId = user.UserId;
-                inst.FullNameEN = user.FullNameEN;
-                inst.FullNameTH = user.FullNameTH;
-
-                return inst;
+                if (null == value) return;
+                // set date if not assigned.
+                if (value.UserCreditDate == DateTime.MinValue)
+                {
+                    value.UserCreditDate = DateTime.Now;
+                }
+                Save(value);
             }
         }
+
         /*
         public static void Borrow(UserCredit credit, TSBCreditBalance balance)
         {

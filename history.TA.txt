@@ -11,8 +11,11 @@ Update 2020-07-20 #13 (TA)
 Update 2020-07-20 #12 (TA)
 - 
 
+[commited]
 Update 2020-07-20 #11 (TA)
-- 
+- Implements TA/TOD model class #96.
+  - UserCredit re-implements #2.
+  - UserCreditTransaction re-implements #2.
 
 [commited]
 Update 2020-07-20 #10 (TA)
