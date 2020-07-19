@@ -56,6 +56,17 @@ namespace DMT.Config.Pages
 
         #endregion
 
+        #region ListView Handlers
+
+        private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = listView.SelectedItem as TSB;
+            pgrid.SelectedObject = null;
+            if (null == item) return;
+        }
+
+        #endregion
+
         private void RefreshTSBs()
         {
             listView.ItemsSource = null;

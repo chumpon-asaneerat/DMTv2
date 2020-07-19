@@ -19,7 +19,8 @@
         <Grid Grid.Column="0">
             <ListView x:Name="listView"
                       FontSize="18"
-                      ItemsSource="{Binding}">
+                      ItemsSource="{Binding}"
+                      SelectionChanged="listView_SelectionChanged">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Width="100"

@@ -27,13 +27,13 @@ using System.Runtime.InteropServices;
 namespace DMT.Config.Pages
 {
     /// <summary>
-    /// Interaction logic for TSBCouponViewPage.xaml
+    /// Interaction logic for TSBAdditionViewPage.xaml
     /// </summary>
-    public partial class TSBCouponViewPage : UserControl
+    public partial class TSBAdditionViewPage : UserControl
     {
         #region Constructor
 
-        public TSBCouponViewPage()
+        public TSBAdditionViewPage()
         {
             InitializeComponent();
         }
@@ -77,3 +77,4 @@ namespace DMT.Config.Pages
         }
     }
 }
+

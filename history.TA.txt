@@ -26,8 +26,15 @@ Update 2020-07-19 #33 (TA)
 Update 2020-07-19 #32 (TA)
 - 
 
+[commited]
 Update 2020-07-19 #31 (TA)
-- 
+- Implements TA/TOD model class #80.
+  - DMT.Plaza.Config.App
+    - Add Image for Addition Credit.
+    - Update TSBCreditViewPage #3.
+    - Update TSBCouponViewPage #3.
+    - Update TSBAdditionViewPage #3.
+    - Update MainWindow code #2.
 
 [commited]
 Update 2020-07-19 #30 (TA)
