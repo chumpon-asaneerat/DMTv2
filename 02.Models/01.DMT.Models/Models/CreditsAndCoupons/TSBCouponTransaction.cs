@@ -586,7 +586,7 @@ namespace DMT.Models
                 cmd += "  FROM TSBCouponTransaction, TSB ";
                 cmd += " WHERE TSBCouponTransaction.TSBId = TSB.TSBId ";
                 cmd += "   AND TSBCouponTransaction.TSBId = ? ";
-                cmd += "   AND TSBAdditionTransaction.TranstionType = ? ";
+                cmd += "   AND TSBCouponTransaction.TransactionType = ? ";
 
                 var ret = NQuery.Query<FKs>(cmd,
                     tsb.TSBId, TransactionTypes.Initial).FirstOrDefault();

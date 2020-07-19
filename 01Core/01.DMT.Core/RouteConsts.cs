@@ -300,44 +300,39 @@ namespace DMT
             }
         }
 
-        public static class Transaction
+        public static class Credit
         {
-            public const string Url = RouteConsts.Url + @"/Transaction";
+            public const string Name = "Credit";
+            public const string Url = RouteConsts.Url + @"/" + Name;
 
-            public static class Credit
+            public static class GetInitial
             {
-                public const string Name = "Credit";
-                public const string Url = Transaction.Url + @"/" + Name;
-
-                public static class GetInitial
-                {
-                    public const string Name = "GetInitial";
-                    public const string Url = Credit.Url + @"/" + Name;
-                }
+                public const string Name = "GetInitial";
+                public const string Url = Credit.Url + @"/" + Name;
             }
+        }
 
-            public static class Coupon
+        public static class Coupon
+        {
+            public const string Name = "Coupon";
+            public const string Url = RouteConsts.Url + @"/" + Name;
+
+            public static class GetInitial
             {
-                public const string Name = "Coupon";
-                public const string Url = Transaction.Url + @"/" + Name;
-
-                public static class GetInitial
-                {
-                    public const string Name = "GetInitial";
-                    public const string Url = Coupon.Url + @"/" + Name;
-                }
+                public const string Name = "GetInitial";
+                public const string Url = Coupon.Url + @"/" + Name;
             }
+        }
 
-            public static class Addition
+        public static class Addition
+        {
+            public const string Name = "Addition";
+            public const string Url = RouteConsts.Url + @"/" + Name;
+
+            public static class GetInitial
             {
-                public const string Name = "Addition";
-                public const string Url = Transaction.Url + @"/" + Name;
-
-                public static class GetInitial
-                {
-                    public const string Name = "GetInitial";
-                    public const string Url = Addition.Url + @"/" + Name;
-                }
+                public const string Name = "GetInitial";
+                public const string Url = Addition.Url + @"/" + Name;
             }
         }
     }

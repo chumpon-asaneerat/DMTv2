@@ -469,7 +469,7 @@ namespace DMT.Models
                 cmd += "  FROM TSBAdditionTransaction, TSB ";
                 cmd += " WHERE TSBAdditionTransaction.TSBId = TSB.TSBId ";
                 cmd += "   AND TSBAdditionTransaction.TSBId = ? ";
-                cmd += "   AND TSBAdditionTransaction.TranstionType = ? ";
+                cmd += "   AND TSBAdditionTransaction.TransactionType = ? ";
 
                 var ret = NQuery.Query<FKs>(cmd, 
                     tsb.TSBId, TransactionTypes.Initial).FirstOrDefault();

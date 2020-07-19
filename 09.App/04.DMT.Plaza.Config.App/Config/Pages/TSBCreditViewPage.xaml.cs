@@ -63,6 +63,8 @@ namespace DMT.Config.Pages
             var item = listView.SelectedItem as TSB;
             pgrid.SelectedObject = null;
             if (null == item) return;
+
+            pgrid.SelectedObject = ops.Credits.GetInitial();
         }
 
         #endregion
