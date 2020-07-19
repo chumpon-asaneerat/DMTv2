@@ -25,6 +25,9 @@ namespace DMT.TA.Windows.Collector.Credit
         }
 
         #endregion
+
+        #region Button Handlers
+
         private void cmdOK_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
@@ -34,5 +37,7 @@ namespace DMT.TA.Windows.Collector.Credit
         {
             this.DialogResult = false;
         }
+
+        #endregion
     }
 }

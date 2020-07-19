@@ -14,8 +14,10 @@ Update 2020-07-20 #12 (TA)
 Update 2020-07-20 #11 (TA)
 - 
 
+[commited]
 Update 2020-07-20 #10 (TA)
-- 
+- Implements TA/TOD model class #95.
+  - Implements CollectorFundViewPage #2. (fixed call incorrect popup window)
 
 [commited]
 Update 2020-07-20 #9 (TA)

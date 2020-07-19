@@ -446,7 +446,6 @@ namespace DMT.TA.Pages.Menu
             {
                 //Console.WriteLine("Refresh data error.");
             }
-            
         }
         // NO Implementation ประวัติการแลกเงินยืมทอน (collector)
         private void changeBorrowingHistory_Click(object sender, RoutedEventArgs e)

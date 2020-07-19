@@ -37,7 +37,8 @@ namespace DMT.TA.Pages.Collector
 
         private void addCollector_Click(object sender, RoutedEventArgs e)
         {
-            var win = new DMT.TA.Windows.Plaza.PlazaReceivedCreditWindow();
+            //var win = new DMT.TA.Windows.Plaza.PlazaReceivedCreditWindow();
+            var win = new DMT.TA.Windows.Collector.Credit.CollectorCreditBorrowWindow();
             if (win.ShowDialog() == false)
             {
                 return;
