@@ -190,7 +190,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="10" />
                 </Grid.ColumnDefinitions>
-                <ctrl:PlazaFundEntry x:Name="srcEntry"
+                <ctrl:PlazaCreditEntry x:Name="srcEntry"
                                 Grid.Column="1"
                                 FontSize="16"
                                 IsEnabled="False"
@@ -201,7 +201,7 @@
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center">
                 </Grid>
-                <ctrl:PlazaFundEntry x:Name="usrEntry"
+                <ctrl:PlazaCreditEntry x:Name="usrEntry"
                                 Grid.Column="3"
                                 FontSize="16"
                                 Background="DarkRed"
@@ -211,7 +211,7 @@
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center">
                 </Grid>
-                <ctrl:PlazaFundEntry x:Name="sumEntry" Margin="0 0 0 5"
+                <ctrl:PlazaCreditEntry x:Name="sumEntry" Margin="0 0 0 5"
                                 Grid.Column="5"
                                 FontSize="16"
                                 IsEnabled="False"

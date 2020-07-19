@@ -102,7 +102,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="10" />
                 </Grid.ColumnDefinitions>
-                <ctrl:PlazaFundEntry x:Name="requestEntry"
+                <ctrl:PlazaCreditEntry x:Name="requestEntry"
                                 Grid.Column="1"
                                 FontSize="16"
                                 IsEnabled="False"
@@ -113,7 +113,7 @@
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center">
                 </Grid>
-                <ctrl:PlazaFundEntry x:Name="approveEntry"
+                <ctrl:PlazaCreditEntry x:Name="approveEntry"
                                 Grid.Column="3"
                                 FontSize="16"
                                 IsEnabled="False"
@@ -124,7 +124,7 @@
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center">
                 </Grid>
-                <ctrl:PlazaFundEntry x:Name="trueReciveEntry"
+                <ctrl:PlazaCreditEntry x:Name="trueReciveEntry"
                                 Grid.Column="5"
                                 FontSize="16"
                                 Background="Orange"
@@ -134,7 +134,7 @@
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center">
                 </Grid>
-                <ctrl:PlazaFundEntry x:Name="exchangeEntry"
+                <ctrl:PlazaCreditEntry x:Name="exchangeEntry"
                                 Grid.Column="7"
                                 FontSize="16"
                                 Background="DarkRed"

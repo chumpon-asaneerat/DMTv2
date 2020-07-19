@@ -98,7 +98,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="10" />
                 </Grid.ColumnDefinitions>
-                <ctrl:PlazaFundEntry x:Name="requestEntry"
+                <ctrl:PlazaCreditEntry x:Name="requestEntry"
                                 Grid.Column="1"
                                 FontSize="16"
                                 Background="Indigo"

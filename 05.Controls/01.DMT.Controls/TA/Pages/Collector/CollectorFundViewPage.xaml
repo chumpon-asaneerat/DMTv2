@@ -83,7 +83,7 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="150"/>
                     </Grid.RowDefinitions>
-                    <ctrl:PlazaFundEntry x:Name="plaza" Margin="0 0 0 5"
+                    <ctrl:PlazaCreditEntry x:Name="plaza" Margin="0 0 0 5"
                                 FontSize="16"
                                 Background="Orange"
                                 Foreground="WhiteSmoke"/>

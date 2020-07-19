@@ -62,7 +62,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
                 <Grid Width="5"/>
-                <ctrl:PlazaFundEntry x:Name="fundEntry"
+                <ctrl:PlazaCreditEntry x:Name="fundEntry"
                                 FontSize="16"
                                 Background="Orange"
                                 Foreground="WhiteSmoke"

@@ -35,8 +35,12 @@ Update 2020-07-20 #5 (TA)
 Update 2020-07-20 #4 (TA)
 - 
 
+[commited]
 Update 2020-07-20 #3 (TA)
-- 
+- Implements TA/TOD model class #88.
+  - DMT.Controls
+    - Rename PlazaFundEntry to PlazaCreditEntry
+    - Update all controls and pages related to PlazaFundEntry.
 
 [commited]
 Update 2020-07-20 #2 (TA)

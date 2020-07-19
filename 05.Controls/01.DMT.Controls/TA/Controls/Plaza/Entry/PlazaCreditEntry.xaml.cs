@@ -12,14 +12,14 @@ namespace DMT.TA.Controls.Plaza.Entry
     /// <summary>
     /// Interaction logic for PlazaFundEntry.xaml
     /// </summary>
-    public partial class PlazaFundEntry : UserControl
+    public partial class PlazaCreditEntry : UserControl
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public PlazaFundEntry()
+        public PlazaCreditEntry()
         {
             InitializeComponent();
         }
