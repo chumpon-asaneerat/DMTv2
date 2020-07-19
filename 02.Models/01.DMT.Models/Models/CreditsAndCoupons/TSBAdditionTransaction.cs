@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using NLib;
 using NLib.Reflection;
 using System.ComponentModel;
+using System.Security.Permissions;
 
 #endregion
 
@@ -445,6 +446,45 @@ namespace DMT.Models
                     });
                     return results;
                 }
+            }
+        }
+
+        public static TSBAdditionTransaction GetInitial()
+        {
+            lock (sync)
+            {
+                var tsb = TSB.GetCurrent();
+                return GetInitial(tsb);
+            }
+        }
+
+        public static TSBAdditionTransaction GetInitial(TSB tsb)
+        {
+            if (null == tsb) return null;
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT TSBAdditionTransaction.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "  FROM TSBAdditionTransaction, TSB ";
+                cmd += " WHERE TSBAdditionTransaction.TSBId = TSB.TSBId ";
+                cmd += "   AND TSBAdditionTransaction.TSBId = ? ";
+                cmd += "   AND TSBAdditionTransaction.TranstionType = ? ";
+
+                var ret = NQuery.Query<FKs>(cmd, 
+                    tsb.TSBId, TransactionTypes.Initial).FirstOrDefault();
+                TSBAdditionTransaction inst;
+                if (null == ret)
+                {
+                    inst = Create();
+                    tsb.AssignTo(inst);
+                    inst.TransactionType = TransactionTypes.Initial;
+                }
+                else
+                {
+                    inst = ret.ToTSBAdditionTransaction();
+                }
+                return inst;
             }
         }
 

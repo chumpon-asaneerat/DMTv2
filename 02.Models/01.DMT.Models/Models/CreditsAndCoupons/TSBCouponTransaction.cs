@@ -566,6 +566,45 @@ namespace DMT.Models
             }
         }
 
+        public static TSBCouponTransaction GetInitial()
+        {
+            lock (sync)
+            {
+                var tsb = TSB.GetCurrent();
+                return GetInitial(tsb);
+            }
+        }
+
+        public static TSBCouponTransaction GetInitial(TSB tsb)
+        {
+            if (null == tsb) return null;
+            lock (sync)
+            {
+                string cmd = string.Empty;
+                cmd += "SELECT TSBCouponTransaction.* ";
+                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                cmd += "  FROM TSBCouponTransaction, TSB ";
+                cmd += " WHERE TSBCouponTransaction.TSBId = TSB.TSBId ";
+                cmd += "   AND TSBCouponTransaction.TSBId = ? ";
+                cmd += "   AND TSBAdditionTransaction.TranstionType = ? ";
+
+                var ret = NQuery.Query<FKs>(cmd,
+                    tsb.TSBId, TransactionTypes.Initial).FirstOrDefault();
+                TSBCouponTransaction inst;
+                if (null == ret)
+                {
+                    inst = Create();
+                    tsb.AssignTo(inst);
+                    inst.TransactionType = TransactionTypes.Initial;
+                }
+                else
+                {
+                    inst = ret.ToTSBCouponTransaction();
+                }
+                return inst;
+            }
+        }
+
         #endregion
     }
 
