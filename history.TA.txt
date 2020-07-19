@@ -20,8 +20,10 @@ Update 2020-07-19 #35 (TA)
 Update 2020-07-19 #34 (TA)
 - 
 
+[commited]
 Update 2020-07-19 #33 (TA)
-- 
+- Implements TA/TOD model class #82.
+  - Update route const.
 
 [commited]
 Update 2020-07-19 #32 (TA)
