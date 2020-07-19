@@ -54,7 +54,8 @@ TABLES
   - PlazaGroupId (string MaxLength(10))
   - UserId (string MaxLength(10))
   - ShiftId (int)
-  - UserShiftId (int)
+  - ShiftDate (datetime)
+  - UserShiftId (int) ???
   - BagNo (string MaxLength(10)) - OK
   - BeltNo (string MaxLength(20)) - OK
 

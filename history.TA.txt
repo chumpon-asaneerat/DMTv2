@@ -17,8 +17,10 @@ Update 2020-07-19 #26 (TA)
 Update 2020-07-19 #25 (TA)
 - 
 
+[commited]
 Update 2020-07-19 #24 (TA)
-- 
+- Implements TA/TOD model class #76.
+  - Update database-design.txt
 
 [commited]
 Update 2020-07-19 #23 (TA)
