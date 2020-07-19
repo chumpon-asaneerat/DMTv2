@@ -23,8 +23,11 @@ Update 2020-07-19 #24 (TA)
 Update 2020-07-19 #23 (TA)
 - 
 
+[commited]
 Update 2020-07-19 #22 (TA)
-- 
+- Implements TA/TOD model class #74.
+  - TSBCreditBalance re-implements #1.
+  - Remve TSBCredit.cs
 
 [commited]
 Update 2020-07-19 #21 (TA)

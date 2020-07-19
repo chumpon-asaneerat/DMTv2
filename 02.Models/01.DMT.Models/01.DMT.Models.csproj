@@ -101,7 +101,6 @@
     <Compile Include="Models\CreditsAndCoupons\TSBCreditBalance.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSBCreditTransaction.cs" />
     <Compile Include="Models\CreditsAndCoupons\UserCredit.cs" />
-    <Compile Include="Models\CreditsAndCoupons\TSBCredit.cs" />
     <Compile Include="Models\CreditsAndCoupons\UserCreditTransaction.cs" />
     <Compile Include="Models\DataModels.cs" />
     <Compile Include="Models\Common\DMTModelBase.cs" />
