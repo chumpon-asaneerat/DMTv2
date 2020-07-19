@@ -28,7 +28,7 @@ namespace DMT.Models
     {
         #region Enum
 
-        public enum UserCreditTransactionType
+        public enum TransactionTypes
         {
             Borrow = 1,
             Return = 2,
@@ -39,15 +39,22 @@ namespace DMT.Models
 
         #region Internal Variables
 
-        private Guid _PKId = Guid.NewGuid();
+        private int _TransactionId = 0;
         private DateTime _TransactionDate = DateTime.MinValue;
-        private UserCreditTransactionType _TransactionType = UserCreditTransactionType.Borrow;
+        private TransactionTypes _TransactionType = TransactionTypes.Borrow;
 
-        private Guid _RefId = Guid.Empty; // for undo.
+        private int _RefId = 0; // for undo.
+
+        private int _UserCreditId = 0;
 
         private string _TSBId = string.Empty;
         private string _TSBNameEN = string.Empty;
         private string _TSBNameTH = string.Empty;
+
+        private string _PlazaGroupId = string.Empty;
+        private string _PlazaGroupNameEN = string.Empty;
+        private string _PlazaGroupNameTH = string.Empty;
+        private string _Direction = string.Empty;
 
         private string _UserId = string.Empty;
         private string _FullNameEN = string.Empty;
@@ -111,25 +118,25 @@ namespace DMT.Models
         #region Common
 
         /// <summary>
-        /// Gets or sets PKId
+        /// Gets or sets TransactionId
         /// </summary>
         [Category("Common")]
-        [Description("Gets or sets PKId")]
-        [PrimaryKey]
+        [Description(" Gets or sets TransactionId")]
         [ReadOnly(true)]
-        [PeropertyMapName("PKId")]
-        public Guid PKId
+        [PrimaryKey, AutoIncrement]
+        [PeropertyMapName("TransactionId")]
+        public int TransactionId
         {
             get
             {
-                return _PKId;
+                return _TransactionId;
             }
             set
             {
-                if (_PKId != value)
+                if (_TransactionId != value)
                 {
-                    _PKId = value;
-                    this.RaiseChanged("PKId");
+                    _TransactionId = value;
+                    this.RaiseChanged("TransactionId");
                 }
             }
         }
@@ -137,21 +144,21 @@ namespace DMT.Models
         /// Gets or sets Transaction Date.
         /// </summary>
         [Category("Common")]
-        [Description("Gets or sets Transaction Date.")]
+        [Description(" Gets or sets Transaction Date")]
         [ReadOnly(true)]
         [PeropertyMapName("TransactionDate")]
         public DateTime TransactionDate
         {
-            get { return _TransactionDate; }
+            get
+            {
+                return _TransactionDate;
+            }
             set
             {
                 if (_TransactionDate != value)
                 {
                     _TransactionDate = value;
-                    // Raise event.
                     this.RaiseChanged("TransactionDate");
-                    this.RaiseChanged("TransactionDateString");
-                    this.RaiseChanged("TransactionDateTimeString");
                 }
             }
         }
@@ -173,10 +180,27 @@ namespace DMT.Models
             set { }
         }
         /// <summary>
-        /// Gets Transaction DateTime String.
+        /// Gets Transaction Time String.
         /// </summary>
         [Category("Common")]
-        [Description("Gets Transaction DateTime String.")]
+        [Description("Gets Transaction Time String.")]
+        [ReadOnly(true)]
+        [JsonIgnore]
+        [Ignore]
+        public string TransactionTimeString
+        {
+            get
+            {
+                var ret = (this.TransactionDate == DateTime.MinValue) ? "" : this.TransactionDate.ToThaiTimeString();
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>
+        /// Gets Transaction Date Time String.
+        /// </summary>
+        [Category("Common")]
+        [Description("Gets Transaction Date Time String.")]
         [ReadOnly(true)]
         [JsonIgnore]
         [Ignore]
@@ -194,9 +218,9 @@ namespace DMT.Models
         /// </summary>
         [Category("Common")]
         [Description("Gets or sets Transaction Type.")]
-        [Browsable(false)]
+        [ReadOnly(true)]
         [PeropertyMapName("TransactionType")]
-        public UserCreditTransactionType TransactionType
+        public TransactionTypes TransactionType
         {
             get { return _TransactionType; }
             set
@@ -204,7 +228,6 @@ namespace DMT.Models
                 if (_TransactionType != value)
                 {
                     _TransactionType = value;
-                    // Raise event.
                     this.RaiseChanged("TransactionType");
                 }
             }
@@ -216,7 +239,7 @@ namespace DMT.Models
         [Description("Gets or sets RefId")]
         [ReadOnly(true)]
         [PeropertyMapName("RefId")]
-        public Guid RefId
+        public int RefId
         {
             get
             {
@@ -242,9 +265,10 @@ namespace DMT.Models
         [Category("TSB")]
         [Description("Gets or sets TSBId.")]
         [ReadOnly(true)]
+        [Ignore]
         [MaxLength(10)]
         [PeropertyMapName("TSBId")]
-        public string TSBId
+        public virtual string TSBId
         {
             get
             {
@@ -308,6 +332,104 @@ namespace DMT.Models
 
         #endregion
 
+        #region PlazaGroup
+
+        /// <summary>
+        /// Gets or sets PlazaGroupId.
+        /// </summary>
+        [Category("Plaza Group")]
+        [Description("Gets or sets PlazaGroupId.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [MaxLength(10)]
+        [PeropertyMapName("PlazaGroupId")]
+        public virtual string PlazaGroupId
+        {
+            get
+            {
+                return _PlazaGroupId;
+            }
+            set
+            {
+                if (_PlazaGroupId != value)
+                {
+                    _PlazaGroupId = value;
+                    this.RaiseChanged("PlazaGroupId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets PlazaGroupNameEN.
+        /// </summary>
+        [Category("Plaza Group")]
+        [Description("Gets or sets PlazaGroupNameEN.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [PeropertyMapName("PlazaGroupNameEN")]
+        public virtual string PlazaGroupNameEN
+        {
+            get
+            {
+                return _PlazaGroupNameEN;
+            }
+            set
+            {
+                if (_PlazaGroupNameEN != value)
+                {
+                    _PlazaGroupNameEN = value;
+                    this.RaiseChanged("PlazaGroupNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets PlazaGroupNameTH.
+        /// </summary>
+        [Category("Plaza Group")]
+        [Description("Gets or sets PlazaGroupNameTH.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [PeropertyMapName("PlazaGroupNameTH")]
+        public virtual string PlazaGroupNameTH
+        {
+            get
+            {
+                return _PlazaGroupNameTH;
+            }
+            set
+            {
+                if (_PlazaGroupNameTH != value)
+                {
+                    _PlazaGroupNameTH = value;
+                    this.RaiseChanged("PlazaGroupNameTH");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Direction.
+        /// </summary>
+        [Category("Plaza Group")]
+        [Description("Gets or sets Direction.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [PeropertyMapName("Direction")]
+        public virtual string Direction
+        {
+            get
+            {
+                return _Direction;
+            }
+            set
+            {
+                if (_Direction != value)
+                {
+                    _Direction = value;
+                    this.RaiseChanged("Direction");
+                }
+            }
+        }
+
+        #endregion
+
         #region User
 
         /// <summary>
@@ -316,9 +438,10 @@ namespace DMT.Models
         [Category("User")]
         [Description("Gets or sets UserId")]
         [ReadOnly(true)]
+        [Ignore]
         [MaxLength(10)]
         [PeropertyMapName("UserId")]
-        public string UserId
+        public virtual string UserId
         {
             get
             {
@@ -376,6 +499,33 @@ namespace DMT.Models
                 {
                     _FullNameTH = value;
                     this.RaiseChanged("FullNameTH");
+                }
+            }
+        }
+
+        #endregion
+
+        #region UserCredit
+
+        /// <summary>
+        /// Gets or sets UserCreditId
+        /// </summary>
+        [Category("UserCredit")]
+        [Description("Gets or sets UserCreditId")]
+        [ReadOnly(true)]
+        [PeropertyMapName("UserCreditId")]
+        public int UserCreditId
+        {
+            get
+            {
+                return _UserCreditId;
+            }
+            set
+            {
+                if (_UserCreditId != value)
+                {
+                    _UserCreditId = value;
+                    this.RaiseChanged("UserCreditId");
                 }
             }
         }
@@ -694,6 +844,16 @@ namespace DMT.Models
             #region TSB
 
             /// <summary>
+            /// Gets or sets TSBId.
+            /// </summary>
+            [MaxLength(10)]
+            [PeropertyMapName("TSBId")]
+            public override string TSBId
+            {
+                get { return base.TSBId; }
+                set { base.TSBId = value; }
+            }
+            /// <summary>
             /// Gets or sets TSBNameEN.
             /// </summary>
             [MaxLength(100)]
@@ -716,8 +876,63 @@ namespace DMT.Models
 
             #endregion
 
+            #region PlazaGroup
+
+            /// <summary>
+            /// Gets or sets PlazaGroupId.
+            /// </summary>
+            [MaxLength(10)]
+            [PeropertyMapName("PlazaGroupId")]
+            public override string PlazaGroupId
+            {
+                get { return base.PlazaGroupId; }
+                set { base.PlazaGroupId = value; }
+            }
+            /// <summary>
+            /// Gets or sets PlazaGroupNameEN.
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("PlazaGroupNameEN")]
+            public override string PlazaGroupNameEN
+            {
+                get { return base.PlazaGroupNameEN; }
+                set { base.PlazaGroupNameEN = value; }
+            }
+            /// <summary>
+            /// Gets or sets PlazaGroupNameTH.
+            /// </summary>
+            [MaxLength(100)]
+            [PeropertyMapName("PlazaGroupNameTH")]
+            public override string PlazaGroupNameTH
+            {
+                get { return base.PlazaGroupNameTH; }
+                set { base.PlazaGroupNameTH = value; }
+            }
+            /// <summary>
+            /// Gets or sets Direction.
+            /// </summary>
+            [MaxLength(10)]
+            [PeropertyMapName("Direction")]
+            public override string Direction
+            {
+                get { return base.Direction; }
+                set { base.Direction = value; }
+            }
+
+            #endregion
+
             #region User
 
+            /// <summary>
+            /// Gets or sets UserId
+            /// </summary>
+            [MaxLength(10)]
+            [PeropertyMapName("UserId")]
+            public override string UserId
+            {
+                get { return base.UserId; }
+                set { base.UserId = value; }
+            }
             /// <summary>
             /// Gets or sets FullNameEN
             /// </summary>
