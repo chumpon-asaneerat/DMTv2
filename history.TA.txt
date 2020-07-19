@@ -26,8 +26,10 @@ Update 2020-07-20 #8 (TA)
 Update 2020-07-20 #7 (TA)
 - 
 
+[commited]
 Update 2020-07-20 #6 (TA)
-- 
+- Implements TA/TOD model class #91.
+  - Implements PlazaStockSummaryWindow #1.
 
 [commited]
 Update 2020-07-20 #5 (TA)

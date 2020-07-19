@@ -4,87 +4,89 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ctrl="clr-namespace:DMT.TA.Controls.Plaza.Entry"
-        mc:Ignorable="d"
-        Title="เช็คยอดด่าน" 
-        ResizeMode="NoResize" 
-        ShowInTaskbar="False" 
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Center" 
+        Title="เช็คยอดด่าน"
+        Width="700"
+        Height="550"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
         WindowStartupLocation="CenterOwner"
-        Height="550" 
-        Width="700">
+        mc:Ignorable="d">
     <Grid Background="DimGray">
         <DockPanel>
-            <DockPanel DockPanel.Dock="Bottom" Height="60">
-                <StackPanel DockPanel.Dock="Right"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center">
-                    <Grid Width="5"/>
+            <DockPanel Height="60" DockPanel.Dock="Bottom">
+                <StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            DockPanel.Dock="Right">
+                    <Grid Width="5" />
                     <Button x:Name="cmdClose"
-                            DockPanel.Dock="Left"
-                        Foreground="White"
-                        HorizontalAlignment="Center"
+                            Width="220"
+                            Height="50"
+                            HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             HorizontalContentAlignment="Stretch"
                             VerticalContentAlignment="Stretch"
-                            Height="50"
-                            Width="220"
-                        Click="cmdClose_Click">
+                            DockPanel.Dock="Left"
+                            Foreground="White"
+                            Click="cmdClose_Click">
                         <Button.Background>
-                            <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                            <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png" />
                         </Button.Background>
                         <DockPanel>
-                            <Grid Width="5"></Grid>
-                            <Image DockPanel.Dock="Left" 
-                               Height="50"
-                               Width="50"
-                               Source="/DMT.Controls;component/Images/Button/Stop.png" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center" />
-                            <StackPanel Orientation="Vertical"
-                                    VerticalAlignment="Center">
-                                <TextBlock FontSize="20" 
-                                       HorizontalAlignment="Center"
-                                       Text="ปิด"
-                                       FontWeight="Bold"
-                                       TextAlignment="Center"
-                                       TextWrapping="Wrap">
-                                </TextBlock>
+                            <Grid Width="5" />
+                            <Image Width="50"
+                                   Height="50"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   DockPanel.Dock="Left"
+                                   Source="/DMT.Controls;component/Images/Button/Stop.png" />
+                            <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                                <TextBlock HorizontalAlignment="Center"
+                                           FontSize="20"
+                                           Text="ปิด"
+                                           FontWeight="Bold"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap" />
                                 <Grid Height="10" />
                             </StackPanel>
                         </DockPanel>
                     </Button>
 
-                    <Grid Width="5"/>
+                    <Grid Width="5" />
                 </StackPanel>
             </DockPanel>
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
-                <Grid Width="5"/>
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                <Grid Width="5" />
+                <!-- CREDIT -->
                 <ctrl:PlazaCreditEntry x:Name="creditEntry"
-                                FontSize="16"
-                                Background="Orange"
-                                Foreground="WhiteSmoke"
-                                Width="300"/>
-                <Grid Width="5"/>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="150"/>
-                    </Grid.RowDefinitions>
-                    <ctrl:PlazaCouponEntry x:Name="couponEntry"
-                                       FontSize="16"
-                                       Background="DarkRed"
-                                       Foreground="WhiteSmoke"
-                                       Width="300"/>
-                    <ctrl:LoanMoney2Entry x:Name="loanMoneyEntry" Grid.Row="1"
+                                       Width="300"
                                        FontSize="16"
                                        Background="Orange"
-                                       Foreground="WhiteSmoke"
-                                       Width="300"/>
+                                       Foreground="WhiteSmoke" />
+                <Grid Width="5" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="150" />
+                    </Grid.RowDefinitions>
+                    <!-- COUPON -->
+                    <ctrl:PlazaCouponEntry x:Name="couponEntry"
+                                           Width="300"
+                                           FontSize="16"
+                                           Background="DarkRed"
+                                           Foreground="WhiteSmoke" />
+                    <!-- ADDITION -->
+                    <ctrl:LoanMoney2Entry x:Name="loanMoneyEntry"
+                                          Grid.Row="1"
+                                          Width="300"
+                                          FontSize="16"
+                                          Background="Orange"
+                                          Foreground="WhiteSmoke" />
                 </Grid>
-                <Grid Width="5"/>
+                <Grid Width="5" />
             </StackPanel>
         </DockPanel>
     </Grid>

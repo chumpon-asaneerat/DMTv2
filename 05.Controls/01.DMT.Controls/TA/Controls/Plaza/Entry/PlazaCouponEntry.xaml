@@ -45,7 +45,7 @@
                                    Width="50"/>
                         <TextBox Margin="2"
                              TextAlignment="Right"
-                             Text="{Binding BHT35}"
+                             Text="{Binding CouponBHT35}"
                                  Width="50"/>
                     </DockPanel>
                     <!-- 80 BHT -->
@@ -62,7 +62,7 @@
                                    Width="50"/>
                         <TextBox Margin="2"
                              TextAlignment="Right"
-                             Text="{Binding BHT80}"
+                             Text="{Binding CouponBHT80}"
                                  Width="50"/>
                     </DockPanel>
                     <!-- Count Total -->
@@ -80,7 +80,7 @@
                         <TextBox Margin="2"
                                  TextAlignment="Right"
                                  IsEnabled="False"
-                                 Text="{Binding CntTotal}"
+                                 Text="{Binding CouponTotal}"
                                  Width="90"/>
 
                     </DockPanel>
@@ -99,7 +99,7 @@
                         <TextBox Margin="2"
                                  TextAlignment="Right"
                                  IsEnabled="False"
-                                 Text="{Binding BHTTotal}"
+                                 Text="{Binding CouponBHTTotal}"
                                  Width="90"/>
                     </DockPanel>
                     <Grid Height="5"/>

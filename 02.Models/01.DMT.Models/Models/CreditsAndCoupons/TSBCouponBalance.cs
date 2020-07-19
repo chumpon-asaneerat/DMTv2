@@ -268,12 +268,19 @@ namespace DMT.Models
 		[Description("Gets or sets total value in baht.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[JsonIgnore]
 		[PeropertyMapName("CouponBHTTotal")]
-		public decimal CouponBHTTotal
+		public virtual decimal CouponBHTTotal
 		{
 			get { return _CouponBHTTotal; }
-			set { }
+			set
+			{
+				if (_CouponBHTTotal != value)
+				{
+					_CouponBHTTotal = value;
+					// Raise event.
+					this.RaiseChanged("CouponBHTTotal");
+				}
+			}
 		}
 
 		#endregion
@@ -339,6 +346,15 @@ namespace DMT.Models
 				get { return base.CouponBHT80; }
 				set { base.CouponBHT80 = value; }
 			}
+			/// <summary>
+			/// Gets or sets total value in baht.
+			/// </summary>
+			[PeropertyMapName("CouponBHTTotal")]
+			public override decimal CouponBHTTotal
+			{
+				get { return base.CouponBHTTotal; }
+				set { base.CouponBHTTotal = value; }
+			}
 
 			#endregion
 
@@ -396,7 +412,7 @@ namespace DMT.Models
 							   FROM TSBCouponTransaction 
 							  WHERE TSBCouponTransaction.TransactionType = 2 -- Sold = 2
 								AND TSBCouponTransaction.TSBId = TSB.TSBId
-							)) AS ST25
+							)) AS CouponBHT35
 						 , ((
 							 SELECT IFNULL(SUM(CouponBHT80), 0) 
 							   FROM TSBCouponTransaction 
@@ -410,7 +426,21 @@ namespace DMT.Models
 							   FROM TSBCouponTransaction 
 							  WHERE TSBCouponTransaction.TransactionType = 2 -- Sold = 2
 								AND TSBCouponTransaction.TSBId = TSB.TSBId
-							)) AS ST50
+							)) AS CouponBHT80
+						 , ((
+							 SELECT IFNULL(SUM((CouponBHT35 * CouponBHT35Factor) + (CouponBHT80 * CouponBHT80Factor)), 0) 
+							   FROM TSBCouponTransaction 
+							  WHERE (   TSBCouponTransaction.TransactionType = 0 
+									 OR TSBCouponTransaction.TransactionType = 1
+									) -- Initial = 0, Received = 1
+								AND TSBCouponTransaction.TSBId = TSB.TSBId
+							) -
+							(
+							 SELECT IFNULL(SUM((CouponBHT35 * CouponBHT35Factor) + (CouponBHT80 * CouponBHT80Factor)), 0) 
+							   FROM TSBCouponTransaction 
+							  WHERE TSBCouponTransaction.TransactionType = 2 -- Sold = 2
+								AND TSBCouponTransaction.TSBId = TSB.TSBId
+							)) AS CouponBHTTotal
 					  FROM TSB
 					 WHERE TSB.TSBId = ?
 				";
@@ -443,7 +473,7 @@ namespace DMT.Models
 							   FROM TSBCouponTransaction 
 							  WHERE TSBCouponTransaction.TransactionType = 2 -- Sold = 2
 								AND TSBCouponTransaction.TSBId = TSB.TSBId
-							)) AS ST25
+							)) AS CouponBHT35
 						 , ((
 							 SELECT IFNULL(SUM(CouponBHT80), 0) 
 							   FROM TSBCouponTransaction 
@@ -457,7 +487,21 @@ namespace DMT.Models
 							   FROM TSBCouponTransaction 
 							  WHERE TSBCouponTransaction.TransactionType = 2 -- Sold = 2
 								AND TSBCouponTransaction.TSBId = TSB.TSBId
-							)) AS ST50
+							)) AS CouponBHT80
+						 , ((
+							 SELECT IFNULL(SUM((CouponBHT35 * CouponBHT35Factor) + (CouponBHT80 * CouponBHT80Factor)), 0) 
+							   FROM TSBCouponTransaction 
+							  WHERE (   TSBCouponTransaction.TransactionType = 0 
+									 OR TSBCouponTransaction.TransactionType = 1
+									) -- Initial = 0, Received = 1
+								AND TSBCouponTransaction.TSBId = TSB.TSBId
+							) -
+							(
+							 SELECT IFNULL(SUM((CouponBHT35 * CouponBHT35Factor) + (CouponBHT80 * CouponBHT80Factor)), 0) 
+							   FROM TSBCouponTransaction 
+							  WHERE TSBCouponTransaction.TransactionType = 2 -- Sold = 2
+								AND TSBCouponTransaction.TSBId = TSB.TSBId
+							)) AS CouponBHTTotal
 					  FROM TSB
 				";
 				var rets = NQuery.Query<FKs>(cmd).ToList();

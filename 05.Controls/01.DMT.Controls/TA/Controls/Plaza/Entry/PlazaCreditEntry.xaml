@@ -100,7 +100,7 @@
                                    Width="50"/>
                         <TextBox Margin="2"
                             TextAlignment="Right"
-                            Text="{Binding BHT10c}"
+                            Text="{Binding BHT10}"
                                  Width="50"/>
 
                     </DockPanel>

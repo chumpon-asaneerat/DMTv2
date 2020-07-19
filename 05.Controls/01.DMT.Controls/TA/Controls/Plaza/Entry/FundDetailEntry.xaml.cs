@@ -1,7 +1,11 @@
-﻿using System;
+﻿#region Using
+
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+
+#endregion
 
 namespace DMT.TA.Controls.Plaza.Entry
 {
@@ -10,14 +14,16 @@ namespace DMT.TA.Controls.Plaza.Entry
     /// </summary>
     public partial class FundDetailEntry : UserControl
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public FundDetailEntry()
         {
             InitializeComponent();
         }
 
-        public void Setup()
-        {
-            //listView.ItemsSource = funds;
-        }
+        #endregion
     }
 }
