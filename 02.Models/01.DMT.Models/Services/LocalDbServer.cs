@@ -156,7 +156,7 @@ namespace DMT.Services
 			Db.CreateTable<TSBAdditionTransaction>();
 
 			Db.CreateTable<UserCredit>();
-			//Db.CreateTable<UserCreditTransaction>();
+			Db.CreateTable<UserCreditTransaction>();
 
 			InitDefaults();
 		}

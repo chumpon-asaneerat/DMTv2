@@ -73,7 +73,6 @@ namespace DMT.Models
         private int _BHT500 = 0;
         private int _BHT1000 = 0;
         private decimal _BHTTotal = decimal.Zero;
-        private string _Remark = "";
 
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
@@ -749,6 +748,20 @@ namespace DMT.Models
                     this.RaiseChanged("BHT1000");
                 }
             }
+        }
+        /// <summary>
+        /// Gets or sets total (coin/bill) value in baht.
+        /// </summary>
+        [Category("Coin/Bill")]
+        [Description("Gets or sets total (coin/bill) value in baht.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [JsonIgnore]
+        [PeropertyMapName("BHTTotal")]
+        public decimal BHTTotal
+        {
+            get { return _BHTTotal; }
+            set { }
         }
 
         #endregion

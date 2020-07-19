@@ -300,35 +300,53 @@ namespace LocalDbServerFunctionTest
             {
                 var usrCredit = UserCredit.Create(user, plazaGroup, bagNo, beltNo);
                 pgUserCredit.SelectedObject = usrCredit;
+                var userCreditTran = UserCreditTransaction.Create();
+                pgUserCreditTran.SelectedObject = userCreditTran;
             }
             else
             {
                 pgUserCredit.SelectedObject = null;
+                pgUserCreditTran.SelectedObject = null;
             }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            /*
-            var tsbBalance = pgTSBBalance.SelectedObject as TSBBalance;
-            var usrCredit = pgUserCredit.SelectedObject as UserCredit;
-            if (null == tsbBalance || null == usrCredit) return;
+            var userCredit = pgUserCredit.SelectedObject as UserCredit;
+            if (null == userCredit) return;
+            UserCredit.Save(userCredit);
+
+            var userCreditTran = pgUserCreditTran.SelectedObject as UserCreditTransaction;
+            if (null == userCreditTran) return;
 
             if (rbBorrow.Checked)
             {
                 // Borrow.
+                userCreditTran.UserCreditId = userCredit.UserCreditId;
+                userCreditTran.TransactionType = UserCreditTransaction.TransactionTypes.Borrow;
+                UserCreditTransaction.Save(userCreditTran);
+
+                pgUserCreditTran.SelectedObject = null;
+                /*
                 UserCredit.Borrow(usrCredit, tsbBalance);
                 // refresh balance
                 pgTSBBalance.SelectedObject = TSBBalance.GetCurrent();
+                */
             }
             else if (rbReturn.Checked)
             {
                 // Return.
+                userCreditTran.UserCreditId = userCredit.UserCreditId;
+                userCreditTran.TransactionType = UserCreditTransaction.TransactionTypes.Return;
+                UserCreditTransaction.Save(userCreditTran);
+
+                pgUserCreditTran.SelectedObject = null;
+                /*
                 UserCredit.Return(usrCredit, tsbBalance);
                 // refresh balance
                 pgTSBBalance.SelectedObject = TSBBalance.GetCurrent();
+                */
             }
-            */
         }
 
         private void button7_Click(object sender, EventArgs e)
