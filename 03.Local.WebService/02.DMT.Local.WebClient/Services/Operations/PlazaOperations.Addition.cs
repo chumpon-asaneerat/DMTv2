@@ -58,11 +58,24 @@ namespace DMT.Services
 
             #region Public Methods
 
-            public TSBAdditionTransaction GetInitial()
+            public TSBAdditionTransaction GetCurrentInitial()
             {
                 var ret = NRestClient.Create(port: 9000).Execute<TSBAdditionTransaction>(
-                    RouteConsts.Addition.GetInitial.Url);
+                    RouteConsts.Addition.GetCurrentInitial.Url);
                 return ret;
+            }
+
+            public TSBAdditionTransaction GetInitial(TSB tsb)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<TSBAdditionTransaction>(
+                    RouteConsts.Addition.GetInitial.Url, tsb);
+                return ret;
+            }
+
+            public void SaveTransaction(TSBAdditionTransaction value)
+            {
+                NRestClient.Create(port: 9000).Execute(
+                    RouteConsts.Addition.SaveTransaction.Url, value);
             }
 
             #endregion

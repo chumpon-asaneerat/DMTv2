@@ -58,11 +58,24 @@ namespace DMT.Services
 
             #region Public Methods
 
-            public TSBCreditTransaction GetInitial()
+            public TSBCreditTransaction GetCurrentInitial()
             {
                 var ret = NRestClient.Create(port: 9000).Execute<TSBCreditTransaction>(
-                    RouteConsts.Credit.GetInitial.Url);
+                    RouteConsts.Credit.GetCurrentInitial.Url);
                 return ret;
+            }
+
+            public TSBCreditTransaction GetInitial(TSB tsb)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<TSBCreditTransaction>(
+                    RouteConsts.Credit.GetInitial.Url, tsb);
+                return ret;
+            }
+
+            public void SaveTransaction(TSBCreditTransaction value)
+            {
+                NRestClient.Create(port: 9000).Execute(
+                    RouteConsts.Credit.SaveTransaction.Url, value);
             }
 
             #endregion

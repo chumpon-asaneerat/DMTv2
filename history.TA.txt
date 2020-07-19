@@ -11,8 +11,20 @@ Update 2020-07-19 #38 (TA)
 Update 2020-07-19 #37 (TA)
 - 
 
+[commited]
 Update 2020-07-19 #36 (TA)
-- 
+- Implements TA/TOD model class #85.
+  - Update route const.
+  - Implements Credit Controller #2.
+  - Implements Coupon Controller #2.
+  - Implements Addition Controller #2.
+  - Implements Credit Plaza Operations #2.
+  - Implements Coupon Plaza Operations #2.
+  - Implements Addition Plaza Operations #2.
+  - DMT.Plaza.Config.App
+    - Update TSBCreditViewPage #4.
+    - Update TSBCouponViewPage #4.
+    - Update TSBAdditionViewPage #4.
 
 [commited]
 Update 2020-07-19 #35 (TA)

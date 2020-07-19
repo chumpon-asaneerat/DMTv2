@@ -18,10 +18,28 @@ namespace DMT.Services
     public class CouponController : ApiController
     {
         [HttpPost]
-        [ActionName(RouteConsts.Coupon.GetInitial.Name)]
-        public TSBCouponTransaction GetInitial()
+        [ActionName(RouteConsts.Coupon.GetCurrentInitial.Name)]
+        public TSBCouponTransaction GetCurrentInitial()
         {
             return TSBCouponTransaction.GetInitial();
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Coupon.GetInitial.Name)]
+        public TSBCouponTransaction GetInitial([FromBody] TSB tsb)
+        {
+            return TSBCouponTransaction.GetInitial(tsb);
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Coupon.SaveTransaction.Name)]
+        public void SaveTransaction([FromBody] TSBCouponTransaction value)
+        {
+            if (value.TransactionDate == DateTime.MinValue)
+            {
+                value.TransactionDate = DateTime.Now;
+            }
+            TSBCouponTransaction.Save(value);
         }
     }
 }

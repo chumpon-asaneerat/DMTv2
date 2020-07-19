@@ -18,10 +18,28 @@ namespace DMT.Services
     public class CreditController : ApiController
     {
         [HttpPost]
-        [ActionName(RouteConsts.Credit.GetInitial.Name)]
-        public TSBCreditTransaction GetInitial()
+        [ActionName(RouteConsts.Credit.GetCurrentInitial.Name)]
+        public TSBCreditTransaction GetCurrentInitial()
         {
             return TSBCreditTransaction.GetInitial();
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Credit.GetInitial.Name)]
+        public TSBCreditTransaction GetInitial([FromBody] TSB tsb)
+        {
+            return TSBCreditTransaction.GetInitial(tsb);
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Credit.SaveTransaction.Name)]
+        public void SaveTransaction([FromBody] TSBCreditTransaction value)
+        {
+            if (value.TransactionDate == DateTime.MinValue)
+            {
+                value.TransactionDate = DateTime.Now;
+            }
+            TSBCreditTransaction.Save(value);
         }
     }
 }

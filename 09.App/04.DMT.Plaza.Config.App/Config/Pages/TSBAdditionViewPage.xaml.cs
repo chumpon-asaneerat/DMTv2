@@ -64,7 +64,20 @@ namespace DMT.Config.Pages
             pgrid.SelectedObject = null;
             if (null == item) return;
 
-            pgrid.SelectedObject = ops.Additions.GetInitial();
+            pgrid.SelectedObject = ops.Additions.GetInitial(item);
+        }
+
+        #endregion
+
+        #region Button Handlers
+
+        private void cmdSave_Click(object sender, RoutedEventArgs e)
+        {
+            var item = pgrid.SelectedObject as TSBAdditionTransaction;
+            if (null == item) return;
+            ops.Additions.SaveTransaction(item);
+            // clear
+            pgrid.SelectedObject = null;
         }
 
         #endregion

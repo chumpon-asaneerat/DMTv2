@@ -18,10 +18,28 @@ namespace DMT.Services
     public class AdditionController : ApiController
     {
         [HttpPost]
-        [ActionName(RouteConsts.Addition.GetInitial.Name)]
-        public TSBAdditionTransaction GetInitial()
+        [ActionName(RouteConsts.Addition.GetCurrentInitial.Name)]
+        public TSBAdditionTransaction GetCurrentInitial()
         {
             return TSBAdditionTransaction.GetInitial();
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Addition.GetInitial.Name)]
+        public TSBAdditionTransaction GetInitial([FromBody] TSB tsb)
+        {
+            return TSBAdditionTransaction.GetInitial(tsb);
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Addition.SaveTransaction.Name)]
+        public void SaveTransaction([FromBody] TSBAdditionTransaction value)
+        {
+            if (value.TransactionDate == DateTime.MinValue)
+            {
+                value.TransactionDate = DateTime.Now;
+            }
+            TSBAdditionTransaction.Save(value);
         }
     }
 }
