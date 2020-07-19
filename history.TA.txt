@@ -17,8 +17,11 @@ Update 2020-07-19 #36 (TA)
 Update 2020-07-19 #35 (TA)
 - 
 
+[commited]
 Update 2020-07-19 #34 (TA)
-- 
+- Implements TA/TOD model class #83.
+  - Implements Transaction Controller (Credit/Coupon/Addition) #1.
+  - Implements Plaza Operations Transaction (Credit/Coupon/Addition) #1.
 
 [commited]
 Update 2020-07-19 #33 (TA)
