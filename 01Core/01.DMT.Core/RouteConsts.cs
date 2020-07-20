@@ -340,6 +340,30 @@ namespace DMT
                 public const string Name = "GetActiveUserCredit";
                 public const string Url = Credit.Url + @"/" + Name;
             }
+
+            public static class GetActiveUserCreditById
+            {
+                public const string Name = "GetActiveUserCreditById";
+                public const string Url = Credit.Url + @"/" + Name;
+            }
+
+            public static class GetActiveUserCredits
+            {
+                public const string Name = "GetActiveUserCredits";
+                public const string Url = Credit.Url + @"/" + Name;
+            }
+
+            public static class SaveUserCredit
+            {
+                public const string Name = "SaveUserCredit";
+                public const string Url = Credit.Url + @"/" + Name;
+            }
+
+            public static class SaveUserTransaction
+            {
+                public const string Name = "SaveUserTransaction";
+                public const string Url = Credit.Url + @"/" + Name;
+            }
         }
 
         public static class Coupon

@@ -39,6 +39,10 @@ namespace DMT.Models
 
         #region Internal Variables
 
+        // For Runtime Used
+        private string _description = string.Empty;
+        private bool _hasRemark = false;
+
         private int _TransactionId = 0;
         private DateTime _TransactionDate = DateTime.MinValue;
         private TransactionTypes _TransactionType = TransactionTypes.Borrow;
@@ -114,6 +118,65 @@ namespace DMT.Models
         #endregion
 
         #region Public Properties
+
+        #region Runtime
+
+        /// <summary>
+        /// Gets or sets has remark.
+        /// </summary>
+        [Category("Runtime")]
+        [Description("Gets or sets HasRemark.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [PeropertyMapName("Description")]
+        public string Description
+        {
+            get { return _description; }
+            set
+            {
+                if (_description != value)
+                {
+                    _description = value;
+                    // Raise event.
+                    this.RaiseChanged("Description");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets has remark.
+        /// </summary>
+        [Category("Runtime")]
+        [Description("Gets or sets HasRemark.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [PeropertyMapName("HasRemark")]
+        public bool HasRemark
+        {
+            get { return _hasRemark; }
+            set
+            {
+                if (_hasRemark != value)
+                {
+                    _hasRemark = value;
+                    // Raise event.
+                    this.RaiseChanged("HasRemark");
+                    this.RaiseChanged("RemarkVisibility");
+                }
+            }
+        }
+
+        [Category("Runtime")]
+        [Description("Gets or sets RemarkVisibility.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [PeropertyMapName("RemarkVisibility")]
+        public System.Windows.Visibility RemarkVisibility
+        {
+            get { return (_hasRemark) ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed; }
+            set { }
+        }
+
+        #endregion
 
         #region Common
 

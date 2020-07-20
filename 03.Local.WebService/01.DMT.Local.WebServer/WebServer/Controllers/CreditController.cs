@@ -58,7 +58,6 @@ namespace DMT.Services
             return ret;
         }
 
-
         [HttpPost]
         [ActionName(RouteConsts.Credit.GetActiveUserCredit.Name)]
         public UserCredit GetActiveUserCredit([FromBody] Search.UserCredits.GetActive value)
@@ -66,6 +65,46 @@ namespace DMT.Services
             if (null == value) return null;
             var ret = UserCredit.GetActive(value.User, value.PlazaGroup);
             return ret;
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Credit.GetActiveUserCreditById.Name)]
+        public UserCredit GetActiveUserCreditById([FromBody] Search.UserCredits.GetActiveById value)
+        {
+            if (null == value) return null;
+            var ret = UserCredit.GetActive(value.UserId, value.PlazaGroupId);
+            return ret;
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Credit.GetActiveUserCredits.Name)]
+        public List<UserCredit> GetActiveUserCredits([FromBody] TSB value)
+        {
+            if (null == value) return null;
+            var ret = UserCredit.GetActives(value);
+            return ret;
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Credit.SaveUserCredit.Name)]
+        public void SaveUserCredit([FromBody] UserCredit value)
+        {
+            if (value.UserCreditDate == DateTime.MinValue)
+            {
+                value.UserCreditDate = DateTime.Now;
+            }
+            UserCredit.Save(value);
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Credit.SaveUserTransaction.Name)]
+        public void SaveUserTransaction([FromBody] UserCreditTransaction value)
+        {
+            if (value.TransactionDate == DateTime.MinValue)
+            {
+                value.TransactionDate = DateTime.Now;
+            }
+            UserCreditTransaction.Save(value);
         }
     }
 }

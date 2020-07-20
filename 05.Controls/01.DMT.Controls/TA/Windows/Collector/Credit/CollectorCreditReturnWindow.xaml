@@ -4,93 +4,93 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ctrl="clr-namespace:DMT.TA.Controls.Plaza.Entry"
-        mc:Ignorable="d"
-        Title="Collector Credit Return" 
-        ResizeMode="NoResize" 
-        ShowInTaskbar="False" 
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Center" 
-        WindowStartupLocation="CenterOwner"
-        Height="600" 
+        Title="Collector Credit Return"
         Width="1000"
-        Background="DimGray">
+        Height="600"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner"
+        Background="DimGray"
+        mc:Ignorable="d">
     <Grid Margin="15">
         <DockPanel>
             <Border DockPanel.Dock="Top">
-                <TextBlock x:Name="txtDescription" Margin="2" FontSize="40" FontWeight="Bold" Foreground="White" 
-                               DockPanel.Dock="Left" 
-                               TextAlignment="Center"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Text="{Binding Description}"/>
+                <TextBlock x:Name="txtDescription"
+                           Margin="2"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="40"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           DockPanel.Dock="Left"
+                           TextAlignment="Center"
+                           Text="{Binding Description}" />
             </Border>
-            <DockPanel DockPanel.Dock="Bottom" Height="60">
-                <Grid Width="5" DockPanel.Dock="Right"></Grid>
+            <DockPanel Height="60" DockPanel.Dock="Bottom">
+                <Grid Width="5" DockPanel.Dock="Right" />
                 <Button x:Name="cmdOK"
-                            DockPanel.Dock="Right"
-                        Foreground="White"
+                        Width="220"
+                        Height="50"
                         HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            HorizontalContentAlignment="Stretch"
-                            VerticalContentAlignment="Stretch"
-                            Height="50"
-                            Width="220"
+                        VerticalAlignment="Center"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        DockPanel.Dock="Right"
+                        Foreground="White"
                         Click="cmdOK_Click">
                     <Button.Background>
-                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png" />
                     </Button.Background>
                     <DockPanel>
-                        <Grid Width="5"></Grid>
-                        <Image DockPanel.Dock="Left" 
+                        <Grid Width="5" />
+                        <Image Width="50"
                                Height="50"
-                               Width="50"
-                               Source="/DMT.Controls;component/Images/Button/OK2.png" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center" />
-                        <StackPanel Orientation="Vertical"
-                                    VerticalAlignment="Center">
-                            <TextBlock FontSize="20" 
-                                       HorizontalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Left"
+                               Source="/DMT.Controls;component/Images/Button/OK2.png" />
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                            <TextBlock HorizontalAlignment="Center"
+                                       FontSize="20"
                                        Text="คืนเงิน"
                                        FontWeight="Bold"
                                        TextAlignment="Center"
-                                       TextWrapping="Wrap">
-                            </TextBlock>
+                                       TextWrapping="Wrap" />
                             <Grid Height="10" />
                         </StackPanel>
                     </DockPanel>
                 </Button>
-                <Grid Width="5" DockPanel.Dock="Left"></Grid>
+                <Grid Width="5" DockPanel.Dock="Left" />
                 <Button x:Name="cmdCancel"
-                            DockPanel.Dock="Left"
-                        Foreground="White"
+                        Width="220"
+                        Height="50"
                         HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            HorizontalContentAlignment="Stretch"
-                            VerticalContentAlignment="Stretch"
-                            Height="50"
-                            Width="220"
+                        VerticalAlignment="Center"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        DockPanel.Dock="Left"
+                        Foreground="White"
                         Click="cmdCancel_Click">
                     <Button.Background>
-                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png" />
                     </Button.Background>
                     <DockPanel>
-                        <Grid Width="5"></Grid>
-                        <Image DockPanel.Dock="Left" 
+                        <Grid Width="5" />
+                        <Image Width="50"
                                Height="50"
-                               Width="50"
-                               Source="/DMT.Controls;component/Images/Button/Cancel2.png" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center" />
-                        <StackPanel Orientation="Vertical"
-                                    VerticalAlignment="Center">
-                            <TextBlock FontSize="20" 
-                                       HorizontalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Left"
+                               Source="/DMT.Controls;component/Images/Button/Cancel2.png" />
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                            <TextBlock HorizontalAlignment="Center"
+                                       FontSize="20"
                                        Text="ยกเลิก"
                                        FontWeight="Bold"
                                        TextAlignment="Center"
-                                       TextWrapping="Wrap">
-                            </TextBlock>
+                                       TextWrapping="Wrap" />
                             <Grid Height="10" />
                         </StackPanel>
                     </DockPanel>
@@ -105,21 +105,20 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <ctrl:PlazaCreditEntry x:Name="srcEntry"
-                                Grid.Column="1"
-                                FontSize="16"
-                                IsEnabled="False"
-                                Background="CornflowerBlue"
-                                Foreground="WhiteSmoke"/>
+                                       Grid.Column="1"
+                                       FontSize="16"
+                                       IsEnabled="False"
+                                       Background="CornflowerBlue"
+                                       Foreground="WhiteSmoke" />
                 <Grid Grid.Column="2"
                       Margin="5"
                       HorizontalAlignment="Center"
-                      VerticalAlignment="Center">
-                </Grid>
+                      VerticalAlignment="Center" />
                 <ctrl:PlazaCreditEntry x:Name="usrEntry"
-                                Grid.Column="3"
-                                FontSize="16"
-                                Background="DarkRed"
-                                Foreground="WhiteSmoke"/>
+                                       Grid.Column="3"
+                                       FontSize="16"
+                                       Background="DarkRed"
+                                       Foreground="WhiteSmoke" />
             </Grid>
         </DockPanel>
     </Grid>

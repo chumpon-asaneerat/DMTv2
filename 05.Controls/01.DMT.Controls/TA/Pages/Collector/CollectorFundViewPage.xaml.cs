@@ -40,12 +40,14 @@ namespace DMT.TA.Pages.Collector
             //var win = new DMT.TA.Windows.Plaza.PlazaReceivedCreditWindow();
             var win = new DMT.TA.Windows.Collector.Credit.CollectorCreditBorrowWindow();
             win.Owner = Application.Current.MainWindow;
-            win.Setup(new UserCredit());
+            win.Setup(null);
             if (win.ShowDialog() == false)
             {
                 return;
             }
+            RefreshPlazaInfo();
         }
+
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
         {
             // Main Menu Page
@@ -58,7 +60,6 @@ namespace DMT.TA.Pages.Collector
         public void RefreshPlazaInfo()
         {
             var tsbCredit = ops.Credits.GetCurrent();
-
             this.DataContext = tsbCredit;
 
             tsbCredit.Description = "ยอดที่สามารถยืมได้";
@@ -68,6 +69,9 @@ namespace DMT.TA.Pages.Collector
 
             loanEntry.IsEnabled = false;
             loanEntry.DataContext = tsbCredit;
+
+            grid.Setup();
         }
+
     }
 }

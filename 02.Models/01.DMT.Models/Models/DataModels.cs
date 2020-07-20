@@ -167,6 +167,19 @@ namespace DMT.Models
                     return ret;
                 }
             }
+            public class GetActiveById : NSearch<GetActive>
+            {
+                public string UserId { get; set; }
+                public string PlazaGroupId { get; set; }
+
+                public static GetActiveById Create(string userId, string plazGroupId)
+                {
+                    var ret = new GetActiveById();
+                    ret.UserId = userId;
+                    ret.PlazaGroupId = plazGroupId;
+                    return ret;
+                }
+            }
         }
     }
 

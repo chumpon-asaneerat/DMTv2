@@ -12,6 +12,8 @@ using NLib.Reflection;
 using NLib.Reports.Rdlc;
 using System.Reflection;
 using System.ComponentModel;
+using System.Windows.Interop;
+using NLib;
 
 #endregion
 
@@ -35,7 +37,11 @@ namespace DMT.TA.Windows.Collector.Credit
         #endregion
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
-        private UserCredit _credit = null;
+        
+        private UserCredit srcObj;
+        private UserCreditTransaction usrObj;
+        private TSBCreditBalance plazaObj;
+        private TSBCreditBalance sumObj;
 
         #region Button Handlers
 
@@ -44,19 +50,36 @@ namespace DMT.TA.Windows.Collector.Credit
             string userId = txtSearchUserId.Text;
             if (string.IsNullOrEmpty(userId) || userId.Length < 5) return;
             var user = ops.Users.GetById(Search.Users.ById.Create(userId));
-            if (null != user && null != _credit)
+            if (null != user && null != srcObj)
             {
-                _credit.UserId = user.UserId;
-                _credit.FullNameEN = user.FullNameEN;
-                _credit.FullNameTH = user.FullNameTH;
+                srcObj.UserId = user.UserId;
+                srcObj.FullNameEN = user.FullNameEN;
+                srcObj.FullNameTH = user.FullNameTH;
             }
         }
 
         private void cmdOK_Click(object sender, RoutedEventArgs e)
         {
-            if (null != _credit)
+            if (null != srcObj && srcObj.UserCreditId == 0)
             {
-                Console.WriteLine(_credit);
+                var plazaGrp = cbPlzaGroups.SelectedItem as PlazaGroup;
+                if (null != plazaGrp)
+                {
+                    srcObj.TSBId = plazaGrp.TSBId;
+                    srcObj.PlazaGroupId = plazaGrp.PlazaGroupId;
+                }
+                srcObj.State = UserCredit.StateTypes.Initial;
+                ops.Credits.SaveUserCredit(srcObj);
+                // Gets Id after save.
+                var search = Search.UserCredits.GetActiveById.Create(
+                    srcObj.UserId, srcObj.PlazaGroupId);
+                srcObj = ops.Credits.GetActiveUserCreditById(search);
+            }
+            if (null != usrObj)
+            {
+                usrObj.UserCreditId = srcObj.UserCreditId;
+                usrObj.TransactionType = UserCreditTransaction.TransactionTypes.Borrow;
+                ops.Credits.SaveUserTransaction(usrObj);
             }
             this.DialogResult = true;
         }
@@ -83,23 +106,59 @@ namespace DMT.TA.Windows.Collector.Credit
             }
         }
 
+        private void Calc()
+        {
+            sumObj.BHT1 = plazaObj.BHT1 - usrObj.BHT1;
+            sumObj.BHT2 = plazaObj.BHT2 - usrObj.BHT2;
+            sumObj.BHT5 = plazaObj.BHT5 - usrObj.BHT5;
+            sumObj.BHT10 = plazaObj.BHT10 - usrObj.BHT10;
+            sumObj.BHT20 = plazaObj.BHT20 - usrObj.BHT20;
+            sumObj.BHT50 = plazaObj.BHT50 - usrObj.BHT50;
+            sumObj.BHT100 = plazaObj.BHT100 - usrObj.BHT100;
+            sumObj.BHT500 = plazaObj.BHT500 - usrObj.BHT500;
+            sumObj.BHT1000 = plazaObj.BHT1000 - usrObj.BHT1000;
+        }
+
         public void Setup(UserCredit credit)
         {
-            _credit = credit;
-            if (null == _credit)
+            srcObj = credit;
+
+            usrObj = new UserCreditTransaction();
+            plazaObj = ops.Credits.GetCurrent();
+            sumObj = new TSBCreditBalance();
+            plazaObj.AssignTo(sumObj);
+
+            if (null == srcObj)
             {
-                
+                srcObj = new UserCredit();
             }
             else
             {
-                if (_credit.UserCreditId == 0)
+                if (srcObj.UserCreditId == 0)
                 {
                     panelSearch.Visibility = Visibility.Visible;
                 }
                 else panelSearch.Visibility = Visibility.Collapsed;
             }
             LoadMasters();
-            this.DataContext = _credit;
+
+            this.DataContext = srcObj;
+
+            srcObj.Description = "ยอดยืมปัจจุบัน";
+            srcObj.HasRemark = false;
+            usrObj.Description = "ยืมเงิน";
+            usrObj.PropertyChanged += UsrObj_PropertyChanged;
+            sumObj.Description = "ยอดด่านคงเหลือ";
+            sumObj.HasRemark = false;
+
+            srcEntry.DataContext = srcObj;
+            usrEntry.DataContext = usrObj;
+            sumEntry.DataContext = sumObj;
+        }
+
+        private void UsrObj_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            Calc();
         }
     }
 }

@@ -111,7 +111,7 @@
                              HorizontalAlignment="Left"
                              VerticalAlignment="Center"
                              FontSize="18"
-                             Text="{Binding BaltNo}" />
+                             Text="{Binding BeltNo}" />
                     <Grid Width="5" />
                     <TextBlock Width="40"
                                HorizontalAlignment="Center"

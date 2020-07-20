@@ -41,6 +41,10 @@ namespace DMT.Models
 
 		#region Internal Variables
 
+		// For Runtime Used
+		private string _description = string.Empty;
+		private bool _hasRemark = false;
+
 		private int _UserCreditId = 0;
 		private DateTime _UserCreditDate = DateTime.MinValue;
 		private StateTypes _State = StateTypes.Initial;
@@ -113,6 +117,76 @@ namespace DMT.Models
 		#endregion
 
 		#region Public Properties
+
+		#region Runtime
+
+		/// <summary>
+		/// Gets or sets has remark.
+		/// </summary>
+		[Category("Runtime")]
+		[Description("Gets or sets HasRemark.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("Description")]
+		public string Description
+		{
+			get { return _description; }
+			set
+			{
+				if (_description != value)
+				{
+					_description = value;
+					// Raise event.
+					this.RaiseChanged("Description");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets has remark.
+		/// </summary>
+		[Category("Runtime")]
+		[Description("Gets or sets HasRemark.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("HasRemark")]
+		public bool HasRemark
+		{
+			get { return _hasRemark; }
+			set
+			{
+				if (_hasRemark != value)
+				{
+					_hasRemark = value;
+					// Raise event.
+					this.RaiseChanged("HasRemark");
+					this.RaiseChanged("RemarkVisibility");
+				}
+			}
+		}
+
+		[Category("Runtime")]
+		[Description("Gets or sets RemarkVisibility.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("RemarkVisibility")]
+		public System.Windows.Visibility RemarkVisibility
+		{
+			get { return (_hasRemark) ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed; }
+			set { }
+		}
+
+		[Category("Runtime")]
+		[Description("Gets or sets ReceivedBagVisibility.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("ReceivedBagVisibility")]
+		public System.Windows.Visibility ReceivedBagVisibility
+		{
+			get { return (_State == StateTypes.Initial) ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed; }
+			set { }
+		}
+
+		#endregion
 
 		#region Common
 
@@ -212,6 +286,7 @@ namespace DMT.Models
 					_State = value;
 					// Raise event.
 					this.RaiseChanged("State");
+					this.RaiseChanged("ReceivedBagVisibility");
 				}
 			}
 		}
@@ -1206,6 +1281,337 @@ namespace DMT.Models
 				}
 
 				return inst;
+			}
+		}
+
+		public static UserCredit GetActive(string userId, string plazaGroupId)
+		{
+			lock (sync)
+			{
+				if (string.IsNullOrWhiteSpace(userId) || 
+					string.IsNullOrWhiteSpace(plazaGroupId)) return null;
+
+
+				string cmd = @"
+					SELECT UserCredit.* 
+						 , TSB.TSBNameEN
+						 , TSB.TSBNameTH
+						 , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction 
+						 , User.FullNameEN, User.FullNameTH 
+						 , ((
+							 SELECT IFNULL(SUM(ST25), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(ST25), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS ST25
+						 , ((
+							 SELECT IFNULL(SUM(ST50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(ST50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS ST50
+						 , ((
+							 SELECT IFNULL(SUM(BHT1), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(BHT1), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS BHT1
+						 , ((
+							 SELECT IFNULL(SUM(BHT2), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(BHT2), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS BHT2
+						 , ((
+							 SELECT IFNULL(SUM(BHT5), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(BHT5), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS BHT5
+						 , ((
+							 SELECT IFNULL(SUM(BHT10), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(BHT10), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS BHT10
+						 , ((
+							 SELECT IFNULL(SUM(BHT20), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(BHT20), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS BHT20
+						 , ((
+							 SELECT IFNULL(SUM(BHT50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(BHT50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS BHT50
+						 , ((
+							 SELECT IFNULL(SUM(BHT100), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(BHT100), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS BHT100
+						 , ((
+							 SELECT IFNULL(SUM(BHT500), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(BHT500), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS BHT500
+						 , ((
+							 SELECT IFNULL(SUM(BHT1000), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(BHT1000), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS BHT1000
+					  FROM UserCredit, TSB, PlazaGroup, User
+					 WHERE PlazaGroup.TSBId = TSB.TSBId 
+					   AND UserCredit.TSBId = TSB.TSBId 
+					   AND UserCredit.PlazaGroupId = PlazaGroup.PlazaGroupId 
+					   AND UserCredit.UserId = User.UserId 
+					   AND UserCredit.PlazaGroupId = ? 
+					   AND UserCredit.State <> ? 
+				";
+
+				var ret = NQuery.Query<FKs>(cmd,
+					plazaGroupId, StateTypes.Completed).FirstOrDefault();
+
+				UserCredit inst = (null != ret) ? ret.ToUserCredit() : null;
+				return inst;
+			}
+		}
+
+		public static List<UserCredit> GetActives(TSB tsb)
+		{
+			lock (sync)
+			{
+				if (null == tsb) return null;
+
+
+				string cmd = @"
+					SELECT UserCredit.* 
+						 , TSB.TSBNameEN
+						 , TSB.TSBNameTH
+						 , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction 
+						 , User.FullNameEN, User.FullNameTH 
+						 , ((
+							 SELECT IFNULL(SUM(ST25), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(ST25), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS ST25
+						 , ((
+							 SELECT IFNULL(SUM(ST50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(ST50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS ST50
+						 , ((
+							 SELECT IFNULL(SUM(BHT1), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(BHT1), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS BHT1
+						 , ((
+							 SELECT IFNULL(SUM(BHT2), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(BHT2), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS BHT2
+						 , ((
+							 SELECT IFNULL(SUM(BHT5), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(BHT5), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS BHT5
+						 , ((
+							 SELECT IFNULL(SUM(BHT10), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(BHT10), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS BHT10
+						 , ((
+							 SELECT IFNULL(SUM(BHT20), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(BHT20), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS BHT20
+						 , ((
+							 SELECT IFNULL(SUM(BHT50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(BHT50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS BHT50
+						 , ((
+							 SELECT IFNULL(SUM(BHT100), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(BHT100), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS BHT100
+						 , ((
+							 SELECT IFNULL(SUM(BHT500), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(BHT500), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS BHT500
+						 , ((
+							 SELECT IFNULL(SUM(BHT1000), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(BHT1000), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS BHT1000
+					  FROM UserCredit, TSB, PlazaGroup, User
+					 WHERE PlazaGroup.TSBId = TSB.TSBId 
+					   AND UserCredit.TSBId = TSB.TSBId 
+					   AND UserCredit.PlazaGroupId = PlazaGroup.PlazaGroupId 
+					   AND UserCredit.UserId = User.UserId 
+					   AND UserCredit.TSBId = ? 
+					   AND UserCredit.State <> ? 
+				";
+
+				var rets = NQuery.Query<FKs>(cmd,
+					tsb.TSBId, StateTypes.Completed).ToList();
+				var results = new List<UserCredit>();
+				if (null != rets)
+				{
+					rets.ForEach(ret => 
+					{
+						results.Add(ret.ToUserCredit());
+					});
+				}
+				return results;
 			}
 		}
 		/*

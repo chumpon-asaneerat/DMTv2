@@ -99,6 +99,32 @@ namespace DMT.Services
                 return ret;
             }
 
+            public UserCredit GetActiveUserCreditById(Search.UserCredits.GetActiveById value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<UserCredit>(
+                    RouteConsts.Credit.GetActiveUserCreditById.Url, value);
+                return ret;
+            }
+
+            public List<UserCredit> GetActiveUserCredits(TSB value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<UserCredit>>(
+                    RouteConsts.Credit.GetActiveUserCredits.Url, value);
+                return ret;
+            }
+
+            public void SaveUserCredit(UserCredit value)
+            {
+                NRestClient.Create(port: 9000).Execute(
+                    RouteConsts.Credit.SaveUserCredit.Url, value);
+            }
+
+            public void SaveUserTransaction(UserCreditTransaction value)
+            {
+                NRestClient.Create(port: 9000).Execute(
+                    RouteConsts.Credit.SaveUserTransaction.Url, value);
+            }
+
             #endregion
         }
 
