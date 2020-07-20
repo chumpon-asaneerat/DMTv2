@@ -89,8 +89,22 @@
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.tabControl7 = new System.Windows.Forms.TabControl();
+            this.tabPage16 = new System.Windows.Forms.TabPage();
             this.pgUserCredit = new System.Windows.Forms.PropertyGrid();
+            this.tabPage17 = new System.Windows.Forms.TabPage();
+            this.pgUserCreditTran = new System.Windows.Forms.PropertyGrid();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.rbReturn = new System.Windows.Forms.RadioButton();
+            this.button5 = new System.Windows.Forms.Button();
+            this.rbBorrow = new System.Windows.Forms.RadioButton();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.txtBeltNo = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtBagNo = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbPlazaGroups = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.cbUsers = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -105,20 +119,6 @@
             this.lbActiveTSB3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbPlazaGroups = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtBagNo = new System.Windows.Forms.TextBox();
-            this.txtBeltNo = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tabControl7 = new System.Windows.Forms.TabControl();
-            this.tabPage16 = new System.Windows.Forms.TabPage();
-            this.tabPage17 = new System.Windows.Forms.TabPage();
-            this.pgUserCreditTran = new System.Windows.Forms.PropertyGrid();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.rbReturn = new System.Windows.Forms.RadioButton();
-            this.button5 = new System.Windows.Forms.Button();
-            this.rbBorrow = new System.Windows.Forms.RadioButton();
             this.tabControl11.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -154,16 +154,16 @@
             this.tabControl2.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.panel9.SuspendLayout();
+            this.tabControl7.SuspendLayout();
+            this.tabPage16.SuspendLayout();
+            this.tabPage17.SuspendLayout();
+            this.panel12.SuspendLayout();
             this.panel11.SuspendLayout();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgUserCredit)).BeginInit();
             this.panel13.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.tabControl7.SuspendLayout();
-            this.tabPage16.SuspendLayout();
-            this.tabPage17.SuspendLayout();
-            this.panel12.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl11
@@ -186,7 +186,7 @@
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(926, 576);
+            this.tabPage1.Size = new System.Drawing.Size(1140, 692);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "TSB/Plaza/Lane";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -196,14 +196,14 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(391, 71);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(535, 505);
+            this.panel7.Size = new System.Drawing.Size(749, 621);
             this.panel7.TabIndex = 4;
             // 
             // splitter1
             // 
             this.splitter1.Location = new System.Drawing.Point(388, 71);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 505);
+            this.splitter1.Size = new System.Drawing.Size(3, 621);
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
             // 
@@ -212,7 +212,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 71);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(388, 505);
+            this.panel4.Size = new System.Drawing.Size(388, 621);
             this.panel4.TabIndex = 2;
             // 
             // panel1
@@ -221,7 +221,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(926, 71);
+            this.panel1.Size = new System.Drawing.Size(1140, 71);
             this.panel1.TabIndex = 1;
             // 
             // button1
@@ -242,7 +242,7 @@
             this.tabPage2.Controls.Add(this.panel2);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(926, 576);
+            this.tabPage2.Size = new System.Drawing.Size(1140, 692);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Roles/Users";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -252,14 +252,14 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(391, 71);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(535, 505);
+            this.panel8.Size = new System.Drawing.Size(749, 621);
             this.panel8.TabIndex = 5;
             // 
             // splitter2
             // 
             this.splitter2.Location = new System.Drawing.Point(388, 71);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(3, 505);
+            this.splitter2.Size = new System.Drawing.Size(3, 621);
             this.splitter2.TabIndex = 4;
             this.splitter2.TabStop = false;
             // 
@@ -268,7 +268,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel5.Location = new System.Drawing.Point(0, 71);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(388, 505);
+            this.panel5.Size = new System.Drawing.Size(388, 621);
             this.panel5.TabIndex = 3;
             // 
             // panel2
@@ -277,7 +277,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(926, 71);
+            this.panel2.Size = new System.Drawing.Size(1140, 71);
             this.panel2.TabIndex = 1;
             // 
             // button2
@@ -330,7 +330,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 25);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(530, 476);
+            this.tabPage6.Size = new System.Drawing.Size(744, 592);
             this.tabPage6.TabIndex = 0;
             this.tabPage6.Text = "Credit";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -343,7 +343,7 @@
             this.tabControl4.Location = new System.Drawing.Point(3, 3);
             this.tabControl4.Name = "tabControl4";
             this.tabControl4.SelectedIndex = 0;
-            this.tabControl4.Size = new System.Drawing.Size(524, 470);
+            this.tabControl4.Size = new System.Drawing.Size(738, 586);
             this.tabControl4.TabIndex = 0;
             // 
             // tabPage10
@@ -354,7 +354,7 @@
             this.tabPage10.Location = new System.Drawing.Point(4, 25);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(516, 441);
+            this.tabPage10.Size = new System.Drawing.Size(730, 557);
             this.tabPage10.TabIndex = 0;
             this.tabPage10.Text = "Editor View";
             this.tabPage10.UseVisualStyleBackColor = true;
@@ -364,16 +364,16 @@
             this.pgTSBCredit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pgTSBCredit.Location = new System.Drawing.Point(3, 43);
             this.pgTSBCredit.Name = "pgTSBCredit";
-            this.pgTSBCredit.Size = new System.Drawing.Size(510, 351);
+            this.pgTSBCredit.Size = new System.Drawing.Size(724, 467);
             this.pgTSBCredit.TabIndex = 1;
             // 
             // panel14
             // 
             this.panel14.Controls.Add(this.button9);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel14.Location = new System.Drawing.Point(3, 394);
+            this.panel14.Location = new System.Drawing.Point(3, 510);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(510, 44);
+            this.panel14.Size = new System.Drawing.Size(724, 44);
             this.panel14.TabIndex = 2;
             // 
             // button9
@@ -394,7 +394,7 @@
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel10.Location = new System.Drawing.Point(3, 3);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(510, 40);
+            this.panel10.Size = new System.Drawing.Size(724, 40);
             this.panel10.TabIndex = 0;
             // 
             // button18
@@ -434,7 +434,7 @@
             this.tabPage11.Location = new System.Drawing.Point(4, 25);
             this.tabPage11.Name = "tabPage11";
             this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage11.Size = new System.Drawing.Size(516, 441);
+            this.tabPage11.Size = new System.Drawing.Size(730, 557);
             this.tabPage11.TabIndex = 1;
             this.tabPage11.Text = "Transaction View";
             this.tabPage11.UseVisualStyleBackColor = true;
@@ -449,7 +449,7 @@
             this.dgTSBCredit.RowHeadersWidth = 51;
             this.dgTSBCredit.RowTemplate.Height = 24;
             this.dgTSBCredit.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTSBCredit.Size = new System.Drawing.Size(510, 395);
+            this.dgTSBCredit.Size = new System.Drawing.Size(724, 511);
             this.dgTSBCredit.TabIndex = 2;
             // 
             // panel15
@@ -458,7 +458,7 @@
             this.panel15.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel15.Location = new System.Drawing.Point(3, 3);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(510, 40);
+            this.panel15.Size = new System.Drawing.Size(724, 40);
             this.panel15.TabIndex = 1;
             // 
             // button10
@@ -477,7 +477,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 25);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(530, 476);
+            this.tabPage7.Size = new System.Drawing.Size(744, 592);
             this.tabPage7.TabIndex = 1;
             this.tabPage7.Text = "Coupon";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -490,7 +490,7 @@
             this.tabControl5.Location = new System.Drawing.Point(3, 3);
             this.tabControl5.Name = "tabControl5";
             this.tabControl5.SelectedIndex = 0;
-            this.tabControl5.Size = new System.Drawing.Size(524, 470);
+            this.tabControl5.Size = new System.Drawing.Size(738, 586);
             this.tabControl5.TabIndex = 1;
             // 
             // tabPage12
@@ -501,7 +501,7 @@
             this.tabPage12.Location = new System.Drawing.Point(4, 25);
             this.tabPage12.Name = "tabPage12";
             this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage12.Size = new System.Drawing.Size(516, 441);
+            this.tabPage12.Size = new System.Drawing.Size(730, 557);
             this.tabPage12.TabIndex = 0;
             this.tabPage12.Text = "Editor View";
             this.tabPage12.UseVisualStyleBackColor = true;
@@ -511,16 +511,16 @@
             this.pgTSBCoupon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pgTSBCoupon.Location = new System.Drawing.Point(3, 43);
             this.pgTSBCoupon.Name = "pgTSBCoupon";
-            this.pgTSBCoupon.Size = new System.Drawing.Size(510, 351);
+            this.pgTSBCoupon.Size = new System.Drawing.Size(724, 467);
             this.pgTSBCoupon.TabIndex = 1;
             // 
             // panel16
             // 
             this.panel16.Controls.Add(this.button11);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel16.Location = new System.Drawing.Point(3, 394);
+            this.panel16.Location = new System.Drawing.Point(3, 510);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(510, 44);
+            this.panel16.Size = new System.Drawing.Size(724, 44);
             this.panel16.TabIndex = 2;
             // 
             // button11
@@ -540,7 +540,7 @@
             this.panel17.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel17.Location = new System.Drawing.Point(3, 3);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(510, 40);
+            this.panel17.Size = new System.Drawing.Size(724, 40);
             this.panel17.TabIndex = 0;
             // 
             // button20
@@ -570,7 +570,7 @@
             this.tabPage13.Location = new System.Drawing.Point(4, 25);
             this.tabPage13.Name = "tabPage13";
             this.tabPage13.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage13.Size = new System.Drawing.Size(516, 441);
+            this.tabPage13.Size = new System.Drawing.Size(730, 557);
             this.tabPage13.TabIndex = 1;
             this.tabPage13.Text = "Transaction View";
             this.tabPage13.UseVisualStyleBackColor = true;
@@ -585,7 +585,7 @@
             this.dgTSBCoupon.RowHeadersWidth = 51;
             this.dgTSBCoupon.RowTemplate.Height = 24;
             this.dgTSBCoupon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTSBCoupon.Size = new System.Drawing.Size(510, 395);
+            this.dgTSBCoupon.Size = new System.Drawing.Size(724, 511);
             this.dgTSBCoupon.TabIndex = 2;
             // 
             // panel18
@@ -594,7 +594,7 @@
             this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel18.Location = new System.Drawing.Point(3, 3);
             this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(510, 40);
+            this.panel18.Size = new System.Drawing.Size(724, 40);
             this.panel18.TabIndex = 1;
             // 
             // button13
@@ -613,7 +613,7 @@
             this.tabPage8.Location = new System.Drawing.Point(4, 25);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(530, 476);
+            this.tabPage8.Size = new System.Drawing.Size(744, 592);
             this.tabPage8.TabIndex = 2;
             this.tabPage8.Text = "Addition";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -626,7 +626,7 @@
             this.tabControl6.Location = new System.Drawing.Point(3, 3);
             this.tabControl6.Name = "tabControl6";
             this.tabControl6.SelectedIndex = 0;
-            this.tabControl6.Size = new System.Drawing.Size(524, 470);
+            this.tabControl6.Size = new System.Drawing.Size(738, 586);
             this.tabControl6.TabIndex = 1;
             // 
             // tabPage14
@@ -637,7 +637,7 @@
             this.tabPage14.Location = new System.Drawing.Point(4, 25);
             this.tabPage14.Name = "tabPage14";
             this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage14.Size = new System.Drawing.Size(516, 441);
+            this.tabPage14.Size = new System.Drawing.Size(730, 557);
             this.tabPage14.TabIndex = 0;
             this.tabPage14.Text = "Editor View";
             this.tabPage14.UseVisualStyleBackColor = true;
@@ -647,16 +647,16 @@
             this.pgTSBAddition.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pgTSBAddition.Location = new System.Drawing.Point(3, 43);
             this.pgTSBAddition.Name = "pgTSBAddition";
-            this.pgTSBAddition.Size = new System.Drawing.Size(510, 351);
+            this.pgTSBAddition.Size = new System.Drawing.Size(724, 467);
             this.pgTSBAddition.TabIndex = 1;
             // 
             // panel19
             // 
             this.panel19.Controls.Add(this.button14);
             this.panel19.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel19.Location = new System.Drawing.Point(3, 394);
+            this.panel19.Location = new System.Drawing.Point(3, 510);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(510, 44);
+            this.panel19.Size = new System.Drawing.Size(724, 44);
             this.panel19.TabIndex = 2;
             // 
             // button14
@@ -677,7 +677,7 @@
             this.panel20.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel20.Location = new System.Drawing.Point(3, 3);
             this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(510, 40);
+            this.panel20.Size = new System.Drawing.Size(724, 40);
             this.panel20.TabIndex = 0;
             // 
             // button21
@@ -717,7 +717,7 @@
             this.tabPage15.Location = new System.Drawing.Point(4, 25);
             this.tabPage15.Name = "tabPage15";
             this.tabPage15.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage15.Size = new System.Drawing.Size(516, 441);
+            this.tabPage15.Size = new System.Drawing.Size(730, 557);
             this.tabPage15.TabIndex = 1;
             this.tabPage15.Text = "Transaction View";
             this.tabPage15.UseVisualStyleBackColor = true;
@@ -732,7 +732,7 @@
             this.dgTSBAddition.RowHeadersWidth = 51;
             this.dgTSBAddition.RowTemplate.Height = 24;
             this.dgTSBAddition.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTSBAddition.Size = new System.Drawing.Size(510, 395);
+            this.dgTSBAddition.Size = new System.Drawing.Size(724, 511);
             this.dgTSBAddition.TabIndex = 2;
             // 
             // panel21
@@ -741,7 +741,7 @@
             this.panel21.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel21.Location = new System.Drawing.Point(3, 3);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(510, 40);
+            this.panel21.Size = new System.Drawing.Size(724, 40);
             this.panel21.TabIndex = 1;
             // 
             // button16
@@ -797,6 +797,28 @@
             this.panel9.Size = new System.Drawing.Size(724, 551);
             this.panel9.TabIndex = 5;
             // 
+            // tabControl7
+            // 
+            this.tabControl7.Controls.Add(this.tabPage16);
+            this.tabControl7.Controls.Add(this.tabPage17);
+            this.tabControl7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl7.Location = new System.Drawing.Point(0, 147);
+            this.tabControl7.Name = "tabControl7";
+            this.tabControl7.SelectedIndex = 0;
+            this.tabControl7.Size = new System.Drawing.Size(724, 404);
+            this.tabControl7.TabIndex = 4;
+            // 
+            // tabPage16
+            // 
+            this.tabPage16.Controls.Add(this.pgUserCredit);
+            this.tabPage16.Location = new System.Drawing.Point(4, 25);
+            this.tabPage16.Name = "tabPage16";
+            this.tabPage16.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage16.Size = new System.Drawing.Size(716, 375);
+            this.tabPage16.TabIndex = 0;
+            this.tabPage16.Text = "User Credit";
+            this.tabPage16.UseVisualStyleBackColor = true;
+            // 
             // pgUserCredit
             // 
             this.pgUserCredit.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -804,6 +826,69 @@
             this.pgUserCredit.Name = "pgUserCredit";
             this.pgUserCredit.Size = new System.Drawing.Size(710, 369);
             this.pgUserCredit.TabIndex = 3;
+            // 
+            // tabPage17
+            // 
+            this.tabPage17.Controls.Add(this.pgUserCreditTran);
+            this.tabPage17.Controls.Add(this.panel12);
+            this.tabPage17.Location = new System.Drawing.Point(4, 25);
+            this.tabPage17.Name = "tabPage17";
+            this.tabPage17.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage17.Size = new System.Drawing.Size(716, 375);
+            this.tabPage17.TabIndex = 1;
+            this.tabPage17.Text = "User Credit Transaction";
+            this.tabPage17.UseVisualStyleBackColor = true;
+            // 
+            // pgUserCreditTran
+            // 
+            this.pgUserCreditTran.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pgUserCreditTran.Location = new System.Drawing.Point(3, 3);
+            this.pgUserCreditTran.Name = "pgUserCreditTran";
+            this.pgUserCreditTran.Size = new System.Drawing.Size(710, 333);
+            this.pgUserCreditTran.TabIndex = 4;
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.rbReturn);
+            this.panel12.Controls.Add(this.button5);
+            this.panel12.Controls.Add(this.rbBorrow);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel12.Location = new System.Drawing.Point(3, 336);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(710, 36);
+            this.panel12.TabIndex = 5;
+            // 
+            // rbReturn
+            // 
+            this.rbReturn.AutoSize = true;
+            this.rbReturn.Location = new System.Drawing.Point(101, 7);
+            this.rbReturn.Name = "rbReturn";
+            this.rbReturn.Size = new System.Drawing.Size(72, 21);
+            this.rbReturn.TabIndex = 5;
+            this.rbReturn.Text = "Return";
+            this.rbReturn.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(179, 3);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(115, 28);
+            this.button5.TabIndex = 2;
+            this.button5.Text = "Add";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // rbBorrow
+            // 
+            this.rbBorrow.AutoSize = true;
+            this.rbBorrow.Checked = true;
+            this.rbBorrow.Location = new System.Drawing.Point(12, 7);
+            this.rbBorrow.Name = "rbBorrow";
+            this.rbBorrow.Size = new System.Drawing.Size(73, 21);
+            this.rbBorrow.TabIndex = 4;
+            this.rbBorrow.TabStop = true;
+            this.rbBorrow.Text = "Borrow";
+            this.rbBorrow.UseVisualStyleBackColor = true;
             // 
             // panel11
             // 
@@ -822,13 +907,62 @@
             this.panel11.Size = new System.Drawing.Size(724, 147);
             this.panel11.TabIndex = 0;
             // 
+            // txtBeltNo
+            // 
+            this.txtBeltNo.Location = new System.Drawing.Point(102, 110);
+            this.txtBeltNo.Name = "txtBeltNo";
+            this.txtBeltNo.Size = new System.Drawing.Size(234, 22);
+            this.txtBeltNo.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(41, 113);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 17);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Belt No";
+            // 
+            // txtBagNo
+            // 
+            this.txtBagNo.Location = new System.Drawing.Point(101, 78);
+            this.txtBagNo.Name = "txtBagNo";
+            this.txtBagNo.Size = new System.Drawing.Size(234, 22);
+            this.txtBagNo.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(40, 81);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 17);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Bag No";
+            // 
+            // cbPlazaGroups
+            // 
+            this.cbPlazaGroups.FormattingEnabled = true;
+            this.cbPlazaGroups.Location = new System.Drawing.Point(101, 41);
+            this.cbPlazaGroups.Name = "cbPlazaGroups";
+            this.cbPlazaGroups.Size = new System.Drawing.Size(235, 24);
+            this.cbPlazaGroups.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 44);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 17);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Plaza Group";
+            // 
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(381, 107);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(117, 28);
             this.button6.TabIndex = 3;
-            this.button6.Text = "Create";
+            this.button6.Text = "GetActive";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -856,7 +990,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(516, 441);
+            this.tabPage5.Size = new System.Drawing.Size(730, 557);
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "Transaction View";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -872,7 +1006,7 @@
             this.dgUserCredit.RowHeadersWidth = 51;
             this.dgUserCredit.RowTemplate.Height = 24;
             this.dgUserCredit.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgUserCredit.Size = new System.Drawing.Size(510, 398);
+            this.dgUserCredit.Size = new System.Drawing.Size(724, 514);
             this.dgUserCredit.TabIndex = 2;
             // 
             // panel13
@@ -882,7 +1016,7 @@
             this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel13.Location = new System.Drawing.Point(3, 3);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(510, 37);
+            this.panel13.Size = new System.Drawing.Size(724, 37);
             this.panel13.TabIndex = 1;
             // 
             // button8
@@ -961,140 +1095,6 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 44);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 17);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Plaza Group";
-            // 
-            // cbPlazaGroups
-            // 
-            this.cbPlazaGroups.FormattingEnabled = true;
-            this.cbPlazaGroups.Location = new System.Drawing.Point(101, 41);
-            this.cbPlazaGroups.Name = "cbPlazaGroups";
-            this.cbPlazaGroups.Size = new System.Drawing.Size(235, 24);
-            this.cbPlazaGroups.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(40, 81);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 17);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Bag No";
-            // 
-            // txtBagNo
-            // 
-            this.txtBagNo.Location = new System.Drawing.Point(101, 78);
-            this.txtBagNo.Name = "txtBagNo";
-            this.txtBagNo.Size = new System.Drawing.Size(234, 22);
-            this.txtBagNo.TabIndex = 7;
-            // 
-            // txtBeltNo
-            // 
-            this.txtBeltNo.Location = new System.Drawing.Point(102, 110);
-            this.txtBeltNo.Name = "txtBeltNo";
-            this.txtBeltNo.Size = new System.Drawing.Size(234, 22);
-            this.txtBeltNo.TabIndex = 9;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(41, 113);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 17);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Belt No";
-            // 
-            // tabControl7
-            // 
-            this.tabControl7.Controls.Add(this.tabPage16);
-            this.tabControl7.Controls.Add(this.tabPage17);
-            this.tabControl7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl7.Location = new System.Drawing.Point(0, 147);
-            this.tabControl7.Name = "tabControl7";
-            this.tabControl7.SelectedIndex = 0;
-            this.tabControl7.Size = new System.Drawing.Size(724, 404);
-            this.tabControl7.TabIndex = 4;
-            // 
-            // tabPage16
-            // 
-            this.tabPage16.Controls.Add(this.pgUserCredit);
-            this.tabPage16.Location = new System.Drawing.Point(4, 25);
-            this.tabPage16.Name = "tabPage16";
-            this.tabPage16.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage16.Size = new System.Drawing.Size(716, 375);
-            this.tabPage16.TabIndex = 0;
-            this.tabPage16.Text = "User Credit";
-            this.tabPage16.UseVisualStyleBackColor = true;
-            // 
-            // tabPage17
-            // 
-            this.tabPage17.Controls.Add(this.pgUserCreditTran);
-            this.tabPage17.Controls.Add(this.panel12);
-            this.tabPage17.Location = new System.Drawing.Point(4, 25);
-            this.tabPage17.Name = "tabPage17";
-            this.tabPage17.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage17.Size = new System.Drawing.Size(716, 375);
-            this.tabPage17.TabIndex = 1;
-            this.tabPage17.Text = "User Credit Transaction";
-            this.tabPage17.UseVisualStyleBackColor = true;
-            // 
-            // pgUserCreditTran
-            // 
-            this.pgUserCreditTran.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pgUserCreditTran.Location = new System.Drawing.Point(3, 3);
-            this.pgUserCreditTran.Name = "pgUserCreditTran";
-            this.pgUserCreditTran.Size = new System.Drawing.Size(710, 333);
-            this.pgUserCreditTran.TabIndex = 4;
-            // 
-            // panel12
-            // 
-            this.panel12.Controls.Add(this.rbReturn);
-            this.panel12.Controls.Add(this.button5);
-            this.panel12.Controls.Add(this.rbBorrow);
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel12.Location = new System.Drawing.Point(3, 336);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(710, 36);
-            this.panel12.TabIndex = 5;
-            // 
-            // rbReturn
-            // 
-            this.rbReturn.AutoSize = true;
-            this.rbReturn.Location = new System.Drawing.Point(101, 7);
-            this.rbReturn.Name = "rbReturn";
-            this.rbReturn.Size = new System.Drawing.Size(72, 21);
-            this.rbReturn.TabIndex = 5;
-            this.rbReturn.Text = "Return";
-            this.rbReturn.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(179, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(115, 28);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "Add";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // rbBorrow
-            // 
-            this.rbBorrow.AutoSize = true;
-            this.rbBorrow.Checked = true;
-            this.rbBorrow.Location = new System.Drawing.Point(12, 7);
-            this.rbBorrow.Name = "rbBorrow";
-            this.rbBorrow.Size = new System.Drawing.Size(73, 21);
-            this.rbBorrow.TabIndex = 4;
-            this.rbBorrow.TabStop = true;
-            this.rbBorrow.Text = "Borrow";
-            this.rbBorrow.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1140,6 +1140,11 @@
             this.tabControl2.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
+            this.tabControl7.ResumeLayout(false);
+            this.tabPage16.ResumeLayout(false);
+            this.tabPage17.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.tabPage5.ResumeLayout(false);
@@ -1148,11 +1153,6 @@
             this.panel6.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.tabControl7.ResumeLayout(false);
-            this.tabPage16.ResumeLayout(false);
-            this.tabPage17.ResumeLayout(false);
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
             this.ResumeLayout(false);
 
         }

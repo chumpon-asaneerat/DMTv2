@@ -298,7 +298,13 @@ namespace LocalDbServerFunctionTest
                 !string.IsNullOrWhiteSpace(bagNo) &&
                 !string.IsNullOrWhiteSpace(beltNo))
             {
-                var usrCredit = UserCredit.Create(user, plazaGroup, bagNo, beltNo);
+                var usrCredit = UserCredit.GetActive(user, plazaGroup);
+                if (null != usrCredit)
+                {
+                    if (string.IsNullOrWhiteSpace(usrCredit.BagNo)) usrCredit.BagNo = bagNo;
+                    if (string.IsNullOrWhiteSpace(usrCredit.BeltNo)) usrCredit.BeltNo = beltNo;
+                }
+
                 pgUserCredit.SelectedObject = usrCredit;
                 var userCreditTran = UserCreditTransaction.Create();
                 pgUserCreditTran.SelectedObject = userCreditTran;

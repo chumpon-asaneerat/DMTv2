@@ -152,6 +152,26 @@ namespace DMT.Models
 
     partial class Search
     {
+        public class UserCredits
+        {
+            public class GetActive : NSearch<GetActive>
+            {
+                public User User { get; set; }
+                public PlazaGroup PlazaGroup { get; set; }
+
+                public static GetActive Create(User user, PlazaGroup plazGroup)
+                {
+                    var ret = new GetActive();
+                    ret.User = user;
+                    ret.PlazaGroup = plazGroup;
+                    return ret;
+                }
+            }
+        }
+    }
+
+    partial class Search
+    {
         public static class Lanes
         {
             public static class Current

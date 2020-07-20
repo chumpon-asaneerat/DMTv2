@@ -57,5 +57,15 @@ namespace DMT.Services
             var ret = TSBCreditBalance.GetCurrent(tsb);
             return ret;
         }
+
+
+        [HttpPost]
+        [ActionName(RouteConsts.Credit.GetActiveUserCredit.Name)]
+        public UserCredit GetActiveUserCredit([FromBody] Search.UserCredits.GetActive value)
+        {
+            if (null == value) return null;
+            var ret = UserCredit.GetActive(value.User, value.PlazaGroup);
+            return ret;
+        }
     }
 }

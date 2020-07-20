@@ -334,6 +334,12 @@ namespace DMT
                 public const string Name = "GetTSBCurrent";
                 public const string Url = Credit.Url + @"/" + Name;
             }
+
+            public static class GetActiveUserCredit
+            {
+                public const string Name = "GetActiveUserCredit";
+                public const string Url = Credit.Url + @"/" + Name;
+            }
         }
 
         public static class Coupon

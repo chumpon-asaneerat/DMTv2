@@ -995,20 +995,19 @@ namespace DMT.Models
             lock (sync)
             {
                 string cmd = string.Empty;
-                cmd += "SELECT TSBCreditTransaction.* ";
+                cmd += "SELECT UserCreditTransaction.* ";
                 cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , UserCredit.PlazaGroupId, UserCredit.PlazaGroupNameEN, UserCredit.PlazaGroupNameTH ";
-                cmd += "     , UserCredit.UserId, UserCredit.FullNameEN, UserCredit.FullNameTH ";
-                cmd += "     , UserCredit.ST25, UserCredit.ST50 ";
-                cmd += "     , UserCredit.BHT1, UserCredit.BHT2, UserCredit.BHT5 ";
-                cmd += "     , UserCredit.BHT10, UserCredit.BHT20, UserCredit.BHT50 ";
-                cmd += "     , UserCredit.BHT100, UserCredit.BHT500, UserCredit.BHT1000 ";
-                cmd += "  FROM UserCreditTransaction, TSB, UserCredit ";
-                cmd += "  FROM UserCreditTransaction, TSB ";
-                cmd += " WHERE UserCreditTransaction.TSBId = TSB.TSBId ";
+                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
+                cmd += "     , User.UserId, User.FullNameEN, User.FullNameTH ";
+                cmd += "     , UserCredit.UserCreditDate, ";
+                cmd += "     , UserCredit.State, UserCredit.BagNo, UserCredit.BeltNo ";
+                cmd += "  FROM UserCreditTransaction, TSB, PlazaGroup, User, UserCredit ";
+                cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
                 cmd += "   AND UserCredit.TSBId = TSB.TSBId ";
+                cmd += "   AND UserCredit.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+                cmd += "   AND UserCredit.UserId = User.UserId ";
                 cmd += "   AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId ";
-                cmd += "   AND UserCreditTransaction.TSBId = ? ";
+                cmd += "   AND UserCredit.TSBId = ? ";
 
                 var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
                 if (null == rets)

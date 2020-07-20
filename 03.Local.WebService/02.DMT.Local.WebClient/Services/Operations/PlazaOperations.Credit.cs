@@ -92,6 +92,13 @@ namespace DMT.Services
                 return ret;
             }
 
+            public UserCredit GetActiveUserCredit(Search.UserCredits.GetActive value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<UserCredit>(
+                    RouteConsts.Credit.GetActiveUserCredit.Url, value);
+                return ret;
+            }
+
             #endregion
         }
 
