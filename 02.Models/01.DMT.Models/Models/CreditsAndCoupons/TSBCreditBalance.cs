@@ -787,6 +787,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.ST25), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.ST25), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS ST25
 						 , ((
 							 SELECT IFNULL(SUM(ST50), 0) 
@@ -801,6 +815,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.ST50), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.ST50), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS ST50
 						 , ((
 							 SELECT IFNULL(SUM(BHT1), 0) 
@@ -815,6 +843,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT1), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT1), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT1
 						 , ((
 							 SELECT IFNULL(SUM(BHT2), 0) 
@@ -829,6 +871,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT2), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT2), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT2
 						 , ((
 							 SELECT IFNULL(SUM(BHT5), 0) 
@@ -843,6 +899,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT5), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT5), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT5
 						 , ((
 							 SELECT IFNULL(SUM(BHT10), 0) 
@@ -857,6 +927,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT10), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT10), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT10
 						 , ((
 							 SELECT IFNULL(SUM(BHT20), 0) 
@@ -871,6 +955,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT20), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT20), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT20
 						 , ((
 							 SELECT IFNULL(SUM(BHT50), 0) 
@@ -885,6 +983,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT50), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT50), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT50
 						 , ((
 							 SELECT IFNULL(SUM(BHT100), 0) 
@@ -899,6 +1011,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT100), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT100), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT100
 						 , ((
 							 SELECT IFNULL(SUM(BHT500), 0) 
@@ -913,6 +1039,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT500), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT500), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT500
 						 , ((
 							 SELECT IFNULL(SUM(BHT1000), 0) 
@@ -927,6 +1067,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT1000), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT1000), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT1000
 					  FROM TSB
 					 WHERE TSB.TSBId = ?
@@ -955,6 +1109,20 @@ namespace DMT.Models
 						 , TSB.TSBNameEN
 						 , TSB.TSBNameTH
 						 , ((
+							 SELECT IFNULL(SUM(AdditionalBHTTotal), 0) 
+							   FROM TSBAdditionTransaction 
+							  WHERE (   TSBAdditionTransaction.TransactionType = 0 
+									 OR TSBAdditionTransaction.TransactionType = 1
+									) -- Initial = 0, Borrow = 1
+								AND TSBAdditionTransaction.TSBId = TSB.TSBId
+							) -
+							(
+							 SELECT IFNULL(SUM(AdditionalBHTTotal), 0) 
+							   FROM TSBAdditionTransaction 
+							  WHERE TSBAdditionTransaction.TransactionType = 2 -- Returns = 2
+								AND TSBAdditionTransaction.TSBId = TSB.TSBId
+							)) AS AdditionalBHTTotal
+						 , ((
 							 SELECT IFNULL(SUM(ST25), 0) 
 							   FROM TSBCreditTransaction 
 							  WHERE (   TSBCreditTransaction.TransactionType = 0 
@@ -967,6 +1135,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.ST25), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.ST25), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS ST25
 						 , ((
 							 SELECT IFNULL(SUM(ST50), 0) 
@@ -981,6 +1163,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.ST50), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.ST50), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS ST50
 						 , ((
 							 SELECT IFNULL(SUM(BHT1), 0) 
@@ -995,6 +1191,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT1), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT1), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT1
 						 , ((
 							 SELECT IFNULL(SUM(BHT2), 0) 
@@ -1009,6 +1219,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT2), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT2), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT2
 						 , ((
 							 SELECT IFNULL(SUM(BHT5), 0) 
@@ -1023,6 +1247,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT5), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT5), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT5
 						 , ((
 							 SELECT IFNULL(SUM(BHT10), 0) 
@@ -1037,6 +1275,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT10), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT10), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT10
 						 , ((
 							 SELECT IFNULL(SUM(BHT20), 0) 
@@ -1051,6 +1303,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT20), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT20), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT20
 						 , ((
 							 SELECT IFNULL(SUM(BHT50), 0) 
@@ -1065,6 +1331,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT50), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT50), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT50
 						 , ((
 							 SELECT IFNULL(SUM(BHT100), 0) 
@@ -1079,6 +1359,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT100), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT100), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT100
 						 , ((
 							 SELECT IFNULL(SUM(BHT500), 0) 
@@ -1093,6 +1387,20 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
+							) - 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT500), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT500), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT500
 						 , ((
 							 SELECT IFNULL(SUM(BHT1000), 0) 
@@ -1107,21 +1415,21 @@ namespace DMT.Models
 							   FROM TSBCreditTransaction 
 							  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND TSBCreditTransaction.TSBId = TSB.TSBId
-							)) AS BHT1000
-						 , ((
-							 SELECT IFNULL(SUM(AdditionalBHTTotal), 0) 
-							   FROM TSBAdditionTransaction 
-							  WHERE (   TSBAdditionTransaction.TransactionType = 0 
-									 OR TSBAdditionTransaction.TransactionType = 1
-									) -- Initial = 0, Borrow = 1
-								AND TSBAdditionTransaction.TSBId = TSB.TSBId
-							) -
+							) - 
 							(
-							 SELECT IFNULL(SUM(AdditionalBHTTotal), 0) 
-							   FROM TSBAdditionTransaction 
-							  WHERE TSBAdditionTransaction.TransactionType = 2 -- Returns = 2
-								AND TSBAdditionTransaction.TSBId = TSB.TSBId
-							)) AS AdditionalBHTTotal
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT1000), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 1 -- Borrow
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) + 
+							(
+							 SELECT IFNULL(SUM(UserCreditTransaction.BHT1000), 0) 
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCredit.TSBId = TSB.TSBId
+								AND UserCreditTransaction.TransactionType = 2 -- Return
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS BHT1000
 					  FROM TSB
 				";
 				var rets = NQuery.Query<FKs>(cmd).ToList();
