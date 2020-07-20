@@ -775,7 +775,7 @@ namespace DMT.Models
 							   FROM UserCreditTransaction, UserCredit
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-                                AND UserCredit.TSBId = TSB.TSBId
+								AND UserCredit.TSBId = TSB.TSBId
 							) -
 							(
 							 SELECT (IFNULL(SUM(UserCreditTransaction.ST25), 0) * .25 +
@@ -792,7 +792,7 @@ namespace DMT.Models
 							   FROM UserCreditTransaction, UserCredit 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-                                AND UserCredit.TSBId = TSB.TSBId
+								AND UserCredit.TSBId = TSB.TSBId
 							)) AS UserBHTTotal
 						 , ((
 							 SELECT IFNULL(SUM(AdditionalBHTTotal), 0) 
@@ -1116,9 +1116,8 @@ namespace DMT.Models
 								AND UserCreditTransaction.TransactionType = 2 -- Return
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT1000
-					  FROM TSB, UserCredit
-					 WHERE UserCredit.TSBId = TSB.TSBId
-					   AND TSB.TSBId = ?
+					  FROM TSB
+					 WHERE TSB.TSBId = ?
 				";
 				var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
 				var result = (null != ret) ? ret.ToTSBCreditBalance() : null;
@@ -1126,7 +1125,6 @@ namespace DMT.Models
 				{
 					var addition = TSBAdditionBalance.GetCurrent();
 					result.AdditionalBHTTotal = (null != addition) ? addition.AdditionalBHTTotal : decimal.Zero;
-
 				}
 				return result;
 			}
@@ -1158,7 +1156,7 @@ namespace DMT.Models
 							   FROM UserCreditTransaction, UserCredit 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-                                AND UserCredit.TSBId = TSB.TSBId
+								AND UserCredit.TSBId = TSB.TSBId
 							) -
 							(
 							 SELECT (IFNULL(SUM(UserCreditTransaction.ST25), 0) * .25 +
@@ -1175,7 +1173,7 @@ namespace DMT.Models
 							   FROM UserCreditTransaction, UserCredit 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-                                AND UserCredit.TSBId = TSB.TSBId
+								AND UserCredit.TSBId = TSB.TSBId
 							)) AS UserBHTTotal
 						 , ((
 							 SELECT IFNULL(SUM(AdditionalBHTTotal), 0) 
@@ -1499,8 +1497,7 @@ namespace DMT.Models
 								AND UserCreditTransaction.TransactionType = 2 -- Return
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT1000
-					  FROM TSB, UserCredit
-					 WHERE UserCredit.TSBId = TSB.TSBId
+					  FROM TSB
 				";
 				var rets = NQuery.Query<FKs>(cmd).ToList();
 				var results = new List<TSBCreditBalance>();
