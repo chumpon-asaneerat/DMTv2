@@ -60,6 +60,13 @@ namespace DMT.TA.Windows.Collector.Credit
 
         private void cmdOK_Click(object sender, RoutedEventArgs e)
         {
+            if (HasNegative())
+            {
+                MessageBox.Show(Application.Current.MainWindow, 
+                    "ไม่สามารถดำเนินการบันทึกข้อมูลได้ เนื่องจากระบบพบว่ามีการ ยอดการยืมเงินในบางรายการ เกินจำนวนที่่ด่านมีอยู่", 
+                    "Toll Admin");
+                return;
+            }
             if (null != srcObj && srcObj.UserCreditId == 0)
             {
                 var plazaGrp = cbPlzaGroups.SelectedItem as PlazaGroup;
@@ -106,8 +113,27 @@ namespace DMT.TA.Windows.Collector.Credit
             }
         }
 
+        private bool HasNegative()
+        {
+            return (
+                sumObj.ST25 < 0 ||
+                sumObj.ST50 < 0 ||
+                sumObj.BHT1 < 0 ||
+                sumObj.BHT2 < 0 ||
+                sumObj.BHT5 < 0 ||
+                sumObj.BHT10 < 0 ||
+                sumObj.BHT20 < 0 ||
+                sumObj.BHT50 < 0 ||
+                sumObj.BHT100 < 0 ||
+                sumObj.BHT500 < 0 ||
+                sumObj.BHT1000 < 0
+                );
+        }
+
         private void Calc()
         {
+            sumObj.ST25 = plazaObj.ST25 - usrObj.ST25;
+            sumObj.ST50 = plazaObj.ST50 - usrObj.ST50;
             sumObj.BHT1 = plazaObj.BHT1 - usrObj.BHT1;
             sumObj.BHT2 = plazaObj.BHT2 - usrObj.BHT2;
             sumObj.BHT5 = plazaObj.BHT5 - usrObj.BHT5;

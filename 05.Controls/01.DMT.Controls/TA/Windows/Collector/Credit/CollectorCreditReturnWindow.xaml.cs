@@ -44,6 +44,13 @@ namespace DMT.TA.Windows.Collector.Credit
 
         private void cmdOK_Click(object sender, RoutedEventArgs e)
         {
+            if (HasNegative())
+            {
+                MessageBox.Show(Application.Current.MainWindow,
+                    "ไม่สามารถดำเนินการบันทึกข้อมูลได้ เนื่องจากระบบพบว่ามีการ คืนเงิน เกินจำนวนที่่ได้ยืมไป",
+                    "Toll Admin");
+                return;
+            }
             if (null != srcObj && null != usrObj)
             {
                 usrObj.UserCreditId = srcObj.UserCreditId;
@@ -72,6 +79,11 @@ namespace DMT.TA.Windows.Collector.Credit
         }
 
         #endregion
+
+        private bool HasNegative()
+        {
+            return (usrObj.BHTTotal > srcObj.BHTTotal);
+        }
 
         public void Setup(UserCredit credit)
         {
