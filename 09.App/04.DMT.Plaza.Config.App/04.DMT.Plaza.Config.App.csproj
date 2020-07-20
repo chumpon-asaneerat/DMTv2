@@ -84,6 +84,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Config\Pages\HQSetupUriPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Config\Pages\ShiftViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -115,6 +119,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Config\Pages\HQSetupUriPage.xaml.cs">
+      <DependentUpon>HQSetupUriPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Config\Pages\ShiftViewPage.xaml.cs">
       <DependentUpon>ShiftViewPage.xaml</DependentUpon>

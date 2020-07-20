@@ -135,6 +135,15 @@ namespace DMT
 
         #endregion
 
+        #region Data Center
+
+        private void cmdHQSetupUri_Click(object sender, RoutedEventArgs e)
+        {
+            PageContentManager.Instance.Current = new Config.Pages.HQSetupUriPage();
+        }
+
+        #endregion
+
         #region Windows Services (Install/Unstall/CheckStatus)
 
         private void cmdInstall_Click(object sender, RoutedEventArgs e)

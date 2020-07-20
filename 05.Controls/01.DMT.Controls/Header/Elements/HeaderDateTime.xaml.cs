@@ -3,6 +3,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 //using NLib.Services;
@@ -30,11 +31,18 @@ namespace DMT.Controls.Header
         #endregion
 
         private DispatcherTimer timer = new DispatcherTimer();
+        private NLib.Components.PingManager ping;
 
         #region Loaded/Unloaded
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            ping = new NLib.Components.PingManager();
+            ping.OnReply += Ping_OnReply;
+            ping.Add(@"www.google.com2");
+            ping.Interval = 1000;
+            ping.Start();
+
             UpdateUI();
 
             timer = new DispatcherTimer();
@@ -43,8 +51,29 @@ namespace DMT.Controls.Header
             timer.Start();
         }
 
+        private void Ping_OnReply(object sender, NLib.Networks.PingResponseEventArgs e)
+        {
+            if (null != e.Reply && 
+                e.Reply.Status == System.Net.NetworkInformation.IPStatus.Success)
+            {
+                borderDT.Background = new SolidColorBrush(Colors.Transparent);
+            }
+            else
+            {
+                borderDT.Background = new SolidColorBrush(Colors.Maroon);
+            }
+        }
+
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
+            if (null != ping)
+            {
+                ping.OnReply -= Ping_OnReply;
+                ping.Stop();
+                ping.Dispose();
+            }
+            ping = null;
+
             if (null != timer)
             {
                 timer.Stop();

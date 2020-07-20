@@ -8,11 +8,15 @@ Update 2020-07-20 #28 (TA)
 Update 2020-07-20 #27 (TA)
 - 
 
+[commited]
 Update 2020-07-20 #26 (TA)
-- 
+- Implements TA/TOD model class #106.
+  - Header DateTime add supports ping (hard code host name to www.google.com2).
 
+[commited]
 Update 2020-07-20 #25 (TA)
-- 
+- Implements TA/TOD model class #107.
+  - Plaza Config App init HQSetupUriPage.
 
 [commited]
 Update 2020-07-20 #24 (TA)
