@@ -428,6 +428,7 @@ namespace DMT.Models
                 cmd += "     , Role.RoleNameEN, Role.RoleNameTH ";
                 cmd += "  FROM User, Role ";
                 cmd += " WHERE User.RoleId = Role.RoleId ";
+                cmd += "   AND User.UserId = ? ";
 
                 var ret = NQuery.Query<FKs>(cmd, userId).FirstOrDefault();
                 return (null != ret) ? ret.ToUser() : null;

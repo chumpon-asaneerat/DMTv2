@@ -4,173 +4,197 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ctrl="clr-namespace:DMT.TA.Controls.Plaza.Entry"
-        mc:Ignorable="d"
-        Title="Collector Credit Borrow" 
-        ResizeMode="NoResize" 
-        ShowInTaskbar="False" 
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Center" 
-        WindowStartupLocation="CenterOwner"
-        Height="600" 
+        Title="Collector Credit Borrow"
         Width="1100"
-        Background="DimGray">
+        Height="600"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner"
+        Background="DimGray"
+        mc:Ignorable="d">
     <Grid Margin="15">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="311*"/>
-            <ColumnDefinition Width="653*"/>
+            <ColumnDefinition Width="311*" />
+            <ColumnDefinition Width="653*" />
         </Grid.ColumnDefinitions>
         <DockPanel Grid.ColumnSpan="2">
-            <DockPanel x:Name="infoPanel" 
-                       DockPanel.Dock="Top"
+            <DockPanel x:Name="infoPanel"
                        Margin="10"
+                       DockPanel.Dock="Top"
                        Visibility="Visible">
-                <StackPanel Orientation="Horizontal">
-                    <Grid Height="10"/>
-                    <TextBlock FontSize="18"    
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top"
+                            x:Name="panelSearch">
+                    <Grid Height="10" />
+                    <TextBlock Width="150"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
+                               FontSize="18"
                                TextAlignment="Right"
                                Foreground="WhiteSmoke"
-                               Text="รหัสพนักงาน:"
-                               Width="100"/>
-                    <Grid Width="5"/>
-                    <TextBox x:Name="txtStaffId"
-                             FontSize="18"
+                               Text="ค้นหา รหัสพนักงาน:" />
+                    <Grid Width="5" />
+                    <TextBox x:Name="txtSearchUserId"
+                             Width="150"
                              HorizontalAlignment="Left"
                              VerticalAlignment="Center"
-                             Width="70"
-                             Text=""/>
-                    <TextBlock FontSize="18"    
+                             FontSize="18"
+                             Text="" />
+                    <Grid Width="5" />
+                    <Button x:Name="cmdSearchUser"
+                            Width="75"
+                            Content="ค้นหา"
+                            Click="cmdSearchUser_Click" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                    <Grid Height="10" />
+                    <TextBlock Width="110"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
+                               FontSize="18"
                                TextAlignment="Right"
                                Foreground="WhiteSmoke"
-                               Text="ชื่อพนักงาน:"
-                               Width="100"/>
-                    <Grid Width="5"/>
+                               Text="รหัสพนักงาน:" />
+                    <Grid Width="5" />
+                    <TextBox x:Name="txtUserId"
+                             Width="100"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"
+                             FontSize="18"
+                             IsEnabled="False"
+                             Text="{Binding UserId}" />
+                    <Grid Width="5" />
+                    <TextBlock Width="160"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="18"
+                               TextAlignment="Right"
+                               Foreground="WhiteSmoke"
+                               Text="ชื่อพนักงาน:" />
+                    <Grid Width="5" />
                     <TextBox x:Name="txtName"
-                             FontSize="18"
+                             Width="200"
                              HorizontalAlignment="Left"
                              VerticalAlignment="Center"
-                             Width="100"
-                             Text=""/>
-                    <TextBlock FontSize="18"    
+                             IsEnabled="False"
+                             FontSize="18"
+                             Text="{Binding FullNameTH}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Grid Height="10" />
+                    <TextBlock Width="110"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
+                               FontSize="18"
                                TextAlignment="Right"
                                Foreground="WhiteSmoke"
-                               Text="หมายเลขถุงเงิน:"
-                               Width="110"/>
-                    <Grid Width="5"/>
+                               Text="หมายเลขถุงเงิน:" />
+                    <Grid Width="5" />
                     <TextBox x:Name="txtBagNo"
-                             FontSize="18"
+                             Width="100"
                              HorizontalAlignment="Left"
                              VerticalAlignment="Center"
-                             Width="100"
-                             Text=""/>
-                    <Grid Width="5"/>
-                    <TextBlock FontSize="18"    
+                             FontSize="18"
+                             Text="{Binding BagNo}" />
+                    <Grid Width="5" />
+                    <TextBlock Width="160"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
+                               FontSize="18"
                                TextAlignment="Right"
                                Foreground="WhiteSmoke"
-                               Text="หมายเลขเข็มขัดนิรภัย:"
-                               Width="160"/>
-                    <Grid Width="5"/>
+                               Text="หมายเลขเข็มขัดนิรภัย:" />
+                    <Grid Width="5" />
                     <TextBox x:Name="txtBeltNo"
-                             FontSize="18"
+                             Width="100"
                              HorizontalAlignment="Left"
                              VerticalAlignment="Center"
-                             Width="100"
-                             Text=""/>
-                    <Grid Width="5"/>
-                    <TextBlock FontSize="18"    
+                             FontSize="18"
+                             Text="{Binding BaltNo}" />
+                    <Grid Width="5" />
+                    <TextBlock Width="40"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
+                               FontSize="18"
                                TextAlignment="Right"
                                Foreground="WhiteSmoke"
-                               Text="ด่าน:"
-                               Width="40"/>
-                    <Grid Width="5"/>
-                    <ComboBox Name="cbSide" FontSize="18" 
+                               Text="ด่าน:" />
+                    <Grid Width="5" />
+                    <ComboBox Name="cbPlzaGroups"
+                              Width="100"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"
                               HorizontalContentAlignment="Center"
                               VerticalContentAlignment="Center"
-                              Width="100"
-                              SelectedValue="1">
-                        <ComboBoxItem Content="ขาเข้า"/>
-                        <ComboBoxItem Content="ขาออก"/>
+                              FontSize="18"
+                              ItemsSource="{Binding}">
                     </ComboBox>
                 </StackPanel>
             </DockPanel>
-            <DockPanel DockPanel.Dock="Bottom" Height="60">
-                <Grid Width="5" DockPanel.Dock="Right"></Grid>
+            <DockPanel Height="60" DockPanel.Dock="Bottom">
+                <Grid Width="5" DockPanel.Dock="Right" />
                 <Button x:Name="cmdOK"
-                            DockPanel.Dock="Right"
-                        Foreground="White"
+                        Width="220"
+                        Height="50"
                         HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            HorizontalContentAlignment="Stretch"
-                            VerticalContentAlignment="Stretch"
-                            Height="50"
-                            Width="220"
+                        VerticalAlignment="Center"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        DockPanel.Dock="Right"
+                        Foreground="White"
                         Click="cmdOK_Click">
                     <Button.Background>
-                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png" />
                     </Button.Background>
                     <DockPanel>
-                        <Grid Width="5"></Grid>
-                        <Image DockPanel.Dock="Left" 
+                        <Grid Width="5" />
+                        <Image Width="50"
                                Height="50"
-                               Width="50"
-                               Source="/DMT.Controls;component/Images/Button/OK2.png" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center" />
-                        <StackPanel Orientation="Vertical"
-                                    VerticalAlignment="Center">
-                            <TextBlock FontSize="20" 
-                                       HorizontalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Left"
+                               Source="/DMT.Controls;component/Images/Button/OK2.png" />
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                            <TextBlock HorizontalAlignment="Center"
+                                       FontSize="20"
                                        Text="ตกลง"
                                        FontWeight="Bold"
                                        TextAlignment="Center"
-                                       TextWrapping="Wrap">
-                            </TextBlock>
+                                       TextWrapping="Wrap" />
                             <Grid Height="10" />
                         </StackPanel>
                     </DockPanel>
                 </Button>
-                <Grid Width="5" DockPanel.Dock="Left"></Grid>
+                <Grid Width="5" DockPanel.Dock="Left" />
                 <Button x:Name="cmdCancel"
-                            DockPanel.Dock="Left"
-                        Foreground="White"
+                        Width="220"
+                        Height="50"
                         HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            HorizontalContentAlignment="Stretch"
-                            VerticalContentAlignment="Stretch"
-                            Height="50"
-                            Width="220"
+                        VerticalAlignment="Center"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        DockPanel.Dock="Left"
+                        Foreground="White"
                         Click="cmdCancel_Click">
                     <Button.Background>
-                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png" />
                     </Button.Background>
                     <DockPanel>
-                        <Grid Width="5"></Grid>
-                        <Image DockPanel.Dock="Left" 
+                        <Grid Width="5" />
+                        <Image Width="50"
                                Height="50"
-                               Width="50"
-                               Source="/DMT.Controls;component/Images/Button/Cancel2.png" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center" />
-                        <StackPanel Orientation="Vertical"
-                                    VerticalAlignment="Center">
-                            <TextBlock FontSize="20" 
-                                       HorizontalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Left"
+                               Source="/DMT.Controls;component/Images/Button/Cancel2.png" />
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                            <TextBlock HorizontalAlignment="Center"
+                                       FontSize="20"
                                        Text="ยกเลิก"
                                        FontWeight="Bold"
                                        TextAlignment="Center"
-                                       TextWrapping="Wrap">
-                            </TextBlock>
+                                       TextWrapping="Wrap" />
                             <Grid Height="10" />
                         </StackPanel>
                     </DockPanel>
@@ -179,7 +203,7 @@
             </DockPanel>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10" />
@@ -191,32 +215,31 @@
                     <ColumnDefinition Width="10" />
                 </Grid.ColumnDefinitions>
                 <ctrl:PlazaCreditEntry x:Name="srcEntry"
-                                Grid.Column="1"
-                                FontSize="16"
-                                IsEnabled="False"
-                                Background="CornflowerBlue"
-                                Foreground="WhiteSmoke" />
+                                       Grid.Column="1"
+                                       FontSize="16"
+                                       IsEnabled="False"
+                                       Background="CornflowerBlue"
+                                       Foreground="WhiteSmoke" />
                 <Grid Grid.Column="2"
                       Margin="15,223,15,151"
                       HorizontalAlignment="Center"
-                      VerticalAlignment="Center">
-                </Grid>
+                      VerticalAlignment="Center" />
                 <ctrl:PlazaCreditEntry x:Name="usrEntry"
-                                Grid.Column="3"
-                                FontSize="16"
-                                Background="DarkRed"
-                                Foreground="WhiteSmoke" />
+                                       Grid.Column="3"
+                                       FontSize="16"
+                                       Background="DarkRed"
+                                       Foreground="WhiteSmoke" />
                 <Grid Grid.Column="4"
                       Margin="15,223,15,151"
                       HorizontalAlignment="Center"
-                      VerticalAlignment="Center">
-                </Grid>
-                <ctrl:PlazaCreditEntry x:Name="sumEntry" Margin="0 0 0 5"
-                                Grid.Column="5"
-                                FontSize="16"
-                                IsEnabled="False"
-                                Background="Orange"
-                                Foreground="WhiteSmoke" />
+                      VerticalAlignment="Center" />
+                <ctrl:PlazaCreditEntry x:Name="sumEntry"
+                                       Grid.Column="5"
+                                       Margin="0,0,0,5"
+                                       FontSize="16"
+                                       IsEnabled="False"
+                                       Background="Orange"
+                                       Foreground="WhiteSmoke" />
             </Grid>
         </DockPanel>
     </Grid>

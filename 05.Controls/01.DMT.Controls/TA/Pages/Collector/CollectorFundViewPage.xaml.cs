@@ -39,6 +39,8 @@ namespace DMT.TA.Pages.Collector
         {
             //var win = new DMT.TA.Windows.Plaza.PlazaReceivedCreditWindow();
             var win = new DMT.TA.Windows.Collector.Credit.CollectorCreditBorrowWindow();
+            win.Owner = Application.Current.MainWindow;
+            win.Setup(new UserCredit());
             if (win.ShowDialog() == false)
             {
                 return;

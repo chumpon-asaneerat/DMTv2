@@ -2,8 +2,12 @@
 Update 2020-07-20 #20 (TA)
 - 
 
+[commited]
 Update 2020-07-20 #19 (TA)
-- 
+- Implements TA/TOD model class #103.
+  - Implements CollectorFundViewPage #3.
+  - Implements CollectorCreditBorrowWindow #1.
+  - Fixed Get User By Id.
 
 [commited]
 Update 2020-07-20 #18 (TA)
