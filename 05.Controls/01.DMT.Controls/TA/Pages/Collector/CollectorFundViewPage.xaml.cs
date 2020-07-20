@@ -31,6 +31,20 @@ namespace DMT.TA.Pages.Collector
 
         #endregion
 
+        #region Loaded/Unloaded
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            grid.ItemChanged += Grid_ItemChanged;
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            grid.ItemChanged -= Grid_ItemChanged;
+        }
+
+        #endregion
+
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
 
         #region Button Handlers
@@ -57,6 +71,15 @@ namespace DMT.TA.Pages.Collector
 
         #endregion
 
+        #region CollectorSummaryView Handlers
+
+        private void Grid_ItemChanged(object sender, EventArgs e)
+        {
+            RefreshPlazaInfo();
+        }
+
+        #endregion
+
         public void RefreshPlazaInfo()
         {
             var tsbCredit = ops.Credits.GetCurrent();
@@ -72,6 +95,5 @@ namespace DMT.TA.Pages.Collector
 
             grid.Setup();
         }
-
     }
 }

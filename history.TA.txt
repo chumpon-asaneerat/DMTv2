@@ -17,8 +17,10 @@ Update 2020-07-20 #25 (TA)
 Update 2020-07-20 #24 (TA)
 - 
 
+[commited]
 Update 2020-07-20 #23 (TA)
-- 
+- Implements TA/TOD model class #105.
+  - Collector Borrow/Return process fixed some minor bug #2.
 
 [commited]
 Update 2020-07-20 #22 (TA)

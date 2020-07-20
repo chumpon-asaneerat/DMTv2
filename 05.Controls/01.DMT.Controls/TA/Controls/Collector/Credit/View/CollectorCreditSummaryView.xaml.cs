@@ -12,6 +12,7 @@ using NLib.Reflection;
 using NLib.Reports.Rdlc;
 using System.Reflection;
 using System.ComponentModel;
+using NLib;
 
 #endregion
 
@@ -40,7 +41,7 @@ namespace DMT.TA.Controls.Collector.Credit.View
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
@@ -67,6 +68,7 @@ namespace DMT.TA.Controls.Collector.Credit.View
                 return;
             }
 
+            if (null != ItemChanged) ItemChanged.Call(this, System.EventArgs.Empty);
             RefreshUserCredits();
         }
 
@@ -85,6 +87,7 @@ namespace DMT.TA.Controls.Collector.Credit.View
                 return;
             }
 
+            if (null != ItemChanged) ItemChanged.Call(this, System.EventArgs.Empty);
             RefreshUserCredits();
         }
 
@@ -109,5 +112,7 @@ namespace DMT.TA.Controls.Collector.Credit.View
         {
             RefreshUserCredits();
         }
+
+        public event System.EventHandler ItemChanged;
     }
 }
