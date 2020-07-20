@@ -52,6 +52,10 @@ Update 2020-07-21 #1 (TA)
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-07-20 #36 (TA)
+- Check merge to origin/master (OK).
+
+[commited]
 Update 2020-07-20 #35 (TA)
 - Implements TA/TOD model class #111.
   - Collector Borrow/Return process fixed some minor bug #6.
