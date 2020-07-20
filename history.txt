@@ -20,6 +20,10 @@ Update 2020-07-20 #6
 
 [commited]
 Update 2020-07-20 #5
+- Update history.txt
+
+[commited]
+Update 2020-07-20 #4
 - Prepare history.txt
 
 [commited]
