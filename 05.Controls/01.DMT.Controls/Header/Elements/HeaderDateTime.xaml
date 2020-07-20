@@ -10,7 +10,8 @@
              Unloaded="UserControl_Unloaded">
     <!-- Current Date Time -->
     <Border BorderBrush="WhiteSmoke"
-            BorderThickness="1">
+            BorderThickness="1"
+            Background="Maroon">
         <DockPanel HorizontalAlignment="Center" 
                     Margin="5 0 5 10"
                     Height="90">
