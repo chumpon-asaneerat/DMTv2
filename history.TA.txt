@@ -2,8 +2,10 @@
 Update 2020-07-20 #29 (TA)
 - 
 
+[commited]
 Update 2020-07-20 #28 (TA)
-- 
+- Implements TA/TOD model class #107.
+  - TOD Revenue Entry now load BagNo and BeltNo that assigned from TA.
 
 [commited]
 Update 2020-07-20 #27 (TA)

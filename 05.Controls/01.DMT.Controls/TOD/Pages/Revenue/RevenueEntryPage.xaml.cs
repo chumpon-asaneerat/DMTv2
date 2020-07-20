@@ -105,7 +105,19 @@ namespace DMT.TOD.Pages.Revenue
                 txtUserId.Text = _userShift.UserId;
                 txtUserName.Text = _userShift.FullNameTH;
 
+                var search = Search.UserCredits.GetActiveById.Create(_userShift.UserId, _plazaGroup.PlazaGroupId);
+                var userCredit = ops.Credits.GetActiveUserCreditById(search);
                 _revenueEntry = new Models.RevenueEntry();
+                if (null != userCredit)
+                {
+                    _revenueEntry.BagNo = userCredit.BagNo;
+                    _revenueEntry.BeltNo = userCredit.BeltNo;
+                }
+                else
+                {
+                    _revenueEntry.BagNo = string.Empty;
+                    _revenueEntry.BeltNo = string.Empty;
+                }
                 // assigned plaza.
                 _revenueEntry.PlazaGroupId = _plazaGroup.PlazaGroupId;
 
