@@ -51,6 +51,15 @@ Update 2020-07-21 #1 (TA)
 - 
 
 --------------------------------------------------------------------------------------------
+Update 2020-07-20 #38 (TA)
+- 
+
+[commited]
+Update 2020-07-20 #37 (TA)
+- Implements TA/TOD model class #113
+  - Collector Borrow/Return process fixed some minor bug #7.
+  - Update UserCredit fixed bug in queries.
+
 [commited]
 Update 2020-07-20 #37 (TA)
 - Implements TA/TOD model class #112 (TA remind note below).

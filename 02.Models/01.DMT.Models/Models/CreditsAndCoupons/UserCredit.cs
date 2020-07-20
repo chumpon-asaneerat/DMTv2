@@ -1248,12 +1248,13 @@ namespace DMT.Models
 					   AND UserCredit.TSBId = TSB.TSBId 
 					   AND UserCredit.PlazaGroupId = PlazaGroup.PlazaGroupId 
 					   AND UserCredit.UserId = User.UserId 
+					   AND UserCredit.UserId = ?
 					   AND UserCredit.TSBId = ? 
 					   AND UserCredit.State <> ? 
 				";
 
 				var ret = NQuery.Query<FKs>(cmd,
-					plazaGroup.TSBId, StateTypes.Completed).FirstOrDefault();
+					user.UserId, plazaGroup.TSBId, StateTypes.Completed).FirstOrDefault();
 				
 				UserCredit inst;
 				if (null == ret)
@@ -1435,12 +1436,13 @@ namespace DMT.Models
 					   AND UserCredit.TSBId = TSB.TSBId 
 					   AND UserCredit.PlazaGroupId = PlazaGroup.PlazaGroupId 
 					   AND UserCredit.UserId = User.UserId 
+					   AND UserCredit.UserId = ?
 					   AND UserCredit.PlazaGroupId = ? 
 					   AND UserCredit.State <> ? 
 				";
 
 				var ret = NQuery.Query<FKs>(cmd,
-					plazaGroupId, StateTypes.Completed).FirstOrDefault();
+					userId, plazaGroupId, StateTypes.Completed).FirstOrDefault();
 
 				UserCredit inst = (null != ret) ? ret.ToUserCredit() : null;
 				return inst;
