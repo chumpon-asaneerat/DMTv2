@@ -51,11 +51,23 @@ Update 2020-07-21 #1 (TA)
 - 
 
 --------------------------------------------------------------------------------------------
+Update 2020-07-20 #35 (TA)
+- 
+
+Update 2020-07-20 #34 (TA)
+- 
+
+Update 2020-07-20 #33 (TA)
+- 
+
 Update 2020-07-20 #32 (TA)
 - 
 
+[commited]
 Update 2020-07-20 #31 (TA)
-- 
+- Implements TA/TOD model class #108.
+  - UserCredit now can get UserBHTTotal.
+  - Collector Borrow/Return process fixed some minor bug #3.
 
 [commited]
 Update 2020-07-20 #30 (TA)

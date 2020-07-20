@@ -761,6 +761,40 @@ namespace DMT.Models
 						 , TSB.TSBNameEN
 						 , TSB.TSBNameTH
 						 , ((
+							 SELECT (IFNULL(SUM(UserCreditTransaction.ST25), 0) * .25 +
+									 IFNULL(SUM(UserCreditTransaction.ST50), 0) * .5 +
+									 IFNULL(SUM(UserCreditTransaction.BHT1), 0) +
+									 IFNULL(SUM(UserCreditTransaction.BHT2), 0) * 2 +
+									 IFNULL(SUM(UserCreditTransaction.BHT5), 0) * 5 +
+									 IFNULL(SUM(UserCreditTransaction.BHT10), 0) * 10 +
+									 IFNULL(SUM(UserCreditTransaction.BHT20), 0) * 20 +
+									 IFNULL(SUM(UserCreditTransaction.BHT50), 0) * 50 +
+									 IFNULL(SUM(UserCreditTransaction.BHT100), 0) * 100 +
+									 IFNULL(SUM(UserCreditTransaction.BHT500), 0) * 500 +
+									 IFNULL(SUM(UserCreditTransaction.BHT1000), 0) * 1000)
+							   FROM UserCreditTransaction, UserCredit
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+                                AND UserCredit.TSBId = TSB.TSBId
+							) -
+							(
+							 SELECT (IFNULL(SUM(UserCreditTransaction.ST25), 0) * .25 +
+									 IFNULL(SUM(UserCreditTransaction.ST50), 0) * .5 +
+									 IFNULL(SUM(UserCreditTransaction.BHT1), 0) +
+									 IFNULL(SUM(UserCreditTransaction.BHT2), 0) * 2 +
+									 IFNULL(SUM(UserCreditTransaction.BHT5), 0) * 5 +
+									 IFNULL(SUM(UserCreditTransaction.BHT10), 0) * 10 +
+									 IFNULL(SUM(UserCreditTransaction.BHT20), 0) * 20 +
+									 IFNULL(SUM(UserCreditTransaction.BHT50), 0) * 50 +
+									 IFNULL(SUM(UserCreditTransaction.BHT100), 0) * 100 +
+									 IFNULL(SUM(UserCreditTransaction.BHT500), 0) * 500 +
+									 IFNULL(SUM(UserCreditTransaction.BHT1000), 0) * 1000)
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+                                AND UserCredit.TSBId = TSB.TSBId
+							)) AS UserBHTTotal
+						 , ((
 							 SELECT IFNULL(SUM(AdditionalBHTTotal), 0) 
 							   FROM TSBAdditionTransaction 
 							  WHERE (   TSBAdditionTransaction.TransactionType = 0 
@@ -1082,8 +1116,9 @@ namespace DMT.Models
 								AND UserCreditTransaction.TransactionType = 2 -- Return
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT1000
-					  FROM TSB
-					 WHERE TSB.TSBId = ?
+					  FROM TSB, UserCredit
+					 WHERE UserCredit.TSBId = TSB.TSBId
+					   AND TSB.TSBId = ?
 				";
 				var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
 				var result = (null != ret) ? ret.ToTSBCreditBalance() : null;
@@ -1109,6 +1144,40 @@ namespace DMT.Models
 						 , TSB.TSBNameEN
 						 , TSB.TSBNameTH
 						 , ((
+							 SELECT (IFNULL(SUM(UserCreditTransaction.ST25), 0) * .25 +
+									 IFNULL(SUM(UserCreditTransaction.ST50), 0) * .5 +
+									 IFNULL(SUM(UserCreditTransaction.BHT1), 0) +
+									 IFNULL(SUM(UserCreditTransaction.BHT2), 0) * 2 +
+									 IFNULL(SUM(UserCreditTransaction.BHT5), 0) * 5 +
+									 IFNULL(SUM(UserCreditTransaction.BHT10), 0) * 10 +
+									 IFNULL(SUM(UserCreditTransaction.BHT20), 0) * 20 +
+									 IFNULL(SUM(UserCreditTransaction.BHT50), 0) * 50 +
+									 IFNULL(SUM(UserCreditTransaction.BHT100), 0) * 100 +
+									 IFNULL(SUM(UserCreditTransaction.BHT500), 0) * 500 +
+									 IFNULL(SUM(UserCreditTransaction.BHT1000), 0) * 1000)
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+                                AND UserCredit.TSBId = TSB.TSBId
+							) -
+							(
+							 SELECT (IFNULL(SUM(UserCreditTransaction.ST25), 0) * .25 +
+									 IFNULL(SUM(UserCreditTransaction.ST50), 0) * .5 +
+									 IFNULL(SUM(UserCreditTransaction.BHT1), 0) +
+									 IFNULL(SUM(UserCreditTransaction.BHT2), 0) * 2 +
+									 IFNULL(SUM(UserCreditTransaction.BHT5), 0) * 5 +
+									 IFNULL(SUM(UserCreditTransaction.BHT10), 0) * 10 +
+									 IFNULL(SUM(UserCreditTransaction.BHT20), 0) * 20 +
+									 IFNULL(SUM(UserCreditTransaction.BHT50), 0) * 50 +
+									 IFNULL(SUM(UserCreditTransaction.BHT100), 0) * 100 +
+									 IFNULL(SUM(UserCreditTransaction.BHT500), 0) * 500 +
+									 IFNULL(SUM(UserCreditTransaction.BHT1000), 0) * 1000)
+							   FROM UserCreditTransaction, UserCredit 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+                                AND UserCredit.TSBId = TSB.TSBId
+							)) AS UserBHTTotal
+						 , ((
 							 SELECT IFNULL(SUM(AdditionalBHTTotal), 0) 
 							   FROM TSBAdditionTransaction 
 							  WHERE (   TSBAdditionTransaction.TransactionType = 0 
@@ -1430,7 +1499,8 @@ namespace DMT.Models
 								AND UserCreditTransaction.TransactionType = 2 -- Return
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							)) AS BHT1000
-					  FROM TSB
+					  FROM TSB, UserCredit
+					 WHERE UserCredit.TSBId = TSB.TSBId
 				";
 				var rets = NQuery.Query<FKs>(cmd).ToList();
 				var results = new List<TSBCreditBalance>();
