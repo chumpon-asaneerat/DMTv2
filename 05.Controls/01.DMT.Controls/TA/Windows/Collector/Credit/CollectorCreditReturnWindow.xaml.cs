@@ -95,7 +95,7 @@ namespace DMT.TA.Windows.Collector.Credit
 
             if (null != srcObj)
             {
-                srcObj.Description = "ยอดยืมปัจจุบัน";
+                srcObj.Description = srcObj.FullNameTH;
                 srcObj.HasRemark = false;
                 usrObj.Description = "คืนเงิน";
             }
