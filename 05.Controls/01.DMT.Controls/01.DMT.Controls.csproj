@@ -101,6 +101,9 @@
     <Compile Include="TA\Controls\Plaza\Entry\LoanMoneyEntry.xaml.cs">
       <DependentUpon>LoanMoneyEntry.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TA\Controls\Plaza\Entry\PlazaCreditEntryOld.xaml.cs">
+      <DependentUpon>PlazaCreditEntryOld.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TA\Controls\Plaza\View\FundPlaza2View.xaml.cs">
       <DependentUpon>FundPlaza2View.xaml</DependentUpon>
     </Compile>
@@ -390,6 +393,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="TA\Controls\Plaza\Entry\LoanMoneyEntry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Controls\Plaza\Entry\PlazaCreditEntryOld.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

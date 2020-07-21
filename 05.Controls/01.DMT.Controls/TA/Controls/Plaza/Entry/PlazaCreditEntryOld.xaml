@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="DMT.TA.Controls.Plaza.Entry.PlazaCreditEntry"
+﻿<UserControl x:Class="DMT.TA.Controls.Plaza.Entry.PlazaCreditEntryOld"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -45,7 +45,7 @@
                         <TextBlock Margin="2" 
                                    DockPanel.Dock="Right"  
                                    TextAlignment="Left" 
-                                   Text="บาท" 
+                                   Text="เหรียญ" 
                                    Width="50"/>
                         <TextBox Margin="2"
                              TextAlignment="Right"
@@ -62,7 +62,7 @@
                         <TextBlock Margin="2" 
                                    DockPanel.Dock="Right"  
                                    TextAlignment="Left" 
-                                   Text="บาท" 
+                                   Text="เหรียญ" 
                                    Width="50"/>
                         <TextBox Margin="2"
                              TextAlignment="Right"
@@ -79,7 +79,7 @@
                         <TextBlock Margin="2" 
                                    DockPanel.Dock="Right"  
                                    TextAlignment="Left" 
-                                   Text="บาท" 
+                                   Text="เหรียญ" 
                                    Width="50"/>
                         <TextBox Margin="2"
                              TextAlignment="Right"
@@ -96,7 +96,7 @@
                         <TextBlock Margin="2" 
                                    DockPanel.Dock="Right"  
                                    TextAlignment="Left" 
-                                   Text="บาท" 
+                                   Text="เหรียญ" 
                                    Width="50"/>
                         <TextBox Margin="2"
                             TextAlignment="Right"
@@ -114,7 +114,7 @@
                         <TextBlock Margin="2" 
                                    DockPanel.Dock="Right"  
                                    TextAlignment="Left" 
-                                   Text="บาท" 
+                                   Text="ฉบับ" 
                                    Width="50"/>
                         <TextBox Margin="2"
                             TextAlignment="Right"
@@ -132,7 +132,7 @@
                         <TextBlock Margin="2" 
                                    DockPanel.Dock="Right"  
                                    TextAlignment="Left" 
-                                   Text="บาท" 
+                                   Text="ฉบับ" 
                                    Width="50"/>
                         <TextBox Margin="2"
                             TextAlignment="Right"
@@ -150,7 +150,7 @@
                         <TextBlock Margin="2" 
                                    DockPanel.Dock="Right"  
                                    TextAlignment="Left" 
-                                   Text="บาท" 
+                                   Text="ฉบับ" 
                                    Width="50"/>
                         <TextBox Margin="2"
                             TextAlignment="Right"
@@ -167,7 +167,7 @@
                         <TextBlock Margin="2" 
                                    DockPanel.Dock="Right"  
                                    TextAlignment="Left" 
-                                   Text="บาท" 
+                                   Text="ฉบับ" 
                                    Width="50"/>
                         <TextBox Margin="2"
                             TextAlignment="Right"
@@ -185,7 +185,7 @@
                         <TextBlock Margin="2" 
                                    DockPanel.Dock="Right"  
                                    TextAlignment="Left" 
-                                   Text="บาท" 
+                                   Text="ฉบับ" 
                                    Width="50"/>
                         <TextBox Margin="2"
                             TextAlignment="Right"
