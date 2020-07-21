@@ -485,10 +485,10 @@ namespace DMT.Models
 		[PeropertyMapName("CreditFlowBHTTotal")]
 		public decimal CreditFlowBHTTotal
 		{
-			get { return _AdditionalBHTTotal + _BHTTotal - _UserBHTTotal; }
+			get { return _AdditionalBHTTotal + _BHTTotal + _UserBHTTotal; }
 			set { }
 		}
-
+		
 		/// <summary>
 		/// Gets or sets total (coin/bill) value in baht.
 		/// </summary>

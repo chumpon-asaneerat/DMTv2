@@ -48,7 +48,7 @@
                         <TextBox Margin="2"
                                  TextAlignment="Right"
                                  IsEnabled="True"
-                                 Text="{Binding CreditFlowBHTTotal, StringFormat=N0}"
+                                 Text="{Binding BHTTotal, StringFormat=N0}"
                                  Width="90"/>
                     </DockPanel>
 
@@ -101,7 +101,7 @@
                         <TextBox Margin="2"
                                  TextAlignment="Right"
                                  IsEnabled="False"
-                                 Text="{Binding BHTTotal, StringFormat=N0}"
+                                 Text="{Binding CreditFlowBHTTotal, StringFormat=N0}"
                                  Width="90"/>
                     </DockPanel>
                 </StackPanel>

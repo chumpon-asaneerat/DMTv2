@@ -72,7 +72,7 @@
                                           Margin="3" />
                         <local:CouponRevenueEntry x:Name="couponRevenue" 
                                                   Grid.Row="1"
-                                                  Background="DarkRed"
+                                                  Background="Purple"
                                                   Foreground="WhiteSmoke"
                                                   Margin="3"/>
                     </Grid>
@@ -85,12 +85,12 @@
                         </Grid.RowDefinitions>
                         <local:CouponUsageEntry x:Name="couponUsage" 
                                                 Grid.Row="0"
-                                                Background="DarkRed"
+                                                Background="Purple"
                                                 Foreground="WhiteSmoke"
                                                 Margin="3"/>
                         <local:CouponDMTEntry x:Name="couponDMT" 
                                                   Grid.Row="1"
-                                                  Background="DarkRed"
+                                                  Background="Purple"
                                                   Foreground="WhiteSmoke"
                                                   Margin="3"/>
                     </Grid>
