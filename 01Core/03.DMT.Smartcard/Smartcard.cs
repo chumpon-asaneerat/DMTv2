@@ -3093,12 +3093,12 @@ namespace DMT.Smartcard
         /// </summary>
         public static void Start()
         {
-            if (null != sdk) return; // already start.
+            //if (null != sdk) return; // already start.
 
             //var resolver = CreateResolver();
-            sdk = factory.CreateInstance();
+            if (null == sdk) sdk = factory.CreateInstance();
 
-            reader = new Sl600SmartCardReader(sdk, 0) { IsEmv = false };
+            if (null == reader) reader = new Sl600SmartCardReader(sdk, 0) { IsEmv = false };
 
             timer = new DispatcherTimer();
             timer.Tick += Timer_Tick;
@@ -3117,6 +3117,10 @@ namespace DMT.Smartcard
             }
             timer = null;
 
+        }
+
+        public static void Release()
+        {
             if (null != reader) reader.Dispose();
             reader = null;
 
