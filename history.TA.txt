@@ -26,40 +26,13 @@ Update 2020-07-22 #3 (TA)
 Update 2020-07-22 #2 (TA)
 - 
 
+[commited]
 Update 2020-07-22 #1 (TA)
-- 
+- Implements TA/TOD model class #114
+  - Add DMTDataCenterBase<T> class.
+  - Add DMTTAEntryTable<T> class.
 
 --------------------------------------------------------------------------------------------
-Update 2020-07-21 #17 (TA)
-- 
-
-Update 2020-07-21 #16 (TA)
-- 
-
-Update 2020-07-21 #15 (TA)
-- 
-
-Update 2020-07-21 #14 (TA)
-- 
-
-Update 2020-07-21 #13 (TA)
-- 
-
-Update 2020-07-21 #12 (TA)
-- 
-
-Update 2020-07-21 #11 (TA)
-- 
-
-Update 2020-07-21 #10 (TA)
-- 
-
-Update 2020-07-21 #9 (TA)
-- 
-
-Update 2020-07-21 #8 (TA)
-- 
-
 [commited]
 Update 2020-07-21 #7 (TA)
 - Fixed smartcard problem. Note. When release sdk its cannot restart again until application is exit.

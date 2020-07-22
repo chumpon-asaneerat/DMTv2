@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExtensionMethods\ModelExtensionMethods.cs" />
+    <Compile Include="Models\Common\DMTTATODBase.cs" />
     <Compile Include="Models\Configuration\Config.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSBAdditionBalance.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSBAdditionTransaction.cs" />
