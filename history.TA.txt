@@ -23,8 +23,11 @@ Update 2020-07-22 #4 (TA)
 Update 2020-07-22 #3 (TA)
 - 
 
+[commited]
 Update 2020-07-22 #2 (TA)
-- 
+- Implements TA/TOD model class #115
+  - Add DMTDataCenterFKs<T> class.
+  - Add DMTTAEntryFKs<T> class.
 
 [commited]
 Update 2020-07-22 #1 (TA)

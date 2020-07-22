@@ -30,6 +30,12 @@ namespace DMT.Models
         #endregion
     }
 
+    public abstract class DMTDataCenterFKs<T> : DMTDataCenterBase<T>
+        where T : NTable, new()
+    {
+
+    }
+
     public abstract class DMTTAEntryTable<T> : DMTDataCenterBase<T>
         where T : NTable, new()
     {
@@ -40,5 +46,11 @@ namespace DMT.Models
         #region Public Properties
 
         #endregion
+    }
+
+    public abstract class DMTTAEntryFKs<T> : DMTDataCenterFKs<T>
+        where T : NTable, new()
+    {
+
     }
 }
