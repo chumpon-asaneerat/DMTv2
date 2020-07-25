@@ -1,6 +1,15 @@
 --------------------------------------------------------------------------------------------
-Update 2020-07-25 #3
+Update 2020-07-25 #5
 - 
+
+Update 2020-07-25 #4
+- 
+
+[commited]
+Update 2020-07-25 #3
+- Revenue Entry implements supports focus next by enter/tab key.
+- Web Service (Client) -> Get Methods
+- Web Service (Local Server) -> Common Return Object as Node.js server.
 
 [commited]
 Update 2020-07-25 #2
