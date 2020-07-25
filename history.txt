@@ -2,8 +2,16 @@
 Update 2020-07-25 #3
 - 
 
+[commited]
 Update 2020-07-25 #2
-- 
+- Implements Config App project (Lane Activity & Payment).
+- Model base classes
+  - DataCenterBase
+  - TSBBase
+  - PlazaGroupBase
+  - PlazaBase
+  - CoinBillEntryBase
+  - CreditEntryBase???
 
 [commited]
 Update 2020-07-25 #1
