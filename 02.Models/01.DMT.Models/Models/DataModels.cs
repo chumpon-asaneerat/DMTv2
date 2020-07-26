@@ -31,7 +31,7 @@ namespace DMT.Models
     #endregion
 
     #region Search nested classes
-
+    /*
     public partial class Search
     {
         // for test.
@@ -334,6 +334,6 @@ namespace DMT.Models
             }
         }
     }
-
+    */
     #endregion
 }

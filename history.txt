@@ -27,8 +27,10 @@ Update 2020-07-26 #18
 Update 2020-07-26 #17
 - 
 
+[commited]
 Update 2020-07-26 #16
-- 
+- Update DMT.Models project #6.
+  - DataModels.cs comment out all code.
 
 [commited]
 Update 2020-07-26 #15
