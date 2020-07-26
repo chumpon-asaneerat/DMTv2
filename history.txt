@@ -21,8 +21,13 @@ Update 2020-07-26 #20
 Update 2020-07-26 #19
 - 
 
+[commited]
 Update 2020-07-26 #18
-- 
+- Update DMT.Models project #8.
+  - Lane.cs Set build action from compile to none.
+  - Plaza.cs Set build action from compile to none.
+  - PlazaGroup.cs Set build action from compile to none.
+  - TSB.cs Set build action from compile to none.
 
 [commited]
 Update 2020-07-26 #17
