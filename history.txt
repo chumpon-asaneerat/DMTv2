@@ -18,8 +18,10 @@ Update 2020-07-27 #1
 Update 2020-07-26 #20
 - 
 
+[commited]
 Update 2020-07-26 #19
-- 
+- Update DMT.Models project #9.
+  - Config.cs Set build action from compile to none.
 
 [commited]
 Update 2020-07-26 #18
