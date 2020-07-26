@@ -18,8 +18,9 @@ Update 2020-07-27 #1
 Update 2020-07-26 #10
 - 
 
+[commited]
 Update 2020-07-26 #9
-- 
+- Temporary Unload DMT.Networks project.
 
 [commited]
 Update 2020-07-26 #8
