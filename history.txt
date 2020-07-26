@@ -24,8 +24,17 @@ Update 2020-07-26 #19
 Update 2020-07-26 #18
 - 
 
+[commited]
 Update 2020-07-26 #17
-- 
+- Update DMT.Models project #7.
+  - TSBAdditionalBalance.cs Set build action from compile to none.
+  - TSBAdditionalTransaction.cs Set build action from compile to none.
+  - TSBCouponBalance.cs Set build action from compile to none.
+  - TSBCouponTransaction.cs Set build action from compile to none.
+  - TSBCreditBalance.cs Set build action from compile to none.
+  - TSBCreditTransaction.cs Set build action from compile to none.
+  - UserCredit.cs Set build action from compile to none.
+  - UserCreditTransaction.cs Set build action from compile to none.
 
 [commited]
 Update 2020-07-26 #16
