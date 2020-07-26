@@ -30,8 +30,9 @@ Update 2020-07-26 #32
 Update 2020-07-26 #31
 - 
 
+[commited]
 Update 2020-07-26 #30
-- 
+- Merge from origin/TAv1 #27
 
 [commited]
 Update 2020-07-26 #29
