@@ -24,8 +24,9 @@ Update 2020-07-26 #9
 Update 2020-07-26 #8
 - 
 
+[commited]
 Update 2020-07-26 #7
-- 
+- Temporary Unload Local Web Server and Local Web Client projects.
 
 [commited]
 Update 2020-07-26 #6
