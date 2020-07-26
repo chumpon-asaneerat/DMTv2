@@ -42,8 +42,10 @@ Update 2020-07-26 #23
 Update 2020-07-26 #22
 - 
 
+[commited]
 Update 2020-07-26 #21
-- 
+- Update DMT.Models project #9.
+  - ModelExtensionMethods.cs comment out TSB extenstion methods.
 
 [commited]
 Update 2020-07-26 #20
