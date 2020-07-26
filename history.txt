@@ -18,12 +18,16 @@ Update 2020-07-27 #1
 Update 2020-07-26 #15
 - 
 
+[commited]
 Update 2020-07-26 #14
-- 
+- Update DMT.Models project #4.
+  - Payment.cs Set build action from compile to none.
+  - LaneAttendance.cs Set build action from compile to none.
+  - LanePayment.cs Set build action from compile to none.
 
 [commited]
 Update 2020-07-26 #13
-- Update DMT.Models project #2.
+- Update DMT.Models project #3.
   - RevenueEntry.cs Set build action from compile to none.
 
 [commited]
