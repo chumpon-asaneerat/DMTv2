@@ -21,8 +21,14 @@ Update 2020-07-26 #5
 Update 2020-07-26 #4
 - 
 
+[commited]
 Update 2020-07-26 #3
-- 
+- Temporary Unload Tests projects.
+  - SQLite.Net.Wpf.
+  - WebSocketServerSample.
+  - WebSocketClientSample.
+  - LocalWebServerFunctionSample.
+  - LocalDbServerFunctionSample.
 
 [commited]
 Update 2020-07-26 #2
