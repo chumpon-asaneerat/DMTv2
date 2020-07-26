@@ -120,11 +120,11 @@
     <Compile Include="Models\LaneActivities\LanePayment.cs" />
     <Compile Include="Models\Shifts\UserShiftRevenue.cs" />
     <Compile Include="Models\Revenues\RevenueEntry.cs" />
-    <Compile Include="Models\Users\Role.cs" />
+    <None Include="Models\Users\Role.cs" />
     <Compile Include="Models\Shifts\Shift.cs" />
     <Compile Include="Models\Infrastructures\TSB.cs" />
     <Compile Include="Models\Shifts\TSBShift.cs" />
-    <Compile Include="Models\Users\User.cs" />
+    <None Include="Models\Users\User.cs" />
     <Compile Include="Models\Shifts\UserShift.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Services\LocalDbServer.cs" />

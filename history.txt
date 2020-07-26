@@ -24,13 +24,16 @@ Update 2020-07-26 #14
 Update 2020-07-26 #13
 - 
 
+[commited]
 Update 2020-07-26 #12
-- 
+- Update DMT.Models project #2.
+  - Role.cs Set build action from compile to none.
+  - User.cs Set build action from compile to none.
 
 [commited]
 Update 2020-07-26 #11
 - Update DMT.Models project #1.
-  - LocalDbServer.cs Set build action to none.
+  - LocalDbServer.cs Set build action from compile to none.
 
 [commited]
 Update 2020-07-26 #10
