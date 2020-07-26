@@ -36,8 +36,10 @@ Update 2020-07-26 #25
 Update 2020-07-26 #24
 - 
 
+[commited]
 Update 2020-07-26 #23
-- 
+- Update DMT.Models project #11.
+  - ModelExtensionMethods.cs comment out Role extenstion methods.
 
 [commited]
 Update 2020-07-26 #22

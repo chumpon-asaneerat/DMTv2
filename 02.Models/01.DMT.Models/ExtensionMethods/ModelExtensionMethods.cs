@@ -56,7 +56,7 @@ namespace DMT.Models.ExtensionMethods
     #endregion
 
     #region Role
-
+    /*
     /// <summary>
     /// The Role Extension Methods
     /// </summary>
@@ -74,6 +74,6 @@ namespace DMT.Models.ExtensionMethods
             return User.FindByRole(value.RoleId, status);
         }
     }
-
+    */
     #endregion
 }
