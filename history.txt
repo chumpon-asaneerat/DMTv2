@@ -27,12 +27,13 @@ Update 2020-07-26 #8
 Update 2020-07-26 #7
 - 
 
+[commited]
 Update 2020-07-26 #6
-- 
+- Temporary Unload Smartcard IPC Server project.
 
 [commited]
 Update 2020-07-26 #5
-- Temporary Unload DMT.Controls projects.
+- Temporary Unload DMT.Controls project.
 
 [commited]
 Update 2020-07-26 #4
@@ -54,7 +55,7 @@ Update 2020-07-26 #3
 
 [commited]
 Update 2020-07-26 #2
-- Temporary Unload sample projects.
+- Temporary Unload sample project.
 
 [commited]
 Update 2020-07-26 #1
