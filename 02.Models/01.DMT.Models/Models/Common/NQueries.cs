@@ -8,7 +8,7 @@ using SQLite;
 using SQLiteNetExtensions.Attributes;
 using SQLiteNetExtensions.Extensions;
 using System.ComponentModel;
-using DMT.Services;
+//using DMT.Services;
 // required for JsonIgnore.
 using Newtonsoft.Json;
 using NLib;

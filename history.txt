@@ -15,8 +15,40 @@ Update 2020-07-27 #1
 - 
 
 --------------------------------------------------------------------------------------------
-Update 2020-07-26 #20
+Update 2020-07-26 #30
 - 
+
+Update 2020-07-26 #29
+- 
+
+Update 2020-07-26 #28
+- 
+
+Update 2020-07-26 #27
+- 
+
+Update 2020-07-26 #26
+- 
+
+Update 2020-07-26 #25
+- 
+
+Update 2020-07-26 #24
+- 
+
+Update 2020-07-26 #23
+- 
+
+Update 2020-07-26 #22
+- 
+
+Update 2020-07-26 #21
+- 
+
+[commited]
+Update 2020-07-26 #20
+- Update DMT.Core project #1.
+  - Update RouteConsts.cs comment out all code.
 
 [commited]
 Update 2020-07-26 #19
