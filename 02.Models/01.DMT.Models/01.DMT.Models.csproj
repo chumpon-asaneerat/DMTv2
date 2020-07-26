@@ -118,14 +118,14 @@
     <Compile Include="Models\Infrastructures\Plaza.cs" />
     <None Include="Models\LaneActivities\LaneAttendance.cs" />
     <None Include="Models\LaneActivities\LanePayment.cs" />
-    <Compile Include="Models\Shifts\UserShiftRevenue.cs" />
+    <None Include="Models\Shifts\UserShiftRevenue.cs" />
     <None Include="Models\Revenues\RevenueEntry.cs" />
     <None Include="Models\Users\Role.cs" />
-    <Compile Include="Models\Shifts\Shift.cs" />
+    <None Include="Models\Shifts\Shift.cs" />
     <Compile Include="Models\Infrastructures\TSB.cs" />
-    <Compile Include="Models\Shifts\TSBShift.cs" />
+    <None Include="Models\Shifts\TSBShift.cs" />
     <None Include="Models\Users\User.cs" />
-    <Compile Include="Models\Shifts\UserShift.cs" />
+    <None Include="Models\Shifts\UserShift.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Services\LocalDbServer.cs" />
   </ItemGroup>

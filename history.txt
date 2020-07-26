@@ -15,8 +15,28 @@ Update 2020-07-27 #1
 - 
 
 --------------------------------------------------------------------------------------------
-Update 2020-07-26 #15
+Update 2020-07-26 #20
 - 
+
+Update 2020-07-26 #19
+- 
+
+Update 2020-07-26 #18
+- 
+
+Update 2020-07-26 #17
+- 
+
+Update 2020-07-26 #16
+- 
+
+[commited]
+Update 2020-07-26 #15
+- Update DMT.Models project #5.
+  - Shift.cs Set build action from compile to none.
+  - TSBShift.cs Set build action from compile to none.
+  - UserShift.cs Set build action from compile to none.
+  - UserShiftRevenue.cs Set build action from compile to none.
 
 [commited]
 Update 2020-07-26 #14
