@@ -18,8 +18,14 @@ Update 2020-07-27 #1
 Update 2020-07-26 #5
 - 
 
+[commited]
 Update 2020-07-26 #4
-- 
+- Temporary Unload App projects.
+  - Plaza Windows Services.
+  - TOD
+  - TA
+  - Plaza Config
+  - Plaza Simulator
 
 [commited]
 Update 2020-07-26 #3
