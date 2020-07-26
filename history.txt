@@ -27,8 +27,10 @@ Update 2020-07-26 #13
 Update 2020-07-26 #12
 - 
 
+[commited]
 Update 2020-07-26 #11
-- 
+- Update DMT.Models project #1.
+  - LocalDbServer.cs Set build action to none.
 
 [commited]
 Update 2020-07-26 #10

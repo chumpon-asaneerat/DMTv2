@@ -127,7 +127,7 @@
     <Compile Include="Models\Users\User.cs" />
     <Compile Include="Models\Shifts\UserShift.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\LocalDbServer.cs" />
+    <None Include="Services\LocalDbServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\00.NLib\NLib\NLib.csproj">
