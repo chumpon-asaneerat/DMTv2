@@ -119,7 +119,7 @@
     <Compile Include="Models\LaneActivities\LaneAttendance.cs" />
     <Compile Include="Models\LaneActivities\LanePayment.cs" />
     <Compile Include="Models\Shifts\UserShiftRevenue.cs" />
-    <Compile Include="Models\Revenues\RevenueEntry.cs" />
+    <None Include="Models\Revenues\RevenueEntry.cs" />
     <None Include="Models\Users\Role.cs" />
     <Compile Include="Models\Shifts\Shift.cs" />
     <Compile Include="Models\Infrastructures\TSB.cs" />

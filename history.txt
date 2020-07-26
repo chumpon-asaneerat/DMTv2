@@ -21,8 +21,10 @@ Update 2020-07-26 #15
 Update 2020-07-26 #14
 - 
 
+[commited]
 Update 2020-07-26 #13
-- 
+- Update DMT.Models project #2.
+  - RevenueEntry.cs Set build action from compile to none.
 
 [commited]
 Update 2020-07-26 #12
