@@ -41,7 +41,7 @@ namespace DMT.Models.ExtensionMethods
     #endregion
 
     #region Plaza
-
+    /*
     /// <summary>
     /// The Plaza Extension Methods
     /// </summary>
@@ -52,7 +52,7 @@ namespace DMT.Models.ExtensionMethods
             return Lane.GetPlazaLanes(value);
         }
     }
-
+    */
     #endregion
 
     #region Role

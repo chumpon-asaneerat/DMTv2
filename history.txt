@@ -39,8 +39,10 @@ Update 2020-07-26 #24
 Update 2020-07-26 #23
 - 
 
+[commited]
 Update 2020-07-26 #22
-- 
+- Update DMT.Models project #10.
+  - ModelExtensionMethods.cs comment out Plaza extenstion methods.
 
 [commited]
 Update 2020-07-26 #21
