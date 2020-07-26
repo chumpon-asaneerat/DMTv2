@@ -21,8 +21,11 @@ Update 2020-07-26 #30
 Update 2020-07-26 #29
 - 
 
+[commited]
 Update 2020-07-26 #28
-- 
+- Update DMT.Models project #15.
+  - Clean and delete executables (OK).
+  - Check  recompile (OK).
 
 [commited]
 Update 2020-07-26 #27
