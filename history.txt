@@ -24,8 +24,11 @@ Update 2020-07-26 #29
 Update 2020-07-26 #28
 - 
 
+[commited]
 Update 2020-07-26 #27
-- 
+- Update DMT.Models project #14.
+  - Remove DMTTATODBase.cs
+  - Remove NSearch.cs
 
 [commited]
 Update 2020-07-26 #26

@@ -127,9 +127,7 @@
     <None Include="Models\Backup\Users\User.cs" />
     <None Include="Models\Backup\Shifts\UserShift.cs" />
     <Compile Include="Models\Common\DMTModelBase.cs" />
-    <Compile Include="Models\Common\DMTTATODBase.cs" />
     <Compile Include="Models\Common\NQueries.cs" />
-    <Compile Include="Models\Common\NSearch.cs" />
     <Compile Include="Models\Common\NTables.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Services\LocalDbServer.cs" />
