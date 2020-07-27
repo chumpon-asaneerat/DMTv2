@@ -17,96 +17,214 @@ using Newtonsoft.Json.Bson;
 
 namespace DMT.Models
 {
-    #region DataCenterModelBase (abstract)
+	#region DataCenterModelBase (abstract)
 
-    /// <summary>
-    /// DataCenterModelBase (abstract).
-    /// </summary>
-    /// <typeparam name="T">The Target Class.</typeparam>
+	/// <summary>
+	/// DataCenterModelBase (abstract).
+	/// </summary>
+	/// <typeparam name="T">The Target Class.</typeparam>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
-    public abstract class DataCenterModelBase<T> : NTable<T>
-        where T : NTable, new()
-    {
-        #region Intenral Variables
+	public abstract class DataCenterModelBase<T> : NTable<T>
+		where T : NTable, new()
+	{
+		#region Intenral Variables
 
-        private int _Status = 0;
-        private DateTime _LastUpdate = DateTime.MinValue;
+		private int _Status = 0;
+		private DateTime _LastUpdate = DateTime.MinValue;
 
-        #endregion
+		#endregion
 
-        #region Public Proprties
+		#region Public Proprties
 
-        #region Status (DC)
+		/// <summary>
+		/// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
+		/// </summary>
+		[Category("DataCenter")]
+		[Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
+		[ReadOnly(true)]
+		[PeropertyMapName("Status")]
+		[PropertyOrder(101)]
+		public int Status
+		{
+			get
+			{
+				return _Status;
+			}
+			set
+			{
+				if (_Status != value)
+				{
+					_Status = value;
+					this.RaiseChanged("Status");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets LastUpdated (Sync to DC).
+		/// </summary>
+		[Category("DataCenter")]
+		[Description("Gets or sets LastUpdated (Sync to DC).")]
+		[ReadOnly(true)]
+		[PeropertyMapName("LastUpdate")]
+		[PropertyOrder(102)]
+		public DateTime LastUpdate
+		{
+			get { return _LastUpdate; }
+			set
+			{
+				if (_LastUpdate != value)
+				{
+					_LastUpdate = value;
+					this.RaiseChanged("LastUpdate");
+				}
+			}
+		}
 
-        /// <summary>
-        /// Gets or sets Status (1 = Sync, 0 = Unsync, etc..)
-        /// </summary>
-        [Category("DataCenter")]
-        [Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
-        [ReadOnly(true)]
-        [PeropertyMapName("Status")]
-        [PropertyOrder(101)]
-        public int Status
-        {
-            get
-            {
-                return _Status;
-            }
-            set
-            {
-                if (_Status != value)
-                {
-                    _Status = value;
-                    this.RaiseChanged("Status");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets LastUpdated (Sync to DC).
-        /// </summary>
-        [Category("DataCenter")]
-        [Description("Gets or sets LastUpdated (Sync to DC).")]
-        [ReadOnly(true)]
-        [PeropertyMapName("LastUpdate")]
-        [PropertyOrder(102)]
-        public DateTime LastUpdate
-        {
-            get { return _LastUpdate; }
-            set
-            {
-                if (_LastUpdate != value)
-                {
-                    _LastUpdate = value;
-                    this.RaiseChanged("LastUpdate");
-                }
-            }
-        }
+		#endregion
+	}
 
-        #endregion
+	#endregion
 
-        #endregion
-    }
+	#region TSBModelBase (abstract)
 
-    #endregion
-
-    #region TSBModelBase (abstract)
-
-    /// <summary>
-    /// TSBModelBase (abstract).
-    /// </summary>
-    /// <typeparam name="T">The Target Class.</typeparam>
+	/// <summary>
+	/// TSBModelBase (abstract).
+	/// </summary>
+	/// <typeparam name="T">The Target Class.</typeparam>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
-    public abstract class TSBModelBase<T> : DataCenterModelBase<T>
-        where T : NTable, new()
-    {
-        #region Intenral Variables
+	public abstract class TSBModelBase<T> : DataCenterModelBase<T>
+		where T : NTable, new()
+	{
+		#region Intenral Variables
 
-        #endregion
+		private string _TSBId = string.Empty;
+		private string _TSBNameEN = string.Empty;
+		private string _TSBNameTH = string.Empty;
+		private string _NetworkId = string.Empty;
+		private bool _Active = false;
 
-        #region Public Proprties
+		#endregion
 
-        #endregion
-    }
+		#region Public Proprties
 
-    #endregion
+		/// <summary>
+		/// Gets or sets TSBId.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets TSBId.")]
+		[PrimaryKey, MaxLength(10)]
+		[PeropertyMapName("TSBId")]
+		[PropertyOrder(101)]
+		public string TSBId
+		{
+			get
+			{
+				return _TSBId;
+			}
+			set
+			{
+				if (_TSBId != value)
+				{
+					_TSBId = value;
+					this.RaiseChanged("TSBId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets NetworkId.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets NetworkId.")]
+		[MaxLength(10)]
+		[PeropertyMapName("NetworkId")]
+		[PropertyOrder(102)]
+		public string NetworkId
+		{
+			get
+			{
+				return _NetworkId;
+			}
+			set
+			{
+				if (_NetworkId != value)
+				{
+					_NetworkId = value;
+					this.RaiseChanged("NetworkId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets TSBNameEN.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets TSBNameEN.")]
+		[MaxLength(100)]
+		[PeropertyMapName("TSBNameEN")]
+		[PropertyOrder(103)]
+		public string TSBNameEN
+		{
+			get
+			{
+				return _TSBNameEN;
+			}
+			set
+			{
+				if (_TSBNameEN != value)
+				{
+					_TSBNameEN = value;
+					this.RaiseChanged("TSBNameEN");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets TSBNameTH.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets TSBNameTH.")]
+		[MaxLength(100)]
+		[PeropertyMapName("TSBNameTH")]
+		[PropertyOrder(104)]
+		public string TSBNameTH
+		{
+			get
+			{
+				return _TSBNameTH;
+			}
+			set
+			{
+				if (_TSBNameTH != value)
+				{
+					_TSBNameTH = value;
+					this.RaiseChanged("TSBNameTH");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets is active TSB.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets is active TSB.")]
+		[ReadOnly(true)]
+		[PeropertyMapName("Active")]
+		[PropertyOrder(105)]
+		public bool Active
+		{
+			get
+			{
+				return _Active;
+			}
+			set
+			{
+				if (_Active != value)
+				{
+					_Active = value;
+					this.RaiseChanged("Active");
+				}
+			}
+		}
+
+		#endregion
+	}
+
+	#endregion
 }
