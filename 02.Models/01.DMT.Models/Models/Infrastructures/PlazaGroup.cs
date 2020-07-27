@@ -28,6 +28,31 @@ namespace DMT.Models
     {
         #region Public Properties
 
+        /// <summary>
+        /// Gets or sets PlazaId.
+        /// </summary>
+        [PropertyOrder(201)]
+        public override string PlazaGroupId
+        { }
+        /// <summary>
+        /// Gets or sets PlazaGroupNameEN
+        /// </summary>
+        [PropertyOrder(202)]
+        public override string PlazaGroupNameEN
+        { }
+        /// <summary>
+        /// Gets or sets PlazaGroupNameTH
+        /// </summary>
+        [PropertyOrder(203)]
+        public override string PlazaGroupNameTH
+        { }
+        /// <summary>
+        /// Gets or sets Direction
+        /// </summary>
+        [PropertyOrder(204)]
+        public override string Direction
+        { }
+
         #endregion
     }
 

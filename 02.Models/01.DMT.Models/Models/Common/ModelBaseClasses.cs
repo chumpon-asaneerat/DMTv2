@@ -263,7 +263,7 @@ namespace DMT.Models
 		[PrimaryKey, MaxLength(10)]
 		[PeropertyMapName("PlazaGroupId")]
 		[PropertyOrder(201)]
-		public string PlazaGroupId
+		public virtual string PlazaGroupId
 		{
 			get
 			{
@@ -287,7 +287,7 @@ namespace DMT.Models
 		[Ignore]
 		[PeropertyMapName("PlazaGroupNameEN")]
 		[PropertyOrder(202)]
-		public string PlazaGroupNameEN
+		public virtual string PlazaGroupNameEN
 		{
 			get
 			{
@@ -311,7 +311,7 @@ namespace DMT.Models
 		[Ignore]
 		[PeropertyMapName("PlazaGroupNameTH")]
 		[PropertyOrder(203)]
-		public string PlazaGroupNameTH
+		public virtual string PlazaGroupNameTH
 		{
 			get
 			{
@@ -335,7 +335,7 @@ namespace DMT.Models
 		[Ignore]
 		[PeropertyMapName("Direction")]
 		[PropertyOrder(204)]
-		public string Direction
+		public virtual string Direction
 		{
 			get
 			{
