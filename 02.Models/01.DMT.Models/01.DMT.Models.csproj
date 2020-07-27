@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExtensionMethods\ModelExtensionMethods.cs" />
+    <Compile Include="Models\Common\ModelBaseClasses.cs" />
     <Compile Include="Services\LocalDbServer.cs" />
     <None Include="Models\Backup\Common\DMTTATODBase.cs" />
     <None Include="Models\Backup\Configuration\Config.cs" />
