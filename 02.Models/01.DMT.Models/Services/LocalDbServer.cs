@@ -93,6 +93,7 @@ namespace DMT.Services
 			if (null == Db) return;
 
 			Db.CreateTable<TSB>();
+			Db.CreateTable<PlazaGroup>();
 		}
 
 		#endregion

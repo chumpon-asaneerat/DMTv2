@@ -23,8 +23,9 @@ Update 2020-07-27 #14
 Update 2020-07-27 #13
 - 
 
+[commited]
 Update 2020-07-27 #12
-- 
+- Add PlazaGroup class.
 
 [commited]
 Update 2020-07-27 #11

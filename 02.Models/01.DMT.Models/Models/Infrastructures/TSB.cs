@@ -23,6 +23,7 @@ namespace DMT.Models
 	/// The TSB Data Model class.
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	//[Table("TSB")]
 	public class TSB : TSBModelBase<TSB>
 	{
 		#region Public Properties
