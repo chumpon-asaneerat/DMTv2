@@ -137,6 +137,7 @@ namespace DMT.Models
 		[Description("Gets or sets NetworkId.")]
 		[MaxLength(10)]
 		[PeropertyMapName("NetworkId")]
+		[Ignore]
 		[PropertyOrder(102)]
 		public string NetworkId
 		{
@@ -160,6 +161,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSBNameEN.")]
 		[MaxLength(100)]
 		[PeropertyMapName("TSBNameEN")]
+		[Ignore]
 		[PropertyOrder(103)]
 		public string TSBNameEN
 		{
@@ -183,6 +185,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSBNameTH.")]
 		[MaxLength(100)]
 		[PeropertyMapName("TSBNameTH")]
+		[Ignore]
 		[PropertyOrder(104)]
 		public string TSBNameTH
 		{
@@ -206,6 +209,7 @@ namespace DMT.Models
 		[Description("Gets or sets is active TSB.")]
 		[ReadOnly(true)]
 		[PeropertyMapName("Active")]
+		[Ignore]
 		[PropertyOrder(105)]
 		public bool Active
 		{
