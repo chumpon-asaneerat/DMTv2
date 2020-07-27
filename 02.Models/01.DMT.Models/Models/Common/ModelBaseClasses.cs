@@ -23,4 +23,17 @@ namespace DMT.Models
     }
 
     #endregion
+
+    #region TSBModelBase (abstract)
+
+    /// <summary>
+    /// TSBModelBase (abstract).
+    /// </summary>
+    /// <typeparam name="T">The Target Class.</typeparam>
+    public abstract class TSBModelBase<T> : DataCenterModelBase<T>
+        where T : NTable, new()
+    {
+    }
+
+    #endregion
 }

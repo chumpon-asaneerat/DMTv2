@@ -14,8 +14,9 @@ Update 2020-07-27 #8
 Update 2020-07-27 #7
 - 
 
+[commited]
 Update 2020-07-27 #6
-- 
+- Add TSBModelBase<T> class.
 
 [commited]
 Update 2020-07-27 #5
