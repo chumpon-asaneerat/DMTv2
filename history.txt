@@ -17,8 +17,9 @@ Update 2020-07-27 #16
 Update 2020-07-27 #15
 - 
 
+[commited]
 Update 2020-07-27 #14
-- 
+- Update PlazaGroupModelBase<T> class #2.
 
 [commited]
 Update 2020-07-27 #13

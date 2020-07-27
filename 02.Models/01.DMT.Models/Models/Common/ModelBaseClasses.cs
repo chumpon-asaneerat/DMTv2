@@ -248,6 +248,36 @@ namespace DMT.Models
 
 		#region Public Proprties
 
+		/// <summary>
+		/// Gets or sets TSBId.
+		/// </summary>
+		[PropertyOrder(101)]
+		public override string TSBId
+		{
+			get { return base.TSBId; }
+			set { base.TSBId = value; }
+		}
+		/// <summary>
+		/// Gets or sets TSBNameEN.
+		/// </summary>
+		[Ignore]
+		[PropertyOrder(103)]
+		public override string TSBNameEN
+		{
+			get { return base.TSBNameEN; }
+			set { base.TSBNameEN = value; }
+		}
+		/// <summary>
+		/// Gets or sets TSBNameTH.
+		/// </summary>
+		[Ignore]
+		[PropertyOrder(104)]
+		public override string TSBNameTH
+		{
+			get { return base.TSBNameTH; }
+			set { base.TSBNameTH = value; }
+		}
+
 		#endregion
 	}
 
