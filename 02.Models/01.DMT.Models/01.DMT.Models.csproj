@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExtensionMethods\ModelExtensionMethods.cs" />
+    <Compile Include="Services\LocalDbServer.cs" />
     <None Include="Models\Backup\Common\DMTTATODBase.cs" />
     <None Include="Models\Backup\Configuration\Config.cs" />
     <None Include="Models\Backup\CreditsAndCoupons\TSBAdditionBalance.cs" />
@@ -130,7 +131,7 @@
     <Compile Include="Models\Common\NQueries.cs" />
     <Compile Include="Models\Common\NTables.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="Services\LocalDbServer.cs" />
+    <None Include="Services\LocalDbServer2.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\00.NLib\NLib\NLib.csproj">

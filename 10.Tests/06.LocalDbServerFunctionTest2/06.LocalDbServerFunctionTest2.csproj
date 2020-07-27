@@ -83,5 +83,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\00.NLib\NLib\NLib.csproj">
+      <Project>{41a9d6c0-c833-403f-9bc1-eecdc246a428}</Project>
+      <Name>NLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\01Core\01.DMT.Core\01.DMT.Core.csproj">
+      <Project>{db7fb4b5-3662-479e-a7da-26b73611bfd4}</Project>
+      <Name>01.DMT.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\02.Models\01.DMT.Models\01.DMT.Models.csproj">
+      <Project>{7d584f0a-920f-4be1-8652-3527fd7a5c27}</Project>
+      <Name>01.DMT.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
