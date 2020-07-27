@@ -244,9 +244,116 @@ namespace DMT.Models
 	{
 		#region Intenral Variables
 
+		private string _PlazaGroupId = string.Empty;
+		private string _PlazaGroupNameEN = string.Empty;
+		private string _PlazaGroupNameTH = string.Empty;
+		private string _Direction = string.Empty;
+
 		#endregion
 
 		#region Public Proprties
+
+		#region Plaza Group
+
+		/// <summary>
+		/// Gets or sets PlazaId.
+		/// </summary>
+		[Category("Plaza Group")]
+		[Description("Gets or sets PlazaId.")]
+		[PrimaryKey, MaxLength(10)]
+		[PeropertyMapName("PlazaGroupId")]
+		[PropertyOrder(201)]
+		public string PlazaGroupId
+		{
+			get
+			{
+				return _PlazaGroupId;
+			}
+			set
+			{
+				if (_PlazaGroupId != value)
+				{
+					_PlazaGroupId = value;
+					this.RaiseChanged("PlazaGroupId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets PlazaGroupNameEN
+		/// </summary>
+		[Category("Plaza Group")]
+		[Description("Gets or sets PlazaGroupNameEN")]
+		[MaxLength(100)]
+		[Ignore]
+		[PeropertyMapName("PlazaGroupNameEN")]
+		[PropertyOrder(202)]
+		public string PlazaGroupNameEN
+		{
+			get
+			{
+				return _PlazaGroupNameEN;
+			}
+			set
+			{
+				if (_PlazaGroupNameEN != value)
+				{
+					_PlazaGroupNameEN = value;
+					this.RaiseChanged("PlazaGroupNameEN");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets PlazaGroupNameTH
+		/// </summary>
+		[Category("Plaza Group")]
+		[Description("Gets or sets PlazaGroupNameTH")]
+		[MaxLength(100)]
+		[Ignore]
+		[PeropertyMapName("PlazaGroupNameTH")]
+		[PropertyOrder(203)]
+		public string PlazaGroupNameTH
+		{
+			get
+			{
+				return _PlazaGroupNameTH;
+			}
+			set
+			{
+				if (_PlazaGroupNameTH != value)
+				{
+					_PlazaGroupNameTH = value;
+					this.RaiseChanged("PlazaGroupNameTH");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Direction
+		/// </summary>
+		[Category("Plaza Group")]
+		[Description("Gets or sets Direction")]
+		[MaxLength(10)]
+		[Ignore]
+		[PeropertyMapName("Direction")]
+		[PropertyOrder(204)]
+		public string Direction
+		{
+			get
+			{
+				return _Direction;
+			}
+			set
+			{
+				if (_Direction != value)
+				{
+					_Direction = value;
+					this.RaiseChanged("Direction");
+				}
+			}
+		}
+
+		#endregion
+
+		#region TSB
 
 		/// <summary>
 		/// Gets or sets TSBId.
@@ -277,6 +384,8 @@ namespace DMT.Models
 			get { return base.TSBNameTH; }
 			set { base.TSBNameTH = value; }
 		}
+
+		#endregion
 
 		#endregion
 	}

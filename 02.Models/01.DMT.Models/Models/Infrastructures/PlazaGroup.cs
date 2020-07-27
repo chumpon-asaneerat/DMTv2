@@ -26,10 +26,6 @@ namespace DMT.Models
     //[Table("PlazaGroup")]
     public class PlazaGroup : TSBModelBase<PlazaGroup>
     {
-        #region Internal Variables
-
-        #endregion
-
         #region Public Properties
 
         #endregion
