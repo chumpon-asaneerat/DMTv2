@@ -139,7 +139,7 @@ namespace DMT.Models
 		[PeropertyMapName("NetworkId")]
 		[Ignore]
 		[PropertyOrder(102)]
-		public string NetworkId
+		public virtual string NetworkId
 		{
 			get
 			{
@@ -163,7 +163,7 @@ namespace DMT.Models
 		[PeropertyMapName("TSBNameEN")]
 		[Ignore]
 		[PropertyOrder(103)]
-		public string TSBNameEN
+		public virtual string TSBNameEN
 		{
 			get
 			{
@@ -187,7 +187,7 @@ namespace DMT.Models
 		[PeropertyMapName("TSBNameTH")]
 		[Ignore]
 		[PropertyOrder(104)]
-		public string TSBNameTH
+		public virtual string TSBNameTH
 		{
 			get
 			{
@@ -211,7 +211,7 @@ namespace DMT.Models
 		[PeropertyMapName("Active")]
 		[Ignore]
 		[PropertyOrder(105)]
-		public bool Active
+		public virtual bool Active
 		{
 			get
 			{
