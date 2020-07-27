@@ -231,4 +231,25 @@ namespace DMT.Models
 	}
 
 	#endregion
+
+	#region PlazaGroupModelBase (abstract)
+
+	/// <summary>
+	/// PlazaGroupModelBase (abstract).
+	/// </summary>
+	/// <typeparam name="T">The Target Class.</typeparam>
+	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	public abstract class PlazaGroupModelBase<T> : TSBModelBase<T>
+		where T : NTable, new()
+	{
+		#region Intenral Variables
+
+		#endregion
+
+		#region Public Proprties
+
+		#endregion
+	}
+
+	#endregion
 }

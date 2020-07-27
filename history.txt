@@ -20,8 +20,9 @@ Update 2020-07-27 #15
 Update 2020-07-27 #14
 - 
 
+[commited]
 Update 2020-07-27 #13
-- 
+- Add PlazaGroupModelBase<T> class.
 
 [commited]
 Update 2020-07-27 #12
