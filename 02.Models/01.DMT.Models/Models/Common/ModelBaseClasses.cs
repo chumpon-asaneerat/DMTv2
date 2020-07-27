@@ -115,7 +115,7 @@ namespace DMT.Models
 		[PrimaryKey, MaxLength(10)]
 		[PeropertyMapName("TSBId")]
 		[PropertyOrder(101)]
-		public string TSBId
+		public virtual string TSBId
 		{
 			get
 			{

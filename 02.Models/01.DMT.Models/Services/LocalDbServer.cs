@@ -91,6 +91,8 @@ namespace DMT.Services
 		private void InitTables()
 		{
 			if (null == Db) return;
+
+			Db.CreateTable<TSB>();
 		}
 
 		#endregion

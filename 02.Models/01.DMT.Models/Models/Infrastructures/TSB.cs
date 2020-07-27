@@ -28,8 +28,18 @@ namespace DMT.Models
 		#region Public Properties
 
 		/// <summary>
+		/// Gets or sets TSBId.
+		/// </summary>
+		[PropertyOrder(101)]
+		public override string TSBId
+		{
+			get { return base.TSBId; }
+			set { base.TSBId = value; }
+		}
+		/// <summary>
 		/// Gets or sets NetworkId.
 		/// </summary>
+		[PropertyOrder(102)]
 		public override string NetworkId
 		{
 			get { return base.NetworkId; }
@@ -38,6 +48,7 @@ namespace DMT.Models
 		/// <summary>
 		/// Gets or sets TSBNameEN.
 		/// </summary>
+		[PropertyOrder(103)]
 		public override string TSBNameEN
 		{
 			get { return base.TSBNameEN; }
@@ -46,6 +57,7 @@ namespace DMT.Models
 		/// <summary>
 		/// Gets or sets TSBNameTH.
 		/// </summary>
+		[PropertyOrder(104)]
 		public override string TSBNameTH
 		{
 			get { return base.TSBNameTH; }
@@ -54,6 +66,7 @@ namespace DMT.Models
 		/// <summary>
 		/// Gets or sets is active TSB.
 		/// </summary>
+		[PropertyOrder(105)]
 		public override bool Active
 		{
 			get { return base.Active; }
