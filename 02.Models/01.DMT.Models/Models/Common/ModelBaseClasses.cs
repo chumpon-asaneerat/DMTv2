@@ -762,14 +762,14 @@ namespace DMT.Models
 
 	#endregion
 
-	#region TSBShiftModelBase (abstract)
+	#region UserShiftModelBase (abstract)
 
 	/// <summary>
-	/// TSBShiftModelBase (abstract).
+	/// UserShiftModelBase (abstract).
 	/// </summary>
 	/// <typeparam name="T">The Target Class.</typeparam>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
-	public abstract class TSBShiftModelBase<T> : TSBModelBase<T>
+	public abstract class UserShiftModelBase<T> : TSBModelBase<T>
 		where T : NTable, new()
 	{
 		#region Intenral Variables

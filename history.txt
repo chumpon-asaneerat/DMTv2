@@ -22,6 +22,12 @@ Update 2020-07-29 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-07-28 #15
+- Change TSBShiftModelBase<T> class to UserShiftModelBase<T>.
+- Update TSBShift class #3.
+- Update UserShift class #2.
+
+[commited]
 Update 2020-07-28 #14
 - Add TSBShiftModelBase<T> class.
 - Update TSBShift class #2.

@@ -24,7 +24,7 @@ namespace DMT.Models
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
 	//[Table("Plaza")]
-	public class TSBShift : TSBShiftModelBase<Plaza>
+	public class TSBShift : UserShiftModelBase<Plaza>
 	{
 		#region Internal Variables
 
@@ -35,10 +35,10 @@ namespace DMT.Models
 		#region Public Properties
 
 		/// <summary>
-		/// Gets or sets PK Id.
+		/// Gets or sets TSB Shift PK Id.
 		/// </summary>
 		[Category("Common")]
-		[Description("Gets or sets PK Id.")]
+		[Description("Gets or sets TSB Shift PK Id.")]
 		[ReadOnly(true)]
 		[PrimaryKey]
 		[AutoIncrement]
