@@ -99,6 +99,7 @@ namespace DMT.Services
 			Db.CreateTable<Shift>();
 			Db.CreateTable<Role>();
 			Db.CreateTable<User>();
+			Db.CreateTable<TSBShift>();
 		}
 
 		#endregion

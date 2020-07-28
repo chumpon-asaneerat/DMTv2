@@ -471,102 +471,6 @@ namespace DMT.Models
 
 	#endregion
 
-	#region ShiftModelBase (abstract)
-
-	/// <summary>
-	/// ShiftModelBase (abstract).
-	/// </summary>
-	/// <typeparam name="T">The Target Class.</typeparam>
-	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
-	public abstract class ShiftModelBase<T> : DataCenterModelBase<T>
-		where T : NTable, new()
-	{
-		#region Intenral Variables
-
-		private int _ShiftId = 0;
-		private string _ShiftNameTH = string.Empty;
-		private string _ShiftNameEN = string.Empty;
-
-		#endregion
-
-		#region Public Proprties
-
-		/// <summary>
-		/// Gets or sets ShiftId.
-		/// </summary>
-		[Category("Common")]
-		[Description("Gets or sets ShiftId.")]
-		[PeropertyMapName("ShiftId")]
-		[PropertyOrder(501)]
-		public virtual int ShiftId
-		{
-			get
-			{
-				return _ShiftId;
-			}
-			set
-			{
-				if (_ShiftId != value)
-				{
-					_ShiftId = value;
-					this.RaiseChanged("ShiftId");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets Name TH.
-		/// </summary>
-		[Category("Common")]
-		[Description("Gets or sets Name TH.")]
-		[MaxLength(50)]
-		[Ignore]
-		[PeropertyMapName("ShiftNameTH")]
-		[PropertyOrder(502)]
-		public virtual string ShiftNameTH
-		{
-			get
-			{
-				return _ShiftNameTH;
-			}
-			set
-			{
-				if (_ShiftNameTH != value)
-				{
-					_ShiftNameTH = value;
-					this.RaiseChanged("ShiftNameTH");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets Name EN.
-		/// </summary>
-		[Category("Common")]
-		[Description("Gets or sets Name EN.")]
-		[MaxLength(50)]
-		[Ignore]
-		[PeropertyMapName("ShiftNameEN")]
-		[PropertyOrder(503)]
-		public virtual string ShiftNameEN
-		{
-			get
-			{
-				return _ShiftNameEN;
-			}
-			set
-			{
-				if (_ShiftNameEN != value)
-				{
-					_ShiftNameEN = value;
-					this.RaiseChanged("ShiftNameEN");
-				}
-			}
-		}
-
-		#endregion
-	}
-
-	#endregion
-
 	#region RoleModelBase (abstract)
 
 	/// <summary>
@@ -756,6 +660,447 @@ namespace DMT.Models
 				}
 			}
 		}
+
+		#endregion
+	}
+
+	#endregion
+
+	#region ShiftModelBase (abstract)
+
+	/// <summary>
+	/// ShiftModelBase (abstract).
+	/// </summary>
+	/// <typeparam name="T">The Target Class.</typeparam>
+	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	public abstract class ShiftModelBase<T> : DataCenterModelBase<T>
+		where T : NTable, new()
+	{
+		#region Intenral Variables
+
+		private int _ShiftId = 0;
+		private string _ShiftNameTH = string.Empty;
+		private string _ShiftNameEN = string.Empty;
+
+		#endregion
+
+		#region Public Proprties
+
+		/// <summary>
+		/// Gets or sets ShiftId.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets ShiftId.")]
+		[PeropertyMapName("ShiftId")]
+		[PropertyOrder(501)]
+		public virtual int ShiftId
+		{
+			get
+			{
+				return _ShiftId;
+			}
+			set
+			{
+				if (_ShiftId != value)
+				{
+					_ShiftId = value;
+					this.RaiseChanged("ShiftId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Name TH.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets Name TH.")]
+		[MaxLength(50)]
+		[Ignore]
+		[PeropertyMapName("ShiftNameTH")]
+		[PropertyOrder(502)]
+		public virtual string ShiftNameTH
+		{
+			get
+			{
+				return _ShiftNameTH;
+			}
+			set
+			{
+				if (_ShiftNameTH != value)
+				{
+					_ShiftNameTH = value;
+					this.RaiseChanged("ShiftNameTH");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Name EN.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets Name EN.")]
+		[MaxLength(50)]
+		[Ignore]
+		[PeropertyMapName("ShiftNameEN")]
+		[PropertyOrder(503)]
+		public virtual string ShiftNameEN
+		{
+			get
+			{
+				return _ShiftNameEN;
+			}
+			set
+			{
+				if (_ShiftNameEN != value)
+				{
+					_ShiftNameEN = value;
+					this.RaiseChanged("ShiftNameEN");
+				}
+			}
+		}
+
+		#endregion
+	}
+
+	#endregion
+
+	#region TSBShiftModelBase (abstract)
+
+	/// <summary>
+	/// TSBShiftModelBase (abstract).
+	/// </summary>
+	/// <typeparam name="T">The Target Class.</typeparam>
+	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	public abstract class TSBShiftModelBase<T> : TSBModelBase<T>
+		where T : NTable, new()
+	{
+		#region Intenral Variables
+
+		// Shift
+		private int _ShiftId = 0;
+		private string _ShiftNameTH = string.Empty;
+		private string _ShiftNameEN = string.Empty;
+		// User
+		private string _UserId = string.Empty;
+		private string _FullNameEN = string.Empty;
+		private string _FullNameTH = string.Empty;
+		// Shift Begin/End
+		private DateTime _Begin = DateTime.MinValue;
+		private DateTime _End = DateTime.MinValue;
+
+		#endregion
+
+		#region Public Proprties
+
+		#region Shift
+
+		/// <summary>
+		/// Gets or sets ShiftId.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets ShiftId.")]
+		[PeropertyMapName("ShiftId")]
+		[PropertyOrder(501)]
+		public virtual int ShiftId
+		{
+			get
+			{
+				return _ShiftId;
+			}
+			set
+			{
+				if (_ShiftId != value)
+				{
+					_ShiftId = value;
+					this.RaiseChanged("ShiftId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Name TH.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets Name TH.")]
+		[MaxLength(50)]
+		[Ignore]
+		[PeropertyMapName("ShiftNameTH")]
+		[PropertyOrder(502)]
+		public virtual string ShiftNameTH
+		{
+			get
+			{
+				return _ShiftNameTH;
+			}
+			set
+			{
+				if (_ShiftNameTH != value)
+				{
+					_ShiftNameTH = value;
+					this.RaiseChanged("ShiftNameTH");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Name EN.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets Name EN.")]
+		[MaxLength(50)]
+		[Ignore]
+		[PeropertyMapName("ShiftNameEN")]
+		[PropertyOrder(503)]
+		public virtual string ShiftNameEN
+		{
+			get
+			{
+				return _ShiftNameEN;
+			}
+			set
+			{
+				if (_ShiftNameEN != value)
+				{
+					_ShiftNameEN = value;
+					this.RaiseChanged("ShiftNameEN");
+				}
+			}
+		}
+
+		#endregion
+
+		#region User
+
+		/// <summary>
+		/// Gets or sets UserId
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets UserId")]
+		[MaxLength(10)]
+		[PeropertyMapName("UserId")]
+		[PropertyOrder(701)]
+		public virtual string UserId
+		{
+			get
+			{
+				return _UserId;
+			}
+			set
+			{
+				if (_UserId != value)
+				{
+					_UserId = value;
+					this.RaiseChanged("UserId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets FullNameEN
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets FullNameEN")]
+		[MaxLength(100)]
+		[Ignore]
+		[PeropertyMapName("FullNameEN")]
+		[PropertyOrder(702)]
+		public virtual string FullNameEN
+		{
+			get
+			{
+				return _FullNameEN;
+			}
+			set
+			{
+				if (_FullNameEN != value)
+				{
+					_FullNameEN = value;
+					this.RaiseChanged("FullNameEN");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets FullNameTH
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets FullNameTH")]
+		[MaxLength(100)]
+		[Ignore]
+		[PeropertyMapName("FullNameTH")]
+		[PropertyOrder(703)]
+		public virtual string FullNameTH
+		{
+			get
+			{
+				return _FullNameTH;
+			}
+			set
+			{
+				if (_FullNameTH != value)
+				{
+					_FullNameTH = value;
+					this.RaiseChanged("FullNameTH");
+				}
+			}
+		}
+
+		#endregion
+
+		#region Begin/End
+
+		/// <summary>
+		/// Gets or sets Begin Date.
+		/// </summary>
+		[Category("Shift")]
+		[Description("Gets or sets Begin Date.")]
+		//[ReadOnly(true)]
+		[PeropertyMapName("Begin")]
+		[PropertyOrder(801)]
+		public virtual DateTime Begin
+		{
+			get { return _Begin; }
+			set
+			{
+				if (_Begin != value)
+				{
+					_Begin = value;
+					// Raise event.
+					RaiseChanged("Begin");
+					RaiseChanged("BeginDateString");
+					RaiseChanged("BeginTimeString");
+					RaiseChanged("BeginDateTimeString");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets End Date.
+		/// </summary>
+		[Category("Shift")]
+		[Description("Gets or sets End Date.")]
+		//[ReadOnly(true)]
+		[PeropertyMapName("End")]
+		[PropertyOrder(805)]
+		public virtual DateTime End
+		{
+			get { return _End; }
+			set
+			{
+				if (_End != value)
+				{
+					_End = value;
+					// Raise event.
+					RaiseChanged("End");
+					RaiseChanged("EndDateString");
+					RaiseChanged("EndTimeString");
+					RaiseChanged("EndDateTimeString");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets Begin Date String.
+		/// </summary>
+		[Category("Shift")]
+		[Description("Gets Begin Date String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		[PropertyOrder(802)]
+		public string BeginDateString
+		{
+			get
+			{
+				var ret = (this.Begin == DateTime.MinValue) ? "" : this.Begin.ToThaiDateTimeString("dd/MM/yyyy");
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets End Date String.
+		/// </summary>
+		[Category("Shift")]
+		[Description("Gets End Date String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		[PropertyOrder(806)]
+		public string EndDateString
+		{
+			get
+			{
+				var ret = (this.End == DateTime.MinValue) ? "" : this.End.ToThaiDateTimeString("dd/MM/yyyy");
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets Begin Time String.
+		/// </summary>
+		[Category("Shift")]
+		[Description("Gets Begin Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		[PropertyOrder(803)]
+		public string BeginTimeString
+		{
+			get
+			{
+				var ret = (this.Begin == DateTime.MinValue) ? "" : this.Begin.ToThaiTimeString();
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets End Time String.
+		/// </summary>
+		[Category("Shift")]
+		[Description("Gets End Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		[PropertyOrder(807)]
+		public string EndTimeString
+		{
+			get
+			{
+				var ret = (this.End == DateTime.MinValue) ? "" : this.End.ToThaiTimeString();
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets or sets Begin Date Time String..
+		/// </summary>
+		[Category("Shift")]
+		[Description("Gets or sets Begin Date Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		[PropertyOrder(804)]
+		public string BeginDateTimeString
+		{
+			get
+			{
+				var ret = (this.Begin == DateTime.MinValue) ? "" : this.Begin.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets End Date Time String.
+		/// </summary>
+		[Category("Shift")]
+		[Description("Gets End Date Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		[PropertyOrder(808)]
+		public string EndDateTimeString
+		{
+			get
+			{
+				var ret = (this.End == DateTime.MinValue) ? "" : this.End.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+				return ret;
+			}
+			set { }
+		}
+
+		#endregion
 
 		#endregion
 	}
