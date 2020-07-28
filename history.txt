@@ -49,6 +49,13 @@ Update 2020-07-29 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-07-28 #18
+- Update history.txt (remind)
+  - Backup current models to Backup2.
+  - Revert to used original models (with PropertyOrder attribute) for reduce complex of code.
+  - Check Calculate Cnt <-> Amt in all Credit model classes.
+
+[commited]
 Update 2020-07-28 #17
 - Prepare history.txt
 
