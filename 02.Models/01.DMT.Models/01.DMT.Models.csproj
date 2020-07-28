@@ -97,6 +97,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExtensionMethods\ModelExtensionMethods.cs" />
+    <None Include="Models\Backup2\Common\DMTModelBase.cs" />
+    <None Include="Models\Backup2\Common\ModelBaseClasses.cs" />
+    <None Include="Models\Backup2\Common\NQueries.cs" />
+    <None Include="Models\Backup2\Common\NTables.cs" />
+    <None Include="Models\Backup2\Infrastructures\Lane.cs" />
+    <None Include="Models\Backup2\Infrastructures\Plaza.cs" />
+    <None Include="Models\Backup2\Infrastructures\PlazaGroup.cs" />
+    <None Include="Models\Backup2\Infrastructures\TSB.cs" />
+    <None Include="Models\Backup2\Shifts\Shift.cs" />
+    <None Include="Models\Backup2\Shifts\TSBShift.cs" />
+    <None Include="Models\Backup2\Shifts\UserShift.cs" />
+    <None Include="Models\Backup2\Users\Role.cs" />
+    <None Include="Models\Backup2\Users\User.cs" />
     <Compile Include="Models\Common\ModelBaseClasses.cs" />
     <Compile Include="Models\Infrastructures\Lane.cs" />
     <Compile Include="Models\Infrastructures\Plaza.cs" />
