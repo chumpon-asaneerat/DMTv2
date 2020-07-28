@@ -1,4 +1,31 @@
 --------------------------------------------------------------------------------------------
+Update 2020-07-29 #15
+- 
+
+Update 2020-07-29 #14
+- 
+
+Update 2020-07-29 #13
+- 
+
+Update 2020-07-29 #12
+- 
+
+Update 2020-07-29 #11
+- 
+
+Update 2020-07-29 #10
+- 
+
+Update 2020-07-29 #9
+- 
+
+Update 2020-07-29 #8
+- 
+
+Update 2020-07-29 #7
+- 
+
 Update 2020-07-29 #7
 - 
 
@@ -22,9 +49,13 @@ Update 2020-07-29 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-07-28 #17
+- Prepare history.txt
+
+[commited]
 Update 2020-07-28 #16
 - Update history.txt
-  - Revert to used original models with add PropertyOrder for sort properties.
+  - Revert to used original models (with PropertyOrder attribute) for reduce complex of code.
   - Check Calculate Cnt <-> Amt in all Credit model classes.
 
 [commited]
