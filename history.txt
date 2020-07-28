@@ -22,6 +22,12 @@ Update 2020-07-29 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-07-28 #16
+- Update history.txt
+  - Revert to used original models with add PropertyOrder for sort properties.
+  - Check Calculate Cnt <-> Amt in all Credit model classes.
+
+[commited]
 Update 2020-07-28 #15
 - Change TSBShiftModelBase<T> class to UserShiftModelBase<T>.
 - Update TSBShift class #3.
