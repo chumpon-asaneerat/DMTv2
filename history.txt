@@ -22,6 +22,11 @@ Update 2020-07-29 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-07-28 #9
+- Add LaneModelBase<T>
+- Update Lane #2
+
+[commited]
 Update 2020-07-28 #8
 - Add UserShift.cs
 

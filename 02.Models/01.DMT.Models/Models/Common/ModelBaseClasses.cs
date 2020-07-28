@@ -450,4 +450,150 @@ namespace DMT.Models
 	}
 
 	#endregion
+
+	#region PlazaModelBase (abstract)
+
+	/// <summary>
+	/// LaneModelBase (abstract).
+	/// </summary>
+	/// <typeparam name="T">The Target Class.</typeparam>
+	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	public abstract class LaneModelBase<T> : PlazaModelBase<T>
+		where T : NTable, new()
+	{
+		#region Intenral Variables
+
+		private int _PkId = 0;
+		private int _LaneNo = 0;
+		private string _LaneId = string.Empty;
+		private string _LaneType = string.Empty;
+		private string _LaneAbbr = string.Empty;
+
+		#endregion
+
+		#region Public Proprties
+
+		/// <summary>
+		/// Gets or sets Lane PkId
+		/// </summary>
+		[Category("Lane")]
+		[Description("Gets or sets Lane PkId")]
+		[ReadOnly(true)]
+		[AutoIncrement]
+		[Ignore]
+		[PeropertyMapName("PkId")]
+		[PropertyOrder(401)]
+		public virtual int PkId
+		{
+			get
+			{
+				return _PkId;
+			}
+			set
+			{
+				if (_PkId != value)
+				{
+					_PkId = value;
+					this.RaiseChanged("PkId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Lane No.
+		/// </summary>
+		[Category("Lane")]
+		[Description("Gets or sets Lane No.")]
+		[PeropertyMapName("LaneNo")]
+		[PropertyOrder(402)]
+		public virtual int LaneNo
+		{
+			get
+			{
+				return _LaneNo;
+			}
+			set
+			{
+				if (_LaneNo != value)
+				{
+					_LaneNo = value;
+					this.RaiseChanged("LaneNo");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets LaneId
+		/// </summary>
+		[Category("Lane")]
+		[Description("Gets or sets LaneId")]
+		[MaxLength(10)]
+		[PeropertyMapName("LaneId")]
+		[PropertyOrder(403)]
+		public virtual string LaneId
+		{
+			get
+			{
+				return _LaneId;
+			}
+			set
+			{
+				if (_LaneId != value)
+				{
+					_LaneId = value;
+					this.RaiseChanged("LaneId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets LaneType
+		/// </summary>
+		[Category("Lane")]
+		[Description("Gets or sets LaneType")]
+		[MaxLength(10)]
+		[Ignore]
+		[PeropertyMapName("LaneType")]
+		[PropertyOrder(404)]
+		public virtual string LaneType
+		{
+			get
+			{
+				return _LaneType;
+			}
+			set
+			{
+				if (_LaneType != value)
+				{
+					_LaneType = value;
+					this.RaiseChanged("LaneType");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets LaneAbbr
+		/// </summary>
+		[Category("Lane")]
+		[Description("Gets or sets LaneAbbr")]
+		[MaxLength(10)]
+		[Ignore]
+		[PeropertyMapName("LaneAbbr")]
+		[PropertyOrder(405)]
+		public virtual string LaneAbbr
+		{
+			get
+			{
+				return _LaneAbbr;
+			}
+			set
+			{
+				if (_LaneAbbr != value)
+				{
+					_LaneAbbr = value;
+					this.RaiseChanged("LaneAbbr");
+				}
+			}
+		}
+
+		#endregion
+	}
+
+	#endregion
 }
