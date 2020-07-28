@@ -22,6 +22,11 @@ Update 2020-07-29 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-07-28 #11
+- Add RoleModelBase<T>
+- Update Role #2
+
+[commited]
 Update 2020-07-28 #10
 - Add ShiftModelBase<T>
 - Update Shift #2

@@ -31,6 +31,7 @@ namespace DMT.Models
 		/// <summary>
 		/// Gets or sets ShiftId.
 		/// </summary>
+		[PrimaryKey]
 		[PropertyOrder(501)]
 		public override int ShiftId
 		{

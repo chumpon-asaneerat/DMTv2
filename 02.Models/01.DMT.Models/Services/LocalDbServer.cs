@@ -97,6 +97,7 @@ namespace DMT.Services
 			Db.CreateTable<Plaza>();
 			Db.CreateTable<Lane>();
 			Db.CreateTable<Shift>();
+			Db.CreateTable<Role>();
 		}
 
 		#endregion

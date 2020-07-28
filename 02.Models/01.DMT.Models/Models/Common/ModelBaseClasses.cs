@@ -692,4 +692,102 @@ namespace DMT.Models
 	}
 
 	#endregion
+
+	#region RoleModelBase (abstract)
+
+	/// <summary>
+	/// RoleModelBase (abstract).
+	/// </summary>
+	/// <typeparam name="T">The Target Class.</typeparam>
+	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	public abstract class RoleModelBase<T> : DataCenterModelBase<T>
+		where T : NTable, new()
+	{
+		#region Intenral Variables
+
+		private string _RoleId = string.Empty;
+		private string _RoleNameEN = string.Empty;
+		private string _RoleNameTH = string.Empty;
+
+		#endregion
+
+		#region Public Proprties
+
+		/// <summary>
+		/// Gets or sets RoleId
+		/// </summary>
+		[Category("Role")]
+		[Description("Gets or sets RoleId")]
+		[ReadOnly(true)]
+		[MaxLength(20)]
+		[PeropertyMapName("RoleId")]
+		[PropertyOrder(601)]
+		public virtual string RoleId
+		{
+			get
+			{
+				return _RoleId;
+			}
+			set
+			{
+				if (_RoleId != value)
+				{
+					_RoleId = value;
+					this.RaiseChanged("RoleId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets RoleNameEN
+		/// </summary>
+		[Category("Role")]
+		[Description("Gets or sets RoleNameEN")]
+		[MaxLength(50)]
+		[Ignore]
+		[PeropertyMapName("RoleNameEN")]
+		[PropertyOrder(602)]
+		public virtual string RoleNameEN
+		{
+			get
+			{
+				return _RoleNameEN;
+			}
+			set
+			{
+				if (_RoleNameEN != value)
+				{
+					_RoleNameEN = value;
+					this.RaiseChanged("RoleNameEN");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets RoleNameTH
+		/// </summary>
+		[Category("Role")]
+		[Description("Gets or sets RoleNameTH")]
+		[MaxLength(50)]
+		[Ignore]
+		[PeropertyMapName("RoleNameTH")]
+		[PropertyOrder(603)]
+		public virtual string RoleNameTH
+		{
+			get
+			{
+				return _RoleNameTH;
+			}
+			set
+			{
+				if (_RoleNameTH != value)
+				{
+					_RoleNameTH = value;
+					this.RaiseChanged("RoleNameTH");
+				}
+			}
+		}
+
+		#endregion
+	}
+
+	#endregion
 }
