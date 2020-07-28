@@ -26,6 +26,13 @@ namespace DMT.Models
 	//[Table("TSB")]
 	public class TSB : TSBModelBase<TSB>
 	{
+		#region Internal Variables
+
+		private string _NetworkId = string.Empty;
+		private bool _Active = false;
+
+		#endregion
+
 		#region Public Properties
 
 		/// <summary>
@@ -39,18 +46,9 @@ namespace DMT.Models
 			set { base.TSBId = value; }
 		}
 		/// <summary>
-		/// Gets or sets NetworkId.
-		/// </summary>
-		[PropertyOrder(102)]
-		public override string NetworkId
-		{
-			get { return base.NetworkId; }
-			set { base.NetworkId = value; }
-		}
-		/// <summary>
 		/// Gets or sets TSBNameEN.
 		/// </summary>
-		[PropertyOrder(103)]
+		[PropertyOrder(102)]
 		public override string TSBNameEN
 		{
 			get { return base.TSBNameEN; }
@@ -59,20 +57,57 @@ namespace DMT.Models
 		/// <summary>
 		/// Gets or sets TSBNameTH.
 		/// </summary>
-		[PropertyOrder(104)]
+		[PropertyOrder(103)]
 		public override string TSBNameTH
 		{
 			get { return base.TSBNameTH; }
 			set { base.TSBNameTH = value; }
 		}
 		/// <summary>
+		/// Gets or sets NetworkId.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets NetworkId.")]
+		[MaxLength(10)]
+		[PeropertyMapName("NetworkId")]
+		[PropertyOrder(104)]
+		public virtual string NetworkId
+		{
+			get
+			{
+				return _NetworkId;
+			}
+			set
+			{
+				if (_NetworkId != value)
+				{
+					_NetworkId = value;
+					this.RaiseChanged("NetworkId");
+				}
+			}
+		}
+		/// <summary>
 		/// Gets or sets is active TSB.
 		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets is active TSB.")]
+		[ReadOnly(true)]
+		[PeropertyMapName("Active")]
 		[PropertyOrder(105)]
-		public override bool Active
+		public virtual bool Active
 		{
-			get { return base.Active; }
-			set { base.Active = value;  }
+			get
+			{
+				return _Active;
+			}
+			set
+			{
+				if (_Active != value)
+				{
+					_Active = value;
+					this.RaiseChanged("Active");
+				}
+			}
 		}
 
 		#endregion

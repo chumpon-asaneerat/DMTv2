@@ -100,8 +100,6 @@ namespace DMT.Models
 		private string _TSBId = string.Empty;
 		private string _TSBNameEN = string.Empty;
 		private string _TSBNameTH = string.Empty;
-		private string _NetworkId = string.Empty;
-		private bool _Active = false;
 
 		#endregion
 
@@ -131,30 +129,6 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets NetworkId.
-		/// </summary>
-		[Category("Common")]
-		[Description("Gets or sets NetworkId.")]
-		[MaxLength(10)]
-		[PeropertyMapName("NetworkId")]
-		[Ignore]
-		[PropertyOrder(102)]
-		public virtual string NetworkId
-		{
-			get
-			{
-				return _NetworkId;
-			}
-			set
-			{
-				if (_NetworkId != value)
-				{
-					_NetworkId = value;
-					this.RaiseChanged("NetworkId");
-				}
-			}
-		}
-		/// <summary>
 		/// Gets or sets TSBNameEN.
 		/// </summary>
 		[Category("Common")]
@@ -162,7 +136,7 @@ namespace DMT.Models
 		[MaxLength(100)]
 		[PeropertyMapName("TSBNameEN")]
 		[Ignore]
-		[PropertyOrder(103)]
+		[PropertyOrder(102)]
 		public virtual string TSBNameEN
 		{
 			get
@@ -186,7 +160,7 @@ namespace DMT.Models
 		[MaxLength(100)]
 		[PeropertyMapName("TSBNameTH")]
 		[Ignore]
-		[PropertyOrder(104)]
+		[PropertyOrder(103)]
 		public virtual string TSBNameTH
 		{
 			get
@@ -199,30 +173,6 @@ namespace DMT.Models
 				{
 					_TSBNameTH = value;
 					this.RaiseChanged("TSBNameTH");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets is active TSB.
-		/// </summary>
-		[Category("Common")]
-		[Description("Gets or sets is active TSB.")]
-		[ReadOnly(true)]
-		[PeropertyMapName("Active")]
-		[Ignore]
-		[PropertyOrder(105)]
-		public virtual bool Active
-		{
-			get
-			{
-				return _Active;
-			}
-			set
-			{
-				if (_Active != value)
-				{
-					_Active = value;
-					this.RaiseChanged("Active");
 				}
 			}
 		}
@@ -463,41 +413,13 @@ namespace DMT.Models
 	{
 		#region Intenral Variables
 
-		private int _PkId = 0;
 		private int _LaneNo = 0;
 		private string _LaneId = string.Empty;
-		private string _LaneType = string.Empty;
-		private string _LaneAbbr = string.Empty;
 
 		#endregion
 
 		#region Public Proprties
 
-		/// <summary>
-		/// Gets or sets Lane PkId
-		/// </summary>
-		[Category("Lane")]
-		[Description("Gets or sets Lane PkId")]
-		[ReadOnly(true)]
-		[AutoIncrement]
-		[Ignore]
-		[PeropertyMapName("PkId")]
-		[PropertyOrder(401)]
-		public virtual int PkId
-		{
-			get
-			{
-				return _PkId;
-			}
-			set
-			{
-				if (_PkId != value)
-				{
-					_PkId = value;
-					this.RaiseChanged("PkId");
-				}
-			}
-		}
 		/// <summary>
 		/// Gets or sets Lane No.
 		/// </summary>
@@ -540,54 +462,6 @@ namespace DMT.Models
 				{
 					_LaneId = value;
 					this.RaiseChanged("LaneId");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets LaneType
-		/// </summary>
-		[Category("Lane")]
-		[Description("Gets or sets LaneType")]
-		[MaxLength(10)]
-		[Ignore]
-		[PeropertyMapName("LaneType")]
-		[PropertyOrder(404)]
-		public virtual string LaneType
-		{
-			get
-			{
-				return _LaneType;
-			}
-			set
-			{
-				if (_LaneType != value)
-				{
-					_LaneType = value;
-					this.RaiseChanged("LaneType");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets LaneAbbr
-		/// </summary>
-		[Category("Lane")]
-		[Description("Gets or sets LaneAbbr")]
-		[MaxLength(10)]
-		[Ignore]
-		[PeropertyMapName("LaneAbbr")]
-		[PropertyOrder(405)]
-		public virtual string LaneAbbr
-		{
-			get
-			{
-				return _LaneAbbr;
-			}
-			set
-			{
-				if (_LaneAbbr != value)
-				{
-					_LaneAbbr = value;
-					this.RaiseChanged("LaneAbbr");
 				}
 			}
 		}
@@ -782,6 +656,103 @@ namespace DMT.Models
 				{
 					_RoleNameTH = value;
 					this.RaiseChanged("RoleNameTH");
+				}
+			}
+		}
+
+		#endregion
+	}
+
+	#endregion
+
+	#region UserModelBase (abstract)
+
+	/// <summary>
+	/// UserModelBase (abstract).
+	/// </summary>
+	/// <typeparam name="T">The Target Class.</typeparam>
+	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	public abstract class UserModelBase<T> : RoleModelBase<T>
+		where T : NTable, new()
+	{
+		#region Intenral Variables
+
+		private string _UserId = string.Empty;
+		private string _FullNameEN = string.Empty;
+		private string _FullNameTH = string.Empty;
+
+		#endregion
+
+		#region Public Proprties
+
+		/// <summary>
+		/// Gets or sets UserId
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets UserId")]
+		[MaxLength(10)]
+		[PeropertyMapName("UserId")]
+		[PropertyOrder(701)]
+		public virtual string UserId
+		{
+			get
+			{
+				return _UserId;
+			}
+			set
+			{
+				if (_UserId != value)
+				{
+					_UserId = value;
+					this.RaiseChanged("UserId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets FullNameEN
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets FullNameEN")]
+		[MaxLength(100)]
+		[Ignore]
+		[PeropertyMapName("FullNameEN")]
+		[PropertyOrder(702)]
+		public virtual string FullNameEN
+		{
+			get
+			{
+				return _FullNameEN;
+			}
+			set
+			{
+				if (_FullNameEN != value)
+				{
+					_FullNameEN = value;
+					this.RaiseChanged("FullNameEN");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets FullNameTH
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets FullNameTH")]
+		[MaxLength(100)]
+		[Ignore]
+		[PeropertyMapName("FullNameTH")]
+		[PropertyOrder(703)]
+		public virtual string FullNameTH
+		{
+			get
+			{
+				return _FullNameTH;
+			}
+			set
+			{
+				if (_FullNameTH != value)
+				{
+					_FullNameTH = value;
+					this.RaiseChanged("FullNameTH");
 				}
 			}
 		}

@@ -26,17 +26,40 @@ namespace DMT.Models
 	//[Table("Lane")]
 	public class Lane : LaneModelBase<Lane>
 	{
+		#region Internal Variables
+
+		private int _PkId = 0;
+		private string _LaneType = string.Empty;
+		private string _LaneAbbr = string.Empty;
+
+		#endregion
+
 		#region Public Properties
 
 		/// <summary>
 		/// Gets or sets Lane PkId
 		/// </summary>
+		[Category("Lane")]
+		[Description("Gets or sets Lane PkId")]
+		[ReadOnly(true)]
 		[PrimaryKey]
+		[AutoIncrement]
+		[PeropertyMapName("PkId")]
 		[PropertyOrder(401)]
-		public override int PkId
+		public virtual int PkId
 		{
-			get { return base.PkId; }
-			set { base.PkId = value; }
+			get
+			{
+				return _PkId;
+			}
+			set
+			{
+				if (_PkId != value)
+				{
+					_PkId = value;
+					this.RaiseChanged("PkId");
+				}
+			}
 		}
 		/// <summary>
 		/// Gets or sets Lane No.
@@ -59,20 +82,48 @@ namespace DMT.Models
 		/// <summary>
 		/// Gets or sets LaneType
 		/// </summary>
+		[Category("Lane")]
+		[Description("Gets or sets LaneType")]
+		[MaxLength(10)]
+		[PeropertyMapName("LaneType")]
 		[PropertyOrder(404)]
-		public override string LaneType
+		public virtual string LaneType
 		{
-			get { return base.LaneType; }
-			set { base.LaneType = value; }
+			get
+			{
+				return _LaneType;
+			}
+			set
+			{
+				if (_LaneType != value)
+				{
+					_LaneType = value;
+					this.RaiseChanged("LaneType");
+				}
+			}
 		}
 		/// <summary>
 		/// Gets or sets LaneAbbr
 		/// </summary>
+		[Category("Lane")]
+		[Description("Gets or sets LaneAbbr")]
+		[MaxLength(10)]
+		[PeropertyMapName("LaneAbbr")]
 		[PropertyOrder(405)]
-		public override string LaneAbbr
+		public virtual string LaneAbbr
 		{
-			get { return base.LaneAbbr; }
-			set { base.LaneAbbr = value; }
+			get
+			{
+				return _LaneAbbr;
+			}
+			set
+			{
+				if (_LaneAbbr != value)
+				{
+					_LaneAbbr = value;
+					this.RaiseChanged("LaneAbbr");
+				}
+			}
 		}
 
 		#endregion
