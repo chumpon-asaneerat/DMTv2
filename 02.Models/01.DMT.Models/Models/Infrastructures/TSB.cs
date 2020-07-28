@@ -31,6 +31,7 @@ namespace DMT.Models
 		/// <summary>
 		/// Gets or sets TSBId.
 		/// </summary>
+		[PrimaryKey]
 		[PropertyOrder(101)]
 		public override string TSBId
 		{

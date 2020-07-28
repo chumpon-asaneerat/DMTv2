@@ -112,7 +112,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Common")]
 		[Description("Gets or sets TSBId.")]
-		[PrimaryKey, MaxLength(10)]
+		[MaxLength(10)]
 		[PeropertyMapName("TSBId")]
 		[PropertyOrder(101)]
 		public virtual string TSBId
@@ -253,14 +253,12 @@ namespace DMT.Models
 
 		#region Public Proprties
 
-		#region Plaza Group
-
 		/// <summary>
 		/// Gets or sets PlazaId.
 		/// </summary>
 		[Category("Plaza Group")]
 		[Description("Gets or sets PlazaId.")]
-		[PrimaryKey, MaxLength(10)]
+		[MaxLength(10)]
 		[PeropertyMapName("PlazaGroupId")]
 		[PropertyOrder(201)]
 		public virtual string PlazaGroupId
@@ -352,20 +350,101 @@ namespace DMT.Models
 		}
 
 		#endregion
+	}
 
-		#region TSB
+	#endregion
 
-		/// <summary>
-		/// Gets or sets TSBId.
-		/// </summary>
-		[PropertyOrder(101)]
-		public override string TSBId
-		{
-			get { return base.TSBId; }
-			set { base.TSBId = value; }
-		}
+	#region PlazaModelBase (abstract)
+
+	/// <summary>
+	/// PlazaModelBase (abstract).
+	/// </summary>
+	/// <typeparam name="T">The Target Class.</typeparam>
+	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	public abstract class PlazaModelBase<T> : PlazaGroupModelBase<T>
+		where T : NTable, new()
+	{
+		#region Intenral Variables
+
+		private string _PlazaId = string.Empty;
+		private string _PlazaNameEN = string.Empty;
+		private string _PlazaNameTH = string.Empty;
 
 		#endregion
+
+		#region Public Proprties
+
+		/// <summary>
+		/// Gets or sets PlazaId.
+		/// </summary>
+		[Category("Plaza")]
+		[Description("Gets or sets PlazaId.")]
+		[MaxLength(10)]
+		[PeropertyMapName("PlazaId")]
+		[PropertyOrder(301)]
+		public virtual string PlazaId
+		{
+			get
+			{
+				return _PlazaId;
+			}
+			set
+			{
+				if (_PlazaId != value)
+				{
+					_PlazaId = value;
+					this.RaiseChanged("PlazaId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets PlazaNameEN
+		/// </summary>
+		[Category("Plaza")]
+		[Description("Gets or sets PlazaNameEN")]
+		[MaxLength(100)]
+		[Ignore]
+		[PeropertyMapName("PlazaNameEN")]
+		[PropertyOrder(302)]
+		public virtual string PlazaNameEN
+		{
+			get
+			{
+				return _PlazaNameEN;
+			}
+			set
+			{
+				if (_PlazaNameEN != value)
+				{
+					_PlazaNameEN = value;
+					this.RaiseChanged("PlazaNameEN");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets PlazaNameTH
+		/// </summary>
+		[Category("Plaza")]
+		[Description("Gets or sets PlazaNameTH")]
+		[MaxLength(100)]
+		[Ignore]
+		[PeropertyMapName("PlazaNameTH")]
+		[PropertyOrder(303)]
+		public virtual string PlazaNameTH
+		{
+			get
+			{
+				return _PlazaNameTH;
+			}
+			set
+			{
+				if (_PlazaNameTH != value)
+				{
+					_PlazaNameTH = value;
+					this.RaiseChanged("PlazaNameTH");
+				}
+			}
+		}
 
 		#endregion
 	}

@@ -94,6 +94,7 @@ namespace DMT.Services
 
 			Db.CreateTable<TSB>();
 			Db.CreateTable<PlazaGroup>();
+			Db.CreateTable<Plaza>();
 		}
 
 		#endregion

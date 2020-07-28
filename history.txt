@@ -2,8 +2,14 @@
 Update 2020-07-28 #3
 - 
 
+[commited]
 Update 2020-07-28 #2
-- 
+- Add PlazaModelBase<T> class.
+- Add Plaza class.
+- Update PlazaGroupModelBase<T> class #6.
+- Update PlazaGroup class #4.
+- Update TSB Model class #3.
+- Update TSBModelBase<T> class #4.
 
 [commited]
 Update 2020-07-28 #1
