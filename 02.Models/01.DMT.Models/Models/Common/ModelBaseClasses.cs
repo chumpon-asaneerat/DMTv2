@@ -43,7 +43,7 @@ namespace DMT.Models
 		[Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
 		[ReadOnly(true)]
 		[PeropertyMapName("Status")]
-		[PropertyOrder(101)]
+		[PropertyOrder(10001)]
 		public int Status
 		{
 			get
@@ -66,7 +66,7 @@ namespace DMT.Models
 		[Description("Gets or sets LastUpdated (Sync to DC).")]
 		[ReadOnly(true)]
 		[PeropertyMapName("LastUpdate")]
-		[PropertyOrder(102)]
+		[PropertyOrder(10002)]
 		public DateTime LastUpdate
 		{
 			get { return _LastUpdate; }

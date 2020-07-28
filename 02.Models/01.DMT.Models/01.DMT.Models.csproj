@@ -104,6 +104,7 @@
     <Compile Include="Models\Infrastructures\TSB.cs" />
     <Compile Include="Models\Shifts\Shift.cs" />
     <Compile Include="Models\Shifts\TSBShift.cs" />
+    <Compile Include="Models\Shifts\UserShift.cs" />
     <Compile Include="Models\Users\Role.cs" />
     <Compile Include="Models\Users\User.cs" />
     <Compile Include="Services\LocalDbServer.cs" />
