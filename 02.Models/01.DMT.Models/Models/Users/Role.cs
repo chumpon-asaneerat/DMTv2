@@ -17,16 +17,7 @@ using Newtonsoft.Json.Bson;
 
 namespace DMT.Models
 {
-	#region TSB
-
-	/// <summary>
-	/// The TSB Data Model class.
-	/// </summary>
-	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
-	//[Table("TSB")]
-	public class Lane
-	{
-	}
-
-	#endregion
+    class Role
+    {
+    }
 }
