@@ -451,7 +451,7 @@ namespace DMT.Models
 
 	#endregion
 
-	#region PlazaModelBase (abstract)
+	#region LaneModelBase (abstract)
 
 	/// <summary>
 	/// LaneModelBase (abstract).
@@ -588,6 +588,102 @@ namespace DMT.Models
 				{
 					_LaneAbbr = value;
 					this.RaiseChanged("LaneAbbr");
+				}
+			}
+		}
+
+		#endregion
+	}
+
+	#endregion
+
+	#region ShiftModelBase (abstract)
+
+	/// <summary>
+	/// ShiftModelBase (abstract).
+	/// </summary>
+	/// <typeparam name="T">The Target Class.</typeparam>
+	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	public abstract class ShiftModelBase<T> : DataCenterModelBase<T>
+		where T : NTable, new()
+	{
+		#region Intenral Variables
+
+		private int _ShiftId = 0;
+		private string _ShiftNameTH = string.Empty;
+		private string _ShiftNameEN = string.Empty;
+
+		#endregion
+
+		#region Public Proprties
+
+		/// <summary>
+		/// Gets or sets ShiftId.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets ShiftId.")]
+		[PeropertyMapName("ShiftId")]
+		[PropertyOrder(501)]
+		public virtual int ShiftId
+		{
+			get
+			{
+				return _ShiftId;
+			}
+			set
+			{
+				if (_ShiftId != value)
+				{
+					_ShiftId = value;
+					this.RaiseChanged("ShiftId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Name TH.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets Name TH.")]
+		[MaxLength(50)]
+		[Ignore]
+		[PeropertyMapName("ShiftNameTH")]
+		[PropertyOrder(502)]
+		public virtual string ShiftNameTH
+		{
+			get
+			{
+				return _ShiftNameTH;
+			}
+			set
+			{
+				if (_ShiftNameTH != value)
+				{
+					_ShiftNameTH = value;
+					this.RaiseChanged("ShiftNameTH");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Name EN.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets Name EN.")]
+		[MaxLength(50)]
+		[Ignore]
+		[PeropertyMapName("ShiftNameEN")]
+		[PropertyOrder(503)]
+		public virtual string ShiftNameEN
+		{
+			get
+			{
+				return _ShiftNameEN;
+			}
+			set
+			{
+				if (_ShiftNameEN != value)
+				{
+					_ShiftNameEN = value;
+					this.RaiseChanged("ShiftNameEN");
 				}
 			}
 		}

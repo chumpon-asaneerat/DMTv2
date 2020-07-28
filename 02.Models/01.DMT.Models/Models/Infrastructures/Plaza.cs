@@ -17,10 +17,10 @@ using Newtonsoft.Json.Bson;
 
 namespace DMT.Models
 {
-	#region PlazaGroup
+	#region Plaza
 
 	/// <summary>
-	/// The PlazaGroup Data Model class.
+	/// The Plaza Data Model class.
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
 	//[Table("Plaza")]

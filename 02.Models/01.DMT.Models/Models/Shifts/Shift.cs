@@ -17,7 +17,47 @@ using Newtonsoft.Json.Bson;
 
 namespace DMT.Models
 {
-    class Shift
-    {
-    }
+	#region Shift
+
+	/// <summary>
+	/// The Shift Data Model class.
+	/// </summary>
+	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	//[Table("Shift")]
+	public class Shift : ShiftModelBase<Shift>
+	{
+		#region Public Proprties
+
+		/// <summary>
+		/// Gets or sets ShiftId.
+		/// </summary>
+		[PropertyOrder(501)]
+		public override int ShiftId
+		{
+			get { return base.ShiftId; }
+			set { base.ShiftId = value; }
+		}
+		/// <summary>
+		/// Gets or sets Name TH.
+		/// </summary>
+		[PropertyOrder(502)]
+		public override string ShiftNameTH
+		{
+			get { return base.ShiftNameTH; }
+			set { base.ShiftNameTH = value; }
+		}
+		/// <summary>
+		/// Gets or sets Name EN.
+		/// </summary>
+		[PropertyOrder(503)]
+		public override string ShiftNameEN
+		{
+			get { return base.ShiftNameEN; }
+			set { base.ShiftNameEN = value; }
+		}
+
+		#endregion
+	}
+
+	#endregion
 }
