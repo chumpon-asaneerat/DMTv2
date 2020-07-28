@@ -103,6 +103,7 @@
     <Compile Include="Models\Infrastructures\PlazaGroup.cs" />
     <Compile Include="Models\Infrastructures\TSB.cs" />
     <Compile Include="Models\Users\Role.cs" />
+    <Compile Include="Models\Users\User.cs" />
     <Compile Include="Services\LocalDbServer.cs" />
     <None Include="Models\Backup\Common\DMTTATODBase.cs" />
     <None Include="Models\Backup\Configuration\Config.cs" />
