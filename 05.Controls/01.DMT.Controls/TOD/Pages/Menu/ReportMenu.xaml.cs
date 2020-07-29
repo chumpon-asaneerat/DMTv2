@@ -81,6 +81,17 @@ namespace DMT.TOD.Pages.Menu
             PageContentManager.Instance.Current = page;
         }
 
+        private void repSlipNull_Click(object sender, RoutedEventArgs e)
+        {
+            Models.RevenueEntry revenueEntry = null;
+            // Slip Preview
+            var page = new Reports.RevenueSlipPreviewNull();
+            page.MenuPage = new Menu.MainMenu(); // Set MenPage to main menu.
+            page.CallerPage = this; // Set CallerPage for click back.
+            page.Setup(_user, revenueEntry);
+            PageContentManager.Instance.Current = page;
+        }
+
         private void backHome_Click(object sender, RoutedEventArgs e)
         {
             // Main Menu Page

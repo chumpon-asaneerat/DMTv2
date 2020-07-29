@@ -146,7 +146,7 @@
     <None Include="Models\Backup\CreditsAndCoupons\TSBCreditTransaction.cs" />
     <None Include="Models\Backup\CreditsAndCoupons\UserCredit.cs" />
     <None Include="Models\Backup\CreditsAndCoupons\UserCreditTransaction.cs" />
-    <Compile Include="Models\Backup\DataModels.cs" />
+    <None Include="Models\Backup\DataModels.cs" />
     <None Include="Models\Backup\Common\DMTModelBase.cs" />
     <None Include="Models\Backup\Common\NQueries.cs" />
     <None Include="Models\Backup\Common\NSearch.cs" />

@@ -216,8 +216,17 @@
     <Compile Include="TOD\Pages\Reports\DailyRevenueSummaryPreview.xaml.cs">
       <DependentUpon>DailyRevenueSummaryPreview.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TOD\Pages\Reports\RevenueSlipPreviewNull.xaml.cs">
+      <DependentUpon>RevenueSlipPreviewNull.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TOD\Pages\Reports\RevenueSlipPreview.xaml.cs">
       <DependentUpon>RevenueSlipPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TOD\Pages\Revenue\RevenueSupervisorPage.xaml.cs">
+      <DependentUpon>RevenueSupervisorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TOD\Pages\Revenue\RevenueSupervisorSelectionPage.xaml.cs">
+      <DependentUpon>RevenueSupervisorSelectionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TOD\Pages\Revenue\RevenueDateSelectionPage.xaml.cs">
       <DependentUpon>RevenueDateSelectionPage.xaml</DependentUpon>
@@ -305,6 +314,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="TOD\Pages\Reports\RevenueSlipNull.rdlc" />
     <EmbeddedResource Include="TOD\Pages\Reports\RevenueSlipSum.rdlc" />
     <EmbeddedResource Include="TOD\Pages\Reports\RevenueSlip.rdlc" />
     <None Include="Properties\DataSources\DMT.Models.RevenueEntry.datasource" />
@@ -548,7 +558,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="TOD\Pages\Reports\RevenueSlipPreviewNull.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="TOD\Pages\Reports\RevenueSlipPreview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TOD\Pages\Revenue\RevenueSupervisorPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TOD\Pages\Revenue\RevenueSupervisorSelectionPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

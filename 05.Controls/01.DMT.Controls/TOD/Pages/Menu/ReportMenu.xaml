@@ -28,7 +28,7 @@
                     <RowDefinition Height="75"/>
                     <RowDefinition Height="140"/>
                     <RowDefinition Height="5"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="140"/>
                     <RowDefinition Height="5"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="5"/>
@@ -131,6 +131,52 @@
                                        TextAlignment="Center"
                                        TextWrapping="Wrap">
                             </TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+
+                <Button x:Name="repSlipNull" 
+                        Grid.Column="0" Grid.Row="3" 
+                        Margin="0 0 5 0"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        Click="repSlipNull_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Purple"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="DarkOrchid"/>
+                                    <Setter Property="Foreground" Value="WhiteSmoke"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <DockPanel>
+                        <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Center">
+                            <TextBlock FontSize="42" 
+                                       HorizontalAlignment="Center"
+                                       Text="แบบ form ในนำส่งรายได้"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                                <!--
+                                <Run Text="เปิดกะงาน" />
+                                <LineBreak />
+                                <Run Text="เปิดกะงาน 2" />
+                                -->
+                            </TextBlock>
+
                         </StackPanel>
                     </DockPanel>
                 </Button>

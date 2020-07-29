@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using NLib.Services;
 
 using DMT.Windows;
+using System;
 
 #endregion
 
@@ -85,11 +86,15 @@ namespace DMT.TOD.Pages.Menu
                 return;
             }
             var user = signinWin.User;
+            DateTime dt = DateTime.Now;
+
+            if(search.dteRevenue != null)
+                dt = search.dteRevenue;
 
             // Revenue Slip Preview
-            var page = new Revenue.RevenueDateSelectionPage();
+            var page = new Revenue.RevenueSupervisorSelectionPage();
             // setup
-            page.Setup(user);
+            page.Setup(user, dt);
             PageContentManager.Instance.Current = page;
         }
 

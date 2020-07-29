@@ -187,6 +187,12 @@
                                        TextAlignment="Center"
                                        TextWrapping="Wrap">
                             </TextBlock>
+                            <TextBlock x:Name="txtSupName" FontSize="28" 
+                                       HorizontalAlignment="Center"
+                                       Text="(หัวหน้าด่าน)"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap">
+                            </TextBlock>
                         </StackPanel>
                     </DockPanel>
                 </Button>

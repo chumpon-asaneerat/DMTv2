@@ -27,6 +27,8 @@ namespace DMT.TOD.Windows.Reports
         public RevenueSlipSearchWindow()
         {
             InitializeComponent();
+
+            dtDate.SelectedDate = DateTime.Now;
         }
 
         #endregion
@@ -94,5 +96,8 @@ namespace DMT.TOD.Windows.Reports
                 return grid.SelectedEntry;
             }
         }
+
+        public DateTime dteRevenue { get { return dtDate.SelectedDate.Value; } }
+
     }
 }
