@@ -42,7 +42,7 @@
                 <Grid Height="5" />
                 <TextBox x:Name="txtUserId" 
                          FontSize="18"
-                         Text=""/>
+                         Text="" KeyDown="txtUserId_KeyDown"/>
                 <Grid Height="5" />
                 <TextBlock Foreground="WhiteSmoke" 
                            FontSize="18"
@@ -50,7 +50,7 @@
                 <Grid Height="5" />
                 <PasswordBox x:Name="txtPassword" 
                              FontSize="18"
-                             PasswordChar="*"/>
+                             PasswordChar="*" KeyDown="txtPassword_KeyDown"/>
                 <Grid Height="5" />
             </StackPanel>
         </StackPanel>

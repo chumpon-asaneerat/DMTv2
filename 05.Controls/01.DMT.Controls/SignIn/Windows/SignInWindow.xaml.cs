@@ -25,6 +25,9 @@ namespace DMT.Windows
         public SignInWindow()
         {
             InitializeComponent();
+
+            txtUserId.SelectAll();
+            txtUserId.Focus();
         }
 
         #endregion
@@ -90,6 +93,27 @@ namespace DMT.Windows
 
         public User User { get { return _user;} }
 
+        #endregion
+
+        #region TextBox Keydown
+        private void txtUserId_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                txtPassword.SelectAll();
+                txtPassword.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPassword_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                cmdOK.Focus();
+                e.Handled = true;
+            }
+        }
         #endregion
     }
 }

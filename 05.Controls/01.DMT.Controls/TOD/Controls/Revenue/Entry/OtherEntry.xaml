@@ -43,10 +43,10 @@
                                    TextAlignment="Left"
                                    Text="บาท"
                                    Width="40"/>
-                        <TextBox Margin="2"
+                        <TextBox x:Name="txtTotalBaht" Margin="2"
                                  TextAlignment="Right"
                                  Text="{Binding OtherBHTTotal}"
-                                 Width="90"/>
+                                 Width="90" KeyDown="txtTotalBaht_KeyDown"/>
                     </DockPanel>
                     <Grid Height="5"/>
                     <!-- Remark -->
@@ -59,7 +59,7 @@
                                    FontSize="16"
                                    TextAlignment="Left"
                                    Foreground="WhiteSmoke"/>
-                        <TextBox Height="100" 
+                        <TextBox x:Name="txtRemark" Height="100" 
                                  AcceptsReturn="True"
                                  TextWrapping="Wrap"
                                  VerticalScrollBarVisibility="Auto"

@@ -57,10 +57,10 @@
                                TextAlignment="Left"
                                Text="ฉบับ"
                                Width="40"/>
-                        <TextBox Margin="2"
+                        <TextBox x:Name="txtFreePassUsageClassA" Margin="2"
                                  TextAlignment="Right"
                                  Text="{Binding FreePassUsageClassA}"
-                                 Width="50"/>
+                                 Width="50" KeyDown="txtFreePassUsageClassA_KeyDown"/>
                     </DockPanel>
                     <!-- Count Total -->
                     <DockPanel Margin="5 0 5 0">
@@ -74,7 +74,7 @@
                                TextAlignment="Left"
                                Text="ฉบับ"
                                Width="40"/>
-                        <TextBox Margin="2"
+                        <TextBox x:Name="txtFreePassUsageOther" Margin="2"
                                  TextAlignment="Right"
                                  Text="{Binding FreePassUsageOther}"
                                  

@@ -39,5 +39,17 @@ namespace DMT.TOD.Controls.Revenue.Entry
         }
 
         #endregion
+
+        #region TextBox Keydown
+        private void txtFreePassUsageClassA_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                txtFreePassUsageOther.SelectAll();
+                txtFreePassUsageOther.Focus();
+                e.Handled = true;
+            }
+        }
+        #endregion
     }
 }

@@ -43,10 +43,10 @@
                                    TextAlignment="Left" 
                                    Text="เหรียญ" 
                                    Width="50"/>
-                        <TextBox Margin="2"
+                        <TextBox x:Name="txt1Baht" Margin="2"
                                  TextAlignment="Right"
                                  Text="{Binding TrafficBHT1}"
-                                 Width="50"/>
+                                 Width="50" KeyDown="txt1Baht_KeyDown"/>
                     </DockPanel>
                     <!-- 2 BHT -->
                     <DockPanel Margin="5 0 5 0">
@@ -60,10 +60,10 @@
                                    TextAlignment="Left" 
                                    Text="เหรียญ" 
                                    Width="50"/>
-                        <TextBox Margin="2"
+                        <TextBox x:Name="txt2Baht" Margin="2"
                                  TextAlignment="Right"
                                  Text="{Binding TrafficBHT2}"
-                                 Width="50"/>
+                                 Width="50" KeyDown="txt2Baht_KeyDown"/>
                     </DockPanel>
                     <!-- 5 BHT -->
                     <DockPanel Margin="5 0 5 0">
@@ -77,10 +77,10 @@
                                    TextAlignment="Left" 
                                    Text="เหรียญ" 
                                    Width="50"/>
-                        <TextBox Margin="2"
+                        <TextBox x:Name="txt5Baht" Margin="2"
                                  TextAlignment="Right"
                                  Text="{Binding TrafficBHT5}"
-                                 Width="50"/>
+                                 Width="50" KeyDown="txt5Baht_KeyDown"/>
                     </DockPanel>
                     <!-- 10 BHT coin -->
                     <DockPanel Margin="5 0 5 0">
@@ -94,10 +94,10 @@
                                    TextAlignment="Left" 
                                    Text="เหรียญ" 
                                    Width="50"/>
-                        <TextBox Margin="2"
+                        <TextBox x:Name="txt10Baht" Margin="2"
                                  TextAlignment="Right"
                                  Text="{Binding TrafficBHT10}"
-                                 Width="50"/>
+                                 Width="50" KeyDown="txt10Baht_KeyDown"/>
 
                     </DockPanel>
                     <!-- 20 BHT -->
@@ -112,10 +112,10 @@
                                    TextAlignment="Left" 
                                    Text="ฉบับ" 
                                    Width="50"/>
-                        <TextBox Margin="2"
+                        <TextBox x:Name="txt20Baht" Margin="2"
                                  TextAlignment="Right"
                                  Text="{Binding TrafficBHT20}"
-                                 Width="50"/>
+                                 Width="50" KeyDown="txt20Baht_KeyDown"/>
 
                     </DockPanel>
                     <!-- 50 BHT -->
@@ -130,10 +130,10 @@
                                    TextAlignment="Left" 
                                    Text="ฉบับ" 
                                    Width="50"/>
-                        <TextBox Margin="2"
+                        <TextBox x:Name="txt50Baht" Margin="2"
                                  TextAlignment="Right"
                                  Text="{Binding TrafficBHT50}"
-                                 Width="50"/>
+                                 Width="50" KeyDown="txt50Baht_KeyDown"/>
 
                     </DockPanel>
                     <!-- 100 BHT -->
@@ -148,10 +148,10 @@
                                    TextAlignment="Left" 
                                    Text="ฉบับ" 
                                    Width="50"/>
-                        <TextBox Margin="2"
+                        <TextBox x:Name="txt100Baht" Margin="2"
                                  TextAlignment="Right"
                                  Text="{Binding TrafficBHT100}"
-                                 Width="50"/>
+                                 Width="50" KeyDown="txt100Baht_KeyDown"/>
 
                     </DockPanel>
                     <!-- 500 BHT -->
@@ -166,10 +166,10 @@
                                    TextAlignment="Left" 
                                    Text="ฉบับ" 
                                    Width="50"/>
-                        <TextBox Margin="2"
+                        <TextBox x:Name="txt500Baht" Margin="2"
                                  TextAlignment="Right"
                                  Text="{Binding TrafficBHT500}"
-                                 Width="50"/>
+                                 Width="50" KeyDown="txt500Baht_KeyDown"/>
 
                     </DockPanel>
                     <!-- 1000 BHT -->
@@ -184,10 +184,10 @@
                                    TextAlignment="Left" 
                                    Text="ฉบับ" 
                                    Width="50"/>
-                        <TextBox Margin="2"
+                        <TextBox x:Name="txt1000Baht" Margin="2"
                                  TextAlignment="Right"
                                  Text="{Binding TrafficBHT1000}"
-                                 Width="50"/>
+                                 Width="50" KeyDown="txt1000Baht_KeyDown"/>
 
                     </DockPanel>
                     <!-- Total BHT -->
@@ -221,7 +221,7 @@
                                    FontSize="16"
                                    TextAlignment="Left"
                                    Foreground="WhiteSmoke"/>
-                        <TextBox Height="100" 
+                        <TextBox x:Name="txtRemarkBaht" Height="100" 
                                  AcceptsReturn="True"
                                  TextWrapping="Wrap"
                                  VerticalScrollBarVisibility="Auto"

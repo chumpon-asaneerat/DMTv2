@@ -39,5 +39,26 @@ namespace DMT.TOD.Controls.Revenue.Entry
         }
 
         #endregion
+
+        private void txtBagNo_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                txtBeltNo.SelectAll();
+                txtBeltNo.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtBeltNo_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                trafficRevenue.Focus();
+                trafficRevenue.txt1Baht.SelectAll();
+                trafficRevenue.txt1Baht.Focus();
+                e.Handled = true;
+            }
+        }
     }
 }

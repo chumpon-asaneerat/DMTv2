@@ -37,16 +37,16 @@
                             <TextBlock Text="หมายเลขถุงเงิน" 
                                        Foreground="WhiteSmoke"/>
                             <Grid Width="10" />
-                            <TextBox Width="200"
+                            <TextBox x:Name="txtBagNo" Width="200"
                                      TextAlignment="Center"
-                                     Text="{Binding BagNo}"/>
+                                     Text="{Binding BagNo}" KeyDown="txtBagNo_KeyDown"/>
                             <Grid Width="10" />
                             <TextBlock Text="หมายเลขเข็มขัดนิรภัย" 
                                        Foreground="WhiteSmoke"/>
                             <Grid Width="10" />
-                            <TextBox Width="200"
+                            <TextBox x:Name="txtBeltNo" Width="200"
                                      TextAlignment="Center"
-                                     Text="{Binding BeltNo}"/>
+                                     Text="{Binding BeltNo}" KeyDown="txtBeltNo_KeyDown"/>
                             <Grid Width="10" />
                         </StackPanel>
                     </Grid>

@@ -47,21 +47,21 @@
                                TextAlignment="Left"
                                Text="บาท"
                                Width="40"/>
-                        <TextBox Margin="2"
+                        <TextBox x:Name="txt35Book" Margin="2"
                              DockPanel.Dock="Right"
                              TextAlignment="Right"
                              IsEnabled="False"
                              Text="{Binding CouponSoldBHT35Total}"
-                             Width="90"/>
+                             Width="90" KeyDown="txt35Book_KeyDown"/>
                         <TextBlock Margin="2"
                                DockPanel.Dock="Right" 
                                TextAlignment="Left"
                                Text="เล่ม"
                                Width="40"/>
-                        <TextBox Margin="2"
+                        <TextBox x:Name="txt35Baht" Margin="2"
                              TextAlignment="Right"
                              Text="{Binding CouponSoldBHT35}"
-                             Width="50"/>
+                             Width="50" KeyDown="txt35Baht_KeyDown"/>
                     </DockPanel>
                     <!-- 80 BHT -->
                     <DockPanel Margin="5 0 5 0">
@@ -75,7 +75,7 @@
                                TextAlignment="Left"
                                Text="บาท"
                                Width="40"/>
-                        <TextBox Margin="2"
+                        <TextBox x:Name="txt80Book" Margin="2"
                              DockPanel.Dock="Right"
                              TextAlignment="Right"
                              IsEnabled="False"
@@ -86,10 +86,10 @@
                                TextAlignment="Left"
                                Text="เล่ม"
                                Width="40"/>
-                        <TextBox Margin="2"
+                        <TextBox x:Name="txt80Baht" Margin="2"
                             TextAlignment="Right"
                             Text="{Binding CouponSoldBHT80}"
-                            Width="50"/>
+                            Width="50" KeyDown="txt80Baht_KeyDown"/>
                     </DockPanel>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="10 5 10 5">
