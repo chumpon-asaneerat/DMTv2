@@ -26,6 +26,8 @@ namespace DMT.Models
 	/// The User Data Model Class.
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	[Serializable]
+	[JsonObject(MemberSerialization.OptOut)]
 	//[Table("User")]
 	public class User : NTable<User>
 	{

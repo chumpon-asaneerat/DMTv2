@@ -20,6 +20,9 @@ using Newtonsoft.Json.Bson;
 
 namespace DMT.Models
 {
+    [TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+    [Serializable]
+    [JsonObject(MemberSerialization.OptOut)]
     //[Table("UserShiftRevenue")]
     public class UserShiftRevenue : NTable<UserShiftRevenue>
     {

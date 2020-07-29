@@ -26,6 +26,8 @@ namespace DMT.Models
 	/// The TSB Data Model class.
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	[Serializable]
+	[JsonObject(MemberSerialization.OptOut)]
 	//[Table("TSB")]
 	public class TSB : NTable<TSB>
 	{

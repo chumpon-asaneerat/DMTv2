@@ -26,6 +26,8 @@ namespace DMT.Models
 	/// The Role Data Model Class.
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	[Serializable]
+	[JsonObject(MemberSerialization.OptOut)]
 	//[Table("Role")]
 	public class Role : NTable<Role>
 	{

@@ -22,6 +22,9 @@ namespace DMT.Models
 {
     #region TSBShift
 
+    [TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+    [Serializable]
+    [JsonObject(MemberSerialization.OptOut)]
     //[Table("TSBShift")]
     public class TSBShift : NTable<TSBShift>
     {

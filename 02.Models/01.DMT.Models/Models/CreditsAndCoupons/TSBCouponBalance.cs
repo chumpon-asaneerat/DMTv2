@@ -2,17 +2,19 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+
+using NLib;
+using NLib.Design;
+using NLib.Reflection;
 
 using SQLite;
 using SQLiteNetExtensions.Attributes;
 using SQLiteNetExtensions.Extensions;
-
-// required for JsonIgnore.
+// required for JsonIgnore attribute.
 using Newtonsoft.Json;
-using NLib;
-using NLib.Reflection;
-using System.ComponentModel;
+using Newtonsoft.Json.Bson;
 
 #endregion
 
@@ -23,6 +25,9 @@ namespace DMT.Models
 	/// <summary>
 	/// The TSBCouponBalance Data Model class.
 	/// </summary>
+	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	[Serializable]
+	[JsonObject(MemberSerialization.OptOut)]
 	//[Table("TSBCouponBalance")]
 	public class TSBCouponBalance : NTable<TSBCouponBalance>
 	{

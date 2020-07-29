@@ -20,8 +20,9 @@ Update 2020-07-29 #35
 Update 2020-07-29 #34
 - 
 
+[commited]
 Update 2020-07-29 #33
-- 
+- Fixed Json Serialization in all models.
 
 [commited]
 Update 2020-07-29 #32

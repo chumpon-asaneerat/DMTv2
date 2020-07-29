@@ -26,6 +26,8 @@ namespace DMT.Models
 	/// The Payment Data Model Class.
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	[Serializable]
+	[JsonObject(MemberSerialization.OptOut)]
 	//[Table("Payment")]
 	public class Payment : NTable<Payment>
 	{

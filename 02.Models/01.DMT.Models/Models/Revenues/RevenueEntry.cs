@@ -26,6 +26,8 @@ namespace DMT.Models
 	/// The RevenueEntry class.
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	[Serializable]
+	[JsonObject(MemberSerialization.OptOut)]
 	//[Table("RevenueEntry")]
 	public class RevenueEntry : NTable<RevenueEntry>
 	{

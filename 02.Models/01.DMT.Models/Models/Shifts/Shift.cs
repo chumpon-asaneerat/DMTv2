@@ -26,6 +26,8 @@ namespace DMT.Models
 	/// The Shift Data Model class.
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	[Serializable]
+	[JsonObject(MemberSerialization.OptOut)]
 	//[Table("Shift")]
 	public class Shift : NTable<Shift>
 	{

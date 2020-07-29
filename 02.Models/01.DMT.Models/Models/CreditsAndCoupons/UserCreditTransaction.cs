@@ -26,6 +26,8 @@ namespace DMT.Models
 	/// The UserCredit Data Model class.
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	[Serializable]
+	[JsonObject(MemberSerialization.OptOut)]
 	//[Table("UserCredit")]
 	public class UserCreditTransaction : NTable<UserCreditTransaction>
 	{

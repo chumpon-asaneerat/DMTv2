@@ -26,6 +26,8 @@ namespace DMT.Models
 	/// The Lane Data Model class.
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	[Serializable]
+	[JsonObject(MemberSerialization.OptOut)]
 	//[Table("Lane")]
 	public class Lane : NTable<Lane>
 	{

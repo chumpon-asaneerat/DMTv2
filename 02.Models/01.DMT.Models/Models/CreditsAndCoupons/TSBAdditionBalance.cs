@@ -25,6 +25,9 @@ namespace DMT.Models
 	/// <summary>
 	/// The TSBAdditionBalance Data Model class.
 	/// </summary>
+	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	[Serializable]
+	[JsonObject(MemberSerialization.OptOut)]
 	//[Table("TSBAdditionBalance")]
 	public class TSBAdditionBalance : NTable<TSBAdditionBalance>
 	{

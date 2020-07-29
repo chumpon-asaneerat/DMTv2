@@ -26,6 +26,8 @@ namespace DMT.Models
 	/// The Config Data Model Class.
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	[Serializable]
+	[JsonObject(MemberSerialization.OptOut)]
 	//[Table("Config")]
 	public class Config : NTable<Config>
 	{

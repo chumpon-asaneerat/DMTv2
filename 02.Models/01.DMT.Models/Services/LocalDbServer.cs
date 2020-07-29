@@ -147,13 +147,12 @@ namespace DMT.Services
 			Db.CreateTable<RevenueEntry>();
 
 			Db.CreateTable<TSBCreditTransaction>();
-			/*
+
 			Db.CreateTable<TSBCouponTransaction>();
 			Db.CreateTable<TSBAdditionTransaction>();
 
 			Db.CreateTable<UserCredit>();
 			Db.CreateTable<UserCreditTransaction>();
-			*/
 
 			InitDefaults();
 		}

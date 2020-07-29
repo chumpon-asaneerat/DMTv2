@@ -22,6 +22,9 @@ namespace DMT.Models
 {
     #region UserShift
 
+    [TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+    [Serializable]
+    [JsonObject(MemberSerialization.OptOut)]
     //[Table("UserShift")]
     public class UserShift : NTable<UserShift>
     {

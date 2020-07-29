@@ -5,6 +5,7 @@
 using RestSharp;
 //using RestSharp.Authenticators;
 using RestSharp.Serializers.NewtonsoftJson;
+using System;
 
 #endregion
 
@@ -90,6 +91,7 @@ namespace DMT.Services
             var response = client.Execute(request);
             if (null != response && null != response.Content)
             {
+                Console.WriteLine(response.Content);
                 ret = response.Content.FromJson<TReturn>();
             }
 

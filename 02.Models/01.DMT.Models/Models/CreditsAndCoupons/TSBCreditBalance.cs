@@ -25,6 +25,9 @@ namespace DMT.Models
 	/// <summary>
 	/// The TSBCreditBalance Data Model class.
 	/// </summary>
+	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	[Serializable]
+	[JsonObject(MemberSerialization.OptOut)]
 	//[Table("TSBCreditBalance")]
 	public class TSBCreditBalance : NTable<TSBCreditBalance>
 	{

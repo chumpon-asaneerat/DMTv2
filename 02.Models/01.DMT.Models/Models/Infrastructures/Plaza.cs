@@ -26,6 +26,8 @@ namespace DMT.Models
 	/// The Plaza Data Model class.
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+	[Serializable]
+	[JsonObject(MemberSerialization.OptOut)]
 	//[Table("Plaza")]
 	public class Plaza : NTable<Plaza>
 	{
