@@ -115,6 +115,8 @@
     <Compile Include="Models\Infrastructures\Plaza.cs" />
     <Compile Include="Models\Infrastructures\PlazaGroup.cs" />
     <Compile Include="Models\Infrastructures\TSB.cs" />
+    <Compile Include="Models\LaneActivities\LaneAttendance.cs" />
+    <Compile Include="Models\LaneActivities\LanePayment.cs" />
     <Compile Include="Models\LaneActivities\Payment.cs" />
     <Compile Include="Models\Shifts\Shift.cs" />
     <Compile Include="Models\Shifts\TSBShift.cs" />
