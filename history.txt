@@ -1,6 +1,39 @@
 --------------------------------------------------------------------------------------------
-Update 2020-07-29 #30
+Update 2020-07-29 #40
 - 
+
+Update 2020-07-29 #39
+- 
+
+Update 2020-07-29 #38
+- 
+
+Update 2020-07-29 #37
+- 
+
+Update 2020-07-29 #36
+- 
+
+Update 2020-07-29 #35
+- 
+
+Update 2020-07-29 #34
+- 
+
+Update 2020-07-29 #33
+- 
+
+Update 2020-07-29 #32
+- 
+
+Update 2020-07-29 #31
+- 
+
+[commited]
+Update 2020-07-29 #30
+- Reload Plaza Config App.
+- Reload Plaza Simulator App project.
+- Full recompile - OK.
 
 [commited]
 Update 2020-07-29 #29
