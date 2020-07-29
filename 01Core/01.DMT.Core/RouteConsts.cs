@@ -7,6 +7,8 @@ namespace DMT
     {
         public const string Url = @"api";
 
+        #region TSB
+
         public static class TSB
         {
             public const string Url = RouteConsts.Url + @"/TSB";
@@ -80,6 +82,10 @@ namespace DMT
             }
         }
 
+        #endregion
+
+        #region User
+
         public static class User
         {
             public const string Url = RouteConsts.Url + @"/User";
@@ -134,6 +140,10 @@ namespace DMT
             }
         }
 
+        #endregion
+
+        #region Shift
+
         public static class Shift
         {
             public const string Url = RouteConsts.Url + @"/Shift";
@@ -168,6 +178,10 @@ namespace DMT
                 public const string Url = Shift.Url + @"/" + Name;
             }
         }
+
+        #endregion
+
+        #region UserShift
 
         public static class UserShift
         {
@@ -215,6 +229,10 @@ namespace DMT
                 public const string Url = UserShift.Url + @"/" + Name;
             }
         }
+
+        #endregion
+
+        #region Lane (Attendance/Payment)
 
         public static class Lane
         {
@@ -305,6 +323,10 @@ namespace DMT
             }
         }
 
+        #endregion
+
+        #region Revenue
+
         public static class Revenue
         {
             public const string Url = RouteConsts.Url + @"/Revenue";
@@ -339,11 +361,10 @@ namespace DMT
                 public const string Url = Revenue.Url + @"/" + Name;
             }
         }
-    }
-    /*
-    public static class RouteConsts
-    {
-        public const string Url = @"api";
+
+        #endregion
+
+        #region Credit
 
         public static class Credit
         {
@@ -410,6 +431,14 @@ namespace DMT
                 public const string Url = Credit.Url + @"/" + Name;
             }
         }
+
+        #endregion
+    }
+    /*
+    public static class RouteConsts
+    {
+        public const string Url = @"api";
+
 
         public static class Coupon
         {

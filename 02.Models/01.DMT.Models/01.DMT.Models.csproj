@@ -116,6 +116,8 @@
     <Compile Include="Models\CreditsAndCoupons\TSBAdditionBalance.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSBCreditBalance.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSBCreditTransaction.cs" />
+    <Compile Include="Models\CreditsAndCoupons\UserCredit.cs" />
+    <Compile Include="Models\CreditsAndCoupons\UserCreditTransaction.cs" />
     <Compile Include="Models\Infrastructures\Lane.cs" />
     <Compile Include="Models\Infrastructures\Plaza.cs" />
     <Compile Include="Models\Infrastructures\PlazaGroup.cs" />
