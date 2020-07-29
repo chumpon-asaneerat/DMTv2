@@ -618,10 +618,10 @@ namespace DMT.Models
 		/// <summary>
 		/// Gets or sets number of .25 baht coin.
 		/// </summary>
-		[Category("Coin/Bill")]
+		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of .25 baht coin.")]
-		[PeropertyMapName("ST25")]
-		public int ST25
+		[PeropertyMapName("CountST25")]
+		public int CountST25
 		{
 			get { return _ST25; }
 			set
@@ -631,17 +631,17 @@ namespace DMT.Models
 					_ST25 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("ST25");
+					this.RaiseChanged("CountST25");
 				}
 			}
 		}
 		/// <summary>
 		/// Gets or sets number of .50 baht coin.
 		/// </summary>
-		[Category("Coin/Bill")]
+		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of .50 baht coin.")]
-		[PeropertyMapName("ST50")]
-		public int ST50
+		[PeropertyMapName("CountST50")]
+		public int CountST50
 		{
 			get { return _ST50; }
 			set
@@ -651,17 +651,17 @@ namespace DMT.Models
 					_ST50 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("ST50");
+					this.RaiseChanged("CountST50");
 				}
 			}
 		}
 		/// <summary>
 		/// Gets or sets number of 1 baht coin.
 		/// </summary>
-		[Category("Coin/Bill")]
+		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 1 baht coin.")]
-		[PeropertyMapName("BHT1")]
-		public int BHT1
+		[PeropertyMapName("CountBHT1")]
+		public int CountBHT1
 		{
 			get { return _BHT1; }
 			set
@@ -671,17 +671,17 @@ namespace DMT.Models
 					_BHT1 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("BHT1");
+					this.RaiseChanged("CountBHT1");
 				}
 			}
 		}
 		/// <summary>
 		/// Gets or sets number of 2 baht coin.
 		/// </summary>
-		[Category("Coin/Bill")]
+		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 2 baht coin.")]
-		[PeropertyMapName("BHT2")]
-		public int BHT2
+		[PeropertyMapName("CountBHT2")]
+		public int CountBHT2
 		{
 			get { return _BHT2; }
 			set
@@ -691,17 +691,17 @@ namespace DMT.Models
 					_BHT2 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("BHT2");
+					this.RaiseChanged("CountBHT2");
 				}
 			}
 		}
 		/// <summary>
 		/// Gets or sets number of 5 baht coin.
 		/// </summary>
-		[Category("Coin/Bill")]
+		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 5 baht coin.")]
-		[PeropertyMapName("BHT5")]
-		public int BHT5
+		[PeropertyMapName("CountBHT5")]
+		public int CountBHT5
 		{
 			get { return _BHT5; }
 			set
@@ -711,17 +711,17 @@ namespace DMT.Models
 					_BHT5 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("BHT5");
+					this.RaiseChanged("CountBHT5");
 				}
 			}
 		}
 		/// <summary>
 		/// Gets or sets number of 10 baht coin.
 		/// </summary>
-		[Category("Coin/Bill")]
+		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 10 baht coin.")]
-		[PeropertyMapName("BHT10")]
-		public int BHT10
+		[PeropertyMapName("CountBHT10")]
+		public int CountBHT10
 		{
 			get { return _BHT10; }
 			set
@@ -731,17 +731,17 @@ namespace DMT.Models
 					_BHT10 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("BHT10");
+					this.RaiseChanged("CountBHT10");
 				}
 			}
 		}
 		/// <summary>
 		/// Gets or sets number of 20 baht bill.
 		/// </summary>
-		[Category("Coin/Bill")]
+		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 20 baht bill.")]
-		[PeropertyMapName("BHT20")]
-		public int BHT20
+		[PeropertyMapName("CountBHT20")]
+		public int CountBHT20
 		{
 			get { return _BHT20; }
 			set
@@ -751,17 +751,17 @@ namespace DMT.Models
 					_BHT20 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("BHT20");
+					this.RaiseChanged("CountBHT20");
 				}
 			}
 		}
 		/// <summary>
 		/// Gets or sets number of 50 baht bill.
 		/// </summary>
-		[Category("Coin/Bill")]
+		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 50 baht bill.")]
-		[PeropertyMapName("BHT50")]
-		public int BHT50
+		[PeropertyMapName("CountBHT50")]
+		public int CountBHT50
 		{
 			get { return _BHT50; }
 			set
@@ -771,17 +771,17 @@ namespace DMT.Models
 					_BHT50 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("BHT50");
+					this.RaiseChanged("CountBHT50");
 				}
 			}
 		}
 		/// <summary>
 		/// Gets or sets number of 100 baht bill.
 		/// </summary>
-		[Category("Coin/Bill")]
+		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 100 baht bill.")]
-		[PeropertyMapName("BHT100")]
-		public int BHT100
+		[PeropertyMapName("CountBHT100")]
+		public int CountBHT100
 		{
 			get { return _BHT100; }
 			set
@@ -791,17 +791,17 @@ namespace DMT.Models
 					_BHT100 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("BHT100");
+					this.RaiseChanged("CountBHT100");
 				}
 			}
 		}
 		/// <summary>
 		/// Gets or sets number of 500 baht bill.
 		/// </summary>
-		[Category("Coin/Bill")]
+		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 500 baht bill.")]
-		[PeropertyMapName("BHT500")]
-		public int BHT500
+		[PeropertyMapName("CountBHT500")]
+		public int CountBHT500
 		{
 			get { return _BHT500; }
 			set
@@ -811,17 +811,17 @@ namespace DMT.Models
 					_BHT500 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("BHT500");
+					this.RaiseChanged("CountBHT500");
 				}
 			}
 		}
 		/// <summary>
 		/// Gets or sets number of 1000 baht bill.
 		/// </summary>
-		[Category("Coin/Bill")]
+		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 1000 baht bill.")]
-		[PeropertyMapName("BHT1000")]
-		public int BHT1000
+		[PeropertyMapName("CountBHT1000")]
+		public int CountBHT1000
 		{
 			get { return _BHT1000; }
 			set
@@ -831,7 +831,7 @@ namespace DMT.Models
 					_BHT1000 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("BHT1000");
+					this.RaiseChanged("CountBHT1000");
 				}
 			}
 		}
