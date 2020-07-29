@@ -114,6 +114,9 @@
     <Compile Include="Models\Common\NSearch.cs" />
     <Compile Include="Models\Configuration\Config.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSBAdditionBalance.cs" />
+    <Compile Include="Models\CreditsAndCoupons\TSBAdditionTransaction.cs" />
+    <Compile Include="Models\CreditsAndCoupons\TSBCouponBalance.cs" />
+    <Compile Include="Models\CreditsAndCoupons\TSBCouponTransaction.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSBCreditBalance.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSBCreditTransaction.cs" />
     <Compile Include="Models\CreditsAndCoupons\UserCredit.cs" />
