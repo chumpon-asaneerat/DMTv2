@@ -91,11 +91,11 @@ namespace DMT.Services
 		private void InitTables()
 		{
 			if (null == Db) return;
-			/*
 			Db.CreateTable<TSB>();
 			Db.CreateTable<PlazaGroup>();
 			Db.CreateTable<Plaza>();
 			Db.CreateTable<Lane>();
+			/*
 			Db.CreateTable<Shift>();
 			Db.CreateTable<Role>();
 			Db.CreateTable<User>();

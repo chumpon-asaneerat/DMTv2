@@ -38,8 +38,9 @@ Update 2020-07-29 #5
 Update 2020-07-29 #4
 - 
 
+[commited]
 Update 2020-07-29 #3
-- 
+- Revert to used original models (TSB/PlazaGroup/Plaza/Lane) with PropertyOrder attribute).
 
 [commited]
 Update 2020-07-29 #2

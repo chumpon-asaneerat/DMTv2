@@ -110,6 +110,10 @@
     <None Include="Models\Backup2\Shifts\UserShift.cs" />
     <None Include="Models\Backup2\Users\Role.cs" />
     <None Include="Models\Backup2\Users\User.cs" />
+    <Compile Include="Models\Infrastructures\Lane.cs" />
+    <Compile Include="Models\Infrastructures\Plaza.cs" />
+    <Compile Include="Models\Infrastructures\PlazaGroup.cs" />
+    <Compile Include="Models\Infrastructures\TSB.cs" />
     <Compile Include="Services\LocalDbServer.cs" />
     <None Include="Models\Backup\Common\DMTTATODBase.cs" />
     <None Include="Models\Backup\Configuration\Config.cs" />
@@ -160,7 +164,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\Infrastructures\" />
     <Folder Include="Models\Shifts\" />
     <Folder Include="Models\Users\" />
   </ItemGroup>
