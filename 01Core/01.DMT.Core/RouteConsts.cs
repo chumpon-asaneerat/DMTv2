@@ -57,6 +57,27 @@ namespace DMT
                 public const string Name = "GetPlazaGroupPlazas";
                 public const string Url = TSB.Url + @"/" + Name;
             }
+            // NEW!! 2020-07-29 - Save methods
+            public static class SaveTSB
+            {
+                public const string Name = "SaveTSB";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
+            public static class SavePlazaGroup
+            {
+                public const string Name = "SavePlazaGroup";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
+            public static class SavePlaza
+            {
+                public const string Name = "SavePlaza";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
+            public static class SaveLane
+            {
+                public const string Name = "SaveLane";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
         }
     }
     /*

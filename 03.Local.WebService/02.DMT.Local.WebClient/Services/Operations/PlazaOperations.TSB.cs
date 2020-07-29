@@ -128,6 +128,50 @@ namespace DMT.Services
                 return _current;
             }
 
+            public TSB SaveTSB(TSB value)
+            {
+                if (null != value)
+                {
+                    var ret = NRestClient.Create(port: 9000).Execute<TSB>(
+                        RouteConsts.TSB.SaveTSB.Url, value);
+                    return ret;
+                }
+                return value;
+            }
+
+            public PlazaGroup SavePlazaGroup(PlazaGroup value)
+            {
+                if (null != value)
+                {
+                    var ret = NRestClient.Create(port: 9000).Execute<PlazaGroup>(
+                        RouteConsts.TSB.SavePlazaGroup.Url, value);
+                    return ret;
+                }
+                return value;
+            }
+
+            public Plaza SavePlaza(Plaza value)
+            {
+                if (null != value)
+                {
+                    var ret = NRestClient.Create(port: 9000).Execute<Plaza>(
+                        RouteConsts.TSB.SavePlaza.Url, value);
+                    return ret;
+                }
+                return value;
+            }
+
+            public Lane SaveLane(Lane value)
+            {
+                if (null != value)
+                {
+                    var ret = NRestClient.Create(port: 9000).Execute<Lane>(
+                        RouteConsts.TSB.SaveLane.Url, value);
+                    return ret;
+                }
+                return value;
+            }
+
             #endregion
         }
 

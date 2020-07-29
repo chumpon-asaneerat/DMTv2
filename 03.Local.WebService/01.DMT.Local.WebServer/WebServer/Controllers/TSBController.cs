@@ -85,5 +85,49 @@ namespace DMT.Services
             var results = TSB.GetCurrent();
             return results;
         }
+
+        [HttpPost]
+        [ActionName(RouteConsts.TSB.SaveTSB.Name)]
+        public TSB SaveTSB([FromBody] TSB value)
+        {
+            if (null != value)
+            {
+                TSB.Save(value);
+            }
+            return value;
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.TSB.SavePlazaGroup.Name)]
+        public PlazaGroup SavePlazaGroup([FromBody] PlazaGroup value)
+        {
+            if (null != value)
+            {
+                PlazaGroup.Save(value);
+            }
+            return value;
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.TSB.SavePlaza.Name)]
+        public Plaza SavePlaza([FromBody] Plaza value)
+        {
+            if (null != value)
+            {
+                Plaza.Save(value);
+            }
+            return value;
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.TSB.SaveLane.Name)]
+        public Lane SaveLane([FromBody] Lane value)
+        {
+            if (null != value)
+            {
+                Lane.Save(value);
+            }
+            return value;
+        }
     }
 }

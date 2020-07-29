@@ -14,8 +14,13 @@ Update 2020-07-29 #18
 Update 2020-07-29 #17
 - 
 
+[commited]
 Update 2020-07-29 #16
-- 
+- Re-Implements RouteConsts.cs #2.
+- Re-Implements PlazaOperation.TSB #1
+  - Add SaveTSB/SavePlazaGroup/SavePlaza/SaveLane method.
+- Re-Implements TSBController #2.
+  - Add SaveTSB/SavePlazaGroup/SavePlaza/SaveLane method.
 
 [commited]
 Update 2020-07-29 #15
