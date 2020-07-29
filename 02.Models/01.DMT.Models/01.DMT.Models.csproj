@@ -111,6 +111,9 @@
     <None Include="Models\Backup2\Users\Role.cs" />
     <None Include="Models\Backup2\Users\User.cs" />
     <Compile Include="Models\Configuration\Config.cs" />
+    <Compile Include="Models\CreditsAndCoupons\TSBAdditionBalance.cs" />
+    <Compile Include="Models\CreditsAndCoupons\TSBCreditBalance.cs" />
+    <Compile Include="Models\CreditsAndCoupons\TSBCreditTransaction.cs" />
     <Compile Include="Models\Infrastructures\Lane.cs" />
     <Compile Include="Models\Infrastructures\Plaza.cs" />
     <Compile Include="Models\Infrastructures\PlazaGroup.cs" />
@@ -174,9 +177,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\CreditsAndCoupons\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(SolutionDir)References\runtimes\*.*" "$(TargetDir)\runtimes\*.*" /Y/D/E</PostBuildEvent>

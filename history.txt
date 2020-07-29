@@ -14,8 +14,10 @@ Update 2020-07-29 #12
 Update 2020-07-29 #11
 - 
 
+[commited]
 Update 2020-07-29 #10
-- 
+- Revert to used original models (TSBAdditionBalance/TSBCreditBalance/TSBCreditTransaction)
+  with PropertyOrder attribute).
 
 [commited]
 Update 2020-07-29 #9
