@@ -2,8 +2,10 @@
 Update 2020-07-29 #30
 - 
 
+[commited]
 Update 2020-07-29 #29
-- 
+- Reload TA App project.
+- Full recompile - OK.
 
 [commited]
 Update 2020-07-29 #28
