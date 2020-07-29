@@ -8,8 +8,10 @@ Update 2020-07-29 #14
 Update 2020-07-29 #13
 - 
 
+[commited]
 Update 2020-07-29 #12
-- 
+- Reload DMT.Networks project.
+- Reload DMT.Smartcard project.
 
 [commited]
 Update 2020-07-29 #11
