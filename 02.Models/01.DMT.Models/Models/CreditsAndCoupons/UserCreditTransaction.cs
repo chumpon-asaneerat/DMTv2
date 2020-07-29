@@ -841,222 +841,222 @@ namespace DMT.Models
 		#region Coin/Bill (Amount)
 
 		/// <summary>
-		/// Gets or sets number of .25 baht coin.
+		/// Gets or sets amount of .25 baht coin.
 		/// </summary>
-		[Category("Coin/Bill")]
-		[Description("Gets or sets number of .25 baht coin.")]
-		[PeropertyMapName("ST25")]
-		public int ST25
+		[Category("Coin/Bill (Amount)")]
+		[Description("Gets or sets amount of .25 baht coin.")]
+		[PeropertyMapName("AmountST25")]
+		public int AmountST25
 		{
-			get { return _ST25; }
+			get { return _AmtST25; }
 			set
 			{
-				if (_ST25 != value)
+				if (_AmtST25 != value)
 				{
-					_ST25 = value;
+					_AmtST25 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("ST25");
+					this.RaiseChanged("AmountST25");
 				}
 			}
 		}
 		/// <summary>
-		/// Gets or sets number of .50 baht coin.
+		/// Gets or sets amount of .50 baht coin.
 		/// </summary>
-		[Category("Coin/Bill")]
-		[Description("Gets or sets number of .50 baht coin.")]
-		[PeropertyMapName("ST50")]
-		public int ST50
+		[Category("Coin/Bill (Amount)")]
+		[Description("Gets or sets amount of .50 baht coin.")]
+		[PeropertyMapName("AmountST50")]
+		public int AmountST50
 		{
-			get { return _ST50; }
+			get { return _AmtST50; }
 			set
 			{
-				if (_ST50 != value)
+				if (_AmtST50 != value)
 				{
-					_ST50 = value;
+					_AmtST50 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("ST50");
+					this.RaiseChanged("AmountST50");
 				}
 			}
 		}
 		/// <summary>
-		/// Gets or sets number of 1 baht coin.
+		/// Gets or sets amount of 1 baht coin.
 		/// </summary>
-		[Category("Coin/Bill")]
-		[Description("Gets or sets number of 1 baht coin.")]
-		[PeropertyMapName("BHT1")]
-		public int BHT1
+		[Category("Coin/Bill (Amount)")]
+		[Description("Gets or sets amount of 1 baht coin.")]
+		[PeropertyMapName("AmountBHT1")]
+		public int AmountBHT1
 		{
-			get { return _BHT1; }
+			get { return _AmtBHT1; }
 			set
 			{
-				if (_BHT1 != value)
+				if (_AmtBHT1 != value)
 				{
-					_BHT1 = value;
+					_AmtBHT1 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("BHT1");
+					this.RaiseChanged("AmountBHT1");
 				}
 			}
 		}
 		/// <summary>
-		/// Gets or sets number of 2 baht coin.
+		/// Gets or sets amount of 2 baht coin.
 		/// </summary>
-		[Category("Coin/Bill")]
-		[Description("Gets or sets number of 2 baht coin.")]
-		[PeropertyMapName("BHT2")]
-		public int BHT2
+		[Category("Coin/Bill (Amount)")]
+		[Description("Gets or sets amount of 2 baht coin.")]
+		[PeropertyMapName("AmountBHT2")]
+		public int AmountBHT2
 		{
-			get { return _BHT2; }
+			get { return _AmtBHT2; }
 			set
 			{
-				if (_BHT2 != value)
+				if (_AmtBHT2 != value)
 				{
-					_BHT2 = value;
+					_AmtBHT2 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("BHT2");
+					this.RaiseChanged("AmountBHT2");
 				}
 			}
 		}
 		/// <summary>
-		/// Gets or sets number of 5 baht coin.
+		/// Gets or sets amount of 5 baht coin.
 		/// </summary>
-		[Category("Coin/Bill")]
-		[Description("Gets or sets number of 5 baht coin.")]
-		[PeropertyMapName("BHT5")]
-		public int BHT5
+		[Category("Coin/Bill (Amount)")]
+		[Description("Gets or sets amount of 5 baht coin.")]
+		[PeropertyMapName("AmountBHT5")]
+		public int AmountBHT5
 		{
-			get { return _BHT5; }
+			get { return _AmtBHT5; }
 			set
 			{
-				if (_BHT5 != value)
+				if (_AmtBHT5 != value)
 				{
-					_BHT5 = value;
+					_AmtBHT5 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("BHT5");
+					this.RaiseChanged("AmountBHT5");
 				}
 			}
 		}
 		/// <summary>
-		/// Gets or sets number of 10 baht coin.
+		/// Gets or sets amount of 10 baht coin.
 		/// </summary>
-		[Category("Coin/Bill")]
-		[Description("Gets or sets number of 10 baht coin.")]
-		[PeropertyMapName("BHT10")]
-		public int BHT10
+		[Category("Coin/Bill (Amount)")]
+		[Description("Gets or sets amount of 10 baht coin.")]
+		[PeropertyMapName("AmountBHT10")]
+		public int AmountBHT10
 		{
-			get { return _BHT10; }
+			get { return _AmtBHT10; }
 			set
 			{
-				if (_BHT10 != value)
+				if (_AmtBHT10 != value)
 				{
-					_BHT10 = value;
+					_AmtBHT10 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("BHT10");
+					this.RaiseChanged("AmountBHT10");
 				}
 			}
 		}
 		/// <summary>
-		/// Gets or sets number of 20 baht bill.
+		/// Gets or sets amount of 20 baht bill.
 		/// </summary>
-		[Category("Coin/Bill")]
-		[Description("Gets or sets number of 20 baht bill.")]
-		[PeropertyMapName("BHT20")]
-		public int BHT20
+		[Category("Coin/Bill (Amount)")]
+		[Description("Gets or sets amount of 20 baht bill.")]
+		[PeropertyMapName("AmountBHT20")]
+		public int AmountBHT20
 		{
-			get { return _BHT20; }
+			get { return _AmtBHT20; }
 			set
 			{
-				if (_BHT20 != value)
+				if (_AmtBHT20 != value)
 				{
-					_BHT20 = value;
+					_AmtBHT20 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("BHT20");
+					this.RaiseChanged("AmountBHT20");
 				}
 			}
 		}
 		/// <summary>
-		/// Gets or sets number of 50 baht bill.
+		/// Gets or sets amount of 50 baht bill.
 		/// </summary>
-		[Category("Coin/Bill")]
-		[Description("Gets or sets number of 50 baht bill.")]
-		[PeropertyMapName("BHT50")]
-		public int BHT50
+		[Category("Coin/Bill (Amount)")]
+		[Description("Gets or sets amount of 50 baht bill.")]
+		[PeropertyMapName("AmountBHT50")]
+		public int AmountBHT50
 		{
-			get { return _BHT50; }
+			get { return _AmtBHT50; }
 			set
 			{
-				if (_BHT50 != value)
+				if (_AmtBHT50 != value)
 				{
-					_BHT50 = value;
+					_AmtBHT50 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("BHT50");
+					this.RaiseChanged("AmountBHT50");
 				}
 			}
 		}
 		/// <summary>
-		/// Gets or sets number of 100 baht bill.
+		/// Gets or sets amount of 100 baht bill.
 		/// </summary>
-		[Category("Coin/Bill")]
-		[Description("Gets or sets number of 100 baht bill.")]
-		[PeropertyMapName("BHT100")]
-		public int BHT100
+		[Category("Coin/Bill (Amount)")]
+		[Description("Gets or sets amount of 100 baht bill.")]
+		[PeropertyMapName("AmountBHT100")]
+		public int AmountBHT100
 		{
-			get { return _BHT100; }
+			get { return _AmtBHT100; }
 			set
 			{
-				if (_BHT100 != value)
+				if (_AmtBHT100 != value)
 				{
-					_BHT100 = value;
+					_AmtBHT100 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("BHT100");
+					this.RaiseChanged("AmountBHT100");
 				}
 			}
 		}
 		/// <summary>
-		/// Gets or sets number of 500 baht bill.
+		/// Gets or sets amount of 500 baht bill.
 		/// </summary>
-		[Category("Coin/Bill")]
-		[Description("Gets or sets number of 500 baht bill.")]
-		[PeropertyMapName("BHT500")]
-		public int BHT500
+		[Category("Coin/Bill (Amount)")]
+		[Description("Gets or sets amount of 500 baht bill.")]
+		[PeropertyMapName("AmountBHT500")]
+		public int AmountBHT500
 		{
-			get { return _BHT500; }
+			get { return _AmtBHT500; }
 			set
 			{
-				if (_BHT500 != value)
+				if (_AmtBHT500 != value)
 				{
-					_BHT500 = value;
+					_AmtBHT500 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("BHT500");
+					this.RaiseChanged("AmountBHT500");
 				}
 			}
 		}
 		/// <summary>
-		/// Gets or sets number of 1000 baht bill.
+		/// Gets or sets amount of 1000 baht bill.
 		/// </summary>
-		[Category("Coin/Bill")]
-		[Description("Gets or sets number of 1000 baht bill.")]
-		[PeropertyMapName("BHT1000")]
-		public int BHT1000
+		[Category("Coin/Bill (Amount)")]
+		[Description("Gets or sets amount of 1000 baht bill.")]
+		[PeropertyMapName("AmountBHT1000")]
+		public int AmountBHT1000
 		{
-			get { return _BHT1000; }
+			get { return _AmtBHT1000; }
 			set
 			{
-				if (_BHT1000 != value)
+				if (_AmtBHT1000 != value)
 				{
-					_BHT1000 = value;
+					_AmtBHT1000 = value;
 					CalcTotal();
 					// Raise event.
-					this.RaiseChanged("BHT1000");
+					this.RaiseChanged("AmountBHT1000");
 				}
 			}
 		}
