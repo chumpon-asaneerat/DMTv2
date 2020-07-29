@@ -8,8 +8,11 @@ Update 2020-07-29 #29
 Update 2020-07-29 #28
 - 
 
+[commited]
 Update 2020-07-29 #27
-- 
+- Reload DMT.Controls project.
+- Reload LocalDbServerFunctionTest project.
+- Full recompile - OK.
 
 [commited]
 Update 2020-07-29 #26
