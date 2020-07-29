@@ -17,8 +17,11 @@ Update 2020-07-29 #26
 Update 2020-07-29 #25
 - 
 
+[commited]
 Update 2020-07-29 #24
-- 
+- Re-Implements RouteConsts.cs #10.
+- Re-Implements CouponController #1.
+- Re-Implements PlazaOperation.Coupon #1
 
 [commited]
 Update 2020-07-29 #23

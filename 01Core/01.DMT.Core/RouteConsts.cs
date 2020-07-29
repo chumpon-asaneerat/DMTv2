@@ -433,12 +433,8 @@ namespace DMT
         }
 
         #endregion
-    }
-    /*
-    public static class RouteConsts
-    {
-        public const string Url = @"api";
 
+        #region Coupon
 
         public static class Coupon
         {
@@ -475,6 +471,15 @@ namespace DMT
                 public const string Url = Coupon.Url + @"/" + Name;
             }
         }
+
+        #endregion
+    }
+    /*
+    public static class RouteConsts
+    {
+        public const string Url = @"api";
+
+
 
         public static class Addition
         {
