@@ -95,10 +95,12 @@ namespace DMT.Services
 			Db.CreateTable<PlazaGroup>();
 			Db.CreateTable<Plaza>();
 			Db.CreateTable<Lane>();
+
+			Db.CreateTable<Shift>();
+
 			Db.CreateTable<Role>();
 			Db.CreateTable<User>();
 			/*
-			Db.CreateTable<Shift>();
 			Db.CreateTable<TSBShift>();
 			Db.CreateTable<UserShift>();
 			*/

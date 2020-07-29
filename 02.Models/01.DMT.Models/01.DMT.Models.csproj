@@ -115,7 +115,7 @@
     <Compile Include="Models\Infrastructures\Plaza.cs" />
     <Compile Include="Models\Infrastructures\PlazaGroup.cs" />
     <Compile Include="Models\Infrastructures\TSB.cs" />
-    <None Include="Models\Shifts\Shift.cs" />
+    <Compile Include="Models\Shifts\Shift.cs" />
     <Compile Include="Models\Users\Role.cs" />
     <Compile Include="Models\Users\User.cs" />
     <Compile Include="Services\LocalDbServer.cs" />
