@@ -94,7 +94,7 @@ namespace DMT.TOD.Pages.Reports
 
                 DMT.Windows.MessageBoxYesNoWindow msg = new DMT.Windows.MessageBoxYesNoWindow();
                 msg.Owner = Application.Current.MainWindow;
-                msg.Setup("กะปัจจุบันยังป้อนรายได้ไม่ครับ ต้องการป้อนรายได้ตอหรือไม่ ?", "DMT - Tour of Duty");
+                msg.Setup("กะปัจจุบันยังป้อนรายได้ไม่ครบ ต้องการป้อนรายได้ต่อหรือไม่ ?", "DMT - Tour of Duty");
                 if (msg.ShowDialog() == true)
                 {
                     GoRevenuEntry();
