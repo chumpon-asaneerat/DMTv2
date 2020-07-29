@@ -100,11 +100,28 @@ namespace DMT.Services
 
 			Db.CreateTable<Role>();
 			Db.CreateTable<User>();
-			/*
+
+			Db.CreateTable<Payment>();
+
+			Db.CreateTable<Config>();
+
 			Db.CreateTable<TSBShift>();
 			Db.CreateTable<UserShift>();
+			Db.CreateTable<UserShiftRevenue>();
+
+			/*
+			Db.CreateTable<LaneAttendance>();
+			Db.CreateTable<LanePayment>();
+
+			Db.CreateTable<RevenueEntry>();
+
+			Db.CreateTable<TSBCreditTransaction>();
+			Db.CreateTable<TSBCouponTransaction>();
+			Db.CreateTable<TSBAdditionTransaction>();
+
+			Db.CreateTable<UserCredit>();
+			Db.CreateTable<UserCreditTransaction>();
 			*/
-			Db.CreateTable<Config>();
 		}
 
 		#endregion
