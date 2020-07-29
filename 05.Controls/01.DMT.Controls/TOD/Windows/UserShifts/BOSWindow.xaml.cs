@@ -58,9 +58,17 @@ namespace DMT.TOD.Windows.UserShifts
                 bool success = ops.UserShifts.BeginUserShift(inst);
                 if (!success)
                 {
+                    DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                    msg.Owner = Application.Current.MainWindow;
+                    msg.Setup("ไม่สามารถเปิดกะใหม่ได้ เนื่องจาก ยังมีกะที่ยังไม่ป้อนรายได้", "DMT - Tour of Duty");
+                    if (msg.ShowDialog() == true)
+                    {
+
+                    }
+
                     // Some job is open required to enter revenue entry first.
-                    MessageBox.Show(this, "ไม่สามารถเปิดกะใหม่ได้ เนื่องจาก ยังมีกะที่ยังไม่ป้อนรายได้", 
-                        "DMT - Tour of Duty");
+                    //MessageBox.Show(this, "ไม่สามารถเปิดกะใหม่ได้ เนื่องจาก ยังมีกะที่ยังไม่ป้อนรายได้", 
+                    //    "DMT - Tour of Duty");
                 }
             }
 

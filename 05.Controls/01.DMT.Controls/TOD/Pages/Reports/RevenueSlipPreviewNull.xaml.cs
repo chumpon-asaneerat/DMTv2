@@ -55,9 +55,17 @@ namespace DMT.TOD.Pages.Reports
         {
             if (null == _revenueEntry)
             {
-                MessageBox.Show("Revenue Entry is not found.",
-                    "DMT - Tour of Duty");
-                return;
+                DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                msg.Owner = Application.Current.MainWindow;
+                msg.Setup("Revenue Entry is not found.", "DMT - Tour of Duty");
+                if (msg.ShowDialog() == true)
+                {
+                    return;
+                }
+
+                //MessageBox.Show("Revenue Entry is not found.",
+                //    "DMT - Tour of Duty");
+                //return;
             }
 
             this.rptViewer.Print();
@@ -226,9 +234,17 @@ namespace DMT.TOD.Pages.Reports
             if (_revenueEntry.RevenueDate == DateTime.MinValue ||
                 _revenueEntry.EntryDate == DateTime.MinValue)
             {
-                MessageBox.Show("Entry Date or Revenue Date is not set.",
-                    "DMT - Tour of Duty");
-                return false;
+                DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                msg.Owner = Application.Current.MainWindow;
+                msg.Setup("Entry Date or Revenue Date is not set.", "DMT - Tour of Duty");
+                if (msg.ShowDialog() == true)
+                {
+                    return false;
+                }
+
+                //MessageBox.Show("Entry Date or Revenue Date is not set.",
+                //    "DMT - Tour of Duty");
+                //return false;
             }
 
             // update save data
@@ -293,8 +309,16 @@ namespace DMT.TOD.Pages.Reports
                 null == model.DataSources || model.DataSources.Count <= 0 ||
                 null == model.DataSources[0] || null == model.DataSources[0].Items)
             {
-                MessageBox.Show("No result found.", "DMT - Tour of Duty");
-                this.rptViewer.ClearReport();
+                DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                msg.Owner = Application.Current.MainWindow;
+                msg.Setup("No result found.", "DMT - Tour of Duty");
+                if (msg.ShowDialog() == true)
+                {
+                    this.rptViewer.ClearReport();
+                }
+
+                //MessageBox.Show("No result found.", "DMT - Tour of Duty");
+                //this.rptViewer.ClearReport();
             }
             else
             {

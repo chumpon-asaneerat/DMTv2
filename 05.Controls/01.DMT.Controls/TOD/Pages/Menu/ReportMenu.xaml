@@ -167,7 +167,7 @@
                                     VerticalAlignment="Center">
                             <TextBlock FontSize="42" 
                                        HorizontalAlignment="Center"
-                                       Text="แบบ form ในนำส่งรายได้"
+                                       Text="พิมพ์แบบฟอร์ม ใบนำส่งรายได้"
                                        TextAlignment="Center"
                                        TextWrapping="Wrap">
                                 <!--

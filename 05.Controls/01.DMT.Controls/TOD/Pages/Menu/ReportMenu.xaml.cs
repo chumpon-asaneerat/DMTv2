@@ -49,8 +49,16 @@ namespace DMT.TOD.Pages.Menu
 
             if (null == revenueEntry)
             {
-                MessageBox.Show("กรุณาเลือกรายการที่ต้องการเเรียกดูใบนำส่งรายได้");
-                return;
+                DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                msg.Owner = Application.Current.MainWindow;
+                msg.Setup("กรุณาเลือกรายการที่ต้องการเเรียกดูใบนำส่งรายได้", "DMT - Tour of Duty");
+                if (msg.ShowDialog() == true)
+                {
+                    return;
+                }
+
+                //MessageBox.Show("กรุณาเลือกรายการที่ต้องการเเรียกดูใบนำส่งรายได้");
+                //return;
             }
             // Revenue Slip Preview
             var page = new Reports.RevenueSlipPreview();

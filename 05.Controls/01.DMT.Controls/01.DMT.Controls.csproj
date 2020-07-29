@@ -240,6 +240,12 @@
     <Compile Include="TOD\Pages\TollAdmin\EMVQRCodePage.xaml.cs">
       <DependentUpon>EMVQRCodePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TOD\Windows\MessageBox\MessageBoxYesNoWindow.xaml.cs">
+      <DependentUpon>MessageBoxYesNoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TOD\Windows\MessageBox\MessageBoxWindow.xaml.cs">
+      <DependentUpon>MessageBoxWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TOD\Windows\Reports\RevenueSlipSearchWindow.xaml.cs">
       <DependentUpon>RevenueSlipSearchWindow.xaml</DependentUpon>
     </Compile>
@@ -589,6 +595,14 @@
     <Page Include="TOD\Pages\TollAdmin\EMVQRCodePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TOD\Windows\MessageBox\MessageBoxYesNoWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TOD\Windows\MessageBox\MessageBoxWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="TOD\Windows\Reports\RevenueSlipSearchWindow.xaml">
       <SubType>Designer</SubType>

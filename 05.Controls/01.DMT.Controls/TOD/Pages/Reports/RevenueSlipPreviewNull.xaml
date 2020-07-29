@@ -33,11 +33,11 @@
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                DockPanel.Dock="Left"
-                               Source="/DMT.Controls;component/Images/Button/OK2.png" />
+                               Source="/DMT.Controls;component/Images/Button/Printer3.png" />
                         <StackPanel VerticalAlignment="Center" Orientation="Vertical">
                             <TextBlock HorizontalAlignment="Center"
                                        FontSize="20"
-                                       Text="ตกลง"
+                                       Text="พิมพิ์"
                                        FontWeight="Bold"
                                        TextAlignment="Center"
                                        TextWrapping="Wrap" />

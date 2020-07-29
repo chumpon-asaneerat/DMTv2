@@ -9,6 +9,7 @@ using DMT.Models;
 using DMT.Services;
 using NLib.Services;
 using NLib.Reflection;
+using DMT.TOD.Windows;
 
 #endregion
 
@@ -59,9 +60,17 @@ namespace DMT.TOD.Pages.Revenue
             var plazaGroup = cbPlazas.SelectedItem as PlazaGroup;
             if (null == plazaGroup)
             {
-                MessageBox.Show("กรุณาเลือกด่านของรายได้", "DMT - Tour of Duty");
-                cbPlazas.Focus();
-                return;
+                DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                msg.Owner = Application.Current.MainWindow;
+                msg.Setup("กรุณาเลือกด่านของรายได้", "DMT - Tour of Duty");
+                if (msg.ShowDialog() == true)
+                {
+                    cbPlazas.Focus();
+                    return;
+                }
+                //MessageBox.Show("กรุณาเลือกด่านของรายได้", "DMT - Tour of Duty");
+                //cbPlazas.Focus();
+                //return;
             }
 
             bool isNew = false;
@@ -78,24 +87,56 @@ namespace DMT.TOD.Pages.Revenue
             {
                 if (_plazaRevenue.RevenueDate != DateTime.MinValue)
                 {
-                    MessageBox.Show("กะของพนักงานนี้ ถูกป้อนรายได้แล้ว", "DMT - Tour of Duty");
-                    return;
+                    DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                    msg.Owner = Application.Current.MainWindow;
+                    msg.Setup("กะของพนักงานนี้ ถูกป้อนรายได้แล้ว", "DMT - Tour of Duty");
+                    if (msg.ShowDialog() == true)
+                    {
+                        return;
+                    }
+
+                    //MessageBox.Show("กะของพนักงานนี้ ถูกป้อนรายได้แล้ว", "DMT - Tour of Duty");
+                    //return;
                 }
                 if (null == _laneActivities || _laneActivities.Count <= 0)
                 {
-                    MessageBox.Show("ไม่พบข้อมูลเลนที่ยังไม่ถูกป้อนรายได้", "DMT - Tour of Duty");
-                    return;
+                    DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                    msg.Owner = Application.Current.MainWindow;
+                    msg.Setup("ไม่พบข้อมูลเลนที่ยังไม่ถูกป้อนรายได้", "DMT - Tour of Duty");
+                    if (msg.ShowDialog() == true)
+                    {
+                        return;
+                    }
+
+                    //MessageBox.Show("ไม่พบข้อมูลเลนที่ยังไม่ถูกป้อนรายได้", "DMT - Tour of Duty");
+                    //return;
                 }
             }
             else
             {
                 if (isNew)
                 {
-                    MessageBox.Show("ไม่สามารถสร้างรายการสำหรับจัดเก็บกะรายได้.", "DMT - Tour of Duty");
+                    DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                    msg.Owner = Application.Current.MainWindow;
+                    msg.Setup("ไม่สามารถนำส่งรายได้ เนื่องจากไม่พบข้อมูลการทำงาน", "DMT - Tour of Duty");
+                    if (msg.ShowDialog() == true)
+                    {
+                        //return;
+                    }
+
+                    //MessageBox.Show("ไม่สามารถสร้างรายการสำหรับจัดเก็บกะรายได้.", "DMT - Tour of Duty");
                 }
                 else
                 {
-                    MessageBox.Show("กะนี้ถูกจัดเก็บรายได้แล้ว.", "DMT - Tour of Duty");
+                    DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                    msg.Setup("กะนี้ถูกจัดเก็บรายได้แล้ว.", "DMT - Tour of Duty");
+                    msg.Owner = Application.Current.MainWindow;
+                    if (msg.ShowDialog() == true)
+                    {
+                        //return;
+                    }
+
+                    //MessageBox.Show("กะนี้ถูกจัดเก็บรายได้แล้ว.", "DMT - Tour of Duty");
                 }
                 return;
             }
