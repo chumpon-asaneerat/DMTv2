@@ -5,8 +5,10 @@ Update 2020-07-29 #15
 Update 2020-07-29 #14
 - 
 
+[commited]
 Update 2020-07-29 #13
-- 
+- Reload DMT.Local.WebServer project.
+- Reload DMT.Local.WebClient project.
 
 [commited]
 Update 2020-07-29 #12
