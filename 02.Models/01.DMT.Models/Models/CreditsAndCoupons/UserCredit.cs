@@ -69,18 +69,31 @@ namespace DMT.Models
 		private string _FullNameEN = string.Empty;
 		private string _FullNameTH = string.Empty;
 
-		// Coin/Bill
-		private int _ST25 = 0;
-		private int _ST50 = 0;
-		private int _BHT1 = 0;
-		private int _BHT2 = 0;
-		private int _BHT5 = 0;
-		private int _BHT10 = 0;
-		private int _BHT20 = 0;
-		private int _BHT50 = 0;
-		private int _BHT100 = 0;
-		private int _BHT500 = 0;
-		private int _BHT1000 = 0;
+		// Coin/Bill (Count)
+		private int _CntST25 = 0;
+		private int _CntST50 = 0;
+		private int _CntBHT1 = 0;
+		private int _CntBHT2 = 0;
+		private int _CntBHT5 = 0;
+		private int _CntBHT10 = 0;
+		private int _CntBHT20 = 0;
+		private int _CntBHT50 = 0;
+		private int _CntBHT100 = 0;
+		private int _CntBHT500 = 0;
+		private int _CntBHT1000 = 0;
+		// Coin/Bill (Amount)
+		private int _AmtST25 = 0;
+		private int _AmtST50 = 0;
+		private int _AmtBHT1 = 0;
+		private int _AmtBHT2 = 0;
+		private int _AmtBHT5 = 0;
+		private int _AmtBHT10 = 0;
+		private int _AmtBHT20 = 0;
+		private int _AmtBHT50 = 0;
+		private int _AmtBHT100 = 0;
+		private int _AmtBHT500 = 0;
+		private int _AmtBHT1000 = 0;
+
 		private decimal _BHTTotal = decimal.Zero;
 
 		private int _Status = 0;
