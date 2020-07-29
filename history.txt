@@ -11,8 +11,10 @@ Update 2020-07-29 #28
 Update 2020-07-29 #27
 - 
 
+[commited]
 Update 2020-07-29 #26
-- 
+- Reload DMT.Smartcard.IPC.Server project.
+- Full recompile - OK.
 
 [commited]
 Update 2020-07-29 #25
