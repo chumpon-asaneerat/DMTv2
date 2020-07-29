@@ -5,8 +5,13 @@ Update 2020-07-29 #21
 Update 2020-07-29 #20
 - 
 
+[commited]
 Update 2020-07-29 #19
-- 
+- Re-Implements RouteConsts.cs #5.
+- Re-Implements LaneController #1.
+- Re-Implements PlazaOperation.Lane #1
+- Re-Implements UserShiftController #1.
+- Re-Implements PlazaOperation.UserShift #1
 
 [commited]
 Update 2020-07-29 #18
