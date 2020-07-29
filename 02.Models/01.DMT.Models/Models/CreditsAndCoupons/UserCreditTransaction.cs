@@ -623,12 +623,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountST25")]
 		public int CountST25
 		{
-			get { return _ST25; }
+			get { return _CntST25; }
 			set
 			{
-				if (_ST25 != value)
+				if (_CntST25 != value)
 				{
-					_ST25 = value;
+					_CntST25 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountST25");
@@ -643,12 +643,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountST50")]
 		public int CountST50
 		{
-			get { return _ST50; }
+			get { return _CntST50; }
 			set
 			{
-				if (_ST50 != value)
+				if (_CntST50 != value)
 				{
-					_ST50 = value;
+					_CntST50 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountST50");
@@ -663,12 +663,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountBHT1")]
 		public int CountBHT1
 		{
-			get { return _BHT1; }
+			get { return _CntBHT1; }
 			set
 			{
-				if (_BHT1 != value)
+				if (_CntBHT1 != value)
 				{
-					_BHT1 = value;
+					_CntBHT1 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountBHT1");
@@ -683,12 +683,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountBHT2")]
 		public int CountBHT2
 		{
-			get { return _BHT2; }
+			get { return _CntBHT2; }
 			set
 			{
-				if (_BHT2 != value)
+				if (_CntBHT2 != value)
 				{
-					_BHT2 = value;
+					_CntBHT2 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountBHT2");
@@ -703,12 +703,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountBHT5")]
 		public int CountBHT5
 		{
-			get { return _BHT5; }
+			get { return _CntBHT5; }
 			set
 			{
-				if (_BHT5 != value)
+				if (_CntBHT5 != value)
 				{
-					_BHT5 = value;
+					_CntBHT5 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountBHT5");
@@ -723,12 +723,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountBHT10")]
 		public int CountBHT10
 		{
-			get { return _BHT10; }
+			get { return _CntBHT10; }
 			set
 			{
-				if (_BHT10 != value)
+				if (_CntBHT10 != value)
 				{
-					_BHT10 = value;
+					_CntBHT10 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountBHT10");
@@ -743,12 +743,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountBHT20")]
 		public int CountBHT20
 		{
-			get { return _BHT20; }
+			get { return _CntBHT20; }
 			set
 			{
-				if (_BHT20 != value)
+				if (_CntBHT20 != value)
 				{
-					_BHT20 = value;
+					_CntBHT20 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountBHT20");
@@ -763,12 +763,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountBHT50")]
 		public int CountBHT50
 		{
-			get { return _BHT50; }
+			get { return _CntBHT50; }
 			set
 			{
-				if (_BHT50 != value)
+				if (_CntBHT50 != value)
 				{
-					_BHT50 = value;
+					_CntBHT50 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountBHT50");
@@ -783,12 +783,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountBHT100")]
 		public int CountBHT100
 		{
-			get { return _BHT100; }
+			get { return _CntBHT100; }
 			set
 			{
-				if (_BHT100 != value)
+				if (_CntBHT100 != value)
 				{
-					_BHT100 = value;
+					_CntBHT100 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountBHT100");
@@ -803,12 +803,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountBHT500")]
 		public int CountBHT500
 		{
-			get { return _BHT500; }
+			get { return _CntBHT500; }
 			set
 			{
-				if (_BHT500 != value)
+				if (_CntBHT500 != value)
 				{
-					_BHT500 = value;
+					_CntBHT500 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountBHT500");
@@ -823,12 +823,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountBHT1000")]
 		public int CountBHT1000
 		{
-			get { return _BHT1000; }
+			get { return _CntBHT1000; }
 			set
 			{
-				if (_BHT1000 != value)
+				if (_CntBHT1000 != value)
 				{
-					_BHT1000 = value;
+					_CntBHT1000 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountBHT1000");

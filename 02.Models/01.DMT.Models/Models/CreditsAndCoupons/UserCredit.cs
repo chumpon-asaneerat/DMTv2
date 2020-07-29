@@ -610,12 +610,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountST25")]
 		public virtual int CountST25
 		{
-			get { return _ST25; }
+			get { return _CntST25; }
 			set
 			{
-				if (_ST25 != value)
+				if (_CntST25 != value)
 				{
-					_ST25 = value;
+					_CntST25 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountST25");
@@ -632,12 +632,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountST50")]
 		public virtual int CountST50
 		{
-			get { return _ST50; }
+			get { return _CntST50; }
 			set
 			{
-				if (_ST50 != value)
+				if (_CntST50 != value)
 				{
-					_ST50 = value;
+					_CntST50 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountST50");
@@ -654,12 +654,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountBHT1")]
 		public virtual int CountBHT1
 		{
-			get { return _BHT1; }
+			get { return _CntBHT1; }
 			set
 			{
-				if (_BHT1 != value)
+				if (_CntBHT1 != value)
 				{
-					_BHT1 = value;
+					_CntBHT1 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountBHT1");
@@ -676,12 +676,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountBHT2")]
 		public virtual int CountBHT2
 		{
-			get { return _BHT2; }
+			get { return _CntBHT2; }
 			set
 			{
-				if (_BHT2 != value)
+				if (_CntBHT2 != value)
 				{
-					_BHT2 = value;
+					_CntBHT2 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountBHT2");
@@ -698,12 +698,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountBHT5")]
 		public virtual int CountBHT5
 		{
-			get { return _BHT5; }
+			get { return _CntBHT5; }
 			set
 			{
-				if (_BHT5 != value)
+				if (_CntBHT5 != value)
 				{
-					_BHT5 = value;
+					_CntBHT5 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountBHT5");
@@ -720,12 +720,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountBHT10")]
 		public virtual int CountBHT10
 		{
-			get { return _BHT10; }
+			get { return _CntBHT10; }
 			set
 			{
-				if (_BHT10 != value)
+				if (_CntBHT10 != value)
 				{
-					_BHT10 = value;
+					_CntBHT10 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountBHT10");
@@ -742,12 +742,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountBHT20")]
 		public virtual int CountBHT20
 		{
-			get { return _BHT20; }
+			get { return _CntBHT20; }
 			set
 			{
-				if (_BHT20 != value)
+				if (_CntBHT20 != value)
 				{
-					_BHT20 = value;
+					_CntBHT20 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountBHT20");
@@ -764,12 +764,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountBHT50")]
 		public virtual int CountBHT50
 		{
-			get { return _BHT50; }
+			get { return _CntBHT50; }
 			set
 			{
-				if (_BHT50 != value)
+				if (_CntBHT50 != value)
 				{
-					_BHT50 = value;
+					_CntBHT50 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountBHT50");
@@ -786,12 +786,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountBHT100")]
 		public virtual int CountBHT100
 		{
-			get { return _BHT100; }
+			get { return _CntBHT100; }
 			set
 			{
-				if (_BHT100 != value)
+				if (_CntBHT100 != value)
 				{
-					_BHT100 = value;
+					_CntBHT100 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountBHT100");
@@ -808,12 +808,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountBHT500")]
 		public virtual int CountBHT500
 		{
-			get { return _BHT500; }
+			get { return _CntBHT500; }
 			set
 			{
-				if (_BHT500 != value)
+				if (_CntBHT500 != value)
 				{
-					_BHT500 = value;
+					_CntBHT500 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountBHT500");
@@ -830,12 +830,12 @@ namespace DMT.Models
 		[PeropertyMapName("CountBHT1000")]
 		public virtual int CountBHT1000
 		{
-			get { return _BHT1000; }
+			get { return _CntBHT1000; }
 			set
 			{
-				if (_BHT1000 != value)
+				if (_CntBHT1000 != value)
 				{
-					_BHT1000 = value;
+					_CntBHT1000 = value;
 					CalcTotal();
 					// Raise event.
 					this.RaiseChanged("CountBHT1000");
@@ -1248,106 +1248,210 @@ namespace DMT.Models
 
 			#endregion
 
-			#region Coin/Bill
+			#region Coin/Bill (count)
 
 			/// <summary>
 			/// Gets or sets number of .25 baht coin.
 			/// </summary>
-			[PeropertyMapName("ST25")]
-			public override int ST25
+			[PeropertyMapName("CountST25")]
+			public override int CountST25
 			{
-				get { return base.ST25; }
-				set { base.ST25 = value; }
+				get { return base.CountST25; }
+				set { base.CountST25 = value; }
 			}
 			/// <summary>
 			/// Gets or sets number of .50 baht coin.
 			/// </summary>
-			[PeropertyMapName("ST50")]
-			public override int ST50
+			[PeropertyMapName("CountST50")]
+			public override int CountST50
 			{
-				get { return base.ST50; }
-				set { base.ST50 = value; }
+				get { return base.CountST50; }
+				set { base.CountST50 = value; }
 			}
 			/// <summary>
 			/// Gets or sets number of 1 baht coin.
 			/// </summary>
-			[PeropertyMapName("BHT1")]
-			public override int BHT1
+			[PeropertyMapName("CountBHT1")]
+			public override int CountBHT1
 			{
-				get { return base.BHT1; }
-				set { base.BHT1 = value; }
+				get { return base.CountBHT1; }
+				set { base.CountBHT1 = value; }
 			}
 			/// <summary>
 			/// Gets or sets number of 2 baht coin.
 			/// </summary>
-			[PeropertyMapName("BHT2")]
-			public override int BHT2
+			[PeropertyMapName("CountBHT2")]
+			public override int CountBHT2
 			{
-				get { return base.BHT2; }
-				set { base.BHT2 = value; }
+				get { return base.CountBHT2; }
+				set { base.CountBHT2 = value; }
 			}
 			/// <summary>
 			/// Gets or sets number of 5 baht coin.
 			/// </summary>
-			[PeropertyMapName("BHT5")]
-			public override int BHT5
+			[PeropertyMapName("CountBHT5")]
+			public override int CountBHT5
 			{
-				get { return base.BHT5; }
-				set { base.BHT5 = value; }
+				get { return base.CountBHT5; }
+				set { base.CountBHT5 = value; }
 			}
 			/// <summary>
 			/// Gets or sets number of 10 baht coin.
 			/// </summary>
-			[PeropertyMapName("BHT10")]
-			public override int BHT10
+			[PeropertyMapName("CountBHT10")]
+			public override int CountBHT10
 			{
-				get { return base.BHT10; }
-				set { base.BHT10 = value; }
+				get { return base.CountBHT10; }
+				set { base.CountBHT10 = value; }
 			}
 			/// <summary>
 			/// Gets or sets number of 20 baht bill.
 			/// </summary>
-			[PeropertyMapName("BHT20")]
-			public override int BHT20
+			[PeropertyMapName("CountBHT20")]
+			public override int CountBHT20
 			{
-				get { return base.BHT20; }
-				set { base.BHT20 = value; }
+				get { return base.CountBHT20; }
+				set { base.CountBHT20 = value; }
 			}
 			/// <summary>
 			/// Gets or sets number of 50 baht bill.
 			/// </summary>
-			[PeropertyMapName("BHT50")]
-			public override int BHT50
+			[PeropertyMapName("CountBHT50")]
+			public override int CountBHT50
 			{
-				get { return base.BHT50; }
-				set { base.BHT50 = value; }
+				get { return base.CountBHT50; }
+				set { base.CountBHT50 = value; }
 			}
 			/// <summary>
 			/// Gets or sets number of 100 baht bill.
 			/// </summary>
-			[PeropertyMapName("BHT100")]
-			public override int BHT100
+			[PeropertyMapName("CountBHT100")]
+			public override int CountBHT100
 			{
-				get { return base.BHT100; }
-				set { base.BHT100 = value; }
+				get { return base.CountBHT100; }
+				set { base.CountBHT100 = value; }
 			}
 			/// <summary>
 			/// Gets or sets number of 500 baht bill.
 			/// </summary>
-			[PeropertyMapName("BHT500")]
-			public override int BHT500
+			[PeropertyMapName("CountBHT500")]
+			public override int CountBHT500
 			{
-				get { return base.BHT500; }
-				set { base.BHT500 = value; }
+				get { return base.CountBHT500; }
+				set { base.CountBHT500 = value; }
 			}
 			/// <summary>
 			/// Gets or sets number of 1000 baht bill.
 			/// </summary>
-			[PeropertyMapName("BHT1000")]
-			public override int BHT1000
+			[PeropertyMapName("CountBHT1000")]
+			public override int CountBHT1000
 			{
-				get { return base.BHT1000; }
-				set { base.BHT1000 = value; }
+				get { return base.CountBHT1000; }
+				set { base.CountBHT1000 = value; }
+			}
+
+			#endregion
+
+			#region Coin/Bill (Amount)
+
+			/// <summary>
+			/// Gets or sets amount of .25 baht coin.
+			/// </summary>
+			[PeropertyMapName("AmountST25")]
+			public override int AmountST25
+			{
+				get { return base.AmountST25; }
+				set { base.AmountST25 = value; }
+			}
+			/// <summary>
+			/// Gets or sets amount of .50 baht coin.
+			/// </summary>
+			[PeropertyMapName("AmountST50")]
+			public override int AmountST50
+			{
+				get { return base.AmountST50; }
+				set { base.AmountST50 = value; }
+			}
+			/// <summary>
+			/// Gets or sets amount of 1 baht coin.
+			/// </summary>
+			[PeropertyMapName("AmountBHT1")]
+			public override int AmountBHT1
+			{
+				get { return base.AmountBHT1; }
+				set { base.AmountBHT1 = value; }
+			}
+			/// <summary>
+			/// Gets or sets amount of 2 baht coin.
+			/// </summary>
+			[PeropertyMapName("AmountBHT2")]
+			public override int AmountBHT2
+			{
+				get { return base.AmountBHT2; }
+				set { base.AmountBHT2 = value; }
+			}
+			/// <summary>
+			/// Gets or sets amount of 5 baht coin.
+			/// </summary>
+			[PeropertyMapName("AmountBHT5")]
+			public override int AmountBHT5
+			{
+				get { return base.AmountBHT5; }
+				set { base.AmountBHT5 = value; }
+			}
+			/// <summary>
+			/// Gets or sets amount of 10 baht coin.
+			/// </summary>
+			[PeropertyMapName("AmountBHT10")]
+			public override int AmountBHT10
+			{
+				get { return base.AmountBHT10; }
+				set { base.AmountBHT10 = value; }
+			}
+			/// <summary>
+			/// Gets or sets amount of 20 baht bill.
+			/// </summary>
+			[PeropertyMapName("AmountBHT20")]
+			public override int AmountBHT20
+			{
+				get { return base.AmountBHT20; }
+				set { base.AmountBHT20 = value; }
+			}
+			/// <summary>
+			/// Gets or sets amount of 50 baht bill.
+			/// </summary>
+			[PeropertyMapName("AmountBHT50")]
+			public override int AmountBHT50
+			{
+				get { return base.AmountBHT50; }
+				set { base.AmountBHT50 = value; }
+			}
+			/// <summary>
+			/// Gets or sets amount of 100 baht bill.
+			/// </summary>
+			[PeropertyMapName("AmountBHT100")]
+			public override int AmountBHT100
+			{
+				get { return base.AmountBHT100; }
+				set { base.AmountBHT100 = value; }
+			}
+			/// <summary>
+			/// Gets or sets amount of 500 baht bill.
+			/// </summary>
+			[PeropertyMapName("AmountBHT500")]
+			public override int AmountBHT500
+			{
+				get { return base.AmountBHT500; }
+				set { base.AmountBHT500 = value; }
+			}
+			/// <summary>
+			/// Gets or sets amount of 1000 baht bill.
+			/// </summary>
+			[PeropertyMapName("AmountBHT1000")]
+			public override int AmountBHT1000
+			{
+				get { return base.AmountBHT1000; }
+				set { base.AmountBHT1000 = value; }
 			}
 
 			#endregion
