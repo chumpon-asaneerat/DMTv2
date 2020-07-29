@@ -108,6 +108,13 @@ namespace DMT.Services
                 LastUpdated = DateTime.MinValue;
             }
 
+            public Shift SaveShift(Shift value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<Shift>(
+                    RouteConsts.Shift.SaveShift.Url, value);
+                return ret;
+            }
+
             #endregion
         }
 

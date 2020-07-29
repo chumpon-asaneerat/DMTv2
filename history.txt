@@ -8,8 +8,15 @@ Update 2020-07-29 #20
 Update 2020-07-29 #19
 - 
 
+[commited]
 Update 2020-07-29 #18
-- 
+- Re-Implements RouteConsts.cs #4.
+- Re-Implements ShiftController #1.
+  - Add SaveShift method.
+- Re-Implements UserShiftController #1.
+- Re-Implements PlazaOperation.Shift #1
+  - Add SaveShift method.
+- Re-Implements PlazaOperation.UserShift #1
 
 [commited]
 Update 2020-07-29 #17

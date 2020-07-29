@@ -45,5 +45,16 @@ namespace DMT.Services
             if (null == value) return null;
             return TSBShift.Create(value.Shift, value.User);
         }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Shift.SaveShift.Name)]
+        public Shift SaveShift([FromBody] Shift value)
+        {
+            if (null != value)
+            {
+                Shift.Save(value);
+            }
+            return value;
+        }
     }
 }

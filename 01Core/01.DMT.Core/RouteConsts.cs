@@ -133,13 +133,6 @@ namespace DMT
                 public const string Url = User.Url + @"/" + Name;
             }
         }
-    }
-    /*
-    public static class RouteConsts
-    {
-        public const string Url = @"api";
-
-
 
         public static class Shift
         {
@@ -166,6 +159,12 @@ namespace DMT
             public static class Create
             {
                 public const string Name = "Create";
+                public const string Url = Shift.Url + @"/" + Name;
+            }
+            // NEW!! 2020-07-29 - Save methods
+            public static class SaveShift
+            {
+                public const string Name = "SaveShift";
                 public const string Url = Shift.Url + @"/" + Name;
             }
         }
@@ -340,6 +339,11 @@ namespace DMT
                 public const string Url = Revenue.Url + @"/" + Name;
             }
         }
+    }
+    /*
+    public static class RouteConsts
+    {
+        public const string Url = @"api";
 
         public static class Credit
         {
