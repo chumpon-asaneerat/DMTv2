@@ -216,4 +216,44 @@ namespace DMT.Models
     }
 
     #endregion
+
+    #region Revenues
+
+    partial class Search
+    {
+        public static class Revenues
+        {
+            public class PlazaShift : NSearch<PlazaShift>
+            {
+                public UserShift Shift { get; set; }
+                public PlazaGroup PlazaGroup { get; set; }
+
+                public static PlazaShift Create(UserShift shift, PlazaGroup plazaGroup)
+                {
+                    var ret = new PlazaShift();
+                    ret.Shift = shift;
+                    ret.PlazaGroup = plazaGroup;
+                    return ret;
+                }
+            }
+            public class SaveRevenueShift : NSearch<SaveRevenueShift>
+            {
+                public UserShiftRevenue RevenueShift { get; set; }
+                public string RevenueId { get; set; }
+                public DateTime RevenueDate { get; set; }
+
+                public static SaveRevenueShift Create(UserShiftRevenue revenueShift,
+                    string revenueId, DateTime revenueDate)
+                {
+                    var ret = new SaveRevenueShift();
+                    ret.RevenueShift = revenueShift;
+                    ret.RevenueId = revenueId;
+                    ret.RevenueDate = revenueDate;
+                    return ret;
+                }
+            }
+        }
+    }
+
+    #endregion
 }

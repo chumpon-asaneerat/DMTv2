@@ -1,9 +1,39 @@
 --------------------------------------------------------------------------------------------
+Update 2020-07-29 #30
+- 
+
+Update 2020-07-29 #29
+- 
+
+Update 2020-07-29 #28
+- 
+
+Update 2020-07-29 #27
+- 
+
+Update 2020-07-29 #26
+- 
+
+Update 2020-07-29 #25
+- 
+
+Update 2020-07-29 #24
+- 
+
+Update 2020-07-29 #23
+- 
+
+Update 2020-07-29 #22
+- 
+
 Update 2020-07-29 #21
 - 
 
+[commited]
 Update 2020-07-29 #20
-- 
+- Re-Implements RouteConsts.cs #6.
+- Re-Implements RevenueController #1.
+- Re-Implements PlazaOperation.Revenue #1
 
 [commited]
 Update 2020-07-29 #19
