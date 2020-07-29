@@ -32,8 +32,9 @@ Update 2020-07-29 #7
 Update 2020-07-29 #6
 - 
 
+[commited]
 Update 2020-07-29 #5
-- 
+- Revert to used original models (Role/User) with PropertyOrder attribute).
 
 [commited]
 Update 2020-07-29 #4

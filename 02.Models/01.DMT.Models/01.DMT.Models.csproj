@@ -115,6 +115,9 @@
     <Compile Include="Models\Infrastructures\Plaza.cs" />
     <Compile Include="Models\Infrastructures\PlazaGroup.cs" />
     <Compile Include="Models\Infrastructures\TSB.cs" />
+    <None Include="Models\Shifts\Shift.cs" />
+    <Compile Include="Models\Users\Role.cs" />
+    <Compile Include="Models\Users\User.cs" />
     <Compile Include="Services\LocalDbServer.cs" />
     <None Include="Models\Backup\Common\DMTTATODBase.cs" />
     <None Include="Models\Backup\Configuration\Config.cs" />
@@ -164,10 +167,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Shifts\" />
-    <Folder Include="Models\Users\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(SolutionDir)References\runtimes\*.*" "$(TargetDir)\runtimes\*.*" /Y/D/E</PostBuildEvent>
