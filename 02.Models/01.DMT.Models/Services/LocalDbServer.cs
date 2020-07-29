@@ -111,9 +111,9 @@ namespace DMT.Services
 
 			Db.CreateTable<LaneAttendance>();
 			Db.CreateTable<LanePayment>();
-			/*
-			Db.CreateTable<RevenueEntry>();
 
+			Db.CreateTable<RevenueEntry>();
+			/*
 			Db.CreateTable<TSBCreditTransaction>();
 			Db.CreateTable<TSBCouponTransaction>();
 			Db.CreateTable<TSBAdditionTransaction>();

@@ -118,6 +118,7 @@
     <Compile Include="Models\LaneActivities\LaneAttendance.cs" />
     <Compile Include="Models\LaneActivities\LanePayment.cs" />
     <Compile Include="Models\LaneActivities\Payment.cs" />
+    <Compile Include="Models\Revenues\RevenueEntry.cs" />
     <Compile Include="Models\Shifts\Shift.cs" />
     <Compile Include="Models\Shifts\TSBShift.cs" />
     <Compile Include="Models\Shifts\UserShift.cs" />
@@ -175,7 +176,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\CreditsAndCoupons\" />
-    <Folder Include="Models\Revenues\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
