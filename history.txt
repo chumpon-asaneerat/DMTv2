@@ -5,8 +5,11 @@ Update 2020-07-29 #30
 Update 2020-07-29 #29
 - 
 
+[commited]
 Update 2020-07-29 #28
-- 
+- Reload Plaza Windows Service project.
+- Reload TOD App project.
+- Full recompile - OK.
 
 [commited]
 Update 2020-07-29 #27
