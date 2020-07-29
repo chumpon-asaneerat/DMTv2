@@ -14,8 +14,11 @@ Update 2020-07-29 #27
 Update 2020-07-29 #26
 - 
 
+[commited]
 Update 2020-07-29 #25
-- 
+- Re-Implements RouteConsts.cs #11 (completed revert from original).
+- Re-Implements AdditionController #1.
+- Re-Implements PlazaOperation.Addition #1
 
 [commited]
 Update 2020-07-29 #24

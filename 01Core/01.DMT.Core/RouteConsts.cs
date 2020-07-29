@@ -5,7 +5,11 @@ namespace DMT
 {
     public static class RouteConsts
     {
+        #region Base Url
+
         public const string Url = @"api";
+
+        #endregion
 
         #region TSB
 
@@ -473,13 +477,8 @@ namespace DMT
         }
 
         #endregion
-    }
-    /*
-    public static class RouteConsts
-    {
-        public const string Url = @"api";
 
-
+        #region Addition
 
         public static class Addition
         {
@@ -516,6 +515,7 @@ namespace DMT
                 public const string Url = Addition.Url + @"/" + Name;
             }
         }
+
+        #endregion
     }
-    */
 }
