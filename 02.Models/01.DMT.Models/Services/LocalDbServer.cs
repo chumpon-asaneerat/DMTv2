@@ -91,7 +91,7 @@ namespace DMT.Services
 		private void InitTables()
 		{
 			if (null == Db) return;
-
+			/*
 			Db.CreateTable<TSB>();
 			Db.CreateTable<PlazaGroup>();
 			Db.CreateTable<Plaza>();
@@ -101,6 +101,7 @@ namespace DMT.Services
 			Db.CreateTable<User>();
 			Db.CreateTable<TSBShift>();
 			Db.CreateTable<UserShift>();
+			*/
 		}
 
 		#endregion
