@@ -1,9 +1,29 @@
 --------------------------------------------------------------------------------------------
+Update 2020-07-29 #21
+- 
+
+Update 2020-07-29 #20
+- 
+
+Update 2020-07-29 #19
+- 
+
+Update 2020-07-29 #18
+- 
+
+Update 2020-07-29 #17
+- 
+
+Update 2020-07-29 #16
+- 
+
 Update 2020-07-29 #15
 - 
 
+[commited]
 Update 2020-07-29 #14
-- 
+- Re-Implements RouteConsts.cs
+- Add PlazaOperation.Master.cs
 
 [commited]
 Update 2020-07-29 #13

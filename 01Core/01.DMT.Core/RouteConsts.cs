@@ -3,6 +3,32 @@ using System.Collections.Generic;
 
 namespace DMT
 {
+    public static class RouteConsts
+    {
+        public const string Url = @"api";
+
+        public static class Master
+        {
+            public const string Url = RouteConsts.Url + @"/master";
+
+            public static class TSB
+            {
+                public const string Url = Master.Url + @"/TSB";
+            }
+            public static class PlazaGroup
+            {
+                public const string Url = Master.Url + @"/PlazaGroup";
+            }
+            public static class Plaza
+            {
+                public const string Url = Master.Url + @"/Plaza";
+            }
+            public static class Lane
+            {
+                public const string Url = Master.Url + @"/Lane";
+            }
+        }
+    }
     /*
     public static class RouteConsts
     {
