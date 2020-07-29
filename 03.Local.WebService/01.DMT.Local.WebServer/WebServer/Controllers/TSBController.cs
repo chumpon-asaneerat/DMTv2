@@ -48,7 +48,7 @@ namespace DMT.Services
         public List<Plaza> GetTSBPlazas([FromBody] TSB value)
         {
             if (null == value) return new List<Plaza>();
-            var results = value.GetPlazas();
+            var results = Plaza.GetTSBPlazas(value);
             return results;
         }
 
@@ -57,7 +57,7 @@ namespace DMT.Services
         public List<Lane> GetTSBLanes([FromBody] TSB value)
         {
             if (null == value) return new List<Lane>();
-            var results = value.GetLanes();
+            var results = Lane.GetTSBLanes(value);
             return results;
         }
 
@@ -66,7 +66,7 @@ namespace DMT.Services
         public List<Lane> GetPlazaLanes([FromBody] Plaza value)
         {
             if (null == value) return new List<Lane>();
-            var results = value.GetLanes();
+            var results = Lane.GetPlazaLanes(value);
             return results;
         }
 
@@ -75,7 +75,7 @@ namespace DMT.Services
         public void SetActive([FromBody] TSB value)
         {
             if (null == value) return;
-            value.SetActive();
+            TSB.SetActive(value.TSBId);
         }
 
         [HttpPost]

@@ -17,8 +17,11 @@ Update 2020-07-29 #17
 Update 2020-07-29 #16
 - 
 
+[commited]
 Update 2020-07-29 #15
-- 
+- Remove PlazaOperation.Master.cs
+- Re-Implements RouteConsts.cs #2.
+- Re-Implements TSBController #1.
 
 [commited]
 Update 2020-07-29 #14
