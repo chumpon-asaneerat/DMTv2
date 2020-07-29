@@ -256,4 +256,41 @@ namespace DMT.Models
     }
 
     #endregion
+
+    #region UserCredit
+
+    partial class Search
+    {
+        public class UserCredits
+        {
+            public class GetActive : NSearch<GetActive>
+            {
+                public User User { get; set; }
+                public PlazaGroup PlazaGroup { get; set; }
+
+                public static GetActive Create(User user, PlazaGroup plazGroup)
+                {
+                    var ret = new GetActive();
+                    ret.User = user;
+                    ret.PlazaGroup = plazGroup;
+                    return ret;
+                }
+            }
+            public class GetActiveById : NSearch<GetActive>
+            {
+                public string UserId { get; set; }
+                public string PlazaGroupId { get; set; }
+
+                public static GetActiveById Create(string userId, string plazGroupId)
+                {
+                    var ret = new GetActiveById();
+                    ret.UserId = userId;
+                    ret.PlazaGroupId = plazGroupId;
+                    return ret;
+                }
+            }
+        }
+    }
+
+    #endregion
 }

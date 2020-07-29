@@ -23,8 +23,11 @@ Update 2020-07-29 #24
 Update 2020-07-29 #23
 - 
 
+[commited]
 Update 2020-07-29 #22
-- 
+- Re-Implements RouteConsts.cs #8.
+- Re-Implements CreditController #1.
+- Re-Implements PlazaOperation.Credit #1
 
 [commited]
 Update 2020-07-29 #21
