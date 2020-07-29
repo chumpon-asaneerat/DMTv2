@@ -11,8 +11,13 @@ Update 2020-07-29 #19
 Update 2020-07-29 #18
 - 
 
+[commited]
 Update 2020-07-29 #17
-- 
+- Re-Implements RouteConsts.cs #3.
+- Re-Implements PlazaOperation.User #1
+  - Add SaveRole/SaveUser method.
+- Re-Implements UserController #1.
+  - Add SaveRole/SaveUser method.
 
 [commited]
 Update 2020-07-29 #16

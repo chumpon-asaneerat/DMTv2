@@ -24,12 +24,6 @@ namespace DMT.Models.ExtensionMethods
             if (null == value) return new List<User>();
             return User.FindByRole(value.RoleId);
         }
-
-        public static List<User> GetUsers(this Role value, int status)
-        {
-            if (null == value) return new List<User>();
-            return User.FindByRole(value.RoleId, status);
-        }
     }
     */
     #endregion

@@ -79,12 +79,6 @@ namespace DMT
                 public const string Url = TSB.Url + @"/" + Name;
             }
         }
-    }
-    /*
-    public static class RouteConsts
-    {
-        public const string Url = @"api";
-
 
         public static class User
         {
@@ -125,7 +119,27 @@ namespace DMT
                 public const string Name = "GetByLogIn";
                 public const string Url = User.Url + @"/" + Name;
             }
+
+            // NEW!! 2020-07-29 - Save methods
+            public static class SaveRole
+            {
+                public const string Name = "SaveRole";
+                public const string Url = User.Url + @"/" + Name;
+            }
+
+            public static class SaveUser
+            {
+                public const string Name = "SaveUser";
+                public const string Url = User.Url + @"/" + Name;
+            }
         }
+    }
+    /*
+    public static class RouteConsts
+    {
+        public const string Url = @"api";
+
+
 
         public static class Shift
         {

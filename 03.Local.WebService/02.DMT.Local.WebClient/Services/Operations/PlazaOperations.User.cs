@@ -104,6 +104,20 @@ namespace DMT.Services
                 return ret;
             }
 
+            public Role SaveRole(Role value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<Role>(
+                    RouteConsts.User.SaveRole.Url, value);
+                return ret;
+            }
+
+            public User SaveUser(User value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<User>(
+                    RouteConsts.User.SaveUser.Url, value);
+                return ret;
+            }
+
             #endregion
         }
 

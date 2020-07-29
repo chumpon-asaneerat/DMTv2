@@ -40,7 +40,7 @@ namespace DMT.Services
         {
             if (null == value) return new List<User>();
             int status = 1; // active only
-            var results = value.GetUsers(status);
+            var results = Models.User.FindByRole(value.RoleId, status);
             return results;
         }
 
@@ -66,6 +66,28 @@ namespace DMT.Services
         {
             if (null == value) return null;
             return Models.User.GetByUserId(value.UserId, value.Password);
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.User.SaveRole.Name)]
+        public Role SaveRole([FromBody] Role value)
+        {
+            if (null != value)
+            {
+                Role.Save(value);
+            }
+            return value;
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.User.SaveUser.Name)]
+        public User SaveUser([FromBody] User value)
+        {
+            if (null != value)
+            {
+                Models.User.Save(value);
+            }
+            return value;
         }
     }
 }
