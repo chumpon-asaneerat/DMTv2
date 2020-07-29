@@ -23,8 +23,9 @@ Update 2020-07-29 #34
 Update 2020-07-29 #33
 - 
 
+[commited]
 Update 2020-07-29 #32
-- 
+- Reload SmartcardM1Test project.
 
 [commited]
 Update 2020-07-29 #31
