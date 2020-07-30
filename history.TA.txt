@@ -24,8 +24,10 @@ Update 2020-07-31 #1 (TA)
 Update 2020-07-30 #8 (TA)
 - 
 
+[commited]
 Update 2020-07-30 #7 (TA)
-- 
+- Add SqlScriptManager.cs
+- Add Embeded Resource - UserCreditSummaryView.sql.
 
 [commited]
 Update 2020-07-30 #6 (TA)

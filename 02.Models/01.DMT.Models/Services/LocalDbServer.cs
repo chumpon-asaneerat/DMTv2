@@ -159,7 +159,7 @@ namespace DMT.Services
 
 		private void InitDefaults()
 		{
-			//InitViews();
+			InitViews();
 			InitTSBAndPlazaAndLanes();
 			InitShifts();
 			InitRoleAndUsers();
@@ -171,6 +171,7 @@ namespace DMT.Services
 		{
 			if (null == Db) return;
 
+			/*
 			var info = Db.GetTableInfo("UserCreditTransactionSummaryView");
 			// info.Count is number of column.
 			if (null != info && info.Count > 0)
@@ -210,6 +211,7 @@ namespace DMT.Services
 				";
 
 			Console.WriteLine(cmd);
+			*/
 		}
 
 		private void InitTSBAndPlazaAndLanes()

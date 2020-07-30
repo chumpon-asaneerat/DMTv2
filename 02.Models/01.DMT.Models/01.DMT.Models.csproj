@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExtensionMethods\ModelExtensionMethods.cs" />
+    <Compile Include="Views\SqlScriptManager.cs" />
     <None Include="Models\Backup2\Common\DMTModelBase.cs" />
     <None Include="Models\Backup2\Common\ModelBaseClasses.cs" />
     <None Include="Models\Backup2\Common\NQueries.cs" />
@@ -185,6 +186,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Scripts\UserCreditSummaryView.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(SolutionDir)References\runtimes\*.*" "$(TargetDir)\runtimes\*.*" /Y/D/E</PostBuildEvent>
