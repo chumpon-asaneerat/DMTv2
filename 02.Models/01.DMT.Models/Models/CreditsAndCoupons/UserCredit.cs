@@ -82,17 +82,17 @@ namespace DMT.Models
 		private int _CntBHT500 = 0;
 		private int _CntBHT1000 = 0;
 		// Coin/Bill (Amount)
-		private int _AmtST25 = 0;
-		private int _AmtST50 = 0;
-		private int _AmtBHT1 = 0;
-		private int _AmtBHT2 = 0;
-		private int _AmtBHT5 = 0;
-		private int _AmtBHT10 = 0;
-		private int _AmtBHT20 = 0;
-		private int _AmtBHT50 = 0;
-		private int _AmtBHT100 = 0;
-		private int _AmtBHT500 = 0;
-		private int _AmtBHT1000 = 0;
+		private decimal _AmtST25 = 0;
+		private decimal _AmtST50 = 0;
+		private decimal _AmtBHT1 = 0;
+		private decimal _AmtBHT2 = 0;
+		private decimal _AmtBHT5 = 0;
+		private decimal _AmtBHT10 = 0;
+		private decimal _AmtBHT20 = 0;
+		private decimal _AmtBHT50 = 0;
+		private decimal _AmtBHT100 = 0;
+		private decimal _AmtBHT500 = 0;
+		private decimal _AmtBHT1000 = 0;
 
 		private decimal _BHTTotal = decimal.Zero;
 
@@ -114,21 +114,44 @@ namespace DMT.Models
 
 		private void CalcCountToAmount()
 		{
+			_AmtST25 = Convert.ToDecimal(_CntST25 * (decimal).25);
+			this.RaiseChanged("AmountST25");
+			_AmtST50 = Convert.ToDecimal(_CntST50 * (decimal).50);
+			this.RaiseChanged("AmountST50");
+			_AmtBHT1 = _CntBHT1 * 1;
+			this.RaiseChanged("AmountBHT1");
+			_AmtBHT2 = _CntBHT2 * 2;
+			this.RaiseChanged("AmountBHT2");
+			_AmtBHT5 = _CntBHT5 * 5;
+			this.RaiseChanged("AmountBHT5");
+			_AmtBHT10 = _CntBHT10 * 10;
+			this.RaiseChanged("AmountBHT10");
+			_AmtBHT20 = _CntBHT20 * 20;
+			this.RaiseChanged("AmountBHT20");
+			_AmtBHT50 = _CntBHT50 * 50;
+			this.RaiseChanged("AmountBHT50");
+			_AmtBHT100 = _CntBHT100 * 100;
+			this.RaiseChanged("AmountBHT100");
+			_AmtBHT500 = _CntBHT500 * 500;
+			this.RaiseChanged("AmountBHT500");
+			_AmtBHT1000 = _CntBHT1000 * 1000;
+			this.RaiseChanged("AmountBHT1000");
+
 			decimal total = 0;
-			total += Convert.ToDecimal(_ST25 * (decimal).25);
-			total += Convert.ToDecimal(_ST50 * (decimal).50);
-			total += _BHT1 * 1;
-			total += _BHT2 * 2;
-			total += _BHT5 * 5;
-			total += _BHT10 * 10;
-			total += _BHT20 * 20;
-			total += _BHT50 * 50;
-			total += _BHT100 * 100;
-			total += _BHT500 * 500;
-			total += _BHT1000 * 1000;
+			total += _AmtST25;
+			total += _AmtST50;
+			total += _AmtBHT1;
+			total += _AmtBHT2;
+			total += _AmtBHT5;
+			total += _AmtBHT10;
+			total += _AmtBHT20;
+			total += _AmtBHT50;
+			total += _AmtBHT100;
+			total += _AmtBHT500;
+			total += _AmtBHT1000;
 
 			_BHTTotal = total;
-
+			// Raise event.
 			this.RaiseChanged("BHTTotal");
 		}
 
@@ -875,7 +898,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountST25")]
-		public virtual int AmountST25
+		public virtual decimal AmountST25
 		{
 			get { return _AmtST25; }
 			set
@@ -897,7 +920,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountST50")]
-		public virtual int AmountST50
+		public virtual decimal AmountST50
 		{
 			get { return _AmtST50; }
 			set
@@ -919,7 +942,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountBHT1")]
-		public virtual int AmountBHT1
+		public virtual decimal AmountBHT1
 		{
 			get { return _AmtBHT1; }
 			set
@@ -941,7 +964,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountBHT2")]
-		public virtual int AmountBHT2
+		public virtual decimal AmountBHT2
 		{
 			get { return _AmtBHT2; }
 			set
@@ -963,7 +986,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountBHT5")]
-		public virtual int AmountBHT5
+		public virtual decimal AmountBHT5
 		{
 			get { return _AmtBHT5; }
 			set
@@ -985,7 +1008,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountBHT10")]
-		public virtual int AmountBHT10
+		public virtual decimal AmountBHT10
 		{
 			get { return _AmtBHT10; }
 			set
@@ -1007,7 +1030,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountBHT20")]
-		public virtual int AmountBHT20
+		public virtual decimal AmountBHT20
 		{
 			get { return _AmtBHT20; }
 			set
@@ -1029,7 +1052,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountBHT50")]
-		public virtual int AmountBHT50
+		public virtual decimal AmountBHT50
 		{
 			get { return _AmtBHT50; }
 			set
@@ -1051,7 +1074,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountBHT100")]
-		public virtual int AmountBHT100
+		public virtual decimal AmountBHT100
 		{
 			get { return _AmtBHT100; }
 			set
@@ -1073,7 +1096,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountBHT500")]
-		public virtual int AmountBHT500
+		public virtual decimal AmountBHT500
 		{
 			get { return _AmtBHT500; }
 			set
@@ -1095,7 +1118,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountBHT1000")]
-		public virtual int AmountBHT1000
+		public virtual decimal AmountBHT1000
 		{
 			get { return _AmtBHT1000; }
 			set
