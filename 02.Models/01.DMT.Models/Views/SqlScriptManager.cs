@@ -25,15 +25,21 @@ namespace DMT.Views
                 {
                     using (Stream stream = Current.GetManifestResourceStream(resourceName))
                     {
-                        using (StreamReader reader = new StreamReader(stream))
+                        if (null != stream)
                         {
-                            ret = reader.ReadToEnd();
+                            using (StreamReader reader = new StreamReader(stream))
+                            {
+                                if (null != reader)
+                                {
+                                    ret = reader.ReadToEnd();
+                                }
+                            }
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception /*ex*/)
                 {
-                    Console.WriteLine(ex);
+                    //Console.WriteLine(ex);
                     ret = string.Empty;
                 }
             }
