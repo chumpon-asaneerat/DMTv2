@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace DMT.Views
 {
-    public class SqlScriptManager
+    public class SqliteScriptManager
     {
-        private static Assembly Current { get { return typeof(SqlScriptManager).Assembly; } }
+        private static Assembly Current { get { return typeof(SqliteScriptManager).Assembly; } }
 
         public static string GetScript(string resourceName)
         {
@@ -31,8 +31,9 @@ namespace DMT.Views
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    Console.WriteLine(ex);
                     ret = string.Empty;
                 }
             }

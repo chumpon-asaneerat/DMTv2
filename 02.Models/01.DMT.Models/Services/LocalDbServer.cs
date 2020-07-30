@@ -6,15 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Runtime.CompilerServices;
+using System.Reflection;
+
 // SQLite
 using SQLite;
 using SQLiteNetExtensions.Attributes;
 using SQLiteNetExtensions.Extensions;
-using NLib.IO;
-using System.Runtime.CompilerServices;
-using DMT.Models;
-using System.Reflection;
+
 using NLib;
+using NLib.IO;
+
+using DMT.Models;
+using DMT.Views;
 
 #endregion
 
@@ -170,6 +174,10 @@ namespace DMT.Services
 		private void InitViews()
 		{
 			if (null == Db) return;
+			string resourceName = "UserCreditSummaryView.sql";
+			string script = SqliteScriptManager.GetScript(@"DMT.Views.Scripts." + resourceName);
+			Console.WriteLine(script);
+
 
 			/*
 			var info = Db.GetTableInfo("UserCreditTransactionSummaryView");
