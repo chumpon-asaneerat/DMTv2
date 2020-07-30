@@ -115,29 +115,6 @@ namespace DMT.Models
 
 		private void CalcCountToAmount()
 		{
-			_AmtST25 = Convert.ToDecimal(_CntST25 * (decimal).25);
-			this.RaiseChanged("AmountST25");
-			_AmtST50 = Convert.ToDecimal(_CntST50 * (decimal).50);
-			this.RaiseChanged("AmountST50");
-			_AmtBHT1 = _CntBHT1 * 1;
-			this.RaiseChanged("AmountBHT1");
-			_AmtBHT2 = _CntBHT2 * 2;
-			this.RaiseChanged("AmountBHT2");
-			_AmtBHT5 = _CntBHT5 * 5;
-			this.RaiseChanged("AmountBHT5");
-			_AmtBHT10 = _CntBHT10 * 10;
-			this.RaiseChanged("AmountBHT10");
-			_AmtBHT20 = _CntBHT20 * 20;
-			this.RaiseChanged("AmountBHT20");
-			_AmtBHT50 = _CntBHT50 * 50;
-			this.RaiseChanged("AmountBHT50");
-			_AmtBHT100 = _CntBHT100 * 100;
-			this.RaiseChanged("AmountBHT100");
-			_AmtBHT500 = _CntBHT500 * 500;
-			this.RaiseChanged("AmountBHT500");
-			_AmtBHT1000 = _CntBHT1000 * 1000;
-			this.RaiseChanged("AmountBHT1000");
-
 			decimal total = 0;
 			total += _AmtST25;
 			total += _AmtST50;
@@ -672,6 +649,10 @@ namespace DMT.Models
 				if (_CntST25 != value)
 				{
 					_CntST25 = value;
+
+					_AmtST25 = Convert.ToDecimal(_CntST25 * (decimal).25);
+					this.RaiseChanged("AmountST25");
+
 					CalcCountToAmount();
 					// Raise event.
 					this.RaiseChanged("CountST25");
@@ -692,6 +673,10 @@ namespace DMT.Models
 				if (_CntST50 != value)
 				{
 					_CntST50 = value;
+
+					_AmtST50 = Convert.ToDecimal(_CntST50 * (decimal).50);
+					this.RaiseChanged("AmountST50");
+
 					CalcCountToAmount();
 					// Raise event.
 					this.RaiseChanged("CountST50");
@@ -712,6 +697,10 @@ namespace DMT.Models
 				if (_CntBHT1 != value)
 				{
 					_CntBHT1 = value;
+
+					_AmtBHT1 = _CntBHT1 * 1;
+					this.RaiseChanged("AmountBHT1");
+
 					CalcCountToAmount();
 					// Raise event.
 					this.RaiseChanged("CountBHT1");
@@ -732,6 +721,10 @@ namespace DMT.Models
 				if (_CntBHT2 != value)
 				{
 					_CntBHT2 = value;
+
+					_AmtBHT2 = _CntBHT2 * 2;
+					this.RaiseChanged("AmountBHT2");
+
 					CalcCountToAmount();
 					// Raise event.
 					this.RaiseChanged("CountBHT2");
@@ -752,6 +745,10 @@ namespace DMT.Models
 				if (_CntBHT5 != value)
 				{
 					_CntBHT5 = value;
+
+					_AmtBHT5 = _CntBHT5 * 5;
+					this.RaiseChanged("AmountBHT5");
+
 					CalcCountToAmount();
 					// Raise event.
 					this.RaiseChanged("CountBHT5");
@@ -772,6 +769,10 @@ namespace DMT.Models
 				if (_CntBHT10 != value)
 				{
 					_CntBHT10 = value;
+
+					_AmtBHT10 = _CntBHT10 * 10;
+					this.RaiseChanged("AmountBHT10");
+
 					CalcCountToAmount();
 					// Raise event.
 					this.RaiseChanged("CountBHT10");
@@ -792,6 +793,10 @@ namespace DMT.Models
 				if (_CntBHT20 != value)
 				{
 					_CntBHT20 = value;
+
+					_AmtBHT20 = _CntBHT20 * 20;
+					this.RaiseChanged("AmountBHT20");
+
 					CalcCountToAmount();
 					// Raise event.
 					this.RaiseChanged("CountBHT20");
@@ -812,6 +817,10 @@ namespace DMT.Models
 				if (_CntBHT50 != value)
 				{
 					_CntBHT50 = value;
+
+					_AmtBHT50 = _CntBHT50 * 50;
+					this.RaiseChanged("AmountBHT50");
+
 					CalcCountToAmount();
 					// Raise event.
 					this.RaiseChanged("CountBHT50");
@@ -832,6 +841,10 @@ namespace DMT.Models
 				if (_CntBHT100 != value)
 				{
 					_CntBHT100 = value;
+
+					_AmtBHT100 = _CntBHT100 * 100;
+					this.RaiseChanged("AmountBHT100");
+
 					CalcCountToAmount();
 					// Raise event.
 					this.RaiseChanged("CountBHT100");
@@ -852,6 +865,10 @@ namespace DMT.Models
 				if (_CntBHT500 != value)
 				{
 					_CntBHT500 = value;
+
+					_AmtBHT500 = _CntBHT500 * 500;
+					this.RaiseChanged("AmountBHT500");
+
 					CalcCountToAmount();
 					// Raise event.
 					this.RaiseChanged("CountBHT500");
@@ -872,6 +889,10 @@ namespace DMT.Models
 				if (_CntBHT1000 != value)
 				{
 					_CntBHT1000 = value;
+
+					_AmtBHT1000 = _CntBHT1000 * 1000;
+					this.RaiseChanged("AmountBHT1000");
+
 					CalcCountToAmount();
 					// Raise event.
 					this.RaiseChanged("CountBHT1000");
