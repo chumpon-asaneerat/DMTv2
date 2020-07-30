@@ -1,6 +1,22 @@
 --------------------------------------------------------------------------------------------
-Update 2020-07-27 #1 (TA)
+Update 2020-07-30 #5 (TA)
 - 
+
+Update 2020-07-30 #4 (TA)
+- 
+
+Update 2020-07-30 #3 (TA)
+- 
+
+Update 2020-07-30 #2 (TA)
+- 
+
+[commited]
+Update 2020-07-30 #1 (TA)
+- Prepare history.TA.txt
+  Note Last update on history.txt.
+  - Update UserCredit #6.
+  - Update UserCreditTransaction #6.
 
 --------------------------------------------------------------------------------------------
 [commited]
