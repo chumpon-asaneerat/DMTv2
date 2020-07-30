@@ -49,7 +49,7 @@
                                    Width="50"/>
                         <TextBox Margin="2"
                              TextAlignment="Right"
-                             Text="{Binding BHT1}"
+                             Text="{Binding AmountBHT1, StringFormat=N0}"
                                  Width="50"/>
                     </DockPanel>
                     <!-- 2 BHT -->
@@ -66,7 +66,7 @@
                                    Width="50"/>
                         <TextBox Margin="2"
                              TextAlignment="Right"
-                             Text="{Binding BHT2}"
+                             Text="{Binding AmountBHT2, StringFormat=N0}"
                                  Width="50"/>
                     </DockPanel>
                     <!-- 5 BHT -->
@@ -83,7 +83,7 @@
                                    Width="50"/>
                         <TextBox Margin="2"
                              TextAlignment="Right"
-                             Text="{Binding BHT5}"
+                             Text="{Binding AmountBHT5, StringFormat=N0}"
                                  Width="50"/>
                     </DockPanel>
                     <!-- 10 BHT coin -->
@@ -100,7 +100,7 @@
                                    Width="50"/>
                         <TextBox Margin="2"
                             TextAlignment="Right"
-                            Text="{Binding BHT10}"
+                            Text="{Binding AmountBHT10, StringFormat=N0}"
                                  Width="50"/>
 
                     </DockPanel>
@@ -118,7 +118,7 @@
                                    Width="50"/>
                         <TextBox Margin="2"
                             TextAlignment="Right"
-                            Text="{Binding BHT20}"
+                            Text="{Binding AmountBHT20, StringFormat=N0}"
                                  Width="50"/>
 
                     </DockPanel>
@@ -136,7 +136,7 @@
                                    Width="50"/>
                         <TextBox Margin="2"
                             TextAlignment="Right"
-                            Text="{Binding BHT50}"
+                            Text="{Binding AmountBHT50, StringFormat=N0}"
                                  Width="50"/>
 
                     </DockPanel>
@@ -154,7 +154,7 @@
                                    Width="50"/>
                         <TextBox Margin="2"
                             TextAlignment="Right"
-                            Text="{Binding BHT100}"
+                            Text="{Binding AmountBHT100, StringFormat=N0}"
                                  Width="50"/>
                     </DockPanel>
                     <!-- 500 BHT -->
@@ -171,7 +171,7 @@
                                    Width="50"/>
                         <TextBox Margin="2"
                             TextAlignment="Right"
-                            Text="{Binding BHT500}"
+                            Text="{Binding AmountBHT500, StringFormat=N0}"
                                  Width="50"/>
 
                     </DockPanel>
@@ -189,7 +189,7 @@
                                    Width="50"/>
                         <TextBox Margin="2"
                             TextAlignment="Right"
-                            Text="{Binding BHT1000}"
+                            Text="{Binding AmountBHT1000, StringFormat=N0}"
                                  Width="50"/>
 
                     </DockPanel>

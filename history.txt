@@ -14,8 +14,11 @@ Update 2020-07-30 #12
 Update 2020-07-30 #11
 - 
 
+[commited]
 Update 2020-07-30 #10
-- 
+- DMT.Controls project Update #1.
+  - CollectorCreditBorrowWindow update calculation from Count to Amount.
+  - PlazaCreditEntry update Binding in xaml.
 
 [commited]
 Update 2020-07-30 #9

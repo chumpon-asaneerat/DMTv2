@@ -116,33 +116,33 @@ namespace DMT.TA.Windows.Collector.Credit
         private bool HasNegative()
         {
             return (
-                sumObj.ST25 < 0 ||
-                sumObj.ST50 < 0 ||
-                sumObj.BHT1 < 0 ||
-                sumObj.BHT2 < 0 ||
-                sumObj.BHT5 < 0 ||
-                sumObj.BHT10 < 0 ||
-                sumObj.BHT20 < 0 ||
-                sumObj.BHT50 < 0 ||
-                sumObj.BHT100 < 0 ||
-                sumObj.BHT500 < 0 ||
-                sumObj.BHT1000 < 0
+                sumObj.AmountST25 < 0 ||
+                sumObj.AmountST50 < 0 ||
+                sumObj.AmountBHT1 < 0 ||
+                sumObj.AmountBHT2 < 0 ||
+                sumObj.AmountBHT5 < 0 ||
+                sumObj.AmountBHT10 < 0 ||
+                sumObj.AmountBHT20 < 0 ||
+                sumObj.AmountBHT50 < 0 ||
+                sumObj.AmountBHT100 < 0 ||
+                sumObj.AmountBHT500 < 0 ||
+                sumObj.AmountBHT1000 < 0
                 );
         }
 
         private void Calc()
         {
-            sumObj.ST25 = plazaObj.ST25 - usrObj.ST25;
-            sumObj.ST50 = plazaObj.ST50 - usrObj.ST50;
-            sumObj.BHT1 = plazaObj.BHT1 - usrObj.BHT1;
-            sumObj.BHT2 = plazaObj.BHT2 - usrObj.BHT2;
-            sumObj.BHT5 = plazaObj.BHT5 - usrObj.BHT5;
-            sumObj.BHT10 = plazaObj.BHT10 - usrObj.BHT10;
-            sumObj.BHT20 = plazaObj.BHT20 - usrObj.BHT20;
-            sumObj.BHT50 = plazaObj.BHT50 - usrObj.BHT50;
-            sumObj.BHT100 = plazaObj.BHT100 - usrObj.BHT100;
-            sumObj.BHT500 = plazaObj.BHT500 - usrObj.BHT500;
-            sumObj.BHT1000 = plazaObj.BHT1000 - usrObj.BHT1000;
+            sumObj.AmountST25 = plazaObj.AmountST25 - usrObj.AmountST25;
+            sumObj.AmountST50 = plazaObj.AmountST50 - usrObj.AmountST50;
+            sumObj.AmountBHT1 = plazaObj.AmountBHT1 - usrObj.AmountBHT1;
+            sumObj.AmountBHT2 = plazaObj.AmountBHT2 - usrObj.AmountBHT2;
+            sumObj.AmountBHT5 = plazaObj.AmountBHT5 - usrObj.AmountBHT5;
+            sumObj.AmountBHT10 = plazaObj.AmountBHT10 - usrObj.AmountBHT10;
+            sumObj.AmountBHT20 = plazaObj.AmountBHT20 - usrObj.AmountBHT20;
+            sumObj.AmountBHT50 = plazaObj.AmountBHT50 - usrObj.AmountBHT50;
+            sumObj.AmountBHT100 = plazaObj.AmountBHT100 - usrObj.AmountBHT100;
+            sumObj.AmountBHT500 = plazaObj.AmountBHT500 - usrObj.AmountBHT500;
+            sumObj.AmountBHT1000 = plazaObj.AmountBHT1000 - usrObj.AmountBHT1000;
         }
 
         public void Setup(UserCredit credit)
