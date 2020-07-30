@@ -608,6 +608,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("CountST25")]
+		[PropertyOrder(10)]
 		public virtual int CountST25
 		{
 			get { return _CntST25; }
@@ -633,6 +634,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("CountST50")]
+		[PropertyOrder(11)]
 		public virtual int CountST50
 		{
 			get { return _CntST50; }
@@ -658,6 +660,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("CountBHT1")]
+		[PropertyOrder(12)]
 		public virtual int CountBHT1
 		{
 			get { return _CntBHT1; }
@@ -683,6 +686,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("CountBHT2")]
+		[PropertyOrder(13)]
 		public virtual int CountBHT2
 		{
 			get { return _CntBHT2; }
@@ -708,6 +712,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("CountBHT5")]
+		[PropertyOrder(14)]
 		public virtual int CountBHT5
 		{
 			get { return _CntBHT5; }
@@ -733,6 +738,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("CountBHT10")]
+		[PropertyOrder(15)]
 		public virtual int CountBHT10
 		{
 			get { return _CntBHT10; }
@@ -758,6 +764,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("CountBHT20")]
+		[PropertyOrder(16)]
 		public virtual int CountBHT20
 		{
 			get { return _CntBHT20; }
@@ -783,6 +790,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("CountBHT50")]
+		[PropertyOrder(17)]
 		public virtual int CountBHT50
 		{
 			get { return _CntBHT50; }
@@ -808,6 +816,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("CountBHT100")]
+		[PropertyOrder(18)]
 		public virtual int CountBHT100
 		{
 			get { return _CntBHT100; }
@@ -833,6 +842,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("CountBHT500")]
+		[PropertyOrder(19)]
 		public virtual int CountBHT500
 		{
 			get { return _CntBHT500; }
@@ -858,6 +868,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("CountBHT1000")]
+		[PropertyOrder(20)]
 		public virtual int CountBHT1000
 		{
 			get { return _CntBHT1000; }
@@ -1158,12 +1169,12 @@ namespace DMT.Models
 
 		#endregion
 
-		#region Coin/Bill (Other)
+		#region Coin/Bill (Summary)
 
 		/// <summary>
 		/// Gets or sets total (coin/bill) value in baht.
 		/// </summary>
-		[Category("Coin/Bill")]
+		[Category("Coin/Bill (Summary)")]
 		[Description("Gets or sets total (coin/bill) value in baht.")]
 		[ReadOnly(true)]
 		[Ignore]

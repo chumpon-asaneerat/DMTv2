@@ -324,6 +324,7 @@ namespace DMT.Models
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of .25 baht coin.")]
 		[PeropertyMapName("CountST25")]
+		[PropertyOrder(10)]
 		public virtual int CountST25
 		{
 			get { return _CntST25; }
@@ -347,6 +348,7 @@ namespace DMT.Models
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of .50 baht coin.")]
 		[PeropertyMapName("CountST50")]
+		[PropertyOrder(11)]
 		public virtual int CountST50
 		{
 			get { return _CntST50; }
@@ -370,6 +372,7 @@ namespace DMT.Models
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 1 baht coin.")]
 		[PeropertyMapName("CountBHT1")]
+		[PropertyOrder(12)]
 		public virtual int CountBHT1
 		{
 			get { return _CntBHT1; }
@@ -393,6 +396,7 @@ namespace DMT.Models
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 2 baht coin.")]
 		[PeropertyMapName("CountBHT2")]
+		[PropertyOrder(13)]
 		public virtual int CountBHT2
 		{
 			get { return _CntBHT2; }
@@ -416,6 +420,7 @@ namespace DMT.Models
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 5 baht coin.")]
 		[PeropertyMapName("CountBHT5")]
+		[PropertyOrder(14)]
 		public virtual int CountBHT5
 		{
 			get { return _CntBHT5; }
@@ -439,6 +444,7 @@ namespace DMT.Models
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 10 baht coin.")]
 		[PeropertyMapName("CountBHT10")]
+		[PropertyOrder(15)]
 		public virtual int CountBHT10
 		{
 			get { return _CntBHT10; }
@@ -462,6 +468,7 @@ namespace DMT.Models
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 20 baht bill.")]
 		[PeropertyMapName("CountBHT20")]
+		[PropertyOrder(16)]
 		public virtual int CountBHT20
 		{
 			get { return _CntBHT20; }
@@ -485,6 +492,7 @@ namespace DMT.Models
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 50 baht bill.")]
 		[PeropertyMapName("CountBHT50")]
+		[PropertyOrder(17)]
 		public virtual int CountBHT50
 		{
 			get { return _CntBHT50; }
@@ -508,6 +516,7 @@ namespace DMT.Models
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 100 baht bill.")]
 		[PeropertyMapName("CountBHT100")]
+		[PropertyOrder(18)]
 		public virtual int CountBHT100
 		{
 			get { return _CntBHT100; }
@@ -531,6 +540,7 @@ namespace DMT.Models
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 500 baht bill.")]
 		[PeropertyMapName("CountBHT500")]
+		[PropertyOrder(19)]
 		public virtual int CountBHT500
 		{
 			get { return _CntBHT500; }
@@ -554,6 +564,7 @@ namespace DMT.Models
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 1000 baht bill.")]
 		[PeropertyMapName("CountBHT1000")]
+		[PropertyOrder(20)]
 		public virtual int CountBHT1000
 		{
 			get { return _CntBHT1000; }
@@ -832,12 +843,12 @@ namespace DMT.Models
 
 		#endregion
 
-		#region Coin/Bill (Other)
+		#region Coin/Bill (Summary)
 
 		/// <summary>
 		/// Gets or sets total value in baht.
 		/// </summary>
-		[Category("Coin/Bill")]
+		[Category("Coin/Bill (Summary)")]
 		[Description("Gets or sets total value in baht.")]
 		[ReadOnly(true)]
 		[PeropertyMapName("BHTTotal")]
