@@ -1424,7 +1424,7 @@ namespace DMT.Models
 			/// Gets or sets amount of .25 baht coin.
 			/// </summary>
 			[PeropertyMapName("AmountST25")]
-			public override int AmountST25
+			public override decimal AmountST25
 			{
 				get { return base.AmountST25; }
 				set { base.AmountST25 = value; }
@@ -1433,7 +1433,7 @@ namespace DMT.Models
 			/// Gets or sets amount of .50 baht coin.
 			/// </summary>
 			[PeropertyMapName("AmountST50")]
-			public override int AmountST50
+			public override decimal AmountST50
 			{
 				get { return base.AmountST50; }
 				set { base.AmountST50 = value; }
@@ -1442,7 +1442,7 @@ namespace DMT.Models
 			/// Gets or sets amount of 1 baht coin.
 			/// </summary>
 			[PeropertyMapName("AmountBHT1")]
-			public override int AmountBHT1
+			public override decimal AmountBHT1
 			{
 				get { return base.AmountBHT1; }
 				set { base.AmountBHT1 = value; }
@@ -1451,7 +1451,7 @@ namespace DMT.Models
 			/// Gets or sets amount of 2 baht coin.
 			/// </summary>
 			[PeropertyMapName("AmountBHT2")]
-			public override int AmountBHT2
+			public override decimal AmountBHT2
 			{
 				get { return base.AmountBHT2; }
 				set { base.AmountBHT2 = value; }
@@ -1460,7 +1460,7 @@ namespace DMT.Models
 			/// Gets or sets amount of 5 baht coin.
 			/// </summary>
 			[PeropertyMapName("AmountBHT5")]
-			public override int AmountBHT5
+			public override decimal AmountBHT5
 			{
 				get { return base.AmountBHT5; }
 				set { base.AmountBHT5 = value; }
@@ -1469,7 +1469,7 @@ namespace DMT.Models
 			/// Gets or sets amount of 10 baht coin.
 			/// </summary>
 			[PeropertyMapName("AmountBHT10")]
-			public override int AmountBHT10
+			public override decimal AmountBHT10
 			{
 				get { return base.AmountBHT10; }
 				set { base.AmountBHT10 = value; }
@@ -1478,7 +1478,7 @@ namespace DMT.Models
 			/// Gets or sets amount of 20 baht bill.
 			/// </summary>
 			[PeropertyMapName("AmountBHT20")]
-			public override int AmountBHT20
+			public override decimal AmountBHT20
 			{
 				get { return base.AmountBHT20; }
 				set { base.AmountBHT20 = value; }
@@ -1487,7 +1487,7 @@ namespace DMT.Models
 			/// Gets or sets amount of 50 baht bill.
 			/// </summary>
 			[PeropertyMapName("AmountBHT50")]
-			public override int AmountBHT50
+			public override decimal AmountBHT50
 			{
 				get { return base.AmountBHT50; }
 				set { base.AmountBHT50 = value; }
@@ -1496,7 +1496,7 @@ namespace DMT.Models
 			/// Gets or sets amount of 100 baht bill.
 			/// </summary>
 			[PeropertyMapName("AmountBHT100")]
-			public override int AmountBHT100
+			public override decimal AmountBHT100
 			{
 				get { return base.AmountBHT100; }
 				set { base.AmountBHT100 = value; }
@@ -1505,7 +1505,7 @@ namespace DMT.Models
 			/// Gets or sets amount of 500 baht bill.
 			/// </summary>
 			[PeropertyMapName("AmountBHT500")]
-			public override int AmountBHT500
+			public override decimal AmountBHT500
 			{
 				get { return base.AmountBHT500; }
 				set { base.AmountBHT500 = value; }
@@ -1514,7 +1514,7 @@ namespace DMT.Models
 			/// Gets or sets amount of 1000 baht bill.
 			/// </summary>
 			[PeropertyMapName("AmountBHT1000")]
-			public override int AmountBHT1000
+			public override decimal AmountBHT1000
 			{
 				get { return base.AmountBHT1000; }
 				set { base.AmountBHT1000 = value; }

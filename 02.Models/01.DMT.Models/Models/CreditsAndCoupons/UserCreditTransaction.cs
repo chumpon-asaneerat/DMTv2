@@ -95,7 +95,7 @@ namespace DMT.Models
 		private decimal _AmtBHT1000 = 0;
 
 		private decimal _BHTTotal = decimal.Zero;
-		private string _Remark = "";
+		private string _Remark = string.Empty;
 
 		private int _Status = 0;
 		private DateTime _LastUpdate = DateTime.MinValue;

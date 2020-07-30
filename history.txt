@@ -17,8 +17,12 @@ Update 2020-07-30 #11
 Update 2020-07-30 #10
 - 
 
+[commited]
 Update 2020-07-30 #9
-- 
+- Update UserCredit #12.
+- Update UserCreditTransaction #12.
+- Update TSBCreditBalance #1.
+- Update TSBCreditTransaction #1.
 
 [commited]
 Update 2020-07-30 #8
