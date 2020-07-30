@@ -543,6 +543,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountST25")]
+		[PropertyOrder(21)]
 		public virtual decimal AmountST25
 		{
 			get { return _AmtST25; }
@@ -568,6 +569,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountST50")]
+		[PropertyOrder(22)]
 		public virtual decimal AmountST50
 		{
 			get { return _AmtST50; }
@@ -593,6 +595,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountBHT1")]
+		[PropertyOrder(23)]
 		public virtual decimal AmountBHT1
 		{
 			get { return _AmtBHT1; }
@@ -618,6 +621,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountBHT2")]
+		[PropertyOrder(24)]
 		public virtual decimal AmountBHT2
 		{
 			get { return _AmtBHT2; }
@@ -643,6 +647,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountBHT5")]
+		[PropertyOrder(25)]
 		public virtual decimal AmountBHT5
 		{
 			get { return _AmtBHT5; }
@@ -668,6 +673,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountBHT10")]
+		[PropertyOrder(26)]
 		public virtual decimal AmountBHT10
 		{
 			get { return _AmtBHT10; }
@@ -693,6 +699,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountBHT20")]
+		[PropertyOrder(27)]
 		public virtual decimal AmountBHT20
 		{
 			get { return _AmtBHT20; }
@@ -718,6 +725,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountBHT50")]
+		[PropertyOrder(28)]
 		public virtual decimal AmountBHT50
 		{
 			get { return _AmtBHT50; }
@@ -743,6 +751,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountBHT100")]
+		[PropertyOrder(29)]
 		public virtual decimal AmountBHT100
 		{
 			get { return _AmtBHT100; }
@@ -768,6 +777,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountBHT500")]
+		[PropertyOrder(30)]
 		public virtual decimal AmountBHT500
 		{
 			get { return _AmtBHT500; }
@@ -793,6 +803,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("AmountBHT1000")]
+		[PropertyOrder(31)]
 		public virtual decimal AmountBHT1000
 		{
 			get { return _AmtBHT1000; }
