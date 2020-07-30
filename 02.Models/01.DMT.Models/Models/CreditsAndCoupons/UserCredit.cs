@@ -1574,137 +1574,269 @@ namespace DMT.Models
 						 , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction 
 						 , User.FullNameEN, User.FullNameTH 
 						 , ((
-							 SELECT IFNULL(SUM(ST25), 0) 
+							 SELECT IFNULL(SUM(CountST25), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(ST25), 0) 
+							 SELECT IFNULL(SUM(CountST25), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS ST25
+							)) AS CountST25
 						 , ((
-							 SELECT IFNULL(SUM(ST50), 0) 
+							 SELECT IFNULL(SUM(CountST50), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(ST50), 0) 
+							 SELECT IFNULL(SUM(CountST50), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS ST50
+							)) AS CountST50
 						 , ((
-							 SELECT IFNULL(SUM(BHT1), 0) 
+							 SELECT IFNULL(SUM(CountBHT1), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT1), 0) 
+							 SELECT IFNULL(SUM(CountBHT1), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT1
+							)) AS CountBHT1
 						 , ((
-							 SELECT IFNULL(SUM(BHT2), 0) 
+							 SELECT IFNULL(SUM(CountBHT2), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT2), 0) 
+							 SELECT IFNULL(SUM(CountBHT2), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT2
+							)) AS CountBHT2
 						 , ((
-							 SELECT IFNULL(SUM(BHT5), 0) 
+							 SELECT IFNULL(SUM(CountBHT5), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT5), 0) 
+							 SELECT IFNULL(SUM(CountBHT5), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT5
+							)) AS CountBHT5
 						 , ((
-							 SELECT IFNULL(SUM(BHT10), 0) 
+							 SELECT IFNULL(SUM(CountBHT10), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT10), 0) 
+							 SELECT IFNULL(SUM(CountBHT10), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT10
+							)) AS CountBHT10
 						 , ((
-							 SELECT IFNULL(SUM(BHT20), 0) 
+							 SELECT IFNULL(SUM(CountBHT20), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT20), 0) 
+							 SELECT IFNULL(SUM(CountBHT20), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT20
+							)) AS CountBHT20
 						 , ((
-							 SELECT IFNULL(SUM(BHT50), 0) 
+							 SELECT IFNULL(SUM(CountBHT50), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT50), 0) 
+							 SELECT IFNULL(SUM(CountBHT50), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT50
+							)) AS CountBHT50
 						 , ((
-							 SELECT IFNULL(SUM(BHT100), 0) 
+							 SELECT IFNULL(SUM(CountBHT100), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT100), 0) 
+							 SELECT IFNULL(SUM(CountBHT100), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT100
+							)) AS CountBHT100
 						 , ((
-							 SELECT IFNULL(SUM(BHT500), 0) 
+							 SELECT IFNULL(SUM(CountBHT500), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT500), 0) 
+							 SELECT IFNULL(SUM(CountBHT500), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT500
+							)) AS CountBHT500
 						 , ((
-							 SELECT IFNULL(SUM(BHT1000), 0) 
+							 SELECT IFNULL(SUM(CountBHT1000), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT1000), 0) 
+							 SELECT IFNULL(SUM(CountBHT1000), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT1000
+							)) AS CountBHT1000
+						 , ((
+							 SELECT IFNULL(SUM(AmountST25), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountST25), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountST25
+						 , ((
+							 SELECT IFNULL(SUM(AmountST50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountST50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountST50
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT1), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT1), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT1
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT2), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT2), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT2
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT5), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT5), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT5
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT10), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT10), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT10
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT20), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT20), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT20
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT50
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT100), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT100), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT100
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT500), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT500), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT500
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT1000), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT1000), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT1000
 					  FROM UserCredit, TSB, PlazaGroup, User
 					 WHERE PlazaGroup.TSBId = TSB.TSBId 
 					   AND UserCredit.TSBId = TSB.TSBId 
@@ -1762,137 +1894,269 @@ namespace DMT.Models
 						 , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction 
 						 , User.FullNameEN, User.FullNameTH 
 						 , ((
-							 SELECT IFNULL(SUM(ST25), 0) 
+							 SELECT IFNULL(SUM(CountST25), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(ST25), 0) 
+							 SELECT IFNULL(SUM(CountST25), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS ST25
+							)) AS CountST25
 						 , ((
-							 SELECT IFNULL(SUM(ST50), 0) 
+							 SELECT IFNULL(SUM(CountST50), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(ST50), 0) 
+							 SELECT IFNULL(SUM(CountST50), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS ST50
+							)) AS CountST50
 						 , ((
-							 SELECT IFNULL(SUM(BHT1), 0) 
+							 SELECT IFNULL(SUM(CountBHT1), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT1), 0) 
+							 SELECT IFNULL(SUM(CountBHT1), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT1
+							)) AS CountBHT1
 						 , ((
-							 SELECT IFNULL(SUM(BHT2), 0) 
+							 SELECT IFNULL(SUM(CountBHT2), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT2), 0) 
+							 SELECT IFNULL(SUM(CountBHT2), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT2
+							)) AS CountBHT2
 						 , ((
-							 SELECT IFNULL(SUM(BHT5), 0) 
+							 SELECT IFNULL(SUM(CountBHT5), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT5), 0) 
+							 SELECT IFNULL(SUM(CountBHT5), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT5
+							)) AS CountBHT5
 						 , ((
-							 SELECT IFNULL(SUM(BHT10), 0) 
+							 SELECT IFNULL(SUM(CountBHT10), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT10), 0) 
+							 SELECT IFNULL(SUM(CountBHT10), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT10
+							)) AS CountBHT10
 						 , ((
-							 SELECT IFNULL(SUM(BHT20), 0) 
+							 SELECT IFNULL(SUM(CountBHT20), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT20), 0) 
+							 SELECT IFNULL(SUM(CountBHT20), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT20
+							)) AS CountBHT20
 						 , ((
-							 SELECT IFNULL(SUM(BHT50), 0) 
+							 SELECT IFNULL(SUM(CountBHT50), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT50), 0) 
+							 SELECT IFNULL(SUM(CountBHT50), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT50
+							)) AS CountBHT50
 						 , ((
-							 SELECT IFNULL(SUM(BHT100), 0) 
+							 SELECT IFNULL(SUM(CountBHT100), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT100), 0) 
+							 SELECT IFNULL(SUM(CountBHT100), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT100
+							)) AS CountBHT100
 						 , ((
-							 SELECT IFNULL(SUM(BHT500), 0) 
+							 SELECT IFNULL(SUM(CountBHT500), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT500), 0) 
+							 SELECT IFNULL(SUM(CountBHT500), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT500
+							)) AS CountBHT500
 						 , ((
-							 SELECT IFNULL(SUM(BHT1000), 0) 
+							 SELECT IFNULL(SUM(CountBHT1000), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT1000), 0) 
+							 SELECT IFNULL(SUM(CountBHT1000), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT1000
+							)) AS CountBHT1000
+						 , ((
+							 SELECT IFNULL(SUM(AmountST25), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountST25), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountST25
+						 , ((
+							 SELECT IFNULL(SUM(AmountST50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountST50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountST50
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT1), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT1), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT1
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT2), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT2), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT2
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT5), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT5), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT5
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT10), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT10), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT10
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT20), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT20), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT20
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT50
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT100), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT100), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT100
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT500), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT500), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT500
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT1000), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT1000), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT1000
 					  FROM UserCredit, TSB, PlazaGroup, User
 					 WHERE PlazaGroup.TSBId = TSB.TSBId 
 					   AND UserCredit.TSBId = TSB.TSBId 
@@ -1925,137 +2189,269 @@ namespace DMT.Models
 						 , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction 
 						 , User.FullNameEN, User.FullNameTH 
 						 , ((
-							 SELECT IFNULL(SUM(ST25), 0) 
+							 SELECT IFNULL(SUM(CountST25), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(ST25), 0) 
+							 SELECT IFNULL(SUM(CountST25), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS ST25
+							)) AS CountST25
 						 , ((
-							 SELECT IFNULL(SUM(ST50), 0) 
+							 SELECT IFNULL(SUM(CountST50), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(ST50), 0) 
+							 SELECT IFNULL(SUM(CountST50), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS ST50
+							)) AS CountST50
 						 , ((
-							 SELECT IFNULL(SUM(BHT1), 0) 
+							 SELECT IFNULL(SUM(CountBHT1), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT1), 0) 
+							 SELECT IFNULL(SUM(CountBHT1), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT1
+							)) AS CountBHT1
 						 , ((
-							 SELECT IFNULL(SUM(BHT2), 0) 
+							 SELECT IFNULL(SUM(CountBHT2), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT2), 0) 
+							 SELECT IFNULL(SUM(CountBHT2), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT2
+							)) AS CountBHT2
 						 , ((
-							 SELECT IFNULL(SUM(BHT5), 0) 
+							 SELECT IFNULL(SUM(CountBHT5), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT5), 0) 
+							 SELECT IFNULL(SUM(CountBHT5), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT5
+							)) AS CountBHT5
 						 , ((
-							 SELECT IFNULL(SUM(BHT10), 0) 
+							 SELECT IFNULL(SUM(CountBHT10), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT10), 0) 
+							 SELECT IFNULL(SUM(CountBHT10), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT10
+							)) AS CountBHT10
 						 , ((
-							 SELECT IFNULL(SUM(BHT20), 0) 
+							 SELECT IFNULL(SUM(CountBHT20), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT20), 0) 
+							 SELECT IFNULL(SUM(CountBHT20), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT20
+							)) AS CountBHT20
 						 , ((
-							 SELECT IFNULL(SUM(BHT50), 0) 
+							 SELECT IFNULL(SUM(CountBHT50), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT50), 0) 
+							 SELECT IFNULL(SUM(CountBHT50), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT50
+							)) AS CountBHT50
 						 , ((
-							 SELECT IFNULL(SUM(BHT100), 0) 
+							 SELECT IFNULL(SUM(CountBHT100), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT100), 0) 
+							 SELECT IFNULL(SUM(CountBHT100), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT100
+							)) AS CountBHT100
 						 , ((
-							 SELECT IFNULL(SUM(BHT500), 0) 
+							 SELECT IFNULL(SUM(CountBHT500), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT500), 0) 
+							 SELECT IFNULL(SUM(CountBHT500), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT500
+							)) AS CountBHT500
 						 , ((
-							 SELECT IFNULL(SUM(BHT1000), 0) 
+							 SELECT IFNULL(SUM(CountBHT1000), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 							) -
 							(
-							 SELECT IFNULL(SUM(BHT1000), 0) 
+							 SELECT IFNULL(SUM(CountBHT1000), 0) 
 							   FROM UserCreditTransaction 
 							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-							)) AS BHT1000
+							)) AS CountBHT1000
+						 , ((
+							 SELECT IFNULL(SUM(AmountST25), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountST25), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountST25
+						 , ((
+							 SELECT IFNULL(SUM(AmountST50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountST50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountST50
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT1), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT1), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT1
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT2), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT2), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT2
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT5), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT5), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT5
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT10), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT10), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT10
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT20), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT20), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT20
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT50), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT50
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT100), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT100), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT100
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT500), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT500), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT500
+						 , ((
+							 SELECT IFNULL(SUM(AmountBHT1000), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 1 -- Borrow = 1
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							) -
+							(
+							 SELECT IFNULL(SUM(AmountBHT1000), 0) 
+							   FROM UserCreditTransaction 
+							  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
+								AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+							)) AS AmountBHT1000
 					  FROM UserCredit, TSB, PlazaGroup, User
 					 WHERE PlazaGroup.TSBId = TSB.TSBId 
 					   AND UserCredit.TSBId = TSB.TSBId 
