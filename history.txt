@@ -8,25 +8,15 @@ Update 2020-07-30 #4
 Update 2020-07-30 #3
 - 
 
+[commited]
 Update 2020-07-30 #2
-- 
+- Merge from origin/TAv1 #28
 
+[commited]
 Update 2020-07-30 #1
-- 
+- Sync from Kik (TOD).
 
 --------------------------------------------------------------------------------------------
-Update 2020-07-29 #46
-- 
-
-Update 2020-07-29 #45
-- 
-
-Update 2020-07-29 #44
-- 
-
-Update 2020-07-29 #43
-- 
-
 [commited]
 Update 2020-07-29 #42
 - Update UserCredit #6.
@@ -57,14 +47,10 @@ Update 2020-07-29 #37
 - Update UserCreditTransaction #2.
 
 [commited]
-Update 2020-07-30 #1
-- Sync from Kik (TOD).
-[commited]
 Update 2020-07-29 #36
 - Update UserCredit #1.
 - Update UserCreditTransaction #1.
 
---------------------------------------------------------------------------------------------
 [commited]
 Update 2020-07-29 #35
 - Merge to origin/TAv1
