@@ -20,8 +20,10 @@ Update 2020-07-30 #10
 Update 2020-07-30 #9
 - 
 
+[commited]
 Update 2020-07-30 #8
-- 
+- Update UserCredit #11.
+- Update UserCreditTransaction #11.
 
 [commited]
 Update 2020-07-30 #7
