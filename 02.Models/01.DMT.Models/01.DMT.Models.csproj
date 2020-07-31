@@ -97,6 +97,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExtensionMethods\ModelExtensionMethods.cs" />
+    <Compile Include="Models\CreditsAndCoupons\Users\Coupons\UserCoupon.cs" />
+    <Compile Include="Models\CreditsAndCoupons\Users\Coupons\UserCouponTransaction.cs" />
     <Compile Include="Views\SqlScriptManager.cs" />
     <None Include="Models\Backup2\Common\DMTModelBase.cs" />
     <None Include="Models\Backup2\Common\ModelBaseClasses.cs" />
@@ -185,9 +187,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\CreditsAndCoupons\Users\Coupons\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Views\Scripts\UserCreditSummaryView.sql" />
   </ItemGroup>

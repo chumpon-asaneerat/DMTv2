@@ -35,8 +35,10 @@ Update 2020-07-31 #5
 Update 2020-07-31 #4
 - 
 
+[commited]
 Update 2020-07-31 #3
-- 
+- Add UserCoupon model.
+- Add UserCouponTransaction model.
 
 [commited]
 Update 2020-07-31 #2
