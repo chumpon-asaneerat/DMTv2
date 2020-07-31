@@ -23,7 +23,7 @@ namespace DMT.Models
 	#region UserCoupon
 
 	/// <summary>
-	/// The UserCredit Data Model class.
+	/// The UserCoupon Data Model class.
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
 	[Serializable]
@@ -31,6 +31,38 @@ namespace DMT.Models
 	//[Table("UserCoupon")]
 	public class UserCoupon
 	{
+		#region Enum
+
+		#endregion
+
+		#region Internal Variables
+
+		#endregion
+
+		#region Constructor
+
+		/// <summary>
+		/// Constructor.
+		/// </summary>
+		public UserCoupon() : base() { }
+
+		#endregion
+
+		#region Private Methods
+
+		#endregion
+
+		#region Public Properties
+
+		#endregion
+
+		#region Internal Class
+
+		#endregion
+
+		#region Static Methods
+
+		#endregion
 	}
 
 	#endregion
