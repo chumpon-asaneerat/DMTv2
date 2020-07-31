@@ -497,7 +497,131 @@ namespace DMT.Models
 
 		public class FKs : UserCouponTransaction
 		{
+			#region TSB
 
+			/// <summary>
+			/// Gets or sets TSBId.
+			/// </summary>
+			[MaxLength(10)]
+			[PeropertyMapName("TSBId")]
+			public override string TSBId
+			{
+				get { return base.TSBId; }
+				set { base.TSBId = value; }
+			}
+			/// <summary>
+			/// Gets or sets TSBNameEN.
+			/// </summary>
+			[MaxLength(100)]
+			[PeropertyMapName("TSBNameEN")]
+			public override string TSBNameEN
+			{
+				get { return base.TSBNameEN; }
+				set { base.TSBNameEN = value; }
+			}
+			/// <summary>
+			/// Gets or sets TSBNameTH.
+			/// </summary>
+			[MaxLength(100)]
+			[PeropertyMapName("TSBNameTH")]
+			public override string TSBNameTH
+			{
+				get { return base.TSBNameTH; }
+				set { base.TSBNameTH = value; }
+			}
+
+			#endregion
+
+			#region PlazaGroup
+
+			/// <summary>
+			/// Gets or sets PlazaGroupId.
+			/// </summary>
+			[MaxLength(10)]
+			[PeropertyMapName("PlazaGroupId")]
+			public override string PlazaGroupId
+			{
+				get { return base.PlazaGroupId; }
+				set { base.PlazaGroupId = value; }
+			}
+			/// <summary>
+			/// Gets or sets PlazaGroupNameEN.
+			/// </summary>
+			[MaxLength(100)]
+			[PeropertyMapName("PlazaGroupNameEN")]
+			public override string PlazaGroupNameEN
+			{
+				get { return base.PlazaGroupNameEN; }
+				set { base.PlazaGroupNameEN = value; }
+			}
+			/// <summary>
+			/// Gets or sets PlazaGroupNameTH.
+			/// </summary>
+			[MaxLength(100)]
+			[PeropertyMapName("PlazaGroupNameTH")]
+			public override string PlazaGroupNameTH
+			{
+				get { return base.PlazaGroupNameTH; }
+				set { base.PlazaGroupNameTH = value; }
+			}
+			/// <summary>
+			/// Gets or sets Direction.
+			/// </summary>
+			[MaxLength(10)]
+			[PeropertyMapName("Direction")]
+			public override string Direction
+			{
+				get { return base.Direction; }
+				set { base.Direction = value; }
+			}
+
+			#endregion
+
+			#region User
+
+			/// <summary>
+			/// Gets or sets UserId
+			/// </summary>
+			[MaxLength(10)]
+			[PeropertyMapName("UserId")]
+			public override string UserId
+			{
+				get { return base.UserId; }
+				set { base.UserId = value; }
+			}
+			/// <summary>
+			/// Gets or sets FullNameEN
+			/// </summary>
+			[MaxLength(100)]
+			[PeropertyMapName("FullNameEN")]
+			public override string FullNameEN
+			{
+				get { return base.FullNameEN; }
+				set { base.FullNameEN = value; }
+			}
+			/// <summary>
+			/// Gets or sets FullNameTH
+			/// </summary>
+			[MaxLength(100)]
+			[PeropertyMapName("FullNameTH")]
+			public override string FullNameTH
+			{
+				get { return base.FullNameTH; }
+				set { base.FullNameTH = value; }
+			}
+
+			#endregion
+
+			#region Public Methods
+
+			public UserCouponTransaction ToUserCouponTransaction()
+			{
+				UserCouponTransaction inst = new UserCouponTransaction();
+				this.AssignTo(inst); // set all properties to new instance.
+				return inst;
+			}
+
+			#endregion
 		}
 
 		#endregion
