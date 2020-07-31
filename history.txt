@@ -42,8 +42,9 @@ Update 2020-07-31 #13
 Update 2020-07-31 #12
 - 
 
+[commited]
 Update 2020-07-31 #11
-- 
+- Prepare history.TA.txt.
 
 [commited]
 Update 2020-07-31 #10
