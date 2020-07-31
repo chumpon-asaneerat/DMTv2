@@ -37,6 +37,10 @@ namespace DMT.Models
 
 		#region Internal Variables
 
+		private int _TransactionId = 0;
+		private DateTime _TransactionDate = DateTime.MinValue;
+		//private TransactionTypes _TransactionType = TransactionTypes.Initial;
+
 		private int _Status = 0;
 		private DateTime _LastUpdate = DateTime.MinValue;
 
@@ -59,6 +63,123 @@ namespace DMT.Models
 
 		#region Common
 
+		/// <summary>
+		/// Gets or sets TransactionId
+		/// </summary>
+		[Category("Common")]
+		[Description(" Gets or sets TransactionId")]
+		[ReadOnly(true)]
+		[PrimaryKey, AutoIncrement]
+		[PeropertyMapName("TransactionId")]
+		public int TransactionId
+		{
+			get
+			{
+				return _TransactionId;
+			}
+			set
+			{
+				if (_TransactionId != value)
+				{
+					_TransactionId = value;
+					this.RaiseChanged("TransactionId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Transaction Date.
+		/// </summary>
+		[Category("Common")]
+		[Description(" Gets or sets Transaction Date")]
+		[ReadOnly(true)]
+		[PeropertyMapName("TransactionDate")]
+		public DateTime TransactionDate
+		{
+			get
+			{
+				return _TransactionDate;
+			}
+			set
+			{
+				if (_TransactionDate != value)
+				{
+					_TransactionDate = value;
+					this.RaiseChanged("TransactionDate");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets Transaction Date String.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets Transaction Date String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string TransactionDateString
+		{
+			get
+			{
+				var ret = (this.TransactionDate == DateTime.MinValue) ? "" : this.TransactionDate.ToThaiDateTimeString("dd/MM/yyyy");
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets Transaction Time String.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets Transaction Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string TransactionTimeString
+		{
+			get
+			{
+				var ret = (this.TransactionDate == DateTime.MinValue) ? "" : this.TransactionDate.ToThaiTimeString();
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets Transaction Date Time String.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets Transaction Date Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string TransactionDateTimeString
+		{
+			get
+			{
+				var ret = (this.TransactionDate == DateTime.MinValue) ? "" : this.TransactionDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+				return ret;
+			}
+			set { }
+		}
+		/*
+		/// <summary>
+		/// Gets or sets Transaction Type.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets Transaction Type.")]
+		[ReadOnly(true)]
+		[PeropertyMapName("TransactionType")]
+		public TransactionTypes TransactionType
+		{
+			get { return _TransactionType; }
+			set
+			{
+				if (_TransactionType != value)
+				{
+					_TransactionType = value;
+					this.RaiseChanged("TransactionType");
+				}
+			}
+		}
+		*/
 		#endregion
 
 		#region Status (DC)

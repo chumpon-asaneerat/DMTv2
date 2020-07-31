@@ -37,6 +37,10 @@ namespace DMT.Models
 
 		#region Internal Variables
 
+		private int _UserCouponId = 0;
+		private DateTime _UserCouponDate = DateTime.MinValue;
+		//private StateTypes _State = StateTypes.Initial;
+
 		private int _Status = 0;
 		private DateTime _LastUpdate = DateTime.MinValue;
 
@@ -59,6 +63,108 @@ namespace DMT.Models
 
 		#region Common
 
+		/// <summary>
+		/// Gets or sets UserCouponId
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets UserCouponId")]
+		[PrimaryKey, AutoIncrement]
+		[ReadOnly(true)]
+		[PeropertyMapName("UserCouponId")]
+		public int UserCouponId
+		{
+			get
+			{
+				return _UserCouponId;
+			}
+			set
+			{
+				if (_UserCouponId != value)
+				{
+					_UserCouponId = value;
+					this.RaiseChanged("UserCouponId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets UserCoupon Date.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets UserCredit Date.")]
+		[ReadOnly(true)]
+		[PeropertyMapName("UserCouponDate")]
+		public DateTime UserCouponDate
+		{
+			get { return _UserCouponDate; }
+			set
+			{
+				if (_UserCouponDate != value)
+				{
+					_UserCouponDate = value;
+					// Raise event.
+					this.RaiseChanged("UserCouponDate");
+					this.RaiseChanged("UserCouponDateString");
+					this.RaiseChanged("UserCouponDateTimeString");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets UserCoupon Date String.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets UserCoupon Date String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string UserCouponDateString
+		{
+			get
+			{
+				var ret = (this.UserCouponDate == DateTime.MinValue) ? "" : this.UserCouponDate.ToThaiDateTimeString("dd/MM/yyyy");
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets UserCoupon DateTime String.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets UserCoupon DateTime String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string UserCouponDateTimeString
+		{
+			get
+			{
+				var ret = (this.UserCouponDate == DateTime.MinValue) ? "" : this.UserCouponDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+				return ret;
+			}
+			set { }
+		}
+		/*
+		/// <summary>
+		/// Gets or sets State.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets State.")]
+		[Browsable(false)]
+		[PeropertyMapName("State")]
+		public StateTypes State
+		{
+			get { return _State; }
+			set
+			{
+				if (_State != value)
+				{
+					_State = value;
+					// Raise event.
+					this.RaiseChanged("State");
+					this.RaiseChanged("ReceivedBagVisibility");
+				}
+			}
+		}
+		*/
 		#endregion
 
 		#region Status (DC)
@@ -116,7 +222,7 @@ namespace DMT.Models
 		public class FKs : UserCoupon
 		{
 
-        }
+		}
 
 		#endregion
 
