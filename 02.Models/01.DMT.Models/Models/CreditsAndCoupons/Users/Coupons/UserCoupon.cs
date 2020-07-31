@@ -41,6 +41,19 @@ namespace DMT.Models
 		private DateTime _UserCouponDate = DateTime.MinValue;
 		//private StateTypes _State = StateTypes.Initial;
 
+		private string _TSBId = string.Empty;
+		private string _TSBNameEN = string.Empty;
+		private string _TSBNameTH = string.Empty;
+
+		private string _PlazaGroupId = string.Empty;
+		private string _PlazaGroupNameEN = string.Empty;
+		private string _PlazaGroupNameTH = string.Empty;
+		private string _Direction = string.Empty;
+
+		private string _UserId = string.Empty;
+		private string _FullNameEN = string.Empty;
+		private string _FullNameTH = string.Empty;
+
 		private int _Status = 0;
 		private DateTime _LastUpdate = DateTime.MinValue;
 
@@ -165,6 +178,251 @@ namespace DMT.Models
 			}
 		}
 		*/
+		#endregion
+
+		#region TSB
+
+		/// <summary>
+		/// Gets or sets TSBId.
+		/// </summary>
+		[Category("TSB")]
+		[Description("Gets or sets TSBId.")]
+		[ReadOnly(true)]
+		[MaxLength(10)]
+		[PeropertyMapName("TSBId")]
+		public string TSBId
+		{
+			get
+			{
+				return _TSBId;
+			}
+			set
+			{
+				if (_TSBId != value)
+				{
+					_TSBId = value;
+					this.RaiseChanged("TSBId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets TSBNameEN.
+		/// </summary>
+		[Category("TSB")]
+		[Description("Gets or sets TSBNameEN.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("TSBNameEN")]
+		public virtual string TSBNameEN
+		{
+			get
+			{
+				return _TSBNameEN;
+			}
+			set
+			{
+				if (_TSBNameEN != value)
+				{
+					_TSBNameEN = value;
+					this.RaiseChanged("TSBNameEN");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets TSBNameTH.
+		/// </summary>
+		[Category("TSB")]
+		[Description("Gets or sets TSBNameTH.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("TSBNameTH")]
+		public virtual string TSBNameTH
+		{
+			get
+			{
+				return _TSBNameTH;
+			}
+			set
+			{
+				if (_TSBNameTH != value)
+				{
+					_TSBNameTH = value;
+					this.RaiseChanged("TSBNameTH");
+				}
+			}
+		}
+
+		#endregion
+
+		#region PlazaGroup
+
+		/// <summary>
+		/// Gets or sets PlazaGroupId.
+		/// </summary>
+		[Category("Plaza Group")]
+		[Description("Gets or sets PlazaGroupId.")]
+		[ReadOnly(true)]
+		[MaxLength(10)]
+		[PeropertyMapName("PlazaGroupId")]
+		public string PlazaGroupId
+		{
+			get
+			{
+				return _PlazaGroupId;
+			}
+			set
+			{
+				if (_PlazaGroupId != value)
+				{
+					_PlazaGroupId = value;
+					this.RaiseChanged("PlazaGroupId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets PlazaGroupNameEN.
+		/// </summary>
+		[Category("Plaza Group")]
+		[Description("Gets or sets PlazaGroupNameEN.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("PlazaGroupNameEN")]
+		public virtual string PlazaGroupNameEN
+		{
+			get
+			{
+				return _PlazaGroupNameEN;
+			}
+			set
+			{
+				if (_PlazaGroupNameEN != value)
+				{
+					_PlazaGroupNameEN = value;
+					this.RaiseChanged("PlazaGroupNameEN");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets PlazaGroupNameTH.
+		/// </summary>
+		[Category("Plaza Group")]
+		[Description("Gets or sets PlazaGroupNameTH.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("PlazaGroupNameTH")]
+		public virtual string PlazaGroupNameTH
+		{
+			get
+			{
+				return _PlazaGroupNameTH;
+			}
+			set
+			{
+				if (_PlazaGroupNameTH != value)
+				{
+					_PlazaGroupNameTH = value;
+					this.RaiseChanged("PlazaGroupNameTH");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Direction.
+		/// </summary>
+		[Category("Plaza Group")]
+		[Description("Gets or sets Direction.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("Direction")]
+		public virtual string Direction
+		{
+			get
+			{
+				return _Direction;
+			}
+			set
+			{
+				if (_Direction != value)
+				{
+					_Direction = value;
+					this.RaiseChanged("Direction");
+				}
+			}
+		}
+
+		#endregion
+
+		#region User
+
+		/// <summary>
+		/// Gets or sets UserId
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets UserId")]
+		[ReadOnly(true)]
+		[MaxLength(10)]
+		[PeropertyMapName("UserId")]
+		public string UserId
+		{
+			get
+			{
+				return _UserId;
+			}
+			set
+			{
+				if (_UserId != value)
+				{
+					_UserId = value;
+					this.RaiseChanged("UserId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets FullNameEN
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets FullNameEN")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("FullNameEN")]
+		public virtual string FullNameEN
+		{
+			get
+			{
+				return _FullNameEN;
+			}
+			set
+			{
+				if (_FullNameEN != value)
+				{
+					_FullNameEN = value;
+					this.RaiseChanged("FullNameEN");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets FullNameTH
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets FullNameTH")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("FullNameTH")]
+		public virtual string FullNameTH
+		{
+			get
+			{
+				return _FullNameTH;
+			}
+			set
+			{
+				if (_FullNameTH != value)
+				{
+					_FullNameTH = value;
+					this.RaiseChanged("FullNameTH");
+				}
+			}
+		}
+
 		#endregion
 
 		#region Status (DC)

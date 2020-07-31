@@ -23,8 +23,10 @@ Update 2020-07-31 #9
 Update 2020-07-31 #8
 - 
 
+[commited]
 Update 2020-07-31 #7
-- 
+- Update UserCoupon model #5.
+- Update UserCouponTransaction model #5.
 
 [commited]
 Update 2020-07-31 #6

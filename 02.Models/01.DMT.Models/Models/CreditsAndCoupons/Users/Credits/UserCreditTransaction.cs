@@ -20,7 +20,7 @@ using Newtonsoft.Json.Bson;
 
 namespace DMT.Models
 {
-	#region UserCredit
+	#region UserCreditTransaction
 
 	/// <summary>
 	/// The UserCredit Data Model class.
