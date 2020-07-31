@@ -114,14 +114,14 @@
     <Compile Include="Models\Common\DMT.Searchs.cs" />
     <Compile Include="Models\Common\NSearch.cs" />
     <Compile Include="Models\Configuration\Config.cs" />
-    <Compile Include="Models\CreditsAndCoupons\TSBAdditionBalance.cs" />
-    <Compile Include="Models\CreditsAndCoupons\TSBAdditionTransaction.cs" />
-    <Compile Include="Models\CreditsAndCoupons\TSBCouponBalance.cs" />
-    <Compile Include="Models\CreditsAndCoupons\TSBCouponTransaction.cs" />
-    <Compile Include="Models\CreditsAndCoupons\TSBCreditBalance.cs" />
-    <Compile Include="Models\CreditsAndCoupons\TSBCreditTransaction.cs" />
-    <Compile Include="Models\CreditsAndCoupons\UserCredit.cs" />
-    <Compile Include="Models\CreditsAndCoupons\UserCreditTransaction.cs" />
+    <Compile Include="Models\CreditsAndCoupons\TSB\Credits\TSBAdditionBalance.cs" />
+    <Compile Include="Models\CreditsAndCoupons\TSB\Credits\TSBAdditionTransaction.cs" />
+    <Compile Include="Models\CreditsAndCoupons\TSB\Coupons\TSBCouponBalance.cs" />
+    <Compile Include="Models\CreditsAndCoupons\TSB\Coupons\TSBCouponTransaction.cs" />
+    <Compile Include="Models\CreditsAndCoupons\TSB\Credits\TSBCreditBalance.cs" />
+    <Compile Include="Models\CreditsAndCoupons\TSB\Credits\TSBCreditTransaction.cs" />
+    <Compile Include="Models\CreditsAndCoupons\Users\Credits\UserCredit.cs" />
+    <Compile Include="Models\CreditsAndCoupons\Users\Credits\UserCreditTransaction.cs" />
     <Compile Include="Models\Infrastructures\Lane.cs" />
     <Compile Include="Models\Infrastructures\Plaza.cs" />
     <Compile Include="Models\Infrastructures\PlazaGroup.cs" />
@@ -185,7 +185,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Models\CreditsAndCoupons\Users\Coupons\" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Scripts\UserCreditSummaryView.sql" />
   </ItemGroup>
