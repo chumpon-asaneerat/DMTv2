@@ -39,8 +39,10 @@ Update 2020-08-01 #37
 Update 2020-08-01 #36
 - 
 
+[commited]
 Update 2020-08-01 #35
-- 
+- Update DMT.Plaza.Simulator.App #1.
+  - Remove Additional Credit related UI/code.
 
 [commited]
 Update 2020-08-01 #34

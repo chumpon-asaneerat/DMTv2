@@ -128,11 +128,6 @@ namespace DMT
             PageContentManager.Instance.Current = new Config.Pages.TSBCouponViewPage();
         }
 
-        private void cmdTSBAdditionView_Click(object sender, RoutedEventArgs e)
-        {
-            PageContentManager.Instance.Current = new Config.Pages.TSBAdditionViewPage();
-        }
-
         #endregion
 
         #region Data Center

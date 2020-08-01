@@ -92,14 +92,6 @@
                             <Image Source="Images/Reports/slip_06.png" />
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
-                    <Fluent:Button x:Name="cmdTSBAdditionView"
-                                   Width="75"
-                                   Header="Extra Credit (Initial)"
-                                   Click="cmdTSBAdditionView_Click">
-                        <Fluent:Button.LargeIcon>
-                            <Image Source="Images/Money/Borrow3.png" />
-                        </Fluent:Button.LargeIcon>
-                    </Fluent:Button>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
             <!-- Tab - Data Center -->

@@ -92,10 +92,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Config\Pages\TSBAdditionViewPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Config\Pages\TSBCouponViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -125,9 +121,6 @@
     </Compile>
     <Compile Include="Config\Pages\ShiftViewPage.xaml.cs">
       <DependentUpon>ShiftViewPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Config\Pages\TSBAdditionViewPage.xaml.cs">
-      <DependentUpon>TSBAdditionViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Config\Pages\TSBCouponViewPage.xaml.cs">
       <DependentUpon>TSBCouponViewPage.xaml</DependentUpon>
