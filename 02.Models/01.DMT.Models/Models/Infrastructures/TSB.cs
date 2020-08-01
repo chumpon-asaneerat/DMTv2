@@ -37,6 +37,9 @@ namespace DMT.Models
 		private string _TSBNameEN = string.Empty;
 		private string _TSBNameTH = string.Empty;
 		private string _NetworkId = string.Empty;
+
+		private decimal _MaxCredit = decimal.Zero;
+
 		private bool _Active = false;
 
 		private int _Status = 0;
@@ -142,6 +145,28 @@ namespace DMT.Models
 				{
 					_TSBNameTH = value;
 					this.RaiseChanged("TSBNameTH");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Max TSB Credit.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets Max TSB Credit.")]
+		[ReadOnly(true)]
+		[PeropertyMapName("MaxCredit")]
+		public decimal MaxCredit
+		{
+			get
+			{
+				return _MaxCredit;
+			}
+			set
+			{
+				if (_MaxCredit != value)
+				{
+					_MaxCredit = value;
+					this.RaiseChanged("MaxCredit");
 				}
 			}
 		}
