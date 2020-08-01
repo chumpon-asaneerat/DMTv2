@@ -11,6 +11,11 @@ using System.Threading.Tasks;
 
 namespace DMT
 {
+    // Source: https://stackoverflow.com/questions/40161/does-c-sharp-have-built-in-support-for-parsing-page-number-strings
+    
+    /// <summary>
+    /// The Range Parser class.
+    /// </summary>
     public static class RangeParser
     {
         /// <summary>
