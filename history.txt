@@ -17,8 +17,9 @@ Update 2020-08-01 #16
 Update 2020-08-01 #15
 - 
 
+[commited]
 Update 2020-08-01 #14
-- 
+- Re-Implements TSBCouponTransaction #2.
 
 [commited]
 Update 2020-08-01 #13

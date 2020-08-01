@@ -278,6 +278,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coupon")]
 		[Description("Gets or sets coupon book id.")]
+		[Unique]
 		[PeropertyMapName("CouponId")]
 		public int CouponId
 		{
