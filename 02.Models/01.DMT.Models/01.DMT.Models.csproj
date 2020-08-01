@@ -98,6 +98,7 @@
   <ItemGroup>
     <Compile Include="ExtensionMethods\ModelExtensionMethods.cs" />
     <Compile Include="Models\Configuration\ViewHistory.cs" />
+    <Compile Include="Models\CreditsAndCoupons\Common\Coupons\CouponFactor.cs" />
     <Compile Include="Models\CreditsAndCoupons\Users\Coupons\UserCoupon.cs" />
     <Compile Include="Models\CreditsAndCoupons\Users\Coupons\UserCouponTransaction.cs" />
     <Compile Include="Views\SqlScriptManager.cs" />

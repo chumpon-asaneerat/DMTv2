@@ -14,8 +14,10 @@ Update 2020-08-01 #7
 Update 2020-08-01 #6
 - 
 
+[commited]
 Update 2020-08-01 #5
-- 
+- Add CouponFactor model class.
+- Add CouponType enum.
 
 [commited]
 Update 2020-08-01 #4
