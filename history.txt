@@ -32,8 +32,9 @@ Update 2020-08-01 #21
 Update 2020-08-01 #20
 - 
 
+[commited]
 Update 2020-08-01 #19
-- 
+- Update TSBCouponBalanceView.sql #4
 
 [commited]
 Update 2020-08-01 #18
