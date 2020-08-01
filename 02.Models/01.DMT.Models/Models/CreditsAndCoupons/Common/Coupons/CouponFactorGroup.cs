@@ -34,6 +34,7 @@ namespace DMT.Models
         #region Internal Variables
 
         private int _GroupPkId = 0;
+        private string _Remark = string.Empty;
 
         private DateTime _Begin = DateTime.MinValue;
         private DateTime _End = DateTime.MinValue;
@@ -73,6 +74,26 @@ namespace DMT.Models
                     _GroupPkId = value;
                     // Raise event.
                     this.RaiseChanged("GroupPkId");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Remark.
+        /// </summary>
+        [Category("Coupon")]
+        [Description("Gets or sets Remark.")]
+        [MaxLength(255)]
+        [PeropertyMapName("Remark")]
+        public virtual string Remark
+        {
+            get { return _Remark; }
+            set
+            {
+                if (_Remark != value)
+                {
+                    _Remark = value;
+                    // Raise event.
+                    this.RaiseChanged("Remark");
                 }
             }
         }

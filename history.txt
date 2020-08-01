@@ -23,8 +23,10 @@ Update 2020-08-01 #14
 Update 2020-08-01 #13
 - 
 
+[commited]
 Update 2020-08-01 #12
-- 
+- Update CouponFactorGroup model #2.
+- Add Init Default for CouponFactorGroup and CouponFactor.
 
 [commited]
 Update 2020-08-01 #11

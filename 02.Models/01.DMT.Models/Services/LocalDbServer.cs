@@ -172,62 +172,13 @@ namespace DMT.Services
 
 		private void InitDefaults()
 		{
-			InitViews();
 			InitTSBAndPlazaAndLanes();
 			InitShifts();
 			InitRoleAndUsers();
 			InitPayments();
+			InitCouponFactors();
 			InitConfigs();
-		}
-
-		private void InitViews()
-		{
-			if (null == Db) return;
-
-			string[] views = new string[]
-			{
-				"UserCreditSummaryView"
-			};
-
-			foreach (var viewName in views)
-			{
-				InitView(viewName);
-			}
-		}
-
-		private void InitView(string viewName)
-		{
-			if (null == Db) return;
-
-			var hist = ViewHistory.GetWithChildren(viewName, false);
-
-			if (null == hist || hist.VersionId != HistoryVersion)
-			{
-				MethodBase med = MethodBase.GetCurrentMethod();
-				try
-				{
-					string dropCmd = string.Empty;
-					dropCmd += "DROP VIEW IF EXISTS " + viewName;
-					Db.Execute(dropCmd);
-
-					string resourceName = viewName + ".sql";
-					string script = SqliteScriptManager.GetScript(@"DMT.Views.Scripts." + resourceName);
-
-					var ret = Db.Execute(script);
-
-					Console.WriteLine("Returns: {0}", ret);
-
-					if (null == hist) hist = new ViewHistory();
-					hist.ViewName = viewName;
-					hist.VersionId = HistoryVersion;
-					ViewHistory.Save(hist);
-				}
-				catch (Exception ex)
-				{
-					//Console.WriteLine(ex);
-					med.Err(ex);
-				}
-			}
+			InitViews();
 		}
 
 		private void InitTSBAndPlazaAndLanes()
@@ -1349,7 +1300,28 @@ namespace DMT.Services
 			if (!Payment.Exists(item)) Payment.Save(item);
 		}
 
-		private void InitConfigs()
+		private void InitCouponFactors()
+		{
+			var group = new CouponFactorGroup();
+			group.Remark = "Default";
+			group.Begin = DateTime.MinValue;
+			group.End = DateTime.MinValue;
+			CouponFactorGroup.Save(group);
+			// Coupon 35.
+			var c35 = new CouponFactor();
+			c35.GroupPkId = group.GroupPkId;
+			c35.CouponType = CouponType.BHT35;
+			c35.Factor = 665;
+			CouponFactor.Save(c35);
+			// Coupon 80.
+			var c80 = new CouponFactor();
+			c80.GroupPkId = group.GroupPkId;
+			c80.CouponType = CouponType.BHT80;
+			c80.Factor = 1520;
+			CouponFactor.Save(c80);
+		}
+
+	private void InitConfigs()
 		{
 			if (null == Db) return;
 			Config item;
@@ -1371,6 +1343,56 @@ namespace DMT.Services
 			item = new Config() { Key = Configs.App.ShiftId, Value = "" };
 			if (!Config.Exists(item)) Config.Save(item);
 			*/
+		}
+
+		private void InitViews()
+		{
+			if (null == Db) return;
+
+			string[] views = new string[]
+			{
+				"UserCreditSummaryView"
+			};
+
+			foreach (var viewName in views)
+			{
+				InitView(viewName);
+			}
+		}
+
+		private void InitView(string viewName)
+		{
+			if (null == Db) return;
+
+			var hist = ViewHistory.GetWithChildren(viewName, false);
+
+			if (null == hist || hist.VersionId != HistoryVersion)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					string dropCmd = string.Empty;
+					dropCmd += "DROP VIEW IF EXISTS " + viewName;
+					Db.Execute(dropCmd);
+
+					string resourceName = viewName + ".sql";
+					string script = SqliteScriptManager.GetScript(@"DMT.Views.Scripts." + resourceName);
+
+					var ret = Db.Execute(script);
+
+					Console.WriteLine("Returns: {0}", ret);
+
+					if (null == hist) hist = new ViewHistory();
+					hist.ViewName = viewName;
+					hist.VersionId = HistoryVersion;
+					ViewHistory.Save(hist);
+				}
+				catch (Exception ex)
+				{
+					//Console.WriteLine(ex);
+					med.Err(ex);
+				}
+			}
 		}
 
 		#endregion
