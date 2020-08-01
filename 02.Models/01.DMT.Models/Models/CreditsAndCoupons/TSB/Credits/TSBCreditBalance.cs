@@ -69,6 +69,7 @@ namespace DMT.Models
 
 		// Summary
 		private decimal _UserBHTTotal = decimal.Zero;
+		// Transaction (Borrow) - (Return)
 		private decimal _AdditionalBHTTotal = decimal.Zero;
 
 		#endregion

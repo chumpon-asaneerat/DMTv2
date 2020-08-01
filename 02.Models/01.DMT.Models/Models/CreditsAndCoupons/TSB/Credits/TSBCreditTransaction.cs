@@ -79,6 +79,9 @@ namespace DMT.Models
 		private decimal _AmtBHT500 = 0;
 		private decimal _AmtBHT1000 = 0;
 
+		private decimal _AdditionalBHTBorrow = decimal.Zero;
+		private decimal _AdditionalBHTReturn = decimal.Zero;
+
 		private decimal _BHTTotal = decimal.Zero;
 		private string _Remark = string.Empty;
 
