@@ -30,11 +30,29 @@ Update 2020-08-02 #1
 - 
 
 --------------------------------------------------------------------------------------------
+Update 2020-08-01 #38
+- 
+
+Update 2020-08-01 #37
+- 
+
+Update 2020-08-01 #36
+- 
+
+Update 2020-08-01 #35
+- 
+
+Update 2020-08-01 #34
+- 
+
 Update 2020-08-01 #33
 - 
 
+[commited]
 Update 2020-08-01 #32
-- 
+- Set Build Action Plaza Operation - Additional Credit to None.
+- Set Build Action Additional Credit Controller to None.
+- Comment out all code related to Additional Credit in all projects.
 
 [commited]
 Update 2020-08-01 #31

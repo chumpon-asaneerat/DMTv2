@@ -215,36 +215,43 @@ namespace LocalDbServerFunctionTest
 
         private void button15_Click(object sender, EventArgs e)
         {
+            /*
             // TSB Addition Transaction - Init
             var inst = TSBAdditionTransaction.Create();
             inst.TransactionDate = DateTime.Now;
             inst.TransactionType = TSBAdditionTransaction.TransactionTypes.Initial;
 
             pgTSBAddition.SelectedObject = inst;
+            */
         }
 
         private void button22_Click(object sender, EventArgs e)
         {
+            /*
             // TSB Addition Transaction - Borrow
             var inst = TSBAdditionTransaction.Create();
             inst.TransactionDate = DateTime.Now;
             inst.TransactionType = TSBAdditionTransaction.TransactionTypes.Borrow;
 
             pgTSBAddition.SelectedObject = inst;
+            */
         }
 
         private void button21_Click(object sender, EventArgs e)
         {
+            /*
             // TSB Addition Transaction - Returns
             var inst = TSBAdditionTransaction.Create();
             inst.TransactionDate = DateTime.Now;
             inst.TransactionType = TSBAdditionTransaction.TransactionTypes.Returns;
 
             pgTSBAddition.SelectedObject = inst;
+            */
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
+            /*
             // TSB Addition Transaction - Save
             var inst = pgTSBAddition.SelectedObject as TSBAdditionTransaction;
             var tsb = TSB.GetCurrent();
@@ -258,10 +265,12 @@ namespace LocalDbServerFunctionTest
                 TSBAdditionTransaction.Save(inst);
             }
             pgTSBAddition.SelectedObject = null;
+            */
         }
 
         private void button16_Click(object sender, EventArgs e)
         {
+            /*
             // TSB Addition Transaction - Refresh
             dgTSBAddition.DataSource = null;
             var tsb = TSB.GetCurrent();
@@ -270,6 +279,7 @@ namespace LocalDbServerFunctionTest
                 return;
             }
             dgTSBAddition.DataSource = TSBAdditionTransaction.Gets(tsb);
+            */
         }
 
         #endregion

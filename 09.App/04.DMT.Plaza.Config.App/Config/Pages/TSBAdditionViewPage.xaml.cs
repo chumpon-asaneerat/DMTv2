@@ -60,11 +60,13 @@ namespace DMT.Config.Pages
 
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            /*
             var item = listView.SelectedItem as TSB;
             pgrid.SelectedObject = null;
             if (null == item) return;
 
             pgrid.SelectedObject = ops.Additions.GetInitial(item);
+            */
         }
 
         #endregion
@@ -73,11 +75,13 @@ namespace DMT.Config.Pages
 
         private void cmdSave_Click(object sender, RoutedEventArgs e)
         {
+            /*
             var item = pgrid.SelectedObject as TSBAdditionTransaction;
             if (null == item) return;
             ops.Additions.SaveTransaction(item);
             // clear
             pgrid.SelectedObject = null;
+            */
         }
 
         #endregion

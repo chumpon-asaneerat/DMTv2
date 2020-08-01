@@ -67,7 +67,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\NRestClient.cs" />
-    <Compile Include="Services\Operations\PlazaOperations.Addition.cs" />
+    <None Include="Services\Operations\PlazaOperations.Addition.cs" />
     <Compile Include="Services\Operations\PlazaOperations.base.cs" />
     <Compile Include="Services\Operations\PlazaOperations.Coupon.cs" />
     <Compile Include="Services\Operations\PlazaOperations.Credit.cs" />
