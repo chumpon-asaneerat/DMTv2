@@ -79,10 +79,11 @@ namespace DMT.Models
 		private decimal _AmtBHT500 = 0;
 		private decimal _AmtBHT1000 = 0;
 
+		private decimal _BHTTotal = decimal.Zero;
+
 		private decimal _AdditionalBHTBorrow = decimal.Zero;
 		private decimal _AdditionalBHTReturn = decimal.Zero;
 
-		private decimal _BHTTotal = decimal.Zero;
 		private string _Remark = string.Empty;
 
 		private int _Status = 0;
@@ -888,6 +889,51 @@ namespace DMT.Models
 					_Remark = value;
 					// Raise event.
 					this.RaiseChanged("Remark");
+				}
+			}
+		}
+
+		#endregion
+
+		#region Additional
+
+		/// <summary>
+		/// Gets or sets amount Additional BHT Borrow.
+		/// </summary>
+		[Category("Additional (Amount)")]
+		[Description("Gets or sets amount Additional BHT Borrow.")]
+		[PeropertyMapName("AdditionalBHTBorrow")]
+		[PropertyOrder(41)]
+		public virtual decimal AdditionalBHTBorrow
+		{
+			get { return _AdditionalBHTBorrow; }
+			set
+			{
+				if (_AdditionalBHTBorrow != value)
+				{
+					_AdditionalBHTBorrow = value;
+					// Raise event.
+					this.RaiseChanged("AdditionalBHTBorrow");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets amount Additional BHT Return.
+		/// </summary>
+		[Category("Additional (Amount)")]
+		[Description("Gets or sets amount Additional BHT Return.")]
+		[PeropertyMapName("AdditionalBHTReturn")]
+		[PropertyOrder(42)]
+		public virtual decimal AdditionalBHTReturn
+		{
+			get { return _AdditionalBHTReturn; }
+			set
+			{
+				if (_AdditionalBHTReturn != value)
+				{
+					_AdditionalBHTReturn = value;
+					// Raise event.
+					this.RaiseChanged("AdditionalBHTReturn");
 				}
 			}
 		}

@@ -23,8 +23,9 @@ Update 2020-08-01 #27
 Update 2020-08-01 #26
 - 
 
+[commited]
 Update 2020-08-01 #25
-- 
+- Re-Implements TSBCreditTransaction #2.
 
 [commited]
 Update 2020-08-01 #24
