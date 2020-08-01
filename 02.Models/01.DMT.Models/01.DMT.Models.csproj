@@ -107,8 +107,8 @@
     <Compile Include="Models\Common\DMT.Searchs.cs" />
     <Compile Include="Models\Common\NSearch.cs" />
     <Compile Include="Models\Configuration\Config.cs" />
-    <Compile Include="Models\CreditsAndCoupons\TSB\Credits\TSBAdditionBalance.cs" />
-    <Compile Include="Models\CreditsAndCoupons\TSB\Credits\TSBAdditionTransaction.cs" />
+    <None Include="Models\CreditsAndCoupons\TSB\Credits\TSBAdditionBalance.cs" />
+    <None Include="Models\CreditsAndCoupons\TSB\Credits\TSBAdditionTransaction.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSB\Coupons\TSBCouponBalance.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSB\Coupons\TSBCouponTransaction.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSB\Credits\TSBCreditBalance.cs" />

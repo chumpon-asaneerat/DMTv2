@@ -29,8 +29,10 @@ Update 2020-08-01 #22
 Update 2020-08-01 #21
 - 
 
+[commited]
 Update 2020-08-01 #20
-- 
+- Set Build Action TSBAdditionBalance.cs to None.
+- Set Build Action TSBAdditionTransaction.cs to None.
 
 [commited]
 Update 2020-08-01 #19
