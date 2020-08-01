@@ -23,8 +23,9 @@ Update 2020-08-01 #4
 Update 2020-08-01 #3
 - 
 
+[commited]
 Update 2020-08-01 #2
-- 
+- Add VersionHistory model.
 
 [commited]
 Update 2020-08-01 #1

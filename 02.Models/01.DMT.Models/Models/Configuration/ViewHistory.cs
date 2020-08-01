@@ -20,76 +20,75 @@ using Newtonsoft.Json.Bson;
 
 namespace DMT.Models
 {
-	#region Config
+	#region ViewHistory
 
 	/// <summary>
-	/// The Config Data Model Class.
+	/// The ViewHistory Data Model Class.
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
 	[Serializable]
 	[JsonObject(MemberSerialization.OptOut)]
-	//[Table("Config")]
-	public class Config : NTable<Config>
+	//[Table("ViewHistory")]
+	public class ViewHistory : NTable<Config>
 	{
 		#region Intenral Variables
 
-		private string _Key = string.Empty;
-		private string _Value = string.Empty;
+		private string _ViewName = string.Empty;
+		private int _VersionId = 0;
 
 		#endregion
 
 		#region Constructor
 
 		/// <summary>
-		/// Constructor.
+		/// ViewHistory.
 		/// </summary>
-		public Config() : base() { }
+		public ViewHistory() : base() { }
 
 		#endregion
 
 		#region Public Properties
 
 		/// <summary>
-		/// Gets or sets Key
+		/// Gets or sets ViewName
 		/// </summary>
 		[Category("Common")]
-		[Description("Gets or sets Key")]
-		[PrimaryKey, MaxLength(30)]
-		[PeropertyMapName("Key")]
-		public string Key
+		[Description("Gets or sets ViewName")]
+		[PrimaryKey, MaxLength(100)]
+		[PeropertyMapName("ViewName")]
+		public string ViewName
 		{
 			get
 			{
-				return _Key;
+				return _ViewName;
 			}
 			set
 			{
-				if (_Key != value)
+				if (_ViewName != value)
 				{
-					_Key = value;
-					this.RaiseChanged("Key");
+					_ViewName = value;
+					this.RaiseChanged("ViewName");
 				}
 			}
 		}
 		/// <summary>
-		/// Gets or sets Value
+		/// Gets or sets VersionId
 		/// </summary>
 		[Category("Common")]
-		[Description("Gets or sets Value")]
-		[MaxLength(100)]
-		[PeropertyMapName("Value")]
-		public string Value
+		[Description("Gets or sets VersionId")]
+		[PeropertyMapName("VersionId")]
+		public int VersionId
 		{
 			get
 			{
-				return _Value;
+				return _VersionId;
 			}
 			set
 			{
-				if (_Value != value)
+				if (_VersionId != value)
 				{
-					_Value = value;
-					this.RaiseChanged("Value");
+					_VersionId = value;
+					this.RaiseChanged("VersionId");
 				}
 			}
 		}
