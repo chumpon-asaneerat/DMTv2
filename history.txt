@@ -45,8 +45,9 @@ Update 2020-08-01 #35
 Update 2020-08-01 #34
 - 
 
+[commited]
 Update 2020-08-01 #33
-- 
+- Replace inline sql code to view #1.
 
 [commited]
 Update 2020-08-01 #32

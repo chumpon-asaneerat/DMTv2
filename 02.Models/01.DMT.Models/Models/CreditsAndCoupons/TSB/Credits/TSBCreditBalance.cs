@@ -1215,7 +1215,7 @@ namespace DMT.Models
 				string cmd = @"
 				    SELECT * 
 					  FROM TSBCreditSummarryView
-					 WHERE TSB.TSBId = ?
+					 WHERE TSBCreditSummarryView.TSBId = ?
 				";
 				var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
 				var result = (null != ret) ? ret.ToTSBCreditBalance() : null;

@@ -1352,8 +1352,8 @@ namespace DMT.Services
 			string[] views = new string[]
 			{
 				"TSBCreditSummarryView",
-				"UserCreditSummaryView",
-				"TSBCouponSummaryView"
+				"TSBCouponSummarryView",
+				"UserCreditSummaryView"
 			};
 
 			foreach (var viewName in views)
@@ -1370,6 +1370,7 @@ namespace DMT.Services
 
 			if (null == hist || hist.VersionId != HistoryVersion)
 			{
+				string script = string.Empty;
 				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
@@ -1378,7 +1379,7 @@ namespace DMT.Services
 					Db.Execute(dropCmd);
 
 					string resourceName = viewName + ".sql";
-					string script = SqliteScriptManager.GetScript(@"DMT.Views.Scripts." + resourceName);
+					script = SqliteScriptManager.GetScript(@"DMT.Views.Scripts." + resourceName);
 
 					var ret = Db.Execute(script);
 
@@ -1393,6 +1394,8 @@ namespace DMT.Services
 				{
 					//Console.WriteLine(ex);
 					med.Err(ex);
+					med.Err("Script:" + Environment.NewLine + script);
+					Console.WriteLine(script);
 				}
 			}
 		}

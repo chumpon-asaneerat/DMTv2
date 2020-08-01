@@ -655,16 +655,16 @@ AS
 			)) AS AmountBHT1000
 		 , ((
 			 SELECT IFNULL(SUM(AdditionalBHT), 0) 
-			   FROM TSBAdditionTransaction 
-			  WHERE (   TSBAdditionTransaction.TransactionType = 0 
-					 OR TSBAdditionTransaction.TransactionType = 1
+			   FROM TSBCreditTransaction 
+			  WHERE (   TSBCreditTransaction.TransactionType = 0 
+					 OR TSBCreditTransaction.TransactionType = 1
 					) -- Initial = 0, Borrow = 1
-				AND TSBAdditionTransaction.TSBId = TSB.TSBId
+				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(AdditionalBHT), 0) 
-			   FROM TSBAdditionTransaction 
-			  WHERE TSBAdditionTransaction.TransactionType = 2 -- Returns = 2
-				AND TSBAdditionTransaction.TSBId = TSB.TSBId
+			   FROM TSBCreditTransaction 
+			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			)) AS AdditionalBHTTotal
 	  FROM TSB

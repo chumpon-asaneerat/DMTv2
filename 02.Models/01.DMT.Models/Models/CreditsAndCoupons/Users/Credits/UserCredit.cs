@@ -1570,9 +1570,9 @@ namespace DMT.Models
 				string cmd = @"
 					SELECT *
 					  FROM UserCreditSummaryView
-					 WHERE UserCredit.UserId = ?
-					   AND UserCredit.TSBId = ? 
-					   AND UserCredit.State <> ? 
+					 WHERE UserCreditSummaryView.UserId = ?
+					   AND UserCreditSummaryView.TSBId = ? 
+					   AND UserCreditSummaryView.State <> ? 
 				";
 
 				var ret = NQuery.Query<FKs>(cmd,
@@ -1618,9 +1618,9 @@ namespace DMT.Models
 				string cmd = @"
 					SELECT *
 					  FROM UserCreditSummaryView
-					 WHERE UserCredit.UserId = ?
-					   AND UserCredit.PlazaGroupId = ? 
-					   AND UserCredit.State <> ? 
+					 WHERE UserCreditSummaryView.UserId = ?
+					   AND UserCreditSummaryView.PlazaGroupId = ? 
+					   AND UserCreditSummaryView.State <> ? 
 				";
 
 				var ret = NQuery.Query<FKs>(cmd,
@@ -1640,8 +1640,8 @@ namespace DMT.Models
 				string cmd = @"
 					SELECT *
 					  FROM UserCreditSummaryView
-					 WHERE UserCredit.TSBId = ? 
-					   AND UserCredit.State <> ? 
+					 WHERE UserCreditSummaryView.TSBId = ? 
+					   AND UserCreditSummaryView.State <> ? 
 				";
 
 				var rets = NQuery.Query<FKs>(cmd,
