@@ -38,8 +38,16 @@ Update 2020-08-02 #4
 Update 2020-08-02 #3
 - 
 
+[commited]
 Update 2020-08-02 #2
-- 
+- Update history.txt (Note)
+  - Config App
+    - TSB/PlazaGroup/Plaza/Lane -> Implements Save function.
+    - Role/User -> Implements Save function.
+    - Coupon Initial screen (Page).
+    - Implement Coupon Controller.
+    - Implement Plaza Operation - Coupon.
+    - Credit Transaction - Add more enum for Internal Excnahge (In/Out).
 
 [commited]
 Update 2020-08-02 #1
