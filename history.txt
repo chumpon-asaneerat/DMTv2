@@ -20,8 +20,10 @@ Update 2020-08-01 #28
 Update 2020-08-01 #27
 - 
 
+[commited]
 Update 2020-08-01 #26
-- 
+- Update TSBCreditBalanceView.sql #2.
+- Re-Implements TSBCreditBalance #2.
 
 [commited]
 Update 2020-08-01 #25

@@ -667,4 +667,16 @@ AS
 				AND UserCreditTransaction.TransactionType = 2 -- Return
 				AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 			)) AS AmountBHT1000
+		 , ((
+			 SELECT IFNULL(SUM(UserCreditTransaction.AdditionalBHTBorrow), 0) 
+			   FROM UserCreditTransaction, UserCredit 
+			  WHERE UserCredit.TSBId = TSB.TSBId
+				AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+		    ) -
+			(
+			 SELECT IFNULL(SUM(UserCreditTransaction.AdditionalBHTReturn), 0) 
+			   FROM UserCreditTransaction, UserCredit 
+			  WHERE UserCredit.TSBId = TSB.TSBId
+				AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+			)) AS AdditionalBHTTotal
 	  FROM TSB
