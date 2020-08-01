@@ -17,8 +17,12 @@ Update 2020-08-01 #6
 Update 2020-08-01 #5
 - 
 
+[commited]
 Update 2020-08-01 #4
-- 
+- Update history.txt.
+  - Note.
+    - TSBCreditTransaction required to add AdditionBHT column.
+    - TSBAdditionTransaction should be removed.
 
 [commited]
 Update 2020-08-01 #3
