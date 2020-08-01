@@ -29,8 +29,9 @@ Update 2020-08-01 #12
 Update 2020-08-01 #11
 - 
 
+[commited]
 Update 2020-08-01 #10
-- 
+- Update CouponFactor model class #2.
 
 [commited]
 Update 2020-08-01 #9
