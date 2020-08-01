@@ -29,7 +29,7 @@ namespace DMT.Models
 	[Serializable]
 	[JsonObject(MemberSerialization.OptOut)]
 	//[Table("ViewHistory")]
-	public class ViewHistory : NTable<Config>
+	public class ViewHistory : NTable<ViewHistory>
 	{
 		#region Intenral Variables
 

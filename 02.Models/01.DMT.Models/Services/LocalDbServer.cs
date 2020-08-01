@@ -86,6 +86,12 @@ namespace DMT.Services
 
 		#endregion
 
+		#region Internal Variables
+
+		private int HistoryVersion = 1;
+
+		#endregion
+
 		#region Constructor and Destructor
 
 		/// <summary>
@@ -140,6 +146,7 @@ namespace DMT.Services
 			Db.CreateTable<Payment>();
 
 			Db.CreateTable<Config>();
+			Db.CreateTable<ViewHistory>();
 
 			Db.CreateTable<TSBShift>();
 			Db.CreateTable<UserShift>();
@@ -174,52 +181,51 @@ namespace DMT.Services
 		private void InitViews()
 		{
 			if (null == Db) return;
-			string resourceName = "UserCreditSummaryView.sql";
-			string script = SqliteScriptManager.GetScript(@"DMT.Views.Scripts." + resourceName);
-			Console.WriteLine(script);
 
-
-			/*
-			var info = Db.GetTableInfo("UserCreditTransactionSummaryView");
-			// info.Count is number of column.
-			if (null != info && info.Count > 0)
+			string[] views = new string[]
 			{
-				Console.WriteLine("View Exists");
-			}
-			else
+				"UserCreditSummaryView"
+			};
+
+			foreach (var viewName in views)
 			{
-				Console.WriteLine("View Not Exists");
+				InitView(viewName);
 			}
+		}
 
-			string cmd =
-				@"
-				CREATE VIEW UserCreditTransactionSummaryView
-				AS
-					SELECT UserCredit.TSBId, 
-							UserCredit.UserId, 
-							UserCredit.TransactionType, 
-							SUM(UserCredit.ST25) AS ST25, 
-							SUM(UserCredit.ST50) AS ST50, 
-							SUM(UserCredit.BHT1) AS BHT1, 
-							SUM(UserCredit.BHT2) AS BHT2, 
-							SUM(UserCredit.BHT5) AS BHT5, 
-							SUM(UserCredit.BHT10) AS BHT10, 
-							SUM(UserCredit.BHT20) AS BHT20, 
-							SUM(UserCredit.BHT50) AS BHT50, 
-							SUM(UserCredit.BHT100) AS BHT100, 
-							SUM(UserCredit.BHT500) AS BHT500, 
-							SUM(UserCredit.BHT1000) AS BHT1000, 
-							SUM(UserCredit.BHTTotal) AS BHTTotal 
-						FROM UserCredit
-						WHERE (   TransactionType = 1 
-							OR TransactionType = 2) 
-						GROUP BY UserCredit.TSBId 
-							, UserCredit.UserId 
-							, UserCredit.TransactionType
-				";
+		private void InitView(string viewName)
+		{
+			if (null == Db) return;
 
-			Console.WriteLine(cmd);
-			*/
+			var hist = ViewHistory.GetWithChildren(viewName, false);
+
+			if (null == hist || hist.VersionId != HistoryVersion)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					string dropCmd = string.Empty;
+					dropCmd += "DROP VIEW IF EXISTS " + viewName;
+					Db.Execute(dropCmd);
+
+					string resourceName = viewName + ".sql";
+					string script = SqliteScriptManager.GetScript(@"DMT.Views.Scripts." + resourceName);
+
+					var ret = Db.Execute(script);
+
+					Console.WriteLine("Returns: {0}", ret);
+
+					if (null == hist) hist = new ViewHistory();
+					hist.ViewName = viewName;
+					hist.VersionId = HistoryVersion;
+					ViewHistory.Save(hist);
+				}
+				catch (Exception ex)
+				{
+					//Console.WriteLine(ex);
+					med.Err(ex);
+				}
+			}
 		}
 
 		private void InitTSBAndPlazaAndLanes()

@@ -20,8 +20,10 @@ Update 2020-08-01 #5
 Update 2020-08-01 #4
 - 
 
+[commited]
 Update 2020-08-01 #3
-- 
+- Update VersionHistory model #2.
+- Update InitViews methods (LocalDbServer).
 
 [commited]
 Update 2020-08-01 #2
