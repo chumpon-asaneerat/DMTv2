@@ -36,8 +36,9 @@ Update 2020-08-01 #38
 Update 2020-08-01 #37
 - 
 
+[commited]
 Update 2020-08-01 #36
-- 
+- Move Payment model to common folder.
 
 [commited]
 Update 2020-08-01 #35
