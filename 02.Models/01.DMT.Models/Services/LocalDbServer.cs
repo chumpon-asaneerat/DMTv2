@@ -1351,9 +1351,9 @@ namespace DMT.Services
 
 			string[] views = new string[]
 			{
-				"TSBCreditBalanceView",
+				"TSBCreditSummarryView",
 				"UserCreditSummaryView",
-				"TSBCouponBalanceView"
+				"TSBCouponSummaryView"
 			};
 
 			foreach (var viewName in views)

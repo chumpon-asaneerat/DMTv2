@@ -1,4 +1,4 @@
-﻿CREATE VIEW TSBCreditBalanceView
+﻿CREATE VIEW TSBCreditSummarryView
 AS
 	SELECT TSB.TSBId
 		 , TSB.TSBNameEN

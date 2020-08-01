@@ -102,8 +102,8 @@
     <Compile Include="Models\CreditsAndCoupons\Common\Coupons\CouponFactorGroup.cs" />
     <Compile Include="Models\CreditsAndCoupons\Users\Coupons\UserCoupon.cs" />
     <Compile Include="Models\CreditsAndCoupons\Users\Coupons\UserCouponTransaction.cs" />
-    <EmbeddedResource Include="Views\Scripts\TSBCouponBalanceView.sql" />
-    <EmbeddedResource Include="Views\Scripts\TSBCreditBalanceView.sql" />
+    <EmbeddedResource Include="Views\Scripts\TSBCouponSummarryView.sql" />
+    <EmbeddedResource Include="Views\Scripts\TSBCreditSummarryView.sql" />
     <Compile Include="Views\SqlScriptManager.cs" />
     <Compile Include="Models\Common\DMT.Searchs.cs" />
     <Compile Include="Models\Common\NSearch.cs" />

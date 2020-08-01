@@ -14,8 +14,10 @@ Update 2020-08-01 #30
 Update 2020-08-01 #29
 - 
 
+[commited]
 Update 2020-08-01 #28
-- 
+- Update TSBCreditSummaryView.sql #4 (Rename).
+- Update TSBCouponSummaryView.sql #5 (Rename).
 
 [commited]
 Update 2020-08-01 #27
