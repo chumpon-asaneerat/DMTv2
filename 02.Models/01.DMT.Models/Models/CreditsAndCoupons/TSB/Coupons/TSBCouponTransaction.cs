@@ -55,15 +55,9 @@ namespace DMT.Models
 		private string _TSBNameTH = string.Empty;
 
 		// Coupon 
-		private decimal _CouponBHT35Factor = 665;
-		private decimal _CouponBHT80Factor = 1520;
-		private int _CouponBHT35 = 0;
-		private int _CouponBHT80 = 0;
-		private decimal _CouponBHT35Total = decimal.Zero;
-		private decimal _CouponBHT80Total = decimal.Zero;
-
-		private int _CouponTotal = 0;
-		private decimal _CouponBHTTotal = decimal.Zero;
+		private int _CouponId = 0;
+		private CouponType _CouponType = CouponType.BHT35;
+		private decimal _Factor = 665;
 
 		private string _Remark = string.Empty;
 
@@ -78,28 +72,6 @@ namespace DMT.Models
 		/// Constructor.
 		/// </summary>
 		public TSBCouponTransaction() : base() { }
-
-		#endregion
-
-		#region Private Methods
-
-		private void CalcCouponTotal()
-		{
-			_CouponBHT35Total = Convert.ToDecimal(_CouponBHT35 * _CouponBHT35Factor);
-			_CouponBHT80Total = Convert.ToDecimal(_CouponBHT80 * _CouponBHT80Factor);
-			_CouponTotal = _CouponBHT35 + _CouponBHT80;
-			decimal total = 0;
-			total += _CouponBHT35Total;
-			total += _CouponBHT80Total;
-			_CouponBHTTotal = total;
-
-			// Raise event.
-			this.RaiseChanged("CouponBHT35Total");
-			this.RaiseChanged("CouponBHT80Total");
-			this.RaiseChanged("CouponTotal");
-			this.RaiseChanged("CouponBHTTotal");
-
-		}
 
 		#endregion
 
@@ -302,112 +274,61 @@ namespace DMT.Models
 		#region Coupon
 
 		/// <summary>
-		/// Gets or sets number of 35 BHT coupon factor.
+		/// Gets or sets coupon book id.
 		/// </summary>
 		[Category("Coupon")]
-		[Description("Gets or sets number of 35 BHT coupon factor.")]
-		[PeropertyMapName("CouponBHT35Factor")]
-		public decimal CouponBHT35Factor
+		[Description("Gets or sets coupon book id.")]
+		[PeropertyMapName("CouponId")]
+		public int CouponId
 		{
-			get { return _CouponBHT35Factor; }
+			get { return _CouponId; }
 			set
 			{
-				if (_CouponBHT35Factor != value)
+				if (_CouponId != value)
 				{
-					_CouponBHT35Factor = value;
-					CalcCouponTotal();
+					_CouponId = value;
 					// Raise event.
-					this.RaiseChanged("CouponBHT35Factor");
+					this.RaiseChanged("CouponId");
 				}
 			}
 		}
 		/// <summary>
-		/// Gets or sets number of 80 BHT coupon factor.
+		/// Gets or sets number of coupon type.
 		/// </summary>
 		[Category("Coupon")]
-		[Description("Gets or sets number of 80 BHT coupon factor.")]
-		[PeropertyMapName("CouponBHT80Factor")]
-		public decimal CouponBHT80Factor
+		[Description("Gets or sets number of coupon type.")]
+		[PeropertyMapName("CouponType")]
+		public CouponType CouponType
 		{
-			get { return _CouponBHT80Factor; }
+			get { return _CouponType; }
 			set
 			{
-				if (_CouponBHT80Factor != value)
+				if (_CouponType != value)
 				{
-					_CouponBHT80Factor = value;
-					CalcCouponTotal();
+					_CouponType = value;
 					// Raise event.
-					this.RaiseChanged("CouponBHT80Factor");
+					this.RaiseChanged("CouponType");
 				}
 			}
 		}
 		/// <summary>
-		/// Gets or sets number of 35 BHT coupon.
+		/// Gets or sets number of coupon factor.
 		/// </summary>
 		[Category("Coupon")]
-		[Description("Gets or sets number of 35 BHT coupon.")]
-		[PeropertyMapName("CouponBHT35")]
-		public virtual int CouponBHT35
+		[Description("Gets or sets number of coupon factor.")]
+		[PeropertyMapName("Factor")]
+		public decimal Factor
 		{
-			get { return _CouponBHT35; }
+			get { return _Factor; }
 			set
 			{
-				if (_CouponBHT35 != value)
+				if (_Factor != value)
 				{
-					_CouponBHT35 = value;
-					CalcCouponTotal();
+					_Factor = value;
 					// Raise event.
-					this.RaiseChanged("CouponBHT35");
-
+					this.RaiseChanged("Factor");
 				}
 			}
-		}
-		/// <summary>
-		/// Gets or sets number of 80 BHT coupon.
-		/// </summary>
-		[Category("Coupon")]
-		[Description("Gets or sets number of 80 BHT coupon.")]
-		[PeropertyMapName("CouponBHT80")]
-		public virtual int CouponBHT80
-		{
-			get { return _CouponBHT80; }
-			set
-			{
-				if (_CouponBHT80 != value)
-				{
-					_CouponBHT80 = value;
-					CalcCouponTotal();
-					// Raise event.
-					this.RaiseChanged("CouponBHT80");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets calculate coupon total (book count).
-		/// </summary>
-		[Category("Coupon")]
-		[Description("Gets calculate coupon total (book count).")]
-		[JsonIgnore]
-		[Ignore]
-		[PeropertyMapName("CouponTotal")]
-		public int CouponTotal
-		{
-			get { return _CouponTotal; }
-			set { }
-		}
-		/// <summary>
-		/// Gets or sets total value in baht.
-		/// </summary>
-		[Category("Coupon")]
-		[Description("Gets or sets total value in baht.")]
-		[ReadOnly(true)]
-		[JsonIgnore]
-		[Ignore]
-		[PeropertyMapName("CouponBHTTotal")]
-		public decimal CouponBHTTotal
-		{
-			get { return _CouponBHTTotal; }
-			set { }
 		}
 		/// <summary>
 		/// Gets or sets Remark.
