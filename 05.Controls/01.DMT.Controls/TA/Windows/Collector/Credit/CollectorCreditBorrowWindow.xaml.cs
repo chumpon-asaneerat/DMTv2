@@ -177,7 +177,7 @@ namespace DMT.TA.Windows.Collector.Credit
             sumObj.Description = "ยอดด่านคงเหลือ";
             sumObj.HasRemark = false;
 
-            srcEntry.DataContext = srcObj;
+            //srcEntry.DataContext = srcObj;
             usrEntry.DataContext = usrObj;
             sumEntry.DataContext = sumObj;
         }

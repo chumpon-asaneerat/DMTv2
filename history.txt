@@ -42,8 +42,11 @@ Update 2020-08-01 #36
 Update 2020-08-01 #35
 - 
 
+[commited]
 Update 2020-08-01 #34
-- 
+- Update DMT.Controls.
+  - Update CollectorCreditBorrowWindow layout/code #1.
+  - Update CollectorCreditReturnWindow layout/code #1.
 
 [commited]
 Update 2020-08-01 #33
