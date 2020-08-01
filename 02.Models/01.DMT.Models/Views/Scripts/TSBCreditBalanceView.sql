@@ -38,20 +38,6 @@ AS
 				AND UserCredit.TSBId = TSB.TSBId
 			)) AS UserBHTTotal
 		 , ((
-			 SELECT IFNULL(SUM(AdditionalBHTTotal), 0) 
-			   FROM TSBAdditionTransaction 
-			  WHERE (   TSBAdditionTransaction.TransactionType = 0 
-					 OR TSBAdditionTransaction.TransactionType = 1
-					) -- Initial = 0, Borrow = 1
-				AND TSBAdditionTransaction.TSBId = TSB.TSBId
-			) -
-			(
-			 SELECT IFNULL(SUM(AdditionalBHTTotal), 0) 
-			   FROM TSBAdditionTransaction 
-			  WHERE TSBAdditionTransaction.TransactionType = 2 -- Returns = 2
-				AND TSBAdditionTransaction.TSBId = TSB.TSBId
-			)) AS AdditionalBHTTotal
-		 , ((
 			 SELECT IFNULL(SUM(CountST25), 0) 
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
@@ -668,15 +654,17 @@ AS
 				AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
 			)) AS AmountBHT1000
 		 , ((
-			 SELECT IFNULL(SUM(UserCreditTransaction.AdditionalBHTBorrow), 0) 
-			   FROM UserCreditTransaction, UserCredit 
-			  WHERE UserCredit.TSBId = TSB.TSBId
-				AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
-		    ) -
+			 SELECT IFNULL(SUM(AdditionalBHT), 0) 
+			   FROM TSBAdditionTransaction 
+			  WHERE (   TSBAdditionTransaction.TransactionType = 0 
+					 OR TSBAdditionTransaction.TransactionType = 1
+					) -- Initial = 0, Borrow = 1
+				AND TSBAdditionTransaction.TSBId = TSB.TSBId
+			) -
 			(
-			 SELECT IFNULL(SUM(UserCreditTransaction.AdditionalBHTReturn), 0) 
-			   FROM UserCreditTransaction, UserCredit 
-			  WHERE UserCredit.TSBId = TSB.TSBId
-				AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId
+			 SELECT IFNULL(SUM(AdditionalBHT), 0) 
+			   FROM TSBAdditionTransaction 
+			  WHERE TSBAdditionTransaction.TransactionType = 2 -- Returns = 2
+				AND TSBAdditionTransaction.TSBId = TSB.TSBId
 			)) AS AdditionalBHTTotal
 	  FROM TSB
