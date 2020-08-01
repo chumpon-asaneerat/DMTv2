@@ -1351,6 +1351,7 @@ namespace DMT.Services
 
 			string[] views = new string[]
 			{
+				"TSBCreditBalanceView",
 				"UserCreditSummaryView",
 				"TSBCouponBalanceView"
 			};

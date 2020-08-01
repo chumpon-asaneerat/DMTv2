@@ -23,8 +23,9 @@ Update 2020-08-01 #24
 Update 2020-08-01 #23
 - 
 
+[commited]
 Update 2020-08-01 #22
-- 
+- Add TSBCreditBalanceView init in LocalDbServer.
 
 [commited]
 Update 2020-08-01 #21
