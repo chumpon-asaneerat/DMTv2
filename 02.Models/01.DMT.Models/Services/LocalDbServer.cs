@@ -144,6 +144,7 @@ namespace DMT.Services
 			Db.CreateTable<User>();
 
 			Db.CreateTable<Payment>();
+			Db.CreateTable<CouponFactorGroup>();
 			Db.CreateTable<CouponFactor>();
 
 			Db.CreateTable<Config>();

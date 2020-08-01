@@ -26,8 +26,10 @@ Update 2020-08-01 #13
 Update 2020-08-01 #12
 - 
 
+[commited]
 Update 2020-08-01 #11
-- 
+- Add CouponFactorGroup model
+- Update CouponFactor model class #3.
 
 [commited]
 Update 2020-08-01 #10

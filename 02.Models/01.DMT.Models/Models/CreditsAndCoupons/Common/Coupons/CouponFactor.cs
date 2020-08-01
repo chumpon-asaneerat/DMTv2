@@ -44,10 +44,9 @@ namespace DMT.Models
         #region Internal Variable
 
         private int _PKId = 0;
+        private int _GroupPkId = 0;
         private CouponType _CouponType = CouponType.BHT35;
         private decimal _Factor = 665;
-        private DateTime _Begin = DateTime.MinValue;
-        private DateTime _End = DateTime.MinValue;
 
         private int _Status = 0;
         private DateTime _LastUpdate = DateTime.MinValue;
@@ -88,6 +87,25 @@ namespace DMT.Models
             }
         }
         /// <summary>
+        /// Gets or sets Group PK Id.
+        /// </summary>
+        [Category("Coupon")]
+        [Description("Gets or sets Group PK Id.")]
+        [PeropertyMapName("GroupPkId")]
+        public virtual int GroupPkId
+        {
+            get { return _GroupPkId; }
+            set
+            {
+                if (_GroupPkId != value)
+                {
+                    _GroupPkId = value;
+                    // Raise event.
+                    this.RaiseChanged("GroupPkId");
+                }
+            }
+        }
+        /// <summary>
         /// Gets or sets coupon type.
         /// </summary>
         [Category("Coupon")]
@@ -124,159 +142,6 @@ namespace DMT.Models
                     this.RaiseChanged("Factor");
                 }
             }
-        }
-
-        #endregion
-
-        #region Begin/End
-
-        /// <summary>
-        /// Gets or sets Begin Date.
-        /// </summary>
-        [Category("Effect Date")]
-        [Description("Gets or sets Begin Date.")]
-        //[ReadOnly(true)]
-        [PeropertyMapName("Begin")]
-        public DateTime Begin
-        {
-            get { return _Begin; }
-            set
-            {
-                if (_Begin != value)
-                {
-                    _Begin = value;
-                    // Raise event.
-                    RaiseChanged("Begin");
-                    RaiseChanged("BeginDateString");
-                    RaiseChanged("BeginTimeString");
-                    RaiseChanged("BeginDateTimeString");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets End Date.
-        /// </summary>
-        [Category("Effect Date")]
-        [Description("Gets or sets End Date.")]
-        //[ReadOnly(true)]
-        [PeropertyMapName("End")]
-        public DateTime End
-        {
-            get { return _End; }
-            set
-            {
-                if (_End != value)
-                {
-                    _End = value;
-                    // Raise event.
-                    RaiseChanged("End");
-                    RaiseChanged("EndDateString");
-                    RaiseChanged("EndTimeString");
-                    RaiseChanged("EndDateTimeString");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets Begin Date String.
-        /// </summary>
-        [Category("Effect Date")]
-        [Description("Gets Begin Date String.")]
-        [ReadOnly(true)]
-        [JsonIgnore]
-        [Ignore]
-        public string BeginDateString
-        {
-            get
-            {
-                var ret = (this.Begin == DateTime.MinValue) ? "" : this.Begin.ToThaiDateTimeString("dd/MM/yyyy");
-                return ret;
-            }
-            set { }
-        }
-        /// <summary>
-        /// Gets End Date String.
-        /// </summary>
-        [Category("Effect Date")]
-        [Description("Gets End Date String.")]
-        [ReadOnly(true)]
-        [JsonIgnore]
-        [Ignore]
-        public string EndDateString
-        {
-            get
-            {
-                var ret = (this.End == DateTime.MinValue) ? "" : this.End.ToThaiDateTimeString("dd/MM/yyyy");
-                return ret;
-            }
-            set { }
-        }
-        /// <summary>
-        /// Gets Begin Time String.
-        /// </summary>
-        [Category("Effect Date")]
-        [Description("Gets Begin Time String.")]
-        [ReadOnly(true)]
-        [JsonIgnore]
-        [Ignore]
-        public string BeginTimeString
-        {
-            get
-            {
-                var ret = (this.Begin == DateTime.MinValue) ? "" : this.Begin.ToThaiTimeString();
-                return ret;
-            }
-            set { }
-        }
-        /// <summary>
-        /// Gets End Time String.
-        /// </summary>
-        [Category("Effect Date")]
-        [Description("Gets End Time String.")]
-        [ReadOnly(true)]
-        [JsonIgnore]
-        [Ignore]
-        public string EndTimeString
-        {
-            get
-            {
-                var ret = (this.End == DateTime.MinValue) ? "" : this.End.ToThaiTimeString();
-                return ret;
-            }
-            set { }
-        }
-        /// <summary>
-        /// Gets or sets Begin Date Time String..
-        /// </summary>
-        [Category("Effect Date")]
-        [Description("Gets or sets Begin Date Time String.")]
-        [ReadOnly(true)]
-        [JsonIgnore]
-        [Ignore]
-        public string BeginDateTimeString
-        {
-            get
-            {
-                var ret = (this.Begin == DateTime.MinValue) ? "" : this.Begin.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
-                return ret;
-            }
-            set { }
-        }
-        /// <summary>
-        /// Gets End Date Time String.
-        /// </summary>
-        [Category("Effect Date")]
-        [Description("Gets End Date Time String.")]
-        [ReadOnly(true)]
-        [JsonIgnore]
-        [Ignore]
-        public string EndDateTimeString
-        {
-            get
-            {
-                var ret = (this.End == DateTime.MinValue) ? "" : this.End.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
-                return ret;
-            }
-            set { }
         }
 
         #endregion
@@ -326,6 +191,10 @@ namespace DMT.Models
         }
 
         #endregion
+
+        #endregion
+
+        #region Internal Class
 
         #endregion
 
