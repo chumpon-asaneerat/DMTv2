@@ -103,6 +103,7 @@
     <Compile Include="Models\CreditsAndCoupons\Users\Coupons\UserCoupon.cs" />
     <Compile Include="Models\CreditsAndCoupons\Users\Coupons\UserCouponTransaction.cs" />
     <EmbeddedResource Include="Views\Scripts\TSBCouponBalanceView.sql" />
+    <Content Include="Views\Scripts\TSBCreditBalanceView.sql" />
     <Compile Include="Views\SqlScriptManager.cs" />
     <Compile Include="Models\Common\DMT.Searchs.cs" />
     <Compile Include="Models\Common\NSearch.cs" />
