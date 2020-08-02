@@ -106,6 +106,18 @@ namespace DMT.Services
                 return ret;
             }
 
+            public void UserBorrowCoupons(Search.UserCoupons.BorrowCoupons value)
+            {
+                NRestClient.Create(port: 9000).Execute(
+                    RouteConsts.Coupon.UserBorrowCoupons.Url, value);
+            }
+
+            public void UserReturnCoupons(Search.UserCoupons.ReturnCoupons value)
+            {
+                NRestClient.Create(port: 9000).Execute(
+                    RouteConsts.Coupon.UserReturnCoupons.Url, value);
+            }
+
             #endregion
         }
 

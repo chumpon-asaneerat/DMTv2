@@ -69,5 +69,21 @@ namespace DMT.Services
         {
             return TSBCouponBalance.GetCurrent(tsb);
         }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Coupon.UserBorrowCoupons.Name)]
+        public void UserBorrowCoupons([FromBody] Search.UserCoupons.BorrowCoupons value)
+        {
+            if (null == value) return;
+            UserCouponTransaction.UserBorrowCoupons(value.User, value.Coupons);
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Coupon.UserReturnCoupons.Name)]
+        public void UserReturnCoupons([FromBody] Search.UserCoupons.ReturnCoupons value)
+        {
+            if (null == value) return;
+            UserCouponTransaction.UserReturnCoupons(value.User, value.Coupons);
+        }
     }
 }

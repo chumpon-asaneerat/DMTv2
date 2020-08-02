@@ -293,4 +293,42 @@ namespace DMT.Models
     }
 
     #endregion
+
+    #region UserCoupon
+
+    partial class Search
+    {
+        public class UserCoupons
+        {
+            public class BorrowCoupons : NSearch<BorrowCoupons>
+            {
+                public User User { get; set; }
+                public List<TSBCouponTransaction> Coupons { get; set; }
+
+                public static BorrowCoupons Create(User user, List<TSBCouponTransaction> coupons)
+                {
+                    var ret = new BorrowCoupons();
+                    ret.User = user;
+                    ret.Coupons = coupons;
+                    return ret;
+                }
+            }
+
+            public class ReturnCoupons : NSearch<ReturnCoupons>
+            {
+                public User User { get; set; }
+                public List<TSBCouponTransaction> Coupons { get; set; }
+
+                public static ReturnCoupons Create(User user, List<TSBCouponTransaction> coupons)
+                {
+                    var ret = new ReturnCoupons();
+                    ret.User = user;
+                    ret.Coupons = coupons;
+                    return ret;
+                }
+            }
+        }
+    }
+
+    #endregion
 }

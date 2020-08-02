@@ -603,6 +603,49 @@ namespace DMT.Models
 			}
 		}
 
+		public static void UserBorrowCoupons(User user, List<TSBCouponTransaction> coupons)
+		{
+			if (null == user || null == coupons || coupons.Count <= 0) return;
+			lock (sync)
+			{
+				coupons.ForEach(coupon => 
+				{
+					coupon.TransactionType = TSBCouponTransaction.TransactionTypes.User;
+					TSBCouponTransaction.Save(coupon);
+					var inst = new UserCouponTransaction();
+					inst._TransactionDate = DateTime.Now;
+					inst.TransactionType = TransactionTypes.Borrow;
+					inst.TSBId = coupon.TSBId;
+					inst.CouponId = coupon.CouponId;
+					inst.CouponType = coupon.CouponType;
+					inst.Factor = coupon.Factor;
+					UserCouponTransaction.Save(inst);
+				});
+
+			}
+		}
+
+		public static void UserReturnCoupons(User user, List<TSBCouponTransaction> coupons)
+		{
+			if (null == user || null == coupons || coupons.Count <= 0) return;
+			lock (sync)
+			{
+				coupons.ForEach(coupon => 
+				{
+					coupon.TransactionType = TSBCouponTransaction.TransactionTypes.Received;
+					TSBCouponTransaction.Save(coupon);
+					var inst = new UserCouponTransaction();
+					inst._TransactionDate = DateTime.Now;
+					inst.TransactionType = TransactionTypes.Return;
+					inst.TSBId = coupon.TSBId;
+					inst.CouponId = coupon.CouponId;
+					inst.CouponType = coupon.CouponType;
+					inst.Factor = coupon.Factor;
+					UserCouponTransaction.Save(inst);
+				});
+			}
+		}
+
 		#endregion
 	}
 
