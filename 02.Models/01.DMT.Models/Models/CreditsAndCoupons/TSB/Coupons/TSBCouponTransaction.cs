@@ -590,8 +590,10 @@ namespace DMT.Models
 				string cmd = string.Empty;
 				cmd += "SELECT TSBCouponTransaction.* ";
 				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "  FROM TSBCouponTransaction, TSB ";
+				cmd += "     , User.UserId, User.FullNameEN, User.FullNameTH ";
+				cmd += "  FROM TSBCouponTransaction, TSB, User ";
 				cmd += " WHERE TSBCouponTransaction.TSBId = TSB.TSBId ";
+				cmd += "   AND TSBCouponTransaction.UserId = User.UserId ";
 				cmd += "   AND TSBCouponTransaction.TSBId = ? ";
 
 				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
@@ -628,8 +630,10 @@ namespace DMT.Models
 				string cmd = string.Empty;
 				cmd += "SELECT TSBCouponTransaction.* ";
 				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "  FROM TSBCouponTransaction, TSB ";
+				cmd += "     , User.UserId, User.FullNameEN, User.FullNameTH ";
+				cmd += "  FROM TSBCouponTransaction, TSB, User ";
 				cmd += " WHERE TSBCouponTransaction.TSBId = TSB.TSBId ";
+				cmd += "   AND TSBCouponTransaction.UserId = User.UserId ";
 				cmd += "   AND TSBCouponTransaction.TSBId = ? ";
 				cmd += "   AND TSBCouponTransaction.TransactionType = ? ";
 
