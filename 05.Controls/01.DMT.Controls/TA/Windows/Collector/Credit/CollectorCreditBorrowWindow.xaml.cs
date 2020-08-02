@@ -48,7 +48,7 @@ namespace DMT.TA.Windows.Collector.Credit
         private void cmdSearchUser_Click(object sender, RoutedEventArgs e)
         {
             string userId = txtSearchUserId.Text;
-            if (string.IsNullOrEmpty(userId) || userId.Length == 0) return;
+            if (string.IsNullOrEmpty(userId)) return;
 
             var users = ops.Users.SearchById(Search.Users.ById.Create(userId));
             if (null != users && null != srcObj)

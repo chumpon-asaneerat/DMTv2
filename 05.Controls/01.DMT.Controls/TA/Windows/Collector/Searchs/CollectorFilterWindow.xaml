@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="กรุณาเลือกพนักงานเก็บเงิน"
         Width="700"
-        Height="250"
+        Height="500"
         HorizontalAlignment="Center"
         VerticalAlignment="Center"
         ResizeMode="NoResize"
@@ -96,7 +96,19 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <ListView x:Name="lvUsers" />
+                <ListView x:Name="lvUsers"
+                          FontSize="18">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="รหัสพนักงาน" 
+                                    DisplayMemberBinding="{Binding Path=UserId}" 
+                                    Width="100"/>
+                            <GridViewColumn Header="ชือพนักงาน" 
+                                    DisplayMemberBinding="{Binding Path=FullNameTH}" 
+                                    Width="250"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
             </Grid>
         </DockPanel>
     </Grid>
