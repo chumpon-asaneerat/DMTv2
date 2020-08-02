@@ -110,7 +110,7 @@ namespace LocalDbServerSample
         private void button2_Click(object sender, EventArgs e)
         {
             // Gets User Coupons.
-            //dbgUserCoupon.DataSource = UserCouponTransaction.Gets();
+            dbgUserCoupon.DataSource = UserCouponTransaction.Gets();
         }
 
         private void button3_Click(object sender, EventArgs e)

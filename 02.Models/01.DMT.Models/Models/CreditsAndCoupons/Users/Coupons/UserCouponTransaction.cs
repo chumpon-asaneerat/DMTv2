@@ -208,7 +208,6 @@ namespace DMT.Models
 		[Category("TSB")]
 		[Description("Gets or sets TSBId.")]
 		[ReadOnly(true)]
-		[Ignore]
 		[MaxLength(10)]
 		[PeropertyMapName("TSBId")]
 		public virtual string TSBId
@@ -283,7 +282,6 @@ namespace DMT.Models
 		[Category("User")]
 		[Description("Gets or sets UserId")]
 		[ReadOnly(true)]
-		[Ignore]
 		[MaxLength(10)]
 		[PeropertyMapName("UserId")]
 		public virtual string UserId
@@ -554,6 +552,56 @@ namespace DMT.Models
 		#endregion
 
 		#region Static Methods
+
+		/// <summary>
+		/// Gets Active TSB User transactions.
+		/// </summary>
+		/// <returns>
+		/// Returns Current Active TSB's User transactions. If not found returns null.
+		/// </returns>
+		public static List<UserCouponTransaction> Gets()
+		{
+			lock (sync)
+			{
+				var tsb = TSB.GetCurrent();
+				return Gets(tsb);
+			}
+		}
+		/// <summary>
+		/// Gets User Coupon transactions.
+		/// </summary>
+		/// <param name="tsb">The target User to get coupon transaction.</param>
+		/// <returns>Returns User transactions. If TSB not found returns null.</returns>
+		public static List<UserCouponTransaction> Gets(TSB tsb)
+		{
+			if (null == tsb) return null;
+			lock (sync)
+			{
+				string cmd = string.Empty;
+				cmd += "SELECT UserCouponTransaction.* ";
+				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+				cmd += "     , User.FullNameEN, User.FullNameTH ";
+				cmd += "  FROM UserCouponTransaction, TSB, User ";
+				cmd += " WHERE UserCouponTransaction.TSBId = TSB.TSBId ";
+				cmd += "   AND UserCouponTransaction.UserId = User.UserId ";
+				cmd += "   AND UserCouponTransaction.TSBId = ? ";
+
+				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
+				if (null == rets)
+				{
+					return new List<UserCouponTransaction>();
+				}
+				else
+				{
+					var results = new List<UserCouponTransaction>();
+					rets.ForEach(ret =>
+					{
+						results.Add(ret.ToUserCouponTransaction());
+					});
+					return results;
+				}
+			}
+		}
 
 		#endregion
 	}
