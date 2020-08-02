@@ -112,7 +112,8 @@
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"
                          TextWrapping="Wrap"
-                         FontSize="18" />
+                         FontSize="18" 
+                         KeyUp="txtFilter35_KeyUp"/>
                 <ListView x:Name="lvTSB35"
                           Grid.Row="2"
                           Grid.Column="1"
@@ -183,7 +184,8 @@
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"
                          TextWrapping="Wrap"
-                         FontSize="18" />
+                         FontSize="18" 
+                         KeyUp="txtFilter80_KeyUp"/>
                 <ListView x:Name="lvTSB80"
                           Grid.Row="2"
                           Grid.Column="5"
