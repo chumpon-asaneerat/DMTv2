@@ -47,7 +47,9 @@ namespace DMT.TOD.Pages.Reports
 
         private Models.RevenueEntry _revenueEntry = null;
 
+#pragma warning disable IDE0052 // Remove unread private members
         private bool isNew = false;
+#pragma warning restore IDE0052 // Remove unread private members
 
         #region Button Handlers
 
