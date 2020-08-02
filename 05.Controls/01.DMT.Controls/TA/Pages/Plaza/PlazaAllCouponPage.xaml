@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ctrl="clr-namespace:DMT.TA.Controls.Plaza.Entry"
-             xmlns:ctrl2="clr-namespace:DMT.TA.Controls.Plaza.History"
+             xmlns:ctrl2="clr-namespace:DMT.TA.Controls.Plaza.View"
              d:DesignHeight="650"
              d:DesignWidth="1000"
              mc:Ignorable="d">
@@ -103,22 +103,41 @@
                                FontSize="18"
                                Foreground="WhiteSmoke"
                                Text="รหัสสินค้า :" />
-
-                    
-                    <TextBlock 
-                               Margin="350,0,0,0"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               FontSize="18"
-                               Foreground="WhiteSmoke"
-                               Text="รหัสพนักงาน :" />
-                    <TextBox x:Name="txtSearchUserId"
-                             Width="150" Margin="450,0,0,0"
+                    <TextBox x:Name="txtItemId"
+                             Width="150" Margin="105,0,0,0"
                              HorizontalAlignment="Left"
                              VerticalAlignment="Center"
                              FontSize="18"
                              Text="" />
+
                     
+                    <TextBlock 
+                               Margin="440,0,0,0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               FontSize="18"
+                               Foreground="WhiteSmoke"
+                               Text="เลขที่ใบโอน :" />
+                    <TextBox x:Name="txtSearchUserId"
+                             Width="150" Margin="550,0,0,0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"
+                             FontSize="18"
+                             Text="" />
+
+                    <TextBlock 
+                               Margin="710,0,0,0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               FontSize="18"
+                               Foreground="WhiteSmoke"
+                               Text="ด่านเก็บเงิน :" />
+                    <ComboBox x:Name="cbTollgate" 
+                               Margin="850,0,0,0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               FontSize="18" Width="150">
+                    </ComboBox>
 
                     <TextBlock Grid.Row="1"
                                Margin="10,0,0,0"
@@ -127,6 +146,41 @@
                                FontSize="18"
                                Foreground="WhiteSmoke"
                                Text="Serial No :" />
+                    <TextBox x:Name="txtSerialNo" Grid.Row="1"
+                             Width="150" Margin="105,0,0,0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"
+                             FontSize="18"
+                             Text="" />
+                    <TextBlock Grid.Row="1"
+                               Margin="440,0,0,0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               FontSize="18"
+                               Foreground="WhiteSmoke"
+                               Text="สถานะ :" />
+                    <ComboBox x:Name="cbStatus" Grid.Row="1"
+                               Margin="550,0,0,0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               FontSize="18" Width="150">
+                        
+                    </ComboBox>
+
+                    <TextBlock Grid.Row="1"
+                               Margin="710,0,0,0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               FontSize="18"
+                               Foreground="WhiteSmoke"
+                               Text="เลขที่ AR Invoice :" />
+
+                    <TextBox x:Name="txtAR" Grid.Row="1"
+                             Width="150" Margin="850,0,0,0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"
+                             FontSize="18"
+                             Text="" />
 
                     <TextBlock Grid.Row="2"
                                Margin="10,0,0,0"
@@ -136,24 +190,61 @@
                                Foreground="WhiteSmoke"
                                Text="วันที่ขาย :" />
                     <DatePicker x:Name="dtDate" Grid.Row="2"
-                                Margin="110,5,0,0"
-                                Width="180"
+                                Margin="105,5,0,0"
+                                Width="150"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                FontSize="18" />
+                    <DatePicker x:Name="dtDateEnd" Grid.Row="2"
+                                Margin="265,5,0,0"
+                                Width="150"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 FontSize="18" />
 
+                    <TextBlock Grid.Row="2"
+                               Margin="440,0,0,0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               FontSize="18"
+                               Foreground="WhiteSmoke"
+                               Text="กะทำงาน :" />
+
+                    <ComboBox x:Name="cbShift" Grid.Row="2"
+                               Margin="550,0,0,0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               FontSize="18" Width="150">
+
+                    </ComboBox>
+
+
                     <Button x:Name="cmdSearch" Grid.Row="3"
-                            Width="60"
-                            Margin="10,10,0,0"
+                            Width="100"
+                            Margin="105,0,0,10"
                             HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
+                            VerticalAlignment="Bottom"
                             Content="แสดงข้อมูล"
                             FontSize="18" Click="cmdSearch_Click" />
+
+                    <TextBlock Grid.Row="3"
+                               Margin="440,0,0,0"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               FontSize="18"
+                               Foreground="WhiteSmoke"
+                               Text="สต็อกคงเหลือ :" />
+                    <TextBox x:Name="txtStock" Grid.Row="3"
+                             Width="150" Margin="550,0,0,0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"
+                             FontSize="18"
+                             Text="" />
                 </Grid>
 
             </Border>
             <Grid>
-                <ctrl2:PlazaFundHistoryView x:Name="grid" />
+                <ctrl2:PlazaAllCouponView x:Name="grid" />
             </Grid>
         </StackPanel>
 

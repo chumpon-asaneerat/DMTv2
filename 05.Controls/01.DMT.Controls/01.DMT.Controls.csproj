@@ -116,6 +116,9 @@
     <Compile Include="TA\Controls\Plaza\View\FundPlaza3View.xaml.cs">
       <DependentUpon>FundPlaza3View.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TA\Controls\Plaza\View\PlazaAllCouponView.xaml.cs">
+      <DependentUpon>PlazaAllCouponView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TA\Pages\Collector\CollectorFundViewPage.xaml.cs">
       <DependentUpon>CollectorFundViewPage.xaml</DependentUpon>
     </Compile>
@@ -455,6 +458,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="TA\Controls\Plaza\View\FundPlaza3View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Controls\Plaza\View\PlazaAllCouponView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
