@@ -48,6 +48,7 @@ namespace LocalDbServerSample
         private void button6_Click(object sender, EventArgs e)
         {
             // Gets TSBs
+            dbgTSB.DataSource = TSB.Gets();
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -143,6 +144,20 @@ namespace LocalDbServerSample
         private void button20_Click(object sender, EventArgs e)
         {
 
+        }
+
+        #endregion
+
+        #region DataGrid Handlers
+
+        private void dbgTSB_SelectionChanged(object sender, EventArgs e)
+        {
+            var dbgrid = dbgTSB;
+            var pgrid = pgTSB;
+
+            pgrid.SelectedObject = null;
+            if (null == dbgrid.SelectedRows || dbgrid.SelectedRows.Count <= 0) return;
+            pgrid.SelectedObject = dbgrid.SelectedRows[0].DataBoundItem;
         }
 
         #endregion

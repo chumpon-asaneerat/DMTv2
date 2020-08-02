@@ -46,6 +46,10 @@ Update 2020-08-03 #1 (TA)
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-08-02 #12 (TA)
+- Implements Request Exchange process #10.
+
+[commited]
 Update 2020-08-02 #11 (TA)
 - Prepare history.TA.txt.
 

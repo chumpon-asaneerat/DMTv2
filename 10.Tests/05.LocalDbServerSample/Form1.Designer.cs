@@ -42,13 +42,12 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
-            this.dbGrid = new System.Windows.Forms.DataGridView();
+            this.dbgTSB = new System.Windows.Forms.DataGridView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -77,7 +76,10 @@
             this.panel17 = new System.Windows.Forms.Panel();
             this.panel18 = new System.Windows.Forms.Panel();
             this.panel19 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.dbGrid)).BeginInit();
+            this.pgTSB = new System.Windows.Forms.PropertyGrid();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.button20 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dbgTSB)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -248,16 +250,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button20
-            // 
-            this.button20.Location = new System.Drawing.Point(309, 3);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(147, 40);
-            this.button20.TabIndex = 15;
-            this.button20.Text = "button20";
-            this.button20.UseVisualStyleBackColor = true;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
-            // 
             // button19
             // 
             this.button19.Location = new System.Drawing.Point(3, 3);
@@ -308,15 +300,20 @@
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
-            // dbGrid
+            // dbgTSB
             // 
-            this.dbGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dbGrid.Location = new System.Drawing.Point(129, 132);
-            this.dbGrid.Name = "dbGrid";
-            this.dbGrid.RowHeadersWidth = 51;
-            this.dbGrid.RowTemplate.Height = 24;
-            this.dbGrid.Size = new System.Drawing.Size(554, 248);
-            this.dbGrid.TabIndex = 2;
+            this.dbgTSB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dbgTSB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dbgTSB.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dbgTSB.Location = new System.Drawing.Point(3, 63);
+            this.dbgTSB.MultiSelect = false;
+            this.dbgTSB.Name = "dbgTSB";
+            this.dbgTSB.RowHeadersWidth = 51;
+            this.dbgTSB.RowTemplate.Height = 24;
+            this.dbgTSB.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dbgTSB.Size = new System.Drawing.Size(753, 554);
+            this.dbgTSB.TabIndex = 2;
+            this.dbgTSB.SelectionChanged += new System.EventHandler(this.dbgTSB_SelectionChanged);
             // 
             // tabControl1
             // 
@@ -338,7 +335,9 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.dbGrid);
+            this.tabPage1.Controls.Add(this.dbgTSB);
+            this.tabPage1.Controls.Add(this.splitter1);
+            this.tabPage1.Controls.Add(this.pgTSB);
             this.tabPage1.Controls.Add(this.panel11);
             this.tabPage1.Controls.Add(this.panel2);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
@@ -356,7 +355,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1110, 573);
+            this.tabPage2.Size = new System.Drawing.Size(1110, 681);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Plaza Group";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -521,7 +520,6 @@
             // 
             // panel11
             // 
-            this.panel11.Controls.Add(this.button20);
             this.panel11.Controls.Add(this.button15);
             this.panel11.Controls.Add(this.button14);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -532,9 +530,10 @@
             // 
             // panel12
             // 
+            this.panel12.Controls.Add(this.button20);
             this.panel12.Controls.Add(this.button16);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel12.Location = new System.Drawing.Point(3, 509);
+            this.panel12.Location = new System.Drawing.Point(3, 617);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(1104, 61);
             this.panel12.TabIndex = 6;
@@ -602,6 +601,32 @@
             this.panel19.Size = new System.Drawing.Size(1110, 61);
             this.panel19.TabIndex = 6;
             // 
+            // pgTSB
+            // 
+            this.pgTSB.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pgTSB.Location = new System.Drawing.Point(759, 63);
+            this.pgTSB.Name = "pgTSB";
+            this.pgTSB.Size = new System.Drawing.Size(348, 554);
+            this.pgTSB.TabIndex = 6;
+            // 
+            // splitter1
+            // 
+            this.splitter1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.splitter1.Location = new System.Drawing.Point(756, 63);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 554);
+            this.splitter1.TabIndex = 7;
+            this.splitter1.TabStop = false;
+            // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(156, 3);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(147, 40);
+            this.button20.TabIndex = 16;
+            this.button20.Text = "button20";
+            this.button20.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -612,7 +637,7 @@
             this.Text = "Db Server Sample";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dbGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbgTSB)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -660,13 +685,12 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.DataGridView dbGrid;
+        private System.Windows.Forms.DataGridView dbgTSB;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -695,6 +719,9 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.PropertyGrid pgTSB;
+        private System.Windows.Forms.Button button20;
     }
 }
 
