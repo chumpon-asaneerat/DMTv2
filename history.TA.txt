@@ -41,8 +41,9 @@ Update 2020-08-03 #3 (TA)
 Update 2020-08-03 #2 (TA)
 - 
 
+[commited]
 Update 2020-08-03 #1 (TA)
-- 
+- Implements Request Exchange process #11.
 
 --------------------------------------------------------------------------------------------
 [commited]

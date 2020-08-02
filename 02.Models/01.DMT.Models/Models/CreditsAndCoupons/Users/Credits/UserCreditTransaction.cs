@@ -1400,7 +1400,7 @@ namespace DMT.Models
 				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
 				cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
 				cmd += "     , User.UserId, User.FullNameEN, User.FullNameTH ";
-				cmd += "     , UserCredit.UserCreditDate, ";
+				cmd += "     , UserCredit.UserCreditDate ";
 				cmd += "     , UserCredit.State, UserCredit.BagNo, UserCredit.BeltNo ";
 				cmd += "  FROM UserCreditTransaction, TSB, PlazaGroup, User, UserCredit ";
 				cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";

@@ -54,41 +54,49 @@ namespace LocalDbServerSample
         private void button7_Click(object sender, EventArgs e)
         {
             // Gets Plaza Groups
+            dbgPlazaGroup.DataSource = PlazaGroup.Gets();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             // Gets Plazas
+            dbgPlaza.DataSource = Plaza.Gets();
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             // Gets Lanes
+            dbgLane.DataSource = Lane.Gets();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             // Gets TSB Credits
+            dbgTSBCredit.DataSource = TSBCreditTransaction.Gets();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             // Gets User Credits
+            dbgUserCredit.DataSource = UserCreditTransaction.Gets();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             // Gets TSB Coupons.
+            dbgTSBCoupon.DataSource = TSBCouponTransaction.Gets();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             // Gets User Coupons.
+            //dbgUserCoupon.DataSource = UserCouponTransaction.Gets();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             // Gets TSB Exchanges.
+            //dbgTSBExchange.DataSource = TSBExchangeTransaction.Gets();
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -154,6 +162,86 @@ namespace LocalDbServerSample
         {
             var dbgrid = dbgTSB;
             var pgrid = pgTSB;
+
+            pgrid.SelectedObject = null;
+            if (null == dbgrid.SelectedRows || dbgrid.SelectedRows.Count <= 0) return;
+            pgrid.SelectedObject = dbgrid.SelectedRows[0].DataBoundItem;
+        }
+
+        private void dbgPlazaGroup_SelectionChanged(object sender, EventArgs e)
+        {
+            var dbgrid = dbgPlazaGroup;
+            var pgrid = pgPlazaGroup;
+
+            pgrid.SelectedObject = null;
+            if (null == dbgrid.SelectedRows || dbgrid.SelectedRows.Count <= 0) return;
+            pgrid.SelectedObject = dbgrid.SelectedRows[0].DataBoundItem;
+        }
+
+        private void dbgPlaza_SelectionChanged(object sender, EventArgs e)
+        {
+            var dbgrid = dbgPlaza;
+            var pgrid = pgPlaza;
+
+            pgrid.SelectedObject = null;
+            if (null == dbgrid.SelectedRows || dbgrid.SelectedRows.Count <= 0) return;
+            pgrid.SelectedObject = dbgrid.SelectedRows[0].DataBoundItem;
+        }
+
+        private void dbgLane_SelectionChanged(object sender, EventArgs e)
+        {
+            var dbgrid = dbgLane;
+            var pgrid = pgLane;
+
+            pgrid.SelectedObject = null;
+            if (null == dbgrid.SelectedRows || dbgrid.SelectedRows.Count <= 0) return;
+            pgrid.SelectedObject = dbgrid.SelectedRows[0].DataBoundItem;
+        }
+
+        private void dbgTSBCredit_SelectionChanged(object sender, EventArgs e)
+        {
+            var dbgrid = dbgTSBCredit;
+            var pgrid = pgTSBCredit;
+
+            pgrid.SelectedObject = null;
+            if (null == dbgrid.SelectedRows || dbgrid.SelectedRows.Count <= 0) return;
+            pgrid.SelectedObject = dbgrid.SelectedRows[0].DataBoundItem;
+        }
+
+        private void dbgUserCredit_SelectionChanged(object sender, EventArgs e)
+        {
+            var dbgrid = dbgUserCredit;
+            var pgrid = pgUserCredit;
+
+            pgrid.SelectedObject = null;
+            if (null == dbgrid.SelectedRows || dbgrid.SelectedRows.Count <= 0) return;
+            pgrid.SelectedObject = dbgrid.SelectedRows[0].DataBoundItem;
+        }
+
+        private void dbgTSBCoupon_SelectionChanged(object sender, EventArgs e)
+        {
+            var dbgrid = dbgTSBCoupon;
+            var pgrid = pgTSBCoupon;
+
+            pgrid.SelectedObject = null;
+            if (null == dbgrid.SelectedRows || dbgrid.SelectedRows.Count <= 0) return;
+            pgrid.SelectedObject = dbgrid.SelectedRows[0].DataBoundItem;
+        }
+
+        private void dbgUserCoupon_SelectionChanged(object sender, EventArgs e)
+        {
+            var dbgrid = dbgUserCoupon;
+            var pgrid = pgUserCoupon;
+
+            pgrid.SelectedObject = null;
+            if (null == dbgrid.SelectedRows || dbgrid.SelectedRows.Count <= 0) return;
+            pgrid.SelectedObject = dbgrid.SelectedRows[0].DataBoundItem;
+        }
+
+        private void dbgTSBExchange_SelectionChanged(object sender, EventArgs e)
+        {
+            var dbgrid = dbgTSBExchange;
+            var pgrid = pgTSBExchange;
 
             pgrid.SelectedObject = null;
             if (null == dbgrid.SelectedRows || dbgrid.SelectedRows.Count <= 0) return;

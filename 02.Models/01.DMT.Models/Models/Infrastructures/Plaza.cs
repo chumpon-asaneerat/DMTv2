@@ -442,7 +442,7 @@ namespace DMT.Models
 				string cmd = string.Empty;
 				cmd += "SELECT Plaza.* ";
 				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, Plaza.Direction ";
+				cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
 				cmd += "  FROM Plaza, PlazaGroup, TSB ";
 				cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
 				cmd += "   AND PlazaGroup.TSBId = TSB.TSBId ";
@@ -478,7 +478,7 @@ namespace DMT.Models
 				string cmd = string.Empty;
 				cmd += "SELECT Plaza.* ";
 				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, Plaza.Direction ";
+				cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
 				cmd += "  FROM Plaza, PlazaGroup, TSB ";
 				cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
 				cmd += "   AND PlazaGroup.TSBId = TSB.TSBId ";
