@@ -30,8 +30,6 @@
         {
             this.button13 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -41,7 +39,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
@@ -90,6 +87,7 @@
             this.pgTSBCoupon = new System.Windows.Forms.PropertyGrid();
             this.panel17 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.button20 = new System.Windows.Forms.Button();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.dbgUserCoupon = new System.Windows.Forms.DataGridView();
             this.splitter3 = new System.Windows.Forms.Splitter();
@@ -102,7 +100,9 @@
             this.pgTSBExchange = new System.Windows.Forms.PropertyGrid();
             this.panel19 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.button20 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dbgTSB)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -122,19 +122,15 @@
             this.panel5.SuspendLayout();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbgTSBCredit)).BeginInit();
-            this.panel15.SuspendLayout();
             this.panel6.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbgUserCredit)).BeginInit();
-            this.panel16.SuspendLayout();
             this.panel7.SuspendLayout();
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbgTSBCoupon)).BeginInit();
-            this.panel17.SuspendLayout();
             this.panel8.SuspendLayout();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbgUserCoupon)).BeginInit();
-            this.panel18.SuspendLayout();
             this.panel9.SuspendLayout();
             this.tabPage9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbgTSBExchange)).BeginInit();
@@ -154,33 +150,13 @@
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(3, 3);
+            this.button12.Location = new System.Drawing.Point(156, 3);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(147, 40);
             this.button12.TabIndex = 8;
-            this.button12.Text = "button12";
+            this.button12.Text = "Gets 35 Coupons";
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(3, 3);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(147, 40);
-            this.button11.TabIndex = 7;
-            this.button11.Text = "button11";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(3, 3);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(147, 40);
-            this.button10.TabIndex = 6;
-            this.button10.Text = "button10";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button9
             // 
@@ -264,23 +240,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(3, 3);
+            this.button1.Location = new System.Drawing.Point(156, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(147, 40);
             this.button1.TabIndex = 0;
             this.button1.Text = "Gets TSB Coupons";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button19
-            // 
-            this.button19.Location = new System.Drawing.Point(3, 3);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(147, 40);
-            this.button19.TabIndex = 14;
-            this.button19.Text = "button19";
-            this.button19.UseVisualStyleBackColor = true;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
             // button18
             // 
@@ -646,7 +612,6 @@
             // 
             // panel15
             // 
-            this.panel15.Controls.Add(this.button19);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel15.Location = new System.Drawing.Point(0, 620);
             this.panel15.Name = "panel15";
@@ -721,7 +686,6 @@
             // 
             // panel16
             // 
-            this.panel16.Controls.Add(this.button10);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel16.Location = new System.Drawing.Point(0, 620);
             this.panel16.Name = "panel16";
@@ -785,7 +749,6 @@
             // 
             // panel17
             // 
-            this.panel17.Controls.Add(this.button11);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel17.Location = new System.Drawing.Point(0, 620);
             this.panel17.Name = "panel17";
@@ -794,6 +757,8 @@
             // 
             // panel8
             // 
+            this.panel8.Controls.Add(this.button19);
+            this.panel8.Controls.Add(this.button11);
             this.panel8.Controls.Add(this.button20);
             this.panel8.Controls.Add(this.button1);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
@@ -801,6 +766,16 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(1110, 60);
             this.panel8.TabIndex = 5;
+            // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(3, 3);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(147, 40);
+            this.button20.TabIndex = 17;
+            this.button20.Text = "Init Coupons";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
             // tabPage8
             // 
@@ -850,7 +825,6 @@
             // 
             // panel18
             // 
-            this.panel18.Controls.Add(this.button12);
             this.panel18.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel18.Location = new System.Drawing.Point(0, 620);
             this.panel18.Name = "panel18";
@@ -859,6 +833,8 @@
             // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.button10);
+            this.panel9.Controls.Add(this.button12);
             this.panel9.Controls.Add(this.button2);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel9.Location = new System.Drawing.Point(0, 0);
@@ -930,15 +906,35 @@
             this.panel10.Size = new System.Drawing.Size(1110, 60);
             this.panel10.TabIndex = 5;
             // 
-            // button20
+            // button11
             // 
-            this.button20.Location = new System.Drawing.Point(156, 3);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(147, 40);
-            this.button20.TabIndex = 17;
-            this.button20.Text = "Init Coupons";
-            this.button20.UseVisualStyleBackColor = true;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
+            this.button11.Location = new System.Drawing.Point(309, 3);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(147, 40);
+            this.button11.TabIndex = 18;
+            this.button11.Text = "Get Sold Coupons";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(309, 3);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(147, 40);
+            this.button10.TabIndex = 9;
+            this.button10.Text = "Gets 80 Coupons";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(462, 3);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(147, 40);
+            this.button19.TabIndex = 19;
+            this.button19.Text = "Distribute Coupons";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
             // Form1
             // 
@@ -969,19 +965,15 @@
             this.panel5.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dbgTSBCredit)).EndInit();
-            this.panel15.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dbgUserCredit)).EndInit();
-            this.panel16.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dbgTSBCoupon)).EndInit();
-            this.panel17.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dbgUserCoupon)).EndInit();
-            this.panel18.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.tabPage9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dbgTSBExchange)).EndInit();
@@ -994,8 +986,6 @@
         #endregion
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
@@ -1005,7 +995,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button16;
@@ -1067,6 +1056,9 @@
         private System.Windows.Forms.PropertyGrid pgTSBExchange;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button19;
     }
 }
 

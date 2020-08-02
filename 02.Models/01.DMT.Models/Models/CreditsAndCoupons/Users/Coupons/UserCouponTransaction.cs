@@ -604,6 +604,89 @@ namespace DMT.Models
 			}
 		}
 
+		public static List<UserCouponTransaction> GetBHT35Coupons()
+		{
+			lock (sync)
+			{
+				var tsb = TSB.GetCurrent();
+				return GetBHT35Coupons(tsb);
+			}
+		}
+
+		public static List<UserCouponTransaction> GetBHT35Coupons(TSB tsb)
+		{
+			if (null == tsb) return null;
+			lock (sync)
+			{
+				string cmd = string.Empty;
+				cmd += "SELECT UserCouponTransaction.* ";
+				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+				cmd += "     , User.FullNameEN, User.FullNameTH ";
+				cmd += "  FROM UserCouponTransaction, TSB, User ";
+				cmd += " WHERE UserCouponTransaction.TSBId = TSB.TSBId ";
+				cmd += "   AND UserCouponTransaction.UserId = User.UserId ";
+				cmd += "   AND UserCouponTransaction.TSBId = ? ";
+				cmd += "   AND UserCouponTransaction.CouponType = ? ";
+
+				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId, CouponType.BHT35).ToList();
+				if (null == rets)
+				{
+					return new List<UserCouponTransaction>();
+				}
+				else
+				{
+					var results = new List<UserCouponTransaction>();
+					rets.ForEach(ret =>
+					{
+						results.Add(ret.ToUserCouponTransaction());
+					});
+					return results;
+				}
+			}
+		}
+
+		public static List<UserCouponTransaction> GetBHT80Coupons()
+		{
+			lock (sync)
+			{
+				var tsb = TSB.GetCurrent();
+				return GetBHT80Coupons(tsb);
+			}
+		}
+
+		public static List<UserCouponTransaction> GetBHT80Coupons(TSB tsb)
+		{
+			if (null == tsb) return null;
+			lock (sync)
+			{
+				string cmd = string.Empty;
+				cmd += "SELECT UserCouponTransaction.* ";
+				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+				cmd += "     , User.FullNameEN, User.FullNameTH ";
+				cmd += "  FROM UserCouponTransaction, TSB, User ";
+				cmd += " WHERE UserCouponTransaction.TSBId = TSB.TSBId ";
+				cmd += "   AND UserCouponTransaction.UserId = User.UserId ";
+				cmd += "   AND UserCouponTransaction.TSBId = ? ";
+				cmd += "   AND UserCouponTransaction.CouponType = ? ";
+
+				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId, CouponType.BHT80).ToList();
+				if (null == rets)
+				{
+					return new List<UserCouponTransaction>();
+				}
+				else
+				{
+					var results = new List<UserCouponTransaction>();
+					rets.ForEach(ret =>
+					{
+						results.Add(ret.ToUserCouponTransaction());
+					});
+					return results;
+				}
+			}
+		}
+
+
 		public static void UserBorrowCoupons(User user, List<TSBCouponTransaction> coupons)
 		{
 			if (null == user || null == coupons || coupons.Count <= 0) return;
@@ -617,6 +700,7 @@ namespace DMT.Models
 					inst._TransactionDate = DateTime.Now;
 					inst.TransactionType = TransactionTypes.Borrow;
 					inst.TSBId = coupon.TSBId;
+					inst.UserId = user.UserId;
 					inst.CouponId = coupon.CouponId;
 					inst.CouponType = coupon.CouponType;
 					inst.Factor = coupon.Factor;
@@ -639,6 +723,7 @@ namespace DMT.Models
 					inst._TransactionDate = DateTime.Now;
 					inst.TransactionType = TransactionTypes.Return;
 					inst.TSBId = coupon.TSBId;
+					inst.UserId = user.UserId;
 					inst.CouponId = coupon.CouponId;
 					inst.CouponType = coupon.CouponType;
 					inst.Factor = coupon.Factor;

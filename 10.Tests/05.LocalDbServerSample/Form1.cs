@@ -102,23 +102,18 @@ namespace LocalDbServerSample
             dbgUserCredit.DataSource = UserCreditTransaction.Gets();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // Gets TSB Coupons.
-            dbgTSBCoupon.DataSource = TSBCouponTransaction.Gets();
-        }
 
         private void button20_Click(object sender, EventArgs e)
         {
             var tsb = TSB.GetCurrent();
             if (null == tsb) return;
             // Init TSB Coupons.
-            string book35Range = "630001-630010";
+            string book35Range = "630001-631000";
             var coupon35Ids = book35Range.ParseRange(0, 999999);
             if (null != coupon35Ids)
             {
                 coupon35Ids = coupon35Ids.Distinct();
-                foreach(var id in coupon35Ids)
+                foreach (var id in coupon35Ids)
                 {
                     TSBCouponTransaction item = new TSBCouponTransaction();
                     item.TransactionDate = DateTime.Now;
@@ -131,7 +126,7 @@ namespace LocalDbServerSample
                     TSBCouponTransaction.Save(item);
                 }
             }
-            string book80Range = "630011-630020";
+            string book80Range = "631001-632000";
             var coupon80Ids = book80Range.ParseRange(0, 999999);
             if (null != coupon80Ids)
             {
@@ -154,31 +149,75 @@ namespace LocalDbServerSample
             dbgTSBCoupon.DataSource = TSBCouponTransaction.Gets();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Gets TSB Coupons (Received).
+            dbgTSBCoupon.DataSource = TSBCouponTransaction.GetTSBCoupons();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            // Gets Sold Coupons.
+            dbgTSBCoupon.DataSource = TSBCouponTransaction.GetTSBSoldCoupons();
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            // User Borrow Coupons
+            var user = User.Get("14211");
+            var tsbCoupons = TSBCouponTransaction.GetTSBCoupons();
+            var borrows = new List<TSBCouponTransaction>();
+            Random rand = new Random();
+            int idx = rand.Next(tsbCoupons.Count);
+            var item = tsbCoupons[idx];
+            int i = 0;
+            do
+            {
+                if (null == item) continue;
+
+                if (item.TransactionType == TSBCouponTransaction.TransactionTypes.User ||
+                    item.TransactionType == TSBCouponTransaction.TransactionTypes.Sold)
+                {
+                    idx = rand.Next(tsbCoupons.Count);
+                    item = tsbCoupons[idx];
+                }
+                else
+                {
+                    borrows.Add(tsbCoupons[idx]);
+                    i++;
+                }
+            }
+            while (i < 10);
+
+            var search = Search.UserCoupons.BorrowCoupons.Create(user, borrows);
+            UserCouponTransaction.UserBorrowCoupons(search.User, search.Coupons);
+
+            // Gets TSB Coupons (Received).
+            dbgTSBCoupon.DataSource = TSBCouponTransaction.GetTSBCoupons();
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             // Gets User Coupons.
             dbgUserCoupon.DataSource = UserCouponTransaction.Gets();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button12_Click(object sender, EventArgs e)
         {
-            // Gets TSB Exchanges.
-            //dbgTSBExchange.DataSource = TSBExchangeTransaction.Gets();
+            // Gets User 35 Coupons.
+            dbgUserCoupon.DataSource = UserCouponTransaction.GetBHT35Coupons();
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-
+            // Gets User 80 Coupons.
+            dbgUserCoupon.DataSource = UserCouponTransaction.GetBHT80Coupons();
         }
 
-        private void button11_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button12_Click(object sender, EventArgs e)
-        {
-
+            // Gets TSB Exchanges.
+            //dbgTSBExchange.DataSource = TSBExchangeTransaction.Gets();
         }
 
         private void button13_Click(object sender, EventArgs e)
@@ -202,11 +241,6 @@ namespace LocalDbServerSample
         }
 
         private void button18_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button19_Click(object sender, EventArgs e)
         {
 
         }

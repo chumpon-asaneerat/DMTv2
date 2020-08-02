@@ -23,8 +23,9 @@ Update 2020-08-03 #9 (TA)
 Update 2020-08-03 #8 (TA)
 - 
 
+[commited]
 Update 2020-08-03 #7 (TA)
-- 
+- Implements Request Exchange process #17.
 
 [commited]
 Update 2020-08-03 #6 (TA)
