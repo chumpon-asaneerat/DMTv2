@@ -58,7 +58,6 @@
             this.splitter9 = new System.Windows.Forms.Splitter();
             this.pgPlazaGroup = new System.Windows.Forms.PropertyGrid();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.button20 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dbgPlaza = new System.Windows.Forms.DataGridView();
@@ -103,6 +102,7 @@
             this.pgTSBExchange = new System.Windows.Forms.PropertyGrid();
             this.panel19 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.button20 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dbgTSB)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -454,22 +454,12 @@
             // 
             // panel12
             // 
-            this.panel12.Controls.Add(this.button20);
             this.panel12.Controls.Add(this.button16);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel12.Location = new System.Drawing.Point(3, 617);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(1104, 61);
             this.panel12.TabIndex = 6;
-            // 
-            // button20
-            // 
-            this.button20.Location = new System.Drawing.Point(156, 3);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(147, 40);
-            this.button20.TabIndex = 16;
-            this.button20.Text = "button20";
-            this.button20.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -804,6 +794,7 @@
             // 
             // panel8
             // 
+            this.panel8.Controls.Add(this.button20);
             this.panel8.Controls.Add(this.button1);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel8.Location = new System.Drawing.Point(0, 0);
@@ -939,6 +930,16 @@
             this.panel10.Size = new System.Drawing.Size(1110, 60);
             this.panel10.TabIndex = 5;
             // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(156, 3);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(147, 40);
+            this.button20.TabIndex = 17;
+            this.button20.Text = "Init Coupons";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1040,7 +1041,6 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.PropertyGrid pgTSB;
-        private System.Windows.Forms.Button button20;
         private System.Windows.Forms.DataGridView dbgPlazaGroup;
         private System.Windows.Forms.Splitter splitter9;
         private System.Windows.Forms.PropertyGrid pgPlazaGroup;
@@ -1066,6 +1066,7 @@
         private System.Windows.Forms.Splitter splitter2;
         private System.Windows.Forms.PropertyGrid pgTSBExchange;
         private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button20;
     }
 }
 

@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using NLib;
 using DMT.Models;
 using DMT.Services;
+using DMT;
 
 #endregion
 
@@ -107,6 +108,52 @@ namespace LocalDbServerSample
             dbgTSBCoupon.DataSource = TSBCouponTransaction.Gets();
         }
 
+        private void button20_Click(object sender, EventArgs e)
+        {
+            var tsb = TSB.GetCurrent();
+            if (null == tsb) return;
+            // Init TSB Coupons.
+            string book35Range = "630001-630010";
+            var coupon35Ids = book35Range.ParseRange(0, 999999);
+            if (null != coupon35Ids)
+            {
+                coupon35Ids = coupon35Ids.Distinct();
+                foreach(var id in coupon35Ids)
+                {
+                    TSBCouponTransaction item = new TSBCouponTransaction();
+                    item.TransactionDate = DateTime.Now;
+                    item.TSBId = tsb.TSBId;
+
+                    item.CouponId = "ข" + id.ToString("D6");
+                    item.CouponType = CouponType.BHT35;
+                    item.Factor = 665;
+
+                    TSBCouponTransaction.Save(item);
+                }
+            }
+            string book80Range = "630011-630020";
+            var coupon80Ids = book80Range.ParseRange(0, 999999);
+            if (null != coupon80Ids)
+            {
+                coupon80Ids = coupon80Ids.Distinct();
+                foreach (var id in coupon80Ids)
+                {
+                    TSBCouponTransaction item = new TSBCouponTransaction();
+                    item.TransactionDate = DateTime.Now;
+                    item.TSBId = tsb.TSBId;
+
+                    item.CouponId = "C" + id.ToString("D6");
+                    item.CouponType = CouponType.BHT80;
+                    item.Factor = 1520;
+
+                    TSBCouponTransaction.Save(item);
+                }
+            }
+
+            // Gets TSB Coupons.
+            dbgTSBCoupon.DataSource = TSBCouponTransaction.Gets();
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             // Gets User Coupons.
@@ -160,11 +207,6 @@ namespace LocalDbServerSample
         }
 
         private void button19_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button20_Click(object sender, EventArgs e)
         {
 
         }

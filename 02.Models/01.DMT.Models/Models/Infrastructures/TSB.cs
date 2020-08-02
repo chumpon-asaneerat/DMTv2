@@ -283,6 +283,10 @@ namespace DMT.Models
 				return Get(db, tsbId);
 			}
 		}
+		/// <summary>
+		/// Gets Active TSB.
+		/// </summary>
+		/// <returns>Returns Active TSB instance.</returns>
 		public static TSB GetCurrent()
 		{
 			lock (sync)

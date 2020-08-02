@@ -376,6 +376,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coupon")]
 		[Description("Gets or sets number of coupon type.")]
+		[ReadOnly(true)]
 		[PeropertyMapName("CouponType")]
 		public CouponType CouponType
 		{
