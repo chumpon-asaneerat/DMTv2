@@ -1356,6 +1356,8 @@ namespace DMT.Services
 			{
 				"TSBCreditSummarryView",
 				"TSBCouponSummarryView",
+				"UserCreditBorrowSummaryView",
+				"UserCreditReturnSummaryView",
 				"UserCreditSummaryView",
 				"UserCouponSummaryView"
 			};
@@ -1371,8 +1373,10 @@ namespace DMT.Services
 			if (null == Db) return;
 
 			var hist = ViewHistory.GetWithChildren(viewName, false);
+			var info = Db.GetTableInfo(viewName);
+			bool exists = (null != info) ? info.Count > 0 : false;
 
-			if (null == hist || hist.VersionId != HistoryVersion)
+			if (!exists || null == hist || hist.VersionId != HistoryVersion)
 			{
 				string script = string.Empty;
 				MethodBase med = MethodBase.GetCurrentMethod();
