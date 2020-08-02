@@ -55,7 +55,7 @@ namespace DMT.Models
 		private string _TSBNameTH = string.Empty;
 
 		// Coupon 
-		private int _CouponId = 0;
+		private string _CouponId = string.Empty;
 		private CouponType _CouponType = CouponType.BHT35;
 		private decimal _Factor = 665;
 
@@ -278,10 +278,10 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coupon")]
 		[Description("Gets or sets coupon book id.")]
-		[Unique]
 		[ReadOnly(true)]
+		[MaxLength(20)]
 		[PeropertyMapName("CouponId")]
-		public int CouponId
+		public string CouponId
 		{
 			get { return _CouponId; }
 			set
@@ -308,6 +308,16 @@ namespace DMT.Models
 				if (_CouponType != value)
 				{
 					_CouponType = value;
+					if (_CouponType == CouponType.BHT35)
+					{
+						_Factor = 665;
+
+					}
+					else
+					{
+						_Factor = 665;
+
+					}
 					// Raise event.
 					this.RaiseChanged("CouponType");
 				}
@@ -318,6 +328,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coupon")]
 		[Description("Gets or sets number of coupon factor.")]
+		[ReadOnly(true)]
 		[PeropertyMapName("Factor")]
 		public decimal Factor
 		{
@@ -496,7 +507,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static TSBCouponTransaction GetInitial()
+		public static List<TSBCouponTransaction> GetInitial()
 		{
 			lock (sync)
 			{
@@ -505,7 +516,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static TSBCouponTransaction GetInitial(TSB tsb)
+		public static List<TSBCouponTransaction> GetInitial(TSB tsb)
 		{
 			if (null == tsb) return null;
 			lock (sync)
@@ -518,20 +529,22 @@ namespace DMT.Models
 				cmd += "   AND TSBCouponTransaction.TSBId = ? ";
 				cmd += "   AND TSBCouponTransaction.TransactionType = ? ";
 
-				var ret = NQuery.Query<FKs>(cmd,
-					tsb.TSBId, TransactionTypes.Initial).FirstOrDefault();
-				TSBCouponTransaction inst;
-				if (null == ret)
+				var rets = NQuery.Query<FKs>(cmd,
+					tsb.TSBId, TransactionTypes.Initial).ToList();
+
+				if (null == rets)
 				{
-					inst = Create();
-					tsb.AssignTo(inst);
-					inst.TransactionType = TransactionTypes.Initial;
+					return new List<TSBCouponTransaction>();
 				}
 				else
 				{
-					inst = ret.ToTSBCouponTransaction();
+					var results = new List<TSBCouponTransaction>();
+					rets.ForEach(ret =>
+					{
+						results.Add(ret.ToTSBCouponTransaction());
+					});
+					return results;
 				}
-				return inst;
 			}
 		}
 

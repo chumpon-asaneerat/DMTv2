@@ -58,16 +58,16 @@ namespace DMT.Services
 
             #region Public Methods
 
-            public TSBCouponTransaction GetCurrentInitial()
+            public List<TSBCouponTransaction> GetCurrentInitial()
             {
-                var ret = NRestClient.Create(port: 9000).Execute<TSBCouponTransaction>(
+                var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
                     RouteConsts.Coupon.GetCurrentInitial.Url, new { });
                 return ret;
             }
 
-            public TSBCouponTransaction GetInitial(TSB tsb)
+            public List<TSBCouponTransaction> GetInitial(TSB tsb)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<TSBCouponTransaction>(
+                var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
                     RouteConsts.Coupon.GetInitial.Url, tsb);
                 return ret;
             }

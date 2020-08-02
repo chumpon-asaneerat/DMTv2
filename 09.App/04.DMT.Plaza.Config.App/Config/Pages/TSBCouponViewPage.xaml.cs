@@ -47,6 +47,11 @@ namespace DMT.Config.Pages
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             RefreshTSBs();
+
+            if (cbCouponType.SelectedIndex == -1)
+            {
+                cbCouponType.SelectedIndex = 0; // auto select
+            }
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
@@ -61,23 +66,53 @@ namespace DMT.Config.Pages
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var item = listView.SelectedItem as TSB;
+            /*
             pgrid.SelectedObject = null;
             if (null == item) return;
 
             pgrid.SelectedObject = ops.Coupons.GetInitial(item);
+            */
         }
 
         #endregion
 
         #region Button Handlers
 
+        private void cmdAddCoupon_Click(object sender, RoutedEventArgs e)
+        {
+            string idRange = txtRange.Text;
+            var ids = idRange.ParseRange(0, 999999);
+            if (null != ids)
+            {
+                // remove duplicate id.
+                ids = ids.Distinct();
+                foreach (var id in ids)
+                {
+                    TSBCouponTransaction item = new TSBCouponTransaction();
+                    if ((cbCouponType.SelectedIndex == 0))
+                    {
+                        item.CouponId = "ข" + id.ToString("D6");
+                        item.CouponType = CouponType.BHT35;
+                    }
+                    else
+                    {
+                        item.CouponId = "C" + id.ToString("D6");
+                        item.CouponType = CouponType.BHT80;
+                    }
+                    ops.Coupons.SaveTransaction(item);
+                }
+            }
+        }
+
         private void cmdSave_Click(object sender, RoutedEventArgs e)
         {
+            /*
             var item = pgrid.SelectedObject as TSBCouponTransaction;
             if (null == item) return;
             ops.Coupons.SaveTransaction(item);
             // clear
             pgrid.SelectedObject = null;
+            */
         }
 
         #endregion

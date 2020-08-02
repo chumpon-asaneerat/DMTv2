@@ -39,11 +39,50 @@
         <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" />
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="40" />
             </Grid.RowDefinitions>
+            <!--
             <xceed:PropertyGrid x:Name="pgrid" />
+            -->
+            <DockPanel Grid.Row="0" LastChildFill="True">
+                <Grid Width="10" DockPanel.Dock="Left" />
+                <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
+                    <TextBlock FontSize="18" 
+                               Text="Book Number (range):" />
+                    <TextBox x:Name="txtRange"
+                             Width="250"
+                             FontSize="18" />
+                </StackPanel>
+                <Grid Width="10" DockPanel.Dock="Left" />
+                <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
+                    <TextBlock FontSize="18" 
+                               Text="Coupon Type:" />
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox x:Name="cbCouponType"
+                                  FontSize="16"
+                                  Width="200">
+                            <ComboBoxItem>BHT 35</ComboBoxItem>
+                            <ComboBoxItem>BHT 80</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+                <Grid Width="10" DockPanel.Dock="Left" />
+                <StackPanel Orientation="Vertical" DockPanel.Dock="Left"
+                            VerticalAlignment="Center">
+                    <Button x:Name="cmdAddCoupon" 
+                            FontSize="18" 
+                            Width="150"
+                            Content="Add"
+                            Click="cmdAddCoupon_Click"/>
+                </StackPanel>
+                <Grid />
+            </DockPanel>
             <Grid Grid.Row="1">
+
+            </Grid>
+            <Grid Grid.Row="2">
                 <Button x:Name="cmdSave"
                         Width="75"
                         Margin="0,10,10,0"

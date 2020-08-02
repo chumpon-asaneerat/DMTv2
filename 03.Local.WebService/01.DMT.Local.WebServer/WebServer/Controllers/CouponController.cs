@@ -19,14 +19,14 @@ namespace DMT.Services
     {
         [HttpPost]
         [ActionName(RouteConsts.Coupon.GetCurrentInitial.Name)]
-        public TSBCouponTransaction GetCurrentInitial()
+        public List<TSBCouponTransaction> GetCurrentInitial()
         {
             return TSBCouponTransaction.GetInitial();
         }
 
         [HttpPost]
         [ActionName(RouteConsts.Coupon.GetInitial.Name)]
-        public TSBCouponTransaction GetInitial([FromBody] TSB tsb)
+        public List<TSBCouponTransaction> GetInitial([FromBody] TSB tsb)
         {
             return TSBCouponTransaction.GetInitial(tsb);
         }
