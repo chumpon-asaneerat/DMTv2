@@ -733,15 +733,15 @@ namespace DMT.Models
 		}
 
 		public static void Sold(UserCouponTransaction coupon)
-        {
+		{
 			if (null == coupon) return;
 			lock (sync)
-            {
+			{
 				coupon.TransactionType = UserCouponTransaction.TransactionTypes.Sold;
 				UserCouponTransaction.Save(coupon);
 				var tsbCoupon = TSBCouponTransaction.FindById(coupon.CouponId);
 				if (null != tsbCoupon)
-                {
+				{
 					TSBCouponTransaction.Sold(tsbCoupon);
 				}
 			}

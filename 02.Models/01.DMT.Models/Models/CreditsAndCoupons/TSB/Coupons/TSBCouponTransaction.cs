@@ -540,6 +540,88 @@ namespace DMT.Models
 			}
 		}
 
+		public static List<TSBCouponTransaction> GetBHT35Coupons()
+		{
+			lock (sync)
+			{
+				var tsb = TSB.GetCurrent();
+				return GetTSBBHT35Coupons(tsb);
+			}
+		}
+
+		public static List<TSBCouponTransaction> GetTSBBHT35Coupons(TSB tsb)
+		{
+			if (null == tsb) return null;
+			lock (sync)
+			{
+				string cmd = string.Empty;
+				cmd += "SELECT TSBCouponTransaction.* ";
+				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+				cmd += "  FROM TSBCouponTransaction, TSB ";
+				cmd += " WHERE TSBCouponTransaction.TSBId = TSB.TSBId ";
+				cmd += "   AND TSBCouponTransaction.TSBId = ? ";
+				cmd += "   AND TSBCouponTransaction.CouponType = ? ";
+				cmd += "   AND TSBCouponTransaction.TransactionType = ? ";
+
+				var rets = NQuery.Query<FKs>(cmd,
+					tsb.TSBId, CouponType.BHT35, TransactionTypes.Received).ToList();
+				if (null == rets)
+				{
+					return new List<TSBCouponTransaction>();
+				}
+				else
+				{
+					var results = new List<TSBCouponTransaction>();
+					rets.ForEach(ret =>
+					{
+						results.Add(ret.ToTSBCouponTransaction());
+					});
+					return results;
+				}
+			}
+		}
+
+		public static List<TSBCouponTransaction> GetTSBBHT80Coupons()
+		{
+			lock (sync)
+			{
+				var tsb = TSB.GetCurrent();
+				return GetTSBBHT80Coupons(tsb);
+			}
+		}
+
+		public static List<TSBCouponTransaction> GetTSBBHT80Coupons(TSB tsb)
+		{
+			if (null == tsb) return null;
+			lock (sync)
+			{
+				string cmd = string.Empty;
+				cmd += "SELECT TSBCouponTransaction.* ";
+				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+				cmd += "  FROM TSBCouponTransaction, TSB ";
+				cmd += " WHERE TSBCouponTransaction.TSBId = TSB.TSBId ";
+				cmd += "   AND TSBCouponTransaction.TSBId = ? ";
+				cmd += "   AND TSBCouponTransaction.CouponType = ? ";
+				cmd += "   AND TSBCouponTransaction.TransactionType = ? ";
+
+				var rets = NQuery.Query<FKs>(cmd, 
+					tsb.TSBId, CouponType.BHT80, TransactionTypes.Received).ToList();
+				if (null == rets)
+				{
+					return new List<TSBCouponTransaction>();
+				}
+				else
+				{
+					var results = new List<TSBCouponTransaction>();
+					rets.ForEach(ret =>
+					{
+						results.Add(ret.ToTSBCouponTransaction());
+					});
+					return results;
+				}
+			}
+		}
+
 		public static List<TSBCouponTransaction> GetTSBSoldCoupons()
 		{
 			lock (sync)

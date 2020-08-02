@@ -35,6 +35,8 @@ namespace DMT.TA.Windows.Coupon
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
         private User _user = null;
+        private List<TSBCouponTransaction> _tsbCoupon35;
+        private List<TSBCouponTransaction> _tsbCoupon80;
 
         #region Button Handlers
 
@@ -83,6 +85,24 @@ namespace DMT.TA.Windows.Coupon
             {
                 txtUser.Content = string.Empty;
             }
+            RefreshCoupons();
+        }
+
+        private void RefreshCoupons()
+        {
+            var tsb = ops.TSB.GetCurrent();
+            _tsbCoupon35 = null;
+            _tsbCoupon80 = null;
+            lvUser35.ItemsSource = null;
+            lvUser80.ItemsSource = null;
+
+            if (null != tsb)
+            {
+                _tsbCoupon35 = ops.Coupons.GetTSBBHT35Coupons(tsb);
+                _tsbCoupon80 = ops.Coupons.GetTSBBHT80Coupons(tsb);
+            }
+            lvTSB35.ItemsSource = _tsbCoupon35;
+            lvTSB80.ItemsSource = _tsbCoupon80;
         }
     }
 }

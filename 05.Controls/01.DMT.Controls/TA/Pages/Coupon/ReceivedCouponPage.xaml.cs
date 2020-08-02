@@ -14,6 +14,7 @@ using System.Reflection;
 using System.ComponentModel;
 using System.Windows.Interop;
 using NLib;
+using System.Windows.Threading;
 
 #endregion
 
@@ -29,12 +30,41 @@ namespace DMT.TA.Pages.Coupon
         public ReceivedCouponPage()
         {
             InitializeComponent();
+        }
 
+        #endregion
+
+        #region Loaded/Unloaded
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
+
+            RefreshList();
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            if (null == timer) return;
+            timer.Stop();
+            timer = null;
+        }
+
+        #endregion
+
+        #region Timer Handler
+
+        void timer_Tick(object sender, EventArgs e)
+        {
             UpdateDateTime();
         }
 
         #endregion
 
+        private DispatcherTimer timer = new DispatcherTimer();
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
         private User _user = null;
 
@@ -95,14 +125,13 @@ namespace DMT.TA.Pages.Coupon
                     txtUserName.Text = string.Empty;
                 }
             }
-
-            UpdateDateTime();
         }
 
         private void cmdAppend_Click(object sender, RoutedEventArgs e)
         {
             var win = new DMT.TA.Windows.Coupon.CouponEditWindow();
-
+            win.Owner = Application.Current.MainWindow;
+            win.Setup(_user);
             if (win.ShowDialog() == false)
             {
                 UpdateDateTime();
@@ -110,14 +139,13 @@ namespace DMT.TA.Pages.Coupon
             }
 
             RefreshList();
-            UpdateDateTime();
         }
 
         #endregion
 
         public void RefreshList()
         {
-
+            //_tsbCoupon35 = ops.Coupons.get
         }
     }
 }

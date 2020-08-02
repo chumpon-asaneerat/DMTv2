@@ -72,6 +72,20 @@ namespace DMT.Services
                 return ret;
             }
 
+            public List<TSBCouponTransaction> GetTSBBHT35Coupons(TSB tsb)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
+                    RouteConsts.Coupon.GetTSBBHT35Coupons.Url, tsb);
+                return ret;
+            }
+
+            public List<TSBCouponTransaction> GetTSBBHT80Coupons(TSB tsb)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
+                    RouteConsts.Coupon.GetTSBBHT80Coupons.Url, tsb);
+                return ret;
+            }
+
             public List<TSBCouponTransaction> GetCurrentTSBSoldCoupons()
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(

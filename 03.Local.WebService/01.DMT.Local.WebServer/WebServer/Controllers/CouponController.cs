@@ -46,6 +46,20 @@ namespace DMT.Services
         }
 
         [HttpPost]
+        [ActionName(RouteConsts.Coupon.GetTSBBHT35Coupons.Name)]
+        public List<TSBCouponTransaction> GetTSBBHT35Coupons([FromBody] TSB tsb)
+        {
+            return TSBCouponTransaction.GetTSBBHT35Coupons(tsb);
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Coupon.GetTSBBHT80Coupons.Name)]
+        public List<TSBCouponTransaction> GetTSBBHT80Coupons([FromBody] TSB tsb)
+        {
+            return TSBCouponTransaction.GetTSBBHT80Coupons(tsb);
+        }
+
+        [HttpPost]
         [ActionName(RouteConsts.Coupon.SaveTransaction.Name)]
         public void SaveTransaction([FromBody] TSBCouponTransaction value)
         {

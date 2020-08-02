@@ -249,15 +249,15 @@
                 </Button>
                 <Label x:Name="txtUser" 
                        Grid.Column="1"
-                       Width="126"
-                       Margin="8,0,75,0"
+                       Grid.ColumnSpan="9"
+                       Margin="5"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Top"
                        Content=""
                        FontSize="18"
                        Foreground="White"
                        FontWeight="Normal"
-                       FontFamily="Tahoma" />
+                       FontFamily="Tahoma"/>
                 <Label Grid.Column="1"
                        Grid.ColumnSpan="3"
                        Width="126"
@@ -280,7 +280,6 @@
                        Foreground="White"
                        FontWeight="Normal"
                        FontFamily="Tahoma" />
-
             </Grid>
         </DockPanel>
     </Grid>
