@@ -15,6 +15,7 @@ using System.ComponentModel;
 using System.Windows.Interop;
 using NLib;
 using System.Collections;
+using System.Linq;
 
 #endregion
 
@@ -44,7 +45,24 @@ namespace DMT.TA.Windows.Coupon
         private void cmdSaveExchange_Click(object sender, RoutedEventArgs e)
         {
             // Save
-
+            if (null != _user && null != _tsbCoupon35)
+            {
+                var list = _tsbCoupon35.FindAll(item =>
+                {
+                    return item.TransactionType == TSBCouponTransaction.TransactionTypes.User;
+                }).ToList();
+                var opts = Search.UserCoupons.BorrowCoupons.Create(_user, list);
+                ops.Coupons.UserBorrowCoupons(opts);
+            }
+            if (null != _user && null != _tsbCoupon80)
+            {
+                var list = _tsbCoupon80.FindAll(item =>
+                {
+                    return item.TransactionType == TSBCouponTransaction.TransactionTypes.User;
+                }).ToList();
+                var opts = Search.UserCoupons.BorrowCoupons.Create(_user, list);
+                ops.Coupons.UserBorrowCoupons(opts);
+            }
             this.DialogResult = true;
         }
 
