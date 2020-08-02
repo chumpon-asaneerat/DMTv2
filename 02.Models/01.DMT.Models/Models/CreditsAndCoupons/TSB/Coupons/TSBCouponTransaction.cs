@@ -35,9 +35,10 @@ namespace DMT.Models
 
 		public enum TransactionTypes : int
 		{
-			Initial = 0,
 			// received from account
-			Received = 1,
+			Received = 0,
+			// User On Hand
+			User = 1,
 			// Sold
 			Sold = 2
 		}
@@ -48,15 +49,11 @@ namespace DMT.Models
 
 		private int _TransactionId = 0;
 		private DateTime _TransactionDate = DateTime.MinValue;
-		private TransactionTypes _TransactionType = TransactionTypes.Initial;
+		private TransactionTypes _TransactionType = TransactionTypes.Received;
 
 		private string _TSBId = string.Empty;
 		private string _TSBNameEN = string.Empty;
 		private string _TSBNameTH = string.Empty;
-
-		private string _UserId = string.Empty;
-		private string _FullNameEN = string.Empty;
-		private string _FullNameTH = string.Empty;
 
 		// Coupon 
 		private string _CouponId = string.Empty;
@@ -275,81 +272,6 @@ namespace DMT.Models
 
 		#endregion
 
-		#region User
-
-		/// <summary>
-		/// Gets or sets UserId
-		/// </summary>
-		[Category("User")]
-		[Description("Gets or sets UserId")]
-		[ReadOnly(true)]
-		[Ignore]
-		[MaxLength(10)]
-		[PeropertyMapName("UserId")]
-		public virtual string UserId
-		{
-			get
-			{
-				return _UserId;
-			}
-			set
-			{
-				if (_UserId != value)
-				{
-					_UserId = value;
-					this.RaiseChanged("UserId");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets FullNameEN
-		/// </summary>
-		[Category("User")]
-		[Description("Gets or sets FullNameEN")]
-		[ReadOnly(true)]
-		[Ignore]
-		[PeropertyMapName("FullNameEN")]
-		public virtual string FullNameEN
-		{
-			get
-			{
-				return _FullNameEN;
-			}
-			set
-			{
-				if (_FullNameEN != value)
-				{
-					_FullNameEN = value;
-					this.RaiseChanged("FullNameEN");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets FullNameTH
-		/// </summary>
-		[Category("User")]
-		[Description("Gets or sets FullNameTH")]
-		[ReadOnly(true)]
-		[Ignore]
-		[PeropertyMapName("FullNameTH")]
-		public virtual string FullNameTH
-		{
-			get
-			{
-				return _FullNameTH;
-			}
-			set
-			{
-				if (_FullNameTH != value)
-				{
-					_FullNameTH = value;
-					this.RaiseChanged("FullNameTH");
-				}
-			}
-		}
-
-		#endregion
-
 		#region Coupon
 
 		/// <summary>
@@ -512,41 +434,6 @@ namespace DMT.Models
 
 			#endregion
 
-			#region User
-
-			/// <summary>
-			/// Gets or sets UserId
-			/// </summary>
-			[MaxLength(10)]
-			[PeropertyMapName("UserId")]
-			public override string UserId
-			{
-				get { return base.UserId; }
-				set { base.UserId = value; }
-			}
-			/// <summary>
-			/// Gets or sets FullNameEN
-			/// </summary>
-			[MaxLength(100)]
-			[PeropertyMapName("FullNameEN")]
-			public override string FullNameEN
-			{
-				get { return base.FullNameEN; }
-				set { base.FullNameEN = value; }
-			}
-			/// <summary>
-			/// Gets or sets FullNameTH
-			/// </summary>
-			[MaxLength(100)]
-			[PeropertyMapName("FullNameTH")]
-			public override string FullNameTH
-			{
-				get { return base.FullNameTH; }
-				set { base.FullNameTH = value; }
-			}
-
-			#endregion
-
 			#region Public Methods
 
 			public TSBCouponTransaction ToTSBCouponTransaction()
@@ -590,10 +477,8 @@ namespace DMT.Models
 				string cmd = string.Empty;
 				cmd += "SELECT TSBCouponTransaction.* ";
 				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , User.UserId, User.FullNameEN, User.FullNameTH ";
-				cmd += "  FROM TSBCouponTransaction, TSB, User ";
+				cmd += "  FROM TSBCouponTransaction, TSB ";
 				cmd += " WHERE TSBCouponTransaction.TSBId = TSB.TSBId ";
-				cmd += "   AND TSBCouponTransaction.UserId = User.UserId ";
 				cmd += "   AND TSBCouponTransaction.TSBId = ? ";
 
 				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
@@ -630,15 +515,13 @@ namespace DMT.Models
 				string cmd = string.Empty;
 				cmd += "SELECT TSBCouponTransaction.* ";
 				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , User.UserId, User.FullNameEN, User.FullNameTH ";
-				cmd += "  FROM TSBCouponTransaction, TSB, User ";
+				cmd += "  FROM TSBCouponTransaction, TSB ";
 				cmd += " WHERE TSBCouponTransaction.TSBId = TSB.TSBId ";
-				cmd += "   AND TSBCouponTransaction.UserId = User.UserId ";
 				cmd += "   AND TSBCouponTransaction.TSBId = ? ";
 				cmd += "   AND TSBCouponTransaction.TransactionType = ? ";
 
 				var rets = NQuery.Query<FKs>(cmd,
-					tsb.TSBId, TransactionTypes.Initial).ToList();
+					tsb.TSBId, TransactionTypes.Received).ToList();
 
 				if (null == rets)
 				{

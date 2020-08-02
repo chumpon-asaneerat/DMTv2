@@ -8,7 +8,7 @@ AS
 			   FROM TSBCouponTransaction 
 			  WHERE (   TSBCouponTransaction.TransactionType = 0 
 					 OR TSBCouponTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					) -- Received = 0, UserOnHand = 1
 				AND TSBCouponTransaction.TSBId = TSB.TSBId
 				AND TSBCouponTransaction.CouponType = 35
 			) -
@@ -24,7 +24,7 @@ AS
 			   FROM TSBCouponTransaction 
 			  WHERE (   TSBCouponTransaction.TransactionType = 0 
 					 OR TSBCouponTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					) -- Received = 0, UserOnHand = 1
 				AND TSBCouponTransaction.TSBId = TSB.TSBId
 				AND TSBCouponTransaction.CouponType = 80
 			) -
@@ -40,7 +40,7 @@ AS
 			   FROM TSBCouponTransaction 
 			  WHERE (   TSBCouponTransaction.TransactionType = 0 
 					 OR TSBCouponTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					) -- Received = 0, UserOnHand = 1
 				AND TSBCouponTransaction.TSBId = TSB.TSBId
 				AND TSBCouponTransaction.CouponType = 35
 			) +
@@ -49,7 +49,7 @@ AS
 			   FROM TSBCouponTransaction 
 			  WHERE (   TSBCouponTransaction.TransactionType = 0 
 					 OR TSBCouponTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					) -- Received = 0, UserOnHand = 1
 				AND TSBCouponTransaction.TSBId = TSB.TSBId
 				AND TSBCouponTransaction.CouponType = 80
 			) -
