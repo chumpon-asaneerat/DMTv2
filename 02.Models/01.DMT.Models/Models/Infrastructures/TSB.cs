@@ -153,7 +153,6 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Common")]
 		[Description("Gets or sets Max TSB Credit.")]
-		[ReadOnly(true)]
 		[PeropertyMapName("MaxCredit")]
 		public decimal MaxCredit
 		{

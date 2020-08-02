@@ -35,8 +35,10 @@ Update 2020-08-02 #5
 Update 2020-08-02 #4
 - 
 
+[commited]
 Update 2020-08-02 #3
-- 
+- Update TSB model add MaxCredit column #2.
+- Update TSBCouponTransaction model set readonly attribute for CouponId.
 
 [commited]
 Update 2020-08-02 #2
