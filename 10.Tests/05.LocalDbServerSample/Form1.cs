@@ -47,27 +47,27 @@ namespace LocalDbServerSample
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            // Gets TSB Coupons.
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            // Gets User Coupons.
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            // Gets TSB Exchanges.
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            // Gets TSB Credits
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            // Gets User Credits
         }
 
         private void button6_Click(object sender, EventArgs e)
