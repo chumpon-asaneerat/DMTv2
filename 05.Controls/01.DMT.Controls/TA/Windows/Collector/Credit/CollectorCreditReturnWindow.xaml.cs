@@ -53,20 +53,26 @@ namespace DMT.TA.Windows.Collector.Credit
             }
             if (null != srcObj && null != usrObj)
             {
-                usrObj.UserCreditId = srcObj.UserCreditId;
-                usrObj.TransactionType = UserCreditTransaction.TransactionTypes.Return;
-                ops.Credits.SaveUserTransaction(usrObj);
-                // Check is total borrow is reach zero.
-                var search = Search.UserCredits.GetActiveById.Create(
-                    srcObj.UserId, srcObj.PlazaGroupId);
-                var inst = ops.Credits.GetActiveUserCreditById(search);
-                if (null != inst)
+                DMT.Windows.MessageBoxYesNoRedWindow msg = new DMT.Windows.MessageBoxYesNoRedWindow();
+                msg.Owner = Application.Current.MainWindow;
+                msg.Setup("ยืนยันการคืนเงิน ยืมทอน", srcObj.FullNameTH+" จำนวนเงิน "+ srcObj.BHTTotal.ToString("#,##0") + " บาท", "Toll Admin", true);
+                if (msg.ShowDialog() == true)
                 {
-                    if (inst.BHTTotal <= decimal.Zero)
+                    usrObj.UserCreditId = srcObj.UserCreditId;
+                    usrObj.TransactionType = UserCreditTransaction.TransactionTypes.Return;
+                    ops.Credits.SaveUserTransaction(usrObj);
+                    // Check is total borrow is reach zero.
+                    var search = Search.UserCredits.GetActiveById.Create(
+                        srcObj.UserId, srcObj.PlazaGroupId);
+                    var inst = ops.Credits.GetActiveUserCreditById(search);
+                    if (null != inst)
                     {
-                        // change source state.
-                        srcObj.State = UserCredit.StateTypes.Completed;
-                        ops.Credits.SaveUserCredit(srcObj);
+                        if (inst.BHTTotal <= decimal.Zero)
+                        {
+                            // change source state.
+                            srcObj.State = UserCredit.StateTypes.Completed;
+                            ops.Credits.SaveUserCredit(srcObj);
+                        }
                     }
                 }
             }

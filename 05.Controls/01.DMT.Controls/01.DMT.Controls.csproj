@@ -92,6 +92,9 @@
     <Compile Include="TA\Controls\Collector\Coupon\View\CouponReturnView.xaml.cs">
       <DependentUpon>CouponReturnView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TA\Controls\History\View\PlazaFundHistoryView.xaml.cs">
+      <DependentUpon>PlazaFundHistoryView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TA\Controls\Plaza\Entry\FundDetailEntry.xaml.cs">
       <DependentUpon>FundDetailEntry.xaml</DependentUpon>
     </Compile>
@@ -100,6 +103,9 @@
     </Compile>
     <Compile Include="TA\Controls\Plaza\Entry\LoanMoneyEntry.xaml.cs">
       <DependentUpon>LoanMoneyEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Controls\Plaza\Entry\PlazaCreditEntryTotal.xaml.cs">
+      <DependentUpon>PlazaCreditEntryTotal.xaml</DependentUpon>
     </Compile>
     <Compile Include="TA\Controls\Plaza\Entry\PlazaCreditEntryOld.xaml.cs">
       <DependentUpon>PlazaCreditEntryOld.xaml</DependentUpon>
@@ -124,6 +130,9 @@
     </Compile>
     <Compile Include="TA\Pages\Exchange\PlazaRequestExchangePage.xaml.cs">
       <DependentUpon>PlazaRequestExchangePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Pages\History\PlazaReturnHistoryPage.xaml.cs">
+      <DependentUpon>PlazaReturnHistoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TA\Pages\Menu\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
@@ -188,6 +197,15 @@
     </Compile>
     <Compile Include="TA\Controls\Plaza\View\PlazaFundView.xaml.cs">
       <DependentUpon>PlazaFundView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Windows\MessageBox\MessageBoxYesNoRed3Window.xaml.cs">
+      <DependentUpon>MessageBoxYesNoRed3Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Windows\MessageBox\MessageBoxYesNoRedWindow - Copy.xaml.cs">
+      <DependentUpon>MessageBoxYesNoRedWindow - Copy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TA\Windows\MessageBox\MessageBoxYesNoRed2Window.xaml.cs">
+      <DependentUpon>MessageBoxYesNoRed2Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="TA\Windows\Plaza\PlazaStockSummaryWindow.xaml.cs">
       <DependentUpon>PlazaStockSummaryWindow.xaml</DependentUpon>
@@ -323,10 +341,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="TA\Pages\Reports\CouponRep.rdlc" />
     <EmbeddedResource Include="TOD\Pages\Reports\RevenueSlipNull.rdlc" />
     <EmbeddedResource Include="TOD\Pages\Reports\RevenueSlipSum.rdlc" />
     <EmbeddedResource Include="TOD\Pages\Reports\RevenueSlip.rdlc" />
     <None Include="Properties\DataSources\DMT.Models.RevenueEntry.datasource" />
+    <None Include="Properties\DataSources\DMT.Models.UserCouponTransaction.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -403,6 +423,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="TA\Controls\History\View\PlazaFundHistoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="TA\Controls\Plaza\Entry\FundDetailEntry.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -412,6 +436,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="TA\Controls\Plaza\Entry\LoanMoneyEntry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Controls\Plaza\Entry\PlazaCreditEntryTotal.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -444,6 +472,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="TA\Pages\Exchange\PlazaRequestExchangePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Pages\History\PlazaReturnHistoryPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -528,6 +560,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="TA\Windows\Coupon\CouponReturnWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Windows\MessageBox\MessageBoxYesNoRed3Window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Windows\MessageBox\MessageBoxYesNoRedWindow - Copy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Windows\MessageBox\MessageBoxYesNoRed2Window.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

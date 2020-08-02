@@ -56,38 +56,78 @@
                     <Grid Width="5" />
                 </StackPanel>
             </DockPanel>
-            <StackPanel HorizontalAlignment="Center"
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid>
+                    <DockPanel >
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                               Margin="10,0,0,0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="30"
+                               Foreground="WhiteSmoke"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap"
+                                Text="วงเงินหมุนเวียนด่าน :"/>
+                            <TextBlock x:Name="txtMsg" 
+                               Margin="10,0,0,0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="30"
+                               Foreground="WhiteSmoke"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap"/>
+                            <TextBlock
+                               Margin="10,0,0,0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="30"
+                               Foreground="WhiteSmoke"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap"
+                                Text="บาท"/>
+                        </StackPanel>
+
+                    </DockPanel>
+                </Grid>
+                <StackPanel HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Orientation="Horizontal">
-                <Grid Width="5" />
-                <!-- CREDIT -->
-                <ctrl:PlazaCreditEntry x:Name="creditEntry"
+                        Orientation="Horizontal" Grid.Row="1">
+                    <Grid Width="5" />
+                    <!-- CREDIT -->
+                    <ctrl:PlazaCreditEntry x:Name="creditEntry"
                                        Width="300"
                                        FontSize="16"
                                        Background="Orange"
                                        Foreground="WhiteSmoke" />
-                <Grid Width="5" />
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="150" />
-                    </Grid.RowDefinitions>
-                    <!-- COUPON -->
-                    <ctrl:PlazaCouponEntry x:Name="couponEntry"
+                    <Grid Width="5" />
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="150" />
+                        </Grid.RowDefinitions>
+                        <!-- COUPON -->
+                        <ctrl:PlazaCouponEntry x:Name="couponEntry"
                                            Width="300"
                                            FontSize="16"
                                            Background="DarkRed"
                                            Foreground="WhiteSmoke" />
-                    <!-- ADDITION -->
-                    <ctrl:LoanMoney2Entry x:Name="loanMoneyEntry"
+                        <!-- ADDITION -->
+                        <ctrl:LoanMoney2Entry x:Name="loanMoneyEntry"
                                           Grid.Row="1"
                                           Width="300"
                                           FontSize="16"
                                           Background="Orange"
                                           Foreground="WhiteSmoke" />
-                </Grid>
-                <Grid Width="5" />
-            </StackPanel>
+                    </Grid>
+                    <Grid Width="5" />
+                </StackPanel>
+            </Grid>
+            
         </DockPanel>
     </Grid>
 </Window>

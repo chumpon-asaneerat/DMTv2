@@ -47,7 +47,7 @@ namespace DMT.TA.Windows.Plaza
         public void RefreshPlazaInfo()
         {
             var tsbCredit = ops.Credits.GetCurrent();
-            tsbCredit.Description = "เงินยืมทอน";
+            tsbCredit.Description = "เงินยืมทอนหมุนเวียนด่าน";
             tsbCredit.HasRemark = false;
             creditEntry.IsEnabled = false;
             creditEntry.DataContext = tsbCredit;
@@ -60,6 +60,11 @@ namespace DMT.TA.Windows.Plaza
 
             loanMoneyEntry.IsEnabled = false;
             loanMoneyEntry.DataContext = tsbCredit;
+
+            if (tsbCredit != null)
+                txtMsg.Text = tsbCredit.BHTTotal.ToString();
+            else
+                txtMsg.Text = "0";
         }
     }
 }

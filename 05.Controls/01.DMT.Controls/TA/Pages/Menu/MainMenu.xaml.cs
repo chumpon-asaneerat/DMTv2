@@ -450,7 +450,8 @@ namespace DMT.TA.Pages.Menu
         // NO Implementation ประวัติการแลกเงินยืมทอน (collector)
         private void changeBorrowingHistory_Click(object sender, RoutedEventArgs e)
         {
-
+            var page = new History.PlazaReturnHistoryPage();
+            PageContentManager.Instance.Current = page;
         }
         // NO Implementation รับคูปอง (collector)
         private void collectorReveivedCoupon_Click(object sender, RoutedEventArgs e)
