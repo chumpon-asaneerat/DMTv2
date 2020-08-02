@@ -85,7 +85,7 @@ Update 2020-08-02 #8
 - Update Coupon related process #5.
 
 [commited]
-Update 2020-08-02 #7
+Update 2020-08-02 #7 (re commit)
 - Update Coupon related process #4.
 
 [commited]
