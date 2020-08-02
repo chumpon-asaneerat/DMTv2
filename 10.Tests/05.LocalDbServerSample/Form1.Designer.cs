@@ -39,8 +39,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.dbgTSB = new System.Windows.Forms.DataGridView();
@@ -103,6 +101,8 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dbgTSB)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -114,11 +114,9 @@
             this.panel3.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbgPlaza)).BeginInit();
-            this.panel13.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbgLane)).BeginInit();
-            this.panel14.SuspendLayout();
             this.panel5.SuspendLayout();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbgTSBCredit)).BeginInit();
@@ -247,26 +245,6 @@
             this.button1.Text = "Gets TSB Coupons";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button18
-            // 
-            this.button18.Location = new System.Drawing.Point(3, 3);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(147, 40);
-            this.button18.TabIndex = 13;
-            this.button18.Text = "button18";
-            this.button18.UseVisualStyleBackColor = true;
-            this.button18.Click += new System.EventHandler(this.button18_Click);
-            // 
-            // button17
-            // 
-            this.button17.Location = new System.Drawing.Point(3, 3);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(147, 40);
-            this.button17.TabIndex = 12;
-            this.button17.Text = "button17";
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
             // button16
             // 
@@ -484,7 +462,6 @@
             // 
             // panel13
             // 
-            this.panel13.Controls.Add(this.button17);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel13.Location = new System.Drawing.Point(0, 620);
             this.panel13.Name = "panel13";
@@ -548,7 +525,6 @@
             // 
             // panel14
             // 
-            this.panel14.Controls.Add(this.button18);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel14.Location = new System.Drawing.Point(0, 620);
             this.panel14.Name = "panel14";
@@ -833,6 +809,8 @@
             // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.button18);
+            this.panel9.Controls.Add(this.button17);
             this.panel9.Controls.Add(this.button10);
             this.panel9.Controls.Add(this.button12);
             this.panel9.Controls.Add(this.button2);
@@ -936,6 +914,26 @@
             this.button19.UseVisualStyleBackColor = true;
             this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(462, 3);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(147, 40);
+            this.button17.TabIndex = 13;
+            this.button17.Text = "Sold";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(615, 3);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(147, 40);
+            this.button18.TabIndex = 14;
+            this.button18.Text = "Returns";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -957,11 +955,9 @@
             this.panel3.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dbgPlaza)).EndInit();
-            this.panel13.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dbgLane)).EndInit();
-            this.panel14.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dbgTSBCredit)).EndInit();
@@ -995,8 +991,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.DataGridView dbgTSB;
@@ -1059,6 +1053,8 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button button17;
     }
 }
 

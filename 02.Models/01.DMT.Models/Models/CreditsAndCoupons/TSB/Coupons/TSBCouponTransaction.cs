@@ -581,6 +581,43 @@ namespace DMT.Models
 			}
 		}
 
+		public static TSBCouponTransaction FindById(string couponId)
+        {
+			lock (sync)
+			{
+				var tsb = TSB.GetCurrent();
+				return FindById(tsb, couponId);
+			}
+		}
+
+		public static TSBCouponTransaction FindById(TSB tsb, string couponId)
+		{
+			lock (sync)
+			{
+				string cmd = string.Empty;
+				cmd += "SELECT TSBCouponTransaction.* ";
+				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+				cmd += "  FROM TSBCouponTransaction, TSB ";
+				cmd += " WHERE TSBCouponTransaction.TSBId = TSB.TSBId ";
+				cmd += "   AND TSBCouponTransaction.TSBId = ? ";
+				cmd += "   AND TSBCouponTransaction.CouponId = ? ";
+
+				var ret = NQuery.Query<FKs>(cmd,
+					tsb.TSBId, couponId).FirstOrDefault();
+				return (null != ret) ? ret.ToTSBCouponTransaction() : null;
+			}
+		}
+
+		public static void Sold(TSBCouponTransaction coupon)
+		{
+			if (null == coupon) return;
+			lock (sync)
+			{
+				coupon.TransactionType = TSBCouponTransaction.TransactionTypes.Sold;
+				TSBCouponTransaction.Save(coupon);
+			}
+		}
+
 		#endregion
 	}
 

@@ -36,7 +36,8 @@ namespace DMT.Models
 		public enum TransactionTypes
 		{
 			Borrow = 1,
-			Return = 2 
+			Return = 2,
+			Sold = 3
 		}
 
 		#endregion
@@ -686,7 +687,6 @@ namespace DMT.Models
 			}
 		}
 
-
 		public static void UserBorrowCoupons(User user, List<TSBCouponTransaction> coupons)
 		{
 			if (null == user || null == coupons || coupons.Count <= 0) return;
@@ -729,6 +729,21 @@ namespace DMT.Models
 					inst.Factor = coupon.Factor;
 					UserCouponTransaction.Save(inst);
 				});
+			}
+		}
+
+		public static void Sold(UserCouponTransaction coupon)
+        {
+			if (null == coupon) return;
+			lock (sync)
+            {
+				coupon.TransactionType = UserCouponTransaction.TransactionTypes.Sold;
+				UserCouponTransaction.Save(coupon);
+				var tsbCoupon = TSBCouponTransaction.FindById(coupon.CouponId);
+				if (null != tsbCoupon)
+                {
+					TSBCouponTransaction.Sold(tsbCoupon);
+				}
 			}
 		}
 

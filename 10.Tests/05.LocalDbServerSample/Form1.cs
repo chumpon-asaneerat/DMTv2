@@ -102,13 +102,12 @@ namespace LocalDbServerSample
             dbgUserCredit.DataSource = UserCreditTransaction.Gets();
         }
 
-
         private void button20_Click(object sender, EventArgs e)
         {
             var tsb = TSB.GetCurrent();
             if (null == tsb) return;
             // Init TSB Coupons.
-            string book35Range = "630001-631000";
+            string book35Range = "630001-630100";
             var coupon35Ids = book35Range.ParseRange(0, 999999);
             if (null != coupon35Ids)
             {
@@ -126,7 +125,7 @@ namespace LocalDbServerSample
                     TSBCouponTransaction.Save(item);
                 }
             }
-            string book80Range = "631001-632000";
+            string book80Range = "630101-630200";
             var coupon80Ids = book80Range.ParseRange(0, 999999);
             if (null != coupon80Ids)
             {
@@ -187,7 +186,7 @@ namespace LocalDbServerSample
                     i++;
                 }
             }
-            while (i < 10);
+            while (i < 7);
 
             var search = Search.UserCoupons.BorrowCoupons.Create(user, borrows);
             UserCouponTransaction.UserBorrowCoupons(search.User, search.Coupons);
@@ -214,6 +213,43 @@ namespace LocalDbServerSample
             dbgUserCoupon.DataSource = UserCouponTransaction.GetBHT80Coupons();
         }
 
+        private void button17_Click(object sender, EventArgs e)
+        {
+            // Sold
+            var dbgrid = dbgUserCoupon;
+
+            if (null == dbgrid.SelectedRows || dbgrid.SelectedRows.Count <= 0) return;
+            var item = dbgrid.SelectedRows[0].DataBoundItem as UserCouponTransaction;
+            if (null != item)
+            {
+                UserCouponTransaction.Sold(item);
+            }
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            // Returns
+            var dbgrid = dbgUserCoupon;
+
+            if (null == dbgrid.SelectedRows || dbgrid.SelectedRows.Count <= 0) return;
+            var item = dbgrid.SelectedRows[0].DataBoundItem as UserCouponTransaction;
+            if (null != item)
+            {
+                User user = new User();
+                user.UserId = item.UserId;
+                item.TransactionType = UserCouponTransaction.TransactionTypes.Return;
+                UserCouponTransaction.Save(item);
+
+                var coupon = TSBCouponTransaction.FindById(item.CouponId);                
+                if (null != coupon)
+                {
+                    var coupons = new List<TSBCouponTransaction>();
+                    coupons.Add(coupon);
+                    UserCouponTransaction.UserReturnCoupons(user, coupons);
+                }
+            }
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
             // Gets TSB Exchanges.
@@ -231,16 +267,6 @@ namespace LocalDbServerSample
         }
 
         private void button16_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button17_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button18_Click(object sender, EventArgs e)
         {
 
         }
