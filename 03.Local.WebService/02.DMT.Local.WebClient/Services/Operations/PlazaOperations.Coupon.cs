@@ -58,17 +58,31 @@ namespace DMT.Services
 
             #region Public Methods
 
-            public List<TSBCouponTransaction> GetCurrentInitial()
+            public List<TSBCouponTransaction> GetCurrentTSBCoupons()
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
-                    RouteConsts.Coupon.GetCurrentInitial.Url, new { });
+                    RouteConsts.Coupon.GetCurrentTSBCoupons.Url, new { });
                 return ret;
             }
 
-            public List<TSBCouponTransaction> GetInitial(TSB tsb)
+            public List<TSBCouponTransaction> GetTSBCoupons(TSB tsb)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
-                    RouteConsts.Coupon.GetInitial.Url, tsb);
+                    RouteConsts.Coupon.GetTSBCoupons.Url, tsb);
+                return ret;
+            }
+
+            public List<TSBCouponTransaction> GetCurrentTSBSoldCoupons()
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
+                    RouteConsts.Coupon.GetCurrentTSBSoldCoupons.Url, new { });
+                return ret;
+            }
+
+            public List<TSBCouponTransaction> GetTSBSoldCoupons(TSB tsb)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
+                    RouteConsts.Coupon.GetTSBSoldCoupons.Url, tsb);
                 return ret;
             }
 

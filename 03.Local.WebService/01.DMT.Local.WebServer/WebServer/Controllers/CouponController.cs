@@ -18,17 +18,31 @@ namespace DMT.Services
     public class CouponController : ApiController
     {
         [HttpPost]
-        [ActionName(RouteConsts.Coupon.GetCurrentInitial.Name)]
-        public List<TSBCouponTransaction> GetCurrentInitial()
+        [ActionName(RouteConsts.Coupon.GetCurrentTSBCoupons.Name)]
+        public List<TSBCouponTransaction> GetTSBCoupons()
         {
-            return TSBCouponTransaction.GetInitial();
+            return TSBCouponTransaction.GetTSBCoupons();
         }
 
         [HttpPost]
-        [ActionName(RouteConsts.Coupon.GetInitial.Name)]
-        public List<TSBCouponTransaction> GetInitial([FromBody] TSB tsb)
+        [ActionName(RouteConsts.Coupon.GetTSBCoupons.Name)]
+        public List<TSBCouponTransaction> GetTSBCoupons([FromBody] TSB tsb)
         {
-            return TSBCouponTransaction.GetInitial(tsb);
+            return TSBCouponTransaction.GetTSBCoupons(tsb);
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Coupon.GetCurrentTSBSoldCoupons.Name)]
+        public List<TSBCouponTransaction> GetCurrentTSBSoldCoupons()
+        {
+            return TSBCouponTransaction.GetTSBSoldCoupons();
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Coupon.GetTSBSoldCoupons.Name)]
+        public List<TSBCouponTransaction> GetTSBSoldCoupons([FromBody] TSB tsb)
+        {
+            return TSBCouponTransaction.GetTSBSoldCoupons(tsb);
         }
 
         [HttpPost]

@@ -498,16 +498,16 @@ namespace DMT.Models
 			}
 		}
 
-		public static List<TSBCouponTransaction> GetInitial()
+		public static List<TSBCouponTransaction> GetTSBCoupons()
 		{
 			lock (sync)
 			{
 				var tsb = TSB.GetCurrent();
-				return GetInitial(tsb);
+				return GetTSBCoupons(tsb);
 			}
 		}
 
-		public static List<TSBCouponTransaction> GetInitial(TSB tsb)
+		public static List<TSBCouponTransaction> GetTSBCoupons(TSB tsb)
 		{
 			if (null == tsb) return null;
 			lock (sync)
@@ -522,6 +522,47 @@ namespace DMT.Models
 
 				var rets = NQuery.Query<FKs>(cmd,
 					tsb.TSBId, TransactionTypes.Received).ToList();
+
+				if (null == rets)
+				{
+					return new List<TSBCouponTransaction>();
+				}
+				else
+				{
+					var results = new List<TSBCouponTransaction>();
+					rets.ForEach(ret =>
+					{
+						results.Add(ret.ToTSBCouponTransaction());
+					});
+					return results;
+				}
+			}
+		}
+
+		public static List<TSBCouponTransaction> GetTSBSoldCoupons()
+		{
+			lock (sync)
+			{
+				var tsb = TSB.GetCurrent();
+				return GetTSBSoldCoupons(tsb);
+			}
+		}
+
+		public static List<TSBCouponTransaction> GetTSBSoldCoupons(TSB tsb)
+		{
+			if (null == tsb) return null;
+			lock (sync)
+			{
+				string cmd = string.Empty;
+				cmd += "SELECT TSBCouponTransaction.* ";
+				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+				cmd += "  FROM TSBCouponTransaction, TSB ";
+				cmd += " WHERE TSBCouponTransaction.TSBId = TSB.TSBId ";
+				cmd += "   AND TSBCouponTransaction.TSBId = ? ";
+				cmd += "   AND TSBCouponTransaction.TransactionType = ? ";
+
+				var rets = NQuery.Query<FKs>(cmd,
+					tsb.TSBId, TransactionTypes.Sold).ToList();
 
 				if (null == rets)
 				{
