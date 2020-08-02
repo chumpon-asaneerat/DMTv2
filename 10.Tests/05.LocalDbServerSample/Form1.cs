@@ -75,6 +75,26 @@ namespace LocalDbServerSample
             dbgTSBCredit.DataSource = TSBCreditTransaction.Gets();
         }
 
+        private void button14_Click(object sender, EventArgs e)
+        {
+            // Init TSB Credit.
+            TSBCreditTransaction inst = TSBCreditTransaction.GetInitial();
+            inst.TransactionDate = DateTime.Now;
+            inst.CountBHT1 = 300;
+            inst.CountBHT2 = 300;
+            inst.CountBHT5 = 500;
+            inst.CountBHT10 = 300;
+            inst.CountBHT20 = 200;
+            inst.CountBHT50 = 200;
+            inst.CountBHT100 = 100;
+            inst.CountBHT500 = 50;
+            inst.CountBHT1000 = 30;
+            TSBCreditTransaction.Save(inst);
+
+            // Gets TSB Credits
+            dbgTSBCredit.DataSource = TSBCreditTransaction.Gets();
+        }
+
         private void button5_Click(object sender, EventArgs e)
         {
             // Gets User Credits
@@ -115,11 +135,6 @@ namespace LocalDbServerSample
         }
 
         private void button13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button14_Click(object sender, EventArgs e)
         {
 
         }
