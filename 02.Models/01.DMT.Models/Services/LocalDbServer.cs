@@ -1356,7 +1356,8 @@ namespace DMT.Services
 			{
 				"TSBCreditSummarryView",
 				"TSBCouponSummarryView",
-				"UserCreditSummaryView"
+				"UserCreditSummaryView",
+				"UserCouponSummaryView"
 			};
 
 			foreach (var viewName in views)
