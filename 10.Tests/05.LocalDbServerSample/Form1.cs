@@ -107,7 +107,7 @@ namespace LocalDbServerSample
             var tsb = TSB.GetCurrent();
             if (null == tsb) return;
             // Init TSB Coupons.
-            string book35Range = "630001-630100";
+            string book35Range = "630001-630050";
             var coupon35Ids = book35Range.ParseRange(0, 999999);
             if (null != coupon35Ids)
             {
@@ -125,7 +125,7 @@ namespace LocalDbServerSample
                     TSBCouponTransaction.Save(item);
                 }
             }
-            string book80Range = "630101-630200";
+            string book80Range = "630051-630100";
             var coupon80Ids = book80Range.ParseRange(0, 999999);
             if (null != coupon80Ids)
             {
