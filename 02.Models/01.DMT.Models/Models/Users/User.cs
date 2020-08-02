@@ -449,6 +449,40 @@ namespace DMT.Models
 			}
 		}
 
+		public static List<User> SearchById(SQLiteConnection db, string userId)
+		{
+			if (null == db) return null;
+			lock (sync)
+			{
+				string cmd = string.Empty;
+				cmd += "SELECT User.* ";
+				cmd += "     , Role.RoleNameEN, Role.RoleNameTH ";
+				cmd += "  FROM User, Role ";
+				cmd += " WHERE User.RoleId = Role.RoleId ";
+				cmd += "   AND User.UserId like ? ";
+
+				var rets = NQuery.Query<FKs>(cmd, "%" + userId + "%").ToList();
+
+				var results = new List<User>();
+				if (null != rets)
+				{
+					rets.ForEach(ret =>
+					{
+						results.Add(ret.ToUser());
+					});
+				}
+				return results;
+			}
+		}
+		public static List<User> SearchById(string userId)
+		{
+			lock (sync)
+			{
+				SQLiteConnection db = Default;
+				return SearchById(db, userId);
+			}
+		}
+
 		public static List<User> FindByRole(string roleId)
 		{
 			lock (sync)
