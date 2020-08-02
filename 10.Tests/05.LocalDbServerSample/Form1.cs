@@ -65,6 +65,16 @@ namespace LocalDbServerSample
             // Gets Lanes
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // Gets TSB Credits
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // Gets User Credits
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             // Gets TSB Coupons.
@@ -78,16 +88,6 @@ namespace LocalDbServerSample
         private void button3_Click(object sender, EventArgs e)
         {
             // Gets TSB Exchanges.
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            // Gets TSB Credits
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            // Gets User Credits
         }
 
         private void button10_Click(object sender, EventArgs e)
