@@ -49,12 +49,40 @@ namespace DMT.TA.Windows.Collector.Credit
         {
             string userId = txtSearchUserId.Text;
             if (string.IsNullOrEmpty(userId) || userId.Length < 5) return;
+            /*
             var user = ops.Users.GetById(Search.Users.ById.Create(userId));
             if (null != user && null != srcObj)
             {
                 srcObj.UserId = user.UserId;
                 srcObj.FullNameEN = user.FullNameEN;
                 srcObj.FullNameTH = user.FullNameTH;
+            }
+            */
+            var users = ops.Users.SearchById(Search.Users.ById.Create(userId));
+            if (null != users && null != srcObj)
+            {
+                if (users.Count == 1)
+                {
+                    var user = users[0];
+                    srcObj.UserId = user.UserId;
+                    srcObj.FullNameEN = user.FullNameEN;
+                    srcObj.FullNameTH = user.FullNameTH;
+                }
+                else if (users.Count > 1)
+                {
+                    var win = new TA.Windows.Collector.Searchs.CollectorFilterWindow();
+                    win.Owner = Application.Current.MainWindow;
+                    win.Setup(users);
+                    if (win.ShowDialog() == false || null == win.SelectedUser)
+                    {
+                        // No user selected.
+                        return;
+                    }
+                    var user = win.SelectedUser;
+                    srcObj.UserId = user.UserId;
+                    srcObj.FullNameEN = user.FullNameEN;
+                    srcObj.FullNameTH = user.FullNameTH;
+                }
             }
         }
 
