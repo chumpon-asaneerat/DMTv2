@@ -65,13 +65,8 @@ namespace DMT.Config.Pages
 
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var item = listView.SelectedItem as TSB;
-            /*
-            pgrid.SelectedObject = null;
-            if (null == item) return;
-
-            pgrid.SelectedObject = ops.Coupons.GetInitial(item);
-            */
+            var tsb = listView.SelectedItem as TSB;
+            RefreshCoupon(tsb);
         }
 
         #endregion
@@ -81,6 +76,11 @@ namespace DMT.Config.Pages
         private void cmdAddCoupon_Click(object sender, RoutedEventArgs e)
         {
             string idRange = txtRange.Text;
+            txtRange.Text = string.Empty;
+
+            var tsb = listView.SelectedItem as TSB;
+            if (null == tsb) return;
+
             var ids = idRange.ParseRange(0, 999999);
             if (null != ids)
             {
@@ -89,18 +89,23 @@ namespace DMT.Config.Pages
                 foreach (var id in ids)
                 {
                     TSBCouponTransaction item = new TSBCouponTransaction();
+                    item.TSBId = tsb.TSBId;
                     if ((cbCouponType.SelectedIndex == 0))
                     {
                         item.CouponId = "ข" + id.ToString("D6");
                         item.CouponType = CouponType.BHT35;
+                        item.Factor = 665;
                     }
                     else
                     {
                         item.CouponId = "C" + id.ToString("D6");
                         item.CouponType = CouponType.BHT80;
+                        item.Factor = 1520;
                     }
                     ops.Coupons.SaveTransaction(item);
                 }
+
+                RefreshCoupon(tsb);
             }
         }
 
@@ -124,6 +129,17 @@ namespace DMT.Config.Pages
             var tsbs = ops.TSB.GetTSBs();
 
             listView.ItemsSource = tsbs;
+        }
+
+        private void RefreshCoupon(TSB tsb)
+        {
+            lvCoupon.ItemsSource = null;
+
+            if (null != tsb)
+            {
+                var coupons = ops.Coupons.GetInitial(tsb);
+                lvCoupon.ItemsSource = coupons;
+            }
         }
     }
 }

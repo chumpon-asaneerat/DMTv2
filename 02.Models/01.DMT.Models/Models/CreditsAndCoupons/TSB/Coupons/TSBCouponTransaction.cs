@@ -308,16 +308,6 @@ namespace DMT.Models
 				if (_CouponType != value)
 				{
 					_CouponType = value;
-					if (_CouponType == CouponType.BHT35)
-					{
-						_Factor = 665;
-
-					}
-					else
-					{
-						_Factor = 665;
-
-					}
 					// Raise event.
 					this.RaiseChanged("CouponType");
 				}

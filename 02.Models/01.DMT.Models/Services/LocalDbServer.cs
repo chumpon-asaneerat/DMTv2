@@ -1321,7 +1321,7 @@ namespace DMT.Services
 			CouponFactor.Save(c80);
 		}
 
-	private void InitConfigs()
+		private void InitConfigs()
 		{
 			if (null == Db) return;
 			Config item;
