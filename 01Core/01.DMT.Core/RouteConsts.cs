@@ -118,6 +118,12 @@ namespace DMT
                 public const string Url = User.Url + @"/" + Name;
             }
 
+            public static class SearchById
+            {
+                public const string Name = "SearchById";
+                public const string Url = User.Url + @"/" + Name;
+            }
+
             public static class GetByCardId
             {
                 public const string Name = "GetByCardId";

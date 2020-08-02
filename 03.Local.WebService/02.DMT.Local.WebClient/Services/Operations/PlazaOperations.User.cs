@@ -97,6 +97,13 @@ namespace DMT.Services
                 return ret;
             }
 
+            public List<User> SearchById(Search.Users.ById value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<User>>(
+                    RouteConsts.User.SearchById.Url, value);
+                return ret;
+            }
+
             public User GetByLogIn(Search.Users.ByLogIn value)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<User>(

@@ -53,6 +53,14 @@ namespace DMT.Services
         }
 
         [HttpPost]
+        [ActionName(RouteConsts.User.SearchById.Name)]
+        public List<User> SearchById([FromBody] Search.Users.ById value)
+        {
+            if (null == value) return null;
+            return Models.User.SearchById(value.UserId);
+        }
+
+        [HttpPost]
         [ActionName(RouteConsts.User.GetByCardId.Name)]
         public User GetByCardId([FromBody] Search.Users.ByCardId value)
         {
