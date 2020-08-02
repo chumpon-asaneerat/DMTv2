@@ -268,6 +268,45 @@ namespace DMT.Models
 
 		#region Internal Class
 
+		public class FKs : TSBExchangeTransaction
+		{
+			#region TSB
+
+			/// <summary>
+			/// Gets or sets TSBNameEN.
+			/// </summary>
+			[MaxLength(100)]
+			[PeropertyMapName("TSBNameEN")]
+			public override string TSBNameEN
+			{
+				get { return base.TSBNameEN; }
+				set { base.TSBNameEN = value; }
+			}
+			/// <summary>
+			/// Gets or sets TSBNameTH.
+			/// </summary>
+			[MaxLength(100)]
+			[PeropertyMapName("TSBNameTH")]
+			public override string TSBNameTH
+			{
+				get { return base.TSBNameTH; }
+				set { base.TSBNameTH = value; }
+			}
+
+			#endregion
+
+			#region Public Methods
+
+			public TSBExchangeTransaction ToTSBExchangeTransaction()
+			{
+				TSBExchangeTransaction inst = new TSBExchangeTransaction();
+				this.AssignTo(inst); // set all properties to new instance.
+				return inst;
+			}
+
+			#endregion
+		}
+
 		#endregion
 
 		#region Static Methods
