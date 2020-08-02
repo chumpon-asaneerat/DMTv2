@@ -33,26 +33,32 @@ namespace DMT.Models
 	{
 		#region Enum
 
+		public enum TransactionTypes
+		{
+			Borrow = 1,
+			Return = 2 
+		}
+
 		#endregion
 
 		#region Internal Variables
 
 		private int _TransactionId = 0;
 		private DateTime _TransactionDate = DateTime.MinValue;
-		//private TransactionTypes _TransactionType = TransactionTypes.Initial;
+		private TransactionTypes _TransactionType = TransactionTypes.Borrow;
 
 		private string _TSBId = string.Empty;
 		private string _TSBNameEN = string.Empty;
 		private string _TSBNameTH = string.Empty;
 
-		private string _PlazaGroupId = string.Empty;
-		private string _PlazaGroupNameEN = string.Empty;
-		private string _PlazaGroupNameTH = string.Empty;
-		private string _Direction = string.Empty;
-
 		private string _UserId = string.Empty;
 		private string _FullNameEN = string.Empty;
 		private string _FullNameTH = string.Empty;
+
+		// Coupon 
+		private string _CouponId = string.Empty;
+		private CouponType _CouponType = CouponType.BHT35;
+		private decimal _Factor = 665;
 
 		private int _Status = 0;
 		private DateTime _LastUpdate = DateTime.MinValue;
@@ -172,7 +178,6 @@ namespace DMT.Models
 			}
 			set { }
 		}
-		/*
 		/// <summary>
 		/// Gets or sets Transaction Type.
 		/// </summary>
@@ -192,7 +197,7 @@ namespace DMT.Models
 				}
 			}
 		}
-		*/
+
 		#endregion
 
 		#region TSB
@@ -270,104 +275,6 @@ namespace DMT.Models
 
 		#endregion
 
-		#region PlazaGroup
-
-		/// <summary>
-		/// Gets or sets PlazaGroupId.
-		/// </summary>
-		[Category("Plaza Group")]
-		[Description("Gets or sets PlazaGroupId.")]
-		[ReadOnly(true)]
-		[Ignore]
-		[MaxLength(10)]
-		[PeropertyMapName("PlazaGroupId")]
-		public virtual string PlazaGroupId
-		{
-			get
-			{
-				return _PlazaGroupId;
-			}
-			set
-			{
-				if (_PlazaGroupId != value)
-				{
-					_PlazaGroupId = value;
-					this.RaiseChanged("PlazaGroupId");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets PlazaGroupNameEN.
-		/// </summary>
-		[Category("Plaza Group")]
-		[Description("Gets or sets PlazaGroupNameEN.")]
-		[ReadOnly(true)]
-		[Ignore]
-		[PeropertyMapName("PlazaGroupNameEN")]
-		public virtual string PlazaGroupNameEN
-		{
-			get
-			{
-				return _PlazaGroupNameEN;
-			}
-			set
-			{
-				if (_PlazaGroupNameEN != value)
-				{
-					_PlazaGroupNameEN = value;
-					this.RaiseChanged("PlazaGroupNameEN");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets PlazaGroupNameTH.
-		/// </summary>
-		[Category("Plaza Group")]
-		[Description("Gets or sets PlazaGroupNameTH.")]
-		[ReadOnly(true)]
-		[Ignore]
-		[PeropertyMapName("PlazaGroupNameTH")]
-		public virtual string PlazaGroupNameTH
-		{
-			get
-			{
-				return _PlazaGroupNameTH;
-			}
-			set
-			{
-				if (_PlazaGroupNameTH != value)
-				{
-					_PlazaGroupNameTH = value;
-					this.RaiseChanged("PlazaGroupNameTH");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets Direction.
-		/// </summary>
-		[Category("Plaza Group")]
-		[Description("Gets or sets Direction.")]
-		[ReadOnly(true)]
-		[Ignore]
-		[PeropertyMapName("Direction")]
-		public virtual string Direction
-		{
-			get
-			{
-				return _Direction;
-			}
-			set
-			{
-				if (_Direction != value)
-				{
-					_Direction = value;
-					this.RaiseChanged("Direction");
-				}
-			}
-		}
-
-		#endregion
-
 		#region User
 
 		/// <summary>
@@ -437,6 +344,71 @@ namespace DMT.Models
 				{
 					_FullNameTH = value;
 					this.RaiseChanged("FullNameTH");
+				}
+			}
+		}
+
+		#endregion
+
+		#region Coupon
+
+		/// <summary>
+		/// Gets or sets coupon book id.
+		/// </summary>
+		[Category("Coupon")]
+		[Description("Gets or sets coupon book id.")]
+		[ReadOnly(true)]
+		[MaxLength(20)]
+		[PeropertyMapName("CouponId")]
+		public string CouponId
+		{
+			get { return _CouponId; }
+			set
+			{
+				if (_CouponId != value)
+				{
+					_CouponId = value;
+					// Raise event.
+					this.RaiseChanged("CouponId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets number of coupon type.
+		/// </summary>
+		[Category("Coupon")]
+		[Description("Gets or sets number of coupon type.")]
+		[PeropertyMapName("CouponType")]
+		public CouponType CouponType
+		{
+			get { return _CouponType; }
+			set
+			{
+				if (_CouponType != value)
+				{
+					_CouponType = value;
+					// Raise event.
+					this.RaiseChanged("CouponType");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets number of coupon factor.
+		/// </summary>
+		[Category("Coupon")]
+		[Description("Gets or sets number of coupon factor.")]
+		[ReadOnly(true)]
+		[PeropertyMapName("Factor")]
+		public decimal Factor
+		{
+			get { return _Factor; }
+			set
+			{
+				if (_Factor != value)
+				{
+					_Factor = value;
+					// Raise event.
+					this.RaiseChanged("Factor");
 				}
 			}
 		}
@@ -528,51 +500,6 @@ namespace DMT.Models
 			{
 				get { return base.TSBNameTH; }
 				set { base.TSBNameTH = value; }
-			}
-
-			#endregion
-
-			#region PlazaGroup
-
-			/// <summary>
-			/// Gets or sets PlazaGroupId.
-			/// </summary>
-			[MaxLength(10)]
-			[PeropertyMapName("PlazaGroupId")]
-			public override string PlazaGroupId
-			{
-				get { return base.PlazaGroupId; }
-				set { base.PlazaGroupId = value; }
-			}
-			/// <summary>
-			/// Gets or sets PlazaGroupNameEN.
-			/// </summary>
-			[MaxLength(100)]
-			[PeropertyMapName("PlazaGroupNameEN")]
-			public override string PlazaGroupNameEN
-			{
-				get { return base.PlazaGroupNameEN; }
-				set { base.PlazaGroupNameEN = value; }
-			}
-			/// <summary>
-			/// Gets or sets PlazaGroupNameTH.
-			/// </summary>
-			[MaxLength(100)]
-			[PeropertyMapName("PlazaGroupNameTH")]
-			public override string PlazaGroupNameTH
-			{
-				get { return base.PlazaGroupNameTH; }
-				set { base.PlazaGroupNameTH = value; }
-			}
-			/// <summary>
-			/// Gets or sets Direction.
-			/// </summary>
-			[MaxLength(10)]
-			[PeropertyMapName("Direction")]
-			public override string Direction
-			{
-				get { return base.Direction; }
-				set { base.Direction = value; }
 			}
 
 			#endregion

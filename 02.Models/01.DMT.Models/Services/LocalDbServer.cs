@@ -167,6 +167,9 @@ namespace DMT.Services
 			Db.CreateTable<UserCredit>();
 			Db.CreateTable<UserCreditTransaction>();
 
+			Db.CreateTable<UserCoupon>();
+			Db.CreateTable<UserCouponTransaction>();
+
 			InitDefaults();
 		}
 

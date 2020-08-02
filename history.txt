@@ -14,8 +14,11 @@ Update 2020-08-02 #12
 Update 2020-08-02 #11
 - 
 
+[commited]
 Update 2020-08-02 #10
-- 
+- Update Coupon related process #7.
+- Set Build Action UserCoupon.cs to Compile.
+- Set Build Action UserCouponTransaction.cs to Compile.
 
 [commited]
 Update 2020-08-02 #9
