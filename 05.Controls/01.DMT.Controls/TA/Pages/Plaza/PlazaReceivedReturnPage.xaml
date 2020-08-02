@@ -151,14 +151,12 @@
                                FontSize="18"
                                Foreground="WhiteSmoke"
                                Text="วันที่ :" />
-
-                    <TextBox x:Name="txtDate"
-                             Width="180"
-                             Margin="225,5,0,0"
-                             HorizontalAlignment="Left"
-                             VerticalAlignment="Top"
-                             TextWrapping="Wrap"
-                             FontSize="18" />
+                    <DatePicker x:Name="dtDate"
+                                Margin="225,5,0,0"
+                                Width="180"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                FontSize="18" />
                     <Button x:Name="cmdSearch"
                             Width="60"
                             Margin="413,4,0,0"

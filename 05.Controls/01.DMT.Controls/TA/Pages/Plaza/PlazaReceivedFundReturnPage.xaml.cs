@@ -47,14 +47,14 @@ namespace DMT.TA.Pages.Plaza
 
         private void cmdAppend_Click(object sender, RoutedEventArgs e)
         {
-            //var win = new  TA.Plaza.FundBorrowReturnWindow();
-            //win.Owner = Application.Current.MainWindow;
+            var win = new Windows.Plaza.PlazaReceivedCreditWindow();
+            win.Owner = Application.Current.MainWindow;
 
-            //win.Title = "แลกเงินหมุนเวียนภายในด่าน";
-            //if (win.ShowDialog() == false)
-            //{
-            //    return;
-            //}
+            win.Title = "แลกเงินหมุนเวียนภายในด่าน";
+            if (win.ShowDialog() == false)
+            {
+                return;
+            }
         }
 
         #endregion

@@ -47,16 +47,16 @@ namespace DMT.TA.Pages.Plaza
 
         private void cmdAppend_Click(object sender, RoutedEventArgs e)
         {
-            //var win = new Windows.TA.Plaza.FundBorrowReturnWindow();
-            //win.Owner = Application.Current.MainWindow;
+            var win = new Windows.Plaza.PlazaReceivedCreditWindow();
+            win.Owner = Application.Current.MainWindow;
 
-           
-            //win.Title = "คืนเงินทอน";
+
+            win.Title = "คืนเงินทอน";
             //win.Setup(srcObj, rcvObj, retObj, resObj);
-            //if (win.ShowDialog() == false)
-            //{
-            //    return;
-            //}
+            if (win.ShowDialog() == false)
+            {
+                return;
+            }
         }
 
         #endregion
