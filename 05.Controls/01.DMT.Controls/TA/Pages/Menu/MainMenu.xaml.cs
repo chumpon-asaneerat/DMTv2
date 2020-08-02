@@ -410,7 +410,16 @@ namespace DMT.TA.Pages.Menu
         // NO Implementation ประวัติการขายคูปอง
         private void plazaAllCoupon_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                // Plaza Fund Received
+                var page = new DMT.TA.Pages.Plaza.PlazaAllCouponPage();
+                PageContentManager.Instance.Current = page;
+            }
+            catch (Exception)
+            {
+                //Console.WriteLine("Refresh data error.");
+            }
         }
         // Implement #1 แลกเงินหมุนเวียนในด่าน
         private void exchangeMoney_Click(object sender, RoutedEventArgs e)

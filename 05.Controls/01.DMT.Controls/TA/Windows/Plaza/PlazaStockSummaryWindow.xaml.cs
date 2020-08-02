@@ -62,7 +62,7 @@ namespace DMT.TA.Windows.Plaza
             loanMoneyEntry.DataContext = tsbCredit;
 
             if (tsbCredit != null)
-                txtMsg.Text = tsbCredit.BHTTotal.ToString();
+                txtMsg.Text = tsbCredit.BHTTotal.ToString("#,##0");
             else
                 txtMsg.Text = "0";
         }

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:ctrl="clr-namespace:DMT.Controls"
+        xmlns:nlib="clr-namespace:NLib.Wpf.Controls;assembly=NLib.Reports"
         mc:Ignorable="d"
         Title="" 
         ResizeMode="NoResize" 
@@ -91,9 +91,7 @@
                 <Grid />
             </DockPanel>
             <Grid>
-                <ScrollViewer>
-                    <Image Source="/DMT.Controls;component/Images/Reports/ใบนำส่งรายได้รวม2.jpg" />
-                </ScrollViewer>
+                <nlib:WpfReportViewer x:Name="rptViewer" Margin="2" />
             </Grid>
         </DockPanel>
     </Grid>

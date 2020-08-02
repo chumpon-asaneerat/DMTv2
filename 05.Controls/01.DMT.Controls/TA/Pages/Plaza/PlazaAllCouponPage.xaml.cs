@@ -15,19 +15,19 @@ using System.ComponentModel;
 
 #endregion
 
-namespace DMT.TA.Pages.History
+namespace DMT.TA.Pages.Plaza
 {
     /// <summary>
-    /// Interaction logic for PlazaReturnHistoryPage.xaml
+    /// Interaction logic for PlazaAllCouponPage.xaml
     /// </summary>
-    public partial class PlazaReturnHistoryPage : UserControl
+    public partial class PlazaAllCouponPage : UserControl
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public PlazaReturnHistoryPage()
+        public PlazaAllCouponPage()
         {
             InitializeComponent();
         }
@@ -63,8 +63,6 @@ namespace DMT.TA.Pages.History
             this.DataContext = tsbCredit;
             tsbCredit.Description = "ยืมเงิน";
             tsbCredit.HasRemark = false;
-            plaza.IsEnabled = false;
-            plaza.DataContext = tsbCredit;
 
         }
 
@@ -91,33 +89,6 @@ namespace DMT.TA.Pages.History
                         return;
                     }
                     _user = win.SelectedUser;
-                }
-            }
-        }
-
-        private void cmdCancelRe_Click(object sender, RoutedEventArgs e)
-        {
-            if (null != _user)
-            {
-                //string total = _user.BHTTotal.ToString("#,##0");
-                string total = "1,000";
-
-                DMT.Windows.MessageBoxYesNoRed2Window msg = new DMT.Windows.MessageBoxYesNoRed2Window();
-                msg.Owner = Application.Current.MainWindow;
-                msg.Setup("ยืนยันการ ยกเลิกรายการยืม/คืน เงินทอน", _user.FullNameTH, " จำนวนเงิน ", total, " บาท", "Toll Admin");
-                if (msg.ShowDialog() == true)
-                {
-
-                }
-            }
-            else
-            {
-                DMT.Windows.MessageBoxYesNoRed2Window msg = new DMT.Windows.MessageBoxYesNoRed2Window();
-                msg.Owner = Application.Current.MainWindow;
-                msg.Setup("ยืนยันการ ยกเลิกรายการยืม/คืน เงินทอน", "ทดสอบ", " จำนวนเงิน ", "1,000", " บาท", "Toll Admin");
-                if (msg.ShowDialog() == true)
-                {
-
                 }
             }
         }

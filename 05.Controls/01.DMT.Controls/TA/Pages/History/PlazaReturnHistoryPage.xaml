@@ -171,13 +171,13 @@
                                Foreground="WhiteSmoke"
                                Text="วันที่การทำรายการ :" />
 
-                    <TextBox x:Name="txtDate"
-                             Width="180"
-                             Margin="160,5,0,0"
-                             HorizontalAlignment="Left"
-                             VerticalAlignment="Top"
-                             TextWrapping="Wrap"
-                             FontSize="18" />
+
+                    <DatePicker x:Name="dtDate"
+                                Margin="160,5,0,0"
+                                Width="180"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                FontSize="18" />
                     <TextBlock 
                                Margin="350,0,0,0"
                                HorizontalAlignment="Left"
