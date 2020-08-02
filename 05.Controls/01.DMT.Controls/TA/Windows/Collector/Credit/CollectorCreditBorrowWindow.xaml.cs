@@ -48,16 +48,8 @@ namespace DMT.TA.Windows.Collector.Credit
         private void cmdSearchUser_Click(object sender, RoutedEventArgs e)
         {
             string userId = txtSearchUserId.Text;
-            if (string.IsNullOrEmpty(userId) || userId.Length < 5) return;
-            /*
-            var user = ops.Users.GetById(Search.Users.ById.Create(userId));
-            if (null != user && null != srcObj)
-            {
-                srcObj.UserId = user.UserId;
-                srcObj.FullNameEN = user.FullNameEN;
-                srcObj.FullNameTH = user.FullNameTH;
-            }
-            */
+            if (string.IsNullOrEmpty(userId) || userId.Length == 0) return;
+
             var users = ops.Users.SearchById(Search.Users.ById.Create(userId));
             if (null != users && null != srcObj)
             {
