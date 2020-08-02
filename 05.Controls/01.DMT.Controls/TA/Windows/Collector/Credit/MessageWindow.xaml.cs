@@ -1,8 +1,11 @@
-﻿using System;
+﻿#region Using
+
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
+#endregion
 
 namespace DMT.TA.Windows.Collector.Credit
 {
