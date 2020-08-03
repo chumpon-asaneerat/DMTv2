@@ -605,16 +605,16 @@ namespace DMT.Models
 			}
 		}
 
-		public static List<UserCouponTransaction> GetBHT35Coupons()
+		public static List<UserCouponTransaction> GetUserBHT35Coupons(User user)
 		{
 			lock (sync)
 			{
 				var tsb = TSB.GetCurrent();
-				return GetBHT35Coupons(tsb);
+				return GetUserBHT35Coupons(tsb, user);
 			}
 		}
 
-		public static List<UserCouponTransaction> GetBHT35Coupons(TSB tsb)
+		public static List<UserCouponTransaction> GetUserBHT35Coupons(TSB tsb, User user)
 		{
 			if (null == tsb) return null;
 			lock (sync)
@@ -628,8 +628,21 @@ namespace DMT.Models
 				cmd += "   AND UserCouponTransaction.UserId = User.UserId ";
 				cmd += "   AND UserCouponTransaction.TSBId = ? ";
 				cmd += "   AND UserCouponTransaction.CouponType = ? ";
+				if (null != user)
+				{
+					cmd += "   AND UserCouponTransaction.UserId = ? ";
+				}
 
-				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId, CouponType.BHT35).ToList();
+				List<FKs> rets;
+				if (null != user)
+				{
+					rets = NQuery.Query<FKs>(cmd, 
+						tsb.TSBId, CouponType.BHT35, user.UserId).ToList();
+				}
+				else
+				{
+					rets = NQuery.Query<FKs>(cmd, tsb.TSBId, CouponType.BHT35).ToList();
+				}
 				if (null == rets)
 				{
 					return new List<UserCouponTransaction>();
@@ -646,16 +659,16 @@ namespace DMT.Models
 			}
 		}
 
-		public static List<UserCouponTransaction> GetBHT80Coupons()
+		public static List<UserCouponTransaction> GetUserBHT80Coupons(User user)
 		{
 			lock (sync)
 			{
 				var tsb = TSB.GetCurrent();
-				return GetBHT80Coupons(tsb);
+				return GetUserBHT80Coupons(tsb, user);
 			}
 		}
 
-		public static List<UserCouponTransaction> GetBHT80Coupons(TSB tsb)
+		public static List<UserCouponTransaction> GetUserBHT80Coupons(TSB tsb, User user)
 		{
 			if (null == tsb) return null;
 			lock (sync)
@@ -669,8 +682,20 @@ namespace DMT.Models
 				cmd += "   AND UserCouponTransaction.UserId = User.UserId ";
 				cmd += "   AND UserCouponTransaction.TSBId = ? ";
 				cmd += "   AND UserCouponTransaction.CouponType = ? ";
-
-				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId, CouponType.BHT80).ToList();
+				if (null != user)
+				{
+					cmd += "   AND UserCouponTransaction.UserId = ? ";
+				}
+				List<FKs> rets;
+				if (null != user)
+				{
+					rets = NQuery.Query<FKs>(cmd, 
+						tsb.TSBId, CouponType.BHT80, user.UserId).ToList();
+				}
+				else
+				{
+					rets = NQuery.Query<FKs>(cmd, tsb.TSBId, CouponType.BHT80).ToList();
+				}
 				if (null == rets)
 				{
 					return new List<UserCouponTransaction>();

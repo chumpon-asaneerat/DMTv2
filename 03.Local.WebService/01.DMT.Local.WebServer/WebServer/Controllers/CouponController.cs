@@ -60,6 +60,42 @@ namespace DMT.Services
         }
 
         [HttpPost]
+        [ActionName(RouteConsts.Coupon.ToTSBBHT35Coupons.Name)]
+        public List<TSBCouponTransaction> ToTSBBHT35Coupons(
+            [FromBody] Search.UserCoupons.ToTSBCoupons value)
+        {
+            if (null == value) return new List<TSBCouponTransaction>();
+            return TSBCouponTransaction.ToTSBBHT35Coupons(value.TSB, value.Coupons);
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Coupon.ToTSBBHT80Coupons.Name)]
+        public List<TSBCouponTransaction> ToTSBBHT80Coupons(
+            [FromBody] Search.UserCoupons.ToTSBCoupons value)
+        {
+            if (null == value) return new List<TSBCouponTransaction>();
+            return TSBCouponTransaction.ToTSBBHT80Coupons(value.TSB, value.Coupons);
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Coupon.GetUserBHT35Coupons.Name)]
+        public List<UserCouponTransaction> GetUserBHT35Coupons(
+            [FromBody] Search.UserCoupons.ByUser value)
+        {
+            if (null == value) return new List<UserCouponTransaction>();
+            return UserCouponTransaction.GetUserBHT35Coupons(value.TSB, value.User);
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Coupon.GetUserBHT80Coupons.Name)]
+        public List<UserCouponTransaction> GetUserBHT80Coupons(
+            [FromBody] Search.UserCoupons.ByUser value)
+        {
+            if (null == value) return new List<UserCouponTransaction>();
+            return UserCouponTransaction.GetUserBHT80Coupons(value.TSB, value.User);
+        }
+
+        [HttpPost]
         [ActionName(RouteConsts.Coupon.SaveTransaction.Name)]
         public void SaveTransaction([FromBody] TSBCouponTransaction value)
         {

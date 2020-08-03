@@ -327,6 +327,35 @@ namespace DMT.Models
                     return ret;
                 }
             }
+
+            public class ByUser : NSearch<ByUser>
+            {
+                public TSB TSB { get; set; }
+                public User User { get; set; }
+
+
+                public static ByUser Create(TSB tsb, User user)
+                {
+                    var ret = new ByUser();
+                    ret.User = user;
+                    ret.TSB = tsb;
+                    return ret;
+                }
+            }
+
+            public class ToTSBCoupons : NSearch<ToTSBCoupons>
+            {
+                public TSB TSB { get; set; }
+                public List<UserCouponTransaction> Coupons { get; set; }
+
+                public static ToTSBCoupons Create(TSB tsb, List<UserCouponTransaction> coupons)
+                {
+                    var ret = new ToTSBCoupons();
+                    ret.TSB = tsb;
+                    ret.Coupons = coupons;
+                    return ret;
+                }
+            }
         }
     }
 

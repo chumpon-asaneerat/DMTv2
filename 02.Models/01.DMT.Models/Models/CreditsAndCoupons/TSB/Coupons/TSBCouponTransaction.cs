@@ -15,6 +15,7 @@ using SQLiteNetExtensions.Extensions;
 // required for JsonIgnore attribute.
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
+using System.Net;
 
 #endregion
 
@@ -688,6 +689,58 @@ namespace DMT.Models
 					tsb.TSBId, couponId).FirstOrDefault();
 				return (null != ret) ? ret.ToTSBCouponTransaction() : null;
 			}
+		}
+
+		public static List<TSBCouponTransaction> ToTSBBHT35Coupons(List<UserCouponTransaction> coupons)
+		{
+			lock (sync)
+			{
+				var tsb = TSB.GetCurrent();
+				return ToTSBBHT35Coupons(tsb, coupons);
+			}
+		}
+
+		public static List<TSBCouponTransaction> ToTSBBHT35Coupons(TSB tsb, List<UserCouponTransaction> coupons)
+		{
+			List<TSBCouponTransaction> results = new List<TSBCouponTransaction>();
+			if (null == tsb || null == coupons || coupons.Count <= 0) return results;
+
+			coupons.ForEach(coupon => 
+			{
+				var inst = FindById(coupon.CouponId);
+				if (null != inst)
+				{
+					results.Add(inst);
+				}
+			});
+
+			return results;
+		}
+
+		public static List<TSBCouponTransaction> ToTSBBHT80Coupons(List<UserCouponTransaction> coupons)
+		{
+			lock (sync)
+			{
+				var tsb = TSB.GetCurrent();
+				return ToTSBBHT80Coupons(tsb, coupons);
+			}
+		}
+
+		public static List<TSBCouponTransaction> ToTSBBHT80Coupons(TSB tsb, List<UserCouponTransaction> coupons)
+		{
+			List<TSBCouponTransaction> results = new List<TSBCouponTransaction>();
+			if (null == tsb || null == coupons || coupons.Count <= 0) return results;
+
+			coupons.ForEach(coupon =>
+			{
+				var inst = FindById(coupon.CouponId);
+				if (null != inst)
+				{
+					results.Add(inst);
+				}
+			});
+
+			return results;
 		}
 
 		public static void Sold(TSBCouponTransaction coupon)

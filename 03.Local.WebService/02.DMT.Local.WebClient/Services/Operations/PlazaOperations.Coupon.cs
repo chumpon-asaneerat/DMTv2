@@ -86,6 +86,36 @@ namespace DMT.Services
                 return ret;
             }
 
+            public List<TSBCouponTransaction> ToTSBBHT35Coupons(Search.UserCoupons.ToTSBCoupons value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
+                    RouteConsts.Coupon.ToTSBBHT35Coupons.Url, value);
+                return ret;
+            }
+
+            public List<TSBCouponTransaction> ToTSBBHT80Coupons(Search.UserCoupons.ToTSBCoupons value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
+                    RouteConsts.Coupon.ToTSBBHT80Coupons.Url, value);
+                return ret;
+            }
+
+            public List<UserCouponTransaction> GetUserBHT35Coupons(
+                Search.UserCoupons.ByUser value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<UserCouponTransaction>>(
+                    RouteConsts.Coupon.GetUserBHT35Coupons.Url, value);
+                return ret;
+            }
+
+            public List<UserCouponTransaction> GetUserBHT80Coupons(
+                Search.UserCoupons.ByUser value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<UserCouponTransaction>>(
+                    RouteConsts.Coupon.GetUserBHT80Coupons.Url, value);
+                return ret;
+            }
+
             public List<TSBCouponTransaction> GetCurrentTSBSoldCoupons()
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(

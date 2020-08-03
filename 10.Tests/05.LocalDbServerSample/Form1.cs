@@ -204,13 +204,15 @@ namespace LocalDbServerSample
         private void button12_Click(object sender, EventArgs e)
         {
             // Gets User 35 Coupons.
-            dbgUserCoupon.DataSource = UserCouponTransaction.GetBHT35Coupons();
+            var user = User.Get("14211");
+            dbgUserCoupon.DataSource = UserCouponTransaction.GetUserBHT35Coupons(user);
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
             // Gets User 80 Coupons.
-            dbgUserCoupon.DataSource = UserCouponTransaction.GetBHT80Coupons();
+            var user = User.Get("14211");
+            dbgUserCoupon.DataSource = UserCouponTransaction.GetUserBHT80Coupons(user);
         }
 
         private void button17_Click(object sender, EventArgs e)

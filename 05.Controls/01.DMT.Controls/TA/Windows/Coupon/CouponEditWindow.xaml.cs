@@ -172,8 +172,35 @@ namespace DMT.TA.Windows.Coupon
                 _tsbCoupon35 = ops.Coupons.GetTSBBHT35Coupons(tsb);
                 _tsbCoupon80 = ops.Coupons.GetTSBBHT80Coupons(tsb);
             }
+            if (null != _user && null != tsb)
+            {
+                var opts = Search.UserCoupons.ByUser.Create(tsb, _user);
+                var user35Items = ops.Coupons.GetUserBHT35Coupons(opts);
+                if (null != user35Items)
+                {
+                    var opts2 = Search.UserCoupons.ToTSBCoupons.Create(tsb, user35Items);
+                    var tsb35Items = ops.Coupons.ToTSBBHT35Coupons(opts2);
+                    if (null != tsb35Items)
+                    {
+                        _tsbCoupon35.AddRange(tsb35Items);
+                    }
+                }
+                var user80Items = ops.Coupons.GetUserBHT80Coupons(opts);
+                if (null != user80Items)
+                {
+                    var opts2 = Search.UserCoupons.ToTSBCoupons.Create(tsb, user80Items);
+                    var tsb35Items = ops.Coupons.ToTSBBHT80Coupons(opts2);
+                    if (null != tsb35Items)
+                    {
+                        _tsbCoupon80.AddRange(tsb35Items);
+                    }
+                }
+            }
             lvTSB35.ItemsSource = _tsbCoupon35;
             lvTSB80.ItemsSource = _tsbCoupon80;
+
+            RefreshBHT35Coupons();
+            RefreshBHT80Coupons();
         }
 
         private void RefreshBHT35Coupons()

@@ -11,8 +11,9 @@ Update 2020-08-03 #7
 Update 2020-08-03 #6
 - 
 
+[commited]
 Update 2020-08-03 #5
-- 
+- Update Coupon related process #20. 
 
 [commited]
 Update 2020-08-03 #4

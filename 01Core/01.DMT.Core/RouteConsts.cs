@@ -481,6 +481,30 @@ namespace DMT
                 public const string Url = Coupon.Url + @"/" + Name;
             }
 
+            public static class ToTSBBHT35Coupons
+            {
+                public const string Name = "ToTSBBHT35Coupons";
+                public const string Url = Coupon.Url + @"/" + Name;
+            }
+
+            public static class ToTSBBHT80Coupons
+            {
+                public const string Name = "ToTSBBHT80Coupons";
+                public const string Url = Coupon.Url + @"/" + Name;
+            }
+
+            public static class GetUserBHT35Coupons
+            {
+                public const string Name = "GetUserBHT35Coupons";
+                public const string Url = Coupon.Url + @"/" + Name;
+            }
+
+            public static class GetUserBHT80Coupons
+            {
+                public const string Name = "GetUserBHT80Coupons";
+                public const string Url = Coupon.Url + @"/" + Name;
+            }
+
             public static class GetTSBSoldCoupons
             {
                 public const string Name = "GetTSBSoldCoupons";
