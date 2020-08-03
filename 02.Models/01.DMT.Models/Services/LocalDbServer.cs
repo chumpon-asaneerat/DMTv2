@@ -1359,6 +1359,8 @@ namespace DMT.Services
 				"UserCreditBorrowSummaryView",
 				"UserCreditReturnSummaryView",
 				"UserCreditSummaryView",
+				"UserCoupon35SummaryView",
+				"UserCoupon80SummaryView",
 				"UserCouponSummaryView"
 			};
 
