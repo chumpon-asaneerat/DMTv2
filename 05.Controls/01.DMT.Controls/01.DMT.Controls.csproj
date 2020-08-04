@@ -347,6 +347,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="TA\Pages\Reports\CouponSalesReceiptRep.rdlc" />
     <EmbeddedResource Include="TA\Pages\Reports\CouponRep.rdlc" />
     <EmbeddedResource Include="TOD\Pages\Reports\RevenueSlipNull.rdlc" />
     <EmbeddedResource Include="TOD\Pages\Reports\RevenueSlipSum.rdlc" />
