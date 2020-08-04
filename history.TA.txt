@@ -2,8 +2,9 @@
 Update 2020-08-04 #3 (TA)
 - 
 
+[commited]
 Update 2020-08-04 #2 (TA)
-- 
+- Merge origin/master (Kik) #2.
 
 [commited]
 Update 2020-08-04 #1 (TA)
