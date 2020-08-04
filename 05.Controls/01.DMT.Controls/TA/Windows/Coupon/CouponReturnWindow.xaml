@@ -103,10 +103,60 @@
                     <ColumnDefinition Width="10" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height ="50" />
+                    <RowDefinition Height ="80" />
                     <RowDefinition Height ="40" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
+                <Grid Grid.Column="1" Grid.ColumnSpan="7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="*" />
+                       
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="10" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height ="*" />
+                        <RowDefinition Height ="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.ColumnSpan="3">
+                        <Label Content="พนง : " 
+                               FontSize="18" 
+                               Foreground="White" 
+                               FontWeight="Normal" 
+                               FontFamily="Tahoma"     
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"/>
+                        <TextBlock x:Name="txtUserId" 
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               FontSize="18" 
+                               Foreground="White" 
+                               FontWeight="Normal" 
+                               FontFamily="Tahoma" 
+                               Text="" />
+                    </StackPanel>
+                    <Label Content="คูปอง 35 บาท" Grid.Column="1" Grid.Row="1"
+                       FontSize="18" 
+                       Foreground="White" 
+                       FontWeight="Normal" 
+                       FontFamily="Tahoma" 
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Top" 
+                       Width="126" 
+                       Grid.ColumnSpan="3" />
+
+                    <Label Content="คูปอง 80 บาท" Grid.Column="3" Grid.Row="1"
+                       FontSize="18" 
+                       Foreground="White" 
+                       FontWeight="Normal" 
+                       FontFamily="Tahoma" 
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Top" 
+                       Width="126" 
+                       Grid.ColumnSpan="3" />
+                </Grid>
                 <TextBox x:Name="txtNewCouponCode35" Margin="15,7,0,0" Grid.Column="1" Grid.Row="1" 
                          HorizontalAlignment="Left" 
                          TextWrapping="Wrap" 
@@ -205,36 +255,7 @@
                                 HorizontalAlignment="Center" 
                                 VerticalAlignment="Center" Source="/DMT.Controls;component/Images/Button/back.png" />
                 </Button>
-                <Label Content="พนง : 14055" 
-                       FontSize="18" 
-                       Foreground="White" 
-                       FontWeight="Normal" 
-                       FontFamily="Tahoma" 
-                       Grid.Column="1" 
-                       HorizontalAlignment="Center" Margin="8,0,75,0" 
-                       VerticalAlignment="Top" 
-                       Width="126" />
-                <Label Content="คูปอง 35 บาท" 
-                       FontSize="18" 
-                       Foreground="White" 
-                       FontWeight="Normal" 
-                       FontFamily="Tahoma" 
-                       Grid.Column="1" 
-                       HorizontalAlignment="Center" Margin="187,14,185,0" 
-                       VerticalAlignment="Top" 
-                       Width="126" 
-                       Grid.ColumnSpan="3" />
-
-                <Label Content="คูปอง 80 บาท" 
-                       FontSize="18" 
-                       Foreground="White" 
-                       FontWeight="Normal" 
-                       FontFamily="Tahoma" 
-                       Grid.Column="5" 
-                       HorizontalAlignment="Center" Margin="188,14,182,0" 
-                       VerticalAlignment="Top" 
-                       Width="126" 
-                       Grid.ColumnSpan="3" />
+               
             </Grid>
         </DockPanel>
     </Grid>
