@@ -33,8 +33,10 @@ Update 2020-08-05 #21
 Update 2020-08-05 #20
 - prepare hisotry.txt
 
+[commited]
 Update 2020-08-05 #19
-- 
+- Update Coupon related process #40. 
+  - Permanent remove TSBAdditionBalance.cs, TSBAdditionTransaction.cs.
 
 [commited]
 Update 2020-08-05 #18
