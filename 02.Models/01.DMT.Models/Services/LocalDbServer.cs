@@ -1354,17 +1354,25 @@ namespace DMT.Services
 		{
 			if (null == Db) return;
 
-			string[] views = new string[]
-			{
-				"TSBCreditSummarryView",
-				"TSBCouponSummarryView",
-				"UserCreditBorrowSummaryView",
-				"UserCreditReturnSummaryView",
-				"UserCreditSummaryView",
-				"UserCoupon35SummaryView",
-				"UserCoupon80SummaryView",
-				"UserCouponSummaryView"
-			};
+			string prefix;
+			List<string> views = new List<string>();
+			// Note: 
+			// -----------------------------------------------------------
+			// Embeded resource used . instead / to access sub contents.
+			// -----------------------------------------------------------
+
+			// Credits
+			prefix = @"Credits.";
+			views.Add(string.Format("{0}" + "TSBCreditSummarryView", prefix));
+			views.Add(string.Format("{0}" + "UserCreditBorrowSummaryView", prefix));
+			views.Add(string.Format("{0}" + "UserCreditReturnSummaryView", prefix));
+			views.Add(string.Format("{0}" + "UserCreditSummaryView", prefix));
+
+			// Coupons
+			prefix = @"Coupons.";
+			views.Add(string.Format("{0}" + "UserCoupon35SummaryView", prefix));
+			views.Add(string.Format("{0}" + "UserCoupon80SummaryView", prefix));
+			views.Add(string.Format("{0}" + "UserCouponSummaryView", prefix));
 
 			foreach (var viewName in views)
 			{

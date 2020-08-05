@@ -29,8 +29,10 @@ Update 2020-08-05 #12
 Update 2020-08-05 #11
 - 
 
+[commited]
 Update 2020-08-05 #10
-- 
+- Update Coupon related process #30. 
+  - Update local db server initviews methods.
 
 [commited]
 Update 2020-08-05 #9
