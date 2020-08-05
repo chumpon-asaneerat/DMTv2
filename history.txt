@@ -5,8 +5,10 @@ Update 2020-08-05 #20
 Update 2020-08-05 #19
 - 
 
+[commited]
 Update 2020-08-05 #18
-- 
+- Update Coupon related process #39. 
+  - Permanent remove CouponFactorGroup.cs, CouponFactor.cs.
 
 [commited]
 Update 2020-08-05 #17
