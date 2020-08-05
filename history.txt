@@ -11,8 +11,10 @@ Update 2020-08-05 #18
 Update 2020-08-05 #17
 - 
 
+[commited]
 Update 2020-08-05 #16
-- 
+- Update Coupon related process #37. 
+  - Update TSBCouponBalance add Amount 35/80
 
 [commited]
 Update 2020-08-05 #15
