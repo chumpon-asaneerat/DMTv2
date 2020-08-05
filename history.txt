@@ -17,8 +17,11 @@ Update 2020-08-05 #26
 Update 2020-08-05 #25
 - 
 
+[commited]
 Update 2020-08-05 #24
-- 
+- Update Coupon related process #44. 
+  - Permanent remove AdditionController.cs
+  - Permanent remove PlazaOperations.Addition.cs
 
 [commited]
 Update 2020-08-05 #23

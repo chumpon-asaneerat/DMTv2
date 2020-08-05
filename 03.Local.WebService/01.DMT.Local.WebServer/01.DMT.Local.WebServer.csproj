@@ -86,7 +86,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="WebServer\Controllers\AdditionController.cs" />
     <Compile Include="WebServer\Controllers\CouponController.cs" />
     <Compile Include="WebServer\Controllers\CreditController.cs" />
     <Compile Include="WebServer\Controllers\UserShiftController.cs" />
