@@ -26,8 +26,10 @@ Update 2020-08-05 #23
 Update 2020-08-05 #22
 - 
 
+[commited]
 Update 2020-08-05 #21
-- 
+- Update Coupon related process #41. 
+  - TSBCreditTransaction model add IsValidXXX for check amount is exact match coin/bill count.
 
 [commited]
 Update 2020-08-05 #20
