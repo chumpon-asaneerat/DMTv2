@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Media;
 
 using NLib;
 using NLib.Design;
@@ -31,6 +32,9 @@ namespace DMT.Models
 	//[Table("UserCredit")]
 	public class UserCreditTransaction : NTable<UserCreditTransaction>
 	{
+		private static SolidColorBrush RedForeground = new SolidColorBrush(Colors.DarkRed);
+		private static SolidColorBrush BlackForeground = new SolidColorBrush(Colors.DarkRed);
+
 		#region Enum
 
 		public enum TransactionTypes
@@ -193,6 +197,121 @@ namespace DMT.Models
 			get { return (_hasRemark) ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed; }
 			set { }
 		}
+
+		#region Valid Colors
+
+		[Category("Runtime")]
+		[Description("Gets or sets Foreground color for ST25.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public SolidColorBrush ST25Foreground
+		{
+			get { return (IsValidST25) ? BlackForeground : RedForeground; }
+			set { }
+		}
+		[Category("Runtime")]
+		[Description("Gets or sets Foreground color for ST50.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public SolidColorBrush ST50Foreground
+		{
+			get { return (IsValidST50) ? BlackForeground : RedForeground; }
+			set { }
+		}
+		[Category("Runtime")]
+		[Description("Gets or sets Foreground color for BHT1.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public SolidColorBrush BHT1Foreground
+		{
+			get { return (IsValidBHT1) ? BlackForeground : RedForeground; }
+			set { }
+		}
+		[Category("Runtime")]
+		[Description("Gets or sets Foreground color for BHT2.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public SolidColorBrush BHT2Foreground
+		{
+			get { return (IsValidBHT2) ? BlackForeground : RedForeground; }
+			set { }
+		}
+		[Category("Runtime")]
+		[Description("Gets or sets Foreground color for BHT5.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public SolidColorBrush BHT5Foreground
+		{
+			get { return (IsValidBHT5) ? BlackForeground : RedForeground; }
+			set { }
+		}
+		[Category("Runtime")]
+		[Description("Gets or sets Foreground color for BHT10.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public SolidColorBrush BHT10Foreground
+		{
+			get { return (IsValidBHT10) ? BlackForeground : RedForeground; }
+			set { }
+		}
+		[Category("Runtime")]
+		[Description("Gets or sets Foreground color for BHT20.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public SolidColorBrush BHT20Foreground
+		{
+			get { return (IsValidBHT20) ? BlackForeground : RedForeground; }
+			set { }
+		}
+		[Category("Runtime")]
+		[Description("Gets or sets Foreground color for BHT50.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public SolidColorBrush BHT50Foreground
+		{
+			get { return (IsValidBHT50) ? BlackForeground : RedForeground; }
+			set { }
+		}
+		[Category("Runtime")]
+		[Description("Gets or sets Foreground color for BHT100.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public SolidColorBrush BHT100Foreground
+		{
+			get { return (IsValidBHT100) ? BlackForeground : RedForeground; }
+			set { }
+		}
+		[Category("Runtime")]
+		[Description("Gets or sets Foreground color for BHT500.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public SolidColorBrush BHT500Foreground
+		{
+			get { return (IsValidBHT500) ? BlackForeground : RedForeground; }
+			set { }
+		}
+		[Category("Runtime")]
+		[Description("Gets or sets Foreground color for BHT1000.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public SolidColorBrush BHT1000Foreground
+		{
+			get { return (IsValidBHT1000) ? BlackForeground : RedForeground; }
+			set { }
+		}
+
+		#endregion
 
 		#endregion
 

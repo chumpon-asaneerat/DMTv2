@@ -11,8 +11,12 @@ Update 2020-08-05 #28
 Update 2020-08-05 #27
 - 
 
+[commited]
 Update 2020-08-05 #26
-- 
+- Update Coupon related process #46. 
+  - UserCreditTransaction model add IsValid runtime foreground color peoperties.
+  - TSBCreditBalance model add IsValid runtime foreground color peoperties.
+  - TSBCreditTransaction model add IsValid runtime foreground color peoperties.
 
 [commited]
 Update 2020-08-05 #25
