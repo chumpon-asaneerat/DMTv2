@@ -41,9 +41,6 @@ namespace DMT.TA.Windows.Coupon
 
         private Models.RevenueEntry _revenueEntry = null;
 
-        private bool isNew = false;
-
-
         #region Button Handlers
 
         private void cmdSaveExchange_Click(object sender, RoutedEventArgs e)
@@ -185,12 +182,7 @@ namespace DMT.TA.Windows.Coupon
                     _revenueEntry.EntryDate == DateTime.MinValue ||
                     _revenueEntry.RevenueDate == DateTime.MinValue)
                 {
-                    isNew = true;
                     InitNewReport();
-                }
-                else
-                {
-                    isNew = false;
                 }
             }
 

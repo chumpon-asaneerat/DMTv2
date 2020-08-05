@@ -32,11 +32,13 @@ Update 2020-08-06 #11
 Update 2020-08-06 #10
 - 
 
+[commited]
 Update 2020-08-06 #9
-- 
+- Update Coupon related process #62.
 
+[commited]
 Update 2020-08-06 #8
-- 
+- Update Coupon related process #61.
 
 [commited]
 Update 2020-08-06 #7
