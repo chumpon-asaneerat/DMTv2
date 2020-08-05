@@ -137,7 +137,7 @@ namespace DMT.Config.Pages
 
             if (null != tsb)
             {
-                var coupons = ops.Coupons.GetTSBCoupons(tsb);
+                var coupons = ops.Coupons.GetTSBCouponTransactions(tsb);
                 lvCoupon.ItemsSource = coupons;
             }
         }

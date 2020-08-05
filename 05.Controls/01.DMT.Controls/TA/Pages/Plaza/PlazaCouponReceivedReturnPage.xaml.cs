@@ -72,6 +72,7 @@ namespace DMT.TA.Pages.Plaza
         */
         public void RefreshPlazaInfo()
         {
+            /*
             var tsbCoupon = ops.Coupons.GetCurrent();
 
             this.DataContext = tsbCoupon;
@@ -79,6 +80,7 @@ namespace DMT.TA.Pages.Plaza
             tsbCoupon.HasRemark = false;
             plaza.IsEnabled = false;
             plaza.DataContext = tsbCoupon;
+            */
         }
     }
 }

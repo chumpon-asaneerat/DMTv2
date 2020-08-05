@@ -313,12 +313,16 @@ namespace DMT.Services
 
         public void Borrow(TSBCouponTransaction value)
         {
-            
+            value.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
+            value.UserId = User.UserId;
+            value.UserReceiveDate = DateTime.Now;
         }
 
         public void Return(TSBCouponTransaction value)
         {
-
+            value.TransactionType = TSBCouponTransaction.TransactionTypes.Stock;
+            value.UserId = string.Empty;
+            value.UserReceiveDate = DateTime.MinValue;
         }
 
         #endregion

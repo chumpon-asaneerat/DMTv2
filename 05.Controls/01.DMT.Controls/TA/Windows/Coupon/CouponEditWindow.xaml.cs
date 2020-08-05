@@ -36,9 +36,10 @@ namespace DMT.TA.Windows.Coupon
         #endregion
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
-        private User _user = null;
-        private List<TSBCouponTransaction> _tsbCoupon35 = null;
-        private List<TSBCouponTransaction> _tsbCoupon80 = null;
+        private TSBCouponManager manager = new TSBCouponManager();
+        //private User _user = null;
+        //private List<TSBCouponTransaction> _tsbCoupon35 = null;
+        //private List<TSBCouponTransaction> _tsbCoupon80 = null;
 
         #region Button Handlers
 
@@ -78,7 +79,7 @@ namespace DMT.TA.Windows.Coupon
         {
             var item = lvTSB35.SelectedItem as TSBCouponTransaction;
             if (null == item) return;
-            item.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
+            manager.Borrow(item);
             RefreshBHT35Coupons();
         }
 
@@ -86,7 +87,7 @@ namespace DMT.TA.Windows.Coupon
         {
             var item = lvUser35.SelectedItem as TSBCouponTransaction;
             if (null == item) return;
-            item.TransactionType = TSBCouponTransaction.TransactionTypes.Stock;
+            manager.Return(item);
             RefreshBHT35Coupons();
         }
 
@@ -94,7 +95,7 @@ namespace DMT.TA.Windows.Coupon
         {
             var item = lvTSB80.SelectedItem as TSBCouponTransaction;
             if (null == item) return;
-            item.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
+            manager.Borrow(item);
             RefreshBHT80Coupons();
         }
 
@@ -102,7 +103,7 @@ namespace DMT.TA.Windows.Coupon
         {
             var item = lvUser80.SelectedItem as TSBCouponTransaction;
             if (null == item) return;
-            item.TransactionType = TSBCouponTransaction.TransactionTypes.Stock;
+            manager.Return(item);
             RefreshBHT80Coupons();
         }
 
@@ -121,8 +122,8 @@ namespace DMT.TA.Windows.Coupon
                     var item = list[0] as TSBCouponTransaction;
                     if (null == item) return;
                     item.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
-                    RefreshBHT35Coupons();
                     txtFilter35.Text = string.Empty;
+                    RefreshBHT35Coupons();
                 }
             }
         }
@@ -138,8 +139,8 @@ namespace DMT.TA.Windows.Coupon
                     var item = list[0] as TSBCouponTransaction;
                     if (null == item) return;
                     item.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
-                    RefreshBHT80Coupons();
                     txtFilter80.Text = string.Empty;
+                    RefreshBHT80Coupons();
                 }
             }
         }
@@ -148,11 +149,11 @@ namespace DMT.TA.Windows.Coupon
 
         public void Setup(User user)
         {
-            _user = user;
-            if (null != _user)
+            manager.User = user;
+            if (null != manager.User)
             {
-                txtUser.Content = string.Format("พนง: {0} {1}", 
-                    _user.UserId, _user.FullNameTH);
+                txtUser.Content = string.Format("พนง: {0} {1}",
+                    manager.User.UserId, manager.User.FullNameTH);
             }
             else
             {
@@ -163,78 +164,33 @@ namespace DMT.TA.Windows.Coupon
 
         private void LoadCoupons()
         {
-            /*
-            var tsb = ops.TSB.GetCurrent();
-            _tsbCoupon35 = null;
-            _tsbCoupon80 = null;
-            lvUser35.ItemsSource = null;
-            lvUser80.ItemsSource = null;
-
-            if (null != tsb)
-            {
-                _tsbCoupon35 = ops.Coupons.GetTSBBHT35Coupons(tsb);
-                _tsbCoupon80 = ops.Coupons.GetTSBBHT80Coupons(tsb);
-            }
-            if (null != _user && null != tsb)
-            {
-                var opts = Search.UserCoupons.ByUser.Create(tsb, _user);
-                var user35Items = ops.Coupons.GetUserBHT35Coupons(opts);
-                if (null != user35Items)
-                {
-                    var opts2 = Search.UserCoupons.ToTSBCoupons.Create(tsb, user35Items);
-                    var tsb35Items = ops.Coupons.ToTSBBHT35Coupons(opts2);
-                    if (null != tsb35Items)
-                    {
-                        _tsbCoupon35.AddRange(tsb35Items);
-                    }
-                }
-                var user80Items = ops.Coupons.GetUserBHT80Coupons(opts);
-                if (null != user80Items)
-                {
-                    var opts2 = Search.UserCoupons.ToTSBCoupons.Create(tsb, user80Items);
-                    var tsb35Items = ops.Coupons.ToTSBBHT80Coupons(opts2);
-                    if (null != tsb35Items)
-                    {
-                        _tsbCoupon80.AddRange(tsb35Items);
-                    }
-                }
-            }
-            lvTSB35.ItemsSource = _tsbCoupon35;
-            lvTSB80.ItemsSource = _tsbCoupon80;
+            manager.Refresh();
 
             RefreshBHT35Coupons();
             RefreshBHT80Coupons();
-            */
         }
 
         private void RefreshBHT35Coupons()
         {
-            if (null != _tsbCoupon35)
+            lvTSB35.ItemsSource = null;
+            lvTSB35.ItemsSource = manager.C35Stocks.FindAll(item =>
             {
-                lvTSB35.ItemsSource = _tsbCoupon35.FindAll(item =>
-                {
-                    return item.CouponId.Contains(txtFilter35.Text) && item.TransactionType == TSBCouponTransaction.TransactionTypes.Stock;
-                });
-                lvUser35.ItemsSource = _tsbCoupon35.FindAll(item =>
-                {
-                    return item.TransactionType == TSBCouponTransaction.TransactionTypes.Lane;
-                });
-            }
+                return item.CouponId.Contains(txtFilter35.Text) && item.TransactionType == TSBCouponTransaction.TransactionTypes.Stock;
+            });
+
+            lvUser35.ItemsSource = null;
+            lvUser35.ItemsSource = manager.C35Users;
         }
 
         private void RefreshBHT80Coupons()
         {
-            if (null != _tsbCoupon80)
+            lvTSB80.ItemsSource = null;
+            lvTSB80.ItemsSource = manager.C80Stocks.FindAll(item =>
             {
-                lvTSB80.ItemsSource = _tsbCoupon80.FindAll(item =>
-                {
-                    return item.CouponId.Contains(txtFilter80.Text) && item.TransactionType == TSBCouponTransaction.TransactionTypes.Stock;
-                });
-                lvUser80.ItemsSource = _tsbCoupon80.FindAll(item =>
-                {
-                    return item.TransactionType == TSBCouponTransaction.TransactionTypes.Lane;
-                });
-            }
+                return item.CouponId.Contains(txtFilter80.Text) && item.TransactionType == TSBCouponTransaction.TransactionTypes.Stock;
+            });
+            lvUser80.ItemsSource = null;
+            lvUser80.ItemsSource = manager.C80Users;
         }
     }
 }

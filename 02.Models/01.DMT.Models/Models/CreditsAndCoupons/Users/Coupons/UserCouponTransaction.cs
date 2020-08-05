@@ -784,6 +784,7 @@ namespace DMT.Models
 
 		public static void Sold(UserCouponTransaction coupon)
 		{
+			/*
 			if (null == coupon) return;
 			lock (sync)
 			{
@@ -795,6 +796,7 @@ namespace DMT.Models
 					TSBCouponTransaction.Sold(tsbCoupon);
 				}
 			}
+			*/
 		}
 
 		#endregion
