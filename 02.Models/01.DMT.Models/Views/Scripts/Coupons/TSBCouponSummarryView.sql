@@ -1,4 +1,4 @@
-﻿CREATE VIEW TSBCouponSummaryView
+﻿CREATE VIEW TSBCouponSummarryView
 AS
 	SELECT TSBCouponTransaction.* 
 		 , TSB.TSBId

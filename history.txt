@@ -17,14 +17,17 @@ Update 2020-08-05 #16
 Update 2020-08-05 #15
 - 
 
+[commited]
 Update 2020-08-05 #14
-- 
+- Update Coupon related process #34. 
+  - Update local db server initviews methods.
+  - Add TSBCouponTransactionView.sql
 
 [commited]
 Update 2020-08-05 #13
 - Update Coupon related process #33. 
   - Update local db server initviews methods.
-  - Add TSBCouponTransactionView,sql
+  - Add TSBCouponTransactionView.sql
 
 [commited]
 Update 2020-08-05 #12

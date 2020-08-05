@@ -1371,13 +1371,23 @@ namespace DMT.Services
 			InitView("UserCouponSummaryView", prefix);
 		}
 
+		class ViewInfo
+		{
+			public string Name { get; set; }
+		}
+
 		private void InitView(string viewName, string resourcePrefix = "")
 		{
 			if (null == Db) return;
 
 			var hist = ViewHistory.GetWithChildren(viewName, false);
 			var info = Db.GetTableInfo(viewName);
-			bool exists = (null != info) ? info.Count > 0 : false;
+
+			string checkViewCmd = "SELECT Name FROM sqlite_master WHERE Type = 'view' AND Name = ?";
+			var rets = Db.Query<ViewInfo>(checkViewCmd, viewName);
+			bool exists = (null != rets && rets.Count > 0);
+
+			//bool exists = (null != info) ? info.Count > 0 : false;
 
 			if (!exists || null == hist || hist.VersionId != HistoryVersion)
 			{
@@ -1387,7 +1397,26 @@ namespace DMT.Services
 				{
 					string dropCmd = string.Empty;
 					dropCmd += "DROP VIEW IF EXISTS " + viewName;
-					Db.Execute(dropCmd);
+					Db.BeginTransaction();
+					try { Db.Execute(dropCmd); }
+					catch (Exception dropEx) 
+					{
+						//Console.WriteLine(dropEx);
+						med.Err(dropEx);
+						med.Err("Drop Failed:" + Environment.NewLine + viewName);
+						Db.Rollback(); 
+					}
+					finally { Db.Commit(); }
+
+					// Recheck
+					/*
+					rets = Db.Query<ViewInfo>(checkViewCmd, viewName);
+					exists = (null != rets && rets.Count > 0);
+					if (exists)
+					{
+						Console.WriteLine("Drop View Failed.");
+					}
+					*/
 
 					string resourceName = viewName + ".sql";
 					// Note: 
