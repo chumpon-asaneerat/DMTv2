@@ -14,8 +14,11 @@ Update 2020-08-05 #7
 Update 2020-08-05 #6
 - 
 
+[commited]
 Update 2020-08-05 #5
-- 
+- Update Coupon related process #25. 
+  - Remove CouponFacorGroup nodel (Set build action to none).
+  - Remove CouponFacor model (Set build action to none).
 
 [commited]
 Update 2020-08-05 #4

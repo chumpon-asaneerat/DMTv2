@@ -144,8 +144,8 @@ namespace DMT.Services
 			Db.CreateTable<User>();
 
 			Db.CreateTable<Payment>();
-			Db.CreateTable<CouponFactorGroup>();
-			Db.CreateTable<CouponFactor>();
+			//Db.CreateTable<CouponFactorGroup>();
+			//Db.CreateTable<CouponFactor>();
 
 			Db.CreateTable<Config>();
 			Db.CreateTable<ViewHistory>();
@@ -1305,6 +1305,7 @@ namespace DMT.Services
 
 		private void InitCouponFactors()
 		{
+			/*
 			var group = new CouponFactorGroup();
 			group.Remark = "Default";
 			group.Begin = DateTime.MinValue;
@@ -1322,6 +1323,7 @@ namespace DMT.Services
 			c80.CouponType = CouponType.BHT80;
 			c80.Factor = 1520;
 			CouponFactor.Save(c80);
+			*/
 		}
 
 		private void InitConfigs()
