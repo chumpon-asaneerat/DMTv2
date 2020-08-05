@@ -451,6 +451,26 @@ namespace DMT
             public const string Name = "Coupon";
             public const string Url = RouteConsts.Url + @"/" + Name;
 
+            #region TSB Coupon Balance
+
+            public static class GetTSBCouponBalances
+            {
+                public const string Name = "GetTSBCouponBalances";
+                public const string Url = Coupon.Url + @"/" + Name;
+            }
+
+            #endregion
+
+            #region TSB Coupon Transaction
+
+            public static class SaveTSBCouponTransaction
+            {
+                public const string Name = "SaveTSBCouponTransaction";
+                public const string Url = Coupon.Url + @"/" + Name;
+            }
+
+            #endregion
+            /*
             public static class GetCurrentTSBCoupons
             {
                 public const string Name = "GetCurrentTSBCoupons";
@@ -511,21 +531,9 @@ namespace DMT
                 public const string Url = Coupon.Url + @"/" + Name;
             }
 
-            public static class SaveTransaction
-            {
-                public const string Name = "SaveTransaction";
-                public const string Url = Coupon.Url + @"/" + Name;
-            }
-
             public static class GetCurrent
             {
                 public const string Name = "GetCurrent";
-                public const string Url = Coupon.Url + @"/" + Name;
-            }
-
-            public static class GetTSBCurrent
-            {
-                public const string Name = "GetTSBCurrent";
                 public const string Url = Coupon.Url + @"/" + Name;
             }
 
@@ -540,6 +548,7 @@ namespace DMT
                 public const string Name = "UserReturnCoupons";
                 public const string Url = Coupon.Url + @"/" + Name;
             }
+            */
         }
 
         #endregion

@@ -17,6 +17,34 @@ namespace DMT.Services
     /// </summary>
     public class CouponController : ApiController
     {
+        #region TSB Coupon Balance
+
+        [HttpPost]
+        [ActionName(RouteConsts.Coupon.GetTSBCouponBalances.Name)]
+        public List<TSBCouponBalance> GetTSBCouponBalances()
+        {
+            return TSBCouponBalance.GetTSBCouponBalances();
+        }
+
+        #endregion
+
+        #region TSB Coupon Transaction
+
+        [HttpPost]
+        [ActionName(RouteConsts.Coupon.SaveTSBCouponTransaction.Name)]
+        public void SaveTransaction([FromBody] TSBCouponTransaction value)
+        {
+            if (value.TransactionDate == DateTime.MinValue)
+            {
+                value.TransactionDate = DateTime.Now;
+            }
+            TSBCouponTransaction.Save(value);
+        }
+
+        #endregion
+
+
+        /*
         [HttpPost]
         [ActionName(RouteConsts.Coupon.GetCurrentTSBCoupons.Name)]
         public List<TSBCouponTransaction> GetCurrentTSBCoupons()
@@ -135,5 +163,6 @@ namespace DMT.Services
             if (null == value) return;
             UserCouponTransaction.UserReturnCoupons(value.User, value.Coupons);
         }
+        */
     }
 }

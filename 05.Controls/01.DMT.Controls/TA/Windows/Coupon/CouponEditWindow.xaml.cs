@@ -42,9 +42,10 @@ namespace DMT.TA.Windows.Coupon
 
         #region Button Handlers
 
-        private void cmdSaveExchange_Click(object sender, RoutedEventArgs e)
+        private void cmdSave_Click(object sender, RoutedEventArgs e)
         {
             // Save
+            /*
             if (null != _user && null != _tsbCoupon35)
             {
                 var list = _tsbCoupon35.FindAll(item =>
@@ -63,6 +64,7 @@ namespace DMT.TA.Windows.Coupon
                 var opts = Search.UserCoupons.BorrowCoupons.Create(_user, list);
                 ops.Coupons.UserBorrowCoupons(opts);
             }
+            */
             this.DialogResult = true;
         }
 
@@ -161,6 +163,7 @@ namespace DMT.TA.Windows.Coupon
 
         private void LoadCoupons()
         {
+            /*
             var tsb = ops.TSB.GetCurrent();
             _tsbCoupon35 = null;
             _tsbCoupon80 = null;
@@ -201,6 +204,7 @@ namespace DMT.TA.Windows.Coupon
 
             RefreshBHT35Coupons();
             RefreshBHT80Coupons();
+            */
         }
 
         private void RefreshBHT35Coupons()

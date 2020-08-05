@@ -553,12 +553,12 @@ namespace DMT.Models
 		/// Gets Active TSB Coupon balance.
 		/// </summary>
 		/// <returns>Returns Current Active TSB Coupon balance. If not found returns null.</returns>
-		public static List<TSBCouponBalance> GetCurrent()
+		public static List<TSBCouponBalance> GetTSBCouponBalances()
 		{
 			lock (sync)
 			{
 				var tsb = TSB.GetCurrent();
-				return GetCurrent(tsb);
+				return GetTSBCouponBalances(tsb);
 			}
 		}
 		/// <summary>
@@ -566,7 +566,7 @@ namespace DMT.Models
 		/// </summary>
 		/// <param name="tsb">The target TSB to get balance.</param>
 		/// <returns>Returns List of TSB Coupon balance. If TSB not found returns null.</returns>
-		public static List<TSBCouponBalance> GetCurrent(TSB tsb)
+		public static List<TSBCouponBalance> GetTSBCouponBalances(TSB tsb)
 		{
 			if (null == tsb) return new List<TSBCouponBalance>();
 			lock (sync)

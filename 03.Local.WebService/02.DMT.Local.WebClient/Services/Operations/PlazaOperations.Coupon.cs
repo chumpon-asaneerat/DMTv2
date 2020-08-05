@@ -58,6 +58,28 @@ namespace DMT.Services
 
             #region Public Methods
 
+            #region TSB Coupon Balance
+
+            public List<TSBCouponBalance> GetTSBCouponBalances()
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponBalance>>(
+                    RouteConsts.Coupon.GetTSBCouponBalances.Url, new { });
+                return ret;
+            }
+
+            #endregion
+
+            #region TSB Coupon Transaction
+
+            public void SaveTransaction(TSBCouponTransaction value)
+            {
+                NRestClient.Create(port: 9000).Execute(
+                    RouteConsts.Coupon.SaveTSBCouponTransaction.Url, value);
+            }
+
+            #endregion
+
+            /*
             public List<TSBCouponTransaction> GetCurrentTSBCoupons()
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
@@ -161,8 +183,57 @@ namespace DMT.Services
                 NRestClient.Create(port: 9000).Execute(
                     RouteConsts.Coupon.UserReturnCoupons.Url, value);
             }
-
+            */
             #endregion
+        }
+
+        #endregion
+    }
+
+    public class TSBCouponManager
+    {
+        #region Internal Variables
+
+        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private List<TSBCouponBalance> _summaries = null;
+        private List<TSBCouponTransaction> _coupons = null;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public TSBCouponManager() : base() 
+        { 
+        }
+        /// <summary>
+        /// Destructor.
+        /// </summary>
+        ~TSBCouponManager()
+        {
+            _summaries = null;
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public void Refresh()
+        {
+            _summaries = ops.Coupons.GetTSBCouponBalances();
+        }
+
+        public List<TSBCouponBalance> Summaries { get { return _summaries;  } }
+
+        public List<TSBCouponTransaction> Stocks
+        {
+            get
+            {
+                if (null == _coupons) return new List<TSBCouponTransaction>();
+                return _coupons;
+            }
         }
 
         #endregion

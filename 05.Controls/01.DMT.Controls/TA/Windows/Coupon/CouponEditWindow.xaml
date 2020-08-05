@@ -20,7 +20,7 @@
                        Margin="5"
                        DockPanel.Dock="Bottom">
                 <Grid Width="5" DockPanel.Dock="Right" />
-                <Button x:Name="cmdSaveExchange"
+                <Button x:Name="cmdSave"
                         Width="220"
                         Height="50"
                         HorizontalAlignment="Center"
@@ -29,7 +29,7 @@
                         VerticalContentAlignment="Stretch"
                         DockPanel.Dock="Right"
                         Foreground="White"
-                        Click="cmdSaveExchange_Click">
+                        Click="cmdSave_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png" />
                     </Button.Background>
