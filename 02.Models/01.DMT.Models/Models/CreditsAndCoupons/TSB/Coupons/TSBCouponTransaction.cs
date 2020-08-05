@@ -52,16 +52,25 @@ namespace DMT.Models
 		private DateTime _TransactionDate = DateTime.MinValue;
 		private TransactionTypes _TransactionType = TransactionTypes.Received;
 
-		private string _TSBId = string.Empty;
-		private string _TSBNameEN = string.Empty;
-		private string _TSBNameTH = string.Empty;
-
 		// Coupon 
 		private string _CouponId = string.Empty;
 		private CouponType _CouponType = CouponType.BHT35;
-		private decimal _Factor = 665;
+		private decimal _Price = 665;
+		// TSB
+		private string _TSBId = string.Empty;
+		private string _TSBNameEN = string.Empty;
+		private string _TSBNameTH = string.Empty;
+		// User
+		private string _UserId = string.Empty;
+		private string _FullNameEN = string.Empty;
+		private string _FullNameTH = string.Empty;
+		// Sold
+		private DateTime _SoldDate = DateTime.MinValue;
+		private string _SoldBy = string.Empty;
+		private string _SoldByFullNameEN = string.Empty;
+		private string _SoldByFullNameTH = string.Empty;
 
-		private string _Remark = string.Empty;
+		//private string _Remark = string.Empty;
 
 		private int _Status = 0;
 		private DateTime _LastUpdate = DateTime.MinValue;
@@ -317,25 +326,251 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets number of coupon factor.
+		/// Gets or sets number of coupon price.
 		/// </summary>
 		[Category("Coupon")]
-		[Description("Gets or sets number of coupon factor.")]
+		[Description("Gets or sets number of coupon price.")]
 		[ReadOnly(true)]
-		[PeropertyMapName("Factor")]
-		public decimal Factor
+		[PeropertyMapName("Price")]
+		public decimal Price
 		{
-			get { return _Factor; }
+			get { return _Price; }
 			set
 			{
-				if (_Factor != value)
+				if (_Price != value)
 				{
-					_Factor = value;
+					_Price = value;
 					// Raise event.
-					this.RaiseChanged("Factor");
+					this.RaiseChanged("Price");
 				}
 			}
 		}
+
+		#endregion
+
+		#region User
+
+		/// <summary>
+		/// Gets or sets UserId
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets UserId")]
+		[ReadOnly(true)]
+		[MaxLength(10)]
+		[PeropertyMapName("UserId")]
+		public virtual string UserId
+		{
+			get
+			{
+				return _UserId;
+			}
+			set
+			{
+				if (_UserId != value)
+				{
+					_UserId = value;
+					this.RaiseChanged("UserId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets FullNameEN
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets FullNameEN")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("FullNameEN")]
+		public virtual string FullNameEN
+		{
+			get
+			{
+				return _FullNameEN;
+			}
+			set
+			{
+				if (_FullNameEN != value)
+				{
+					_FullNameEN = value;
+					this.RaiseChanged("FullNameEN");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets FullNameTH
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets FullNameTH")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("FullNameTH")]
+		public virtual string FullNameTH
+		{
+			get
+			{
+				return _FullNameTH;
+			}
+			set
+			{
+				if (_FullNameTH != value)
+				{
+					_FullNameTH = value;
+					this.RaiseChanged("FullNameTH");
+				}
+			}
+		}
+
+		#endregion
+
+		#region Sold
+
+		/// <summary>
+		/// Gets or sets SoldBy (UserId)
+		/// </summary>
+		[Category("Sold")]
+		[Description("Gets or sets SoldBy (UserId)")]
+		[ReadOnly(true)]
+		[MaxLength(10)]
+		[PeropertyMapName("SoldBy")]
+		public virtual string SoldBy
+		{
+			get
+			{
+				return _SoldBy;
+			}
+			set
+			{
+				if (_SoldBy != value)
+				{
+					_SoldBy = value;
+					this.RaiseChanged("UserId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Sold User FullNameEN
+		/// </summary>
+		[Category("Sold")]
+		[Description("Gets or sets Sold User FullNameEN")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("SoldByFullNameEN")]
+		public virtual string SoldByFullNameEN
+		{
+			get
+			{
+				return _SoldByFullNameEN;
+			}
+			set
+			{
+				if (_SoldByFullNameEN != value)
+				{
+					_SoldByFullNameEN = value;
+					this.RaiseChanged("SoldByFullNameEN");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Sold User FullNameTH
+		/// </summary>
+		[Category("Sold")]
+		[Description("Gets or sets Sold User FullNameTH")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("SoldByFullNameTH")]
+		public virtual string SoldByFullNameTH
+		{
+			get
+			{
+				return _SoldByFullNameTH;
+			}
+			set
+			{
+				if (_SoldByFullNameTH != value)
+				{
+					_SoldByFullNameTH = value;
+					this.RaiseChanged("SoldByFullNameTH");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Sold Date.
+		/// </summary>
+		[Category("Sold")]
+		[Description(" Gets or sets Sold Date")]
+		[ReadOnly(true)]
+		[PeropertyMapName("SoldDate")]
+		public DateTime SoldDate
+		{
+			get
+			{
+				return _SoldDate;
+			}
+			set
+			{
+				if (_SoldDate != value)
+				{
+					_SoldDate = value;
+					this.RaiseChanged("SoldDate");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets Sold Date String.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets Sold Date String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string SoldDateString
+		{
+			get
+			{
+				var ret = (this.SoldDate == DateTime.MinValue) ? "" : this.SoldDate.ToThaiDateTimeString("dd/MM/yyyy");
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets Sold Time String.
+		/// </summary>
+		[Category("Sold")]
+		[Description("Gets Sold Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string SoldTimeString
+		{
+			get
+			{
+				var ret = (this.SoldDate == DateTime.MinValue) ? "" : this.SoldDate.ToThaiTimeString();
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets Sold Date Time String.
+		/// </summary>
+		[Category("Sold")]
+		[Description("Gets Sold Date Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string SoldDateTimeString
+		{
+			get
+			{
+				var ret = (this.SoldDate == DateTime.MinValue) ? "" : this.SoldDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+				return ret;
+			}
+			set { }
+		}
+
+		#endregion
+
+		#region Remark
+		/*
 		/// <summary>
 		/// Gets or sets Remark.
 		/// </summary>
@@ -356,7 +591,7 @@ namespace DMT.Models
 				}
 			}
 		}
-
+		*/
 		#endregion
 
 		#region Status (DC)

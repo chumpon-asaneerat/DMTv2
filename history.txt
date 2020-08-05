@@ -20,8 +20,14 @@ Update 2020-08-05 #5
 Update 2020-08-05 #4
 - 
 
+[commited]
 Update 2020-08-05 #3
-- 
+- Update Coupon related process #23. 
+  - TSBCouponTransaction change structure (K.Tee)
+    - Change Factor to Price.
+    - Remove Remark column.
+    - Add UserId column -> supports set UserId/FullNameEN/FullNameTH.
+    - Add SoldBy, SoldDate Columns (with FullNameEN/FullNameTH).
 
 [commited]
 Update 2020-08-05 #2
