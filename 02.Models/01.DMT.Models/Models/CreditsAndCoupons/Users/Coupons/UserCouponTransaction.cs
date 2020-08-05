@@ -59,7 +59,7 @@ namespace DMT.Models
 		// Coupon 
 		private string _CouponId = string.Empty;
 		private CouponType _CouponType = CouponType.BHT35;
-		private decimal _Factor = 665;
+		private decimal _Price = 665;
 
 		private int _Status = 0;
 		private DateTime _LastUpdate = DateTime.MinValue;
@@ -393,22 +393,42 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets number of coupon factor.
+		/// Gets Coupon Type String.
 		/// </summary>
 		[Category("Coupon")]
-		[Description("Gets or sets number of coupon factor.")]
+		[Description("Gets Coupon Type String.")]
 		[ReadOnly(true)]
-		[PeropertyMapName("Factor")]
-		public decimal Factor
+		[JsonIgnore]
+		[Ignore]
+		public string CouponTypeString
 		{
-			get { return _Factor; }
+			get
+			{
+				if (CouponType == CouponType.BHT35)
+					return "35";
+				else if (CouponType == CouponType.BHT80)
+					return "80";
+				else return "N/A"; // N/A
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets or sets number of coupon price.
+		/// </summary>
+		[Category("Coupon")]
+		[Description("Gets or sets number of coupon price.")]
+		[ReadOnly(true)]
+		[PeropertyMapName("Price")]
+		public decimal Price
+		{
+			get { return _Price; }
 			set
 			{
-				if (_Factor != value)
+				if (_Price != value)
 				{
-					_Factor = value;
+					_Price = value;
 					// Raise event.
-					this.RaiseChanged("Factor");
+					this.RaiseChanged("Price");
 				}
 			}
 		}
