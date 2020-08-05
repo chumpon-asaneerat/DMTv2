@@ -8,8 +8,10 @@ Update 2020-08-05 #19
 Update 2020-08-05 #18
 - 
 
+[commited]
 Update 2020-08-05 #17
-- 
+- Update Coupon related process #38. 
+  - Update TSBCouponBalance add User info.
 
 [commited]
 Update 2020-08-05 #16

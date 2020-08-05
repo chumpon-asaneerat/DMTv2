@@ -41,6 +41,10 @@ namespace DMT.Models
 		private string _TSBNameEN = string.Empty;
 		private string _TSBNameTH = string.Empty;
 
+		private string _UserId = string.Empty;
+		private string _FullNameEN = string.Empty;
+		private string _FullNameTH = string.Empty;
+
 		private int _CountCouponBHT35 = 0;
 		private int _CountCouponBHT80 = 0;
 
@@ -216,6 +220,80 @@ namespace DMT.Models
 
 		#endregion
 
+		#region User
+
+		/// <summary>
+		/// Gets or sets UserId
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets UserId")]
+		[ReadOnly(true)]
+		[MaxLength(10)]
+		[PeropertyMapName("UserId")]
+		public virtual string UserId
+		{
+			get
+			{
+				return _UserId;
+			}
+			set
+			{
+				if (_UserId != value)
+				{
+					_UserId = value;
+					this.RaiseChanged("UserId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets FullNameEN
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets FullNameEN")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("FullNameEN")]
+		public virtual string FullNameEN
+		{
+			get
+			{
+				return _FullNameEN;
+			}
+			set
+			{
+				if (_FullNameEN != value)
+				{
+					_FullNameEN = value;
+					this.RaiseChanged("FullNameEN");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets FullNameTH
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets FullNameTH")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("FullNameTH")]
+		public virtual string FullNameTH
+		{
+			get
+			{
+				return _FullNameTH;
+			}
+			set
+			{
+				if (_FullNameTH != value)
+				{
+					_FullNameTH = value;
+					this.RaiseChanged("FullNameTH");
+				}
+			}
+		}
+
+		#endregion
+
 		#region Coupon
 
 		/// <summary>
@@ -375,6 +453,41 @@ namespace DMT.Models
 			{
 				get { return base.TSBNameTH; }
 				set { base.TSBNameTH = value; }
+			}
+
+			#endregion
+
+			#region User
+
+			/// <summary>
+			/// Gets or sets UserId
+			/// </summary>
+			[MaxLength(10)]
+			[PeropertyMapName("UserId")]
+			public override string UserId
+			{
+				get { return base.UserId; }
+				set { base.UserId = value; }
+			}
+			/// <summary>
+			/// Gets or sets FullNameEN
+			/// </summary>
+			[MaxLength(100)]
+			[PeropertyMapName("FullNameEN")]
+			public override string FullNameEN
+			{
+				get { return base.FullNameEN; }
+				set { base.FullNameEN = value; }
+			}
+			/// <summary>
+			/// Gets or sets FullNameTH
+			/// </summary>
+			[MaxLength(100)]
+			[PeropertyMapName("FullNameTH")]
+			public override string FullNameTH
+			{
+				get { return base.FullNameTH; }
+				set { base.FullNameTH = value; }
 			}
 
 			#endregion
