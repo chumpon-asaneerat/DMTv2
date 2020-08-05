@@ -2,8 +2,10 @@
 Update 2020-08-05 #30
 - 
 
+[commited]
 Update 2020-08-05 #29
-- 
+- Update Coupon related process #49. 
+  - Format some DMT.Controls xaml.
 
 [commited]
 Update 2020-08-05 #28
