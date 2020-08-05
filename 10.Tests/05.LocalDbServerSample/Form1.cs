@@ -107,7 +107,7 @@ namespace LocalDbServerSample
             var tsb = TSB.GetCurrent();
             if (null == tsb) return;
             // Init TSB Coupons.
-            string book35Range = "630001-630050";
+            string book35Range = "630001-630010";
             var coupon35Ids = book35Range.ParseRange(0, 999999);
             if (null != coupon35Ids)
             {
@@ -120,12 +120,12 @@ namespace LocalDbServerSample
 
                     item.CouponId = "ข" + id.ToString("D6");
                     item.CouponType = CouponType.BHT35;
-                    item.Factor = 665;
+                    item.Price = 665;
 
                     TSBCouponTransaction.Save(item);
                 }
             }
-            string book80Range = "630051-630100";
+            string book80Range = "630051-630060";
             var coupon80Ids = book80Range.ParseRange(0, 999999);
             if (null != coupon80Ids)
             {
@@ -138,7 +138,7 @@ namespace LocalDbServerSample
 
                     item.CouponId = "C" + id.ToString("D6");
                     item.CouponType = CouponType.BHT80;
-                    item.Factor = 1520;
+                    item.Price = 1520;
 
                     TSBCouponTransaction.Save(item);
                 }

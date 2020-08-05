@@ -1355,32 +1355,21 @@ namespace DMT.Services
 			if (null == Db) return;
 
 			string prefix;
-			List<string> views = new List<string>();
-			// Note: 
-			// -----------------------------------------------------------
-			// Embeded resource used . instead / to access sub contents.
-			// -----------------------------------------------------------
+			// Credits - Embeded resource used . instead / to access sub contents.
+			prefix = @"Credits";
+			InitView("TSBCreditSummarryView", prefix);
+			InitView("UserCreditBorrowSummaryView", prefix);
+			InitView("UserCreditReturnSummaryView", prefix);
+			InitView("UserCreditSummaryView", prefix);
 
-			// Credits
-			prefix = @"Credits.";
-			views.Add(string.Format("{0}" + "TSBCreditSummarryView", prefix));
-			views.Add(string.Format("{0}" + "UserCreditBorrowSummaryView", prefix));
-			views.Add(string.Format("{0}" + "UserCreditReturnSummaryView", prefix));
-			views.Add(string.Format("{0}" + "UserCreditSummaryView", prefix));
-
-			// Coupons
-			prefix = @"Coupons.";
-			views.Add(string.Format("{0}" + "UserCoupon35SummaryView", prefix));
-			views.Add(string.Format("{0}" + "UserCoupon80SummaryView", prefix));
-			views.Add(string.Format("{0}" + "UserCouponSummaryView", prefix));
-
-			foreach (var viewName in views)
-			{
-				InitView(viewName);
-			}
+			// Coupons - Embeded resource used . instead / to access sub contents.
+			prefix = @"Coupons";
+			InitView("UserCoupon35SummaryView", prefix);
+			InitView("UserCoupon80SummaryView", prefix);
+			InitView("UserCouponSummaryView", prefix);
 		}
 
-		private void InitView(string viewName)
+		private void InitView(string viewName, string resourcePrefix = "")
 		{
 			if (null == Db) return;
 
@@ -1399,16 +1388,48 @@ namespace DMT.Services
 					Db.Execute(dropCmd);
 
 					string resourceName = viewName + ".sql";
-					script = SqliteScriptManager.GetScript(@"DMT.Views.Scripts." + resourceName);
+					// Note: 
+					// -----------------------------------------------------------
+					// Embeded resource used . instead / to access sub contents.
+					// -----------------------------------------------------------
+					string embededResourceName;
+					if (!string.IsNullOrWhiteSpace(resourcePrefix))
+					{
+						// Has prefix
+						if (!resourcePrefix.Trim().EndsWith("."))
+						{
+							// Not end with . so append . and concat full name.
+							embededResourceName = @"DMT.Views.Scripts." + resourcePrefix + "." + resourceName;
+						}
+						else
+						{
+							// Already end with . so concat to full name.
+							embededResourceName = @"DMT.Views.Scripts." + resourcePrefix + resourceName;
+						}
+					}
+					else
+					{
+						// No prefix.
+						embededResourceName = @"DMT.Views.Scripts." + resourceName;
+					}
 
-					var ret = Db.Execute(script);
+					script = SqliteScriptManager.GetScript(embededResourceName);
 
-					Console.WriteLine("Returns: {0}", ret);
+					if (!string.IsNullOrEmpty(script))
+					{
+						var ret = Db.Execute(script);
 
-					if (null == hist) hist = new ViewHistory();
-					hist.ViewName = viewName;
-					hist.VersionId = HistoryVersion;
-					ViewHistory.Save(hist);
+						Console.WriteLine("Returns: {0}", ret);
+
+						if (null == hist) hist = new ViewHistory();
+						hist.ViewName = viewName;
+						hist.VersionId = HistoryVersion;
+						ViewHistory.Save(hist);
+					}
+					else
+					{
+						Console.WriteLine("{0} Has Empty Scripts.", viewName);
+					}
 				}
 				catch (Exception ex)
 				{
