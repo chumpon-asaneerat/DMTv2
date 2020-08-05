@@ -462,56 +462,11 @@ namespace DMT.TA.Pages.Menu
             var page = new History.PlazaReturnHistoryPage();
             PageContentManager.Instance.Current = page;
         }
-        // NO Implementation รับคูปอง (collector)
+        // รับคูปอง (collector)
         private void collectorReveivedCoupon_Click(object sender, RoutedEventArgs e)
         {
             var page = new Coupon.ReceivedCouponPage();
             PageContentManager.Instance.Current = page;
-            /*
-            try
-            {
-                // Coupon Return
-                var page = new TA.Coupon.ReceivedCouponPage();
-
-                List<Models.Coupon> coupons = new List<Models.Coupon>();
-                Models.Coupon coupon;
-
-                coupon = new Models.Coupon();
-                coupon.Date = new DateTime(2020, 3, 16, 18, 50, 11);
-                coupon.StaffId = "14055";
-                coupon.StaffName = "นางวิภา สวัสดิวัฒน์";
-                coupon.Lane = 6;
-                coupon.Count = 5;
-                coupon.Type = "คูปอง 80 บาท";
-                coupons.Add(coupon);
-
-                coupon = new Models.Coupon();
-                coupon.Date = new DateTime(2020, 3, 16, 23, 15, 24);
-                coupon.StaffId = "14147";
-                coupon.StaffName = "นางสาว แก้วใส ฟ้ารุ่งโรจณ์";
-                coupon.Lane = 2;
-                coupon.Count = 4;
-                coupon.Type = "คูปอง 35 บาท";
-                coupons.Add(coupon);
-
-                coupon = new Models.Coupon();
-                coupon.Date = new DateTime(2020, 3, 17, 12, 1, 47);
-                coupon.StaffId = "12562";
-                coupon.StaffName = "นาย ภักดี อมรรุ่งโรจน์";
-                coupon.Lane = 4;
-                coupon.Count = 9;
-                coupon.Type = "คูปอง 80 บาท";
-                coupons.Add(coupon);
-
-                page.Setup(coupons);
-
-                PageContentManager.Instance.Current = page;
-            }
-            catch (Exception)
-            {
-                //Console.WriteLine("Refresh data error.");
-            }
-            */
         }
         // NO Implementation คืนคูปอง (collector)
         private void collectorReturnCoupon_Click(object sender, RoutedEventArgs e)
