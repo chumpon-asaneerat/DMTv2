@@ -19,7 +19,7 @@ namespace DMT.Services
     {
         [HttpPost]
         [ActionName(RouteConsts.Coupon.GetCurrentTSBCoupons.Name)]
-        public List<TSBCouponTransaction> GetTSBCoupons()
+        public List<TSBCouponTransaction> GetCurrentTSBCoupons()
         {
             return TSBCouponTransaction.GetTSBCoupons();
         }

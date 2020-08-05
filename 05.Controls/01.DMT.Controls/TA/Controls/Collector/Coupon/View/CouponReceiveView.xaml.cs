@@ -37,6 +37,8 @@ namespace DMT.TA.Controls.Collector.Coupon
 
         #endregion
 
+        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+
         private void cmdPrint_Click(object sender, RoutedEventArgs e)
         {
 
@@ -46,11 +48,11 @@ namespace DMT.TA.Controls.Collector.Coupon
         {
 
         }
-        /*
-        public void Setup(List<Models.Coupon> coupons)
+       
+        public void RefreshList()
         {
+            var coupons = ops.Coupons.GetCurrentTSBCoupons();
             listView.ItemsSource = coupons;
         }
-        */
     }
 }

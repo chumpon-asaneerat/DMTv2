@@ -137,7 +137,6 @@ namespace DMT.TA.Pages.Coupon
                 UpdateDateTime();
                 return;
             }
-
             RefreshList();
         }
 
@@ -145,7 +144,7 @@ namespace DMT.TA.Pages.Coupon
 
         public void RefreshList()
         {
-            //_tsbCoupon35 = ops.Coupons.get
+            grid.RefreshList();
         }
     }
 }
