@@ -385,6 +385,7 @@ namespace DMT.Models
 					this.RaiseChanged("CountST25");
 					this.RaiseChanged("AmountST25");
 					this.RaiseChanged("IsValidST25");
+					this.RaiseChanged("ST25Forground");
 
 					CalcTotalAmount();
 				}
@@ -412,6 +413,7 @@ namespace DMT.Models
 					this.RaiseChanged("CountST50");
 					this.RaiseChanged("AmountST50");
 					this.RaiseChanged("IsValidST50");
+					this.RaiseChanged("ST50Forground");
 
 					CalcTotalAmount();
 				}
@@ -439,6 +441,7 @@ namespace DMT.Models
 					this.RaiseChanged("CountBHT1");
 					this.RaiseChanged("AmountBHT1");
 					this.RaiseChanged("IsValidBHT1");
+					this.RaiseChanged("BHT1Forground");
 
 					CalcTotalAmount();
 				}
@@ -466,6 +469,7 @@ namespace DMT.Models
 					this.RaiseChanged("CountBHT2");
 					this.RaiseChanged("AmountBHT2");
 					this.RaiseChanged("IsValidBHT2");
+					this.RaiseChanged("BHT2Forground");
 
 					CalcTotalAmount();
 				}
@@ -493,6 +497,7 @@ namespace DMT.Models
 					this.RaiseChanged("CountBHT5");
 					this.RaiseChanged("AmountBHT5");
 					this.RaiseChanged("IsValidBHT5");
+					this.RaiseChanged("BHT5Forground");
 
 					CalcTotalAmount();
 				}
@@ -520,6 +525,7 @@ namespace DMT.Models
 					this.RaiseChanged("CountBHT10");
 					this.RaiseChanged("AmountBHT10");
 					this.RaiseChanged("IsValidBHT10");
+					this.RaiseChanged("BHT10Forground");
 
 					CalcTotalAmount();
 				}
@@ -547,6 +553,7 @@ namespace DMT.Models
 					this.RaiseChanged("CountBHT20");
 					this.RaiseChanged("AmountBHT20");
 					this.RaiseChanged("IsValidBHT20");
+					this.RaiseChanged("BHT20Forground");
 
 					CalcTotalAmount();
 				}
@@ -574,6 +581,7 @@ namespace DMT.Models
 					this.RaiseChanged("CountBHT50");
 					this.RaiseChanged("AmountBHT50");
 					this.RaiseChanged("IsValidBHT50");
+					this.RaiseChanged("BHT50Forground");
 
 					CalcTotalAmount();
 				}
@@ -601,6 +609,7 @@ namespace DMT.Models
 					this.RaiseChanged("CountBHT100");
 					this.RaiseChanged("AmountBHT100");
 					this.RaiseChanged("IsValidBHT100");
+					this.RaiseChanged("BHT100Forground");
 
 					CalcTotalAmount();
 				}
@@ -628,6 +637,7 @@ namespace DMT.Models
 					this.RaiseChanged("CountBHT500");
 					this.RaiseChanged("AmountBHT500");
 					this.RaiseChanged("IsValidBHT500");
+					this.RaiseChanged("BHT500Forground");
 
 					CalcTotalAmount();
 				}
@@ -655,6 +665,7 @@ namespace DMT.Models
 					this.RaiseChanged("CountBHT1000");
 					this.RaiseChanged("AmountBHT1000");
 					this.RaiseChanged("IsValidBHT1000");
+					this.RaiseChanged("BHT1000Forground");
 
 					CalcTotalAmount();
 				}
@@ -687,6 +698,7 @@ namespace DMT.Models
 					this.RaiseChanged("AmountST25");
 					this.RaiseChanged("CountST25");
 					this.RaiseChanged("IsValidST25");
+					this.RaiseChanged("ST25Forground");
 
 					CalcTotalAmount();
 				}
@@ -714,6 +726,7 @@ namespace DMT.Models
 					this.RaiseChanged("AmountST50");
 					this.RaiseChanged("CountST50");
 					this.RaiseChanged("IsValidST50");
+					this.RaiseChanged("ST50Forground");
 
 					CalcTotalAmount();
 				}
@@ -741,6 +754,7 @@ namespace DMT.Models
 					this.RaiseChanged("AmountBHT1");
 					this.RaiseChanged("CountBHT1");
 					this.RaiseChanged("IsValidBHT1");
+					this.RaiseChanged("BHT1Forground");
 
 					CalcTotalAmount();
 				}
@@ -768,6 +782,7 @@ namespace DMT.Models
 					this.RaiseChanged("AmountBHT2");
 					this.RaiseChanged("CountBHT2");
 					this.RaiseChanged("IsValidBHT2");
+					this.RaiseChanged("BHT2Forground");
 
 					CalcTotalAmount();
 				}
@@ -795,6 +810,7 @@ namespace DMT.Models
 					this.RaiseChanged("AmountBHT5");
 					this.RaiseChanged("CountBHT5");
 					this.RaiseChanged("IsValidBHT5");
+					this.RaiseChanged("BHT5Forground");
 
 					CalcTotalAmount();
 				}
@@ -822,6 +838,7 @@ namespace DMT.Models
 					this.RaiseChanged("AmountBHT10");
 					this.RaiseChanged("CountBHT10");
 					this.RaiseChanged("IsValidBHT10");
+					this.RaiseChanged("BHT10Forground");
 
 					CalcTotalAmount();
 				}
@@ -849,6 +866,7 @@ namespace DMT.Models
 					this.RaiseChanged("AmountBHT20");
 					this.RaiseChanged("CountBHT20");
 					this.RaiseChanged("IsValidBHT20");
+					this.RaiseChanged("BHT20Forground");
 
 					CalcTotalAmount();
 				}
@@ -876,6 +894,7 @@ namespace DMT.Models
 					this.RaiseChanged("AmountBHT50");
 					this.RaiseChanged("CountBHT50");
 					this.RaiseChanged("IsValidBHT50");
+					this.RaiseChanged("BHT50Forground");
 
 					CalcTotalAmount();
 				}
@@ -903,6 +922,7 @@ namespace DMT.Models
 					this.RaiseChanged("AmountBHT100");
 					this.RaiseChanged("CountBHT100");
 					this.RaiseChanged("IsValidBHT100");
+					this.RaiseChanged("BHT100Forground");
 
 					CalcTotalAmount();
 				}
@@ -930,6 +950,7 @@ namespace DMT.Models
 					this.RaiseChanged("AmountBHT500");
 					this.RaiseChanged("CountBHT500");
 					this.RaiseChanged("IsValidBHT500");
+					this.RaiseChanged("BHT500Forground");
 
 					CalcTotalAmount();
 				}
@@ -957,6 +978,7 @@ namespace DMT.Models
 					this.RaiseChanged("AmountBHT1000");
 					this.RaiseChanged("CountBHT1000");
 					this.RaiseChanged("IsValidBHT1000");
+					this.RaiseChanged("BHT1000Forground");
 
 					CalcTotalAmount();
 				}

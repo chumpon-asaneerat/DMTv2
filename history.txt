@@ -8,8 +8,12 @@ Update 2020-08-05 #29
 Update 2020-08-05 #28
 - 
 
+[commited]
 Update 2020-08-05 #27
-- 
+  - UserCredit model add event raisers for runtime foreground color peoperties.
+  - UserCreditTransaction model add event raisers for runtime foreground color peoperties.
+  - TSBCreditBalance model add event raisers for runtime foreground color peoperties.
+  - TSBCreditTransaction model add event raisers for runtime foreground color peoperties.
 
 [commited]
 Update 2020-08-05 #26
