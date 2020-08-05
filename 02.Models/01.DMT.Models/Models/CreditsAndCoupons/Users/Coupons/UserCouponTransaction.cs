@@ -740,9 +740,12 @@ namespace DMT.Models
 			if (null == user || null == coupons || coupons.Count <= 0) return;
 			lock (sync)
 			{
+				DateTime receivedDate = DateTime.Now;
 				coupons.ForEach(coupon => 
 				{
 					coupon.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
+					coupon.UserId = user.UserId;
+					coupon.UserReceiveDate = receivedDate;
 					TSBCouponTransaction.Save(coupon);
 					var inst = new UserCouponTransaction();
 					inst._TransactionDate = DateTime.Now;

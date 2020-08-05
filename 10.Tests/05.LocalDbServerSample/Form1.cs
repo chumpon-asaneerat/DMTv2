@@ -174,20 +174,21 @@ namespace LocalDbServerSample
             {
                 if (null == item) continue;
 
-                if (item.TransactionType == TSBCouponTransaction.TransactionTypes.Lane ||
-                    item.TransactionType == TSBCouponTransaction.TransactionTypes.SoldByLane ||
-                    item.TransactionType == TSBCouponTransaction.TransactionTypes.SoldByTSB)
+                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock)
                 {
                     idx = rand.Next(tsbCoupons.Count);
                     item = tsbCoupons[idx];
                 }
                 else
                 {
-                    borrows.Add(tsbCoupons[idx]);
+                    var coupon = tsbCoupons[idx];
+                    // update transaction type.
+                    coupon.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
+                    borrows.Add(coupon);
                     i++;
                 }
             }
-            while (i < 7);
+            while (i < 3);
 
             var search = Search.UserCoupons.BorrowCoupons.Create(user, borrows);
             UserCouponTransaction.UserBorrowCoupons(search.User, search.Coupons);

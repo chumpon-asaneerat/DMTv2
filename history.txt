@@ -14,8 +14,12 @@ Update 2020-08-05 #17
 Update 2020-08-05 #16
 - 
 
+[commited]
 Update 2020-08-05 #15
-- 
+- Update Coupon related process #36. 
+  - Update TSBCouponSummarryView.sql
+  - Update Sample code to Distribute coupon.
+  - Update UserCouponTransaction model #1.
 
 [commited]
 Update 2020-08-05 #14
