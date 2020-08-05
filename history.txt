@@ -26,8 +26,10 @@ Update 2020-08-05 #13
 Update 2020-08-05 #12
 - 
 
+[commited]
 Update 2020-08-05 #11
-- 
+- Update Coupon related process #31. 
+  - Update TSBCouponSummarryView #1.
 
 [commited]
 Update 2020-08-05 #10

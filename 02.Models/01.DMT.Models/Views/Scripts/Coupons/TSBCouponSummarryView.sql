@@ -1,5 +1,17 @@
 ﻿CREATE VIEW TSBCouponSummarryView
 AS
+	SELECT TSBCouponTransaction.* 
+		 , TSB.TSBId
+		 , TSB.TSBNameEN
+		 , TSB.TSBNameTH
+		 , [User].UserId, [User].FullNameEN, [User].FullNameTH
+	  FROM TSBCouponTransaction
+		 , TSB
+		   LEFT JOIN [User] usr ON (TSBCouponTransaction.UserId = usr.UserId) 
+		   LEFT JOIN [User] sup ON (TSBCouponTransaction.SoldBy = usr.UserId) 
+	 ORDER BY TSBCouponTransaction.CardId
+
+/*
 	SELECT TSB.TSBId
 		 , TSB.TSBNameEN
 		 , TSB.TSBNameTH
@@ -68,3 +80,4 @@ AS
 				AND TSBCouponTransaction.CouponType = 80
 			)) AS CouponBHTTotal
 	  FROM TSB
+(/
