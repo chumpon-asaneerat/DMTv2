@@ -49,7 +49,7 @@ namespace DMT.TA.Windows.Coupon
             {
                 var list = _tsbCoupon35.FindAll(item =>
                 {
-                    return item.TransactionType == TSBCouponTransaction.TransactionTypes.User;
+                    return item.TransactionType == TSBCouponTransaction.TransactionTypes.Lane;
                 }).ToList();
                 var opts = Search.UserCoupons.BorrowCoupons.Create(_user, list);
                 ops.Coupons.UserBorrowCoupons(opts);
@@ -58,7 +58,7 @@ namespace DMT.TA.Windows.Coupon
             {
                 var list = _tsbCoupon80.FindAll(item =>
                 {
-                    return item.TransactionType == TSBCouponTransaction.TransactionTypes.User;
+                    return item.TransactionType == TSBCouponTransaction.TransactionTypes.Lane;
                 }).ToList();
                 var opts = Search.UserCoupons.BorrowCoupons.Create(_user, list);
                 ops.Coupons.UserBorrowCoupons(opts);
@@ -76,7 +76,7 @@ namespace DMT.TA.Windows.Coupon
         {
             var item = lvTSB35.SelectedItem as TSBCouponTransaction;
             if (null == item) return;
-            item.TransactionType = TSBCouponTransaction.TransactionTypes.User;
+            item.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
             RefreshBHT35Coupons();
         }
 
@@ -84,7 +84,7 @@ namespace DMT.TA.Windows.Coupon
         {
             var item = lvUser35.SelectedItem as TSBCouponTransaction;
             if (null == item) return;
-            item.TransactionType = TSBCouponTransaction.TransactionTypes.Received;
+            item.TransactionType = TSBCouponTransaction.TransactionTypes.Stock;
             RefreshBHT35Coupons();
         }
 
@@ -92,7 +92,7 @@ namespace DMT.TA.Windows.Coupon
         {
             var item = lvTSB80.SelectedItem as TSBCouponTransaction;
             if (null == item) return;
-            item.TransactionType = TSBCouponTransaction.TransactionTypes.User;
+            item.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
             RefreshBHT80Coupons();
         }
 
@@ -100,7 +100,7 @@ namespace DMT.TA.Windows.Coupon
         {
             var item = lvUser80.SelectedItem as TSBCouponTransaction;
             if (null == item) return;
-            item.TransactionType = TSBCouponTransaction.TransactionTypes.Received;
+            item.TransactionType = TSBCouponTransaction.TransactionTypes.Stock;
             RefreshBHT80Coupons();
         }
 
@@ -118,7 +118,7 @@ namespace DMT.TA.Windows.Coupon
                 {
                     var item = list[0] as TSBCouponTransaction;
                     if (null == item) return;
-                    item.TransactionType = TSBCouponTransaction.TransactionTypes.User;
+                    item.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
                     RefreshBHT35Coupons();
                     txtFilter35.Text = string.Empty;
                 }
@@ -135,7 +135,7 @@ namespace DMT.TA.Windows.Coupon
                 {
                     var item = list[0] as TSBCouponTransaction;
                     if (null == item) return;
-                    item.TransactionType = TSBCouponTransaction.TransactionTypes.User;
+                    item.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
                     RefreshBHT80Coupons();
                     txtFilter80.Text = string.Empty;
                 }
@@ -209,11 +209,11 @@ namespace DMT.TA.Windows.Coupon
             {
                 lvTSB35.ItemsSource = _tsbCoupon35.FindAll(item =>
                 {
-                    return item.CouponId.Contains(txtFilter35.Text) && item.TransactionType == TSBCouponTransaction.TransactionTypes.Received;
+                    return item.CouponId.Contains(txtFilter35.Text) && item.TransactionType == TSBCouponTransaction.TransactionTypes.Stock;
                 });
                 lvUser35.ItemsSource = _tsbCoupon35.FindAll(item =>
                 {
-                    return item.TransactionType == TSBCouponTransaction.TransactionTypes.User;
+                    return item.TransactionType == TSBCouponTransaction.TransactionTypes.Lane;
                 });
             }
         }
@@ -224,11 +224,11 @@ namespace DMT.TA.Windows.Coupon
             {
                 lvTSB80.ItemsSource = _tsbCoupon80.FindAll(item =>
                 {
-                    return item.CouponId.Contains(txtFilter80.Text) && item.TransactionType == TSBCouponTransaction.TransactionTypes.Received;
+                    return item.CouponId.Contains(txtFilter80.Text) && item.TransactionType == TSBCouponTransaction.TransactionTypes.Stock;
                 });
                 lvUser80.ItemsSource = _tsbCoupon80.FindAll(item =>
                 {
-                    return item.TransactionType == TSBCouponTransaction.TransactionTypes.User;
+                    return item.TransactionType == TSBCouponTransaction.TransactionTypes.Lane;
                 });
             }
         }

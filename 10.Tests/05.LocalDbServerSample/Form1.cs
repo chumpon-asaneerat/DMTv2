@@ -174,8 +174,9 @@ namespace LocalDbServerSample
             {
                 if (null == item) continue;
 
-                if (item.TransactionType == TSBCouponTransaction.TransactionTypes.User ||
-                    item.TransactionType == TSBCouponTransaction.TransactionTypes.Sold)
+                if (item.TransactionType == TSBCouponTransaction.TransactionTypes.Lane ||
+                    item.TransactionType == TSBCouponTransaction.TransactionTypes.SoldByLane ||
+                    item.TransactionType == TSBCouponTransaction.TransactionTypes.SoldByTSB)
                 {
                     idx = rand.Next(tsbCoupons.Count);
                     item = tsbCoupons[idx];

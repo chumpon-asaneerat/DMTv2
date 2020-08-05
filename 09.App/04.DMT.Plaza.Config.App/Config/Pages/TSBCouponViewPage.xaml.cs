@@ -94,13 +94,13 @@ namespace DMT.Config.Pages
                     {
                         item.CouponId = "ข" + id.ToString("D6");
                         item.CouponType = CouponType.BHT35;
-                        item.Factor = 665;
+                        item.Price = 665;
                     }
                     else
                     {
                         item.CouponId = "C" + id.ToString("D6");
                         item.CouponType = CouponType.BHT80;
-                        item.Factor = 1520;
+                        item.Price = 1520;
                     }
                     ops.Coupons.SaveTransaction(item);
                 }

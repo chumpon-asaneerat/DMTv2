@@ -742,7 +742,7 @@ namespace DMT.Models
 			{
 				coupons.ForEach(coupon => 
 				{
-					coupon.TransactionType = TSBCouponTransaction.TransactionTypes.User;
+					coupon.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
 					TSBCouponTransaction.Save(coupon);
 					var inst = new UserCouponTransaction();
 					inst._TransactionDate = DateTime.Now;
@@ -751,10 +751,9 @@ namespace DMT.Models
 					inst.UserId = user.UserId;
 					inst.CouponId = coupon.CouponId;
 					inst.CouponType = coupon.CouponType;
-					inst.Factor = coupon.Factor;
+					inst.Price = coupon.Price;
 					UserCouponTransaction.Save(inst);
 				});
-
 			}
 		}
 
@@ -765,7 +764,7 @@ namespace DMT.Models
 			{
 				coupons.ForEach(coupon => 
 				{
-					coupon.TransactionType = TSBCouponTransaction.TransactionTypes.Received;
+					coupon.TransactionType = TSBCouponTransaction.TransactionTypes.Stock;
 					TSBCouponTransaction.Save(coupon);
 					var inst = new UserCouponTransaction();
 					inst._TransactionDate = DateTime.Now;
@@ -774,7 +773,7 @@ namespace DMT.Models
 					inst.UserId = user.UserId;
 					inst.CouponId = coupon.CouponId;
 					inst.CouponType = coupon.CouponType;
-					inst.Factor = coupon.Factor;
+					inst.Price = coupon.Price;
 					UserCouponTransaction.Save(inst);
 				});
 			}

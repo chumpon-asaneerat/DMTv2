@@ -32,8 +32,11 @@ Update 2020-08-05 #11
 Update 2020-08-05 #10
 - 
 
+[commited]
 Update 2020-08-05 #9
-- 
+- Update Coupon related process #29. 
+  - Pre fixed TSBCouponTransaction, UserCouponTransaction Static methods and related project.
+    before create new view.
 
 [commited]
 Update 2020-08-05 #8

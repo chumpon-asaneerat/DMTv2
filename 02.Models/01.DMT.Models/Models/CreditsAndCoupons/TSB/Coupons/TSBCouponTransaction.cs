@@ -895,7 +895,7 @@ namespace DMT.Models
 		#region Static Methods
 
 		/// <summary>
-		/// Gets Active TSB Coupon transactions.
+		/// Gets Active TSB Coupon transactions (all status).
 		/// </summary>
 		/// <returns>
 		/// Returns Current Active TSB Coupon transactions. If not found returns null.
@@ -909,7 +909,7 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets TSB Coupon transactions.
+		/// Gets TSB Coupon transactions (all status).
 		/// </summary>
 		/// <param name="tsb">The target TSB to get coupon transaction.</param>
 		/// <returns>Returns TSB Coupon transactions. If TSB not found returns null.</returns>
@@ -965,7 +965,7 @@ namespace DMT.Models
 				cmd += "   AND TSBCouponTransaction.TransactionType = ? ";
 
 				var rets = NQuery.Query<FKs>(cmd,
-					tsb.TSBId, TransactionTypes.Received).ToList();
+					tsb.TSBId, TransactionTypes.Stock).ToList();
 
 				if (null == rets)
 				{
@@ -1007,7 +1007,7 @@ namespace DMT.Models
 				cmd += "   AND TSBCouponTransaction.TransactionType = ? ";
 
 				var rets = NQuery.Query<FKs>(cmd,
-					tsb.TSBId, CouponType.BHT35, TransactionTypes.Received).ToList();
+					tsb.TSBId, CouponType.BHT35, TransactionTypes.Stock).ToList();
 				if (null == rets)
 				{
 					return new List<TSBCouponTransaction>();
@@ -1048,7 +1048,7 @@ namespace DMT.Models
 				cmd += "   AND TSBCouponTransaction.TransactionType = ? ";
 
 				var rets = NQuery.Query<FKs>(cmd, 
-					tsb.TSBId, CouponType.BHT80, TransactionTypes.Received).ToList();
+					tsb.TSBId, CouponType.BHT80, TransactionTypes.Stock).ToList();
 				if (null == rets)
 				{
 					return new List<TSBCouponTransaction>();
@@ -1088,7 +1088,7 @@ namespace DMT.Models
 				cmd += "   AND TSBCouponTransaction.TransactionType = ? ";
 
 				var rets = NQuery.Query<FKs>(cmd,
-					tsb.TSBId, TransactionTypes.Sold).ToList();
+					tsb.TSBId, TransactionTypes.SoldByLane).ToList();
 
 				if (null == rets)
 				{
@@ -1190,7 +1190,7 @@ namespace DMT.Models
 			if (null == coupon) return;
 			lock (sync)
 			{
-				coupon.TransactionType = TSBCouponTransaction.TransactionTypes.Sold;
+				coupon.TransactionType = TSBCouponTransaction.TransactionTypes.SoldByLane;
 				TSBCouponTransaction.Save(coupon);
 			}
 		}
