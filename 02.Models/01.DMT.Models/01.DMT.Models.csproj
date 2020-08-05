@@ -111,6 +111,7 @@
     <EmbeddedResource Include="Views\Scripts\Credits\UserCreditReturnSummaryView.sql" />
     <EmbeddedResource Include="Views\Scripts\Coupons\UserCoupon35SummaryView.sql" />
     <EmbeddedResource Include="Views\Scripts\Coupons\UserCoupon80SummaryView.sql" />
+    <EmbeddedResource Include="Views\Scripts\Coupons\TSBCouponTransactionView.sql" />
     <Compile Include="Views\SqlScriptManager.cs" />
     <Compile Include="Models\Common\DMT.Searchs.cs" />
     <Compile Include="Models\Common\NSearch.cs" />

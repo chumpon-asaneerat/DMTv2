@@ -20,8 +20,11 @@ Update 2020-08-05 #15
 Update 2020-08-05 #14
 - 
 
+[commited]
 Update 2020-08-05 #13
-- 
+- Update Coupon related process #33. 
+  - Update local db server initviews methods.
+  - Add TSBCouponTransactionView,sql
 
 [commited]
 Update 2020-08-05 #12
