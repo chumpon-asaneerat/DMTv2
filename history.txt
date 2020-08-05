@@ -11,8 +11,18 @@ Update 2020-08-05 #8
 Update 2020-08-05 #7
 - 
 
+[commited]
 Update 2020-08-05 #6
-- 
+- Update Coupon related process #26. 
+  - TSBCouponTransaction change structure (K.Tee) #3
+    - Remove IsFinished column.
+    - Remove FinishFlag column (0: Completed, 1: Avaliable).
+    - TransactionTypes Change enum value
+      - CancelOrRemove = 0
+      - Stock = 1
+      - Lane = 2
+      - SoldByLane = 3
+      - SoldByTSB = 4
 
 [commited]
 Update 2020-08-05 #5

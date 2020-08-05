@@ -36,13 +36,23 @@ namespace DMT.Models
 
 		public enum TransactionTypes : int
 		{
-			// received from account
-			Received = 0,
-			// User On Hand
-			User = 1,
-			// Sold
-			Sold = 2
+			// Cancel or Remove
+			CancelOrRemove = 0,
+			// TSB Stock
+			Stock = 1,
+			// Borrow By User on Lane
+			Lane = 2,
+			// Sold By User on Lane
+			SoldByLane = 3,
+			// Sold By Supervisor on TSB
+			SoldByTSB = 4
 		}
+
+		public enum FinishedFlags : int
+        {
+			Completed = 0,
+			Avaliable = 1
+        }
 
 		#endregion
 
@@ -50,7 +60,7 @@ namespace DMT.Models
 
 		private int _TransactionId = 0;
 		private DateTime _TransactionDate = DateTime.MinValue;
-		private TransactionTypes _TransactionType = TransactionTypes.Received;
+		private TransactionTypes _TransactionType = TransactionTypes.Stock;
 
 		// Coupon 
 		private string _CouponId = string.Empty;
@@ -70,7 +80,7 @@ namespace DMT.Models
 		private string _SoldByFullNameEN = string.Empty;
 		private string _SoldByFullNameTH = string.Empty;
 
-		private bool _IsFinished = false;
+		private FinishedFlags _FinishFlag = FinishedFlags.Avaliable;
 		//private string _Remark = string.Empty;
 
 		private int _Status = 0;
@@ -207,24 +217,24 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets Is Finished (0: not finished, 1: already finished).
+		/// Gets or sets Finish Flag (0: Completed, 1: Avaliable).
 		/// </summary>
 		[Category("Common")]
-		[Description("Gets or sets Is Finished (0: not finished, 1: already finished).")]
+		[Description("Gets or sets Is Finished (0: Completed, 1: Avaliable).")]
 		[ReadOnly(true)]
-		[PeropertyMapName("IsFinished")]
-		public virtual bool IsFinished
+		[PeropertyMapName("FinishFlag")]
+		public virtual FinishedFlags FinishFlag
 		{
 			get
 			{
-				return _IsFinished;
+				return _FinishFlag;
 			}
 			set
 			{
-				if (_IsFinished != value)
+				if (_FinishFlag != value)
 				{
-					_IsFinished = value;
-					this.RaiseChanged("IsFinished");
+					_FinishFlag = value;
+					this.RaiseChanged("FinishFlag");
 				}
 			}
 		}
