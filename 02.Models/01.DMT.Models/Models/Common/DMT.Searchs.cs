@@ -298,6 +298,23 @@ namespace DMT.Models
 
     partial class Search
     {
+        public class TSBCoupons
+        {
+            public class ByUser : NSearch<ByUser>
+            {
+                public TSB TSB { get; set; }
+                public User User { get; set; }
+
+                public static ByUser Create(TSB tsb, User user)
+                {
+                    var ret = new ByUser();
+                    ret.User = user;
+                    ret.TSB = tsb;
+                    return ret;
+                }
+            }
+        }
+
         public class UserCoupons
         {
             public class BorrowCoupons : NSearch<BorrowCoupons>
@@ -332,7 +349,6 @@ namespace DMT.Models
             {
                 public TSB TSB { get; set; }
                 public User User { get; set; }
-
 
                 public static ByUser Create(TSB tsb, User user)
                 {

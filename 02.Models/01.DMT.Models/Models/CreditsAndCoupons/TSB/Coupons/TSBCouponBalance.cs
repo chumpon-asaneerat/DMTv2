@@ -568,7 +568,7 @@ namespace DMT.Models
 		/// <returns>Returns List of TSB Coupon balance. If TSB not found returns null.</returns>
 		public static List<TSBCouponBalance> GetCurrent(TSB tsb)
 		{
-			if (null == tsb) return null;
+			if (null == tsb) return new List<TSBCouponBalance>();
 			lock (sync)
 			{
 				string cmd = @"
@@ -589,18 +589,37 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets All TSB Coupon Balance.
+		/// Gets TSB Coupon Balance.
 		/// </summary>
-		/// <returns>Returns List of all TSB Coupon balance.</returns>
-		public static List<TSBCouponBalance> Gets()
+		/// <param name="tsb">The target TSB to get balance.</param>
+		/// <param name="user">The target User to get balance.</param>
+		/// <returns>Returns List of TSB Coupon balance. If TSB not found returns null.</returns>
+		public static List<TSBCouponBalance> GetByUser(User user)
 		{
+			lock (sync)
+			{
+				var tsb = TSB.GetCurrent();
+				return GetByUser(tsb, user);
+			}
+		}
+		/// <summary>
+		/// Gets TSB Coupon Balance.
+		/// </summary>
+		/// <param name="tsb">The target TSB to get balance.</param>
+		/// <param name="user">The target User to get balance.</param>
+		/// <returns>Returns List of TSB Coupon balance. If TSB not found returns null.</returns>
+		public static List<TSBCouponBalance> GetByUser(TSB tsb, User user)
+		{
+			if (null == tsb || null == user) return new List<TSBCouponBalance>();
 			lock (sync)
 			{
 				string cmd = @"
 					SELECT * 
 					  FROM TSBCouponSummarryView
+					 WHERE TSBCouponSummarryView.TSBId = ?
+					   AND TSBCouponSummarryView.UserId = ?
 				";
-				var rets = NQuery.Query<FKs>(cmd).ToList();
+				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId, user.UserId).ToList();
 				var results = new List<TSBCouponBalance>();
 				if (null != rets)
 				{
@@ -612,6 +631,7 @@ namespace DMT.Models
 				return results;
 			}
 		}
+
 
 		#endregion
 	}

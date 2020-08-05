@@ -134,7 +134,6 @@ namespace DMT.TA.Pages.Coupon
             win.Setup(_user);
             if (win.ShowDialog() == false)
             {
-                UpdateDateTime();
                 return;
             }
             RefreshList();
