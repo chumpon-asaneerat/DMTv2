@@ -23,8 +23,10 @@ Update 2020-08-05 #24
 Update 2020-08-05 #23
 - 
 
+[commited]
 Update 2020-08-05 #22
-- 
+- Update Coupon related process #42. 
+  - UserCreditTransaction model add IsValidXXX for check amount is exact match coin/bill count.
 
 [commited]
 Update 2020-08-05 #21

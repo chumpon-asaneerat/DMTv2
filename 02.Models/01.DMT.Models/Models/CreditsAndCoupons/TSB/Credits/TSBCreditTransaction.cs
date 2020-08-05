@@ -868,7 +868,7 @@ namespace DMT.Models
 
 		#endregion
 
-		#region Coin/Bill (Amount)
+		#region Coin/Bill (IsValid)
 
 		/// <summary>
 		/// Gets amount is exact match .25 baht coin.
