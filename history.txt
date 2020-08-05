@@ -17,8 +17,12 @@ Update 2020-08-05 #6
 Update 2020-08-05 #5
 - 
 
+[commited]
 Update 2020-08-05 #4
-- 
+- Update Coupon related process #24. 
+  - TSBCouponTransaction change structure (K.Tee) #2
+    - Add IsFinished column (0: not finished, 1: already finished).
+    - Add CouponTypeString in model.
 
 [commited]
 Update 2020-08-05 #3

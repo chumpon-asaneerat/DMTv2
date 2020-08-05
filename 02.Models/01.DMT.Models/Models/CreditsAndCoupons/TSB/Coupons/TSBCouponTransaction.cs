@@ -70,6 +70,7 @@ namespace DMT.Models
 		private string _SoldByFullNameEN = string.Empty;
 		private string _SoldByFullNameTH = string.Empty;
 
+		private bool _IsFinished = false;
 		//private string _Remark = string.Empty;
 
 		private int _Status = 0;
@@ -205,6 +206,28 @@ namespace DMT.Models
 				}
 			}
 		}
+		/// <summary>
+		/// Gets or sets Is Finished (0: not finished, 1: already finished).
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets Is Finished (0: not finished, 1: already finished).")]
+		[ReadOnly(true)]
+		[PeropertyMapName("IsFinished")]
+		public virtual bool IsFinished
+		{
+			get
+			{
+				return _IsFinished;
+			}
+			set
+			{
+				if (_IsFinished != value)
+				{
+					_IsFinished = value;
+					this.RaiseChanged("IsFinished");
+				}
+			}
+		}
 
 		#endregion
 
@@ -322,8 +345,29 @@ namespace DMT.Models
 					_CouponType = value;
 					// Raise event.
 					this.RaiseChanged("CouponType");
+					this.RaiseChanged("CouponTypeString");
 				}
 			}
+		}
+		/// <summary>
+		/// Gets Coupon Type String.
+		/// </summary>
+		[Category("Coupon")]
+		[Description("Gets Coupon Type String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string CouponTypeString
+		{
+			get
+			{
+				if (CouponType == CouponType.BHT35)
+					return "35";
+				else if (CouponType == CouponType.BHT80)
+					return "80";
+				else return "N/A"; // N/A
+			}
+			set { }
 		}
 		/// <summary>
 		/// Gets or sets number of coupon price.
