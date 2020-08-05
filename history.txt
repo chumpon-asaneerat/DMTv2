@@ -8,8 +8,11 @@ Update 2020-08-05 #9
 Update 2020-08-05 #8
 - 
 
+[commited]
 Update 2020-08-05 #7
-- 
+- Update Coupon related process #27. 
+  - TSBCouponTransaction change structure (K.Tee) #4
+    - Add related columns in TSBCouponTransaction.FKs class.
 
 [commited]
 Update 2020-08-05 #6

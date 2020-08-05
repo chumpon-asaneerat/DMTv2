@@ -49,10 +49,10 @@ namespace DMT.Models
 		}
 
 		public enum FinishedFlags : int
-        {
+		{
 			Completed = 0,
 			Avaliable = 1
-        }
+		}
 
 		#endregion
 
@@ -721,6 +721,76 @@ namespace DMT.Models
 			{
 				get { return base.TSBNameTH; }
 				set { base.TSBNameTH = value; }
+			}
+
+			#endregion
+
+			#region User
+
+			/// <summary>
+			/// Gets or sets UserId
+			/// </summary>
+			[MaxLength(10)]
+			[PeropertyMapName("UserId")]
+			public override string UserId
+			{
+				get { return base.UserId; }
+				set { base.UserId = value; }
+			}
+			/// <summary>
+			/// Gets or sets FullNameEN
+			/// </summary>
+			[MaxLength(100)]
+			[PeropertyMapName("FullNameEN")]
+			public override string FullNameEN
+			{
+				get { return base.FullNameEN; }
+				set { base.FullNameEN = value; }
+			}
+			/// <summary>
+			/// Gets or sets FullNameTH
+			/// </summary>
+			[MaxLength(100)]
+			[PeropertyMapName("FullNameTH")]
+			public override string FullNameTH
+			{
+				get { return base.FullNameTH; }
+				set { base.FullNameTH = value; }
+			}
+
+			#endregion
+
+			#region Sold
+
+			/// <summary>
+			/// Gets or sets SoldBy
+			/// </summary>
+			[MaxLength(10)]
+			[PeropertyMapName("SoldBy")]
+			public override string SoldBy
+			{
+				get { return base.SoldBy; }
+				set { base.SoldBy = value; }
+			}
+			/// <summary>
+			/// Gets or sets SoldBy FullNameEN
+			/// </summary>
+			[MaxLength(100)]
+			[PeropertyMapName("SoldByFullNameEN")]
+			public override string SoldByFullNameEN
+			{
+				get { return base.SoldByFullNameEN; }
+				set { base.SoldByFullNameEN = value; }
+			}
+			/// <summary>
+			/// Gets or sets SoldBy FullNameTH
+			/// </summary>
+			[MaxLength(100)]
+			[PeropertyMapName("SoldByFullNameTH")]
+			public override string SoldByFullNameTH
+			{
+				get { return base.SoldByFullNameTH; }
+				set { base.SoldByFullNameTH = value; }
 			}
 
 			#endregion
