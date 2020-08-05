@@ -195,10 +195,13 @@ namespace DMT.TOD.Pages.Reports
                     {
                         begin = laneAct.Begin;
                     }
+                    /*
                     if (end == DateTime.MinValue || laneAct.End > end)
                     {
                         end = laneAct.End;
                     }
+                    */
+                    end = DateTime.Now; // End time used printed date instead of lane date.
 
                     if (!lanes.Contains(laneAct.LaneNo))
                     {
@@ -225,7 +228,7 @@ namespace DMT.TOD.Pages.Reports
 
                 _revenueEntry.Lanes = laneList.Trim();
                 _revenueEntry.ShiftBegin = begin;
-                _revenueEntry.ShiftEnd = end;
+                //_revenueEntry.ShiftEnd = end;
 
                 // assign supervisor.
                 var sup = ops.Shifts.GetCurrent();

@@ -74,6 +74,12 @@ namespace DMT.TOD.Windows.Reports
         {
             if (!loaded) return;
             if (!dtDate.SelectedDate.HasValue) return;
+            /*
+            var role = new Role();
+            role.RoleId = "COLLECTOR";
+            var items = ops.Users.GetUsers(role);
+            grid.Setup(items);
+            */
             var items = ops.Revenue.GetRevenues(dtDate.SelectedDate.Value);
             grid.Setup(items);
         }
