@@ -23,8 +23,10 @@ Update 2020-08-05 #4
 Update 2020-08-05 #3
 - 
 
+[commited]
 Update 2020-08-05 #2
-- 
+- Update Coupon related process #22. 
+  - Remove UserCoupon model (Set build action to none).
 
 [commited]
 Update 2020-08-05 #1
