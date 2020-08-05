@@ -24,8 +24,9 @@
                        Margin="10"
                        DockPanel.Dock="Top"
                        Visibility="Visible">
-                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top"
-                            x:Name="panelSearch">
+                <StackPanel x:Name="panelSearch"
+                            Orientation="Horizontal"
+                            DockPanel.Dock="Top">
                     <Grid Height="10" />
                     <TextBlock Width="150"
                                HorizontalAlignment="Center"
@@ -128,11 +129,9 @@
                               HorizontalContentAlignment="Center"
                               VerticalContentAlignment="Center"
                               FontSize="18"
-                              ItemsSource="{Binding}">
-                    </ComboBox>
+                              ItemsSource="{Binding}" />
                 </StackPanel>
             </DockPanel>
-           
             <DockPanel Height="60" DockPanel.Dock="Bottom">
                 <Grid Width="5" DockPanel.Dock="Right" />
                 <Button x:Name="cmdOK"
@@ -216,12 +215,13 @@
                     <ColumnDefinition Width="10" />
                 </Grid.ColumnDefinitions>
                 <ctrl:PlazaCreditEntryTotal x:Name="srcEntry"
-                                       Grid.Column="1"
-                                       FontSize="16"
+                                            Grid.Column="1"
+                                            FontSize="16"
                                             IsEnabled="False"
-                                       Background="CornflowerBlue"
-                                       Foreground="WhiteSmoke" />
-                <ctrl:PlazaCreditEntry x:Name="usrEntry" Grid.Row="2"
+                                            Background="CornflowerBlue"
+                                            Foreground="WhiteSmoke" />
+                <ctrl:PlazaCreditEntry x:Name="usrEntry"
+                                       Grid.Row="2"
                                        Grid.Column="1"
                                        FontSize="16"
                                        Background="DarkRed"
@@ -230,7 +230,8 @@
                       Margin="15,223,15,151"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center" />
-                <ctrl:PlazaCreditEntry x:Name="sumEntry" Grid.Row="2"
+                <ctrl:PlazaCreditEntry x:Name="sumEntry"
+                                       Grid.Row="2"
                                        Grid.Column="3"
                                        Margin="0,0,0,5"
                                        FontSize="16"

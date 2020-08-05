@@ -5,11 +5,18 @@ Update 2020-08-05 #30
 Update 2020-08-05 #29
 - 
 
+[commited]
 Update 2020-08-05 #28
-- 
+- Update Coupon related process #48. 
+  - UserCredit model Fixed event raisers for runtime foreground color peoperties.
+  - UserCreditTransaction model Fixed event raisers for runtime foreground color peoperties.
+  - TSBCreditBalance model Fixed event raisers for runtime foreground color peoperties.
+  - TSBCreditTransaction model Fixed event raisers for runtime foreground color peoperties.
+  - Update PlazaCreditEntry.xaml to detected input invalid (Foreground = red).
 
 [commited]
 Update 2020-08-05 #27
+- Update Coupon related process #47. 
   - UserCredit model add event raisers for runtime foreground color peoperties.
   - UserCreditTransaction model add event raisers for runtime foreground color peoperties.
   - TSBCreditBalance model add event raisers for runtime foreground color peoperties.

@@ -94,7 +94,6 @@
                                         </TextBlock>
                                     </StackPanel>
                                 </DockPanel>
-
                             </DockPanel>
                         </Border>
                     </DataTemplate>
