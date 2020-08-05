@@ -41,6 +41,11 @@ Update 2020-08-05 #8
   - UserCouponTransaction change structure (K.Tee) #1
     - Change Factor to Price.
     - Add CouponTypeString in model.
+    - Add event raiser in TransactionDate property.
+  - TSBCouponTransaction change structure (K.Tee) #8
+    - Add event raiser in TransactionDate property.
+    - Add event raiser in SoldDate property.
+    - Add UserReceiveDate property.
 
 [commited]
 Update 2020-08-05 #7

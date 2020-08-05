@@ -74,6 +74,7 @@ namespace DMT.Models
 		private string _UserId = string.Empty;
 		private string _FullNameEN = string.Empty;
 		private string _FullNameTH = string.Empty;
+		private DateTime _UserReceivedDate = DateTime.MinValue;
 		// Sold
 		private DateTime _SoldDate = DateTime.MinValue;
 		private string _SoldBy = string.Empty;
@@ -143,6 +144,9 @@ namespace DMT.Models
 				{
 					_TransactionDate = value;
 					this.RaiseChanged("TransactionDate");
+					this.RaiseChanged("TransactionDateString");
+					this.RaiseChanged("TransactionTimeString");
+					this.RaiseChanged("TransactionDateTimeString");
 				}
 			}
 		}
@@ -473,6 +477,82 @@ namespace DMT.Models
 				}
 			}
 		}
+		/// <summary>
+		/// Gets or sets UserReceive Date.
+		/// </summary>
+		[Category("User")]
+		[Description(" Gets or sets UserReceive Date")]
+		[ReadOnly(true)]
+		[PeropertyMapName("UserReceiveDate")]
+		public DateTime UserReceiveDate
+		{
+			get
+			{
+				return _UserReceivedDate;
+			}
+			set
+			{
+				if (_UserReceivedDate != value)
+				{
+					_UserReceivedDate = value;
+					this.RaiseChanged("UserReceiveDate");
+					this.RaiseChanged("UserReceiveDateString");
+					this.RaiseChanged("UserReceiveTimeString");
+					this.RaiseChanged("UserReceiveDateTimeString");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets UserReceive Date String.
+		/// </summary>
+		[Category("User")]
+		[Description("Gets UserReceive Date String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string UserReceiveDateString
+		{
+			get
+			{
+				var ret = (this.UserReceiveDate == DateTime.MinValue) ? "" : this.UserReceiveDate.ToThaiDateTimeString("dd/MM/yyyy");
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets UserReceive Time String.
+		/// </summary>
+		[Category("User")]
+		[Description("Gets UserReceive Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string UserReceiveTimeString
+		{
+			get
+			{
+				var ret = (this.UserReceiveDate == DateTime.MinValue) ? "" : this.UserReceiveDate.ToThaiTimeString();
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets UserReceive Date Time String.
+		/// </summary>
+		[Category("User")]
+		[Description("Gets UserReceive Date Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string UserReceiveDateTimeString
+		{
+			get
+			{
+				var ret = (this.UserReceiveDate == DateTime.MinValue) ? "" : this.UserReceiveDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+				return ret;
+			}
+			set { }
+		}
 
 		#endregion
 
@@ -566,13 +646,16 @@ namespace DMT.Models
 				{
 					_SoldDate = value;
 					this.RaiseChanged("SoldDate");
+					this.RaiseChanged("SoldDateString");
+					this.RaiseChanged("SoldTimeString");
+					this.RaiseChanged("SoldDateTimeString");
 				}
 			}
 		}
 		/// <summary>
 		/// Gets Sold Date String.
 		/// </summary>
-		[Category("Common")]
+		[Category("Sold")]
 		[Description("Gets Sold Date String.")]
 		[ReadOnly(true)]
 		[JsonIgnore]

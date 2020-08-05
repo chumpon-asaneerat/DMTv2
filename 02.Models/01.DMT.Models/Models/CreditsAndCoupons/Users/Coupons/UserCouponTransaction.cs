@@ -125,6 +125,9 @@ namespace DMT.Models
 				{
 					_TransactionDate = value;
 					this.RaiseChanged("TransactionDate");
+					this.RaiseChanged("TransactionDateString");
+					this.RaiseChanged("TransactionTimeString");
+					this.RaiseChanged("TransactionDateTimeString");
 				}
 			}
 		}
