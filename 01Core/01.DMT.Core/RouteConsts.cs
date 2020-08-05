@@ -463,6 +463,12 @@ namespace DMT
 
             #region TSB Coupon Transaction
 
+            public static class GetTSBCouponTransactions
+            {
+                public const string Name = "GetTSBCouponTransactions";
+                public const string Url = Coupon.Url + @"/" + Name;
+            }
+
             public static class SaveTSBCouponTransaction
             {
                 public const string Name = "SaveTSBCouponTransaction";

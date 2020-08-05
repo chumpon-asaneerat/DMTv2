@@ -900,12 +900,12 @@ namespace DMT.Models
 		/// <returns>
 		/// Returns Current Active TSB Coupon transactions. If not found returns null.
 		/// </returns>
-		public static List<TSBCouponTransaction> Gets()
+		public static List<TSBCouponTransaction> GetTSBCouponTransactions()
 		{
 			lock (sync)
 			{
 				var tsb = TSB.GetCurrent();
-				return Gets(tsb);
+				return GetTSBCouponTransactions(tsb);
 			}
 		}
 		/// <summary>
@@ -913,17 +913,15 @@ namespace DMT.Models
 		/// </summary>
 		/// <param name="tsb">The target TSB to get coupon transaction.</param>
 		/// <returns>Returns TSB Coupon transactions. If TSB not found returns null.</returns>
-		public static List<TSBCouponTransaction> Gets(TSB tsb)
+		public static List<TSBCouponTransaction> GetTSBCouponTransactions(TSB tsb)
 		{
 			if (null == tsb) return null;
 			lock (sync)
 			{
 				string cmd = string.Empty;
-				cmd += "SELECT TSBCouponTransaction.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "  FROM TSBCouponTransaction, TSB ";
-				cmd += " WHERE TSBCouponTransaction.TSBId = TSB.TSBId ";
-				cmd += "   AND TSBCouponTransaction.TSBId = ? ";
+				cmd += "SELECT * ";
+				cmd += "  FROM TSBCouponTransactionView ";
+				cmd += " WHERE TSBCouponTransactionView.TSBId = ? ";
 
 				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
 				if (null == rets)
@@ -941,7 +939,7 @@ namespace DMT.Models
 				}
 			}
 		}
-
+		/*
 		public static List<TSBCouponTransaction> GetTSBCoupons()
 		{
 			lock (sync)
@@ -1132,7 +1130,7 @@ namespace DMT.Models
 				return (null != ret) ? ret.ToTSBCouponTransaction() : null;
 			}
 		}
-
+		
 		public static List<TSBCouponTransaction> ToTSBBHT35Coupons(List<UserCouponTransaction> coupons)
 		{
 			lock (sync)
@@ -1194,7 +1192,7 @@ namespace DMT.Models
 				TSBCouponTransaction.Save(coupon);
 			}
 		}
-
+		*/
 		#endregion
 	}
 

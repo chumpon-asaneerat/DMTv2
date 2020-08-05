@@ -1,7 +1,6 @@
 ﻿CREATE VIEW TSBCouponTransactionView
 AS
 	SELECT TSBCouponTransaction.* 
-		 , TSB.TSBId
 		 , TSB.TSBNameEN
 		 , TSB.TSBNameTH
 		 , usr.FullNameEN, usr.FullNameTH

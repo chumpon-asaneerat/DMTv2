@@ -60,16 +60,23 @@ namespace DMT.Services
 
             #region TSB Coupon Balance
 
-            public List<TSBCouponBalance> GetTSBCouponBalances()
+            public List<TSBCouponBalance> GetTSBCouponBalances(TSB value)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponBalance>>(
-                    RouteConsts.Coupon.GetTSBCouponBalances.Url, new { });
+                    RouteConsts.Coupon.GetTSBCouponBalances.Url, value);
                 return ret;
             }
 
             #endregion
 
             #region TSB Coupon Transaction
+
+            public List<TSBCouponTransaction> GetTSBCouponTransactions(TSB value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
+                    RouteConsts.Coupon.GetTSBCouponTransactions.Url, value);
+                return ret;
+            }
 
             public void SaveTransaction(TSBCouponTransaction value)
             {
@@ -195,7 +202,8 @@ namespace DMT.Services
         #region Internal Variables
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
-        private List<TSBCouponBalance> _summaries = null;
+
+        private List<TSBCouponTransaction> _origins = null;
         private List<TSBCouponTransaction> _coupons = null;
 
         #endregion
@@ -213,7 +221,7 @@ namespace DMT.Services
         /// </summary>
         ~TSBCouponManager()
         {
-            _summaries = null;
+
         }
 
         #endregion
@@ -222,18 +230,95 @@ namespace DMT.Services
 
         public void Refresh()
         {
-            _summaries = ops.Coupons.GetTSBCouponBalances();
+            TSB tsb = null;
+            Summaries = ops.Coupons.GetTSBCouponBalances(tsb);
+            // get original list.
+            _origins = ops.Coupons.GetTSBCouponTransactions(tsb);
+            // get work list.
+            _coupons = ops.Coupons.GetTSBCouponTransactions(tsb);
         }
 
-        public List<TSBCouponBalance> Summaries { get { return _summaries;  } }
+        public User User { get; set; }
+        public List<TSBCouponBalance> Summaries { get; private set; }
 
-        public List<TSBCouponTransaction> Stocks
+        public List<TSBCouponTransaction> C35Stocks
         {
             get
             {
-                if (null == _coupons) return new List<TSBCouponTransaction>();
-                return _coupons;
+                if (null == _coupons)
+                    return new List<TSBCouponTransaction>();
+                return _coupons.FindAll(item =>
+                {
+                    bool ret = (
+                        item.TransactionType == TSBCouponTransaction.TransactionTypes.Stock &&
+                        item.CouponType == CouponType.BHT35
+                    );
+                    return ret;
+                });
             }
+        }
+
+        public List<TSBCouponTransaction> C80Stocks
+        {
+            get
+            {
+                if (null == _coupons)
+                    return new List<TSBCouponTransaction>();
+                return _coupons.FindAll(item =>
+                {
+                    bool ret = (
+                        item.TransactionType == TSBCouponTransaction.TransactionTypes.Stock &&
+                        item.CouponType == CouponType.BHT80
+                    );
+                    return ret;
+                });
+            }
+        }
+
+        public List<TSBCouponTransaction> C35Users
+        {
+            get
+            {
+                if (null == _coupons && null == User)
+                    return new List<TSBCouponTransaction>();
+                return _coupons.FindAll(item =>
+                {
+                    bool ret = (
+                        item.TransactionType == TSBCouponTransaction.TransactionTypes.Lane &&
+                        item.CouponType == CouponType.BHT35 &&
+                        item.UserId == User.UserId
+                    );
+                    return ret;
+                });
+            }
+        }
+
+        public List<TSBCouponTransaction> C80Users
+        {
+            get
+            {
+                if (null == _coupons && null == User)
+                    return new List<TSBCouponTransaction>();
+                return _coupons.FindAll(item =>
+                {
+                    bool ret = (
+                        item.TransactionType == TSBCouponTransaction.TransactionTypes.Lane &&
+                        item.CouponType == CouponType.BHT80 &&
+                        item.UserId == User.UserId
+                    );
+                    return ret;
+                });
+            }
+        }
+
+        public void Borrow(TSBCouponTransaction value)
+        {
+            
+        }
+
+        public void Return(TSBCouponTransaction value)
+        {
+
         }
 
         #endregion
