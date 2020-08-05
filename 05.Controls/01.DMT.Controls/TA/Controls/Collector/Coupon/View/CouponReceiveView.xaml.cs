@@ -1,7 +1,22 @@
-﻿using System;
+﻿#region Using
+
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+
+using DMT.Models;
+using DMT.Services;
+using NLib.Services;
+using NLib.Reflection;
+using NLib.Reports.Rdlc;
+using System.Reflection;
+using System.ComponentModel;
+using System.Windows.Interop;
+using NLib;
+using System.Windows.Threading;
+
+#endregion
 
 namespace DMT.TA.Controls.Collector.Coupon
 {

@@ -61,6 +61,11 @@ Update 2020-08-06 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-08-05 #32
+- Update Coupon related process #51. 
+  - Format some DMT.Controls xaml.
+
+[commited]
 Update 2020-08-05 #31
 - Update Coupon related process #50. 
   - Update TA MainMenu page.
