@@ -340,6 +340,7 @@ namespace DMT.Models
 					// Raise event.
 					this.RaiseChanged("CountST25");
 					this.RaiseChanged("AmountST25");
+					this.RaiseChanged("IsValidST25");
 
 					CalcTotalAmount();
 				}
@@ -364,6 +365,7 @@ namespace DMT.Models
 					// Raise event.
 					this.RaiseChanged("CountST50");
 					this.RaiseChanged("AmountST50");
+					this.RaiseChanged("IsValidST50");
 
 					CalcTotalAmount();
 				}
@@ -388,6 +390,7 @@ namespace DMT.Models
 					// Raise event.
 					this.RaiseChanged("CountBHT1");
 					this.RaiseChanged("AmountBHT1");
+					this.RaiseChanged("IsValidBHT1");
 
 					CalcTotalAmount();
 				}
@@ -412,6 +415,7 @@ namespace DMT.Models
 					// Raise event.
 					this.RaiseChanged("CountBHT2");
 					this.RaiseChanged("AmountBHT2");
+					this.RaiseChanged("IsValidBHT2");
 
 					CalcTotalAmount();
 				}
@@ -436,6 +440,7 @@ namespace DMT.Models
 					// Raise event.
 					this.RaiseChanged("CountBHT5");
 					this.RaiseChanged("AmountBHT5");
+					this.RaiseChanged("IsValidBHT5");
 
 					CalcTotalAmount();
 				}
@@ -460,6 +465,7 @@ namespace DMT.Models
 					// Raise event.
 					this.RaiseChanged("CountBHT10");
 					this.RaiseChanged("AmountBHT10");
+					this.RaiseChanged("IsValidBHT10");
 
 					CalcTotalAmount();
 				}
@@ -484,6 +490,7 @@ namespace DMT.Models
 					// Raise event.
 					this.RaiseChanged("CountBHT20");
 					this.RaiseChanged("AmountBHT20");
+					this.RaiseChanged("IsValidBHT20");
 
 					CalcTotalAmount();
 				}
@@ -508,6 +515,7 @@ namespace DMT.Models
 					// Raise event.
 					this.RaiseChanged("CountBHT50");
 					this.RaiseChanged("AmountBHT50");
+					this.RaiseChanged("IsValidBHT50");
 
 					CalcTotalAmount();
 				}
@@ -532,6 +540,7 @@ namespace DMT.Models
 					// Raise event.
 					this.RaiseChanged("CountBHT100");
 					this.RaiseChanged("AmountBHT100");
+					this.RaiseChanged("IsValidBHT100");
 
 					CalcTotalAmount();
 				}
@@ -556,6 +565,7 @@ namespace DMT.Models
 					// Raise event.
 					this.RaiseChanged("CountBHT500");
 					this.RaiseChanged("AmountBHT500");
+					this.RaiseChanged("IsValidBHT500");
 
 					CalcTotalAmount();
 				}
@@ -580,6 +590,7 @@ namespace DMT.Models
 					// Raise event.
 					this.RaiseChanged("CountBHT1000");
 					this.RaiseChanged("AmountBHT1000");
+					this.RaiseChanged("IsValidBHT1000");
 
 					CalcTotalAmount();
 				}

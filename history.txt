@@ -20,8 +20,13 @@ Update 2020-08-05 #25
 Update 2020-08-05 #24
 - 
 
+[commited]
 Update 2020-08-05 #23
-- 
+- Update Coupon related process #43. 
+  - TSBCreditTransaction model add event raisers.
+  - UserCreditTransaction model add event raisers.
+  - TSBCreditBalance model add IsValidXXX for check amount is exact match coin/bill count.
+  - UserCredit model add IsValidXXX for check amount is exact match coin/bill count.
 
 [commited]
 Update 2020-08-05 #22
