@@ -37,9 +37,6 @@ namespace DMT.TA.Windows.Coupon
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
         private TSBCouponManager manager = new TSBCouponManager();
-        //private User _user = null;
-        //private List<TSBCouponTransaction> _tsbCoupon35 = null;
-        //private List<TSBCouponTransaction> _tsbCoupon80 = null;
 
         #region Button Handlers
 
@@ -47,26 +44,6 @@ namespace DMT.TA.Windows.Coupon
         {
             // Save
             manager.Save();
-            /*
-            if (null != _user && null != _tsbCoupon35)
-            {
-                var list = _tsbCoupon35.FindAll(item =>
-                {
-                    return item.TransactionType == TSBCouponTransaction.TransactionTypes.Lane;
-                }).ToList();
-                var opts = Search.UserCoupons.BorrowCoupons.Create(_user, list);
-                ops.Coupons.UserBorrowCoupons(opts);
-            }
-            if (null != _user && null != _tsbCoupon80)
-            {
-                var list = _tsbCoupon80.FindAll(item =>
-                {
-                    return item.TransactionType == TSBCouponTransaction.TransactionTypes.Lane;
-                }).ToList();
-                var opts = Search.UserCoupons.BorrowCoupons.Create(_user, list);
-                ops.Coupons.UserBorrowCoupons(opts);
-            }
-            */
             this.DialogResult = true;
         }
 

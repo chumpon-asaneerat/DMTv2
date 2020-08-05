@@ -46,9 +46,23 @@ namespace DMT.TA.Controls.Collector.Coupon
 
         private void cmdEdit_Click(object sender, RoutedEventArgs e)
         {
+            Button button = (sender as Button);
+            var trans = (null != button) ? button.DataContext as TSBCouponSummary : null;
+            if (null == trans) return;
+            var search = Search.Users.ById.Create(trans.UserId);
+            var user = ops.Users.GetById(search);
+            if (null == user) return;
 
+            var win = new DMT.TA.Windows.Coupon.CouponEditWindow();
+            win.Owner = Application.Current.MainWindow;
+            win.Setup(user);
+            if (win.ShowDialog() == false)
+            {
+                return;
+            }
+            RefreshList();
         }
-       
+
         public void RefreshList()
         {
             var coupons = ops.Coupons.GetTSBCouponSummaries(null);
