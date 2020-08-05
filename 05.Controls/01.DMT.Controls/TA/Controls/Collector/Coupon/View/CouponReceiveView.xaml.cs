@@ -51,10 +51,8 @@ namespace DMT.TA.Controls.Collector.Coupon
        
         public void RefreshList()
         {
-            /*
-            var coupons = ops.Coupons.GetCurrentTSBCoupons();
+            var coupons = ops.Coupons.GetTSBCouponTransactions(null);
             listView.ItemsSource = coupons;
-            */
         }
     }
 }

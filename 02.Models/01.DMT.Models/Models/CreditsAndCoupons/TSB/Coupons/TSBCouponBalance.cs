@@ -41,17 +41,9 @@ namespace DMT.Models
 		private string _TSBNameEN = string.Empty;
 		private string _TSBNameTH = string.Empty;
 
-		private string _UserId = string.Empty;
-		private string _FullNameEN = string.Empty;
-		private string _FullNameTH = string.Empty;
-
-		private int _CountCouponBHT35 = 0;
-		private int _CountCouponBHT80 = 0;
-
-		private decimal _AmountCouponBHT35 = decimal.Zero;
-		private decimal _AmountCouponBHT80 = decimal.Zero;
-
-		private int _CountCouponTotal = 0;
+		private int _CouponBHT35 = 0;
+		private int _CouponBHT80 = 0;
+		private int _CouponTotal = 0;
 		private decimal _CouponBHTTotal = decimal.Zero;
 
 		#endregion
@@ -69,17 +61,10 @@ namespace DMT.Models
 
 		private void CalcCouponTotal()
 		{
-			_CountCouponTotal = _CountCouponBHT35 + _CountCouponBHT80;
+			_CouponTotal = _CouponBHT35 + _CouponBHT80;
 			// Raise event.
-			this.RaiseChanged("CountCouponTotal");
+			this.RaiseChanged("CouponTotal");
 
-		}
-
-		private void CalcAmountTotal()
-		{
-			_CouponBHTTotal = _AmountCouponBHT35 + _AmountCouponBHT80;
-			// Raise event.
-			this.RaiseChanged("CouponBHTTotal");
 		}
 
 		#endregion
@@ -220,80 +205,6 @@ namespace DMT.Models
 
 		#endregion
 
-		#region User
-
-		/// <summary>
-		/// Gets or sets UserId
-		/// </summary>
-		[Category("User")]
-		[Description("Gets or sets UserId")]
-		[ReadOnly(true)]
-		[MaxLength(10)]
-		[PeropertyMapName("UserId")]
-		public virtual string UserId
-		{
-			get
-			{
-				return _UserId;
-			}
-			set
-			{
-				if (_UserId != value)
-				{
-					_UserId = value;
-					this.RaiseChanged("UserId");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets FullNameEN
-		/// </summary>
-		[Category("User")]
-		[Description("Gets or sets FullNameEN")]
-		[ReadOnly(true)]
-		[Ignore]
-		[PeropertyMapName("FullNameEN")]
-		public virtual string FullNameEN
-		{
-			get
-			{
-				return _FullNameEN;
-			}
-			set
-			{
-				if (_FullNameEN != value)
-				{
-					_FullNameEN = value;
-					this.RaiseChanged("FullNameEN");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets FullNameTH
-		/// </summary>
-		[Category("User")]
-		[Description("Gets or sets FullNameTH")]
-		[ReadOnly(true)]
-		[Ignore]
-		[PeropertyMapName("FullNameTH")]
-		public virtual string FullNameTH
-		{
-			get
-			{
-				return _FullNameTH;
-			}
-			set
-			{
-				if (_FullNameTH != value)
-				{
-					_FullNameTH = value;
-					this.RaiseChanged("FullNameTH");
-				}
-			}
-		}
-
-		#endregion
-
 		#region Coupon
 
 		/// <summary>
@@ -304,17 +215,17 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("CouponBHT35")]
-		public virtual int CountCouponBHT35
+		public virtual int CouponBHT35
 		{
-			get { return _CountCouponBHT35; }
+			get { return _CouponBHT35; }
 			set
 			{
-				if (_CountCouponBHT35 != value)
+				if (_CouponBHT35 != value)
 				{
-					_CountCouponBHT35 = value;
+					_CouponBHT35 = value;
 					CalcCouponTotal();
 					// Raise event.
-					this.RaiseChanged("CountCouponBHT35");
+					this.RaiseChanged("CouponBHT35");
 
 				}
 			}
@@ -326,63 +237,18 @@ namespace DMT.Models
 		[Description("Gets or sets number of 80 BHT coupon.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("CountCouponBHT80")]
-		public virtual int CountCouponBHT80
+		[PeropertyMapName("CouponBHT80")]
+		public virtual int CouponBHT80
 		{
-			get { return _CountCouponBHT80; }
+			get { return _CouponBHT80; }
 			set
 			{
-				if (_CountCouponBHT80 != value)
+				if (_CouponBHT80 != value)
 				{
-					_CountCouponBHT80 = value;
+					_CouponBHT80 = value;
 					CalcCouponTotal();
 					// Raise event.
-					this.RaiseChanged("CountCouponBHT80");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets Amount of 35 BHT coupon.
-		/// </summary>
-		[Category("Coupon")]
-		[Description("Gets or sets Amount of 35 BHT coupon.")]
-		[ReadOnly(true)]
-		[Ignore]
-		[PeropertyMapName("AmountCouponBHT35")]
-		public virtual decimal AmountCouponBHT35
-		{
-			get { return _AmountCouponBHT35; }
-			set
-			{
-				if (_AmountCouponBHT35 != value)
-				{
-					_AmountCouponBHT35 = value;
-					CalcAmountTotal();
-					// Raise event.
-					this.RaiseChanged("AmountCouponBHT35");
-
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets Amount of 80 BHT coupon.
-		/// </summary>
-		[Category("Coupon")]
-		[Description("Gets or sets Amount of 80 BHT coupon.")]
-		[ReadOnly(true)]
-		[Ignore]
-		[PeropertyMapName("AmountCouponBHT80")]
-		public virtual decimal AmountCouponBHT80
-		{
-			get { return _AmountCouponBHT80; }
-			set
-			{
-				if (_AmountCouponBHT80 != value)
-				{
-					_AmountCouponBHT80 = value;
-					CalcAmountTotal();
-					// Raise event.
-					this.RaiseChanged("AmountCouponBHT80");
+					this.RaiseChanged("CouponBHT80");
 				}
 			}
 		}
@@ -395,9 +261,9 @@ namespace DMT.Models
 		[Ignore]
 		[JsonIgnore]
 		[PeropertyMapName("CouponTotal")]
-		public int CountCouponTotal
+		public int CouponTotal
 		{
-			get { return _CountCouponTotal; }
+			get { return _CouponTotal; }
 			set { }
 		}
 		/// <summary>
@@ -411,7 +277,15 @@ namespace DMT.Models
 		public virtual decimal CouponBHTTotal
 		{
 			get { return _CouponBHTTotal; }
-			set { }
+			set
+			{
+				if (_CouponBHTTotal != value)
+				{
+					_CouponBHTTotal = value;
+					// Raise event.
+					this.RaiseChanged("CouponBHTTotal");
+				}
+			}
 		}
 
 		#endregion
@@ -457,78 +331,34 @@ namespace DMT.Models
 
 			#endregion
 
-			#region User
-
-			/// <summary>
-			/// Gets or sets UserId
-			/// </summary>
-			[MaxLength(10)]
-			[PeropertyMapName("UserId")]
-			public override string UserId
-			{
-				get { return base.UserId; }
-				set { base.UserId = value; }
-			}
-			/// <summary>
-			/// Gets or sets FullNameEN
-			/// </summary>
-			[MaxLength(100)]
-			[PeropertyMapName("FullNameEN")]
-			public override string FullNameEN
-			{
-				get { return base.FullNameEN; }
-				set { base.FullNameEN = value; }
-			}
-			/// <summary>
-			/// Gets or sets FullNameTH
-			/// </summary>
-			[MaxLength(100)]
-			[PeropertyMapName("FullNameTH")]
-			public override string FullNameTH
-			{
-				get { return base.FullNameTH; }
-				set { base.FullNameTH = value; }
-			}
-
-			#endregion
-
 			#region Coupon
 
 			/// <summary>
 			/// Gets or sets number of 35 BHT coupon.
 			/// </summary>
-			[PeropertyMapName("CountCouponBHT35")]
-			public override int CountCouponBHT35
+			[PeropertyMapName("CouponBHT35")]
+			public override int CouponBHT35
 			{
-				get { return base.CountCouponBHT35; }
-				set { base.CountCouponBHT35 = value; }
+				get { return base.CouponBHT35; }
+				set { base.CouponBHT35 = value; }
 			}
 			/// <summary>
 			/// Gets or sets number of 80 BHT coupon.
 			/// </summary>
-			[PeropertyMapName("CountCouponBHT80")]
-			public override int CountCouponBHT80
+			[PeropertyMapName("CouponBHT80")]
+			public override int CouponBHT80
 			{
-				get { return base.CountCouponBHT80; }
-				set { base.CountCouponBHT80 = value; }
+				get { return base.CouponBHT80; }
+				set { base.CouponBHT80 = value; }
 			}
 			/// <summary>
-			/// Gets or sets Amount of 35 BHT coupon.
+			/// Gets or sets total value in baht.
 			/// </summary>
-			[PeropertyMapName("AmountCouponBHT35")]
-			public override decimal AmountCouponBHT35
+			[PeropertyMapName("CouponBHTTotal")]
+			public override decimal CouponBHTTotal
 			{
-				get { return base.AmountCouponBHT35; }
-				set { base.AmountCouponBHT35 = value; }
-			}
-			/// <summary>
-			/// Gets or sets Amount of 80 BHT coupon.
-			/// </summary>
-			[PeropertyMapName("AmountCouponBHT80")]
-			public override decimal AmountCouponBHT80
-			{
-				get { return base.AmountCouponBHT80; }
-				set { base.AmountCouponBHT80 = value; }
+				get { return base.CouponBHTTotal; }
+				set { base.CouponBHTTotal = value; }
 			}
 
 			#endregion
@@ -553,30 +383,46 @@ namespace DMT.Models
 		/// Gets Active TSB Coupon balance.
 		/// </summary>
 		/// <returns>Returns Current Active TSB Coupon balance. If not found returns null.</returns>
-		public static List<TSBCouponBalance> GetTSBCouponBalances()
+		public static TSBCouponBalance GetTSBBalance()
 		{
 			lock (sync)
 			{
 				var tsb = TSB.GetCurrent();
-				return GetTSBCouponBalances(tsb);
+				return GetTSBBalance(tsb);
 			}
 		}
 		/// <summary>
 		/// Gets TSB Coupon Balance.
 		/// </summary>
 		/// <param name="tsb">The target TSB to get balance.</param>
-		/// <returns>Returns List of TSB Coupon balance. If TSB not found returns null.</returns>
-		public static List<TSBCouponBalance> GetTSBCouponBalances(TSB tsb)
+		/// <returns>Returns TSB Coupon balance. If TSB not found returns null.</returns>
+		public static TSBCouponBalance GetTSBBalance(TSB tsb)
 		{
-			if (null == tsb) return new List<TSBCouponBalance>();
+			if (null == tsb) return null;
 			lock (sync)
 			{
 				string cmd = @"
 					SELECT * 
-					  FROM TSBCouponSummarryView
-					 WHERE TSBCouponSummarryView.TSBId = ?
+					  FROM TSBCouponBalanceView
+					 WHERE TSBCouponBalanceView.TSBId = ?
 				";
-				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
+				var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
+				return (null != ret) ? ret.ToTSBCouponBalance() : null;
+			}
+		}
+		/// <summary>
+		/// Gets All TSB Coupon Balance.
+		/// </summary>
+		/// <returns>Returns List fo all TSB Coupon balance.</returns>
+		public static List<TSBCouponBalance> GetTSBBalances()
+		{
+			lock (sync)
+			{
+				string cmd = @"
+					SELECT * 
+					  FROM TSBCouponBalanceView
+				";
+				var rets = NQuery.Query<FKs>(cmd).ToList();
 				var results = new List<TSBCouponBalance>();
 				if (null != rets)
 				{
@@ -588,50 +434,6 @@ namespace DMT.Models
 				return results;
 			}
 		}
-		/// <summary>
-		/// Gets TSB Coupon Balance.
-		/// </summary>
-		/// <param name="tsb">The target TSB to get balance.</param>
-		/// <param name="user">The target User to get balance.</param>
-		/// <returns>Returns List of TSB Coupon balance. If TSB not found returns null.</returns>
-		public static List<TSBCouponBalance> GetByUser(User user)
-		{
-			lock (sync)
-			{
-				var tsb = TSB.GetCurrent();
-				return GetByUser(tsb, user);
-			}
-		}
-		/// <summary>
-		/// Gets TSB Coupon Balance.
-		/// </summary>
-		/// <param name="tsb">The target TSB to get balance.</param>
-		/// <param name="user">The target User to get balance.</param>
-		/// <returns>Returns List of TSB Coupon balance. If TSB not found returns null.</returns>
-		public static List<TSBCouponBalance> GetByUser(TSB tsb, User user)
-		{
-			if (null == tsb || null == user) return new List<TSBCouponBalance>();
-			lock (sync)
-			{
-				string cmd = @"
-					SELECT * 
-					  FROM TSBCouponSummarryView
-					 WHERE TSBCouponSummarryView.TSBId = ?
-					   AND TSBCouponSummarryView.UserId = ?
-				";
-				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId, user.UserId).ToList();
-				var results = new List<TSBCouponBalance>();
-				if (null != rets)
-				{
-					rets.ForEach(ret =>
-					{
-						results.Add(ret.ToTSBCouponBalance());
-					});
-				}
-				return results;
-			}
-		}
-
 
 		#endregion
 	}

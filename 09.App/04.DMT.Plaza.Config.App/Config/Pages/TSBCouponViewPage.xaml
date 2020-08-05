@@ -93,7 +93,7 @@
                                         DisplayMemberBinding="{Binding Path=CouponType}" />
                             <GridViewColumn Width="150"
                                         Header="Price"
-                                        DisplayMemberBinding="{Binding Path=Factor}" />
+                                        DisplayMemberBinding="{Binding Path=Price}" />
                         </GridView>
                     </ListView.View>
                 </ListView>

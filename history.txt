@@ -44,8 +44,11 @@ Update 2020-08-06 #7
 Update 2020-08-06 #6
 - 
 
+[commited]
 Update 2020-08-06 #5
-- 
+- Update Coupon related process #58.
+  - Add new view TSBCouponBalanceView.sql
+  - Fixed various bugs.
 
 [commited]
 Update 2020-08-06 #4

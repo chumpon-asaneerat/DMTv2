@@ -20,12 +20,25 @@ namespace DMT.Services
         #region TSB Coupon Balance
 
         [HttpPost]
-        [ActionName(RouteConsts.Coupon.GetTSBCouponBalances.Name)]
-        public List<TSBCouponBalance> GetTSBCouponBalances([FromBody] TSB tsb)
+        [ActionName(RouteConsts.Coupon.GetTSBBalance.Name)]
+        public TSBCouponBalance GetTSBBalance([FromBody] TSB tsb)
         {
             if (null == tsb)
-                return TSBCouponBalance.GetTSBCouponBalances();
-            return TSBCouponBalance.GetTSBCouponBalances(tsb);
+                return TSBCouponBalance.GetTSBBalance();
+            return TSBCouponBalance.GetTSBBalance(tsb);
+        }
+
+        #endregion
+
+        #region TSB Coupon Summary
+
+        [HttpPost]
+        [ActionName(RouteConsts.Coupon.GetTSBCouponSummaries.Name)]
+        public List<TSBCouponSummary> GetTSBCouponSummaries([FromBody] TSB tsb)
+        {
+            if (null == tsb)
+                return TSBCouponSummary.GetTSBCouponSummaries();
+            return TSBCouponSummary.GetTSBCouponSummaries(tsb);
         }
 
         #endregion

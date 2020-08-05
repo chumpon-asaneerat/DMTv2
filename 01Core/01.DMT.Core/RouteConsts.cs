@@ -453,9 +453,19 @@ namespace DMT
 
             #region TSB Coupon Balance
 
-            public static class GetTSBCouponBalances
+            public static class GetTSBBalance
             {
-                public const string Name = "GetTSBCouponBalances";
+                public const string Name = "GetTSBBalance";
+                public const string Url = Coupon.Url + @"/" + Name;
+            }
+
+            #endregion
+
+            #region TSB Coupon Summary
+
+            public static class GetTSBCouponSummaries
+            {
+                public const string Name = "GetTSBCouponSummaries";
                 public const string Url = Coupon.Url + @"/" + Name;
             }
 

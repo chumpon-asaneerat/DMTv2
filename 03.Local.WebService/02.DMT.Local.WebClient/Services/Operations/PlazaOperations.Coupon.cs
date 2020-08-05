@@ -60,10 +60,21 @@ namespace DMT.Services
 
             #region TSB Coupon Balance
 
-            public List<TSBCouponBalance> GetTSBCouponBalances(TSB value)
+            public TSBCouponBalance GetTSBBalance(TSB value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponBalance>>(
-                    RouteConsts.Coupon.GetTSBCouponBalances.Url, value);
+                var ret = NRestClient.Create(port: 9000).Execute<TSBCouponBalance>(
+                    RouteConsts.Coupon.GetTSBBalance.Url, value);
+                return ret;
+            }
+
+            #endregion
+
+            #region TSB Coupon Summary
+
+            public List<TSBCouponSummary> GetTSBCouponSummaries(TSB value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponSummary>>(
+                    RouteConsts.Coupon.GetTSBCouponSummaries.Url, value);
                 return ret;
             }
 
@@ -231,7 +242,7 @@ namespace DMT.Services
         public void Refresh()
         {
             TSB tsb = null;
-            Summaries = ops.Coupons.GetTSBCouponBalances(tsb);
+            Summaries = ops.Coupons.GetTSBCouponSummaries(tsb);
             // get original list.
             _origins = ops.Coupons.GetTSBCouponTransactions(tsb);
             // get work list.
@@ -239,7 +250,7 @@ namespace DMT.Services
         }
 
         public User User { get; set; }
-        public List<TSBCouponBalance> Summaries { get; private set; }
+        public List<TSBCouponSummary> Summaries { get; private set; }
 
         public List<TSBCouponTransaction> C35Stocks
         {
@@ -254,7 +265,7 @@ namespace DMT.Services
                         item.CouponType == CouponType.BHT35
                     );
                     return ret;
-                });
+                }).OrderBy(x => x.CouponId).ToList();
             }
         }
 
@@ -271,7 +282,7 @@ namespace DMT.Services
                         item.CouponType == CouponType.BHT80
                     );
                     return ret;
-                });
+                }).OrderBy(x => x.CouponId).ToList();
             }
         }
 
@@ -289,7 +300,7 @@ namespace DMT.Services
                         item.UserId == User.UserId
                     );
                     return ret;
-                });
+                }).OrderBy(x => x.CouponId).ToList();
             }
         }
 
@@ -307,7 +318,7 @@ namespace DMT.Services
                         item.UserId == User.UserId
                     );
                     return ret;
-                });
+                }).OrderBy(x => x.CouponId).ToList();
             }
         }
 

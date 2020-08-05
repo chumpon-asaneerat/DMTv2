@@ -52,13 +52,11 @@ namespace DMT.TA.Windows.Plaza
             creditEntry.IsEnabled = false;
             creditEntry.DataContext = tsbCredit;
 
-            /*
-            var tsbCoupon = ops.Coupons.GetCurrent();
+            var tsbCoupon = ops.Coupons.GetTSBBalance(null);
             tsbCoupon.Description = "คุปอง";
             tsbCoupon.HasRemark = false;
             couponEntry.IsEnabled = false;
             couponEntry.DataContext = tsbCoupon;
-            */
 
             loanMoneyEntry.IsEnabled = false;
             loanMoneyEntry.DataContext = tsbCredit;
