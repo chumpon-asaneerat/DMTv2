@@ -136,16 +136,16 @@ namespace DMT.Services
                     RouteConsts.Coupon.SaveTransaction.Url, value);
             }
 
-            public TSBCouponBalance GetCurrent()
+            public List<TSBCouponBalance> GetCurrent()
             {
-                var ret = NRestClient.Create(port: 9000).Execute<TSBCouponBalance>(
+                var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponBalance>>(
                     RouteConsts.Coupon.GetCurrent.Url, new { });
                 return ret;
             }
 
-            public TSBCouponBalance GetTSBCurrent(TSB tsb)
+            public List<TSBCouponBalance> GetTSBCurrent(TSB tsb)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<TSBCouponBalance>(
+                var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponBalance>>(
                     RouteConsts.Coupon.GetTSBCurrent.Url, tsb);
                 return ret;
             }

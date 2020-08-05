@@ -26,17 +26,12 @@
                     <GridViewColumn Width="250"
                                     Header="ชือพนักงาน"
                                     DisplayMemberBinding="{Binding Path=FullNameTH}" />
-                    <!--
-                    <GridViewColumn Header="ประเภทคูปอง"
-                                    DisplayMemberBinding="{Binding Path=Type}"
-                                    Width="150"/>
-                    -->
                     <GridViewColumn Width="150"
                                     Header="จำนวนเล่ม (35 บาท)"
-                                    DisplayMemberBinding="{Binding Path=Count}" />
+                                    DisplayMemberBinding="{Binding Path=CountCouponBHT35}" />
                     <GridViewColumn Width="150"
                                     Header="จำนวนเล่ม (80 บาท)"
-                                    DisplayMemberBinding="{Binding Path=Count80}" />
+                                    DisplayMemberBinding="{Binding Path=CountCouponBHT80}" />
                     <GridViewColumn Width="150" Header="">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

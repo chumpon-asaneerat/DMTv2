@@ -553,7 +553,7 @@ namespace DMT.Models
 		/// Gets Active TSB Coupon balance.
 		/// </summary>
 		/// <returns>Returns Current Active TSB Coupon balance. If not found returns null.</returns>
-		public static TSBCouponBalance GetCurrent()
+		public static List<TSBCouponBalance> GetCurrent()
 		{
 			lock (sync)
 			{
@@ -565,8 +565,8 @@ namespace DMT.Models
 		/// Gets TSB Coupon Balance.
 		/// </summary>
 		/// <param name="tsb">The target TSB to get balance.</param>
-		/// <returns>Returns TSB Coupon balance. If TSB not found returns null.</returns>
-		public static TSBCouponBalance GetCurrent(TSB tsb)
+		/// <returns>Returns List of TSB Coupon balance. If TSB not found returns null.</returns>
+		public static List<TSBCouponBalance> GetCurrent(TSB tsb)
 		{
 			if (null == tsb) return null;
 			lock (sync)
@@ -576,14 +576,22 @@ namespace DMT.Models
 					  FROM TSBCouponSummarryView
 					 WHERE TSBCouponSummarryView.TSBId = ?
 				";
-				var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
-				return (null != ret) ? ret.ToTSBCouponBalance() : null;
+				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
+				var results = new List<TSBCouponBalance>();
+				if (null != rets)
+				{
+					rets.ForEach(ret =>
+					{
+						results.Add(ret.ToTSBCouponBalance());
+					});
+				}
+				return results;
 			}
 		}
 		/// <summary>
 		/// Gets All TSB Coupon Balance.
 		/// </summary>
-		/// <returns>Returns List fo all TSB Coupon balance.</returns>
+		/// <returns>Returns List of all TSB Coupon balance.</returns>
 		public static List<TSBCouponBalance> Gets()
 		{
 			lock (sync)

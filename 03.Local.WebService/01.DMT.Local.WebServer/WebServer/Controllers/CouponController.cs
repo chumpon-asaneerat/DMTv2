@@ -108,14 +108,14 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.Coupon.GetCurrent.Name)]
-        public TSBCouponBalance GetCurrent()
+        public List<TSBCouponBalance> GetCurrent()
         {
             return TSBCouponBalance.GetCurrent();
         }
 
         [HttpPost]
         [ActionName(RouteConsts.Coupon.GetTSBCurrent.Name)]
-        public TSBCouponBalance GetTSBCurrent([FromBody] TSB tsb)
+        public List<TSBCouponBalance> GetTSBCurrent([FromBody] TSB tsb)
         {
             return TSBCouponBalance.GetCurrent(tsb);
         }

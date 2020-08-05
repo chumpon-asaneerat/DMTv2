@@ -61,6 +61,13 @@ Update 2020-08-06 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-08-05 #34
+- Update Coupon related process #53.
+  - Update TSBCouponBalance static methods.
+  - Update Coupon Controller.
+  - Update Plaza Operations - Coupon.
+
+[commited]
 Update 2020-08-05 #33
 - Update Coupon related process #52. 
 
