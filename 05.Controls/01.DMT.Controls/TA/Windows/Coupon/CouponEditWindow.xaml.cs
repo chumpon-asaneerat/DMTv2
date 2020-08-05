@@ -46,6 +46,7 @@ namespace DMT.TA.Windows.Coupon
         private void cmdSave_Click(object sender, RoutedEventArgs e)
         {
             // Save
+            manager.Save();
             /*
             if (null != _user && null != _tsbCoupon35)
             {

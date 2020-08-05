@@ -24,7 +24,7 @@
                                     Header="รหัสพนักงาน"
                                     DisplayMemberBinding="{Binding Path=UserId}" />
                     <GridViewColumn Width="250"
-                                    Header="ชือพนักงาน"
+                                    Header="ชื่อพนักงาน"
                                     DisplayMemberBinding="{Binding Path=FullNameTH}" />
                     <GridViewColumn Width="150"
                                     Header="จำนวนเล่ม (35 บาท)"

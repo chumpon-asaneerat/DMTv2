@@ -53,10 +53,11 @@
                 </DockPanel>
             </Border>
         </StackPanel>
-        <StackPanel Orientation="Vertical">
+        <DockPanel LastChildFill="True">
             <Border BorderBrush="Silver"
                     BorderThickness="1"
-                    Background="CornflowerBlue">
+                    Background="CornflowerBlue"
+                    DockPanel.Dock="Top">
                 <TextBlock Margin="5"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center"
@@ -66,7 +67,8 @@
             </Border>
             <Border BorderBrush="Silver"
                     BorderThickness="1"
-                    Background="Silver">
+                    Background="Silver"
+                    DockPanel.Dock="Top">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5"
                                HorizontalAlignment="Left"
@@ -151,6 +153,6 @@
             <Grid>
                 <ctrl:CouponReceiveView x:Name="grid" />
             </Grid>
-        </StackPanel>
+        </DockPanel>
     </DockPanel>
 </UserControl>

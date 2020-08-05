@@ -336,6 +336,25 @@ namespace DMT.Services
             value.UserReceiveDate = DateTime.MinValue;
         }
 
+        public void Save()
+        {
+            if (null != _coupons)
+            {
+                _coupons.ForEach(coupon =>
+                {
+                    var origin = (null != _origins) ? _origins.Find(x => x.CouponId == coupon.CouponId) : null;
+                    if (null != origin)
+                    {
+                        if (origin.TransactionType != coupon.TransactionType ||
+                            origin.UserId != coupon.UserId)
+                        {
+                            ops.Coupons.SaveTransaction(coupon);
+                        }
+                    }
+                });
+            }
+        }
+
         #endregion
     }
 }

@@ -303,7 +303,7 @@ namespace DMT.Models
 		[Description("Gets or sets number of 35 BHT coupon.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("CouponBHT35")]
+		[PeropertyMapName("CountCouponBHT35")]
 		public virtual int CountCouponBHT35
 		{
 			get { return _CountCouponBHT35; }
