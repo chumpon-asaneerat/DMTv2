@@ -70,7 +70,7 @@ namespace DMT.TA.Pages.Coupon
 
         public void RefreshList()
         {
-
+            grid.RefreshList();
         }
     }
 }

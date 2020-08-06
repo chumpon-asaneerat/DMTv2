@@ -41,7 +41,14 @@ namespace DMT.TA.Controls.Collector.Coupon
 
         private void cmdReturn_Click(object sender, RoutedEventArgs e)
         {
-
+            var win = new DMT.TA.Windows.Coupon.CouponReturnWindow();
+            win.Owner = Application.Current.MainWindow;
+            win.Setup(_user);
+            if (win.ShowDialog() == false)
+            {
+                return;
+            }
+            RefreshList();
         }
 
         public void RefreshList()

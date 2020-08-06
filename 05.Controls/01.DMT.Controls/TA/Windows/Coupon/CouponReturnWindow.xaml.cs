@@ -1,20 +1,22 @@
-﻿using System;
+﻿#region Using
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
-using System.Collections;
+using DMT.Models;
+using DMT.Services;
+using NLib.Services;
+using NLib.Reflection;
+using NLib.Reports.Rdlc;
+using System.Reflection;
+using System.ComponentModel;
+using System.Windows.Interop;
+using NLib;
+using System.Windows.Threading;
 
-
+#endregion
 
 namespace DMT.TA.Windows.Coupon
 {
@@ -23,14 +25,21 @@ namespace DMT.TA.Windows.Coupon
     /// </summary>
     public partial class CouponReturnWindow : Window
     {
+        #region Constructor
+
         public CouponReturnWindow()
         {
             InitializeComponent();
         }
 
+        #endregion
+
+        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private TSBCouponManager manager = new TSBCouponManager();
+
         #region Button Handlers
 
-        private void cmdSaveExchange_Click(object sender, RoutedEventArgs e)
+        private void cmdSave_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
         }
@@ -40,27 +49,31 @@ namespace DMT.TA.Windows.Coupon
             this.DialogResult = false;
         }
 
-        #endregion
-
         private void btnNext35_Click(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
         private void btnBack35_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void btnNext80_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void btnBack80_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
+        #endregion
+
+        public void Setup(User user)
+        {
+
+        }
     }
 }
