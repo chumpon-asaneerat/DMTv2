@@ -204,6 +204,9 @@
     <Compile Include="TA\Controls\Plaza\View\PlazaFundView.xaml.cs">
       <DependentUpon>PlazaFundView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TA\Windows\Collector\Credit\ReceiveMoneyBagWindow.xaml.cs">
+      <DependentUpon>ReceiveMoneyBagWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TA\Windows\MessageBox\MessageBoxYesNoRed3Window.xaml.cs">
       <DependentUpon>MessageBoxYesNoRed3Window.xaml</DependentUpon>
     </Compile>
@@ -575,6 +578,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="TA\Windows\Coupon\CouponReturnWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Windows\Collector\Credit\ReceiveMoneyBagWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -95,8 +95,22 @@ namespace DMT.TA.Controls.Collector.Credit.View
         {
             var userCredit = (Models.UserCredit)((FrameworkElement)sender).DataContext;
             if (null == userCredit) return;
-            userCredit.State = UserCredit.StateTypes.Received;
-            ops.Credits.SaveUserCredit(userCredit);
+
+            var win = new Windows.Collector.Credit.ReceiveMoneyBagWindow();
+            win.Owner = Application.Current.MainWindow;
+            win.Title = userCredit.Description;
+
+            win.Setup(userCredit.BagNo,userCredit.BHTTotal);
+
+            if (win.ShowDialog() == false)
+            {
+                return;
+            }
+            else
+            {
+                userCredit.State = UserCredit.StateTypes.Received;
+                ops.Credits.SaveUserCredit(userCredit);
+            }
         }
 
         #endregion
