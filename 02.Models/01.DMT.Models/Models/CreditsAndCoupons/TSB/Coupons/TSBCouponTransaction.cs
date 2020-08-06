@@ -110,12 +110,17 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
+		[PeropertyMapName("Foreground")]
 		public SolidColorBrush Foreground
 		{
 			get 
 			{
 				bool isSold = TransactionType == TransactionTypes.SoldByLane || 
 					TransactionType == TransactionTypes.SoldByTSB;
+				if (isSold)
+				{
+					Console.WriteLine("Sold found.");
+				}
 				return (!isSold) ? BlackForeground : RedForeground; 
 			}
 			set { }
@@ -240,6 +245,7 @@ namespace DMT.Models
 				{
 					_TransactionType = value;
 					this.RaiseChanged("TransactionType");
+					this.RaiseChanged("Foreground"); // raise event.
 				}
 			}
 		}
@@ -945,6 +951,7 @@ namespace DMT.Models
 				cmd += "SELECT * ";
 				cmd += "  FROM TSBCouponTransactionView ";
 				cmd += " WHERE TSBCouponTransactionView.TSBId = ? ";
+				cmd += "   AND TSBCouponTransactionView.FinishFlag = 1 ";
 
 				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
 				if (null == rets)

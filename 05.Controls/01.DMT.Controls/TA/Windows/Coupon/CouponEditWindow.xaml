@@ -121,9 +121,20 @@
                           ItemsSource="{Binding}">
                     <ListView.View>
                         <GridView>
+                            <!--
                             <GridViewColumn Width="200"
                                             Header="รายการคูปองทั้งหมด"
                                             DisplayMemberBinding="{Binding Path=CouponId}" />
+                            -->
+                            <GridViewColumn Width="200"
+                                            Header="รายการคูปองทั้งหมด">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=CouponId}" 
+                                                   Foreground="{Binding Path=Foreground}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -134,9 +145,20 @@
                           ItemsSource="{Binding}">
                     <ListView.View>
                         <GridView>
+                            <!--
                             <GridViewColumn Width="200"
                                             Header="รายการจ่าย พก"
                                             DisplayMemberBinding="{Binding Path=CouponId}" />
+                            -->
+                            <GridViewColumn Width="200"
+                                            Header="รายการจ่าย พก">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=CouponId}" 
+                                                   Foreground="{Binding Path=Foreground}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -193,9 +215,20 @@
                           ItemsSource="{Binding}">
                     <ListView.View>
                         <GridView>
+                            <!--
                             <GridViewColumn Width="200"
                                             Header="รายการคูปองทั้งหมด"
                                             DisplayMemberBinding="{Binding Path=CouponId}" />
+                            -->
+                            <GridViewColumn Width="200"
+                                            Header="รายการคูปองทั้งหมด">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=CouponId}" 
+                                                   Foreground="{Binding Path=Foreground}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -206,9 +239,22 @@
                           ItemsSource="{Binding}">
                     <ListView.View>
                         <GridView>
+                            <!--
                             <GridViewColumn Width="200"
                                             Header="รายการจ่าย พก"
-                                            DisplayMemberBinding="{Binding Path=CouponId}" />
+                                            DisplayMemberBinding="{Binding Path=CouponId}">
+                                
+                            </GridViewColumn>
+                            -->
+                            <GridViewColumn Width="200"
+                                            Header="รายการจ่าย พก">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=CouponId}" 
+                                                   Foreground="{Binding Path=Foreground}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>

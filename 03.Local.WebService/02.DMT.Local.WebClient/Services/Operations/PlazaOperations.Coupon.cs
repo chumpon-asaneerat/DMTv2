@@ -338,8 +338,7 @@ namespace DMT.Services
                 return _coupons.FindAll(item =>
                 {
                     bool ret = (
-                        (item.TransactionType == TSBCouponTransaction.TransactionTypes.Stock ||
-                        item.TransactionType == TSBCouponTransaction.TransactionTypes.SoldByLane) &&
+                        item.TransactionType == TSBCouponTransaction.TransactionTypes.Stock &&
                         item.CouponType == CouponType.BHT35
                     );
                     return ret;
@@ -356,8 +355,7 @@ namespace DMT.Services
                 return _coupons.FindAll(item =>
                 {
                     bool ret = (
-                        (item.TransactionType == TSBCouponTransaction.TransactionTypes.Stock ||
-                        item.TransactionType == TSBCouponTransaction.TransactionTypes.SoldByLane) &&
+                        item.TransactionType == TSBCouponTransaction.TransactionTypes.Stock &&
                         item.CouponType == CouponType.BHT80
                     );
                     return ret;
@@ -374,7 +372,8 @@ namespace DMT.Services
                 return _coupons.FindAll(item =>
                 {
                     bool ret = (
-                        item.TransactionType == TSBCouponTransaction.TransactionTypes.Lane &&
+                        (item.TransactionType == TSBCouponTransaction.TransactionTypes.Lane ||
+                        item.TransactionType == TSBCouponTransaction.TransactionTypes.SoldByLane) &&
                         item.CouponType == CouponType.BHT35 &&
                         item.UserId == User.UserId
                     );
@@ -392,7 +391,8 @@ namespace DMT.Services
                 return _coupons.FindAll(item =>
                 {
                     bool ret = (
-                        item.TransactionType == TSBCouponTransaction.TransactionTypes.Lane &&
+                        (item.TransactionType == TSBCouponTransaction.TransactionTypes.Lane ||
+                        item.TransactionType == TSBCouponTransaction.TransactionTypes.SoldByLane) &&
                         item.CouponType == CouponType.BHT80 &&
                         item.UserId == User.UserId
                     );
