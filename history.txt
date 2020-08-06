@@ -8,8 +8,9 @@ Update 2020-08-06 #39
 Update 2020-08-06 #38
 - 
 
+[commited]
 Update 2020-08-06 #37
-- 
+- Merge to origin/TA (with new Kik update).
 
 [commited]
 Update 2020-08-06 #36
