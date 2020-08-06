@@ -201,7 +201,6 @@ namespace DMT.TOD.Pages.Reports
                         end = laneAct.End;
                     }
                     */
-
                     if (!lanes.Contains(laneAct.LaneNo))
                     {
                         lanes.Add(laneAct.LaneNo);
@@ -209,9 +208,15 @@ namespace DMT.TOD.Pages.Reports
                 });
 
                 // Begin time used start of shift.
-                begin = _userShift.Begin;
-                // End time used printed date
-                end = DateTime.Now;
+                if (begin == DateTime.MinValue)
+                {
+                    begin = _userShift.Begin;
+                }
+                if (end == DateTime.MinValue)
+                {
+                    // End time used printed date
+                    end = DateTime.Now;
+                }
 
                 int iCnt = 0;
                 int iMax = lanes.Count;
