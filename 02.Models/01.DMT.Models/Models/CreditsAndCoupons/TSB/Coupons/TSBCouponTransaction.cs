@@ -117,10 +117,6 @@ namespace DMT.Models
 			{
 				bool isSold = TransactionType == TransactionTypes.SoldByLane || 
 					TransactionType == TransactionTypes.SoldByTSB;
-				if (isSold)
-				{
-					Console.WriteLine("Sold found.");
-				}
 				return (!isSold) ? BlackForeground : RedForeground; 
 			}
 			set { }
