@@ -9,29 +9,26 @@
         <ListView x:Name="listView" FontSize="18" ItemsSource="{Binding}">
             <ListView.View>
                 <GridView>
+                    <!--
                     <GridViewColumn Header="วันที่" 
                                     DisplayMemberBinding="{Binding Path=DateString}" 
                                     Width="100"/>
                     <GridViewColumn Header="เวลา" 
                                     DisplayMemberBinding="{Binding Path=TimeString}" 
                                     Width="80"/>
-                    <GridViewColumn Header="รหัสพนักงาน" 
-                                    DisplayMemberBinding="{Binding Path=StaffId}" 
-                                    Width="100"/>
-                    <GridViewColumn Header="ชือพนักงาน" 
-                                    DisplayMemberBinding="{Binding Path=StaffName}" 
-                                    Width="250"/>
-                    <!--
-                    <GridViewColumn Header="ประเภทคูปอง" 
-                                    DisplayMemberBinding="{Binding Path=Type}" 
-                                    Width="150"/>
                     -->
-                    <GridViewColumn Header="จำนวนเล่ม (35 บาท)" 
-                                    DisplayMemberBinding="{Binding Path=Count}" 
-                                    Width="150"/>
-                    <GridViewColumn Header="จำนวนเล่ม (80 บาท)" 
-                                    DisplayMemberBinding="{Binding Path=Count80}" 
-                                    Width="150"/>
+                    <GridViewColumn Width="100"
+                                    Header="รหัสพนักงาน"
+                                    DisplayMemberBinding="{Binding Path=UserId}" />
+                    <GridViewColumn Width="250"
+                                    Header="ชื่อพนักงาน"
+                                    DisplayMemberBinding="{Binding Path=FullNameTH}" />
+                    <GridViewColumn Width="150"
+                                    Header="จำนวนเล่ม (35 บาท)"
+                                    DisplayMemberBinding="{Binding Path=CountCouponBHT35}" />
+                    <GridViewColumn Width="150"
+                                    Header="จำนวนเล่ม (80 บาท)"
+                                    DisplayMemberBinding="{Binding Path=CountCouponBHT80}" />
                     <GridViewColumn Header="" 
                                     Width="250">
                         <GridViewColumn.CellTemplate>

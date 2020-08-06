@@ -60,7 +60,6 @@ namespace DMT.TA.Controls.Collector.Coupon
 
         public void RefreshList()
         {
-            // need to change get coupon on lanes instead.
             var coupons = ops.Coupons.GetTSBCouponSummaries(null);
             listView.ItemsSource = coupons;
         }
