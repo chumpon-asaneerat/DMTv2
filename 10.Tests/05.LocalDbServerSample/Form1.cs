@@ -145,23 +145,24 @@ namespace LocalDbServerSample
             }
 
             // Gets TSB Coupons.
-            dbgTSBCoupon.DataSource = TSBCouponTransaction.Gets();
+            //dbgTSBCoupon.DataSource = TSBCouponTransaction.Gets();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             // Gets TSB Coupons (Received).
-            dbgTSBCoupon.DataSource = TSBCouponTransaction.GetTSBCoupons();
+            //dbgTSBCoupon.DataSource = TSBCouponTransaction.GetTSBCoupons();
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
             // Gets Sold Coupons.
-            dbgTSBCoupon.DataSource = TSBCouponTransaction.GetTSBSoldCoupons();
+            //dbgTSBCoupon.DataSource = TSBCouponTransaction.GetTSBSoldCoupons();
         }
 
         private void button19_Click(object sender, EventArgs e)
         {
+            /*
             // User Borrow Coupons
             var user = User.Get("14211");
             var tsbCoupons = TSBCouponTransaction.GetTSBCoupons();
@@ -195,6 +196,7 @@ namespace LocalDbServerSample
 
             // Gets TSB Coupons (Received).
             dbgTSBCoupon.DataSource = TSBCouponTransaction.GetTSBCoupons();
+            */
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -232,6 +234,7 @@ namespace LocalDbServerSample
 
         private void button18_Click(object sender, EventArgs e)
         {
+            /*
             // Returns
             var dbgrid = dbgUserCoupon;
 
@@ -252,6 +255,7 @@ namespace LocalDbServerSample
                     UserCouponTransaction.UserReturnCoupons(user, coupons);
                 }
             }
+            */
         }
 
         private void button3_Click(object sender, EventArgs e)
