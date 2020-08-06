@@ -332,6 +332,7 @@ namespace DMT.Services
                     {
                         if (origin.TransactionType != coupon.TransactionType ||
                             origin.UserId != coupon.UserId ||
+                            origin.SoldBy != coupon.UserId ||
                             origin.FinishFlag != coupon.FinishFlag)
                         {
                             ops.Coupons.SaveTransaction(coupon);

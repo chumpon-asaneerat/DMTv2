@@ -63,14 +63,24 @@ namespace DMT.TA.Pages.Coupon
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
+            var sold35 = lvSold35.ItemsSource as IList;
+            var cnt35 = (null != sold35) ? sold35.Count : 0;
+            var sold80 = lvSold80.ItemsSource as IList;
+            var cnt80 = (null != sold80) ? sold80.Count : 0;
+            var cntTotal = cnt35 + cnt80;
+
             DMT.Windows.MessageBoxYesNoRed3Window msg = new DMT.Windows.MessageBoxYesNoRed3Window();
             msg.Owner = Application.Current.MainWindow;
-            msg.Setup("ยืนยันการขายคูปอง จำนวน ","5", " เล่ม"
-                , "คูปอง 35 บาท = ", "2"," เล่ม"
-                , "คูปอง 80 บาท = ", "3", " เล่ม"
+            msg.Setup("ยืนยันการขายคูปอง จำนวน ", cntTotal.ToString("n0"), " เล่ม"
+                , "คูปอง 35 บาท = ", cnt35.ToString("n0"), " เล่ม"
+                , "คูปอง 80 บาท = ", cnt80.ToString("n0"), " เล่ม"
                 , "Toll Admin");
             if (msg.ShowDialog() == true)
             {
+                // Save
+                Verified(); // set finish flag if sold and return to stock if unsold.
+                manager.Save();
+
                 // Main Menu Page
                 var page = new Menu.MainMenu();
                 PageContentManager.Instance.Current = page;
@@ -80,22 +90,36 @@ namespace DMT.TA.Pages.Coupon
 
         private void btnNext35_Click(object sender, RoutedEventArgs e)
         {
-            
+            var item = lvTSB35.SelectedItem as TSBCouponTransaction;
+            if (null == item) return;
+            if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
+            manager.SoldByTSB(item);
+            RefreshBHT35Coupons();
         }
 
         private void btnBack35_Click(object sender, RoutedEventArgs e)
         {
-           
+            var item = lvSold35.SelectedItem as TSBCouponTransaction;
+            if (null == item) return;
+            manager.UnsoldByTSB(item);
+            RefreshBHT35Coupons();
         }
 
         private void btnNext80_Click(object sender, RoutedEventArgs e)
         {
-            
+            var item = lvTSB80.SelectedItem as TSBCouponTransaction;
+            if (null == item) return;
+            if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
+            manager.SoldByTSB(item);
+            RefreshBHT80Coupons();
         }
 
         private void btnBack80_Click(object sender, RoutedEventArgs e)
         {
-            
+            var item = lvSold80.SelectedItem as TSBCouponTransaction;
+            if (null == item) return;
+            manager.UnsoldByTSB(item);
+            RefreshBHT80Coupons();
         }
 
         #endregion
@@ -192,8 +216,46 @@ namespace DMT.TA.Pages.Coupon
             var stock80 = lvTSB80.ItemsSource as IList;
             txtTSBCount80.Text = (null != stock80) ? stock80.Count.ToString("n0") : "0";
 
-            var sold80 = lvTSB35.ItemsSource as IList;
+            var sold80 = lvSold80.ItemsSource as IList;
             txtSoldCount80.Text = (null != sold80) ? sold80.Count.ToString("n0") : "0";
+        }
+
+
+        private void Verified()
+        {
+            // Mark Finish Flag.
+            var Sold35coupons = lvSold35.ItemsSource as List<TSBCouponTransaction>;
+            MarkCompleted(Sold35coupons);
+            var Sold80coupons = lvSold80.ItemsSource as List<TSBCouponTransaction>;
+            MarkCompleted(Sold80coupons);
+            // Returns to stock.
+            var Stock35coupons = lvTSB35.ItemsSource as List<TSBCouponTransaction>;
+            ReturnToStock(Stock35coupons);
+            var Stock80coupons = lvTSB80.ItemsSource as List<TSBCouponTransaction>;
+            ReturnToStock(Stock80coupons);
+        }
+
+        private void MarkCompleted(List<TSBCouponTransaction> items)
+        {
+            if (null == items) return;
+            items.ForEach(item =>
+            {
+                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.SoldByTSB)
+                    return;
+                item.FinishFlag = 0;
+            });
+        }
+        private void ReturnToStock(List<TSBCouponTransaction> items)
+        {
+            if (null == items) return;
+            items.ForEach(item =>
+            {
+                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock)
+                    return;
+                item.TransactionType = TSBCouponTransaction.TransactionTypes.Stock;
+                item.SoldBy = string.Empty;
+                item.SoldDate = DateTime.MinValue;
+            });
         }
     }
 }
