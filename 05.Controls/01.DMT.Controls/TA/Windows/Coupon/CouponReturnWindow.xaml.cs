@@ -55,6 +55,7 @@ namespace DMT.TA.Windows.Coupon
         {
             var item = lvTSB35.SelectedItem as TSBCouponTransaction;
             if (null == item) return;
+            if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
             manager.Borrow(item);
             RefreshBHT35Coupons();
         }
@@ -71,6 +72,7 @@ namespace DMT.TA.Windows.Coupon
         {
             var item = lvTSB80.SelectedItem as TSBCouponTransaction;
             if (null == item) return;
+            if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
             manager.Borrow(item);
             RefreshBHT80Coupons();
         }
