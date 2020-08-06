@@ -53,35 +53,37 @@ namespace DMT.TA.Windows.Coupon
 
         private void btnNext35_Click(object sender, RoutedEventArgs e)
         {
-            var item = lvTSB35.SelectedItem as TSBCouponTransaction;
+            var item = lvUserSold35.SelectedItem as TSBCouponTransaction;
             if (null == item) return;
-            if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Lane) return;
-            manager.Return(item);
+            if (item.TransactionType != TSBCouponTransaction.TransactionTypes.SoldByLane) return;
+            //manager.Return(item);
             RefreshBHT35Coupons();
         }
 
         private void btnBack35_Click(object sender, RoutedEventArgs e)
         {
-            var item = lvUser35.SelectedItem as TSBCouponTransaction;
+            var item = lvUserOnHand35.SelectedItem as TSBCouponTransaction;
             if (null == item) return;
-            manager.Return(item);
+            if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Lane) return;
+            //manager.Return(item);
             RefreshBHT35Coupons();
         }
 
         private void btnNext80_Click(object sender, RoutedEventArgs e)
         {
-            var item = lvTSB80.SelectedItem as TSBCouponTransaction;
+            var item = lvUserSold80.SelectedItem as TSBCouponTransaction;
             if (null == item) return;
-            if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Lane) return;
-            manager.Return(item);
+            if (item.TransactionType != TSBCouponTransaction.TransactionTypes.SoldByLane) return;
+            //manager.Return(item);
             RefreshBHT80Coupons();
         }
 
         private void btnBack80_Click(object sender, RoutedEventArgs e)
         {
-            var item = lvUser80.SelectedItem as TSBCouponTransaction;
+            var item = lvUserOnHand80.SelectedItem as TSBCouponTransaction;
             if (null == item) return;
-            manager.Return(item);
+            if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Lane) return;
+            //manager.Return(item);
             RefreshBHT80Coupons();
         }
 
@@ -112,12 +114,26 @@ namespace DMT.TA.Windows.Coupon
 
         private void RefreshBHT35Coupons()
         {
+            lvUserSold35.ItemsSource = null;
+            lvUserSold35.ItemsSource = manager.C35UserSolds.FindAll(item =>
+            {
+                return item.TransactionType == TSBCouponTransaction.TransactionTypes.SoldByLane;
+            });
 
+            lvUserOnHand35.ItemsSource = null;
+            lvUserOnHand35.ItemsSource = manager.C35UserOnHands;
         }
 
         private void RefreshBHT80Coupons()
         {
+            lvUserSold80.ItemsSource = null;
+            lvUserSold80.ItemsSource = manager.C80UserSolds.FindAll(item =>
+            {
+                return item.TransactionType == TSBCouponTransaction.TransactionTypes.SoldByLane;
+            });
 
+            lvUserOnHand80.ItemsSource = null;
+            lvUserOnHand80.ItemsSource = manager.C80UserOnHands;
         }
     }
 }

@@ -161,7 +161,7 @@
                            FontWeight="Normal"
                            FontFamily="Tahoma" />
                 </Grid>
-                <ListView x:Name="lvTSB35"
+                <ListView x:Name="lvUserSold35"
                           Grid.Row="1"
                           Grid.RowSpan="2"
                           Grid.ColumnSpan="2"
@@ -177,7 +177,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <ListView x:Name="lvUser35"
+                <ListView x:Name="lvUserOnHand35"
                           Grid.Row="1"
                           Grid.RowSpan="2"
                           Grid.Column="2"
@@ -230,7 +230,7 @@
                            VerticalAlignment="Center"
                            Source="/DMT.Controls;component/Images/Button/back.png" />
                 </Button>
-                <ListView x:Name="lvTSB80"
+                <ListView x:Name="lvUserSold80"
                           Grid.Row="1"
                           Grid.RowSpan="2"
                           Grid.Column="5"
@@ -247,7 +247,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <ListView x:Name="lvUser80"
+                <ListView x:Name="lvUserOnHand80"
                           Grid.Row="1"
                           Grid.RowSpan="2"
                           Grid.Column="7"

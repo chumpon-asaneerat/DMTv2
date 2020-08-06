@@ -84,14 +84,6 @@
                             <Image Source="Images/Toll/money.ico" />
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
-                    <Fluent:Button x:Name="cmdTSBCouponView"
-                                   Width="75"
-                                   Header="Coupons (Initial)"
-                                   Click="cmdTSBCouponView_Click">
-                        <Fluent:Button.LargeIcon>
-                            <Image Source="Images/Reports/slip_06.png" />
-                        </Fluent:Button.LargeIcon>
-                    </Fluent:Button>
                 </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
             <!-- Tab - Data Center -->

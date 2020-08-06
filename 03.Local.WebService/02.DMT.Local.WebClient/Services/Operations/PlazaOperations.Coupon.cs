@@ -249,8 +249,47 @@ namespace DMT.Services
             _coupons = ops.Coupons.GetTSBCouponTransactions(tsb);
         }
 
+        public void Borrow(TSBCouponTransaction value)
+        {
+            value.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
+            value.UserId = User.UserId;
+            value.UserReceiveDate = DateTime.Now;
+        }
+
+        public void Return(TSBCouponTransaction value)
+        {
+            value.TransactionType = TSBCouponTransaction.TransactionTypes.Stock;
+            value.UserId = string.Empty;
+            value.UserReceiveDate = DateTime.MinValue;
+        }
+
+        public void Save()
+        {
+            if (null != _coupons)
+            {
+                _coupons.ForEach(coupon =>
+                {
+                    var origin = (null != _origins) ? _origins.Find(x => x.CouponId == coupon.CouponId) : null;
+                    if (null != origin)
+                    {
+                        if (origin.TransactionType != coupon.TransactionType ||
+                            origin.UserId != coupon.UserId)
+                        {
+                            ops.Coupons.SaveTransaction(coupon);
+                        }
+                    }
+                });
+            }
+        }
+
+        #endregion
+
+        #region Public Properties
+
         public User User { get; set; }
         public List<TSBCouponSummary> Summaries { get; private set; }
+
+        #region For Borrow/Return between Stock-Lane
 
         public List<TSBCouponTransaction> C35Stocks
         {
@@ -324,6 +363,10 @@ namespace DMT.Services
             }
         }
 
+        #endregion
+
+        #region For Lane Sold/Return Coupon (User on hand)
+
         public List<TSBCouponTransaction> C35UserSolds
         {
             get
@@ -360,38 +403,43 @@ namespace DMT.Services
             }
         }
 
-        public void Borrow(TSBCouponTransaction value)
+        public List<TSBCouponTransaction> C35UserOnHands
         {
-            value.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
-            value.UserId = User.UserId;
-            value.UserReceiveDate = DateTime.Now;
-        }
-
-        public void Return(TSBCouponTransaction value)
-        {
-            value.TransactionType = TSBCouponTransaction.TransactionTypes.Stock;
-            value.UserId = string.Empty;
-            value.UserReceiveDate = DateTime.MinValue;
-        }
-
-        public void Save()
-        {
-            if (null != _coupons)
+            get
             {
-                _coupons.ForEach(coupon =>
+                if (null == _coupons && null == User)
+                    return new List<TSBCouponTransaction>();
+                return _coupons.FindAll(item =>
                 {
-                    var origin = (null != _origins) ? _origins.Find(x => x.CouponId == coupon.CouponId) : null;
-                    if (null != origin)
-                    {
-                        if (origin.TransactionType != coupon.TransactionType ||
-                            origin.UserId != coupon.UserId)
-                        {
-                            ops.Coupons.SaveTransaction(coupon);
-                        }
-                    }
-                });
+                    bool ret = (
+                        item.TransactionType == TSBCouponTransaction.TransactionTypes.Lane &&
+                        item.CouponType == CouponType.BHT35 &&
+                        item.UserId == User.UserId
+                    );
+                    return ret;
+                }).OrderBy(x => x.CouponId).ToList();
             }
         }
+
+        public List<TSBCouponTransaction> C80UserOnHands
+        {
+            get
+            {
+                if (null == _coupons && null == User)
+                    return new List<TSBCouponTransaction>();
+                return _coupons.FindAll(item =>
+                {
+                    bool ret = (
+                        item.TransactionType == TSBCouponTransaction.TransactionTypes.Lane &&
+                        item.CouponType == CouponType.BHT80 &&
+                        item.UserId == User.UserId
+                    );
+                    return ret;
+                }).OrderBy(x => x.CouponId).ToList();
+            }
+        }
+
+        #endregion
 
         #endregion
     }
