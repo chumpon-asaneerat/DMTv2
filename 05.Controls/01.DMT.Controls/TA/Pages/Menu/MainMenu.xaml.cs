@@ -442,7 +442,7 @@ namespace DMT.TA.Pages.Menu
             }
 
         }
-        // OK. เงินยืมทอน (collector)
+        // Implement #1 - เงินยืมทอน (collector)
         private void collectorFund_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -462,19 +462,19 @@ namespace DMT.TA.Pages.Menu
             var page = new History.PlazaReturnHistoryPage();
             PageContentManager.Instance.Current = page;
         }
-        // Implement #1 รับคูปอง (collector)
+        // Implement #1 - รับคูปอง (collector) (ขาดเรื่อง แสดงรายการที่ขายใน lane)
         private void collectorReveivedCoupon_Click(object sender, RoutedEventArgs e)
         {
             var page = new Coupon.ReceivedCouponPage();
             PageContentManager.Instance.Current = page;
         }
-        // Implement #1 คืนคูปอง (collector)
+        // Implement #1 - คืนคูปอง (collector)
         private void collectorReturnCoupon_Click(object sender, RoutedEventArgs e)
         {
             var page = new Coupon.ReturnCouponPage();
             PageContentManager.Instance.Current = page;
         }
-        // OK. เช็คยอดด่าน
+        // Implement #1 - เช็คยอดด่าน (ขาดเรื่อง ยืมเพิ่ม กับการตรวจ max balance)
         private void plazaAllStock_Click(object sender, RoutedEventArgs e)
         {
             var win = new Windows.Plaza.PlazaStockSummaryWindow();
