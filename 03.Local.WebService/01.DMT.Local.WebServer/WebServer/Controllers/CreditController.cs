@@ -87,13 +87,16 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.Credit.SaveUserCredit.Name)]
-        public void SaveUserCredit([FromBody] UserCredit value)
+        public int SaveUserCredit([FromBody] UserCredit value)
         {
             if (value.UserCreditDate == DateTime.MinValue)
             {
                 value.UserCreditDate = DateTime.Now;
             }
+            // save
             UserCredit.Save(value);
+            // returns Id.
+            return value.UserCreditId;
         }
 
         [HttpPost]

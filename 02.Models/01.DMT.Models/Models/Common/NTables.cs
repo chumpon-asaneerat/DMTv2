@@ -112,11 +112,27 @@ namespace DMT.Models
                 if (null == db || null == value) return;
                 if (!Exists(db, value))
                 {
-                    db.Insert(value);
+                    //db.Insert(value);
+                    try
+                    {
+                        db.Insert(value);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
                 }
                 else
                 {
-                    db.Update(value);
+                    //db.Update(value);
+                    try
+                    {
+                        db.Update(value);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
                 }
             }
         }

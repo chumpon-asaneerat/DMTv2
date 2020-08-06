@@ -113,10 +113,11 @@ namespace DMT.Services
                 return ret;
             }
 
-            public void SaveUserCredit(UserCredit value)
+            public int SaveUserCredit(UserCredit value)
             {
-                NRestClient.Create(port: 9000).Execute(
+                var ret = NRestClient.Create(port: 9000).Execute<int>(
                     RouteConsts.Credit.SaveUserCredit.Url, value);
+                return ret;
             }
 
             public void SaveUserTransaction(UserCreditTransaction value)

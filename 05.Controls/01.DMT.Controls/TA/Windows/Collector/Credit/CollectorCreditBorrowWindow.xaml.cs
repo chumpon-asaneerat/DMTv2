@@ -96,19 +96,30 @@ namespace DMT.TA.Windows.Collector.Credit
                     srcObj.PlazaGroupId = plazaGrp.PlazaGroupId;
                 }
                 srcObj.State = UserCredit.StateTypes.Initial;
-                ops.Credits.SaveUserCredit(srcObj);
-                // Gets Id after save.
-                var search = Search.UserCredits.GetActiveById.Create(
-                    srcObj.UserId, srcObj.PlazaGroupId);
-                srcObj = ops.Credits.GetActiveUserCreditById(search);
+                int pkid = ops.Credits.SaveUserCredit(srcObj);
+                srcObj.UserCreditId = pkid;
             }
-            if (null != usrObj)
+            if (null != usrObj && null != srcObj)
             {
                 usrObj.UserCreditId = srcObj.UserCreditId;
                 usrObj.TransactionType = UserCreditTransaction.TransactionTypes.Borrow;
+                if (string.IsNullOrWhiteSpace(usrObj.TSBId))
+                {
+                    usrObj.TSBId = srcObj.TSBId;
+                }
+                if (string.IsNullOrWhiteSpace(usrObj.PlazaGroupId))
+                {
+                    usrObj.PlazaGroupId = srcObj.PlazaGroupId;
+                }
+                if (string.IsNullOrWhiteSpace(usrObj.UserId))
+                {
+                    usrObj.UserId = srcObj.UserId;
+                }
+
                 ops.Credits.SaveUserTransaction(usrObj);
+
+                this.DialogResult = true;
             }
-            this.DialogResult = true;
         }
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
