@@ -255,8 +255,8 @@
     <Compile Include="TOD\Pages\Revenue\RevenueSupervisorPage.xaml.cs">
       <DependentUpon>RevenueSupervisorPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TOD\Pages\Revenue\ReprintRevSlipPage.xaml.cs">
-      <DependentUpon>ReprintRevSlipPage.xaml</DependentUpon>
+    <Compile Include="TOD\Pages\Revenue\SupervisorRevenueEntryPage.xaml.cs">
+      <DependentUpon>SupervisorRevenueEntryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TOD\Pages\Revenue\RevenueSupervisorSelectionPage.xaml.cs">
       <DependentUpon>RevenueSupervisorSelectionPage.xaml</DependentUpon>
@@ -652,7 +652,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="TOD\Pages\Revenue\ReprintRevSlipPage.xaml">
+    <Page Include="TOD\Pages\Revenue\SupervisorRevenueEntryPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

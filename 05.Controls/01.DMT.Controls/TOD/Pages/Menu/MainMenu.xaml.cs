@@ -70,36 +70,9 @@ namespace DMT.TOD.Pages.Menu
             PageContentManager.Instance.Current = page;
         }
 
-        private void reprintRevSlip_Click(object sender, RoutedEventArgs e)
+        private void supRevEntry_Click(object sender, RoutedEventArgs e)
         {
-            #region Old
-            //var signinWin = new SignInWindow();
-            //signinWin.Owner = Application.Current.MainWindow;
-            //signinWin.Setup("SUPERVISOR");
-            //if (signinWin.ShowDialog() == false)
-            //{
-            //    return;
-            //}
-            //var search = new Windows.Reports.RevenueSlipSearchWindow();
-            //search.Owner = Application.Current.MainWindow;
-            //if (search.ShowDialog() == false)
-            //{
-            //    return;
-            //}
-            //var user = signinWin.User;
-            //DateTime dt = DateTime.Now;
-
-            //if(search.dteRevenue != null)
-            //    dt = search.dteRevenue;
-
-            // Revenue Slip Preview
-            //var page = new Revenue.RevenueSupervisorSelectionPage();
-            //// setup
-            //page.Setup(user, dt);
-            //PageContentManager.Instance.Current = page;
-            #endregion
-
-            var page = new Revenue.ReprintRevSlipPage();
+            var page = new Revenue.SupervisorRevenueEntryPage();
             page.Setup();
             PageContentManager.Instance.Current = page;
         }

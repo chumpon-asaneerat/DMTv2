@@ -151,12 +151,12 @@
                         </StackPanel>
                     </DockPanel>
                 </Button>
-                <Button x:Name="reprintRevSlip" 
+                <Button x:Name="supRevEntry" 
                         Grid.Column="1" Grid.Row="1" 
                         Margin="0 0 0 0"
                         HorizontalContentAlignment="Stretch"
                         VerticalContentAlignment="Stretch"
-                        Click="reprintRevSlip_Click">
+                        Click="supRevEntry_Click">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="RoyalBlue"/>

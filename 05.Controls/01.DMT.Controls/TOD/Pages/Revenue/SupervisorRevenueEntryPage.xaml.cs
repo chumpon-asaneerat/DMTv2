@@ -16,16 +16,16 @@ using DMT.TOD.Windows;
 namespace DMT.TOD.Pages.Revenue
 {
     /// <summary>
-    /// Interaction logic for ReprintRevSlipPage.xaml
+    /// Interaction logic for SupervisorRevenueEntryPage.xaml
     /// </summary>
-    public partial class ReprintRevSlipPage : UserControl
+    public partial class SupervisorRevenueEntryPage : UserControl
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public ReprintRevSlipPage()
+        public SupervisorRevenueEntryPage()
         {
             InitializeComponent();
         }
