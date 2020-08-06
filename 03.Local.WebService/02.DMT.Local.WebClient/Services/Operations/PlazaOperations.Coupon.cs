@@ -324,6 +324,42 @@ namespace DMT.Services
             }
         }
 
+        public List<TSBCouponTransaction> C35UserSolds
+        {
+            get
+            {
+                if (null == _coupons && null == User)
+                    return new List<TSBCouponTransaction>();
+                return _coupons.FindAll(item =>
+                {
+                    bool ret = (
+                        item.TransactionType == TSBCouponTransaction.TransactionTypes.SoldByLane &&
+                        item.CouponType == CouponType.BHT35 &&
+                        item.UserId == User.UserId
+                    );
+                    return ret;
+                }).OrderBy(x => x.CouponId).ToList();
+            }
+        }
+
+        public List<TSBCouponTransaction> C80UserSolds
+        {
+            get
+            {
+                if (null == _coupons && null == User)
+                    return new List<TSBCouponTransaction>();
+                return _coupons.FindAll(item =>
+                {
+                    bool ret = (
+                        item.TransactionType == TSBCouponTransaction.TransactionTypes.SoldByLane &&
+                        item.CouponType == CouponType.BHT80 &&
+                        item.UserId == User.UserId
+                    );
+                    return ret;
+                }).OrderBy(x => x.CouponId).ToList();
+            }
+        }
+
         public void Borrow(TSBCouponTransaction value)
         {
             value.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
