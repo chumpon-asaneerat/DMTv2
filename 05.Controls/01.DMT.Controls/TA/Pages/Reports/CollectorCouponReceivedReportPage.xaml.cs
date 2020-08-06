@@ -64,7 +64,7 @@ namespace DMT.TA.Pages.Reports
         {
             Assembly assembly = this.GetType().Assembly;
             RdlcReportModel inst = new RdlcReportModel();
-            inst.Definition.EmbededReportName = "DMT.Ta.Pages.Reports.CollectorCouponReceived.rdlc";
+            inst.Definition.EmbededReportName = "DMT.TA.Pages.Reports.CollectorCouponReceived.rdlc";
             inst.Definition.RdlcInstance = RdlcReportUtils.GetEmbededReport(assembly,
                 inst.Definition.EmbededReportName);
             // clear reprot datasource.
@@ -107,12 +107,16 @@ namespace DMT.TA.Pages.Reports
             // Add to datasources
             inst.DataSources.Add(c80DS);
 
-            /*
             // Add parameters (if required).
-            //DateTime today = DateTime.Now;
-            //string printDate = today.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
-            //inst.Parameters.Add(RdlcReportParameter.Create("PrintDate", printDate));
-            */
+            // Coupon Received Date.
+            DateTime today = DateTime.Today;            
+            //string couponDate = today.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+            string couponDate = today.ToThaiDateTimeString("dd/MM/yyyy");
+            inst.Parameters.Add(RdlcReportParameter.Create("couponDate", couponDate));
+            // Supervisor (Current User)
+            string supervisorFullName = DMT.Controls.TAApp.User.Current.FullNameTH;
+            inst.Parameters.Add(RdlcReportParameter.Create("supervisorFullName", supervisorFullName));
+
             return inst;
         }
 
