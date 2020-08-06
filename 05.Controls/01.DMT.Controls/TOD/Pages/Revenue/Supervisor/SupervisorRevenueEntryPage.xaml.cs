@@ -9,7 +9,6 @@ using DMT.Models;
 using DMT.Services;
 using NLib.Services;
 using NLib.Reflection;
-using DMT.TOD.Windows;
 
 #endregion
 
@@ -34,48 +33,28 @@ namespace DMT.TOD.Pages.Revenue
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
 
-        private DateTime _entryDT = DateTime.MinValue;
-        private DateTime _revDT = DateTime.MinValue;
-
         private User _user = null;
         private UserShift _userShift = null;
+        private PlazaGroup _plazaGroup = null;
         private UserShiftRevenue _plazaRevenue = null;
         private List<LaneAttendance> _laneActivities = null;
-        private UserCredit srcObj;
+
+        private DateTime _entryDate = DateTime.MinValue;
+        private DateTime _revDate = DateTime.MinValue;
+
+        private Models.RevenueEntry _revenueEntry = null;
 
         #region Button Handlers
 
-        private void cmdSearchUser_Click(object sender, RoutedEventArgs e)
+        private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
-            string userId = txtSearchUserId.Text;
-            if (string.IsNullOrEmpty(userId)) return;
-
-            var users = ops.Users.SearchById(Search.Users.ById.Create(userId));
-            if (null != users)
-            {
-                if (users.Count == 1)
-                {
-                    var user = users[0];
-                    srcObj.UserId = user.UserId;
-                    srcObj.FullNameEN = user.FullNameEN;
-                    srcObj.FullNameTH = user.FullNameTH;
-                }
-                else if (users.Count > 1)
-                {
-                    var win = new TA.Windows.Collector.Searchs.CollectorFilterWindow();
-                    win.Owner = Application.Current.MainWindow;
-                    win.Setup(users);
-                    if (win.ShowDialog() == false || null == win.SelectedUser)
-                    {
-                        // No user selected.
-                        return;
-                    }
-                    var user = win.SelectedUser;
-                    srcObj.UserId = user.UserId;
-                    srcObj.FullNameEN = user.FullNameEN;
-                    srcObj.FullNameTH = user.FullNameTH;
-                }
-            }
+            // Slip Preview
+            var page = new Reports.RevenueSlipPreview();
+            page.MenuPage = new Menu.MainMenu(); // Set MenPage to main menu.
+            page.CallerPage = this; // Set CallerPage for click back.
+            page.Setup(_user, _userShift, _plazaGroup, _plazaRevenue, _laneActivities,
+                _entryDate, _revDate, _revenueEntry);
+            PageContentManager.Instance.Current = page;
         }
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
@@ -85,87 +64,62 @@ namespace DMT.TOD.Pages.Revenue
             PageContentManager.Instance.Current = page;
         }
 
-        private void cmdOk_Click(object sender, RoutedEventArgs e)
-        {
-            // Revenue Entry Page
-            var page = new RevenueRevSlipPage();
-            page.Setup(_user, _userShift, _entryDT, _revDT);
-            PageContentManager.Instance.Current = page;
-        }
-
         #endregion
 
-        #region Combobox Handlers
-
-        private void cbPlazas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void Setup(User user, UserShift userShift, PlazaGroup plazaGroup,
+            UserShiftRevenue plazaRevenue,
+            List<LaneAttendance> laneActivities,
+            DateTime entryDate, DateTime revDate)
         {
-            // Load related lane data.
-            RefreshLanes();
-        }
+            _user = user;
+            _userShift = userShift;
 
-        #endregion
-
-        private void LoadPlazaGroups()
-        {
-            cbPlazas.ItemsSource = null;
-
-            var plazaGroups = new List<PlazaGroup>();
-            var tsb = ops.TSB.GetCurrent();
-            if (null != tsb)
+            if (null == _userShift || null == _plazaGroup || null == _plazaRevenue)
             {
-                plazaGroups = ops.TSB.GetTSBPlazaGroups(tsb);
-            }
+                _entryDate = DateTime.MinValue;
+                _revDate = DateTime.MinValue;
 
-            cbPlazas.ItemsSource = plazaGroups;
-            if (null != plazaGroups && plazaGroups.Count > 0)
-            {
-                cbPlazas.SelectedIndex = 0;
-            }
-        }
+                txtRevDate.Text = string.Empty;
+                txtPlazaName.Text = string.Empty;
 
-        private void RefreshLanes()
-        {
-            if (null != _userShift)
-            {
-                // get selected plaza group
-                var plazaGroup = cbPlazas.SelectedItem as PlazaGroup;
+                txtShiftName.Text = string.Empty;
 
-                _revDT = _userShift.Begin.Date; // get date part from UserShift.Begin
-                txtRevDate.Text = _revDT.ToThaiDateTimeString("dd/MM/yyyy");
+                txtUserId.Text = string.Empty;
+                txtUserName.Text = string.Empty;
 
-                // get all lanes information.
-                var search = Search.Lanes.Attendances.ByUserShift.Create(
-                    _userShift, plazaGroup, DateTime.MinValue);
-                _laneActivities = ops.Lanes.GetAttendancesByUserShift(search);
-                if (null == _laneActivities || _laneActivities.Count <= 0)
-                {
-                    // no data.
-                    grid.Setup(null);
-                }
-                else
-                {
-                    grid.Setup(_laneActivities);
-                }
+                revEntry.DataContext = null;
             }
             else
             {
-                //MessageBox.Show("ไม่พบกะของพนักงาน", "DMT - Tour of Duty");
+                _entryDate = entryDate;
+                _revDate = revDate;
+
+                txtRevDate.Text = _revDate.ToThaiDateTimeString("dd/MM/yyyy");
+                txtPlazaName.Text = _plazaGroup.PlazaGroupNameTH;
+
+                txtShiftName.Text = _userShift.ShiftNameTH;
+                
+                txtUserId.Text = _userShift.UserId;
+                txtUserName.Text = _userShift.FullNameTH;
+
+                var search = Search.UserCredits.GetActiveById.Create(_userShift.UserId, _plazaGroup.PlazaGroupId);
+                var userCredit = ops.Credits.GetActiveUserCreditById(search);
+                _revenueEntry = new Models.RevenueEntry();
+                if (null != userCredit)
+                {
+                    _revenueEntry.BagNo = userCredit.BagNo;
+                    _revenueEntry.BeltNo = userCredit.BeltNo;
+                }
+                else
+                {
+                    _revenueEntry.BagNo = string.Empty;
+                    _revenueEntry.BeltNo = string.Empty;
+                }
+                // assigned plaza.
+                _revenueEntry.PlazaGroupId = _plazaGroup.PlazaGroupId;
+
+                revEntry.DataContext = _revenueEntry;
             }
-        }
-
-        public void Setup(User user)
-        {
-            _user = user;
-            
-            LoadPlazaGroups();
-            dtEntryDate.SelectedDate = DateTime.Now;
-
-            if (null == srcObj)
-            {
-                srcObj = new UserCredit();
-            }
-            this.DataContext = srcObj;
-
         }
     }
 }

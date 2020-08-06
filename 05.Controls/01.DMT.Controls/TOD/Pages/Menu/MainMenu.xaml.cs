@@ -81,7 +81,7 @@ namespace DMT.TOD.Pages.Menu
             }
             var user = signinWin.User;
 
-            var page = new Revenue.SupervisorRevenueEntryPage();
+            var page = new Revenue.SupervisorRevenueDateSelectionPage();
             page.Setup(user);
             PageContentManager.Instance.Current = page;
         }
