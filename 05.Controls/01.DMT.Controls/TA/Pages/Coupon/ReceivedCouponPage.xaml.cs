@@ -42,6 +42,8 @@ namespace DMT.TA.Pages.Coupon
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            grid.OnPrint += Grid_OnPrint;
+
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
@@ -55,6 +57,8 @@ namespace DMT.TA.Pages.Coupon
             if (null == timer) return;
             timer.Stop();
             timer = null;
+
+            grid.OnPrint -= Grid_OnPrint;
         }
 
         #endregion
@@ -137,6 +141,18 @@ namespace DMT.TA.Pages.Coupon
                 return;
             }
             RefreshList();
+        }
+
+        #endregion
+
+        #region On Print Handler
+
+        private void Grid_OnPrint(object sender, Controls.Collector.Coupon.PrintCouponReceivedReportEventArgs e)
+        {
+            var page = new Pages.Reports.CollectorCouponReceivedReportPage();
+            page.CallerPage = this;
+            page.Setup(e.User, e.Transaction);
+            PageContentManager.Instance.Current = page;
         }
 
         #endregion

@@ -778,6 +778,96 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
+        <Textbox Name="TSBNameTH">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!TSBNameTH.Value, "main")</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>TSBNameTH</rd:DefaultName>
+          <Top>1.71333in</Top>
+          <Left>1.57167in</Left>
+          <Height>0.25in</Height>
+          <Width>1.78333in</Width>
+          <ZIndex>11</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="FullNameTH">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!FullNameTH.Value, "main")</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>FullNameTH</rd:DefaultName>
+          <Top>1.3625in</Top>
+          <Left>5.455in</Left>
+          <Height>0.25in</Height>
+          <Width>1.89167in</Width>
+          <ZIndex>12</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="UserId">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!UserId.Value, "main")</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>UserId</rd:DefaultName>
+          <Top>1.38283in</Top>
+          <Left>1.57167in</Left>
+          <Height>0.25in</Height>
+          <Width>1.78333in</Width>
+          <ZIndex>13</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
       </ReportItems>
       <Style>
         <Border>
@@ -808,6 +898,13 @@
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
       <rd:DataSourceID>a8411b5b-cbad-49f5-92ea-99a59d3fe384</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="DMTModels2">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>f4b1c524-e54b-45d0-a841-29f078acd85f</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -971,6 +1068,79 @@
         <rd:DataSetName>DMT.Models</rd:DataSetName>
         <rd:TableName>UserCouponTransaction</rd:TableName>
         <rd:ObjectDataSourceType>DMT.Models.UserCouponTransaction, DMT.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="main">
+      <Query>
+        <DataSourceName>DMTModels2</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="AmountCouponBHT35">
+          <DataField>AmountCouponBHT35</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="AmountCouponBHT80">
+          <DataField>AmountCouponBHT80</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="CountCouponBHT35">
+          <DataField>CountCouponBHT35</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CountCouponBHT80">
+          <DataField>CountCouponBHT80</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CountCouponTotal">
+          <DataField>CountCouponTotal</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CouponBHTTotal">
+          <DataField>CouponBHTTotal</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FullNameEN">
+          <DataField>FullNameEN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FullNameTH">
+          <DataField>FullNameTH</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="HasRemark">
+          <DataField>HasRemark</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="RemarkVisibility">
+          <DataField>RemarkVisibility</DataField>
+          <rd:TypeName>System.Windows.Visibility</rd:TypeName>
+        </Field>
+        <Field Name="TSBId">
+          <DataField>TSBId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TSBNameEN">
+          <DataField>TSBNameEN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TSBNameTH">
+          <DataField>TSBNameTH</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="UserId">
+          <DataField>UserId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>DMT.Models</rd:DataSetName>
+        <rd:TableName>TSBCouponSummary</rd:TableName>
+        <rd:ObjectDataSourceType>DMT.Models.TSBCouponSummary, DMT.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

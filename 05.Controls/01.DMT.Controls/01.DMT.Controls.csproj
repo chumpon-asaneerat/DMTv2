@@ -158,6 +158,9 @@
     <Compile Include="TA\Pages\Plaza\PlazaAllCouponPage.xaml.cs">
       <DependentUpon>PlazaAllCouponPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TA\Pages\Reports\CollectorCouponReceivedReportPage.xaml.cs">
+      <DependentUpon>CollectorCouponReceivedReportPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TA\Pages\Reports\CollectorFundSummaryReportPage.xaml.cs">
       <DependentUpon>CollectorFundSummaryReportPage.xaml</DependentUpon>
     </Compile>
@@ -351,11 +354,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="TA\Pages\Reports\CouponSalesReceiptRep.rdlc" />
-    <EmbeddedResource Include="TA\Pages\Reports\CouponRep.rdlc" />
+    <EmbeddedResource Include="TA\Pages\Reports\CollectorCouponReceived.rdlc" />
     <EmbeddedResource Include="TOD\Pages\Reports\RevenueSlipNull.rdlc" />
     <EmbeddedResource Include="TOD\Pages\Reports\RevenueSlipSum.rdlc" />
     <EmbeddedResource Include="TOD\Pages\Reports\RevenueSlip.rdlc" />
     <None Include="Properties\DataSources\DMT.Models.RevenueEntry.datasource" />
+    <None Include="Properties\DataSources\DMT.Models.TSBCouponSummary.datasource" />
     <None Include="Properties\DataSources\DMT.Models.UserCouponTransaction.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -520,6 +524,10 @@
     <Page Include="TA\Pages\Plaza\PlazaAllCouponPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Pages\Reports\CollectorCouponReceivedReportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TA\Pages\Reports\CollectorFundSummaryReportPage.xaml">
       <Generator>MSBuild:Compile</Generator>
