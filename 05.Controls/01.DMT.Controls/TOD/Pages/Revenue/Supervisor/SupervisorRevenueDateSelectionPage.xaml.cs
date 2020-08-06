@@ -37,6 +37,7 @@ namespace DMT.TOD.Pages.Revenue
         private DateTime _entryDT = DateTime.MinValue;
         private DateTime _revDT = DateTime.MinValue;
 
+        private User _sup = null;
         private User _user = null;
         private UserShift _userShift = null;
         private UserShiftRevenue _plazaRevenue = null;
@@ -55,10 +56,10 @@ namespace DMT.TOD.Pages.Revenue
             {
                 if (users.Count == 1)
                 {
-                    var user = users[0];
-                    srcObj.UserId = user.UserId;
-                    srcObj.FullNameEN = user.FullNameEN;
-                    srcObj.FullNameTH = user.FullNameTH;
+                    _user = users[0];
+                    srcObj.UserId = _user.UserId;
+                    srcObj.FullNameEN = _user.FullNameEN;
+                    srcObj.FullNameTH = _user.FullNameTH;
                 }
                 else if (users.Count > 1)
                 {
@@ -70,10 +71,10 @@ namespace DMT.TOD.Pages.Revenue
                         // No user selected.
                         return;
                     }
-                    var user = win.SelectedUser;
-                    srcObj.UserId = user.UserId;
-                    srcObj.FullNameEN = user.FullNameEN;
-                    srcObj.FullNameTH = user.FullNameTH;
+                    _user = win.SelectedUser;
+                    srcObj.UserId = _user.UserId;
+                    srcObj.FullNameEN = _user.FullNameEN;
+                    srcObj.FullNameTH = _user.FullNameTH;
                 }
             }
         }
@@ -87,10 +88,35 @@ namespace DMT.TOD.Pages.Revenue
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
-            // Revenue Entry Page
-            var page = new SupervisorRevenueEntryPage();
+            if (null == _user)
+            {
+                DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                msg.Owner = Application.Current.MainWindow;
+                msg.Setup("กรุณาเลือกพนักงาน", "DMT - Tour of Duty");
+                if (msg.ShowDialog() == true)
+                {
+                    txtUserId.Focus();
+                }
+                return;
+            }
+
+            var shift = cbShifts.SelectedItem as Shift;
+            if (null == shift)
+            {
+                DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                msg.Owner = Application.Current.MainWindow;
+                msg.Setup("กรุณาเลือกกะของรายได้", "DMT - Tour of Duty");
+                if (msg.ShowDialog() == true)
+                {
+                    cbShifts.Focus();
+                }
+                return;
+            }
+            // create new user shift.
+            _userShift = ops.UserShifts.Create(shift, _user);
 
             var plazaGroup = cbPlazas.SelectedItem as PlazaGroup;
+
             if (null == plazaGroup)
             {
                 DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
@@ -99,19 +125,19 @@ namespace DMT.TOD.Pages.Revenue
                 if (msg.ShowDialog() == true)
                 {
                     cbPlazas.Focus();
-                    return;
                 }
-
-                //MessageBox.Show("กรุณาเลือกด่านของรายได้", "DMT - Tour of Duty");
-                //cbPlazas.Focus();
-                //return;
+                return;
             }
 
-            bool isNew = true;
             var revops = Search.Revenues.PlazaShift.Create(_userShift, plazaGroup);
             _plazaRevenue = ops.Revenue.CreateRevenueShift(revops);
 
-            page.Setup(_user, _userShift, plazaGroup, _plazaRevenue,
+            _entryDT = dtEntryDate.SelectedDate.Value;
+            _revDT = dtDate.SelectedDate.Value;
+
+            // Revenue Entry Page
+            var page = new SupervisorRevenueEntryPage();
+            page.Setup(_sup, _user, _userShift, plazaGroup, _plazaRevenue,
             _laneActivities,
             _entryDT, _revDT);
             PageContentManager.Instance.Current = page;
@@ -128,6 +154,11 @@ namespace DMT.TOD.Pages.Revenue
         }
 
         #endregion
+
+        private void LoadShifts()
+        {
+            cbShifts.ItemsSource = ops.Shifts.GetShifts();
+        }
 
         private void LoadPlazaGroups()
         {
@@ -177,24 +208,16 @@ namespace DMT.TOD.Pages.Revenue
             }
         }
 
-        public void Setup(User user)
+        public void Setup(User sup)
         {
-            _user = user;
-            
+            _sup = sup;
+
+            LoadShifts();
             LoadPlazaGroups();
             dtEntryDate.SelectedDate = DateTime.Now;
 
-            if (null != _user)
-            {
-                //_userShift = ops.UserShifts.GetCurrent(_user);
-            }
-
-            if (null == srcObj)
-            {
-                srcObj = new UserCredit();
-            }
+            srcObj = new UserCredit();
             this.DataContext = srcObj;
-
         }
     }
 }

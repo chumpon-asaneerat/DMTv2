@@ -33,6 +33,7 @@ namespace DMT.TOD.Pages.Revenue
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
 
+        private User _sup = null;
         private User _user = null;
         private UserShift _userShift = null;
         private PlazaGroup _plazaGroup = null;
@@ -66,13 +67,18 @@ namespace DMT.TOD.Pages.Revenue
 
         #endregion
 
-        public void Setup(User user, UserShift userShift, PlazaGroup plazaGroup,
+        public void Setup(User sup, User user, UserShift userShift, PlazaGroup plazaGroup,
             UserShiftRevenue plazaRevenue,
             List<LaneAttendance> laneActivities,
             DateTime entryDate, DateTime revDate)
         {
+            _sup = sup;
             _user = user;
             _userShift = userShift;
+            _plazaGroup = plazaGroup;
+            _plazaRevenue = plazaRevenue;
+            _entryDate = entryDate;
+            _revDate = revDate;
 
             if (null == _userShift || null == _plazaGroup || null == _plazaRevenue)
             {

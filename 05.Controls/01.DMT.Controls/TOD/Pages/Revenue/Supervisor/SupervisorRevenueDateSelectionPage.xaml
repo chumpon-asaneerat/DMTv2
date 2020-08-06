@@ -216,6 +216,38 @@
             </Border>
             <Border BorderBrush="Silver"
                     BorderThickness="1"
+                    Background="Silver"
+                    DockPanel.Dock="Top">
+                <StackPanel Orientation="Horizontal">
+                    <Grid Width="5" Height="50"/>
+                    <TextBlock 
+                               DockPanel.Dock="Left"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="18"
+                               TextAlignment="Right"
+                               Text="กะ:" />
+                    <Grid Width="5" />
+                    <ComboBox x:Name="cbShifts"
+                              Width="120"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              HorizontalContentAlignment="Center"
+                              VerticalContentAlignment="Center"
+                              FontSize="18"
+                              DisplayMemberPath="ShiftNameTH"
+                              SelectedValuePath="ShiftId">
+                        <!--
+                        <ComboBoxItem Content="1"/>
+                        <ComboBoxItem Content="2"/>
+                        <ComboBoxItem Content="3"/>
+                        -->
+                    </ComboBox>
+                    <Grid Width="5" />
+                </StackPanel>
+            </Border>
+            <Border BorderBrush="Silver"
+                    BorderThickness="1"
                     Background="CornflowerBlue"
                     DockPanel.Dock="Top">
                 <TextBlock Margin="5"
