@@ -272,12 +272,12 @@
                   <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2in</Width>
+                  <Width>2.5in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.5in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -291,7 +291,7 @@
                                   <Value>ขาย</Value>
                                   <Style>
                                     <FontFamily>tahoma</FontFamily>
-                                    <FontSize>11pt</FontSize>
+                                    <FontSize>24pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -326,7 +326,7 @@
                                   <Value>รายการคูปอง</Value>
                                   <Style>
                                     <FontFamily>tahoma</FontFamily>
-                                    <FontSize>11pt</FontSize>
+                                    <FontSize>24pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -352,7 +352,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.5in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -366,7 +366,7 @@
                                   <Value />
                                   <Style>
                                     <FontFamily>tahoma</FontFamily>
-                                    <FontSize>11pt</FontSize>
+                                    <FontSize>24pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -401,7 +401,7 @@
                                   <Value>=Fields!CouponId.Value</Value>
                                   <Style>
                                     <FontFamily>tahoma</FontFamily>
-                                    <FontSize>11pt</FontSize>
+                                    <FontSize>24pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -450,8 +450,8 @@
             <DataSetName>C35</DataSetName>
             <Top>0.04002in</Top>
             <Left>0.17583in</Left>
-            <Height>0.5in</Height>
-            <Width>3in</Width>
+            <Height>1in</Height>
+            <Width>3.5in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -465,12 +465,12 @@
                   <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2in</Width>
+                  <Width>2.5in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.5in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -484,7 +484,7 @@
                                   <Value>ขาย</Value>
                                   <Style>
                                     <FontFamily>tahoma</FontFamily>
-                                    <FontSize>11pt</FontSize>
+                                    <FontSize>24pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -519,7 +519,7 @@
                                   <Value>รายการคูปอง</Value>
                                   <Style>
                                     <FontFamily>tahoma</FontFamily>
-                                    <FontSize>11pt</FontSize>
+                                    <FontSize>24pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -545,7 +545,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.5in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -559,7 +559,7 @@
                                   <Value />
                                   <Style>
                                     <FontFamily>tahoma</FontFamily>
-                                    <FontSize>11pt</FontSize>
+                                    <FontSize>24pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -592,7 +592,7 @@
                                   <Value>=Fields!CouponId.Value</Value>
                                   <Style>
                                     <FontFamily>tahoma</FontFamily>
-                                    <FontSize>11pt</FontSize>
+                                    <FontSize>24pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -641,8 +641,8 @@
             <DataSetName>C80</DataSetName>
             <Top>0.04002in</Top>
             <Left>3.86225in</Left>
-            <Height>0.5in</Height>
-            <Width>3in</Width>
+            <Height>1in</Height>
+            <Width>3.5in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -651,7 +651,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>1.5886cm</Height>
+        <Height>2.88506cm</Height>
         <Style />
       </Body>
       <Width>19.5cm</Width>
@@ -685,7 +685,7 @@
               <Top>1.38283in</Top>
               <Left>0.17558in</Left>
               <Height>0.25in</Height>
-              <Width>1.08333in</Width>
+              <Width>1.19791in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -720,7 +720,7 @@
               <Top>1.38283in</Top>
               <Left>3.86225in</Left>
               <Height>0.25in</Height>
-              <Width>1.45833in</Width>
+              <Width>1.19791in</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -756,7 +756,7 @@
               <Top>1.67727in</Top>
               <Left>0.17558in</Left>
               <Height>0.25in</Height>
-              <Width>1.08333in</Width>
+              <Width>1.19791in</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -792,7 +792,7 @@
               <Top>1.67727in</Top>
               <Left>3.86225in</Left>
               <Height>0.25in</Height>
-              <Width>1.45833in</Width>
+              <Width>1.19791in</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -828,7 +828,7 @@
               <Top>1.95665in</Top>
               <Left>0.17558in</Left>
               <Height>0.25in</Height>
-              <Width>1.08333in</Width>
+              <Width>1.19791in</Width>
               <ZIndex>4</ZIndex>
               <Style>
                 <Border>
@@ -1049,15 +1049,18 @@
                   <TextRuns>
                     <TextRun>
                       <Value>=First(Fields!TSBNameTH.Value, "main")</Value>
-                      <Style />
+                      <Style>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>11pt</FontSize>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>TSBNameTH</rd:DefaultName>
-              <Top>1.71333in</Top>
-              <Left>1.57167in</Left>
+              <Top>1.67727in</Top>
+              <Left>1.40917in</Left>
               <Height>0.25in</Height>
               <Width>1.78333in</Width>
               <ZIndex>11</ZIndex>
@@ -1079,15 +1082,18 @@
                   <TextRuns>
                     <TextRun>
                       <Value>=First(Fields!FullNameTH.Value, "main")</Value>
-                      <Style />
+                      <Style>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>11pt</FontSize>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>FullNameTH</rd:DefaultName>
-              <Top>1.3625in</Top>
-              <Left>5.455in</Left>
+              <Top>1.38283in</Top>
+              <Left>5.0925in</Left>
               <Height>0.25in</Height>
               <Width>1.89167in</Width>
               <ZIndex>12</ZIndex>
@@ -1109,7 +1115,10 @@
                   <TextRuns>
                     <TextRun>
                       <Value>=First(Fields!UserId.Value, "main")</Value>
-                      <Style />
+                      <Style>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>11pt</FontSize>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style />
@@ -1117,7 +1126,7 @@
               </Paragraphs>
               <rd:DefaultName>UserId</rd:DefaultName>
               <Top>1.38283in</Top>
-              <Left>1.57167in</Left>
+              <Left>1.40917in</Left>
               <Height>0.25in</Height>
               <Width>1.78333in</Width>
               <ZIndex>13</ZIndex>
@@ -1139,15 +1148,18 @@
                   <TextRuns>
                     <TextRun>
                       <Value>=Parameters!couponDate.Value</Value>
-                      <Style />
+                      <Style>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>11pt</FontSize>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>couponDate</rd:DefaultName>
-              <Top>2.055in</Top>
-              <Left>1.57167in</Left>
+              <Top>1.95665in</Top>
+              <Left>1.40917in</Left>
               <Height>0.25in</Height>
               <Width>1.78333in</Width>
               <ZIndex>14</ZIndex>
@@ -1169,15 +1181,18 @@
                   <TextRuns>
                     <TextRun>
                       <Value>=Parameters!supervisorFullName.Value</Value>
-                      <Style />
+                      <Style>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>11pt</FontSize>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>supervisorFullName</rd:DefaultName>
-              <Top>1.68194in</Top>
-              <Left>5.455in</Left>
+              <Top>1.67727in</Top>
+              <Left>5.0925in</Left>
               <Height>0.25in</Height>
               <Width>1.89167in</Width>
               <ZIndex>15</ZIndex>
