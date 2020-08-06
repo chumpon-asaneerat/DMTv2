@@ -191,23 +191,28 @@ namespace DMT.TOD.Pages.Reports
                 List<int> lanes = new List<int>();
                 _laneActivities.ForEach(laneAct =>
                 {
+                    /*
                     if (begin == DateTime.MinValue || laneAct.Begin < begin)
                     {
                         begin = laneAct.Begin;
                     }
-                    /*
                     if (end == DateTime.MinValue || laneAct.End > end)
                     {
                         end = laneAct.End;
                     }
                     */
-                    end = DateTime.Now; // End time used printed date instead of lane date.
 
                     if (!lanes.Contains(laneAct.LaneNo))
                     {
                         lanes.Add(laneAct.LaneNo);
                     }
                 });
+
+                // Begin time used start of shift.
+                begin = _userShift.Begin;
+                // End time used printed date
+                end = DateTime.Now;
+
                 int iCnt = 0;
                 int iMax = lanes.Count;
                 string laneList = string.Empty;
