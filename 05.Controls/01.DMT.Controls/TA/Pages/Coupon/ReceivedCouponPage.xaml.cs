@@ -34,6 +34,10 @@ namespace DMT.TA.Pages.Coupon
 
         #endregion
 
+        private DispatcherTimer timer = new DispatcherTimer();
+        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private User _user = null;
+
         #region Loaded/Unloaded
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -63,10 +67,6 @@ namespace DMT.TA.Pages.Coupon
         }
 
         #endregion
-
-        private DispatcherTimer timer = new DispatcherTimer();
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
-        private User _user = null;
 
         private void UpdateDateTime()
         {

@@ -34,6 +34,22 @@ namespace DMT.TA.Pages.Coupon
 
         #endregion
 
+        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+
+        #region Loaded/Unloaded
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            RefreshList();
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        #endregion
+
         #region Button Handlers
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
@@ -51,5 +67,10 @@ namespace DMT.TA.Pages.Coupon
         }
 
         #endregion
+
+        public void RefreshList()
+        {
+
+        }
     }
 }

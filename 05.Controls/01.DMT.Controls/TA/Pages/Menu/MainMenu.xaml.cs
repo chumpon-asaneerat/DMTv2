@@ -442,7 +442,7 @@ namespace DMT.TA.Pages.Menu
             }
 
         }
-        // Implement #1 เงินยืมทอน (collector)
+        // OK. เงินยืมทอน (collector)
         private void collectorFund_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -462,62 +462,17 @@ namespace DMT.TA.Pages.Menu
             var page = new History.PlazaReturnHistoryPage();
             PageContentManager.Instance.Current = page;
         }
-        // รับคูปอง (collector)
+        // Implement #1 รับคูปอง (collector)
         private void collectorReveivedCoupon_Click(object sender, RoutedEventArgs e)
         {
             var page = new Coupon.ReceivedCouponPage();
             PageContentManager.Instance.Current = page;
         }
-        // คืนคูปอง (collector)
+        // Implement #1 คืนคูปอง (collector)
         private void collectorReturnCoupon_Click(object sender, RoutedEventArgs e)
         {
             var page = new Coupon.ReturnCouponPage();
             PageContentManager.Instance.Current = page;
-            /*
-            try
-            {
-                // Coupon Return
-                var page = new TA.Coupon.ReturnCouponPage();
-
-                List<Models.Coupon> coupons = new List<Models.Coupon>();
-                Models.Coupon coupon;
-
-                coupon = new Models.Coupon();
-                coupon.Date = new DateTime(2020, 3, 16, 18, 50, 11);
-                coupon.StaffId = "14055";
-                coupon.StaffName = "นางวิภา สวัสดิวัฒน์";
-                coupon.Lane = 6;
-                coupon.Count = 10;
-                coupon.Type = "คูปอง 35 บาท";
-                coupons.Add(coupon);
-
-                coupon = new Models.Coupon();
-                coupon.Date = new DateTime(2020, 3, 16, 23, 15, 24);
-                coupon.StaffId = "14147";
-                coupon.StaffName = "นางสาว แก้วใส ฟ้ารุ่งโรจณ์";
-                coupon.Lane = 2;
-                coupon.Count = 7;
-                coupon.Type = "คูปอง 80 บาท";
-                coupons.Add(coupon);
-
-                coupon = new Models.Coupon();
-                coupon.Date = new DateTime(2020, 3, 17, 12, 1, 47);
-                coupon.StaffId = "12562";
-                coupon.StaffName = "นาย ภักดี อมรรุ่งโรจน์";
-                coupon.Lane = 4;
-                coupon.Count = 8;
-                coupon.Type = "คูปอง 35 บาท";
-                coupons.Add(coupon);
-
-                page.Setup(coupons);
-
-                PageContentManager.Instance.Current = page;
-            }
-            catch (Exception)
-            {
-                //Console.WriteLine("Refresh data error.");
-            }
-            */
         }
         // OK. เช็คยอดด่าน
         private void plazaAllStock_Click(object sender, RoutedEventArgs e)
