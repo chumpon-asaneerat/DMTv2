@@ -72,8 +72,17 @@ namespace DMT.TOD.Pages.Menu
 
         private void supRevEntry_Click(object sender, RoutedEventArgs e)
         {
+            var signinWin = new SignInWindow();
+            signinWin.Owner = Application.Current.MainWindow;
+            signinWin.Setup("SUPERVISOR");
+            if (signinWin.ShowDialog() == false)
+            {
+                return;
+            }
+            var user = signinWin.User;
+
             var page = new Revenue.SupervisorRevenueEntryPage();
-            page.Setup();
+            page.Setup(user);
             PageContentManager.Instance.Current = page;
         }
 

@@ -249,22 +249,16 @@
     <Compile Include="TOD\Pages\Reports\RevenueSlipPreview.xaml.cs">
       <DependentUpon>RevenueSlipPreview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TOD\Pages\Revenue\RevenueRevSlipPage.xaml.cs">
+    <Compile Include="TOD\Pages\Revenue\Supervisor\RevenueRevSlipPage.xaml.cs">
       <DependentUpon>RevenueRevSlipPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TOD\Pages\Revenue\RevenueSupervisorPage.xaml.cs">
-      <DependentUpon>RevenueSupervisorPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TOD\Pages\Revenue\SupervisorRevenueEntryPage.xaml.cs">
+    <Compile Include="TOD\Pages\Revenue\Supervisor\SupervisorRevenueEntryPage.xaml.cs">
       <DependentUpon>SupervisorRevenueEntryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TOD\Pages\Revenue\RevenueSupervisorSelectionPage.xaml.cs">
-      <DependentUpon>RevenueSupervisorSelectionPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TOD\Pages\Revenue\RevenueDateSelectionPage.xaml.cs">
+    <Compile Include="TOD\Pages\Revenue\Collector\RevenueDateSelectionPage.xaml.cs">
       <DependentUpon>RevenueDateSelectionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TOD\Pages\Revenue\RevenueEntryPage.xaml.cs">
+    <Compile Include="TOD\Pages\Revenue\Collector\RevenueEntryPage.xaml.cs">
       <DependentUpon>RevenueEntryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TOD\Pages\TollAdmin\ChangeShiftPage.xaml.cs">
@@ -644,27 +638,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="TOD\Pages\Revenue\RevenueRevSlipPage.xaml">
+    <Page Include="TOD\Pages\Revenue\Supervisor\RevenueRevSlipPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="TOD\Pages\Revenue\RevenueSupervisorPage.xaml">
+    <Page Include="TOD\Pages\Revenue\Supervisor\SupervisorRevenueEntryPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="TOD\Pages\Revenue\SupervisorRevenueEntryPage.xaml">
+    <Page Include="TOD\Pages\Revenue\Collector\RevenueDateSelectionPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="TOD\Pages\Revenue\RevenueSupervisorSelectionPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="TOD\Pages\Revenue\RevenueDateSelectionPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="TOD\Pages\Revenue\RevenueEntryPage.xaml">
+    <Page Include="TOD\Pages\Revenue\Collector\RevenueEntryPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -769,7 +755,9 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="TOD\Pages\Revenue\Unused\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Background\snartcard.png" />
     <Resource Include="Images\Button\EndWork.png" />

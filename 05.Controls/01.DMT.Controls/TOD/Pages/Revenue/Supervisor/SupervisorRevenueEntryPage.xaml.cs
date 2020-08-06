@@ -44,6 +44,7 @@ namespace DMT.TOD.Pages.Revenue
         private UserCredit srcObj;
 
         #region Button Handlers
+
         private void cmdSearchUser_Click(object sender, RoutedEventArgs e)
         {
             string userId = txtSearchUserId.Text;
@@ -88,10 +89,7 @@ namespace DMT.TOD.Pages.Revenue
         {
             // Revenue Entry Page
             var page = new RevenueRevSlipPage();
-
-
             page.Setup(_user, _userShift, _entryDT, _revDT);
-
             PageContentManager.Instance.Current = page;
         }
 
@@ -155,8 +153,10 @@ namespace DMT.TOD.Pages.Revenue
             }
         }
 
-        public void Setup()
+        public void Setup(User user)
         {
+            _user = user;
+            
             LoadPlazaGroups();
             dtEntryDate.SelectedDate = DateTime.Now;
 
@@ -164,7 +164,6 @@ namespace DMT.TOD.Pages.Revenue
             {
                 srcObj = new UserCredit();
             }
-
             this.DataContext = srcObj;
 
         }
