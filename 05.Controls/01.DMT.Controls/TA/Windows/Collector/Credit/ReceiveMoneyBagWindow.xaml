@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Receive Money Bag" 
-        Height="300" 
+        Height="320" 
         Width="500" 
         ResizeMode="NoResize" 
         ShowInTaskbar="False" 
@@ -21,8 +21,8 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="5"/>
-            <RowDefinition Height="90"/>
-            <RowDefinition Height="130"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="140"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="5"/>
         </Grid.RowDefinitions>
@@ -36,23 +36,22 @@
                     Grid.Column="1" Grid.ColumnSpan="2">
             <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Foreground="WhiteSmoke" 
-                           FontSize="25"
+                           FontSize="30" FontWeight="Bold"
                            Text="รับถุงเงิน หมายเลข :"/>
                 <Grid Width="5" />
-                <TextBlock x:Name="txtBagID" Foreground="WhiteSmoke"
-                         FontSize="25" IsEnabled="False"/>
+                <TextBlock x:Name="txtBagID" Foreground="Red"
+                         FontSize="30" FontWeight="Bold"/>
                 </StackPanel>
             <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Foreground="WhiteSmoke" 
-                           FontSize="25"
+                           FontSize="30" FontWeight="Bold"
                            Text="จำนวนเงิน :"/>
                 <Grid Width="5"/>
-                <TextBlock x:Name="txtAmount"  Foreground="WhiteSmoke"
-                             FontSize="25" />
+                <TextBlock x:Name="txtAmount"  Foreground="Red"
+                             FontSize="30" FontWeight="Bold"/>
                 <Grid Width="5"/>
                 <TextBlock Foreground="WhiteSmoke" 
-                           FontSize="25"
-                           Text="บาท"/>
+                           FontSize="30" FontWeight="Bold" Text="บาท"/>
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="2"
