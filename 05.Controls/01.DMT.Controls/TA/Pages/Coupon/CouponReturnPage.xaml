@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              d:DesignHeight="580"
              d:DesignWidth="1100"
+             Loaded="UserControl_Loaded"
+             Unloaded="UserControl_Unloaded"
              mc:Ignorable="d">
     <DockPanel Margin="5">
         <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom">
@@ -113,7 +115,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="45" />
                 </Grid.RowDefinitions>
-                <TextBox x:Name="txtNewCouponCode35"
+                <TextBox x:Name="txtFilter35"
                          Grid.Row="1"
                          Grid.Column="1"
                          Width="180"
@@ -121,8 +123,9 @@
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"
                          TextWrapping="Wrap"
-                         FontSize="18" />
-                <ListView x:Name="listView"
+                         FontSize="18" 
+                         KeyUp="txtFilter35_KeyUp"/>
+                <ListView x:Name="lvTSB35"
                           Grid.Row="2"
                           Grid.Column="1"
                           FontSize="18"
@@ -136,7 +139,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <ListView x:Name="listViewUse"
+                <ListView x:Name="lvSold35"
                           Grid.Row="2"
                           Grid.Column="3"
                           FontSize="18"
@@ -150,8 +153,6 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-
-
                 <Button Name="btnNext35"
                         Grid.Row="2"
                         Grid.Column="2"
@@ -188,7 +189,7 @@
                            VerticalAlignment="Center"
                            Source="/DMT.Controls;component/Images/Button/back.png" />
                 </Button>
-                <TextBox x:Name="txtNewCouponCode80"
+                <TextBox x:Name="txtFilter80"
                          Grid.Row="1"
                          Grid.Column="5"
                          Width="180"
@@ -196,8 +197,9 @@
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"
                          TextWrapping="Wrap"
-                         FontSize="18" />
-                <ListView x:Name="listView80"
+                         FontSize="18" 
+                         KeyUp="txtFilter80_KeyUp"/>
+                <ListView x:Name="lvTSB80"
                           Grid.Row="2"
                           Grid.Column="5"
                           FontSize="18"
@@ -211,7 +213,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <ListView x:Name="listViewUse80"
+                <ListView x:Name="lvSold80"
                           Grid.Row="2"
                           Grid.Column="7"
                           FontSize="18"
@@ -225,7 +227,6 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-
                 <Button Name="btnNext80"
                         Grid.Row="2"
                         Grid.Column="6"
@@ -293,7 +294,7 @@
                        Foreground="White"
                        FontWeight="Normal"
                        FontFamily="Tahoma" />
-                <TextBox Name="txtCoupon35"
+                <TextBox x:Name="txtTSBCount35"
                          Grid.Row="3"
                          Grid.Column="1"
                          Width="120"
@@ -301,13 +302,15 @@
                          Margin="10,7,0,0"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"
+                         TextAlignment="Right"
                          FontSize="25"
                          FontWeight="Normal"
                          FontFamily="Tahoma"
                          TextWrapping="Wrap"
+                         IsReadOnly="True"
                          Text="0" />
 
-                <TextBox Name="txtCouponU35"
+                <TextBox x:Name="txtSoldCount35"
                          Grid.Row="3"
                          Grid.Column="3"
                          Width="120"
@@ -315,13 +318,14 @@
                          Margin="10,7,0,0"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"
+                         TextAlignment="Right"
                          FontSize="25"
                          FontWeight="Normal"
                          FontFamily="Tahoma"
                          TextWrapping="Wrap"
+                         IsReadOnly="True"
                          Text="0" />
-
-                <TextBox Name="txtCoupon80"
+                <TextBox x:Name="txtTSBCount80"
                          Grid.Row="3"
                          Grid.Column="5"
                          Width="120"
@@ -329,13 +333,14 @@
                          Margin="10,7,0,0"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"
+                         TextAlignment="Right"
                          FontSize="25"
                          FontWeight="Normal"
                          FontFamily="Tahoma"
                          TextWrapping="Wrap"
+                         IsReadOnly="True"
                          Text="0" />
-
-                <TextBox Name="txtCouponU80"
+                <TextBox x:Name="txtSoldCount80"
                          Grid.Row="3"
                          Grid.Column="7"
                          Width="120"
@@ -343,10 +348,12 @@
                          Margin="10,7,0,0"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Top"
+                         TextAlignment="Right"
                          FontSize="25"
                          FontWeight="Normal"
                          FontFamily="Tahoma"
                          TextWrapping="Wrap"
+                         IsReadOnly="True"
                          Text="0" />
                 <Label Grid.Row="3"
                        Grid.Column="1"
@@ -394,6 +401,5 @@
                        FontFamily="Tahoma" />
             </Grid>
         </StackPanel>
-
     </DockPanel>
 </UserControl>
