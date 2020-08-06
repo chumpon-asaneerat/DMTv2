@@ -261,7 +261,8 @@ namespace DMT.Services
                 return _coupons.FindAll(item =>
                 {
                     bool ret = (
-                        item.TransactionType == TSBCouponTransaction.TransactionTypes.Stock &&
+                        (item.TransactionType == TSBCouponTransaction.TransactionTypes.Stock ||
+                        item.TransactionType == TSBCouponTransaction.TransactionTypes.SoldByLane) &&
                         item.CouponType == CouponType.BHT35
                     );
                     return ret;
@@ -278,7 +279,8 @@ namespace DMT.Services
                 return _coupons.FindAll(item =>
                 {
                     bool ret = (
-                        item.TransactionType == TSBCouponTransaction.TransactionTypes.Stock &&
+                        (item.TransactionType == TSBCouponTransaction.TransactionTypes.Stock ||
+                        item.TransactionType == TSBCouponTransaction.TransactionTypes.SoldByLane) &&
                         item.CouponType == CouponType.BHT80
                     );
                     return ret;

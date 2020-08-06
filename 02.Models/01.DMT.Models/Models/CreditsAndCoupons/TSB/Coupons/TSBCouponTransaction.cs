@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Media;
 
 using NLib;
 using NLib.Design;
@@ -15,7 +16,6 @@ using SQLiteNetExtensions.Extensions;
 // required for JsonIgnore attribute.
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
-using System.Net;
 
 #endregion
 
@@ -32,6 +32,9 @@ namespace DMT.Models
 	//[Table("TSBCouponTransaction")]
 	public class TSBCouponTransaction : NTable<TSBCouponTransaction>
 	{
+		private static SolidColorBrush RedForeground = new SolidColorBrush(Colors.Red);
+		private static SolidColorBrush BlackForeground = new SolidColorBrush(Colors.Black);
+
 		#region Enum
 
 		public enum TransactionTypes : int
@@ -99,6 +102,26 @@ namespace DMT.Models
 		#endregion
 
 		#region Public Properties
+
+		#region Runtime
+
+		[Category("Runtime")]
+		[Description("Gets or sets Foreground color.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public SolidColorBrush Foreground
+		{
+			get 
+			{
+				bool isSold = TransactionType == TransactionTypes.SoldByLane || 
+					TransactionType == TransactionTypes.SoldByTSB;
+				return (!isSold) ? BlackForeground : RedForeground; 
+			}
+			set { }
+		}
+
+		#endregion
 
 		#region Common
 
