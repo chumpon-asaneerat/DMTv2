@@ -77,6 +77,7 @@ namespace DMT.TOD.Pages.Revenue
             _userShift = userShift;
             _plazaGroup = plazaGroup;
             _plazaRevenue = plazaRevenue;
+            _laneActivities = laneActivities;
             _entryDate = entryDate;
             _revDate = revDate;
 
@@ -128,9 +129,12 @@ namespace DMT.TOD.Pages.Revenue
                 _revenueEntry.ShiftEnd = _revDate;
 
                 // assign supervisor.
-                _revenueEntry.SupervisorId = sup.UserId;
-                _revenueEntry.SupervisorNameEN = sup.FullNameEN;
-                _revenueEntry.SupervisorNameTH = sup.FullNameTH;
+                if (null != _sup)
+                {
+                    _revenueEntry.SupervisorId = _sup.UserId;
+                    _revenueEntry.SupervisorNameEN = _sup.FullNameEN;
+                    _revenueEntry.SupervisorNameTH = _sup.FullNameTH;
+                }
 
                 revEntry.DataContext = _revenueEntry;
             }
