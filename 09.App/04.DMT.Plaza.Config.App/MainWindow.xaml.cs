@@ -123,11 +123,6 @@ namespace DMT
             PageContentManager.Instance.Current = new Config.Pages.TSBCreditViewPage();
         }
 
-        private void cmdTSBCouponView_Click(object sender, RoutedEventArgs e)
-        {
-            PageContentManager.Instance.Current = new Config.Pages.TSBCouponViewPage();
-        }
-
         #endregion
 
         #region Data Center

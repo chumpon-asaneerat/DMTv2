@@ -102,6 +102,21 @@ namespace DMT
             PageContentManager.Instance.Current = new Simulator.Pages.SupervisorTaskPage();
         }
 
+        private void cmdTSBCouponView_Click(object sender, RoutedEventArgs e)
+        {
+            PageContentManager.Instance.Current = new Simulator.Pages.TSBCouponViewPage();
+        }
+
+        private void cmdTSBLaneSoldCoupon_Click(object sender, RoutedEventArgs e)
+        {
+            PageContentManager.Instance.Current = new Simulator.Pages.TSBLaneSoldCouponPage();
+        }
+
+        private void cmdTSBPlazaSoldCoupon_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         #endregion
     }
 }

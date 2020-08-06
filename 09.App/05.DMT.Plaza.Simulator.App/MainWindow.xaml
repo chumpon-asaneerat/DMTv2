@@ -54,21 +54,25 @@
                 <Fluent:RibbonGroupBox Header="Coupons">
                     <Fluent:Button x:Name="cmdTSBCouponView"
                                    Width="75"
-                                   Header="Coupons (Initial)">
+                                   Header="Coupons (Initial)"
+                                   Click="cmdTSBCouponView_Click">
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/Reports/slip_06.png" />
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
                     <Fluent:Button x:Name="cmdTSBLaneSoldCoupon"
                                    Width="75"
-                                   Header="Sold (Lane)">
+                                   Header="Sold (Lane)"
+                                   Click="cmdTSBLaneSoldCoupon_Click">
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/Reports/slip_06.png" />
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
                     <Fluent:Button x:Name="cmdTSBPlazaSoldCoupon"
                                    Width="75"
-                                   Header="Sold (Plaza)">
+                                   Header="Sold (Plaza)"
+                                   Click="cmdTSBPlazaSoldCoupon_Click"
+                                   Visibility="Collapsed">
                         <Fluent:Button.LargeIcon>
                             <Image Source="Images/Reports/slip_06.png" />
                         </Fluent:Button.LargeIcon>
