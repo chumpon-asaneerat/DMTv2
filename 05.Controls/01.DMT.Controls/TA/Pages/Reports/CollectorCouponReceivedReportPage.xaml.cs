@@ -32,13 +32,15 @@ namespace DMT.TA.Pages.Reports
         #endregion
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private User _user = null;
+        private TSBCouponSummary _summary = null;
 
         #region Button Handlers
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
         {
             // Main Menu Page
-            var page = new Menu.MainMenu();
+            var page = (null != this.CallerPage) ? this.CallerPage : new Menu.MainMenu();
             PageContentManager.Instance.Current = page;
         }
 
@@ -48,11 +50,14 @@ namespace DMT.TA.Pages.Reports
             this.rptViewer.Print();
 
             // Main Menu Page
-            var page = new Menu.MainMenu();
+            var page = (null != this.CallerPage) ? this.CallerPage : new Menu.MainMenu();
             PageContentManager.Instance.Current = page;
         }
 
         #endregion
+
+        public ContentControl MenuPage { get; set; }
+        public ContentControl CallerPage { get; set; }
 
         private RdlcReportModel GetReportModel()
         {
@@ -63,17 +68,36 @@ namespace DMT.TA.Pages.Reports
                 inst.Definition.EmbededReportName);
             // clear reprot datasource.
             inst.DataSources.Clear();
-            /*
-            List<RevenueEntry> items = new List<RevenueEntry>();
-            if (null != _revenues) items.AddRange(_revenues);
 
-            // assign new data source
+            List<TSBCouponSummary> items = new List<TSBCouponSummary>();
+            if (null != _summary) items.Add(_summary);
+            // load C35 items.
+            List<TSBCouponTransaction> c35Items = new List<TSBCouponTransaction>();
+            // load C80 items.
+            List<TSBCouponTransaction> c80Items = new List<TSBCouponTransaction>();
+
+            // assign new data source (main for header)
             RdlcReportDataSource mainDS = new RdlcReportDataSource();
             mainDS.Name = "main"; // the datasource name in the rdlc report.
             mainDS.Items = items; // setup data source
             // Add to datasources
             inst.DataSources.Add(mainDS);
 
+            // assign new data source (main for coupon35)
+            RdlcReportDataSource c35DS = new RdlcReportDataSource();
+            c35DS.Name = "c35"; // the datasource name in the rdlc report.
+            c35DS.Items = c35Items; // setup data source
+            // Add to datasources
+            inst.DataSources.Add(c35DS);
+
+            // assign new data source (main for coupon80)
+            RdlcReportDataSource c80DS = new RdlcReportDataSource();
+            c80DS.Name = "c80"; // the datasource name in the rdlc report.
+            c80DS.Items = c80Items; // setup data source
+            // Add to datasources
+            inst.DataSources.Add(c80DS);
+
+            /*
             // Add parameters (if required).
             //DateTime today = DateTime.Now;
             //string printDate = today.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
@@ -82,11 +106,11 @@ namespace DMT.TA.Pages.Reports
             return inst;
         }
 
-        public void Setup(List<Models.RevenueEntry> revenues)
+        public void Setup(User user, TSBCouponSummary summary)
         {
-            /*
-            _revenues = revenues;
-            if (null != _revenues)
+            _user = user;
+            _summary = summary; 
+            if (null != _summary && null != _user) 
             {
                 var model = GetReportModel();
                 if (null == model ||
@@ -109,7 +133,6 @@ namespace DMT.TA.Pages.Reports
                     this.rptViewer.LoadReport(model);
                 }
             }
-            */
         }
     }
 }

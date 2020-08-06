@@ -41,7 +41,17 @@ namespace DMT.TA.Controls.Collector.Coupon
 
         private void cmdPrint_Click(object sender, RoutedEventArgs e)
         {
+            Button button = (sender as Button);
+            var trans = (null != button) ? button.DataContext as TSBCouponSummary : null;
+            if (null == trans) return;
+            var search = Search.Users.ById.Create(trans.UserId);
+            var user = ops.Users.GetById(search);
+            if (null == user) return;
 
+            var page = new Pages.Reports.CollectorCouponReceivedReportPage();
+            page.CallerPage = this;
+            page.Setup(trans);
+            PageContentManager.Instance.Current = page;
         }
 
         private void cmdEdit_Click(object sender, RoutedEventArgs e)
