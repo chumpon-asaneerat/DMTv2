@@ -296,6 +296,29 @@ namespace DMT.Services
 
         #endregion
 
+        #region For Lane Sold/Unsold Coupon (TSB)
+
+        public void SoldByTSB(TSBCouponTransaction value)
+        {
+            //if (null == User) return;
+            if (value.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
+            value.TransactionType = TSBCouponTransaction.TransactionTypes.SoldByTSB;
+            value.SoldBy = User.UserId;
+            value.SoldDate = DateTime.Now;
+            //value.UserReceiveDate = DateTime.Now;
+        }
+
+        public void UnsoldByTSB(TSBCouponTransaction value)
+        {
+            //if (null == User) return;
+            if (value.TransactionType != TSBCouponTransaction.TransactionTypes.SoldByTSB) return;
+            value.TransactionType = TSBCouponTransaction.TransactionTypes.Stock;
+            value.SoldBy = User.UserId;
+            value.SoldDate = DateTime.MinValue;
+        }
+
+        #endregion
+
         #region Save
 
         public void Save()
@@ -471,6 +494,46 @@ namespace DMT.Services
                         item.TransactionType == TSBCouponTransaction.TransactionTypes.Lane &&
                         item.CouponType == CouponType.BHT80 &&
                         item.UserId == User.UserId
+                    );
+                    return ret;
+                }).OrderBy(x => x.CouponId).ToList();
+            }
+        }
+
+        #endregion
+
+        #region For Lane Sold/Unsold Coupon (TSB)
+
+        public List<TSBCouponTransaction> C35TSBSolds
+        {
+            get
+            {
+                if (null == _coupons && null == User)
+                    return new List<TSBCouponTransaction>();
+                return _coupons.FindAll(item =>
+                {
+                    bool ret = (
+                        item.TransactionType == TSBCouponTransaction.TransactionTypes.SoldByTSB &&
+                        item.CouponType == CouponType.BHT35 &&
+                        item.SoldBy == User.UserId
+                    );
+                    return ret;
+                }).OrderBy(x => x.CouponId).ToList();
+            }
+        }
+
+        public List<TSBCouponTransaction> C80TSBSolds
+        {
+            get
+            {
+                if (null == _coupons && null == User)
+                    return new List<TSBCouponTransaction>();
+                return _coupons.FindAll(item =>
+                {
+                    bool ret = (
+                        item.TransactionType == TSBCouponTransaction.TransactionTypes.SoldByTSB &&
+                        item.CouponType == CouponType.BHT80 &&
+                        item.SoldBy == User.UserId
                     );
                     return ret;
                 }).OrderBy(x => x.CouponId).ToList();

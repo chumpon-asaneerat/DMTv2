@@ -59,7 +59,7 @@ namespace DMT.TA.Pages.Menu
             try
             {
                 var page = new Pages.Coupon.CouponReturnPage();
-                //page.Setup(coupons, couponUs, coupons80, couponsU80);
+                page.Setup(DMT.Controls.TAApp.User.Current);
                 PageContentManager.Instance.Current = page;
             }
             catch (Exception)

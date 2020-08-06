@@ -14,7 +14,8 @@ using System.Reflection;
 using System.ComponentModel;
 using System.Windows.Interop;
 using NLib;
-using System.Windows.Threading;
+using System.Collections;
+using System.Linq;
 
 #endregion
 
@@ -103,12 +104,38 @@ namespace DMT.TA.Pages.Coupon
 
         private void txtFilter35_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
-
+            RefreshBHT35Coupons();
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                var list = lvTSB35.ItemsSource as IList;
+                if (null != list && list.Count == 1)
+                {
+                    var item = list[0] as TSBCouponTransaction;
+                    if (null == item) return;
+                    if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
+                    item.TransactionType = TSBCouponTransaction.TransactionTypes.SoldByTSB;
+                    txtFilter35.Text = string.Empty;
+                    RefreshBHT35Coupons();
+                }
+            }
         }
 
         private void txtFilter80_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
-
+            RefreshBHT80Coupons();
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                var list = lvTSB80.ItemsSource as IList;
+                if (null != list && list.Count == 1)
+                {
+                    var item = list[0] as TSBCouponTransaction;
+                    if (null == item) return;
+                    if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
+                    item.TransactionType = TSBCouponTransaction.TransactionTypes.SoldByTSB;
+                    txtFilter80.Text = string.Empty;
+                    RefreshBHT80Coupons();
+                }
+            }
         }
 
         #endregion
@@ -136,7 +163,9 @@ namespace DMT.TA.Pages.Coupon
             });
 
             lvSold35.ItemsSource = null;
-            lvSold35.ItemsSource = manager.C35Users;
+            lvSold35.ItemsSource = manager.C35TSBSolds;
+
+            UpdateCounters();
         }
 
         private void RefreshBHT80Coupons()
@@ -147,7 +176,24 @@ namespace DMT.TA.Pages.Coupon
                 return item.CouponId.Contains(txtFilter80.Text) && item.TransactionType == TSBCouponTransaction.TransactionTypes.Stock;
             });
             lvSold80.ItemsSource = null;
-            lvSold80.ItemsSource = manager.C80Users;
+            lvSold80.ItemsSource = manager.C80TSBSolds;
+
+            UpdateCounters();
+        }
+
+        private void UpdateCounters()
+        {
+            var stock35 = lvTSB35.ItemsSource as IList;
+            txtTSBCount35.Text = (null != stock35) ? stock35.Count.ToString("n0") : "0";
+
+            var sold35 = lvSold35.ItemsSource as IList;
+            txtSoldCount35.Text = (null != sold35) ? sold35.Count.ToString("n0") : "0";
+            
+            var stock80 = lvTSB80.ItemsSource as IList;
+            txtTSBCount80.Text = (null != stock80) ? stock80.Count.ToString("n0") : "0";
+
+            var sold80 = lvTSB35.ItemsSource as IList;
+            txtSoldCount80.Text = (null != sold80) ? sold80.Count.ToString("n0") : "0";
         }
     }
 }
