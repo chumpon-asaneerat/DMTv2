@@ -35,6 +35,7 @@ namespace DMT.TA.Pages.Coupon
         #endregion
 
         #region Button
+
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
         {
             // Main Menu Page
@@ -78,6 +79,7 @@ namespace DMT.TA.Pages.Coupon
         {
             
         }
+
         #endregion
     }
 }
