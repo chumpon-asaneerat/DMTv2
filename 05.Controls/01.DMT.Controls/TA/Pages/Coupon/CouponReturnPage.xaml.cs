@@ -1,12 +1,22 @@
-﻿using System;
+﻿#region Using
+
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-using NLib;
+using DMT.Models;
+using DMT.Services;
 using NLib.Services;
-using System.Collections;
+using NLib.Reflection;
+using NLib.Reports.Rdlc;
+using System.Reflection;
+using System.ComponentModel;
+using System.Windows.Interop;
+using NLib;
+using System.Windows.Threading;
 
+#endregion
 
 namespace DMT.TA.Pages.Coupon
 {
@@ -15,10 +25,14 @@ namespace DMT.TA.Pages.Coupon
     /// </summary>
     public partial class CouponReturnPage : UserControl
     {
+        #region Constructor
+
         public CouponReturnPage()
         {
             InitializeComponent();
         }
+
+        #endregion
 
         #region Button
         private void cmdCancel_Click(object sender, RoutedEventArgs e)

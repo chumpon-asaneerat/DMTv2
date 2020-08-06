@@ -468,7 +468,7 @@ namespace DMT.TA.Pages.Menu
             var page = new Coupon.ReceivedCouponPage();
             PageContentManager.Instance.Current = page;
         }
-        // NO Implementation คืนคูปอง (collector)
+        // คืนคูปอง (collector)
         private void collectorReturnCoupon_Click(object sender, RoutedEventArgs e)
         {
             var page = new Coupon.ReturnCouponPage();
