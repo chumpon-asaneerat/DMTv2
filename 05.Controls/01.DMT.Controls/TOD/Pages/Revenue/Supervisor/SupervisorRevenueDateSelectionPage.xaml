@@ -108,36 +108,26 @@
                                Foreground="Black"
                                Text="วันที่ป้อนรายได้" />
                     <DatePicker x:Name="dtEntryDate"
-                    Grid.Row="2"
-                    Grid.Column="2"
-                    Grid.ColumnSpan="2"
-                    Width="225"
-                    Margin="5"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    FontSize="20"/>
+                                Width="225"
+                                Margin="5"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                IsEnabled="False"
+                                FontSize="20" />
+                    <Grid Width="5" />
                     <TextBlock Margin="5"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                FontSize="18"
                                Foreground="Red"
                                Text="วันที่ของรายได้" />
-                    <DatePicker x:Name="dtDate"
-                    Grid.Row="2"
-                    Grid.Column="2"
-                    Grid.ColumnSpan="2"
-                    Width="225"
-                    Margin="5"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    FontSize="20"/>
-                    <TextBlock x:Name="txtRevDate"
-                               Margin="5"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               FontSize="18"
-                               Foreground="Black"
-                               Text="" />
+                    <DatePicker x:Name="dtRevDate"
+                                Width="225"
+                                Margin="5"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                FontSize="20" />
+                    <Grid Width="5" />
                     <TextBlock Width="120"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
@@ -154,80 +144,12 @@
                               FontSize="18"
                               Foreground="Black"
                               SelectionChanged="cbPlazas_SelectionChanged" />
-                </StackPanel>
-            </Border>
-            <Border BorderBrush="Silver"
-                    BorderThickness="1"
-                    Background="Silver"
-                    DockPanel.Dock="Top">
-                <StackPanel Orientation="Horizontal">
-                    <Grid Width="5" Height="50"/>
-                    <TextBlock 
-                               DockPanel.Dock="Left"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontSize="18"
-                               TextAlignment="Right"
-                               Text="ค้นหา รหัสพนักงาน:" />
                     <Grid Width="5" />
-                    <TextBox x:Name="txtSearchUserId"
-                             Width="150"
-                             HorizontalAlignment="Left"
-                             VerticalAlignment="Center"
-                             FontSize="18"
-                             Text="" />
-                    <Grid Width="5" />
-                    <Button x:Name="cmdSearchUser"
-                            Width="75" Height="40"
-                            Content="ค้นหา"
-                            Click="cmdSearchUser_Click" />
-                    <Grid Width="5" />
-                    <TextBlock 
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontSize="18"
-                               TextAlignment="Right"
-                               Text="รหัสพนักงาน:" />
-                    <Grid Width="5" />
-                    <TextBox x:Name="txtUserId"
-                             Width="100"
-                             HorizontalAlignment="Left"
-                             VerticalAlignment="Center"
-                             FontSize="18"
-                             IsEnabled="False"
-                             Text="{Binding UserId}" />
-                    <Grid Width="5" />
-                    <TextBlock 
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontSize="18"
-                               TextAlignment="Right"
-                               Text="ชื่อพนักงาน:" />
-                    <Grid Width="5" />
-                    <TextBox x:Name="txtName"
-                             Width="200"
-                             HorizontalAlignment="Left"
-                             VerticalAlignment="Center"
-                             IsEnabled="False"
-                             FontSize="18"
-                             Text="{Binding FullNameTH}" />
-
-                </StackPanel>
-            </Border>
-            <Border BorderBrush="Silver"
-                    BorderThickness="1"
-                    Background="Silver"
-                    DockPanel.Dock="Top">
-                <StackPanel Orientation="Horizontal">
-                    <Grid Width="5" Height="50"/>
-                    <TextBlock 
-                               DockPanel.Dock="Left"
-                               HorizontalAlignment="Center"
+                    <TextBlock HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="18"
                                TextAlignment="Right"
                                Text="กะ:" />
-                    <Grid Width="5" />
                     <ComboBox x:Name="cbShifts"
                               Width="120"
                               HorizontalAlignment="Center"
@@ -243,7 +165,62 @@
                         <ComboBoxItem Content="3"/>
                         -->
                     </ComboBox>
+                </StackPanel>
+            </Border>
+            <Border BorderBrush="Silver"
+                    BorderThickness="1"
+                    Background="Silver"
+                    DockPanel.Dock="Top">
+                <StackPanel Orientation="Horizontal">
+                    <Grid Width="5" Height="50" />
+                    <TextBlock HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Left"
+                               FontSize="18"
+                               TextAlignment="Right"
+                               Text="ค้นหา รหัสพนักงาน:" />
                     <Grid Width="5" />
+                    <TextBox x:Name="txtSearchUserId"
+                             Width="150"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"
+                             FontSize="18"
+                             Text="" />
+                    <Grid Width="5" />
+                    <Button x:Name="cmdSearchUser"
+                            Width="75"
+                            Height="40"
+                            Content="ค้นหา"
+                            Click="cmdSearchUser_Click" />
+                    <Grid Width="5" />
+                    <TextBlock HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="18"
+                               TextAlignment="Right"
+                               Text="รหัสพนักงาน:" />
+                    <Grid Width="5" />
+                    <TextBox x:Name="txtUserId"
+                             Width="100"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"
+                             FontSize="18"
+                             IsEnabled="False"
+                             Text="{Binding UserId}" />
+                    <Grid Width="5" />
+                    <TextBlock HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="18"
+                               TextAlignment="Right"
+                               Text="ชื่อพนักงาน:" />
+                    <Grid Width="5" />
+                    <TextBox x:Name="txtName"
+                             Width="200"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"
+                             IsEnabled="False"
+                             FontSize="18"
+                             Text="{Binding FullNameTH}" />
+
                 </StackPanel>
             </Border>
             <Border BorderBrush="Silver"

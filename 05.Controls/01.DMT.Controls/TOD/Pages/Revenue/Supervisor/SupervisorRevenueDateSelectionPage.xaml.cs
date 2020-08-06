@@ -133,7 +133,7 @@ namespace DMT.TOD.Pages.Revenue
             _plazaRevenue = ops.Revenue.CreateRevenueShift(revops);
 
             _entryDT = dtEntryDate.SelectedDate.Value;
-            _revDT = dtDate.SelectedDate.Value;
+            _revDT = dtRevDate.SelectedDate.Value;
 
             // Revenue Entry Page
             var page = new SupervisorRevenueEntryPage();
@@ -186,7 +186,6 @@ namespace DMT.TOD.Pages.Revenue
                 var plazaGroup = cbPlazas.SelectedItem as PlazaGroup;
 
                 _revDT = _userShift.Begin.Date; // get date part from UserShift.Begin
-                txtRevDate.Text = _revDT.ToThaiDateTimeString("dd/MM/yyyy");
 
                 // get all lanes information.
                 var search = Search.Lanes.Attendances.ByUserShift.Create(
@@ -215,6 +214,7 @@ namespace DMT.TOD.Pages.Revenue
             LoadShifts();
             LoadPlazaGroups();
             dtEntryDate.SelectedDate = DateTime.Now;
+            dtRevDate.SelectedDate = DateTime.Now;
 
             srcObj = new UserCredit();
             this.DataContext = srcObj;

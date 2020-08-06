@@ -141,7 +141,6 @@ namespace DMT.TOD.Pages.Revenue
                 return;
             }
 
-
             page.Setup(_user, _userShift, plazaGroup, _plazaRevenue, 
                 _laneActivities, _entryDT, _revDT);
 

@@ -108,21 +108,29 @@ namespace DMT.TOD.Pages.Revenue
                 txtUserId.Text = _userShift.UserId;
                 txtUserName.Text = _userShift.FullNameTH;
 
-                var search = Search.UserCredits.GetActiveById.Create(_userShift.UserId, _plazaGroup.PlazaGroupId);
-                var userCredit = ops.Credits.GetActiveUserCreditById(search);
                 _revenueEntry = new Models.RevenueEntry();
-                if (null != userCredit)
-                {
-                    _revenueEntry.BagNo = userCredit.BagNo;
-                    _revenueEntry.BeltNo = userCredit.BeltNo;
-                }
-                else
-                {
-                    _revenueEntry.BagNo = string.Empty;
-                    _revenueEntry.BeltNo = string.Empty;
-                }
+                _revenueEntry.BagNo = string.Empty;
+                _revenueEntry.BeltNo = string.Empty;
+
                 // assigned plaza.
                 _revenueEntry.PlazaGroupId = _plazaGroup.PlazaGroupId;
+
+                // update object properties.
+                _plazaGroup.AssignTo(_revenueEntry); // assigned plaza group name (EN/TH)
+                _userShift.AssignTo(_revenueEntry); // assigned user full name (EN/TH)
+
+                // assigned date after sync object(s) to RevenueEntry.
+                _revenueEntry.EntryDate = _entryDate; // assigned Entry date.
+                _revenueEntry.RevenueDate = _revDate; // assigned Revenue date.
+
+                //_revenueEntry.Lanes = laneList.Trim();
+                _revenueEntry.ShiftBegin = _revDate;
+                _revenueEntry.ShiftEnd = _revDate;
+
+                // assign supervisor.
+                _revenueEntry.SupervisorId = sup.UserId;
+                _revenueEntry.SupervisorNameEN = sup.FullNameEN;
+                _revenueEntry.SupervisorNameTH = sup.FullNameTH;
 
                 revEntry.DataContext = _revenueEntry;
             }
