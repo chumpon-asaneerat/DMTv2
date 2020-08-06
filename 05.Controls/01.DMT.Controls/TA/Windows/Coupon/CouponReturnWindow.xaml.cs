@@ -42,6 +42,7 @@ namespace DMT.TA.Windows.Coupon
         private void cmdSave_Click(object sender, RoutedEventArgs e)
         {
             // Save
+            Verified(); // set finish flag if sold and return to stock if unsold.
             manager.Save();
             this.DialogResult = true;
         }
@@ -56,7 +57,7 @@ namespace DMT.TA.Windows.Coupon
             var item = lvUserSold35.SelectedItem as TSBCouponTransaction;
             if (null == item) return;
             if (item.TransactionType != TSBCouponTransaction.TransactionTypes.SoldByLane) return;
-            //manager.Return(item);
+            manager.UnsoldByLane(item);
             RefreshBHT35Coupons();
         }
 
@@ -65,7 +66,7 @@ namespace DMT.TA.Windows.Coupon
             var item = lvUserOnHand35.SelectedItem as TSBCouponTransaction;
             if (null == item) return;
             if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Lane) return;
-            //manager.Return(item);
+            manager.SoldByLane(item);
             RefreshBHT35Coupons();
         }
 
@@ -74,7 +75,7 @@ namespace DMT.TA.Windows.Coupon
             var item = lvUserSold80.SelectedItem as TSBCouponTransaction;
             if (null == item) return;
             if (item.TransactionType != TSBCouponTransaction.TransactionTypes.SoldByLane) return;
-            //manager.Return(item);
+            manager.UnsoldByLane(item);
             RefreshBHT80Coupons();
         }
 
@@ -83,7 +84,7 @@ namespace DMT.TA.Windows.Coupon
             var item = lvUserOnHand80.SelectedItem as TSBCouponTransaction;
             if (null == item) return;
             if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Lane) return;
-            //manager.Return(item);
+            manager.SoldByLane(item);
             RefreshBHT80Coupons();
         }
 
@@ -110,6 +111,43 @@ namespace DMT.TA.Windows.Coupon
 
             RefreshBHT35Coupons();
             RefreshBHT80Coupons();
+        }
+
+        private void Verified()
+        {
+            // Mark Finish Flag.
+            var userSold35coupons = lvUserSold35.ItemsSource as List<TSBCouponTransaction>;
+            MarkCompleted(userSold35coupons);
+            var userSold80coupons = lvUserSold80.ItemsSource as List<TSBCouponTransaction>;
+            MarkCompleted(userSold80coupons);
+            // Returns to stock.
+            var userUnSold35coupons = lvUserOnHand35.ItemsSource as List<TSBCouponTransaction>;
+            ReturnToStock(userUnSold35coupons);
+            var userUnSold80coupons = lvUserOnHand80.ItemsSource as List<TSBCouponTransaction>;
+            ReturnToStock(userUnSold80coupons);
+        }
+
+        private void MarkCompleted(List<TSBCouponTransaction> items)
+        {
+            if (null == items) return;
+            items.ForEach(item => 
+            {
+                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.SoldByLane)
+                    return;
+                item.FinishFlag = 0;
+            });
+        }
+        private void ReturnToStock(List<TSBCouponTransaction> items)
+        {
+            if (null == items) return;
+            items.ForEach(item =>
+            {
+                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Lane)
+                    return;
+                item.TransactionType = TSBCouponTransaction.TransactionTypes.Stock;
+                item.UserId = string.Empty;
+                item.UserReceiveDate = DateTime.MinValue;
+            });
         }
 
         private void RefreshBHT35Coupons()
