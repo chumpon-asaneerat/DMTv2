@@ -32,6 +32,7 @@ namespace DMT.TA.Pages.Reports
         #endregion
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private TSBCouponManager manager = new TSBCouponManager();
         private User _user = null;
         private TSBCouponSummary _summary = null;
 
@@ -44,7 +45,7 @@ namespace DMT.TA.Pages.Reports
             PageContentManager.Instance.Current = page;
         }
 
-        private void cmdOK_Click(object sender, RoutedEventArgs e)
+        private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
             // print reports.
             this.rptViewer.Print();
@@ -63,7 +64,7 @@ namespace DMT.TA.Pages.Reports
         {
             Assembly assembly = this.GetType().Assembly;
             RdlcReportModel inst = new RdlcReportModel();
-            inst.Definition.EmbededReportName = "DMT.TOD.Pages.Reports.CollectorCouponReceived.rdlc";
+            inst.Definition.EmbededReportName = "DMT.Ta.Pages.Reports.CollectorCouponReceived.rdlc";
             inst.Definition.RdlcInstance = RdlcReportUtils.GetEmbededReport(assembly,
                 inst.Definition.EmbededReportName);
             // clear reprot datasource.
@@ -71,10 +72,19 @@ namespace DMT.TA.Pages.Reports
 
             List<TSBCouponSummary> items = new List<TSBCouponSummary>();
             if (null != _summary) items.Add(_summary);
+
+            // gets coupon list by type.
+            manager.User = _user;
+            manager.Refresh(); // reload data.
+
             // load C35 items.
             List<TSBCouponTransaction> c35Items = new List<TSBCouponTransaction>();
+            var c35coupons = manager.C35Users;
+            if (null != c35coupons) c35Items.AddRange(c35coupons);
             // load C80 items.
             List<TSBCouponTransaction> c80Items = new List<TSBCouponTransaction>();
+            var c80coupons = manager.C80Users;
+            if (null != c80coupons) c80Items.AddRange(c80coupons);
 
             // assign new data source (main for header)
             RdlcReportDataSource mainDS = new RdlcReportDataSource();
@@ -85,14 +95,14 @@ namespace DMT.TA.Pages.Reports
 
             // assign new data source (main for coupon35)
             RdlcReportDataSource c35DS = new RdlcReportDataSource();
-            c35DS.Name = "c35"; // the datasource name in the rdlc report.
+            c35DS.Name = "C35"; // the datasource name in the rdlc report.
             c35DS.Items = c35Items; // setup data source
             // Add to datasources
             inst.DataSources.Add(c35DS);
 
             // assign new data source (main for coupon80)
             RdlcReportDataSource c80DS = new RdlcReportDataSource();
-            c80DS.Name = "c80"; // the datasource name in the rdlc report.
+            c80DS.Name = "C80"; // the datasource name in the rdlc report.
             c80DS.Items = c80Items; // setup data source
             // Add to datasources
             inst.DataSources.Add(c80DS);

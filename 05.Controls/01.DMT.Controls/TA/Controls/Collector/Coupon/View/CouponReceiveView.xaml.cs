@@ -20,6 +20,15 @@ using System.Windows.Threading;
 
 namespace DMT.TA.Controls.Collector.Coupon
 {
+    public delegate void PrintCouponReceivedReportEventHandler(object sender, PrintCouponReceivedReportEventArgs e);
+    
+    public class PrintCouponReceivedReportEventArgs
+    {
+        public TSBCouponSummary Transaction { get; set; }
+        public User User { get; set; }
+    }
+
+
     /// <summary>
     /// Interaction logic for CouponReceiveView.xaml
     /// </summary>
@@ -48,10 +57,12 @@ namespace DMT.TA.Controls.Collector.Coupon
             var user = ops.Users.GetById(search);
             if (null == user) return;
 
-            var page = new Pages.Reports.CollectorCouponReceivedReportPage();
-            page.CallerPage = this;
-            page.Setup(trans);
-            PageContentManager.Instance.Current = page;
+            // Raise Event.
+            OnPrint.Invoke(this, new PrintCouponReceivedReportEventArgs()
+            {
+                Transaction = trans,
+                User = user
+            });
         }
 
         private void cmdEdit_Click(object sender, RoutedEventArgs e)
@@ -78,5 +89,7 @@ namespace DMT.TA.Controls.Collector.Coupon
             var coupons = ops.Coupons.GetTSBCouponSummaries(null);
             listView.ItemsSource = coupons;
         }
+
+        public event PrintCouponReceivedReportEventHandler OnPrint;
     }
 }

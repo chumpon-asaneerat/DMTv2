@@ -356,6 +356,7 @@
     <EmbeddedResource Include="TOD\Pages\Reports\RevenueSlipSum.rdlc" />
     <EmbeddedResource Include="TOD\Pages\Reports\RevenueSlip.rdlc" />
     <None Include="Properties\DataSources\DMT.Models.RevenueEntry.datasource" />
+    <None Include="Properties\DataSources\DMT.Models.TSBCouponSummary.datasource" />
     <None Include="Properties\DataSources\DMT.Models.UserCouponTransaction.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
