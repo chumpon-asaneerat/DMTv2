@@ -41,6 +41,8 @@ namespace DMT.TA.Windows.Coupon
 
         private void cmdSave_Click(object sender, RoutedEventArgs e)
         {
+            // Save
+            manager.Save();
             this.DialogResult = true;
         }
 
@@ -51,27 +53,67 @@ namespace DMT.TA.Windows.Coupon
 
         private void btnNext35_Click(object sender, RoutedEventArgs e)
         {
-
+            var item = lvTSB35.SelectedItem as TSBCouponTransaction;
+            if (null == item) return;
+            manager.Borrow(item);
+            RefreshBHT35Coupons();
         }
 
         private void btnBack35_Click(object sender, RoutedEventArgs e)
         {
-
+            var item = lvUser35.SelectedItem as TSBCouponTransaction;
+            if (null == item) return;
+            manager.Return(item);
+            RefreshBHT35Coupons();
         }
 
         private void btnNext80_Click(object sender, RoutedEventArgs e)
         {
-
+            var item = lvTSB80.SelectedItem as TSBCouponTransaction;
+            if (null == item) return;
+            manager.Borrow(item);
+            RefreshBHT80Coupons();
         }
 
         private void btnBack80_Click(object sender, RoutedEventArgs e)
         {
-
+            var item = lvUser80.SelectedItem as TSBCouponTransaction;
+            if (null == item) return;
+            manager.Return(item);
+            RefreshBHT80Coupons();
         }
 
         #endregion
 
         public void Setup(User user)
+        {
+            manager.User = user;
+            if (null != manager.User)
+            {
+                txtUser.Content = string.Format("พนง: {0} {1}",
+                    manager.User.UserId, manager.User.FullNameTH);
+            }
+            else
+            {
+                txtUser.Content = string.Empty;
+            }
+            LoadCoupons();
+        }
+
+        private void LoadCoupons()
+        {
+            manager.Refresh();
+
+            RefreshBHT35Coupons();
+            RefreshBHT80Coupons();
+        }
+
+        private void RefreshBHT35Coupons()
+        {
+
+        }
+
+        private void RefreshBHT80Coupons()
         {
 
         }

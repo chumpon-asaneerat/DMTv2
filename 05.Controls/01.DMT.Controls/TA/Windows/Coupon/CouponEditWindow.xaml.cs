@@ -52,7 +52,6 @@ namespace DMT.TA.Windows.Coupon
             this.DialogResult = false;
         }
 
-
         private void btnNext35_Click(object sender, RoutedEventArgs e)
         {
             var item = lvTSB35.SelectedItem as TSBCouponTransaction;
