@@ -51,6 +51,29 @@
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
                 </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Header="Coupons">
+                    <Fluent:Button x:Name="cmdTSBCouponView"
+                                   Width="75"
+                                   Header="Coupons (Initial)">
+                        <Fluent:Button.LargeIcon>
+                            <Image Source="Images/Reports/slip_06.png" />
+                        </Fluent:Button.LargeIcon>
+                    </Fluent:Button>
+                    <Fluent:Button x:Name="cmdTSBLaneSoldCoupon"
+                                   Width="75"
+                                   Header="Sold (Lane)">
+                        <Fluent:Button.LargeIcon>
+                            <Image Source="Images/Reports/slip_06.png" />
+                        </Fluent:Button.LargeIcon>
+                    </Fluent:Button>
+                    <Fluent:Button x:Name="cmdTSBPlazaSoldCoupon"
+                                   Width="75"
+                                   Header="Sold (Plaza)">
+                        <Fluent:Button.LargeIcon>
+                            <Image Source="Images/Reports/slip_06.png" />
+                        </Fluent:Button.LargeIcon>
+                    </Fluent:Button>
+                </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
         <Grid Grid.Row="1">

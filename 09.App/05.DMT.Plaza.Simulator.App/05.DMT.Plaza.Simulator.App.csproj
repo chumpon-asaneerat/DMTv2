@@ -93,6 +93,12 @@
     <Compile Include="Simulator\Pages\SupervisorTaskPage.xaml.cs">
       <DependentUpon>SupervisorTaskPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Simulator\Pages\TSBCouponViewPage.xaml.cs">
+      <DependentUpon>TSBCouponViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Simulator\Pages\TSBLaneSoldCouponPage.xaml.cs">
+      <DependentUpon>TSBLaneSoldCouponPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Simulator\Pages\UserViewPage.xaml.cs">
       <DependentUpon>UserViewPage.xaml</DependentUpon>
     </Compile>
@@ -158,6 +164,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Simulator\Pages\TSBCouponViewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Simulator\Pages\TSBLaneSoldCouponPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Simulator\Pages\UserViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -193,6 +207,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Users\red-user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Reports\slip_06.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
