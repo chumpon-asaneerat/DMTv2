@@ -100,7 +100,7 @@ namespace DMT.TA.Controls.Collector.Credit.View
             win.Owner = Application.Current.MainWindow;
             win.Title = userCredit.Description;
 
-            win.Setup(userCredit.BagNo,userCredit.BHTTotal);
+            win.Setup(userCredit.UserId, userCredit.BagNo, userCredit.BHTTotal);
 
             if (win.ShowDialog() == false)
             {

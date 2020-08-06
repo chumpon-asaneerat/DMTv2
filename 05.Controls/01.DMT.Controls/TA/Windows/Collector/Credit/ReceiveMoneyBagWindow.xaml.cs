@@ -37,7 +37,7 @@ namespace DMT.TA.Windows.Collector.Credit
 
         private List<string> _roles = new List<string>();
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
-        private User _user = null;
+        private string _userId = null;
 
         #endregion
 
@@ -66,14 +66,23 @@ namespace DMT.TA.Windows.Collector.Credit
                 Search.Users.ByLogIn.Create(userId, pwd));
             if (null == user || _roles.IndexOf(user.RoleId) == -1)
             {
-                Console.WriteLine("LogIn Failed");
+                //Console.WriteLine("LogIn Failed");
                 txtMsg.Text = "LogIn Failed";
 
                 txtUserId.SelectAll();
                 txtUserId.Focus();
                 return;
             }
-            _user = user;
+
+            if (null != user && user.UserId != _userId)
+            {
+                txtMsg.Text = "LogIn Failed";
+
+                txtUserId.SelectAll();
+                txtUserId.Focus();
+                return;
+            }
+
             this.DialogResult = true;
         }
 
@@ -84,19 +93,8 @@ namespace DMT.TA.Windows.Collector.Credit
 
         #endregion
 
-        #region Public Methods
-
-        public void Setup(params string[] roles)
-        {
-            _roles.Clear();
-            _roles.AddRange(roles);
-        }
-
-        public User User { get { return _user;} }
-
-        #endregion
-
         #region TextBox Keydown
+
         private void txtUserId_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
@@ -115,10 +113,12 @@ namespace DMT.TA.Windows.Collector.Credit
                 e.Handled = true;
             }
         }
+
         #endregion
 
-        public void Setup(string msg1, decimal? msg2)
+        public void Setup(string userId, string msg1, decimal? msg2)
         {
+            _userId = userId;
 
             txtBagID.Text = msg1;
 
@@ -127,6 +127,8 @@ namespace DMT.TA.Windows.Collector.Credit
             else
                 txtAmount.Text = "0";
 
+            _roles.Clear();
+            _roles.Add("COLLECTOR");
         }
     }
 }
