@@ -239,6 +239,8 @@ namespace DMT.Services
 
         #region Public Methods
 
+        #region Refresh
+
         public void Refresh()
         {
             TSB tsb = null;
@@ -249,8 +251,14 @@ namespace DMT.Services
             _coupons = ops.Coupons.GetTSBCouponTransactions(tsb);
         }
 
+        #endregion
+
+        #region For Borrow/Return between Stock-Lane
+
         public void Borrow(TSBCouponTransaction value)
         {
+            if (null == User) return;
+            if (value.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
             value.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
             value.UserId = User.UserId;
             value.UserReceiveDate = DateTime.Now;
@@ -258,10 +266,37 @@ namespace DMT.Services
 
         public void Return(TSBCouponTransaction value)
         {
+            if (value.TransactionType != TSBCouponTransaction.TransactionTypes.Lane) return;
             value.TransactionType = TSBCouponTransaction.TransactionTypes.Stock;
             value.UserId = string.Empty;
             value.UserReceiveDate = DateTime.MinValue;
         }
+
+        #endregion
+
+        #region For Lane Sold/Unsold Coupon (User on hand)
+
+        public void SoldByLane(TSBCouponTransaction value)
+        {
+            //if (null == User) return;
+            if (value.TransactionType != TSBCouponTransaction.TransactionTypes.Lane) return;
+            value.TransactionType = TSBCouponTransaction.TransactionTypes.SoldByLane;
+            //value.UserId = User.UserId;
+            //value.UserReceiveDate = DateTime.Now;
+        }
+
+        public void UnsoldByLane(TSBCouponTransaction value)
+        {
+            //if (null == User) return;
+            if (value.TransactionType != TSBCouponTransaction.TransactionTypes.SoldByLane) return;
+            value.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
+            //value.UserId = string.Empty;
+            //value.UserReceiveDate = DateTime.MinValue;
+        }
+
+        #endregion
+
+        #region Save
 
         public void Save()
         {
@@ -281,6 +316,8 @@ namespace DMT.Services
                 });
             }
         }
+
+        #endregion
 
         #endregion
 
@@ -365,7 +402,7 @@ namespace DMT.Services
 
         #endregion
 
-        #region For Lane Sold/Return Coupon (User on hand)
+        #region For Lane Sold/Unsold Coupon (User on hand)
 
         public List<TSBCouponTransaction> C35UserSolds
         {
