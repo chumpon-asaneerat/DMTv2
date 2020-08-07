@@ -53,6 +53,8 @@ namespace DMT.Models
 		private DateTime _TransactionDate = DateTime.MinValue;
 		private TransactionTypes _TransactionType = TransactionTypes.Request;
 
+		private Guid _GroupId = Guid.Empty; // Exchange group Id.
+
 		private string _TSBId = string.Empty;
 		private string _TSBNameEN = string.Empty;
 		private string _TSBNameTH = string.Empty;
@@ -192,6 +194,31 @@ namespace DMT.Models
 				}
 			}
 		}
+
+		/// <summary>
+		/// Gets or sets Exchange GroupId
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets Exchange GroupId")]
+		[ReadOnly(true)]
+		[PrimaryKey]
+		[PeropertyMapName("GroupId")]
+		public Guid GroupId
+		{
+			get
+			{
+				return _GroupId;
+			}
+			set
+			{
+				if (_GroupId != value)
+				{
+					_GroupId = value;
+					this.RaiseChanged("GroupId");
+				}
+			}
+		}
+
 		/// <summary>
 		/// Gets or sets  Remark.
 		/// </summary>
