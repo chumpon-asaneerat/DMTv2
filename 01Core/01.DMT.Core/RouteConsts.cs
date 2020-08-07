@@ -569,42 +569,12 @@ namespace DMT
 
         #endregion
 
-        #region Addition
+        #region Exchange
 
-        public static class Addition
+        public static class Exchange
         {
-            public const string Name = "Addition";
+            public const string Name = "Exchange";
             public const string Url = RouteConsts.Url + @"/" + Name;
-
-            public static class GetCurrentInitial
-            {
-                public const string Name = "GetCurrentInitial";
-                public const string Url = Addition.Url + @"/" + Name;
-            }
-
-            public static class GetInitial
-            {
-                public const string Name = "GetInitial";
-                public const string Url = Addition.Url + @"/" + Name;
-            }
-
-            public static class SaveTransaction
-            {
-                public const string Name = "SaveTransaction";
-                public const string Url = Addition.Url + @"/" + Name;
-            }
-
-            public static class GetCurrent
-            {
-                public const string Name = "GetCurrent";
-                public const string Url = Addition.Url + @"/" + Name;
-            }
-
-            public static class GetTSBCurrent
-            {
-                public const string Name = "GetTSBCurrent";
-                public const string Url = Addition.Url + @"/" + Name;
-            }
         }
 
         #endregion
