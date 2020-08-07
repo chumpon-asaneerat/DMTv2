@@ -1417,6 +1417,16 @@ namespace DMT.Models
 			}
 		}
 
+		public static void SaveTransaction(TSBCreditTransaction value)
+		{
+			if (null == value) return;
+			if (value.TransactionDate == DateTime.MinValue)
+			{
+				value.TransactionDate = DateTime.Now;
+			}
+			TSBCreditTransaction.Save(value);
+		}
+
 		#endregion
 	}
 

@@ -35,11 +35,7 @@ namespace DMT.Services
         [ActionName(RouteConsts.Credit.SaveTransaction.Name)]
         public void SaveTransaction([FromBody] TSBCreditTransaction value)
         {
-            if (value.TransactionDate == DateTime.MinValue)
-            {
-                value.TransactionDate = DateTime.Now;
-            }
-            TSBCreditTransaction.Save(value);
+            TSBCreditTransaction.SaveTransaction(value);
         }
 
         [HttpPost]
@@ -89,25 +85,15 @@ namespace DMT.Services
         [ActionName(RouteConsts.Credit.SaveUserCredit.Name)]
         public int SaveUserCredit([FromBody] UserCredit value)
         {
-            if (value.UserCreditDate == DateTime.MinValue)
-            {
-                value.UserCreditDate = DateTime.Now;
-            }
             // save
-            UserCredit.Save(value);
-            // returns Id.
-            return value.UserCreditId;
+            return UserCredit.SaveCredit(value);
         }
 
         [HttpPost]
         [ActionName(RouteConsts.Credit.SaveUserTransaction.Name)]
         public void SaveUserTransaction([FromBody] UserCreditTransaction value)
         {
-            if (value.TransactionDate == DateTime.MinValue)
-            {
-                value.TransactionDate = DateTime.Now;
-            }
-            UserCreditTransaction.Save(value);
+            UserCreditTransaction.SaveTransaction(value);
         }
     }
 }

@@ -2007,17 +2007,18 @@ namespace DMT.Models
 			}
 		}
 		*/
-		public static void SaveCredit(UserCredit value)
+		public static int SaveCredit(UserCredit value)
 		{
 			lock (sync)
 			{
-				if (null == value) return;
+				if (null == value) return 0;
 				// set date if not assigned.
 				if (value.UserCreditDate == DateTime.MinValue)
 				{
 					value.UserCreditDate = DateTime.Now;
 				}
 				Save(value);
+				return value.UserCreditId;
 			}
 		}
 
