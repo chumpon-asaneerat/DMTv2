@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Media;
 
 using NLib;
 using NLib.Design;
@@ -31,6 +32,9 @@ namespace DMT.Models
 	//[Table("TSBExchangeTransaction")]
 	public class TSBExchangeTransaction : NTable<TSBExchangeTransaction>
 	{
+		private static SolidColorBrush RedForeground = new SolidColorBrush(Colors.Red);
+		private static SolidColorBrush BlackForeground = new SolidColorBrush(Colors.Black);
+
 		#region Enum
 
 		public enum TransactionTypes : int
