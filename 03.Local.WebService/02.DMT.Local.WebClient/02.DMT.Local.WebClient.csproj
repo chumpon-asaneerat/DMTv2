@@ -70,6 +70,7 @@
     <Compile Include="Services\Operations\PlazaOperations.base.cs" />
     <Compile Include="Services\Operations\PlazaOperations.Coupon.cs" />
     <Compile Include="Services\Operations\PlazaOperations.Credit.cs" />
+    <Compile Include="Services\Operations\PlazaOperations.Exchange.cs" />
     <Compile Include="Services\Operations\PlazaOperations.UserShift.cs" />
     <Compile Include="Services\Operations\PlazaOperations.Lane.cs" />
     <Compile Include="Services\Operations\PlazaOperations.Revenue.cs" />
