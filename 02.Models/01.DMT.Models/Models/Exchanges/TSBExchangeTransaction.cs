@@ -1588,6 +1588,19 @@ namespace DMT.Models
 
 		#region Static Methods
 
+		public static List<TSBExchangeTransaction> GetTSBExchangeTransactions() 
+		{ 
+		}
+
+		public static List<TSBExchangeTransaction> GetTSBExchangeTransactions(TSB tsb)
+		{
+		}
+
+		public static void SaveTSBExchangeTransaction(TSBExchangeTransaction value)
+        {
+
+        }
+
 		#endregion
 	}
 

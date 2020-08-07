@@ -578,15 +578,15 @@ namespace DMT
 
             #region Exchange Transaction
 
-            public static class GetExchangeTransactions
+            public static class GetTSBExchangeTransactions
             {
-                public const string Name = "GetExchangeTransactions";
+                public const string Name = "GetTSBExchangeTransactions";
                 public const string Url = Exchange.Url + @"/" + Name;
             }
 
-            public static class SaveExchangeTransaction
+            public static class SaveTSBExchangeTransaction
             {
-                public const string Name = "SaveExchangeTransaction";
+                public const string Name = "SaveTSBExchangeTransaction";
                 public const string Url = Exchange.Url + @"/" + Name;
             }
 
