@@ -1607,7 +1607,8 @@ namespace DMT.Models
 
 		public static void SaveTransaction(TSBExchangeTransaction value)
 		{
-
+			if (null == value) return;
+			TSBExchangeTransaction.Save(value);
 		}
 
 		#endregion
