@@ -24,8 +24,8 @@ namespace DMT.Services
         public List<TSBExchangeTransaction> GetTSBExchangeTransactions([FromBody] TSB tsb)
         {
             if (null == tsb)
-                return TSBExchangeTransaction.GetTSBExchangeTransactions();
-            return TSBExchangeTransaction.GetTSBExchangeTransactions(tsb);
+                return TSBExchangeTransaction.GetTransactions();
+            return TSBExchangeTransaction.GetTransactions(tsb);
         }
 
         [HttpPost]
@@ -36,7 +36,7 @@ namespace DMT.Services
             {
                 value.TransactionDate = DateTime.Now;
             }
-            TSBExchangeTransaction.SaveTSBExchangeTransaction(value);
+            TSBExchangeTransaction.SaveTransaction(value);
         }
 
         #endregion

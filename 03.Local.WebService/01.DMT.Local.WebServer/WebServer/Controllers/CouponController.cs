@@ -58,7 +58,7 @@ namespace DMT.Services
         [ActionName(RouteConsts.Coupon.SaveTSBCouponTransaction.Name)]
         public void SaveTransaction([FromBody] TSBCouponTransaction value)
         {
-            TSBCouponTransaction.Save(value);
+            TSBCouponTransaction.SaveTransaction(value);
         }
 
         #endregion

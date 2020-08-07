@@ -1588,20 +1588,24 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static List<TSBExchangeTransaction> GetTSBExchangeTransactions() 
+		public static List<TSBExchangeTransaction> GetTransactions() 
 		{
 			lock (sync)
 			{
 				var tsb = TSB.GetCurrent();
-				return GetTSBExchangeTransactions(tsb);
+				return GetTransactions(tsb);
 			}
 		}
 
-		public static List<TSBExchangeTransaction> GetTSBExchangeTransactions(TSB tsb)
+		public static List<TSBExchangeTransaction> GetTransactions(TSB tsb)
 		{
+			List<TSBExchangeTransaction> results = null;
+			if (null == tsb) return new List<TSBExchangeTransaction>();
+
+			return results;
 		}
 
-		public static void SaveTSBExchangeTransaction(TSBExchangeTransaction value)
+		public static void SaveTransaction(TSBExchangeTransaction value)
 		{
 
 		}
