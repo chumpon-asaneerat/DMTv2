@@ -30,8 +30,9 @@ Update 2020-08-07 #12
 Update 2020-08-07 #11
 - 
 
+[commited]
 Update 2020-08-07 #10
-- 
+- Update Exchange process #6.
 
 [commited]
 Update 2020-08-07 #9

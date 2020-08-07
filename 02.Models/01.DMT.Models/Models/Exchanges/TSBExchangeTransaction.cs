@@ -965,6 +965,165 @@ namespace DMT.Models
 
 		#endregion
 
+		#region Coin/Bill (IsValid)
+
+		/// <summary>
+		/// Gets amount is exact match .25 baht coin.
+		/// </summary>
+		[Category("Coin/Bill (IsValid)")]
+		[Description("Gets amount is exact match .25 baht coin.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		[PropertyOrder(32)]
+		public virtual bool IsValidST25
+		{
+			get { return (_AmtST25 % (decimal).25) == 0; }
+			set { }
+		}
+		/// <summary>
+		/// Gets amount is exact match .50 baht coin.
+		/// </summary>
+		[Category("Coin/Bill (IsValid)")]
+		[Description("Gets amount is exact match .50 baht coin.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		[PropertyOrder(33)]
+		public virtual bool IsValidST50
+		{
+			get { return (_AmtST50 % (decimal).5) == 0; }
+			set { }
+		}
+		/// <summary>
+		/// Gets amount is exact match 1 baht coin.
+		/// </summary>
+		[Category("Coin/Bill (IsValid)")]
+		[Description("Gets amount is exact match 1 baht coin.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		[PropertyOrder(34)]
+		public virtual bool IsValidBHT1
+		{
+			get { return _AmtBHT1 == _CntBHT1; }
+			set { }
+		}
+		/// <summary>
+		/// Gets amount is exact match 2 baht coin.
+		/// </summary>
+		[Category("Coin/Bill (IsValid)")]
+		[Description("Gets amount is exact match 2 baht coin.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		[PropertyOrder(35)]
+		public virtual bool IsValidBHT2
+		{
+			get { return (_AmtBHT2 % 2) == 0; }
+			set { }
+		}
+		/// <summary>
+		/// Gets amount is exact match 5 baht coin.
+		/// </summary>
+		[Category("Coin/Bill (IsValid)")]
+		[Description("Gets amount is exact match 5 baht coin.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		[PropertyOrder(36)]
+		public virtual bool IsValidBHT5
+		{
+			get { return (_AmtBHT5 % 5) == 0; }
+			set { }
+		}
+		/// <summary>
+		/// Gets amount is exact match 10 baht coin.
+		/// </summary>
+		[Category("Coin/Bill (IsValid)")]
+		[Description("Gets amount is exact match 10 baht coin.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		[PropertyOrder(37)]
+		public virtual bool IsValidBHT10
+		{
+			get { return (_AmtBHT10 % 10) == 0; }
+			set { }
+		}
+		/// <summary>
+		/// Gets amount is exact match 20 baht bill.
+		/// </summary>
+		[Category("Coin/Bill (IsValid)")]
+		[Description("Gets amount is exact match 20 baht bill.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		[PropertyOrder(38)]
+		public virtual bool IsValidBHT20
+		{
+			get { return (_AmtBHT20 % 20) == 0; }
+			set { }
+		}
+		/// <summary>
+		/// Gets amount is exact match 50 baht bill.
+		/// </summary>
+		[Category("Coin/Bill (IsValid)")]
+		[Description("Gets amount is exact match 50 baht bill.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		[PropertyOrder(39)]
+		public virtual bool IsValidBHT50
+		{
+			get { return (_AmtBHT50 % 50) == 0; }
+			set { }
+		}
+		/// <summary>
+		/// Gets amount is exact match 100 baht bill.
+		/// </summary>
+		[Category("Coin/Bill (IsValid)")]
+		[Description("Gets amount is exact match 100 baht bill.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		[PropertyOrder(40)]
+		public virtual bool IsValidBHT100
+		{
+			get { return (_AmtBHT100 % 100) == 0; }
+			set { }
+		}
+		/// <summary>
+		/// Gets amount is exact match 500 baht bill.
+		/// </summary>
+		[Category("Coin/Bill (IsValid)")]
+		[Description("Gets amount is exact match 500 baht bill.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		[PropertyOrder(41)]
+		public virtual bool IsValidBHT500
+		{
+			get { return (_AmtBHT500 % 500) == 0; }
+			set { }
+		}
+		/// <summary>
+		/// Gets amount is exact match 1000 baht bill.
+		/// </summary>
+		[Category("Coin/Bill (IsValid)")]
+		[Description("Gets amount is exact match 1000 baht bill.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		[PropertyOrder(41)]
+		public virtual bool IsValidBHT1000
+		{
+			get { return (_AmtBHT1000 % 1000) == 0; }
+			set { }
+		}
+
+		#endregion
+
 		#region Coin/Bill (Summary)
 
 		/// <summary>
