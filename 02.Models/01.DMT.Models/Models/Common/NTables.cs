@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Media;
 
 using SQLite;
 using SQLiteNetExtensions.Attributes;
@@ -55,6 +56,13 @@ namespace DMT.Models
     public abstract class NTable<T> : NTable
         where T : NTable, new()
     {
+        #region Static Resources
+
+        protected static SolidColorBrush RedForeground = new SolidColorBrush(Colors.Red);
+        protected static SolidColorBrush BlackForeground = new SolidColorBrush(Colors.Black);
+
+        #endregion
+
         #region Static Methods
 
         #region Create

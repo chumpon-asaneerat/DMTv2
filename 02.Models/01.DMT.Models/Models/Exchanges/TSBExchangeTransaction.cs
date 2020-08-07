@@ -32,9 +32,6 @@ namespace DMT.Models
 	//[Table("TSBExchangeTransaction")]
 	public class TSBExchangeTransaction : NTable<TSBExchangeTransaction>
 	{
-		private static SolidColorBrush RedForeground = new SolidColorBrush(Colors.Red);
-		private static SolidColorBrush BlackForeground = new SolidColorBrush(Colors.Black);
-
 		#region Enum
 
 		public enum TransactionTypes : int

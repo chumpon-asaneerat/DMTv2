@@ -32,9 +32,6 @@ namespace DMT.Models
 	//[Table("TSBCreditBalance")]
 	public class TSBCreditBalance : NTable<TSBCreditBalance>
 	{
-		private static SolidColorBrush RedForeground = new SolidColorBrush(Colors.Red);
-		private static SolidColorBrush BlackForeground = new SolidColorBrush(Colors.Black);
-
 		#region Internal Variables
 
 		// For Runtime Used
