@@ -14,6 +14,7 @@ using System.ComponentModel;
 using Newtonsoft.Json;
 using NLib;
 using NLib.Reflection;
+using System.Reflection;
 
 #endregion
 
@@ -118,6 +119,8 @@ namespace DMT.Models
             lock (sync)
             {
                 if (null == db || null == value) return;
+                MethodBase med = MethodBase.GetCurrentMethod();
+
                 if (!Exists(db, value))
                 {
                     //db.Insert(value);
@@ -127,7 +130,7 @@ namespace DMT.Models
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex);
+                        med.Err(ex);
                     }
                 }
                 else
@@ -139,7 +142,7 @@ namespace DMT.Models
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex);
+                        med.Err(ex);
                     }
                 }
             }
