@@ -37,12 +37,22 @@ namespace DMT.Models
 		{
 			// Request.
 			Request = 1,
-			// Approve.
-			Approve = 2,
-			// Received.
-			Received = 3,
 			// Canceled.
-			Canceled = 4
+			Canceled = 2,
+			// Approve.
+			Approve = 3,
+			// Reject.
+			Reject = 4,
+			// Received.
+			Received = 5,
+			// Completed (reserved).
+			Completed = 9
+		}
+
+		public enum FinishedFlags : int
+		{
+			Completed = 0,
+			Avaliable = 1
 		}
 
 		#endregion
@@ -61,6 +71,7 @@ namespace DMT.Models
 
 		private string _Remark = string.Empty;
 
+		private FinishedFlags _FinishFlag = FinishedFlags.Avaliable;
 		private int _Status = 0;
 		private DateTime _LastUpdate = DateTime.MinValue;
 
@@ -194,7 +205,6 @@ namespace DMT.Models
 				}
 			}
 		}
-
 		/// <summary>
 		/// Gets or sets Exchange GroupId
 		/// </summary>
@@ -218,24 +228,25 @@ namespace DMT.Models
 				}
 			}
 		}
-
 		/// <summary>
-		/// Gets or sets  Remark.
+		/// Gets or sets Finish Flag (0: Completed, 1: Avaliable).
 		/// </summary>
-		[Category("Remark")]
-		[Description("Gets or sets  Remark.")]
-		[MaxLength(255)]
-		[PeropertyMapName("Remark")]
-		public string Remark
+		[Category("Common")]
+		[Description("Gets or sets Is Finished (0: Completed, 1: Avaliable).")]
+		[ReadOnly(true)]
+		[PeropertyMapName("FinishFlag")]
+		public virtual FinishedFlags FinishFlag
 		{
-			get { return _Remark; }
+			get
+			{
+				return _FinishFlag;
+			}
 			set
 			{
-				if (_Remark != value)
+				if (_FinishFlag != value)
 				{
-					_Remark = value;
-					// Raise event.
-					this.RaiseChanged("Remark");
+					_FinishFlag = value;
+					this.RaiseChanged("FinishFlag");
 				}
 			}
 		}
@@ -310,6 +321,31 @@ namespace DMT.Models
 				{
 					_TSBNameTH = value;
 					this.RaiseChanged("TSBNameTH");
+				}
+			}
+		}
+
+		#endregion
+
+		#region Remark
+
+		/// <summary>
+		/// Gets or sets  Remark.
+		/// </summary>
+		[Category("Remark")]
+		[Description("Gets or sets  Remark.")]
+		[MaxLength(255)]
+		[PeropertyMapName("Remark")]
+		public string Remark
+		{
+			get { return _Remark; }
+			set
+			{
+				if (_Remark != value)
+				{
+					_Remark = value;
+					// Raise event.
+					this.RaiseChanged("Remark");
 				}
 			}
 		}
