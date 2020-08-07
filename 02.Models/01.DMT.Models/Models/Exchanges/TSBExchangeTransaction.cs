@@ -100,6 +100,8 @@ namespace DMT.Models
 
 		private decimal _BHTTotal = decimal.Zero;
 
+		private decimal _AdditionalBHT = decimal.Zero;
+
 		private string _Remark = string.Empty;
 
 		private FinishedFlags _FinishFlag = FinishedFlags.Avaliable;
@@ -976,6 +978,31 @@ namespace DMT.Models
 		{
 			get { return _BHTTotal; }
 			set { }
+		}
+
+		#endregion
+
+		#region Additional
+
+		/// <summary>
+		/// Gets or sets amount Additional BHT.
+		/// </summary>
+		[Category("Additional (Amount)")]
+		[Description("Gets or sets amount Additional BHT.")]
+		[PeropertyMapName("AdditionalBHT")]
+		[PropertyOrder(51)]
+		public virtual decimal AdditionalBHT
+		{
+			get { return _AdditionalBHT; }
+			set
+			{
+				if (_AdditionalBHT != value)
+				{
+					_AdditionalBHT = value;
+					// Raise event.
+					this.RaiseChanged("AdditionalBHT");
+				}
+			}
 		}
 
 		#endregion
