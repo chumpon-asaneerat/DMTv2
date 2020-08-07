@@ -962,6 +962,18 @@ namespace DMT.Models
 				}
 			}
 		}
+
+		public static void SaveTSBCouponTransaction(TSBCouponTransaction value)
+		{
+			if (null == value) return;
+			if (value.TransactionDate == DateTime.MinValue)
+			{
+				value.TransactionDate = DateTime.Now;
+			}
+			TSBCouponTransaction.Save(value);
+
+		}
+
 		/*
 		public static List<TSBCouponTransaction> GetTSBCoupons()
 		{

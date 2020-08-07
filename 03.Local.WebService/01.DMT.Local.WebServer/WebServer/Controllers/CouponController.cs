@@ -58,10 +58,6 @@ namespace DMT.Services
         [ActionName(RouteConsts.Coupon.SaveTSBCouponTransaction.Name)]
         public void SaveTransaction([FromBody] TSBCouponTransaction value)
         {
-            if (value.TransactionDate == DateTime.MinValue)
-            {
-                value.TransactionDate = DateTime.Now;
-            }
             TSBCouponTransaction.Save(value);
         }
 
