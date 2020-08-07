@@ -575,6 +575,22 @@ namespace DMT
         {
             public const string Name = "Exchange";
             public const string Url = RouteConsts.Url + @"/" + Name;
+
+            #region Exchange Transaction
+
+            public static class GetExchangeTransactions
+            {
+                public const string Name = "GetExchangeTransactions";
+                public const string Url = Exchange.Url + @"/" + Name;
+            }
+
+            public static class SaveExchangeTransaction
+            {
+                public const string Name = "SaveExchangeTransaction";
+                public const string Url = Exchange.Url + @"/" + Name;
+            }
+
+            #endregion
         }
 
         #endregion
