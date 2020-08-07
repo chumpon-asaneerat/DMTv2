@@ -27,8 +27,9 @@ Update 2020-08-07 #18
 Update 2020-08-07 #17
 -
 
+[commited]
 Update 2020-08-07 #16
--
+- Update Exchange process #12.
 
 [commited]
 Update 2020-08-07 #15

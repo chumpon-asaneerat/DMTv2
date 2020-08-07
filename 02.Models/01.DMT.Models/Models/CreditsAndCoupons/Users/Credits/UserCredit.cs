@@ -32,9 +32,6 @@ namespace DMT.Models
 	//[Table("UserCredit")]
 	public class UserCredit : NTable<UserCredit>
 	{
-		private static SolidColorBrush RedForeground = new SolidColorBrush(Colors.Red);
-		private static SolidColorBrush BlackForeground = new SolidColorBrush(Colors.Black);
-
 		#region Enum
 
 		public enum StateTypes : int
