@@ -3069,17 +3069,6 @@ namespace DMT.Smartcard
                 return _instance;
             }
         }
-        /// <summary>
-        /// Free all resources.
-        /// </summary>
-        public static void Release()
-        {
-            if (null != _instance)
-            {
-                _instance.Dispose(true);
-            }
-            _instance = null;
-        }
 
         #endregion
 
@@ -3364,6 +3353,22 @@ namespace DMT.Smartcard
         /// OnIdle Event Handler
         /// </summary>
         public event EventHandler OnIdle;
+
+        #endregion
+
+        #region Public Statis Methods
+
+        /// <summary>
+        /// Free all resources.
+        /// </summary>
+        public static void Release()
+        {
+            if (null != _instance)
+            {
+                _instance.Dispose(true);
+            }
+            _instance = null;
+        }
 
         #endregion
     }
