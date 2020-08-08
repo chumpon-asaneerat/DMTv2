@@ -2689,7 +2689,10 @@ namespace DMT.Smartcard
                     }
                     Handle = IntPtr.Zero;
                 }
-                //SDK = null;
+                if (null != SDK)
+                {
+                    //SDK = null;
+                }
                 disposedValue = true;
             }
         }
@@ -3103,13 +3106,30 @@ namespace DMT.Smartcard
         /// </summary>
         private SmartcardService()
         {
-
+            AppDomain.CurrentDomain.DomainUnload += CurrentDomain_DomainUnload;
+            AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
         }
         /// <summary>
         /// Destructor.
         /// </summary>
         ~SmartcardService()
         {
+            Dispose(true);
+        }
+
+        #endregion
+
+        #region AppDomin Event Handlers
+
+        private void CurrentDomain_DomainUnload(object sender, EventArgs e)
+        {
+            AppDomain.CurrentDomain.DomainUnload -= CurrentDomain_DomainUnload;
+            Dispose(true);
+        }
+
+        private void CurrentDomain_ProcessExit(object sender, EventArgs e)
+        {
+            AppDomain.CurrentDomain.ProcessExit -= CurrentDomain_ProcessExit;
             Dispose(true);
         }
 
