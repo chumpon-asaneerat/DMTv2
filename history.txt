@@ -41,8 +41,19 @@ Update 2020-08-08 #8
 Update 2020-08-08 #7
 - 
 
+[commited]
 Update 2020-08-08 #6
-- 
+- Note:
+  - TA/TOD should has config to set local web server ip address to access from difference
+    computer.
+  - Smartcard Service require to check open port from difference process on same computer
+    but not same time.
+  - Required to Implements basic communitation to TA/TOD Server (Web Service).
+  - TSB Credit fixed bug when User borrow first time -> may required to seperate business
+    logic from UI.
+  - Node.js mssql checks connect to SQL Server via domain (check connection string/config).
+  - Update Simulator App for more user friendly (all screen)
+  - Update Config App add more config related to setting Server and Windows Service.
 
 [commited]
 Update 2020-08-08 #5
