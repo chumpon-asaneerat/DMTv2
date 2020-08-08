@@ -144,8 +144,6 @@ namespace DMT.Services
 			Db.CreateTable<User>();
 
 			Db.CreateTable<Payment>();
-			//Db.CreateTable<CouponFactorGroup>();
-			//Db.CreateTable<CouponFactor>();
 
 			Db.CreateTable<Config>();
 			Db.CreateTable<ViewHistory>();
@@ -162,13 +160,14 @@ namespace DMT.Services
 			Db.CreateTable<TSBCreditTransaction>();
 
 			Db.CreateTable<TSBCouponTransaction>();
-			//Db.CreateTable<TSBAdditionTransaction>();
 
 			Db.CreateTable<UserCredit>();
 			Db.CreateTable<UserCreditTransaction>();
 
 			//Db.CreateTable<UserCoupon>();
 			Db.CreateTable<UserCouponTransaction>();
+
+			Db.CreateTable<TSBExchangeTransaction>();
 
 			InitDefaults();
 		}
@@ -179,7 +178,6 @@ namespace DMT.Services
 			InitShifts();
 			InitRoleAndUsers();
 			InitPayments();
-			InitCouponFactors();
 			InitConfigs();
 			InitViews();
 		}
@@ -1303,29 +1301,6 @@ namespace DMT.Services
 			if (!Payment.Exists(item)) Payment.Save(item);
 		}
 
-		private void InitCouponFactors()
-		{
-			/*
-			var group = new CouponFactorGroup();
-			group.Remark = "Default";
-			group.Begin = DateTime.MinValue;
-			group.End = DateTime.MinValue;
-			CouponFactorGroup.Save(group);
-			// Coupon 35.
-			var c35 = new CouponFactor();
-			c35.GroupPkId = group.GroupPkId;
-			c35.CouponType = CouponType.BHT35;
-			c35.Factor = 665;
-			CouponFactor.Save(c35);
-			// Coupon 80.
-			var c80 = new CouponFactor();
-			c80.GroupPkId = group.GroupPkId;
-			c80.CouponType = CouponType.BHT80;
-			c80.Factor = 1520;
-			CouponFactor.Save(c80);
-			*/
-		}
-
 		private void InitConfigs()
 		{
 			if (null == Db) return;
@@ -1370,6 +1345,10 @@ namespace DMT.Services
 			InitView("UserCoupon35SummaryView", prefix);
 			InitView("UserCoupon80SummaryView", prefix);
 			InitView("UserCouponSummaryView", prefix);
+
+			// Exchanges - Embeded resource used . instead / to access sub contents.
+			prefix = @"Exchanges";
+			InitView("TSBExchangeTransactionView", prefix);
 		}
 
 		class ViewInfo
