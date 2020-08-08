@@ -58,7 +58,7 @@ namespace DMT.Services
 
             #region Public Methods
 
-            #region TSB Balance
+            #region TSB Credit Balance
 
             public TSBCreditBalance GetTSBBalance(TSB tsb)
             {
@@ -66,6 +66,20 @@ namespace DMT.Services
                     RouteConsts.Credit.GetTSBBalance.Url, tsb);
                 return ret;
             }
+
+            #endregion
+
+            #region TSB Credit Transaction
+
+            public void SaveTSBCreditTransaction(TSBCreditTransaction value)
+            {
+                NRestClient.Create(port: 9000).Execute(
+                    RouteConsts.Credit.SaveTSBCreditTransaction.Url, value);
+            }
+
+            #endregion
+
+            #region User Credit Transaction
 
             #endregion
 
@@ -82,12 +96,6 @@ namespace DMT.Services
                 var ret = NRestClient.Create(port: 9000).Execute<TSBCreditTransaction>(
                     RouteConsts.Credit.GetInitial.Url, tsb);
                 return ret;
-            }
-
-            public void SaveTransaction(TSBCreditTransaction value)
-            {
-                NRestClient.Create(port: 9000).Execute(
-                    RouteConsts.Credit.SaveTransaction.Url, value);
             }
 
             public UserCredit GetActiveUserCredit(Search.UserCredits.GetActive value)

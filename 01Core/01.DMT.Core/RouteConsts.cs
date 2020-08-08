@@ -381,11 +381,29 @@ namespace DMT
             public const string Name = "Credit";
             public const string Url = RouteConsts.Url + @"/" + Name;
 
+            #region TSB Credit Balance
+
             public static class GetTSBBalance
             {
                 public const string Name = "GetTSBBalance";
                 public const string Url = Credit.Url + @"/" + Name;
             }
+
+            #endregion
+
+            #region TSB Credit Transaction
+
+            public static class SaveTSBCreditTransaction
+            {
+                public const string Name = "SaveTSBCreditTransaction";
+                public const string Url = Credit.Url + @"/" + Name;
+            }
+
+            #endregion
+
+            #region TSB User Transaction
+
+            #endregion
 
             /*
             public static class GetCurrentInitial
@@ -397,12 +415,6 @@ namespace DMT
             public static class GetInitial
             {
                 public const string Name = "GetInitial";
-                public const string Url = Credit.Url + @"/" + Name;
-            }
-
-            public static class SaveTransaction
-            {
-                public const string Name = "SaveTransaction";
                 public const string Url = Credit.Url + @"/" + Name;
             }
 

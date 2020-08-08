@@ -76,8 +76,7 @@ namespace DMT.Config.Pages
         {
             var item = pgrid.SelectedObject as TSBCreditTransaction;
             if (null == item) return;
-            //TODO: Fixed Credit (Save Transaction).
-            //ops.Credits.SaveTransaction(item);
+            ops.Credits.SaveTSBCreditTransaction(item);
             // clear
             pgrid.SelectedObject = null;
         }
