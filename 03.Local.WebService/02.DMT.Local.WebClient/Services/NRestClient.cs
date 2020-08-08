@@ -80,17 +80,13 @@ namespace DMT.Services
         {
             string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
             var client = new RestClient(BaseUrl);
-            client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
+            //client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
             client.UseNewtonsoftJson();
             var request = new RestRequest(actionUrl, Method.POST);
             request.RequestFormat = DataFormat.Json;
             if (null != pObj)
             {
                 request.AddJsonBody(pObj);
-            }
-            else
-            {
-                Console.WriteLine("No body add null parameter assigned");
             }
 
             TReturn ret = default;
@@ -101,12 +97,12 @@ namespace DMT.Services
                 {
                     Console.WriteLine("Error");
                 }
-                Console.WriteLine(response.Content);
+                //Console.WriteLine(response.Content);
                 ret = response.Content.FromJson<TReturn>();
             }
             else
             {
-                Console.WriteLine("Execute no response.");
+                //Console.WriteLine("Execute no response.");
             }
 
             return ret;
@@ -121,19 +117,13 @@ namespace DMT.Services
         {
             string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
             var client = new RestClient(BaseUrl);
-            client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
+            //client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
             client.UseNewtonsoftJson();
             var request = new RestRequest(actionUrl, Method.POST);
             request.RequestFormat = DataFormat.Json;
             if (null != pObj)
             {
-                var jstr = pObj.ToJson(true);
-                Console.WriteLine("Len: {0}, Data: {1}", jstr.Length, jstr);
                 request.AddJsonBody(pObj);
-            }
-            else
-            {
-                Console.WriteLine("No body add null parameter assigned");
             }
 
             var response = client.Execute(request);
@@ -143,11 +133,11 @@ namespace DMT.Services
                 {
                     Console.WriteLine("Error");
                 }
-                Console.WriteLine(response.Content);
+                //Console.WriteLine(response.Content);
             }
             else
             {
-                Console.WriteLine("Execute no response.");
+                //Console.WriteLine("Execute no response.");
             }
         }
 

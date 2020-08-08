@@ -9,6 +9,7 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using System.Web.Http;
+using System.Web.Http.Validation;
 
 #endregion
 
@@ -42,11 +43,23 @@ namespace DMT.Services
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             };
             config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new StringEnumConverter());
+            // Replace IBodyModelValidator to Custom Model Validator to prevent
+            // Insufficient Stack problem.
+            config.Services.Replace(typeof(IBodyModelValidator), new CustomBodyModelValidator());
 
             appBuilder.UseWebApi(config);
         }
     }
 
+    public class CustomBodyModelValidator : DefaultBodyModelValidator
+    {
+        public override bool ShouldValidateType(Type type)
+        {
+            // Ignore validation on all DMTModelBase subclasses.
+            bool isDMTModel = !type.IsSubclassOf(typeof(Models.DMTModelBase));
+            return isDMTModel && base.ShouldValidateType(type);
+        }
+    }
     /// <summary>
     /// Local Database Web Server (Self Host).
     /// </summary>
