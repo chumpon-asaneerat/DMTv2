@@ -3116,15 +3116,21 @@ namespace DMT.Smartcard
                 timer.Tick -= Timer_Tick;
             }
             timer = null;
-
+            Release();
         }
 
         public static void Release()
         {
-            if (null != reader) reader.Dispose();
+            if (null != reader)
+            {
+                reader.Dispose();
+            }
             reader = null;
 
-            if (null != sdk) sdk.Dispose();
+            if (null != sdk)
+            {
+                sdk.Dispose();
+            }
             sdk = null;
         }
 
