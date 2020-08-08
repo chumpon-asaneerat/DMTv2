@@ -2983,12 +2983,12 @@ namespace DMT.Smartcard
 
     #endregion
 
-    #region SmartcardService
+    #region SmartcardService2
 
     /// <summary>
     /// The Smartcard Service class.
     /// </summary>
-    public static class SmartcardService
+    public static class SmartcardService2
     {
         #region Internal Variables
 
@@ -3011,7 +3011,7 @@ namespace DMT.Smartcard
         /// <summary>
         /// Constructor (static)
         /// </summary>
-        static SmartcardService()
+        static SmartcardService2()
         {
             // load factory.
             factory = SL600SDKFactory.CreateFactory(
@@ -3159,6 +3159,229 @@ namespace DMT.Smartcard
         /// OnIdle Event Handler
         /// </summary>
         public static event EventHandler OnIdle;
+
+        #endregion
+    }
+
+    #endregion
+
+    #region SmartcardService
+
+    /// <summary>
+    /// The Smartcard Service class.
+    /// </summary>
+    public class SmartcardService : IDisposable
+    {
+        #region Singelton
+
+        private static SmartcardService _instance = null;
+        /// <summary>
+        /// Singelton Access.
+        /// </summary>
+        public static SmartcardService Instance
+        {
+            get
+            {
+                if (null == _instance)
+                {
+                    lock (typeof(SmartcardService))
+                    {
+                        _instance = new SmartcardService();
+                    }
+                }
+                return _instance;
+            }
+        }
+
+        public static void Release()
+        {
+            if (null != _instance)
+            {
+                _instance.Dispose();
+            }
+            _instance = null;
+        }
+
+        #endregion
+
+        #region Internal Variables
+
+        private bool onScanning = false;
+
+        private SL600SDKFactory factory = null;
+        private SL600SDK sdk = null;
+
+        private Sl600SmartCardReader reader = null;
+        private DispatcherTimer timer = null;
+
+        public bool ReadSerialNoOnly = false;
+        private Sl600SmartCardReader.ReadCardSerialResult _lastSN = null;
+        private Sl600SmartCardReader.ReadCardBlockResult _lastData = null;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor (private)
+        /// </summary>
+        private SmartcardService()
+        {
+            // load factory.
+            factory = SL600SDKFactory.CreateFactory(
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MasterRD.dll"));
+        }
+        /// <summary>
+        /// Destructor.
+        /// </summary>
+        ~SmartcardService()
+        {
+            Dispose();
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if (onScanning) return;
+
+            onScanning = true;
+
+            if (null != reader)
+            {
+                if (reader.IsCardExist())
+                {
+                    //SL600SDK.DefaultKey
+                    var snResult = reader.ReadCardSerial(/*true*/);
+                    if (null != snResult && snResult.status == 0)
+                    {
+                        if (null == _lastSN ||
+                            _lastSN.SerialNo != snResult.SerialNo)
+                        {
+                            if (null != OnCardReadSerial)
+                            {
+                                OnCardReadSerial.Invoke(null, new M1CardReadSerialEventArgs(snResult));
+                            }
+                            _lastSN = snResult;
+
+                            if (!ReadSerialNoOnly)
+                            {
+                                var dataResult = reader.ReadCardBlock(SecureKey/*, true, true*/);
+                                if (null == _lastData ||
+                                    (null != _lastData &&
+                                    _lastData.Block0 != dataResult.Block0 &&
+                                    _lastData.Block1 != dataResult.Block1 &&
+                                    _lastData.Block2 != dataResult.Block2 &&
+                                    _lastData.Block3 != dataResult.Block3))
+                                {
+                                    // Raise event if last read value is not same card.
+                                    if (null != OnCardReadBlock)
+                                    {
+                                        OnCardReadBlock.Invoke(null, new M1CardReadBlockEventArgs(dataResult));
+                                    }
+                                    _lastData = dataResult;
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    // reset last read card.
+                    if (null != _lastSN || null != _lastData)
+                    {
+                        if (null != OnIdle)
+                        {
+                            OnIdle.Invoke(null, EventArgs.Empty);
+                        }
+                        _lastSN = null;
+                        _lastData = null;
+                    }
+                }
+            }
+
+            onScanning = false;
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Dispose;
+        /// </summary>
+        public void Dispose()
+        {
+            if (null != reader)
+            {
+                reader.Dispose();
+            }
+            reader = null;
+
+            if (null != sdk)
+            {
+                sdk.Dispose();
+            }
+            sdk = null;
+        }
+        /// <summary>
+        /// Start listen USB port.
+        /// </summary>
+        public void Start()
+        {
+            //if (null != sdk) return; // already start.
+
+            //var resolver = CreateResolver();
+            if (null == sdk) sdk = factory.CreateInstance();
+
+            if (null == reader) reader = new Sl600SmartCardReader(sdk, 0) { IsEmv = false };
+
+            timer = new DispatcherTimer();
+            timer.Tick += Timer_Tick;
+            timer.Interval = TimeSpan.FromMilliseconds(150);
+            timer.Start();
+        }
+        /// <summary>
+        /// Shutdown and free resources.
+        /// </summary>
+        public void Shutdown()
+        {
+            if (null != timer)
+            {
+                timer.Stop();
+                timer.Tick -= Timer_Tick;
+            }
+            timer = null;
+            Release();
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets Secure Key.
+        /// </summary>
+        public byte[] SecureKey { get; set; }
+
+        #endregion
+
+        #region Public events
+
+        /// <summary>
+        /// OnCardReadSerial Event Handler.
+        /// </summary>
+        public event M1CardReadSerialEventHandler OnCardReadSerial;
+        /// <summary>
+        /// OnCardReadBlock Event Handler.
+        /// </summary>
+        public event M1CardReadBlockEventHandler OnCardReadBlock;
+        /// <summary>
+        /// OnIdle Event Handler
+        /// </summary>
+        public event EventHandler OnIdle;
 
         #endregion
     }
