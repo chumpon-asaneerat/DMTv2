@@ -79,4 +79,47 @@ namespace DMT.Services
 
         #endregion
     }
+
+    public class TSBExchangeManager
+    {
+        #region Internal Variables
+
+        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+
+        private List<TSBExchangeTransaction> _origins = null;
+        private List<TSBExchangeTransaction> _coupons = null;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public TSBExchangeManager() : base()
+        {
+        }
+        /// <summary>
+        /// Destructor.
+        /// </summary>
+        ~TSBExchangeManager()
+        {
+
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public void Refresh()
+        {
+            TSB tsb = null;
+            // get original list.
+            _origins = ops.Exchanges.GetTSBExchangeTransactions(tsb);
+            // get work list.
+            _coupons = ops.Exchanges.GetTSBExchangeTransactions(tsb);
+        }
+
+        #endregion
+    }
 }
