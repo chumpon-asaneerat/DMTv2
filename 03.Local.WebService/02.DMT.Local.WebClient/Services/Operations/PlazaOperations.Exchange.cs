@@ -87,7 +87,7 @@ namespace DMT.Services
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
 
         private List<TSBExchangeTransaction> _origins = null;
-        private List<TSBExchangeTransaction> _coupons = null;
+        private List<TSBExchangeTransaction> _exchanges = null;
 
         #endregion
 
@@ -111,14 +111,45 @@ namespace DMT.Services
 
         #region Public Methods
 
+        #region Refresh
+
         public void Refresh()
         {
             TSB tsb = null;
             // get original list.
             _origins = ops.Exchanges.GetTSBExchangeTransactions(tsb);
             // get work list.
-            _coupons = ops.Exchanges.GetTSBExchangeTransactions(tsb);
+            _exchanges = ops.Exchanges.GetTSBExchangeTransactions(tsb);
         }
+
+        #endregion
+
+        #region Save
+
+        public void Save(TSBExchangeTransaction value)
+        {
+            if (null != _exchanges)
+            {
+                _exchanges.ForEach(exchange =>
+                {
+                    /*
+                    //??? figure how to identify match row !!.
+                    var origin = (null != _origins) ? _origins.Find(x => x.CouponId == coupon.CouponId) : null;
+                    if (null != origin)
+                    {
+                        if (origin.TransactionType != exchange.TransactionType ||
+                            origin.UserId != exchange.UserId ||
+                            origin.FinishFlag != exchange.FinishFlag)
+                        {
+                            ops.Exchanges.SaveTSBExchangeTransaction(exchange);
+                        }
+                    }
+                    */
+                });
+            }
+        }
+
+        #endregion
 
         #endregion
     }
