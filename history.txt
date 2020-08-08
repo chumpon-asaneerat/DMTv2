@@ -29,8 +29,9 @@ Update 2020-08-08 #32
 Update 2020-08-08 #31
 - 
 
+[commited]
 Update 2020-08-08 #30
-- 
+- Re-Implements Smartcard (core) #18 (still has problem when device unplug/replug).
 
 [commited]
 Update 2020-08-08 #29

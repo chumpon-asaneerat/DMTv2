@@ -178,6 +178,7 @@ namespace SmartcardM1Test
 
         private void cmdRelease_Click(object sender, EventArgs e)
         {
+            SmartcardService.Instance.Shutdown(true);
             SmartcardService.Release();
             // Update Status
             UpdateStatus();
