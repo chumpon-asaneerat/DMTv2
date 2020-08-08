@@ -31,6 +31,14 @@ namespace DMT.Services
 
         #region TSB Credit Transaction
 
+
+        [HttpPost]
+        [ActionName(RouteConsts.Credit.GetInitialTSBCreditTransaction.Name)]
+        public TSBCreditTransaction GetInitialTSBCreditTransaction([FromBody] TSB tsb)
+        {
+            return TSBCreditTransaction.GetInitialTransaction(tsb);
+        }
+
         [HttpPost]
         [ActionName(RouteConsts.Credit.SaveTSBCreditTransaction.Name)]
         public void SaveTSBCreditTransaction([FromBody] TSBCreditTransaction value)
@@ -45,19 +53,6 @@ namespace DMT.Services
         #endregion
 
         /*
-        [HttpPost]
-        [ActionName(RouteConsts.Credit.GetCurrentInitial.Name)]
-        public TSBCreditTransaction GetCurrentInitial()
-        {
-            return TSBCreditTransaction.GetInitial();
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Credit.GetInitial.Name)]
-        public TSBCreditTransaction GetInitial([FromBody] TSB tsb)
-        {
-            return TSBCreditTransaction.GetInitial(tsb);
-        }
 
         [HttpPost]
         [ActionName(RouteConsts.Credit.GetActiveUserCredit.Name)]

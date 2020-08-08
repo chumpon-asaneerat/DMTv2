@@ -71,6 +71,13 @@ namespace DMT.Services
 
             #region TSB Credit Transaction
 
+            public TSBCreditTransaction GetInitialTSBCreditTransaction(TSB tsb)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<TSBCreditTransaction>(
+                    RouteConsts.Credit.GetInitialTSBCreditTransaction.Url, tsb);
+                return ret;
+            }
+
             public void SaveTSBCreditTransaction(TSBCreditTransaction value)
             {
                 NRestClient.Create(port: 9000).Execute(
@@ -88,19 +95,6 @@ namespace DMT.Services
             #endregion
 
             /*
-            public TSBCreditTransaction GetCurrentInitial()
-            {
-                var ret = NRestClient.Create(port: 9000).Execute<TSBCreditTransaction>(
-                    RouteConsts.Credit.GetCurrentInitial.Url, new { });
-                return ret;
-            }
-
-            public TSBCreditTransaction GetInitial(TSB tsb)
-            {
-                var ret = NRestClient.Create(port: 9000).Execute<TSBCreditTransaction>(
-                    RouteConsts.Credit.GetInitial.Url, tsb);
-                return ret;
-            }
 
             public UserCredit GetActiveUserCredit(Search.UserCredits.GetActive value)
             {

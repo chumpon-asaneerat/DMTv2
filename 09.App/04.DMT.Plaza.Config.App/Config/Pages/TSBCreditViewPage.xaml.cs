@@ -64,8 +64,7 @@ namespace DMT.Config.Pages
             pgrid.SelectedObject = null;
             if (null == item) return;
 
-            //TODO: Fixed Credit (Get Initial).
-            //pgrid.SelectedObject = ops.Credits.GetInitial(item);
+            pgrid.SelectedObject = ops.Credits.GetInitialTSBCreditTransaction(item);
         }
 
         #endregion

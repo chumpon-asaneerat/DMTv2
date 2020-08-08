@@ -1378,16 +1378,16 @@ namespace DMT.Models
 			}
 		}
 
-		public static TSBCreditTransaction GetInitial()
+		public static TSBCreditTransaction GetInitialTransaction()
 		{
 			lock (sync)
 			{
 				var tsb = TSB.GetCurrent();
-				return GetInitial(tsb);
+				return GetInitialTransaction(tsb);
 			}
 		}
 
-		public static TSBCreditTransaction GetInitial(TSB tsb)
+		public static TSBCreditTransaction GetInitialTransaction(TSB tsb)
 		{
 			if (null == tsb) return null;
 			lock (sync)

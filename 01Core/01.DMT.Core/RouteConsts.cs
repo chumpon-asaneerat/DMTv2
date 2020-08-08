@@ -393,6 +393,12 @@ namespace DMT
 
             #region TSB Credit Transaction
 
+            public static class GetInitialTSBCreditTransaction
+            {
+                public const string Name = "GetInitialTSBCreditTransaction";
+                public const string Url = Credit.Url + @"/" + Name;
+            }
+
             public static class SaveTSBCreditTransaction
             {
                 public const string Name = "SaveTSBCreditTransaction";
@@ -413,12 +419,6 @@ namespace DMT
             public static class GetCurrentInitial
             {
                 public const string Name = "GetCurrentInitial";
-                public const string Url = Credit.Url + @"/" + Name;
-            }
-
-            public static class GetInitial
-            {
-                public const string Name = "GetInitial";
                 public const string Url = Credit.Url + @"/" + Name;
             }
 
