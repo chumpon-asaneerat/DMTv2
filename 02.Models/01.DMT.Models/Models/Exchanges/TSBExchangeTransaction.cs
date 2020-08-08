@@ -1599,10 +1599,31 @@ namespace DMT.Models
 
 		public static List<TSBExchangeTransaction> GetTransactions(TSB tsb)
 		{
-			List<TSBExchangeTransaction> results = null;
-			if (null == tsb) return new List<TSBExchangeTransaction>();
+			if (null == tsb) return null;
+			lock (sync)
+			{
+				// Required to change to view later.
+				string cmd = string.Empty;
+				cmd += "SELECT * ";
+				cmd += "  FROM TSBExchangeTransaction ";
+				cmd += " WHERE TSBExchangeTransaction.TSBId = ? ";
+				cmd += "   AND TSBExchangeTransaction.FinishFlag = 1 ";
 
-			return results;
+				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
+				if (null == rets)
+				{
+					return new List<TSBExchangeTransaction>();
+				}
+				else
+				{
+					var results = new List<TSBExchangeTransaction>();
+					rets.ForEach(ret =>
+					{
+						results.Add(ret.ToTSBExchangeTransaction());
+					});
+					return results;
+				}
+			}
 		}
 
 		public static void SaveTransaction(TSBExchangeTransaction value)
