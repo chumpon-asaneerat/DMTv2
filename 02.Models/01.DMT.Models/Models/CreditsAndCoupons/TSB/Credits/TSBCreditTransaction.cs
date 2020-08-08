@@ -502,10 +502,7 @@ namespace DMT.Models
 		[PropertyOrder(12)]
 		public virtual int CountBHT1
 		{
-			get 
-			{ 
-				return _CntBHT1; 
-			}
+			get { return _CntBHT1; }
 			set
 			{
 				if (_CntBHT1 != value)
@@ -795,10 +792,7 @@ namespace DMT.Models
 		[PropertyOrder(23)]
 		public virtual decimal AmountBHT1
 		{
-			get 
-			{ 
-				return _AmtBHT1; 
-			}
+			get { return _AmtBHT1; }
 			set
 			{
 				if (_AmtBHT1 != value)
