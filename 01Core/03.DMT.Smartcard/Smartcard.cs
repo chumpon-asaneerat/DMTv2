@@ -3108,6 +3108,15 @@ namespace DMT.Smartcard
         {
             AppDomain.CurrentDomain.DomainUnload += CurrentDomain_DomainUnload;
             AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
+            // Windows Forms
+            System.Windows.Forms.Application.ApplicationExit += new EventHandler(Application_ApplicationExit);
+            System.Windows.Forms.Application.ThreadExit += new EventHandler(Application_ThreadExit);
+            // WPF
+            if (null != System.Windows.Application.Current)
+            {
+                System.Windows.Application.Current.Exit += new System.Windows.ExitEventHandler(Current_Exit);
+                System.Windows.Application.Current.SessionEnding += new System.Windows.SessionEndingCancelEventHandler(Current_SessionEnding);
+            }
         }
         /// <summary>
         /// Destructor.
@@ -3119,7 +3128,7 @@ namespace DMT.Smartcard
 
         #endregion
 
-        #region AppDomin Event Handlers
+        #region AppDomin/Application(Windows Forms/WPF) Event Handlers
 
         private void CurrentDomain_DomainUnload(object sender, EventArgs e)
         {
@@ -3130,6 +3139,39 @@ namespace DMT.Smartcard
         private void CurrentDomain_ProcessExit(object sender, EventArgs e)
         {
             AppDomain.CurrentDomain.ProcessExit -= CurrentDomain_ProcessExit;
+            Dispose(true);
+        }
+
+        void Application_ThreadExit(object sender, EventArgs e)
+        {
+            // this event raise before application exit
+            System.Windows.Forms.Application.ThreadExit -= new EventHandler(Application_ThreadExit);
+            Dispose(true);
+        }
+
+        void Application_ApplicationExit(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.ApplicationExit -= new EventHandler(Application_ApplicationExit);
+            Dispose(true);
+        }
+
+        private void Current_Exit(object sender, System.Windows.ExitEventArgs e)
+        {
+            // this event raise before application exit
+            if (null != System.Windows.Application.Current)
+            {
+                System.Windows.Application.Current.Exit -= new System.Windows.ExitEventHandler(Current_Exit);
+            }
+            Dispose(true);
+        }
+
+        private void Current_SessionEnding(object sender, System.Windows.SessionEndingCancelEventArgs e)
+        {
+            // this event raise when window is logoff or shutdown
+            if (null != System.Windows.Application.Current)
+            {
+                System.Windows.Application.Current.SessionEnding -= new System.Windows.SessionEndingCancelEventHandler(Current_SessionEnding);
+            }
             Dispose(true);
         }
 
@@ -3260,7 +3302,8 @@ namespace DMT.Smartcard
         /// <summary>
         /// Shutdown and free resources.
         /// </summary>
-        public void Shutdown()
+        /// <param name="disposed">True for force dispose.</param>
+        public void Shutdown(bool disposed = false)
         {
             if (null != timer)
             {
@@ -3273,6 +3316,7 @@ namespace DMT.Smartcard
                 reader.Dispose();
             }
             reader = null;
+            if (disposed) Dispose(true);
         }
 
         #endregion
