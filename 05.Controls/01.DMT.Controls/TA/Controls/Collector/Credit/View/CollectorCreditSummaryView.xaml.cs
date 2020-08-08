@@ -108,7 +108,7 @@ namespace DMT.TA.Controls.Collector.Credit.View
             }
             else
             {
-                //TODO: Fixed Credit.
+                //TODO: Fixed Credit (Save User Credit).
                 /*
                 userCredit.State = UserCredit.StateTypes.Received;
                 ops.Credits.SaveUserCredit(userCredit);
@@ -120,9 +120,9 @@ namespace DMT.TA.Controls.Collector.Credit.View
 
         private void RefreshUserCredits()
         {
-            //TODO: Fixed Credit.
-            /*
             var tsb = ops.TSB.GetCurrent();
+            //TODO: Fixed Credit (Active User Credits).
+            /*
             var userCredits = ops.Credits.GetActiveUserCredits(tsb);
             listView.ItemsSource = userCredits;
             */

@@ -89,7 +89,7 @@ namespace DMT.TA.Windows.Collector.Credit
             }
             if (null != srcObj && srcObj.UserCreditId == 0)
             {
-                //TODO: Fixed Credit.
+                //TODO: Fixed Credit (Collector Borrow).
                 /*
                 var plazaGrp = cbPlzaGroups.SelectedItem as PlazaGroup;
                 if (null != plazaGrp)
@@ -104,7 +104,7 @@ namespace DMT.TA.Windows.Collector.Credit
             }
             if (null != usrObj && null != srcObj)
             {
-                //TODO: Fixed Credit.
+                //TODO: Fixed Credit (Collector Borrow).
                 /*
                 usrObj.UserCreditId = srcObj.UserCreditId;
                 usrObj.TransactionType = UserCreditTransaction.TransactionTypes.Borrow;
@@ -183,7 +183,7 @@ namespace DMT.TA.Windows.Collector.Credit
 
         public void Setup(UserCredit credit)
         {
-            //TODO: Fixed Credit.
+            //TODO: Fixed Credit (Collector Borrow).
             /*
             srcObj = credit;
 

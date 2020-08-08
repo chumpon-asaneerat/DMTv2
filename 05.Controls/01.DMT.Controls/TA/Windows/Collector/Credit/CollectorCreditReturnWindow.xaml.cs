@@ -53,7 +53,7 @@ namespace DMT.TA.Windows.Collector.Credit
             }
             if (null != srcObj && null != usrObj)
             {
-                //TODO: Fixed Credit.
+                //TODO: Fixed Credit (Collector Return).
                 /*
                 DMT.Windows.MessageBoxYesNoRedWindow msg = new DMT.Windows.MessageBoxYesNoRedWindow();
                 msg.Owner = Application.Current.MainWindow;

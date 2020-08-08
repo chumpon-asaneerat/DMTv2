@@ -36,8 +36,6 @@ namespace DMT.TA.Pages.History
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
         private User _user = null;
-        //private UserCredit srcObj;
-        //private UserCreditTransaction usrObj;
 
         #region Button Handlers
 
@@ -58,17 +56,13 @@ namespace DMT.TA.Pages.History
 
         public void RefreshPlazaInfo()
         {
-            //TODO: Fixed Credit.
-            /*
-            var tsbCredit = ops.Credits.GetCurrent();
+            var tsbCredit = ops.Credits.GetTSBBalance(null);
 
             this.DataContext = tsbCredit;
             tsbCredit.Description = "ยืมเงิน";
             tsbCredit.HasRemark = false;
             plaza.IsEnabled = false;
             plaza.DataContext = tsbCredit;
-            */
-
         }
 
         private void cmdSearch_Click(object sender, RoutedEventArgs e)
@@ -103,6 +97,7 @@ namespace DMT.TA.Pages.History
             if (null != _user)
             {
                 //string total = _user.BHTTotal.ToString("#,##0");
+                //TODO: Plaza History implements not finished.
                 string total = "1,000";
 
                 DMT.Windows.MessageBoxYesNoRed2Window msg = new DMT.Windows.MessageBoxYesNoRed2Window();

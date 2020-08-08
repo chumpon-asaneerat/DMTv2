@@ -60,9 +60,7 @@ namespace DMT.TA.Pages.Plaza
 
         public void RefreshPlazaInfo()
         {
-            //TODO: Fixed Credit.
-            /*
-            var tsbCredit = ops.Credits.GetCurrent();
+            var tsbCredit = ops.Credits.GetTSBBalance(null);
 
             this.DataContext = tsbCredit;
             tsbCredit.Description = "เงินยืมทอน";
@@ -72,7 +70,6 @@ namespace DMT.TA.Pages.Plaza
 
             loanEntry.IsEnabled = false;
             loanEntry.DataContext = tsbCredit;
-            */
         }
     }
 }
