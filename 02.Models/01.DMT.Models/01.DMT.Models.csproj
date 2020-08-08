@@ -156,7 +156,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Scripts\Exchanges\TSBExchangeTransationView.sql" />
+    <EmbeddedResource Include="Views\Scripts\Exchanges\TSBExchangeTransactionView.sql" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Scripts\Credits\UserCreditSummaryView.sql" />

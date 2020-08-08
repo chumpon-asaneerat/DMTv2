@@ -1605,7 +1605,7 @@ namespace DMT.Models
 				// Required to change to view later.
 				string cmd = string.Empty;
 				cmd += "SELECT * ";
-				cmd += "  FROM TSBExchangeTransaction ";
+				cmd += "  FROM TSBExchangeTransactionView ";
 				cmd += " WHERE TSBExchangeTransaction.TSBId = ? ";
 				cmd += "   AND TSBExchangeTransaction.FinishFlag = 1 ";
 

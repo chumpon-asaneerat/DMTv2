@@ -1,4 +1,4 @@
-﻿CREATE VIEW TSExchangeTransactionView
+﻿CREATE VIEW TSBExchangeTransactionView
 AS
 	SELECT TSBExchangeTransaction.* 
 		 , TSB.TSBNameEN
