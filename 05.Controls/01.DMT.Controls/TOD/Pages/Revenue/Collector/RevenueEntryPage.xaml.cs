@@ -94,7 +94,7 @@ namespace DMT.TOD.Pages.Revenue
             }
             else
             {
-                //TODO: Fixed Credit.
+                //TODO: Fixed Credit (Revenue Process).
                 /*
                 _entryDate = entryDate;
                 _revDate = revDate;

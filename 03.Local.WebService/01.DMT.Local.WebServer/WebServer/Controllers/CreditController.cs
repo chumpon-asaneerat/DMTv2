@@ -17,6 +17,18 @@ namespace DMT.Services
     /// </summary>
     public class CreditController : ApiController
     {
+        #region TSB Balance
+
+        [HttpPost]
+        [ActionName(RouteConsts.Credit.GetTSBBalance.Name)]
+        public TSBCreditBalance GetTSBBalance([FromBody] TSB tsb)
+        {
+            var ret = TSBCreditBalance.GetCurrent(tsb);
+            return ret;
+        }
+
+        #endregion
+
         /*
         [HttpPost]
         [ActionName(RouteConsts.Credit.GetCurrentInitial.Name)]
@@ -37,22 +49,6 @@ namespace DMT.Services
         public void SaveTransaction([FromBody] TSBCreditTransaction value)
         {
             TSBCreditTransaction.SaveTransaction(value);
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Credit.GetCurrent.Name)]
-        public TSBCreditBalance GetCurrent()
-        {
-            var ret = TSBCreditBalance.GetCurrent();
-            return ret;
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Credit.GetTSBCurrent.Name)]
-        public TSBCreditBalance GetTSBCurrent([FromBody] TSB tsb)
-        {
-            var ret = TSBCreditBalance.GetCurrent(tsb);
-            return ret;
         }
 
         [HttpPost]

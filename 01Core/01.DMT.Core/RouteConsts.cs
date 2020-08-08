@@ -381,6 +381,12 @@ namespace DMT
             public const string Name = "Credit";
             public const string Url = RouteConsts.Url + @"/" + Name;
 
+            public static class GetTSBBalance
+            {
+                public const string Name = "GetTSBBalance";
+                public const string Url = Credit.Url + @"/" + Name;
+            }
+
             /*
             public static class GetCurrentInitial
             {
@@ -397,18 +403,6 @@ namespace DMT
             public static class SaveTransaction
             {
                 public const string Name = "SaveTransaction";
-                public const string Url = Credit.Url + @"/" + Name;
-            }
-
-            public static class GetCurrent
-            {
-                public const string Name = "GetCurrent";
-                public const string Url = Credit.Url + @"/" + Name;
-            }
-
-            public static class GetTSBCurrent
-            {
-                public const string Name = "GetTSBCurrent";
                 public const string Url = Credit.Url + @"/" + Name;
             }
 

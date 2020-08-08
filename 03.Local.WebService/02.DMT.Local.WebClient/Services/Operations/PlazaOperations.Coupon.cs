@@ -208,6 +208,8 @@ namespace DMT.Services
         #endregion
     }
 
+    #region TSBCouponManager
+
     public class TSBCouponManager
     {
         #region Internal Variables
@@ -545,4 +547,6 @@ namespace DMT.Services
 
         #endregion
     }
+
+    #endregion
 }

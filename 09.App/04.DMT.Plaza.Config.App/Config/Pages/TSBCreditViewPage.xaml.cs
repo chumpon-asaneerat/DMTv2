@@ -64,7 +64,7 @@ namespace DMT.Config.Pages
             pgrid.SelectedObject = null;
             if (null == item) return;
 
-            //TODO: Fixed Credit.
+            //TODO: Fixed Credit (Get Initial).
             //pgrid.SelectedObject = ops.Credits.GetInitial(item);
         }
 
@@ -76,7 +76,7 @@ namespace DMT.Config.Pages
         {
             var item = pgrid.SelectedObject as TSBCreditTransaction;
             if (null == item) return;
-            //TODO: Fixed Credit.
+            //TODO: Fixed Credit (Save Transaction).
             //ops.Credits.SaveTransaction(item);
             // clear
             pgrid.SelectedObject = null;

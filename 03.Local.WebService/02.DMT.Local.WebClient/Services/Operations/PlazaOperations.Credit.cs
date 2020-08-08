@@ -57,6 +57,18 @@ namespace DMT.Services
             #endregion
 
             #region Public Methods
+
+            #region TSB Balance
+
+            public TSBCreditBalance GetTSBBalance(TSB tsb)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<TSBCreditBalance>(
+                    RouteConsts.Credit.GetTSBBalance.Url, tsb);
+                return ret;
+            }
+
+            #endregion
+
             /*
             public TSBCreditTransaction GetCurrentInitial()
             {
@@ -76,20 +88,6 @@ namespace DMT.Services
             {
                 NRestClient.Create(port: 9000).Execute(
                     RouteConsts.Credit.SaveTransaction.Url, value);
-            }
-
-            public TSBCreditBalance GetCurrent()
-            {
-                var ret = NRestClient.Create(port: 9000).Execute<TSBCreditBalance>(
-                    RouteConsts.Credit.GetCurrent.Url, new { });
-                return ret;
-            }
-
-            public TSBCreditBalance GetTSBCurrent(TSB tsb)
-            {
-                var ret = NRestClient.Create(port: 9000).Execute<TSBCreditBalance>(
-                    RouteConsts.Credit.GetTSBCurrent.Url, tsb);
-                return ret;
             }
 
             public UserCredit GetActiveUserCredit(Search.UserCredits.GetActive value)
@@ -131,4 +129,72 @@ namespace DMT.Services
 
         #endregion
     }
+
+    #region TSBCreditManager
+
+    public class TSBCreditManager
+    {
+        #region Internal Variables
+
+        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public TSBCreditManager() : base() { }
+
+        #endregion
+
+        #region Private Methods
+
+
+        #endregion
+
+        #region Public Methods
+
+        public void Refresh()
+        {
+            this.TSB = ops.TSB.GetCurrent();
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        #region TSB
+
+        /// <summary>
+        /// Gets Current TSB.
+        /// </summary>
+        public TSB TSB { get; private set; }
+
+        #endregion
+
+        #region TSB Balance
+
+        /// <summary>
+        /// Gets Current TSB Balance.
+        /// </summary>
+        public TSBCreditBalance Balance
+        {
+            get
+            {
+                if (null == this.TSB)
+                {
+                    return null;
+                }
+                return ops.Credits.GetTSBBalance(this.TSB);
+            }
+        }
+
+        #endregion
+
+        #endregion
+    }
+
+    #endregion
 }
