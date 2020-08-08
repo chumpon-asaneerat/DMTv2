@@ -1725,13 +1725,17 @@ namespace DMT.Smartcard
 
     public class SL600SDKFactory
     {
-        object _syncObj = new object();
-        DispathcedThread _thread;
-        FunctionPointersContainer _functions;
-        IntPtr _hModule;
         private static SL600SDKFactory _factory;
-        string _pathToDll;
-        int _refCounter;
+
+        private object _syncObj = new object();
+
+        private DispathcedThread _thread;
+        private FunctionPointersContainer _functions;
+        private IntPtr _hModule;
+        
+        private string _pathToDll;
+        private int _refCounter;
+
         internal SL600SDKFactory(string path)
         {
             _pathToDll = path;
@@ -1768,14 +1772,17 @@ namespace DMT.Smartcard
             }
         }
 
-        private void Release()
+        public void Release()
         {
             lock (_syncObj)
             {
-                _thread.Dispose();
+                if (null != _thread) _thread.Dispose();
                 _thread = null;
                 _functions = null;
-                Win32Interop.FreeLibrary(_hModule);
+                if (_hModule != IntPtr.Zero)
+                {
+                    Win32Interop.FreeLibrary(_hModule);
+                }
                 _hModule = IntPtr.Zero;
             }
         }
@@ -3227,16 +3234,14 @@ namespace DMT.Smartcard
         /// </summary>
         private SmartcardService()
         {
-            // load factory.
-            factory = SL600SDKFactory.CreateFactory(
-                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MasterRD.dll"));
+
         }
         /// <summary>
         /// Destructor.
         /// </summary>
         ~SmartcardService()
         {
-            Dispose();
+            Shutdown();
         }
 
         #endregion
@@ -3314,29 +3319,27 @@ namespace DMT.Smartcard
         /// </summary>
         public void Dispose()
         {
-            if (null != reader)
-            {
-                reader.Dispose();
-            }
-            reader = null;
-
-            if (null != sdk)
-            {
-                sdk.Dispose();
-            }
-            sdk = null;
+            Shutdown();
         }
         /// <summary>
         /// Start listen USB port.
         /// </summary>
         public void Start()
         {
-            //if (null != sdk) return; // already start.
-
             //var resolver = CreateResolver();
-            if (null == sdk) sdk = factory.CreateInstance();
-
-            if (null == reader) reader = new Sl600SmartCardReader(sdk, 0) { IsEmv = false };
+            if (null == factory)
+            {
+                factory = SL600SDKFactory.CreateFactory(
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MasterRD.dll"));
+            }
+            if (null == sdk)
+            {
+                sdk = factory.CreateInstance();
+            }
+            if (null == reader)
+            {
+                reader = new Sl600SmartCardReader(sdk, 0) { IsEmv = false };
+            }
 
             timer = new DispatcherTimer();
             timer.Tick += Timer_Tick;
@@ -3354,7 +3357,24 @@ namespace DMT.Smartcard
                 timer.Tick -= Timer_Tick;
             }
             timer = null;
-            //Release();
+            if (null != reader)
+            {
+                reader.Dispose();
+            }
+            reader = null;
+
+            if (null != sdk)
+            {
+                sdk.Dispose();
+            }
+            sdk = null;
+
+            if (null != factory)
+            {
+                // Release.
+                factory.Release();
+            }
+            factory = null;
         }
 
         #endregion
