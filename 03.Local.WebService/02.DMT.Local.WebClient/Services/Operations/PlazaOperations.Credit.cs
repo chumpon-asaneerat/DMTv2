@@ -70,14 +70,14 @@ namespace DMT.Services
             #endregion
 
             #region TSB Credit Transaction
-            /*
+
             public TSBCreditTransaction GetInitialTSBCreditTransaction(TSB tsb)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<TSBCreditTransaction>(
                     RouteConsts.Credit.GetInitialTSBCreditTransaction.Url, tsb);
                 return ret;
             }
-            */
+
             public void SaveTSBCreditTransaction(TSBCreditTransaction value)
             {
                 NRestClient.Create(port: 9000).Execute(
@@ -136,13 +136,13 @@ namespace DMT.Services
         #endregion
     }
 
-    #region TSBCreditManager
+    #region TSBCreditManager (abstract)
 
-    public class TSBCreditManager
+    public abstract class TSBCreditManager
     {
         #region Internal Variables
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        protected PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
 
         #endregion
 
@@ -155,8 +155,9 @@ namespace DMT.Services
 
         #endregion
 
-        #region Private Methods
+        #region Protected Methods
 
+        protected virtual void OnRefresh() { }
 
         #endregion
 
@@ -165,6 +166,7 @@ namespace DMT.Services
         public void Refresh()
         {
             this.TSB = ops.TSB.GetCurrent();
+            OnRefresh();
         }
 
         #endregion
@@ -198,6 +200,44 @@ namespace DMT.Services
         }
 
         #endregion
+
+        #endregion
+    }
+
+    #endregion
+
+    #region TSBCreditInitManager
+
+    public class TSBCreditInitManager : TSBCreditManager
+    {
+        #region Internal Variables
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public TSBCreditInitManager() : base() { }
+
+        #endregion
+
+        #region Private Methods
+
+        #endregion
+
+        #region Protected Methods
+
+        protected override void OnRefresh() { }
+
+        #endregion
+
+        #region Public Methods
+
+        #endregion
+
+        #region Public Properties
 
         #endregion
     }
