@@ -79,9 +79,7 @@ namespace LocalDbServerSample
         private void button14_Click(object sender, EventArgs e)
         {
             // Init TSB Credit.
-            //TODO: Init TSB Credit (demo).
-            /*
-            TSBCreditTransaction inst = TSBCreditTransaction.GetInitial();
+            TSBCreditTransaction inst = TSBCreditTransaction.GetInitialTransaction();
             inst.TransactionDate = DateTime.Now;
             inst.CountBHT1 = 300;
             inst.CountBHT2 = 300;
@@ -96,7 +94,6 @@ namespace LocalDbServerSample
 
             // Gets TSB Credits
             dbgTSBCredit.DataSource = TSBCreditTransaction.Gets();
-            */
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -154,13 +151,32 @@ namespace LocalDbServerSample
         private void button1_Click(object sender, EventArgs e)
         {
             // Gets TSB Coupons (Received).
-            //dbgTSBCoupon.DataSource = TSBCouponTransaction.GetTSBCoupons();
+            var coupons = TSBCouponTransaction.GetTSBCouponTransactions();
+            dbgTSBCoupon.DataSource = null;
+            if (null != coupons)
+            {
+                dbgTSBCoupon.DataSource = coupons.Find(x => 
+                {
+                    return x.TransactionType == TSBCouponTransaction.TransactionTypes.Stock;
+                });
+            }
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
             // Gets Sold Coupons.
-            //dbgTSBCoupon.DataSource = TSBCouponTransaction.GetTSBSoldCoupons();
+            var coupons = TSBCouponTransaction.GetTSBCouponTransactions();
+            dbgTSBCoupon.DataSource = null;
+            if (null != coupons)
+            {
+                dbgTSBCoupon.DataSource = coupons.Find(x =>
+                {
+                    return (
+                        x.TransactionType == TSBCouponTransaction.TransactionTypes.SoldByLane &&
+                        x.TransactionType == TSBCouponTransaction.TransactionTypes.SoldByTSB
+                    );
+                });
+            }
         }
 
         private void button19_Click(object sender, EventArgs e)
