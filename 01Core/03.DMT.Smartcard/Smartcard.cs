@@ -2297,11 +2297,28 @@ namespace DMT.Smartcard
 
         public IntPtr Handle { get; private set; }
 
+        public bool Connected { get; private set; }
+        public string ConnectStatus { get; private set; }
+
         public Sl600SmartCardReader(SL600SDK sdk, int icdev)
         {
             SDK = sdk;
             ICDev = (ushort)icdev;
             Handle = SDK.RFInitUSB(icdev);
+            if (Handle == IntPtr.Zero)
+            {
+                Connected = false;
+                //Console.WriteLine("Port Handle is zero.");
+                ConnectStatus = "Port Handle is zero.";
+            }
+            if (Handle == new IntPtr(-1))
+            {
+                Connected = false;
+                //Console.WriteLine("Port in used by another process.");
+                ConnectStatus = "Port in used by another process.";
+            }
+            Connected = true;
+            ConnectStatus = "Port opened.";
         }
         public override byte[] Reset()
         {
@@ -2654,11 +2671,12 @@ namespace DMT.Smartcard
                         if (null != SDK)
                         {
                             SDK.RFClosePort(Handle);
+
+                            Connected = false;
+                            ConnectStatus = "Port closed.";
                         }
                     }
                     Handle = IntPtr.Zero;
-
-                    SDK.Dispose();
                 }
                 SDK = null;
                 disposedValue = true;
@@ -3219,7 +3237,9 @@ namespace DMT.Smartcard
                 return _instance;
             }
         }
-
+        /// <summary>
+        /// Free all resources.
+        /// </summary>
         public static void Release()
         {
             if (null != _instance)
@@ -3335,11 +3355,22 @@ namespace DMT.Smartcard
         #region Public Methods
 
         /// <summary>
-        /// Dispose;
+        /// Dispose (Free all resources).
         /// </summary>
         public void Dispose()
         {
             Shutdown();
+            if (null != sdk)
+            {
+                sdk.Dispose();
+            }
+            sdk = null;
+            if (null != factory)
+            {
+                // Release.
+                factory.Release();
+            }
+            factory = null;
         }
         /// <summary>
         /// Start listen USB port.
@@ -3382,19 +3413,6 @@ namespace DMT.Smartcard
                 reader.Dispose();
             }
             reader = null;
-
-            if (null != sdk)
-            {
-                sdk.Dispose();
-            }
-            sdk = null;
-
-            if (null != factory)
-            {
-                // Release.
-                factory.Release();
-            }
-            factory = null;
         }
 
         #endregion
@@ -3405,6 +3423,26 @@ namespace DMT.Smartcard
         /// Gets or sets Secure Key.
         /// </summary>
         public byte[] SecureKey { get; set; }
+        /// <summary>
+        /// Checks is port connected or not.
+        /// </summary>
+        public bool Connected
+        {
+            get 
+            {
+                return (null != reader) ? reader.Connected : false;
+            }
+        }
+        /// <summary>
+        /// Checks is port connected or not.
+        /// </summary>
+        public string ConnectStatus
+        {
+            get
+            {
+                return (null != reader) ? reader.ConnectStatus : "Reader is null.";
+            }
+        }
 
         #endregion
 
