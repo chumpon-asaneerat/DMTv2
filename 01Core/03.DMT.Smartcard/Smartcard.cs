@@ -1779,11 +1779,15 @@ namespace DMT.Smartcard
                 if (null != _thread) _thread.Dispose();
                 _thread = null;
                 _functions = null;
+
                 if (_hModule != IntPtr.Zero)
                 {
                     Win32Interop.FreeLibrary(_hModule);
                 }
                 _hModule = IntPtr.Zero;
+
+                // reset static variables
+                _factory = null;
             }
         }
 
@@ -1793,7 +1797,9 @@ namespace DMT.Smartcard
             var val = Interlocked.Decrement(ref _refCounter);
 
             if (val == 0)
+            {
                 Release();
+            }
         }
 
         public static SL600SDKFactory CreateFactory(string path)
@@ -2338,7 +2344,9 @@ namespace DMT.Smartcard
 
                     try
                     {
-                        return SDK._functions.GetFunctionDelegate<SDKDelegates.rf_typea_rst>()(ICDev, 0, dataPtr, lenPtr);
+                        int ret = SDK._functions.GetFunctionDelegate<SDKDelegates.rf_typea_rst>()(
+                            ICDev, 0, dataPtr, lenPtr);
+                        return ret;
                     }
                     finally
                     {
