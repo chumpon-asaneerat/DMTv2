@@ -55,7 +55,7 @@ namespace DMT.TA.Controls.Collector.Credit.View
 
         private void cmdReceived_Click(object sender, RoutedEventArgs e)
         {
-            var userCredit = (Models.UserCredit)((FrameworkElement)sender).DataContext;
+            var userCredit = (Models.UserCreditBalance)((FrameworkElement)sender).DataContext;
             if (null == userCredit) return;
             var win = new Windows.Collector.Credit.CollectorCreditBorrowWindow();
             win.Owner = Application.Current.MainWindow;
@@ -74,7 +74,7 @@ namespace DMT.TA.Controls.Collector.Credit.View
 
         private void cmdReturn_Click(object sender, RoutedEventArgs e)
         {
-            var userCredit = (Models.UserCredit)((FrameworkElement)sender).DataContext;
+            var userCredit = (Models.UserCreditBalance)((FrameworkElement)sender).DataContext;
             if (null == userCredit) return;
             var win = new Windows.Collector.Credit.CollectorCreditReturnWindow();
             win.Owner = Application.Current.MainWindow;
@@ -93,7 +93,7 @@ namespace DMT.TA.Controls.Collector.Credit.View
 
         private void cmdReceivedBag_Click(object sender, RoutedEventArgs e)
         {
-            var userCredit = (Models.UserCredit)((FrameworkElement)sender).DataContext;
+            var userCredit = (Models.UserCreditBalance)((FrameworkElement)sender).DataContext;
             if (null == userCredit) return;
 
             var win = new Windows.Collector.Credit.ReceiveMoneyBagWindow();

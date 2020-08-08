@@ -37,7 +37,7 @@ namespace DMT.TA.Windows.Collector.Credit
         #endregion
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
-        private UserCredit srcObj;
+        private UserCreditBalance srcObj;
         private UserCreditTransaction usrObj;
 
         #region Button Handlers
@@ -94,7 +94,7 @@ namespace DMT.TA.Windows.Collector.Credit
             return (usrObj.BHTTotal > srcObj.BHTTotal);
         }
 
-        public void Setup(UserCredit credit)
+        public void Setup(UserCreditBalance credit)
         {
             srcObj = credit;
 

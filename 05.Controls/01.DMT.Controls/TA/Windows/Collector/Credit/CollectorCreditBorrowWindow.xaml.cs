@@ -38,7 +38,7 @@ namespace DMT.TA.Windows.Collector.Credit
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
         
-        private UserCredit srcObj;
+        private UserCreditBalance srcObj;
         private UserCreditTransaction usrObj;
         private TSBCreditBalance plazaObj;
         private TSBCreditBalance sumObj;
@@ -181,7 +181,7 @@ namespace DMT.TA.Windows.Collector.Credit
             sumObj.AmountBHT1000 = plazaObj.AmountBHT1000 - usrObj.AmountBHT1000;
         }
 
-        public void Setup(UserCredit credit)
+        public void Setup(UserCreditBalance credit)
         {
             //TODO: Fixed Credit (Collector Borrow).
             /*
