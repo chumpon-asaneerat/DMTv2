@@ -37,10 +37,14 @@ namespace DMT.Models
 		public enum TransactionTypes : int
 		{
 			Initial = 0,
-			// received from exchange request.
+			// received from account.
 			Received = 1,
-			// return from exchange request.
-			Returns = 2
+			// return to account.
+			Returns = 2,
+			// Internal Replace (Takeout from TSB)
+			ReplaceOut = 3,
+			// Internal Replace (Replace in TSB)
+			ReplaceIn = 4
 		}
 
 		#endregion
