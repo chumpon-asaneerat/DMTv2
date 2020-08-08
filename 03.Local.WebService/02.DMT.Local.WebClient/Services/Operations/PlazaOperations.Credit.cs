@@ -79,6 +79,10 @@ namespace DMT.Services
 
             #endregion
 
+            #region User Credit Balance
+
+            #endregion
+
             #region User Credit Transaction
 
             #endregion

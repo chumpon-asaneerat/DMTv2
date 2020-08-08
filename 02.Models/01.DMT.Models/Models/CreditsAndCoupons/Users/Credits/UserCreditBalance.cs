@@ -21,16 +21,16 @@ using Newtonsoft.Json.Bson;
 
 namespace DMT.Models
 {
-	#region UserCredit
+	#region UserCreditBalance
 
 	/// <summary>
-	/// The UserCredit Data Model class.
+	/// The UserCreditBalance Data Model class.
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
 	[Serializable]
 	[JsonObject(MemberSerialization.OptOut)]
 	//[Table("UserCredit")]
-	public class UserCredit : NTable<UserCredit>
+	public class UserCreditBalance : NTable<UserCreditBalance>
 	{
 		#region Enum
 
@@ -107,7 +107,7 @@ namespace DMT.Models
 		/// <summary>
 		/// Constructor.
 		/// </summary>
-		public UserCredit() : base() { }
+		public UserCreditBalance() : base() { }
 
 		#endregion
 
@@ -1570,7 +1570,7 @@ namespace DMT.Models
 
 		#region Internal Class
 
-		public class FKs : UserCredit
+		public class FKs : UserCreditBalance
 		{
 			#region TSB
 
@@ -1867,9 +1867,9 @@ namespace DMT.Models
 
 			#region Public Methods
 
-			public UserCredit ToUserCredit()
+			public UserCreditBalance ToUserCreditBalance()
 			{
-				UserCredit inst = new UserCredit();
+				UserCreditBalance inst = new UserCreditBalance();
 				this.AssignTo(inst); // set all properties to new instance.
 				return inst;
 			}
@@ -1881,7 +1881,7 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static UserCredit GetActive(User user, PlazaGroup plazaGroup)
+		public static UserCreditBalance GetActive(User user, PlazaGroup plazaGroup)
 		{
 			lock (sync)
 			{
@@ -1898,8 +1898,8 @@ namespace DMT.Models
 
 				var ret = NQuery.Query<FKs>(cmd,
 					user.UserId, plazaGroup.TSBId, StateTypes.Completed).FirstOrDefault();
-				
-				UserCredit inst;
+
+				UserCreditBalance inst;
 				if (null == ret)
 				{
 					inst = Create();
@@ -1921,14 +1921,14 @@ namespace DMT.Models
 				}
 				else
 				{
-					inst = ret.ToUserCredit();
+					inst = ret.ToUserCreditBalance();
 				}
 
 				return inst;
 			}
 		}
 
-		public static UserCredit GetActive(string userId, string plazaGroupId)
+		public static UserCreditBalance GetActive(string userId, string plazaGroupId)
 		{
 			lock (sync)
 			{
@@ -1947,12 +1947,12 @@ namespace DMT.Models
 				var ret = NQuery.Query<FKs>(cmd,
 					userId, plazaGroupId, StateTypes.Completed).FirstOrDefault();
 
-				UserCredit inst = (null != ret) ? ret.ToUserCredit() : null;
+				UserCreditBalance inst = (null != ret) ? ret.ToUserCreditBalance() : null;
 				return inst;
 			}
 		}
 
-		public static List<UserCredit> GetActives(TSB tsb)
+		public static List<UserCreditBalance> GetActives(TSB tsb)
 		{
 			lock (sync)
 			{
@@ -1967,19 +1967,19 @@ namespace DMT.Models
 
 				var rets = NQuery.Query<FKs>(cmd,
 					tsb.TSBId, StateTypes.Completed).ToList();
-				var results = new List<UserCredit>();
+				var results = new List<UserCreditBalance>();
 				if (null != rets)
 				{
 					rets.ForEach(ret => 
 					{
-						results.Add(ret.ToUserCredit());
+						results.Add(ret.ToUserCreditBalance());
 					});
 				}
 				return results;
 			}
 		}
 
-		public static int SaveCredit(UserCredit value)
+		public static int SaveBalance(UserCreditBalance value)
 		{
 			lock (sync)
 			{

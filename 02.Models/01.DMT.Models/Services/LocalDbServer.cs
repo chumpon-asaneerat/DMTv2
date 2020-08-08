@@ -161,7 +161,7 @@ namespace DMT.Services
 
 			Db.CreateTable<TSBCouponTransaction>();
 
-			Db.CreateTable<UserCredit>();
+			Db.CreateTable<UserCreditBalance>();
 			Db.CreateTable<UserCreditTransaction>();
 
 			//Db.CreateTable<UserCoupon>();
