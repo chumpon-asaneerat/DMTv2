@@ -31,25 +31,25 @@ namespace SmartcardM1Test
         private void InitSmartcardHandlers()
         {
             // Init Event Handlers.
-            SmartcardService.OnIdle += SmartcardService_OnIdle;
-            SmartcardService.OnCardReadSerial += SmartcardService_OnCardReadSerial;
-            SmartcardService.OnCardReadBlock += SmartcardService_OnCardReadBlock;
+            SmartcardService.Instance.OnIdle += SmartcardService_OnIdle;
+            SmartcardService.Instance.OnCardReadSerial += SmartcardService_OnCardReadSerial;
+            SmartcardService.Instance.OnCardReadBlock += SmartcardService_OnCardReadBlock;
         }
 
         private void FreeSmartcardHandlers()
         {
             // Release Event Handlers.
-            SmartcardService.OnCardReadBlock -= SmartcardService_OnCardReadBlock;
-            SmartcardService.OnCardReadSerial -= SmartcardService_OnCardReadSerial;
-            SmartcardService.OnIdle -= SmartcardService_OnIdle;
+            SmartcardService.Instance.OnCardReadBlock -= SmartcardService_OnCardReadBlock;
+            SmartcardService.Instance.OnCardReadSerial -= SmartcardService_OnCardReadSerial;
+            SmartcardService.Instance.OnIdle -= SmartcardService_OnIdle;
         }
 
         private void InitSmartcardService()
         {
             // Read both serial and block.
-            SmartcardService.ReadSerialNoOnly = false;
+            SmartcardService.Instance.ReadSerialNoOnly = false;
             // Set Secure Key.
-            SmartcardService.SecureKey = SL600SDK.DefaultKey;
+            SmartcardService.Instance.SecureKey = SL600SDK.DefaultKey;
             // Init all handlers
             InitSmartcardHandlers();
         }
@@ -57,19 +57,19 @@ namespace SmartcardM1Test
         private void FreeSmartcardService()
         {
             // Required when close program to prevent process halt.
-            SmartcardService.Shutdown();
+            SmartcardService.Instance.Shutdown();
             // Free all handlers
             FreeSmartcardHandlers();
         }
 
         private void StartService()
         {
-            SmartcardService.Start();
+            SmartcardService.Instance.Start();
         }
 
         private void ShutdownService()
         {
-            SmartcardService.Shutdown();
+            SmartcardService.Instance.Shutdown();
         }
 
         #endregion
@@ -127,7 +127,7 @@ namespace SmartcardM1Test
 
         private void chkReadBoth_CheckedChanged(object sender, EventArgs e)
         {
-            SmartcardService.ReadSerialNoOnly = !chkReadBoth.Checked;
+            SmartcardService.Instance.ReadSerialNoOnly = !chkReadBoth.Checked;
         }
 
         #endregion

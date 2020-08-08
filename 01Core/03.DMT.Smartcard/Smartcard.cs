@@ -3354,7 +3354,7 @@ namespace DMT.Smartcard
                 timer.Tick -= Timer_Tick;
             }
             timer = null;
-            Release();
+            //Release();
         }
 
         #endregion
