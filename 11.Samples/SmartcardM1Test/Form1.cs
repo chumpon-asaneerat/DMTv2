@@ -72,6 +72,20 @@ namespace SmartcardM1Test
             SmartcardService.Instance.Shutdown();
         }
 
+        private void UpdateStatus()
+        {
+            bool isConnected = SmartcardService.Instance.Connected;
+            // Set Buttons enable state.
+            cmdStart.Enabled = !isConnected;
+            cmdStop.Enabled = isConnected;
+            // Update connect status.
+            lbConnectStatus.Text = (isConnected) ? "Connected" : "Disconnected";
+            lbConnectStatus.ForeColor = (isConnected) ? Color.Green : Color.Red;
+            // Update connect status's message.
+            lbConnectStatusMsg.Text = SmartcardService.Instance.ConnectStatus;
+            lbConnectStatusMsg.ForeColor = (isConnected) ? Color.Green : Color.Red;
+        }
+
         #endregion
 
         #region UI Event Handlers
@@ -81,9 +95,8 @@ namespace SmartcardM1Test
         private void Form1_Load(object sender, EventArgs e)
         {
             InitSmartcardService();
-            // Set Buttons enable state.
-            cmdStart.Enabled = true;
-            cmdStop.Enabled = false;
+            // Update Status
+            UpdateStatus();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -97,6 +110,9 @@ namespace SmartcardM1Test
 
         private void SmartcardService_OnIdle(object sender, EventArgs e)
         {
+            // Update Status
+            UpdateStatus();
+
             lbCardExist.ForeColor = Color.Red;
             lbCardExist.Text = "Card not avaliable.";
             lbSN.Text = "-";
@@ -108,6 +124,9 @@ namespace SmartcardM1Test
 
         private void SmartcardService_OnCardReadSerial(object sender, M1CardReadSerialEventArgs e)
         {
+            // Update Status
+            UpdateStatus();
+
             lbCardExist.ForeColor = Color.Green;
             lbCardExist.Text = "Card avaliable.";
             lbSN.Text = e.SerialNo;
@@ -138,18 +157,16 @@ namespace SmartcardM1Test
         {
             // start listen port.
             StartService();
-            // Set Buttons enable state.
-            cmdStart.Enabled = false;
-            cmdStop.Enabled = true;
+            // Update Status
+            UpdateStatus();
         }
 
         private void cmdStop_Click(object sender, EventArgs e)
         {
             // stop listen port.
             ShutdownService();
-            // Set Buttons enable state.
-            cmdStart.Enabled = true;
-            cmdStop.Enabled = false;
+            // Update Status
+            UpdateStatus();
         }
 
         #endregion

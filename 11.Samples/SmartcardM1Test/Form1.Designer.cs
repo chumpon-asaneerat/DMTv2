@@ -42,13 +42,16 @@
             this.chkReadBoth = new System.Windows.Forms.CheckBox();
             this.cmdStart = new System.Windows.Forms.Button();
             this.cmdStop = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbConnectStatus = new System.Windows.Forms.Label();
+            this.lbConnectStatusMsg = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbBlock3
             // 
             this.lbBlock3.AutoSize = true;
             this.lbBlock3.Font = new System.Drawing.Font("Lucida Console", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBlock3.Location = new System.Drawing.Point(113, 313);
+            this.lbBlock3.Location = new System.Drawing.Point(144, 346);
             this.lbBlock3.Name = "lbBlock3";
             this.lbBlock3.Size = new System.Drawing.Size(79, 14);
             this.lbBlock3.TabIndex = 15;
@@ -58,7 +61,7 @@
             // 
             this.lbBlock2.AutoSize = true;
             this.lbBlock2.Font = new System.Drawing.Font("Lucida Console", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBlock2.Location = new System.Drawing.Point(113, 283);
+            this.lbBlock2.Location = new System.Drawing.Point(144, 316);
             this.lbBlock2.Name = "lbBlock2";
             this.lbBlock2.Size = new System.Drawing.Size(79, 14);
             this.lbBlock2.TabIndex = 14;
@@ -68,7 +71,7 @@
             // 
             this.lbBlock1.AutoSize = true;
             this.lbBlock1.Font = new System.Drawing.Font("Lucida Console", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBlock1.Location = new System.Drawing.Point(113, 256);
+            this.lbBlock1.Location = new System.Drawing.Point(144, 289);
             this.lbBlock1.Name = "lbBlock1";
             this.lbBlock1.Size = new System.Drawing.Size(79, 14);
             this.lbBlock1.TabIndex = 13;
@@ -78,7 +81,7 @@
             // 
             this.lbBlock0.AutoSize = true;
             this.lbBlock0.Font = new System.Drawing.Font("Lucida Console", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBlock0.Location = new System.Drawing.Point(113, 229);
+            this.lbBlock0.Location = new System.Drawing.Point(144, 262);
             this.lbBlock0.Name = "lbBlock0";
             this.lbBlock0.Size = new System.Drawing.Size(79, 14);
             this.lbBlock0.TabIndex = 12;
@@ -87,7 +90,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 226);
+            this.label4.Location = new System.Drawing.Point(54, 259);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 17);
             this.label4.TabIndex = 11;
@@ -96,7 +99,7 @@
             // lbCardExist
             // 
             this.lbCardExist.AutoSize = true;
-            this.lbCardExist.Location = new System.Drawing.Point(113, 170);
+            this.lbCardExist.Location = new System.Drawing.Point(144, 203);
             this.lbCardExist.Name = "lbCardExist";
             this.lbCardExist.Size = new System.Drawing.Size(62, 17);
             this.lbCardExist.TabIndex = 10;
@@ -105,7 +108,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 170);
+            this.label1.Location = new System.Drawing.Point(54, 203);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 17);
             this.label1.TabIndex = 9;
@@ -137,7 +140,7 @@
             // 
             this.lbSN.AutoSize = true;
             this.lbSN.Font = new System.Drawing.Font("Lucida Console", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSN.Location = new System.Drawing.Point(113, 200);
+            this.lbSN.Location = new System.Drawing.Point(144, 233);
             this.lbSN.Name = "lbSN";
             this.lbSN.Size = new System.Drawing.Size(15, 14);
             this.lbSN.TabIndex = 19;
@@ -146,7 +149,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(33, 197);
+            this.label5.Location = new System.Drawing.Point(64, 230);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 17);
             this.label5.TabIndex = 18;
@@ -157,7 +160,7 @@
             this.chkReadBoth.AutoSize = true;
             this.chkReadBoth.Checked = true;
             this.chkReadBoth.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkReadBoth.Location = new System.Drawing.Point(371, 170);
+            this.chkReadBoth.Location = new System.Drawing.Point(421, 203);
             this.chkReadBoth.Name = "chkReadBoth";
             this.chkReadBoth.Size = new System.Drawing.Size(166, 21);
             this.chkReadBoth.TabIndex = 20;
@@ -185,11 +188,41 @@
             this.cmdStop.UseVisualStyleBackColor = true;
             this.cmdStop.Click += new System.EventHandler(this.cmdStop_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(25, 138);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(112, 17);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Connect Status: ";
+            // 
+            // lbConnectStatus
+            // 
+            this.lbConnectStatus.AutoSize = true;
+            this.lbConnectStatus.Location = new System.Drawing.Point(144, 138);
+            this.lbConnectStatus.Name = "lbConnectStatus";
+            this.lbConnectStatus.Size = new System.Drawing.Size(98, 17);
+            this.lbConnectStatus.TabIndex = 24;
+            this.lbConnectStatus.Text = "Disconnected.";
+            // 
+            // lbConnectStatusMsg
+            // 
+            this.lbConnectStatusMsg.AutoSize = true;
+            this.lbConnectStatusMsg.Location = new System.Drawing.Point(144, 166);
+            this.lbConnectStatusMsg.Name = "lbConnectStatusMsg";
+            this.lbConnectStatusMsg.Size = new System.Drawing.Size(13, 17);
+            this.lbConnectStatusMsg.TabIndex = 25;
+            this.lbConnectStatusMsg.Text = "-";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 430);
+            this.Controls.Add(this.lbConnectStatusMsg);
+            this.Controls.Add(this.lbConnectStatus);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.cmdStop);
             this.Controls.Add(this.cmdStart);
             this.Controls.Add(this.chkReadBoth);
@@ -232,6 +265,9 @@
         private System.Windows.Forms.CheckBox chkReadBoth;
         private System.Windows.Forms.Button cmdStart;
         private System.Windows.Forms.Button cmdStop;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbConnectStatus;
+        private System.Windows.Forms.Label lbConnectStatusMsg;
     }
 }
 

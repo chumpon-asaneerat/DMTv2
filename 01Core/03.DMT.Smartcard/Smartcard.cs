@@ -2304,7 +2304,7 @@ namespace DMT.Smartcard
         {
             SDK = sdk;
             ICDev = (ushort)icdev;
-            Handle = SDK.RFInitUSB(icdev);
+            Handle = (null != SDK) ? SDK.RFInitUSB(icdev) : IntPtr.Zero;
             if (Handle == IntPtr.Zero)
             {
                 Connected = false;
@@ -2322,18 +2322,27 @@ namespace DMT.Smartcard
         }
         public override byte[] Reset()
         {
-            SDK.RFSetAntennaMode(ICDev, false);
-            Sleep(50);
-            SDK.RFInitType(ICDev, (byte)'A');
-            Sleep(50);
-            SDK.RFSetAntennaMode(ICDev, true);
-            Sleep(50);
-            return SDK.RFResetTypeA(ICDev, 0);
+            if (null != SDK)
+            {
+                SDK.RFSetAntennaMode(ICDev, false);
+                Sleep(50);
+            }
+            if (null != SDK)
+            {
+                SDK.RFInitType(ICDev, (byte)'A');
+                Sleep(50);
+            }
+            if (null != SDK)
+            {
+                SDK.RFSetAntennaMode(ICDev, true);
+                Sleep(50);
+            }
+            return (null != SDK) ? SDK.RFResetTypeA(ICDev, 0) : null;
         }
 
         protected override byte[] SendCommand(byte[] command)
         {
-            return SDK.RFCOSCommand(ICDev, command);
+            return (null != SDK) ? SDK.RFCOSCommand(ICDev, command) : null;
         }
 
         public void DoEvents()
@@ -2347,8 +2356,11 @@ namespace DMT.Smartcard
 
         public void Sleep(int ms)
         {
-            //Thread.Sleep(ms);
-            DoEvents();
+            if (ms > 0)
+            {
+                //Thread.Sleep(ms);
+                DoEvents();
+            }
         }
 
         public override bool IsCardExist()
@@ -2367,8 +2379,7 @@ namespace DMT.Smartcard
 
                     try
                     {
-                        int ret = SDK._functions.GetFunctionDelegate<SDKDelegates.rf_typea_rst>()(
-                            ICDev, 0, dataPtr, lenPtr);
+                        int ret = (null != SDK) ? SDK._functions.GetFunctionDelegate<SDKDelegates.rf_typea_rst>()(ICDev, 0, dataPtr, lenPtr) : -1;
                         return ret;
                     }
                     finally
@@ -2397,7 +2408,7 @@ namespace DMT.Smartcard
             else Marshal.Copy(new byte[] { 0, 0, 0, 0x52 }, 0, tagType, Marshal.SizeOf(typeof(ushort)));
             try
             {
-                status = SDK.RFRequest(ICDev, false, tagType);
+                status = (null != SDK) ? SDK.RFRequest(ICDev, false, tagType) : -1;
                 if (status != 0)
                 {
                     //Console.WriteLine("RFRequest failed.");
@@ -2423,7 +2434,7 @@ namespace DMT.Smartcard
             var psizePtr = Marshal.AllocHGlobal(SL600SDK.MAX_RF_BUFFER);
             try
             {
-                status = SDK.RFAntiColl(ICDev, serialNoPtr, serialNoLenPtr);
+                status = (null != SDK) ? SDK.RFAntiColl(ICDev, serialNoPtr, serialNoLenPtr) : -1;
                 if (status != 0)
                 {
                     //Console.WriteLine("RFAntiColl failed.");
@@ -2433,7 +2444,7 @@ namespace DMT.Smartcard
                 {
                     // adjust size to actual size.
                     byte snrSize = Marshal.ReadByte(serialNoLenPtr, 0);
-                    status = SDK.RFSelect(ICDev, serialNoPtr, snrSize, psizePtr);
+                    status = (null != SDK) ? SDK.RFSelect(ICDev, serialNoPtr, snrSize, psizePtr) : -1;
                     if (status != 0)
                     {
                         //Console.WriteLine("RFSelect failed.");
@@ -2473,7 +2484,7 @@ namespace DMT.Smartcard
 
             try
             {
-                status = SDK.RFM1Authentication2(ICDev, mode, block_abs, secureKeyPtr);
+                status = (null != SDK) ? SDK.RFM1Authentication2(ICDev, mode, block_abs, secureKeyPtr) : -1;
                 if (status != 0)
                 {
                     Console.WriteLine("RFM1Authentication2 failed.");
@@ -2497,7 +2508,7 @@ namespace DMT.Smartcard
 
             try
             {
-                status = SDK.RFM1Read(ICDev, blockNo, dataPtr, dataLenPtr);
+                status = (null != SDK) ? SDK.RFM1Read(ICDev, blockNo, dataPtr, dataLenPtr) : -1;
                 Sleep(50);
                 if (status != 0)
                 {
@@ -2569,13 +2580,13 @@ namespace DMT.Smartcard
                 int status = 0;
                 try
                 {
-                    SDK.RFSetAntennaMode(ICDev, false);
+                    if (null != SDK) SDK.RFSetAntennaMode(ICDev, false);
                     Sleep(50);
 
-                    SDK.RFInitType(ICDev, (byte)'A');
+                    if (null != SDK) SDK.RFInitType(ICDev, (byte)'A');
                     Sleep(50);
 
-                    SDK.RFSetAntennaMode(ICDev, true);
+                    if (null != SDK) SDK.RFSetAntennaMode(ICDev, true);
                     Sleep(50);
 
                     status = RFRequest(STDMode);
@@ -2678,7 +2689,7 @@ namespace DMT.Smartcard
                     }
                     Handle = IntPtr.Zero;
                 }
-                SDK = null;
+                //SDK = null;
                 disposedValue = true;
             }
         }
@@ -3028,188 +3039,6 @@ namespace DMT.Smartcard
 
     #endregion
 
-    #region SmartcardService2
-
-    /// <summary>
-    /// The Smartcard Service class.
-    /// </summary>
-    public static class SmartcardService2
-    {
-        #region Internal Variables
-
-        private static bool onScanning = false;
-
-        private static SL600SDKFactory factory = null;
-        private static SL600SDK sdk = null;
-
-        private static Sl600SmartCardReader reader = null;
-        private static DispatcherTimer timer = null;
-
-        public static bool ReadSerialNoOnly = false;
-        private static Sl600SmartCardReader.ReadCardSerialResult _lastSN = null;
-        private static Sl600SmartCardReader.ReadCardBlockResult _lastData = null;
-
-        #endregion
-
-        #region Constructor
-
-        /// <summary>
-        /// Constructor (static)
-        /// </summary>
-        static SmartcardService2()
-        {
-            // load factory.
-            factory = SL600SDKFactory.CreateFactory(
-                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MasterRD.dll"));
-        }
-
-        #endregion
-
-        #region Private Methods
-
-        private static void Timer_Tick(object sender, EventArgs e)
-        {
-            if (onScanning) return;
-
-            onScanning = true;
-
-            if (null != reader)
-            {
-                if (reader.IsCardExist())
-                {
-                    //SL600SDK.DefaultKey
-                    var snResult = reader.ReadCardSerial(/*true*/);
-                    if (null != snResult && snResult.status == 0)
-                    {
-                        if (null == _lastSN ||
-                            _lastSN.SerialNo != snResult.SerialNo)
-                        {
-                            if (null != OnCardReadSerial)
-                            {
-                                OnCardReadSerial.Invoke(null, new M1CardReadSerialEventArgs(snResult));
-                            }
-                            _lastSN = snResult;
-
-                            if (!ReadSerialNoOnly)
-                            {
-                                var dataResult = reader.ReadCardBlock(SecureKey/*, true, true*/);
-                                if (null == _lastData ||
-                                    (null != _lastData &&
-                                    _lastData.Block0 != dataResult.Block0 &&
-                                    _lastData.Block1 != dataResult.Block1 &&
-                                    _lastData.Block2 != dataResult.Block2 &&
-                                    _lastData.Block3 != dataResult.Block3))
-                                {
-                                    // Raise event if last read value is not same card.
-                                    if (null != OnCardReadBlock)
-                                    {
-                                        OnCardReadBlock.Invoke(null, new M1CardReadBlockEventArgs(dataResult));
-                                    }
-                                    _lastData = dataResult;
-                                }
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    // reset last read card.
-                    if (null != _lastSN || null != _lastData)
-                    {
-                        if (null != OnIdle)
-                        {
-                            OnIdle.Invoke(null, EventArgs.Empty);
-                        }
-                        _lastSN = null;
-                        _lastData = null;
-                    }
-                }
-            }
-
-            onScanning = false;
-        }
-
-        #endregion
-
-        #region Public Methods
-
-        /// <summary>
-        /// Start listen USB port.
-        /// </summary>
-        public static void Start()
-        {
-            //if (null != sdk) return; // already start.
-
-            //var resolver = CreateResolver();
-            if (null == sdk) sdk = factory.CreateInstance();
-
-            if (null == reader) reader = new Sl600SmartCardReader(sdk, 0) { IsEmv = false };
-
-            timer = new DispatcherTimer();
-            timer.Tick += Timer_Tick;
-            timer.Interval = TimeSpan.FromMilliseconds(150);
-            timer.Start();
-        }
-        /// <summary>
-        /// Shutdown and free resources.
-        /// </summary>
-        public static void Shutdown()
-        {
-            if (null != timer)
-            {
-                timer.Stop();
-                timer.Tick -= Timer_Tick;
-            }
-            timer = null;
-            Release();
-        }
-
-        public static void Release()
-        {
-            if (null != reader)
-            {
-                reader.Dispose();
-            }
-            reader = null;
-
-            if (null != sdk)
-            {
-                sdk.Dispose();
-            }
-            sdk = null;
-        }
-
-        #endregion
-
-        #region Public Properties
-
-        /// <summary>
-        /// Gets or sets Secure Key.
-        /// </summary>
-        public static byte[] SecureKey { get; set; }
-
-        #endregion
-
-        #region Public events
-
-        /// <summary>
-        /// OnCardReadSerial Event Handler.
-        /// </summary>
-        public static event M1CardReadSerialEventHandler OnCardReadSerial;
-        /// <summary>
-        /// OnCardReadBlock Event Handler.
-        /// </summary>
-        public static event M1CardReadBlockEventHandler OnCardReadBlock;
-        /// <summary>
-        /// OnIdle Event Handler
-        /// </summary>
-        public static event EventHandler OnIdle;
-
-        #endregion
-    }
-
-    #endregion
-
     #region SmartcardService
 
     /// <summary>
@@ -3244,7 +3073,7 @@ namespace DMT.Smartcard
         {
             if (null != _instance)
             {
-                _instance.Dispose();
+                _instance.Dispose(true);
             }
             _instance = null;
         }
@@ -3281,7 +3110,7 @@ namespace DMT.Smartcard
         /// </summary>
         ~SmartcardService()
         {
-            Shutdown();
+            Dispose(true);
         }
 
         #endregion
@@ -3357,20 +3186,31 @@ namespace DMT.Smartcard
         /// <summary>
         /// Dispose (Free all resources).
         /// </summary>
-        public void Dispose()
+        /// <param name="disposed">True to free all resources.</param>
+        public void Dispose(bool disposed)
         {
             Shutdown();
-            if (null != sdk)
+            if (disposed)
             {
-                sdk.Dispose();
+                if (null != sdk)
+                {
+                    sdk.Dispose();
+                }
+                sdk = null;
+                if (null != factory)
+                {
+                    // Release.
+                    factory.Release();
+                }
+                factory = null;
             }
-            sdk = null;
-            if (null != factory)
-            {
-                // Release.
-                factory.Release();
-            }
-            factory = null;
+        }
+        /// <summary>
+        /// Dispose.
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(false);
         }
         /// <summary>
         /// Start listen USB port.
