@@ -80,7 +80,7 @@ namespace DMT.Services
         {
             string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
             var client = new RestClient(BaseUrl);
-            client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.Revalidate);
+            client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
             client.UseNewtonsoftJson();
             var request = new RestRequest(actionUrl, Method.POST);
             request.RequestFormat = DataFormat.Json;
@@ -121,7 +121,7 @@ namespace DMT.Services
         {
             string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
             var client = new RestClient(BaseUrl);
-            client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.Revalidate);
+            client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
             client.UseNewtonsoftJson();
             var request = new RestRequest(actionUrl, Method.POST);
             request.RequestFormat = DataFormat.Json;

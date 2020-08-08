@@ -1167,8 +1167,8 @@ namespace DMT.Models
 		[Category("Summary")]
 		[Description("Gets or sets total (coin/bill) value in baht.")]
 		[ReadOnly(true)]
-		[Ignore]
 		[JsonIgnore]
+		[Ignore]
 		[PeropertyMapName("BHTTotal")]
 		public decimal BHTTotal
 		{

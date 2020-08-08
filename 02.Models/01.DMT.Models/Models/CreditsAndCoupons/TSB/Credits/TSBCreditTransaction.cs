@@ -446,6 +446,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of .25 baht coin.")]
+		[JsonProperty("cs25")]
 		[PeropertyMapName("CountST25")]
 		[PropertyOrder(10)]
 		public virtual int CountST25
@@ -472,6 +473,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of .50 baht coin.")]
+		[JsonProperty("cs50")]
 		[PeropertyMapName("CountST50")]
 		[PropertyOrder(11)]
 		public virtual int CountST50
@@ -498,6 +500,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 1 baht coin.")]
+		[JsonProperty("cb1")]
 		[PeropertyMapName("CountBHT1")]
 		[PropertyOrder(12)]
 		public virtual int CountBHT1
@@ -524,6 +527,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 2 baht coin.")]
+		[JsonProperty("cb2")]
 		[PeropertyMapName("CountBHT2")]
 		[PropertyOrder(13)]
 		public virtual int CountBHT2
@@ -550,6 +554,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 5 baht coin.")]
+		[JsonProperty("cb5")]
 		[PeropertyMapName("CountBHT5")]
 		[PropertyOrder(14)]
 		public virtual int CountBHT5
@@ -576,6 +581,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 10 baht coin.")]
+		[JsonProperty("cb10")]
 		[PeropertyMapName("CountBHT10")]
 		[PropertyOrder(15)]
 		public virtual int CountBHT10
@@ -602,6 +608,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 20 baht bill.")]
+		[JsonProperty("cb20")]
 		[PeropertyMapName("CountBHT20")]
 		[PropertyOrder(16)]
 		public virtual int CountBHT20
@@ -628,6 +635,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 50 baht bill.")]
+		[JsonProperty("cb50")]
 		[PeropertyMapName("CountBHT50")]
 		[PropertyOrder(17)]
 		public virtual int CountBHT50
@@ -654,6 +662,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 100 baht bill.")]
+		[JsonProperty("cb100")]
 		[PeropertyMapName("CountBHT100")]
 		[PropertyOrder(18)]
 		public virtual int CountBHT100
@@ -680,6 +689,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 500 baht bill.")]
+		[JsonProperty("cb500")]
 		[PeropertyMapName("CountBHT500")]
 		[PropertyOrder(19)]
 		public virtual int CountBHT500
@@ -706,6 +716,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Count)")]
 		[Description("Gets or sets number of 1000 baht bill.")]
+		[JsonProperty("cb1000")]
 		[PeropertyMapName("CountBHT1000")]
 		[PropertyOrder(20)]
 		public virtual int CountBHT1000
@@ -737,6 +748,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Amount)")]
 		[Description("Gets or sets amount of .25 baht coin.")]
+		[JsonProperty("as25")]
 		[PeropertyMapName("AmountST25")]
 		[PropertyOrder(21)]
 		public virtual decimal AmountST25
@@ -762,6 +774,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Amount)")]
 		[Description("Gets or sets amount of .50 baht coin.")]
+		[JsonProperty("as50")]
 		[PeropertyMapName("AmountST50")]
 		[PropertyOrder(22)]
 		public virtual decimal AmountST50
@@ -788,6 +801,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Amount)")]
 		[Description("Gets or sets amount of 1 baht coin.")]
+		[JsonProperty("ab1")]
 		[PeropertyMapName("AmountBHT1")]
 		[PropertyOrder(23)]
 		public virtual decimal AmountBHT1
@@ -814,6 +828,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Amount)")]
 		[Description("Gets or sets amount of 2 baht coin.")]
+		[JsonProperty("ab2")]
 		[PeropertyMapName("AmountBHT2")]
 		[PropertyOrder(24)]
 		public virtual decimal AmountBHT2
@@ -840,6 +855,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Amount)")]
 		[Description("Gets or sets amount of 5 baht coin.")]
+		[JsonProperty("ab5")]
 		[PeropertyMapName("AmountBHT5")]
 		[PropertyOrder(25)]
 		public virtual decimal AmountBHT5
@@ -866,6 +882,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Amount)")]
 		[Description("Gets or sets amount of 10 baht coin.")]
+		[JsonProperty("ab10")]
 		[PeropertyMapName("AmountBHT10")]
 		[PropertyOrder(26)]
 		public virtual decimal AmountBHT10
@@ -892,6 +909,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Amount)")]
 		[Description("Gets or sets amount of 20 baht bill.")]
+		[JsonProperty("ab20")]
 		[PeropertyMapName("AmountBHT20")]
 		[PropertyOrder(27)]
 		public virtual decimal AmountBHT20
@@ -918,6 +936,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Amount)")]
 		[Description("Gets or sets amount of 50 baht bill.")]
+		[JsonProperty("ab50")]
 		[PeropertyMapName("AmountBHT50")]
 		[PropertyOrder(28)]
 		public virtual decimal AmountBHT50
@@ -944,6 +963,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Amount)")]
 		[Description("Gets or sets amount of 100 baht bill.")]
+		[JsonProperty("ab100")]
 		[PeropertyMapName("AmountBHT100")]
 		[PropertyOrder(29)]
 		public virtual decimal AmountBHT100
@@ -970,6 +990,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Amount)")]
 		[Description("Gets or sets amount of 500 baht bill.")]
+		[JsonProperty("ab500")]
 		[PeropertyMapName("AmountBHT500")]
 		[PropertyOrder(30)]
 		public virtual decimal AmountBHT500
@@ -996,6 +1017,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coin/Bill (Amount)")]
 		[Description("Gets or sets amount of 1000 baht bill.")]
+		[JsonProperty("ab1000")]
 		[PeropertyMapName("AmountBHT1000")]
 		[PropertyOrder(31)]
 		public virtual decimal AmountBHT1000
@@ -1187,6 +1209,8 @@ namespace DMT.Models
 		[Category("Coin/Bill (Summary)")]
 		[Description("Gets or sets total value in baht.")]
 		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
 		[PeropertyMapName("BHTTotal")]
 		public decimal BHTTotal
 		{
