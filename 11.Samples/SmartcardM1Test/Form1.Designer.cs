@@ -45,6 +45,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lbConnectStatus = new System.Windows.Forms.Label();
             this.lbConnectStatusMsg = new System.Windows.Forms.Label();
+            this.cmdRelease = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbBlock3
@@ -170,9 +171,9 @@
             // 
             // cmdStart
             // 
-            this.cmdStart.Location = new System.Drawing.Point(26, 82);
+            this.cmdStart.Location = new System.Drawing.Point(26, 75);
             this.cmdStart.Name = "cmdStart";
-            this.cmdStart.Size = new System.Drawing.Size(136, 35);
+            this.cmdStart.Size = new System.Drawing.Size(136, 50);
             this.cmdStart.TabIndex = 21;
             this.cmdStart.Text = "Start";
             this.cmdStart.UseVisualStyleBackColor = true;
@@ -180,11 +181,11 @@
             // 
             // cmdStop
             // 
-            this.cmdStop.Location = new System.Drawing.Point(168, 82);
+            this.cmdStop.Location = new System.Drawing.Point(168, 75);
             this.cmdStop.Name = "cmdStop";
-            this.cmdStop.Size = new System.Drawing.Size(136, 35);
+            this.cmdStop.Size = new System.Drawing.Size(136, 50);
             this.cmdStop.TabIndex = 22;
-            this.cmdStop.Text = "Stop";
+            this.cmdStop.Text = "Shutdown";
             this.cmdStop.UseVisualStyleBackColor = true;
             this.cmdStop.Click += new System.EventHandler(this.cmdStop_Click);
             // 
@@ -215,11 +216,22 @@
             this.lbConnectStatusMsg.TabIndex = 25;
             this.lbConnectStatusMsg.Text = "-";
             // 
+            // cmdRelease
+            // 
+            this.cmdRelease.Location = new System.Drawing.Point(310, 75);
+            this.cmdRelease.Name = "cmdRelease";
+            this.cmdRelease.Size = new System.Drawing.Size(136, 50);
+            this.cmdRelease.TabIndex = 26;
+            this.cmdRelease.Text = "Release";
+            this.cmdRelease.UseVisualStyleBackColor = true;
+            this.cmdRelease.Click += new System.EventHandler(this.cmdRelease_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 430);
+            this.Controls.Add(this.cmdRelease);
             this.Controls.Add(this.lbConnectStatusMsg);
             this.Controls.Add(this.lbConnectStatus);
             this.Controls.Add(this.label6);
@@ -268,6 +280,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lbConnectStatus;
         private System.Windows.Forms.Label lbConnectStatusMsg;
+        private System.Windows.Forms.Button cmdRelease;
     }
 }
 

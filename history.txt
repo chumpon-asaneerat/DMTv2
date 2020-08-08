@@ -35,8 +35,9 @@ Update 2020-08-08 #30
 Update 2020-08-08 #29
 - 
 
+[commited]
 Update 2020-08-08 #28
-- 
+- Re-Implements Smartcard (core) #16.
 
 [commited]
 Update 2020-08-08 #27

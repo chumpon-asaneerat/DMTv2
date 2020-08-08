@@ -78,6 +78,7 @@ namespace SmartcardM1Test
             // Set Buttons enable state.
             cmdStart.Enabled = !isConnected;
             cmdStop.Enabled = isConnected;
+
             // Update connect status.
             lbConnectStatus.Text = (isConnected) ? "Connected" : "Disconnected";
             lbConnectStatus.ForeColor = (isConnected) ? Color.Green : Color.Red;
@@ -165,6 +166,19 @@ namespace SmartcardM1Test
         {
             // stop listen port.
             ShutdownService();
+            // Update Status
+            UpdateStatus();
+        }
+
+        private void cmdShutdownForce_Click(object sender, EventArgs e)
+        {
+            // stop listen port and force cleanup all resource.
+            ShutdownService();
+        }
+
+        private void cmdRelease_Click(object sender, EventArgs e)
+        {
+            SmartcardService.Release();
             // Update Status
             UpdateStatus();
         }
