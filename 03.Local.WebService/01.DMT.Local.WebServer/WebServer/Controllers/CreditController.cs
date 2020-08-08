@@ -31,18 +31,23 @@ namespace DMT.Services
 
         #region TSB Credit Transaction
 
-        /*
         [HttpPost]
         [ActionName(RouteConsts.Credit.GetInitialTSBCreditTransaction.Name)]
         public TSBCreditTransaction GetInitialTSBCreditTransaction([FromBody] TSB tsb)
         {
             return TSBCreditTransaction.GetInitialTransaction(tsb);
         }
-        */
+
         [HttpPost]
         [ActionName(RouteConsts.Credit.SaveTSBCreditTransaction.Name)]
         public void SaveTSBCreditTransaction([FromBody] TSBCreditTransaction value)
         {
+            if (null == value)
+            {
+                Console.WriteLine("Transaction is null.");
+                return;
+            }
+            Console.WriteLine("Transaction is : {0}", value);
             TSBCreditTransaction.SaveTransaction(value);
         }
 

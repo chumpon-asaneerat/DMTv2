@@ -165,7 +165,6 @@ namespace DMT.Services
 
         public void Refresh()
         {
-            this.TSB = ops.TSB.GetCurrent();
             OnRefresh();
         }
 
@@ -178,7 +177,7 @@ namespace DMT.Services
         /// <summary>
         /// Gets Current TSB.
         /// </summary>
-        public TSB TSB { get; private set; }
+        public TSB TSB { get; set; }
 
         #endregion
 
@@ -238,6 +237,18 @@ namespace DMT.Services
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// Gets Current Initial TSB Credit Transaction. If TSB not assigned null returns.
+        /// </summary>
+        public TSBCreditTransaction Current
+        {
+            get 
+            {
+                if (null == TSB) return null;
+                return ops.Credits.GetInitialTSBCreditTransaction(TSB);
+            }
+        }
 
         #endregion
     }

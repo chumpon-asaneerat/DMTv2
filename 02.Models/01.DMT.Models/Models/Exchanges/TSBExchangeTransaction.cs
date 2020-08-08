@@ -270,7 +270,6 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets Exchange GroupId")]
 		[ReadOnly(true)]
-		[PrimaryKey]
 		[PeropertyMapName("GroupId")]
 		public Guid GroupId
 		{

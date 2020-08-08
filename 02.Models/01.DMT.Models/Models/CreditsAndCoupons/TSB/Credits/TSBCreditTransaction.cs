@@ -1423,12 +1423,24 @@ namespace DMT.Models
 
 		public static void SaveTransaction(TSBCreditTransaction value)
 		{
-			if (null == value) return;
+			if (null == value)
+			{
+				Console.WriteLine("Transaction is null.");
+				return;
+			}
 			if (value.TransactionDate == DateTime.MinValue)
 			{
 				value.TransactionDate = DateTime.Now;
 			}
 			TSBCreditTransaction.Save(value);
+			if (value.TransactionId == 0)
+			{
+				Console.WriteLine("Save failed.");
+			}
+			else
+			{
+				Console.WriteLine("Save Success.");
+			}
 		}
 
 		#endregion

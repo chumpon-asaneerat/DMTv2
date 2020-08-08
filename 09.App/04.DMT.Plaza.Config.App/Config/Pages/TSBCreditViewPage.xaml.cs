@@ -41,6 +41,7 @@ namespace DMT.Config.Pages
         #endregion
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private TSBCreditInitManager initMgr = new TSBCreditInitManager();
 
         #region Loaded/Unloaded
 
@@ -64,8 +65,9 @@ namespace DMT.Config.Pages
             pgrid.SelectedObject = null;
             if (null == item) return;
 
-            //TODO: Init TSB Credit (Setup).
-            //pgrid.SelectedObject = ops.Credits.GetInitialTSBCreditTransaction(item);
+            initMgr.TSB = item;
+            initMgr.Refresh();
+            pgrid.SelectedObject = initMgr.Current;
         }
 
         #endregion

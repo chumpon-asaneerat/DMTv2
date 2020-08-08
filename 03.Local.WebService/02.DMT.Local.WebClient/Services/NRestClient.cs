@@ -6,6 +6,7 @@ using RestSharp;
 //using RestSharp.Authenticators;
 using RestSharp.Serializers.NewtonsoftJson;
 using System;
+using System.Net.Cache;
 
 #endregion
 
@@ -79,6 +80,7 @@ namespace DMT.Services
         {
             string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
             var client = new RestClient(BaseUrl);
+            client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.Revalidate);
             client.UseNewtonsoftJson();
             var request = new RestRequest(actionUrl, Method.POST);
             request.RequestFormat = DataFormat.Json;
@@ -86,13 +88,25 @@ namespace DMT.Services
             {
                 request.AddJsonBody(pObj);
             }
+            else
+            {
+                Console.WriteLine("No body add null parameter assigned");
+            }
 
             TReturn ret = default;
             var response = client.Execute(request);
             if (null != response && null != response.Content)
             {
+                if (response.Content.Contains("rror"))
+                {
+                    Console.WriteLine("Error");
+                }
                 Console.WriteLine(response.Content);
                 ret = response.Content.FromJson<TReturn>();
+            }
+            else
+            {
+                Console.WriteLine("Execute no response.");
             }
 
             return ret;
@@ -107,17 +121,33 @@ namespace DMT.Services
         {
             string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
             var client = new RestClient(BaseUrl);
+            client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.Revalidate);
             client.UseNewtonsoftJson();
             var request = new RestRequest(actionUrl, Method.POST);
             request.RequestFormat = DataFormat.Json;
             if (null != pObj)
             {
+                var jstr = pObj.ToJson(true);
+                Console.WriteLine("Len: {0}, Data: {1}", jstr.Length, jstr);
                 request.AddJsonBody(pObj);
+            }
+            else
+            {
+                Console.WriteLine("No body add null parameter assigned");
             }
 
             var response = client.Execute(request);
             if (null != response && null != response.Content)
             {
+                if (response.Content.Contains("rror"))
+                {
+                    Console.WriteLine("Error");
+                }
+                Console.WriteLine(response.Content);
+            }
+            else
+            {
+                Console.WriteLine("Execute no response.");
             }
         }
 
