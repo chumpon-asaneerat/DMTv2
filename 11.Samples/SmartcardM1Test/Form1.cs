@@ -14,34 +14,86 @@ namespace SmartcardM1Test
 {
     public partial class Form1 : Form
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        #endregion
+
+        #region Private Methods
+
+        private void InitSmartcardHandlers()
         {
-            // Read both serial and block.
-            SmartcardService.ReadSerialNoOnly = false;
-            // Set Secure Key.
-            SmartcardService.SecureKey = SL600SDK.DefaultKey;
             // Init Event Handlers.
             SmartcardService.OnIdle += SmartcardService_OnIdle;
             SmartcardService.OnCardReadSerial += SmartcardService_OnCardReadSerial;
             SmartcardService.OnCardReadBlock += SmartcardService_OnCardReadBlock;
-            SmartcardService.Start();
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void FreeSmartcardHandlers()
         {
             // Release Event Handlers.
             SmartcardService.OnCardReadBlock -= SmartcardService_OnCardReadBlock;
             SmartcardService.OnCardReadSerial -= SmartcardService_OnCardReadSerial;
             SmartcardService.OnIdle -= SmartcardService_OnIdle;
-
-            SmartcardService.Shutdown(); // Required when close program to prevent process halt.
         }
 
+        private void InitSmartcardService()
+        {
+            // Read both serial and block.
+            SmartcardService.ReadSerialNoOnly = false;
+            // Set Secure Key.
+            SmartcardService.SecureKey = SL600SDK.DefaultKey;
+            // Init all handlers
+            InitSmartcardHandlers();
+        }
+
+        private void FreeSmartcardService()
+        {
+            // Required when close program to prevent process halt.
+            SmartcardService.Shutdown();
+            // Free all handlers
+            FreeSmartcardHandlers();
+        }
+
+        private void StartService()
+        {
+            SmartcardService.Start();
+        }
+
+        private void ShutdownService()
+        {
+            SmartcardService.Shutdown();
+        }
+
+        #endregion
+
+        #region UI Event Handlers
+
+        #region Load/Closing
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            InitSmartcardService();
+            // Set Buttons enable state.
+            cmdStart.Enabled = true;
+            cmdStop.Enabled = false;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FreeSmartcardService();
+        }
+
+        #endregion
+
+        #region SmartcardService Event Handlers
 
         private void SmartcardService_OnIdle(object sender, EventArgs e)
         {
@@ -69,9 +121,39 @@ namespace SmartcardM1Test
             lbBlock3.Text = "Block 3: " + e.Block3;
         }
 
+        #endregion
+
+        #region CheckBox Handlers
+
         private void chkReadBoth_CheckedChanged(object sender, EventArgs e)
         {
             SmartcardService.ReadSerialNoOnly = !chkReadBoth.Checked;
         }
+
+        #endregion
+
+        #region Button Handlers
+
+        private void cmdStart_Click(object sender, EventArgs e)
+        {
+            // start listen port.
+            StartService();
+            // Set Buttons enable state.
+            cmdStart.Enabled = false;
+            cmdStop.Enabled = true;
+        }
+
+        private void cmdStop_Click(object sender, EventArgs e)
+        {
+            // stop listen port.
+            ShutdownService();
+            // Set Buttons enable state.
+            cmdStart.Enabled = true;
+            cmdStop.Enabled = false;
+        }
+
+        #endregion
+
+        #endregion
     }
 }
