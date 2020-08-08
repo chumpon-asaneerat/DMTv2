@@ -1285,6 +1285,13 @@ namespace DMT.Smartcard
             ThrowIfDisposed();
             return _thread.Invoke(() => _functions.GetFunctionDelegate<SDKDelegates.rf_init_usb>()(HIDNum));
         }
+
+        public void RFClosePort(IntPtr handle)
+        {
+            ThrowIfDisposed();
+            _thread.Invoke(() => ThrowIfNotSucceded(_functions.GetFunctionDelegate<SDKDelegates.rf_ClosePort>()(handle)));
+        }
+
         public Task<IntPtr> RFInitUSBAsync(int HIDNum)
         {
             ThrowIfDisposed();
@@ -2294,7 +2301,6 @@ namespace DMT.Smartcard
         {
             SDK = sdk;
             ICDev = (ushort)icdev;
-
             Handle = SDK.RFInitUSB(icdev);
         }
         public override byte[] Reset()
@@ -2538,7 +2544,6 @@ namespace DMT.Smartcard
             public string Block3 { get; set; }
         }
 
-
         public ReadCardSerialResult ReadCardSerial(bool STDMode = true)
         {
             ReadCardSerialResult result = new ReadCardSerialResult();
@@ -2644,11 +2649,18 @@ namespace DMT.Smartcard
             {
                 if (disposing)
                 {
+                    if (Handle != IntPtr.Zero)
+                    {
+                        if (null != SDK)
+                        {
+                            SDK.RFClosePort(Handle);
+                        }
+                    }
+                    Handle = IntPtr.Zero;
+
                     SDK.Dispose();
                 }
-
                 SDK = null;
-
                 disposedValue = true;
             }
         }
