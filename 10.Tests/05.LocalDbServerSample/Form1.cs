@@ -79,6 +79,8 @@ namespace LocalDbServerSample
         private void button14_Click(object sender, EventArgs e)
         {
             // Init TSB Credit.
+            //TODO: Init TSB Credit (demo).
+            /*
             TSBCreditTransaction inst = TSBCreditTransaction.GetInitial();
             inst.TransactionDate = DateTime.Now;
             inst.CountBHT1 = 300;
@@ -94,6 +96,7 @@ namespace LocalDbServerSample
 
             // Gets TSB Credits
             dbgTSBCredit.DataSource = TSBCreditTransaction.Gets();
+            */
         }
 
         private void button5_Click(object sender, EventArgs e)

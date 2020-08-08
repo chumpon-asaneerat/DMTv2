@@ -31,14 +31,14 @@ namespace DMT.Services
 
         #region TSB Credit Transaction
 
-
+        /*
         [HttpPost]
         [ActionName(RouteConsts.Credit.GetInitialTSBCreditTransaction.Name)]
         public TSBCreditTransaction GetInitialTSBCreditTransaction([FromBody] TSB tsb)
         {
             return TSBCreditTransaction.GetInitialTransaction(tsb);
         }
-
+        */
         [HttpPost]
         [ActionName(RouteConsts.Credit.SaveTSBCreditTransaction.Name)]
         public void SaveTSBCreditTransaction([FromBody] TSBCreditTransaction value)

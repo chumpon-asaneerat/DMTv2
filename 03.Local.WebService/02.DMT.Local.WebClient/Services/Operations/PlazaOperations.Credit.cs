@@ -70,14 +70,14 @@ namespace DMT.Services
             #endregion
 
             #region TSB Credit Transaction
-
+            /*
             public TSBCreditTransaction GetInitialTSBCreditTransaction(TSB tsb)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<TSBCreditTransaction>(
                     RouteConsts.Credit.GetInitialTSBCreditTransaction.Url, tsb);
                 return ret;
             }
-
+            */
             public void SaveTSBCreditTransaction(TSBCreditTransaction value)
             {
                 NRestClient.Create(port: 9000).Execute(

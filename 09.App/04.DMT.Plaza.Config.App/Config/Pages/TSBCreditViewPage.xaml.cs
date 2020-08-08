@@ -64,7 +64,8 @@ namespace DMT.Config.Pages
             pgrid.SelectedObject = null;
             if (null == item) return;
 
-            pgrid.SelectedObject = ops.Credits.GetInitialTSBCreditTransaction(item);
+            //TODO: Init TSB Credit (Setup).
+            //pgrid.SelectedObject = ops.Credits.GetInitialTSBCreditTransaction(item);
         }
 
         #endregion
