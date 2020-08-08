@@ -14,8 +14,15 @@ Update 2020-08-09 #17
 Update 2020-08-09 #16
 - 
 
+[commited]
 Update 2020-08-09 #15
-- 
+- Note:
+  - TA/TOD should has config to set local web server ip address to access from difference
+    computer.
+  - Required to Implements basic communitation to TA/TOD Server (Web Service).
+  - Node.js mssql checks connect to SQL Server via domain (check connection string/config).
+  - Update Simulator App for more user friendly (all screen)
+  - Update Config App add more config related to setting Server and Windows Service.
 
 [commited]
 Update 2020-08-09 #14
