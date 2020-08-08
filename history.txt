@@ -5,8 +5,9 @@ Update 2020-08-09 #20
 Update 2020-08-09 #19
 - 
 
+[commited]
 Update 2020-08-09 #18
-- 
+- Clean up and re-compile for test Assembly resolve problem (Seem to be OK).
 
 [commited]
 Update 2020-08-09 #17
