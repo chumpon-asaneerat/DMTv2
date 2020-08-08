@@ -58,12 +58,14 @@ namespace DMT.TA.Pages.Plaza
 
         public void RefreshPlazaInfo()
         {
+            //TODO: Fixed Credit.
+            /*
             var tsbCredit = ops.Credits.GetCurrent();
 
             this.DataContext = tsbCredit;
             tsbCredit.Description = "ยืมเงิน";
             tsbCredit.HasRemark = false;
-
+            */
         }
 
         private void cmdSearch_Click(object sender, RoutedEventArgs e)

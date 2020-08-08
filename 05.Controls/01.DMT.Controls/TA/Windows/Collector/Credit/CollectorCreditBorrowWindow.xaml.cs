@@ -89,6 +89,8 @@ namespace DMT.TA.Windows.Collector.Credit
             }
             if (null != srcObj && srcObj.UserCreditId == 0)
             {
+                //TODO: Fixed Credit.
+                /*
                 var plazaGrp = cbPlzaGroups.SelectedItem as PlazaGroup;
                 if (null != plazaGrp)
                 {
@@ -98,9 +100,12 @@ namespace DMT.TA.Windows.Collector.Credit
                 srcObj.State = UserCredit.StateTypes.Initial;
                 int pkid = ops.Credits.SaveUserCredit(srcObj);
                 srcObj.UserCreditId = pkid;
+                */
             }
             if (null != usrObj && null != srcObj)
             {
+                //TODO: Fixed Credit.
+                /*
                 usrObj.UserCreditId = srcObj.UserCreditId;
                 usrObj.TransactionType = UserCreditTransaction.TransactionTypes.Borrow;
                 if (string.IsNullOrWhiteSpace(usrObj.TSBId))
@@ -117,7 +122,7 @@ namespace DMT.TA.Windows.Collector.Credit
                 }
 
                 ops.Credits.SaveUserTransaction(usrObj);
-
+                */
                 this.DialogResult = true;
             }
         }
@@ -178,6 +183,8 @@ namespace DMT.TA.Windows.Collector.Credit
 
         public void Setup(UserCredit credit)
         {
+            //TODO: Fixed Credit.
+            /*
             srcObj = credit;
 
             usrObj = new UserCreditTransaction();
@@ -211,6 +218,7 @@ namespace DMT.TA.Windows.Collector.Credit
             srcEntry.DataContext = srcObj;
             usrEntry.DataContext = usrObj;
             sumEntry.DataContext = sumObj;
+            */
         }
 
         private void UsrObj_PropertyChanged(object sender, PropertyChangedEventArgs e)

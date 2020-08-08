@@ -59,6 +59,8 @@ namespace DMT.TA.Pages.Exchange
 
         public void RefreshPlazaInfo()
         {
+            //TODO: Fixed Credit.
+            /*
             var tsbCredit = ops.Credits.GetCurrent();
 
             this.DataContext = tsbCredit;
@@ -70,6 +72,7 @@ namespace DMT.TA.Pages.Exchange
 
             loanEntry.IsEnabled = false;
             loanEntry.DataContext = tsbCredit;
+            */
         }
     }
 }

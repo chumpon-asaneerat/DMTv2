@@ -53,6 +53,8 @@ namespace DMT.TA.Windows.Collector.Credit
             }
             if (null != srcObj && null != usrObj)
             {
+                //TODO: Fixed Credit.
+                /*
                 DMT.Windows.MessageBoxYesNoRedWindow msg = new DMT.Windows.MessageBoxYesNoRedWindow();
                 msg.Owner = Application.Current.MainWindow;
                 msg.Setup("ยืนยันการคืนเงิน ยืมทอน", srcObj.FullNameTH+" จำนวนเงิน "+ srcObj.BHTTotal.ToString("#,##0") + " บาท", "Toll Admin", true);
@@ -75,6 +77,7 @@ namespace DMT.TA.Windows.Collector.Credit
                         }
                     }
                 }
+                */
             }
             this.DialogResult = true;
         }

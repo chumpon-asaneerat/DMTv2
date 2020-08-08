@@ -58,24 +58,11 @@ namespace DMT.TA.Pages.Plaza
         }
 
         #endregion
-        /*
-        private void UpdateBalance()
-        {
 
-        }
-
-        public void Setup()
-        {
-            UpdateBalance();
-        }
-
-        private void _plaza_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            UpdateBalance();
-        }
-        */
         public void RefreshPlazaInfo()
         {
+            //TODO: Fixed Credit.
+            /*
             var tsbCredit = ops.Credits.GetCurrent();
 
             this.DataContext = tsbCredit;
@@ -86,6 +73,7 @@ namespace DMT.TA.Pages.Plaza
 
             loanEntry.IsEnabled = false;
             loanEntry.DataContext = tsbCredit;
+            */
         }
     }
 }

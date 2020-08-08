@@ -94,6 +94,8 @@ namespace DMT.TOD.Pages.Revenue
             }
             else
             {
+                //TODO: Fixed Credit.
+                /*
                 _entryDate = entryDate;
                 _revDate = revDate;
 
@@ -122,6 +124,7 @@ namespace DMT.TOD.Pages.Revenue
                 _revenueEntry.PlazaGroupId = _plazaGroup.PlazaGroupId;
 
                 revEntry.DataContext = _revenueEntry;
+                */
             }
         }
     }

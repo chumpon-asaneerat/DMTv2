@@ -2002,7 +2002,8 @@ namespace DMT.Smartcard
                     return null; // end of stream, no tag found
                 }
 
-                if (RemoveEMVPadding && byteCount == 0 && (thisByte == 0x00 || thisByte == 0xff)) // todo: check 0xff usage!!!
+                // NOTE: check 0xff usage!!!
+                if (RemoveEMVPadding && byteCount == 0 && (thisByte == 0x00 || thisByte == 0xff))
                     continue; // skip if not already reading tag (EMV allows 0x00 or 0xff padding between TLV entries)
 
                 byteCount++;

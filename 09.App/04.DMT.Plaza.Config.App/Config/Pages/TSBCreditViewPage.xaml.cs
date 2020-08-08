@@ -64,7 +64,8 @@ namespace DMT.Config.Pages
             pgrid.SelectedObject = null;
             if (null == item) return;
 
-            pgrid.SelectedObject = ops.Credits.GetInitial(item);
+            //TODO: Fixed Credit.
+            //pgrid.SelectedObject = ops.Credits.GetInitial(item);
         }
 
         #endregion
@@ -75,7 +76,8 @@ namespace DMT.Config.Pages
         {
             var item = pgrid.SelectedObject as TSBCreditTransaction;
             if (null == item) return;
-            ops.Credits.SaveTransaction(item);
+            //TODO: Fixed Credit.
+            //ops.Credits.SaveTransaction(item);
             // clear
             pgrid.SelectedObject = null;
         }

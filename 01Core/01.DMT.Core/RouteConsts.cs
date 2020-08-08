@@ -381,6 +381,7 @@ namespace DMT
             public const string Name = "Credit";
             public const string Url = RouteConsts.Url + @"/" + Name;
 
+            /*
             public static class GetCurrentInitial
             {
                 public const string Name = "GetCurrentInitial";
@@ -440,6 +441,7 @@ namespace DMT
                 public const string Name = "SaveUserTransaction";
                 public const string Url = Credit.Url + @"/" + Name;
             }
+            */
         }
 
         #endregion

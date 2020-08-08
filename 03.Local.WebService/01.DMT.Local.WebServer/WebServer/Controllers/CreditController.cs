@@ -17,6 +17,7 @@ namespace DMT.Services
     /// </summary>
     public class CreditController : ApiController
     {
+        /*
         [HttpPost]
         [ActionName(RouteConsts.Credit.GetCurrentInitial.Name)]
         public TSBCreditTransaction GetCurrentInitial()
@@ -95,5 +96,6 @@ namespace DMT.Services
         {
             UserCreditTransaction.SaveTransaction(value);
         }
+        */
     }
 }

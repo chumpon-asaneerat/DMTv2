@@ -58,6 +58,8 @@ namespace DMT.TA.Pages.History
 
         public void RefreshPlazaInfo()
         {
+            //TODO: Fixed Credit.
+            /*
             var tsbCredit = ops.Credits.GetCurrent();
 
             this.DataContext = tsbCredit;
@@ -65,6 +67,7 @@ namespace DMT.TA.Pages.History
             tsbCredit.HasRemark = false;
             plaza.IsEnabled = false;
             plaza.DataContext = tsbCredit;
+            */
 
         }
 

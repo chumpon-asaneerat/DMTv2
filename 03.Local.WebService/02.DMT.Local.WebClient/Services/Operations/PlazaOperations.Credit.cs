@@ -57,7 +57,7 @@ namespace DMT.Services
             #endregion
 
             #region Public Methods
-
+            /*
             public TSBCreditTransaction GetCurrentInitial()
             {
                 var ret = NRestClient.Create(port: 9000).Execute<TSBCreditTransaction>(
@@ -125,7 +125,7 @@ namespace DMT.Services
                 NRestClient.Create(port: 9000).Execute(
                     RouteConsts.Credit.SaveUserTransaction.Url, value);
             }
-
+            */
             #endregion
         }
 

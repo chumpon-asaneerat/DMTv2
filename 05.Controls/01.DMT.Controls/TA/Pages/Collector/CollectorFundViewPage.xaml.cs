@@ -81,6 +81,8 @@ namespace DMT.TA.Pages.Collector
 
         public void RefreshPlazaInfo()
         {
+            //TODO: Fixed Credit.
+            /*
             var tsbCredit = ops.Credits.GetCurrent();
             this.DataContext = tsbCredit;
 
@@ -93,6 +95,7 @@ namespace DMT.TA.Pages.Collector
             loanEntry.DataContext = tsbCredit;
 
             grid.Setup();
+            */
         }
     }
 }
