@@ -146,11 +146,8 @@
     <Compile Include="TA\Pages\Plaza\PlazaCouponReceivedReturnPage.xaml.cs">
       <DependentUpon>PlazaCouponReceivedReturnPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TA\Pages\Plaza\PlazaFundReceivedReturnPage.xaml.cs">
-      <DependentUpon>PlazaFundReceivedReturnPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TA\Pages\Plaza\PlazaReceivedFundReturnPage.xaml.cs">
-      <DependentUpon>PlazaReceivedFundReturnPage.xaml</DependentUpon>
+    <Compile Include="TA\Pages\Plaza\PlazaInternalCreditExchangePage.xaml.cs">
+      <DependentUpon>PlazaInternalCreditExchangePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TA\Pages\Plaza\PlazaReceivedReturnPage.xaml.cs">
       <DependentUpon>PlazaReceivedReturnPage.xaml</DependentUpon>
@@ -509,13 +506,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="TA\Pages\Plaza\PlazaFundReceivedReturnPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="TA\Pages\Plaza\PlazaInternalCreditExchangePage.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="TA\Pages\Plaza\PlazaReceivedFundReturnPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="TA\Pages\Plaza\PlazaReceivedReturnPage.xaml">
       <Generator>MSBuild:Compile</Generator>

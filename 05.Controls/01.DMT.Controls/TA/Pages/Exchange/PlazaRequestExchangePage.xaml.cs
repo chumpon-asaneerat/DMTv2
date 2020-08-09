@@ -54,6 +54,7 @@ namespace DMT.TA.Pages.Exchange
             tran.FullNameTH = user.FullNameTH;
 
             var win = new Windows.Exchange.PlazaCreditRequestExchangeWindow();
+            win.Title = "คำร้องขอการแลกเปลี่ยนเงิน";
             win.Owner = Application.Current.MainWindow;
             win.Setup(Windows.Exchange.ExchangeWindowMode.New,  tran);
 
@@ -75,6 +76,9 @@ namespace DMT.TA.Pages.Exchange
             {
                 if (tran.TransactionType != TSBExchangeTransaction.TransactionTypes.Request)
                     return; // invalid transaction type.
+                if (tran.TransactionId == 0)
+                    return; // data is not saved so ignore it.
+
                 ops.Exchanges.SaveTSBExchangeTransaction(tran);
             }
             else if (win.Mode == Windows.Exchange.ExchangeWindowMode.Cancel)
@@ -82,6 +86,8 @@ namespace DMT.TA.Pages.Exchange
                 if (tran.TransactionType != TSBExchangeTransaction.TransactionTypes.Request)
                     return; // invalid transaction type.
 
+                if (tran.TransactionId == 0)
+                    return; // data is not saved so ignore it.
                 tran.TransactionType = TSBExchangeTransaction.TransactionTypes.Canceled;
                 tran.FinishFlag = TSBExchangeTransaction.FinishedFlags.Completed;
                 ops.Exchanges.SaveTSBExchangeTransaction(tran);

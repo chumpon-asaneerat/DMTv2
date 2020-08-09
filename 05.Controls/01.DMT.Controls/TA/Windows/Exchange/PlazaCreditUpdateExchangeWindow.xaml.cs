@@ -5,6 +5,13 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
+using DMT.Models;
+using DMT.Services;
+using NLib.Services;
+using NLib.Reflection;
+using NLib.Reports.Rdlc;
+using System.Reflection;
+
 #endregion
 
 namespace DMT.TA.Windows.Exchange
@@ -26,6 +33,9 @@ namespace DMT.TA.Windows.Exchange
 
         #endregion
 
+        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private TSB _tsb = null;
+
         #region Button Handlers
 
         private void cmdSaveExchange_Click(object sender, RoutedEventArgs e)
@@ -41,15 +51,17 @@ namespace DMT.TA.Windows.Exchange
         #endregion
 
         #region Public Methods
-        /*
-        public void Setup(Models.FundExchange item)
+
+        public void Setup(TSBExchangeTransaction transaction)
         {
+            /*
             //srcEntry.DataContext = item.Plaza;
             requestEntry.DataContext = item.Request;
             approveEntry.DataContext = item.Approve;
             exchangeEntry.DataContext = item.Exchange;
+            */
         }
-        */
+
         #endregion
     }
 }

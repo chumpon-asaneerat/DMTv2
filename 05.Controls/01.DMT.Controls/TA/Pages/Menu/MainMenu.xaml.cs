@@ -95,7 +95,7 @@ namespace DMT.TA.Pages.Menu
         // Implement #1 แลกเงินหมุนเวียนในด่าน
         private void exchangeMoney_Click(object sender, RoutedEventArgs e)
         {
-            var page = new DMT.TA.Pages.Plaza.PlazaReceivedFundReturnPage();
+            var page = new DMT.TA.Pages.Plaza.PlazaInternalCreditExchangePage();
             page.RefreshPlazaInfo();
             PageContentManager.Instance.Current = page;
         }

@@ -58,6 +58,7 @@ namespace DMT.TA.Controls.Exchange.View
             if (null != item)
             {
                 var win = new Windows.Exchange.PlazaCreditRequestExchangeWindow();
+                win.Title = "คำร้องขอการแลกเปลี่ยนเงิน";
                 win.Owner = Application.Current.MainWindow;
                 win.Setup(Windows.Exchange.ExchangeWindowMode.Edit, item);
 
@@ -72,48 +73,39 @@ namespace DMT.TA.Controls.Exchange.View
                         return; // invalid transaction type.
                     ops.Exchanges.SaveTSBExchangeTransaction(item);
                 }
+                else if (win.Mode == Windows.Exchange.ExchangeWindowMode.Cancel)
+                {
+                    if (item.TransactionType != TSBExchangeTransaction.TransactionTypes.Request)
+                        return; // invalid transaction type.
+
+                    if (item.TransactionId == 0)
+                        return; // data is not saved so ignore it.
+                    item.TransactionType = TSBExchangeTransaction.TransactionTypes.Canceled;
+                    item.FinishFlag = TSBExchangeTransaction.FinishedFlags.Completed;
+                    ops.Exchanges.SaveTSBExchangeTransaction(item);
+                }
+
                 // Request list.
                 RefreshList(_tsb);
             }
-            /*
-            Models.FundExchange item = b.CommandParameter as Models.FundExchange;
-            if (null != item)
-            {
-                item.IsEditing = true;
-
-                var win = new DMT.TA.Windows.Exchange.PlazaFundRequestExchangeWindow();
-                win.Owner = Application.Current.MainWindow;
-
-                win.Title = "คำร้องขอการแลกเปลี่ยนเงิน";
-
-                win.Setup(DMT.TA.Windows.Exchange.ExchangeWindowMode.Edit, item);
-                if (win.ShowDialog() == false)
-                {
-                    item.IsEditing = false;
-                    return;
-                }
-
-                item.IsEditing = false;
-
-                if (win.Mode == DMT.TA.Windows.Exchange.ExchangeWindowMode.Cancel)
-                {
-                    // remove an item if cancel.
-                    _items.Remove(item);
-                }
-
-                // refresh the update item.
-                listView.Items.Refresh();
-            }
-            */
         }
 
         private void cmdExchange_Click(object sender, RoutedEventArgs e)
         {
-            /*
             Button b = sender as Button;
-            Models.FundExchange item = b.CommandParameter as Models.FundExchange;
+            TSBExchangeTransaction item = b.CommandParameter as TSBExchangeTransaction;
             if (null != item)
             {
+                var win = new DMT.TA.Windows.Exchange.PlazaCreditUpdateExchangeWindow();
+                win.Owner = Application.Current.MainWindow;
+                win.Title = "ยืนยันข้อมูลการแลกเปลี่ยนเงิน";
+                win.Setup(item);
+                if (win.ShowDialog() == false)
+                {
+                    return;
+                }
+
+                /*
                 item.IsEditing = true;
 
                 var win = new DMT.TA.Windows.Exchange.PlazaFundRequestExchangeWindow();
@@ -158,8 +150,8 @@ namespace DMT.TA.Controls.Exchange.View
 
                 // refresh the items list.
                 listView.Items.Refresh();
+                */
             }
-            */
         }
         /*
         private void AppendPlazaFund(Models.FundExchange item)

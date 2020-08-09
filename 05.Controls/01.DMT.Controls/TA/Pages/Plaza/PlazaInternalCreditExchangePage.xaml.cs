@@ -11,22 +11,23 @@ using NLib.Services;
 using NLib.Reflection;
 using NLib.Reports.Rdlc;
 using System.Reflection;
+using System.ComponentModel;
 
 #endregion
 
 namespace DMT.TA.Pages.Plaza
 {
     /// <summary>
-    /// Interaction logic for PlazaFundReceivedReturnPage.xaml
+    /// Interaction logic for PlazaInternalCreditExchangePage.xaml
     /// </summary>
-    public partial class PlazaFundReceivedReturnPage : UserControl
+    public partial class PlazaInternalCreditExchangePage : UserControl
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public PlazaFundReceivedReturnPage()
+        public PlazaInternalCreditExchangePage()
         {
             InitializeComponent();
         }
@@ -34,6 +35,7 @@ namespace DMT.TA.Pages.Plaza
         #endregion
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private TSB _tsb = null;
 
         #region Button Handlers
 
@@ -46,21 +48,23 @@ namespace DMT.TA.Pages.Plaza
 
         private void cmdAppend_Click(object sender, RoutedEventArgs e)
         {
-            var win = new DMT.TA.Windows.Collector.Credit.CollectorCreditBorrowWindow();
+            var win = new Windows.Plaza.PlazaReceivedCreditWindow();
             win.Owner = Application.Current.MainWindow;
+
+            win.Title = "แลกเงินหมุนเวียนภายในด่าน";
             if (win.ShowDialog() == false)
             {
                 return;
             }
-
-            
         }
 
         #endregion
 
         public void RefreshPlazaInfo()
         {
-            var tsbCredit = ops.Credits.GetTSBBalance(null);
+            _tsb = ops.TSB.GetCurrent();
+
+            var tsbCredit = ops.Credits.GetTSBBalance(_tsb);
 
             this.DataContext = tsbCredit;
             tsbCredit.Description = "เงินยืมทอน";
