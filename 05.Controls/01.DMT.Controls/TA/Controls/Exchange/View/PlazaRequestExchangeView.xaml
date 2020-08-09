@@ -13,31 +13,31 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="วันที่" 
-                                    DisplayMemberBinding="{Binding Path=DateString}" 
-                                    Width="80"/>
+                                    DisplayMemberBinding="{Binding Path=TransactionDateString}" 
+                                    Width="110"/>
                     <GridViewColumn Header="เวลา" 
-                                    DisplayMemberBinding="{Binding Path=TimeString}" 
+                                    DisplayMemberBinding="{Binding Path=TransactionTimeString}" 
                                     Width="80"/>
                     <GridViewColumn Header="รหัสพนักงาน" 
-                                    DisplayMemberBinding="{Binding Path=StaffId}" 
-                                    Width="80"/>
+                                    DisplayMemberBinding="{Binding Path=UserId}" 
+                                    Width="100"/>
                     <GridViewColumn Header="ชื่อพนักงาน" 
-                                    DisplayMemberBinding="{Binding Path=StaffName}" 
-                                    Width="250"/>
+                                    DisplayMemberBinding="{Binding Path=FullNameTH}" 
+                                    Width="220"/>
                     <GridViewColumn Header="เงินขอแลก" 
-                                    DisplayMemberBinding="{Binding Path=ExchangeAmount}" 
+                                    DisplayMemberBinding="{Binding Path=ExchangeBHT}" 
                                     Width="100"/>
                     <GridViewColumn Header="เงินยืมเพิ่ม" 
-                                    DisplayMemberBinding="{Binding Path=BORROWAmount}" 
+                                    DisplayMemberBinding="{Binding Path=BorrowBHT}" 
                                     Width="100"/>
                     <GridViewColumn Header="เพิ่มวงเงิน" 
-                                    DisplayMemberBinding="{Binding Path=REVOLVINGFUNDSAmount}" 
+                                    DisplayMemberBinding="{Binding Path=AdditionalBHT}" 
                                     Width="100"/>
                     <GridViewColumn Header="สถานะ" 
-                                    DisplayMemberBinding="{Binding Path=Status}" 
-                                    Width="150"/>
+                                    DisplayMemberBinding="{Binding Path=TransactionType}" 
+                                    Width="100"/>
                     <GridViewColumn Header="แก้ไข/รับแลก" 
-                                    Width="250">
+                                    Width="240">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal"

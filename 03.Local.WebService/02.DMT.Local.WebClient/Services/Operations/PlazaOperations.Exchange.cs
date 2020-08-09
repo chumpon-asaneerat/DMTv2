@@ -173,7 +173,7 @@ namespace DMT.Services
             {
                 if (null == _exchanges)
                     return new List<TSBExchangeTransaction>();
-                return _exchanges.FindAll(item =>
+                var results = _exchanges.FindAll(item =>
                 {
                     bool ret = (
                         item.TransactionType == TSBExchangeTransaction.TransactionTypes.Request &&
@@ -181,6 +181,8 @@ namespace DMT.Services
                     );
                     return ret;
                 }).OrderBy(x => x.TransactionId).ToList();
+
+                return results;
             }
         }
 

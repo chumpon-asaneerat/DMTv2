@@ -1408,7 +1408,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
-		[PeropertyMapName("BHTTotal")]
+		//[PeropertyMapName("BHTTotal")]
 		public decimal BHTTotal
 		{
 			get { return _BHTTotal; }
@@ -1491,7 +1491,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
-		[PeropertyMapName("GrandTotalBHT")]
+		//[PeropertyMapName("GrandTotalBHT")]
 		public decimal GrandTotalBHT
 		{
 			get { return _ExchangeBHT + _BorrowBHT + GrandTotalBHT; }
@@ -1764,16 +1764,6 @@ namespace DMT.Models
 
 			#region User
 
-			/// <summary>
-			/// Gets or sets UserId
-			/// </summary>
-			[MaxLength(10)]
-			[PeropertyMapName("UserId")]
-			public override string UserId
-			{
-				get { return base.UserId; }
-				set { base.UserId = value; }
-			}
 			/// <summary>
 			/// Gets or sets FullNameEN
 			/// </summary>

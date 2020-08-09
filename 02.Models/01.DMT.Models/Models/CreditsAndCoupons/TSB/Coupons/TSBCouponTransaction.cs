@@ -833,16 +833,6 @@ namespace DMT.Models
 			#region User
 
 			/// <summary>
-			/// Gets or sets UserId
-			/// </summary>
-			[MaxLength(10)]
-			[PeropertyMapName("UserId")]
-			public override string UserId
-			{
-				get { return base.UserId; }
-				set { base.UserId = value; }
-			}
-			/// <summary>
 			/// Gets or sets FullNameEN
 			/// </summary>
 			[MaxLength(100)]

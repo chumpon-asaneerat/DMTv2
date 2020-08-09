@@ -86,6 +86,9 @@ namespace DMT.TA.Pages.Exchange
                 tran.FinishFlag = TSBExchangeTransaction.FinishedFlags.Completed;
                 ops.Exchanges.SaveTSBExchangeTransaction(tran);
             }
+
+            // Request list.
+            grid.RefreshList(_tsb);
         }
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
