@@ -54,6 +54,27 @@ namespace DMT.TA.Controls.Exchange.View
         private void cmdEdit_Click(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;
+            TSBExchangeTransaction item = b.CommandParameter as TSBExchangeTransaction;
+            if (null != item)
+            {
+                var win = new Windows.Exchange.PlazaCreditRequestExchangeWindow();
+                win.Owner = Application.Current.MainWindow;
+                win.Setup(Windows.Exchange.ExchangeWindowMode.Edit, item);
+
+                if (win.ShowDialog() == false)
+                {
+                    return;
+                }
+
+                if (win.Mode == Windows.Exchange.ExchangeWindowMode.Edit)
+                {
+                    if (item.TransactionType != TSBExchangeTransaction.TransactionTypes.Request)
+                        return; // invalid transaction type.
+                    ops.Exchanges.SaveTSBExchangeTransaction(item);
+                }
+                // Request list.
+                RefreshList(_tsb);
+            }
             /*
             Models.FundExchange item = b.CommandParameter as Models.FundExchange;
             if (null != item)
