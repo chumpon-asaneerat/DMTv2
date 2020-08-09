@@ -32,7 +32,35 @@ namespace DMT.Models
 	//[Table("TSBExchangeTransaction")]
 	public class TSBExchangeGroup : NTable<TSBExchangeGroup>
 	{
+		#region Enum
+
+		public enum StateTypes : int
+		{
+			// Request.
+			Request = 1,
+			// Canceled.
+			Canceled = 2,
+			// Approve.
+			Approve = 3,
+			// Reject.
+			Reject = 4,
+			// Received.
+			Received = 5,
+			// Completed (reserved).
+			Completed = 9
+		}
+
+		public enum FinishedFlags : int
+		{
+			Completed = 0,
+			Avaliable = 1
+		}
+
+		#endregion
+
 		#region Internal Variables
+
+		private StateTypes _State = StateTypes.Request;
 
 		private int _Status = 0;
 		private DateTime _LastUpdate = DateTime.MinValue;
@@ -41,6 +69,11 @@ namespace DMT.Models
 
 		#region Constructor
 
+		/// <summary>
+		/// Constructor.
+		/// </summary>
+		public TSBExchangeGroup() : base() { }
+
 		#endregion
 
 		#region Private Methods
@@ -48,6 +81,52 @@ namespace DMT.Models
 		#endregion
 
 		#region Public Properties
+
+		#region Common
+
+		/// <summary>
+		/// Gets or sets State.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets State.")]
+		[ReadOnly(true)]
+		[PeropertyMapName("State")]
+		public StateTypes State
+		{
+			get { return _State; }
+			set
+			{
+				if (_State != value)
+				{
+					_State = value;
+					this.RaiseChanged("State");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Finish Flag (0: Completed, 1: Avaliable).
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets Is Finished (0: Completed, 1: Avaliable).")]
+		[ReadOnly(true)]
+		[PeropertyMapName("FinishFlag")]
+		public virtual FinishedFlags FinishFlag
+		{
+			get
+			{
+				return _FinishFlag;
+			}
+			set
+			{
+				if (_FinishFlag != value)
+				{
+					_FinishFlag = value;
+					this.RaiseChanged("FinishFlag");
+				}
+			}
+		}
+
+		#endregion
 
 		#endregion
 
