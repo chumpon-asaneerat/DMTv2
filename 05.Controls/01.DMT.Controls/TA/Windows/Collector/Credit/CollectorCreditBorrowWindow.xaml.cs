@@ -57,7 +57,7 @@ namespace DMT.TA.Windows.Collector.Credit
             {
                 if (users.Count == 1)
                 {
-                    manager.User = users[0];
+                    manager.SetUser(users[0]);
                 }
                 else if (users.Count > 1)
                 {
@@ -69,24 +69,29 @@ namespace DMT.TA.Windows.Collector.Credit
                         // No user selected.
                         return;
                     }
-                    manager.User = win.SelectedUser;
+                    manager.SetUser(win.SelectedUser);
                 }
             }
         }
 
         private void cmdOK_Click(object sender, RoutedEventArgs e)
         {
-            if (HasNegative())
+            if (manager.HasNegative())
             {
                 MessageBox.Show(Application.Current.MainWindow, 
                     "ไม่สามารถดำเนินการบันทึกข้อมูลได้ เนื่องจากระบบพบว่ามีการ ยอดการยืมเงินในบางรายการ เกินจำนวนที่่ด่านมีอยู่", 
                     "Toll Admin");
                 return;
             }
+
+            if (manager.Save())
+            {
+                this.DialogResult = true;
+            }
+            /*
             if (null != manager.UserBalance && manager.UserBalance.UserCreditId == 0)
             {
                 //TODO: Fixed Credit (Collector Borrow).
-                /*
                 var plazaGrp = cbPlzaGroups.SelectedItem as PlazaGroup;
                 if (null != plazaGrp)
                 {
@@ -96,12 +101,10 @@ namespace DMT.TA.Windows.Collector.Credit
                 srcObj.State = UserCredit.StateTypes.Initial;
                 int pkid = ops.Credits.SaveUserCredit(srcObj);
                 srcObj.UserCreditId = pkid;
-                */
             }
             if (null != manager.Transaction && null != manager.UserBalance)
             {
                 //TODO: Fixed Credit (Collector Borrow).
-                /*
                 usrObj.UserCreditId = srcObj.UserCreditId;
                 usrObj.TransactionType = UserCreditTransaction.TransactionTypes.Borrow;
                 if (string.IsNullOrWhiteSpace(usrObj.TSBId))
@@ -118,9 +121,9 @@ namespace DMT.TA.Windows.Collector.Credit
                 }
 
                 ops.Credits.SaveUserTransaction(usrObj);
-                */
                 this.DialogResult = true;
             }
+            */
         }
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
@@ -144,7 +147,7 @@ namespace DMT.TA.Windows.Collector.Credit
                 }
             }
         }
-
+        /*
         private bool HasNegative()
         {
             return (
@@ -161,7 +164,7 @@ namespace DMT.TA.Windows.Collector.Credit
                 sumObj.AmountBHT1000 < 0
                 );
         }
-
+        */
         /*
         private void Calc()
         {

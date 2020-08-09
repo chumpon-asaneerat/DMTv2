@@ -1699,12 +1699,12 @@ namespace DMT.Models
 		/// Gets Active TSB User Credit transactions.
 		/// </summary>
 		/// <returns>Returns Current Active TSB User Credit transactions. If not found returns null.</returns>
-		public static List<UserCreditTransaction> Gets()
+		public static List<UserCreditTransaction> GetUserCreditTransactions()
 		{
 			lock (sync)
 			{
 				var tsb = TSB.GetCurrent();
-				return Gets(tsb);
+				return GetUserCreditTransactions(tsb);
 			}
 		}
 		/// <summary>
@@ -1712,7 +1712,7 @@ namespace DMT.Models
 		/// </summary>
 		/// <param name="tsb">The target TSB to get transactions.</param>
 		/// <returns>Returns User Credit transactions. If TSB not found returns null.</returns>
-		public static List<UserCreditTransaction> Gets(TSB tsb)
+		public static List<UserCreditTransaction> GetUserCreditTransactions(TSB tsb)
 		{
 			if (null == tsb) return null;
 			lock (sync)
@@ -1749,7 +1749,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static void SaveTransaction(UserCreditTransaction value)
+		public static void SaveUserCreditTransaction(UserCreditTransaction value)
 		{
 			if (null == value) return;
 			if (value.TransactionDate == DateTime.MinValue)

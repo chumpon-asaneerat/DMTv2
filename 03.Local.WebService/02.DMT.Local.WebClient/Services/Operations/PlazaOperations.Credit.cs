@@ -107,6 +107,12 @@ namespace DMT.Services
 
             #region User Credit Transaction
 
+            public void SaveUserCreditTransaction(UserCreditTransaction value)
+            {
+                NRestClient.Create(port: 9000).Execute(
+                    RouteConsts.Credit.SaveUserCreditTransaction.Url, value);
+            }
+
             #endregion
 
             /*
@@ -123,12 +129,6 @@ namespace DMT.Services
                 var ret = NRestClient.Create(port: 9000).Execute<UserCredit>(
                     RouteConsts.Credit.GetActiveUserCreditById.Url, value);
                 return ret;
-            }
-
-            public void SaveUserTransaction(UserCreditTransaction value)
-            {
-                NRestClient.Create(port: 9000).Execute(
-                    RouteConsts.Credit.SaveUserTransaction.Url, value);
             }
             */
             #endregion
@@ -324,18 +324,35 @@ namespace DMT.Services
             // Hook Event to recalcuate when transaction's property changed.
             this.Transaction.PropertyChanged += Transaction_PropertyChanged;
         }
-        /*
+
         public void SetUser(User user)
         {
-            if (null != user)
+            User = user;
+            if (null != User)
             {
-                UserBalance.UserId = user.UserId;
-                UserBalance.FullNameEN = user.FullNameEN;
-                UserBalance.FullNameTH = user.FullNameTH;
+                UserBalance.UserId = User.UserId;
+                UserBalance.FullNameEN = User.FullNameEN;
+                UserBalance.FullNameTH = User.FullNameTH;
             }
         }
-        */
-        public abstract void Save();
+
+        public abstract bool Save();
+
+        public bool HasNegative()
+        {
+            return (
+                ResultBalance.AmountST25 < 0 ||
+                ResultBalance.AmountST50 < 0 ||
+                ResultBalance.AmountBHT1 < 0 ||
+                ResultBalance.AmountBHT2 < 0 ||
+                ResultBalance.AmountBHT5 < 0 ||
+                ResultBalance.AmountBHT10 < 0 ||
+                ResultBalance.AmountBHT20 < 0 ||
+                ResultBalance.AmountBHT50 < 0 ||
+                ResultBalance.AmountBHT100 < 0 ||
+                ResultBalance.AmountBHT500 < 0 ||
+                ResultBalance.AmountBHT1000 < 0);
+        }
 
         #endregion
 
@@ -352,7 +369,7 @@ namespace DMT.Services
         /// <summary>
         /// Gets or sets User.
         /// </summary>
-        public User User { get; set; }
+        public User User { get; private set; }
         /// <summary>
         /// Checks is new UserBalance.
         /// </summary>
@@ -403,12 +420,19 @@ namespace DMT.Services
             ResultBalance.AmountBHT1000 = TSBBalance.AmountBHT1000 - Transaction.AmountBHT1000;
         }
 
-        public override void Save()
+        public override bool Save()
         {
+            bool result = false;
             // Check User Balance is already inserted
             if (null != UserBalance && UserBalance.UserCreditId == 0)
             {
                 // not inserted so insert new record.
+
+                if (string.IsNullOrWhiteSpace(UserBalance.UserId) && null != User)
+                {
+                    UserBalance.UserId = User.UserId;
+                }
+
                 if (null != PlazaGroup)
                 {
                     UserBalance.TSBId = PlazaGroup.TSBId;
@@ -417,8 +441,31 @@ namespace DMT.Services
                 UserBalance.State = UserCreditBalance.StateTypes.Initial;
                 int pkid = ops.Credits.SaveUserCreditBalance(UserBalance);
                 UserBalance.UserCreditId = pkid;
-
             }
+            // Save User Credit Transaction.
+            if (null != Transaction && null != UserBalance)
+            {
+                Transaction.UserCreditId = UserBalance.UserCreditId;
+                Transaction.TransactionType = UserCreditTransaction.TransactionTypes.Borrow;
+                if (string.IsNullOrWhiteSpace(Transaction.TSBId))
+                {
+                    Transaction.TSBId = UserBalance.TSBId;
+                }
+                if (string.IsNullOrWhiteSpace(Transaction.PlazaGroupId))
+                {
+                    Transaction.PlazaGroupId = UserBalance.PlazaGroupId;
+                }
+                if (string.IsNullOrWhiteSpace(Transaction.UserId))
+                {
+                    Transaction.UserId = UserBalance.UserId;
+                }
+
+                ops.Credits.SaveUserCreditTransaction(Transaction);
+
+                result = true; // save success.
+            }
+
+            return result;
         }
 
         #endregion
@@ -438,9 +485,9 @@ namespace DMT.Services
                 return;
         }
 
-        public override void Save()
+        public override bool Save()
         {
-
+            return false;
         }
 
         #endregion

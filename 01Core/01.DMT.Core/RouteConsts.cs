@@ -425,6 +425,12 @@ namespace DMT
 
             #region User Credit Transaction
 
+            public static class SaveUserCreditTransaction
+            {
+                public const string Name = "SaveUserCreditTransaction";
+                public const string Url = Credit.Url + @"/" + Name;
+            }
+
             #endregion
 
             /*
@@ -443,12 +449,6 @@ namespace DMT
             public static class GetActiveUserCreditById
             {
                 public const string Name = "GetActiveUserCreditById";
-                public const string Url = Credit.Url + @"/" + Name;
-            }
-
-            public static class SaveUserTransaction
-            {
-                public const string Name = "SaveUserTransaction";
                 public const string Url = Credit.Url + @"/" + Name;
             }
             */
