@@ -88,6 +88,13 @@ namespace DMT.Services
 
             #region User Credit Balance
 
+            public List<UserCreditBalance> GetActiveUserCreditBalances(TSB value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<UserCreditBalance>>(
+                    RouteConsts.Credit.GetActiveUserCreditBalances.Url, value);
+                return ret;
+            }
+
             #endregion
 
             #region User Credit Transaction
@@ -107,13 +114,6 @@ namespace DMT.Services
             {
                 var ret = NRestClient.Create(port: 9000).Execute<UserCredit>(
                     RouteConsts.Credit.GetActiveUserCreditById.Url, value);
-                return ret;
-            }
-
-            public List<UserCredit> GetActiveUserCredits(TSB value)
-            {
-                var ret = NRestClient.Create(port: 9000).Execute<List<UserCredit>>(
-                    RouteConsts.Credit.GetActiveUserCredits.Url, value);
                 return ret;
             }
 
@@ -249,6 +249,34 @@ namespace DMT.Services
                 return ops.Credits.GetInitialTSBCreditTransaction(TSB);
             }
         }
+
+        #endregion
+    }
+
+    #endregion
+
+    #region UserCreditManager
+
+    public class UserCreditManager
+    {
+        #region Internal Variables
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public UserCreditManager() : base() { }
+
+        #endregion
+
+        #region Public Methods
+
+        #endregion
+
+        #region Public Properties
 
         #endregion
     }

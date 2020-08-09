@@ -53,7 +53,20 @@ namespace DMT.Services
 
         #endregion
 
-        #region TSB User Transaction
+        #region User Credit Balance
+
+        [HttpPost]
+        [ActionName(RouteConsts.Credit.GetActiveUserCreditBalances.Name)]
+        public List<UserCreditBalance> GetActiveUserCreditBalances([FromBody] TSB value)
+        {
+            if (null == value) return null;
+            var ret = UserCreditBalance.GetActiveUserCreditBalances(value);
+            return ret;
+        }
+
+        #endregion
+
+        #region User Credit Transaction
 
         #endregion
 
@@ -74,15 +87,6 @@ namespace DMT.Services
         {
             if (null == value) return null;
             var ret = UserCredit.GetActive(value.UserId, value.PlazaGroupId);
-            return ret;
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Credit.GetActiveUserCredits.Name)]
-        public List<UserCredit> GetActiveUserCredits([FromBody] TSB value)
-        {
-            if (null == value) return null;
-            var ret = UserCredit.GetActives(value);
             return ret;
         }
 

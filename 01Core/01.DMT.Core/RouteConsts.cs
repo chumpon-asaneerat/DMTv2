@@ -407,11 +407,17 @@ namespace DMT
 
             #endregion
 
-            #region TSB User Credit Balance
+            #region User Credit Balance
+
+            public static class GetActiveUserCreditBalances
+            {
+                public const string Name = "GetActiveUserCreditBalances";
+                public const string Url = Credit.Url + @"/" + Name;
+            }
 
             #endregion
 
-            #region TSB User Transaction
+            #region User Credit Transaction
 
             #endregion
 
@@ -431,12 +437,6 @@ namespace DMT
             public static class GetActiveUserCreditById
             {
                 public const string Name = "GetActiveUserCreditById";
-                public const string Url = Credit.Url + @"/" + Name;
-            }
-
-            public static class GetActiveUserCredits
-            {
-                public const string Name = "GetActiveUserCredits";
                 public const string Url = Credit.Url + @"/" + Name;
             }
 
