@@ -94,8 +94,6 @@ namespace DMT.TOD.Pages.Revenue
             }
             else
             {
-                //TODO: Fixed Credit (Revenue Process).
-                /*
                 _entryDate = entryDate;
                 _revDate = revDate;
 
@@ -108,7 +106,7 @@ namespace DMT.TOD.Pages.Revenue
                 txtUserName.Text = _userShift.FullNameTH;
 
                 var search = Search.UserCredits.GetActiveById.Create(_userShift.UserId, _plazaGroup.PlazaGroupId);
-                var userCredit = ops.Credits.GetActiveUserCreditById(search);
+                var userCredit = ops.Credits.GetActiveUserCreditBalanceById(search);
                 _revenueEntry = new Models.RevenueEntry();
                 if (null != userCredit)
                 {
@@ -124,7 +122,6 @@ namespace DMT.TOD.Pages.Revenue
                 _revenueEntry.PlazaGroupId = _plazaGroup.PlazaGroupId;
 
                 revEntry.DataContext = _revenueEntry;
-                */
             }
         }
     }

@@ -42,7 +42,7 @@ namespace DMT.TOD.Pages.Revenue
         private UserShift _userShift = null;
         private UserShiftRevenue _plazaRevenue = null;
         private List<LaneAttendance> _laneActivities = null;
-        private UserCreditBalance srcObj;
+        private UserCreditBalance srcObj = null;
 
         #region Button Handlers
 
@@ -209,8 +209,6 @@ namespace DMT.TOD.Pages.Revenue
 
         public void Setup(User sup)
         {
-            //TODO: Supervisor Revenue Entry Setup.
-            /*
             _sup = sup;
 
             LoadShifts();
@@ -220,7 +218,6 @@ namespace DMT.TOD.Pages.Revenue
 
             srcObj = new UserCreditBalance();
             this.DataContext = srcObj;
-            */
         }
     }
 }
