@@ -37,11 +37,13 @@ namespace DMT.TA.Windows.Collector.Credit
         #endregion
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
-        
+        private UserCreditBorrowManager manager = new UserCreditBorrowManager();
+        /*
         private UserCreditBalance srcObj;
         private UserCreditTransaction usrObj;
         private TSBCreditBalance plazaObj;
         private TSBCreditBalance sumObj;
+        */
 
         #region Button Handlers
 
@@ -51,14 +53,11 @@ namespace DMT.TA.Windows.Collector.Credit
             if (string.IsNullOrEmpty(userId)) return;
 
             var users = ops.Users.SearchById(Search.Users.ById.Create(userId));
-            if (null != users && null != srcObj)
+            if (null != users && null != manager.UserBalance)
             {
                 if (users.Count == 1)
                 {
-                    var user = users[0];
-                    srcObj.UserId = user.UserId;
-                    srcObj.FullNameEN = user.FullNameEN;
-                    srcObj.FullNameTH = user.FullNameTH;
+                    manager.User = users[0];
                 }
                 else if (users.Count > 1)
                 {
@@ -70,10 +69,7 @@ namespace DMT.TA.Windows.Collector.Credit
                         // No user selected.
                         return;
                     }
-                    var user = win.SelectedUser;
-                    srcObj.UserId = user.UserId;
-                    srcObj.FullNameEN = user.FullNameEN;
-                    srcObj.FullNameTH = user.FullNameTH;
+                    manager.User = win.SelectedUser;
                 }
             }
         }
@@ -87,7 +83,7 @@ namespace DMT.TA.Windows.Collector.Credit
                     "Toll Admin");
                 return;
             }
-            if (null != srcObj && srcObj.UserCreditId == 0)
+            if (null != manager.UserBalance && manager.UserBalance.UserCreditId == 0)
             {
                 //TODO: Fixed Credit (Collector Borrow).
                 /*
@@ -102,7 +98,7 @@ namespace DMT.TA.Windows.Collector.Credit
                 srcObj.UserCreditId = pkid;
                 */
             }
-            if (null != usrObj && null != srcObj)
+            if (null != manager.Transaction && null != manager.UserBalance)
             {
                 //TODO: Fixed Credit (Collector Borrow).
                 /*
@@ -134,7 +130,7 @@ namespace DMT.TA.Windows.Collector.Credit
 
         #endregion
 
-        private void LoadMasters()
+        private void LoadPlazaGroups()
         {
             var tsb = ops.TSB.GetCurrent();
             if (null != tsb)
@@ -166,6 +162,7 @@ namespace DMT.TA.Windows.Collector.Credit
                 );
         }
 
+        /*
         private void Calc()
         {
             sumObj.AmountST25 = plazaObj.AmountST25 - usrObj.AmountST25;
@@ -180,9 +177,34 @@ namespace DMT.TA.Windows.Collector.Credit
             sumObj.AmountBHT500 = plazaObj.AmountBHT500 - usrObj.AmountBHT500;
             sumObj.AmountBHT1000 = plazaObj.AmountBHT1000 - usrObj.AmountBHT1000;
         }
+        */
 
-        public void Setup(UserCreditBalance credit)
+        public void Setup(TSB tsb, UserCreditBalance credit)
         {
+            manager.Setup(tsb, credit);
+            if (manager.IsNew)
+            {
+                if (manager.UserBalance.UserCreditId == 0)
+                {
+                    panelSearch.Visibility = Visibility.Visible;
+                }
+                else panelSearch.Visibility = Visibility.Collapsed;
+            }
+            LoadPlazaGroups();
+
+            this.DataContext = manager.UserBalance;
+
+            manager.UserBalance.Description = "ยอดยืมปัจจุบัน";
+            manager.UserBalance.HasRemark = false;
+            manager.Transaction.Description = "ยืมเงิน";
+            //manager.Transaction.PropertyChanged += UsrObj_PropertyChanged;
+            manager.ResultBalance.Description = "ยอดด่านคงเหลือ";
+            manager.ResultBalance.HasRemark = false;
+
+            srcEntry.DataContext = manager.UserBalance;
+            usrEntry.DataContext = manager.Transaction;
+            sumEntry.DataContext = manager.ResultBalance;
+
             //TODO: Fixed Credit (Collector Borrow).
             /*
             srcObj = credit;
@@ -221,9 +243,11 @@ namespace DMT.TA.Windows.Collector.Credit
             */
         }
 
+        /*
         private void UsrObj_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             Calc();
         }
+        */
     }
 }

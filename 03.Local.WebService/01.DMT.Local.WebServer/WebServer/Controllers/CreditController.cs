@@ -64,6 +64,14 @@ namespace DMT.Services
             return ret;
         }
 
+        [HttpPost]
+        [ActionName(RouteConsts.Credit.SaveUserCreditBalance.Name)]
+        public int SaveUserCreditBalance([FromBody] UserCreditBalance value)
+        {
+            // save
+            return UserCreditBalance.SaveUserCreditBalance(value);
+        }
+
         #endregion
 
         #region User Credit Transaction
@@ -88,14 +96,6 @@ namespace DMT.Services
             if (null == value) return null;
             var ret = UserCredit.GetActive(value.UserId, value.PlazaGroupId);
             return ret;
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Credit.SaveUserCredit.Name)]
-        public int SaveUserCredit([FromBody] UserCredit value)
-        {
-            // save
-            return UserCredit.SaveCredit(value);
         }
 
         [HttpPost]

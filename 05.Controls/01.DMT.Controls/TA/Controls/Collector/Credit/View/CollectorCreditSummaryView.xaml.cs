@@ -36,6 +36,7 @@ namespace DMT.TA.Controls.Collector.Credit.View
         #endregion
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private TSB _tsb = null;
 
         #region Loaded/Unloaded
 
@@ -120,12 +121,9 @@ namespace DMT.TA.Controls.Collector.Credit.View
 
         private void RefreshUserCredits()
         {
-            var tsb = ops.TSB.GetCurrent();
-            //TODO: Fixed Credit (Active User Credits).
-            /*
-            var userCredits = ops.Credits.GetActiveUserCredits(tsb);
+            _tsb = ops.TSB.GetCurrent();
+            var userCredits = ops.Credits.GetActiveUserCreditBalances(_tsb);
             listView.ItemsSource = userCredits;
-            */
         }
 
         public void Setup()

@@ -26,8 +26,9 @@ Update 2020-08-09 #23
 Update 2020-08-09 #22
 - 
 
+[commited]
 Update 2020-08-09 #21
-- 
+- Update Exchange/Credit process #45.
 
 [commited]
 Update 2020-08-09 #20
