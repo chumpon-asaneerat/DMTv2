@@ -34,6 +34,7 @@ namespace DMT.TA.Windows.Plaza
         #endregion
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private TSB _tsb = null;
 
         #region Button Handlers
 
@@ -46,14 +47,15 @@ namespace DMT.TA.Windows.Plaza
 
         public void RefreshPlazaInfo()
         {
-            var tsbCredit = ops.Credits.GetTSBBalance(null);
+            _tsb = ops.TSB.GetCurrent();
+            var tsbCredit = ops.Credits.GetTSBBalance(_tsb);
 
             tsbCredit.Description = "เงินยืมทอนหมุนเวียนด่าน";
             tsbCredit.HasRemark = false;
             creditEntry.IsEnabled = false;
             creditEntry.DataContext = tsbCredit;
 
-            var tsbCoupon = ops.Coupons.GetTSBBalance(null);
+            var tsbCoupon = ops.Coupons.GetTSBBalance(_tsb);
             tsbCoupon.Description = "คุปอง";
             tsbCoupon.HasRemark = false;
             couponEntry.IsEnabled = false;

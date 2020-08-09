@@ -81,7 +81,7 @@ namespace DMT.TA.Controls.Collector.Credit.View
             win.Owner = Application.Current.MainWindow;
             win.Title = userCredit.Description;
 
-            win.Setup(userCredit);
+            win.Setup(_tsb, userCredit);
 
             if (win.ShowDialog() == false)
             {

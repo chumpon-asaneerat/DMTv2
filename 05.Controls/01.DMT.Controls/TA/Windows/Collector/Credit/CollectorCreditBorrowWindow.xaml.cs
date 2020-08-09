@@ -70,6 +70,13 @@ namespace DMT.TA.Windows.Collector.Credit
 
         private void cmdOK_Click(object sender, RoutedEventArgs e)
         {
+            manager.PlazaGroup = cbPlzaGroups.SelectedItem as PlazaGroup;
+            if (null == manager.PlazaGroup)
+            {
+                // No Plaza Group Selectd.
+                return;
+            }
+
             if (manager.HasNegative())
             {
                 MessageBox.Show(Application.Current.MainWindow, 

@@ -46,6 +46,7 @@ namespace DMT.TA.Pages.Collector
         #endregion
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private TSB _tsb = null;
 
         #region Button Handlers
 
@@ -53,7 +54,7 @@ namespace DMT.TA.Pages.Collector
         {
             var win = new DMT.TA.Windows.Collector.Credit.CollectorCreditBorrowWindow();
             win.Owner = Application.Current.MainWindow;
-            win.Setup(null);
+            win.Setup(_tsb, null);
             if (win.ShowDialog() == false)
             {
                 return;
@@ -81,7 +82,8 @@ namespace DMT.TA.Pages.Collector
 
         public void RefreshPlazaInfo()
         {
-            var tsbCredit = ops.Credits.GetTSBBalance(null);
+            _tsb = ops.TSB.GetCurrent();
+            var tsbCredit = ops.Credits.GetTSBBalance(_tsb);
             this.DataContext = tsbCredit;
 
             tsbCredit.Description = "ยอดที่สามารถยืมได้";
