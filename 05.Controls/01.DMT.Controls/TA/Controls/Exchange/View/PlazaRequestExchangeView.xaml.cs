@@ -53,8 +53,8 @@ namespace DMT.TA.Controls.Exchange.View
 
         private void cmdEdit_Click(object sender, RoutedEventArgs e)
         {
-            /*
             Button b = sender as Button;
+            /*
             Models.FundExchange item = b.CommandParameter as Models.FundExchange;
             if (null != item)
             {
@@ -215,8 +215,6 @@ namespace DMT.TA.Controls.Exchange.View
         {
             _tsb = tsb;
             manager.TSB = _tsb;
-            manager.Refresh();
-
             listView.ItemsSource = manager.Requests;
         }
     }

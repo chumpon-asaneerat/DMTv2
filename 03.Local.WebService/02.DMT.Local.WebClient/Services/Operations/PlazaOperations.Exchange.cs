@@ -86,9 +86,6 @@ namespace DMT.Services
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
 
-        private List<TSBExchangeTransaction> _origins = null;
-        private List<TSBExchangeTransaction> _exchanges = null;
-
         #endregion
 
         #region Constructor
@@ -111,46 +108,13 @@ namespace DMT.Services
 
         #region Public Methods
 
-        #region Refresh
-
-        public void Refresh()
-        {
-            if (null == this.TSB)
-            {
-                _origins = new List<TSBExchangeTransaction>();
-                _exchanges = new List<TSBExchangeTransaction>();
-                return;
-            }
-            // get original list.
-            _origins = ops.Exchanges.GetTSBExchangeTransactions(this.TSB);
-            // get work list.
-            _exchanges = ops.Exchanges.GetTSBExchangeTransactions(this.TSB);
-        }
-
-        #endregion
-
         #region Save
 
         public void Save(TSBExchangeTransaction value)
         {
-            if (null != _exchanges)
+            if (null != value)
             {
-                _exchanges.ForEach(exchange =>
-                {
-                    /*
-                    //??? figure how to identify match row !!.
-                    var origin = (null != _origins) ? _origins.Find(x => x.CouponId == coupon.CouponId) : null;
-                    if (null != origin)
-                    {
-                        if (origin.TransactionType != exchange.TransactionType ||
-                            origin.UserId != exchange.UserId ||
-                            origin.FinishFlag != exchange.FinishFlag)
-                        {
-                            ops.Exchanges.SaveTSBExchangeTransaction(exchange);
-                        }
-                    }
-                    */
-                });
+                ops.Exchanges.SaveTSBExchangeTransaction(value);
             }
         }
 
@@ -171,9 +135,13 @@ namespace DMT.Services
         {
             get 
             {
-                if (null == _exchanges)
+                if (null == this.TSB)
                     return new List<TSBExchangeTransaction>();
-                var results = _exchanges.FindAll(item =>
+                var items = ops.Exchanges.GetTSBExchangeTransactions(this.TSB);
+                if (null == this.TSB)
+                    return new List<TSBExchangeTransaction>();
+
+                var results = items.FindAll(item =>
                 {
                     bool ret = (
                         item.TransactionType == TSBExchangeTransaction.TransactionTypes.Request &&

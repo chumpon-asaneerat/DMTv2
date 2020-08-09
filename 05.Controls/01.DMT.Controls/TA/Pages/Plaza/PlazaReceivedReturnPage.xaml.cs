@@ -35,6 +35,7 @@ namespace DMT.TA.Pages.Plaza
         #endregion
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private TSB _tsb = null;
 
         #region Button Handlers
 
@@ -63,7 +64,9 @@ namespace DMT.TA.Pages.Plaza
 
         public void RefreshPlazaInfo()
         {
-            var tsbCredit = ops.Credits.GetTSBBalance(null);
+            _tsb = ops.TSB.GetCurrent();
+
+            var tsbCredit = ops.Credits.GetTSBBalance(_tsb);
 
             this.DataContext = tsbCredit;
             tsbCredit.Description = "เงินยืมทอน";
