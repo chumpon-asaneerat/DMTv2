@@ -112,6 +112,7 @@ namespace DMT.Models
 		private string _Remark = string.Empty;
 
 		private FinishedFlags _FinishFlag = FinishedFlags.Avaliable;
+
 		private int _Status = 0;
 		private DateTime _LastUpdate = DateTime.MinValue;
 
