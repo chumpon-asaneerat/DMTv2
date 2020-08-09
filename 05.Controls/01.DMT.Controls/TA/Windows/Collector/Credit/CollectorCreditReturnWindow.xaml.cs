@@ -37,11 +37,8 @@ namespace DMT.TA.Windows.Collector.Credit
         #endregion
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
-        private UserCreditBorrowManager manager = new UserCreditBorrowManager();
-        /*
-        private UserCreditBalance srcObj;
-        private UserCreditTransaction usrObj;
-        */
+        private UserCreditReturnManager manager = new UserCreditReturnManager();
+
         #region Button Handlers
 
         private void cmdOK_Click(object sender, RoutedEventArgs e)

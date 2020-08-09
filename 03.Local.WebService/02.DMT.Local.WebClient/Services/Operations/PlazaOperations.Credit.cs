@@ -338,7 +338,7 @@ namespace DMT.Services
         }
 
         public abstract bool Save();
-        public virtual bool HasNegative() { return false; };
+        public virtual bool HasNegative() { return false; }
 
         #endregion
 

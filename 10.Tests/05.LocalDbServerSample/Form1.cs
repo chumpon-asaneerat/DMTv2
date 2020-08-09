@@ -99,7 +99,7 @@ namespace LocalDbServerSample
         private void button5_Click(object sender, EventArgs e)
         {
             // Gets User Credits
-            dbgUserCredit.DataSource = UserCreditTransaction.Gets();
+            dbgUserCredit.DataSource = UserCreditTransaction.GetUserCreditTransactions();
         }
 
         private void button20_Click(object sender, EventArgs e)
