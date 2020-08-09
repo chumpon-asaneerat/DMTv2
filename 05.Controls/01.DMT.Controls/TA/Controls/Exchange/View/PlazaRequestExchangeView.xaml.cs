@@ -1,12 +1,18 @@
-﻿using System;
+﻿#region Using
+
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
-using NLib;
+using DMT.Models;
+using DMT.Services;
 using NLib.Services;
+using NLib.Reflection;
+using NLib.Reports.Rdlc;
+using System.Reflection;
+
+#endregion
 
 namespace DMT.TA.Controls.Exchange.View
 {
@@ -26,6 +32,10 @@ namespace DMT.TA.Controls.Exchange.View
         }
 
         #endregion
+
+        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private TSB _tsb = null;
+        private TSBExchangeManager manager = new TSBExchangeManager();
 
         #region Loaded/Unloaded
 
@@ -200,16 +210,14 @@ namespace DMT.TA.Controls.Exchange.View
             }
             */
         }
-        /*
-        private Models.FundEntry _plaza;
-        private BindingList<Models.FundExchange> _items;
 
-        public void Setup(Models.FundEntry plaza, BindingList<Models.FundExchange> items)
+        public void RefreshList(TSB tsb)
         {
-            _plaza = plaza;
-            _items = items;
-            listView.ItemsSource = _items;
+            _tsb = tsb;
+            manager.TSB = _tsb;
+            manager.Refresh();
+
+            listView.ItemsSource = manager.Requests;
         }
-        */
     }
 }

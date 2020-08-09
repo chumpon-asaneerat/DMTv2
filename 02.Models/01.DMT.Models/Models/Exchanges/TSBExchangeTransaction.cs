@@ -102,7 +102,12 @@ namespace DMT.Models
 
 		private decimal _BHTTotal = decimal.Zero;
 
+		private decimal _ExchangeBHT = decimal.Zero;
+		private decimal _BorrowBHT = decimal.Zero;
 		private decimal _AdditionalBHT = decimal.Zero;
+
+		private DateTime _PeriodBegin = DateTime.MinValue;
+		private DateTime _PeriodEnd = DateTime.MinValue;
 
 		private string _Remark = string.Empty;
 
@@ -191,6 +196,9 @@ namespace DMT.Models
 				{
 					_TransactionDate = value;
 					this.RaiseChanged("TransactionDate");
+					this.RaiseChanged("TransactionDateString");
+					this.RaiseChanged("TransactionTimeString");
+					this.RaiseChanged("TransactionDateTimeString");
 				}
 			}
 		}
@@ -1409,15 +1417,57 @@ namespace DMT.Models
 
 		#endregion
 
-		#region Additional
+		#region Exchange/Borrow/Additional
 
+		/// <summary>
+		/// Gets or sets amount Exchange BHT.
+		/// </summary>
+		[Category("Summary (Amount)")]
+		[Description("Gets or sets amount Exchange BHT.")]
+		[PeropertyMapName("ExchangeBHT")]
+		[PropertyOrder(51)]
+		public virtual decimal ExchangeBHT
+		{
+			get { return _ExchangeBHT; }
+			set
+			{
+				if (_ExchangeBHT != value)
+				{
+					_ExchangeBHT = value;
+					// Raise event.
+					this.RaiseChanged("ExchangeBHT");
+					this.RaiseChanged("GrandTotalBHT");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets amount Borrow BHT.
+		/// </summary>
+		[Category("Summary (Amount)")]
+		[Description("Gets or sets amount Borrow BHT.")]
+		[PeropertyMapName("BorrowBHT")]
+		[PropertyOrder(52)]
+		public virtual decimal BorrowBHT
+		{
+			get { return _BorrowBHT; }
+			set
+			{
+				if (_BorrowBHT != value)
+				{
+					_BorrowBHT = value;
+					// Raise event.
+					this.RaiseChanged("BorrowBHT");
+					this.RaiseChanged("GrandTotalBHT");
+				}
+			}
+		}
 		/// <summary>
 		/// Gets or sets amount Additional BHT.
 		/// </summary>
-		[Category("Additional (Amount)")]
+		[Category("Summary (Amount)")]
 		[Description("Gets or sets amount Additional BHT.")]
 		[PeropertyMapName("AdditionalBHT")]
-		[PropertyOrder(51)]
+		[PropertyOrder(53)]
 		public virtual decimal AdditionalBHT
 		{
 			get { return _AdditionalBHT; }
@@ -1428,8 +1478,182 @@ namespace DMT.Models
 					_AdditionalBHT = value;
 					// Raise event.
 					this.RaiseChanged("AdditionalBHT");
+					this.RaiseChanged("GrandTotalBHT");
 				}
 			}
+		}
+
+		/// <summary>
+		/// Gets or sets Grand Total in baht.
+		/// </summary>
+		[Category("Summary (Amount)")]
+		[Description("Gets or sets Grand Total in baht.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		[PeropertyMapName("GrandTotalBHT")]
+		public decimal GrandTotalBHT
+		{
+			get { return _ExchangeBHT + _BorrowBHT + GrandTotalBHT; }
+			set { }
+		}
+
+		#endregion
+
+		#region Period
+
+		/// <summary>
+		/// Gets or sets Period Begin Date.
+		/// </summary>
+		[Category("Period")]
+		[Description(" Gets or sets Period Begin Date")]
+		[ReadOnly(true)]
+		[PeropertyMapName("PeriodBegin")]
+		public virtual DateTime PeriodBegin
+		{
+			get
+			{
+				return _PeriodBegin;
+			}
+			set
+			{
+				if (_PeriodBegin != value)
+				{
+					_PeriodBegin = value;
+					this.RaiseChanged("PeriodBegin");
+					this.RaiseChanged("PeriodBeginDateString");
+					this.RaiseChanged("PeriodBeginTimeString");
+					this.RaiseChanged("PeriodBeginDateTimeString");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets Period Begin Date String.
+		/// </summary>
+		[Category("Period")]
+		[Description("Gets Period Begin Date String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string PeriodBeginDateString
+		{
+			get
+			{
+				var ret = (this.PeriodBegin == DateTime.MinValue) ? "" : this.PeriodBegin.ToThaiDateTimeString("dd/MM/yyyy");
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets Period Begin Time String.
+		/// </summary>
+		[Category("Period")]
+		[Description("Gets Period Begin Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string PeriodBeginTimeString
+		{
+			get
+			{
+				var ret = (this.PeriodBegin == DateTime.MinValue) ? "" : this.PeriodBegin.ToThaiTimeString();
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets Period Begin Date Time String.
+		/// </summary>
+		[Category("Period")]
+		[Description("Gets Period Begin Date Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string PeriodBeginDateTimeString
+		{
+			get
+			{
+				var ret = (this.PeriodBegin == DateTime.MinValue) ? "" : this.PeriodBegin.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+				return ret;
+			}
+			set { }
+		}
+
+		/// <summary>
+		/// Gets or sets Period End Date.
+		/// </summary>
+		[Category("Period")]
+		[Description(" Gets or sets Period End Date")]
+		[ReadOnly(true)]
+		[PeropertyMapName("PeriodEnd")]
+		public virtual DateTime PeriodEnd
+		{
+			get
+			{
+				return _PeriodEnd;
+			}
+			set
+			{
+				if (_PeriodEnd != value)
+				{
+					_PeriodEnd = value;
+					this.RaiseChanged("PeriodEnd");
+					this.RaiseChanged("PeriodEndDateString");
+					this.RaiseChanged("PeriodEndTimeString");
+					this.RaiseChanged("PeriodEndDateTimeString");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets Period End Date String.
+		/// </summary>
+		[Category("Period")]
+		[Description("Gets Period End Date String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string PeriodEndDateString
+		{
+			get
+			{
+				var ret = (this.PeriodEnd == DateTime.MinValue) ? "" : this.PeriodEnd.ToThaiDateTimeString("dd/MM/yyyy");
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets Period End Time String.
+		/// </summary>
+		[Category("Period")]
+		[Description("Gets Period End Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string PeriodEndTimeString
+		{
+			get
+			{
+				var ret = (this.PeriodEnd == DateTime.MinValue) ? "" : this.PeriodEnd.ToThaiTimeString();
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets Period End Date Time String.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets Period End Date Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string PeriodEndDateTimeString
+		{
+			get
+			{
+				var ret = (this.PeriodEnd == DateTime.MinValue) ? "" : this.PeriodEnd.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+				return ret;
+			}
+			set { }
 		}
 
 		#endregion
@@ -1607,8 +1831,8 @@ namespace DMT.Models
 				string cmd = string.Empty;
 				cmd += "SELECT * ";
 				cmd += "  FROM TSBExchangeTransactionView ";
-				cmd += " WHERE TSBExchangeTransaction.TSBId = ? ";
-				cmd += "   AND TSBExchangeTransaction.FinishFlag = 1 ";
+				cmd += " WHERE TSBExchangeTransactionView.TSBId = ? ";
+				cmd += "   AND TSBExchangeTransactionView.FinishFlag = 1 ";
 
 				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
 				if (null == rets)

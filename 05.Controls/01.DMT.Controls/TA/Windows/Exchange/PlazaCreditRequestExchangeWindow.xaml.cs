@@ -1,5 +1,6 @@
 ﻿#region Using
 
+using DMT.Models;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -48,18 +49,21 @@ namespace DMT.TA.Windows.Exchange
         #endregion
 
         #region Public Methods
-        /*
-        public void Setup(ExchangeWindowMode mode, Models.FundExchange item)
-        {
-            Mode = mode;
 
-            requestEntry.DataContext = item.Request;
+        public void Setup(ExchangeWindowMode mode, TSBExchangeTransaction transaction)
+        {
+            this.Mode = mode;
+            requestEntry.DataContext = transaction;
+            requestDetailEntry.DataContext = transaction;
         }
-        */
+
         #endregion
 
         #region Public Properties
 
+        /// <summary>
+        /// Gets current transaction editing mode.
+        /// </summary>
         public ExchangeWindowMode Mode { get; private set; }
 
         #endregion

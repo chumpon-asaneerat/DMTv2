@@ -53,7 +53,6 @@
                     </DockPanel>
                 </Button>
                 <Grid Width="5"/>
-
                 <Button x:Name="cmdCancelRequest"
                             DockPanel.Dock="Left"
                         Foreground="White"
@@ -103,7 +102,6 @@
                                 FontSize="16"
                                 Background="Indigo"
                                 Foreground="WhiteSmoke"/>
-
                 <ctrl:FundDetailEntry x:Name="requestDetailEntry"
                                 Grid.Column="3"
                                 FontSize="16"

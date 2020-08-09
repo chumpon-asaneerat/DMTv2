@@ -34,17 +34,57 @@ namespace DMT.TA.Pages.Exchange
         #endregion
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private TSB _tsb = null;
 
         #region Button Handlers
 
         private void cmdRequest_Click(object sender, RoutedEventArgs e)
         {
-            var win = new DMT.TA.Windows.Exchange.PlazaCreditRequestExchangeWindow();
+            TSBExchangeTransaction tran = new TSBExchangeTransaction();
+            tran.TransactionType = TSBExchangeTransaction.TransactionTypes.Request;
+            tran.TransactionDate = DateTime.Now;
+            // Set TSB
+            tran.TSBId = _tsb.TSBId;
+            tran.TSBNameEN = _tsb.TSBNameEN;
+            tran.TSBNameTH = _tsb.TSBNameTH;
+            // Set user.
+            var user = DMT.Controls.TAApp.User.Current;
+            tran.UserId = user.UserId;
+            tran.FullNameEN = user.FullNameEN;
+            tran.FullNameTH = user.FullNameTH;
+
+            var win = new Windows.Exchange.PlazaCreditRequestExchangeWindow();
             win.Owner = Application.Current.MainWindow;
+            win.Setup(Windows.Exchange.ExchangeWindowMode.New,  tran);
 
             if (win.ShowDialog() == false)
             {
                 return;
+            }
+
+            if (win.Mode == Windows.Exchange.ExchangeWindowMode.New)
+            {
+                if (tran.TransactionType != TSBExchangeTransaction.TransactionTypes.Request)
+                    return; // invalid transaction type.
+                // New required to generate group Guid.
+                tran.GroupId = Guid.NewGuid();
+
+                ops.Exchanges.SaveTSBExchangeTransaction(tran);
+            }
+            else if (win.Mode == Windows.Exchange.ExchangeWindowMode.Edit)
+            {
+                if (tran.TransactionType != TSBExchangeTransaction.TransactionTypes.Request)
+                    return; // invalid transaction type.
+                ops.Exchanges.SaveTSBExchangeTransaction(tran);
+            }
+            else if (win.Mode == Windows.Exchange.ExchangeWindowMode.Cancel)
+            {
+                if (tran.TransactionType != TSBExchangeTransaction.TransactionTypes.Request)
+                    return; // invalid transaction type.
+
+                tran.TransactionType = TSBExchangeTransaction.TransactionTypes.Canceled;
+                tran.FinishFlag = TSBExchangeTransaction.FinishedFlags.Completed;
+                ops.Exchanges.SaveTSBExchangeTransaction(tran);
             }
         }
 
@@ -59,7 +99,9 @@ namespace DMT.TA.Pages.Exchange
 
         public void RefreshPlazaInfo()
         {
-            var tsbCredit = ops.Credits.GetTSBBalance(null);
+            _tsb = ops.TSB.GetCurrent();
+
+            var tsbCredit = ops.Credits.GetTSBBalance(_tsb);
 
             this.DataContext = tsbCredit;
 
@@ -70,6 +112,9 @@ namespace DMT.TA.Pages.Exchange
 
             loanEntry.IsEnabled = false;
             loanEntry.DataContext = tsbCredit;
+
+            // Request list.
+            grid.RefreshList(_tsb);
         }
     }
 }

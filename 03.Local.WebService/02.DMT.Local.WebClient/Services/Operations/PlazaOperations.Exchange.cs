@@ -115,11 +115,16 @@ namespace DMT.Services
 
         public void Refresh()
         {
-            TSB tsb = null;
+            if (null == this.TSB)
+            {
+                _origins = new List<TSBExchangeTransaction>();
+                _exchanges = new List<TSBExchangeTransaction>();
+                return;
+            }
             // get original list.
-            _origins = ops.Exchanges.GetTSBExchangeTransactions(tsb);
+            _origins = ops.Exchanges.GetTSBExchangeTransactions(this.TSB);
             // get work list.
-            _exchanges = ops.Exchanges.GetTSBExchangeTransactions(tsb);
+            _exchanges = ops.Exchanges.GetTSBExchangeTransactions(this.TSB);
         }
 
         #endregion
@@ -150,6 +155,34 @@ namespace DMT.Services
         }
 
         #endregion
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets TSB.
+        /// </summary>
+        public TSB TSB { get; set; }
+        /// <summary>
+        /// Gets Request List.
+        /// </summary>
+        public List<TSBExchangeTransaction> Requests
+        {
+            get 
+            {
+                if (null == _exchanges)
+                    return new List<TSBExchangeTransaction>();
+                return _exchanges.FindAll(item =>
+                {
+                    bool ret = (
+                        item.TransactionType == TSBExchangeTransaction.TransactionTypes.Request &&
+                        item.FinishFlag == TSBExchangeTransaction.FinishedFlags.Avaliable
+                    );
+                    return ret;
+                }).OrderBy(x => x.TransactionId).ToList();
+            }
+        }
 
         #endregion
     }

@@ -42,10 +42,6 @@ namespace DMT.TA.Pages.Menu
                 // Exchange Fund Page.
                 var page = new Pages.Exchange.PlazaRequestExchangePage();
                 page.RefreshPlazaInfo();
-                /*
-                BindingList<Models.FundExchange> items = new BindingList<Models.FundExchange>();
-                page.Setup(plaza, items);
-                */
                 PageContentManager.Instance.Current = page;
             }
             catch (Exception)
@@ -53,7 +49,7 @@ namespace DMT.TA.Pages.Menu
                 //Console.WriteLine("Refresh data error.");
             }
         }
-        // Implement #1 หัวหน่าขายคูปอง
+        // OK - หัวหน่าขายคูปอง
         private void plazaReceivedCoupon_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -117,7 +113,7 @@ namespace DMT.TA.Pages.Menu
             }
 
         }
-        // Implement #1 - เงินยืมทอน (collector)
+        // OK - เงินยืมทอน (collector)
         private void collectorFund_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -131,13 +127,7 @@ namespace DMT.TA.Pages.Menu
                 //Console.WriteLine("Refresh data error.");
             }
         }
-        // NO Implementation ประวัติการแลกเงินยืมทอน (collector)
-        private void changeBorrowingHistory_Click(object sender, RoutedEventArgs e)
-        {
-            var page = new History.PlazaReturnHistoryPage();
-            PageContentManager.Instance.Current = page;
-        }
-        // Implement #1 - รับคูปอง (collector) (ขาดเรื่อง แสดงรายการที่ขายใน lane)
+        // OK - รับคูปอง (collector) (ขาดเรื่อง แสดงรายการที่ขายใน lane)
         private void collectorReveivedCoupon_Click(object sender, RoutedEventArgs e)
         {
             var page = new Coupon.ReceivedCouponPage();
@@ -147,6 +137,12 @@ namespace DMT.TA.Pages.Menu
         private void collectorReturnCoupon_Click(object sender, RoutedEventArgs e)
         {
             var page = new Coupon.ReturnCouponPage();
+            PageContentManager.Instance.Current = page;
+        }
+        // NO Implementation ประวัติการแลกเงินยืมทอน (collector)
+        private void changeBorrowingHistory_Click(object sender, RoutedEventArgs e)
+        {
+            var page = new History.PlazaReturnHistoryPage();
             PageContentManager.Instance.Current = page;
         }
         // Implement #1 - เช็คยอดด่าน (ขาดเรื่อง ยืมเพิ่ม กับการตรวจ max balance)
