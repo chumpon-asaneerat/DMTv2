@@ -62,7 +62,7 @@ namespace DMT.TA.Controls.Collector.Credit.View
             win.Owner = Application.Current.MainWindow;
             win.Title = userCredit.Description;
 
-            win.Setup(userCredit);
+            win.Setup(_tsb, userCredit);
 
             if (win.ShowDialog() == false)
             {
@@ -109,11 +109,9 @@ namespace DMT.TA.Controls.Collector.Credit.View
             }
             else
             {
-                //TODO: Fixed Credit (Save User Credit).
-                /*
-                userCredit.State = UserCredit.StateTypes.Received;
-                ops.Credits.SaveUserCredit(userCredit);
-                */
+                // Change state after received bag and update to database.
+                userCredit.State = UserCreditBalance.StateTypes.Received;
+                ops.Credits.SaveUserCreditBalance(userCredit);
             }
         }
 

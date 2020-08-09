@@ -38,12 +38,6 @@ namespace DMT.TA.Windows.Collector.Credit
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
         private UserCreditBorrowManager manager = new UserCreditBorrowManager();
-        /*
-        private UserCreditBalance srcObj;
-        private UserCreditTransaction usrObj;
-        private TSBCreditBalance plazaObj;
-        private TSBCreditBalance sumObj;
-        */
 
         #region Button Handlers
 
@@ -88,42 +82,6 @@ namespace DMT.TA.Windows.Collector.Credit
             {
                 this.DialogResult = true;
             }
-            /*
-            if (null != manager.UserBalance && manager.UserBalance.UserCreditId == 0)
-            {
-                //TODO: Fixed Credit (Collector Borrow).
-                var plazaGrp = cbPlzaGroups.SelectedItem as PlazaGroup;
-                if (null != plazaGrp)
-                {
-                    srcObj.TSBId = plazaGrp.TSBId;
-                    srcObj.PlazaGroupId = plazaGrp.PlazaGroupId;
-                }
-                srcObj.State = UserCredit.StateTypes.Initial;
-                int pkid = ops.Credits.SaveUserCredit(srcObj);
-                srcObj.UserCreditId = pkid;
-            }
-            if (null != manager.Transaction && null != manager.UserBalance)
-            {
-                //TODO: Fixed Credit (Collector Borrow).
-                usrObj.UserCreditId = srcObj.UserCreditId;
-                usrObj.TransactionType = UserCreditTransaction.TransactionTypes.Borrow;
-                if (string.IsNullOrWhiteSpace(usrObj.TSBId))
-                {
-                    usrObj.TSBId = srcObj.TSBId;
-                }
-                if (string.IsNullOrWhiteSpace(usrObj.PlazaGroupId))
-                {
-                    usrObj.PlazaGroupId = srcObj.PlazaGroupId;
-                }
-                if (string.IsNullOrWhiteSpace(usrObj.UserId))
-                {
-                    usrObj.UserId = srcObj.UserId;
-                }
-
-                ops.Credits.SaveUserTransaction(usrObj);
-                this.DialogResult = true;
-            }
-            */
         }
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
@@ -147,40 +105,6 @@ namespace DMT.TA.Windows.Collector.Credit
                 }
             }
         }
-        /*
-        private bool HasNegative()
-        {
-            return (
-                sumObj.AmountST25 < 0 ||
-                sumObj.AmountST50 < 0 ||
-                sumObj.AmountBHT1 < 0 ||
-                sumObj.AmountBHT2 < 0 ||
-                sumObj.AmountBHT5 < 0 ||
-                sumObj.AmountBHT10 < 0 ||
-                sumObj.AmountBHT20 < 0 ||
-                sumObj.AmountBHT50 < 0 ||
-                sumObj.AmountBHT100 < 0 ||
-                sumObj.AmountBHT500 < 0 ||
-                sumObj.AmountBHT1000 < 0
-                );
-        }
-        */
-        /*
-        private void Calc()
-        {
-            sumObj.AmountST25 = plazaObj.AmountST25 - usrObj.AmountST25;
-            sumObj.AmountST50 = plazaObj.AmountST50 - usrObj.AmountST50;
-            sumObj.AmountBHT1 = plazaObj.AmountBHT1 - usrObj.AmountBHT1;
-            sumObj.AmountBHT2 = plazaObj.AmountBHT2 - usrObj.AmountBHT2;
-            sumObj.AmountBHT5 = plazaObj.AmountBHT5 - usrObj.AmountBHT5;
-            sumObj.AmountBHT10 = plazaObj.AmountBHT10 - usrObj.AmountBHT10;
-            sumObj.AmountBHT20 = plazaObj.AmountBHT20 - usrObj.AmountBHT20;
-            sumObj.AmountBHT50 = plazaObj.AmountBHT50 - usrObj.AmountBHT50;
-            sumObj.AmountBHT100 = plazaObj.AmountBHT100 - usrObj.AmountBHT100;
-            sumObj.AmountBHT500 = plazaObj.AmountBHT500 - usrObj.AmountBHT500;
-            sumObj.AmountBHT1000 = plazaObj.AmountBHT1000 - usrObj.AmountBHT1000;
-        }
-        */
 
         public void Setup(TSB tsb, UserCreditBalance credit)
         {
@@ -199,58 +123,15 @@ namespace DMT.TA.Windows.Collector.Credit
 
             manager.UserBalance.Description = "ยอดยืมปัจจุบัน";
             manager.UserBalance.HasRemark = false;
+
             manager.Transaction.Description = "ยืมเงิน";
-            //manager.Transaction.PropertyChanged += UsrObj_PropertyChanged;
+
             manager.ResultBalance.Description = "ยอดด่านคงเหลือ";
             manager.ResultBalance.HasRemark = false;
 
             srcEntry.DataContext = manager.UserBalance;
             usrEntry.DataContext = manager.Transaction;
             sumEntry.DataContext = manager.ResultBalance;
-
-            //TODO: Fixed Credit (Collector Borrow).
-            /*
-            srcObj = credit;
-
-            usrObj = new UserCreditTransaction();
-            plazaObj = ops.Credits.GetCurrent();
-            sumObj = new TSBCreditBalance();
-            plazaObj.AssignTo(sumObj);
-
-            if (null == srcObj)
-            {
-                srcObj = new UserCredit();
-            }
-            else
-            {
-                if (srcObj.UserCreditId == 0)
-                {
-                    panelSearch.Visibility = Visibility.Visible;
-                }
-                else panelSearch.Visibility = Visibility.Collapsed;
-            }
-            LoadMasters();
-
-            this.DataContext = srcObj;
-
-            srcObj.Description = "ยอดยืมปัจจุบัน";
-            srcObj.HasRemark = false;
-            usrObj.Description = "ยืมเงิน";
-            usrObj.PropertyChanged += UsrObj_PropertyChanged;
-            sumObj.Description = "ยอดด่านคงเหลือ";
-            sumObj.HasRemark = false;
-
-            srcEntry.DataContext = srcObj;
-            usrEntry.DataContext = usrObj;
-            sumEntry.DataContext = sumObj;
-            */
         }
-
-        /*
-        private void UsrObj_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            Calc();
-        }
-        */
     }
 }

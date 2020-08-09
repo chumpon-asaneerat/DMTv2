@@ -9,6 +9,7 @@ using RestSharp;
 
 using DMT.Models;
 using NLib.Reflection;
+using System.Windows.Forms;
 
 #endregion
 
@@ -96,6 +97,13 @@ namespace DMT.Services
                 return ret;
             }
 
+            public UserCreditBalance GetActiveUserCreditBalanceById(Search.UserCredits.GetActiveById value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<UserCreditBalance>(
+                    RouteConsts.Credit.GetActiveUserCreditBalanceById.Url, value);
+                return ret;
+            }
+
             public int SaveUserCreditBalance(UserCreditBalance value)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<int>(
@@ -121,13 +129,6 @@ namespace DMT.Services
             {
                 var ret = NRestClient.Create(port: 9000).Execute<UserCredit>(
                     RouteConsts.Credit.GetActiveUserCredit.Url, value);
-                return ret;
-            }
-
-            public UserCredit GetActiveUserCreditById(Search.UserCredits.GetActiveById value)
-            {
-                var ret = NRestClient.Create(port: 9000).Execute<UserCredit>(
-                    RouteConsts.Credit.GetActiveUserCreditById.Url, value);
                 return ret;
             }
             */
@@ -337,22 +338,7 @@ namespace DMT.Services
         }
 
         public abstract bool Save();
-
-        public bool HasNegative()
-        {
-            return (
-                ResultBalance.AmountST25 < 0 ||
-                ResultBalance.AmountST50 < 0 ||
-                ResultBalance.AmountBHT1 < 0 ||
-                ResultBalance.AmountBHT2 < 0 ||
-                ResultBalance.AmountBHT5 < 0 ||
-                ResultBalance.AmountBHT10 < 0 ||
-                ResultBalance.AmountBHT20 < 0 ||
-                ResultBalance.AmountBHT50 < 0 ||
-                ResultBalance.AmountBHT100 < 0 ||
-                ResultBalance.AmountBHT500 < 0 ||
-                ResultBalance.AmountBHT1000 < 0);
-        }
+        public virtual bool HasNegative() { return false; };
 
         #endregion
 
@@ -418,6 +404,22 @@ namespace DMT.Services
             ResultBalance.AmountBHT100 = TSBBalance.AmountBHT100 - Transaction.AmountBHT100;
             ResultBalance.AmountBHT500 = TSBBalance.AmountBHT500 - Transaction.AmountBHT500;
             ResultBalance.AmountBHT1000 = TSBBalance.AmountBHT1000 - Transaction.AmountBHT1000;
+        }
+
+        public override bool HasNegative()
+        {
+            return (
+                ResultBalance.AmountST25 < 0 ||
+                ResultBalance.AmountST50 < 0 ||
+                ResultBalance.AmountBHT1 < 0 ||
+                ResultBalance.AmountBHT2 < 0 ||
+                ResultBalance.AmountBHT5 < 0 ||
+                ResultBalance.AmountBHT10 < 0 ||
+                ResultBalance.AmountBHT20 < 0 ||
+                ResultBalance.AmountBHT50 < 0 ||
+                ResultBalance.AmountBHT100 < 0 ||
+                ResultBalance.AmountBHT500 < 0 ||
+                ResultBalance.AmountBHT1000 < 0);
         }
 
         public override bool Save()
@@ -487,7 +489,35 @@ namespace DMT.Services
 
         public override bool Save()
         {
-            return false;
+            var result = false;
+            if (null != Transaction && null != UserBalance)
+            {
+                Transaction.UserCreditId = UserBalance.UserCreditId;
+                Transaction.TransactionType = UserCreditTransaction.TransactionTypes.Return;
+                ops.Credits.SaveUserCreditTransaction(Transaction);
+
+                // Check is total borrow is reach zero.
+                var search = Search.UserCredits.GetActiveById.Create(
+                    UserBalance.UserId, UserBalance.PlazaGroupId);
+                var inst = ops.Credits.GetActiveUserCreditBalanceById(search);
+                if (null != inst)
+                {
+                    if (inst.BHTTotal <= decimal.Zero)
+                    {
+                        // change source state.
+                        UserBalance.State = UserCreditBalance.StateTypes.Completed;
+                        ops.Credits.SaveUserCreditBalance(UserBalance);
+                    }
+                }
+
+                result = true;
+            }
+            return result;
+        }
+
+        public override bool HasNegative()
+        {
+            return (Transaction.BHTTotal > UserBalance.BHTTotal);
         }
 
         #endregion

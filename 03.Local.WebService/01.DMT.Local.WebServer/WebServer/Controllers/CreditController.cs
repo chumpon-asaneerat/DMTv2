@@ -65,6 +65,15 @@ namespace DMT.Services
         }
 
         [HttpPost]
+        [ActionName(RouteConsts.Credit.GetActiveUserCreditBalanceById.Name)]
+        public UserCreditBalance GetActiveUserCreditBalanceById([FromBody] Search.UserCredits.GetActiveById value)
+        {
+            if (null == value) return null;
+            var ret = UserCreditBalance.GetActiveUserCreditBalanceById(value.UserId, value.PlazaGroupId);
+            return ret;
+        }
+
+        [HttpPost]
         [ActionName(RouteConsts.Credit.SaveUserCreditBalance.Name)]
         public int SaveUserCreditBalance([FromBody] UserCreditBalance value)
         {
@@ -93,15 +102,6 @@ namespace DMT.Services
         {
             if (null == value) return null;
             var ret = UserCredit.GetActive(value.User, value.PlazaGroup);
-            return ret;
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Credit.GetActiveUserCreditById.Name)]
-        public UserCredit GetActiveUserCreditById([FromBody] Search.UserCredits.GetActiveById value)
-        {
-            if (null == value) return null;
-            var ret = UserCredit.GetActive(value.UserId, value.PlazaGroupId);
             return ret;
         }
         */

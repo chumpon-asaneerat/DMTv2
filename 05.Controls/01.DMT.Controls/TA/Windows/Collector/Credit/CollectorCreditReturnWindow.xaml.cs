@@ -37,49 +37,37 @@ namespace DMT.TA.Windows.Collector.Credit
         #endregion
 
         private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private UserCreditBorrowManager manager = new UserCreditBorrowManager();
+        /*
         private UserCreditBalance srcObj;
         private UserCreditTransaction usrObj;
-
+        */
         #region Button Handlers
 
         private void cmdOK_Click(object sender, RoutedEventArgs e)
         {
-            if (HasNegative())
+            if (manager.HasNegative())
             {
                 MessageBox.Show(Application.Current.MainWindow,
                     "ไม่สามารถดำเนินการบันทึกข้อมูลได้ เนื่องจากระบบพบว่ามีการ คืนเงิน เกินจำนวนที่่ได้ยืมไป",
                     "Toll Admin");
                 return;
             }
-            if (null != srcObj && null != usrObj)
+            if (null != manager.UserBalance && null != manager.Transaction)
             {
-                //TODO: Fixed Credit (Collector Return).
-                /*
                 DMT.Windows.MessageBoxYesNoRedWindow msg = new DMT.Windows.MessageBoxYesNoRedWindow();
                 msg.Owner = Application.Current.MainWindow;
-                msg.Setup("ยืนยันการคืนเงิน ยืมทอน", srcObj.FullNameTH+" จำนวนเงิน "+ srcObj.BHTTotal.ToString("#,##0") + " บาท", "Toll Admin", true);
+                msg.Setup("ยืนยันการคืนเงิน ยืมทอน",
+                    manager.UserBalance.FullNameTH + " จำนวนเงิน " + manager.Transaction.BHTTotal.ToString("#,##0") + " บาท", 
+                    "Toll Admin", true);
                 if (msg.ShowDialog() == true)
                 {
-                    usrObj.UserCreditId = srcObj.UserCreditId;
-                    usrObj.TransactionType = UserCreditTransaction.TransactionTypes.Return;
-                    ops.Credits.SaveUserTransaction(usrObj);
-                    // Check is total borrow is reach zero.
-                    var search = Search.UserCredits.GetActiveById.Create(
-                        srcObj.UserId, srcObj.PlazaGroupId);
-                    var inst = ops.Credits.GetActiveUserCreditById(search);
-                    if (null != inst)
+                    if (manager.Save())
                     {
-                        if (inst.BHTTotal <= decimal.Zero)
-                        {
-                            // change source state.
-                            srcObj.State = UserCredit.StateTypes.Completed;
-                            ops.Credits.SaveUserCredit(srcObj);
-                        }
+                        this.DialogResult = true;
                     }
                 }
-                */
             }
-            this.DialogResult = true;
         }
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
@@ -89,28 +77,20 @@ namespace DMT.TA.Windows.Collector.Credit
 
         #endregion
 
-        private bool HasNegative()
+        public void Setup(TSB tsb, UserCreditBalance credit)
         {
-            return (usrObj.BHTTotal > srcObj.BHTTotal);
-        }
+            manager.Setup(tsb, credit);
+            this.DataContext = manager.UserBalance;
 
-        public void Setup(UserCreditBalance credit)
-        {
-            srcObj = credit;
-
-            usrObj = new UserCreditTransaction();
-
-            this.DataContext = srcObj;
-
-            if (null != srcObj)
+            if (null != manager.UserBalance)
             {
-                srcObj.Description = srcObj.FullNameTH;
-                srcObj.HasRemark = false;
-                usrObj.Description = "คืนเงิน";
+                manager.UserBalance.Description = manager.UserBalance.FullNameTH;
+                manager.UserBalance.HasRemark = false;
+                manager.Transaction.Description = "คืนเงิน";
             }
 
-            srcEntry.DataContext = srcObj;
-            usrEntry.DataContext = usrObj;
+            srcEntry.DataContext = manager.UserBalance;
+            usrEntry.DataContext = manager.Transaction;
         }
     }
 }

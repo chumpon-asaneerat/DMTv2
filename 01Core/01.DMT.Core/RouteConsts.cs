@@ -415,6 +415,12 @@ namespace DMT
                 public const string Url = Credit.Url + @"/" + Name;
             }
 
+            public static class GetActiveUserCreditBalanceById
+            {
+                public const string Name = "GetActiveUserCreditBalanceById";
+                public const string Url = Credit.Url + @"/" + Name;
+            }
+
             public static class SaveUserCreditBalance
             {
                 public const string Name = "SaveUserCreditBalance";
@@ -443,12 +449,6 @@ namespace DMT
             public static class GetActiveUserCredit
             {
                 public const string Name = "GetActiveUserCredit";
-                public const string Url = Credit.Url + @"/" + Name;
-            }
-
-            public static class GetActiveUserCreditById
-            {
-                public const string Name = "GetActiveUserCreditById";
                 public const string Url = Credit.Url + @"/" + Name;
             }
             */

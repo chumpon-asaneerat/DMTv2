@@ -1929,7 +1929,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static UserCreditBalance GetActiveUserCreditBalance(
+		public static UserCreditBalance GetActiveUserCreditBalanceById(
 			string userId, string plazaGroupId)
 		{
 			lock (sync)
