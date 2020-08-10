@@ -20,8 +20,9 @@ Update 2020-08-10 #15
 Update 2020-08-10 #14
 - 
 
+[commited]
 Update 2020-08-10 #13
-- 
+- Set DMT.TA.App - X86
 
 [commited]
 Update 2020-08-10 #12
