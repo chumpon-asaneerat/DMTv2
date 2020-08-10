@@ -60,6 +60,9 @@ namespace DMT.Models
 
 		#region Internal Variables
 
+		private int _PkId = 0;
+		private Guid _GroupId = Guid.NewGuid();
+
 		private StateTypes _State = StateTypes.Request;
 
 		private FinishedFlags _FinishFlag = FinishedFlags.Avaliable;
@@ -86,6 +89,51 @@ namespace DMT.Models
 
 		#region Common
 
+		/// <summary>
+		/// Gets or sets PkId
+		/// </summary>
+		[Category("Common")]
+		[Description(" Gets or sets PkId")]
+		[ReadOnly(true)]
+		[PrimaryKey, AutoIncrement]
+		[PeropertyMapName("PkId")]
+		public int PkId
+		{
+			get
+			{
+				return _PkId;
+			}
+			set
+			{
+				if (_PkId != value)
+				{
+					_PkId = value;
+					this.RaiseChanged("PkId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Exchange GroupId
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets Exchange GroupId")]
+		[ReadOnly(true)]
+		[PeropertyMapName("GroupId")]
+		public Guid GroupId
+		{
+			get
+			{
+				return _GroupId;
+			}
+			set
+			{
+				if (_GroupId != value)
+				{
+					_GroupId = value;
+					this.RaiseChanged("GroupId");
+				}
+			}
+		}
 		/// <summary>
 		/// Gets or sets State.
 		/// </summary>
