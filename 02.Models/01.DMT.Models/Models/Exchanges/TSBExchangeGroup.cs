@@ -24,12 +24,12 @@ namespace DMT.Models
 	#region TSBExchangeGroup
 
 	/// <summary>
-	/// The TSBExchangeTransaction Data Model class.
+	/// The TSBExchangeGroup Data Model class.
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
 	[Serializable]
 	[JsonObject(MemberSerialization.OptOut)]
-	//[Table("TSBExchangeTransaction")]
+	//[Table("TSBExchangeGroup")]
 	public class TSBExchangeGroup : NTable<TSBExchangeGroup>
 	{
 		#region Enum
@@ -354,6 +354,12 @@ namespace DMT.Models
 		#endregion
 
 		#region Static Methods
+
+		public static void SaveTSBExchangeGroup(TSBExchangeGroup value)
+		{
+			if (null == value) return;
+			TSBExchangeGroup.Save(value);
+		}
 
 		#endregion
 	}
