@@ -11,8 +11,9 @@ Update 2020-08-10 #38
 Update 2020-08-10 #37
 - 
 
+[commited]
 Update 2020-08-10 #36
-- 
+- Set DMT.TA.App - Any CPU, Prefer 32 bit.
 
 [commited]
 Update 2020-08-10 #35
