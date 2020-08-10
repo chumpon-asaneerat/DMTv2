@@ -11,8 +11,9 @@ Update 2020-08-10 #47
 Update 2020-08-10 #46
 - 
 
+[commited]
 Update 2020-08-10 #45
-- 
+- Set DMT.Plaza.Simulator.App - x86.
 
 [commited]
 Update 2020-08-10 #44
