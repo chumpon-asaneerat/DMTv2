@@ -5,8 +5,10 @@ Update 2020-08-10 #10
 Update 2020-08-10 #9
 - 
 
+[commited]
 Update 2020-08-10 #8
-- 
+- Remove DMT.Smartcard.IPC.Server project.
+- Rename 04.SmartCard.IPC to 04.Remote.WebService.
 
 [commited]
 Update 2020-08-10 #7
