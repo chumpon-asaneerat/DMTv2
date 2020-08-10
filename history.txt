@@ -11,8 +11,9 @@ Update 2020-08-10 #23
 Update 2020-08-10 #22
 - 
 
+[commited]
 Update 2020-08-10 #21
-- 
+- Set SQLite.Net.Wpf.Sample - X86
 
 [commited]
 Update 2020-08-10 #20
