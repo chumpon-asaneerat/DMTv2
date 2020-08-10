@@ -98,6 +98,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.LocalWebServerFunctionTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.LocalDbServerSample", "10.Tests\05.LocalDbServerSample\05.LocalDbServerSample.csproj", "{0FE47D9B-DB20-40E6-B8F1-B25B7BE4213E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{73D84FF1-14AD-43DB-86FA-769E24E925B9}"
+	ProjectSection(SolutionItems) = preProject
+		Examples\MocRabbitMQ.cs = Examples\MocRabbitMQ.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
