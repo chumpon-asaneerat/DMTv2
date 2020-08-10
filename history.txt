@@ -20,8 +20,9 @@ Update 2020-08-10 #35
 Update 2020-08-10 #34
 - 
 
+[commited]
 Update 2020-08-10 #33
-- 
+- Set LocalDbServerSample - Any CPU, Prefer 32 bit.
 
 [commited]
 Update 2020-08-10 #32
