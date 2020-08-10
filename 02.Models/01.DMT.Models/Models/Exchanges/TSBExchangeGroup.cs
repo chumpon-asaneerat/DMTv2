@@ -62,6 +62,8 @@ namespace DMT.Models
 
 		private StateTypes _State = StateTypes.Request;
 
+		private FinishedFlags _FinishFlag = FinishedFlags.Avaliable;
+
 		private int _Status = 0;
 		private DateTime _LastUpdate = DateTime.MinValue;
 
