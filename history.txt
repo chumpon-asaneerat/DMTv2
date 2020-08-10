@@ -20,8 +20,9 @@ Update 2020-08-10 #5
 Update 2020-08-10 #4
 - 
 
+[commited]
 Update 2020-08-10 #3
-- 
+- Update and Re-compile SmartcardM1Test project.
 
 [commited]
 Update 2020-08-10 #2
