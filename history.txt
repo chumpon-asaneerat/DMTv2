@@ -11,8 +11,9 @@ Update 2020-08-10 #18
 Update 2020-08-10 #17
 - 
 
+[commited]
 Update 2020-08-10 #16
-- 
+- Set SQLite.Net.Wpf.Sample - Prefer 32 bit.
 
 [commited]
 Update 2020-08-10 #15
