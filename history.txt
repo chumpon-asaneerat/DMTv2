@@ -20,8 +20,9 @@ Update 2020-08-10 #44
 Update 2020-08-10 #43
 - 
 
+[commited]
 Update 2020-08-10 #42
-- 
+- Set DMT.TOD.App - x86.
 
 [commited]
 Update 2020-08-10 #41
