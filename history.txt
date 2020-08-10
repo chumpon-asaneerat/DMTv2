@@ -26,8 +26,9 @@ Update 2020-08-10 #13
 Update 2020-08-10 #12
 - 
 
+[commited]
 Update 2020-08-10 #11
-- 
+- Set DMT.Plaza.Windows.Services - X86
 
 [commited]
 Update 2020-08-10 #10
