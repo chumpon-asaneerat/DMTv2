@@ -2,8 +2,9 @@
 Update 2020-08-10 #40
 - 
 
+[commited]
 Update 2020-08-10 #39
-- 
+- DMT.Controls project add DMT.Smartcard reference.
 
 [commited]
 Update 2020-08-10 #38
