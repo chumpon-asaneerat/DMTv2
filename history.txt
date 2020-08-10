@@ -14,8 +14,9 @@ Update 2020-08-10 #22
 Update 2020-08-10 #21
 - 
 
+[commited]
 Update 2020-08-10 #20
-- 
+- Set LocalDbServerSample - X86
 
 [commited]
 Update 2020-08-10 #19
