@@ -8,8 +8,9 @@ Update 2020-08-10 #39
 Update 2020-08-10 #38
 - 
 
+[commited]
 Update 2020-08-10 #37
-- 
+- Set DMT.Plaza.Config.App - Any CPU, Prefer 32 bit.
 
 [commited]
 Update 2020-08-10 #36
