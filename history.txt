@@ -17,8 +17,9 @@ Update 2020-08-10 #16
 Update 2020-08-10 #15
 - 
 
+[commited]
 Update 2020-08-10 #14
-- 
+- Set DMT.Plaza.Config.App - X86
 
 [commited]
 Update 2020-08-10 #13
