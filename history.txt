@@ -14,8 +14,9 @@ Update 2020-08-10 #7
 Update 2020-08-10 #6
 - 
 
+[commited]
 Update 2020-08-10 #5
-- 
+- Set DMT.Core - x86.
 
 [commited]
 Update 2020-08-10 #4
