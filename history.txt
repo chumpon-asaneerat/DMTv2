@@ -8,8 +8,9 @@ Update 2020-08-10 #48
 Update 2020-08-10 #47
 - 
 
+[commited]
 Update 2020-08-10 #46
-- 
+- Recompile all projects.
 
 [commited]
 Update 2020-08-10 #45
