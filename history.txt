@@ -32,8 +32,9 @@ Update 2020-08-10 #31
 Update 2020-08-10 #30
 - 
 
+[commited]
 Update 2020-08-10 #29
-- 
+- Set DMT.Local.WebServer - Any CPU.
 
 [commited]
 Update 2020-08-10 #28
