@@ -38,8 +38,9 @@ Update 2020-08-10 #29
 Update 2020-08-10 #28
 - 
 
+[commited]
 Update 2020-08-10 #27
-- 
+- Set DMT.Networks - Any CPU.
 
 [commited]
 Update 2020-08-10 #26
