@@ -2,8 +2,9 @@
 Update 2020-08-10 #10
 - 
 
+[commited]
 Update 2020-08-10 #9
-- 
+- Set DMT.Controls - X86
 
 [commited]
 Update 2020-08-10 #8
