@@ -64,6 +64,10 @@ namespace DMT.Models
 		private Guid _GroupId = Guid.NewGuid();
 
 		private StateTypes _State = StateTypes.Request;
+		// TSB
+		private string _TSBId = string.Empty;
+		private string _TSBNameEN = string.Empty;
+		private string _TSBNameTH = string.Empty;
 
 		private FinishedFlags _FinishFlag = FinishedFlags.Avaliable;
 
@@ -172,6 +176,80 @@ namespace DMT.Models
 				{
 					_FinishFlag = value;
 					this.RaiseChanged("FinishFlag");
+				}
+			}
+		}
+
+		#endregion
+
+		#region TSB
+
+		/// <summary>
+		/// Gets or sets TSBId.
+		/// </summary>
+		[Category("TSB")]
+		[Description("Gets or sets TSBId.")]
+		[ReadOnly(true)]
+		[MaxLength(10)]
+		[PeropertyMapName("TSBId")]
+		public string TSBId
+		{
+			get
+			{
+				return _TSBId;
+			}
+			set
+			{
+				if (_TSBId != value)
+				{
+					_TSBId = value;
+					this.RaiseChanged("TSBId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets TSBNameEN.
+		/// </summary>
+		[Category("TSB")]
+		[Description("Gets or sets TSBNameEN.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("TSBNameEN")]
+		public virtual string TSBNameEN
+		{
+			get
+			{
+				return _TSBNameEN;
+			}
+			set
+			{
+				if (_TSBNameEN != value)
+				{
+					_TSBNameEN = value;
+					this.RaiseChanged("TSBNameEN");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets TSBNameTH.
+		/// </summary>
+		[Category("TSB")]
+		[Description("Gets or sets TSBNameTH.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("TSBNameTH")]
+		public virtual string TSBNameTH
+		{
+			get
+			{
+				return _TSBNameTH;
+			}
+			set
+			{
+				if (_TSBNameTH != value)
+				{
+					_TSBNameTH = value;
+					this.RaiseChanged("TSBNameTH");
 				}
 			}
 		}
