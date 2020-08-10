@@ -29,8 +29,9 @@ Update 2020-08-10 #32
 Update 2020-08-10 #31
 - 
 
+[commited]
 Update 2020-08-10 #30
-- 
+- Set DMT.Local.WebClient - Any CPU.
 
 [commited]
 Update 2020-08-10 #29
