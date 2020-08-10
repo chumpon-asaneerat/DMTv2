@@ -314,6 +314,31 @@ namespace DMT.Models
 
 		public class FKs : TSBExchangeGroup
 		{
+			#region TSB
+
+			/// <summary>
+			/// Gets or sets TSBNameEN.
+			/// </summary>
+			[MaxLength(100)]
+			[PeropertyMapName("TSBNameEN")]
+			public override string TSBNameEN
+			{
+				get { return base.TSBNameEN; }
+				set { base.TSBNameEN = value; }
+			}
+			/// <summary>
+			/// Gets or sets TSBNameTH.
+			/// </summary>
+			[MaxLength(100)]
+			[PeropertyMapName("TSBNameTH")]
+			public override string TSBNameTH
+			{
+				get { return base.TSBNameTH; }
+				set { base.TSBNameTH = value; }
+			}
+
+			#endregion
+
 			#region Public Methods
 
 			public TSBExchangeGroup ToTSBExchangeGroup()
