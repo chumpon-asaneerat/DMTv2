@@ -5,8 +5,9 @@ Update 2020-08-10 #40
 Update 2020-08-10 #39
 - 
 
+[commited]
 Update 2020-08-10 #38
-- 
+- Set DMT.Plaza.Simulator.App - Any CPU, Prefer 32 bit.
 
 [commited]
 Update 2020-08-10 #37
