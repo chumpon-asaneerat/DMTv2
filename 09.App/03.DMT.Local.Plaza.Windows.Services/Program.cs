@@ -35,12 +35,12 @@ namespace DMT
 						/*  This property is required */
 						CompanyName = "DMT",
 						/*  This property is required */
-						ProductName = AppConsts.WindowsService.Plaza.ServiceName,
+						ProductName = AppConsts.WindowsService.Local.ServiceName,
 						/* For Application Version */
-						Version = AppConsts.WindowsService.Plaza.Version,
-						Minor = AppConsts.WindowsService.Plaza.Minor,
-						Build = AppConsts.WindowsService.Plaza.Build,
-						LastUpdate = AppConsts.WindowsService.Plaza.LastUpdate
+						Version = AppConsts.WindowsService.Local.Version,
+						Minor = AppConsts.WindowsService.Local.Minor,
+						Build = AppConsts.WindowsService.Local.Build,
+						LastUpdate = AppConsts.WindowsService.Local.LastUpdate
 					},
 					/* Setup Storage */
 					Storage = new NAppStorage()

@@ -29,9 +29,9 @@ namespace DMT.Services
         public PlazaDataServiceManager()
             : base()
         {
-            ServiceName = AppConsts.WindowsService.Plaza.ServiceName;
-            DisplayName = AppConsts.WindowsService.Plaza.DisplayName;
-            Description = AppConsts.WindowsService.Plaza.Description;
+            ServiceName = AppConsts.WindowsService.Local.ServiceName;
+            DisplayName = AppConsts.WindowsService.Local.DisplayName;
+            Description = AppConsts.WindowsService.Local.Description;
         }
 
         #endregion

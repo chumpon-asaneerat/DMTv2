@@ -66,9 +66,9 @@ namespace DMT.Services
     public class LocalDatabaseWebServer
     {
         private string baseAddress = string.Format(@"{0}://{1}:{2}/",
-            AppConsts.WindowsService.Plaza.LocaWebServer.Protocol,
-            AppConsts.WindowsService.Plaza.LocaWebServer.HostName,
-            AppConsts.WindowsService.Plaza.LocaWebServer.PortNumber);
+            AppConsts.WindowsService.Local.WebServer.Protocol,
+            AppConsts.WindowsService.Local.WebServer.HostName,
+            AppConsts.WindowsService.Local.WebServer.PortNumber);
         private IDisposable server = null;
 
         public void Start()
