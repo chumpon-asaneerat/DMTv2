@@ -1,6 +1,8 @@
 ﻿#region Using
 
+using NLib;
 using System;
+using System.Reflection;
 using System.Threading;
 
 // web socket
@@ -14,36 +16,80 @@ namespace DMT.Services.Behaviors
 {
     public class NotifyBehavior : WebSocketBehavior
     {
+        #region Internal Variables
+
         private static int _number = 0;
+
+        #endregion
+
+        #region Constructor and Destructor
+
+        public NotifyBehavior() : base()
+        {
+            LocalDbServer.Instance.OnChangeShift += Instance_OnChangeShift;
+        }
+        ~NotifyBehavior()
+        {
+            LocalDbServer.Instance.OnChangeShift -= Instance_OnChangeShift;
+        }
+
+        #endregion
+
+        #region LocalDbServer event handers
+
+        private void Instance_OnChangeShift(object sender, EventArgs e)
+        {
+            // send message to all clients.
+            string message = "changeshift";
+            Send(message);
+        }
+
+        #endregion
+
+        #region Override Methods
 
         protected override void OnOpen()
         {
+            MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
                 Interlocked.Increment(ref _number);
                 Sessions.Broadcast(string.Format("info:client={0} ", _number));
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+            }
         }
 
         protected override void OnClose(CloseEventArgs e)
         {
+            MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
                 Interlocked.Decrement(ref _number);
                 Sessions.Broadcast(string.Format("info:client={0} ", _number));
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+            }
         }
 
         protected override void OnMessage(MessageEventArgs e)
         {
+            MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
                 string msg = e.Data;
                 Sessions.Broadcast(msg);
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+            }
         }
+
+        #endregion
     }
 }

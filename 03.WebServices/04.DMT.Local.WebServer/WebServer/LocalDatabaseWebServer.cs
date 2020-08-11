@@ -69,6 +69,8 @@ namespace DMT.Services
     /// </summary>
     public class LocalDatabaseWebServer
     {
+        #region Internal Variables
+
         private string baseAddress = string.Format(@"{0}://{1}:{2}/",
             AppConsts.WindowsService.Local.WebServer.Protocol,
             AppConsts.WindowsService.Local.WebServer.HostName,
@@ -81,6 +83,10 @@ namespace DMT.Services
 
         private IDisposable server = null;
         private WebSocketSharp.Server.HttpServer wsserver = null;
+
+        #endregion
+
+        #region Public Methods
 
         public void Start()
         {
@@ -104,6 +110,7 @@ namespace DMT.Services
                 }
             }
         }
+
         public void Shutdown()
         {
             if (null != wsserver)
@@ -121,5 +128,7 @@ namespace DMT.Services
             // Shutdown database server.
             LocalDbServer.Instance.Shutdown();
         }
+
+        #endregion
     }
 }
