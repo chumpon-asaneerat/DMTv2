@@ -1,6 +1,43 @@
 --------------------------------------------------------------------------------------------
-Update 2020-08-11 #3
+Update 2020-08-11 #15
 - 
+
+Update 2020-08-11 #14
+- 
+
+Update 2020-08-11 #13
+- 
+
+Update 2020-08-11 #12
+- 
+
+Update 2020-08-11 #11
+- 
+
+Update 2020-08-11 #10
+- 
+
+Update 2020-08-11 #9
+- 
+
+Update 2020-08-11 #8
+- 
+
+Update 2020-08-11 #7
+- 
+
+Update 2020-08-11 #6
+- 
+
+Update 2020-08-11 #5
+- 
+
+Update 2020-08-11 #4
+- 
+
+[commited]
+Update 2020-08-11 #3
+- Remove DMT.Controls project - for change folders structure.
 
 [commited]
 Update 2020-08-11 #2
