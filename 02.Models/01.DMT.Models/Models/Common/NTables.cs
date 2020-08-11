@@ -276,12 +276,12 @@ namespace DMT.Models
         /// Save.
         /// </summary>
         /// <param name="value">The item to save to database.</param>
-        public static void Save(T value)
+        public static NDbResult<T> Save(T value)
         {
             lock (sync)
             {
                 SQLiteConnection db = Default;
-                Save(db, value);
+                return Save(db, value);
             }
         }
         /// <summary>

@@ -1,6 +1,38 @@
 --------------------------------------------------------------------------------------------
-Update 2020-08-12 #10
+Update 2020-08-12 #20
 - 
+
+Update 2020-08-12 #19
+- 
+
+Update 2020-08-12 #18
+- 
+
+Update 2020-08-12 #17
+- 
+
+Update 2020-08-12 #16
+- 
+
+Update 2020-08-12 #15
+- 
+
+Update 2020-08-12 #14
+- 
+
+Update 2020-08-12 #13
+- 
+
+Update 2020-08-12 #12
+- 
+
+Update 2020-08-12 #11
+- 
+
+[commited]
+Update 2020-08-12 #10
+- Update Local/DataCenter/TAxTOD service operation #45.
+- Implements TSB related process #2.
 
 [commited]
 Update 2020-08-12 #9
