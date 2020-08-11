@@ -14,8 +14,11 @@ Update 2020-08-11 #12
 Update 2020-08-11 #11
 - 
 
+[commited]
 Update 2020-08-11 #10
-- 
+- Reload TA project.
+- Update TA reference assemblies.
+- Test Re-compile all projects - OK.
 
 [commited]
 Update 2020-08-11 #9
