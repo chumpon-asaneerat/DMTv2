@@ -26,8 +26,9 @@ Update 2020-08-11 #23
 Update 2020-08-11 #22
 - 
 
+[commited]
 Update 2020-08-11 #21
-- 
+- Test Re-compile all projects - OK.
 
 [commited]
 Update 2020-08-11 #20
