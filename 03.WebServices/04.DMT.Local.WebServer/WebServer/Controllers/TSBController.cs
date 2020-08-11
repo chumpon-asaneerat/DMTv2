@@ -181,11 +181,15 @@ namespace DMT.Services
         [ActionName(RouteConsts.TSB.SaveLane.Name)]
         public NDbResult<Lane> SaveLane([FromBody] Lane value)
         {
-            if (null != value)
+            NDbResult<Lane> result;
+            if (null == value)
             {
-                Lane.Save(value);
+                result = new NDbResult<Lane>();
+                result.ParameterIsNull();
+                return result;
             }
-            return value;
+            result = Lane.Save(value);
+            return result;
         }
 
         #endregion

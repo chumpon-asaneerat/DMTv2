@@ -240,36 +240,100 @@ namespace DMT.Services
 
             #region Lane
 
-            public NRestResult<List<Lane>> GetTSBLanes(TSB tsb)
+            public NRestResult<List<Lane>> GetTSBLanes(TSB value)
             {
-                var ret = NRestClient.Create(host: hostName, port: portNo).Execute<List<Lane>>(
-                    RouteConsts.TSB.GetTSBLanes.Url, tsb);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<Lane>> ret;
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<List<Lane>>(RouteConsts.TSB.GetTSBLanes.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<Lane>>();
+                    ret.ParameterIsNull();
+                    ret.data = new List<Lane>();
+                    ret.data = null;
+                }
                 return ret;
             }
 
-            public NRestResult<List<Lane>> GetPlazaLanes(Plaza plaza)
+            public NRestResult<List<Lane>> GetPlazaLanes(Plaza value)
             {
-                var ret = NRestClient.Create(host: hostName, port: portNo).Execute<List<Lane>>(
-                    RouteConsts.TSB.GetPlazaLanes.Url, plaza);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<Lane>> ret;
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<List<Lane>>(RouteConsts.TSB.GetPlazaLanes.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<Lane>>();
+                    ret.ParameterIsNull();
+                    ret.data = new List<Lane>();
+                    ret.data = null;
+                }
                 return ret;
             }
 
-            public NRestResult<List<Lane>> GetPlazaGroupLanes(PlazaGroup plazaGroup)
+            public NRestResult<List<Lane>> GetPlazaGroupLanes(PlazaGroup value)
             {
-                var ret = NRestClient.Create(host: hostName, port: portNo).Execute<List<Lane>>(
-                    RouteConsts.TSB.GetPlazaGroupLanes.Url, plazaGroup);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<Lane>> ret;
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<List<Lane>>(RouteConsts.TSB.GetPlazaGroupLanes.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<Lane>>();
+                    ret.ParameterIsNull();
+                    ret.data = new List<Lane>();
+                    ret.data = null;
+                }
                 return ret;
             }
 
             public NRestResult<Lane> SaveLane(Lane value)
             {
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<Lane> ret;
+
                 if (null != value)
                 {
-                    var ret = NRestClient.Create(host: hostName, port: portNo).Execute<Lane>(
-                        RouteConsts.TSB.SaveLane.Url, value);
-                    return ret;
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<Lane>(RouteConsts.TSB.SaveLane.Url, value);
                 }
-                return new NRestResult<Lane>();
+                else
+                {
+                    ret = new NRestResult<Lane>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
+                return ret;
             }
 
             #endregion
