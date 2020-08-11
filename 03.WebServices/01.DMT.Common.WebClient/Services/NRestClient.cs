@@ -77,7 +77,7 @@ namespace DMT.Services
         /// <param name="username">The username.</param>
         /// <param name="password">The password.</param>
         /// <returns>
-        /// Returns instance of TReturn object if success. Otherwise return null.
+        /// Returns instance of NRestResult.
         /// </returns>
         public NRestResult<TReturn> Execute<TReturn>(string apiUrl,
             object pObj = null, string username = "", string password = "")
@@ -114,6 +114,74 @@ namespace DMT.Services
                     if (null != obj && obj.GetType() == typeof(NDbResult<TReturn>))
                     {
                         var dbRet = (obj as NDbResult<TReturn>);
+                        ret = dbRet.ToRest();
+                    }
+                    else
+                    {
+                        ret.data = obj;
+                    }
+                }
+                else
+                {
+                    //Console.WriteLine("Execute no response.");
+                    ret.ConenctFailed();
+                }
+            }
+            catch (Exception ex)
+            {
+                ret.Error(ex);
+            }
+
+            return ret;
+        }
+        /// <summary>
+        /// Execute (POST).
+        /// </summary>
+        /// <typeparam name="TReturn">The Returns object type.</typeparam>
+        /// <typeparam name="TReturn">The Out object type.</typeparam>
+        /// <param name="apiUrl">The action api url.</param>
+        /// <param name="pObj">The parameter.</param>
+        /// <param name="username">The username.</param>
+        /// <param name="password">The password.</param>
+        /// <returns>
+        /// Returns instance of NRestResult.
+        /// </returns>
+        public NRestResult<TReturn, TOut> Execute<TReturn, TOut>(string apiUrl,
+            object pObj = null, string username = "", string password = "")
+        {
+            NRestResult<TReturn, TOut> ret = new NRestResult<TReturn, TOut>();
+
+            string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
+            try
+            {
+                var client = new RestClient(BaseUrl);
+                client.Timeout = 500;
+                if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
+                {
+                    client.Authenticator = new HttpBasicAuthenticator(username, password);
+                }
+                //client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
+                client.UseNewtonsoftJson();
+                var request = new RestRequest(actionUrl, Method.POST);
+                request.RequestFormat = DataFormat.Json;
+                if (null != pObj)
+                {
+                    request.AddJsonBody(pObj);
+                }
+
+                var response = client.Execute(request);
+                if (null != response && null != response.Content)
+                {
+                    if (response.Content.Contains("rror"))
+                    {
+                        Console.WriteLine("Error");
+                    }
+                    //Console.WriteLine(response.Content);
+                    var obj = response.Content.FromJson<TReturn>();
+                    if (null != obj && obj.GetType() == typeof(NDbResult<TReturn, TOut>))
+                    {
+                        var dbRet = (obj as NDbResult<TReturn, TOut>);
+                        ret = dbRet.ToRest();
                     }
                     else
                     {
@@ -140,9 +208,14 @@ namespace DMT.Services
         /// <param name="pObj">The parameter.</param>
         /// <param name="username">The username.</param>
         /// <param name="password">The password.</param>
-        public void Execute(string apiUrl,
+        /// <returns>
+        /// Returns instance of NRestResult object.
+        /// </returns>
+        public NRestResult Execute(string apiUrl,
             object pObj = null, string username = "", string password = "")
         {
+            NRestResult ret = new NRestResult();
+
             string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
             try
             {
@@ -168,16 +241,24 @@ namespace DMT.Services
                         Console.WriteLine("Error");
                     }
                     //Console.WriteLine(response.Content);
+                    var obj = response.Content.FromJson<NDbResult>();
+                    if (null != obj)
+                    {
+                        ret = obj.ToRest();
+                    }
                 }
                 else
                 {
                     //Console.WriteLine("Execute no response.");
+                    ret.ConenctFailed();
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                ret.Error(ex);
             }
+
+            return ret;
         }
 
         #endregion
