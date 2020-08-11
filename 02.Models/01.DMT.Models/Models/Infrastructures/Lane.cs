@@ -583,7 +583,7 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static List<Lane> Gets(SQLiteConnection db)
+		public static NDbResult<List<Lane>> Gets(SQLiteConnection db)
 		{
 			if (null == db) return new List<Lane>();
 			lock (sync)
@@ -614,7 +614,7 @@ namespace DMT.Models
 				return results;
 			}
 		}
-		public static List<Lane> Gets()
+		public static NDbResult<List<Lane>> Gets()
 		{
 			lock (sync)
 			{
@@ -645,7 +645,7 @@ namespace DMT.Models
 				return (null != ret) ? ret.ToLane() : null;
 			}
 		}
-		public static Lane Get(string laneId)
+		public static NDbResult<Lane> Get(string laneId)
 		{
 			lock (sync)
 			{
@@ -654,7 +654,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static List<Lane> GetTSBLanes(TSB value)
+		public static NDbResult<List<Lane>> GetTSBLanes(TSB value)
 		{
 			lock (sync)
 			{
@@ -662,7 +662,7 @@ namespace DMT.Models
 				return GetTSBLanes(value.TSBId);
 			}
 		}
-		public static List<Lane> GetTSBLanes(string tsbId)
+		public static NDbResult<List<Lane>> GetTSBLanes(string tsbId)
 		{
 			lock (sync)
 			{
@@ -682,7 +682,7 @@ namespace DMT.Models
 				return NQuery.Query<FKs>(cmd, tsbId).ToList<Lane>();
 			}
 		}
-		public static List<Lane> GetPlazaGroupLanes(PlazaGroup value)
+		public static NDbResult<List<Lane>> GetPlazaGroupLanes(PlazaGroup value)
 		{
 			lock (sync)
 			{
@@ -690,7 +690,7 @@ namespace DMT.Models
 				return GetPlazaGroupLanes(value.TSBId, value.PlazaGroupId);
 			}
 		}
-		public static List<Lane> GetPlazaGroupLanes(string tsbId, string plazaGroupId)
+		public static NDbResult<List<Lane>> GetPlazaGroupLanes(string tsbId, string plazaGroupId)
 		{
 			lock (sync)
 			{
@@ -722,7 +722,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static List<Lane> GetPlazaLanes(Plaza value)
+		public static NDbResult<List<Lane>> GetPlazaLanes(Plaza value)
 		{
 			lock (sync)
 			{
@@ -730,7 +730,8 @@ namespace DMT.Models
 				return GetPlazaLanes(value.TSBId, value.PlazaGroupId, value.PlazaId);
 			}
 		}
-		public static List<Lane> GetPlazaLanes(string tsbId, string plazaGroupId, string plazaId)
+		public static NDbResult<List<Lane>> GetPlazaLanes(string tsbId, string plazaGroupId, 
+			string plazaId)
 		{
 			lock (sync)
 			{

@@ -5,8 +5,10 @@ Update 2020-08-12 #20
 Update 2020-08-12 #19
 - 
 
+[commited]
 Update 2020-08-12 #18
-- 
+- Update Local/DataCenter/TAxTOD service operation #54.
+- Implements Lane related process #3.
 
 [commited]
 Update 2020-08-12 #17
