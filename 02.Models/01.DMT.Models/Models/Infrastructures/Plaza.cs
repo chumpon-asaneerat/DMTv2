@@ -436,30 +436,48 @@ namespace DMT.Models
 
 		public static NDbResult<List<Plaza>> Gets(SQLiteConnection db)
 		{
-			if (null == db) return new List<Plaza>();
+			var result = new NDbResult<List<Plaza>>();
+
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<Plaza>();
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT Plaza.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-				cmd += "  FROM Plaza, PlazaGroup, TSB ";
-				cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
-				cmd += "   AND PlazaGroup.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-
-				var rets = NQuery.Query<FKs>(cmd).ToList();
-				var results = new List<Plaza>();
-				if (null != rets)
+				try
 				{
-					rets.ForEach(ret =>
-					{
-						results.Add(ret.ToPlaza());
-					});
-				}
+					string cmd = string.Empty;
+					cmd += "SELECT Plaza.* ";
+					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
+					cmd += "  FROM Plaza, PlazaGroup, TSB ";
+					cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
+					cmd += "   AND PlazaGroup.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
 
-				return results;
+					var rets = NQuery.Query<FKs>(cmd).ToList();
+					var results = new List<Plaza>();
+					if (null != rets)
+					{
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToPlaza());
+						});
+					}
+
+					return results;
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = new List<TSB>();
+
+				}
+				return result;
 			}
 		}
 		public static NDbResult<List<Plaza>> Gets()
@@ -472,21 +490,38 @@ namespace DMT.Models
 		}
 		public static NDbResult<Plaza> Get(SQLiteConnection db, string plazaId)
 		{
-			if (null == db) return null;
+			var result = new NDbResult<Plaza>();
+
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT Plaza.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-				cmd += "  FROM Plaza, PlazaGroup, TSB ";
-				cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
-				cmd += "   AND PlazaGroup.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND Plaza.PlazaId = ? ";
-				var ret = NQuery.Query<FKs>(cmd, plazaId).FirstOrDefault();
-				return (null != ret) ? ret.ToPlaza() : null;
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT Plaza.* ";
+					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
+					cmd += "  FROM Plaza, PlazaGroup, TSB ";
+					cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
+					cmd += "   AND PlazaGroup.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND Plaza.PlazaId = ? ";
+					var ret = NQuery.Query<FKs>(cmd, plazaId).FirstOrDefault();
+					result.data = (null != ret) ? ret.ToPlaza() : null;
+				}
+				catch (Exception ex)
+                {
+					result.Error(ex);
+					result.data = null;
+				}
+				return result;
 			}
 		}
 		public static NDbResult<Plaza> Get(string plazaId)
@@ -499,14 +534,31 @@ namespace DMT.Models
 		}
 		public static NDbResult<List<Plaza>> GetTSBPlazas(TSB value)
 		{
+			var result = new NDbResult<List<Plaza>>();
+			SQLiteConnection db = Default;
+			if (null == value)
+			{
+				result.ParameterIsNull();
+				result.data = null;
+				return result;
+			}
+
 			lock (sync)
 			{
-				if (null == value) return new List<Plaza>();
 				return GetTSBPlazas(value.TSBId);
 			}
 		}
 		public static NDbResult<List<Plaza>> GetTSBPlazas(string tsbId)
 		{
+			var result = new NDbResult<List<Plaza>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<Plaza>();
+				return result;
+			}
+
 			lock (sync)
 			{
 				string cmd = string.Empty;

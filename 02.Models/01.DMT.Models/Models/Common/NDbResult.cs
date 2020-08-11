@@ -63,6 +63,12 @@ namespace DMT.Models
             this.errors.errMsg = "Unknown error.";
         }
 
+        public virtual void ParameterIsNull()
+        {
+            this.errors.errNum = -2;
+            this.errors.errMsg = "Parameter is null.";
+        }
+
         public virtual void Success()
         {
             this.errors.errNum = 0;
