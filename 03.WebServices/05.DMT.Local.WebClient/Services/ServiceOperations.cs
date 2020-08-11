@@ -5,16 +5,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.ComponentModel;
-
-using RestSharp;
-using NLib.ServiceProcess;
-
-using DMT.Models;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
+using System.Windows.Forms.VisualStyles;
+
+using NLib;
+using NLib.ServiceProcess;
+
+using RestSharp;
 
 using WebSocketSharp;
-using System.Windows.Forms.VisualStyles;
+
+using DMT.Models;
+using System.Reflection;
 
 #endregion
 
@@ -79,7 +82,7 @@ namespace DMT.Services
 
         #region Internal Variables
 
-        private string wsAddress = string.Format(@"{0}://{1}:{2}/",
+        private string wsAddress = string.Format(@"{0}://{1}:{2}",
             AppConsts.WindowsService.Local.WebSocket.Protocol,
             AppConsts.WindowsService.Local.WebSocket.HostName,
             AppConsts.WindowsService.Local.WebSocket.PortNumber);
@@ -146,36 +149,61 @@ namespace DMT.Services
 
         private void Connect()
         {
+            MethodBase med = MethodBase.GetCurrentMethod();
             if (null == _ws)
             {
-                _ws = new WebSocket(wsAddress + "nofify");
-                _ws.OnMessage += Ws_OnMessage;
-                _ws.OnError += Ws_OnError;
-                _ws.OnClose += Ws_OnClose;
-                _ws.Connect();
+                try
+                {
+                    _ws = new WebSocket(wsAddress + "/nofify");
+                    _ws.OnMessage += Ws_OnMessage;
+                    _ws.OnError += Ws_OnError;
+                    _ws.OnClose += Ws_OnClose;
+                    _ws.Connect();
+                }
+                catch (Exception ex)
+                {
+                    med.Err(ex);
+                    _ws = null;
+                }
             }
         }
 
         private void Disconnect()
         {
-            if (null != _ws)
+            MethodBase med = MethodBase.GetCurrentMethod();
+            try
             {
-                _ws.OnClose -= Ws_OnClose;
-                _ws.OnError -= Ws_OnError;
-                _ws.OnMessage -= Ws_OnMessage;
-                _ws.Close();
+                if (null != _ws)
+                {
+                    _ws.OnClose -= Ws_OnClose;
+                    _ws.OnError -= Ws_OnError;
+                    _ws.OnMessage -= Ws_OnMessage;
+                    _ws.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
             }
             _ws = null;
         }
 
         void Reconnect(ushort code, string error)
         {
-            if (code != (ushort)CloseStatusCode.Normal)
+            MethodBase med = MethodBase.GetCurrentMethod();
+            try
             {
-                if (null != _ws)
+                if (code != (ushort)CloseStatusCode.Normal)
                 {
-                    _ws.Connect();
+                    if (null != _ws)
+                    {
+                        _ws.Connect();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
             }
         }
 
@@ -194,13 +222,15 @@ namespace DMT.Services
 
             if (evtName == "changeshift")
             {
-                OnChangeShift.Invoke(this, EventArgs.Empty);
+                OnChangeShift.Call(this, EventArgs.Empty);
             }
         }
 
         private void Ws_OnClose(object sender, CloseEventArgs e)
         {
-            Reconnect(e.Code, e.Reason);
+            Disconnect();
+            //TODO: Need Reconnect logic.
+            //Reconnect(e.Code, e.Reason);
         }
 
         private void Ws_OnError(object sender, ErrorEventArgs e)

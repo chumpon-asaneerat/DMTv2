@@ -14,6 +14,9 @@ using System.Web.Http.Validation;
 using WebSocketSharp;
 using WebSocketSharp.Net;
 using WebSocketSharp.Server;
+using System.Reflection;
+using NLib;
+using System.Net;
 
 #endregion
 
@@ -71,13 +74,15 @@ namespace DMT.Services
     {
         #region Internal Variables
 
-        private string baseAddress = string.Format(@"{0}://{1}:{2}/",
+        private string baseAddress = string.Format(@"{0}://{1}:{2}",
             AppConsts.WindowsService.Local.WebServer.Protocol,
             AppConsts.WindowsService.Local.WebServer.HostName,
             AppConsts.WindowsService.Local.WebServer.PortNumber);
-
-        private string wsAddress = string.Format(@"{0}://{1}:{2}/",
-            AppConsts.WindowsService.Local.WebSocket.Protocol,
+        
+        
+        private string wsAddress = string.Format(@"{0}://{1}:{2}",
+            //AppConsts.WindowsService.Local.WebSocket.Protocol,
+            "http",
             AppConsts.WindowsService.Local.WebSocket.HostName,
             AppConsts.WindowsService.Local.WebSocket.PortNumber);
 
@@ -90,6 +95,7 @@ namespace DMT.Services
 
         public void Start()
         {
+            MethodBase med = MethodBase.GetCurrentMethod();
             // Start database server.
             LocalDbServer.Instance.Start();
 
@@ -97,16 +103,23 @@ namespace DMT.Services
             {
                 server = WebApp.Start<StartUp>(url: baseAddress);
             }
-            if (null != wsserver)
+            if (null == wsserver)
             {
-                wsserver = new WebSocketSharp.Server.HttpServer(wsAddress);
-                // Add web socket service
-                wsserver.AddWebSocketService<Behaviors.NotifyBehavior>("/nofify");
-                wsserver.Start();
-                if (wsserver.IsListening)
+                try
                 {
-                    //string msg = string.Format("Listening on port {0}, and providing WebSocket services:", httpsv.Port);
-                    //lbStatus.Text = msg;
+                    wsserver = new WebSocketSharp.Server.HttpServer(wsAddress);
+                    // Add web socket service
+                    wsserver.AddWebSocketService<Behaviors.NotifyBehavior>("/nofify");
+                    wsserver.Start();
+                    if (wsserver.IsListening)
+                    {
+                        //string msg = string.Format("Listening on port {0}, and providing WebSocket services:", httpsv.Port);
+                        //lbStatus.Text = msg;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    med.Err(ex);
                 }
             }
         }

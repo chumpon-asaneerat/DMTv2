@@ -1492,7 +1492,7 @@ namespace DMT.Services
 						med.Err(ex);
 						Db = null;
 
-						OnConectError.Invoke(this, EventArgs.Empty);
+						OnConectError.Call(this, EventArgs.Empty);
 					}
 					if (null != Db)
 					{
@@ -1505,7 +1505,7 @@ namespace DMT.Services
 
 						InitTables();
 
-						OnConnected.Invoke(this, EventArgs.Empty);
+						OnConnected.Call(this, EventArgs.Empty);
 					}
 				}
 			}
@@ -1520,7 +1520,7 @@ namespace DMT.Services
 				Db.Dispose();
 			}
 			Db = null;
-			OnDisconnected.Invoke(this, EventArgs.Empty);
+			OnDisconnected.Call(this, EventArgs.Empty);
 		}
 
 		#endregion
@@ -1528,8 +1528,8 @@ namespace DMT.Services
 		#region Public Methods (Event raiser)
 
 		public void ChangeShift()
-        {
-			OnChangeShift.Invoke(this, EventArgs.Empty);
+		{
+			OnChangeShift.Call(this, EventArgs.Empty);
 
 		}
 

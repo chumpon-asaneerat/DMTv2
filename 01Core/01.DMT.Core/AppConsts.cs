@@ -87,7 +87,7 @@ namespace DMT
                 {
                     public static string Protocol = "ws";
                     public static string HostName = "localhost";
-                    public static int PortNumber = 9001;
+                    public static int PortNumber = 9100;
                 }
             }
 
