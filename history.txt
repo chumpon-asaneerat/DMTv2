@@ -2,12 +2,13 @@
 Update 2020-08-11 #3
 - 
 
+[commited]
 Update 2020-08-11 #2
-- 
+- Unloaded all App projects.
 
 [commited]
 Update 2020-08-11 #1
-- Unloaded all Tests project.
+- Unloaded all Tests projects.
 
 --------------------------------------------------------------------------------------------
 [commited]
