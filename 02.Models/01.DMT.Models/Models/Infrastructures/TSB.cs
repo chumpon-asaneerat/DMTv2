@@ -253,7 +253,6 @@ namespace DMT.Models
 			if (null == db)
 			{
 				result.DatabaseNotConnected();
-				result.data = new List<TSB>();
 				return result;
 			}
 			lock (sync)

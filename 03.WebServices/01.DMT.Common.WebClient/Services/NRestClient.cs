@@ -2,6 +2,7 @@
 
 //using System.Net;
 
+using DMT.Models;
 using RestSharp;
 using RestSharp.Authenticators;
 using RestSharp.Serializers.NewtonsoftJson;
@@ -81,35 +82,44 @@ namespace DMT.Services
         public TReturn Execute<TReturn>(string apiUrl,
             object pObj = null, string username = "", string password = "")
         {
-            string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
-            var client = new RestClient(BaseUrl);
-            if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
-            {
-                client.Authenticator = new HttpBasicAuthenticator(username, password);
-            }
-            //client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
-            client.UseNewtonsoftJson();
-            var request = new RestRequest(actionUrl, Method.POST);
-            request.RequestFormat = DataFormat.Json;
-            if (null != pObj)
-            {
-                request.AddJsonBody(pObj);
-            }
-
             TReturn ret = default;
-            var response = client.Execute(request);
-            if (null != response && null != response.Content)
+
+            string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
+            try
             {
-                if (response.Content.Contains("rror"))
+                var client = new RestClient(BaseUrl);
+                client.Timeout = 500;
+                if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
                 {
-                    Console.WriteLine("Error");
+                    client.Authenticator = new HttpBasicAuthenticator(username, password);
                 }
-                //Console.WriteLine(response.Content);
-                ret = response.Content.FromJson<TReturn>();
+                //client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
+                client.UseNewtonsoftJson();
+                var request = new RestRequest(actionUrl, Method.POST);
+                request.RequestFormat = DataFormat.Json;
+                if (null != pObj)
+                {
+                    request.AddJsonBody(pObj);
+                }
+
+                var response = client.Execute(request);
+                if (null != response && null != response.Content)
+                {
+                    if (response.Content.Contains("rror"))
+                    {
+                        Console.WriteLine("Error");
+                    }
+                    //Console.WriteLine(response.Content);
+                    ret = response.Content.FromJson<TReturn>();
+                }
+                else
+                {
+                    //Console.WriteLine("Execute no response.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                //Console.WriteLine("Execute no response.");
+                Console.WriteLine(ex);
             }
 
             return ret;
@@ -125,32 +135,39 @@ namespace DMT.Services
             object pObj = null, string username = "", string password = "")
         {
             string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
-            var client = new RestClient(BaseUrl);
-            if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
+            try
             {
-                client.Authenticator = new HttpBasicAuthenticator(username, password);
-            }
-            //client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
-            client.UseNewtonsoftJson();
-            var request = new RestRequest(actionUrl, Method.POST);
-            request.RequestFormat = DataFormat.Json;
-            if (null != pObj)
-            {
-                request.AddJsonBody(pObj);
-            }
-
-            var response = client.Execute(request);
-            if (null != response && null != response.Content)
-            {
-                if (response.Content.Contains("rror"))
+                var client = new RestClient(BaseUrl);
+                if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
                 {
-                    Console.WriteLine("Error");
+                    client.Authenticator = new HttpBasicAuthenticator(username, password);
                 }
-                //Console.WriteLine(response.Content);
+                //client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
+                client.UseNewtonsoftJson();
+                var request = new RestRequest(actionUrl, Method.POST);
+                request.RequestFormat = DataFormat.Json;
+                if (null != pObj)
+                {
+                    request.AddJsonBody(pObj);
+                }
+
+                var response = client.Execute(request);
+                if (null != response && null != response.Content)
+                {
+                    if (response.Content.Contains("rror"))
+                    {
+                        Console.WriteLine("Error");
+                    }
+                    //Console.WriteLine(response.Content);
+                }
+                else
+                {
+                    //Console.WriteLine("Execute no response.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                //Console.WriteLine("Execute no response.");
+                Console.WriteLine(ex);
             }
         }
 

@@ -126,7 +126,10 @@ namespace DMT.Simulator.Pages
         {
             listView.ItemsSource = null;
 
-            var tsbs = ops.TSB.GetTSBs();
+            var ret = ops.TSB.GetTSBs();
+            if (null == ret || ret.errors.hasError)
+                return;
+            var tsbs = ret.data;
 
             listView.ItemsSource = tsbs;
         }
