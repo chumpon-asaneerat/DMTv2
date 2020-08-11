@@ -137,8 +137,8 @@ namespace DMT.Models
                     try
                     {
                         db.Insert(value);
-                        result.Success();
                         result.data = value;
+                        result.Success();
                     }
                     catch (Exception ex)
                     {
@@ -153,8 +153,8 @@ namespace DMT.Models
                     try
                     {
                         db.Update(value);
-                        result.Success();
                         result.data = value;
+                        result.Success();
                     }
                     catch (Exception ex)
                     {

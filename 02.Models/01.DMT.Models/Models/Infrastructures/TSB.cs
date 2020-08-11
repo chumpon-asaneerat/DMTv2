@@ -264,6 +264,7 @@ namespace DMT.Models
 					cmd += "SELECT * FROM TSB ";
 					result.Success();
 					result.data = NQuery.Query<TSB>(cmd);
+					result.Success();
 				}
 				catch (Exception ex)
 				{
@@ -300,6 +301,7 @@ namespace DMT.Models
 					cmd += "SELECT * FROM TSB ";
 					cmd += " WHERE TSBId = ? ";
 					result.data = NQuery.Query<TSB>(cmd, tsbId).FirstOrDefault();
+					result.Success();
 				}
 				catch (Exception ex)
 				{
@@ -341,6 +343,7 @@ namespace DMT.Models
 					cmd += " WHERE Active = 1 ";
 					var results = NQuery.Query<TSB>(cmd);
 					result.data = (null != results) ? results.FirstOrDefault() : null;
+					result.Success();
 				}
 				catch (Exception ex)
 				{
@@ -374,6 +377,7 @@ namespace DMT.Models
 					cmd += "   SET Active = 1 ";
 					cmd += " WHERE TSBId = ? ";
 					NQuery.Execute(cmd, tsbId);
+					result.Success();
 				}
 				catch (Exception ex)
 				{

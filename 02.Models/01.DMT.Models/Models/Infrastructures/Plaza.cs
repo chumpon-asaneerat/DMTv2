@@ -470,6 +470,7 @@ namespace DMT.Models
 					}
 
 					result.data = results;
+					result.Success();
 				}
 				catch (Exception ex)
 				{
@@ -517,6 +518,7 @@ namespace DMT.Models
 					cmd += "   AND Plaza.PlazaId = ? ";
 					var ret = NQuery.Query<FKs>(cmd, plazaId).FirstOrDefault();
 					result.data = (null != ret) ? ret.ToPlaza() : null;
+					result.Success();
 				}
 				catch (Exception ex)
 				{
@@ -589,6 +591,7 @@ namespace DMT.Models
 						});
 					}
 					result.data = results;
+					result.Success();
 				}
 				catch (Exception ex)
 				{

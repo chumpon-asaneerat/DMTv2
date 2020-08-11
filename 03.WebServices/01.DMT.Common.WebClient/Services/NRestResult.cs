@@ -194,7 +194,7 @@ namespace DMT.Services
             }
             else
             {
-
+                ret.ParameterIsNull();
             }
 
             return ret;
@@ -212,7 +212,7 @@ namespace DMT.Services
             }
             else
             {
-
+                ret.ParameterIsNull();
             }
 
             return ret;
@@ -231,7 +231,7 @@ namespace DMT.Services
             }
             else
             {
-
+                ret.ParameterIsNull();
             }
 
             return ret;
