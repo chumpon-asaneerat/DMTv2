@@ -17,8 +17,11 @@ Update 2020-08-11 #11
 Update 2020-08-11 #10
 - 
 
+[commited]
 Update 2020-08-11 #9
-- 
+- Reload TOD project.
+- Update TOD reference assemblies.
+- Test Re-compile all projects - OK.
 
 [commited]
 Update 2020-08-11 #8
