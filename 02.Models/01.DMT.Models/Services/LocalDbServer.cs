@@ -1379,12 +1379,12 @@ namespace DMT.Services
 					dropCmd += "DROP VIEW IF EXISTS " + viewName;
 					Db.BeginTransaction();
 					try { Db.Execute(dropCmd); }
-					catch (Exception dropEx) 
+					catch (Exception dropEx)
 					{
 						//Console.WriteLine(dropEx);
 						med.Err(dropEx);
 						med.Err("Drop Failed:" + Environment.NewLine + viewName);
-						Db.Rollback(); 
+						Db.Rollback();
 					}
 					finally { Db.Commit(); }
 
@@ -1491,6 +1491,8 @@ namespace DMT.Services
 					{
 						med.Err(ex);
 						Db = null;
+
+						OnConectError.Invoke(this, EventArgs.Empty);
 					}
 					if (null != Db)
 					{
@@ -1502,6 +1504,8 @@ namespace DMT.Services
 						NQuery.Default = Db;
 
 						InitTables();
+
+						OnConnected.Invoke(this, EventArgs.Empty);
 					}
 				}
 			}
@@ -1516,6 +1520,17 @@ namespace DMT.Services
 				Db.Dispose();
 			}
 			Db = null;
+			OnDisconnected.Invoke(this, EventArgs.Empty);
+		}
+
+		#endregion
+
+		#region Public Methods (Event raiser)
+
+		public void ChangeShift()
+        {
+			OnChangeShift.Invoke(this, EventArgs.Empty);
+
 		}
 
 		#endregion
@@ -1532,7 +1547,17 @@ namespace DMT.Services
 		public SQLiteConnection Db { get; private set; }
 
 		#endregion
-	}
+
+		#region Public Events
+
+		public event System.EventHandler OnConnected;
+		public event System.EventHandler OnDisconnected;
+		public event System.EventHandler OnConectError;
+
+		public event System.EventHandler OnChangeShift;
+
+		#endregion
+		}
 
 	#endregion
 }

@@ -36,6 +36,8 @@ namespace DMT.Services
         public void ChangeShift([FromBody] TSBShift shift)
         {
             TSBShift.ChangeShift(shift);
+            // Raise event.
+            LocalDbServer.Instance.ChangeShift();
         }
 
         [HttpPost]
