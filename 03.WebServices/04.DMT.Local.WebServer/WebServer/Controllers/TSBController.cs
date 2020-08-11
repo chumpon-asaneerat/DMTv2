@@ -19,7 +19,7 @@ namespace DMT.Services
     {
         [HttpPost]
         [ActionName(RouteConsts.TSB.GetTSBs.Name)]
-        public List<TSB> GetTSBs()
+        public NResult<List<TSB>> GetTSBs()
         {
             var results = TSB.Gets();
             return results;

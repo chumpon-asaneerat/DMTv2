@@ -246,17 +246,34 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static List<TSB> Gets(SQLiteConnection db)
+		public static NResult<List<TSB>> Gets(SQLiteConnection db)
 		{
-			if (null == db) return new List<TSB>();
+			var result = new NResult<List<TSB>>();
+
+			if (null == db)
+			{
+				result.DatabaseNotConnected();
+				result.data = new List<TSB>();
+				return result;
+			}
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT * FROM TSB ";
-				return NQuery.Query<TSB>(cmd);
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * FROM TSB ";
+					result.Success();
+					result.data = NQuery.Query<TSB>(cmd);
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+
+				}
+				return result;
 			}
 		}
-		public static List<TSB> Gets()
+		public static NResult<List<TSB>> Gets()
 		{
 			lock (sync)
 			{

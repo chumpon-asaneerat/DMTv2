@@ -66,9 +66,9 @@ namespace DMT.Services
 
             #region Public Methods
 
-            public List<TSB> GetTSBs()
+            public NResult<List<TSB>> GetTSBs()
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<TSB>>(
+                var ret = NRestClient.Create(port: 9000).Execute<NResult<List<TSB>>>(
                     RouteConsts.TSB.GetTSBs.Url, new { });
                 return ret;
             }

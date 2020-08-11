@@ -23,6 +23,27 @@ namespace DMT.Models
     public abstract class NResult
     {
         public NError errors { get; set; }
+
+        public void DatabaseNotConnected()
+        {
+            this.errors = new NError();
+            this.errors.errNum = -1;
+            this.errors.errMsg = "No database connection.";
+        }
+
+        public void Success()
+        {
+            this.errors = new NError();
+            this.errors.errNum = 0;
+            this.errors.errMsg = "Success.";
+        }
+
+        public void Error(Exception ex)
+        {
+            this.errors = new NError();
+            this.errors.errNum = -1;
+            this.errors.errMsg = ex.Message;
+        }
     }
 
     public class NResult<T> : NResult

@@ -65,7 +65,10 @@ namespace DMT.Config.Pages
             tree.ItemsSource = null;
 
             items.Clear();
-            var tsbs = ops.TSB.GetTSBs();
+            var dbResult = ops.TSB.GetTSBs();
+            if (dbResult.errors.hasError) 
+                return;
+            var tsbs = dbResult.data;
             tsbs.ForEach(tsb =>
             {
                 TSBItem item = tsb.CloneTo<TSBItem>();

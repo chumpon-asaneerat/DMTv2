@@ -89,8 +89,10 @@ namespace DMT.Config.Pages
         {
             listView.ItemsSource = null;
 
-            var tsbs = ops.TSB.GetTSBs();
-
+            var result = ops.TSB.GetTSBs();
+            if (result.errors.hasError)
+                return;
+            var tsbs = result.data;
             listView.ItemsSource = tsbs;
         }
     }
