@@ -1,29 +1,49 @@
-﻿using DMT.Models;
+﻿#region Using
+
+using DMT.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+
+#endregion
 
 namespace DMT.Services
 {
+    #region NRestError
+
     public class NRestError
     {
-        public bool hasError { get; set; }
+        #region Public Properties
+
+        public bool hasError
+        {
+            get { return (errNum != 0); }
+            set { }
+        }
         public int errNum { get; set; }
         public string errMsg { get; set; }
+
+        #endregion
     }
+
+    #endregion
+
+    #region NRestResult
 
     public class NRestResult
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public NRestResult() : base()
         {
             this.errors = new NRestError();
             UnknownError();
         }
 
-        public NRestError errors { get; set; }
+        #endregion
+
+        #region Virtual Methods
 
         public virtual void ConenctFailed()
         {
@@ -48,15 +68,32 @@ namespace DMT.Services
             this.errors.errNum = -1;
             this.errors.errMsg = ex.Message;
         }
+
+        #endregion
+
+        #region Public Properties
+
+        public NRestError errors { get; set; }
+
+        #endregion
     }
+
+    #endregion
+
+    #region NRestResult<T>
 
     public class NRestResult<T> : NRestResult
     {
-        public NRestResult() : base()
-        {
-        }
+        #region Constructor
 
-        public T data { get; set; }
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public NRestResult() : base() { }
+
+        #endregion
+
+        #region Override Methods
 
         public override void ConenctFailed()
         {
@@ -77,40 +114,86 @@ namespace DMT.Services
         {
             base.Error(ex);
         }
+
+        #endregion
+
+        #region Public Properties
+
+        public T data { get; set; }
+
+        #endregion
     }
+
+    #endregion
+
+    #region NRestResult<T, O>
 
     public class NRestResult<T, O> : NRestResult
     {
-        public NRestResult() : base()
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public NRestResult() : base() { }
+
+        #endregion
+
+        #region Override Methods
+
+        public override void ConenctFailed()
         {
+            base.ConenctFailed();
         }
+
+        public override void UnknownError()
+        {
+            base.UnknownError();
+        }
+
+        public override void Success()
+        {
+            base.Success();
+        }
+
+        public override void Error(Exception ex)
+        {
+            base.Error(ex);
+        }
+
+        #endregion
+
+        #region Public Properties
 
         public T data { get; set; }
         public O Out { get; set; }
 
-        public override void ConenctFailed()
-        {
-            base.ConenctFailed();
-        }
-
-        public override void UnknownError()
-        {
-            base.UnknownError();
-        }
-
-        public override void Success()
-        {
-            base.Success();
-        }
-
-        public override void Error(Exception ex)
-        {
-            base.Error(ex);
-        }
+        #endregion
     }
+
+    #endregion
+
+    #region NRestResult Extension Methods
 
     public static class NRestResultExtensionMethods
     {
+        public static NRestResult ToRest(this NDbResult value)
+        {
+            NRestResult ret = new NRestResult();
+
+            if (null != value)
+            {
+                ret.errors.errNum = value.errors.errNum;
+                ret.errors.errMsg = value.errors.errMsg;
+            }
+            else
+            {
+
+            }
+
+            return ret;
+        }
+
         public static NRestResult<T> ToRest<T>(this NDbResult<T> value)
         {
             NRestResult<T> ret = new NRestResult<T>();
@@ -148,4 +231,6 @@ namespace DMT.Services
             return ret;
         }
     }
+
+    #endregion
 }
