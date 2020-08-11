@@ -32,8 +32,9 @@ Update 2020-08-11 #6
 Update 2020-08-11 #5
 - 
 
+[commited]
 Update 2020-08-11 #4
-- 
+- Remove all projects in Local.WebService folder.
 
 [commited]
 Update 2020-08-11 #3
