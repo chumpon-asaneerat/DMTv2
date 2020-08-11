@@ -30,8 +30,16 @@ Update 2020-08-12 #1
 - 
 
 --------------------------------------------------------------------------------------------
+[commited]
 Update 2020-08-11 #60
-- 
+- Update Local/DataCenter/TAxTOD service operation #34.
+- Note:
+  - Required to Change database exexute result to NDBResult.
+  - Required to Add RestAPIResult execute result to NRestResult.
+  - The NRestClient need to get host/port from config.
+  - The NRestClient need to supports type that is not class.
+  - TOD need to set config to allow access from another computer.
+  - TA need to set config to allow access from another computer.
 
 [commited]
 Update 2020-08-11 #59
