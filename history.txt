@@ -20,8 +20,12 @@ Update 2020-08-11 #45
 Update 2020-08-11 #44
 - 
 
+[commited]
 Update 2020-08-11 #43
-- 
+- Update Local/DataCenter/TAxTOD service operation #19.
+- Note: 
+  - WebSocket implementations.
+  - NResult<T> class (supports json serialzation).
 
 [commited]
 Update 2020-08-11 #42
