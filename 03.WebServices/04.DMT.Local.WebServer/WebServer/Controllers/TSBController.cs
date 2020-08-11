@@ -63,6 +63,7 @@ namespace DMT.Services
             {
                 result = new NDbResult<TSB>();
                 result.ParameterIsNull();
+                result.data = null;
             }
             else
             {
@@ -74,7 +75,7 @@ namespace DMT.Services
         #endregion
 
         #region Plaza
-        /*
+
         [HttpPost]
         [ActionName(RouteConsts.TSB.GetTSBPlazas.Name)]
         public NDbResult<List<Plaza>> GetTSBPlazas([FromBody] TSB value)
@@ -84,27 +85,33 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<Plaza>>();
                 result.ParameterIsNull();
-                return result;
+                result.data = new List<Plaza>();
             }
-            result = Plaza.GetTSBPlazas(value);
+            else
+            {
+                result = Plaza.GetTSBPlazas(value);
+            }
             return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.TSB.SavePlaza.Name)]
-        public NDbResult SavePlaza([FromBody] Plaza value)
+        public NDbResult<Plaza> SavePlaza([FromBody] Plaza value)
         {
-            NDbResult result;
+            NDbResult<Plaza> result;
             if (null != value)
             {
-                result = new NDbResult();
+                result = new NDbResult<Plaza>();
                 result.ParameterIsNull();
-                return result;
+                result.data = null;
             }
-            result = Plaza.Save(value);
+            else
+            {
+                result = Plaza.Save(value);
+            }
             return result;
         }
-        */
+
         #endregion
 
         #region PlazaGroup

@@ -23,13 +23,15 @@ Update 2020-08-12 #14
 Update 2020-08-12 #13
 - 
 
+[commited]
 Update 2020-08-12 #12
-- 
+- Update Local/DataCenter/TAxTOD service operation #48.
+- Implements Plaza related process #2.
 
 [commited]
 Update 2020-08-12 #11
 - Update Local/DataCenter/TAxTOD service operation #47.
-- Implements Plaza related process #2.
+- Implements Plaza related process #1.
 
 [commited]
 Update 2020-08-12 #10
