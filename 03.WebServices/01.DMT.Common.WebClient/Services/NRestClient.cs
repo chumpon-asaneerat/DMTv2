@@ -3,10 +3,11 @@
 //using System.Net;
 
 using RestSharp;
-//using RestSharp.Authenticators;
+using RestSharp.Authenticators;
 using RestSharp.Serializers.NewtonsoftJson;
 using System;
 using System.Net.Cache;
+using System.Security.Cryptography;
 
 #endregion
 
@@ -72,14 +73,20 @@ namespace DMT.Services
         /// <typeparam name="TReturn">The Returns object type.</typeparam>
         /// <param name="apiUrl">The action api url.</param>
         /// <param name="pObj">The parameter.</param>
+        /// <param name="username">The username.</param>
+        /// <param name="password">The password.</param>
         /// <returns>
         /// Returns instance of TReturn object if success. Otherwise return null.
         /// </returns>
         public TReturn Execute<TReturn>(string apiUrl,
-            object pObj = null)
+            object pObj = null, string username = "", string password = "")
         {
             string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
             var client = new RestClient(BaseUrl);
+            if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
+            {
+                client.Authenticator = new HttpBasicAuthenticator(username, password);
+            }
             //client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
             client.UseNewtonsoftJson();
             var request = new RestRequest(actionUrl, Method.POST);
@@ -112,11 +119,17 @@ namespace DMT.Services
         /// </summary>
         /// <param name="apiUrl">The action api url.</param>
         /// <param name="pObj">The parameter.</param>
+        /// <param name="username">The username.</param>
+        /// <param name="password">The password.</param>
         public void Execute(string apiUrl,
-            object pObj = null)
+            object pObj = null, string username = "", string password = "")
         {
             string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
             var client = new RestClient(BaseUrl);
+            if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
+            {
+                client.Authenticator = new HttpBasicAuthenticator(username, password);
+            }
             //client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
             client.UseNewtonsoftJson();
             var request = new RestRequest(actionUrl, Method.POST);
