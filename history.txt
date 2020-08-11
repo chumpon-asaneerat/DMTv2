@@ -20,12 +20,14 @@ Update 2020-08-11 #25
 Update 2020-08-11 #24
 - 
 
+[commited]
+
 Update 2020-08-11 #23
-- 
+- Add 01.DMT.DataCenter.WebClient project reference assemblies.
 
 [commited]
 Update 2020-08-11 #22
-- Add 02.DMT.TAxTOD.WebClient project properties reference assemblies.
+- Add 02.DMT.TAxTOD.WebClient project reference assemblies.
 
 [commited]
 Update 2020-08-11 #21
