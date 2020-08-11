@@ -8,8 +8,11 @@ Update 2020-08-11 #14
 Update 2020-08-11 #13
 - 
 
+[commited]
 Update 2020-08-11 #12
-- 
+- Reload Plaza.Simulator project.
+- Update Plaza.Simulator reference assemblies.
+- Test Re-compile all projects - OK.
 
 [commited]
 Update 2020-08-11 #11
