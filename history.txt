@@ -26,8 +26,11 @@ Update 2020-08-11 #8
 Update 2020-08-11 #7
 - 
 
+[commited]
 Update 2020-08-11 #6
-- 
+- Remove 04.Remote.WebService folder.
+- Add 01.DMT.Controls
+- Update DMT.Controls reference assemblies.
 
 [commited]
 Update 2020-08-11 #5
