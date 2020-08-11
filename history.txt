@@ -5,8 +5,9 @@ Update 2020-08-12 #10
 Update 2020-08-12 #9
 - 
 
+[commited]
 Update 2020-08-12 #8
-- 
+- Unload project to re-implements DB methods and Local WS methods.
 
 [commited]
 Update 2020-08-12 #7
