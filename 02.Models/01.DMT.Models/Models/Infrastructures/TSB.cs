@@ -282,18 +282,34 @@ namespace DMT.Models
 				return Gets(db);
 			}
 		}
-		public static TSB Get(SQLiteConnection db, string tsbId)
+		public static NDbResult<TSB> Get(SQLiteConnection db, string tsbId)
 		{
-			if (null == db) return null;
+			var result = new NDbResult<TSB>();
+
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT * FROM TSB ";
-				cmd += " WHERE TSBId = ? ";
-				return NQuery.Query<TSB>(cmd, tsbId).FirstOrDefault();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * FROM TSB ";
+					cmd += " WHERE TSBId = ? ";
+					result.data = NQuery.Query<TSB>(cmd, tsbId).FirstOrDefault();
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = null;
+				}
+				return result;
 			}
 		}
-		public static TSB Get(string tsbId)
+		public static NDbResult<TSB> Get(string tsbId)
 		{
 			lock (sync)
 			{
@@ -305,33 +321,65 @@ namespace DMT.Models
 		/// Gets Active TSB.
 		/// </summary>
 		/// <returns>Returns Active TSB instance.</returns>
-		public static TSB GetCurrent()
+		public static NDbResult<TSB> GetCurrent()
 		{
+			var result = new NDbResult<TSB>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
 			lock (sync)
 			{
-				// inactive all TSBs
-				string cmd = string.Empty;
-				cmd += "SELECT * FROM TSB ";
-				cmd += " WHERE Active = 1 ";
-				var results = NQuery.Query<TSB>(cmd);
-				return (null != results) ? results.FirstOrDefault() : null;
+				try
+				{
+					// inactive all TSBs
+					string cmd = string.Empty;
+					cmd += "SELECT * FROM TSB ";
+					cmd += " WHERE Active = 1 ";
+					var results = NQuery.Query<TSB>(cmd);
+					result.data = (null != results) ? results.FirstOrDefault() : null;
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = null;
+				}
+				return result;
 			}
 		}
-		public static void SetActive(string tsbId)
+		public static NDbResult SetActive(string tsbId)
 		{
+			var result = new NDbResult();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				return result;
+			}
 			lock (sync)
 			{
-				// inactive all TSBs
-				string cmd = string.Empty;
-				cmd += "UPDATE TSB ";
-				cmd += "   SET Active = 0";
-				NQuery.Execute(cmd);
-				// Set active TSB
-				cmd = string.Empty;
-				cmd += "UPDATE TSB ";
-				cmd += "   SET Active = 1 ";
-				cmd += " WHERE TSBId = ? ";
-				NQuery.Execute(cmd, tsbId);
+				try
+				{
+					// inactive all TSBs
+					string cmd = string.Empty;
+					cmd += "UPDATE TSB ";
+					cmd += "   SET Active = 0";
+					NQuery.Execute(cmd);
+					// Set active TSB
+					cmd = string.Empty;
+					cmd += "UPDATE TSB ";
+					cmd += "   SET Active = 1 ";
+					cmd += " WHERE TSBId = ? ";
+					NQuery.Execute(cmd, tsbId);
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+				}
+				return result;
 			}
 		}
 
