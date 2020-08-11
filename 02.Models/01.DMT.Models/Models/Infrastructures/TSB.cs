@@ -246,13 +246,14 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static NResult<List<TSB>> Gets(SQLiteConnection db)
+		public static NDbResult<List<TSB>> Gets(SQLiteConnection db)
 		{
-			var result = new NResult<List<TSB>>();
+			var result = new NDbResult<List<TSB>>();
 
 			if (null == db)
 			{
-				result.DatabaseNotConnected();
+				result.ConenctFailed();
+				result.data = new List<TSB>();
 				return result;
 			}
 			lock (sync)
@@ -267,12 +268,13 @@ namespace DMT.Models
 				catch (Exception ex)
 				{
 					result.Error(ex);
+					result.data = new List<TSB>();
 
 				}
 				return result;
 			}
 		}
-		public static NResult<List<TSB>> Gets()
+		public static NDbResult<List<TSB>> Gets()
 		{
 			lock (sync)
 			{

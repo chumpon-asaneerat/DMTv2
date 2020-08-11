@@ -79,10 +79,10 @@ namespace DMT.Services
         /// <returns>
         /// Returns instance of TReturn object if success. Otherwise return null.
         /// </returns>
-        public TReturn Execute<TReturn>(string apiUrl,
+        public NRestResult<TReturn> Execute<TReturn>(string apiUrl,
             object pObj = null, string username = "", string password = "")
         {
-            TReturn ret = default;
+            NRestResult<TReturn> ret = new NRestResult<TReturn>();
 
             string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
             try
@@ -110,16 +110,25 @@ namespace DMT.Services
                         Console.WriteLine("Error");
                     }
                     //Console.WriteLine(response.Content);
-                    ret = response.Content.FromJson<TReturn>();
+                    var obj = response.Content.FromJson<TReturn>();
+                    if (null != obj && obj.GetType() == typeof(NDbResult<TReturn>))
+                    {
+                        var dbRet = (obj as NDbResult<TReturn>);
+                    }
+                    else
+                    {
+                        ret.data = obj;
+                    }
                 }
                 else
                 {
                     //Console.WriteLine("Execute no response.");
+                    ret.ConenctFailed();
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                ret.Error(ex);
             }
 
             return ret;

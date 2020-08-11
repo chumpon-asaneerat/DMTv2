@@ -13,28 +13,33 @@ using NLib.Reflection;
 
 namespace DMT.Models
 {
-    public class NError
+    public class NDbError
     {
         public bool hasError { get; set; }
         public int errNum { get; set; }
         public string errMsg { get; set; }
     }
 
-    public class NResult
+    public class NDbResult
     {
-        public NResult() : base()
+        public NDbResult() : base()
         {
-            this.errors = new NError();
-            this.errors.errNum = -9999;
-            this.errors.errMsg = "Unknown error.";
+            this.errors = new NDbError();
+            UnknownError();
         }
 
-        public NError errors { get; set; }
+        public NDbError errors { get; set; }
 
-        public virtual void DatabaseNotConnected()
+        public virtual void ConenctFailed()
         {
             this.errors.errNum = -1;
-            this.errors.errMsg = "No database connection.";
+            this.errors.errMsg = "Database connection failed.";
+        }
+
+        public virtual void UnknownError()
+        {
+            this.errors.errNum = -9999;
+            this.errors.errMsg = "Unknown error.";
         }
 
         public virtual void Success()
@@ -50,19 +55,22 @@ namespace DMT.Models
         }
     }
 
-    public class NResult<T> : NResult
-        where T : class, new()
+    public class NDbResult<T> : NDbResult
     {
-        public NResult() : base()
+        public NDbResult() : base()
         {
         }
 
         public T data { get; set; }
 
-        public override void DatabaseNotConnected()
+        public override void ConenctFailed()
         {
-            base.DatabaseNotConnected();
-            this.data = new T();
+            base.ConenctFailed();
+        }
+
+        public override void UnknownError()
+        {
+            base.UnknownError();
         }
 
         public override void Success()
@@ -73,26 +81,26 @@ namespace DMT.Models
         public override void Error(Exception ex)
         {
             base.Error(ex);
-            this.data = new T();
         }
     }
 
-    public class NResult<T, O> : NResult
-        where T : class, new()
-        where O : class, new()
+    public class NDbResult<T, O> : NDbResult
     {
-        public NResult() : base() 
+        public NDbResult() : base() 
         { 
         }
 
         public T data { get; set; }
         public O Out { get; set; }
 
-        public override void DatabaseNotConnected()
+        public override void ConenctFailed()
         {
-            base.DatabaseNotConnected();
-            this.data = new T();
-            this.Out = new O();
+            base.ConenctFailed();
+        }
+
+        public override void UnknownError()
+        {
+            base.UnknownError();
         }
 
         public override void Success()
@@ -103,8 +111,6 @@ namespace DMT.Models
         public override void Error(Exception ex)
         {
             base.Error(ex);
-            this.data = new T();
-            this.Out = new O();
         }
     }
 }
