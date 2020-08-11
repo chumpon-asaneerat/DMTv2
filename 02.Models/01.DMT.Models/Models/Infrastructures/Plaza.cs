@@ -434,7 +434,7 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static List<Plaza> Gets(SQLiteConnection db)
+		public static NDbResult<List<Plaza>> Gets(SQLiteConnection db)
 		{
 			if (null == db) return new List<Plaza>();
 			lock (sync)
@@ -462,7 +462,7 @@ namespace DMT.Models
 				return results;
 			}
 		}
-		public static List<Plaza> Gets()
+		public static NDbResult<List<Plaza>> Gets()
 		{
 			lock (sync)
 			{
@@ -470,7 +470,7 @@ namespace DMT.Models
 				return Gets(db);
 			}
 		}
-		public static Plaza Get(SQLiteConnection db, string plazaId)
+		public static NDbResult<Plaza> Get(SQLiteConnection db, string plazaId)
 		{
 			if (null == db) return null;
 			lock (sync)
@@ -489,7 +489,7 @@ namespace DMT.Models
 				return (null != ret) ? ret.ToPlaza() : null;
 			}
 		}
-		public static Plaza Get(string plazaId)
+		public static NDbResult<Plaza> Get(string plazaId)
 		{
 			lock (sync)
 			{
@@ -497,7 +497,7 @@ namespace DMT.Models
 				return Get(db, plazaId);
 			}
 		}
-		public static List<Plaza> GetTSBPlazas(TSB value)
+		public static NDbResult<List<Plaza>> GetTSBPlazas(TSB value)
 		{
 			lock (sync)
 			{
@@ -505,7 +505,7 @@ namespace DMT.Models
 				return GetTSBPlazas(value.TSBId);
 			}
 		}
-		public static List<Plaza> GetTSBPlazas(string tsbId)
+		public static NDbResult<List<Plaza>> GetTSBPlazas(string tsbId)
 		{
 			lock (sync)
 			{

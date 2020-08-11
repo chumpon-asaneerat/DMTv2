@@ -45,29 +45,27 @@ namespace DMT
 
             #endregion
 
-            public static class GetTSBPlazaGroups
-            {
-                public const string Name = "GetTSBPlazaGroups";
-                public const string Url = TSB.Url + @"/" + Name;
-            }
-            public static class GetPlazaGroupLanes
-            {
-                public const string Name = "GetPlazaGroupLanes";
-                public const string Url = TSB.Url + @"/" + Name;
-            }
+            #region Plaza
+
             public static class GetTSBPlazas
             {
                 public const string Name = "GetTSBPlazas";
                 public const string Url = TSB.Url + @"/" + Name;
             }
-            public static class GetTSBLanes
+
+            public static class SavePlaza
             {
-                public const string Name = "GetTSBLanes";
+                public const string Name = "SavePlaza";
                 public const string Url = TSB.Url + @"/" + Name;
             }
-            public static class GetPlazaLanes
+
+            #endregion
+
+            #region PlazaGroup
+
+            public static class GetTSBPlazaGroups
             {
-                public const string Name = "GetPlazaLanes";
+                public const string Name = "GetTSBPlazaGroups";
                 public const string Url = TSB.Url + @"/" + Name;
             }
             // NEW!! 2020-07-17 - Not Implements.
@@ -76,21 +74,42 @@ namespace DMT
                 public const string Name = "GetPlazaGroupPlazas";
                 public const string Url = TSB.Url + @"/" + Name;
             }
+
             public static class SavePlazaGroup
             {
                 public const string Name = "SavePlazaGroup";
                 public const string Url = TSB.Url + @"/" + Name;
             }
-            public static class SavePlaza
+
+            #endregion
+
+            #region Lane
+
+            public static class GetTSBLanes
             {
-                public const string Name = "SavePlaza";
+                public const string Name = "GetTSBLanes";
                 public const string Url = TSB.Url + @"/" + Name;
             }
+
+            public static class GetPlazaLanes
+            {
+                public const string Name = "GetPlazaLanes";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
+
+            public static class GetPlazaGroupLanes
+            {
+                public const string Name = "GetPlazaGroupLanes";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
+
             public static class SaveLane
             {
                 public const string Name = "SaveLane";
                 public const string Url = TSB.Url + @"/" + Name;
             }
+
+            #endregion
         }
 
         #endregion

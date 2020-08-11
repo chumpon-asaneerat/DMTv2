@@ -108,6 +108,17 @@ namespace DMT.Services
                 return ret;
             }
 
+            public NRestResult<Plaza> SavePlaza(Plaza value)
+            {
+                if (null != value)
+                {
+                    var ret = NRestClient.Create(port: 9000).Execute<Plaza>(
+                        RouteConsts.TSB.SavePlaza.Url, value);
+                    return ret;
+                }
+                return new NRestResult<Plaza>();
+            }
+
             #endregion
 
             #region PlazaGroup
@@ -119,14 +130,20 @@ namespace DMT.Services
                 return ret;
             }
 
+            public NRestResult<PlazaGroup> SavePlazaGroup(PlazaGroup value)
+            {
+                if (null != value)
+                {
+                    var ret = NRestClient.Create(port: 9000).Execute<PlazaGroup>(
+                        RouteConsts.TSB.SavePlazaGroup.Url, value);
+                    return ret;
+                }
+                return new NRestResult<PlazaGroup>();
+            }
+
             #endregion
 
-            public NRestResult<List<Lane>> GetPlazaGroupLanes(PlazaGroup plazaGroup)
-            {
-                var ret = NRestClient.Create(port: 9000).Execute<List<Lane>>(
-                    RouteConsts.TSB.GetPlazaGroupLanes.Url, plazaGroup);
-                return ret;
-            }
+            #region Lane
 
             public NRestResult<List<Lane>> GetTSBLanes(TSB tsb)
             {
@@ -142,26 +159,11 @@ namespace DMT.Services
                 return ret;
             }
 
-            public NRestResult<PlazaGroup> SavePlazaGroup(PlazaGroup value)
+            public NRestResult<List<Lane>> GetPlazaGroupLanes(PlazaGroup plazaGroup)
             {
-                if (null != value)
-                {
-                    var ret = NRestClient.Create(port: 9000).Execute<PlazaGroup>(
-                        RouteConsts.TSB.SavePlazaGroup.Url, value);
-                    return ret;
-                }
-                return new NRestResult<PlazaGroup>();
-            }
-
-            public NRestResult<Plaza> SavePlaza(Plaza value)
-            {
-                if (null != value)
-                {
-                    var ret = NRestClient.Create(port: 9000).Execute<Plaza>(
-                        RouteConsts.TSB.SavePlaza.Url, value);
-                    return ret;
-                }
-                return new NRestResult<Plaza>();
+                var ret = NRestClient.Create(port: 9000).Execute<List<Lane>>(
+                    RouteConsts.TSB.GetPlazaGroupLanes.Url, plazaGroup);
+                return ret;
             }
 
             public NRestResult<Lane> SaveLane(Lane value)
@@ -174,6 +176,8 @@ namespace DMT.Services
                 }
                 return new NRestResult<Lane>();
             }
+
+            #endregion
 
             #endregion
         }

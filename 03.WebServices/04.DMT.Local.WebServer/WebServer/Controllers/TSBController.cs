@@ -59,6 +59,32 @@ namespace DMT.Services
 
         #endregion
 
+        #region Plaza
+
+        [HttpPost]
+        [ActionName(RouteConsts.TSB.GetTSBPlazas.Name)]
+        public NDbResult<List<Plaza>> GetTSBPlazas([FromBody] TSB value)
+        {
+            if (null == value) return new List<Plaza>();
+            var results = Plaza.GetTSBPlazas(value);
+            return results;
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.TSB.SavePlaza.Name)]
+        public NDbResult<Plaza> SavePlaza([FromBody] Plaza value)
+        {
+            if (null != value)
+            {
+                Plaza.Save(value);
+            }
+            return value;
+        }
+
+        #endregion
+
+        #region PlazaGroup
+
         [HttpPost]
         [ActionName(RouteConsts.TSB.GetTSBPlazaGroups.Name)]
         public NDbResult<List<PlazaGroup>> GetTSBPlazaGroups([FromBody] TSB value)
@@ -69,22 +95,19 @@ namespace DMT.Services
         }
 
         [HttpPost]
-        [ActionName(RouteConsts.TSB.GetPlazaGroupLanes.Name)]
-        public NDbResult<List<Lane>> GetPlazaGroupLanes([FromBody] PlazaGroup value)
+        [ActionName(RouteConsts.TSB.SavePlazaGroup.Name)]
+        public NDbResult<PlazaGroup> SavePlazaGroup([FromBody] PlazaGroup value)
         {
-            if (null == value) return new List<Lane>();
-            var results = Lane.GetPlazaGroupLanes(value);
-            return results;
+            if (null != value)
+            {
+                PlazaGroup.Save(value);
+            }
+            return value;
         }
 
-        [HttpPost]
-        [ActionName(RouteConsts.TSB.GetTSBPlazas.Name)]
-        public NDbResult<List<Plaza>> GetTSBPlazas([FromBody] TSB value)
-        {
-            if (null == value) return new List<Plaza>();
-            var results = Plaza.GetTSBPlazas(value);
-            return results;
-        }
+        #endregion
+
+        #region Lane
 
         [HttpPost]
         [ActionName(RouteConsts.TSB.GetTSBLanes.Name)]
@@ -105,25 +128,12 @@ namespace DMT.Services
         }
 
         [HttpPost]
-        [ActionName(RouteConsts.TSB.SavePlazaGroup.Name)]
-        public NDbResult<PlazaGroup> SavePlazaGroup([FromBody] PlazaGroup value)
+        [ActionName(RouteConsts.TSB.GetPlazaGroupLanes.Name)]
+        public NDbResult<List<Lane>> GetPlazaGroupLanes([FromBody] PlazaGroup value)
         {
-            if (null != value)
-            {
-                PlazaGroup.Save(value);
-            }
-            return value;
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.TSB.SavePlaza.Name)]
-        public NDbResult<Plaza> SavePlaza([FromBody] Plaza value)
-        {
-            if (null != value)
-            {
-                Plaza.Save(value);
-            }
-            return value;
+            if (null == value) return new List<Lane>();
+            var results = Lane.GetPlazaGroupLanes(value);
+            return results;
         }
 
         [HttpPost]
@@ -136,5 +146,7 @@ namespace DMT.Services
             }
             return value;
         }
+
+        #endregion
     }
 }
