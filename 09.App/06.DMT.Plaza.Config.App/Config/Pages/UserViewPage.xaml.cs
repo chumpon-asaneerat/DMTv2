@@ -44,7 +44,7 @@ namespace DMT.Config.Pages
 
         #endregion
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private List<RoleItem> items = new List<RoleItem>();
 
         #region Loaded/Unloaded

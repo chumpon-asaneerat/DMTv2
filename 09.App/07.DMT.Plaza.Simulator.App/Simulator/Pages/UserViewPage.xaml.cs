@@ -87,7 +87,7 @@ namespace DMT.Simulator.Pages
             public string FullNameTH { get; set; }
         }
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
 
         private List<UserItem> users = new List<UserItem>();
 

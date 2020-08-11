@@ -128,7 +128,7 @@ namespace DMT.Simulator.Pages
             }
         }
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
 
         private List<Shift> shifts = new List<Shift>();
         private List<UserItem> users = new List<UserItem>();

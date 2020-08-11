@@ -32,7 +32,7 @@ namespace DMT.TOD.Controls.Revenue.View
 
         #endregion
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private User _user = null;
 
         private List<UserShift> _userShifts = null;
