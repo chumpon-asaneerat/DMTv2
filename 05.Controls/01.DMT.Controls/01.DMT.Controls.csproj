@@ -384,6 +384,10 @@
       <Project>{7d584f0a-920f-4be1-8652-3527fd7a5c27}</Project>
       <Name>01.DMT.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\03.WebServices\01.DMT.Common.WebClient\01.DMT.Common.WebClient.csproj">
+      <Project>{26ba4314-6b80-4a59-9e0d-7c29919bbc6f}</Project>
+      <Name>01.DMT.Common.WebClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\03.WebServices\05.DMT.Local.WebClient\05.DMT.Local.WebClient.csproj">
       <Project>{0040f19e-4885-4267-9404-61c8dc150f5f}</Project>
       <Name>05.DMT.Local.WebClient</Name>

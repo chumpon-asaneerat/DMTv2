@@ -111,6 +111,10 @@
       <Project>{7d584f0a-920f-4be1-8652-3527fd7a5c27}</Project>
       <Name>01.DMT.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\01.DMT.Common.WebClient\01.DMT.Common.WebClient.csproj">
+      <Project>{26ba4314-6b80-4a59-9e0d-7c29919bbc6f}</Project>
+      <Name>01.DMT.Common.WebClient</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
