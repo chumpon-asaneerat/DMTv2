@@ -17,7 +17,7 @@ namespace DMT.Services
     /// <summary>
     /// The NRestClient (RestSharp) wrapper class.
     /// </summary>
-    internal class NRestClient
+    public class NRestClient
     {
         #region Enums
 
