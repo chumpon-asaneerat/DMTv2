@@ -31,7 +31,7 @@ namespace DMT.Controls.Header
         #endregion
 
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
-        private DispatcherTimer timer = new DispatcherTimer();
+        //private DispatcherTimer timer = new DispatcherTimer();
 
         #region Loaded/Unloaded
 
@@ -40,20 +40,23 @@ namespace DMT.Controls.Header
             txtPlazaId.Visibility = Visibility.Collapsed;
 
             UpdateUI();
-
+            /*
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
+            */
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
+            /*
             if (null != timer)
             {
                 timer.Stop();
             }
             timer = null;
+            */
         }
 
         #endregion
@@ -72,10 +75,11 @@ namespace DMT.Controls.Header
                 txtPlazaName.Text = "ชื่อด่าน : ";
             }
         }
-
+        /*
         void timer_Tick(object sender, EventArgs e)
         {
             UpdateUI();
         }
+        */
     }
 }

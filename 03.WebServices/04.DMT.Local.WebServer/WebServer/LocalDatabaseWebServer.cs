@@ -81,13 +81,12 @@ namespace DMT.Services
         
         
         private string wsAddress = string.Format(@"{0}://{1}:{2}",
-            //AppConsts.WindowsService.Local.WebSocket.Protocol,
-            "http",
+            AppConsts.WindowsService.Local.WebSocket.Protocol,
             AppConsts.WindowsService.Local.WebSocket.HostName,
             AppConsts.WindowsService.Local.WebSocket.PortNumber);
 
         private IDisposable server = null;
-        private WebSocketSharp.Server.HttpServer wsserver = null;
+        private WebSocketSharp.Server.WebSocketServer wsserver = null;
 
         #endregion
 
@@ -107,7 +106,7 @@ namespace DMT.Services
             {
                 try
                 {
-                    wsserver = new WebSocketSharp.Server.HttpServer(wsAddress);
+                    wsserver = new WebSocketSharp.Server.WebSocketServer(wsAddress);
                     // Add web socket service
                     wsserver.AddWebSocketService<Behaviors.NotifyBehavior>("/nofify");
                     wsserver.Start();
