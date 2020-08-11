@@ -2,8 +2,9 @@
 Update 2020-08-11 #20
 - 
 
+[commited]
 Update 2020-08-11 #19
-- 
+- Cleanup all unused files in all projects.
 
 [commited]
 Update 2020-08-11 #18
