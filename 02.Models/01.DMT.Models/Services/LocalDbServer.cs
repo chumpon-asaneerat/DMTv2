@@ -1533,6 +1533,11 @@ namespace DMT.Services
 
 		}
 
+		public void ActiveTSBChanged()
+		{
+			OnActiveTSBChanged.Call(this, EventArgs.Empty);
+		}
+
 		#endregion
 
 		#region Public Properties
@@ -1555,9 +1560,10 @@ namespace DMT.Services
 		public event System.EventHandler OnConectError;
 
 		public event System.EventHandler OnChangeShift;
+		public event System.EventHandler OnActiveTSBChanged;
 
 		#endregion
-		}
+	}
 
 	#endregion
 }

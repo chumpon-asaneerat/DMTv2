@@ -45,10 +45,12 @@ namespace DMT.Controls.Header
             timer.Start();
             */
             LocalServiceOperations.Instance.OnChangeShift += Instance_OnChangeShift;
+            LocalServiceOperations.Instance.OnActiveTSBChanged += Instance_OnActiveTSBChanged;
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
+            LocalServiceOperations.Instance.OnActiveTSBChanged -= Instance_OnActiveTSBChanged;
             LocalServiceOperations.Instance.OnChangeShift -= Instance_OnChangeShift;
             /*
             if (null != timer)
@@ -83,6 +85,11 @@ namespace DMT.Controls.Header
         */
 
         private void Instance_OnChangeShift(object sender, EventArgs e)
+        {
+            UpdateUI();
+        }
+
+        private void Instance_OnActiveTSBChanged(object sender, EventArgs e)
         {
             UpdateUI();
         }

@@ -220,9 +220,13 @@ namespace DMT.Services
             string evtName = (null != msgs && msgs.Length > 0) ? msgs[0] : string.Empty;
             if (string.IsNullOrWhiteSpace(evtName)) return;
 
-            if (evtName == "changeshift")
+            if (evtName == NofifyConsts.ChangeShift)
             {
                 OnChangeShift.Call(this, EventArgs.Empty);
+            }
+            else if (evtName == NofifyConsts.ActiveTSBChanged)
+            {
+                OnActiveTSBChanged.Call(this, EventArgs.Empty);
             }
         }
 
@@ -317,6 +321,7 @@ namespace DMT.Services
 
         #region Public Events
 
+        public event EventHandler OnActiveTSBChanged;
         public event EventHandler OnChangeShift;
 
         #endregion

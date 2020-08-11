@@ -27,9 +27,12 @@ namespace DMT.Services.Behaviors
         public NotifyBehavior() : base()
         {
             LocalDbServer.Instance.OnChangeShift += Instance_OnChangeShift;
+            LocalDbServer.Instance.OnActiveTSBChanged += Instance_OnActiveTSBChanged;
         }
+
         ~NotifyBehavior()
         {
+            LocalDbServer.Instance.OnActiveTSBChanged -= Instance_OnActiveTSBChanged;
             LocalDbServer.Instance.OnChangeShift -= Instance_OnChangeShift;
         }
 
@@ -40,7 +43,14 @@ namespace DMT.Services.Behaviors
         private void Instance_OnChangeShift(object sender, EventArgs e)
         {
             // send message to all clients.
-            string message = "changeshift";
+            string message = NofifyConsts.ChangeShift;
+            Send(message);
+        }
+
+        private void Instance_OnActiveTSBChanged(object sender, EventArgs e)
+        {
+            // send message to all clients.
+            string message = NofifyConsts.ActiveTSBChanged;
             Send(message);
         }
 

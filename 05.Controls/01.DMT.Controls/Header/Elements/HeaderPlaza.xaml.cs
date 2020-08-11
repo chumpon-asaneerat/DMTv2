@@ -46,10 +46,12 @@ namespace DMT.Controls.Header
             timer.Tick += timer_Tick;
             timer.Start();
             */
+            LocalServiceOperations.Instance.OnActiveTSBChanged += Instance_OnActiveTSBChanged;
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
+            LocalServiceOperations.Instance.OnActiveTSBChanged -= Instance_OnActiveTSBChanged;
             /*
             if (null != timer)
             {
@@ -81,5 +83,10 @@ namespace DMT.Controls.Header
             UpdateUI();
         }
         */
+
+        private void Instance_OnActiveTSBChanged(object sender, EventArgs e)
+        {
+            UpdateUI();
+        }
     }
 }

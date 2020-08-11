@@ -76,6 +76,8 @@ namespace DMT.Services
         {
             if (null == value) return;
             TSB.SetActive(value.TSBId);
+            // Raise event.
+            LocalDbServer.Instance.ActiveTSBChanged();
         }
 
         [HttpPost]
