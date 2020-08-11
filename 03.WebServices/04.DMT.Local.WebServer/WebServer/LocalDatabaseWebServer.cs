@@ -10,6 +10,10 @@ using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using System.Web.Http;
 using System.Web.Http.Validation;
+// web socket
+using WebSocketSharp;
+using WebSocketSharp.Net;
+using WebSocketSharp.Server;
 
 #endregion
 
@@ -69,7 +73,14 @@ namespace DMT.Services
             AppConsts.WindowsService.Local.WebServer.Protocol,
             AppConsts.WindowsService.Local.WebServer.HostName,
             AppConsts.WindowsService.Local.WebServer.PortNumber);
+
+        private string wsAddress = string.Format(@"{0}://{1}:{2}/",
+            AppConsts.WindowsService.Local.WebSocket.Protocol,
+            AppConsts.WindowsService.Local.WebSocket.HostName,
+            AppConsts.WindowsService.Local.WebSocket.PortNumber);
+
         private IDisposable server = null;
+        private WebSocketSharp.Server.HttpServer wsserver = null;
 
         public void Start()
         {
@@ -80,9 +91,22 @@ namespace DMT.Services
             {
                 server = WebApp.Start<StartUp>(url: baseAddress);
             }
+            if (null != wsserver)
+            {
+                wsserver = new WebSocketSharp.Server.HttpServer(wsAddress);
+                // Add web socket service
+                wsserver.AddWebSocketService<Behaviors.NotifyBehavior>("/nofify");
+                wsserver.Start();
+            }
         }
         public void Shutdown()
         {
+            if (null != wsserver)
+            {
+                wsserver.Stop();
+            }
+            wsserver = null;
+
             if (null != server)
             {
                 server.Dispose();

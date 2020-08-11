@@ -82,6 +82,13 @@ namespace DMT
                     public static string HostName = "localhost";
                     public static int PortNumber = 9000;
                 }
+
+                public static class WebSocket
+                {
+                    public static string Protocol = "ws";
+                    public static string HostName = "localhost";
+                    public static int PortNumber = 9001;
+                }
             }
 
             public static class DC
