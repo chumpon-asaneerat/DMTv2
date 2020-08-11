@@ -115,7 +115,7 @@ namespace DMT.Services
         #endregion
 
         #region PlazaGroup
-        /*
+
         [HttpPost]
         [ActionName(RouteConsts.TSB.GetTSBPlazaGroups.Name)]
         public NDbResult<List<PlazaGroup>> GetTSBPlazaGroups([FromBody] TSB value)
@@ -145,7 +145,7 @@ namespace DMT.Services
             result = PlazaGroup.Save(value);
             return result;
         }
-        */
+
         #endregion
 
         #region Lane

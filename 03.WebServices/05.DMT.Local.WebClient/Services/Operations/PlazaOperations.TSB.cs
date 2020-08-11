@@ -187,25 +187,55 @@ namespace DMT.Services
             #endregion
 
             #region PlazaGroup
-            /*
-            public NRestResult<List<PlazaGroup>> GetTSBPlazaGroups(TSB tsb)
+
+            public NRestResult<List<PlazaGroup>> GetTSBPlazaGroups(TSB value)
             {
-                var ret = NRestClient.Create(host: hostName, port: portNo).Execute<List<PlazaGroup>>(
-                    RouteConsts.TSB.GetTSBPlazaGroups.Url, tsb);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<PlazaGroup>> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<List<PlazaGroup>>(RouteConsts.TSB.GetTSBPlazaGroups.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<PlazaGroup>>();
+                    ret.ParameterIsNull();
+                    ret.data = new List<PlazaGroup>();
+                }
                 return ret;
             }
 
             public NRestResult<PlazaGroup> SavePlazaGroup(PlazaGroup value)
             {
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<PlazaGroup> ret;
+
                 if (null != value)
                 {
-                    var ret = NRestClient.Create(host: hostName, port: portNo).Execute<PlazaGroup>(
-                        RouteConsts.TSB.SavePlazaGroup.Url, value);
-                    return ret;
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<PlazaGroup>(RouteConsts.TSB.SavePlazaGroup.Url, value);
                 }
-                return new NRestResult<PlazaGroup>();
+                else
+                {
+                    ret = new NRestResult<PlazaGroup>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
+                return ret;
             }
-            */
+
             #endregion
 
             #region Lane
