@@ -1,9 +1,26 @@
 --------------------------------------------------------------------------------------------
+Update 2020-08-11 #20
+- 
+
+Update 2020-08-11 #19
+- 
+
+Update 2020-08-11 #18
+- 
+
+Update 2020-08-11 #17
+- 
+
+Update 2020-08-11 #16
+- 
+
 Update 2020-08-11 #15
 - 
 
+[commited]
 Update 2020-08-11 #14
-- 
+- Remove DMT.DataCenter.WebClient project - for rename.
+- Remove DMT.TAxTOD.WebClient project - for rename.
 
 [commited]
 Update 2020-08-11 #13
