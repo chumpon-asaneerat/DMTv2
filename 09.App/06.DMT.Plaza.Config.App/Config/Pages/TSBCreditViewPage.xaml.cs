@@ -40,7 +40,7 @@ namespace DMT.Config.Pages
 
         #endregion
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private TSBCreditInitManager initMgr = new TSBCreditInitManager();
 
         #region Loaded/Unloaded

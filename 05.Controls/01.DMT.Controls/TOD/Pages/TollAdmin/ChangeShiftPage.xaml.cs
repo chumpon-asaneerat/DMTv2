@@ -33,7 +33,7 @@ namespace DMT.TOD.Pages.TollAdmin
 
         #endregion
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private User _user = null;
 
         private List<LaneAttendance> _laneActivities = null;

@@ -33,7 +33,7 @@ namespace DMT.TOD.Windows.Reports
 
         #endregion
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private User _user = null;
 
         private bool loaded = false;
