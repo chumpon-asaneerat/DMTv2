@@ -5,8 +5,10 @@ Update 2020-08-11 #20
 Update 2020-08-11 #19
 - 
 
+[commited]
 Update 2020-08-11 #18
-- 
+- Set 01.DMT.DataCenter.WebClient project properties #2.
+- Set 02.DMT.TAxTOD.WebClient project properties #3.
 
 [commited]
 Update 2020-08-11 #17
