@@ -127,7 +127,7 @@
     <None Include="Models\CreditsAndCoupons\TSB\Credits\TSBCreditTransaction.cs" />
     <None Include="Models\CreditsAndCoupons\Users\Credits\UserCreditBalance.cs" />
     <None Include="Models\CreditsAndCoupons\Users\Credits\UserCreditTransaction.cs" />
-    <None Include="Models\Infrastructures\Lane.cs" />
+    <Compile Include="Models\Infrastructures\Lane.cs" />
     <Compile Include="Models\Infrastructures\Plaza.cs" />
     <Compile Include="Models\Infrastructures\PlazaGroup.cs" />
     <Compile Include="Models\Infrastructures\TSB.cs" />

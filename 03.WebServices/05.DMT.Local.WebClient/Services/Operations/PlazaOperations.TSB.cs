@@ -239,7 +239,7 @@ namespace DMT.Services
             #endregion
 
             #region Lane
-            /*
+
             public NRestResult<List<Lane>> GetTSBLanes(TSB tsb)
             {
                 var ret = NRestClient.Create(host: hostName, port: portNo).Execute<List<Lane>>(
@@ -271,7 +271,7 @@ namespace DMT.Services
                 }
                 return new NRestResult<Lane>();
             }
-            */
+
             #endregion
 
             #endregion
