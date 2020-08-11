@@ -31,6 +31,10 @@ Update 2020-08-12 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-08-11 #64
+- Merge from origin/TA #1.
+
+[commited]
 Update 2020-08-11 #63
 - Update Local/DataCenter/TAxTOD service operation #37.
 - Note:
