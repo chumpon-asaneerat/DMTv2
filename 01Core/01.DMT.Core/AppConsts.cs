@@ -64,12 +64,12 @@ namespace DMT
         }
         public static class WindowsService
         {
-            public static class Plaza
+            public static class Local
             {
-                public static string ServiceName = "DMT Plaza Windows Service";
-                public static string DisplayName = "DMT Plaza Windows Service";
-                public static string Description = "DMT Plaza Windows Service";
-                public static string ExecutableFileName = @"DMT.Plaza.Windows.Services.exe";
+                public static string ServiceName = "DMT Local Plaza Windows Service";
+                public static string DisplayName = "DMT Local Plaza Windows Service";
+                public static string Description = "DMT Local Plaza Windows Service";
+                public static string ExecutableFileName = @"DMT.Local.Plaza.Windows.Services.exe";
                 // common
                 public static string Version = AppConsts.Version;
                 public static string Minor = AppConsts.Minor;

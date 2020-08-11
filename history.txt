@@ -8,8 +8,9 @@ Update 2020-08-11 #29
 Update 2020-08-11 #28
 - 
 
+[commited]
 Update 2020-08-11 #27
-- 
+- Update Local/DataCenter/TAxTOD service operation #3.
 
 [commited]
 Update 2020-08-11 #26
