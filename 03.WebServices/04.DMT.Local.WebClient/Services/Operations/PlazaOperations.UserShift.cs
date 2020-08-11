@@ -13,7 +13,7 @@ using DMT.Models;
 
 namespace DMT.Services
 {
-    partial class PlazaOperations
+    partial class LocalOperations
     {
         #region Internal Variables
 

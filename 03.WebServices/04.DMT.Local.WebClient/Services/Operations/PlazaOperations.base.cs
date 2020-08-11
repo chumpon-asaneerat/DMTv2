@@ -17,14 +17,14 @@ namespace DMT.Services
     /// Plaza Operations class.
     /// Main class that common all operations into properties.
     /// </summary>
-    public partial class PlazaOperations
+    public partial class LocalOperations
     {
         #region Static Constructor
 
         /// <summary>
         /// Static Constructor
         /// </summary>
-        static PlazaOperations()
+        static LocalOperations()
         {
             // Required for HTTPS.
             ServicePointManager.SecurityProtocol =
@@ -42,7 +42,7 @@ namespace DMT.Services
         /// <summary>
         /// Constructor.
         /// </summary>
-        public PlazaOperations() : base() { }
+        public LocalOperations() : base() { }
 
         #endregion
 

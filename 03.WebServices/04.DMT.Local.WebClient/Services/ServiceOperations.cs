@@ -43,28 +43,28 @@ namespace DMT.Services
 
     #endregion
 
-    #region DMTServiceOperations
+    #region LocalServiceOperations
 
     /// <summary>
-    /// The DMT Service Operations class.
+    /// The Local Service Operations class.
     /// </summary>
-    public partial class DMTServiceOperations
+    public partial class LocalServiceOperations
     {
         #region Singelton
 
-        private static DMTServiceOperations _instance = null;
+        private static LocalServiceOperations _instance = null;
         /// <summary>
         /// Singelton Access.
         /// </summary>
-        public static DMTServiceOperations Instance
+        public static LocalServiceOperations Instance
         {
             get
             {
                 if (null == _instance)
                 {
-                    lock (typeof(DMTServiceOperations))
+                    lock (typeof(LocalServiceOperations))
                     {
-                        _instance = new DMTServiceOperations();
+                        _instance = new LocalServiceOperations();
                     }
                 }
                 return _instance;
@@ -78,18 +78,18 @@ namespace DMT.Services
         /// <summary>
         /// Constructor.
         /// </summary>
-        private DMTServiceOperations() : base()
+        private LocalServiceOperations() : base()
         {
             ServiceMonitor = new NServiceMonitor();
             // Init windows service monitor.
             InitWindowsServices();
 
-            Plaza = new PlazaOperations();
+            Plaza = new LocalOperations();
         }
         /// <summary>
         /// Destructor.
         /// </summary>
-        ~DMTServiceOperations()
+        ~LocalServiceOperations()
         {
             // Shutdown windows service monitor.
             if (null != ServiceMonitor)
@@ -200,7 +200,7 @@ namespace DMT.Services
         /// <summary>
         /// Gets instance of Plaza Operations.
         /// </summary>
-        public PlazaOperations Plaza { get; private set; }
+        public LocalOperations Plaza { get; private set; }
 
         #endregion
     }

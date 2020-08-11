@@ -13,7 +13,7 @@ using DMT.Models;
 
 namespace DMT.Services
 {
-    partial class PlazaOperations
+    partial class LocalOperations
     {
         #region Internal Variables
 
@@ -214,7 +214,7 @@ namespace DMT.Services
     {
         #region Internal Variables
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
 
         private List<TSBCouponTransaction> _origins = null;
         private List<TSBCouponTransaction> _coupons = null;
