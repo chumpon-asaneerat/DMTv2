@@ -36,8 +36,8 @@ namespace DMT
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DMTServiceOperations.Instance.ServiceMonitor.ScanConpleted += ServiceMonitor_ScanConpleted;
-            DMTServiceOperations.Instance.ServiceMonitor.Start();
+            LocalServiceOperations.Instance.ServiceMonitor.ScanConpleted += ServiceMonitor_ScanConpleted;
+            LocalServiceOperations.Instance.ServiceMonitor.Start();
 
             // Initial Page Content Manager
             PageContentManager.Instance.ContentChanged += new EventHandler(Instance_ContentChanged);
@@ -54,8 +54,8 @@ namespace DMT
             PageContentManager.Instance.StatusUpdated -= new StatusMessageEventHandler(Instance_StatusUpdated);
             PageContentManager.Instance.ContentChanged -= new EventHandler(Instance_ContentChanged);
 
-            DMTServiceOperations.Instance.ServiceMonitor.Shutdown();
-            DMTServiceOperations.Instance.ServiceMonitor.ScanConpleted -= ServiceMonitor_ScanConpleted;
+            LocalServiceOperations.Instance.ServiceMonitor.Shutdown();
+            LocalServiceOperations.Instance.ServiceMonitor.ScanConpleted -= ServiceMonitor_ScanConpleted;
         }
 
         #endregion
