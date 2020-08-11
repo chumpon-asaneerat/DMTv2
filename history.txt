@@ -39,8 +39,12 @@ Update 2020-08-11 #59
 Update 2020-08-11 #58
 - 
 
+[commited]
 Update 2020-08-11 #57
-- 
+- Update Local/DataCenter/TAxTOD service operation #32.
+- Note:
+  - Required to Change database exexute result to NDBResult.
+  - Required to Add RestAPIResult execute result to NRestResult.
 
 [commited]
 Update 2020-08-11 #56
