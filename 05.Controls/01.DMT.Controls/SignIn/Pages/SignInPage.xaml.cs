@@ -37,8 +37,8 @@ namespace DMT.Pages
 
         #region Internal Variables
 
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private List<string> _roles = new List<string>();
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
         private User _user = null;
 
         #endregion

@@ -33,7 +33,7 @@ namespace DMT.TA.Controls.Exchange.View
 
         #endregion
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private TSB _tsb = null;
         private TSBExchangeManager manager = new TSBExchangeManager();
 

@@ -35,7 +35,7 @@ namespace DMT.TA.Controls.Collector.Credit.View
 
         #endregion
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private TSB _tsb = null;
 
         #region Loaded/Unloaded

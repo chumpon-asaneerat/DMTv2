@@ -30,7 +30,7 @@ namespace DMT.Controls.Header
 
         #endregion
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private DispatcherTimer timer = new DispatcherTimer();
 
         #region Loaded/Unloaded

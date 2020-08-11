@@ -35,7 +35,7 @@ namespace DMT.TA.Pages.Coupon
 
         #endregion
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private TSBCouponManager manager = new TSBCouponManager();
 
         #region Loaded/Unloaded

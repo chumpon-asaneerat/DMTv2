@@ -33,7 +33,7 @@ namespace DMT.TA.Pages.Exchange
 
         #endregion
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private TSB _tsb = null;
 
         #region Button Handlers

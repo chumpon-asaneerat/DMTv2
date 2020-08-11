@@ -46,7 +46,7 @@ namespace DMT.TA.Controls.Collector.Coupon
 
         #endregion
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
 
         private void cmdPrint_Click(object sender, RoutedEventArgs e)
         {
