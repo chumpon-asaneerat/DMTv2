@@ -52,9 +52,6 @@ namespace DMT.Services
         /// </summary>
         public class TSBOperations
         {
-            private DateTime LastUpdated = DateTime.MinValue;
-            private TSB _current = null;
-
             #region Constructor
 
             /// <summary>
@@ -66,69 +63,30 @@ namespace DMT.Services
 
             #region Public Methods
 
-            public NResult<List<TSB>> GetTSBs()
+            #region TSB
+
+            public NRestResult<List<TSB>> GetTSBs()
             {
-                var ret = NRestClient.Create(port: 9000).Execute<NResult<List<TSB>>>(
+                var ret = NRestClient.Create(port: 9000).Execute<List<TSB>>(
                     RouteConsts.TSB.GetTSBs.Url, new { });
                 return ret;
             }
 
-            public List<Plaza> GetTSBPlazas(TSB tsb)
+            public NRestResult<TSB> GetCurrent()
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<Plaza>>(
-                    RouteConsts.TSB.GetTSBPlazas.Url, tsb);
+                var ret = NRestClient.Create(port: 9000).Execute<TSB>(
+                    RouteConsts.TSB.GetCurrent.Url, new { });
                 return ret;
             }
 
-            public List<PlazaGroup> GetTSBPlazaGroups(TSB tsb)
+            public NRestResult SetActive(TSB tsb)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<PlazaGroup>>(
-                    RouteConsts.TSB.GetTSBPlazaGroups.Url, tsb);
-                return ret;
-            }
-
-            public List<Lane> GetPlazaGroupLanes(PlazaGroup plazaGroup)
-            {
-                var ret = NRestClient.Create(port: 9000).Execute<List<Lane>>(
-                    RouteConsts.TSB.GetPlazaGroupLanes.Url, plazaGroup);
-                return ret;
-            }
-
-            public List<Lane> GetTSBLanes(TSB tsb)
-            {
-                var ret = NRestClient.Create(port: 9000).Execute<List<Lane>>(
-                    RouteConsts.TSB.GetTSBLanes.Url, tsb);
-                return ret;
-            }
-
-            public List<Lane> GetPlazaLanes(Plaza plaza)
-            {
-                var ret = NRestClient.Create(port: 9000).Execute<List<Lane>>(
-                    RouteConsts.TSB.GetPlazaLanes.Url, plaza);
-                return ret;
-            }
-
-            public void SetActive(TSB tsb)
-            {
-                NRestClient.Create(port: 9000).Execute(
+                var ret = NRestClient.Create(port: 9000).Execute(
                     RouteConsts.TSB.SetActive.Url, tsb);
+                return ret;
             }
 
-            public TSB GetCurrent()
-            {
-                TSB ret = _current;
-                TimeSpan ts = DateTime.Now - LastUpdated;
-                if (ts.TotalSeconds >= 1)
-                {
-                    _current = NRestClient.Create(port: 9000).Execute<TSB>(
-                        RouteConsts.TSB.GetCurrent.Url, new { });
-
-                    LastUpdated = DateTime.Now;
-                }
-                return _current;
-            }
-
-            public TSB SaveTSB(TSB value)
+            public NRestResult<TSB> SaveTSB(TSB value)
             {
                 if (null != value)
                 {
@@ -136,10 +94,55 @@ namespace DMT.Services
                         RouteConsts.TSB.SaveTSB.Url, value);
                     return ret;
                 }
-                return value;
+                return new NRestResult<TSB>();
             }
 
-            public PlazaGroup SavePlazaGroup(PlazaGroup value)
+            #endregion
+
+            #region Plaza
+
+            public NRestResult<List<Plaza>> GetTSBPlazas(TSB tsb)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<Plaza>>(
+                    RouteConsts.TSB.GetTSBPlazas.Url, tsb);
+                return ret;
+            }
+
+            #endregion
+
+            #region PlazaGroup
+
+            public NRestResult<List<PlazaGroup>> GetTSBPlazaGroups(TSB tsb)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<PlazaGroup>>(
+                    RouteConsts.TSB.GetTSBPlazaGroups.Url, tsb);
+                return ret;
+            }
+
+            #endregion
+
+            public NRestResult<List<Lane>> GetPlazaGroupLanes(PlazaGroup plazaGroup)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<Lane>>(
+                    RouteConsts.TSB.GetPlazaGroupLanes.Url, plazaGroup);
+                return ret;
+            }
+
+            public NRestResult<List<Lane>> GetTSBLanes(TSB tsb)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<Lane>>(
+                    RouteConsts.TSB.GetTSBLanes.Url, tsb);
+                return ret;
+            }
+
+            public NRestResult<List<Lane>> GetPlazaLanes(Plaza plaza)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<Lane>>(
+                    RouteConsts.TSB.GetPlazaLanes.Url, plaza);
+                return ret;
+            }
+
+            public NRestResult<PlazaGroup> SavePlazaGroup(PlazaGroup value)
             {
                 if (null != value)
                 {
@@ -147,10 +150,10 @@ namespace DMT.Services
                         RouteConsts.TSB.SavePlazaGroup.Url, value);
                     return ret;
                 }
-                return value;
+                return new NRestResult<PlazaGroup>();
             }
 
-            public Plaza SavePlaza(Plaza value)
+            public NRestResult<Plaza> SavePlaza(Plaza value)
             {
                 if (null != value)
                 {
@@ -158,10 +161,10 @@ namespace DMT.Services
                         RouteConsts.TSB.SavePlaza.Url, value);
                     return ret;
                 }
-                return value;
+                return new NRestResult<Plaza>();
             }
 
-            public Lane SaveLane(Lane value)
+            public NRestResult<Lane> SaveLane(Lane value)
             {
                 if (null != value)
                 {
@@ -169,7 +172,7 @@ namespace DMT.Services
                         RouteConsts.TSB.SaveLane.Url, value);
                     return ret;
                 }
-                return value;
+                return new NRestResult<Lane>();
             }
 
             #endregion

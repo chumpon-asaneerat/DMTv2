@@ -17,11 +17,34 @@ namespace DMT
         {
             public const string Url = RouteConsts.Url + @"/TSB";
 
+            #region TSB
+
             public static class GetTSBs
             {
                 public const string Name = "GetTSBs";
                 public const string Url = TSB.Url + @"/" + Name;
             }
+
+            public static class GetCurrent
+            {
+                public const string Name = "GetCurrent";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
+
+            public static class SetActive
+            {
+                public const string Name = "SetActive";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
+            // NEW!! 2020-07-29 - Save methods
+            public static class SaveTSB
+            {
+                public const string Name = "SaveTSB";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
+
+            #endregion
+
             public static class GetTSBPlazaGroups
             {
                 public const string Name = "GetTSBPlazaGroups";
@@ -47,26 +70,10 @@ namespace DMT
                 public const string Name = "GetPlazaLanes";
                 public const string Url = TSB.Url + @"/" + Name;
             }
-            public static class SetActive
-            {
-                public const string Name = "SetActive";
-                public const string Url = TSB.Url + @"/" + Name;
-            }
-            public static class GetCurrent
-            {
-                public const string Name = "GetCurrent";
-                public const string Url = TSB.Url + @"/" + Name;
-            }
             // NEW!! 2020-07-17 - Not Implements.
             public static class GetPlazaGroupPlazas
             {
                 public const string Name = "GetPlazaGroupPlazas";
-                public const string Url = TSB.Url + @"/" + Name;
-            }
-            // NEW!! 2020-07-29 - Save methods
-            public static class SaveTSB
-            {
-                public const string Name = "SaveTSB";
                 public const string Url = TSB.Url + @"/" + Name;
             }
             public static class SavePlazaGroup
