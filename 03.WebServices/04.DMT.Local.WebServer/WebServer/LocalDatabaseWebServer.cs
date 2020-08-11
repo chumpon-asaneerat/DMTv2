@@ -97,6 +97,11 @@ namespace DMT.Services
                 // Add web socket service
                 wsserver.AddWebSocketService<Behaviors.NotifyBehavior>("/nofify");
                 wsserver.Start();
+                if (wsserver.IsListening)
+                {
+                    //string msg = string.Format("Listening on port {0}, and providing WebSocket services:", httpsv.Port);
+                    //lbStatus.Text = msg;
+                }
             }
         }
         public void Shutdown()

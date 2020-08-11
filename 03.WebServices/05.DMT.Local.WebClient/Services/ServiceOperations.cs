@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.ComponentModel;
 
 using RestSharp;
 using NLib.ServiceProcess;
@@ -11,6 +12,8 @@ using NLib.ServiceProcess;
 using DMT.Models;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
+
+using WebSocketSharp;
 
 #endregion
 
@@ -73,6 +76,17 @@ namespace DMT.Services
 
         #endregion
 
+        #region Internal Variables
+
+        private string wsAddress = string.Format(@"{0}://{1}:{2}/",
+            AppConsts.WindowsService.Local.WebSocket.Protocol,
+            AppConsts.WindowsService.Local.WebSocket.HostName,
+            AppConsts.WindowsService.Local.WebSocket.PortNumber);
+
+        private WebSocket _ws = null;
+
+        #endregion
+
         #region Constructor and Destructor
 
         /// <summary>
@@ -84,6 +98,7 @@ namespace DMT.Services
             // Init windows service monitor.
             InitWindowsServices();
 
+            Connect();
             Plaza = new LocalOperations();
         }
         /// <summary>
@@ -91,6 +106,7 @@ namespace DMT.Services
         /// </summary>
         ~LocalServiceOperations()
         {
+            Disconnect();
             // Shutdown windows service monitor.
             if (null != ServiceMonitor)
             {
@@ -125,6 +141,69 @@ namespace DMT.Services
                     // assembly.
                     FileName = System.IO.Path.Combine(path, AppConsts.WindowsService.Local.ExecutableFileName)
                 });
+        }
+
+        private void Connect()
+        {
+            if (null == _ws)
+            {
+                _ws = new WebSocket(wsAddress + "nofify");
+                _ws.OnMessage += Ws_OnMessage;
+                _ws.OnError += Ws_OnError;
+                _ws.OnClose += Ws_OnClose;
+                _ws.Connect();
+            }
+        }
+
+        private void Disconnect()
+        {
+            if (null != _ws)
+            {
+                _ws.OnClose -= Ws_OnClose;
+                _ws.OnError -= Ws_OnError;
+                _ws.OnMessage -= Ws_OnMessage;
+                _ws.Close();
+            }
+            _ws = null;
+        }
+
+        void Reconnect(ushort code, string error)
+        {
+            if (code != (ushort)CloseStatusCode.Normal)
+            {
+                if (null != _ws)
+                {
+                    _ws.Connect();
+                }
+            }
+        }
+
+        #endregion
+
+        #region WS Handlers
+
+        private void Ws_OnMessage(object sender, MessageEventArgs e)
+        {
+            // Cross thread wrapper.
+            /*
+            Invoke(new MethodInvoker(delegate () {
+                string message = e.Data;
+                ListViewItem item = new ListViewItem();
+                item.Text = DateTime.Now.ToString("HH:mm:ss");
+                item.SubItems.Add(message);
+                lvMessages.Items.Add(item);
+            }));
+            */
+        }
+
+        private void Ws_OnClose(object sender, CloseEventArgs e)
+        {
+            Reconnect(e.Code, e.Reason);
+        }
+
+        private void Ws_OnError(object sender, ErrorEventArgs e)
+        {
+            Disconnect();
         }
 
         #endregion
@@ -201,6 +280,10 @@ namespace DMT.Services
         /// Gets instance of Plaza Operations.
         /// </summary>
         public LocalOperations Plaza { get; private set; }
+
+        #endregion
+
+        #region Public Events
 
         #endregion
     }
