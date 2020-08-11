@@ -11,8 +11,11 @@ Update 2020-08-11 #18
 Update 2020-08-11 #17
 - 
 
+[commited]
 Update 2020-08-11 #16
-- 
+- Add 02.DMT.TAxTOD.WebClient project.
+- Set DMT.TAxTOD.WebClient reference assemblies.
+- Test Re-compile all projects - OK.
 
 [commited]
 Update 2020-08-11 #15
