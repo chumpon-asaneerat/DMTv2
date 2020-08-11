@@ -17,11 +17,12 @@ Update 2020-08-11 #26
 Update 2020-08-11 #25
 - 
 
+[commited]
 Update 2020-08-11 #24
-- 
+- Remove unused files.
+- Test Re-compile all projects - OK.
 
 [commited]
-
 Update 2020-08-11 #23
 - Add 01.DMT.DataCenter.WebClient project reference assemblies.
 
