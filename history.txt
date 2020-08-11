@@ -11,8 +11,11 @@ Update 2020-08-11 #13
 Update 2020-08-11 #12
 - 
 
+[commited]
 Update 2020-08-11 #11
-- 
+- Reload Plaza.Config project.
+- Update Plaza.Config reference assemblies.
+- Test Re-compile all projects - OK.
 
 [commited]
 Update 2020-08-11 #10
