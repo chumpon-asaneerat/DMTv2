@@ -33,7 +33,7 @@ namespace DMT.TOD.Pages.Reports
 
         #endregion
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
 
         private List<Models.RevenueEntry> _revenues = null;
 

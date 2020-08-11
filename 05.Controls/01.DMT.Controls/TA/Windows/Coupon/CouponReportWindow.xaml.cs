@@ -27,7 +27,7 @@ namespace DMT.TA.Windows.Coupon
             InitializeComponent();
         }
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
 
         private User _user = null;
         private UserShift _userShift = null;

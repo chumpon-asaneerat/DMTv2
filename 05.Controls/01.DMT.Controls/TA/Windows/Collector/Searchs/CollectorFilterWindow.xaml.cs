@@ -36,7 +36,7 @@ namespace DMT.TA.Windows.Collector.Searchs
 
         #endregion
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private List<User> _users = null;
 
         #region Button Handlers

@@ -33,7 +33,7 @@ namespace DMT.TOD.Pages.Reports
 
         #endregion
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
 
         private User _user = null;
         private UserShift _userShift = null;

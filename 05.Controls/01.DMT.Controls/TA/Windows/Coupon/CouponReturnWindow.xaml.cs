@@ -34,7 +34,7 @@ namespace DMT.TA.Windows.Coupon
 
         #endregion
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private TSBCouponManager manager = new TSBCouponManager();
 
         #region Button Handlers

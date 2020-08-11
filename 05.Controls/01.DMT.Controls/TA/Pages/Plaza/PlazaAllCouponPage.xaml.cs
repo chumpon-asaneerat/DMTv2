@@ -34,7 +34,7 @@ namespace DMT.TA.Pages.Plaza
 
         #endregion
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private User _user = null;
 
         #region Button Handlers

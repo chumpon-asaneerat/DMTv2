@@ -31,7 +31,7 @@ namespace DMT.TA.Pages.Reports
 
         #endregion
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private TSBCouponManager manager = new TSBCouponManager();
         private User _user = null;
         private TSBCouponSummary _summary = null;

@@ -35,8 +35,8 @@ namespace DMT.TA.Windows.Collector.Credit
 
         #region Internal Variables
 
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private List<string> _roles = new List<string>();
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
         private string _userId = null;
 
         #endregion

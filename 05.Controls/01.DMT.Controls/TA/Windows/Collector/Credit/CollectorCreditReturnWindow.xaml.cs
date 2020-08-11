@@ -36,7 +36,7 @@ namespace DMT.TA.Windows.Collector.Credit
 
         #endregion
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private UserCreditReturnManager manager = new UserCreditReturnManager();
 
         #region Button Handlers

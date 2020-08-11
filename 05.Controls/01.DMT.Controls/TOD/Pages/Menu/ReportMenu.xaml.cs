@@ -31,7 +31,7 @@ namespace DMT.TOD.Pages.Menu
 
         #endregion
 
-        private PlazaOperations ops = DMTServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private User _user = null;
 
         #region Button Handlers
