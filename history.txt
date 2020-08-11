@@ -20,8 +20,11 @@ Update 2020-08-11 #10
 Update 2020-08-11 #9
 - 
 
+[commited]
 Update 2020-08-11 #8
-- 
+- Reload 01.DMT.Plaza.Windows.Services project.
+- Update DMT.Plaza.Windows.Services reference assemblies.
+- Test Re-compile all projects - OK.
 
 [commited]
 Update 2020-08-11 #7
