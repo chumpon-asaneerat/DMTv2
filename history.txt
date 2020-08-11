@@ -29,8 +29,11 @@ Update 2020-08-11 #7
 Update 2020-08-11 #6
 - 
 
+[commited]
 Update 2020-08-11 #5
-- 
+- Rename folder 03.Local.WebService to 03.WebServices
+- Add 03.DMT.Local.WebServer.csproj
+- Add 04.DMT.Local.WebClient.csproj
 
 [commited]
 Update 2020-08-11 #4
