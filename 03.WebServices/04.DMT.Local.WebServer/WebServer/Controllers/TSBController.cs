@@ -44,11 +44,13 @@ namespace DMT.Services
             {
                 result = new NDbResult();
                 result.ParameterIsNull();
-                return result;
             }
-            result = TSB.SetActive(value.TSBId);
-            // Raise event.
-            LocalDbServer.Instance.ActiveTSBChanged();
+            else
+            {
+                result = TSB.SetActive(value.TSBId);
+                // Raise event.
+                LocalDbServer.Instance.ActiveTSBChanged();
+            }
             return result;
         }
 
@@ -61,16 +63,18 @@ namespace DMT.Services
             {
                 result = new NDbResult<TSB>();
                 result.ParameterIsNull();
-                return result;
             }
-            result = TSB.Save(value);
+            else
+            {
+                result = TSB.Save(value);
+            }
             return result;
         }
 
         #endregion
 
         #region Plaza
-
+        /*
         [HttpPost]
         [ActionName(RouteConsts.TSB.GetTSBPlazas.Name)]
         public NDbResult<List<Plaza>> GetTSBPlazas([FromBody] TSB value)
@@ -100,11 +104,11 @@ namespace DMT.Services
             result = Plaza.Save(value);
             return result;
         }
-
+        */
         #endregion
 
         #region PlazaGroup
-
+        /*
         [HttpPost]
         [ActionName(RouteConsts.TSB.GetTSBPlazaGroups.Name)]
         public NDbResult<List<PlazaGroup>> GetTSBPlazaGroups([FromBody] TSB value)
@@ -134,11 +138,11 @@ namespace DMT.Services
             result = PlazaGroup.Save(value);
             return result;
         }
-
+        */
         #endregion
 
         #region Lane
-
+        /*
         [HttpPost]
         [ActionName(RouteConsts.TSB.GetTSBLanes.Name)]
         public NDbResult<List<Lane>> GetTSBLanes([FromBody] TSB value)
@@ -176,7 +180,7 @@ namespace DMT.Services
             }
             return value;
         }
-
+        */
         #endregion
     }
 }

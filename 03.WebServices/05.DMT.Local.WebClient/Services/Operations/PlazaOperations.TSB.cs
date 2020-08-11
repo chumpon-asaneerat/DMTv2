@@ -96,11 +96,11 @@ namespace DMT.Services
                 }
                 return new NRestResult<TSB>();
             }
-
+            
             #endregion
 
             #region Plaza
-
+            /*
             public NRestResult<List<Plaza>> GetTSBPlazas(TSB tsb)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<Plaza>>(
@@ -118,11 +118,11 @@ namespace DMT.Services
                 }
                 return new NRestResult<Plaza>();
             }
-
+            */
             #endregion
 
             #region PlazaGroup
-
+            /*
             public NRestResult<List<PlazaGroup>> GetTSBPlazaGroups(TSB tsb)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<PlazaGroup>>(
@@ -140,11 +140,11 @@ namespace DMT.Services
                 }
                 return new NRestResult<PlazaGroup>();
             }
-
+            */
             #endregion
 
             #region Lane
-
+            /*
             public NRestResult<List<Lane>> GetTSBLanes(TSB tsb)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<Lane>>(
@@ -176,7 +176,7 @@ namespace DMT.Services
                 }
                 return new NRestResult<Lane>();
             }
-
+            */
             #endregion
 
             #endregion

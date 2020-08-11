@@ -114,23 +114,37 @@ namespace DMT.Models
         /// </summary>
         /// <param name="db">The connection.</param>
         /// <param name="value">The item to save to database.</param>
-        public static void Save(SQLiteConnection db, T value)
+        public static NDbResult<T> Save(SQLiteConnection db, T value)
         {
+            NDbResult<T> result = new NDbResult<T>();
             lock (sync)
             {
-                if (null == db || null == value) return;
+                if (null == db)
+                {
+                    result.ConenctFailed();
+                    result.data = null;
+                    return result;
+                }
+                if (null == db)
+                {
+                    result.ParameterIsNull();
+                    return result;
+                }
                 MethodBase med = MethodBase.GetCurrentMethod();
 
                 if (!Exists(db, value))
                 {
-                    //db.Insert(value);
                     try
                     {
                         db.Insert(value);
+                        result.Success();
+                        result.data = value;
                     }
                     catch (Exception ex)
                     {
                         med.Err(ex);
+                        result.Error(ex);
+                        result.data = null;
                     }
                 }
                 else
@@ -139,12 +153,18 @@ namespace DMT.Models
                     try
                     {
                         db.Update(value);
+                        result.Success();
+                        result.data = value;
                     }
                     catch (Exception ex)
                     {
                         med.Err(ex);
+                        result.Error(ex);
+                        result.data = null;
                     }
                 }
+
+                return result;
             }
         }
         /// <summary>
