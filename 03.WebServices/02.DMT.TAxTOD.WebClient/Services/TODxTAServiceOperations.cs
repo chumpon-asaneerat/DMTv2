@@ -1,12 +1,49 @@
-﻿using System;
+﻿#region Usings
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
+
+using RestSharp;
+using NLib.ServiceProcess;
+
+using DMT.Models;
+using System.Runtime.InteropServices;
+using System.Security.Permissions;
+
+#endregion
 
 namespace DMT.Services
 {
-    #region LocalServiceOperations
+    #region InstalledStatus
+
+    /// <summary>
+    /// The DMT Window Service Installed Status class.
+    /// </summary>
+    public class InstalledStatus
+    {
+        #region Public properties
+
+        /// <summary>
+        /// Gets (or internal set) all service count.
+        /// </summary>
+        public int ServiceCount { get; internal set; }
+        /// <summary>
+        /// Gets (or internal set) service install count.
+        /// </summary>
+        public int InstalledCount { get; internal set; }
+        /// <summary>
+        /// Gets (or internal set) is Plaza Local Service installed.
+        /// </summary>
+        public bool PlazaLocalServiceInstalled { get; internal set; }
+
+        #endregion
+    }
+
+    #endregion
+
+    #region TODxTAServiceOperations
 
     /// <summary>
     /// The TODxTA Service Operations class.
@@ -47,7 +84,7 @@ namespace DMT.Services
             // Init windows service monitor.
             InitWindowsServices();
 
-            Plaza = new LocalOperations();
+            Plaza = new TAxTODOperations();
         }
         /// <summary>
         /// Destructor.
@@ -83,10 +120,10 @@ namespace DMT.Services
                 {
                     // The Service Name must match the name that declare name 
                     // in NServiceInstaller inherited class
-                    ServiceName = DMT.AppConsts.WindowsService.Plaza.ServiceName,
+                    ServiceName = DMT.AppConsts.WindowsService.TAxTOD.ServiceName,
                     // The File Name must match actual path related to entry (main execute)
                     // assembly.
-                    FileName = System.IO.Path.Combine(path, AppConsts.WindowsService.Plaza.ExecutableFileName)
+                    FileName = System.IO.Path.Combine(path, AppConsts.WindowsService.TAxTOD.ExecutableFileName)
                 });
         }
 
@@ -137,7 +174,7 @@ namespace DMT.Services
                             if (srvInfo.IsInstalled)
                             {
                                 ++result.InstalledCount;
-                                if (srvInfo.ServiceName == AppConsts.WindowsService.Plaza.ServiceName)
+                                if (srvInfo.ServiceName == AppConsts.WindowsService.TAxTOD.ServiceName)
                                 {
                                     result.PlazaLocalServiceInstalled = true;
                                 }
@@ -163,7 +200,7 @@ namespace DMT.Services
         /// <summary>
         /// Gets instance of Plaza Operations.
         /// </summary>
-        public LocalOperations Plaza { get; private set; }
+        public TAxTODOperations Plaza { get; private set; }
 
         #endregion
     }

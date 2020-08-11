@@ -120,10 +120,10 @@ namespace DMT.Services
                 {
                     // The Service Name must match the name that declare name 
                     // in NServiceInstaller inherited class
-                    ServiceName = DMT.AppConsts.WindowsService.Plaza.ServiceName,
+                    ServiceName = DMT.AppConsts.WindowsService.Local.ServiceName,
                     // The File Name must match actual path related to entry (main execute)
                     // assembly.
-                    FileName = System.IO.Path.Combine(path, AppConsts.WindowsService.Plaza.ExecutableFileName)
+                    FileName = System.IO.Path.Combine(path, AppConsts.WindowsService.Local.ExecutableFileName)
                 });
         }
 
@@ -174,7 +174,7 @@ namespace DMT.Services
                             if (srvInfo.IsInstalled)
                             {
                                 ++result.InstalledCount;
-                                if (srvInfo.ServiceName == AppConsts.WindowsService.Plaza.ServiceName)
+                                if (srvInfo.ServiceName == AppConsts.WindowsService.Local.ServiceName)
                                 {
                                     result.PlazaLocalServiceInstalled = true;
                                 }

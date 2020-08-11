@@ -14,17 +14,17 @@ using DMT.Models;
 namespace DMT.Services
 {
     /// <summary>
-    /// Plaza Operations class.
+    /// TAxTOD Operations class.
     /// Main class that common all operations into properties.
     /// </summary>
-    public partial class LocalOperations
+    public partial class TAxTODOperations
     {
         #region Static Constructor
 
         /// <summary>
         /// Static Constructor
         /// </summary>
-        static LocalOperations()
+        static TAxTODOperations()
         {
             // Required for HTTPS.
             ServicePointManager.SecurityProtocol =
@@ -42,7 +42,7 @@ namespace DMT.Services
         /// <summary>
         /// Constructor.
         /// </summary>
-        public LocalOperations() : base() { }
+        public TAxTODOperations() : base() { }
 
         #endregion
 
@@ -56,9 +56,9 @@ namespace DMT.Services
             get
             {
                 return string.Format(@"{0}://{1}:{2}/",
-                    AppConsts.WindowsService.Local.WebServer.Protocol,
-                    AppConsts.WindowsService.Local.WebServer.HostName,
-                    AppConsts.WindowsService.Local.WebServer.PortNumber);
+                    AppConsts.WindowsService.TAxTOD.WebServer.Protocol,
+                    AppConsts.WindowsService.TAxTOD.WebServer.HostName,
+                    AppConsts.WindowsService.TAxTOD.WebServer.PortNumber);
             }
         }
 

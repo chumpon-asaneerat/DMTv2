@@ -76,7 +76,47 @@ namespace DMT
                 public static string Build = AppConsts.Build;
                 public static DateTime LastUpdate = AppConsts.LastUpdate;
 
-                public static class LocaWebServer
+                public static class WebServer
+                {
+                    public static string Protocol = "http";
+                    public static string HostName = "localhost";
+                    public static int PortNumber = 9000;
+                }
+            }
+
+            public static class DC
+            {
+                public static string ServiceName = "DMT Data Center Plaza Windows Service";
+                public static string DisplayName = "DMT Data Center Plaza Windows Service";
+                public static string Description = "DMT Data Center Plaza Windows Service";
+                public static string ExecutableFileName = @"DMT.DC.Plaza.Windows.Services.exe";
+                // common
+                public static string Version = AppConsts.Version;
+                public static string Minor = AppConsts.Minor;
+                public static string Build = AppConsts.Build;
+                public static DateTime LastUpdate = AppConsts.LastUpdate;
+
+                public static class WebServer
+                {
+                    public static string Protocol = "http";
+                    public static string HostName = "localhost";
+                    public static int PortNumber = 9000;
+                }
+            }
+
+            public static class TAxTOD
+            {
+                public static string ServiceName = "DMT TAxTOD Plaza Windows Service";
+                public static string DisplayName = "DMT TAxTOD Plaza Windows Service";
+                public static string Description = "DMT TAxTOD Plaza Windows Service";
+                public static string ExecutableFileName = @"DMT.TAxTOD.Plaza.Windows.Services.exe";
+                // common
+                public static string Version = AppConsts.Version;
+                public static string Minor = AppConsts.Minor;
+                public static string Build = AppConsts.Build;
+                public static DateTime LastUpdate = AppConsts.LastUpdate;
+
+                public static class WebServer
                 {
                     public static string Protocol = "http";
                     public static string HostName = "localhost";

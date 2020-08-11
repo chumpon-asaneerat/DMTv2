@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DMT Windows Service for Plaza common API")]
-[assembly: AssemblyDescription("The DMT Windows Service for Plaza common API.")]
+[assembly: AssemblyTitle("DMT Windows Service for Local Plaza common API")]
+[assembly: AssemblyDescription("The DMT Windows Service for Local Plaza common API.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Softbase Co., Ltd.")]
-[assembly: AssemblyProduct("The DMT Windows Service for Plaza  common API.")]
+[assembly: AssemblyProduct("The DMT Windows Service for Local Plaza  common API.")]
 [assembly: AssemblyCopyright("Copyright ©Softbase Co., Ltd. 2020")]
-[assembly: AssemblyTrademark("The DMT Windows Service for Plaza common API.")]
+[assembly: AssemblyTrademark("The DMT Windows Service for Local Plaza common API.")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
