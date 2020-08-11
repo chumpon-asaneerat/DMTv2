@@ -14,6 +14,7 @@ using System.Runtime.InteropServices;
 using System.Security.Permissions;
 
 using WebSocketSharp;
+using System.Windows.Forms.VisualStyles;
 
 #endregion
 
@@ -185,15 +186,16 @@ namespace DMT.Services
         private void Ws_OnMessage(object sender, MessageEventArgs e)
         {
             // Cross thread wrapper.
-            /*
-            Invoke(new MethodInvoker(delegate () {
-                string message = e.Data;
-                ListViewItem item = new ListViewItem();
-                item.Text = DateTime.Now.ToString("HH:mm:ss");
-                item.SubItems.Add(message);
-                lvMessages.Items.Add(item);
-            }));
-            */
+            string msg = e.Data;
+            if (string.IsNullOrWhiteSpace(msg)) return;
+            string[] msgs = msg.Split(':');
+            string evtName = (null != msgs && msgs.Length > 0) ? msgs[0] : string.Empty;
+            if (string.IsNullOrWhiteSpace(evtName)) return;
+
+            if (evtName == "changeshift")
+            {
+                OnChangeShift.Invoke(this, EventArgs.Empty);
+            }
         }
 
         private void Ws_OnClose(object sender, CloseEventArgs e)
@@ -284,6 +286,8 @@ namespace DMT.Services
         #endregion
 
         #region Public Events
+
+        public event EventHandler OnChangeShift;
 
         #endregion
     }
