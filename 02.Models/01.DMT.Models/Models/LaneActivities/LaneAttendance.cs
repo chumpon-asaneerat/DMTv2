@@ -914,6 +914,17 @@ namespace DMT.Models
 			}
 
 			#endregion
+
+			#region Public Methods
+
+			public LaneAttendance ToLaneAttendance()
+			{
+				LaneAttendance inst = new LaneAttendance();
+				this.AssignTo(inst);
+				return inst;
+			}
+
+			#endregion
 		}
 
 		#endregion
@@ -922,12 +933,27 @@ namespace DMT.Models
 
 		public static NDbResult<LaneAttendance> Create(Lane lane, User supervisor)
 		{
+			var result = new NDbResult<LaneAttendance>();
 			LaneAttendance inst = Create();
-			TSB tsb = TSB.GetCurrent();
-			if (null != tsb) tsb.AssignTo(inst);
-			if (null != lane) lane.AssignTo(inst);
-			if (null != supervisor) supervisor.AssignTo(inst);
-			return inst;
+
+			var tsbRet = TSB.GetCurrent();
+			if (tsbRet.errors.hasError)
+			{
+				result.ParameterIsNull();
+				result.data = null;
+			}
+			else
+			{
+				var tsb = tsbRet.data;
+				if (null != tsb) tsb.AssignTo(inst);
+				if (null != lane) lane.AssignTo(inst);
+				if (null != supervisor) supervisor.AssignTo(inst);
+
+				result.data = inst;
+				result.Success();
+			}
+
+			return result;
 		}
 
 		public static NDbResult<List<LaneAttendance>> Search(UserShift shift, 
@@ -1036,8 +1062,10 @@ namespace DMT.Models
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = new List<LaneAttendance>();
 				}
+				return result;
 			}
 		}
 
@@ -1110,7 +1138,6 @@ namespace DMT.Models
 					result.Error(ex);
 					result.data = new List<LaneAttendance>();
 				}
-
 				return result;
 			}
 		}

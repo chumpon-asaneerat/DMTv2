@@ -856,6 +856,17 @@ namespace DMT.Models
 			}
 
 			#endregion
+
+			#region Public Methods
+
+			public LanePayment ToLanePayment()
+			{
+				LanePayment inst = new LanePayment();
+				this.AssignTo(inst);
+				return inst;
+			}
+
+			#endregion
 		}
 
 		#endregion
@@ -865,15 +876,29 @@ namespace DMT.Models
 		public static NDbResult<LanePayment> Create(Lane lane, User collector,
 			Payment payment, DateTime date, decimal amount)
 		{
+			var result = new NDbResult<LanePayment>();
 			LanePayment inst = Create();
-			TSB tsb = TSB.GetCurrent();
-			if (null != tsb) tsb.AssignTo(inst);
-			if (null != lane) lane.AssignTo(inst);
-			if (null != collector) collector.AssignTo(inst);
-			if (null != payment) payment.AssignTo(inst);
-			inst.PaymentDate = date;
-			inst.Amount = amount;
-			return inst;
+
+			var tsbRet = TSB.GetCurrent();
+			if (tsbRet.errors.hasError)
+			{
+				result.ParameterIsNull();
+				result.data = null;
+			}
+			else
+			{
+				var tsb = tsbRet.data;
+				if (null != tsb) tsb.AssignTo(inst);
+				if (null != lane) lane.AssignTo(inst);
+				if (null != collector) collector.AssignTo(inst);
+				if (null != payment) payment.AssignTo(inst);
+				inst.PaymentDate = date;
+				inst.Amount = amount;
+
+				result.data = inst;
+				result.Success();
+			}
+			return result;
 		}
 
 		public static NDbResult<List<LanePayment>> Search(UserShift shift)
