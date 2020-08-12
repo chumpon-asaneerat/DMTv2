@@ -175,6 +175,8 @@ namespace DMT.Models
 
 		#endregion
 
+		// TODO: Required GroupId Here.
+
 		#region Static Methods
 
 		public static List<Role> Gets(SQLiteConnection db)
