@@ -862,7 +862,7 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static LanePayment Create(Lane lane, User collector,
+		public static NDbResult<LanePayment> Create(Lane lane, User collector,
 			Payment payment, DateTime date, decimal amount)
 		{
 			LanePayment inst = Create();
@@ -876,12 +876,24 @@ namespace DMT.Models
 			return inst;
 		}
 
-		public static List<LanePayment> Search(UserShift shift)
+		public static NDbResult<List<LanePayment>> Search(UserShift shift)
 		{
+			var result = new NDbResult<List<LanePayment>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<LanePayment>();
+				return result;
+			}
+
 			if (null == shift)
 			{
-				return new List<LanePayment>();
+				result.ParameterIsNull();
+				result.data = new List<LanePayment>();
+				return result;
 			}
+
 			lock (sync)
 			{
 				try
@@ -909,21 +921,46 @@ namespace DMT.Models
 					cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
 					cmd += "   AND LanePayment.Begin >= ? ";
 					cmd += "   AND LanePayment.End <= ? ";
-					return NQuery.Query<FKs>(cmd, shift.Begin, shift.End,
-						DateTime.MinValue).ToList<LanePayment>();
+
+					var rets = NQuery.Query<FKs>(cmd, shift.Begin, shift.End,
+						DateTime.MinValue).ToList();
+					var results = new List<LanePayment>();
+					if (null != rets)
+					{
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToLanePayment());
+						});
+					}
+					result.data = results;
+					result.Success();
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = new List<LanePayment>();
 				}
+
+				return result;
 			}
 		}
 
-		public static List<LanePayment> Search(Lane lane)
+		public static NDbResult<List<LanePayment>> Search(Lane lane)
 		{
+			var result = new NDbResult<List<LanePayment>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<LanePayment>();
+				return result;
+			}
+
 			if (null == lane)
 			{
-				return new List<LanePayment>();
+				result.ParameterIsNull();
+				result.data = new List<LanePayment>();
+				return result;
 			}
 			lock (sync)
 			{
@@ -951,20 +988,45 @@ namespace DMT.Models
 					cmd += "   AND LanePayment.UserId = User.UserId ";
 					cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
 					cmd += "   AND LanePayment.LaneId = ? ";
-					return NQuery.Query<FKs>(cmd, lane.LaneId).ToList<LanePayment>();
+
+					var rets = NQuery.Query<FKs>(cmd, lane.LaneId).ToList();
+					var results = new List<LanePayment>();
+					if (null != rets)
+					{
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToLanePayment());
+						});
+					}
+					result.data = results;
+					result.Success();
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = new List<LanePayment>();
 				}
+
+				return result;
 			}
 		}
 
-		public static LanePayment GetCurrentByLane(Lane lane)
+		public static NDbResult<LanePayment> GetCurrentByLane(Lane lane)
 		{
+			var result = new NDbResult<LanePayment>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			if (null == lane)
 			{
-				return null;
+				result.ParameterIsNull();
+				result.data = null;
+				return result;
 			}
 			lock (sync)
 			{
@@ -993,21 +1055,38 @@ namespace DMT.Models
 					cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
 					cmd += "   AND LanePayment.LaneId = ? ";
 					cmd += "   AND LanePayment.End = ? ";
-					return NQuery.Query<FKs>(cmd, lane.LaneId,
-						DateTime.MinValue).FirstOrDefault<LanePayment>();
+
+					var ret = NQuery.Query<FKs>(cmd, lane.LaneId,
+						DateTime.MinValue).FirstOrDefault();
+					result.data = (null != ret) ? ret.ToLanePayment() : null;
+					result.Success();
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = null;
 				}
+
+				return result;
 			}
 		}
 
-		public static List<LanePayment> Search(DateTime date)
+		public static NDbResult<List<LanePayment>> Search(DateTime date)
 		{
+			var result = new NDbResult<List<LanePayment>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<LanePayment>();
+				return result;
+			}
+
 			if (null == date || date == DateTime.MinValue)
 			{
-				return new List<LanePayment>();
+				result.ParameterIsNull();
+				result.data = new List<LanePayment>();
+				return result;
 			}
 			lock (sync)
 			{
@@ -1036,13 +1115,27 @@ namespace DMT.Models
 					cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
 					cmd += " WHERE LanePayment.Begin >= ? ";
 					cmd += "   AND LanePayment.End <= ? ";
-					return NQuery.Query<FKs>(cmd, date,
-						DateTime.MinValue).ToList<LanePayment>();
+
+					var rets = NQuery.Query<FKs>(cmd, date,
+						DateTime.MinValue).ToList();
+					var results = new List<LanePayment>();
+					if (null != rets)
+					{
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToLanePayment());
+						});
+					}
+					result.data = results;
+					result.Success();
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = new List<LanePayment>();
 				}
+
+				return result;
 			}
 		}
 

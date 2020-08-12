@@ -613,7 +613,7 @@ namespace DMT.Models
 
         public static NDbResult<UserShift> Create(Shift shift, User supervisor)
         {
-            NDbResult<UserShift> result = new NDbResult<UserShift>();
+            var result = new NDbResult<UserShift>();
             UserShift inst = Create();
 
             var tsbRet = TSB.GetCurrent();
@@ -637,7 +637,7 @@ namespace DMT.Models
 
         public static NDbResult<UserShift> GetCurrent(string userId)
         {
-            NDbResult<UserShift> result = new NDbResult<UserShift>();
+            var result = new NDbResult<UserShift>();
             SQLiteConnection db = Default;
             if (null == db)
             {
@@ -678,7 +678,7 @@ namespace DMT.Models
 
         public static NDbResult BeginUserShift(UserShift value)
         {
-            NDbResult result = new NDbResult();
+            var result = new NDbResult();
             SQLiteConnection db = Default;
             if (null == db)
             {
@@ -726,7 +726,7 @@ namespace DMT.Models
 
         public static NDbResult EndUserShift(UserShift value)
         {
-            NDbResult result = new NDbResult();
+            var result = new NDbResult();
             SQLiteConnection db = Default;
             if (null == db)
             {

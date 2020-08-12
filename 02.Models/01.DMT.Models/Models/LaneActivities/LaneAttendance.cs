@@ -920,7 +920,7 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static LaneAttendance Create(Lane lane, User supervisor)
+		public static NDbResult<LaneAttendance> Create(Lane lane, User supervisor)
 		{
 			LaneAttendance inst = Create();
 			TSB tsb = TSB.GetCurrent();
@@ -930,13 +930,25 @@ namespace DMT.Models
 			return inst;
 		}
 
-		public static List<LaneAttendance> Search(UserShift shift, PlazaGroup plazaGroup, 
-			DateTime revenueDate)
+		public static NDbResult<List<LaneAttendance>> Search(UserShift shift, 
+			PlazaGroup plazaGroup, DateTime revenueDate)
 		{
+			var result = new NDbResult<List<LaneAttendance>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<LaneAttendance>();
+				return result;
+			}
+
 			if (null == shift)
 			{
-				return new List<LaneAttendance>();
+				result.ParameterIsNull();
+				result.data = new List<LaneAttendance>();
+				return result;
 			}
+
 			lock (sync)
 			{
 				try
@@ -984,22 +996,42 @@ namespace DMT.Models
 
 					if (null != plazaGroup)
 					{
-						return NQuery.Query<FKs>(cmd,
+						var rets = NQuery.Query<FKs>(cmd,
 							shift.UserId,
 							shift.Begin, end,
 							shift.Begin, end,
 							DateTime.MinValue,
 							plazaGroup.PlazaGroupId,
-							revenueDate).ToList<LaneAttendance>();
+							revenueDate).ToList();
+						var results = new List<LaneAttendance>();
+						if (null != rets)
+						{
+							rets.ForEach(ret =>
+							{
+								results.Add(ret.ToLaneAttendance());
+							});
+						}
+						result.data = results;
+						result.Success();
 					}
 					else
 					{
-						return NQuery.Query<FKs>(cmd,
+						var rets = NQuery.Query<FKs>(cmd,
 							shift.UserId,
 							shift.Begin, end,
 							shift.Begin, end,
 							DateTime.MinValue,
-							revenueDate).ToList<LaneAttendance>();
+							revenueDate).ToList();
+						var results = new List<LaneAttendance>();
+						if (null != rets)
+						{
+							rets.ForEach(ret =>
+							{
+								results.Add(ret.ToLaneAttendance());
+							});
+						}
+						result.data = results;
+						result.Success();
 					}
 				}
 				catch (Exception ex)
@@ -1009,11 +1041,22 @@ namespace DMT.Models
 			}
 		}
 
-		public static List<LaneAttendance> Search(UserShift shift)
+		public static NDbResult<List<LaneAttendance>> Search(UserShift shift)
 		{
+			var result = new NDbResult<List<LaneAttendance>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<LaneAttendance>();
+				return result;
+			}
+
 			if (null == shift)
 			{
-				return new List<LaneAttendance>();
+				result.ParameterIsNull();
+				result.data = new List<LaneAttendance>();
+				return result;
 			}
 			lock (sync)
 			{
@@ -1046,24 +1089,48 @@ namespace DMT.Models
 
 					DateTime end = (shift.End == DateTime.MinValue) ? DateTime.Now : shift.End;
 
-					return NQuery.Query<FKs>(cmd,
+					var rets = NQuery.Query<FKs>(cmd, 
 						shift.UserId,
 						shift.Begin, end,
 						shift.Begin, end,
-						DateTime.MinValue).ToList<LaneAttendance>();
+						DateTime.MinValue).ToList();
+					var results = new List<LaneAttendance>();
+					if (null != rets)
+					{
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToLaneAttendance());
+						});
+					}
+					result.data = results;
+					result.Success();
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = new List<LaneAttendance>();
 				}
+
+				return result;
 			}
 		}
 
-		public static List<LaneAttendance> Search(Lane lane)
+		public static NDbResult<List<LaneAttendance>> Search(Lane lane)
 		{
+			var result = new NDbResult<List<LaneAttendance>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<LaneAttendance>();
+				return result;
+			}
+
 			if (null == lane)
 			{
-				return new List<LaneAttendance>();
+				result.ParameterIsNull();
+				result.data = new List<LaneAttendance>();
+				return result;
 			}
 			lock (sync)
 			{
@@ -1089,20 +1156,44 @@ namespace DMT.Models
 					cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
 					cmd += "   AND LaneAttendance.UserId = User.UserId ";
 					cmd += "   AND LaneAttendance.LaneId = ? ";
-					return NQuery.Query<FKs>(cmd, lane.LaneId).ToList<LaneAttendance>();
+					var rets = NQuery.Query<FKs>(cmd, lane.LaneId).ToList();
+					var results = new List<LaneAttendance>();
+					if (null != rets)
+					{
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToLaneAttendance());
+						});
+					}
+					result.data = results;
+					result.Success();
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = new List<LaneAttendance>();
 				}
+
+				return result;
 			}
 		}
 
-		public static LaneAttendance GetCurrentByLane(Lane lane)
+		public static NDbResult<LaneAttendance> GetCurrentByLane(Lane lane)
 		{
+			var result = new NDbResult<LaneAttendance>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			if (null == lane)
 			{
-				return null;
+				result.ParameterIsNull();
+				result.data = null;
+				return result;
 			}
 			lock (sync)
 			{
@@ -1129,21 +1220,37 @@ namespace DMT.Models
 					cmd += "   AND LaneAttendance.UserId = User.UserId ";
 					cmd += "   AND LaneAttendance.LaneId = ? ";
 					cmd += "   AND LaneAttendance.End = ? ";
-					return NQuery.Query<FKs>(cmd, lane.LaneId,
-						DateTime.MinValue).FirstOrDefault<LaneAttendance>();
+					var ret = NQuery.Query<FKs>(cmd, lane.LaneId, 
+						DateTime.MinValue).FirstOrDefault();
+					result.data = (null != ret) ? ret.ToLaneAttendance() : null;
+					result.Success();
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = null;
 				}
+
+				return result;
 			}
 		}
 
-		public static List<LaneAttendance> Search(DateTime date)
+		public static NDbResult<List<LaneAttendance>> Search(DateTime date)
 		{
+			var result = new NDbResult<List<LaneAttendance>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<LaneAttendance>();
+				return result;
+			}
+
 			if (null == date || date == DateTime.MinValue)
 			{
-				return new List<LaneAttendance>();
+				result.ParameterIsNull();
+				result.data = new List<LaneAttendance>();
+				return result;
 			}
 			lock (sync)
 			{
@@ -1170,18 +1277,39 @@ namespace DMT.Models
 					cmd += "   AND LaneAttendance.UserId = User.UserId ";
 					cmd += "   AND LaneAttendance.Begin >= ? ";
 					cmd += "   AND LaneAttendance.End <= ? ";
-					return NQuery.Query<FKs>(cmd, date,
-						DateTime.MinValue).ToList<LaneAttendance>();
+					var rets = NQuery.Query<FKs>(cmd, date, DateTime.MinValue).ToList();
+					var results = new List<LaneAttendance>();
+					if (null != rets)
+					{
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToLaneAttendance());
+						});
+					}
+					result.data = results;
+					result.Success();
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = new List<LaneAttendance>();
 				}
+
+				return result;
 			}
 		}
 
-		public static List<LaneAttendance> GetAllNotHasRevenueEntry()
+		public static NDbResult<List<LaneAttendance>> GetAllNotHasRevenueEntry()
 		{
+			var result = new NDbResult<List<LaneAttendance>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<LaneAttendance>();
+				return result;
+			}
+
 			lock (sync)
 			{
 				try
@@ -1209,13 +1337,25 @@ namespace DMT.Models
 					cmd += "   AND (LaneAttendance.RevenueDate = ?";
 					cmd += "    OR  LaneAttendance.RevenueId IS NULL ";
 					cmd += "    OR  LaneAttendance.RevenueId = ?)";
-					return NQuery.Query<FKs>(cmd, DateTime.MinValue,
-						string.Empty).ToList<LaneAttendance>();
+					var rets = NQuery.Query<FKs>(cmd, DateTime.MinValue, string.Empty).ToList();
+					var results = new List<LaneAttendance>();
+					if (null != rets)
+					{
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToLaneAttendance());
+						});
+					}
+					result.data = results;
+					result.Success();
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = new List<LaneAttendance>();
 				}
+
+				return result;
 			}
 		}
 
