@@ -64,24 +64,67 @@ namespace DMT.Services
 
             #region Role
 
-            public Role GetRole(Search.Roles.ById value)
+            public NRestResult<Role> GetRole(Search.Roles.ById value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<Role>(
-                    RouteConsts.User.GetRole.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<Role> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(port: 9000)
+                        .Execute<Role>(RouteConsts.User.GetRole.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<Role>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
                 return ret;
             }
 
-            public List<Role> GetRoles()
+            public NRestResult<List<Role>> GetRoles()
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<Role>>(
-                    RouteConsts.User.GetRoles.Url, new { });
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<Role>> ret;
+
+                ret = NRestClient.Create(port: 9000)
+                    .Execute<List<Role>>(RouteConsts.User.GetRoles.Url, new { });
+
                 return ret;
             }
 
-            public Role SaveRole(Role value)
+            public NRestResult<Role> SaveRole(Role value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<Role>(
-                    RouteConsts.User.SaveRole.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<Role> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(port: 9000)
+                        .Execute<Role>(RouteConsts.User.SaveRole.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<Role>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
                 return ret;
             }
 
@@ -89,52 +132,171 @@ namespace DMT.Services
 
             #region User
 
-            public List<User> GetUsers(Role role)
+            public NRestResult<List<User>> GetUsers(Role value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<User>>(
-                    RouteConsts.User.GetUsers.Url, role);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<User>> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(port: 9000)
+                        .Execute<List<User>>(RouteConsts.User.GetUsers.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<User>>();
+                    ret.ParameterIsNull();
+                    ret.data = new List<User>();
+                }
                 return ret;
             }
 
-            public User GetByCardId(Search.Users.ByCardId value)
+            public NRestResult<User> GetByCardId(Search.Users.ByCardId value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<User>(
-                    RouteConsts.User.GetByCardId.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<User> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(port: 9000)
+                        .Execute<User>(RouteConsts.User.GetByCardId.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<User>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
                 return ret;
             }
 
-            public User GetById(Search.Users.ById value)
+            public NRestResult<User> GetById(Search.Users.ById value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<User>(
-                    RouteConsts.User.GetById.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<User> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(port: 9000)
+                        .Execute<User>(RouteConsts.User.GetById.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<User>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
                 return ret;
             }
 
-            public List<User> SearchByGroupId(Search.Users.ByGroupId value)
+            public NRestResult<List<User>> SearchByGroupId(Search.Users.ByGroupId value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<User>>(
-                    RouteConsts.User.SearchByGroupId.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<User>> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(port: 9000)
+                        .Execute<List<User>>(RouteConsts.User.SearchByGroupId.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<User>>();
+                    ret.ParameterIsNull();
+                    ret.data = new List<User>();
+                }
                 return ret;
             }
 
-            public List<User> SearchById(Search.Users.ById value)
+            public NRestResult<List<User>> SearchById(Search.Users.ById value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<User>>(
-                    RouteConsts.User.SearchById.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<User>> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(port: 9000)
+                        .Execute<List<User>>(RouteConsts.User.SearchById.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<User>>();
+                    ret.ParameterIsNull();
+                    ret.data = new List<User>();
+                }
                 return ret;
             }
 
-            public User GetByLogIn(Search.Users.ByLogIn value)
+            public NRestResult<User> GetByLogIn(Search.Users.ByLogIn value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<User>(
-                    RouteConsts.User.GetByLogIn.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<User> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(port: 9000)
+                        .Execute<User>(RouteConsts.User.GetByLogIn.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<User>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
                 return ret;
             }
 
-            public User SaveUser(User value)
+            public NRestResult<User> SaveUser(User value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<User>(
-                    RouteConsts.User.SaveUser.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<User> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(port: 9000)
+                        .Execute<User>(RouteConsts.User.SaveUser.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<User>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
                 return ret;
             }
 
