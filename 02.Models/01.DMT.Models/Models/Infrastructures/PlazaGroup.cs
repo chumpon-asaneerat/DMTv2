@@ -356,6 +356,7 @@ namespace DMT.Models
 				catch (Exception ex)
 				{
 					result.Error(ex);
+					result.data = new List<PlazaGroup>();
 				}
 
 				return result;
@@ -461,6 +462,7 @@ namespace DMT.Models
 				catch (Exception ex)
 				{
 					result.Error(ex);
+					result.data = new List<PlazaGroup>();
 
 				}
 				return result;

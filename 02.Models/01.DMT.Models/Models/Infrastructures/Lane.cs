@@ -585,35 +585,54 @@ namespace DMT.Models
 
 		public static NDbResult<List<Lane>> Gets(SQLiteConnection db)
 		{
-			if (null == db) return new List<Lane>();
+			var result = new NDbResult<List<Lane>>();
+
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<Lane>();
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT Lane.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-				cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-				cmd += "  FROM Lane, Plaza, PlazaGroup, TSB ";
-				cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND Lane.TSBId = TSB.TSBId ";
-				cmd += "   AND Lane.PlazaGroupId = Plaza.PlazaGroupId ";
-				cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-
-				var rets = NQuery.Query<FKs>(cmd).ToList();
-				var results = new List<Lane>();
-				if (null != rets)
+				try
 				{
-					rets.ForEach(ret =>
+					string cmd = string.Empty;
+					cmd += "SELECT Lane.* ";
+					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
+					cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+					cmd += "  FROM Lane, Plaza, PlazaGroup, TSB ";
+					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND Lane.TSBId = TSB.TSBId ";
+					cmd += "   AND Lane.PlazaGroupId = Plaza.PlazaGroupId ";
+					cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+
+					var rets = NQuery.Query<FKs>(cmd).ToList();
+					var results = new List<Lane>();
+					if (null != rets)
 					{
-						results.Add(ret.ToLane());
-					});
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToLane());
+						});
+					}
+					result.data = results;
+					result.Success();
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+
 				}
 
-				return results;
+				return result;
 			}
 		}
+
 		public static NDbResult<List<Lane>> Gets()
 		{
 			lock (sync)
@@ -622,27 +641,46 @@ namespace DMT.Models
 				return Gets(db);
 			}
 		}
-		public static Lane Get(SQLiteConnection db, string laneId)
+
+		public static NDbResult<Lane> Get(SQLiteConnection db, string laneId)
 		{
-			if (null == db) return null;
+			var result = new NDbResult<Lane>();
+
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT Lane.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-				cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-				cmd += "  FROM Lane, Plaza, PlazaGroup, TSB ";
-				cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND Lane.TSBId = TSB.TSBId ";
-				cmd += "   AND Lane.PlazaGroupId = Plaza.PlazaGroupId ";
-				cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-				cmd += "   AND Lane.LaneId = ? ";
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT Lane.* ";
+					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
+					cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+					cmd += "  FROM Lane, Plaza, PlazaGroup, TSB ";
+					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND Lane.TSBId = TSB.TSBId ";
+					cmd += "   AND Lane.PlazaGroupId = Plaza.PlazaGroupId ";
+					cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+					cmd += "   AND Lane.LaneId = ? ";
 
-				var ret = NQuery.Query<FKs>(cmd, laneId).FirstOrDefault();
-				return (null != ret) ? ret.ToLane() : null;
+					var ret = NQuery.Query<FKs>(cmd, laneId).FirstOrDefault();
+					result.data = (null != ret) ? ret.ToLane() : null;
+					result.Success();
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+
+				}
+				return result;
 			}
 		}
 		public static NDbResult<Lane> Get(string laneId)
@@ -656,111 +694,203 @@ namespace DMT.Models
 
 		public static NDbResult<List<Lane>> GetTSBLanes(TSB value)
 		{
+			var result = new NDbResult<List<Lane>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<Lane>();
+				return result;
+			}
+
 			lock (sync)
 			{
-				if (null == value) return new List<Lane>();
 				return GetTSBLanes(value.TSBId);
 			}
 		}
 		public static NDbResult<List<Lane>> GetTSBLanes(string tsbId)
 		{
+			var result = new NDbResult<List<Lane>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<Lane>();
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT Lane.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-				cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-				cmd += "  FROM Lane, Plaza, PlazaGroup, TSB ";
-				cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND Lane.TSBId = TSB.TSBId ";
-				cmd += "   AND Lane.PlazaGroupId = Plaza.PlazaGroupId ";
-				cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-				cmd += "   AND Lane.TSBId = ? ";
-				return NQuery.Query<FKs>(cmd, tsbId).ToList<Lane>();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT Lane.* ";
+					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
+					cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+					cmd += "  FROM Lane, Plaza, PlazaGroup, TSB ";
+					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND Lane.TSBId = TSB.TSBId ";
+					cmd += "   AND Lane.PlazaGroupId = Plaza.PlazaGroupId ";
+					cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+					cmd += "   AND Lane.TSBId = ? ";
+					var rets = NQuery.Query<FKs>(cmd, tsbId).ToList();
+					var results = new List<Lane>();
+					if (null != rets)
+					{
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToLane());
+						});
+					}
+					result.data = results;
+					result.Success();
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = new List<Lane>();
+				}
+				return result;
 			}
 		}
+
 		public static NDbResult<List<Lane>> GetPlazaGroupLanes(PlazaGroup value)
 		{
+			var result = new NDbResult<List<Lane>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<Lane>();
+				return result;
+			}
+
 			lock (sync)
 			{
-				if (null == value) return new List<Lane>();
 				return GetPlazaGroupLanes(value.TSBId, value.PlazaGroupId);
 			}
 		}
 		public static NDbResult<List<Lane>> GetPlazaGroupLanes(string tsbId, string plazaGroupId)
 		{
+			var result = new NDbResult<List<Lane>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<Lane>();
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT Lane.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-				cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-				cmd += "  FROM Lane, Plaza, PlazaGroup, TSB ";
-				cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND Lane.TSBId = TSB.TSBId ";
-				cmd += "   AND Lane.PlazaGroupId = Plaza.PlazaGroupId ";
-				cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-				cmd += "   AND Lane.TSBId = ? ";
-				cmd += "   AND Lane.PlazaGroupId = ? ";
-
-				var rets = NQuery.Query<FKs>(cmd, tsbId, plazaGroupId).ToList();
-				var results = new List<Lane>();
-				if (null != rets)
+				try
 				{
-					rets.ForEach(ret =>
+					string cmd = string.Empty;
+					cmd += "SELECT Lane.* ";
+					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
+					cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+					cmd += "  FROM Lane, Plaza, PlazaGroup, TSB ";
+					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND Lane.TSBId = TSB.TSBId ";
+					cmd += "   AND Lane.PlazaGroupId = Plaza.PlazaGroupId ";
+					cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+					cmd += "   AND Lane.TSBId = ? ";
+					cmd += "   AND Lane.PlazaGroupId = ? ";
+
+					var rets = NQuery.Query<FKs>(cmd, tsbId, plazaGroupId).ToList();
+					var results = new List<Lane>();
+					if (null != rets)
 					{
-						results.Add(ret.ToLane());
-					});
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToLane());
+						});
+					}
+					result.data = results;
+					result.Success();
 				}
-				return results;
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = new List<Lane>();
+				}
+				return result;
 			}
 		}
 
 		public static NDbResult<List<Lane>> GetPlazaLanes(Plaza value)
 		{
+			var result = new NDbResult<List<Lane>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<Lane>();
+				return result;
+			}
+
 			lock (sync)
 			{
-				if (null == value) return new List<Lane>();
 				return GetPlazaLanes(value.TSBId, value.PlazaGroupId, value.PlazaId);
 			}
 		}
+
 		public static NDbResult<List<Lane>> GetPlazaLanes(string tsbId, string plazaGroupId, 
 			string plazaId)
 		{
+			var result = new NDbResult<List<Lane>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<Lane>();
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT Lane.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-				cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-				cmd += "  FROM Lane, Plaza, PlazaGroup, TSB ";
-				cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND Lane.TSBId = TSB.TSBId ";
-				cmd += "   AND Lane.PlazaGroupId = Plaza.PlazaGroupId ";
-				cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-				cmd += "   AND Lane.TSBId = ? ";
-				cmd += "   AND Lane.PlazaGroupId = ? ";
-				cmd += "   AND Lane.PlazaId = ? ";
-
-				var rets = NQuery.Query<FKs>(cmd, tsbId, plazaGroupId, plazaId).ToList();
-				var results = new List<Lane>();
-				if (null != rets)
+				try
 				{
-					rets.ForEach(ret =>
+					string cmd = string.Empty;
+					cmd += "SELECT Lane.* ";
+					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
+					cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+					cmd += "  FROM Lane, Plaza, PlazaGroup, TSB ";
+					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND Lane.TSBId = TSB.TSBId ";
+					cmd += "   AND Lane.PlazaGroupId = Plaza.PlazaGroupId ";
+					cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+					cmd += "   AND Lane.TSBId = ? ";
+					cmd += "   AND Lane.PlazaGroupId = ? ";
+					cmd += "   AND Lane.PlazaId = ? ";
+
+					var rets = NQuery.Query<FKs>(cmd, tsbId, plazaGroupId, plazaId).ToList();
+					var results = new List<Lane>();
+					if (null != rets)
 					{
-						results.Add(ret.ToLane());
-					});
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToLane());
+						});
+					}
+					result.data = results;
+					result.Success();
 				}
-				return results;
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = new List<Lane>();
+				}
+				return result;
 			}
 		}
 
