@@ -625,19 +625,26 @@ namespace DMT.Models
         {
             lock (sync)
             {
-                if (null == shift) return false;
-                var last = GetCurrent(shift.UserId);
-                if (null != last)
+                try
                 {
-                    // not enter revenue entry.
-                    return false;
-                }
-                // Begin new shift.
-                if (shift.Begin == DateTime.MinValue)
-                    shift.Begin = DateTime.Now;
+                    if (null == shift) return false;
+                    var last = GetCurrent(shift.UserId);
+                    if (null != last)
+                    {
+                        // not enter revenue entry.
+                        return false;
+                    }
+                    // Begin new shift.
+                    if (shift.Begin == DateTime.MinValue)
+                        shift.Begin = DateTime.Now;
 
-                Save(shift);
-                return true;
+                    Save(shift);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+
+                }
             }
         }
 
@@ -645,12 +652,19 @@ namespace DMT.Models
         {
             lock (sync)
             {
-                if (null == shift) return;
-                // End shift.
-                if (shift.End == DateTime.MinValue)
-                    shift.End = DateTime.Now;
+                try
+                {
+                    if (null == shift) return;
+                    // End shift.
+                    if (shift.End == DateTime.MinValue)
+                        shift.End = DateTime.Now;
 
-                Save(shift);
+                    Save(shift);
+                }
+                catch (Exception ex)
+                {
+
+                }
             }
         }
 
@@ -658,21 +672,28 @@ namespace DMT.Models
         {
             lock (sync)
             {
-                string cmd = string.Empty;
-                cmd += "SELECT UserShift.* ";
-                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
-                cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM UserShift, Shift, User, TSB ";
-                cmd += " WHERE UserShift.ShiftId = Shift.ShiftId ";
-                cmd += "   AND TSB.Active = 1 ";
-                cmd += "   AND UserShift.UserId = User.UserId ";
-                cmd += "   AND UserShift.TSBId = TSB.TSBId ";
-                cmd += "   AND UserShift.UserId = ? ";
-                cmd += "   AND UserShift.End = ? ";
-                var ret = NQuery.Query<FKs>(cmd, userId,
-                    DateTime.MinValue).FirstOrDefault();
-                return (null != ret) ? ret.ToUserShift() : null;
+                try
+                {
+                    string cmd = string.Empty;
+                    cmd += "SELECT UserShift.* ";
+                    cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                    cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
+                    cmd += "     , User.FullNameEN, User.FullNameTH ";
+                    cmd += "  FROM UserShift, Shift, User, TSB ";
+                    cmd += " WHERE UserShift.ShiftId = Shift.ShiftId ";
+                    cmd += "   AND TSB.Active = 1 ";
+                    cmd += "   AND UserShift.UserId = User.UserId ";
+                    cmd += "   AND UserShift.TSBId = TSB.TSBId ";
+                    cmd += "   AND UserShift.UserId = ? ";
+                    cmd += "   AND UserShift.End = ? ";
+                    var ret = NQuery.Query<FKs>(cmd, userId,
+                        DateTime.MinValue).FirstOrDefault();
+                    return (null != ret) ? ret.ToUserShift() : null;
+                }
+                catch (Exception ex)
+                {
+
+                }
             }
         }
 
@@ -680,29 +701,36 @@ namespace DMT.Models
         {
             lock (sync)
             {
-                string cmd = string.Empty;
-                cmd += "SELECT UserShift.* ";
-                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
-                cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM UserShift, Shift, User, TSB ";
-                cmd += " WHERE UserShift.ShiftId = Shift.ShiftId ";
-                cmd += "   AND TSB.Active = 1 ";
-                cmd += "   AND UserShift.UserId = User.UserId ";
-                cmd += "   AND UserShift.TSBId = TSB.TSBId ";
-                cmd += "   AND UserShift.UserId = ? ";
-
-                var rets = NQuery.Query<FKs>(cmd, userId).ToList();
-                var results = new List<UserShift>();
-                if (null != rets)
+                try
                 {
-                    rets.ForEach(ret =>
-                    {
-                        results.Add(ret.ToUserShift());
-                    });
-                }
+                    string cmd = string.Empty;
+                    cmd += "SELECT UserShift.* ";
+                    cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                    cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
+                    cmd += "     , User.FullNameEN, User.FullNameTH ";
+                    cmd += "  FROM UserShift, Shift, User, TSB ";
+                    cmd += " WHERE UserShift.ShiftId = Shift.ShiftId ";
+                    cmd += "   AND TSB.Active = 1 ";
+                    cmd += "   AND UserShift.UserId = User.UserId ";
+                    cmd += "   AND UserShift.TSBId = TSB.TSBId ";
+                    cmd += "   AND UserShift.UserId = ? ";
 
-                return results;
+                    var rets = NQuery.Query<FKs>(cmd, userId).ToList();
+                    var results = new List<UserShift>();
+                    if (null != rets)
+                    {
+                        rets.ForEach(ret =>
+                        {
+                            results.Add(ret.ToUserShift());
+                        });
+                    }
+
+                    return results;
+                }
+                catch (Exception ex)
+                {
+
+                }
             }
         }
 
@@ -710,29 +738,36 @@ namespace DMT.Models
         {
             lock (sync)
             {
-                string cmd = string.Empty;
-                cmd += "SELECT UserShift.* ";
-                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
-                cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM UserShift, Shift, User, TSB ";
-                cmd += " WHERE UserShift.ShiftId = Shift.ShiftId ";
-                cmd += "   AND TSB.Active = 1 ";
-                cmd += "   AND UserShift.UserId = User.UserId ";
-                cmd += "   AND UserShift.TSBId = TSB.TSBId ";
-                cmd += "   AND UserShift.End = ? ";
-
-                var rets = NQuery.Query<FKs>(cmd, DateTime.MinValue).ToList();
-                var results = new List<UserShift>();
-                if (null != rets)
+                try
                 {
-                    rets.ForEach(ret =>
-                    {
-                        results.Add(ret.ToUserShift());
-                    });
-                }
+                    string cmd = string.Empty;
+                    cmd += "SELECT UserShift.* ";
+                    cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                    cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
+                    cmd += "     , User.FullNameEN, User.FullNameTH ";
+                    cmd += "  FROM UserShift, Shift, User, TSB ";
+                    cmd += " WHERE UserShift.ShiftId = Shift.ShiftId ";
+                    cmd += "   AND TSB.Active = 1 ";
+                    cmd += "   AND UserShift.UserId = User.UserId ";
+                    cmd += "   AND UserShift.TSBId = TSB.TSBId ";
+                    cmd += "   AND UserShift.End = ? ";
 
-                return results;
+                    var rets = NQuery.Query<FKs>(cmd, DateTime.MinValue).ToList();
+                    var results = new List<UserShift>();
+                    if (null != rets)
+                    {
+                        rets.ForEach(ret =>
+                        {
+                            results.Add(ret.ToUserShift());
+                        });
+                    }
+
+                    return results;
+                }
+                catch (Exception ex)
+                {
+
+                }
             }
         }
 

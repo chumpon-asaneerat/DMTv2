@@ -67,7 +67,7 @@
     <None Include="Services\Operations\PlazaOperations.Coupon.cs" />
     <None Include="Services\Operations\PlazaOperations.Credit.cs" />
     <None Include="Services\Operations\PlazaOperations.Exchange.cs" />
-    <None Include="Services\Operations\PlazaOperations.UserShift.cs" />
+    <Compile Include="Services\Operations\PlazaOperations.UserShift.cs" />
     <None Include="Services\Operations\PlazaOperations.Lane.cs" />
     <None Include="Services\Operations\PlazaOperations.Revenue.cs" />
     <Compile Include="Services\Operations\PlazaOperations.Shift.cs" />

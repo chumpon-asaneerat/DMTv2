@@ -91,7 +91,7 @@
     <None Include="WebServer\Controllers\CouponController.cs" />
     <None Include="WebServer\Controllers\CreditController.cs" />
     <None Include="WebServer\Controllers\ExchangeController.cs" />
-    <None Include="WebServer\Controllers\UserShiftController.cs" />
+    <Compile Include="WebServer\Controllers\UserShiftController.cs" />
     <None Include="WebServer\Controllers\LaneController.cs" />
     <None Include="WebServer\Controllers\RevenueController.cs" />
     <Compile Include="WebServer\Controllers\ShiftController.cs" />
