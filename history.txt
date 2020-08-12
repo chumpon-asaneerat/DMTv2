@@ -11,8 +11,10 @@ Update 2020-08-13 #28
 Update 2020-08-13 #27
 - 
 
+[commited]
 Update 2020-08-13 #26
-- 
+- Update Local/DataCenter/TAxTOD service operation #84.
+- Implements RevenueEntry related process #2.
 
 [commited]
 Update 2020-08-13 #25

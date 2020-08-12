@@ -151,7 +151,7 @@ namespace DMT.Services
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
 
-                NRestResult ret;
+                NRestResult<RevenueEntry> ret;
 
                 if (null != value)
                 {
@@ -160,12 +160,14 @@ namespace DMT.Services
                 }
                 else
                 {
-
+                    ret = new NRestResult<RevenueEntry>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
                 }
                 return ret;
             }
 
-            public List<RevenueEntry> GetRevenues(DateTime value)
+            public NRestResult<List<RevenueEntry>> GetRevenues(DateTime value)
             {
                 NRestClient.WebProtocol protocol =
                     (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
@@ -182,7 +184,9 @@ namespace DMT.Services
                 }
                 else
                 {
-
+                    ret = new NRestResult<List<RevenueEntry>>();
+                    ret.ParameterIsNull();
+                    ret.data = new List<RevenueEntry>();
                 }
                 return ret;
             }
