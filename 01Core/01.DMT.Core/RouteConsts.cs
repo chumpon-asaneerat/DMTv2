@@ -185,17 +185,25 @@ namespace DMT
         {
             public const string Url = RouteConsts.Url + @"/Shift";
 
+            #region Shift
+
             public static class GetShifts
             {
                 public const string Name = "GetShifts";
                 public const string Url = Shift.Url + @"/" + Name;
             }
 
+            #endregion
+
+            #region TSB Shift
+
             public static class ChangeShift
             {
                 public const string Name = "ChangeShift";
                 public const string Url = Shift.Url + @"/" + Name;
             }
+
+            #endregion
 
             public static class GetCurrent
             {
