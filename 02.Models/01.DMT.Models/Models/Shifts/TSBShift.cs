@@ -634,6 +634,45 @@ namespace DMT.Models
             return result;
         }
 
+        public static NDbResult<TSBShift> GetCurrent()
+        {
+            NDbResult<TSBShift> result = new NDbResult<TSBShift>();
+            SQLiteConnection db = Default;
+            if (null == db)
+            {
+                result.ConenctFailed();
+                result.data = null;
+                return result;
+            }
+
+            lock (sync)
+            {
+                try
+                {
+                    string cmd = string.Empty;
+                    cmd += "SELECT TSBShift.* ";
+                    cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                    cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
+                    cmd += "     , User.FullNameEN, User.FullNameTH ";
+                    cmd += "  FROM TSBShift, TSB, Shift, User ";
+                    cmd += " WHERE TSBShift.ShiftId = Shift.ShiftId ";
+                    cmd += "   AND TSB.Active = 1 ";
+                    cmd += "   AND TSBShift.UserId = User.UserId ";
+                    cmd += "   AND TSBShift.TSBId = TSB.TSBId ";
+                    cmd += "   AND TSBShift.End = ? ";
+                    var ret = NQuery.Query<FKs>(cmd, DateTime.MinValue).FirstOrDefault();
+                    result.data = (null != ret) ? ret.ToTSBShift() : null;
+                    result.Success();
+                }
+                catch (Exception ex)
+                {
+                    result.Error(ex);
+                    result.data = null;
+                }
+                return result;
+            }
+        }
+
         public static NDbResult ChangeShift(TSBShift value)
         {
             NDbResult result = new NDbResult();
@@ -678,45 +717,6 @@ namespace DMT.Models
                 catch (Exception ex)
                 {
                     result.Error(ex);
-                }
-                return result;
-            }
-        }
-
-        public static NDbResult<TSBShift> GetCurrent()
-        {
-            NDbResult<TSBShift> result = new NDbResult<TSBShift>();
-            SQLiteConnection db = Default;
-            if (null == db)
-            {
-                result.ConenctFailed();
-                result.data = null;
-                return result;
-            }
-
-            lock (sync)
-            {
-                try
-                {
-                    string cmd = string.Empty;
-                    cmd += "SELECT TSBShift.* ";
-                    cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                    cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
-                    cmd += "     , User.FullNameEN, User.FullNameTH ";
-                    cmd += "  FROM TSBShift, TSB, Shift, User ";
-                    cmd += " WHERE TSBShift.ShiftId = Shift.ShiftId ";
-                    cmd += "   AND TSB.Active = 1 ";
-                    cmd += "   AND TSBShift.UserId = User.UserId ";
-                    cmd += "   AND TSBShift.TSBId = TSB.TSBId ";
-                    cmd += "   AND TSBShift.End = ? ";
-                    var ret = NQuery.Query<FKs>(cmd, DateTime.MinValue).FirstOrDefault();
-                    result.data = (null != ret) ? ret.ToTSBShift() : null;
-                    result.Success();
-                }
-                catch (Exception ex)
-                {
-                    result.Error(ex);
-                    result.data = null;
                 }
                 return result;
             }
