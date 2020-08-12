@@ -23,8 +23,10 @@ Update 2020-08-13 #14
 Update 2020-08-13 #13
 - 
 
+[commited]
 Update 2020-08-13 #12
-- 
+- Update Local/DataCenter/TAxTOD service operation #70.
+- Implements Shift related process #1.
 
 [commited]
 Update 2020-08-13 #11

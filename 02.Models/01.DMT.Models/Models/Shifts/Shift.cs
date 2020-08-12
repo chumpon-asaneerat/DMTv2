@@ -176,17 +176,36 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static List<Shift> Gets(SQLiteConnection db)
+		public static NDbResult<List<Shift>> Gets(SQLiteConnection db)
 		{
-			if (null == db) return new List<Shift>();
+			var result = new NDbResult<List<Shift>>();
+
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<Shift>();
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT * FROM Shift ";
-				return NQuery.Query<Shift>(cmd);
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * FROM Shift ";
+					result.data = NQuery.Query<Shift>(cmd);
+					result.Success();
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = new List<Shift>();
+				}
+				return result;
 			}
 		}
-		public static List<Shift> Gets()
+
+		public static NDbResult<List<Shift>> Gets()
 		{
 			lock (sync)
 			{
@@ -194,18 +213,39 @@ namespace DMT.Models
 				return Gets(db);
 			}
 		}
-		public static Shift Get(SQLiteConnection db, string shiftId)
+
+		public static NDbResult<Shift> Get(SQLiteConnection db, string shiftId)
 		{
-			if (null == db) return null;
+			var result = new NDbResult<Shift>();
+
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT * FROM Shift ";
-				cmd += " WHERE ShiftId = ? ";
-				return NQuery.Query<Shift>(cmd, shiftId).FirstOrDefault();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * FROM Shift ";
+					cmd += " WHERE ShiftId = ? ";
+					result.data = NQuery.Query<Shift>(cmd, shiftId).FirstOrDefault();
+					result.Success();
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = null;
+
+				}
+				return result;
 			}
 		}
-		public static Shift Get(string shiftId)
+
+		public static NDbResult<Shift> Get(string shiftId)
 		{
 			lock (sync)
 			{
