@@ -1886,10 +1886,11 @@ namespace DMT.Models
 		{
 			lock (sync)
 			{
-				if (null == user || null == plazaGroup) return null;
+				try
+				{
+					if (null == user || null == plazaGroup) return null;
 
-
-				string cmd = @"
+					string cmd = @"
 					SELECT *
 					  FROM UserCreditSummaryView
 					 WHERE UserCreditSummaryView.UserId = ?
@@ -1897,35 +1898,40 @@ namespace DMT.Models
 					   AND UserCreditSummaryView.State <> ? 
 				";
 
-				var ret = NQuery.Query<FKs>(cmd,
-					user.UserId, plazaGroup.TSBId, StateTypes.Completed).FirstOrDefault();
+					var ret = NQuery.Query<FKs>(cmd,
+						user.UserId, plazaGroup.TSBId, StateTypes.Completed).FirstOrDefault();
 
-				UserCreditBalance inst;
-				if (null == ret)
-				{
-					inst = Create();
+					UserCreditBalance inst;
+					if (null == ret)
+					{
+						inst = Create();
 
-					inst.TSBId = plazaGroup.TSBId;
-					inst.TSBNameEN = plazaGroup.TSBNameEN;
-					inst.TSBNameTH = plazaGroup.TSBNameTH;
+						inst.TSBId = plazaGroup.TSBId;
+						inst.TSBNameEN = plazaGroup.TSBNameEN;
+						inst.TSBNameTH = plazaGroup.TSBNameTH;
 
-					inst.PlazaGroupId = plazaGroup.PlazaGroupId;
-					inst.PlazaGroupNameEN = plazaGroup.PlazaGroupNameEN;
-					inst.PlazaGroupNameTH = plazaGroup.PlazaGroupNameTH;
-					inst.Direction = plazaGroup.Direction;
+						inst.PlazaGroupId = plazaGroup.PlazaGroupId;
+						inst.PlazaGroupNameEN = plazaGroup.PlazaGroupNameEN;
+						inst.PlazaGroupNameTH = plazaGroup.PlazaGroupNameTH;
+						inst.Direction = plazaGroup.Direction;
 
-					inst.UserId = user.UserId;
-					inst.FullNameEN = user.FullNameEN;
-					inst.FullNameTH = user.FullNameTH;
+						inst.UserId = user.UserId;
+						inst.FullNameEN = user.FullNameEN;
+						inst.FullNameTH = user.FullNameTH;
 
-					inst.State = StateTypes.Initial;
+						inst.State = StateTypes.Initial;
+					}
+					else
+					{
+						inst = ret.ToUserCreditBalance();
+					}
+
+					return inst;
 				}
-				else
+				catch (Exception ex)
 				{
-					inst = ret.ToUserCreditBalance();
-				}
 
-				return inst;
+				}
 			}
 		}
 
@@ -1934,11 +1940,13 @@ namespace DMT.Models
 		{
 			lock (sync)
 			{
-				if (string.IsNullOrWhiteSpace(userId) || 
-					string.IsNullOrWhiteSpace(plazaGroupId)) return null;
+				try
+				{
+					if (string.IsNullOrWhiteSpace(userId) ||
+						string.IsNullOrWhiteSpace(plazaGroupId)) return null;
 
 
-				string cmd = @"
+					string cmd = @"
 					SELECT *
 					  FROM UserCreditSummaryView
 					 WHERE UserCreditSummaryView.UserId = ?
@@ -1946,11 +1954,16 @@ namespace DMT.Models
 					   AND UserCreditSummaryView.State <> ? 
 				";
 
-				var ret = NQuery.Query<FKs>(cmd,
-					userId, plazaGroupId, StateTypes.Completed).FirstOrDefault();
+					var ret = NQuery.Query<FKs>(cmd,
+						userId, plazaGroupId, StateTypes.Completed).FirstOrDefault();
 
-				UserCreditBalance inst = (null != ret) ? ret.ToUserCreditBalance() : null;
-				return inst;
+					UserCreditBalance inst = (null != ret) ? ret.ToUserCreditBalance() : null;
+					return inst;
+				}
+				catch (Exception ex)
+				{
+
+				}
 			}
 		}
 
@@ -1958,26 +1971,33 @@ namespace DMT.Models
 		{
 			lock (sync)
 			{
-				if (null == tsb) return null;
+				try
+				{
+					if (null == tsb) return null;
 
-				string cmd = @"
+					string cmd = @"
 					SELECT *
 					  FROM UserCreditSummaryView
 					 WHERE UserCreditSummaryView.TSBId = ? 
 					   AND UserCreditSummaryView.State <> ? 
 				";
 
-				var rets = NQuery.Query<FKs>(cmd,
-					tsb.TSBId, StateTypes.Completed).ToList();
-				var results = new List<UserCreditBalance>();
-				if (null != rets)
-				{
-					rets.ForEach(ret => 
+					var rets = NQuery.Query<FKs>(cmd,
+						tsb.TSBId, StateTypes.Completed).ToList();
+					var results = new List<UserCreditBalance>();
+					if (null != rets)
 					{
-						results.Add(ret.ToUserCreditBalance());
-					});
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToUserCreditBalance());
+						});
+					}
+					return results;
 				}
-				return results;
+				catch (Exception ex)
+				{
+
+				}
 			}
 		}
 

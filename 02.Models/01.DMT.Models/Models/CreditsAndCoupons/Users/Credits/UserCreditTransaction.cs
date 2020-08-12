@@ -1707,34 +1707,41 @@ namespace DMT.Models
 			if (null == tsb) return null;
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT UserCreditTransaction.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-				cmd += "     , User.UserId, User.FullNameEN, User.FullNameTH ";
-				cmd += "     , UserCredit.UserCreditDate ";
-				cmd += "     , UserCredit.State, UserCredit.BagNo, UserCredit.BeltNo ";
-				cmd += "  FROM UserCreditTransaction, TSB, PlazaGroup, User, UserCredit ";
-				cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-				cmd += "   AND UserCredit.TSBId = TSB.TSBId ";
-				cmd += "   AND UserCredit.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND UserCredit.UserId = User.UserId ";
-				cmd += "   AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId ";
-				cmd += "   AND UserCredit.TSBId = ? ";
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT UserCreditTransaction.* ";
+					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
+					cmd += "     , User.UserId, User.FullNameEN, User.FullNameTH ";
+					cmd += "     , UserCredit.UserCreditDate ";
+					cmd += "     , UserCredit.State, UserCredit.BagNo, UserCredit.BeltNo ";
+					cmd += "  FROM UserCreditTransaction, TSB, PlazaGroup, User, UserCredit ";
+					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
+					cmd += "   AND UserCredit.TSBId = TSB.TSBId ";
+					cmd += "   AND UserCredit.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND UserCredit.UserId = User.UserId ";
+					cmd += "   AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId ";
+					cmd += "   AND UserCredit.TSBId = ? ";
 
-				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
-				if (null == rets)
-				{
-					return new List<UserCreditTransaction>();
-				}
-				else
-				{
-					var results = new List<UserCreditTransaction>();
-					rets.ForEach(ret =>
+					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
+					if (null == rets)
 					{
-						results.Add(ret.ToUserCreditTransaction());
-					});
-					return results;
+						return new List<UserCreditTransaction>();
+					}
+					else
+					{
+						var results = new List<UserCreditTransaction>();
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToUserCreditTransaction());
+						});
+						return results;
+					}
+				}
+				catch (Exception ex)
+				{
+
 				}
 			}
 		}
