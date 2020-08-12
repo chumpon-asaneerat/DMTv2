@@ -878,131 +878,171 @@ namespace DMT.Models
 
 		public static List<LanePayment> Search(UserShift shift)
 		{
-			if (null == shift) return new List<LanePayment>();
+			if (null == shift)
+			{
+				return new List<LanePayment>();
+			}
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT LanePayment.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-				cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-				cmd += "     , Lane.LaneNo ";
-				cmd += "     , User.FullNameEN, User.FullNameTH ";
-				cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
-				cmd += "  FROM LanePayment, TSB, PlazaGroup, Plaza, Lane, User, Payment ";
-				cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND Lane.TSBId = TSB.TSBId ";
-				cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-				cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
-				cmd += "   AND LanePayment.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND LanePayment.PlazaId = Plaza.PlazaId ";
-				cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
-				cmd += "   AND LanePayment.UserId = User.UserId ";
-				cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
-				cmd += "   AND LanePayment.Begin >= ? ";
-				cmd += "   AND LanePayment.End <= ? ";
-				return NQuery.Query<FKs>(cmd, shift.Begin, shift.End,
-					DateTime.MinValue).ToList<LanePayment>();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT LanePayment.* ";
+					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
+					cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+					cmd += "     , Lane.LaneNo ";
+					cmd += "     , User.FullNameEN, User.FullNameTH ";
+					cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
+					cmd += "  FROM LanePayment, TSB, PlazaGroup, Plaza, Lane, User, Payment ";
+					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND Lane.TSBId = TSB.TSBId ";
+					cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+					cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
+					cmd += "   AND LanePayment.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND LanePayment.PlazaId = Plaza.PlazaId ";
+					cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
+					cmd += "   AND LanePayment.UserId = User.UserId ";
+					cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
+					cmd += "   AND LanePayment.Begin >= ? ";
+					cmd += "   AND LanePayment.End <= ? ";
+					return NQuery.Query<FKs>(cmd, shift.Begin, shift.End,
+						DateTime.MinValue).ToList<LanePayment>();
+				}
+				catch (Exception ex)
+				{
+
+				}
 			}
 		}
 
 		public static List<LanePayment> Search(Lane lane)
 		{
-			if (null == lane) return new List<LanePayment>();
+			if (null == lane)
+			{
+				return new List<LanePayment>();
+			}
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT LanePayment.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-				cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-				cmd += "     , Lane.LaneNo ";
-				cmd += "     , User.FullNameEN, User.FullNameTH ";
-				cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
-				cmd += "  FROM LanePayment, TSB, PlazaGroup, Plaza, Lane, User, Payment ";
-				cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND Lane.TSBId = TSB.TSBId ";
-				cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-				cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
-				cmd += "   AND LanePayment.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND LanePayment.PlazaId = Plaza.PlazaId ";
-				cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
-				cmd += "   AND LanePayment.UserId = User.UserId ";
-				cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
-				cmd += "   AND LanePayment.LaneId = ? ";
-				return NQuery.Query<FKs>(cmd, lane.LaneId).ToList<LanePayment>();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT LanePayment.* ";
+					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
+					cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+					cmd += "     , Lane.LaneNo ";
+					cmd += "     , User.FullNameEN, User.FullNameTH ";
+					cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
+					cmd += "  FROM LanePayment, TSB, PlazaGroup, Plaza, Lane, User, Payment ";
+					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND Lane.TSBId = TSB.TSBId ";
+					cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+					cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
+					cmd += "   AND LanePayment.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND LanePayment.PlazaId = Plaza.PlazaId ";
+					cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
+					cmd += "   AND LanePayment.UserId = User.UserId ";
+					cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
+					cmd += "   AND LanePayment.LaneId = ? ";
+					return NQuery.Query<FKs>(cmd, lane.LaneId).ToList<LanePayment>();
+				}
+				catch (Exception ex)
+				{
+
+				}
 			}
 		}
 
 		public static LanePayment GetCurrentByLane(Lane lane)
 		{
-			if (null == lane) return null;
+			if (null == lane)
+			{
+				return null;
+			}
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT LanePayment.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-				cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-				cmd += "     , Lane.LaneNo ";
-				cmd += "     , User.FullNameEN, User.FullNameTH ";
-				cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
-				cmd += "  FROM LanePayment, TSB, PlazaGroup, Plaza, Lane, User, Payment ";
-				cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND Lane.TSBId = TSB.TSBId ";
-				cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-				cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
-				cmd += "   AND LanePayment.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND LanePayment.PlazaId = Plaza.PlazaId ";
-				cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
-				cmd += "   AND LanePayment.UserId = User.UserId ";
-				cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
-				cmd += "   AND LanePayment.LaneId = ? ";
-				cmd += "   AND LanePayment.End = ? ";
-				return NQuery.Query<FKs>(cmd,lane.LaneId,
-					DateTime.MinValue).FirstOrDefault<LanePayment>();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT LanePayment.* ";
+					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
+					cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+					cmd += "     , Lane.LaneNo ";
+					cmd += "     , User.FullNameEN, User.FullNameTH ";
+					cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
+					cmd += "  FROM LanePayment, TSB, PlazaGroup, Plaza, Lane, User, Payment ";
+					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND Lane.TSBId = TSB.TSBId ";
+					cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+					cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
+					cmd += "   AND LanePayment.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND LanePayment.PlazaId = Plaza.PlazaId ";
+					cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
+					cmd += "   AND LanePayment.UserId = User.UserId ";
+					cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
+					cmd += "   AND LanePayment.LaneId = ? ";
+					cmd += "   AND LanePayment.End = ? ";
+					return NQuery.Query<FKs>(cmd, lane.LaneId,
+						DateTime.MinValue).FirstOrDefault<LanePayment>();
+				}
+				catch (Exception ex)
+				{
+
+				}
 			}
 		}
 
 		public static List<LanePayment> Search(DateTime date)
 		{
-			if (null == date || date == DateTime.MinValue) return new List<LanePayment>();
+			if (null == date || date == DateTime.MinValue)
+			{
+				return new List<LanePayment>();
+			}
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT LanePayment.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-				cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-				cmd += "     , Lane.LaneNo ";
-				cmd += "     , User.FullNameEN, User.FullNameTH ";
-				cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
-				cmd += "  FROM LanePayment, TSB, PlazaGroup, Plaza, Lane, User, Payment ";
-				cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-				cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND Lane.TSBId = TSB.TSBId ";
-				cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-				cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
-				cmd += "   AND LanePayment.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND LanePayment.PlazaId = Plaza.PlazaId ";
-				cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
-				cmd += "   AND LanePayment.UserId = User.UserId ";
-				cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
-				cmd += " WHERE LanePayment.Begin >= ? ";
-				cmd += "   AND LanePayment.End <= ? ";
-				return NQuery.Query<FKs>(cmd, date,
-					DateTime.MinValue).ToList<LanePayment>();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT LanePayment.* ";
+					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
+					cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
+					cmd += "     , Lane.LaneNo ";
+					cmd += "     , User.FullNameEN, User.FullNameTH ";
+					cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
+					cmd += "  FROM LanePayment, TSB, PlazaGroup, Plaza, Lane, User, Payment ";
+					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
+					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND Lane.TSBId = TSB.TSBId ";
+					cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
+					cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
+					cmd += "   AND LanePayment.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND LanePayment.PlazaId = Plaza.PlazaId ";
+					cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
+					cmd += "   AND LanePayment.UserId = User.UserId ";
+					cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
+					cmd += " WHERE LanePayment.Begin >= ? ";
+					cmd += "   AND LanePayment.End <= ? ";
+					return NQuery.Query<FKs>(cmd, date,
+						DateTime.MinValue).ToList<LanePayment>();
+				}
+				catch (Exception ex)
+				{
+
+				}
 			}
 		}
 
