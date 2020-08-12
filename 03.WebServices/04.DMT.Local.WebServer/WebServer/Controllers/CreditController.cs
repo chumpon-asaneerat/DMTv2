@@ -21,10 +21,20 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.Credit.GetTSBBalance.Name)]
-        public NDbResult<TSBCreditBalance> GetTSBBalance([FromBody] TSB tsb)
+        public NDbResult<TSBCreditBalance> GetTSBBalance([FromBody] TSB value)
         {
-            var ret = TSBCreditBalance.GetCurrent(tsb);
-            return ret;
+            NDbResult<TSBCreditBalance> result;
+            if (null == value)
+            {
+                result = new NDbResult<TSBCreditBalance>();
+                result.ParameterIsNull();
+                result.data = null;
+            }
+            else
+            {
+                result = TSBCreditBalance.GetCurrent(value);
+            }
+            return result;
         }
 
         #endregion
@@ -33,9 +43,20 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.Credit.GetInitialTSBCreditTransaction.Name)]
-        public NDbResult<TSBCreditTransaction> GetInitialTSBCreditTransaction([FromBody] TSB tsb)
+        public NDbResult<TSBCreditTransaction> GetInitialTSBCreditTransaction([FromBody] TSB value)
         {
-            return TSBCreditTransaction.GetInitialTransaction(tsb);
+            NDbResult<TSBCreditTransaction> result;
+            if (null == value)
+            {
+                result = new NDbResult<TSBCreditTransaction>();
+                result.ParameterIsNull();
+                result.data = null;
+            }
+            else
+            {
+                result = TSBCreditTransaction.GetInitialTransaction(value);
+            }
+            return result;
         }
 
         [HttpPost]
@@ -43,13 +64,18 @@ namespace DMT.Services
         public NDbResult<TSBCreditTransaction> SaveTSBCreditTransaction(
             [FromBody] TSBCreditTransaction value)
         {
+            NDbResult<TSBCreditTransaction> result;
             if (null == value)
             {
-                Console.WriteLine("Transaction is null.");
-                return;
+                result = new NDbResult<TSBCreditTransaction>();
+                result.ParameterIsNull();
+                result.data = null;
             }
-            Console.WriteLine("Transaction is : {0}", value);
-            TSBCreditTransaction.SaveTransaction(value);
+            else
+            {
+                result = TSBCreditTransaction.SaveTransaction(value);
+            }
+            return result;
         }
 
         #endregion
@@ -60,26 +86,58 @@ namespace DMT.Services
         [ActionName(RouteConsts.Credit.GetActiveUserCreditBalances.Name)]
         public NDbResult<List<UserCreditBalance>> GetActiveUserCreditBalances([FromBody] TSB value)
         {
-            if (null == value) return null;
-            var ret = UserCreditBalance.GetActiveUserCreditBalances(value);
-            return ret;
+            NDbResult<List<UserCreditBalance>> result;
+            if (null == value)
+            {
+                result = new NDbResult<List<UserCreditBalance>>();
+                result.ParameterIsNull();
+                result.data = new List<UserCreditBalance>();
+            }
+            else
+            {
+                result = UserCreditBalance.GetActiveUserCreditBalances(value);
+            }
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.Credit.GetActiveUserCreditBalanceById.Name)]
-        public NDbResult<UserCreditBalance> GetActiveUserCreditBalanceById([FromBody] Search.UserCredits.GetActiveById value)
+        public NDbResult<UserCreditBalance> GetActiveUserCreditBalanceById(
+            [FromBody] Search.UserCredits.GetActiveById value)
         {
-            if (null == value) return null;
-            var ret = UserCreditBalance.GetActiveUserCreditBalanceById(value.UserId, value.PlazaGroupId);
-            return ret;
+            NDbResult<UserCreditBalance> result;
+            if (null == value)
+            {
+                result = new NDbResult<UserCreditBalance>();
+                result.ParameterIsNull();
+                result.data = null;
+            }
+            else
+            {
+                result = UserCreditBalance.GetActiveUserCreditBalanceById(
+                    value.UserId, value.PlazaGroupId);
+            }
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.Credit.SaveUserCreditBalance.Name)]
-        public NDbResult<UserCreditTransaction> SaveUserCreditBalance([FromBody] UserCreditBalance value)
+        public NDbResult<UserCreditBalance> SaveUserCreditBalance(
+            [FromBody] UserCreditBalance value)
         {
-            // save
-            return UserCreditBalance.SaveUserCreditBalance(value);
+            NDbResult<UserCreditBalance> result;
+            if (null == value)
+            {
+                result = new NDbResult<UserCreditBalance>();
+                result.ParameterIsNull();
+                result.data = null;
+            }
+            else
+            {
+
+                result = UserCreditBalance.SaveUserCreditBalance(value);
+            }
+            return result;
         }
 
         #endregion
@@ -88,9 +146,21 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.Credit.SaveUserCreditTransaction.Name)]
-        public NDbResult<UserCreditTransaction> SaveUserCreditTransaction([FromBody] UserCreditTransaction value)
+        public NDbResult<UserCreditTransaction> SaveUserCreditTransaction(
+            [FromBody] UserCreditTransaction value)
         {
-            return UserCreditTransaction.SaveUserCreditTransaction(value);
+            NDbResult<UserCreditTransaction> result;
+            if (null == value)
+            {
+                result = new NDbResult<UserCreditTransaction>();
+                result.ParameterIsNull();
+                result.data = null;
+            }
+            else
+            {
+                result = UserCreditTransaction.SaveUserCreditTransaction(value);
+            }
+            return result;
         }
 
         #endregion
