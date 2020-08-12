@@ -117,19 +117,20 @@ namespace DMT.Models
         public static NDbResult<T> Save(SQLiteConnection db, T value)
         {
             NDbResult<T> result = new NDbResult<T>();
+            if (null == db)
+            {
+                result.ConenctFailed();
+                result.data = null;
+                return result;
+            }
+            if (null == db)
+            {
+                result.ParameterIsNull();
+                return result;
+            }
+
             lock (sync)
             {
-                if (null == db)
-                {
-                    result.ConenctFailed();
-                    result.data = null;
-                    return result;
-                }
-                if (null == db)
-                {
-                    result.ParameterIsNull();
-                    return result;
-                }
                 MethodBase med = MethodBase.GetCurrentMethod();
 
                 if (!Exists(db, value))
@@ -172,12 +173,28 @@ namespace DMT.Models
         /// </summary>
         /// <param name="db">The connection.</param>
         /// <param name="value">The item to load children.</param>
-        public static void UpdateWithChildren(SQLiteConnection db, T value)
+        public static NDbResult UpdateWithChildren(SQLiteConnection db, T value)
         {
+            NDbResult result = new NDbResult();
             lock (sync)
             {
-                if (null == db || null == value) return;
-                db.UpdateWithChildren(value);
+                if (null == db || null == value)
+                {
+                    result.ParameterIsNull();
+                }
+                else
+                {
+                    try
+                    {
+                        db.UpdateWithChildren(value);
+                        result.Success();
+                    }
+                    catch (Exception ex)
+                    {
+                        result.Error(ex);
+                    }
+                }
+                return result;
             }
         }
         /// <summary>
@@ -186,12 +203,30 @@ namespace DMT.Models
         /// <param name="db">The connection.</param>
         /// <param name="recursive">True for load related nested children.</param>
         /// <returns>Returns List of all records</returns>
-        public static List<T> GetAllWithChildren(SQLiteConnection db, bool recursive = false)
+        public static NDbResult<List<T>> GetAllWithChildren(SQLiteConnection db, bool recursive = false)
         {
+            var result = new NDbResult<List<T>>();
+            if (null == db)
+            {
+                result.ConenctFailed();
+                result.data = new List<T>();
+                return result;
+            }
+
             lock (sync)
             {
-                if (null == db) return new List<T>();
-                return db.GetAllWithChildren<T>(recursive: recursive);
+                try
+                {
+                    var results = db.GetAllWithChildren<T>(recursive: recursive);
+                    result.data = results;
+                    result.Success();
+                }
+                catch (Exception ex)
+                {
+                    result.Error(ex);
+                    result.data = new List<T>();
+                }
+                return result;
             }
         }
         /// <summary>
@@ -201,29 +236,47 @@ namespace DMT.Models
         /// <param name="Id">The Id (primary key).</param>
         /// <param name="recursive">True for load related nested children.</param>
         /// <returns>Returns found record.</returns>
-        public static T GetWithChildren(SQLiteConnection db, object Id, bool recursive = false)
+        public static NDbResult<T> GetWithChildren(SQLiteConnection db, 
+            object Id, bool recursive = false)
         {
+            var result = new NDbResult<T>();
+            if (null == db)
+            {
+                result.ConenctFailed();
+                result.data = null;
+                return result;
+            }
+
             lock (sync)
             {
-                if (null == db || null == Id) return null;
-                // read mapping information.
-                var map = db.GetMapping<T>(CreateFlags.None);
-                if (null == map) return null;
-
-                string tableName = map.TableName;
-                string columnName = map.PK.Name;
-                string propertyName = map.PK.PropertyName;
-                // init query string.
-                string cmd = string.Empty;
-                cmd += string.Format("SELECT * FROM {0} WHERE {1} = ?", tableName, columnName);
-                // execute query.
-                T item = db.Query<T>(cmd, Id).FirstOrDefault();
-                if (null != item)
+                try
                 {
-                    // read children.
-                    db.GetChildren(item, recursive);
+                    // read mapping information.
+                    var map = db.GetMapping<T>(CreateFlags.None);
+                    if (null == map) return null;
+
+                    string tableName = map.TableName;
+                    string columnName = map.PK.Name;
+                    string propertyName = map.PK.PropertyName;
+                    // init query string.
+                    string cmd = string.Empty;
+                    cmd += string.Format("SELECT * FROM {0} WHERE {1} = ?", tableName, columnName);
+                    // execute query.
+                    T item = db.Query<T>(cmd, Id).FirstOrDefault();
+                    if (null != item)
+                    {
+                        // read children.
+                        db.GetChildren(item, recursive);
+                    }
+                    result.data = item;
+                    result.Success();
                 }
-                return item;
+                catch (Exception ex)
+                {
+                    result.Error(ex);
+                    result.data = null;
+                }
+                return result;
             }
         }
         /// <summary>
@@ -250,8 +303,12 @@ namespace DMT.Models
             lock (sync)
             {
                 if (null == db || null == Id) return;
-                T inst = GetWithChildren(db, Id, recursive);
-                db.Delete(inst, recursive);
+                var ret = GetWithChildren(db, Id, recursive);
+                if (!ret.errors.hasError)
+                {
+                    T inst = ret.data;
+                    db.Delete(inst, recursive);
+                }
             }
         }
 
@@ -301,7 +358,7 @@ namespace DMT.Models
         /// </summary>
         /// <param name="recursive">True for load related nested children.</param>
         /// <returns>Returns List of all records</returns>
-        public static List<T> GetAllWithChildren(bool recursive = false)
+        public static NDbResult<List<T>> GetAllWithChildren(bool recursive = false)
         {
             lock (sync)
             {
@@ -315,7 +372,7 @@ namespace DMT.Models
         /// <param name="Id">The Id (primary key).</param>
         /// <param name="recursive">True for load related nested children.</param>
         /// <returns>Returns found record.</returns>
-        public static T GetWithChildren(object Id, bool recursive = false)
+        public static NDbResult<T> GetWithChildren(object Id, bool recursive = false)
         {
             lock (sync)
             {
