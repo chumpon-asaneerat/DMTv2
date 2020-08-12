@@ -34,6 +34,7 @@ namespace DMT.Models
 		#region Intenral Variables
 
 		private string _RoleId = string.Empty;
+		private int _GroupId = 0;
 		private string _RoleNameEN = string.Empty;
 		private string _RoleNameTH = string.Empty;
 
@@ -75,6 +76,27 @@ namespace DMT.Models
 				{
 					_RoleId = value;
 					this.RaiseChanged("RoleId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Group Id.
+		/// </summary>
+		[Category("Role")]
+		[Description("Gets or sets Group Id.")]
+		[PeropertyMapName("GroupId")]
+		public int GroupId
+		{
+			get
+			{
+				return _GroupId;
+			}
+			set
+			{
+				if (_GroupId != value)
+				{
+					_GroupId = value;
+					this.RaiseChanged("GroupId");
 				}
 			}
 		}
@@ -175,21 +197,40 @@ namespace DMT.Models
 
 		#endregion
 
-		// TODO: Required GroupId Here.
-
 		#region Static Methods
 
-		public static List<Role> Gets(SQLiteConnection db)
+		public static NDbResult<List<Role>> Gets(SQLiteConnection db)
 		{
-			if (null == db) return new List<Role>();
+			var result = new NDbResult<List<Role>>();
+
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<Role>();
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT * FROM Role ";
-				return NQuery.Query<Role>(cmd);
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * FROM Role ";
+					var results = NQuery.Query<Role>(cmd);
+					result.data = results;
+					result.Success();
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = new List<Role>();
+
+				}
+				return result;
 			}
 		}
-		public static List<Role> Gets()
+
+		public static NDbResult<List<Role>> Gets()
 		{
 			lock (sync)
 			{
@@ -197,18 +238,40 @@ namespace DMT.Models
 				return Gets(db);
 			}
 		}
-		public static Role Get(SQLiteConnection db, string roleId)
+
+		public static NDbResult<Role> Get(SQLiteConnection db, string roleId)
 		{
-			if (null == db) return null;
+			var result = new NDbResult<Role>();
+
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT * FROM Role ";
-				cmd += " WHERE RoleId = ? ";
-				return NQuery.Query<Role>(cmd, roleId).FirstOrDefault();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * FROM Role ";
+					cmd += " WHERE RoleId = ? ";
+					var results = NQuery.Query<Role>(cmd, roleId).FirstOrDefault();
+					result.data = results;
+					result.Success();
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = null;
+				}
+				return result;
 			}
 		}
-		public static Role Get(string roleId)
+
+		public static NDbResult<Role> Get(string roleId)
 		{
 			lock (sync)
 			{

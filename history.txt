@@ -41,8 +41,11 @@ Update 2020-08-13 #8
 Update 2020-08-13 #7
 - 
 
+[commited]
 Update 2020-08-13 #6
-- 
+- Update Local/DataCenter/TAxTOD service operation #64.
+- Implements Role related process #4.
+- Implements User related process #3.
 
 [commited]
 Update 2020-08-13 #5

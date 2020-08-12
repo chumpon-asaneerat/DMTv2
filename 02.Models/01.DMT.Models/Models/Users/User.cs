@@ -400,7 +400,7 @@ namespace DMT.Models
 			{
 				string cmd = string.Empty;
 				cmd += "SELECT User.* ";
-				cmd += "     , Role.RoleNameEN, Role.RoleNameTH ";
+				cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
 				cmd += "  FROM User, Role ";
 				cmd += " WHERE User.RoleId = Role.RoleId ";
 
@@ -433,7 +433,7 @@ namespace DMT.Models
 			{
 				string cmd = string.Empty;
 				cmd += "SELECT User.* ";
-				cmd += "     , Role.RoleNameEN, Role.RoleNameTH ";
+				cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
 				cmd += "  FROM User, Role ";
 				cmd += " WHERE User.RoleId = Role.RoleId ";
 				cmd += "   AND User.UserId = ? ";
@@ -458,7 +458,7 @@ namespace DMT.Models
 			{
 				string cmd = string.Empty;
 				cmd += "SELECT User.* ";
-				cmd += "     , Role.RoleNameEN, Role.RoleNameTH ";
+				cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
 				cmd += "  FROM User, Role ";
 				cmd += " WHERE User.RoleId = Role.RoleId ";
 				cmd += "   AND User.UserId like ? ";
@@ -491,7 +491,7 @@ namespace DMT.Models
 			{
 				string cmd = string.Empty;
 				cmd += "SELECT User.* ";
-				cmd += "     , Role.RoleNameEN, Role.RoleNameTH ";
+				cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
 				cmd += "  FROM User, Role ";
 				cmd += " WHERE User.RoleId = Role.RoleId ";
 				cmd += "   AND User.RoleId = ? ";
@@ -516,7 +516,7 @@ namespace DMT.Models
 			{
 				string cmd = string.Empty;
 				cmd += "SELECT User.* ";
-				cmd += "     , Role.RoleNameEN, Role.RoleNameTH ";
+				cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
 				cmd += "  FROM User, Role ";
 				cmd += " WHERE User.RoleId = Role.RoleId ";
 				cmd += "   AND User.RoleId = ? ";
@@ -549,7 +549,7 @@ namespace DMT.Models
 			{
 				string cmd = string.Empty;
 				cmd += "SELECT User.* ";
-				cmd += "     , Role.RoleNameEN, Role.RoleNameTH ";
+				cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
 				cmd += "  FROM User, Role ";
 				cmd += " WHERE User.RoleId = Role.RoleId ";
 				cmd += "   AND User.UserId = ? ";
@@ -570,7 +570,7 @@ namespace DMT.Models
 			{
 				string cmd = string.Empty;
 				cmd += "SELECT User.* ";
-				cmd += "     , Role.RoleNameEN, Role.RoleNameTH ";
+				cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
 				cmd += "  FROM User, Role ";
 				cmd += " WHERE User.RoleId = Role.RoleId ";
 				cmd += "   AND CardId = ? ";
