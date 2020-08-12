@@ -239,9 +239,21 @@ namespace DMT
         {
             public const string Url = RouteConsts.Url + @"/UserShift";
 
+            public static class Create
+            {
+                public const string Name = "Create";
+                public const string Url = UserShift.Url + @"/" + Name;
+            }
+
             public static class GetUsers
             {
                 public const string Name = "GetUsers";
+                public const string Url = UserShift.Url + @"/" + Name;
+            }
+
+            public static class GetCurrent
+            {
+                public const string Name = "GetCurrent";
                 public const string Url = UserShift.Url + @"/" + Name;
             }
 
@@ -254,18 +266,6 @@ namespace DMT
             public static class EndUserShift
             {
                 public const string Name = "EndUserShift";
-                public const string Url = UserShift.Url + @"/" + Name;
-            }
-
-            public static class GetCurrent
-            {
-                public const string Name = "GetCurrent";
-                public const string Url = UserShift.Url + @"/" + Name;
-            }
-
-            public static class Create
-            {
-                public const string Name = "Create";
                 public const string Url = UserShift.Url + @"/" + Name;
             }
 

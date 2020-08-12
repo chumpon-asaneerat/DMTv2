@@ -611,65 +611,40 @@ namespace DMT.Models
 
         #region Static Methods
 
-        public static UserShift Create(Shift shift, User supervisor)
+        public static NDbResult<UserShift> Create(Shift shift, User supervisor)
         {
+            NDbResult<UserShift> result = new NDbResult<UserShift>();
             UserShift inst = Create();
-            TSB tsb = TSB.GetCurrent();
-            if (null != tsb) tsb.AssignTo(inst);
-            if (null != shift) shift.AssignTo(inst);
-            if (null != supervisor) supervisor.AssignTo(inst);
-            return inst;
-        }
 
-        public static bool BeginUserShift(UserShift shift)
-        {
-            lock (sync)
+            var tsbRet = TSB.GetCurrent();
+            if (tsbRet.errors.hasError)
             {
-                try
-                {
-                    if (null == shift) return false;
-                    var last = GetCurrent(shift.UserId);
-                    if (null != last)
-                    {
-                        // not enter revenue entry.
-                        return false;
-                    }
-                    // Begin new shift.
-                    if (shift.Begin == DateTime.MinValue)
-                        shift.Begin = DateTime.Now;
-
-                    Save(shift);
-                    return true;
-                }
-                catch (Exception ex)
-                {
-
-                }
+                result.ParameterIsNull();
+                result.data = null;
             }
-        }
-
-        public static void EndUserShift(UserShift shift)
-        {
-            lock (sync)
+            else
             {
-                try
-                {
-                    if (null == shift) return;
-                    // End shift.
-                    if (shift.End == DateTime.MinValue)
-                        shift.End = DateTime.Now;
-
-                    Save(shift);
-                }
-                catch (Exception ex)
-                {
-
-                }
+                var tsb = tsbRet.data;
+                if (null != tsb) tsb.AssignTo(inst);
+                if (null != shift) shift.AssignTo(inst);
+                if (null != supervisor) supervisor.AssignTo(inst);
+                result.data = inst;
             }
+
+            return result;
         }
 
-        public static UserShift GetCurrent(string userId)
+        public static NDbResult<UserShift> GetCurrent(string userId)
         {
+            NDbResult<UserShift> result = new NDbResult<UserShift>();
+            SQLiteConnection db = Default;
+            if (null == db)
+            {
+                result.ConenctFailed();
+                result.data = null;
+                return result;
+            }
+
             lock (sync)
             {
                 try
@@ -688,17 +663,117 @@ namespace DMT.Models
                     cmd += "   AND UserShift.End = ? ";
                     var ret = NQuery.Query<FKs>(cmd, userId,
                         DateTime.MinValue).FirstOrDefault();
-                    return (null != ret) ? ret.ToUserShift() : null;
+                    result.data = (null != ret) ? ret.ToUserShift() : null;
+                    result.Success();
                 }
                 catch (Exception ex)
                 {
-
+                    result.Error(ex);
+                    result.data = null;
                 }
+                return result;
             }
         }
 
-        public static List<UserShift> GetUserShifts(string userId)
+        public static NDbResult BeginUserShift(UserShift value)
         {
+            NDbResult result = new NDbResult();
+            SQLiteConnection db = Default;
+            if (null == db)
+            {
+                result.ConenctFailed();
+                return result;
+            }
+
+            if (null == value)
+            {
+                result.ParameterIsNull();
+                return result;
+            }
+
+            lock (sync)
+            {
+                try
+                {
+                    var last = GetCurrent(value.UserId);
+                    if (null != last)
+                    {
+                        // not enter revenue entry.
+                        result.Error(new Exception("ยังมีกะที่ยังไม่ได้ป้อนรายได้"));
+                        result.errors.errNum = -10;
+                        return result;
+                    }
+                    // Begin new shift.
+                    if (value.Begin == DateTime.MinValue)
+                        value.Begin = DateTime.Now;
+
+                    var saveRet = Save(value);
+
+                    result.errors = saveRet.errors;
+                    if (!result.errors.hasError)
+                    {
+                        result.Success();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    result.Error(ex);
+                }
+                return result;
+            }
+        }
+
+        public static NDbResult EndUserShift(UserShift value)
+        {
+            NDbResult result = new NDbResult();
+            SQLiteConnection db = Default;
+            if (null == db)
+            {
+                result.ConenctFailed();
+                return result;
+            }
+
+            if (null == value)
+            {
+                result.ParameterIsNull();
+                return result;
+            }
+
+            lock (sync)
+            {
+                try
+                {
+                    // End shift.
+                    if (value.End == DateTime.MinValue)
+                        value.End = DateTime.Now;
+
+                    var saveRet = Save(value);
+
+                    result.errors = saveRet.errors;
+                    if (!result.errors.hasError)
+                    {
+                        result.Success();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    result.Error(ex);
+                }
+                return result;
+            }
+        }
+
+        public static NDbResult<List<UserShift>> GetUserShifts(string userId)
+        {
+            var result = new NDbResult<List<UserShift>>();
+            SQLiteConnection db = Default;
+            if (null == db)
+            {
+                result.ConenctFailed();
+                result.data = new List<UserShift>();
+                return result;
+            }
+
             lock (sync)
             {
                 try
@@ -725,17 +800,29 @@ namespace DMT.Models
                         });
                     }
 
-                    return results;
+                    result.data = results;
+                    result.Success();
                 }
                 catch (Exception ex)
                 {
-
+                    result.Error(ex);
+                    result.data = new List<UserShift>();
                 }
+                return result;
             }
         }
 
-        public static List<UserShift> GetUnCloseUserShifts()
+        public static NDbResult<List<UserShift>> GetUnCloseUserShifts()
         {
+            var result = new NDbResult<List<UserShift>>();
+            SQLiteConnection db = Default;
+            if (null == db)
+            {
+                result.ConenctFailed();
+                result.data = new List<UserShift>();
+                return result;
+            }
+
             lock (sync)
             {
                 try
@@ -762,12 +849,15 @@ namespace DMT.Models
                         });
                     }
 
-                    return results;
+                    result.data = results;
+                    result.Success();
                 }
                 catch (Exception ex)
                 {
-
+                    result.Error(ex);
+                    result.data = new List<UserShift>();
                 }
+                return result;
             }
         }
 
