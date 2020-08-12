@@ -1692,77 +1692,115 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static List<RevenueEntry> Gets()
+		public static NDbResult<List<RevenueEntry>> Gets()
 		{
+			var result = new NDbResult<List<RevenueEntry>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT RevenueEntry.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-				cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
-				cmd += "     , User.FullNameEN, User.FullNameTH ";
-				cmd += "     , Sup.FullNameEN AS SupervisorNameEN ";
-				cmd += "     , Sup.FullNameTH AS SupervisorNameTH ";
-				cmd += "  FROM RevenueEntry, TSB, PlazaGroup, Shift, User, User as Sup ";
-				cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-				cmd += "   AND RevenueEntry.TSBId = TSB.TSBId ";
-				cmd += "   AND RevenueEntry.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND RevenueEntry.UserId = User.UserId ";
-				cmd += "   AND RevenueEntry.SupervisorId = Sup.UserId ";
-				cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
-
-				var rets = NQuery.Query<FKs>(cmd).ToList();
-				var results = new List<RevenueEntry>();
-				if (null != rets)
+				try
 				{
-					rets.ForEach(ret =>
-					{
-						results.Add(ret.ToRevenueEntry());
-					});
-				}
+					string cmd = string.Empty;
+					cmd += "SELECT RevenueEntry.* ";
+					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
+					cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
+					cmd += "     , User.FullNameEN, User.FullNameTH ";
+					cmd += "     , Sup.FullNameEN AS SupervisorNameEN ";
+					cmd += "     , Sup.FullNameTH AS SupervisorNameTH ";
+					cmd += "  FROM RevenueEntry, TSB, PlazaGroup, Shift, User, User as Sup ";
+					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
+					cmd += "   AND RevenueEntry.TSBId = TSB.TSBId ";
+					cmd += "   AND RevenueEntry.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND RevenueEntry.UserId = User.UserId ";
+					cmd += "   AND RevenueEntry.SupervisorId = Sup.UserId ";
+					cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
 
-				return results;
+					var rets = NQuery.Query<FKs>(cmd).ToList();
+					var results = new List<RevenueEntry>();
+					if (null != rets)
+					{
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToRevenueEntry());
+						});
+					}
+
+					result.data = results;
+					result.Success();
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = new List<RevenueEntry>();
+				}
+				return result;
 			}
 		}
 
-		public static List<RevenueEntry> FindByRevnueDate(DateTime begin, DateTime end)
+		public static NDbResult<List<RevenueEntry>> FindByRevnueDate(DateTime begin, DateTime end)
 		{
+			var result = new NDbResult<List<RevenueEntry>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT RevenueEntry.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-				cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
-				cmd += "     , User.FullNameEN, User.FullNameTH ";
-				cmd += "     , Sup.FullNameEN AS SupervisorNameEN ";
-				cmd += "     , Sup.FullNameTH AS SupervisorNameTH ";
-				cmd += "  FROM RevenueEntry, TSB, PlazaGroup, Shift, User, User as Sup ";
-				cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-				cmd += "   AND RevenueEntry.TSBId = TSB.TSBId ";
-				cmd += "   AND RevenueEntry.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-				cmd += "   AND RevenueEntry.UserId = User.UserId ";
-				cmd += "   AND RevenueEntry.SupervisorId = Sup.UserId ";
-				cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
-				cmd += "   AND RevenueEntry.RevenueDate >= ? ";
-				cmd += "   AND RevenueEntry.RevenueDate <= ? ";
-
-				var rets = NQuery.Query<FKs>(cmd, begin, end).ToList();
-				var results = new List<RevenueEntry>();
-				if (null != rets)
+				try
 				{
-					rets.ForEach(ret =>
-					{
-						results.Add(ret.ToRevenueEntry());
-					});
-				}
+					string cmd = string.Empty;
+					cmd += "SELECT RevenueEntry.* ";
+					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
+					cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
+					cmd += "     , User.FullNameEN, User.FullNameTH ";
+					cmd += "     , Sup.FullNameEN AS SupervisorNameEN ";
+					cmd += "     , Sup.FullNameTH AS SupervisorNameTH ";
+					cmd += "  FROM RevenueEntry, TSB, PlazaGroup, Shift, User, User as Sup ";
+					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
+					cmd += "   AND RevenueEntry.TSBId = TSB.TSBId ";
+					cmd += "   AND RevenueEntry.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "   AND RevenueEntry.UserId = User.UserId ";
+					cmd += "   AND RevenueEntry.SupervisorId = Sup.UserId ";
+					cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
+					cmd += "   AND RevenueEntry.RevenueDate >= ? ";
+					cmd += "   AND RevenueEntry.RevenueDate <= ? ";
 
-				return results;
+					var rets = NQuery.Query<FKs>(cmd, begin, end).ToList();
+					var results = new List<RevenueEntry>();
+					if (null != rets)
+					{
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToRevenueEntry());
+						});
+					}
+
+					result.data = results;
+					result.Success();
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = new List<RevenueEntry>();
+				}
+				return result;
 			}
 		}
 
-		public static List<RevenueEntry> FindByRevnueDate(DateTime date)
+		public static NDbResult<List<RevenueEntry>> FindByRevnueDate(DateTime date)
 		{
 			DateTime begin = date.Date;
 			DateTime end = date.Date.AddDays(1).AddMilliseconds(-1);

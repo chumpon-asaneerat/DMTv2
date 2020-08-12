@@ -826,7 +826,7 @@ namespace DMT.Models
         public static NDbResult<UserShiftRevenue> CreatePlazaRevenue(
             UserShift shift, PlazaGroup plazaGroup)
         {
-            NDbResult<UserShiftRevenue> result = new NDbResult<UserShiftRevenue>();
+            var result = new NDbResult<UserShiftRevenue>();
 
             if (null == shift || null == plazaGroup)
             {
@@ -847,7 +847,14 @@ namespace DMT.Models
         public static NDbResult<UserShiftRevenue> SavePlazaRevenue(UserShiftRevenue value,
             DateTime revenueDate, string revenueId)
         {
-            NDbResult<UserShiftRevenue> result = new NDbResult<UserShiftRevenue>();
+            var result = new NDbResult<UserShiftRevenue>();
+            SQLiteConnection db = Default;
+            if (null == db)
+            {
+                result.ConenctFailed();
+                result.data = null;
+                return result;
+            }
 
             if (null == value)
             {
@@ -875,7 +882,15 @@ namespace DMT.Models
         public static NDbResult<UserShiftRevenue> GetPlazaRevenue(
             UserShift shift, PlazaGroup plazaGroup)
         {
-            NDbResult<UserShiftRevenue> result = new NDbResult<UserShiftRevenue>();
+            var result = new NDbResult<UserShiftRevenue>();
+            SQLiteConnection db = Default;
+            if (null == db)
+            {
+                result.ConenctFailed();
+                result.data = null;
+                return result;
+            }
+
             if (null == shift || null == plazaGroup)
             {
                 result.ParameterIsNull();
