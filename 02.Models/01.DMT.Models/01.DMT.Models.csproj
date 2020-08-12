@@ -133,7 +133,7 @@
     <Compile Include="Models\Infrastructures\TSB.cs" />
     <Compile Include="Models\LaneActivities\LaneAttendance.cs" />
     <Compile Include="Models\LaneActivities\LanePayment.cs" />
-    <None Include="Models\CreditsAndCoupons\Common\Payments\Payment.cs" />
+    <Compile Include="Models\CreditsAndCoupons\Common\Payments\Payment.cs" />
     <Compile Include="Models\Revenues\RevenueEntry.cs" />
     <Compile Include="Models\Shifts\Shift.cs" />
     <Compile Include="Models\Shifts\TSBShift.cs" />

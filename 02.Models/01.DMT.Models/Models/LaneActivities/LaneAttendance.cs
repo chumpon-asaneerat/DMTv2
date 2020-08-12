@@ -929,6 +929,7 @@ namespace DMT.Models
 			if (null != supervisor) supervisor.AssignTo(inst);
 			return inst;
 		}
+
 		public static List<LaneAttendance> Search(UserShift shift, PlazaGroup plazaGroup, 
 			DateTime revenueDate)
 		{
@@ -997,6 +998,7 @@ namespace DMT.Models
 				}
 			}
 		}
+
 		public static List<LaneAttendance> Search(UserShift shift)
 		{
 			if (null == shift) return new List<LaneAttendance>();
@@ -1036,6 +1038,7 @@ namespace DMT.Models
 					DateTime.MinValue).ToList<LaneAttendance>();
 			}
 		}
+
 		public static List<LaneAttendance> Search(Lane lane)
 		{
 			if (null == lane) return new List<LaneAttendance>();
@@ -1064,6 +1067,7 @@ namespace DMT.Models
 				return NQuery.Query<FKs>(cmd, lane.LaneId).ToList<LaneAttendance>();
 			}
 		}
+
 		public static LaneAttendance GetCurrentByLane(Lane lane)
 		{
 			if (null == lane) return null;
@@ -1094,6 +1098,7 @@ namespace DMT.Models
 					DateTime.MinValue).FirstOrDefault<LaneAttendance>();
 			}
 		}
+
 		public static List<LaneAttendance> Search(DateTime date)
 		{
 			if (null == date || date == DateTime.MinValue) return new List<LaneAttendance>();
@@ -1124,6 +1129,7 @@ namespace DMT.Models
 					DateTime.MinValue).ToList<LaneAttendance>();
 			}
 		}
+
 		public static List<LaneAttendance> GetAllNotHasRevenueEntry()
 		{
 			lock (sync)

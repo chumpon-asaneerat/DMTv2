@@ -875,6 +875,7 @@ namespace DMT.Models
 			inst.Amount = amount;
 			return inst;
 		}
+
 		public static List<LanePayment> Search(UserShift shift)
 		{
 			if (null == shift) return new List<LanePayment>();
@@ -907,6 +908,7 @@ namespace DMT.Models
 					DateTime.MinValue).ToList<LanePayment>();
 			}
 		}
+
 		public static List<LanePayment> Search(Lane lane)
 		{
 			if (null == lane) return new List<LanePayment>();
@@ -937,6 +939,7 @@ namespace DMT.Models
 				return NQuery.Query<FKs>(cmd, lane.LaneId).ToList<LanePayment>();
 			}
 		}
+
 		public static LanePayment GetCurrentByLane(Lane lane)
 		{
 			if (null == lane) return null;
@@ -969,6 +972,7 @@ namespace DMT.Models
 					DateTime.MinValue).FirstOrDefault<LanePayment>();
 			}
 		}
+
 		public static List<LanePayment> Search(DateTime date)
 		{
 			if (null == date || date == DateTime.MinValue) return new List<LanePayment>();

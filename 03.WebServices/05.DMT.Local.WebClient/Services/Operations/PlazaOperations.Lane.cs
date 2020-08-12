@@ -66,7 +66,15 @@ namespace DMT.Services
 
             public NRestResult<LaneAttendance> CreateAttendance(Lane lane, User supervisor)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<LaneAttendance>(
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<LaneAttendance> ret;
+
+                ret = NRestClient.Create(port: 9000).Execute<LaneAttendance>(
                     RouteConsts.Lane.CreateAttendance.Url,
                     new LaneAttendanceCreate()
                     {
@@ -78,54 +86,164 @@ namespace DMT.Services
 
             public NRestResult<LaneAttendance> SaveAttendance(LaneAttendance value)
             {
-                NRestClient.Create(port: 9000).Execute(
-                    RouteConsts.Lane.SaveAttendance.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<LaneAttendance> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<LaneAttendance>(RouteConsts.Lane.SaveAttendance.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<LaneAttendance>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
+                return ret;
             }
 
             public NRestResult<List<LaneAttendance>> GetAttendancesByDate(
                 Search.Lanes.Attendances.ByDate value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<LaneAttendance>>(
-                    RouteConsts.Lane.GetAttendancesByDate.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<LaneAttendance>> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<List<LaneAttendance>>(RouteConsts.Lane.GetAttendancesByDate.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<LaneAttendance>>();
+                    ret.ParameterIsNull();
+                    ret.data = new List<LaneAttendance>();
+                }
                 return ret;
             }
 
             public NRestResult<List<LaneAttendance>> GetAttendancesByUserShift(
                 Search.Lanes.Attendances.ByUserShift value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<LaneAttendance>>(
-                    RouteConsts.Lane.GetAttendancesByUserShift.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<LaneAttendance>> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<List<LaneAttendance>>(RouteConsts.Lane.GetAttendancesByUserShift.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<LaneAttendance>>();
+                    ret.ParameterIsNull();
+                    ret.data = new List<LaneAttendance>();
+                }
                 return ret;
             }
 
             public NRestResult<List<LaneAttendance>> GetAllAttendancesByUserShift(
                 UserShift value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<LaneAttendance>>(
-                    RouteConsts.Lane.GetAllAttendancesByUserShift.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<LaneAttendance>> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<List<LaneAttendance>>(RouteConsts.Lane.GetAllAttendancesByUserShift.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<LaneAttendance>>();
+                    ret.ParameterIsNull();
+                    ret.data = new List<LaneAttendance>();
+                }
                 return ret;
             }
 
             public NRestResult<List<LaneAttendance>> GetAttendancesByLane(
                 Search.Lanes.Attendances.ByLane value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<LaneAttendance>>(
-                    RouteConsts.Lane.GetAttendancesByLane.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<LaneAttendance>> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<List<LaneAttendance>>(RouteConsts.Lane.GetAttendancesByLane.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<LaneAttendance>>();
+                    ret.ParameterIsNull();
+                    ret.data = new List<LaneAttendance>();
+                }
                 return ret;
             }
 
             public NRestResult<LaneAttendance> GetCurrentAttendancesByLane(
                 Search.Lanes.Current.AttendanceByLane value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<LaneAttendance>(
-                    RouteConsts.Lane.GetCurrentAttendancesByLane.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<LaneAttendance> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<LaneAttendance>(RouteConsts.Lane.GetCurrentAttendancesByLane.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<LaneAttendance>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
                 return ret;
             }
 
             public NRestResult<List<LaneAttendance>> GetAllNotHasRevenueEntry()
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<LaneAttendance>>(
-                    RouteConsts.Lane.GetAllNotHasRevenueEntry.Url, null);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<LaneAttendance>> ret;
+                ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                    .Execute<List<LaneAttendance>>(RouteConsts.Lane.GetAllNotHasRevenueEntry.Url, null);
                 return ret;
             }
 
@@ -136,7 +254,15 @@ namespace DMT.Services
             public NRestResult<LanePayment> CreatePayment(Lane lane, User supervisor,
                 Payment payment, DateTime date, decimal amount)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<LanePayment>(
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<LaneAttendance> ret;
+
+                ret = NRestClient.Create(port: 9000).Execute<LanePayment>(
                     RouteConsts.Lane.CreatePayment.Url,
                     new LanePaymentCreate()
                     {
@@ -151,39 +277,125 @@ namespace DMT.Services
 
             public NRestResult<LanePayment> SavePayment(LanePayment value)
             {
-                NRestClient.Create(port: 9000).Execute(
-                    RouteConsts.Lane.SavePayment.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<LanePayment> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<LanePayment>(RouteConsts.Lane.SavePayment.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<LanePayment>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
+                return ret;
             }
 
             public NRestResult<List<LanePayment>> GetPaymentsByDate(
                 Search.Lanes.Payments.ByDate value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<LanePayment>>(
-                    RouteConsts.Lane.GetPaymentsByDate.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<LanePayment>> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<List<LanePayment>>(RouteConsts.Lane.GetPaymentsByDate.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<LanePayment>>();
+                    ret.ParameterIsNull();
+                    ret.data = new List<LanePayment>();
+                }
                 return ret;
             }
 
             public NRestResult<List<LanePayment>> GetPaymentsByUserShift(
                 Search.Lanes.Attendances.ByUserShift value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<LanePayment>>(
-                    RouteConsts.Lane.GetPaymentsByUserShift.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<LanePayment>> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<List<LanePayment>>(RouteConsts.Lane.GetPaymentsByUserShift.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<LanePayment>>();
+                    ret.ParameterIsNull();
+                    ret.data = new List<LanePayment>();
+                }
                 return ret;
             }
 
             public NRestResult<List<LanePayment>> GetPaymentsByLane(
                 Search.Lanes.Attendances.ByLane value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<LanePayment>>(
-                    RouteConsts.Lane.GetPaymentsByLane.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<LanePayment>> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<List<LanePayment>>(RouteConsts.Lane.GetPaymentsByLane.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<LanePayment>>();
+                    ret.ParameterIsNull();
+                    ret.data = new List<LanePayment>();
+                }
                 return ret;
             }
 
             public NRestResult<LanePayment> GetCurrentPaymentsByLane(
                 Search.Lanes.Current.PaymentByLane value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<LanePayment>(
-                    RouteConsts.Lane.GetCurrentPaymentsByLane.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<LanePayment> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<LanePayment>(RouteConsts.Lane.GetCurrentPaymentsByLane.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<LanePayment>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
                 return ret;
             }
 

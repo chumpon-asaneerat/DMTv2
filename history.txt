@@ -29,8 +29,11 @@ Update 2020-08-13 #32
 Update 2020-08-13 #31
 - 
 
+[commited]
 Update 2020-08-13 #30
-- 
+- Update Local/DataCenter/TAxTOD service operation #88.
+- Implements Lane Attendance related process #4.
+- Implements Lane Payment related process #4.
 
 [commited]
 Update 2020-08-13 #29

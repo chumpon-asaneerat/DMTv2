@@ -177,17 +177,38 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static List<Payment> Gets(SQLiteConnection db)
+		public static NDbResult<List<Payment>> Gets(SQLiteConnection db)
 		{
-			if (null == db) return new List<Payment>();
+			var result = new NDbResult<List<Payment>>();
+
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<Payment>();
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT * FROM Payment ";
-				return NQuery.Query<Payment>(cmd);
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * FROM Payment ";
+					result.data = NQuery.Query<Payment>(cmd);
+					result.Success();
+
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = new List<Payment>();
+
+				}
+				return result;
 			}
 		}
-		public static List<Payment> Gets()
+
+		public static NDbResult<List<Payment>> Gets()
 		{
 			lock (sync)
 			{
