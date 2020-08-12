@@ -21,30 +21,47 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.User.GetRole.Name)]
-        public Role GetRole([FromBody] Search.Roles.ById value)
+        public NDbResult<Role> GetRole([FromBody] Search.Roles.ById value)
         {
-            if (null == value) return null;
-            var results = Role.Get(value.RoleId);
-            return results;
+            NDbResult<Role> result;
+            if (null == value)
+            {
+                result = new NDbResult<Role>();
+                result.ParameterIsNull();
+                result.data = null;
+            }
+            else
+            {
+                result = Role.Get(value.RoleId);
+
+            }
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.User.GetRoles.Name)]
-        public List<Role> GetRoles()
+        public NDbResult<List<Role>> GetRoles()
         {
-            var results = Role.Gets();
-            return results;
+            NDbResult<List<Role>> result = Role.Gets();
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.User.SaveRole.Name)]
-        public Role SaveRole([FromBody] Role value)
+        public NDbResult<Role> SaveRole([FromBody] Role value)
         {
-            if (null != value)
+            NDbResult<Role> result;
+            if (null == value)
             {
-                Role.Save(value);
+                result = new NDbResult<Role>();
+                result.ParameterIsNull();
+                result.data = null;
             }
-            return value;
+            else
+            {
+                result = Role.Save(value);
+            }
+            return result;
         }
 
         #endregion
@@ -53,65 +70,138 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.User.GetUsers.Name)]
-        public List<User> GetUsers(Role value)
+        public NDbResult<List<User>> GetUsers(Role value)
         {
-            if (null == value) return new List<User>();
             int status = 1; // active only
-            var results = Models.User.FindByRole(value.RoleId, status);
-            return results;
+            NDbResult<List<User>> result;
+
+            if (null == value)
+            {
+                result = new NDbResult<List<User>>();
+                result.ParameterIsNull();
+                result.data = new List<User>();
+            }
+            else
+            {
+                result = Models.User.FindByRole(value.RoleId, status);
+
+            }
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.User.GetById.Name)]
-        public User GetById([FromBody] Search.Users.ById value)
+        public NDbResult<User> GetById([FromBody] Search.Users.ById value)
         {
-            if (null == value) return null;
-            return Models.User.Get(value.UserId);
+            NDbResult<User> result;
+            if (null == value)
+            {
+                result = new NDbResult<User>();
+                result.ParameterIsNull();
+                result.data = null;
+            }
+            else
+            {
+                result = Models.User.Get(value.UserId);
+
+            }
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.User.SearchByGroupId.Name)]
-        public List<User> SearchByGroupId([FromBody] Search.Users.ByGroupId value)
+        public NDbResult<List<User>> SearchByGroupId([FromBody] Search.Users.ByGroupId value)
         {
-            if (null == value) return new List<User>();
             int status = 1; // active only
-            var results = Models.User.FindByGroupId(value.GroupId, status);
-            return results;
+            NDbResult<List<User>> result;
+
+            if (null == value)
+            {
+                result = new NDbResult<List<User>>();
+                result.ParameterIsNull();
+                result.data = new List<User>();
+            }
+            else
+            {
+                result = Models.User.FindByGroupId(value.GroupId, status);
+
+            }
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.User.SearchById.Name)]
-        public List<User> SearchById([FromBody] Search.Users.ById value)
+        public NDbResult<List<User>> SearchById([FromBody] Search.Users.ById value)
         {
-            if (null == value) return null;
-            return Models.User.SearchById(value.UserId);
+            NDbResult<List<User>> result;
+            if (null == value)
+            {
+                result = new NDbResult<List<User>>();
+                result.ParameterIsNull();
+                result.data = new List<User>();
+            }
+            else
+            {
+                result = Models.User.SearchById(value.UserId);
+
+            }
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.User.GetByCardId.Name)]
-        public User GetByCardId([FromBody] Search.Users.ByCardId value)
+        public NDbResult<User> GetByCardId([FromBody] Search.Users.ByCardId value)
         {
-            if (null == value) return null;
-            return Models.User.GetByCardId(value.CardId);
+            NDbResult<User> result;
+            if (null == value)
+            {
+                result = new NDbResult<User>();
+                result.ParameterIsNull();
+                result.data = null;
+            }
+            else
+            {
+                result = Models.User.GetByCardId(value.CardId);
+
+            }
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.User.GetByLogIn.Name)]
-        public User GetByLogIn([FromBody] Search.Users.ByLogIn value)
+        public NDbResult<User> GetByLogIn([FromBody] Search.Users.ByLogIn value)
         {
-            if (null == value) return null;
-            return Models.User.GetByUserId(value.UserId, value.Password);
+            NDbResult<User> result;
+            if (null == value)
+            {
+                result = new NDbResult<User>();
+                result.ParameterIsNull();
+                result.data = null;
+            }
+            else
+            {
+                result = Models.User.GetByUserId(value.UserId, value.Password);
+
+            }
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.User.SaveUser.Name)]
-        public User SaveUser([FromBody] User value)
+        public NDbResult<User> SaveUser([FromBody] User value)
         {
-            if (null != value)
+            NDbResult<User> result;
+            if (null == value)
             {
-                Models.User.Save(value);
+                result = new NDbResult<User>();
+                result.ParameterIsNull();
+                result.data = null;
             }
-            return value;
+            else
+            {
+                result = Models.User.Save(value);
+            }
+            return result;
         }
 
         #endregion

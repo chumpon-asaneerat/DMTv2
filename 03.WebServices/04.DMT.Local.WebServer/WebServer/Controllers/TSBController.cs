@@ -125,7 +125,7 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<PlazaGroup>>();
                 result.ParameterIsNull();
-                return result;
+                result.data = new List<PlazaGroup>();
             }
             else
             {
@@ -143,7 +143,7 @@ namespace DMT.Services
             {
                 result = new NDbResult<PlazaGroup>();
                 result.ParameterIsNull();
-                return result;
+                result.data = null;
             }
             else
             {
@@ -165,7 +165,7 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<Lane>>();
                 result.ParameterIsNull();
-                return result;
+                result.data = new List<Lane>();
             }
             else
             {
@@ -183,7 +183,7 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<Lane>>();
                 result.ParameterIsNull();
-                return result;
+                result.data = new List<Lane>();
             }
             else
             {
@@ -201,7 +201,7 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<Lane>>();
                 result.ParameterIsNull();
-                return result;
+                result.data = new List<Lane>();
             }
             else
             {
@@ -220,9 +220,12 @@ namespace DMT.Services
             {
                 result = new NDbResult<Lane>();
                 result.ParameterIsNull();
-                return result;
+                result.data = null;
             }
-            result = Lane.Save(value);
+            else
+            {
+                result = Lane.Save(value);
+            }
             return result;
         }
 
