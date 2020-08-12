@@ -62,10 +62,27 @@ namespace DMT.Services
 
             #region TSB Credit Balance
 
-            public TSBCreditBalance GetTSBBalance(TSB tsb)
+            public NRestResult<TSBCreditBalance> GetTSBBalance(TSB value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<TSBCreditBalance>(
-                    RouteConsts.Credit.GetTSBBalance.Url, tsb);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<TSBCreditBalance> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<TSBCreditBalance>(RouteConsts.Credit.GetTSBBalance.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<TSBCreditBalance>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
                 return ret;
             }
 
@@ -73,41 +90,129 @@ namespace DMT.Services
 
             #region TSB Credit Transaction
 
-            public TSBCreditTransaction GetInitialTSBCreditTransaction(TSB tsb)
+            public NRestResult<TSBCreditTransaction> GetInitialTSBCreditTransaction(TSB value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<TSBCreditTransaction>(
-                    RouteConsts.Credit.GetInitialTSBCreditTransaction.Url, tsb);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<TSBCreditTransaction> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<TSBCreditTransaction>(RouteConsts.Credit.GetInitialTSBCreditTransaction.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<TSBCreditTransaction>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
                 return ret;
             }
 
-            public void SaveTSBCreditTransaction(TSBCreditTransaction value)
+            public NRestResult<TSBCreditTransaction> SaveTSBCreditTransaction(
+                TSBCreditTransaction value)
             {
-                NRestClient.Create(port: 9000).Execute(
-                    RouteConsts.Credit.SaveTSBCreditTransaction.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<TSBCreditTransaction> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<TSBCreditTransaction>(RouteConsts.Credit.SaveTSBCreditTransaction.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<TSBCreditTransaction>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
+                return ret;
             }
 
             #endregion
 
             #region User Credit Balance
 
-            public List<UserCreditBalance> GetActiveUserCreditBalances(TSB value)
+            public NRestResult<List<UserCreditBalance>> GetActiveUserCreditBalances(TSB value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<UserCreditBalance>>(
-                    RouteConsts.Credit.GetActiveUserCreditBalances.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<UserCreditBalance>> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<List<UserCreditBalance>>(RouteConsts.Credit.GetActiveUserCreditBalances.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<UserCreditBalance>>();
+                    ret.ParameterIsNull();
+                    ret.data = new List<UserCreditBalance>();
+                }
                 return ret;
             }
 
-            public UserCreditBalance GetActiveUserCreditBalanceById(Search.UserCredits.GetActiveById value)
+            public NRestResult<UserCreditBalance> GetActiveUserCreditBalanceById(
+                Search.UserCredits.GetActiveById value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<UserCreditBalance>(
-                    RouteConsts.Credit.GetActiveUserCreditBalanceById.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<UserCreditBalance> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<UserCreditBalance>(RouteConsts.Credit.GetActiveUserCreditBalanceById.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<UserCreditBalance>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
                 return ret;
             }
 
-            public int SaveUserCreditBalance(UserCreditBalance value)
+            public NRestResult<UserCreditBalance> SaveUserCreditBalance(UserCreditBalance value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<int>(
-                    RouteConsts.Credit.SaveUserCreditBalance.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<UserCreditBalance> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<UserCreditBalance>(RouteConsts.Credit.SaveUserCreditBalance.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<UserCreditBalance>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
                 return ret;
             }
 
@@ -115,10 +220,29 @@ namespace DMT.Services
 
             #region User Credit Transaction
 
-            public void SaveUserCreditTransaction(UserCreditTransaction value)
+            public NRestResult<UserCreditTransaction> SaveUserCreditTransaction(
+                UserCreditTransaction value)
             {
-                NRestClient.Create(port: 9000).Execute(
-                    RouteConsts.Credit.SaveUserCreditTransaction.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<UserCreditTransaction> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<UserCreditTransaction>(RouteConsts.Credit.SaveUserCreditTransaction.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<UserCreditTransaction>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
+                return ret;
             }
 
             #endregion
