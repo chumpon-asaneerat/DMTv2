@@ -224,7 +224,6 @@ namespace DMT.Models
 				{
 					result.Error(ex);
 					result.data = new List<Role>();
-
 				}
 				return result;
 			}
@@ -249,7 +248,6 @@ namespace DMT.Models
 				result.data = null;
 				return result;
 			}
-
 
 			lock (sync)
 			{

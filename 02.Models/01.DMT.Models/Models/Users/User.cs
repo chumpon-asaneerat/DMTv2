@@ -392,32 +392,49 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static List<User> Gets(SQLiteConnection db)
+		public static NDbResult<List<User>> Gets(SQLiteConnection db)
 		{
-			List<User> insts = new List<User>();
-			if (null == db) return insts;
+			var result = new NDbResult<List<User>>();
+
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<User>();
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT User.* ";
-				cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
-				cmd += "  FROM User, Role ";
-				cmd += " WHERE User.RoleId = Role.RoleId ";
-
-				var rets = NQuery.Query<FKs>(cmd).ToList();
-				var results = new List<User>();
-				if (null != rets)
+				try
 				{
-					rets.ForEach(ret =>
-					{
-						results.Add(ret.ToUser());
-					});
-				}
+					string cmd = string.Empty;
+					cmd += "SELECT User.* ";
+					cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
+					cmd += "  FROM User, Role ";
+					cmd += " WHERE User.RoleId = Role.RoleId ";
 
-				return results;
+					var rets = NQuery.Query<FKs>(cmd).ToList();
+					var results = new List<User>();
+					if (null != rets)
+					{
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToUser());
+						});
+					}
+					result.data = results;
+					result.Success();
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = new List<User>();
+				}
+				return result;
 			}
 		}
-		public static List<User> Gets()
+
+		public static NDbResult<List<User>> Gets()
 		{
 			lock (sync)
 			{
@@ -426,23 +443,42 @@ namespace DMT.Models
 			}
 		}
 
-		public static User Get(SQLiteConnection db, string userId)
+		public static NDbResult<User> Get(SQLiteConnection db, string userId)
 		{
-			if (null == db) return null;
+			var result = new NDbResult<User>();
+
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT User.* ";
-				cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
-				cmd += "  FROM User, Role ";
-				cmd += " WHERE User.RoleId = Role.RoleId ";
-				cmd += "   AND User.UserId = ? ";
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT User.* ";
+					cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
+					cmd += "  FROM User, Role ";
+					cmd += " WHERE User.RoleId = Role.RoleId ";
+					cmd += "   AND User.UserId = ? ";
 
-				var ret = NQuery.Query<FKs>(cmd, userId).FirstOrDefault();
-				return (null != ret) ? ret.ToUser() : null;
+					var ret = NQuery.Query<FKs>(cmd, userId).FirstOrDefault();
+					result.data = (null != ret) ? ret.ToUser() : null;
+					result.Success();
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = null;
+				}
+				return result;
 			}
 		}
-		public static User Get(string userId)
+
+		public static NDbResult<User> Get(string userId)
 		{
 			lock (sync)
 			{
@@ -451,32 +487,51 @@ namespace DMT.Models
 			}
 		}
 
-		public static List<User> SearchById(SQLiteConnection db, string userId)
+		public static NDbResult<List<User>> SearchById(SQLiteConnection db, string userId)
 		{
-			if (null == db) return null;
+			var result = new NDbResult<List<User>>();
+
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<User>();
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT User.* ";
-				cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
-				cmd += "  FROM User, Role ";
-				cmd += " WHERE User.RoleId = Role.RoleId ";
-				cmd += "   AND User.UserId like ? ";
-
-				var rets = NQuery.Query<FKs>(cmd, "%" + userId + "%").ToList();
-
-				var results = new List<User>();
-				if (null != rets)
+				try
 				{
-					rets.ForEach(ret =>
+					string cmd = string.Empty;
+					cmd += "SELECT User.* ";
+					cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
+					cmd += "  FROM User, Role ";
+					cmd += " WHERE User.RoleId = Role.RoleId ";
+					cmd += "   AND User.UserId like ? ";
+
+					var rets = NQuery.Query<FKs>(cmd, "%" + userId + "%").ToList();
+
+					var results = new List<User>();
+					if (null != rets)
 					{
-						results.Add(ret.ToUser());
-					});
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToUser());
+						});
+					}
+					result.data = results;
+					result.Success();
 				}
-				return results;
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = new List<User>();
+				}
+				return result;
 			}
 		}
-		public static List<User> SearchById(string userId)
+
+		public static NDbResult<List<User>> SearchById(string userId)
 		{
 			lock (sync)
 			{
@@ -485,54 +540,134 @@ namespace DMT.Models
 			}
 		}
 
-		public static List<User> FindByRole(string roleId)
+		public static NDbResult<List<User>> FindByRole(string roleId)
 		{
+			var result = new NDbResult<List<User>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<User>();
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT User.* ";
-				cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
-				cmd += "  FROM User, Role ";
-				cmd += " WHERE User.RoleId = Role.RoleId ";
-				cmd += "   AND User.RoleId = ? ";
-
-				var rets = NQuery.Query<FKs>(cmd, roleId).ToList();
-				var results = new List<User>();
-				if (null != rets)
+				try
 				{
-					rets.ForEach(ret =>
-					{
-						results.Add(ret.ToUser());
-					});
-				}
+					string cmd = string.Empty;
+					cmd += "SELECT User.* ";
+					cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
+					cmd += "  FROM User, Role ";
+					cmd += " WHERE User.RoleId = Role.RoleId ";
+					cmd += "   AND User.RoleId = ? ";
 
-				return results;
+					var rets = NQuery.Query<FKs>(cmd, roleId).ToList();
+					var results = new List<User>();
+					if (null != rets)
+					{
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToUser());
+						});
+					}
+					result.data = results;
+					result.Success();
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = new List<User>();
+				}
+				return result;
 			}
 		}
 
-		public static List<User> FindByRole(string roleId, int status)
+		public static NDbResult<List<User>> FindByGroup(int groupId, int status)
 		{
+			var result = new NDbResult<List<User>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<User>();
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT User.* ";
-				cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
-				cmd += "  FROM User, Role ";
-				cmd += " WHERE User.RoleId = Role.RoleId ";
-				cmd += "   AND User.RoleId = ? ";
-				cmd += "   AND User.Status = ? ";
-
-				var rets = NQuery.Query<FKs>(cmd, roleId, status).ToList();
-				var results = new List<User>();
-				if (null != rets)
+				try
 				{
-					rets.ForEach(ret =>
-					{
-						results.Add(ret.ToUser());
-					});
-				}
+					string cmd = string.Empty;
+					cmd += "SELECT User.* ";
+					cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
+					cmd += "  FROM User, Role ";
+					cmd += " WHERE User.RoleId = Role.RoleId ";
+					cmd += "   AND User.GroupId = ? ";
+					cmd += "   AND User.Status = ? ";
 
-				return results;
+					var rets = NQuery.Query<FKs>(cmd, groupId, status).ToList();
+					var results = new List<User>();
+					if (null != rets)
+					{
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToUser());
+						});
+					}
+					result.data = results;
+					result.Success();
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = new List<User>();
+				}
+				return result;
+			}
+		}
+
+		public static NDbResult<List<User>> FindByRole(string roleId, int status)
+		{
+			var result = new NDbResult<List<User>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<User>();
+				return result;
+			}
+
+			lock (sync)
+			{
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT User.* ";
+					cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
+					cmd += "  FROM User, Role ";
+					cmd += " WHERE User.RoleId = Role.RoleId ";
+					cmd += "   AND User.RoleId = ? ";
+					cmd += "   AND User.Status = ? ";
+
+					var rets = NQuery.Query<FKs>(cmd, roleId, status).ToList();
+					var results = new List<User>();
+					if (null != rets)
+					{
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToUser());
+						});
+					}
+					result.data = results;
+					result.Success();
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = new List<User>();
+				}
+				return result;
 			}
 		}
 
@@ -543,40 +678,79 @@ namespace DMT.Models
 		/// <param name="userId">The UserId.</param>
 		/// /// <param name="password">The password.</param>
 		/// <returns>Returns found record.</returns>
-		public static User GetByUserId(string userId, string password)
+		public static NDbResult<User> GetByUserId(string userId, string password)
 		{
+			var result = new NDbResult<User>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT User.* ";
-				cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
-				cmd += "  FROM User, Role ";
-				cmd += " WHERE User.RoleId = Role.RoleId ";
-				cmd += "   AND User.UserId = ? ";
-				cmd += "   AND User.Password = ? ";
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT User.* ";
+					cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
+					cmd += "  FROM User, Role ";
+					cmd += " WHERE User.RoleId = Role.RoleId ";
+					cmd += "   AND User.UserId = ? ";
+					cmd += "   AND User.Password = ? ";
 
-				var ret = NQuery.Query<FKs>(cmd, userId, password).FirstOrDefault();
-				return (null != ret) ? ret.ToUser() : null;
+					var ret = NQuery.Query<FKs>(cmd, userId, password).FirstOrDefault();
+					result.data = (null != ret) ? ret.ToUser() : null;
+					result.Success();
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = null;
+				}
+				return result;
 			}
 		}
+
 		/// <summary>
 		/// Gets by CardId
 		/// </summary>
 		/// <param name="cardId">The cardId.</param>
 		/// <returns>Returns found record.</returns>
-		public static User GetByCardId(string cardId)
+		public static NDbResult<User> GetByCardId(string cardId)
 		{
+			var result = new NDbResult<User>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT User.* ";
-				cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
-				cmd += "  FROM User, Role ";
-				cmd += " WHERE User.RoleId = Role.RoleId ";
-				cmd += "   AND CardId = ? ";
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT User.* ";
+					cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
+					cmd += "  FROM User, Role ";
+					cmd += " WHERE User.RoleId = Role.RoleId ";
+					cmd += "   AND CardId = ? ";
 
-				var ret = NQuery.Query<FKs>(cmd, cardId).FirstOrDefault();
-				return (null != ret) ? ret.ToUser() : null;
+					var ret = NQuery.Query<FKs>(cmd, cardId).FirstOrDefault();
+					result.data = (null != ret) ? ret.ToUser() : null;
+					result.Success();
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = null;
+				}
+				return result;
 			}
 		}
 
