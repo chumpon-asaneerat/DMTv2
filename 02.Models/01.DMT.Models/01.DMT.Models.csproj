@@ -138,7 +138,7 @@
     <Compile Include="Models\Shifts\Shift.cs" />
     <Compile Include="Models\Shifts\TSBShift.cs" />
     <Compile Include="Models\Shifts\UserShift.cs" />
-    <None Include="Models\Shifts\UserShiftRevenue.cs" />
+    <Compile Include="Models\Shifts\UserShiftRevenue.cs" />
     <Compile Include="Models\Users\Role.cs" />
     <Compile Include="Models\Users\User.cs" />
     <Compile Include="Services\LocalDbServer.cs" />

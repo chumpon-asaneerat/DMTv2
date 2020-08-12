@@ -383,9 +383,17 @@ namespace DMT
         {
             public const string Url = RouteConsts.Url + @"/Revenue";
 
+            #region UserShiftRevenue
+
             public static class CreatePlazaRevenue
             {
                 public const string Name = "CreatePlazaRevenue";
+                public const string Url = Revenue.Url + @"/" + Name;
+            }
+
+            public static class SavePlazaRevenue
+            {
+                public const string Name = "SavePlazaRevenue";
                 public const string Url = Revenue.Url + @"/" + Name;
             }
 
@@ -395,11 +403,9 @@ namespace DMT
                 public const string Url = Revenue.Url + @"/" + Name;
             }
 
-            public static class SavePlazaRevenue
-            {
-                public const string Name = "SavePlazaRevenue";
-                public const string Url = Revenue.Url + @"/" + Name;
-            }
+            #endregion
+
+            #region Revenue Entry
 
             public static class SaveRevenue
             {
@@ -412,6 +418,8 @@ namespace DMT
                 public const string Name = "GetRevenues";
                 public const string Url = Revenue.Url + @"/" + Name;
             }
+
+            #endregion
         }
 
         #endregion

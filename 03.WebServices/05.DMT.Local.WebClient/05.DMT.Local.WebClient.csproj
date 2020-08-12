@@ -69,7 +69,7 @@
     <None Include="Services\Operations\PlazaOperations.Exchange.cs" />
     <Compile Include="Services\Operations\PlazaOperations.UserShift.cs" />
     <None Include="Services\Operations\PlazaOperations.Lane.cs" />
-    <None Include="Services\Operations\PlazaOperations.Revenue.cs" />
+    <Compile Include="Services\Operations\PlazaOperations.Revenue.cs" />
     <Compile Include="Services\Operations\PlazaOperations.Shift.cs" />
     <Compile Include="Services\Operations\PlazaOperations.TSB.cs" />
     <Compile Include="Services\Operations\PlazaOperations.User.cs" />
