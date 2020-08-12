@@ -1549,6 +1549,7 @@ namespace DMT.Models
 				return result;
 			}
 		}
+
 		/// <summary>
 		/// Gets TSB Credit Balance.
 		/// </summary>
@@ -1580,8 +1581,8 @@ namespace DMT.Models
 					 WHERE TSBCreditSummarryView.TSBId = ?
 				";
 					var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
-					var result = (null != ret) ? ret.ToTSBCreditBalance() : null;
-					return result;
+					result.data = (null != ret) ? ret.ToTSBCreditBalance() : null;
+					result.Success();
 				}
 				catch (Exception ex)
 				{
@@ -1591,6 +1592,7 @@ namespace DMT.Models
 				return result;
 			}
 		}
+
 		/// <summary>
 		/// Gets All TSB Credit Balance.
 		/// </summary>
@@ -1622,7 +1624,8 @@ namespace DMT.Models
 							results.Add(ret.ToTSBCreditBalance());
 						});
 					}
-					return results;
+					result.data = results;
+					result.Success();
 				}
 				catch (Exception ex)
 				{

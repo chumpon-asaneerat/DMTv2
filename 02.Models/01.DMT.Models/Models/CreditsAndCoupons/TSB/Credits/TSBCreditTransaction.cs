@@ -1413,7 +1413,8 @@ namespace DMT.Models
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
 					if (null == rets)
 					{
-						return new List<TSBCreditTransaction>();
+						result.data = new List<TSBCreditTransaction>();
+						result.Success();
 					}
 					else
 					{
@@ -1422,7 +1423,9 @@ namespace DMT.Models
 						{
 							results.Add(ret.ToTSBCreditTransaction());
 						});
-						return results;
+
+						result.data = results;
+						result.Success();
 					}
 				}
 				catch (Exception ex)
@@ -1496,7 +1499,8 @@ namespace DMT.Models
 					{
 						inst = ret.ToTSBCreditTransaction();
 					}
-					return inst;
+					result.data = inst;
+					result.Success();
 				}
 				catch (Exception ex)
 				{
@@ -1527,15 +1531,9 @@ namespace DMT.Models
 			{
 				value.TransactionDate = DateTime.Now;
 			}
-			TSBCreditTransaction.Save(value);
-			if (value.TransactionId == 0)
-			{
-				Console.WriteLine("Save failed.");
-			}
-			else
-			{
-				Console.WriteLine("Save Success.");
-			}
+
+			result = Save(value);
+
 			return result;
 		}
 

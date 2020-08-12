@@ -1939,7 +1939,8 @@ namespace DMT.Models
 						inst = ret.ToUserCreditBalance();
 					}
 
-					return inst;
+					result.data = inst;
+					result.Success();
 				}
 				catch (Exception ex)
 				{
@@ -1982,7 +1983,9 @@ namespace DMT.Models
 						userId, plazaGroupId, StateTypes.Completed).FirstOrDefault();
 
 					UserCreditBalance inst = (null != ret) ? ret.ToUserCreditBalance() : null;
-					return inst;
+
+					result.data = inst;
+					result.Success();
 				}
 				catch (Exception ex)
 				{
@@ -2031,7 +2034,9 @@ namespace DMT.Models
 							results.Add(ret.ToUserCreditBalance());
 						});
 					}
-					return results;
+
+					result.data = results;
+					result.Success();
 				}
 				catch (Exception ex)
 				{
