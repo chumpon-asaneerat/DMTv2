@@ -24,24 +24,55 @@ namespace DMT.Services
         [ActionName(RouteConsts.Revenue.CreatePlazaRevenue.Name)]
         public NDbResult<UserShiftRevenue> CreateRevenueShift([FromBody] Search.Revenues.PlazaShift value)
         {
-            if (null == value) return null;
-            return UserShiftRevenue.CreatePlazaRevenue(value.Shift, value.PlazaGroup);
+            NDbResult<UserShiftRevenue> result;
+            if (null == value)
+            {
+                result = new NDbResult<UserShiftRevenue>();
+                result.ParameterIsNull();
+                result.data = null;
+            }
+            else
+            {
+                result = UserShiftRevenue.CreatePlazaRevenue(value.Shift, value.PlazaGroup);
+            }
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.Revenue.SavePlazaRevenue.Name)]
         public NDbResult<UserShiftRevenue> SaveRevenueShift([FromBody] Search.Revenues.SaveRevenueShift value)
         {
-            if (null == value) return;
-            UserShiftRevenue.SavePlazaRevenue(value.RevenueShift, value.RevenueDate, value.RevenueId);
+            NDbResult<UserShiftRevenue> result;
+            if (null == value)
+            {
+                result = new NDbResult<UserShiftRevenue>();
+                result.ParameterIsNull();
+                result.data = null;
+            }
+            else
+            {
+                result = UserShiftRevenue.SavePlazaRevenue(
+                    value.RevenueShift, value.RevenueDate, value.RevenueId);
+            }
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.Revenue.GetPlazaRevenue.Name)]
         public NDbResult<UserShiftRevenue> GetRevenueShift([FromBody] Search.Revenues.PlazaShift value)
         {
-            if (null == value) return null;
-            return UserShiftRevenue.GetPlazaRevenue(value.Shift, value.PlazaGroup);
+            NDbResult<UserShiftRevenue> result;
+            if (null == value)
+            {
+                result = new NDbResult<UserShiftRevenue>();
+                result.ParameterIsNull();
+                result.data = null;
+            }
+            else
+            {
+                result = UserShiftRevenue.GetPlazaRevenue(value.Shift, value.PlazaGroup);
+            }
+            return result;
         }
 
         #endregion
@@ -50,31 +81,52 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.Revenue.SaveRevenue.Name)]
-        public string SaveRevenue([FromBody] RevenueEntry value)
+        public NDbResult<RevenueEntry> SaveRevenue([FromBody] RevenueEntry value)
         {
-            if (null == value) return string.Empty;
-            if (value.PKId == Guid.Empty)
+            NDbResult<RevenueEntry> result;
+            if (null == value)
             {
-                value.PKId = Guid.NewGuid();
+                result = new NDbResult<RevenueEntry>();
+                result.ParameterIsNull();
+                result.data = null;
             }
-            if (value.RevenueId == string.Empty)
+            else
             {
-                Random rand = new Random();
-                if (string.IsNullOrWhiteSpace(value.RevenueId))
+                if (value.PKId == Guid.Empty)
                 {
-                    value.RevenueId = rand.Next(100000).ToString("D5"); // auto generate.
+                    value.PKId = Guid.NewGuid();
                 }
+                if (value.RevenueId == string.Empty)
+                {
+                    Random rand = new Random();
+                    if (string.IsNullOrWhiteSpace(value.RevenueId))
+                    {
+                        value.RevenueId = rand.Next(100000).ToString("D5"); // auto generate.
+                    }
+                }
+                result = RevenueEntry.Save(value);
             }
-            RevenueEntry.Save(value);
-            return value.RevenueId;
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.Revenue.GetRevenues.Name)]
-        public List<RevenueEntry> GetRevenues([FromBody] DateTime value)
+        public NDbResult<List<RevenueEntry>> GetRevenues([FromBody] DateTime value)
         {
-            if (value == DateTime.MinValue) return new List<RevenueEntry>();
-            return RevenueEntry.FindByRevnueDate(value);
+            NDbResult<List<RevenueEntry>> result;
+
+            if (value == DateTime.MinValue)
+            {
+                result = new NDbResult<List<RevenueEntry>>();
+                result.ParameterIsNull();
+                result.data = new List<RevenueEntry>();
+            }
+            else
+            {
+                result = RevenueEntry.FindByRevnueDate(value);
+            }
+
+            return result;
         }
 
         #endregion
