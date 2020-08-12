@@ -60,6 +60,8 @@ namespace DMT.Models
 		#endregion
 
 		#region Public Proprties
+		
+		// TODO: Requied FirstName/LastName/Prefix/GroupdId/etc.. from User List.
 
 		#region Common
 
@@ -534,6 +536,7 @@ namespace DMT.Models
 			}
 		}
 
+		// TODO: MD5 password required for login and save.
 		/// <summary>
 		/// Gets by UserId and password.
 		/// </summary>
@@ -576,6 +579,8 @@ namespace DMT.Models
 				return (null != ret) ? ret.ToUser() : null;
 			}
 		}
+
+		// TODO: Requied new save user method.
 
 		#endregion
 	}
