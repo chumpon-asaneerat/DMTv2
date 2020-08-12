@@ -72,7 +72,7 @@
     <None Include="Services\Operations\PlazaOperations.Revenue.cs" />
     <None Include="Services\Operations\PlazaOperations.Shift.cs" />
     <Compile Include="Services\Operations\PlazaOperations.TSB.cs" />
-    <None Include="Services\Operations\PlazaOperations.User.cs" />
+    <Compile Include="Services\Operations\PlazaOperations.User.cs" />
     <Compile Include="Services\ServiceOperations.cs" />
   </ItemGroup>
   <ItemGroup>

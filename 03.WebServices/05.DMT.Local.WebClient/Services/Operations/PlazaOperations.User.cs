@@ -62,6 +62,8 @@ namespace DMT.Services
 
             #region Public Methods
 
+            #region Role
+
             public Role GetRole(Search.Roles.ById value)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<Role>(
@@ -75,6 +77,17 @@ namespace DMT.Services
                     RouteConsts.User.GetRoles.Url, new { });
                 return ret;
             }
+
+            public Role SaveRole(Role value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<Role>(
+                    RouteConsts.User.SaveRole.Url, value);
+                return ret;
+            }
+
+            #endregion
+
+            #region User
 
             public List<User> GetUsers(Role role)
             {
@@ -111,19 +124,14 @@ namespace DMT.Services
                 return ret;
             }
 
-            public Role SaveRole(Role value)
-            {
-                var ret = NRestClient.Create(port: 9000).Execute<Role>(
-                    RouteConsts.User.SaveRole.Url, value);
-                return ret;
-            }
-
             public User SaveUser(User value)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<User>(
                     RouteConsts.User.SaveUser.Url, value);
                 return ret;
             }
+
+            #endregion
 
             #endregion
         }

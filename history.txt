@@ -20,8 +20,10 @@ Update 2020-08-12 #25
 Update 2020-08-12 #24
 - 
 
+[commited]
 Update 2020-08-12 #23
-- 
+- Update Local/DataCenter/TAxTOD service operation #59.
+- Implements Role related process #2.
 
 [commited]
 Update 2020-08-12 #22

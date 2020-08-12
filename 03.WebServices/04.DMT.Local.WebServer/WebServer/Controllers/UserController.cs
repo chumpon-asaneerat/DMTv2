@@ -17,6 +17,8 @@ namespace DMT.Services
     /// </summary>
     public class UserController : ApiController
     {
+        #region Role
+
         [HttpPost]
         [ActionName(RouteConsts.User.GetRole.Name)]
         public Role GetRole([FromBody] Search.Roles.ById value)
@@ -33,6 +35,21 @@ namespace DMT.Services
             var results = Role.Gets();
             return results;
         }
+
+        [HttpPost]
+        [ActionName(RouteConsts.User.SaveRole.Name)]
+        public Role SaveRole([FromBody] Role value)
+        {
+            if (null != value)
+            {
+                Role.Save(value);
+            }
+            return value;
+        }
+
+        #endregion
+
+        #region User
 
         [HttpPost]
         [ActionName(RouteConsts.User.GetUsers.Name)]
@@ -77,17 +94,6 @@ namespace DMT.Services
         }
 
         [HttpPost]
-        [ActionName(RouteConsts.User.SaveRole.Name)]
-        public Role SaveRole([FromBody] Role value)
-        {
-            if (null != value)
-            {
-                Role.Save(value);
-            }
-            return value;
-        }
-
-        [HttpPost]
         [ActionName(RouteConsts.User.SaveUser.Name)]
         public User SaveUser([FromBody] User value)
         {
@@ -97,5 +103,7 @@ namespace DMT.Services
             }
             return value;
         }
+
+        #endregion
     }
 }
