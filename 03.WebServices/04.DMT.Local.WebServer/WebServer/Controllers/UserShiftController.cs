@@ -21,49 +21,102 @@ namespace DMT.Services
     {
         [HttpPost]
         [ActionName(RouteConsts.UserShift.Create.Name)]
-        public UserShift Create([FromBody] UserShiftCreate value)
+        public NDbResult<UserShift> Create([FromBody] UserShiftCreate value)
         {
-            if (null == value) return null;
-            return UserShift.Create(value.Shift, value.User);
+            NDbResult<UserShift> result;
+
+            if (null == value)
+            {
+                result = new NDbResult<UserShift>();
+                result.ParameterIsNull();
+                result.data = null;
+            }
+            else
+            {
+                result = UserShift.Create(value.Shift, value.User);
+            }
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.UserShift.GetCurrent.Name)]
-        public UserShift GetCurrent([FromBody] User value)
+        public NDbResult<UserShift> GetCurrent([FromBody] User value)
         {
-            if (null == value) return null;
-            return UserShift.GetCurrent(value.UserId);
+            NDbResult<UserShift> result;
+
+            if (null == value)
+            {
+                result = new NDbResult<UserShift>();
+                result.ParameterIsNull();
+            }
+            else
+            {
+                result = UserShift.GetCurrent(value.UserId);
+            }
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.UserShift.BeginUserShift.Name)]
-        public bool BeginUserShift([FromBody] UserShift shift)
+        public NDbResult BeginUserShift([FromBody] UserShift value)
         {
-            if (null == shift) return false;
-            return UserShift.BeginUserShift(shift);
+            NDbResult result;
+
+            if (null == value)
+            {
+                result = new NDbResult<Shift>();
+                result.ParameterIsNull();
+            }
+            else
+            {
+                result = UserShift.BeginUserShift(value);
+            }
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.UserShift.EndUserShift.Name)]
-        public void EndUserShift([FromBody] UserShift shift)
+        public NDbResult EndUserShift([FromBody] UserShift value)
         {
-            if (null == shift) return;
-            UserShift.EndUserShift(shift);
+            NDbResult result;
+
+            if (null == value)
+            {
+                result = new NDbResult<Shift>();
+                result.ParameterIsNull();
+            }
+            else
+            {
+                result = UserShift.EndUserShift(value);
+            }
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.UserShift.GetUserShifts.Name)]
-        public List<UserShift> GetUserShifts([FromBody] User value)
+        public NDbResult<List<UserShift>> GetUserShifts([FromBody] User value)
         {
-            if (null == value) return new List<UserShift>();
-            return UserShift.GetUserShifts(value.UserId);
+            NDbResult<List<UserShift>> result;
+            if (null == value)
+            {
+                result = new NDbResult<List<UserShift>>();
+                result.ParameterIsNull();
+                result.data = new List<UserShift>();
+            }
+            else
+            {
+                result = UserShift.GetUserShifts(value.UserId);
+            }
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.UserShift.GetUnCloseUserShifts.Name)]
-        public List<UserShift> GetUnCloseUserShifts()
+        public NDbResult<List<UserShift>> GetUnCloseUserShifts()
         {
-            return UserShift.GetUnCloseUserShifts();
+            NDbResult<List<UserShift>> result;
+            result = UserShift.GetUnCloseUserShifts();
+            return result;
         }
     }
 }

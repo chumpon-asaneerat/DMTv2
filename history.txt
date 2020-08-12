@@ -29,8 +29,10 @@ Update 2020-08-13 #22
 Update 2020-08-13 #21
 - 
 
+[commited]
 Update 2020-08-13 #20
-- 
+- Update Local/DataCenter/TAxTOD service operation #78.
+- Implements UserShift related process #5.
 
 [commited]
 Update 2020-08-13 #19
