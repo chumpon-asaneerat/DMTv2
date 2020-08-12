@@ -62,49 +62,118 @@ namespace DMT.Services
 
             #region Public Methods
 
-            public UserShift Create(Shift shift, User collector)
+            public NRestResult<UserShift> Create(Shift shift, User collector)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<UserShift>(
-                    RouteConsts.UserShift.Create.Url,
-                    new UserShiftCreate()
-                    {
-                        Shift = shift,
-                        User = collector
-                    });
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<UserShift> ret;
+                var inst = new UserShiftCreate()
+                {
+                    Shift = shift,
+                    User = collector
+                };
+
+                ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                    .Execute<UserShift>(RouteConsts.UserShift.Create.Url, inst);
                 return ret;
             }
 
-            public UserShift GetCurrent(User user)
+            public NRestResult<UserShift> GetCurrent(User value)
             {
-                return NRestClient.Create(port: 9000).Execute<UserShift>(
-                    RouteConsts.UserShift.GetCurrent.Url, user);
-            }
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
 
-            public bool BeginUserShift(UserShift shift)
-            {
-                if (null == shift) return false;
-                return NRestClient.Create(port: 9000).Execute<bool>(
-                    RouteConsts.UserShift.BeginUserShift.Url, shift);
-            }
-
-            public void EndUserShift(UserShift shift)
-            {
-                if (null == shift) return;
-                NRestClient.Create(port: 9000).Execute(
-                    RouteConsts.UserShift.EndUserShift.Url, shift);
-            }
-
-            public List<UserShift> GetUserShifts(User collector)
-            {
-                var ret = NRestClient.Create(port: 9000).Execute<List<UserShift>>(
-                    RouteConsts.UserShift.GetUserShifts.Url, collector);
+                NRestResult<UserShift> ret;
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<UserShift>(RouteConsts.UserShift.GetCurrent.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<UserShift>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
                 return ret;
             }
 
-            public List<UserShift> GetUnCloseUserShifts()
+            public NRestResult BeginUserShift(UserShift value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<UserShift>>(
-                    RouteConsts.UserShift.GetUnCloseUserShifts.Url);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult ret;
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<bool>(RouteConsts.UserShift.BeginUserShift.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult();
+                    ret.ParameterIsNull();
+                }
+                return ret;
+            }
+
+            public NRestResult EndUserShift(UserShift value)
+            {
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult ret;
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute(RouteConsts.UserShift.EndUserShift.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult();
+                    ret.ParameterIsNull();
+                }
+                return ret;
+            }
+
+            public NRestResult<List<UserShift>> GetUserShifts(User value)
+            {
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<UserShift>> ret;
+                ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                    .Execute<List<UserShift>>(RouteConsts.UserShift.GetUserShifts.Url, value);
+                return ret;
+            }
+
+            public NRestResult<List<UserShift>> GetUnCloseUserShifts()
+            {
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<UserShift>> ret;
+                ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                    .Execute<List<UserShift>>(RouteConsts.UserShift.GetUnCloseUserShifts.Url);
                 return ret;
             }
 
