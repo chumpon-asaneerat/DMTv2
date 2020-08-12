@@ -620,6 +620,7 @@ namespace DMT.Models
             if (tsbRet.errors.hasError)
             {
                 result.ParameterIsNull();
+                result.data = null;
             }
             else
             {
@@ -627,9 +628,9 @@ namespace DMT.Models
                 if (null != tsb) tsb.AssignTo(inst);
                 if (null != shift) shift.AssignTo(inst);
                 if (null != supervisor) supervisor.AssignTo(inst);
+                result.data = inst;
             }
 
-            result.data = inst;
             return result;
         }
 

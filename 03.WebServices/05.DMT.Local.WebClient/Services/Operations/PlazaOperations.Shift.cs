@@ -51,9 +51,6 @@ namespace DMT.Services
         /// </summary>
         public class ShiftOperations
         {
-            private DateTime LastUpdated = DateTime.MinValue;
-            private TSBShift _current = null;
-
             #region Constructor
 
             /// <summary>
@@ -117,22 +114,13 @@ namespace DMT.Services
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
 
                 NRestResult<TSBShift> ret;
-                if (null != value)
+                var inst = new TSBShiftCreate()
                 {
-                    var inst = new TSBShiftCreate()
-                    {
-                        Shift = shift,
-                        User = supervisor
-                    };
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<TSBShift>(RouteConsts.Shift.Create.Url inst);
-                }
-                else
-                {
-                    ret = new NRestResult<TSBShift>();
-                    ret.ParameterIsNull();
-                    ret.data = null;
-                }
+                    Shift = shift,
+                    User = supervisor
+                };
+                ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                    .Execute<TSBShift>(RouteConsts.Shift.Create.Url, inst);
                 return ret;
             }
 
@@ -145,23 +133,8 @@ namespace DMT.Services
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
 
                 NRestResult<TSBShift> ret;
-                TimeSpan ts = DateTime.Now - LastUpdated;
-                if (null != value)
-                {
-                    if (ts.TotalSeconds >= 1)
-                    {
-                        ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                            .Execute<TSBShift>(RouteConsts.Shift.GetCurrent.Url, new { });
-
-                        LastUpdated = DateTime.Now;
-                    }
-                }
-                else
-                {
-                    ret = new NRestResult<TSBShift>();
-                    ret.ParameterIsNull();
-                    ret.data = null;
-                }
+                ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                    .Execute<TSBShift>(RouteConsts.Shift.GetCurrent.Url, new { });
                 return ret;
             }
 
@@ -184,9 +157,6 @@ namespace DMT.Services
                     ret = new NRestResult();
                     ret.ParameterIsNull();
                 }
-                // reset last update for reload new shirt.
-                LastUpdated = DateTime.MinValue;
-
                 return ret;
             }
 

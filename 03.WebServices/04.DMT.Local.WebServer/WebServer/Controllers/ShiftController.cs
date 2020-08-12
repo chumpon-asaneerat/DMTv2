@@ -59,11 +59,23 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.Shift.ChangeShift.Name)]
-        public void ChangeShift([FromBody] TSBShift shift)
+        public NDbResult ChangeShift([FromBody] TSBShift value)
         {
-            var result = TSBShift.ChangeShift(shift);
-            // Raise event.
-            LocalDbServer.Instance.ChangeShift();
+            NDbResult result;
+            if (null == value)
+            {
+                result = new NDbResult<Shift>();
+                result.ParameterIsNull();
+            }
+            else
+            {
+                result = TSBShift.ChangeShift(value);
+                if (!result.errors.hasError)
+                {
+                    // Raise event.
+                    LocalDbServer.Instance.ChangeShift();
+                }
+            }
             return result;
         }
 
@@ -71,8 +83,18 @@ namespace DMT.Services
         [ActionName(RouteConsts.Shift.Create.Name)]
         public NDbResult<TSBShift> Create([FromBody] TSBShiftCreate value)
         {
-            if (null == value) return null;
-            return TSBShift.Create(value.Shift, value.User);
+            NDbResult<TSBShift> result;
+            if (null == value)
+            {
+                result = new NDbResult<TSBShift>();
+                result.ParameterIsNull();
+                result.data = null;
+            }
+            else
+            {
+                result = TSBShift.Create(value.Shift, value.User);
+            }
+            return result;
         }
 
         #endregion
