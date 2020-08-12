@@ -1884,12 +1884,25 @@ namespace DMT.Models
 		public static NDbResult<UserCreditBalance> GetActiveUserCreditBalance(
 			User user, PlazaGroup plazaGroup)
 		{
+			var result = new NDbResult<UserCreditBalance>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+			if (null == user || null == plazaGroup)
+			{
+				result.ParameterIsNull();
+				result.data = null;
+				return result;
+			}
+
 			lock (sync)
 			{
 				try
 				{
-					if (null == user || null == plazaGroup) return null;
-
 					string cmd = @"
 					SELECT *
 					  FROM UserCreditSummaryView
@@ -1940,6 +1953,15 @@ namespace DMT.Models
 		public static NDbResult<UserCreditBalance> GetActiveUserCreditBalanceById(
 			string userId, string plazaGroupId)
 		{
+			var result = new NDbResult<UserCreditBalance>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			lock (sync)
 			{
 				try
@@ -1973,12 +1995,25 @@ namespace DMT.Models
 
 		public static NDbResult<List<UserCreditBalance>> GetActiveUserCreditBalances(TSB tsb)
 		{
+			var result = new NDbResult<List<UserCreditBalance>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<UserCreditBalance>();
+				return result;
+			}
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				result.data = new List<UserCreditBalance>();
+				return result;
+			}
+
 			lock (sync)
 			{
 				try
 				{
-					if (null == tsb) return null;
-
 					string cmd = @"
 					SELECT *
 					  FROM UserCreditSummaryView
@@ -2001,7 +2036,7 @@ namespace DMT.Models
 				catch (Exception ex)
 				{
 					result.Error(ex);
-					result.data = new List<UserCreditTransaction>();
+					result.data = new List<UserCreditBalance>();
 				}
 				return result;
 			}
@@ -2009,17 +2044,31 @@ namespace DMT.Models
 
 		public static NDbResult<UserCreditBalance> SaveUserCreditBalance(UserCreditBalance value)
 		{
+			NDbResult<UserCreditBalance> result = new NDbResult<UserCreditBalance>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+			if (null == value)
+			{
+				result.ParameterIsNull();
+				result.data = null;
+				return result;
+			}
+
 			lock (sync)
 			{
-				if (null == value) return 0;
 				// set date if not assigned.
 				if (value.UserCreditDate == DateTime.MinValue)
 				{
 					value.UserCreditDate = DateTime.Now;
 				}
-				Save(value);
-				return value.UserCreditId;
+				result = Save(value);
 			}
+			return result;
 		}
 
 		#endregion

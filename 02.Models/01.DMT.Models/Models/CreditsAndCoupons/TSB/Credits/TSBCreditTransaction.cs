@@ -1344,12 +1344,30 @@ namespace DMT.Models
 		/// <returns>Returns Current Active TSB Credit transactions. If not found returns null.</returns>
 		public static NDbResult<List<TSBCreditTransaction>> Gets()
 		{
+			var result = new NDbResult<List<TSBCreditTransaction>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<TSBCreditTransaction>();
+				return result;
+			}
 			lock (sync)
 			{
 				try
 				{
-					var tsb = TSB.GetCurrent();
-					return Gets(tsb);
+					var tsbRet = TSB.GetCurrent();
+					if (null != tsbRet && !tsbRet.errors.hasError)
+					{
+						var tsb = tsbRet.data;
+						return Gets(tsb);
+					}
+					else
+					{
+						result.Error(new Exception("Cannot get active TSB."));
+						result.errors.errNum = -20;
+						result.data = new List<TSBCreditTransaction>();
+					}
 				}
 				catch (Exception ex)
 				{
@@ -1367,7 +1385,20 @@ namespace DMT.Models
 		/// <returns>Returns TSB Credit transactions. If TSB not found returns null.</returns>
 		public static NDbResult<List<TSBCreditTransaction>> Gets(TSB tsb)
 		{
-			if (null == tsb) return null;
+			var result = new NDbResult<List<TSBCreditTransaction>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<TSBCreditTransaction>();
+				return result;
+			}
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				result.data = new List<TSBCreditTransaction>();
+				return result;
+			}
 			lock (sync)
 			{
 				try
@@ -1405,16 +1436,41 @@ namespace DMT.Models
 
 		public static NDbResult<TSBCreditTransaction> GetInitialTransaction()
 		{
+			var result = new NDbResult<TSBCreditTransaction>();
 			lock (sync)
 			{
-				var tsb = TSB.GetCurrent();
-				return GetInitialTransaction(tsb);
+				var tsbRet = TSB.GetCurrent();
+				if (null != tsbRet && !tsbRet.errors.hasError)
+				{
+					var tsb = tsbRet.data;
+					result = GetInitialTransaction(tsb);
+				}
+				else
+				{
+					result.Error(new Exception("Cannot get active TSB."));
+					result.errors.errNum = -20;
+					result.data = null;
+				}
+				return result;
 			}
 		}
 
 		public static NDbResult<TSBCreditTransaction> GetInitialTransaction(TSB tsb)
 		{
-			if (null == tsb) return null;
+			var result = new NDbResult<TSBCreditTransaction>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				result.data = null;
+				return result;
+			}
 			lock (sync)
 			{
 				try
@@ -1453,10 +1509,19 @@ namespace DMT.Models
 
 		public static NDbResult<TSBCreditTransaction> SaveTransaction(TSBCreditTransaction value)
 		{
+			var result = new NDbResult<TSBCreditTransaction>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
 			if (null == value)
 			{
-				Console.WriteLine("Transaction is null.");
-				return;
+				result.ParameterIsNull();
+				result.data = null;
+				return result;
 			}
 			if (value.TransactionDate == DateTime.MinValue)
 			{

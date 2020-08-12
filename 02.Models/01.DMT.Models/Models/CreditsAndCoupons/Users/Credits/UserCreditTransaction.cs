@@ -1704,8 +1704,18 @@ namespace DMT.Models
 			{
 				try
 				{
-					var tsb = TSB.GetCurrent();
-					return GetUserCreditTransactions(tsb);
+					var tsbRet = TSB.GetCurrent();
+					if (null != tsbRet && !tsbRet.errors.hasError)
+					{
+						var tsb = tsbRet.data;
+						return GetUserCreditTransactions(tsb);
+					}
+					else
+					{
+						result.Error(new Exception("Cannot get active TSB."));
+						result.errors.errNum = -20;
+						result.data = new List<UserCreditTransaction>();
+					}
 				}
 				catch (Exception ex)
 				{
@@ -1715,6 +1725,7 @@ namespace DMT.Models
 				return result;
 			}
 		}
+
 		/// <summary>
 		/// Gets User Credit transactions.
 		/// </summary>
@@ -1759,7 +1770,8 @@ namespace DMT.Models
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
 					if (null == rets)
 					{
-						return new List<UserCreditTransaction>();
+						result.data = new List<UserCreditTransaction>();
+						result.Success();
 					}
 					else
 					{
@@ -1768,7 +1780,8 @@ namespace DMT.Models
 						{
 							results.Add(ret.ToUserCreditTransaction());
 						});
-						return results;
+						result.data = results;
+						result.Success();
 					}
 				}
 				catch (Exception ex)

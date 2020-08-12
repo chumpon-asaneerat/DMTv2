@@ -1516,12 +1516,30 @@ namespace DMT.Models
 		/// <returns>Returns Current Active TSB Credit balance. If not found returns null.</returns>
 		public static NDbResult<TSBCreditBalance> GetCurrent()
 		{
+			var result = new NDbResult<TSBCreditBalance>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
 			lock (sync)
 			{
 				try
 				{
-					var tsb = TSB.GetCurrent();
-					return GetCurrent(tsb);
+					var tsbRet = TSB.GetCurrent();
+					if (null != tsbRet && !tsbRet.errors.hasError)
+					{
+						var tsb = tsbRet.data;
+						return GetCurrent(tsb);
+					}
+					else
+					{
+						result.Error(new Exception("Cannot get active TSB."));
+						result.errors.errNum = -20;
+						result.data = null;
+					}
 				}
 				catch (Exception ex)
 				{
@@ -1538,7 +1556,20 @@ namespace DMT.Models
 		/// <returns>Returns TSB Credit balance. If TSB not found returns null.</returns>
 		public static NDbResult<TSBCreditBalance> GetCurrent(TSB tsb)
 		{
-			if (null == tsb) return null;
+			var result = new NDbResult<TSBCreditBalance>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				result.data = null;
+				return result;
+			}
 			lock (sync)
 			{
 				try
@@ -1566,6 +1597,14 @@ namespace DMT.Models
 		/// <returns>Returns List fo all TSB Credit balance.</returns>
 		public static NDbResult<List<TSBCreditBalance>> Gets()
 		{
+			var result = new NDbResult<List<TSBCreditBalance>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<TSBCreditBalance>();
+				return result;
+			}
 			lock (sync)
 			{
 				try
