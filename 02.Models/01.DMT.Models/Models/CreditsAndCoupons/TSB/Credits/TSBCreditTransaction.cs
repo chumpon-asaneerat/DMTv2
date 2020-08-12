@@ -1360,26 +1360,33 @@ namespace DMT.Models
 			if (null == tsb) return null;
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT TSBCreditTransaction.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "  FROM TSBCreditTransaction, TSB ";
-				cmd += " WHERE TSBCreditTransaction.TSBId = TSB.TSBId ";
-				cmd += "   AND TSBCreditTransaction.TSBId = ? ";
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT TSBCreditTransaction.* ";
+					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+					cmd += "  FROM TSBCreditTransaction, TSB ";
+					cmd += " WHERE TSBCreditTransaction.TSBId = TSB.TSBId ";
+					cmd += "   AND TSBCreditTransaction.TSBId = ? ";
 
-				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
-				if (null == rets)
-				{
-					return new List<TSBCreditTransaction>();
-				}
-				else
-				{
-					var results = new List<TSBCreditTransaction>();
-					rets.ForEach(ret =>
+					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
+					if (null == rets)
 					{
-						results.Add(ret.ToTSBCreditTransaction());
-					});
-					return results;
+						return new List<TSBCreditTransaction>();
+					}
+					else
+					{
+						var results = new List<TSBCreditTransaction>();
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToTSBCreditTransaction());
+						});
+						return results;
+					}
+				}
+				catch (Exception ex)
+				{
+
 				}
 			}
 		}
@@ -1398,28 +1405,35 @@ namespace DMT.Models
 			if (null == tsb) return null;
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT TSBCreditTransaction.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "  FROM TSBCreditTransaction, TSB ";
-				cmd += " WHERE TSBCreditTransaction.TSBId = TSB.TSBId ";
-				cmd += "   AND TSBCreditTransaction.TSBId = ? ";
-				cmd += "   AND TSBCreditTransaction.TransactionType = ? ";
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT TSBCreditTransaction.* ";
+					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+					cmd += "  FROM TSBCreditTransaction, TSB ";
+					cmd += " WHERE TSBCreditTransaction.TSBId = TSB.TSBId ";
+					cmd += "   AND TSBCreditTransaction.TSBId = ? ";
+					cmd += "   AND TSBCreditTransaction.TransactionType = ? ";
 
-				var ret = NQuery.Query<FKs>(cmd,
-					tsb.TSBId, TransactionTypes.Initial).FirstOrDefault();
-				TSBCreditTransaction inst;
-				if (null == ret)
-				{
-					inst = Create();
-					tsb.AssignTo(inst);
-					inst.TransactionType = TransactionTypes.Initial;
+					var ret = NQuery.Query<FKs>(cmd,
+						tsb.TSBId, TransactionTypes.Initial).FirstOrDefault();
+					TSBCreditTransaction inst;
+					if (null == ret)
+					{
+						inst = Create();
+						tsb.AssignTo(inst);
+						inst.TransactionType = TransactionTypes.Initial;
+					}
+					else
+					{
+						inst = ret.ToTSBCreditTransaction();
+					}
+					return inst;
 				}
-				else
+				catch (Exception ex)
 				{
-					inst = ret.ToTSBCreditTransaction();
+
 				}
-				return inst;
 			}
 		}
 

@@ -1532,14 +1532,21 @@ namespace DMT.Models
 			if (null == tsb) return null;
 			lock (sync)
 			{
-				string cmd = @"
+				try
+				{
+					string cmd = @"
 				    SELECT * 
 					  FROM TSBCreditSummarryView
 					 WHERE TSBCreditSummarryView.TSBId = ?
 				";
-				var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
-				var result = (null != ret) ? ret.ToTSBCreditBalance() : null;
-				return result;
+					var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
+					var result = (null != ret) ? ret.ToTSBCreditBalance() : null;
+					return result;
+				}
+				catch (Exception ex)
+				{
+
+				}
 			}
 		}
 		/// <summary>
@@ -1550,20 +1557,27 @@ namespace DMT.Models
 		{
 			lock (sync)
 			{
-				string cmd = @"
+				try
+				{
+					string cmd = @"
 					SELECT *
 					  FROM TSBCreditSummarryView
 				";
-				var rets = NQuery.Query<FKs>(cmd).ToList();
-				var results = new List<TSBCreditBalance>();
-				if (null != rets)
-				{
-					rets.ForEach(ret =>
+					var rets = NQuery.Query<FKs>(cmd).ToList();
+					var results = new List<TSBCreditBalance>();
+					if (null != rets)
 					{
-						results.Add(ret.ToTSBCreditBalance());
-					});
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToTSBCreditBalance());
+						});
+					}
+					return results;
 				}
-				return results;
+				catch (Exception ex)
+				{
+
+				}
 			}
 		}
 
