@@ -259,7 +259,6 @@ namespace DMT.Services
                     ret = new NRestResult<List<Lane>>();
                     ret.ParameterIsNull();
                     ret.data = new List<Lane>();
-                    ret.data = null;
                 }
                 return ret;
             }
@@ -283,7 +282,6 @@ namespace DMT.Services
                     ret = new NRestResult<List<Lane>>();
                     ret.ParameterIsNull();
                     ret.data = new List<Lane>();
-                    ret.data = null;
                 }
                 return ret;
             }
@@ -307,7 +305,6 @@ namespace DMT.Services
                     ret = new NRestResult<List<Lane>>();
                     ret.ParameterIsNull();
                     ret.data = new List<Lane>();
-                    ret.data = null;
                 }
                 return ret;
             }

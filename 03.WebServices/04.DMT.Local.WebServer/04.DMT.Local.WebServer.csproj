@@ -94,7 +94,7 @@
     <None Include="WebServer\Controllers\UserShiftController.cs" />
     <None Include="WebServer\Controllers\LaneController.cs" />
     <None Include="WebServer\Controllers\RevenueController.cs" />
-    <None Include="WebServer\Controllers\ShiftController.cs" />
+    <Compile Include="WebServer\Controllers\ShiftController.cs" />
     <Compile Include="WebServer\Controllers\TSBController.cs" />
     <Compile Include="WebServer\Controllers\UserController.cs" />
     <Compile Include="WebServer\LocalDatabaseWebServer.cs" />

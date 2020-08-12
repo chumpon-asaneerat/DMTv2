@@ -17,46 +17,64 @@ namespace DMT.Services
     /// </summary>
     public class ShiftController : ApiController
     {
+        #region Shift
+
         [HttpPost]
         [ActionName(RouteConsts.Shift.GetShifts.Name)]
-        public List<Shift> GetShifts()
+        public NDbResult<List<Shift>> GetShifts()
         {
-            return Shift.Gets();
+            var results = Shift.Gets();
+            return results;
         }
 
         [HttpPost]
-        [ActionName(RouteConsts.Shift.GetCurrent.Name)]
-        public TSBShift GetCurrent()
+        [ActionName(RouteConsts.Shift.SaveShift.Name)]
+        public NDbResult<Shift> SaveShift([FromBody] Shift value)
         {
-            return TSBShift.GetCurrent();
+            NDbResult<Shift> result;
+            if (null == value)
+            {
+                result = new NDbResult<Shift>();
+                result.ParameterIsNull();
+                result.data = null;
+            }
+            else
+            {
+                result = Shift.Save(value);
+            }
+            return result;
+        }
+
+        #endregion
+
+        #region TSB Shift
+
+        [HttpPost]
+        [ActionName(RouteConsts.Shift.GetCurrent.Name)]
+        public NDbResult<TSBShift> GetCurrent()
+        {
+            var result = TSBShift.GetCurrent();
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.Shift.ChangeShift.Name)]
         public void ChangeShift([FromBody] TSBShift shift)
         {
-            TSBShift.ChangeShift(shift);
+            var result = TSBShift.ChangeShift(shift);
             // Raise event.
             LocalDbServer.Instance.ChangeShift();
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.Shift.Create.Name)]
-        public TSBShift Create([FromBody] TSBShiftCreate value)
+        public NDbResult<TSBShift> Create([FromBody] TSBShiftCreate value)
         {
             if (null == value) return null;
             return TSBShift.Create(value.Shift, value.User);
         }
 
-        [HttpPost]
-        [ActionName(RouteConsts.Shift.SaveShift.Name)]
-        public Shift SaveShift([FromBody] Shift value)
-        {
-            if (null != value)
-            {
-                Shift.Save(value);
-            }
-            return value;
-        }
+        #endregion
     }
 }

@@ -65,55 +65,132 @@ namespace DMT.Services
 
             #region Public Methods
 
-            public List<Shift> GetShifts()
+            #region Shift
+
+            public NRestResult<List<Shift>> GetShifts()
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<Shift>>(
-                    RouteConsts.Shift.GetShifts.Url, new { });
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<Shift>> ret;
+                ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                    .Execute<List<Shift>>(RouteConsts.Shift.GetShifts.Url, new { });
                 return ret;
             }
 
-            public TSBShift Create(Shift shift, User supervisor)
+            public NRestResult<Shift> SaveShift(Shift value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<TSBShift>(
-                    RouteConsts.Shift.Create.Url,
-                    new TSBShiftCreate()
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<Shift> ret;
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<Shift>(RouteConsts.Shift.SaveShift.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<Shift>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
+                return ret;
+            }
+
+            #endregion
+
+            #region TSB Shift
+
+            public NRestResult<TSBShift> Create(Shift shift, User supervisor)
+            {
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<TSBShift> ret;
+                if (null != value)
+                {
+                    var inst = new TSBShiftCreate()
                     {
                         Shift = shift,
                         User = supervisor
-                    });
+                    };
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<TSBShift>(RouteConsts.Shift.Create.Url inst);
+                }
+                else
+                {
+                    ret = new NRestResult<TSBShift>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
                 return ret;
             }
 
-            public TSBShift GetCurrent()
+            public NRestResult<TSBShift> GetCurrent()
             {
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<TSBShift> ret;
                 TimeSpan ts = DateTime.Now - LastUpdated;
-                if (ts.TotalSeconds >= 1)
+                if (null != value)
                 {
-                    _current = NRestClient.Create(port: 9000).Execute<TSBShift>(
-                        RouteConsts.Shift.GetCurrent.Url, new { });
+                    if (ts.TotalSeconds >= 1)
+                    {
+                        ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                            .Execute<TSBShift>(RouteConsts.Shift.GetCurrent.Url, new { });
 
-                    LastUpdated = DateTime.Now;
+                        LastUpdated = DateTime.Now;
+                    }
                 }
-                return _current;
-
+                else
+                {
+                    ret = new NRestResult<TSBShift>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
+                return ret;
             }
 
-            public void ChangeShift(TSBShift shift)
+            public NRestResult ChangeShift(TSBShift value)
             {
-                if (null == shift) return;
-                NRestClient.Create(port: 9000).Execute(
-                    RouteConsts.Shift.ChangeShift.Url, shift);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
 
+                NRestResult ret;
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute(RouteConsts.Shift.ChangeShift.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult();
+                    ret.ParameterIsNull();
+                }
                 // reset last update for reload new shirt.
                 LastUpdated = DateTime.MinValue;
-            }
 
-            public Shift SaveShift(Shift value)
-            {
-                var ret = NRestClient.Create(port: 9000).Execute<Shift>(
-                    RouteConsts.Shift.SaveShift.Url, value);
                 return ret;
             }
+
+            #endregion
 
             #endregion
         }
