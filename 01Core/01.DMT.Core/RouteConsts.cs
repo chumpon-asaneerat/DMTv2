@@ -114,6 +114,8 @@ namespace DMT
         {
             public const string Url = RouteConsts.Url + @"/User";
 
+            #region Role
+
             public static class GetRole
             {
                 public const string Name = "GetRole";
@@ -125,6 +127,16 @@ namespace DMT
                 public const string Name = "GetRoles";
                 public const string Url = User.Url + @"/" + Name;
             }
+            // NEW!! 2020-07-29 - Save methods
+            public static class SaveRole
+            {
+                public const string Name = "SaveRole";
+                public const string Url = User.Url + @"/" + Name;
+            }
+
+            #endregion
+
+            #region User
 
             public static class GetUsers
             {
@@ -156,18 +168,13 @@ namespace DMT
                 public const string Url = User.Url + @"/" + Name;
             }
 
-            // NEW!! 2020-07-29 - Save methods
-            public static class SaveRole
-            {
-                public const string Name = "SaveRole";
-                public const string Url = User.Url + @"/" + Name;
-            }
-
             public static class SaveUser
             {
                 public const string Name = "SaveUser";
                 public const string Url = User.Url + @"/" + Name;
             }
+
+            #endregion
         }
 
         #endregion

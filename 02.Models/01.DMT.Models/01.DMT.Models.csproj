@@ -139,7 +139,7 @@
     <None Include="Models\Shifts\TSBShift.cs" />
     <None Include="Models\Shifts\UserShift.cs" />
     <None Include="Models\Shifts\UserShiftRevenue.cs" />
-    <None Include="Models\Users\Role.cs" />
+    <Compile Include="Models\Users\Role.cs" />
     <None Include="Models\Users\User.cs" />
     <Compile Include="Services\LocalDbServer.cs" />
     <Compile Include="Models\Common\DMTModelBase.cs" />
