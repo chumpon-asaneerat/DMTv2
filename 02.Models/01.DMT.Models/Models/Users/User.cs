@@ -583,7 +583,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static NDbResult<List<User>> FindByGroup(int groupId, int status)
+		public static NDbResult<List<User>> FindByGroupId(int groupId, int status)
 		{
 			var result = new NDbResult<List<User>>();
 			SQLiteConnection db = Default;

@@ -110,6 +110,13 @@ namespace DMT.Services
                 return ret;
             }
 
+            public List<User> SearchByGroupId(Search.Users.ByGroupId value)
+            {
+                var ret = NRestClient.Create(port: 9000).Execute<List<User>>(
+                    RouteConsts.User.SearchByGroupId.Url, value);
+                return ret;
+            }
+
             public List<User> SearchById(Search.Users.ById value)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<User>>(

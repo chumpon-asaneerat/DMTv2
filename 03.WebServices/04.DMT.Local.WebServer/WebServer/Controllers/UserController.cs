@@ -70,6 +70,16 @@ namespace DMT.Services
         }
 
         [HttpPost]
+        [ActionName(RouteConsts.User.SearchByGroupId.Name)]
+        public List<User> SearchByGroupId([FromBody] Search.Users.ByGroupId value)
+        {
+            if (null == value) return new List<User>();
+            int status = 1; // active only
+            var results = Models.User.FindByGroupId(value.GroupId, status);
+            return results;
+        }
+
+        [HttpPost]
         [ActionName(RouteConsts.User.SearchById.Name)]
         public List<User> SearchById([FromBody] Search.Users.ById value)
         {

@@ -150,6 +150,12 @@ namespace DMT
                 public const string Url = User.Url + @"/" + Name;
             }
 
+            public static class SearchByGroupId
+            {
+                public const string Name = "SearchByGroupId";
+                public const string Url = User.Url + @"/" + Name;
+            }
+
             public static class SearchById
             {
                 public const string Name = "SearchById";

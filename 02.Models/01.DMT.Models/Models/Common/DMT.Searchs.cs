@@ -79,6 +79,18 @@ namespace DMT.Models
                 }
             }
 
+            public class ByGroupId : NSearch<ByGroupId>
+            {
+                public int GroupId { get; set; }
+
+                public static ByGroupId Create(int groupId)
+                {
+                    var ret = new ByGroupId();
+                    ret.GroupId = groupId;
+                    return ret;
+                }
+            }
+
             public class ById : NSearch<ById>
             {
                 public string UserId { get; set; }
