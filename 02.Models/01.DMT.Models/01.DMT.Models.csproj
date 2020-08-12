@@ -135,7 +135,7 @@
     <None Include="Models\LaneActivities\LanePayment.cs" />
     <None Include="Models\CreditsAndCoupons\Common\Payments\Payment.cs" />
     <None Include="Models\Revenues\RevenueEntry.cs" />
-    <None Include="Models\Shifts\Shift.cs" />
+    <Compile Include="Models\Shifts\Shift.cs" />
     <None Include="Models\Shifts\TSBShift.cs" />
     <None Include="Models\Shifts\UserShift.cs" />
     <None Include="Models\Shifts\UserShiftRevenue.cs" />
