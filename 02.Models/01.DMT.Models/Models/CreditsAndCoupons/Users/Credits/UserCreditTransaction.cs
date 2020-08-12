@@ -1708,9 +1708,11 @@ namespace DMT.Models
 					return GetUserCreditTransactions(tsb);
 				}
 				catch (Exception ex)
-                {
-
-                }
+				{
+					result.Error(ex);
+					result.data = new List<UserCreditTransaction>();
+				}
+				return result;
 			}
 		}
 		/// <summary>
@@ -1728,8 +1730,13 @@ namespace DMT.Models
 				result.data = new List<UserCreditTransaction>();
 				return result;
 			}
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				result.data = new List<UserCreditTransaction>();
+				return result;
+			}
 
-			if (null == tsb) return null;
 			lock (sync)
 			{
 				try
@@ -1766,20 +1773,39 @@ namespace DMT.Models
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = new List<UserCreditTransaction>();
 				}
+				return result;
 			}
 		}
 
 		public static NDbResult<UserCreditTransaction> SaveUserCreditTransaction(
 			UserCreditTransaction value)
 		{
-			if (null == value) return;
-			if (value.TransactionDate == DateTime.MinValue)
+			var result = new NDbResult<UserCreditTransaction>();
+			SQLiteConnection db = Default;
+			if (null == db)
 			{
-				value.TransactionDate = DateTime.Now;
+				result.ConenctFailed();
+				result.data = null;
+				return result;
 			}
-			UserCreditTransaction.Save(value);
+			if (null == value)
+			{
+				result.ParameterIsNull();
+				result.data = null;
+				return result;
+			}
+			else
+			{
+				if (value.TransactionDate == DateTime.MinValue)
+				{
+					value.TransactionDate = DateTime.Now;
+				}
+				result = Save(value);
+			}
+			return result;
 		}
 
 		#endregion

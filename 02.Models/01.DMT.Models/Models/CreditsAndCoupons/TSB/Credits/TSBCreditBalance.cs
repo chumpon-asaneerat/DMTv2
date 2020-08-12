@@ -1524,9 +1524,11 @@ namespace DMT.Models
 					return GetCurrent(tsb);
 				}
 				catch (Exception ex)
-                {
-
-                }
+				{
+					result.Error(ex);
+					result.data = null;
+				}
+				return result;
 			}
 		}
 		/// <summary>
@@ -1542,7 +1544,7 @@ namespace DMT.Models
 				try
 				{
 					string cmd = @"
-				    SELECT * 
+					SELECT * 
 					  FROM TSBCreditSummarryView
 					 WHERE TSBCreditSummarryView.TSBId = ?
 				";
@@ -1552,8 +1554,10 @@ namespace DMT.Models
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = null;
 				}
+				return result;
 			}
 		}
 		/// <summary>
@@ -1583,8 +1587,10 @@ namespace DMT.Models
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = new List<TSBCreditBalance>();
 				}
+				return result;
 			}
 		}
 

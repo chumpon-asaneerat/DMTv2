@@ -1352,9 +1352,11 @@ namespace DMT.Models
 					return Gets(tsb);
 				}
 				catch (Exception ex)
-                {
-
-                }
+				{
+					result.Error(ex);
+					result.data = new List<TSBCreditTransaction>();
+				}
+				return result;
 			}
 		}
 
@@ -1394,8 +1396,10 @@ namespace DMT.Models
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = new List<TSBCreditTransaction>();
 				}
+				return result;
 			}
 		}
 
@@ -1440,8 +1444,10 @@ namespace DMT.Models
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = null;
 				}
+				return result;
 			}
 		}
 
@@ -1465,6 +1471,7 @@ namespace DMT.Models
 			{
 				Console.WriteLine("Save Success.");
 			}
+			return result;
 		}
 
 		#endregion
