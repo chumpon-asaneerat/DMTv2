@@ -18,27 +18,36 @@ namespace DMT.Services
     /// </summary>
     public class RevenueController : ApiController
     {
+        #region UserShiftRevenue
+
         [HttpPost]
         [ActionName(RouteConsts.Revenue.CreatePlazaRevenue.Name)]
-        public UserShiftRevenue CreateRevenueShift([FromBody] Search.Revenues.PlazaShift value)
+        public NDbResult<UserShiftRevenue> CreateRevenueShift([FromBody] Search.Revenues.PlazaShift value)
         {
             if (null == value) return null;
             return UserShiftRevenue.CreatePlazaRevenue(value.Shift, value.PlazaGroup);
         }
-        [HttpPost]
-        [ActionName(RouteConsts.Revenue.GetPlazaRevenue.Name)]
-        public UserShiftRevenue GetRevenueShift([FromBody] Search.Revenues.PlazaShift value)
-        {
-            if (null == value) return null;
-            return UserShiftRevenue.GetPlazaRevenue(value.Shift, value.PlazaGroup);
-        }
+
         [HttpPost]
         [ActionName(RouteConsts.Revenue.SavePlazaRevenue.Name)]
-        public void SaveRevenueShift([FromBody] Search.Revenues.SaveRevenueShift value)
+        public NDbResult<UserShiftRevenue> SaveRevenueShift([FromBody] Search.Revenues.SaveRevenueShift value)
         {
             if (null == value) return;
             UserShiftRevenue.SavePlazaRevenue(value.RevenueShift, value.RevenueDate, value.RevenueId);
         }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Revenue.GetPlazaRevenue.Name)]
+        public NDbResult<UserShiftRevenue> GetRevenueShift([FromBody] Search.Revenues.PlazaShift value)
+        {
+            if (null == value) return null;
+            return UserShiftRevenue.GetPlazaRevenue(value.Shift, value.PlazaGroup);
+        }
+
+        #endregion
+
+        #region Revenue Entry
+
         [HttpPost]
         [ActionName(RouteConsts.Revenue.SaveRevenue.Name)]
         public string SaveRevenue([FromBody] RevenueEntry value)
@@ -59,6 +68,7 @@ namespace DMT.Services
             RevenueEntry.Save(value);
             return value.RevenueId;
         }
+
         [HttpPost]
         [ActionName(RouteConsts.Revenue.GetRevenues.Name)]
         public List<RevenueEntry> GetRevenues([FromBody] DateTime value)
@@ -66,5 +76,7 @@ namespace DMT.Services
             if (value == DateTime.MinValue) return new List<RevenueEntry>();
             return RevenueEntry.FindByRevnueDate(value);
         }
+
+        #endregion
     }
 }

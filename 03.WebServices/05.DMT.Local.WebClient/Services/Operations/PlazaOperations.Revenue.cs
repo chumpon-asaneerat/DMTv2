@@ -63,31 +63,131 @@ namespace DMT.Services
 
             #region Public Methods
 
-            public UserShiftRevenue CreateRevenueShift(Search.Revenues.PlazaShift value)
+            #region UserShiftRevenue
+
+            public NRestResult<UserShiftRevenue> CreateRevenueShift(
+                Search.Revenues.PlazaShift value)
             {
-                return NRestClient.Create(port: 9000).Execute<UserShiftRevenue>(
-                    RouteConsts.Revenue.CreatePlazaRevenue.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<UserShiftRevenue> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<UserShiftRevenue>(RouteConsts.Revenue.CreatePlazaRevenue.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<UserShiftRevenue>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
+                return ret;
             }
-            public UserShiftRevenue GetRevenueShift(Search.Revenues.PlazaShift value)
+
+            public NRestResult<UserShiftRevenue> SaveRevenueShift(
+                Search.Revenues.SaveRevenueShift value)
             {
-                return NRestClient.Create(port: 9000).Execute<UserShiftRevenue>(
-                    RouteConsts.Revenue.GetPlazaRevenue.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<UserShiftRevenue> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<UserShiftRevenue>(RouteConsts.Revenue.SavePlazaRevenue.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<UserShiftRevenue>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
+                return ret;
             }
-            public void SaveRevenueShift(Search.Revenues.SaveRevenueShift value)
+
+            public NRestResult<UserShiftRevenue> GetRevenueShift(Search.Revenues.PlazaShift value)
             {
-                NRestClient.Create(port: 9000).Execute(
-                    RouteConsts.Revenue.SavePlazaRevenue.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<UserShiftRevenue> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<UserShiftRevenue>(RouteConsts.Revenue.GetPlazaRevenue.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<UserShiftRevenue>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
+                return ret;
             }
-            public string SaveRevenue(RevenueEntry value)
+
+            #endregion
+
+            #region Revenue Entry
+
+            public NRestResult<RevenueEntry> SaveRevenue(RevenueEntry value)
             {
-                return NRestClient.Create(port: 9000).Execute<string>(
-                    RouteConsts.Revenue.SaveRevenue.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<RevenueEntry>(RouteConsts.Revenue.SaveRevenue.Url, value);
+                }
+                else
+                {
+
+                }
+                return ret;
             }
+
             public List<RevenueEntry> GetRevenues(DateTime value)
             {
-                return NRestClient.Create(port: 9000).Execute<List<RevenueEntry>>(
-                    RouteConsts.Revenue.GetRevenues.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<RevenueEntry>> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<List<RevenueEntry>>(RouteConsts.Revenue.GetRevenues.Url, value);
+                }
+                else
+                {
+
+                }
+                return ret;
             }
+
+            #endregion
 
             #endregion
         }
