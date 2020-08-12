@@ -275,6 +275,7 @@ namespace DMT.Models
 				return result;
 			}
 		}
+
 		public static NDbResult<List<TSB>> Gets()
 		{
 			lock (sync)
@@ -283,6 +284,7 @@ namespace DMT.Models
 				return Gets(db);
 			}
 		}
+
 		public static NDbResult<TSB> Get(SQLiteConnection db, string tsbId)
 		{
 			var result = new NDbResult<TSB>();
@@ -311,6 +313,7 @@ namespace DMT.Models
 				return result;
 			}
 		}
+
 		public static NDbResult<TSB> Get(string tsbId)
 		{
 			lock (sync)
@@ -319,6 +322,7 @@ namespace DMT.Models
 				return Get(db, tsbId);
 			}
 		}
+
 		/// <summary>
 		/// Gets Active TSB.
 		/// </summary>
@@ -353,6 +357,7 @@ namespace DMT.Models
 				return result;
 			}
 		}
+
 		public static NDbResult SetActive(string tsbId)
 		{
 			var result = new NDbResult();

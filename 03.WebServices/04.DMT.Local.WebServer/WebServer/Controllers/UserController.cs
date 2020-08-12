@@ -199,7 +199,7 @@ namespace DMT.Services
             }
             else
             {
-                result = Models.User.Save(value);
+                result = Models.User.SaveUser(value);
             }
             return result;
         }

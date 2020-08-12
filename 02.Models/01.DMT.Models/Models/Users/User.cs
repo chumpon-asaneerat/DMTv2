@@ -754,7 +754,32 @@ namespace DMT.Models
 			}
 		}
 
-		// TODO: Requied new save user method.
+		public static NDbResult<User> SaveUser(User value)
+		{
+			var result = new NDbResult<User>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
+			lock (sync)
+			{
+				try
+				{
+					result = Save(value);
+
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = null;
+				}
+				return result;
+			}
+		}
 
 		#endregion
 	}

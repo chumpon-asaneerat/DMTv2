@@ -683,6 +683,7 @@ namespace DMT.Models
 				return result;
 			}
 		}
+
 		public static NDbResult<Lane> Get(string laneId)
 		{
 			lock (sync)
@@ -708,6 +709,7 @@ namespace DMT.Models
 				return GetTSBLanes(value.TSBId);
 			}
 		}
+
 		public static NDbResult<List<Lane>> GetTSBLanes(string tsbId)
 		{
 			var result = new NDbResult<List<Lane>>();
@@ -773,6 +775,7 @@ namespace DMT.Models
 				return GetPlazaGroupLanes(value.TSBId, value.PlazaGroupId);
 			}
 		}
+
 		public static NDbResult<List<Lane>> GetPlazaGroupLanes(string tsbId, string plazaGroupId)
 		{
 			var result = new NDbResult<List<Lane>>();
