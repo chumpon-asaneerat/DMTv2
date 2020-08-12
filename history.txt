@@ -26,8 +26,13 @@ Update 2020-08-13 #43
 Update 2020-08-13 #42
 - 
 
+[commited]
 Update 2020-08-13 #41
-- 
+- Update Local/DataCenter/TAxTOD service operation #99.
+- Implements TSB Credit Balance related process #6.
+- Implements TSB Credit Transaction related process #6.
+- Implements User Credit Balance related process #6.
+- Implements User Credit Transaction related process #5.
 
 [commited]
 Update 2020-08-13 #40

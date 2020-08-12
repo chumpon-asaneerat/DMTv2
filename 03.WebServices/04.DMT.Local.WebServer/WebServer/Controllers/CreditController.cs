@@ -21,7 +21,7 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.Credit.GetTSBBalance.Name)]
-        public TSBCreditBalance GetTSBBalance([FromBody] TSB tsb)
+        public NDbResult<TSBCreditBalance> GetTSBBalance([FromBody] TSB tsb)
         {
             var ret = TSBCreditBalance.GetCurrent(tsb);
             return ret;
@@ -33,14 +33,15 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.Credit.GetInitialTSBCreditTransaction.Name)]
-        public TSBCreditTransaction GetInitialTSBCreditTransaction([FromBody] TSB tsb)
+        public NDbResult<TSBCreditTransaction> GetInitialTSBCreditTransaction([FromBody] TSB tsb)
         {
             return TSBCreditTransaction.GetInitialTransaction(tsb);
         }
 
         [HttpPost]
         [ActionName(RouteConsts.Credit.SaveTSBCreditTransaction.Name)]
-        public void SaveTSBCreditTransaction([FromBody] TSBCreditTransaction value)
+        public NDbResult<TSBCreditTransaction> SaveTSBCreditTransaction(
+            [FromBody] TSBCreditTransaction value)
         {
             if (null == value)
             {
@@ -57,7 +58,7 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.Credit.GetActiveUserCreditBalances.Name)]
-        public List<UserCreditBalance> GetActiveUserCreditBalances([FromBody] TSB value)
+        public NDbResult<List<UserCreditBalance>> GetActiveUserCreditBalances([FromBody] TSB value)
         {
             if (null == value) return null;
             var ret = UserCreditBalance.GetActiveUserCreditBalances(value);
@@ -66,7 +67,7 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.Credit.GetActiveUserCreditBalanceById.Name)]
-        public UserCreditBalance GetActiveUserCreditBalanceById([FromBody] Search.UserCredits.GetActiveById value)
+        public NDbResult<UserCreditBalance> GetActiveUserCreditBalanceById([FromBody] Search.UserCredits.GetActiveById value)
         {
             if (null == value) return null;
             var ret = UserCreditBalance.GetActiveUserCreditBalanceById(value.UserId, value.PlazaGroupId);
@@ -75,7 +76,7 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.Credit.SaveUserCreditBalance.Name)]
-        public int SaveUserCreditBalance([FromBody] UserCreditBalance value)
+        public NDbResult<UserCreditTransaction> SaveUserCreditBalance([FromBody] UserCreditBalance value)
         {
             // save
             return UserCreditBalance.SaveUserCreditBalance(value);
@@ -87,9 +88,9 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.Credit.SaveUserCreditTransaction.Name)]
-        public void SaveUserCreditTransaction([FromBody] UserCreditTransaction value)
+        public NDbResult<UserCreditTransaction> SaveUserCreditTransaction([FromBody] UserCreditTransaction value)
         {
-            UserCreditTransaction.SaveUserCreditTransaction(value);
+            return UserCreditTransaction.SaveUserCreditTransaction(value);
         }
 
         #endregion
