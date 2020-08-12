@@ -127,7 +127,10 @@ namespace DMT.Services
                 result.ParameterIsNull();
                 return result;
             }
-            result = PlazaGroup.GetTSBPlazaGroups(value);
+            else
+            {
+                result = PlazaGroup.GetTSBPlazaGroups(value);
+            }
             return result;
         }
 
@@ -142,7 +145,10 @@ namespace DMT.Services
                 result.ParameterIsNull();
                 return result;
             }
-            result = PlazaGroup.Save(value);
+            else
+            {
+                result = PlazaGroup.Save(value);
+            }
             return result;
         }
 
@@ -154,27 +160,55 @@ namespace DMT.Services
         [ActionName(RouteConsts.TSB.GetTSBLanes.Name)]
         public NDbResult<List<Lane>> GetTSBLanes([FromBody] TSB value)
         {
-            if (null == value) return new List<Lane>();
-            var results = Lane.GetTSBLanes(value);
-            return results;
+            NDbResult<List<Lane>> result;
+            if (null == value)
+            {
+                result = new NDbResult<List<Lane>>();
+                result.ParameterIsNull();
+                return result;
+            }
+            else
+            {
+                result = Lane.GetTSBLanes(value);
+            }
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.TSB.GetPlazaLanes.Name)]
         public NDbResult<List<Lane>> GetPlazaLanes([FromBody] Plaza value)
         {
-            if (null == value) return new List<Lane>();
-            var results = Lane.GetPlazaLanes(value);
-            return results;
+            NDbResult<List<Lane>> result;
+            if (null == value)
+            {
+                result = new NDbResult<List<Lane>>();
+                result.ParameterIsNull();
+                return result;
+            }
+            else
+            {
+                result = Lane.GetPlazaLanes(value);
+            }
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.TSB.GetPlazaGroupLanes.Name)]
         public NDbResult<List<Lane>> GetPlazaGroupLanes([FromBody] PlazaGroup value)
         {
-            if (null == value) return new List<Lane>();
-            var results = Lane.GetPlazaGroupLanes(value);
-            return results;
+            NDbResult<List<Lane>> result;
+            if (null == value)
+            {
+                result = new NDbResult<List<Lane>>();
+                result.ParameterIsNull();
+                return result;
+            }
+            else
+            {
+                result = Lane.GetPlazaGroupLanes(value);
+
+            }
+            return result;
         }
 
         [HttpPost]
