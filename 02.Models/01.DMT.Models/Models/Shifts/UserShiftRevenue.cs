@@ -823,52 +823,95 @@ namespace DMT.Models
 
         #region Static Methods
 
-        public static UserShiftRevenue CreatePlazaRevenue(UserShift shift, PlazaGroup plazaGroup)
+        public static NDbResult<UserShiftRevenue> CreatePlazaRevenue(
+            UserShift shift, PlazaGroup plazaGroup)
         {
-            if (null == shift || null == plazaGroup) return null;
-            UserShiftRevenue inst = new UserShiftRevenue();
-            plazaGroup.AssignTo(inst);
-            shift.AssignTo(inst);
-            return inst;
+            NDbResult<UserShiftRevenue> result = new NDbResult<UserShiftRevenue>();
+
+            if (null == shift || null == plazaGroup)
+            {
+                result.ParameterIsNull();
+                result.data = null;
+            }
+            else
+            {
+                UserShiftRevenue inst = Create();
+                plazaGroup.AssignTo(inst);
+                shift.AssignTo(inst);
+                result.data = inst;
+                result.Success();
+            }
+            return result;
         }
 
-        public static void SavePlazaRevenue(UserShiftRevenue value,
+        public static NDbResult<UserShiftRevenue> SavePlazaRevenue(UserShiftRevenue value,
             DateTime revenueDate, string revenueId)
         {
+            NDbResult<UserShiftRevenue> result = new NDbResult<UserShiftRevenue>();
+
+            if (null == value)
+            {
+                result.ParameterIsNull();
+                return result;
+            }
             lock (sync)
             {
-                if (null == value) return;
-                value.RevenueDate = revenueDate;
-                value.RevenueId = revenueId;
-                // save.
-                Save(value);
+                try
+                {
+                    value.RevenueDate = revenueDate;
+                    value.RevenueId = revenueId;
+                    // save.
+                    result = Save(value);
+                }
+                catch (Exception ex)
+                {
+                    result.Error(ex);
+                    result.data = null;
+                }
+                return result;
             }
         }
 
-        public static UserShiftRevenue GetPlazaRevenue(UserShift shift, PlazaGroup plazaGroup)
+        public static NDbResult<UserShiftRevenue> GetPlazaRevenue(
+            UserShift shift, PlazaGroup plazaGroup)
         {
+            NDbResult<UserShiftRevenue> result = new NDbResult<UserShiftRevenue>();
+            if (null == shift || null == plazaGroup)
+            {
+                result.ParameterIsNull();
+                return result;
+            }
             lock (sync)
             {
-                if (null == shift || null == plazaGroup) return null;
-                string cmd = string.Empty;
-                cmd += "SELECT UserShiftRevenue.* ";
-                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-                cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
-                cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM UserShiftRevenue, TSB, PlazaGroup, Shift, User, UserShift ";
-                cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-                cmd += "   AND UserShift.ShiftId = Shift.ShiftId ";
-                cmd += "   AND UserShift.UserId = User.UserId ";
-                cmd += "   AND UserShiftRevenue.TSBId = TSB.TSBId ";
-                cmd += "   AND UserShiftRevenue.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-                cmd += "   AND UserShiftRevenue.ShiftId = Shift.ShiftId ";
-                cmd += "   AND UserShiftRevenue.UserId = User.UserId ";
-                cmd += "   AND UserShiftRevenue.UserShiftId = ? ";
-                cmd += "   AND UserShiftRevenue.PlazaGroupId = ? ";
-                var ret = NQuery.Query<FKs>(cmd, shift.UserShiftId,
-                    plazaGroup.PlazaGroupId).FirstOrDefault();
-                return (null != ret) ? ret.ToUserShiftRevenue() : null;
+                try
+                {
+                    string cmd = string.Empty;
+                    cmd += "SELECT UserShiftRevenue.* ";
+                    cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                    cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
+                    cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
+                    cmd += "     , User.FullNameEN, User.FullNameTH ";
+                    cmd += "  FROM UserShiftRevenue, TSB, PlazaGroup, Shift, User, UserShift ";
+                    cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
+                    cmd += "   AND UserShift.ShiftId = Shift.ShiftId ";
+                    cmd += "   AND UserShift.UserId = User.UserId ";
+                    cmd += "   AND UserShiftRevenue.TSBId = TSB.TSBId ";
+                    cmd += "   AND UserShiftRevenue.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+                    cmd += "   AND UserShiftRevenue.ShiftId = Shift.ShiftId ";
+                    cmd += "   AND UserShiftRevenue.UserId = User.UserId ";
+                    cmd += "   AND UserShiftRevenue.UserShiftId = ? ";
+                    cmd += "   AND UserShiftRevenue.PlazaGroupId = ? ";
+                    var ret = NQuery.Query<FKs>(cmd, shift.UserShiftId,
+                        plazaGroup.PlazaGroupId).FirstOrDefault();
+                    result.data = (null != ret) ? ret.ToUserShiftRevenue() : null;
+                    result.Success();
+                }
+                catch (Exception ex)
+                {
+                    result.Error(ex);
+                    result.data = null;
+                }
+                return result;
             }
         }
 

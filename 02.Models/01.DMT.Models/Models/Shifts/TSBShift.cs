@@ -629,6 +629,7 @@ namespace DMT.Models
                 if (null != shift) shift.AssignTo(inst);
                 if (null != supervisor) supervisor.AssignTo(inst);
                 result.data = inst;
+                result.Success();
             }
 
             return result;
