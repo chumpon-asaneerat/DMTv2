@@ -1881,7 +1881,7 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static UserCreditBalance GetActiveUserCreditBalance(
+		public static NDbResult<UserCreditBalance> GetActiveUserCreditBalance(
 			User user, PlazaGroup plazaGroup)
 		{
 			lock (sync)
@@ -1935,7 +1935,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static UserCreditBalance GetActiveUserCreditBalanceById(
+		public static NDbResult<UserCreditBalance> GetActiveUserCreditBalanceById(
 			string userId, string plazaGroupId)
 		{
 			lock (sync)
@@ -1967,7 +1967,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static List<UserCreditBalance> GetActiveUserCreditBalances(TSB tsb)
+		public static NDbResult<List<UserCreditBalance>> GetActiveUserCreditBalances(TSB tsb)
 		{
 			lock (sync)
 			{
@@ -2001,7 +2001,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static int SaveUserCreditBalance(UserCreditBalance value)
+		public static NDbResult<UserCreditBalance> SaveUserCreditBalance(UserCreditBalance value)
 		{
 			lock (sync)
 			{

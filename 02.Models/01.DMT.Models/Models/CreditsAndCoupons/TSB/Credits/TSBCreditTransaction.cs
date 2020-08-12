@@ -1342,20 +1342,28 @@ namespace DMT.Models
 		/// Gets Active TSB Credit transactions.
 		/// </summary>
 		/// <returns>Returns Current Active TSB Credit transactions. If not found returns null.</returns>
-		public static List<TSBCreditTransaction> Gets()
+		public static NDbResult<List<TSBCreditTransaction>> Gets()
 		{
 			lock (sync)
-			{ 
-				var tsb = TSB.GetCurrent();
-				return Gets(tsb);
+			{
+				try
+				{
+					var tsb = TSB.GetCurrent();
+					return Gets(tsb);
+				}
+				catch (Exception ex)
+                {
+
+                }
 			}
 		}
+
 		/// <summary>
 		/// Gets TSB Credit transactions.
 		/// </summary>
 		/// <param name="tsb">The target TSB to get transactions.</param>
 		/// <returns>Returns TSB Credit transactions. If TSB not found returns null.</returns>
-		public static List<TSBCreditTransaction> Gets(TSB tsb)
+		public static NDbResult<List<TSBCreditTransaction>> Gets(TSB tsb)
 		{
 			if (null == tsb) return null;
 			lock (sync)
@@ -1391,7 +1399,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static TSBCreditTransaction GetInitialTransaction()
+		public static NDbResult<TSBCreditTransaction> GetInitialTransaction()
 		{
 			lock (sync)
 			{
@@ -1400,7 +1408,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static TSBCreditTransaction GetInitialTransaction(TSB tsb)
+		public static NDbResult<TSBCreditTransaction> GetInitialTransaction(TSB tsb)
 		{
 			if (null == tsb) return null;
 			lock (sync)
@@ -1437,7 +1445,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static void SaveTransaction(TSBCreditTransaction value)
+		public static NDbResult<TSBCreditTransaction> SaveTransaction(TSBCreditTransaction value)
 		{
 			if (null == value)
 			{

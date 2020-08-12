@@ -1689,12 +1689,28 @@ namespace DMT.Models
 		/// Gets Active TSB User Credit transactions.
 		/// </summary>
 		/// <returns>Returns Current Active TSB User Credit transactions. If not found returns null.</returns>
-		public static List<UserCreditTransaction> GetUserCreditTransactions()
+		public static NDbResult<List<UserCreditTransaction>> GetUserCreditTransactions()
 		{
+			var result = new NDbResult<List<UserCreditTransaction>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<UserCreditTransaction>();
+				return result;
+			}
+
 			lock (sync)
 			{
-				var tsb = TSB.GetCurrent();
-				return GetUserCreditTransactions(tsb);
+				try
+				{
+					var tsb = TSB.GetCurrent();
+					return GetUserCreditTransactions(tsb);
+				}
+				catch (Exception ex)
+                {
+
+                }
 			}
 		}
 		/// <summary>
@@ -1702,8 +1718,17 @@ namespace DMT.Models
 		/// </summary>
 		/// <param name="tsb">The target TSB to get transactions.</param>
 		/// <returns>Returns User Credit transactions. If TSB not found returns null.</returns>
-		public static List<UserCreditTransaction> GetUserCreditTransactions(TSB tsb)
+		public static NDbResult<List<UserCreditTransaction>> GetUserCreditTransactions(TSB tsb)
 		{
+			var result = new NDbResult<List<UserCreditTransaction>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<UserCreditTransaction>();
+				return result;
+			}
+
 			if (null == tsb) return null;
 			lock (sync)
 			{
@@ -1746,7 +1771,8 @@ namespace DMT.Models
 			}
 		}
 
-		public static void SaveUserCreditTransaction(UserCreditTransaction value)
+		public static NDbResult<UserCreditTransaction> SaveUserCreditTransaction(
+			UserCreditTransaction value)
 		{
 			if (null == value) return;
 			if (value.TransactionDate == DateTime.MinValue)

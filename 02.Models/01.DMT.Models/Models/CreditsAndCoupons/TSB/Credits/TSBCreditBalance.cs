@@ -1514,12 +1514,19 @@ namespace DMT.Models
 		/// Gets Active TSB Credit balance.
 		/// </summary>
 		/// <returns>Returns Current Active TSB Credit balance. If not found returns null.</returns>
-		public static TSBCreditBalance GetCurrent()
+		public static NDbResult<TSBCreditBalance> GetCurrent()
 		{
 			lock (sync)
 			{
-				var tsb = TSB.GetCurrent();
-				return GetCurrent(tsb);
+				try
+				{
+					var tsb = TSB.GetCurrent();
+					return GetCurrent(tsb);
+				}
+				catch (Exception ex)
+                {
+
+                }
 			}
 		}
 		/// <summary>
@@ -1527,7 +1534,7 @@ namespace DMT.Models
 		/// </summary>
 		/// <param name="tsb">The target TSB to get balance.</param>
 		/// <returns>Returns TSB Credit balance. If TSB not found returns null.</returns>
-		public static TSBCreditBalance GetCurrent(TSB tsb)
+		public static NDbResult<TSBCreditBalance> GetCurrent(TSB tsb)
 		{
 			if (null == tsb) return null;
 			lock (sync)
@@ -1553,7 +1560,7 @@ namespace DMT.Models
 		/// Gets All TSB Credit Balance.
 		/// </summary>
 		/// <returns>Returns List fo all TSB Credit balance.</returns>
-		public static List<TSBCreditBalance> Gets()
+		public static NDbResult<List<TSBCreditBalance>> Gets()
 		{
 			lock (sync)
 			{
