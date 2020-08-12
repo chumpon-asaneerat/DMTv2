@@ -611,53 +611,113 @@ namespace DMT.Models
 
         #region Static Methods
 
-        public static TSBShift Create(Shift shift, User supervisor)
+        public static NDbResult<TSBShift> Create(Shift shift, User supervisor)
         {
+            NDbResult<TSBShift> result = new NDbResult<TSBShift>();
             TSBShift inst = Create();
-            TSB tsb = TSB.GetCurrent();
-            if (null != tsb) tsb.AssignTo(inst);
-            if (null != shift) shift.AssignTo(inst);
-            if (null != supervisor) supervisor.AssignTo(inst);
-            return inst;
+
+            var tsbRet = TSB.GetCurrent();
+            if (tsbRet.errors.hasError)
+            {
+                result.ParameterIsNull();
+            }
+            else
+            {
+                var tsb = tsbRet.data;
+                if (null != tsb) tsb.AssignTo(inst);
+                if (null != shift) shift.AssignTo(inst);
+                if (null != supervisor) supervisor.AssignTo(inst);
+            }
+
+            result.data = inst;
+            return result;
         }
 
-        public static void ChangeShift(TSBShift shift)
+        public static NDbResult ChangeShift(TSBShift value)
         {
+            NDbResult result = new NDbResult();
+            SQLiteConnection db = Default;
+            if (null == db)
+            {
+                result.ConenctFailed();
+                return result;
+            }
+
+            if (null == value)
+            {
+                result.ParameterIsNull();
+                return result;
+            }
+
             lock (sync)
             {
-                if (null == shift) return;
-                
-                var last = GetCurrent();
-
-                if (null != last)
+                try
                 {
-                    // End shift.
-                    last.End = DateTime.Now;
-                    Save(last);
+                    var lastRet = GetCurrent();
+                    if (!lastRet.errors.hasError && null != lastRet.data)
+                    {
+                        var last = lastRet.data;
+                        if (null != last)
+                        {
+                            // End shift.
+                            last.End = DateTime.Now;
+                            Save(last);
+                        }
+                    }
+                    // Begin new shift.
+                    value.Begin = DateTime.Now;
+                    var saveRet = Save(value);
+
+                    result.errors = saveRet.errors;
+                    if (!result.errors.hasError)
+                    {
+                        result.Success();
+                    }
                 }
-                // Begin new shift.
-                shift.Begin = DateTime.Now;
-                Save(shift);
+                catch (Exception ex)
+                {
+                    result.Error(ex);
+                }
+                return result;
             }
         }
 
-        public static TSBShift GetCurrent()
+        public static NDbResult<TSBShift> GetCurrent()
         {
+            NDbResult<TSBShift> result = new NDbResult<TSBShift>();
+            SQLiteConnection db = Default;
+            if (null == db)
+            {
+                result.ConenctFailed();
+                result.data = null;
+                return result;
+            }
+
             lock (sync)
             {
-                string cmd = string.Empty;
-                cmd += "SELECT TSBShift.* ";
-                cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
-                cmd += "     , User.FullNameEN, User.FullNameTH ";
-                cmd += "  FROM TSBShift, TSB, Shift, User ";
-                cmd += " WHERE TSBShift.ShiftId = Shift.ShiftId ";
-                cmd += "   AND TSB.Active = 1 ";
-                cmd += "   AND TSBShift.UserId = User.UserId ";
-                cmd += "   AND TSBShift.TSBId = TSB.TSBId ";
-                cmd += "   AND TSBShift.End = ? ";
-                var ret = NQuery.Query<FKs>(cmd, DateTime.MinValue).FirstOrDefault();
-                return (null != ret) ? ret.ToTSBShift() : null;
+                try
+                {
+                    string cmd = string.Empty;
+                    cmd += "SELECT TSBShift.* ";
+                    cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+                    cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
+                    cmd += "     , User.FullNameEN, User.FullNameTH ";
+                    cmd += "  FROM TSBShift, TSB, Shift, User ";
+                    cmd += " WHERE TSBShift.ShiftId = Shift.ShiftId ";
+                    cmd += "   AND TSB.Active = 1 ";
+                    cmd += "   AND TSBShift.UserId = User.UserId ";
+                    cmd += "   AND TSBShift.TSBId = TSB.TSBId ";
+                    cmd += "   AND TSBShift.End = ? ";
+                    var ret = NQuery.Query<FKs>(cmd, DateTime.MinValue).FirstOrDefault();
+                    result.data = (null != ret) ? ret.ToTSBShift() : null;
+                    result.Success();
+                }
+                catch (Exception ex)
+                {
+                    result.Error(ex);
+                    result.data = null;
+                }
+                return result;
             }
         }
 

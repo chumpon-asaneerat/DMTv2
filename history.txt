@@ -17,8 +17,10 @@ Update 2020-08-13 #16
 Update 2020-08-13 #15
 - 
 
+[commited]
 Update 2020-08-13 #14
-- 
+- Update Local/DataCenter/TAxTOD service operation #72.
+- Implements TSBShift related process #1.
 
 [commited]
 Update 2020-08-13 #13
