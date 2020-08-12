@@ -75,7 +75,6 @@ namespace DMT.Services
             }
             else
             {
-                if (null == value) return new List<LaneAttendance>();
                 result = LaneAttendance.Search(value.Date);
             }
             return result;

@@ -260,7 +260,7 @@ namespace DMT.Services
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
 
-                NRestResult<LaneAttendance> ret;
+                NRestResult<LanePayment> ret;
 
                 ret = NRestClient.Create(port: 9000).Execute<LanePayment>(
                     RouteConsts.Lane.CreatePayment.Url,
