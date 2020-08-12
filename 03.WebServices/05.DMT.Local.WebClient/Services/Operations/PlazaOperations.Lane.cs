@@ -62,6 +62,8 @@ namespace DMT.Services
 
             #region Public Methods
 
+            #region Lane Attendance
+
             public LaneAttendance CreateAttendance(Lane lane, User supervisor)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<LaneAttendance>(
@@ -127,6 +129,10 @@ namespace DMT.Services
                 return ret;
             }
 
+            #endregion
+
+            #region Lane Payment
+
             public LaneAttendance CreatePayment(Lane lane, User supervisor,
                 Payment payment, DateTime date, decimal amount)
             {
@@ -180,6 +186,8 @@ namespace DMT.Services
                     RouteConsts.Lane.GetCurrentPaymentsByLane.Url, value);
                 return ret;
             }
+
+            #endregion
 
             #endregion
         }

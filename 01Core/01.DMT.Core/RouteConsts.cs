@@ -290,27 +290,17 @@ namespace DMT
         {
             public const string Url = RouteConsts.Url + @"/Lane";
 
+            #region Lane Attendance
+
             public static class CreateAttendance
             {
                 public const string Name = "CreateAttendance";
                 public const string Url = Lane.Url + @"/" + Name;
             }
 
-            public static class CreatePayment
-            {
-                public const string Name = "CreatePayment";
-                public const string Url = Lane.Url + @"/" + Name;
-            }
-
             public static class SaveAttendance
             {
                 public const string Name = "SaveAttendance";
-                public const string Url = Lane.Url + @"/" + Name;
-            }
-
-            public static class SavePayment
-            {
-                public const string Name = "SavePayment";
                 public const string Url = Lane.Url + @"/" + Name;
             }
 
@@ -350,6 +340,22 @@ namespace DMT
                 public const string Url = Lane.Url + @"/" + Name;
             }
 
+            #endregion
+
+            #region Lane Payment
+
+            public static class CreatePayment
+            {
+                public const string Name = "CreatePayment";
+                public const string Url = Lane.Url + @"/" + Name;
+            }
+
+            public static class SavePayment
+            {
+                public const string Name = "SavePayment";
+                public const string Url = Lane.Url + @"/" + Name;
+            }
+
             public static class GetPaymentsByDate
             {
                 public const string Name = "GetPaymentsByDate";
@@ -373,6 +379,8 @@ namespace DMT
                 public const string Name = "GetCurrentPaymentsByLane";
                 public const string Url = Lane.Url + @"/" + Name;
             }
+
+            #endregion
         }
 
         #endregion

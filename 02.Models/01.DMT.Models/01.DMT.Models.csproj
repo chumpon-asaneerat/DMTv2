@@ -131,8 +131,8 @@
     <Compile Include="Models\Infrastructures\Plaza.cs" />
     <Compile Include="Models\Infrastructures\PlazaGroup.cs" />
     <Compile Include="Models\Infrastructures\TSB.cs" />
-    <None Include="Models\LaneActivities\LaneAttendance.cs" />
-    <None Include="Models\LaneActivities\LanePayment.cs" />
+    <Compile Include="Models\LaneActivities\LaneAttendance.cs" />
+    <Compile Include="Models\LaneActivities\LanePayment.cs" />
     <None Include="Models\CreditsAndCoupons\Common\Payments\Payment.cs" />
     <Compile Include="Models\Revenues\RevenueEntry.cs" />
     <Compile Include="Models\Shifts\Shift.cs" />

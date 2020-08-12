@@ -18,21 +18,14 @@ namespace DMT.Services
     /// </summary>
     public class LaneController : ApiController
     {
+        #region Lane Attendance
+
         [HttpPost]
         [ActionName(RouteConsts.Lane.CreateAttendance.Name)]
         public LaneAttendance Create([FromBody] LaneAttendanceCreate value)
         {
             if (null == value) return null;
             return LaneAttendance.Create(value.Lane, value.User);
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Lane.SavePayment.Name)]
-        public LanePayment Create([FromBody] LanePaymentCreate value)
-        {
-            if (null == value) return null;
-            return LanePayment.Create(value.Lane, value.User, 
-                value.Payment, value.Date, value.Amount);
         }
 
         [HttpPost]
@@ -46,19 +39,6 @@ namespace DMT.Services
                 value.JobId = rand.Next(100000).ToString("D5"); // auto generate.
             }
             LaneAttendance.Save(value);
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Lane.SavePayment.Name)]
-        public void SavePayment([FromBody] LanePayment value)
-        {
-            if (null == value) return;
-            Random rand = new Random();
-            if (string.IsNullOrWhiteSpace(value.ApproveCode))
-            {
-                value.ApproveCode = rand.Next(10000000).ToString("D8"); // auto generate.
-            }
-            LanePayment.Save(value);
         }
 
         [HttpPost]
@@ -108,6 +88,32 @@ namespace DMT.Services
             return LaneAttendance.GetAllNotHasRevenueEntry();
         }
 
+        #endregion
+
+        #region Lane Payment
+
+        [HttpPost]
+        [ActionName(RouteConsts.Lane.SavePayment.Name)]
+        public LanePayment Create([FromBody] LanePaymentCreate value)
+        {
+            if (null == value) return null;
+            return LanePayment.Create(value.Lane, value.User, 
+                value.Payment, value.Date, value.Amount);
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Lane.SavePayment.Name)]
+        public void SavePayment([FromBody] LanePayment value)
+        {
+            if (null == value) return;
+            Random rand = new Random();
+            if (string.IsNullOrWhiteSpace(value.ApproveCode))
+            {
+                value.ApproveCode = rand.Next(10000000).ToString("D8"); // auto generate.
+            }
+            LanePayment.Save(value);
+        }
+
         [HttpPost]
         [ActionName(RouteConsts.Lane.GetPaymentsByDate.Name)]
         public List<LanePayment> GetPaymentsByDate([FromBody] Search.Lanes.Payments.ByDate value)
@@ -139,5 +145,7 @@ namespace DMT.Services
             if (null == value) return null;
             return LanePayment.GetCurrentByLane(value.Lane);
         }
+
+        #endregion
     }
 }
