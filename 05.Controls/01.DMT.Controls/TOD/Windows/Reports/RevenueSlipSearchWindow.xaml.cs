@@ -74,13 +74,9 @@ namespace DMT.TOD.Windows.Reports
         {
             if (!loaded) return;
             if (!dtDate.SelectedDate.HasValue) return;
-            /*
-            var role = new Role();
-            role.RoleId = "COLLECTOR";
-            var items = ops.Users.GetUsers(role);
-            grid.Setup(items);
-            */
-            var items = ops.Revenue.GetRevenues(dtDate.SelectedDate.Value);
+
+            var ret = ops.Revenue.GetRevenues(dtDate.SelectedDate.Value);
+            var items = (null != ret && !ret.errors.hasError) ? ret.data : new List<RevenueEntry>();
             grid.Setup(items);
         }
 
@@ -97,10 +93,7 @@ namespace DMT.TOD.Windows.Reports
 
         public Models.RevenueEntry SelectedEntry
         {
-            get
-            {
-                return grid.SelectedEntry;
-            }
+            get { return grid.SelectedEntry; }
         }
 
         public DateTime dteRevenue { get { return dtDate.SelectedDate.Value; } }

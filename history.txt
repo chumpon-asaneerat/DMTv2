@@ -11,8 +11,12 @@ Update 2020-08-13 #78
 Update 2020-08-13 #77
 - 
 
+[commited]
 Update 2020-08-13 #76
-- 
+- Update Local/DataCenter/TAxTOD service operation #133.
+  - DMT.Controls - TOD Windows - MessageBox update #1.
+  - DMT.Controls - TOD Windows - Reports update #1.
+  - DMT.Controls - TOD Windows - UserShifts update #1.
 
 [commited]
 Update 2020-08-13 #75

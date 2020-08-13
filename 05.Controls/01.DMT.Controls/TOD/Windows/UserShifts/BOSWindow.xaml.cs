@@ -53,9 +53,12 @@ namespace DMT.TOD.Windows.UserShifts
             Shift shift = cbShift.SelectedItem as Shift;
             if (null != shift)
             {
-                UserShift inst = ops.UserShifts.Create(shift, _user);
+                var creRet = ops.UserShifts.Create(shift, _user);
+                UserShift inst = (null != creRet && !creRet.errors.hasError) ? creRet.data : null;
                 if (null != inst) shift.AssignTo(inst);
-                bool success = ops.UserShifts.BeginUserShift(inst);
+
+                var busrSht = ops.UserShifts.BeginUserShift(inst);
+                bool success = (null != busrSht && !busrSht.errors.hasError);
                 if (!success)
                 {
                     DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
@@ -65,10 +68,6 @@ namespace DMT.TOD.Windows.UserShifts
                     {
 
                     }
-
-                    // Some job is open required to enter revenue entry first.
-                    //MessageBox.Show(this, "ไม่สามารถเปิดกะใหม่ได้ เนื่องจาก ยังมีกะที่ยังไม่ป้อนรายได้", 
-                    //    "DMT - Tour of Duty");
                 }
             }
 
@@ -86,11 +85,19 @@ namespace DMT.TOD.Windows.UserShifts
             if (null != _user)
             {
                 DateTime dt = DateTime.Now;
-                cbShift.ItemsSource = ops.Shifts.GetShifts();
-                var tsb = ops.TSB.GetCurrent();
-                txtPlaza.Text = tsb.TSBNameTH;
+                var ret = ops.Shifts.GetShifts();
+                var shifts = (null != ret && !ret.errors.hasError) ? ret.data : null;
+                cbShift.ItemsSource = shifts;
+
+                var tsbRet = ops.TSB.GetCurrent();
+                var tsb = (null != tsbRet && !tsbRet.errors.hasError) ? tsbRet.data : null;
+                if (null != tsb)
+                {
+                    txtPlaza.Text = tsb.TSBNameTH;
+                }
                 txtDate.Text = dt.ToThaiDateString();
                 txtTime.Text = dt.ToThaiTimeString();
+
                 txtID.Text = _user.UserId;
                 txtName.Text = _user.FullNameTH;
             }

@@ -39,7 +39,6 @@ namespace DMT.Windows
         }
 
         #endregion
-
    
         public void Setup(string msg, string head)
         {
