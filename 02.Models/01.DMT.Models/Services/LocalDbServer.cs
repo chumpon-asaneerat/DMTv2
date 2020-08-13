@@ -1043,33 +1043,15 @@ namespace DMT.Services
 			if (null == Db) return;
 			Role item;
 			User user;
+
+			#region ADMINS
+			
 			item = new Role()
 			{
-				RoleId = "QFREE",
-				RoleNameEN = "QFree",
-				RoleNameTH = "คิวฟรี"
-			};
-			if (!Role.Exists(item)) Role.Save(item);
-
-			user = new User()
-			{
-				UserId = "99001",
-				FullNameEN = "QFree User 1",
-				FullNameTH = "QFree User 1",
-				UserName = "qfree1",
-				Password = "1234",
-				CardId = "",
-				Status = 1,
-				RoleId = item.RoleId
-			};
-			if (!User.Exists(user)) User.Save(user);
-
-
-			item = new Role()
-			{
-				RoleId = "ADMIN",
+				RoleId = "ADMINS",
 				RoleNameEN = "Administrator",
-				RoleNameTH = "ผู้ดูแลระบบ"
+				RoleNameTH = "ผู้ดูแลระบบ",
+				GroupId = 1
 			};
 			if (!Role.Exists(item)) Role.Save(item);
 
@@ -1086,11 +1068,16 @@ namespace DMT.Services
 			};
 			if (!User.Exists(user)) User.Save(user);
 
+			#endregion
+
+			#region ACCOUNT
+
 			item = new Role()
 			{
-				RoleId = "AUDIT",
-				RoleNameEN = "Auditor",
-				RoleNameTH = "ผู้ตรวจสอบ"
+				RoleId = "ACCOUNT",
+				RoleNameEN = "Account",
+				RoleNameTH = "ฝ่ายบัญขี",
+				GroupId = 12
 			};
 			if (!Role.Exists(item)) Role.Save(item);
 
@@ -1120,11 +1107,16 @@ namespace DMT.Services
 			};
 			if (!User.Exists(user)) User.Save(user);
 
+			#endregion
+
+			#region CTC
+
 			item = new Role()
 			{
-				RoleId = "SUPERVISOR",
-				RoleNameEN = "Supervisor",
-				RoleNameTH = "หัวหน้ากะ"
+				RoleId = "CTC",
+				RoleNameEN = "Chief Toll Collector",
+				RoleNameTH = "หัวหน้ากะ",
+				GroupId = 4
 			};
 			if (!Role.Exists(item)) Role.Save(item);
 
@@ -1180,11 +1172,16 @@ namespace DMT.Services
 			};
 			if (!User.Exists(user)) User.Save(user);
 
+			#endregion
+
+			#region TC
+
 			item = new Role()
 			{
-				RoleId = "COLLECTOR",
-				RoleNameEN = "Collector",
-				RoleNameTH = "พนักงาน"
+				RoleId = "TC",
+				RoleNameEN = "Toll Collector",
+				RoleNameTH = "พนักงาน",
+				GroupId = 2
 			};
 			if (!Role.Exists(item)) Role.Save(item);
 
@@ -1278,6 +1275,8 @@ namespace DMT.Services
 				RoleId = item.RoleId
 			};
 			if (!User.Exists(user)) User.Save(user);
+
+			#endregion
 		}
 
 		private void InitPayments()
@@ -1360,7 +1359,12 @@ namespace DMT.Services
 		{
 			if (null == Db) return;
 
-			var hist = ViewHistory.GetWithChildren(viewName, false);
+			var histRet = ViewHistory.GetWithChildren(viewName, false);
+			var hist = (null != histRet && !histRet.errors.hasError) ? histRet.data : null;
+
+			if (null == hist)
+				return;
+
 			var info = Db.GetTableInfo(viewName);
 
 			string checkViewCmd = "SELECT Name FROM sqlite_master WHERE Type = 'view' AND Name = ?";
