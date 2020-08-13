@@ -35,7 +35,7 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("COLLECTOR");
+            signinWin.Setup("TC");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -56,7 +56,7 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("COLLECTOR");
+            signinWin.Setup("TC");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -74,7 +74,7 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("SUPERVISOR");
+            signinWin.Setup("CTC");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -90,7 +90,7 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("SUPERVISOR");
+            signinWin.Setup("CTC");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -108,7 +108,7 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("SUPERVISOR", "AUDIT", "ADMIN", "QFREE");
+            signinWin.Setup("CTC", "ACCOUNT", "ADMINS");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -126,7 +126,7 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("SUPERVISOR", "COLLECTOR", "AUDIT", "ADMIN", "QFREE");
+            signinWin.Setup("TC", "CTC", "ACCOUNT", "ADMINS");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -142,7 +142,7 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("SUPERVISOR", "COLLECTOR", "AUDIT", "ADMIN", "QFREE");
+            signinWin.Setup("TC", "CTC", "ACCOUNT", "ADMINS");
             if (signinWin.ShowDialog() == false)
             {
                 return;

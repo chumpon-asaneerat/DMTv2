@@ -163,7 +163,7 @@ namespace DMT.TA.Pages.Menu
             DMT.Controls.TAApp.User.Current = null;
 
             var page = new DMT.Pages.SignInPage();
-            page.Setup("SUPERVISOR", "AUDIT", "ADMIN", "QFREE");
+            page.Setup("CTC", "ACCOUNT", "ADMINS");
             PageContentManager.Instance.Current = page;
         }
 

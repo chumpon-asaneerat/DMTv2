@@ -2,8 +2,19 @@
 Update 2020-08-13 #80
 - 
 
+[commited]
 Update 2020-08-13 #79
-- 
+- Reload TA project.
+- Reload TOD project.
+- Note:
+  - Add CouponPK int
+  - The NRestClient need to get host/port from config.
+  - TOD need to set config to allow access from another computer.
+  - TA need to set config to allow access from another computer.
+  - TAxTOD Client need new workbrench project.
+  - DC Client need new workbrench project.
+  - Coupon need to add CouponPK column for send back to TAxTOD server.
+  - Need MD5 Implements for User.Password.
 
 [commited]
 Update 2020-08-13 #78
