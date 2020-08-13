@@ -60,10 +60,27 @@ namespace DMT.Services
 
             #region TSB Coupon Balance
 
-            public TSBCouponBalance GetTSBBalance(TSB value)
+            public NRestResult<TSBCouponBalance> GetTSBBalance(TSB value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<TSBCouponBalance>(
-                    RouteConsts.Coupon.GetTSBBalance.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<TSBCouponBalance> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<TSBCouponBalance>(RouteConsts.Coupon.GetTSBBalance.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<TSBCouponBalance>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
                 return ret;
             }
 
@@ -71,10 +88,27 @@ namespace DMT.Services
 
             #region TSB Coupon Summary
 
-            public List<TSBCouponSummary> GetTSBCouponSummaries(TSB value)
+            public NRestResult<List<TSBCouponSummary>> GetTSBCouponSummaries(TSB value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponSummary>>(
-                    RouteConsts.Coupon.GetTSBCouponSummaries.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<TSBCouponSummary>> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<List<TSBCouponSummary>>(RouteConsts.Coupon.GetTSBCouponSummaries.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<TSBCouponSummary>>();
+                    ret.ParameterIsNull();
+                    ret.data = new List<TSBCouponSummary>();
+                }
                 return ret;
             }
 
@@ -82,58 +116,93 @@ namespace DMT.Services
 
             #region TSB Coupon Transaction
 
-            public List<TSBCouponTransaction> GetTSBCouponTransactions(TSB value)
+            public NRestResult<List<TSBCouponTransaction>> GetTSBCouponTransactions(TSB value)
             {
-                var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
-                    RouteConsts.Coupon.GetTSBCouponTransactions.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<TSBCouponTransaction>> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<List<TSBCouponTransaction>>(RouteConsts.Coupon.GetTSBCouponTransactions.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<TSBCouponTransaction>>();
+                    ret.ParameterIsNull();
+                    ret.data = new List<TSBCouponTransaction>();
+                }
                 return ret;
             }
 
-            public void SaveTransaction(TSBCouponTransaction value)
+            public NRestResult<TSBCouponTransaction> SaveTransaction(TSBCouponTransaction value)
             {
-                NRestClient.Create(port: 9000).Execute(
-                    RouteConsts.Coupon.SaveTSBCouponTransaction.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<TSBCouponTransaction> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<TSBCouponTransaction>(RouteConsts.Coupon.SaveTSBCouponTransaction.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<TSBCouponTransaction>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
+                return ret;
             }
 
             #endregion
 
             /*
-            public List<TSBCouponTransaction> GetCurrentTSBCoupons()
+            public NRestResult<List<TSBCouponTransaction>> GetCurrentTSBCoupons()
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
                     RouteConsts.Coupon.GetCurrentTSBCoupons.Url, new { });
                 return ret;
             }
 
-            public List<TSBCouponTransaction> GetTSBCoupons(TSB tsb)
+            public NRestResult<List<TSBCouponTransaction>> GetTSBCoupons(TSB tsb)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
                     RouteConsts.Coupon.GetTSBCoupons.Url, tsb);
                 return ret;
             }
 
-            public List<TSBCouponTransaction> GetTSBBHT35Coupons(TSB tsb)
+            public NRestResult<List<TSBCouponTransaction>> GetTSBBHT35Coupons(TSB tsb)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
                     RouteConsts.Coupon.GetTSBBHT35Coupons.Url, tsb);
                 return ret;
             }
 
-            public List<TSBCouponTransaction> GetTSBBHT80Coupons(TSB tsb)
+            public NRestResult<List<TSBCouponTransaction>> GetTSBBHT80Coupons(TSB tsb)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
                     RouteConsts.Coupon.GetTSBBHT80Coupons.Url, tsb);
                 return ret;
             }
 
-            public List<TSBCouponTransaction> ToTSBBHT35Coupons(Search.UserCoupons.ToTSBCoupons value)
+            public NRestResult<List<TSBCouponTransaction>> ToTSBBHT35Coupons(Search.UserCoupons.ToTSBCoupons value)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
                     RouteConsts.Coupon.ToTSBBHT35Coupons.Url, value);
                 return ret;
             }
 
-            public List<TSBCouponTransaction> ToTSBBHT80Coupons(Search.UserCoupons.ToTSBCoupons value)
+            public NRestResult<List<TSBCouponTransaction>> ToTSBBHT80Coupons(Search.UserCoupons.ToTSBCoupons value)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
                     RouteConsts.Coupon.ToTSBBHT80Coupons.Url, value);
@@ -148,7 +217,7 @@ namespace DMT.Services
                 return ret;
             }
 
-            public List<UserCouponTransaction> GetUserBHT80Coupons(
+            public NRestResult<List<UserCouponTransaction>> GetUserBHT80Coupons(
                 Search.UserCoupons.ByUser value)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<UserCouponTransaction>>(
@@ -156,14 +225,14 @@ namespace DMT.Services
                 return ret;
             }
 
-            public List<TSBCouponTransaction> GetCurrentTSBSoldCoupons()
+            public NRestResult<List<TSBCouponTransaction>> GetCurrentTSBSoldCoupons()
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
                     RouteConsts.Coupon.GetCurrentTSBSoldCoupons.Url, new { });
                 return ret;
             }
 
-            public List<TSBCouponTransaction> GetTSBSoldCoupons(TSB tsb)
+            public NRestResult<List<TSBCouponTransaction>> GetTSBSoldCoupons(TSB tsb)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponTransaction>>(
                     RouteConsts.Coupon.GetTSBSoldCoupons.Url, tsb);
@@ -176,14 +245,14 @@ namespace DMT.Services
                     RouteConsts.Coupon.SaveTransaction.Url, value);
             }
 
-            public List<TSBCouponBalance> GetCurrent()
+            public NRestResult<List<TSBCouponBalance>> GetCurrent()
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponBalance>>(
                     RouteConsts.Coupon.GetCurrent.Url, new { });
                 return ret;
             }
 
-            public List<TSBCouponBalance> GetTSBCurrent(TSB tsb)
+            public NRestResult<List<TSBCouponBalance>> GetTSBCurrent(TSB tsb)
             {
                 var ret = NRestClient.Create(port: 9000).Execute<List<TSBCouponBalance>>(
                     RouteConsts.Coupon.GetTSBCurrent.Url, tsb);
