@@ -55,7 +55,8 @@ namespace DMT.TOD.Pages.TollAdmin
             Shift shift = cbShifts.SelectedItem as Shift;
             if (null != shift)
             {
-                TSBShift inst = ops.Shifts.Create(shift, _user);
+                var ret = ops.Shifts.Create(shift, _user);
+                TSBShift inst = (null != ret && !ret.errors.hasError) ? ret.data : null;
                 if (null != inst) shift.AssignTo(inst);
                 ops.Shifts.ChangeShift(inst);
             }
@@ -67,7 +68,8 @@ namespace DMT.TOD.Pages.TollAdmin
         private void RefreshLanes()
         {
             // get all lanes information.
-            _laneActivities = ops.Lanes.GetAllNotHasRevenueEntry();
+            var ret = ops.Lanes.GetAllNotHasRevenueEntry();
+            _laneActivities = (null != ret && !ret.errors.hasError) ? ret.data : null;
             if (null == _laneActivities || _laneActivities.Count <= 0)
             {
                 // no data.
@@ -85,7 +87,9 @@ namespace DMT.TOD.Pages.TollAdmin
             if (null != _user)
             {
                 DateTime dt = DateTime.Now;
-                cbShifts.ItemsSource = ops.Shifts.GetShifts();
+                var ret = ops.Shifts.GetShifts();
+                var shifts = (null != ret && !ret.errors.hasError) ? ret.data : null;
+                cbShifts.ItemsSource = shifts;
                 // Load related lane data.
                 RefreshLanes();
             }

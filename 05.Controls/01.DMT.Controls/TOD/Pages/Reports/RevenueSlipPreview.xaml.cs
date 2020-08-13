@@ -69,10 +69,6 @@ namespace DMT.TOD.Pages.Reports
                 {
                     return;
                 }
-
-                //MessageBox.Show("Revenue Entry is not found.",
-                //    "DMT - Tour of Duty");
-                //return;
             }
 
             if (isNew)
@@ -103,17 +99,6 @@ namespace DMT.TOD.Pages.Reports
                 {
                     GoMainMenu();
                 }
-
-                //if (MessageBox.Show(Application.Current.MainWindow,
-                //    "กะปัจจุบันยังป้อนรายได้ไม่ครับ ต้องการป้อนรายได้ตอหรือไม่ ?",
-                //    "DMT - Tour of Duty", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                //{
-                //    GoRevenuEntry();
-                //}
-                //else
-                //{
-                //    GoMainMenu();
-                //}
             }
             else
             {
@@ -241,10 +226,14 @@ namespace DMT.TOD.Pages.Reports
                 //_revenueEntry.ShiftEnd = end;
 
                 // assign supervisor.
-                var sup = ops.Shifts.GetCurrent();
-                _revenueEntry.SupervisorId = sup.UserId;
-                _revenueEntry.SupervisorNameEN = sup.FullNameEN;
-                _revenueEntry.SupervisorNameTH = sup.FullNameTH;
+                var ret = ops.Shifts.GetCurrent();
+                var sup = (null != ret && !ret.errors.hasError) ? ret.data : null;
+                if (null != sup)
+                {
+                    _revenueEntry.SupervisorId = sup.UserId;
+                    _revenueEntry.SupervisorNameEN = sup.FullNameEN;
+                    _revenueEntry.SupervisorNameTH = sup.FullNameTH;
+                }
             }
         }
 
@@ -269,7 +258,9 @@ namespace DMT.TOD.Pages.Reports
             }
 
             // update save data
-            string revId = ops.Revenue.SaveRevenue(_revenueEntry);
+            var revRet = ops.Revenue.SaveRevenue(_revenueEntry);
+            var revInst = (null != revRet && !revRet.errors.hasError) ? revRet.data : null;
+            string revId = (null != revInst) ? revInst.RevenueId : string.Empty;
             if (null != _plazaRevenue)
             {
                 // save revenue shift (for plaza)
@@ -290,7 +281,8 @@ namespace DMT.TOD.Pages.Reports
 
             // get all lanes information.
             var search = Search.Lanes.Attendances.ByUserShift.Create(_userShift, null, DateTime.MinValue);
-            var existActivities = ops.Lanes.GetAttendancesByUserShift(search);
+            var ret = ops.Lanes.GetAttendancesByUserShift(search);
+            var existActivities = (null != ret && !ret.errors.hasError) ? ret.data : null;
             if (null == existActivities || existActivities.Count == 0)
             {
                 // no lane activitie in user shift.
@@ -352,9 +344,6 @@ namespace DMT.TOD.Pages.Reports
                 {
                     this.rptViewer.ClearReport();
                 }
-
-                //MessageBox.Show("No result found.", "DMT - Tour of Duty");
-                //this.rptViewer.ClearReport();
             }
             else
             {

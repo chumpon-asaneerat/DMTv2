@@ -14,8 +14,14 @@ Update 2020-08-13 #77
 Update 2020-08-13 #76
 - 
 
+[commited]
 Update 2020-08-13 #75
-- 
+- Update Local/DataCenter/TAxTOD service operation #132.
+  - DMT.Controls - TOD Pages - LogInList update #1.
+  - DMT.Controls - TOD Pages - TollAdmin update #1.
+  - DMT.Controls - TOD Pages - Revenue (Collector/Supervisor) update #1.
+  - DMT.Controls - TOD Pages - Reports update #1.
+  - DMT.Controls - TOD Pages - Menu update #1.
 
 [commited]
 Update 2020-08-13 #74

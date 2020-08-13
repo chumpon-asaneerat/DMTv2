@@ -75,11 +75,13 @@ namespace DMT.TOD.Pages.Revenue
 
             bool isNew = false;
             var revops = Search.Revenues.PlazaShift.Create(_userShift, plazaGroup);
-            _plazaRevenue = ops.Revenue.GetRevenueShift(revops);
+            var revshf = ops.Revenue.GetRevenueShift(revops);
+            _plazaRevenue = (null != revshf && !revshf.errors.hasError) ? revshf.data : null;
             if (null == _plazaRevenue)
             {
                 // Create new if not found.
-                _plazaRevenue = ops.Revenue.CreateRevenueShift(revops);
+                var crevshf = ops.Revenue.CreateRevenueShift(revops);
+                _plazaRevenue = (null != crevshf && !crevshf.errors.hasError) ? crevshf.data : null;
                 isNew = true;
             }
 
@@ -94,9 +96,6 @@ namespace DMT.TOD.Pages.Revenue
                     {
                         return;
                     }
-
-                    //MessageBox.Show("กะของพนักงานนี้ ถูกป้อนรายได้แล้ว", "DMT - Tour of Duty");
-                    //return;
                 }
                 if (null == _laneActivities || _laneActivities.Count <= 0)
                 {
@@ -107,9 +106,6 @@ namespace DMT.TOD.Pages.Revenue
                     {
                         return;
                     }
-
-                    //MessageBox.Show("ไม่พบข้อมูลเลนที่ยังไม่ถูกป้อนรายได้", "DMT - Tour of Duty");
-                    //return;
                 }
             }
             else
@@ -123,8 +119,6 @@ namespace DMT.TOD.Pages.Revenue
                     {
                         //return;
                     }
-
-                    //MessageBox.Show("ไม่สามารถสร้างรายการสำหรับจัดเก็บกะรายได้.", "DMT - Tour of Duty");
                 }
                 else
                 {
@@ -135,8 +129,6 @@ namespace DMT.TOD.Pages.Revenue
                     {
                         //return;
                     }
-
-                    //MessageBox.Show("กะนี้ถูกจัดเก็บรายได้แล้ว.", "DMT - Tour of Duty");
                 }
                 return;
             }
@@ -164,13 +156,17 @@ namespace DMT.TOD.Pages.Revenue
             cbPlazas.ItemsSource = null;
 
             var plazaGroups = new List<PlazaGroup>();
-            var tsb = ops.TSB.GetCurrent();
+            var tsbRet = ops.TSB.GetCurrent();
+            var tsb = (null != tsbRet && !tsbRet.errors.hasError) ? tsbRet.data : null;
+
             if (null != tsb)
             {
-                plazaGroups = ops.TSB.GetTSBPlazaGroups(tsb);
+                var ret = ops.TSB.GetTSBPlazaGroups(tsb);
+                plazaGroups = (null != ret && !ret.errors.hasError) ? ret.data : null;
             }
 
             cbPlazas.ItemsSource = plazaGroups;
+
             if (null != plazaGroups && plazaGroups.Count > 0)
             {
                 cbPlazas.SelectedIndex = 0;
@@ -190,7 +186,9 @@ namespace DMT.TOD.Pages.Revenue
                 // get all lanes information.
                 var search = Search.Lanes.Attendances.ByUserShift.Create(
                     _userShift, plazaGroup, DateTime.MinValue);
-                _laneActivities = ops.Lanes.GetAttendancesByUserShift(search);
+
+                var ret = ops.Lanes.GetAttendancesByUserShift(search);
+                _laneActivities = (null != ret && !ret.errors.hasError) ? ret.data : null;
                 if (null == _laneActivities || _laneActivities.Count <= 0)
                 {
                     // no data.
@@ -217,7 +215,8 @@ namespace DMT.TOD.Pages.Revenue
                 _entryDT = DateTime.Now;
                 txtEntryDate.Text = _entryDT.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
                 // Find user shift.
-                _userShift = ops.UserShifts.GetCurrent(_user);
+                var ret = ops.UserShifts.GetCurrent(_user);
+                _userShift = (null != ret && !ret.errors.hasError) ? ret.data : null;
                 // Load related lane data.
                 RefreshLanes();
             }
