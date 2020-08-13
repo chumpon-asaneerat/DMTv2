@@ -101,7 +101,7 @@
   <ItemGroup>
     <Compile Include="ExtensionMethods\ModelExtensionMethods.cs" />
     <Compile Include="Models\Common\NDbResult.cs" />
-    <None Include="Models\Configuration\ViewHistory.cs" />
+    <Compile Include="Models\Configuration\ViewHistory.cs" />
     <None Include="Models\CreditsAndCoupons\Users\Coupons\UserCoupon.cs" />
     <Compile Include="Models\CreditsAndCoupons\Common\Coupons\Enums.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSB\Coupons\TSBCouponSummary.cs" />
@@ -120,7 +120,7 @@
     <Compile Include="Views\SqlScriptManager.cs" />
     <Compile Include="Models\Common\DMT.Searchs.cs" />
     <Compile Include="Models\Common\NSearch.cs" />
-    <None Include="Models\Configuration\Config.cs" />
+    <Compile Include="Models\Configuration\Config.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSB\Coupons\TSBCouponBalance.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSB\Coupons\TSBCouponTransaction.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSB\Credits\TSBCreditBalance.cs" />

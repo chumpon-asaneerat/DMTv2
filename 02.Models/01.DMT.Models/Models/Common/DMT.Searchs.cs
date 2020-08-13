@@ -103,8 +103,6 @@ namespace DMT.Models
                 }
             }
         }
-
-        #endregion
     }
 
     #endregion
@@ -386,6 +384,8 @@ namespace DMT.Models
             }
         }
     }
+
+    #endregion
 
     #endregion
 }
