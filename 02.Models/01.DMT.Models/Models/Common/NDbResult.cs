@@ -182,7 +182,7 @@ namespace DMT.Models
         #region Public Properties
 
         public T data { get; set; }
-        public O Out { get; set; }
+        public O output { get; set; }
 
         #endregion
     }

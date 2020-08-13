@@ -172,7 +172,7 @@ namespace DMT.Services
         #region Public Properties
 
         public T data { get; set; }
-        public O Out { get; set; }
+        public O output { get; set; }
 
         #endregion
     }
@@ -227,7 +227,7 @@ namespace DMT.Services
                 ret.data = value.data;
                 ret.errors.errNum = value.errors.errNum;
                 ret.errors.errMsg = value.errors.errMsg;
-                ret.Out = value.Out;
+                ret.output = value.output;
             }
             else
             {
