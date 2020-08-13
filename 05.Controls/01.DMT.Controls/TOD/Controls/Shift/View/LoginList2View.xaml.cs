@@ -12,7 +12,6 @@ using NLib.Reflection;
 
 #endregion
 
-
 namespace DMT.TOD.Controls.Revenue.View
 {
     /// <summary>
@@ -66,17 +65,19 @@ namespace DMT.TOD.Controls.Revenue.View
             lstLaneJobs.ItemsSource = null;
             if (null == userShift) return;
 
-            var lanes = ops.Lanes.GetAllAttendancesByUserShift(userShift);
+            var ret = ops.Lanes.GetAllAttendancesByUserShift(userShift);
+            var lanes = (null != ret && !ret.errors.hasError) ? ret.data : null;
+
             lstLaneJobs.ItemsSource = lanes;
         }
 
         public void RefreshUsers() 
         {
             lstLaneJobs.ItemsSource = null;
-
             lstUsers.ItemsSource = null;
 
-            _userShifts = ops.UserShifts.GetUnCloseUserShifts();
+            var ret = ops.UserShifts.GetUnCloseUserShifts();
+            _userShifts = (null != ret && !ret.errors.hasError) ? ret.data : null;
 
             lstUsers.ItemsSource = _userShifts;
         }

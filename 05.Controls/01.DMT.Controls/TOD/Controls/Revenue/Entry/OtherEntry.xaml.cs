@@ -41,6 +41,7 @@ namespace DMT.TOD.Controls.Revenue.Entry
         #endregion
 
         #region TextBox KeyDown
+
         private void txtTotalBaht_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
@@ -50,6 +51,7 @@ namespace DMT.TOD.Controls.Revenue.Entry
                 e.Handled = true;
             }
         }
+
         #endregion
     }
 }

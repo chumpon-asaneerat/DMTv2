@@ -1,9 +1,27 @@
 --------------------------------------------------------------------------------------------
+Update 2020-08-13 #80
+- 
+
+Update 2020-08-13 #79
+- 
+
+Update 2020-08-13 #78
+- 
+
+Update 2020-08-13 #77
+- 
+
+Update 2020-08-13 #76
+- 
+
 Update 2020-08-13 #75
 - 
 
+[commited]
 Update 2020-08-13 #74
-- 
+- Update Local/DataCenter/TAxTOD service operation #131.
+  - DMT.Controls - TOD Controls - Revenue (Entry/View) update #1.
+  - DMT.Controls - TOD Controls - Shift (View) update #1.
 
 [commited]
 Update 2020-08-13 #73

@@ -1,4 +1,6 @@
-﻿using System;
+﻿#region Using
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
+#endregion
 
 namespace DMT.TOD.Controls.Revenue.View
 {
@@ -31,12 +35,5 @@ namespace DMT.TOD.Controls.Revenue.View
         }
 
         #endregion
-
-        /*
-        public void Setup(List<Models.EMVQRCode> lanes)
-        {
-            listView.ItemsSource = lanes;
-        }
-        */
     }
 }
