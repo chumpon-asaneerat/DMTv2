@@ -1804,48 +1804,110 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static List<TSBExchangeTransaction> GetTransactions() 
+		public static NDbResult<List<TSBExchangeTransaction>> GetTransactions() 
 		{
-			lock (sync)
+			var result = new NDbResult<List<TSBExchangeTransaction>>();
+			SQLiteConnection db = Default;
+			if (null == db)
 			{
-				var tsb = TSB.GetCurrent();
-				return GetTransactions(tsb);
+				result.ConenctFailed();
+				result.data = new List<TSBExchangeTransaction>();
+				return result;
 			}
-		}
 
-		public static List<TSBExchangeTransaction> GetTransactions(TSB tsb)
-		{
-			if (null == tsb) return null;
 			lock (sync)
 			{
-				// Required to change to view later.
-				string cmd = string.Empty;
-				cmd += "SELECT * ";
-				cmd += "  FROM TSBExchangeTransactionView ";
-				cmd += " WHERE TSBExchangeTransactionView.TSBId = ? ";
-				cmd += "   AND TSBExchangeTransactionView.FinishFlag = 1 ";
-
-				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
-				if (null == rets)
+				var tsbRet = TSB.GetCurrent();
+				if (null != tsbRet && !tsbRet.errors.hasError)
 				{
-					return new List<TSBExchangeTransaction>();
+					var tsb = tsbRet.data;
+					return GetTransactions(tsb);
 				}
 				else
 				{
-					var results = new List<TSBExchangeTransaction>();
-					rets.ForEach(ret =>
-					{
-						results.Add(ret.ToTSBExchangeTransaction());
-					});
-					return results;
+					result.Error(new Exception("Cannot get active TSB."));
+					result.errors.errNum = -20;
+					result.data = null;
 				}
+				return result;
 			}
 		}
 
-		public static void SaveTransaction(TSBExchangeTransaction value)
+		public static NDbResult<List<TSBExchangeTransaction>> GetTransactions(TSB tsb)
 		{
-			if (null == value) return;
-			TSBExchangeTransaction.Save(value);
+			var result = new NDbResult<List<TSBExchangeTransaction>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<TSBExchangeTransaction>();
+				return result;
+			}
+
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				result.data = new List<TSBExchangeTransaction>();
+				return result;
+			}
+			lock (sync)
+			{
+				try
+				{
+					// Required to change to view later.
+					string cmd = string.Empty;
+					cmd += "SELECT * ";
+					cmd += "  FROM TSBExchangeTransactionView ";
+					cmd += " WHERE TSBExchangeTransactionView.TSBId = ? ";
+					cmd += "   AND TSBExchangeTransactionView.FinishFlag = 1 ";
+
+					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
+					if (null == rets)
+					{
+						result.data = new List<TSBExchangeTransaction>();
+						result.Success();
+					}
+					else
+					{
+						var results = new List<TSBExchangeTransaction>();
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToTSBExchangeTransaction());
+						});
+						result.data = results;
+						result.Success();
+					}
+				}
+				catch (Exception ex)
+				{
+					result.Error(ex);
+					result.data = new List<TSBExchangeTransaction>();
+				}
+				return result;
+			}
+		}
+
+		public static NDbResult<TSBExchangeTransaction> SaveTransaction(
+			TSBExchangeTransaction value)
+		{
+			var result = new NDbResult<TSBExchangeTransaction>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
+			if (null == value)
+			{
+				result.ParameterIsNull();
+				result.data = null;
+				return result;
+
+			}
+			result = Save(value);
+			return result;
 		}
 
 		#endregion

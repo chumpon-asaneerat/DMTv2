@@ -8,8 +8,11 @@ Update 2020-08-13 #59
 Update 2020-08-13 #58
 - 
 
+[commited]
 Update 2020-08-13 #57
-- 
+- Update Local/DataCenter/TAxTOD service operation #115.
+- Implements TSB Exchange Balance related process #2.
+- Implements TSB Exchange Transaction related process #2.
 
 [commited]
 Update 2020-08-13 #56

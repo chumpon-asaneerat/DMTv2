@@ -355,10 +355,25 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static void SaveTSBExchangeGroup(TSBExchangeGroup value)
+		public static NDbResult<TSBExchangeGroup> SaveTSBExchangeGroup(TSBExchangeGroup value)
 		{
-			if (null == value) return;
-			TSBExchangeGroup.Save(value);
+			var result = new NDbResult<TSBExchangeGroup>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
+			if (null == value)
+			{
+				result.ParameterIsNull();
+				result.data = null;
+
+			}
+			result = Save(value);
+			return result;
 		}
 
 		#endregion
