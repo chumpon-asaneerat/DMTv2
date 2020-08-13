@@ -543,7 +543,7 @@ namespace DMT.Models
 		/// Gets Active TSB Coupon summaries.
 		/// </summary>
 		/// <returns>Returns Current Active TSB Coupon balance. If not found returns null.</returns>
-		public static List<TSBCouponSummary> GetTSBCouponSummaries()
+		public static NDbResult<List<TSBCouponSummary>> GetTSBCouponSummaries()
 		{
 			lock (sync)
 			{
@@ -551,12 +551,13 @@ namespace DMT.Models
 				return GetTSBCouponSummaries(tsb);
 			}
 		}
+
 		/// <summary>
 		/// Gets TSB Coupon summaries.
 		/// </summary>
 		/// <param name="tsb">The target TSB to get balance.</param>
 		/// <returns>Returns List of TSB Coupon balance. If TSB not found returns null.</returns>
-		public static List<TSBCouponSummary> GetTSBCouponSummaries(TSB tsb)
+		public static NDbResult<List<TSBCouponSummary>> GetTSBCouponSummaries(TSB tsb)
 		{
 			if (null == tsb) return new List<TSBCouponSummary>();
 			lock (sync)
@@ -578,13 +579,14 @@ namespace DMT.Models
 				return results;
 			}
 		}
+
 		/// <summary>
 		/// Gets TSB Coupon summaries.
 		/// </summary>
 		/// <param name="tsb">The target TSB to get balance.</param>
 		/// <param name="user">The target User to get balance.</param>
 		/// <returns>Returns List of TSB Coupon balance. If TSB not found returns null.</returns>
-		public static List<TSBCouponSummary> GetByUser(User user)
+		public static NDbResult<List<TSBCouponSummary>> GetByUser(User user)
 		{
 			lock (sync)
 			{
@@ -592,13 +594,14 @@ namespace DMT.Models
 				return GetByUser(tsb, user);
 			}
 		}
+
 		/// <summary>
 		/// Gets TSB Coupon summaries.
 		/// </summary>
 		/// <param name="tsb">The target TSB to get balance.</param>
 		/// <param name="user">The target User to get balance.</param>
 		/// <returns>Returns List of TSB Coupon balance. If TSB not found returns null.</returns>
-		public static List<TSBCouponSummary> GetByUser(TSB tsb, User user)
+		public static NDbResult<List<TSBCouponSummary>> GetByUser(TSB tsb, User user)
 		{
 			if (null == tsb || null == user) return new List<TSBCouponSummary>();
 			lock (sync)

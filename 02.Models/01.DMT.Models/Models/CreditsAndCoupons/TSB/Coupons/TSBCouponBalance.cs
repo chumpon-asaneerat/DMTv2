@@ -383,7 +383,7 @@ namespace DMT.Models
 		/// Gets Active TSB Coupon balance.
 		/// </summary>
 		/// <returns>Returns Current Active TSB Coupon balance. If not found returns null.</returns>
-		public static TSBCouponBalance GetTSBBalance()
+		public static NDbResult<TSBCouponBalance> GetTSBBalance()
 		{
 			lock (sync)
 			{
@@ -391,12 +391,13 @@ namespace DMT.Models
 				return GetTSBBalance(tsb);
 			}
 		}
+
 		/// <summary>
 		/// Gets TSB Coupon Balance.
 		/// </summary>
 		/// <param name="tsb">The target TSB to get balance.</param>
 		/// <returns>Returns TSB Coupon balance. If TSB not found returns null.</returns>
-		public static TSBCouponBalance GetTSBBalance(TSB tsb)
+		public static NDbResult<TSBCouponBalance> GetTSBBalance(TSB tsb)
 		{
 			if (null == tsb) return null;
 			lock (sync)
@@ -410,11 +411,12 @@ namespace DMT.Models
 				return (null != ret) ? ret.ToTSBCouponBalance() : null;
 			}
 		}
+
 		/// <summary>
 		/// Gets All TSB Coupon Balance.
 		/// </summary>
 		/// <returns>Returns List fo all TSB Coupon balance.</returns>
-		public static List<TSBCouponBalance> GetTSBBalances()
+		public static NDbResult<List<TSBCouponBalance>> GetTSBBalances()
 		{
 			lock (sync)
 			{

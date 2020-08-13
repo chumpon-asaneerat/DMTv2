@@ -912,7 +912,7 @@ namespace DMT.Models
 		/// <returns>
 		/// Returns Current Active TSB Coupon transactions. If not found returns null.
 		/// </returns>
-		public static List<TSBCouponTransaction> GetTSBCouponTransactions()
+		public static NDbResult<List<TSBCouponTransaction>> GetTSBCouponTransactions()
 		{
 			lock (sync)
 			{
@@ -920,12 +920,13 @@ namespace DMT.Models
 				return GetTSBCouponTransactions(tsb);
 			}
 		}
+
 		/// <summary>
 		/// Gets TSB Coupon transactions (all status).
 		/// </summary>
 		/// <param name="tsb">The target TSB to get coupon transaction.</param>
 		/// <returns>Returns TSB Coupon transactions. If TSB not found returns null.</returns>
-		public static List<TSBCouponTransaction> GetTSBCouponTransactions(TSB tsb)
+		public static NDbResult<List<TSBCouponTransaction>> GetTSBCouponTransactions(TSB tsb)
 		{
 			if (null == tsb) return null;
 			lock (sync)
@@ -953,7 +954,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static void SaveTransaction(TSBCouponTransaction value)
+		public static NDbResult<TSBCouponTransaction> SaveTransaction(TSBCouponTransaction value)
 		{
 			if (null == value) return;
 			if (value.TransactionDate == DateTime.MinValue)

@@ -574,20 +574,21 @@ namespace DMT.Models
 		/// <returns>
 		/// Returns Current Active TSB's User transactions. If not found returns null.
 		/// </returns>
-		public static List<UserCouponTransaction> Gets()
+		public static NDbResult<List<UserCouponTransaction>> Gets()
 		{
 			lock (sync)
 			{
-				var tsb = TSB.GetCurrent();
+				var tsb = TSB.GetCurrentNDbResult();
 				return Gets(tsb);
 			}
 		}
+
 		/// <summary>
 		/// Gets User Coupon transactions.
 		/// </summary>
 		/// <param name="tsb">The target User to get coupon transaction.</param>
 		/// <returns>Returns User transactions. If TSB not found returns null.</returns>
-		public static List<UserCouponTransaction> Gets(TSB tsb)
+		public static NDbResult<List<UserCouponTransaction>> Gets(TSB tsb)
 		{
 			if (null == tsb) return null;
 			lock (sync)
@@ -618,7 +619,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static List<UserCouponTransaction> GetUserBHT35Coupons(User user)
+		public static NDbResult<List<UserCouponTransaction>> GetUserBHT35Coupons(User user)
 		{
 			lock (sync)
 			{
@@ -627,7 +628,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static List<UserCouponTransaction> GetUserBHT35Coupons(TSB tsb, User user)
+		public static NDbResult<List<UserCouponTransaction>> GetUserBHT35Coupons(TSB tsb, User user)
 		{
 			if (null == tsb) return null;
 			lock (sync)
@@ -672,7 +673,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static List<UserCouponTransaction> GetUserBHT80Coupons(User user)
+		public static NDbResult<List<UserCouponTransaction>> GetUserBHT80Coupons(User user)
 		{
 			lock (sync)
 			{
@@ -681,7 +682,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static List<UserCouponTransaction> GetUserBHT80Coupons(TSB tsb, User user)
+		public static NDbResult<List<UserCouponTransaction>> GetUserBHT80Coupons(TSB tsb, User user)
 		{
 			if (null == tsb) return null;
 			lock (sync)
@@ -725,7 +726,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static void UserBorrowCoupons(User user, List<TSBCouponTransaction> coupons)
+		public static NDbResult<TSBCouponTransaction> UserBorrowCoupons(User user, List<TSBCouponTransaction> coupons)
 		{
 			if (null == user || null == coupons || coupons.Count <= 0) return;
 			lock (sync)
@@ -750,7 +751,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static void UserReturnCoupons(User user, List<TSBCouponTransaction> coupons)
+		public static NDbResult<TSBCouponTransaction> UserReturnCoupons(User user, List<TSBCouponTransaction> coupons)
 		{
 			if (null == user || null == coupons || coupons.Count <= 0) return;
 			lock (sync)
@@ -772,7 +773,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static void Sold(UserCouponTransaction coupon)
+		public static NDbResult<TSBCouponTransaction> Sold(UserCouponTransaction coupon)
 		{
 			/*
 			if (null == coupon) return;
