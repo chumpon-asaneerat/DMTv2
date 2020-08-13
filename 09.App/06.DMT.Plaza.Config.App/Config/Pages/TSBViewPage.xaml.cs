@@ -66,22 +66,26 @@ namespace DMT.Config.Pages
 
             items.Clear();
             var ret = ops.TSB.GetTSBs();
-            if (null == ret || ret.errors.hasError)
+            var tsbs = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            if (null == tsbs)
                 return;
 
-            var tsbs = ret.data;
             tsbs.ForEach(tsb =>
             {
                 TSBItem item = tsb.CloneTo<TSBItem>();
                 items.Add(item);
-                var plazas = ops.TSB.GetTSBPlazas(item);
+
+                var pzRet = ops.TSB.GetTSBPlazas(item);
+                var plazas = (null != pzRet && !pzRet.errors.hasError) ? pzRet.data : null;
                 if (null != plazas)
                 {
                     plazas.ForEach(plaza =>
                     {
                         PlazaItem pItem = plaza.CloneTo<PlazaItem>();
                         item.Plazas.Add(pItem);
-                        var lanes = ops.TSB.GetPlazaLanes(plaza);
+
+                        var laneRet = ops.TSB.GetPlazaLanes(plaza);
+                        var lanes = (null != laneRet && !laneRet.errors.hasError) ? laneRet.data : null;
                         if (null != lanes)
                         {
                             lanes.ForEach(lane =>

@@ -68,12 +68,14 @@ namespace DMT.Config.Pages
             tree.ItemsSource = null;
 
             items.Clear();
-            var roles = ops.Users.GetRoles();
+            var roleRet = ops.Users.GetRoles();
+            var roles = (null != roleRet && !roleRet.errors.hasError) ? roleRet.data : null;
             roles.ForEach(role =>
             {
                 RoleItem item = role.CloneTo<RoleItem>();
                 items.Add(item);
-                var users = ops.Users.GetUsers(item);
+                var usrRet = ops.Users.GetUsers(item);
+                var users = (null != usrRet && !usrRet.errors.hasError) ? usrRet.data : null;
                 if (null != users)
                 {
                     users.ForEach(user =>

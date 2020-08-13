@@ -5,8 +5,10 @@ Update 2020-08-13 #80
 Update 2020-08-13 #79
 - 
 
+[commited]
 Update 2020-08-13 #78
-- 
+- Reload Local Plaza Windows Services project.
+- Reload Plaza Config project.
 
 [commited]
 Update 2020-08-13 #77
