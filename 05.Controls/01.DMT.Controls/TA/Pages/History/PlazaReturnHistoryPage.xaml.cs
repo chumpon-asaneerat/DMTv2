@@ -56,7 +56,11 @@ namespace DMT.TA.Pages.History
 
         public void RefreshPlazaInfo()
         {
-            var tsbCredit = ops.Credits.GetTSBBalance(null);
+            var ret = ops.TSB.GetCurrent();
+            var tsb = (null != ret && !ret.errors.hasError) ? ret.data : null;
+
+            var tcRet = ops.Credits.GetTSBBalance(tsb);
+            var tsbCredit = (null != tcRet && !tcRet.errors.hasError) ? tcRet.data : null;
 
             this.DataContext = tsbCredit;
             tsbCredit.Description = "ยืมเงิน";
@@ -70,7 +74,8 @@ namespace DMT.TA.Pages.History
             string userId = txtSearchUserId.Text;
             if (string.IsNullOrEmpty(userId)) return;
 
-            var users = ops.Users.SearchById(Search.Users.ById.Create(userId));
+            var ret = ops.Users.SearchById(Search.Users.ById.Create(userId));
+            var users = (null != ret && !ret.errors.hasError) ? ret.data : null;
             if (null != users)
             {
                 if (users.Count == 1)

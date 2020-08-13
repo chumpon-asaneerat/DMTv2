@@ -98,7 +98,8 @@ namespace DMT.TA.Pages.Coupon
             string userId = txtSearchUserId.Text;
             if (string.IsNullOrEmpty(userId)) return;
 
-            var users = ops.Users.SearchById(Search.Users.ById.Create(userId));
+            var ret = ops.Users.SearchById(Search.Users.ById.Create(userId));
+            var users = (null != ret && !ret.errors.hasError) ? ret.data : null;
             if (null != users)
             {
                 if (users.Count == 1)
