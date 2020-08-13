@@ -587,8 +587,19 @@ namespace DMT.Models
 
 			lock (sync)
 			{
-				var tsb = TSB.GetCurrent();
-				return Gets(tsb);
+				var tsbRet = TSB.GetCurrent();
+				if (null != tsbRet && !tsbRet.errors.hasError)
+				{
+					var tsb = tsbRet.data;
+					return Gets(tsb);
+				}
+				else
+				{
+					result.Error(new Exception("Cannot get active TSB."));
+					result.errors.errNum = -20;
+					result.data = null;
+				}
+				return result;
 			}
 		}
 
@@ -658,12 +669,24 @@ namespace DMT.Models
 
 			lock (sync)
 			{
-				var tsb = TSB.GetCurrent();
-				return GetUserBHT35Coupons(tsb, user);
+				var tsbRet = TSB.GetCurrent();
+				if (null != tsbRet && !tsbRet.errors.hasError)
+				{
+					var tsb = tsbRet.data;
+					return GetUserBHT35Coupons(tsb, user);
+				}
+				else
+				{
+					result.Error(new Exception("Cannot get active TSB."));
+					result.errors.errNum = -20;
+					result.data = null;
+				}
+				return result;
 			}
 		}
 
-		public static NDbResult<List<UserCouponTransaction>> GetUserBHT35Coupons(TSB tsb, User user)
+		public static NDbResult<List<UserCouponTransaction>> GetUserBHT35Coupons(
+			TSB tsb, User user)
 		{
 			var result = new NDbResult<List<UserCouponTransaction>>();
 			SQLiteConnection db = Default;
@@ -674,7 +697,10 @@ namespace DMT.Models
 				return result;
 			}
 
-			if (null == tsb) return null;
+			if (null == tsb)
+			{
+				return null;
+			}
 			lock (sync)
 			{
 				try
@@ -738,12 +764,24 @@ namespace DMT.Models
 
 			lock (sync)
 			{
-				var tsb = TSB.GetCurrent();
-				return GetUserBHT80Coupons(tsb, user);
+				var tsbRet = TSB.GetCurrent();
+				if (null != tsbRet && !tsbRet.errors.hasError)
+				{
+					var tsb = tsbRet.data;
+					return GetUserBHT80Coupons(tsb, user);
+				}
+				else
+				{
+					result.Error(new Exception("Cannot get active TSB."));
+					result.errors.errNum = -20;
+					result.data = null;
+				}
+				return result;
 			}
 		}
 
-		public static NDbResult<List<UserCouponTransaction>> GetUserBHT80Coupons(TSB tsb, User user)
+		public static NDbResult<List<UserCouponTransaction>> GetUserBHT80Coupons(
+			TSB tsb, User user)
 		{
 			var result = new NDbResult<List<UserCouponTransaction>>();
 			SQLiteConnection db = Default;
@@ -857,7 +895,10 @@ namespace DMT.Models
 				return result;
 			}
 
-			if (null == user || null == coupons || coupons.Count <= 0) return;
+			if (null == user || null == coupons || coupons.Count <= 0)
+			{
+				return;
+			}
 			lock (sync)
 			{
 				try

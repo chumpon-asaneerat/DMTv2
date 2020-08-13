@@ -556,8 +556,19 @@ namespace DMT.Models
 
 			lock (sync)
 			{
-				var tsb = TSB.GetCurrent();
-				return GetTSBCouponSummaries(tsb);
+				var tsbRet = TSB.GetCurrent();
+				if (null != tsbRet && !tsbRet.errors.hasError)
+				{
+					var tsb = tsbRet.data;
+					return GetTSBCouponSummaries(tsb);
+				}
+				else
+				{
+					result.Error(new Exception("Cannot get active TSB."));
+					result.errors.errNum = -20;
+					result.data = null;
+				}
+				return result;
 			}
 		}
 
@@ -577,7 +588,10 @@ namespace DMT.Models
 				return result;
 			}
 
-			if (null == tsb) return new List<TSBCouponSummary>();
+			if (null == tsb)
+			{
+				return new List<TSBCouponSummary>();
+			}
 			lock (sync)
 			{
 				try
@@ -625,8 +639,19 @@ namespace DMT.Models
 
 			lock (sync)
 			{
-				var tsb = TSB.GetCurrent();
-				return GetByUser(tsb, user);
+				var tsbRet = TSB.GetCurrent();
+				if (null != tsbRet && !tsbRet.errors.hasError)
+				{
+					var tsb = tsbRet.data;
+					return GetByUser(tsb, user);
+				}
+				else
+				{
+					result.Error(new Exception("Cannot get active TSB."));
+					result.errors.errNum = -20;
+					result.data = null;
+				}
+				return result;
 			}
 		}
 
@@ -647,7 +672,10 @@ namespace DMT.Models
 				return result;
 			}
 
-			if (null == tsb || null == user) return new List<TSBCouponSummary>();
+			if (null == tsb || null == user)
+			{
+				return new List<TSBCouponSummary>();
+			}
 			lock (sync)
 			{
 				try

@@ -925,8 +925,19 @@ namespace DMT.Models
 
 			lock (sync)
 			{
-				var tsb = TSB.GetCurrent();
-				return GetTSBCouponTransactions(tsb);
+				var tsbRet = TSB.GetCurrent();
+				if (null != tsbRet && !tsbRet.errors.hasError)
+				{
+					var tsb = tsbRet.data;
+					return GetTSBCouponTransactions(tsb);
+				}
+				else
+				{
+					result.Error(new Exception("Cannot get active TSB."));
+					result.errors.errNum = -20;
+					result.data = null;
+				}
+				return result;
 			}
 		}
 
@@ -946,7 +957,10 @@ namespace DMT.Models
 				return result;
 			}
 
-			if (null == tsb) return null;
+			if (null == tsb)
+			{
+
+			}
 			lock (sync)
 			{
 				try
@@ -991,7 +1005,10 @@ namespace DMT.Models
 				return result;
 			}
 
-			if (null == value) return;
+			if (null == value)
+			{
+				return;
+			}
 			if (value.TransactionDate == DateTime.MinValue)
 			{
 				value.TransactionDate = DateTime.Now;
