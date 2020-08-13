@@ -14,13 +14,17 @@ Update 2020-08-13 #72
 Update 2020-08-13 #71
 - 
 
+[commited]
 Update 2020-08-13 #70
-- 
+- Update Local/DataCenter/TAxTOD service operation #127.
+  - DMT.Controls - TA Controls - Collector Credit (View) update #1.
+  - DMT.Controls - TA Controls - Exchange (View) update #1.
+  - DMT.Controls - TA Controls - History (View) update #1.
 
 [commited]
 Update 2020-08-13 #69
 - Update Local/DataCenter/TAxTOD service operation #126.
-  - DMT.Controls - TA Controls - Coupon (Entry/View) update #1.
+  - DMT.Controls - TA Controls - Collector Coupon (Entry/View) update #1.
 
 [commited]
 Update 2020-08-13 #68

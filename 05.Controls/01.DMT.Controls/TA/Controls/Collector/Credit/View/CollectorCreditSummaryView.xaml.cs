@@ -58,12 +58,11 @@ namespace DMT.TA.Controls.Collector.Credit.View
         {
             var userCredit = (Models.UserCreditBalance)((FrameworkElement)sender).DataContext;
             if (null == userCredit) return;
+
             var win = new Windows.Collector.Credit.CollectorCreditBorrowWindow();
             win.Owner = Application.Current.MainWindow;
             win.Title = userCredit.Description;
-
             win.Setup(_tsb, userCredit);
-
             if (win.ShowDialog() == false)
             {
                 return;
@@ -77,12 +76,11 @@ namespace DMT.TA.Controls.Collector.Credit.View
         {
             var userCredit = (Models.UserCreditBalance)((FrameworkElement)sender).DataContext;
             if (null == userCredit) return;
+
             var win = new Windows.Collector.Credit.CollectorCreditReturnWindow();
             win.Owner = Application.Current.MainWindow;
             win.Title = userCredit.Description;
-
             win.Setup(_tsb, userCredit);
-
             if (win.ShowDialog() == false)
             {
                 return;
@@ -100,9 +98,7 @@ namespace DMT.TA.Controls.Collector.Credit.View
             var win = new Windows.Collector.Credit.ReceiveMoneyBagWindow();
             win.Owner = Application.Current.MainWindow;
             win.Title = userCredit.Description;
-
             win.Setup(userCredit.UserId, userCredit.BagNo, userCredit.BHTTotal);
-
             if (win.ShowDialog() == false)
             {
                 return;
@@ -119,8 +115,11 @@ namespace DMT.TA.Controls.Collector.Credit.View
 
         private void RefreshUserCredits()
         {
-            _tsb = ops.TSB.GetCurrent();
-            var userCredits = ops.Credits.GetActiveUserCreditBalances(_tsb);
+            var ret = ops.TSB.GetCurrent();
+            _tsb = (null != ret && !ret.errors.hasError) ? ret.data : null;
+
+            var ucRet = ops.Credits.GetActiveUserCreditBalances(_tsb);
+            var userCredits = (null != ucRet && !ucRet.errors.hasError) ? ucRet.data : null;
             listView.ItemsSource = userCredits;
         }
 
