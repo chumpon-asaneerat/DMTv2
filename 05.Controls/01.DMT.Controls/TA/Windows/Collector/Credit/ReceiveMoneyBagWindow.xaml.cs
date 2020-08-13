@@ -62,8 +62,8 @@ namespace DMT.TA.Windows.Collector.Credit
                 return;
             }
 
-            var user = ops.Users.GetByLogIn(
-                Search.Users.ByLogIn.Create(userId, pwd));
+            var ret = ops.Users.GetByLogIn(Search.Users.ByLogIn.Create(userId, pwd));
+            var user = (null != ret && !ret.errors.hasError) ? ret.data : null;
             if (null == user || _roles.IndexOf(user.RoleId) == -1)
             {
                 //Console.WriteLine("LogIn Failed");

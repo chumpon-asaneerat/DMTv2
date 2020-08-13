@@ -47,17 +47,27 @@ namespace DMT.TA.Windows.Plaza
 
         public void RefreshPlazaInfo()
         {
-            _tsb = ops.TSB.GetCurrent();
-            var tsbCredit = ops.Credits.GetTSBBalance(_tsb);
+            var ret = ops.TSB.GetCurrent();
+            _tsb = (null != ret && !ret.errors.hasError) ? ret.data : null;
 
-            tsbCredit.Description = "เงินยืมทอนหมุนเวียนด่าน";
-            tsbCredit.HasRemark = false;
+            var tcrRet = ops.Credits.GetTSBBalance(_tsb);
+            var tsbCredit = (null != tcrRet && !tcrRet.errors.hasError) ? tcrRet.data : null;
+
+            if (null != tsbCredit)
+            {
+                tsbCredit.Description = "เงินยืมทอนหมุนเวียนด่าน";
+                tsbCredit.HasRemark = false;
+            }
             creditEntry.IsEnabled = false;
             creditEntry.DataContext = tsbCredit;
 
-            var tsbCoupon = ops.Coupons.GetTSBBalance(_tsb);
-            tsbCoupon.Description = "คุปอง";
-            tsbCoupon.HasRemark = false;
+            var tcpRet = ops.Coupons.GetTSBBalance(_tsb);
+            var tsbCoupon = (null != tcpRet && !tcpRet.errors.hasError) ? tcpRet.data : null;
+            if (null != tsbCoupon)
+            {
+                tsbCoupon.Description = "คุปอง";
+                tsbCoupon.HasRemark = false;
+            }
             couponEntry.IsEnabled = false;
             couponEntry.DataContext = tsbCoupon;
 

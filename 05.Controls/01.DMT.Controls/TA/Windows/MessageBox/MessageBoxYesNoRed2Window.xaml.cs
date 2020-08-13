@@ -45,7 +45,6 @@ namespace DMT.Windows
 
         #endregion
 
-
         public void Setup(string msg1, string msg2, string msg3, string msg4, string msg5, string head)
         {
             this.Title = head;

@@ -153,7 +153,8 @@ namespace DMT.TA.Windows.Coupon
                 _revenueEntry.ShiftEnd = end;
 
                 // assign supervisor.
-                var sup = ops.Shifts.GetCurrent();
+                var ret = ops.Shifts.GetCurrent();
+                var sup = (null != ret && !ret.errors.hasError) ? ret.data : null;
                 _revenueEntry.SupervisorId = sup.UserId;
                 _revenueEntry.SupervisorNameEN = sup.FullNameEN;
                 _revenueEntry.SupervisorNameTH = sup.FullNameTH;
@@ -198,9 +199,6 @@ namespace DMT.TA.Windows.Coupon
                 {
                     this.rptViewer.ClearReport();
                 }
-
-                //MessageBox.Show("No result found.", "DMT - Tour of Duty");
-                //this.rptViewer.ClearReport();
             }
             else
             {

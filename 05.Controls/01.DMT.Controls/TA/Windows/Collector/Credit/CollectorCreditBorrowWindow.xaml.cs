@@ -46,7 +46,8 @@ namespace DMT.TA.Windows.Collector.Credit
             string userId = txtSearchUserId.Text;
             if (string.IsNullOrEmpty(userId)) return;
 
-            var users = ops.Users.SearchById(Search.Users.ById.Create(userId));
+            var ret = ops.Users.SearchById(Search.Users.ById.Create(userId));
+            var users = (null != ret && !ret.errors.hasError) ? ret.data : null;
             if (null != users && null != manager.UserBalance)
             {
                 if (users.Count == 1)
@@ -100,10 +101,12 @@ namespace DMT.TA.Windows.Collector.Credit
 
         private void LoadPlazaGroups()
         {
-            var tsb = ops.TSB.GetCurrent();
+            var ret = ops.TSB.GetCurrent();
+            var tsb = (null != ret && !ret.errors.hasError) ? ret.data : null;
             if (null != tsb)
             {
-                var plazaGroups = ops.TSB.GetTSBPlazaGroups(tsb);
+                var pgRet = ops.TSB.GetTSBPlazaGroups(tsb);
+                var plazaGroups = (null != pgRet && !pgRet.errors.hasError) ? pgRet.data : null;
                 cbPlzaGroups.DisplayMemberPath = "PlazaGroupNameTH";
                 cbPlzaGroups.ItemsSource = plazaGroups;
                 if (null != plazaGroups && plazaGroups.Count > 0)

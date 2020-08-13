@@ -5,8 +5,15 @@ Update 2020-08-13 #75
 Update 2020-08-13 #74
 - 
 
+[commited]
 Update 2020-08-13 #73
-- 
+- Update Local/DataCenter/TAxTOD service operation #130.
+  - DMT.Controls - TA Windows - Collector Credit update #1.
+  - DMT.Controls - TA Windows - Collector Searchs update #1.
+  - DMT.Controls - TA Windows - Coupon (TSB) update #1.
+  - DMT.Controls - TA Windows - Exchange update #1.
+  - DMT.Controls - TA Windows - MessageBox update #1.
+  - DMT.Controls - TA Windows - Plaza update #1.
 
 [commited]
 Update 2020-08-13 #72
