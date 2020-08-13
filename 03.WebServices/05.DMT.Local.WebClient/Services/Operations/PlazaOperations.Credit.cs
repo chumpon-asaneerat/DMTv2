@@ -320,7 +320,8 @@ namespace DMT.Services
                 {
                     return null;
                 }
-                return ops.Credits.GetTSBBalance(this.TSB);
+                var ret = ops.Credits.GetTSBBalance(this.TSB);
+                return (null != ret && !ret.errors.hasError) ? ret.data : null;
             }
         }
 
@@ -348,20 +349,6 @@ namespace DMT.Services
 
         #endregion
 
-        #region Private Methods
-
-        #endregion
-
-        #region Protected Methods
-
-        protected override void OnRefresh() { }
-
-        #endregion
-
-        #region Public Methods
-
-        #endregion
-
         #region Public Properties
 
         /// <summary>
@@ -372,7 +359,8 @@ namespace DMT.Services
             get 
             {
                 if (null == TSB) return null;
-                return ops.Credits.GetInitialTSBCreditTransaction(TSB);
+                var ret = ops.Credits.GetInitialTSBCreditTransaction(TSB);
+                return (null != ret && !ret.errors.hasError) ? ret.data : null;
             }
         }
 
@@ -440,7 +428,8 @@ namespace DMT.Services
 
             this.Transaction = new UserCreditTransaction();
 
-            this.TSBBalance = ops.Credits.GetTSBBalance(tsb);
+            var ret = ops.Credits.GetTSBBalance(tsb);
+            this.TSBBalance = (null != ret && !ret.errors.hasError) ? ret.data : null;
             this.ResultBalance = new TSBCreditBalance();
 
             this.TSBBalance.AssignTo(this.ResultBalance);
@@ -565,7 +554,8 @@ namespace DMT.Services
                     UserBalance.PlazaGroupId = PlazaGroup.PlazaGroupId;
                 }
                 UserBalance.State = UserCreditBalance.StateTypes.Initial;
-                int pkid = ops.Credits.SaveUserCreditBalance(UserBalance);
+                var ret = ops.Credits.SaveUserCreditBalance(UserBalance);
+                int pkid = (null != ret && !ret.errors.hasError) ? ret.data.UserCreditId : 0;
                 UserBalance.UserCreditId = pkid;
             }
             // Save User Credit Transaction.
@@ -623,7 +613,8 @@ namespace DMT.Services
                 // Check is total borrow is reach zero.
                 var search = Search.UserCredits.GetActiveById.Create(
                     UserBalance.UserId, UserBalance.PlazaGroupId);
-                var inst = ops.Credits.GetActiveUserCreditBalanceById(search);
+                var ret = ops.Credits.GetActiveUserCreditBalanceById(search);
+                var inst = (null != ret && !ret.errors.hasError) ? ret.data : null;
                 if (null != inst)
                 {
                     if (inst.BHTTotal <= decimal.Zero)
