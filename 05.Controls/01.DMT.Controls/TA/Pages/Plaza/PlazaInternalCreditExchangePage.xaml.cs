@@ -62,9 +62,11 @@ namespace DMT.TA.Pages.Plaza
 
         public void RefreshPlazaInfo()
         {
-            _tsb = ops.TSB.GetCurrent();
+            var ret = ops.TSB.GetCurrent();
+            _tsb = (null != ret && !ret.errors.hasError) ? ret.data : null;
 
-            var tsbCredit = ops.Credits.GetTSBBalance(_tsb);
+            var tcRet = ops.Credits.GetTSBBalance(_tsb);
+            var tsbCredit = (null != tcRet && !tcRet.errors.hasError) ? tcRet.data : null;
 
             this.DataContext = tsbCredit;
             tsbCredit.Description = "เงินยืมทอน";

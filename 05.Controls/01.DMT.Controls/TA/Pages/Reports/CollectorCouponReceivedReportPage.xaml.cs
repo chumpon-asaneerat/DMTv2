@@ -138,9 +138,6 @@ namespace DMT.TA.Pages.Reports
                     {
                         this.rptViewer.ClearReport();
                     }
-
-                    //MessageBox.Show("No result found.", "DMT - Tour of Duty");
-                    //this.rptViewer.ClearReport();
                 }
                 else
                 {

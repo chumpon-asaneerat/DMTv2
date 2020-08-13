@@ -8,8 +8,12 @@ Update 2020-08-13 #74
 Update 2020-08-13 #73
 - 
 
+[commited]
 Update 2020-08-13 #72
-- 
+- Update Local/DataCenter/TAxTOD service operation #129.
+  - DMT.Controls - TA Page - Plaza update #1.
+  - DMT.Controls - TA Page - Menu update #1.
+  - DMT.Controls - TA Page - Reports update #1.
 
 [commited]
 Update 2020-08-13 #71

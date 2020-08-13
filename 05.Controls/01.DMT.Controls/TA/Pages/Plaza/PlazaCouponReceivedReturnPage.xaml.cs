@@ -56,7 +56,11 @@ namespace DMT.TA.Pages.Plaza
 
         public void RefreshPlazaInfo()
         {
-            var tsbCoupon = ops.Coupons.GetTSBBalance(null);
+            var ret = ops.TSB.GetCurrent();
+            var tsb = (null != ret && !ret.errors.hasError) ? ret.data : null;
+
+            var tcRet = ops.Credits.GetTSBBalance(tsb);
+            var tsbCoupon = (null != tcRet && !tcRet.errors.hasError) ? tcRet.data : null;
 
             this.DataContext = tsbCoupon;
             tsbCoupon.Description = "คุปอง";
