@@ -23,8 +23,10 @@ Update 2020-08-13 #64
 Update 2020-08-13 #63
 - 
 
+[commited]
 Update 2020-08-13 #62
-- 
+- Update Local/DataCenter/TAxTOD service operation #119.
+- Reload some Test projects and fixed calling code using new NDbResult/NRestResult.
 
 [commited]
 Update 2020-08-13 #61

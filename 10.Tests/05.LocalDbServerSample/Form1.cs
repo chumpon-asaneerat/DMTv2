@@ -49,51 +49,66 @@ namespace LocalDbServerSample
         private void button6_Click(object sender, EventArgs e)
         {
             // Gets TSBs
-            dbgTSB.DataSource = TSB.Gets();
+            var ret = TSB.Gets();
+            var ds = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            dbgTSB.DataSource = ds;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             // Gets Plaza Groups
-            dbgPlazaGroup.DataSource = PlazaGroup.Gets();
+            var ret = PlazaGroup.Gets();
+            var ds = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            dbgPlazaGroup.DataSource = ds;
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             // Gets Plazas
-            dbgPlaza.DataSource = Plaza.Gets();
+            var ret = Plaza.Gets();
+            var ds = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            dbgPlaza.DataSource = ds;
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             // Gets Lanes
-            dbgLane.DataSource = Lane.Gets();
+            var ret = Lane.Gets();
+            var ds = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            dbgLane.DataSource = ds;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             // Gets TSB Credits
-            dbgTSBCredit.DataSource = TSBCreditTransaction.Gets();
+            var ret = TSBCreditTransaction.Gets();
+            var ds = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            dbgTSBCredit.DataSource = ds;
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
             // Init TSB Credit.
-            TSBCreditTransaction inst = TSBCreditTransaction.GetInitialTransaction();
-            inst.TransactionDate = DateTime.Now;
-            inst.CountBHT1 = 300;
-            inst.CountBHT2 = 300;
-            inst.CountBHT5 = 500;
-            inst.CountBHT10 = 300;
-            inst.CountBHT20 = 200;
-            inst.CountBHT50 = 200;
-            inst.CountBHT100 = 100;
-            inst.CountBHT500 = 50;
-            inst.CountBHT1000 = 30;
-            TSBCreditTransaction.Save(inst);
-
+            var ret = TSBCreditTransaction.GetInitialTransaction();
+            TSBCreditTransaction inst = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            if (null != inst)
+            {
+                inst.TransactionDate = DateTime.Now;
+                inst.CountBHT1 = 300;
+                inst.CountBHT2 = 300;
+                inst.CountBHT5 = 500;
+                inst.CountBHT10 = 300;
+                inst.CountBHT20 = 200;
+                inst.CountBHT50 = 200;
+                inst.CountBHT100 = 100;
+                inst.CountBHT500 = 50;
+                inst.CountBHT1000 = 30;
+                TSBCreditTransaction.Save(inst);
+            }
             // Gets TSB Credits
-            dbgTSBCredit.DataSource = TSBCreditTransaction.Gets();
+            var ret2 = TSBCreditTransaction.Gets();
+            var ds = (null != ret2 && !ret2.errors.hasError) ? ret2.data : null;
+            dbgTSBCredit.DataSource = ds;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -104,7 +119,8 @@ namespace LocalDbServerSample
 
         private void button20_Click(object sender, EventArgs e)
         {
-            var tsb = TSB.GetCurrent();
+            var ret = TSB.GetCurrent();
+            var tsb = (null != ret && !ret.errors.hasError) ? ret.data : null;
             if (null == tsb) return;
             // Init TSB Coupons.
             string book35Range = "630001-630010";
@@ -151,7 +167,8 @@ namespace LocalDbServerSample
         private void button1_Click(object sender, EventArgs e)
         {
             // Gets TSB Coupons (Received).
-            var coupons = TSBCouponTransaction.GetTSBCouponTransactions();
+            var ret = TSBCouponTransaction.GetTSBCouponTransactions();
+            var coupons = (null != ret && !ret.errors.hasError) ? ret.data : null;
             dbgTSBCoupon.DataSource = null;
             if (null != coupons)
             {
@@ -165,7 +182,8 @@ namespace LocalDbServerSample
         private void button11_Click(object sender, EventArgs e)
         {
             // Gets Sold Coupons.
-            var coupons = TSBCouponTransaction.GetTSBCouponTransactions();
+            var ret = TSBCouponTransaction.GetTSBCouponTransactions();
+            var coupons = (null != ret && !ret.errors.hasError) ? ret.data : null;
             dbgTSBCoupon.DataSource = null;
             if (null != coupons)
             {
@@ -227,15 +245,21 @@ namespace LocalDbServerSample
         private void button12_Click(object sender, EventArgs e)
         {
             // Gets User 35 Coupons.
-            var user = User.Get("14211");
-            dbgUserCoupon.DataSource = UserCouponTransaction.GetUserBHT35Coupons(user);
+            var ret = User.Get("14211");
+            var user = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            var src = UserCouponTransaction.GetUserBHT35Coupons(user);
+            var ds = (null != src && !src.errors.hasError) ? src.data : null;
+            dbgUserCoupon.DataSource = ds;
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
             // Gets User 80 Coupons.
-            var user = User.Get("14211");
-            dbgUserCoupon.DataSource = UserCouponTransaction.GetUserBHT80Coupons(user);
+            var ret = User.Get("14211");
+            var user = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            var src = UserCouponTransaction.GetUserBHT80Coupons(user);
+            var ds = (null != src && !src.errors.hasError) ? src.data : null;
+            dbgUserCoupon.DataSource = ds;
         }
 
         private void button17_Click(object sender, EventArgs e)
