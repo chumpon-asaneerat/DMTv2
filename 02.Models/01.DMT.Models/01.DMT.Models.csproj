@@ -104,8 +104,8 @@
     <None Include="Models\Configuration\ViewHistory.cs" />
     <None Include="Models\CreditsAndCoupons\Users\Coupons\UserCoupon.cs" />
     <Compile Include="Models\CreditsAndCoupons\Common\Coupons\Enums.cs" />
-    <None Include="Models\CreditsAndCoupons\TSB\Coupons\TSBCouponSummary.cs" />
-    <None Include="Models\CreditsAndCoupons\Users\Coupons\UserCouponTransaction.cs" />
+    <Compile Include="Models\CreditsAndCoupons\TSB\Coupons\TSBCouponSummary.cs" />
+    <Compile Include="Models\CreditsAndCoupons\Users\Coupons\UserCouponTransaction.cs" />
     <EmbeddedResource Include="Views\Scripts\Coupons\TSBCouponSummarryView.sql" />
     <EmbeddedResource Include="Views\Scripts\Credits\TSBCreditSummarryView.sql" />
     <EmbeddedResource Include="Views\Scripts\Coupons\UserCouponSummaryView.sql" />
@@ -121,8 +121,8 @@
     <Compile Include="Models\Common\DMT.Searchs.cs" />
     <Compile Include="Models\Common\NSearch.cs" />
     <None Include="Models\Configuration\Config.cs" />
-    <None Include="Models\CreditsAndCoupons\TSB\Coupons\TSBCouponBalance.cs" />
-    <None Include="Models\CreditsAndCoupons\TSB\Coupons\TSBCouponTransaction.cs" />
+    <Compile Include="Models\CreditsAndCoupons\TSB\Coupons\TSBCouponBalance.cs" />
+    <Compile Include="Models\CreditsAndCoupons\TSB\Coupons\TSBCouponTransaction.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSB\Credits\TSBCreditBalance.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSB\Credits\TSBCreditTransaction.cs" />
     <Compile Include="Models\CreditsAndCoupons\Users\Credits\UserCreditBalance.cs" />

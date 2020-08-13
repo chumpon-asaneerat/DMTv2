@@ -14,8 +14,13 @@ Update 2020-08-13 #47
 Update 2020-08-13 #46
 - 
 
+[commited]
 Update 2020-08-13 #45
-- 
+- Update Local/DataCenter/TAxTOD service operation #103.
+- Implements TSB Coupon Balance related process #1.
+- Implements TSB Coupon Summary related process #1.
+- Implements TSB Coupon Transaction related process #1.
+- Implements User Coupon Transaction related process #1.
 
 [commited]
 Update 2020-08-13 #44
