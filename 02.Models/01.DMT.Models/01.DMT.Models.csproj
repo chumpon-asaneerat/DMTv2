@@ -109,8 +109,8 @@
     <EmbeddedResource Include="Views\Scripts\Coupons\TSBCouponSummarryView.sql" />
     <EmbeddedResource Include="Views\Scripts\Credits\TSBCreditSummarryView.sql" />
     <EmbeddedResource Include="Views\Scripts\Coupons\UserCouponSummaryView.sql" />
-    <None Include="Models\Exchanges\TSBExchangeGroup.cs" />
-    <None Include="Models\Exchanges\TSBExchangeTransaction.cs" />
+    <Compile Include="Models\Exchanges\TSBExchangeGroup.cs" />
+    <Compile Include="Models\Exchanges\TSBExchangeTransaction.cs" />
     <EmbeddedResource Include="Views\Scripts\Credits\UserCreditBorrowSummaryView.sql" />
     <EmbeddedResource Include="Views\Scripts\Credits\UserCreditReturnSummaryView.sql" />
     <EmbeddedResource Include="Views\Scripts\Coupons\UserCoupon35SummaryView.sql" />

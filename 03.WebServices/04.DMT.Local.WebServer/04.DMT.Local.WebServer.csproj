@@ -90,7 +90,7 @@
     <Compile Include="WebServer\Behaviors\NotifyBehavior.cs" />
     <Compile Include="WebServer\Controllers\CouponController.cs" />
     <Compile Include="WebServer\Controllers\CreditController.cs" />
-    <None Include="WebServer\Controllers\ExchangeController.cs" />
+    <Compile Include="WebServer\Controllers\ExchangeController.cs" />
     <Compile Include="WebServer\Controllers\UserShiftController.cs" />
     <Compile Include="WebServer\Controllers\LaneController.cs" />
     <Compile Include="WebServer\Controllers\RevenueController.cs" />
