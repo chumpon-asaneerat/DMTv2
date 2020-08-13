@@ -1,9 +1,26 @@
 --------------------------------------------------------------------------------------------
+Update 2020-08-13 #75
+- 
+
+Update 2020-08-13 #74
+- 
+
+Update 2020-08-13 #73
+- 
+
+Update 2020-08-13 #72
+- 
+
+Update 2020-08-13 #71
+- 
+
 Update 2020-08-13 #70
 - 
 
+[commited]
 Update 2020-08-13 #69
-- 
+- Update Local/DataCenter/TAxTOD service operation #126.
+  - DMT.Controls - TA Controls - Coupon (Entry/View) update #1.
 
 [commited]
 Update 2020-08-13 #68
