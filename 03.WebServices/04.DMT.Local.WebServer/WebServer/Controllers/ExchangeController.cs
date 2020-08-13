@@ -21,22 +21,44 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.Exchange.GetTSBExchangeTransactions.Name)]
-        public List<TSBExchangeTransaction> GetTSBExchangeTransactions([FromBody] TSB tsb)
+        public NDbResult<List<TSBExchangeTransaction>> GetTSBExchangeTransactions(
+            [FromBody] TSB value)
         {
-            if (null == tsb)
-                return TSBExchangeTransaction.GetTransactions();
-            return TSBExchangeTransaction.GetTransactions(tsb);
+            NDbResult<List<TSBExchangeTransaction>> result;
+            if (null == value)
+            {
+                result = new NDbResult<List<TSBExchangeTransaction>>();
+                result.ParameterIsNull();
+                result.data = new List<TSBExchangeTransaction>();
+            }
+            else
+            {
+                result = TSBExchangeTransaction.GetTransactions(value);
+            }
+            return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.Exchange.SaveTSBExchangeTransaction.Name)]
-        public void SaveTSBExchangeTransaction([FromBody] TSBExchangeTransaction value)
+        public NDbResult<TSBExchangeTransaction> SaveTSBExchangeTransaction(
+            [FromBody] TSBExchangeTransaction value)
         {
-            if (value.TransactionDate == DateTime.MinValue)
+            NDbResult<TSBExchangeTransaction> result;
+            if (null == value)
             {
-                value.TransactionDate = DateTime.Now;
+                result = new NDbResult<TSBExchangeTransaction>();
+                result.ParameterIsNull();
+                result.data = null;
             }
-            TSBExchangeTransaction.SaveTransaction(value);
+            else
+            {
+                if (value.TransactionDate == DateTime.MinValue)
+                {
+                    value.TransactionDate = DateTime.Now;
+                }
+                result = TSBExchangeTransaction.SaveTransaction(value);
+            }
+            return result;
         }
 
         #endregion

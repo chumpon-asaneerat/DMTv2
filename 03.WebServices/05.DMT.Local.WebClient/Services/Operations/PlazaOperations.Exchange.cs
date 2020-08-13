@@ -60,16 +60,53 @@ namespace DMT.Services
 
             #region Exchange Transaction
 
-            public List<TSBExchangeTransaction> GetTSBExchangeTransactions(TSB value)
+            public NRestResult<List<TSBExchangeTransaction>> GetTSBExchangeTransactions(TSB value)
             {
-                return NRestClient.Create(port: 9000).Execute<List<TSBExchangeTransaction>>(
-                    RouteConsts.Exchange.GetTSBExchangeTransactions.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<List<TSBExchangeTransaction>> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<List<TSBExchangeTransaction>>(RouteConsts.Exchange.GetTSBExchangeTransactions.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<TSBExchangeTransaction>>();
+                    ret.ParameterIsNull();
+                    ret.data = new List<TSBExchangeTransaction>();
+                }
+                return ret;
             }
 
-            public void SaveTSBExchangeTransaction(TSBExchangeTransaction value)
+            public NRestResult<TSBExchangeTransaction> SaveTSBExchangeTransaction(
+                TSBExchangeTransaction value)
             {
-                NRestClient.Create(port: 9000).Execute(
-                    RouteConsts.Exchange.SaveTSBExchangeTransaction.Url, value);
+                NRestClient.WebProtocol protocol =
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
+                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+
+                NRestResult<TSBExchangeTransaction> ret;
+
+                if (null != value)
+                {
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                        .Execute<TSBExchangeTransaction>(RouteConsts.Exchange.SaveTSBExchangeTransaction.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<TSBExchangeTransaction>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
+                return ret;
             }
 
             #endregion
