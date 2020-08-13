@@ -20,8 +20,11 @@ Update 2020-08-13 #65
 Update 2020-08-13 #64
 - 
 
+[commited]
 Update 2020-08-13 #63
-- 
+- Update Local/DataCenter/TAxTOD service operation #120.
+- Reload DMT.Controls project.
+- Recompile app projects - OK except DMT.Controls project.
 
 [commited]
 Update 2020-08-13 #62
