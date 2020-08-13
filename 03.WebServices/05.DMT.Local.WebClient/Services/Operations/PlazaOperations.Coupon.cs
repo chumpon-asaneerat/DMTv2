@@ -315,11 +315,14 @@ namespace DMT.Services
         public void Refresh()
         {
             TSB tsb = null;
-            Summaries = ops.Coupons.GetTSBCouponSummaries(tsb);
+            var sumRet = ops.Coupons.GetTSBCouponSummaries(tsb);
+            Summaries = (null != sumRet && !sumRet.errors.hasError) ? sumRet.data : null;
             // get original list.
-            _origins = ops.Coupons.GetTSBCouponTransactions(tsb);
+            var oriRet = ops.Coupons.GetTSBCouponTransactions(tsb);
+            _origins = (null != oriRet && !oriRet.errors.hasError) ? oriRet.data : null;
             // get work list.
-            _coupons = ops.Coupons.GetTSBCouponTransactions(tsb);
+            var couponRet = ops.Coupons.GetTSBCouponTransactions(tsb);
+            _coupons = (null != couponRet && !couponRet.errors.hasError) ? couponRet.data : null;
         }
 
         #endregion

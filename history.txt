@@ -23,8 +23,10 @@ Update 2020-08-13 #54
 Update 2020-08-13 #53
 - 
 
+[commited]
 Update 2020-08-13 #52
-- 
+- Update Local/DataCenter/TAxTOD service operation #110.
+- Implements PlazaOperations.Coupon #1.
 
 [commited]
 Update 2020-08-13 #51
