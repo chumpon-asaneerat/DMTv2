@@ -545,6 +545,15 @@ namespace DMT.Models
 		/// <returns>Returns Current Active TSB Coupon balance. If not found returns null.</returns>
 		public static NDbResult<List<TSBCouponSummary>> GetTSBCouponSummaries()
 		{
+			var result = new NDbResult<List<TSBCouponSummary>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			lock (sync)
 			{
 				var tsb = TSB.GetCurrent();
@@ -559,24 +568,41 @@ namespace DMT.Models
 		/// <returns>Returns List of TSB Coupon balance. If TSB not found returns null.</returns>
 		public static NDbResult<List<TSBCouponSummary>> GetTSBCouponSummaries(TSB tsb)
 		{
+			var result = new NDbResult<List<TSBCouponSummary>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			if (null == tsb) return new List<TSBCouponSummary>();
 			lock (sync)
 			{
-				string cmd = @"
+				try
+				{
+					string cmd = @"
 					SELECT * 
 					  FROM TSBCouponSummarryView
 					 WHERE TSBCouponSummarryView.TSBId = ?
 				";
-				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
-				var results = new List<TSBCouponSummary>();
-				if (null != rets)
-				{
-					rets.ForEach(ret =>
+					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
+					var results = new List<TSBCouponSummary>();
+					if (null != rets)
 					{
-						results.Add(ret.ToTSBCouponSummary());
-					});
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToTSBCouponSummary());
+						});
+					}
+					return results;
 				}
-				return results;
+				catch (Exception ex)
+				{
+
+				}
+				return result;
 			}
 		}
 
@@ -588,6 +614,15 @@ namespace DMT.Models
 		/// <returns>Returns List of TSB Coupon balance. If TSB not found returns null.</returns>
 		public static NDbResult<List<TSBCouponSummary>> GetByUser(User user)
 		{
+			var result = new NDbResult<List<TSBCouponSummary>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			lock (sync)
 			{
 				var tsb = TSB.GetCurrent();
@@ -603,25 +638,42 @@ namespace DMT.Models
 		/// <returns>Returns List of TSB Coupon balance. If TSB not found returns null.</returns>
 		public static NDbResult<List<TSBCouponSummary>> GetByUser(TSB tsb, User user)
 		{
+			var result = new NDbResult<List<TSBCouponSummary>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			if (null == tsb || null == user) return new List<TSBCouponSummary>();
 			lock (sync)
 			{
-				string cmd = @"
+				try
+				{
+					string cmd = @"
 					SELECT * 
 					  FROM TSBCouponSummarryView
 					 WHERE TSBCouponSummarryView.TSBId = ?
 					   AND TSBCouponSummarryView.UserId = ?
 				";
-				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId, user.UserId).ToList();
-				var results = new List<TSBCouponSummary>();
-				if (null != rets)
-				{
-					rets.ForEach(ret =>
+					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId, user.UserId).ToList();
+					var results = new List<TSBCouponSummary>();
+					if (null != rets)
 					{
-						results.Add(ret.ToTSBCouponSummary());
-					});
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToTSBCouponSummary());
+						});
+					}
+					return results;
 				}
-				return results;
+				catch (Exception ex)
+				{
+
+				}
+				return result;
 			}
 		}
 

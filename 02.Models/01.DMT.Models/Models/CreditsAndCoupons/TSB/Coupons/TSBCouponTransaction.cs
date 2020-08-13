@@ -914,6 +914,15 @@ namespace DMT.Models
 		/// </returns>
 		public static NDbResult<List<TSBCouponTransaction>> GetTSBCouponTransactions()
 		{
+			var result = new NDbResult<List<TSBCouponTransaction>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			lock (sync)
 			{
 				var tsb = TSB.GetCurrent();
@@ -928,34 +937,60 @@ namespace DMT.Models
 		/// <returns>Returns TSB Coupon transactions. If TSB not found returns null.</returns>
 		public static NDbResult<List<TSBCouponTransaction>> GetTSBCouponTransactions(TSB tsb)
 		{
+			var result = new NDbResult<List<TSBCouponTransaction>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			if (null == tsb) return null;
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT * ";
-				cmd += "  FROM TSBCouponTransactionView ";
-				cmd += " WHERE TSBCouponTransactionView.TSBId = ? ";
-				cmd += "   AND TSBCouponTransactionView.FinishFlag = 1 ";
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * ";
+					cmd += "  FROM TSBCouponTransactionView ";
+					cmd += " WHERE TSBCouponTransactionView.TSBId = ? ";
+					cmd += "   AND TSBCouponTransactionView.FinishFlag = 1 ";
 
-				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
-				if (null == rets)
-				{
-					return new List<TSBCouponTransaction>();
-				}
-				else
-				{
-					var results = new List<TSBCouponTransaction>();
-					rets.ForEach(ret =>
+					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
+					if (null == rets)
 					{
-						results.Add(ret.ToTSBCouponTransaction());
-					});
-					return results;
+						return new List<TSBCouponTransaction>();
+					}
+					else
+					{
+						var results = new List<TSBCouponTransaction>();
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToTSBCouponTransaction());
+						});
+						return results;
+					}
 				}
+				catch (Exception ex)
+				{
+
+				}
+				return result;
 			}
 		}
 
 		public static NDbResult<TSBCouponTransaction> SaveTransaction(TSBCouponTransaction value)
 		{
+			var result = new NDbResult<TSBCouponTransaction>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			if (null == value) return;
 			if (value.TransactionDate == DateTime.MinValue)
 			{

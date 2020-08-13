@@ -385,10 +385,20 @@ namespace DMT.Models
 		/// <returns>Returns Current Active TSB Coupon balance. If not found returns null.</returns>
 		public static NDbResult<TSBCouponBalance> GetTSBBalance()
 		{
+			var result = new NDbResult<TSBCouponBalance>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			lock (sync)
 			{
 				var tsb = TSB.GetCurrent();
-				return GetTSBBalance(tsb);
+				result GetTSBBalance(tsb);
+				return result;
 			}
 		}
 
@@ -399,16 +409,33 @@ namespace DMT.Models
 		/// <returns>Returns TSB Coupon balance. If TSB not found returns null.</returns>
 		public static NDbResult<TSBCouponBalance> GetTSBBalance(TSB tsb)
 		{
+			var result = new NDbResult<TSBCouponBalance>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			if (null == tsb) return null;
 			lock (sync)
 			{
-				string cmd = @"
+				try
+				{
+					string cmd = @"
 					SELECT * 
 					  FROM TSBCouponBalanceView
 					 WHERE TSBCouponBalanceView.TSBId = ?
 				";
-				var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
-				return (null != ret) ? ret.ToTSBCouponBalance() : null;
+					var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
+					return (null != ret) ? ret.ToTSBCouponBalance() : null;
+				}
+				catch(Exception ex)
+				{
+
+				}
+				return result;
 			}
 		}
 
@@ -418,22 +445,39 @@ namespace DMT.Models
 		/// <returns>Returns List fo all TSB Coupon balance.</returns>
 		public static NDbResult<List<TSBCouponBalance>> GetTSBBalances()
 		{
+			var result = new NDbResult<List<TSBCouponBalance>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			lock (sync)
 			{
-				string cmd = @"
+				try
+				{
+					string cmd = @"
 					SELECT * 
 					  FROM TSBCouponBalanceView
 				";
-				var rets = NQuery.Query<FKs>(cmd).ToList();
-				var results = new List<TSBCouponBalance>();
-				if (null != rets)
-				{
-					rets.ForEach(ret =>
+					var rets = NQuery.Query<FKs>(cmd).ToList();
+					var results = new List<TSBCouponBalance>();
+					if (null != rets)
 					{
-						results.Add(ret.ToTSBCouponBalance());
-					});
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToTSBCouponBalance());
+						});
+					}
+					return results;
 				}
-				return results;
+				catch (Exception ex)
+				{
+
+				}
+				return result;
 			}
 		}
 

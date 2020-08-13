@@ -576,9 +576,18 @@ namespace DMT.Models
 		/// </returns>
 		public static NDbResult<List<UserCouponTransaction>> Gets()
 		{
+			var result = new NDbResult<List<UserCouponTransaction>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			lock (sync)
 			{
-				var tsb = TSB.GetCurrentNDbResult();
+				var tsb = TSB.GetCurrent();
 				return Gets(tsb);
 			}
 		}
@@ -590,37 +599,63 @@ namespace DMT.Models
 		/// <returns>Returns User transactions. If TSB not found returns null.</returns>
 		public static NDbResult<List<UserCouponTransaction>> Gets(TSB tsb)
 		{
+			var result = new NDbResult<List<UserCouponTransaction>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			if (null == tsb) return null;
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT UserCouponTransaction.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , User.FullNameEN, User.FullNameTH ";
-				cmd += "  FROM UserCouponTransaction, TSB, User ";
-				cmd += " WHERE UserCouponTransaction.TSBId = TSB.TSBId ";
-				cmd += "   AND UserCouponTransaction.UserId = User.UserId ";
-				cmd += "   AND UserCouponTransaction.TSBId = ? ";
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT UserCouponTransaction.* ";
+					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+					cmd += "     , User.FullNameEN, User.FullNameTH ";
+					cmd += "  FROM UserCouponTransaction, TSB, User ";
+					cmd += " WHERE UserCouponTransaction.TSBId = TSB.TSBId ";
+					cmd += "   AND UserCouponTransaction.UserId = User.UserId ";
+					cmd += "   AND UserCouponTransaction.TSBId = ? ";
 
-				var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
-				if (null == rets)
-				{
-					return new List<UserCouponTransaction>();
-				}
-				else
-				{
-					var results = new List<UserCouponTransaction>();
-					rets.ForEach(ret =>
+					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
+					if (null == rets)
 					{
-						results.Add(ret.ToUserCouponTransaction());
-					});
-					return results;
+						return new List<UserCouponTransaction>();
+					}
+					else
+					{
+						var results = new List<UserCouponTransaction>();
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToUserCouponTransaction());
+						});
+						return results;
+					}
 				}
+				catch (Exception ex)
+				{
+
+				}
+				return result;
 			}
 		}
 
 		public static NDbResult<List<UserCouponTransaction>> GetUserBHT35Coupons(User user)
 		{
+			var result = new NDbResult<List<UserCouponTransaction>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			lock (sync)
 			{
 				var tsb = TSB.GetCurrent();
@@ -630,51 +665,77 @@ namespace DMT.Models
 
 		public static NDbResult<List<UserCouponTransaction>> GetUserBHT35Coupons(TSB tsb, User user)
 		{
+			var result = new NDbResult<List<UserCouponTransaction>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<UserCouponTransaction>();
+				return result;
+			}
+
 			if (null == tsb) return null;
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT UserCouponTransaction.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , User.FullNameEN, User.FullNameTH ";
-				cmd += "  FROM UserCouponTransaction, TSB, User ";
-				cmd += " WHERE UserCouponTransaction.TSBId = TSB.TSBId ";
-				cmd += "   AND UserCouponTransaction.UserId = User.UserId ";
-				cmd += "   AND UserCouponTransaction.TSBId = ? ";
-				cmd += "   AND UserCouponTransaction.CouponType = ? ";
-				if (null != user)
+				try
 				{
-					cmd += "   AND UserCouponTransaction.UserId = ? ";
-				}
-
-				List<FKs> rets;
-				if (null != user)
-				{
-					rets = NQuery.Query<FKs>(cmd, 
-						tsb.TSBId, CouponType.BHT35, user.UserId).ToList();
-				}
-				else
-				{
-					rets = NQuery.Query<FKs>(cmd, tsb.TSBId, CouponType.BHT35).ToList();
-				}
-				if (null == rets)
-				{
-					return new List<UserCouponTransaction>();
-				}
-				else
-				{
-					var results = new List<UserCouponTransaction>();
-					rets.ForEach(ret =>
+					string cmd = string.Empty;
+					cmd += "SELECT UserCouponTransaction.* ";
+					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+					cmd += "     , User.FullNameEN, User.FullNameTH ";
+					cmd += "  FROM UserCouponTransaction, TSB, User ";
+					cmd += " WHERE UserCouponTransaction.TSBId = TSB.TSBId ";
+					cmd += "   AND UserCouponTransaction.UserId = User.UserId ";
+					cmd += "   AND UserCouponTransaction.TSBId = ? ";
+					cmd += "   AND UserCouponTransaction.CouponType = ? ";
+					if (null != user)
 					{
-						results.Add(ret.ToUserCouponTransaction());
-					});
-					return results;
+						cmd += "   AND UserCouponTransaction.UserId = ? ";
+					}
+
+					List<FKs> rets;
+					if (null != user)
+					{
+						rets = NQuery.Query<FKs>(cmd,
+							tsb.TSBId, CouponType.BHT35, user.UserId).ToList();
+					}
+					else
+					{
+						rets = NQuery.Query<FKs>(cmd, tsb.TSBId, CouponType.BHT35).ToList();
+					}
+					if (null == rets)
+					{
+						return new List<UserCouponTransaction>();
+					}
+					else
+					{
+						var results = new List<UserCouponTransaction>();
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToUserCouponTransaction());
+						});
+						return results;
+					}
 				}
+				catch (Exception ex)
+				{
+
+				}
+				return result;
 			}
 		}
 
 		public static NDbResult<List<UserCouponTransaction>> GetUserBHT80Coupons(User user)
 		{
+			var result = new NDbResult<List<UserCouponTransaction>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<UserCouponTransaction>();
+				return result;
+			}
+
 			lock (sync)
 			{
 				var tsb = TSB.GetCurrent();
@@ -684,97 +745,157 @@ namespace DMT.Models
 
 		public static NDbResult<List<UserCouponTransaction>> GetUserBHT80Coupons(TSB tsb, User user)
 		{
+			var result = new NDbResult<List<UserCouponTransaction>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = new List<UserCouponTransaction>();
+				return result;
+			}
+
 			if (null == tsb) return null;
 			lock (sync)
 			{
-				string cmd = string.Empty;
-				cmd += "SELECT UserCouponTransaction.* ";
-				cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-				cmd += "     , User.FullNameEN, User.FullNameTH ";
-				cmd += "  FROM UserCouponTransaction, TSB, User ";
-				cmd += " WHERE UserCouponTransaction.TSBId = TSB.TSBId ";
-				cmd += "   AND UserCouponTransaction.UserId = User.UserId ";
-				cmd += "   AND UserCouponTransaction.TSBId = ? ";
-				cmd += "   AND UserCouponTransaction.CouponType = ? ";
-				if (null != user)
+				try
 				{
-					cmd += "   AND UserCouponTransaction.UserId = ? ";
-				}
-				List<FKs> rets;
-				if (null != user)
-				{
-					rets = NQuery.Query<FKs>(cmd, 
-						tsb.TSBId, CouponType.BHT80, user.UserId).ToList();
-				}
-				else
-				{
-					rets = NQuery.Query<FKs>(cmd, tsb.TSBId, CouponType.BHT80).ToList();
-				}
-				if (null == rets)
-				{
-					return new List<UserCouponTransaction>();
-				}
-				else
-				{
-					var results = new List<UserCouponTransaction>();
-					rets.ForEach(ret =>
+					string cmd = string.Empty;
+					cmd += "SELECT UserCouponTransaction.* ";
+					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
+					cmd += "     , User.FullNameEN, User.FullNameTH ";
+					cmd += "  FROM UserCouponTransaction, TSB, User ";
+					cmd += " WHERE UserCouponTransaction.TSBId = TSB.TSBId ";
+					cmd += "   AND UserCouponTransaction.UserId = User.UserId ";
+					cmd += "   AND UserCouponTransaction.TSBId = ? ";
+					cmd += "   AND UserCouponTransaction.CouponType = ? ";
+					if (null != user)
 					{
-						results.Add(ret.ToUserCouponTransaction());
-					});
-					return results;
+						cmd += "   AND UserCouponTransaction.UserId = ? ";
+					}
+					List<FKs> rets;
+					if (null != user)
+					{
+						rets = NQuery.Query<FKs>(cmd,
+							tsb.TSBId, CouponType.BHT80, user.UserId).ToList();
+					}
+					else
+					{
+						rets = NQuery.Query<FKs>(cmd, tsb.TSBId, CouponType.BHT80).ToList();
+					}
+					if (null == rets)
+					{
+						return new List<UserCouponTransaction>();
+					}
+					else
+					{
+						var results = new List<UserCouponTransaction>();
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToUserCouponTransaction());
+						});
+						return results;
+					}
 				}
+				catch (Exception ex)
+				{
+
+				}
+				return result;
 			}
 		}
 
 		public static NDbResult<TSBCouponTransaction> UserBorrowCoupons(User user, List<TSBCouponTransaction> coupons)
 		{
+			var result = new NDbResult<TSBCouponTransaction>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			if (null == user || null == coupons || coupons.Count <= 0) return;
 			lock (sync)
 			{
-				DateTime receivedDate = DateTime.Now;
-				coupons.ForEach(coupon => 
+				try
 				{
-					coupon.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
-					coupon.UserId = user.UserId;
-					coupon.UserReceiveDate = receivedDate;
-					TSBCouponTransaction.Save(coupon);
-					var inst = new UserCouponTransaction();
-					inst._TransactionDate = DateTime.Now;
-					inst.TransactionType = TransactionTypes.Borrow;
-					inst.TSBId = coupon.TSBId;
-					inst.UserId = user.UserId;
-					inst.CouponId = coupon.CouponId;
-					inst.CouponType = coupon.CouponType;
-					inst.Price = coupon.Price;
-					UserCouponTransaction.Save(inst);
-				});
+					DateTime receivedDate = DateTime.Now;
+					coupons.ForEach(coupon =>
+					{
+						coupon.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
+						coupon.UserId = user.UserId;
+						coupon.UserReceiveDate = receivedDate;
+						TSBCouponTransaction.Save(coupon);
+						var inst = new UserCouponTransaction();
+						inst._TransactionDate = DateTime.Now;
+						inst.TransactionType = TransactionTypes.Borrow;
+						inst.TSBId = coupon.TSBId;
+						inst.UserId = user.UserId;
+						inst.CouponId = coupon.CouponId;
+						inst.CouponType = coupon.CouponType;
+						inst.Price = coupon.Price;
+						UserCouponTransaction.Save(inst);
+					});
+				}
+				catch (Exception ex)
+				{
+
+				}
+				return result;
 			}
 		}
 
 		public static NDbResult<TSBCouponTransaction> UserReturnCoupons(User user, List<TSBCouponTransaction> coupons)
 		{
+			var result = new NDbResult<TSBCouponTransaction>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			if (null == user || null == coupons || coupons.Count <= 0) return;
 			lock (sync)
 			{
-				coupons.ForEach(coupon => 
+				try
 				{
-					coupon.TransactionType = TSBCouponTransaction.TransactionTypes.Stock;
-					TSBCouponTransaction.Save(coupon);
-					var inst = new UserCouponTransaction();
-					inst._TransactionDate = DateTime.Now;
-					inst.TransactionType = TransactionTypes.Return;
-					inst.TSBId = coupon.TSBId;
-					inst.UserId = user.UserId;
-					inst.CouponId = coupon.CouponId;
-					inst.CouponType = coupon.CouponType;
-					inst.Price = coupon.Price;
-					UserCouponTransaction.Save(inst);
-				});
+					coupons.ForEach(coupon =>
+					{
+						coupon.TransactionType = TSBCouponTransaction.TransactionTypes.Stock;
+						TSBCouponTransaction.Save(coupon);
+						var inst = new UserCouponTransaction();
+						inst._TransactionDate = DateTime.Now;
+						inst.TransactionType = TransactionTypes.Return;
+						inst.TSBId = coupon.TSBId;
+						inst.UserId = user.UserId;
+						inst.CouponId = coupon.CouponId;
+						inst.CouponType = coupon.CouponType;
+						inst.Price = coupon.Price;
+						UserCouponTransaction.Save(inst);
+					});
+				}
+				catch (Exception ex)
+				{ 
+
+				}
+				return result;
 			}
 		}
 
 		public static NDbResult<TSBCouponTransaction> Sold(UserCouponTransaction coupon)
 		{
+			var result = new NDbResult<TSBCouponTransaction>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.ConenctFailed();
+				result.data = null;
+				return result;
+			}
+
 			/*
 			if (null == coupon) return;
 			lock (sync)
@@ -788,6 +909,7 @@ namespace DMT.Models
 				}
 			}
 			*/
+			return result;
 		}
 
 		#endregion
