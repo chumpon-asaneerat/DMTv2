@@ -1,4 +1,49 @@
 --------------------------------------------------------------------------------------------
+Update 2020-08-14 #10
+- 
+
+Update 2020-08-14 #9
+- 
+
+Update 2020-08-14 #8
+- 
+
+Update 2020-08-14 #7
+- 
+
+Update 2020-08-14 #6
+- 
+
+Update 2020-08-14 #5
+- 
+
+Update 2020-08-14 #4
+- 
+
+Update 2020-08-14 #3
+- 
+
+Update 2020-08-14 #2
+- 
+
+Update 2020-08-14 #1
+- 
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-08-13 #81
+- Prepare history.txt
+- Note:
+  - Add CouponPK int
+  - The NRestClient need to get host/port from config.
+  - TOD need to set config to allow access from another computer.
+  - TA need to set config to allow access from another computer.
+  - TAxTOD Client need new workbrench project.
+  - DC Client need new workbrench project.
+  - Coupon need to add CouponPK column for send back to TAxTOD server.
+  - Need MD5 Implements for User.Password.
+  - Required method in NRestResult to get instance if not error.
+
 [commited]
 Update 2020-08-13 #80
 - Reload Plaza Simulator project.
