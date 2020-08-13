@@ -14,12 +14,14 @@ Update 2020-08-13 #67
 Update 2020-08-13 #66
 - 
 
+[commited]
 Update 2020-08-13 #65
-- 
+- Update Local/DataCenter/TAxTOD service operation #122.
+- Update history.txt
 
 [commited]
 Update 2020-08-13 #64
-- Update Local/DataCenter/TAxTOD service operation #120.
+- Update Local/DataCenter/TAxTOD service operation #121.
 - Note:
   - The NRestClient need to get host/port from config.
   - TOD need to set config to allow access from another computer.
