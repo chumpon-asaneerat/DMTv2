@@ -2,8 +2,10 @@
 Update 2020-08-13 #60
 - 
 
+[commited]
 Update 2020-08-13 #59
-- 
+- Update Local/DataCenter/TAxTOD service operation #117.
+- Implements PlazaOperations.Exchange #1.
 
 [commited]
 Update 2020-08-13 #58
