@@ -31,19 +31,12 @@ namespace DMT.Controls.Header
         #endregion
 
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
-        //private DispatcherTimer timer = new DispatcherTimer();
 
         #region Loaded/Unloaded
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateUI();
-            /*
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += timer_Tick;
-            timer.Start();
-            */
             LocalServiceOperations.Instance.OnChangeShift += Instance_OnChangeShift;
             LocalServiceOperations.Instance.OnActiveTSBChanged += Instance_OnActiveTSBChanged;
         }
@@ -52,20 +45,14 @@ namespace DMT.Controls.Header
         {
             LocalServiceOperations.Instance.OnActiveTSBChanged -= Instance_OnActiveTSBChanged;
             LocalServiceOperations.Instance.OnChangeShift -= Instance_OnChangeShift;
-            /*
-            if (null != timer)
-            {
-                timer.Stop();
-            }
-            timer = null;
-            */
         }
 
         #endregion
 
         private void UpdateUI()
         {
-            var shift = ops.Shifts.GetCurrent();
+            var ret = ops.Shifts.GetCurrent();
+            var shift = (null != ret && !ret.errors.hasError) ? ret.data : null;
             if (null == shift)
             {
                 txtSupervisorId.Text = "รหัสหัวหน้าด่าน : ";
@@ -77,12 +64,6 @@ namespace DMT.Controls.Header
                 txtSupervisorName.Text = "หัวหน้าด่าน : " + shift.FullNameTH;
             }
         }
-        /*
-        void timer_Tick(object sender, EventArgs e)
-        {
-            UpdateUI();
-        }
-        */
 
         private void Instance_OnChangeShift(object sender, EventArgs e)
         {
