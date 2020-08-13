@@ -619,7 +619,12 @@ namespace DMT.Models
 				return result;
 			}
 
-			if (null == tsb) return null;
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				result.data = new List<UserCouponTransaction>();
+				return result;
+			}
 			lock (sync)
 			{
 				try
@@ -636,7 +641,8 @@ namespace DMT.Models
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
 					if (null == rets)
 					{
-						return new List<UserCouponTransaction>();
+						result.data = new List<UserCouponTransaction>();
+						result.Success();
 					}
 					else
 					{
@@ -645,12 +651,14 @@ namespace DMT.Models
 						{
 							results.Add(ret.ToUserCouponTransaction());
 						});
-						return results;
+						result.data = results;
+						result.Success();
 					}
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = new List<UserCouponTransaction>();
 				}
 				return result;
 			}
@@ -699,7 +707,9 @@ namespace DMT.Models
 
 			if (null == tsb)
 			{
-				return null;
+				result.ParameterIsNull();
+				result.data = new List<UserCouponTransaction>();
+				return result;
 			}
 			lock (sync)
 			{
@@ -731,7 +741,8 @@ namespace DMT.Models
 					}
 					if (null == rets)
 					{
-						return new List<UserCouponTransaction>();
+						result.data = new List<UserCouponTransaction>();
+						result.Success();
 					}
 					else
 					{
@@ -740,12 +751,14 @@ namespace DMT.Models
 						{
 							results.Add(ret.ToUserCouponTransaction());
 						});
-						return results;
+						result.data = results;
+						result.Success();
 					}
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = new List<UserCouponTransaction>();
 				}
 				return result;
 			}
@@ -792,7 +805,12 @@ namespace DMT.Models
 				return result;
 			}
 
-			if (null == tsb) return null;
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				result.data = new List<UserCouponTransaction>();
+				return result;
+			}
 			lock (sync)
 			{
 				try
@@ -822,7 +840,8 @@ namespace DMT.Models
 					}
 					if (null == rets)
 					{
-						return new List<UserCouponTransaction>();
+						result.data = new List<UserCouponTransaction>();
+						result.Success();
 					}
 					else
 					{
@@ -831,18 +850,21 @@ namespace DMT.Models
 						{
 							results.Add(ret.ToUserCouponTransaction());
 						});
-						return results;
+						result.data = results;
+						result.Success();
 					}
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = new List<UserCouponTransaction>();
 				}
 				return result;
 			}
 		}
 
-		public static NDbResult<TSBCouponTransaction> UserBorrowCoupons(User user, List<TSBCouponTransaction> coupons)
+		public static NDbResult<TSBCouponTransaction> UserBorrowCoupons(
+			User user, List<TSBCouponTransaction> coupons)
 		{
 			var result = new NDbResult<TSBCouponTransaction>();
 			SQLiteConnection db = Default;
@@ -853,7 +875,12 @@ namespace DMT.Models
 				return result;
 			}
 
-			if (null == user || null == coupons || coupons.Count <= 0) return;
+			if (null == user || null == coupons || coupons.Count <= 0)
+			{
+				result.ParameterIsNull();
+				result.data = null;
+				return result;
+			}
 			lock (sync)
 			{
 				try
@@ -874,11 +901,14 @@ namespace DMT.Models
 						inst.CouponType = coupon.CouponType;
 						inst.Price = coupon.Price;
 						UserCouponTransaction.Save(inst);
+						result.data = null;
+						result.Success();
 					});
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = null;
 				}
 				return result;
 			}
@@ -897,7 +927,9 @@ namespace DMT.Models
 
 			if (null == user || null == coupons || coupons.Count <= 0)
 			{
-				return;
+				result.ParameterIsNull();
+				result.data = null;
+				return result;
 			}
 			lock (sync)
 			{
@@ -916,11 +948,14 @@ namespace DMT.Models
 						inst.CouponType = coupon.CouponType;
 						inst.Price = coupon.Price;
 						UserCouponTransaction.Save(inst);
+						result.data = null;
+						result.Success();
 					});
 				}
 				catch (Exception ex)
-				{ 
-
+				{
+					result.Error(ex);
+					result.data = null;
 				}
 				return result;
 			}
@@ -937,8 +972,13 @@ namespace DMT.Models
 				return result;
 			}
 
+			if (null == coupon)
+			{
+				result.ParameterIsNull();
+				result.data = null;
+				return result;
+			}
 			/*
-			if (null == coupon) return;
 			lock (sync)
 			{
 				coupon.TransactionType = UserCouponTransaction.TransactionTypes.Sold;

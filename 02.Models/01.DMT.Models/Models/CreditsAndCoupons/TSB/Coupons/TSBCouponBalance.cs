@@ -396,8 +396,18 @@ namespace DMT.Models
 
 			lock (sync)
 			{
-				var tsb = TSB.GetCurrent();
-				result GetTSBBalance(tsb);
+				var tsbRet = TSB.GetCurrent();
+				if (null != tsbRet && !tsbRet.errors.hasError)
+				{
+					var tsb = tsbRet.data;
+					return GetTSBBalance(tsb);
+				}
+				else
+				{
+					result.Error(new Exception("Cannot get active TSB."));
+					result.errors.errNum = -20;
+					result.data = null;
+				}
 				return result;
 			}
 		}
@@ -418,22 +428,29 @@ namespace DMT.Models
 				return result;
 			}
 
-			if (null == tsb) return null;
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				result.data = null;
+				return result;
+			}
 			lock (sync)
 			{
 				try
 				{
 					string cmd = @"
-					SELECT * 
-					  FROM TSBCouponBalanceView
-					 WHERE TSBCouponBalanceView.TSBId = ?
-				";
+						SELECT * 
+						  FROM TSBCouponBalanceView
+						 WHERE TSBCouponBalanceView.TSBId = ?
+					";
 					var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
-					return (null != ret) ? ret.ToTSBCouponBalance() : null;
+					result.data = (null != ret) ? ret.ToTSBCouponBalance() : null;
+					result.Success();
 				}
 				catch(Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = null;
 				}
 				return result;
 			}
@@ -459,23 +476,30 @@ namespace DMT.Models
 				try
 				{
 					string cmd = @"
-					SELECT * 
-					  FROM TSBCouponBalanceView
-				";
+						SELECT * 
+						  FROM TSBCouponBalanceView
+					";
 					var rets = NQuery.Query<FKs>(cmd).ToList();
-					var results = new List<TSBCouponBalance>();
-					if (null != rets)
+					if (null == rets)
 					{
+						result.data = new List<TSBCouponBalance>();
+						result.Success();
+					}
+					else
+					{
+						var results = new List<TSBCouponBalance>();
 						rets.ForEach(ret =>
 						{
 							results.Add(ret.ToTSBCouponBalance());
 						});
+						result.data = results;
+						result.Success();
 					}
-					return results;
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = new List<TSBCouponBalance>();
 				}
 				return result;
 			}

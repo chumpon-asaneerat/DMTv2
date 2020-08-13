@@ -953,13 +953,15 @@ namespace DMT.Models
 			if (null == db)
 			{
 				result.ConenctFailed();
-				result.data = null;
+				result.data = new List<TSBCouponTransaction>();
 				return result;
 			}
 
 			if (null == tsb)
 			{
-
+				result.ParameterIsNull();
+				result.data = new List<TSBCouponTransaction>();
+				return result;
 			}
 			lock (sync)
 			{
@@ -974,7 +976,8 @@ namespace DMT.Models
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
 					if (null == rets)
 					{
-						return new List<TSBCouponTransaction>();
+						result.data = new List<TSBCouponTransaction>();
+						result.Success();
 					}
 					else
 					{
@@ -983,12 +986,14 @@ namespace DMT.Models
 						{
 							results.Add(ret.ToTSBCouponTransaction());
 						});
-						return results;
+						result.data = results;
+						result.Success();
 					}
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = new List<TSBCouponTransaction>();
 				}
 				return result;
 			}
@@ -1007,13 +1012,15 @@ namespace DMT.Models
 
 			if (null == value)
 			{
-				return;
+				result.ParameterIsNull();
+				result.data = null;
+				return result;
 			}
 			if (value.TransactionDate == DateTime.MinValue)
 			{
 				value.TransactionDate = DateTime.Now;
 			}
-			TSBCouponTransaction.Save(value);
+			return TSBCouponTransaction.Save(value);
 
 		}
 

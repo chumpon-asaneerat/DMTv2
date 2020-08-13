@@ -590,7 +590,9 @@ namespace DMT.Models
 
 			if (null == tsb)
 			{
-				return new List<TSBCouponSummary>();
+				result.ParameterIsNull();
+				result.data = new List<TSBCouponSummary>();
+				return result;
 			}
 			lock (sync)
 			{
@@ -602,19 +604,26 @@ namespace DMT.Models
 					 WHERE TSBCouponSummarryView.TSBId = ?
 				";
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
-					var results = new List<TSBCouponSummary>();
-					if (null != rets)
+					if (null == rets)
 					{
+						result.data = new List<TSBCouponSummary>();
+						result.Success();
+					}
+					else
+					{
+						var results = new List<TSBCouponSummary>();
 						rets.ForEach(ret =>
 						{
 							results.Add(ret.ToTSBCouponSummary());
 						});
+						result.data = results;
+						result.Success();
 					}
-					return results;
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = new List<TSBCouponSummary>();
 				}
 				return result;
 			}
@@ -674,7 +683,9 @@ namespace DMT.Models
 
 			if (null == tsb || null == user)
 			{
-				return new List<TSBCouponSummary>();
+				result.ParameterIsNull();
+				result.data = new List<TSBCouponSummary>();
+				return result;
 			}
 			lock (sync)
 			{
@@ -687,19 +698,26 @@ namespace DMT.Models
 					   AND TSBCouponSummarryView.UserId = ?
 				";
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId, user.UserId).ToList();
-					var results = new List<TSBCouponSummary>();
-					if (null != rets)
+					if (null == rets)
 					{
+						result.data = new List<TSBCouponSummary>();
+						result.Success();
+					}
+					else
+					{
+						var results = new List<TSBCouponSummary>();
 						rets.ForEach(ret =>
 						{
 							results.Add(ret.ToTSBCouponSummary());
 						});
+						result.data = results;
+						result.Success();
 					}
-					return results;
 				}
 				catch (Exception ex)
 				{
-
+					result.Error(ex);
+					result.data = new List<TSBCouponSummary>();
 				}
 				return result;
 			}
