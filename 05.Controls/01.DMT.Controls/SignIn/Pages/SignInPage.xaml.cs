@@ -64,9 +64,11 @@ namespace DMT.Pages
                 return;
             }
 
-            var user = ops.Users.GetByLogIn(
+            var ret = ops.Users.GetByLogIn(
                 Search.Users.ByLogIn.Create(userId, pwd));
-            if (null == user || _roles.IndexOf(user.RoleId) == -1)
+            _user = (null != ret && !ret.errors.hasError) ? ret.data : null;
+
+            if (null == _user || _roles.IndexOf(_user.RoleId) == -1)
             {
                 Console.WriteLine("LogIn Failed");
                 txtMsg.Text = "LogIn Failed";
@@ -76,8 +78,6 @@ namespace DMT.Pages
 
                 return;
             }
-
-            _user = user;
 
             Controls.TAApp.User.Current = _user;
             // Init Main Menu
@@ -99,6 +99,7 @@ namespace DMT.Pages
         #endregion
 
         #region TextBox Keydown
+
         private void txtUserId_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
@@ -117,6 +118,7 @@ namespace DMT.Pages
                 e.Handled = true;
             }
         }
+
         #endregion
     }
 }
