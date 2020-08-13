@@ -23,9 +23,18 @@ namespace DMT.Services
         [ActionName(RouteConsts.Coupon.GetTSBBalance.Name)]
         public NDbResult<TSBCouponBalance> GetTSBBalance([FromBody] TSB value)
         {
+            NDbResult<TSBCouponBalance> result;
             if (null == value)
-                return TSBCouponBalance.GetTSBBalance();
-            return TSBCouponBalance.GetTSBBalance(value);
+            {
+                result = new NDbResult<TSBCouponBalance>();
+                result.ParameterIsNull();
+                result.data = null;
+            }
+            else
+            {
+                result = TSBCouponBalance.GetTSBBalance(value);
+            }
+            return result;
         }
 
         #endregion
@@ -36,9 +45,18 @@ namespace DMT.Services
         [ActionName(RouteConsts.Coupon.GetTSBCouponSummaries.Name)]
         public NDbResult<List<TSBCouponSummary>> GetTSBCouponSummaries([FromBody] TSB value)
         {
+            NDbResult<List<TSBCouponSummary>> result;
             if (null == value)
-                return TSBCouponSummary.GetTSBCouponSummaries();
-            return TSBCouponSummary.GetTSBCouponSummaries(value);
+            {
+                result = new NDbResult<List<TSBCouponSummary>>();
+                result.ParameterIsNull();
+                result.data = new List<TSBCouponSummary>();
+            }
+            else
+            {
+                result = TSBCouponSummary.GetTSBCouponSummaries(value);
+            }
+            return result;
         }
 
         #endregion
@@ -49,9 +67,18 @@ namespace DMT.Services
         [ActionName(RouteConsts.Coupon.GetTSBCouponTransactions.Name)]
         public NDbResult<List<TSBCouponTransaction>> GetTSBCouponTransactions([FromBody] TSB value)
         {
+            NDbResult<List<TSBCouponTransaction>> result;
             if (null == value)
-                return TSBCouponTransaction.GetTSBCouponTransactions();
-            return TSBCouponTransaction.GetTSBCouponTransactions(value);
+            {
+                result = new NDbResult<List<TSBCouponTransaction>>();
+                result.ParameterIsNull();
+                result.data = new List<TSBCouponTransaction>();
+            }
+            else
+            {
+                result = TSBCouponTransaction.GetTSBCouponTransactions(value);
+            }
+            return result;
         }
 
         [HttpPost]
@@ -59,11 +86,21 @@ namespace DMT.Services
         public NDbResult<TSBCouponTransaction> SaveTransaction(
             [FromBody] TSBCouponTransaction value)
         {
-            TSBCouponTransaction.SaveTransaction(value);
+            NDbResult<TSBCouponTransaction> result;
+            if (null == value)
+            {
+                result = new NDbResult<TSBCouponTransaction>();
+                result.ParameterIsNull();
+                result.data = null;
+            }
+            else
+            {
+                result = TSBCouponTransaction.SaveTransaction(value);
+            }
+            return result;
         }
 
         #endregion
-
 
         /*
         [HttpPost]
