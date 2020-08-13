@@ -1,6 +1,8 @@
 --------------------------------------------------------------------------------------------
+[commited]
 Update 2020-08-13 #80
-- 
+- Reload Plaza Simulator project.
+- Recompile all projects (Except app projects) - OK.
 
 [commited]
 Update 2020-08-13 #79

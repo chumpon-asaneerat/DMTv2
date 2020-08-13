@@ -184,7 +184,8 @@ namespace DMT.Simulator.Pages
             gridTools.IsEnabled = true;
 
             // Find UserShift.
-            currentUser.Shift = ops.UserShifts.GetCurrent(currentUser);
+            var ret = ops.UserShifts.GetCurrent(currentUser);
+            currentUser.Shift = (null != ret && !ret.errors.hasError) ? ret.data : null;
 
             if (null == currentUser.Shift)
             {
@@ -219,7 +220,8 @@ namespace DMT.Simulator.Pages
         {
             cbShifts.ItemsSource = null;
 
-            shifts = ops.Shifts.GetShifts();
+            var ret = ops.Shifts.GetShifts();
+            shifts = (null != ret && !ret.errors.hasError) ? ret.data : null;
 
             cbShifts.ItemsSource = shifts;
         }
@@ -229,10 +231,12 @@ namespace DMT.Simulator.Pages
             lstUsers.ItemsSource = null;
 
             users.Clear();
-            var role = ops.Users.GetRole(Search.Roles.ById.Create("COLLECTOR"));
+            var roleRet = ops.Users.GetRole(Search.Roles.ById.Create("TC"));
+            var role = (null != roleRet && !roleRet.errors.hasError) ? roleRet.data : null;
             if (null != role)
             {
-                var usrs = ops.Users.GetUsers(role);
+                var usrRet = ops.Users.GetUsers(role);
+                var usrs = (null != usrRet && !usrRet.errors.hasError) ? usrRet.data : null;
                 if (null != usrs)
                 {
                     usrs.ForEach(usr =>
@@ -240,7 +244,8 @@ namespace DMT.Simulator.Pages
                         var inst = new UserItem();
                         usr.AssignTo(inst);
                         // load user shift.
-                        inst.Shift = ops.UserShifts.GetCurrent(usr);
+                        var currRet = ops.UserShifts.GetCurrent(usr);
+                        inst.Shift = (null != currRet && !currRet.errors.hasError) ? currRet.data : null;
                         users.Add(inst);
                     });
                 }
@@ -256,10 +261,12 @@ namespace DMT.Simulator.Pages
             lvLanes.ItemsSource = null;
 
             lanes.Clear();
-            var tsb = ops.TSB.GetCurrent();
+            var tsbRet = ops.TSB.GetCurrent();
+            var tsb = (null != tsbRet && !tsbRet.errors.hasError) ? tsbRet.data : null;
             if (null != tsb)
             {
-                var tsbLanes = ops.TSB.GetTSBLanes(tsb);
+                var tlRet = ops.TSB.GetTSBLanes(tsb);
+                var tsbLanes = (null != tlRet && !tlRet.errors.hasError) ? tlRet.data : null;
                 if (null != tsbLanes)
                 {
                     tsbLanes.ForEach(tsbLane =>
@@ -268,7 +275,8 @@ namespace DMT.Simulator.Pages
                         tsbLane.AssignTo(inst);
                         // find Attendance.
                         var search = Search.Lanes.Current.AttendanceByLane.Create(tsbLane);
-                        inst.Attendance = ops.Lanes.GetCurrentAttendancesByLane(search);
+                        var attRet = ops.Lanes.GetCurrentAttendancesByLane(search);
+                        inst.Attendance = (null != attRet && !attRet.errors.hasError) ? attRet.data : null;
                         lanes.Add(inst);
                     });
                 }
@@ -289,7 +297,8 @@ namespace DMT.Simulator.Pages
             lvAttendances.ItemsSource = null;
 
             var search = Search.Lanes.Attendances.ByLane.Create(currentLane);
-            lvAttendances.ItemsSource = ops.Lanes.GetAttendancesByLane(search);
+            var ret = ops.Lanes.GetAttendancesByLane(search);
+            lvAttendances.ItemsSource = (null != ret && !ret.errors.hasError) ? ret.data : null;
         }
 
         private void RefreshLanePayments()
@@ -367,7 +376,9 @@ namespace DMT.Simulator.Pages
             if (null == currentUser) return;
             var shift = (cbShifts.SelectedItem as Shift);
             if (null == shift) return;
-            var inst = ops.UserShifts.Create(shift, currentUser);
+
+            var ret = ops.UserShifts.Create(shift, currentUser);
+            var inst = (null != ret && !ret.errors.hasError) ? ret.data : null;
 
             DateTime dt = shiftDate.Value.Value;
             inst.Begin = dt;
@@ -402,7 +413,8 @@ namespace DMT.Simulator.Pages
             if (!jobDate.Value.HasValue) return;
             if (null != currentLane.Attendance) return; // has attendance.
 
-            var attd = ops.Lanes.CreateAttendance(currentLane, currentUser);
+            var ret = ops.Lanes.CreateAttendance(currentLane, currentUser);
+            var attd = (null != ret && !ret.errors.hasError) ? ret.data : null;
 
             DateTime dt = jobDate.Value.Value;
             // Set Begin Job date.

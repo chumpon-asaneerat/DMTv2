@@ -140,7 +140,8 @@ namespace DMT.Simulator.Pages
 
             if (null != tsb)
             {
-                var coupons = ops.Coupons.GetTSBCouponTransactions(tsb);
+                var ret = ops.Coupons.GetTSBCouponTransactions(tsb);
+                var coupons = (null != ret && !ret.errors.hasError) ? ret.data : null;
                 lvCoupon.ItemsSource = coupons;
             }
         }

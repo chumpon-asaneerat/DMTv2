@@ -131,10 +131,12 @@ namespace DMT.Simulator.Pages
                 });
             }
             */
-            var role = ops.Users.GetRole(Search.Roles.ById.Create("COLLECTOR"));
+            var roltRet = ops.Users.GetRole(Search.Roles.ById.Create("CT"));
+            var role = (null != roltRet && !roltRet.errors.hasError) ? roltRet.data : null;
             if (null != role)
             {
-                var usrs = ops.Users.GetUsers(role);
+                var usrRet = ops.Users.GetUsers(role);
+                var usrs = (null != usrRet && !usrRet.errors.hasError) ? usrRet.data : null;
                 if (null != usrs)
                 {
                     usrs.ForEach(usr =>
@@ -154,7 +156,8 @@ namespace DMT.Simulator.Pages
 
             if (null == user) return;
 
-            var userShifts = ops.UserShifts.GetUserShifts(user);
+            var usrShfRet = ops.UserShifts.GetUserShifts(user);
+            var userShifts = (null != usrShfRet && !usrShfRet.errors.hasError) ? usrShfRet.data : null;
 
             lvUserShifts.ItemsSource = userShifts;
         }
