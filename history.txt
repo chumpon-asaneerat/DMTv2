@@ -26,8 +26,17 @@ Update 2020-08-14 #23
 Update 2020-08-14 #22
 - 
 
+[commited]
 Update 2020-08-14 #21
-- 
+- Update Local/DataCenter/TAxTOD service operation #153.
+  - Update NDbResult ExtensionMethods #6.
+  - Update NRestResult ExtensionMethods #6.
+  - Shift Models update #1.
+    - Add log.
+  - TSBShift Models update #1.
+    - Add log.
+  - NTable Models update #1.
+    - Add log.
 
 [commited]
 Update 2020-08-14 #20

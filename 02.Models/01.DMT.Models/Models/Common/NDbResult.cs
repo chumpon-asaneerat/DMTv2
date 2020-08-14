@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting;
 
 // required for JsonIgnore.
 using Newtonsoft.Json;
@@ -92,6 +93,10 @@ namespace DMT.Models
         #region Public Properties
 
         public NDbError errors { get; private set; }
+        /// <summary>
+        /// Checks if operation has success.
+        /// </summary>
+        public virtual bool Ok { get { return !this.errors.hasError; } }
 
         #endregion
     }
@@ -151,6 +156,10 @@ namespace DMT.Models
         #region Public Properties
 
         public T data { get; private set; }
+        /// <summary>
+        /// Checks if has data (not null).
+        /// </summary>
+        public bool HasData { get { return (null != this.data); } }
 
         #endregion
 
@@ -225,7 +234,16 @@ namespace DMT.Models
         #region Public Properties
 
         public T data { get; private set; }
+        /// <summary>
+        /// Checks if has data (not null).
+        /// </summary>
+        public bool HasData { get { return (null != this.data); } }
+
         public O output { get; private set; }
+        /// <summary>
+        /// Checks if has ouput (not null)
+        /// </summary>
+        public bool HasOutput { get { return (null != this.output); } }
 
         #endregion
 

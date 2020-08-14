@@ -1336,6 +1336,10 @@ namespace DMT.Services
 			InitView("PlazaView", prefix);
 			InitView("LaneView", prefix);
 
+			// Users - Embeded resource used . instead / to access sub contents.
+			prefix = @"Users";
+			InitView("UserView", prefix);
+
 			// Credits - Embeded resource used . instead / to access sub contents.
 			prefix = @"Credits";
 			InitView("TSBCreditSummarryView", prefix);

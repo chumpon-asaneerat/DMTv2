@@ -91,22 +91,32 @@ namespace DMT.Models
         {
             lock (sync)
             {
-                if (null == db || null == value) return false;
-                // read mapping information.
-                var map = db.GetMapping<T>(CreateFlags.None);
-                if (null == map) return false;
+                MethodBase med = MethodBase.GetCurrentMethod();
+                try
+                {
+                    if (null == db || null == value)
+                        return false;
+                    // read mapping information.
+                    var map = db.GetMapping<T>(CreateFlags.None);
+                    if (null == map) return false;
 
-                string tableName = map.TableName;
-                string columnName = map.PK.Name;
-                string propertyName = map.PK.PropertyName;
-                // get pk id.
-                object Id = PropertyAccess.GetValue(value, propertyName);
-                // init query string.
-                string cmd = string.Empty;
-                cmd += string.Format("SELECT * FROM {0} WHERE {1} = ?", tableName, columnName);
-                // execute query.
-                var item = db.Query<T>(cmd, Id).FirstOrDefault();
-                return (null != item);
+                    string tableName = map.TableName;
+                    string columnName = map.PK.Name;
+                    string propertyName = map.PK.PropertyName;
+                    // get pk id.
+                    object Id = PropertyAccess.GetValue(value, propertyName);
+                    // init query string.
+                    string cmd = string.Empty;
+                    cmd += string.Format("SELECT * FROM {0} WHERE {1} = ?", tableName, columnName);
+                    // execute query.
+                    var item = db.Query<T>(cmd, Id).FirstOrDefault();
+                    return (null != item);
+                }
+                catch (Exception ex)
+                {
+                    med.Err(ex);
+                    return false;
+                }
             }
         }
         /// <summary>
@@ -119,8 +129,7 @@ namespace DMT.Models
             NDbResult<T> result = new NDbResult<T>();
             if (null == db)
             {
-                result.ConenctFailed();
-                result.data = null;
+                result.DbConenctFailed();
                 return result;
             }
             if (null == db)
@@ -132,36 +141,30 @@ namespace DMT.Models
             lock (sync)
             {
                 MethodBase med = MethodBase.GetCurrentMethod();
-
                 if (!Exists(db, value))
                 {
                     try
                     {
                         db.Insert(value);
-                        result.data = value;
-                        result.Success();
+                        result.Success(value);
                     }
                     catch (Exception ex)
                     {
                         med.Err(ex);
                         result.Error(ex);
-                        result.data = null;
                     }
                 }
                 else
                 {
-                    //db.Update(value);
                     try
                     {
                         db.Update(value);
-                        result.data = value;
-                        result.Success();
+                        result.Success(value);
                     }
                     catch (Exception ex)
                     {
                         med.Err(ex);
                         result.Error(ex);
-                        result.data = null;
                     }
                 }
 
@@ -181,18 +184,18 @@ namespace DMT.Models
                 if (null == db || null == value)
                 {
                     result.ParameterIsNull();
+                    return result;
                 }
-                else
+                MethodBase med = MethodBase.GetCurrentMethod();
+                try
                 {
-                    try
-                    {
-                        db.UpdateWithChildren(value);
-                        result.Success();
-                    }
-                    catch (Exception ex)
-                    {
-                        result.Error(ex);
-                    }
+                    db.UpdateWithChildren(value);
+                    result.Success();
+                }
+                catch (Exception ex)
+                {
+                    med.Err(ex);
+                    result.Error(ex);
                 }
                 return result;
             }
@@ -208,23 +211,22 @@ namespace DMT.Models
             var result = new NDbResult<List<T>>();
             if (null == db)
             {
-                result.ConenctFailed();
-                result.data = new List<T>();
+                result.DbConenctFailed();
                 return result;
             }
 
             lock (sync)
             {
+                MethodBase med = MethodBase.GetCurrentMethod();
                 try
                 {
                     var results = db.GetAllWithChildren<T>(recursive: recursive);
-                    result.data = results;
-                    result.Success();
+                    result.Success(results);
                 }
                 catch (Exception ex)
                 {
+                    med.Err(ex);
                     result.Error(ex);
-                    result.data = new List<T>();
                 }
                 return result;
             }
@@ -242,13 +244,13 @@ namespace DMT.Models
             var result = new NDbResult<T>();
             if (null == db)
             {
-                result.ConenctFailed();
-                result.data = null;
+                result.DbConenctFailed();
                 return result;
             }
 
             lock (sync)
             {
+                MethodBase med = MethodBase.GetCurrentMethod();
                 try
                 {
                     // read mapping information.
@@ -268,13 +270,12 @@ namespace DMT.Models
                         // read children.
                         db.GetChildren(item, recursive);
                     }
-                    result.data = item;
-                    result.Success();
+                    result.Success(item);
                 }
                 catch (Exception ex)
                 {
+                    med.Err(ex);
                     result.Error(ex);
-                    result.data = null;
                 }
                 return result;
             }
@@ -288,8 +289,21 @@ namespace DMT.Models
         {
             lock (sync)
             {
-                if (null == db) return 0;
-                return db.DeleteAll<T>();
+                MethodBase med = MethodBase.GetCurrentMethod();
+                int cnt = 0;
+                try
+                {
+                    if (null != db)
+                    {
+                        cnt = db.DeleteAll<T>();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    med.Err(ex);
+                    cnt = 0;
+                }
+                return cnt;
             }
         }
         /// <summary>
@@ -302,12 +316,20 @@ namespace DMT.Models
         {
             lock (sync)
             {
-                if (null == db || null == Id) return;
-                var ret = GetWithChildren(db, Id, recursive);
-                if (!ret.errors.hasError)
+                MethodBase med = MethodBase.GetCurrentMethod();
+                try
                 {
-                    T inst = ret.data;
-                    db.Delete(inst, recursive);
+                    if (null == db || null == Id) return;
+                    var ret = GetWithChildren(db, Id, recursive);
+                    if (ret.Ok && ret.HasData)
+                    {
+                        T inst = ret.data;
+                        db.Delete(inst, recursive);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    med.Err(ex);
                 }
             }
         }

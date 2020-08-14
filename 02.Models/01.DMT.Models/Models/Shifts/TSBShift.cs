@@ -15,6 +15,7 @@ using SQLiteNetExtensions.Extensions;
 // required for JsonIgnore attribute.
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
+using System.Reflection;
 
 #endregion
 
@@ -613,14 +614,13 @@ namespace DMT.Models
 
         public static NDbResult<TSBShift> Create(Shift shift, User supervisor)
         {
-            NDbResult<TSBShift> result = new NDbResult<TSBShift>();
+            var result = new NDbResult<TSBShift>();
             TSBShift inst = Create();
 
             var tsbRet = TSB.GetCurrent();
             if (tsbRet.errors.hasError)
             {
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -628,8 +628,7 @@ namespace DMT.Models
                 if (null != tsb) tsb.AssignTo(inst);
                 if (null != shift) shift.AssignTo(inst);
                 if (null != supervisor) supervisor.AssignTo(inst);
-                result.data = inst;
-                result.Success();
+                result.Success(inst);
             }
 
             return result;
@@ -637,17 +636,17 @@ namespace DMT.Models
 
         public static NDbResult<TSBShift> GetCurrent()
         {
-            NDbResult<TSBShift> result = new NDbResult<TSBShift>();
+            var result = new NDbResult<TSBShift>();
             SQLiteConnection db = Default;
             if (null == db)
             {
-                result.ConenctFailed();
-                result.data = null;
+                result.DbConenctFailed();
                 return result;
             }
 
             lock (sync)
             {
+                MethodBase med = MethodBase.GetCurrentMethod();
                 try
                 {
                     string cmd = string.Empty;
@@ -662,13 +661,13 @@ namespace DMT.Models
                     cmd += "   AND TSBShift.TSBId = TSB.TSBId ";
                     cmd += "   AND TSBShift.End = ? ";
                     var ret = NQuery.Query<FKs>(cmd, DateTime.MinValue).FirstOrDefault();
-                    result.data = (null != ret) ? ret.ToTSBShift() : null;
-                    result.Success();
+                    var data = (null != ret) ? ret.ToTSBShift() : null;
+                    result.Success(data);
                 }
                 catch (Exception ex)
                 {
+                    med.Err(ex);
                     result.Error(ex);
-                    result.data = null;
                 }
                 return result;
             }
@@ -676,11 +675,11 @@ namespace DMT.Models
 
         public static NDbResult ChangeShift(TSBShift value)
         {
-            NDbResult result = new NDbResult();
+            var result = new NDbResult();
             SQLiteConnection db = Default;
             if (null == db)
             {
-                result.ConenctFailed();
+                result.DbConenctFailed();
                 return result;
             }
 
@@ -692,6 +691,7 @@ namespace DMT.Models
 
             lock (sync)
             {
+                MethodBase med = MethodBase.GetCurrentMethod();
                 try
                 {
                     var lastRet = GetCurrent();
@@ -717,6 +717,7 @@ namespace DMT.Models
                 }
                 catch (Exception ex)
                 {
+                    med.Err(ex);
                     result.Error(ex);
                 }
                 return result;

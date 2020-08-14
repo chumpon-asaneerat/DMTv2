@@ -87,6 +87,10 @@ namespace DMT.Services
         #region Public Properties
 
         public NRestError errors { get; private set; }
+        /// <summary>
+        /// Checks if operation has success.
+        /// </summary>
+        public virtual bool Ok { get { return !this.errors.hasError; } }
 
         #endregion
     }
@@ -144,6 +148,10 @@ namespace DMT.Services
         #region Public Properties
 
         public T data { get; set; }
+        /// <summary>
+        /// Checks if has data (not null).
+        /// </summary>
+        public bool HasData { get { return (null != this.data); } }
 
         #endregion
 
@@ -216,7 +224,16 @@ namespace DMT.Services
         #region Public Properties
 
         public T data { get; set; }
+        /// <summary>
+        /// Checks if has data (not null).
+        /// </summary>
+        public bool HasData { get { return (null != this.data); } }
+
         public O output { get; set; }
+        /// <summary>
+        /// Checks if has ouput (not null).
+        /// </summary>
+        public bool HasOutput { get { return (null != this.output); } }
 
         #endregion
 

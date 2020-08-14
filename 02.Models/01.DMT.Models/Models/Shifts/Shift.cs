@@ -15,6 +15,7 @@ using SQLiteNetExtensions.Extensions;
 // required for JsonIgnore attribute.
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
+using System.Reflection;
 
 #endregion
 
@@ -182,24 +183,24 @@ namespace DMT.Models
 
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<Shift>();
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
 					cmd += "SELECT * FROM Shift ";
-					result.data = NQuery.Query<Shift>(cmd);
-					result.Success();
+					var data = NQuery.Query<Shift>(cmd);
+					result.Success(data);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<Shift>();
 				}
 				return result;
 			}
@@ -220,25 +221,25 @@ namespace DMT.Models
 
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
 					cmd += "SELECT * FROM Shift ";
 					cmd += " WHERE ShiftId = ? ";
-					result.data = NQuery.Query<Shift>(cmd, shiftId).FirstOrDefault();
-					result.Success();
+					var data = NQuery.Query<Shift>(cmd, shiftId).FirstOrDefault();
+					result.Success(data);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = null;
 
 				}
 				return result;
