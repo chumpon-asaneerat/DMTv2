@@ -5,8 +5,10 @@ Update 2020-08-15 #10
 Update 2020-08-15 #9
 - 
 
+[commited]
 Update 2020-08-15 #8
-- 
+  - Update LocalDbServer.cs #2
+    - Update encrypt password in user init method #2.
 
 [commited]
 Update 2020-08-15 #7

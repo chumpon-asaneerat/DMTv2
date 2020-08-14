@@ -1074,7 +1074,7 @@ namespace DMT.Services
 				FirstNameTH = fName,
 				MiddleNameTH = mName,
 				LastNameTH = lName,
-				Password = "1234",
+				Password = Utils.MD5.Encrypt("123456"),
 				CardId = "",
 				Status = 1,
 				RoleId = item.RoleId
@@ -1109,7 +1109,7 @@ namespace DMT.Services
 				FirstNameTH = fName,
 				MiddleNameTH = mName,
 				LastNameTH = lName,
-				Password = "1234",
+				Password = Utils.MD5.Encrypt("123456"),
 				CardId = "",
 				Status = 1,
 				RoleId = item.RoleId
@@ -1131,7 +1131,7 @@ namespace DMT.Services
 				FirstNameTH = fName,
 				MiddleNameTH = mName,
 				LastNameTH = lName,
-				Password = "1234",
+				Password = Utils.MD5.Encrypt("123456"),
 				CardId = "",
 				Status = 1,
 				RoleId = item.RoleId
@@ -1166,7 +1166,7 @@ namespace DMT.Services
 				FirstNameTH = fName,
 				MiddleNameTH = mName,
 				LastNameTH = lName,
-				Password = "1234",
+				Password = Utils.MD5.Encrypt("123456"),
 				CardId = "",
 				Status = 1,
 				RoleId = item.RoleId
@@ -1188,7 +1188,7 @@ namespace DMT.Services
 				FirstNameTH = fName,
 				MiddleNameTH = mName,
 				LastNameTH = lName,
-				Password = "1234",
+				Password = Utils.MD5.Encrypt("123456"),
 				CardId = "",
 				Status = 1,
 				RoleId = item.RoleId
@@ -1210,7 +1210,7 @@ namespace DMT.Services
 				FirstNameTH = fName,
 				MiddleNameTH = mName,
 				LastNameTH = lName,
-				Password = "1234",
+				Password = Utils.MD5.Encrypt("123456"),
 				CardId = "",
 				Status = 1,
 				RoleId = item.RoleId
@@ -1232,7 +1232,7 @@ namespace DMT.Services
 				FirstNameTH = fName,
 				MiddleNameTH = mName,
 				LastNameTH = lName,
-				Password = "1234",
+				Password = Utils.MD5.Encrypt("123456"),
 				CardId = "",
 				Status = 1,
 				RoleId = item.RoleId
@@ -1267,8 +1267,7 @@ namespace DMT.Services
 				FirstNameTH = fName,
 				MiddleNameTH = mName,
 				LastNameTH = lName,
-				UserName = "user1",
-				Password = "1234",
+				Password = Utils.MD5.Encrypt("123456"),
 				CardId = "",
 				Status = 1,
 				RoleId = item.RoleId
@@ -1290,8 +1289,7 @@ namespace DMT.Services
 				FirstNameTH = fName,
 				MiddleNameTH = mName,
 				LastNameTH = lName,
-				UserName = "user2",
-				Password = "1234",
+				Password = Utils.MD5.Encrypt("123456"),
 				CardId = "",
 				Status = 1,
 				RoleId = item.RoleId
@@ -1313,8 +1311,7 @@ namespace DMT.Services
 				FirstNameTH = fName,
 				MiddleNameTH = mName,
 				LastNameTH = lName,
-				UserName = "user3",
-				Password = "1234",
+				Password = Utils.MD5.Encrypt("123456"),
 				CardId = "",
 				Status = 1,
 				RoleId = item.RoleId
@@ -1336,8 +1333,7 @@ namespace DMT.Services
 				FirstNameTH = fName,
 				MiddleNameTH = mName,
 				LastNameTH = lName,
-				UserName = "user4",
-				Password = "1234",
+				Password = Utils.MD5.Encrypt("123456"),
 				CardId = "",
 				Status = 1,
 				RoleId = item.RoleId
@@ -1359,8 +1355,7 @@ namespace DMT.Services
 				FirstNameTH = fName,
 				MiddleNameTH = mName,
 				LastNameTH = lName,
-				UserName = "user5",
-				Password = "1234",
+				Password = Utils.MD5.Encrypt("123456"),
 				CardId = "",
 				Status = 1,
 				RoleId = item.RoleId
@@ -1382,8 +1377,7 @@ namespace DMT.Services
 				FirstNameTH = fName,
 				MiddleNameTH = mName,
 				LastNameTH = lName,
-				UserName = "user6",
-				Password = "1234",
+				Password = Utils.MD5.Encrypt("123456"),
 				CardId = "",
 				Status = 1,
 				RoleId = item.RoleId
@@ -1405,8 +1399,7 @@ namespace DMT.Services
 				FirstNameTH = fName,
 				MiddleNameTH = mName,
 				LastNameTH = lName,
-				UserName = "user7",
-				Password = "1234",
+				Password = Utils.MD5.Encrypt("123456"),
 				CardId = "",
 				Status = 1,
 				RoleId = item.RoleId
