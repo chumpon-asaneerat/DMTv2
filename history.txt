@@ -14,8 +14,17 @@ Update 2020-08-14 #37
 Update 2020-08-14 #36
 - 
 
+[commited]
 Update 2020-08-14 #35
-- 
+- Update Local/DataCenter/TAxTOD service operation #167.
+  - Update TSBShiftView.sql #2.
+  - Update UserShiftView.sql #2.
+  - Update UserShiftRevenueView.sql #2.
+  - Update RevenueEntryView.sql #2.
+  - TSBShift Models update #3.
+  - UserShift Models update #2.
+  - UserShiftRevenue Models update #3.
+  - RevenueEntry Models update #2.
 
 [commited]
 Update 2020-08-14 #34

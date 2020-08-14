@@ -1693,7 +1693,7 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static NDbResult<List<RevenueEntry>> Gets()
+		public static NDbResult<List<RevenueEntry>> GetRevenueEnties()
 		{
 			var result = new NDbResult<List<RevenueEntry>>();
 			SQLiteConnection db = Default;
@@ -1709,22 +1709,54 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT RevenueEntry.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-					cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
-					cmd += "     , User.FullNameEN, User.FullNameTH ";
-					cmd += "     , Sup.FullNameEN AS SupervisorNameEN ";
-					cmd += "     , Sup.FullNameTH AS SupervisorNameTH ";
-					cmd += "  FROM RevenueEntry, TSB, PlazaGroup, Shift, User, User as Sup ";
-					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-					cmd += "   AND RevenueEntry.TSBId = TSB.TSBId ";
-					cmd += "   AND RevenueEntry.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND RevenueEntry.UserId = User.UserId ";
-					cmd += "   AND RevenueEntry.SupervisorId = Sup.UserId ";
-					cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
+					cmd += "SELECT * ";
+					cmd += "  FROM RevenueEntryView ";
 
 					var rets = NQuery.Query<FKs>(cmd).ToList();
+					var results = rets.ToModels();
+					/*
+					var results = new List<RevenueEntry>();
+					if (null != rets)
+					{
+						rets.ForEach(ret =>
+						{
+							results.Add(ret.ToModel());
+						});
+					}
+
+					*/
+					result.Success(results);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
+		}
+
+		public static NDbResult<List<RevenueEntry>> GetRevenueEnties(string tsbid)
+		{
+			var result = new NDbResult<List<RevenueEntry>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * ";
+					cmd += "  FROM RevenueEntryView ";
+					cmd += " WHERE TSBId = ? ";
+
+					var rets = NQuery.Query<FKs>(cmd, tsbid).ToList();
 					var results = rets.ToModels();
 					/*
 					var results = new List<RevenueEntry>();
@@ -1764,22 +1796,10 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT RevenueEntry.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-					cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
-					cmd += "     , User.FullNameEN, User.FullNameTH ";
-					cmd += "     , Sup.FullNameEN AS SupervisorNameEN ";
-					cmd += "     , Sup.FullNameTH AS SupervisorNameTH ";
-					cmd += "  FROM RevenueEntry, TSB, PlazaGroup, Shift, User, User as Sup ";
-					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-					cmd += "   AND RevenueEntry.TSBId = TSB.TSBId ";
-					cmd += "   AND RevenueEntry.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND RevenueEntry.UserId = User.UserId ";
-					cmd += "   AND RevenueEntry.SupervisorId = Sup.UserId ";
-					cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
-					cmd += "   AND RevenueEntry.RevenueDate >= ? ";
-					cmd += "   AND RevenueEntry.RevenueDate <= ? ";
+					cmd += "SELECT * ";
+					cmd += "  FROM RevenueEntryView ";
+					cmd += " WHERE RevenueDate >= ? ";
+					cmd += "   AND RevenueDate <= ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, begin, end).ToList();
 					var results = rets.ToModels();

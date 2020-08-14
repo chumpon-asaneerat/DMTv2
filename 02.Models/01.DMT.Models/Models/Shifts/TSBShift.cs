@@ -634,7 +634,7 @@ namespace DMT.Models
             return result;
         }
 
-        public static NDbResult<TSBShift> GetCurrent()
+        public static NDbResult<TSBShift> GetTSBShift(string tsbid)
         {
             var result = new NDbResult<TSBShift>();
             SQLiteConnection db = Default;
@@ -650,17 +650,13 @@ namespace DMT.Models
                 try
                 {
                     string cmd = string.Empty;
-                    cmd += "SELECT TSBShift.* ";
-                    cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                    cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
-                    cmd += "     , User.FullNameEN, User.FullNameTH ";
-                    cmd += "  FROM TSBShift, TSB, Shift, User ";
-                    cmd += " WHERE TSBShift.ShiftId = Shift.ShiftId ";
-                    cmd += "   AND TSB.Active = 1 ";
-                    cmd += "   AND TSBShift.UserId = User.UserId ";
-                    cmd += "   AND TSBShift.TSBId = TSB.TSBId ";
-                    cmd += "   AND TSBShift.End = ? ";
-                    var ret = NQuery.Query<FKs>(cmd, DateTime.MinValue).FirstOrDefault();
+                    cmd += "SELECT * ";
+                    cmd += "  FROM TSBShiftView ";
+                    cmd += " WHERE TSBId = ? ";
+                    cmd += "   AND End = ? ";
+
+                    var ret = NQuery.Query<FKs>(cmd,
+                        tsbid, DateTime.MinValue).FirstOrDefault();
                     var data = (null != ret) ? ret.ToModel() : null;
                     result.Success(data);
                 }
@@ -694,7 +690,8 @@ namespace DMT.Models
                 MethodBase med = MethodBase.GetCurrentMethod();
                 try
                 {
-                    var lastRet = GetCurrent();
+                    // TODO: Need to replace with functional extension methods.
+                    var lastRet = GetTSBShift(value.TSBId);
                     if (!lastRet.errors.hasError && null != lastRet.data)
                     {
                         var last = lastRet.data;

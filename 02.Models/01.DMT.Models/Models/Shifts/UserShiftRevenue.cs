@@ -799,23 +799,12 @@ namespace DMT.Models
                 try
                 {
                     string cmd = string.Empty;
-                    cmd += "SELECT UserShiftRevenue.* ";
-                    cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                    cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-                    cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
-                    cmd += "     , User.FullNameEN, User.FullNameTH ";
-                    cmd += "  FROM UserShiftRevenue, TSB, PlazaGroup, Shift, User, UserShift ";
-                    cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-                    cmd += "   AND UserShift.ShiftId = Shift.ShiftId ";
-                    cmd += "   AND UserShift.UserId = User.UserId ";
-                    cmd += "   AND UserShiftRevenue.TSBId = TSB.TSBId ";
-                    cmd += "   AND UserShiftRevenue.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-                    cmd += "   AND UserShiftRevenue.ShiftId = Shift.ShiftId ";
-                    cmd += "   AND UserShiftRevenue.UserId = User.UserId ";
-                    cmd += "   AND UserShiftRevenue.UserShiftId = ? ";
-                    cmd += "   AND UserShiftRevenue.PlazaGroupId = ? ";
-                    var ret = NQuery.Query<FKs>(cmd, shift.UserShiftId,
-                        plazaGroup.PlazaGroupId).FirstOrDefault();
+                    cmd += "SELECT * ";
+                    cmd += "  FROM UserShiftRevenueView ";
+                    cmd += " WHERE UserShiftId = ? ";
+                    cmd += "   AND PlazaGroupId = ? ";
+                    var ret = NQuery.Query<FKs>(cmd, 
+                        shift.UserShiftId, plazaGroup.PlazaGroupId).FirstOrDefault();
                     result.data = (null != ret) ? ret.ToModel() : null;
                     result.Success();
                 }

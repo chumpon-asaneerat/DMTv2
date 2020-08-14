@@ -634,7 +634,7 @@ namespace DMT.Models
             return result;
         }
 
-        public static NDbResult<UserShift> GetCurrent(string userId)
+        public static NDbResult<UserShift> GetUserShift(string tsbId, string userId)
         {
             var result = new NDbResult<UserShift>();
             SQLiteConnection db = Default;
@@ -650,19 +650,13 @@ namespace DMT.Models
                 try
                 {
                     string cmd = string.Empty;
-                    cmd += "SELECT UserShift.* ";
-                    cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                    cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
-                    cmd += "     , User.FullNameEN, User.FullNameTH ";
-                    cmd += "  FROM UserShift, Shift, User, TSB ";
-                    cmd += " WHERE UserShift.ShiftId = Shift.ShiftId ";
-                    cmd += "   AND TSB.Active = 1 ";
-                    cmd += "   AND UserShift.UserId = User.UserId ";
-                    cmd += "   AND UserShift.TSBId = TSB.TSBId ";
-                    cmd += "   AND UserShift.UserId = ? ";
-                    cmd += "   AND UserShift.End = ? ";
-                    var ret = NQuery.Query<FKs>(cmd, userId,
-                        DateTime.MinValue).FirstOrDefault();
+                    cmd += "SELECT * ";
+                    cmd += "  FROM UserShiftView ";
+                    cmd += " WHERE TSBId = ? ";
+                    cmd += "   AND UserId = ? ";
+                    cmd += "   AND End = ? ";
+                    var ret = NQuery.Query<FKs>(cmd, 
+                        tsbId, userId, DateTime.MinValue).FirstOrDefault();
                     result.data = (null != ret) ? ret.ToModel() : null;
                     result.Success();
                 }
@@ -696,7 +690,8 @@ namespace DMT.Models
                 MethodBase med = MethodBase.GetCurrentMethod();
                 try
                 {
-                    var last = GetCurrent(value.UserId);
+                    // TODO: Need to replace with functional extension methods.
+                    var last = GetUserShift(value.TSBId, value.UserId);
                     if (null != last && null != last.data && !last.errors.hasError)
                     {
                         // not enter revenue entry.
@@ -767,7 +762,7 @@ namespace DMT.Models
             }
         }
 
-        public static NDbResult<List<UserShift>> GetUserShifts(string userId)
+        public static NDbResult<List<UserShift>> GetUserShifts(string tsbId, string userId)
         {
             var result = new NDbResult<List<UserShift>>();
             SQLiteConnection db = Default;
@@ -783,18 +778,12 @@ namespace DMT.Models
                 try
                 {
                     string cmd = string.Empty;
-                    cmd += "SELECT UserShift.* ";
-                    cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                    cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
-                    cmd += "     , User.FullNameEN, User.FullNameTH ";
-                    cmd += "  FROM UserShift, Shift, User, TSB ";
-                    cmd += " WHERE UserShift.ShiftId = Shift.ShiftId ";
-                    cmd += "   AND TSB.Active = 1 ";
-                    cmd += "   AND UserShift.UserId = User.UserId ";
-                    cmd += "   AND UserShift.TSBId = TSB.TSBId ";
+                    cmd += "SELECT * ";
+                    cmd += "  FROM UserShiftView ";
+                    cmd += " WHERE TSBId = ? ";
                     cmd += "   AND UserShift.UserId = ? ";
 
-                    var rets = NQuery.Query<FKs>(cmd, userId).ToList();
+                    var rets = NQuery.Query<FKs>(cmd, tsbId, userId).ToList();
                     var results = rets.ToModels();
                     /*
                     var results = new List<UserShift>();
@@ -817,7 +806,7 @@ namespace DMT.Models
             }
         }
 
-        public static NDbResult<List<UserShift>> GetUnCloseUserShifts()
+        public static NDbResult<List<UserShift>> GetUnCloseUserShifts(string tsbid)
         {
             var result = new NDbResult<List<UserShift>>();
             SQLiteConnection db = Default;
@@ -833,18 +822,12 @@ namespace DMT.Models
                 try
                 {
                     string cmd = string.Empty;
-                    cmd += "SELECT UserShift.* ";
-                    cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-                    cmd += "     , Shift.ShiftNameEN, Shift.ShiftNameTH ";
-                    cmd += "     , User.FullNameEN, User.FullNameTH ";
-                    cmd += "  FROM UserShift, Shift, User, TSB ";
-                    cmd += " WHERE UserShift.ShiftId = Shift.ShiftId ";
-                    cmd += "   AND TSB.Active = 1 ";
-                    cmd += "   AND UserShift.UserId = User.UserId ";
-                    cmd += "   AND UserShift.TSBId = TSB.TSBId ";
-                    cmd += "   AND UserShift.End = ? ";
+                    cmd += "SELECT * ";
+                    cmd += "  FROM UserShiftView ";
+                    cmd += " WHERE TSBId = ? ";
+                    cmd += "   AND End = ? ";
 
-                    var rets = NQuery.Query<FKs>(cmd, DateTime.MinValue).ToList();
+                    var rets = NQuery.Query<FKs>(cmd, tsbid, DateTime.MinValue).ToList();
                     var results = rets.ToModels();
                     /*
                     var results = new List<UserShift>();
