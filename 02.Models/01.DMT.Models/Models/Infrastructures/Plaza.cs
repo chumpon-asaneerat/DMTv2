@@ -451,14 +451,8 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT Plaza.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-					cmd += "  FROM Plaza, PlazaGroup, TSB ";
-					cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
-					cmd += "   AND PlazaGroup.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
+					cmd += "SELECT PlazaView.* ";
+					cmd += "  FROM PlazaView ";
 
 					var rets = NQuery.Query<FKs>(cmd).ToList();
 					var results = new List<Plaza>();
@@ -505,15 +499,9 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT Plaza.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-					cmd += "  FROM Plaza, PlazaGroup, TSB ";
-					cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
-					cmd += "   AND PlazaGroup.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Plaza.PlazaId = ? ";
+					cmd += "SELECT PlazaView.* ";
+					cmd += "  FROM PlazaView ";
+					cmd += " WHERE PlazaView.PlazaId = ? ";
 					var ret = NQuery.Query<FKs>(cmd, plazaId).FirstOrDefault();
 					var data = (null != ret) ? ret.ToPlaza() : null;
 					result.Success(data);
@@ -568,15 +556,9 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT Plaza.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-					cmd += "  FROM Plaza, PlazaGroup, TSB ";
-					cmd += " WHERE Plaza.TSBId = TSB.TSBId ";
-					cmd += "   AND PlazaGroup.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Plaza.TSBId = ? ";
+					cmd += "SELECT PlazaView.* ";
+					cmd += "  FROM PlazaView ";
+					cmd += " WHERE PlazaView.TSBId = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, tsbId).ToList();
 					var results = new List<Plaza>();

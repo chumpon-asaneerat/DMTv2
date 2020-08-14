@@ -143,7 +143,7 @@ namespace DMT.Services
 
         #region Public Properties
 
-        public T data { get; private set; }
+        public T data { get; set; }
 
         #endregion
 
@@ -215,8 +215,8 @@ namespace DMT.Services
 
         #region Public Properties
 
-        public T data { get; private set; }
-        public O output { get; private set; }
+        public T data { get; set; }
+        public O output { get; set; }
 
         #endregion
 

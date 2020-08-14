@@ -1329,6 +1329,11 @@ namespace DMT.Services
 			if (null == Db) return;
 
 			string prefix;
+
+			// Plaza - Embeded resource used . instead / to access sub contents.
+			prefix = @"Plaza";
+			InitView("PlazaView", prefix);
+
 			// Credits - Embeded resource used . instead / to access sub contents.
 			prefix = @"Credits";
 			InitView("TSBCreditSummarryView", prefix);

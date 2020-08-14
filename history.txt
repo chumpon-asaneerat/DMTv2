@@ -5,8 +5,12 @@ Update 2020-08-14 #20
 Update 2020-08-14 #19
 - 
 
+[commited]
 Update 2020-08-14 #18
-- 
+  - Update NDbResult ExtensionMethods #5.
+  - Update NRestResult ExtensionMethods #5.
+  - Add PlazaView.sql.
+  - Plaza Models update #3.
 
 [commited]
 Update 2020-08-14 #17
