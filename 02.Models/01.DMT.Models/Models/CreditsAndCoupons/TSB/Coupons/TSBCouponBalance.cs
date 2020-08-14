@@ -15,6 +15,7 @@ using SQLiteNetExtensions.Extensions;
 // required for JsonIgnore attribute.
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
+using System.Reflection;
 
 #endregion
 
@@ -138,10 +139,9 @@ namespace DMT.Models
 		[Category("TSB")]
 		[Description("Gets or sets TSBId.")]
 		[ReadOnly(true)]
-		[Ignore]
 		[MaxLength(10)]
 		[PeropertyMapName("TSBId")]
-		public virtual string TSBId
+		public string TSBId
 		{
 			get
 			{
@@ -157,10 +157,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets TSBNameEN.
+		/// Gets or sets TSB Name EN.
 		/// </summary>
 		[Category("TSB")]
-		[Description("Gets or sets TSBNameEN.")]
+		[Description("Gets or sets TSB Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("TSBNameEN")]
@@ -180,10 +180,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets TSBNameTH.
+		/// Gets or sets TSB Name TH.
 		/// </summary>
 		[Category("TSB")]
-		[Description("Gets or sets TSBNameTH.")]
+		[Description("Gets or sets TSB Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("TSBNameTH")]
@@ -299,17 +299,7 @@ namespace DMT.Models
 			#region TSB
 
 			/// <summary>
-			/// Gets or sets TSBId.
-			/// </summary>
-			[MaxLength(10)]
-			[PeropertyMapName("TSBId")]
-			public override string TSBId
-			{
-				get { return base.TSBId; }
-				set { base.TSBId = value; }
-			}
-			/// <summary>
-			/// Gets or sets TSBNameEN.
+			/// Gets or sets TSB Name EN.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("TSBNameEN")]
@@ -319,7 +309,7 @@ namespace DMT.Models
 				set { base.TSBNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets TSBNameTH.
+			/// Gets or sets TSB Name TH.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("TSBNameTH")]
@@ -364,14 +354,14 @@ namespace DMT.Models
 			#endregion
 
 			#region Public Methods
-
+			/*
 			public TSBCouponBalance ToTSBCouponBalance()
 			{
 				TSBCouponBalance inst = new TSBCouponBalance();
 				this.AssignTo(inst); // set all properties to new instance.
 				return inst;
 			}
-
+			*/
 			#endregion
 		}
 
@@ -405,8 +395,6 @@ namespace DMT.Models
 				else
 				{
 					result.Error(new Exception("Cannot get active TSB."));
-					result.errors.errNum = -20;
-					result.data = null;
 				}
 				return result;
 			}
@@ -436,21 +424,21 @@ namespace DMT.Models
 			}
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = @"
 						SELECT * 
 						  FROM TSBCouponBalanceView
-						 WHERE TSBCouponBalanceView.TSBId = ?
-					";
+						 WHERE TSBCouponBalanceView.TSBId = ? ";
 					var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
 					result.data = (null != ret) ? ret.ToTSBCouponBalance() : null;
 					result.Success();
 				}
 				catch(Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = null;
 				}
 				return result;
 			}
@@ -473,12 +461,12 @@ namespace DMT.Models
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = @"
 						SELECT * 
-						  FROM TSBCouponBalanceView
-					";
+						  FROM TSBCouponBalanceView ";
 					var rets = NQuery.Query<FKs>(cmd).ToList();
 					if (null == rets)
 					{
@@ -498,8 +486,8 @@ namespace DMT.Models
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<TSBCouponBalance>();
 				}
 				return result;
 			}

@@ -16,6 +16,7 @@ using SQLiteNetExtensions.Extensions;
 // required for JsonIgnore attribute.
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
+using System.Reflection;
 
 #endregion
 
@@ -463,10 +464,9 @@ namespace DMT.Models
 		[Category("TSB")]
 		[Description("Gets or sets TSBId.")]
 		[ReadOnly(true)]
-		[Ignore]
 		[MaxLength(10)]
 		[PeropertyMapName("TSBId")]
-		public virtual string TSBId
+		public string TSBId
 		{
 			get
 			{
@@ -482,10 +482,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets TSBNameEN.
+		/// Gets or sets TSB Name EN.
 		/// </summary>
 		[Category("TSB")]
-		[Description("Gets or sets TSBNameEN.")]
+		[Description("Gets or sets TSB Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("TSBNameEN")]
@@ -505,10 +505,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets TSBNameTH.
+		/// Gets or sets TSB Name TH.
 		/// </summary>
 		[Category("TSB")]
-		[Description("Gets or sets TSBNameTH.")]
+		[Description("Gets or sets TSB Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("TSBNameTH")]
@@ -533,15 +533,14 @@ namespace DMT.Models
 		#region PlazaGroup
 
 		/// <summary>
-		/// Gets or sets PlazaGroupId.
+		/// Gets or sets Plaza Group Id.
 		/// </summary>
 		[Category("Plaza Group")]
-		[Description("Gets or sets PlazaGroupId.")]
+		[Description("Gets or sets Plaza Group Id.")]
 		[ReadOnly(true)]
-		[Ignore]
 		[MaxLength(10)]
 		[PeropertyMapName("PlazaGroupId")]
-		public virtual string PlazaGroupId
+		public string PlazaGroupId
 		{
 			get
 			{
@@ -557,10 +556,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets PlazaGroupNameEN.
+		/// Gets or sets Plaza Group Name EN.
 		/// </summary>
 		[Category("Plaza Group")]
-		[Description("Gets or sets PlazaGroupNameEN.")]
+		[Description("Gets or sets Plaza Group Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("PlazaGroupNameEN")]
@@ -580,10 +579,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets PlazaGroupNameTH.
+		/// Gets or sets Plaza Group Name TH.
 		/// </summary>
 		[Category("Plaza Group")]
-		[Description("Gets or sets PlazaGroupNameTH.")]
+		[Description("Gets or sets Plaza Group Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("PlazaGroupNameTH")]
@@ -631,15 +630,14 @@ namespace DMT.Models
 		#region User
 
 		/// <summary>
-		/// Gets or sets UserId
+		/// Gets or sets User Id
 		/// </summary>
 		[Category("User")]
-		[Description("Gets or sets UserId")]
+		[Description("Gets or sets User Id.")]
 		[ReadOnly(true)]
-		[Ignore]
 		[MaxLength(10)]
 		[PeropertyMapName("UserId")]
-		public virtual string UserId
+		public string UserId
 		{
 			get
 			{
@@ -655,10 +653,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets FullNameEN
+		/// Gets or sets User Full Name EN
 		/// </summary>
 		[Category("User")]
-		[Description("Gets or sets FullNameEN")]
+		[Description("Gets or sets User Full Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("FullNameEN")]
@@ -678,10 +676,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets FullNameTH
+		/// Gets or sets User Full Name TH
 		/// </summary>
 		[Category("User")]
-		[Description("Gets or sets FullNameTH")]
+		[Description("Gets or sets User Full Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("FullNameTH")]
@@ -1567,17 +1565,7 @@ namespace DMT.Models
 			#region TSB
 
 			/// <summary>
-			/// Gets or sets TSBId.
-			/// </summary>
-			[MaxLength(10)]
-			[PeropertyMapName("TSBId")]
-			public override string TSBId
-			{
-				get { return base.TSBId; }
-				set { base.TSBId = value; }
-			}
-			/// <summary>
-			/// Gets or sets TSBNameEN.
+			/// Gets or sets TSB Name EN.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("TSBNameEN")]
@@ -1587,7 +1575,7 @@ namespace DMT.Models
 				set { base.TSBNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets TSBNameTH.
+			/// Gets or sets TSB Name TH.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("TSBNameTH")]
@@ -1602,17 +1590,7 @@ namespace DMT.Models
 			#region PlazaGroup
 
 			/// <summary>
-			/// Gets or sets PlazaGroupId.
-			/// </summary>
-			[MaxLength(10)]
-			[PeropertyMapName("PlazaGroupId")]
-			public override string PlazaGroupId
-			{
-				get { return base.PlazaGroupId; }
-				set { base.PlazaGroupId = value; }
-			}
-			/// <summary>
-			/// Gets or sets PlazaGroupNameEN.
+			/// Gets or sets Plaza Group Name EN.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("PlazaGroupNameEN")]
@@ -1622,7 +1600,7 @@ namespace DMT.Models
 				set { base.PlazaGroupNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets PlazaGroupNameTH.
+			/// Gets or sets Plaza Group Name TH.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("PlazaGroupNameTH")]
@@ -1647,7 +1625,7 @@ namespace DMT.Models
 			#region User
 
 			/// <summary>
-			/// Gets or sets FullNameEN
+			/// Gets or sets Full Name EN.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("FullNameEN")]
@@ -1657,7 +1635,7 @@ namespace DMT.Models
 				set { base.FullNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets FullNameTH
+			/// Gets or sets Full Name TH.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("FullNameTH")]
@@ -1670,14 +1648,14 @@ namespace DMT.Models
 			#endregion
 
 			#region Public Methods
-
+			/*
 			public UserCreditTransaction ToUserCreditTransaction()
 			{
 				UserCreditTransaction inst = new UserCreditTransaction();
 				this.AssignTo(inst); // set all properties to new instance.
 				return inst;
 			}
-
+			*/
 			#endregion
 		}
 
@@ -1702,6 +1680,7 @@ namespace DMT.Models
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					var tsbRet = TSB.GetCurrent();
@@ -1719,8 +1698,8 @@ namespace DMT.Models
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<UserCreditTransaction>();
 				}
 				return result;
 			}
@@ -1750,6 +1729,7 @@ namespace DMT.Models
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
@@ -1786,8 +1766,8 @@ namespace DMT.Models
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<UserCreditTransaction>();
 				}
 				return result;
 			}

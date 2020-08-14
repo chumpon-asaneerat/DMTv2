@@ -23,13 +23,13 @@ namespace DMT.Models
 	#region UserCoupon
 
 	/// <summary>
-	/// The UserCoupon Data Model class.
+	/// The UserCouponBalance Data Model class.
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
 	[Serializable]
 	[JsonObject(MemberSerialization.OptOut)]
 	//[Table("UserCoupon")]
-	public class UserCoupon : NTable<UserCoupon>
+	public class UserCouponBalance : NTable<UserCouponBalance>
 	{
 		#region Enum
 
@@ -70,7 +70,7 @@ namespace DMT.Models
 		/// <summary>
 		/// Constructor.
 		/// </summary>
-		public UserCoupon() : base() { }
+		public UserCouponBalance() : base() { }
 
 		#endregion
 
@@ -219,10 +219,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets TSBNameEN.
+		/// Gets or sets TSB Name EN.
 		/// </summary>
 		[Category("TSB")]
-		[Description("Gets or sets TSBNameEN.")]
+		[Description("Gets or sets TSB Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("TSBNameEN")]
@@ -242,10 +242,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets TSBNameTH.
+		/// Gets or sets TSB Name TH.
 		/// </summary>
 		[Category("TSB")]
-		[Description("Gets or sets TSBNameTH.")]
+		[Description("Gets or sets TSB Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("TSBNameTH")]
@@ -270,10 +270,10 @@ namespace DMT.Models
 		#region User
 
 		/// <summary>
-		/// Gets or sets UserId
+		/// Gets or sets User Id
 		/// </summary>
 		[Category("User")]
-		[Description("Gets or sets UserId")]
+		[Description("Gets or sets User Id.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
 		[PeropertyMapName("UserId")]
@@ -293,10 +293,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets FullNameEN
+		/// Gets or sets User Full Name EN
 		/// </summary>
 		[Category("User")]
-		[Description("Gets or sets FullNameEN")]
+		[Description("Gets or sets User Full Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("FullNameEN")]
@@ -316,10 +316,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets FullNameTH
+		/// Gets or sets User Full Name TH
 		/// </summary>
 		[Category("User")]
-		[Description("Gets or sets FullNameTH")]
+		[Description("Gets or sets User Full Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("FullNameTH")]
@@ -478,12 +478,12 @@ namespace DMT.Models
 
 		#region Internal Class
 
-		public class FKs : UserCoupon
+		public class FKs : UserCouponBalance
 		{
 			#region TSB
 
 			/// <summary>
-			/// Gets or sets TSBNameEN.
+			/// Gets or sets TSB Name EN.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("TSBNameEN")]
@@ -493,7 +493,7 @@ namespace DMT.Models
 				set { base.TSBNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets TSBNameTH.
+			/// Gets or sets TSB Name TH.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("TSBNameTH")]
@@ -508,7 +508,7 @@ namespace DMT.Models
 			#region User
 
 			/// <summary>
-			/// Gets or sets FullNameEN
+			/// Gets or sets Full Name EN.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("FullNameEN")]
@@ -518,7 +518,7 @@ namespace DMT.Models
 				set { base.FullNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets FullNameTH
+			/// Gets or sets Full Name TH.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("FullNameTH")]
@@ -531,14 +531,14 @@ namespace DMT.Models
 			#endregion
 
 			#region Public Methods
-
-			public UserCoupon ToUserCoupon()
+			/*
+			public UserCouponBalance ToUserCouponBalance()
 			{
-				UserCoupon inst = new UserCoupon();
+				UserCouponBalance inst = new UserCouponBalance();
 				this.AssignTo(inst); // set all properties to new instance.
 				return inst;
 			}
-
+			*/
 			#endregion
 		}
 

@@ -15,6 +15,7 @@ using SQLiteNetExtensions.Extensions;
 // required for JsonIgnore attribute.
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
+using System.Reflection;
 
 #endregion
 
@@ -56,10 +57,10 @@ namespace DMT.Models
 		#region Common
 
 		/// <summary>
-		/// Gets or sets PaymentId
+		/// Gets or sets Payment Id.
 		/// </summary>
 		[Category("Payment")]
-		[Description("Gets or sets PaymentId")]
+		[Description("Gets or sets Payment Id.")]
 		//[ReadOnly(true)]
 		[PrimaryKey, MaxLength(20)]
 		[PeropertyMapName("PaymentId")]
@@ -79,10 +80,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets PaymentNameEN
+		/// Gets or sets Payment Name EN
 		/// </summary>
 		[Category("Payment")]
-		[Description("Gets or sets PaymentNameEN")]
+		[Description("Gets or sets Payment Name EN.")]
 		[MaxLength(50)]
 		[PeropertyMapName("PaymentNameEN")]
 		public string PaymentNameEN
@@ -101,10 +102,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets PaymentNameTH
+		/// Gets or sets Payment Name TH.
 		/// </summary>
 		[Category("Payment")]
-		[Description("Gets or sets PaymentNameTH")]
+		[Description("Gets or sets Payment Name TH.")]
 		[MaxLength(50)]
 		[PeropertyMapName("PaymentNameTH")]
 		public string PaymentNameTH
@@ -177,43 +178,43 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static NDbResult<List<Payment>> Gets(SQLiteConnection db)
+		public static NDbResult<List<Payment>> GetPayments(SQLiteConnection db)
 		{
 			var result = new NDbResult<List<Payment>>();
 
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<Payment>();
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
 					cmd += "SELECT * FROM Payment ";
-					result.data = NQuery.Query<Payment>(cmd);
-					result.Success();
+					var data = NQuery.Query<Payment>(cmd);
+					result.Success(data);
 
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<Payment>();
 
 				}
 				return result;
 			}
 		}
 
-		public static NDbResult<List<Payment>> Gets()
+		public static NDbResult<List<Payment>> GetPayments()
 		{
 			lock (sync)
 			{
 				SQLiteConnection db = Default;
-				return Gets(db);
+				return GetPayments(db);
 			}
 		}
 

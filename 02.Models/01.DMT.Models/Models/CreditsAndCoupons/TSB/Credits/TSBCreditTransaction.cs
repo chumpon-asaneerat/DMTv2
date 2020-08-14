@@ -16,6 +16,7 @@ using SQLiteNetExtensions.Extensions;
 // required for JsonIgnore attribute.
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
+using System.Reflection;
 
 #endregion
 
@@ -391,10 +392,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets TSBNameEN.
+		/// Gets or sets TSB Name EN.
 		/// </summary>
 		[Category("TSB")]
-		[Description("Gets or sets TSBNameEN.")]
+		[Description("Gets or sets TSB Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("TSBNameEN")]
@@ -414,10 +415,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets TSBNameTH.
+		/// Gets or sets TSB Name TH.
 		/// </summary>
 		[Category("TSB")]
-		[Description("Gets or sets TSBNameTH.")]
+		[Description("Gets or sets TSB Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("TSBNameTH")]
@@ -1300,7 +1301,7 @@ namespace DMT.Models
 			#region TSB
 
 			/// <summary>
-			/// Gets or sets TSBNameEN.
+			/// Gets or sets TSB Name EN.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("TSBNameEN")]
@@ -1310,7 +1311,7 @@ namespace DMT.Models
 				set { base.TSBNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets TSBNameTH.
+			/// Gets or sets TSB Name TH.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("TSBNameTH")]
@@ -1323,14 +1324,14 @@ namespace DMT.Models
 			#endregion
 
 			#region Public Methods
-
+			/*
 			public TSBCreditTransaction ToTSBCreditTransaction()
 			{
 				TSBCreditTransaction inst = new TSBCreditTransaction();
 				this.AssignTo(inst); // set all properties to new instance.
 				return inst;
 			}
-
+			*/
 			#endregion
 		}
 
@@ -1356,6 +1357,7 @@ namespace DMT.Models
 			{
 				try
 				{
+					MethodBase med = MethodBase.GetCurrentMethod();
 					var tsbRet = TSB.GetCurrent();
 					if (null != tsbRet && !tsbRet.errors.hasError)
 					{
@@ -1371,8 +1373,8 @@ namespace DMT.Models
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<TSBCreditTransaction>();
 				}
 				return result;
 			}
@@ -1401,6 +1403,7 @@ namespace DMT.Models
 			}
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
@@ -1430,8 +1433,8 @@ namespace DMT.Models
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<TSBCreditTransaction>();
 				}
 				return result;
 			}
@@ -1451,8 +1454,6 @@ namespace DMT.Models
 				else
 				{
 					result.Error(new Exception("Cannot get active TSB."));
-					result.errors.errNum = -20;
-					result.data = null;
 				}
 				return result;
 			}
@@ -1476,6 +1477,7 @@ namespace DMT.Models
 			}
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
@@ -1504,8 +1506,8 @@ namespace DMT.Models
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = null;
 				}
 				return result;
 			}

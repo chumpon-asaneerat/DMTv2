@@ -26,8 +26,38 @@ Update 2020-08-15 #3
 Update 2020-08-15 #2
 - 
 
+[commited]
 Update 2020-08-15 #1
-- 
+- Update Local/DataCenter/TAxTOD service operation #169.
+  - Payment Models update #1.
+    - Add log.
+  - TSBCouponBalance Models update #1.
+    - Add log.
+    - Format properties.
+  - TSBCouponSummary Models update #1.
+    - Add log.
+    - Format properties.
+  - TSBCouponTransaction Models update #1.
+    - Add log.
+    - Format properties.
+  - TSBCreditBalance Models update #1.
+    - Add log.
+    - Format properties.
+  - TSBCreditTransaction Models update #1.
+    - Add log.
+    - Format properties.
+  - UserCouponBalance Models update #1.
+    - Add log.
+    - Format properties.
+  - UserCouponTransaction Models update #1.
+    - Add log.
+    - Format properties.
+  - UserCreditBalance Models update #1.
+    - Add log.
+    - Format properties.
+  - UserCreditTransaction Models update #1.
+    - Add log.
+    - Format properties.
 
 --------------------------------------------------------------------------------------------
 [commited]

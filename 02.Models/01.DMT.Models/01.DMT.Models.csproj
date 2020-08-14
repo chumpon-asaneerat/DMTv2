@@ -102,7 +102,7 @@
     <Compile Include="ExtensionMethods\ModelExtensionMethods.cs" />
     <Compile Include="Models\Common\NDbResult.cs" />
     <Compile Include="Models\Configuration\ViewHistory.cs" />
-    <None Include="Models\CreditsAndCoupons\Users\Coupons\UserCoupon.cs" />
+    <None Include="Models\CreditsAndCoupons\Users\Coupons\UserCouponBalance.cs" />
     <Compile Include="Models\CreditsAndCoupons\Common\Coupons\Enums.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSB\Coupons\TSBCouponSummary.cs" />
     <Compile Include="Models\CreditsAndCoupons\Users\Coupons\UserCouponTransaction.cs" />

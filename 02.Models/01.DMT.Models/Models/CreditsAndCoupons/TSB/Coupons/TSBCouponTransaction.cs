@@ -16,6 +16,7 @@ using SQLiteNetExtensions.Extensions;
 // required for JsonIgnore attribute.
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
+using System.Reflection;
 
 #endregion
 
@@ -293,10 +294,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets TSBNameEN.
+		/// Gets or sets TSB Name EN.
 		/// </summary>
 		[Category("TSB")]
-		[Description("Gets or sets TSBNameEN.")]
+		[Description("Gets or sets TSB Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("TSBNameEN")]
@@ -316,10 +317,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets TSBNameTH.
+		/// Gets or sets TSB Name TH.
 		/// </summary>
 		[Category("TSB")]
-		[Description("Gets or sets TSBNameTH.")]
+		[Description("Gets or sets TSB Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("TSBNameTH")]
@@ -341,104 +342,17 @@ namespace DMT.Models
 
 		#endregion
 
-		#region Coupon
-
-		/// <summary>
-		/// Gets or sets coupon book id.
-		/// </summary>
-		[Category("Coupon")]
-		[Description("Gets or sets coupon book id.")]
-		[ReadOnly(true)]
-		[MaxLength(20)]
-		[PeropertyMapName("CouponId")]
-		public string CouponId
-		{
-			get { return _CouponId; }
-			set
-			{
-				if (_CouponId != value)
-				{
-					_CouponId = value;
-					// Raise event.
-					this.RaiseChanged("CouponId");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets number of coupon type.
-		/// </summary>
-		[Category("Coupon")]
-		[Description("Gets or sets number of coupon type.")]
-		[ReadOnly(true)]
-		[PeropertyMapName("CouponType")]
-		public CouponType CouponType
-		{
-			get { return _CouponType; }
-			set
-			{
-				if (_CouponType != value)
-				{
-					_CouponType = value;
-					// Raise event.
-					this.RaiseChanged("CouponType");
-					this.RaiseChanged("CouponTypeString");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets Coupon Type String.
-		/// </summary>
-		[Category("Coupon")]
-		[Description("Gets Coupon Type String.")]
-		[ReadOnly(true)]
-		[JsonIgnore]
-		[Ignore]
-		public string CouponTypeString
-		{
-			get
-			{
-				if (CouponType == CouponType.BHT35)
-					return "35";
-				else if (CouponType == CouponType.BHT80)
-					return "80";
-				else return "N/A"; // N/A
-			}
-			set { }
-		}
-		/// <summary>
-		/// Gets or sets number of coupon price.
-		/// </summary>
-		[Category("Coupon")]
-		[Description("Gets or sets number of coupon price.")]
-		[ReadOnly(true)]
-		[PeropertyMapName("Price")]
-		public decimal Price
-		{
-			get { return _Price; }
-			set
-			{
-				if (_Price != value)
-				{
-					_Price = value;
-					// Raise event.
-					this.RaiseChanged("Price");
-				}
-			}
-		}
-
-		#endregion
-
 		#region User
 
 		/// <summary>
-		/// Gets or sets UserId
+		/// Gets or sets User Id
 		/// </summary>
 		[Category("User")]
-		[Description("Gets or sets UserId")]
+		[Description("Gets or sets User Id.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
 		[PeropertyMapName("UserId")]
-		public virtual string UserId
+		public string UserId
 		{
 			get
 			{
@@ -454,10 +368,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets FullNameEN
+		/// Gets or sets User Full Name EN
 		/// </summary>
 		[Category("User")]
-		[Description("Gets or sets FullNameEN")]
+		[Description("Gets or sets User Full Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("FullNameEN")]
@@ -477,10 +391,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets FullNameTH
+		/// Gets or sets User Full Name TH
 		/// </summary>
 		[Category("User")]
-		[Description("Gets or sets FullNameTH")]
+		[Description("Gets or sets User Full Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("FullNameTH")]
@@ -498,82 +412,6 @@ namespace DMT.Models
 					this.RaiseChanged("FullNameTH");
 				}
 			}
-		}
-		/// <summary>
-		/// Gets or sets UserReceive Date.
-		/// </summary>
-		[Category("User")]
-		[Description(" Gets or sets UserReceive Date")]
-		[ReadOnly(true)]
-		[PeropertyMapName("UserReceiveDate")]
-		public DateTime UserReceiveDate
-		{
-			get
-			{
-				return _UserReceivedDate;
-			}
-			set
-			{
-				if (_UserReceivedDate != value)
-				{
-					_UserReceivedDate = value;
-					this.RaiseChanged("UserReceiveDate");
-					this.RaiseChanged("UserReceiveDateString");
-					this.RaiseChanged("UserReceiveTimeString");
-					this.RaiseChanged("UserReceiveDateTimeString");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets UserReceive Date String.
-		/// </summary>
-		[Category("User")]
-		[Description("Gets UserReceive Date String.")]
-		[ReadOnly(true)]
-		[JsonIgnore]
-		[Ignore]
-		public string UserReceiveDateString
-		{
-			get
-			{
-				var ret = (this.UserReceiveDate == DateTime.MinValue) ? "" : this.UserReceiveDate.ToThaiDateTimeString("dd/MM/yyyy");
-				return ret;
-			}
-			set { }
-		}
-		/// <summary>
-		/// Gets UserReceive Time String.
-		/// </summary>
-		[Category("User")]
-		[Description("Gets UserReceive Time String.")]
-		[ReadOnly(true)]
-		[JsonIgnore]
-		[Ignore]
-		public string UserReceiveTimeString
-		{
-			get
-			{
-				var ret = (this.UserReceiveDate == DateTime.MinValue) ? "" : this.UserReceiveDate.ToThaiTimeString();
-				return ret;
-			}
-			set { }
-		}
-		/// <summary>
-		/// Gets UserReceive Date Time String.
-		/// </summary>
-		[Category("User")]
-		[Description("Gets UserReceive Date Time String.")]
-		[ReadOnly(true)]
-		[JsonIgnore]
-		[Ignore]
-		public string UserReceiveDateTimeString
-		{
-			get
-			{
-				var ret = (this.UserReceiveDate == DateTime.MinValue) ? "" : this.UserReceiveDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
-				return ret;
-			}
-			set { }
 		}
 
 		#endregion
@@ -604,10 +442,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets Sold User FullNameEN
+		/// Gets or sets Sold User Full Name EN.
 		/// </summary>
 		[Category("Sold")]
-		[Description("Gets or sets Sold User FullNameEN")]
+		[Description("Gets or sets Sold User Full Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("SoldByFullNameEN")]
@@ -627,10 +465,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets Sold User FullNameTH
+		/// Gets or sets Sold User Full Name TH.
 		/// </summary>
 		[Category("Sold")]
-		[Description("Gets or sets Sold User FullNameTH")]
+		[Description("Gets or sets Sold User Full Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("SoldByFullNameTH")]
@@ -728,6 +566,93 @@ namespace DMT.Models
 
 		#endregion
 
+		#region Coupon
+
+		/// <summary>
+		/// Gets or sets coupon book id.
+		/// </summary>
+		[Category("Coupon")]
+		[Description("Gets or sets coupon book id.")]
+		[ReadOnly(true)]
+		[MaxLength(20)]
+		[PeropertyMapName("CouponId")]
+		public string CouponId
+		{
+			get { return _CouponId; }
+			set
+			{
+				if (_CouponId != value)
+				{
+					_CouponId = value;
+					// Raise event.
+					this.RaiseChanged("CouponId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets number of coupon type.
+		/// </summary>
+		[Category("Coupon")]
+		[Description("Gets or sets number of coupon type.")]
+		[ReadOnly(true)]
+		[PeropertyMapName("CouponType")]
+		public CouponType CouponType
+		{
+			get { return _CouponType; }
+			set
+			{
+				if (_CouponType != value)
+				{
+					_CouponType = value;
+					// Raise event.
+					this.RaiseChanged("CouponType");
+					this.RaiseChanged("CouponTypeString");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets Coupon Type String.
+		/// </summary>
+		[Category("Coupon")]
+		[Description("Gets Coupon Type String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string CouponTypeString
+		{
+			get
+			{
+				if (CouponType == CouponType.BHT35)
+					return "35";
+				else if (CouponType == CouponType.BHT80)
+					return "80";
+				else return "N/A"; // N/A
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets or sets number of coupon price.
+		/// </summary>
+		[Category("Coupon")]
+		[Description("Gets or sets number of coupon price.")]
+		[ReadOnly(true)]
+		[PeropertyMapName("Price")]
+		public decimal Price
+		{
+			get { return _Price; }
+			set
+			{
+				if (_Price != value)
+				{
+					_Price = value;
+					// Raise event.
+					this.RaiseChanged("Price");
+				}
+			}
+		}
+
+		#endregion
+
 		#region Remark
 		/*
 		/// <summary>
@@ -808,7 +733,7 @@ namespace DMT.Models
 			#region TSB
 
 			/// <summary>
-			/// Gets or sets TSBNameEN.
+			/// Gets or sets TSB Name EN.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("TSBNameEN")]
@@ -818,7 +743,7 @@ namespace DMT.Models
 				set { base.TSBNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets TSBNameTH.
+			/// Gets or sets TSB Name TH.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("TSBNameTH")]
@@ -833,7 +758,7 @@ namespace DMT.Models
 			#region User
 
 			/// <summary>
-			/// Gets or sets FullNameEN
+			/// Gets or sets Full Name EN.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("FullNameEN")]
@@ -843,7 +768,7 @@ namespace DMT.Models
 				set { base.FullNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets FullNameTH
+			/// Gets or sets Full Name TH.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("FullNameTH")]
@@ -868,17 +793,17 @@ namespace DMT.Models
 				set { base.SoldBy = value; }
 			}
 			/// <summary>
-			/// Gets or sets SoldBy FullNameEN
+			/// Gets or sets SoldBy Full Name EN.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("SoldByFullNameEN")]
+			[PeropertyMapName("SoldByFullNameEN.")]
 			public override string SoldByFullNameEN
 			{
 				get { return base.SoldByFullNameEN; }
 				set { base.SoldByFullNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets SoldBy FullNameTH
+			/// Gets or sets SoldBy Full Name TH.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("SoldByFullNameTH")]
@@ -891,14 +816,14 @@ namespace DMT.Models
 			#endregion
 
 			#region Public Methods
-
+			/*
 			public TSBCouponTransaction ToTSBCouponTransaction()
 			{
 				TSBCouponTransaction inst = new TSBCouponTransaction();
 				this.AssignTo(inst); // set all properties to new instance.
 				return inst;
 			}
-
+			*/
 			#endregion
 		}
 
@@ -934,8 +859,6 @@ namespace DMT.Models
 				else
 				{
 					result.Error(new Exception("Cannot get active TSB."));
-					result.errors.errNum = -20;
-					result.data = null;
 				}
 				return result;
 			}
@@ -965,6 +888,7 @@ namespace DMT.Models
 			}
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
@@ -992,8 +916,8 @@ namespace DMT.Models
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<TSBCouponTransaction>();
 				}
 				return result;
 			}
