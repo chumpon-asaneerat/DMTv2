@@ -35,11 +35,20 @@ namespace DMT.Models
 		#region Intenral Variables
 
 		private string _UserId = string.Empty;
-		private string _FullNameEN = string.Empty;
-		private string _FullNameTH = string.Empty;
-		private string _UserName = string.Empty;
+
+		private string _PrefixEN = string.Empty;
+		private string _PrefixTH = string.Empty;
+
+		private string _FirstNameEN = string.Empty;
+		private string _FirstNameTH = string.Empty;
+
+		private string _MiddleNameEN = string.Empty;
+		private string _MiddleNameTH = string.Empty;
+
+		private string _LastNameEN = string.Empty;
+		private string _LastNameTH = string.Empty;
+
 		private string _Password = string.Empty;
-		private string _PasswordMD5 = string.Empty;
 		private string _CardId = string.Empty;
 
 		private string _RoleId = string.Empty;
@@ -61,8 +70,6 @@ namespace DMT.Models
 		#endregion
 
 		#region Public Proprties
-		
-		// TODO: Requied FirstName/LastName/Prefix/GroupdId/etc.. from User List.
 
 		#region Common
 
@@ -88,71 +95,201 @@ namespace DMT.Models
 				}
 			}
 		}
+
 		/// <summary>
-		/// Gets or sets FullNameEN
+		/// Gets or sets Prefix EN.
 		/// </summary>
 		[Category("User")]
-		[Description("Gets or sets FullNameEN")]
-		[MaxLength(100)]
-		[PeropertyMapName("FullNameEN")]
-		public string FullNameEN
+		[Description("Gets or sets Prefix EN.")]
+		[MaxLength(20)]
+		[PeropertyMapName("PrefixEN")]
+		public string PrefixEN
 		{
-			get
-			{
-				return _FullNameEN;
-			}
+			get { return _PrefixEN; }
 			set
 			{
-				if (_FullNameEN != value)
+				if (_PrefixEN != value)
 				{
-					_FullNameEN = value;
+					_PrefixEN = value;
+					this.RaiseChanged("PrefixEN");
 					this.RaiseChanged("FullNameEN");
 				}
 			}
 		}
 		/// <summary>
-		/// Gets or sets FullNameTH
+		/// Gets or sets First Name EN.
 		/// </summary>
 		[Category("User")]
-		[Description("Gets or sets FullNameTH")]
-		[MaxLength(100)]
-		[PeropertyMapName("FullNameTH")]
-		public string FullNameTH
+		[Description("Gets or sets First Name EN")]
+		[MaxLength(40)]
+		[PeropertyMapName("FirstNameEN")]
+		public string FirstNameEN
+		{
+			get { return _FirstNameEN; }
+			set
+			{
+				if (_FirstNameEN != value)
+				{
+					_FirstNameEN = value;
+					this.RaiseChanged("FirstNameEN");
+					this.RaiseChanged("FullNameEN");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Middle Name EN.
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets Middle Name EN")]
+		[MaxLength(20)]
+		[PeropertyMapName("MiddleNameEN")]
+		public string MiddleNameEN
+		{
+			get { return _MiddleNameEN; }
+			set
+			{
+				if (_MiddleNameEN != value)
+				{
+					_MiddleNameEN = value;
+					this.RaiseChanged("MiddleNameEN");
+					this.RaiseChanged("FullNameEN");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Last Name EN.
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets Last Name EN")]
+		[MaxLength(50)]
+		[PeropertyMapName("LastNameEN")]
+		public string LastNameEN
+		{
+			get { return _LastNameEN; }
+			set
+			{
+				if (_LastNameEN != value)
+				{
+					_LastNameEN = value;
+					this.RaiseChanged("LastNameEN");
+					this.RaiseChanged("FullNameEN");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets FullName EN.
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets FullName EN.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("FullNameEN")]
+		public string FullNameEN
 		{
 			get
 			{
-				return _FullNameTH;
+				return string.Format("{0} {1} {2} {3}", 
+					_PrefixEN, _FirstNameEN, _MiddleNameEN, _LastNameEN).Trim();
 			}
+			set { }
+		}
+
+		/// <summary>
+		/// Gets or sets Prefix TH.
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets Prefix TH.")]
+		[MaxLength(20)]
+		[PeropertyMapName("PrefixTH")]
+		public string PrefixTH
+		{
+			get { return _PrefixTH; }
 			set
 			{
-				if (_FullNameTH != value)
+				if (_PrefixTH != value)
 				{
-					_FullNameTH = value;
+					_PrefixTH = value;
+					this.RaiseChanged("PrefixTH");
 					this.RaiseChanged("FullNameTH");
 				}
 			}
 		}
 		/// <summary>
-		/// Gets or sets UserName
+		/// Gets or sets First Name TH.
 		/// </summary>
 		[Category("User")]
-		[Description("Gets or sets UserName")]
+		[Description("Gets or sets First Name TH")]
+		[MaxLength(40)]
+		[PeropertyMapName("FirstNameTH")]
+		public string FirstNameTH
+		{
+			get { return _FirstNameTH; }
+			set
+			{
+				if (_FirstNameTH != value)
+				{
+					_FirstNameTH = value;
+					this.RaiseChanged("FirstNameTH");
+					this.RaiseChanged("FullNameTH");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Middle Name TH.
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets Middle Name TH")]
+		[MaxLength(20)]
+		[PeropertyMapName("MiddleNameTH")]
+		public string MiddleNameTH
+		{
+			get { return _MiddleNameTH; }
+			set
+			{
+				if (_MiddleNameTH != value)
+				{
+					_MiddleNameTH = value;
+					this.RaiseChanged("MiddleNameTH");
+					this.RaiseChanged("FullNameTH");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Last Name TH.
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets Last Name TH")]
 		[MaxLength(50)]
-		[PeropertyMapName("UserName")]
-		public string UserName
+		[PeropertyMapName("LastNameTH")]
+		public string LastNameTH
+		{
+			get { return _LastNameTH; }
+			set
+			{
+				if (_LastNameTH != value)
+				{
+					_LastNameTH = value;
+					this.RaiseChanged("LastNameTH");
+					this.RaiseChanged("FullNameTH");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets FullName TH.
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets FullName TH.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("FullNameTH")]
+		public string FullNameTH
 		{
 			get
 			{
-				return _UserName;
+				return string.Format("{0} {1} {2} {3}",
+					_PrefixTH, _FirstNameTH, _MiddleNameTH, _LastNameTH).Trim();
 			}
-			set
-			{
-				if (_UserName != value)
-				{
-					_UserName = value;
-					this.RaiseChanged("UserName");
-				}
-			}
+			set { }
 		}
 		/// <summary>
 		/// Gets or sets Password
@@ -173,28 +310,6 @@ namespace DMT.Models
 				{
 					_Password = value;
 					this.RaiseChanged("Password");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets MD5 Hash
-		/// </summary>
-		[Category("User")]
-		[Description("Gets or sets MD5 Hash")]
-		[MaxLength(50)]
-		[PeropertyMapName("PasswordMD5")]
-		public string PasswordMD5
-		{
-			get
-			{
-				return _PasswordMD5;
-			}
-			set
-			{
-				if (_PasswordMD5 != value)
-				{
-					_PasswordMD5 = value;
-					this.RaiseChanged("PasswordMD5");
 				}
 			}
 		}
@@ -226,11 +341,11 @@ namespace DMT.Models
 		#region Role
 
 		/// <summary>
-		/// Gets or sets RoleId
+		/// Gets or sets Role Id.
 		/// </summary>
 		//[ForeignKey(typeof(Role)), MaxLength(10)]
 		[Category("Role")]
-		[Description("Gets or sets RoleId")]
+		[Description("Gets or sets Role Id.")]
 		[ReadOnly(true)]
 		[MaxLength(20)]
 		[PeropertyMapName("RoleId")]
@@ -250,10 +365,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets RoleNameEN
+		/// Gets or sets Role Name EN.
 		/// </summary>
 		[Category("Role")]
-		[Description("Gets or sets RoleNameEN")]
+		[Description("Gets or sets Role Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("RoleNameEN")]
@@ -273,10 +388,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets RoleNameTH
+		/// Gets or sets Role Name TH
 		/// </summary>
 		[Category("Role")]
-		[Description("Gets or sets RoleNameTH")]
+		[Description("Gets or sets Role Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("RoleNameTH")]
@@ -355,7 +470,7 @@ namespace DMT.Models
 			#region Role
 
 			/// <summary>
-			/// Gets or sets RoleNameEN
+			/// Gets or sets Role Name EN.
 			/// </summary>
 			[MaxLength(50)]
 			[PeropertyMapName("RoleNameEN")]
@@ -365,7 +480,7 @@ namespace DMT.Models
 				set { base.RoleNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets RoleNameTH
+			/// Gets or sets Role Name TH.
 			/// </summary>
 			[MaxLength(50)]
 			[PeropertyMapName("RoleNameTH")]

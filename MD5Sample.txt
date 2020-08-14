@@ -1,3 +1,14 @@
+// DATA From RabbitMQ
+{
+    "staffId": "00114",
+    "staffFamilyName": "killer1115",
+    "staffFirstName": "killer1115",
+    "staffMiddleName": "",
+    "title": "Mr.",
+    "password": "2173919d7674801af25d5cb5a130f9c3",
+    "group": 10,
+    "cardSerialNo": ""
+  }
 
 
 // given, a password in a string
