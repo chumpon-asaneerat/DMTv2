@@ -1,6 +1,38 @@
 --------------------------------------------------------------------------------------------
-Update 2020-08-15 #10
+Update 2020-08-15 #20
 - 
+
+Update 2020-08-15 #19
+- 
+
+Update 2020-08-15 #18
+- 
+
+Update 2020-08-15 #17
+- 
+
+Update 2020-08-15 #16
+- 
+
+Update 2020-08-15 #15
+- 
+
+Update 2020-08-15 #14
+- 
+
+Update 2020-08-15 #13
+- 
+
+Update 2020-08-15 #12
+- 
+
+Update 2020-08-15 #11
+- 
+
+[commited]
+Update 2020-08-15 #10
+- Update Local/DataCenter/TAxTOD service operation #178.
+  - Update MD5 sample project #3.
 
 [commited]
 Update 2020-08-15 #9
