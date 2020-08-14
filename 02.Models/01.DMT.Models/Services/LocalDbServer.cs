@@ -1043,9 +1043,13 @@ namespace DMT.Services
 			if (null == Db) return;
 			Role item;
 			User user;
+			string prefix = string.Empty;
+			string fName = string.Empty;
+			string mName = string.Empty;
+			string lName = string.Empty;
 
 			#region ADMINS
-			
+
 			item = new Role()
 			{
 				RoleId = "ADMINS",
@@ -1055,12 +1059,21 @@ namespace DMT.Services
 			};
 			if (!Role.Exists(item)) Role.Save(item);
 
+			prefix = "";
+			fName = "Admin 1";
+			mName = "";
+			lName = "";
 			user = new User()
 			{
 				UserId = "99901",
-				FullNameEN = "Admin 1",
-				FullNameTH = "Admin 1",
-				UserName = "admin1",
+				PrefixEN = prefix,
+				FirstNameEN = fName,
+				MiddleNameEN = mName,
+				LastNameEN = lName,
+				PrefixTH = prefix,
+				FirstNameTH = fName,
+				MiddleNameTH = mName,
+				LastNameTH = lName,
 				Password = "1234",
 				CardId = "",
 				Status = 1,
@@ -1081,12 +1094,21 @@ namespace DMT.Services
 			};
 			if (!Role.Exists(item)) Role.Save(item);
 
+			prefix = "";
+			fName = "audit1";
+			mName = "";
+			lName = "";
 			user = new User()
 			{
 				UserId = "85020",
-				FullNameEN = "audit1",
-				FullNameTH = "audit1",
-				UserName = "audit1",
+				PrefixEN = prefix,
+				FirstNameEN = fName,
+				MiddleNameEN = mName,
+				LastNameEN = lName,
+				PrefixTH = prefix,
+				FirstNameTH = fName,
+				MiddleNameTH = mName,
+				LastNameTH = lName,
 				Password = "1234",
 				CardId = "",
 				Status = 1,
@@ -1094,12 +1116,21 @@ namespace DMT.Services
 			};
 			if (!User.Exists(user)) User.Save(user);
 
+			prefix = "นาย";
+			fName = "สมชาย";
+			mName = "";
+			lName = "ตุยเอียว";
 			user = new User()
 			{
 				UserId = "65401",
-				FullNameEN = "นาย สมชาย ตุยเอียว",
-				FullNameTH = "นาย สมชาย ตุยเอียว",
-				UserName = "audit2",
+				PrefixEN = prefix,
+				FirstNameEN = fName,
+				MiddleNameEN = mName,
+				LastNameEN = lName,
+				PrefixTH = prefix,
+				FirstNameTH = fName,
+				MiddleNameTH = mName,
+				LastNameTH = lName,
 				Password = "1234",
 				CardId = "",
 				Status = 1,
@@ -1120,12 +1151,21 @@ namespace DMT.Services
 			};
 			if (!Role.Exists(item)) Role.Save(item);
 
+			prefix = "นาย";
+			fName = "ผจญ";
+			mName = "";
+			lName = "สุดศิริ";
 			user = new User()
 			{
 				UserId = "13566",
-				FullNameEN = "นาย ผจญ สุดศิริ",
-				FullNameTH = "นาย ผจญ สุดศิริ",
-				UserName = "sup1",
+				PrefixEN = prefix,
+				FirstNameEN = fName,
+				MiddleNameEN = mName,
+				LastNameEN = lName,
+				PrefixTH = prefix,
+				FirstNameTH = fName,
+				MiddleNameTH = mName,
+				LastNameTH = lName,
 				Password = "1234",
 				CardId = "",
 				Status = 1,
@@ -1133,12 +1173,21 @@ namespace DMT.Services
 			};
 			if (!User.Exists(user)) User.Save(user);
 
+			prefix = "นาย";
+			fName = "วิรชัย";
+			mName = "";
+			lName = "ขำหิรัญ";
 			user = new User()
 			{
 				UserId = "26855",
-				FullNameEN = "นวย วิรชัย ขำหิรัญ",
-				FullNameTH = "นวย วิรชัย ขำหิรัญ",
-				UserName = "sup2",
+				PrefixEN = prefix,
+				FirstNameEN = fName,
+				MiddleNameEN = mName,
+				LastNameEN = lName,
+				PrefixTH = prefix,
+				FirstNameTH = fName,
+				MiddleNameTH = mName,
+				LastNameTH = lName,
 				Password = "1234",
 				CardId = "",
 				Status = 1,
@@ -1146,12 +1195,21 @@ namespace DMT.Services
 			};
 			if (!User.Exists(user)) User.Save(user);
 
+			prefix = "นาย";
+			fName = "บุญส่ง";
+			mName = "";
+			lName = "บุญปลื้ม";
 			user = new User()
 			{
 				UserId = "30242",
-				FullNameEN = "นาย บุญส่ง บุญปลื้ม",
-				FullNameTH = "นาย บุญส่ง บุญปลื้ม",
-				UserName = "sup3",
+				PrefixEN = prefix,
+				FirstNameEN = fName,
+				MiddleNameEN = mName,
+				LastNameEN = lName,
+				PrefixTH = prefix,
+				FirstNameTH = fName,
+				MiddleNameTH = mName,
+				LastNameTH = lName,
 				Password = "1234",
 				CardId = "",
 				Status = 1,
@@ -1159,12 +1217,21 @@ namespace DMT.Services
 			};
 			if (!User.Exists(user)) User.Save(user);
 
+			prefix = "นาย";
+			fName = "สมบูรณ์";
+			mName = "";
+			lName = "สบายดี";
 			user = new User()
 			{
 				UserId = "76333",
-				FullNameEN = "นาย สมบูรณ์ สบายดี",
-				FullNameTH = "นาย สมบูรณ์ สบายดี",
-				UserName = "sup4",
+				PrefixEN = prefix,
+				FirstNameEN = fName,
+				MiddleNameEN = mName,
+				LastNameEN = lName,
+				PrefixTH = prefix,
+				FirstNameTH = fName,
+				MiddleNameTH = mName,
+				LastNameTH = lName,
 				Password = "1234",
 				CardId = "",
 				Status = 1,
@@ -1185,11 +1252,21 @@ namespace DMT.Services
 			};
 			if (!Role.Exists(item)) Role.Save(item);
 
+			prefix = "นาย";
+			fName = "ภักดี";
+			mName = "";
+			lName = "อมรรุ่งโรจน์";
 			user = new User()
 			{
 				UserId = "14211",
-				FullNameEN = "นาย ภักดี อมรรุ่งโรจน์",
-				FullNameTH = "นาย ภักดี อมรรุ่งโรจน์",
+				PrefixEN = prefix,
+				FirstNameEN = fName,
+				MiddleNameEN = mName,
+				LastNameEN = lName,
+				PrefixTH = prefix,
+				FirstNameTH = fName,
+				MiddleNameTH = mName,
+				LastNameTH = lName,
 				UserName = "user1",
 				Password = "1234",
 				CardId = "",
@@ -1198,11 +1275,21 @@ namespace DMT.Services
 			};
 			if (!User.Exists(user)) User.Save(user);
 
+			prefix = "นางสาว";
+			fName = "แก้วใส";
+			mName = "";
+			lName = "ฟ้ารุ่งโรจณ์";
 			user = new User()
 			{
 				UserId = "14124",
-				FullNameEN = "นางสาว แก้วใส ฟ้ารุ่งโรจณ์",
-				FullNameTH = "นางสาว แก้วใส ฟ้ารุ่งโรจณ์",
+				PrefixEN = prefix,
+				FirstNameEN = fName,
+				MiddleNameEN = mName,
+				LastNameEN = lName,
+				PrefixTH = prefix,
+				FirstNameTH = fName,
+				MiddleNameTH = mName,
+				LastNameTH = lName,
 				UserName = "user2",
 				Password = "1234",
 				CardId = "",
@@ -1211,11 +1298,21 @@ namespace DMT.Services
 			};
 			if (!User.Exists(user)) User.Save(user);
 
+			prefix = "นาง";
+			fName = "วิภา";
+			mName = "";
+			lName = "สวัสดิวัฒน์";
 			user = new User()
 			{
 				UserId = "14055",
-				FullNameEN = "นางวิภา สวัสดิวัฒน์",
-				FullNameTH = "นางวิภา สวัสดิวัฒน์",
+				PrefixEN = prefix,
+				FirstNameEN = fName,
+				MiddleNameEN = mName,
+				LastNameEN = lName,
+				PrefixTH = prefix,
+				FirstNameTH = fName,
+				MiddleNameTH = mName,
+				LastNameTH = lName,
 				UserName = "user3",
 				Password = "1234",
 				CardId = "",
@@ -1224,11 +1321,21 @@ namespace DMT.Services
 			};
 			if (!User.Exists(user)) User.Save(user);
 
+			prefix = "นาย";
+			fName = "สุเทพ";
+			mName = "";
+			lName = "เหมัน";
 			user = new User()
 			{
 				UserId = "14321",
-				FullNameEN = "นาย สุเทพ เหมัน",
-				FullNameTH = "นาย สุเทพ เหมัน",
+				PrefixEN = prefix,
+				FirstNameEN = fName,
+				MiddleNameEN = mName,
+				LastNameEN = lName,
+				PrefixTH = prefix,
+				FirstNameTH = fName,
+				MiddleNameTH = mName,
+				LastNameTH = lName,
 				UserName = "user4",
 				Password = "1234",
 				CardId = "",
@@ -1237,11 +1344,21 @@ namespace DMT.Services
 			};
 			if (!User.Exists(user)) User.Save(user);
 
+			prefix = "นาย";
+			fName = "ศิริลักษณ์";
+			mName = "";
+			lName = "วงษาหาร";
 			user = new User()
 			{
 				UserId = "14477",
-				FullNameEN = "นาย ศิริลักษณ์ วงษาหาร",
-				FullNameTH = "นาย ศิริลักษณ์ วงษาหาร",
+				PrefixEN = prefix,
+				FirstNameEN = fName,
+				MiddleNameEN = mName,
+				LastNameEN = lName,
+				PrefixTH = prefix,
+				FirstNameTH = fName,
+				MiddleNameTH = mName,
+				LastNameTH = lName,
 				UserName = "user5",
 				Password = "1234",
 				CardId = "",
@@ -1250,11 +1367,21 @@ namespace DMT.Services
 			};
 			if (!User.Exists(user)) User.Save(user);
 
+			prefix = "นางสาว";
+			fName = "สุณิสา";
+			mName = "";
+			lName = "อีนูน";
 			user = new User()
 			{
 				UserId = "14566",
-				FullNameEN = "นางสาว สุณิสา อีนูน",
-				FullNameTH = "นางสาว สุณิสา อีนูน",
+				PrefixEN = prefix,
+				FirstNameEN = fName,
+				MiddleNameEN = mName,
+				LastNameEN = lName,
+				PrefixTH = prefix,
+				FirstNameTH = fName,
+				MiddleNameTH = mName,
+				LastNameTH = lName,
 				UserName = "user6",
 				Password = "1234",
 				CardId = "",
@@ -1263,11 +1390,21 @@ namespace DMT.Services
 			};
 			if (!User.Exists(user)) User.Save(user);
 
+			prefix = "นาง";
+			fName = "วาสนา";
+			mName = "";
+			lName = "ชาญวิเศษ";
 			user = new User()
 			{
 				UserId = "15097",
-				FullNameEN = "นาง วาสนา ชาญวิเศษ",
-				FullNameTH = "นาง วาสนา ชาญวิเศษ",
+				PrefixEN = prefix,
+				FirstNameEN = fName,
+				MiddleNameEN = mName,
+				LastNameEN = lName,
+				PrefixTH = prefix,
+				FirstNameTH = fName,
+				MiddleNameTH = mName,
+				LastNameTH = lName,
 				UserName = "user7",
 				Password = "1234",
 				CardId = "",
