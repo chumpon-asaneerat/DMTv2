@@ -94,17 +94,19 @@ namespace MD5Sample
                     byte[] asciiBytes = ASCIIEncoding.ASCII.GetBytes(value);
                     byte[] hashedBytes = cypt.MD5CryptoServiceProvider.Create().ComputeHash(asciiBytes);
                     ret = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
-
-                    return ret;
-                }
-                /// <summary>
-                /// Decrypt MD5 string to original.
-                /// </summary>
-                /// <param name="value">The encrypt string.</param>
-                /// <returns>Returns original string.</returns>
-                public static string Decrypt(string value)
-                {
-                    string ret = string.Empty;
+                    /*
+                    // Step 1, calculate MD5 hash from input
+                    var md5 = cypt.MD5.Create();
+                    byte[] inputBytes = Encoding.ASCII.GetBytes(value);
+                    byte[] hashBytes = md5.ComputeHash(inputBytes);
+                    // Step 2, convert byte array to hex string
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < hashBytes.Length; i++)
+                    {
+                        sb.Append(hashBytes[i].ToString("x2"));
+                    }
+                    ret = sb.ToString();
+                    */
 
                     return ret;
                 }
@@ -142,17 +144,6 @@ namespace MD5Sample
 
                     return ret;
                 }
-                /// <summary>
-                /// Decrypt MD5 string to original.
-                /// </summary>
-                /// <param name="value">The encrypt string.</param>
-                /// <returns>Returns original string.</returns>
-                public static string Decrypt(string value)
-                {
-                    string ret = string.Empty;
-
-                    return ret;
-                }
             }
 
             #endregion
@@ -172,37 +163,13 @@ namespace MD5Sample
                 public static string Encrypt(string value)
                 {
                     string ret = string.Empty;
-
-                    /*
                     using (var md5 = cypt.MD5.Create())
                     {
-                        ret = BitConverter.ToString(md5.ComputeHash(Encoding.UTF8.GetBytes(value)))
+                        byte[] inputBytes = Encoding.UTF8.GetBytes(value);
+                        byte[] hashBytes = md5.ComputeHash(inputBytes);
+                        ret = BitConverter.ToString(hashBytes)
                             .Replace("-", string.Empty).ToLower();
                     }
-                    */
-
-                    // Step 1, calculate MD5 hash from input
-                    var md5 = cypt.MD5.Create();
-                    byte[] inputBytes = Encoding.ASCII.GetBytes(value);
-                    byte[] hashBytes = md5.ComputeHash(inputBytes);
-                    // Step 2, convert byte array to hex string
-                    StringBuilder sb = new StringBuilder();
-                    for (int i = 0; i < hashBytes.Length; i++)
-                    {
-                        sb.Append(hashBytes[i].ToString("x2"));
-                    }
-                    ret = sb.ToString();
-                    return ret;
-                }
-                /// <summary>
-                /// Decrypt MD5 string to original.
-                /// </summary>
-                /// <param name="value">The encrypt string.</param>
-                /// <returns>Returns original string.</returns>
-                public static string Decrypt(string value)
-                {
-                    string ret = string.Empty;
-
                     return ret;
                 }
             }
