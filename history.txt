@@ -8,8 +8,13 @@ Update 2020-08-14 #19
 Update 2020-08-14 #18
 - 
 
+[commited]
 Update 2020-08-14 #17
-- 
+- Update Local/DataCenter/TAxTOD service operation #149.
+  - Update NDbResult ExtensionMethods #5.
+  - Update NRestResult ExtensionMethods #5.
+  - TSB Models update #2.
+  - Plaza Models update #2.
 
 [commited]
 Update 2020-08-14 #16

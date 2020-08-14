@@ -86,7 +86,7 @@ namespace DMT.Services
 
         #region Public Properties
 
-        public NRestError errors { get; set; }
+        public NRestError errors { get; private set; }
 
         #endregion
     }
@@ -127,9 +127,10 @@ namespace DMT.Services
             this.data = Default();
         }
 
-        public override void Success()
+        public void Success(T data)
         {
             base.Success();
+            this.data = (null != data) ? data : Default();
         }
 
         public override void Error(Exception ex)
@@ -142,7 +143,7 @@ namespace DMT.Services
 
         #region Public Properties
 
-        public T data { get; set; }
+        public T data { get; private set; }
 
         #endregion
 
@@ -178,46 +179,57 @@ namespace DMT.Services
         public override void RestConenctFailed()
         {
             base.RestConenctFailed();
-            this.data = Default();
+            this.data = DefaultData();
+            this.output = DefaultOutput();
         }
 
         public override void UnknownError()
         {
             base.UnknownError();
-            this.data = Default();
+            this.data = DefaultData();
+            this.output = DefaultOutput();
         }
 
         public override void ParameterIsNull()
         {
             base.ParameterIsNull();
-            this.data = Default();
+            this.data = DefaultData();
+            this.output = DefaultOutput();
         }
 
-        public override void Success()
+        public void Success(T data, O output)
         {
             base.Success();
+            this.data = (null != data) ? data : DefaultData();
+            this.output = (null != output) ? output : DefaultOutput();
         }
 
         public override void Error(Exception ex)
         {
             base.Error(ex);
-            this.data = Default();
+            this.data = DefaultData();
+            this.output = DefaultOutput();
         }
 
         #endregion
 
         #region Public Properties
 
-        public T data { get; set; }
-        public O output { get; set; }
+        public T data { get; private set; }
+        public O output { get; private set; }
 
         #endregion
 
         #region Static Methods
 
-        public static T Default()
+        public static T DefaultData()
         {
             return (typeof(T) == typeof(IList)) ? new T() : default(T);
+        }
+
+        public static O DefaultOutput()
+        {
+            return (typeof(O) == typeof(IList)) ? new O() : default(O);
         }
 
         #endregion

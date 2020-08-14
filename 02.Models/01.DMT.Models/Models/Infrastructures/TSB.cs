@@ -253,8 +253,7 @@ namespace DMT.Models
 
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<TSB>();
+				result.DbConenctFailed();
 				return result;
 			}
 			lock (sync)
@@ -265,15 +264,13 @@ namespace DMT.Models
 					string cmd = string.Empty;
 					cmd += "SELECT * FROM TSB ";
 					result.Success();
-					result.data = NQuery.Query<TSB>(cmd);
-					result.Success();
+					var data = NQuery.Query<TSB>(cmd);
+					result.Success(data);
 				}
 				catch (Exception ex)
 				{
 					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<TSB>();
-
 				}
 				return result;
 			}
@@ -294,8 +291,7 @@ namespace DMT.Models
 
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 			lock (sync)
@@ -306,14 +302,13 @@ namespace DMT.Models
 					string cmd = string.Empty;
 					cmd += "SELECT * FROM TSB ";
 					cmd += " WHERE TSBId = ? ";
-					result.data = NQuery.Query<TSB>(cmd, tsbId).FirstOrDefault();
-					result.Success();
+					var data = NQuery.Query<TSB>(cmd, tsbId).FirstOrDefault();
+					result.Success(data);
 				}
 				catch (Exception ex)
 				{
 					med.Err(ex);
 					result.Error(ex);
-					result.data = null;
 				}
 				return result;
 			}
@@ -338,8 +333,7 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 			lock (sync)
@@ -352,14 +346,13 @@ namespace DMT.Models
 					cmd += "SELECT * FROM TSB ";
 					cmd += " WHERE Active = 1 ";
 					var results = NQuery.Query<TSB>(cmd);
-					result.data = (null != results) ? results.FirstOrDefault() : null;
-					result.Success();
+					var data = (null != results) ? results.FirstOrDefault() : null;
+					result.Success(data);
 				}
 				catch (Exception ex)
 				{
 					med.Err(ex);
 					result.Error(ex);
-					result.data = null;
 				}
 				return result;
 			}
@@ -371,7 +364,7 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
+				result.DbConenctFailed();
 				return result;
 			}
 			lock (sync)

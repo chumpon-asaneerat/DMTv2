@@ -441,8 +441,7 @@ namespace DMT.Models
 
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<Plaza>();
+				result.DbConenctFailed();
 				return result;
 			}
 
@@ -470,16 +469,12 @@ namespace DMT.Models
 							results.Add(ret.ToPlaza());
 						});
 					}
-
-					result.data = results;
-					result.Success();
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
 					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<Plaza>();
-
 				}
 				return result;
 			}
@@ -500,8 +495,7 @@ namespace DMT.Models
 
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
@@ -521,14 +515,13 @@ namespace DMT.Models
 					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
 					cmd += "   AND Plaza.PlazaId = ? ";
 					var ret = NQuery.Query<FKs>(cmd, plazaId).FirstOrDefault();
-					result.data = (null != ret) ? ret.ToPlaza() : null;
-					result.Success();
+					var data = (null != ret) ? ret.ToPlaza() : null;
+					result.Success(data);
 				}
 				catch (Exception ex)
 				{
 					med.Err(ex);
 					result.Error(ex);
-					result.data = null;
 				}
 				return result;
 			}
@@ -550,7 +543,6 @@ namespace DMT.Models
 			if (null == value)
 			{
 				result.ParameterIsNull();
-				result.data = null;
 				return result;
 			}
 
@@ -566,8 +558,7 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<Plaza>();
+				result.DbConenctFailed();
 				return result;
 			}
 
@@ -596,14 +587,12 @@ namespace DMT.Models
 							results.Add(ret.ToPlaza());
 						});
 					}
-					result.data = results;
-					result.Success();
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
 					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<Plaza>();
 				}
 				return result;
 			}

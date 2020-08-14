@@ -91,7 +91,7 @@ namespace DMT.Models
 
         #region Public Properties
 
-        public NDbError errors { get; set; }
+        public NDbError errors { get; private set; }
 
         #endregion
     }
@@ -150,7 +150,7 @@ namespace DMT.Models
 
         #region Public Properties
 
-        public T data { get; set; }
+        public T data { get; private set; }
 
         #endregion
 
@@ -188,48 +188,57 @@ namespace DMT.Models
         public override void DbConenctFailed()
         {
             base.DbConenctFailed();
-            this.data = Default();
+            this.data = DefaultData();
+            this.output = DefaultOutput();
         }
 
         public override void UnknownError()
         {
             base.UnknownError();
-            this.data = Default();
+            this.data = DefaultData();
+            this.output = DefaultOutput();
         }
 
         public override void ParameterIsNull()
         {
             base.ParameterIsNull();
-            this.data = Default();
+            this.data = DefaultData();
+            this.output = DefaultOutput();
         }
 
         public void Success(T data, O output)
         {
             base.Success();
-            this.data = data;
-            this.output = output;
+            this.data = (null != data) ? data : DefaultData();
+            this.output = (null != output) ? output : DefaultOutput();
         }
 
         public override void Error(Exception ex)
         {
             base.Error(ex);
-            this.data = Default();
+            this.data = DefaultData();
+            this.output = DefaultOutput();
         }
 
         #endregion
 
         #region Public Properties
 
-        public T data { get; set; }
-        public O output { get; set; }
+        public T data { get; private set; }
+        public O output { get; private set; }
 
         #endregion
 
         #region Static Methods
 
-        public static T Default()
+        public static T DefaultData()
         {
             return (typeof(T) == typeof(IList)) ? new T() : default(T);
+        }
+
+        public static O DefaultOutput()
+        {
+            return (typeof(O) == typeof(IList)) ? new O() : default(O);
         }
 
         #endregion
