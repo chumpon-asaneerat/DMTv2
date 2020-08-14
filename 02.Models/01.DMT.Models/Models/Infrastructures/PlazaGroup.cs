@@ -321,7 +321,7 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static NDbResult<List<PlazaGroup>> Gets(SQLiteConnection db)
+		public static NDbResult<List<PlazaGroup>> GetPlazaGroups(SQLiteConnection db)
 		{
 			var result = new NDbResult<List<PlazaGroup>>();
 
@@ -361,16 +361,16 @@ namespace DMT.Models
 			}
 		}
 
-		public static NDbResult<List<PlazaGroup>> Gets()
+		public static NDbResult<List<PlazaGroup>> GetPlazaGroups()
 		{
 			lock (sync)
 			{
 				SQLiteConnection db = Default;
-				return Gets(db);
+				return GetPlazaGroups(db);
 			}
 		}
 
-		public static NDbResult<PlazaGroup> Get(SQLiteConnection db, string plazaGroupId)
+		public static NDbResult<PlazaGroup> GetPlazaGroup(SQLiteConnection db, string plazaGroupId)
 		{
 			var result = new NDbResult<PlazaGroup>();
 
@@ -402,12 +402,12 @@ namespace DMT.Models
 			}
 		}
 
-		public static NDbResult<PlazaGroup> Get(string plazaGroupId)
+		public static NDbResult<PlazaGroup> GetPlazaGroup(string plazaGroupId)
 		{
 			lock (sync)
 			{
 				SQLiteConnection db = Default;
-				return Get(db, plazaGroupId);
+				return GetPlazaGroup(db, plazaGroupId);
 			}
 		}
 

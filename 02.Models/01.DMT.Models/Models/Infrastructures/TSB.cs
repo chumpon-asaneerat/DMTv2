@@ -247,7 +247,7 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static NDbResult<List<TSB>> Gets(SQLiteConnection db)
+		public static NDbResult<List<TSB>> GetTSBs(SQLiteConnection db)
 		{
 			var result = new NDbResult<List<TSB>>();
 
@@ -276,16 +276,16 @@ namespace DMT.Models
 			}
 		}
 
-		public static NDbResult<List<TSB>> Gets()
+		public static NDbResult<List<TSB>> GetTSBs()
 		{
 			lock (sync)
 			{
 				SQLiteConnection db = Default;
-				return Gets(db);
+				return GetTSBs(db);
 			}
 		}
 
-		public static NDbResult<TSB> Get(SQLiteConnection db, string tsbId)
+		public static NDbResult<TSB> GetTSB(SQLiteConnection db, string tsbId)
 		{
 			var result = new NDbResult<TSB>();
 
@@ -314,12 +314,12 @@ namespace DMT.Models
 			}
 		}
 
-		public static NDbResult<TSB> Get(string tsbId)
+		public static NDbResult<TSB> GetTSB(string tsbId)
 		{
 			lock (sync)
 			{
 				SQLiteConnection db = Default;
-				return Get(db, tsbId);
+				return GetTSB(db, tsbId);
 			}
 		}
 

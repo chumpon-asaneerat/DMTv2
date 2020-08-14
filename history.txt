@@ -14,8 +14,17 @@ Update 2020-08-14 #27
 Update 2020-08-14 #26
 - 
 
+[commited]
 Update 2020-08-14 #25
-- 
+- Update Local/DataCenter/TAxTOD service operation #157.
+  - NTable Models update #2.
+  - Shift Models update #2.
+  - Role Models update #2.
+  - User Models update #2.
+  - TSB Models update #3.
+  - Plaza Models update #4.
+  - PlazaGroup Models update #2.
+  - Lane Models update #2.
 
 [commited]
 Update 2020-08-14 #24

@@ -200,7 +200,7 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static NDbResult<List<Role>> Gets(SQLiteConnection db)
+		public static NDbResult<List<Role>> GetRoles(SQLiteConnection db)
 		{
 			var result = new NDbResult<List<Role>>();
 
@@ -229,16 +229,16 @@ namespace DMT.Models
 			}
 		}
 
-		public static NDbResult<List<Role>> Gets()
+		public static NDbResult<List<Role>> GetRoles()
 		{
 			lock (sync)
 			{
 				SQLiteConnection db = Default;
-				return Gets(db);
+				return GetRoles(db);
 			}
 		}
 
-		public static NDbResult<Role> Get(SQLiteConnection db, string roleId)
+		public static NDbResult<Role> GetRole(SQLiteConnection db, string roleId)
 		{
 			var result = new NDbResult<Role>();
 
@@ -268,12 +268,12 @@ namespace DMT.Models
 			}
 		}
 
-		public static NDbResult<Role> Get(string roleId)
+		public static NDbResult<Role> GetRole(string roleId)
 		{
 			lock (sync)
 			{
 				SQLiteConnection db = Default;
-				return Get(db, roleId);
+				return GetRole(db, roleId);
 			}
 		}
 

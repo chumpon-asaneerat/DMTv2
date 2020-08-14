@@ -320,6 +320,7 @@ namespace DMT.Models
                 try
                 {
                     if (null == db || null == Id) return;
+                    // TODO: Need to replace with functional extension methods.
                     var ret = GetWithChildren(db, Id, recursive);
                     if (ret.Ok && ret.HasData)
                     {

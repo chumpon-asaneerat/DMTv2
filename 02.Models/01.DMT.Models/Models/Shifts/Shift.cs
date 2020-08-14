@@ -177,7 +177,7 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static NDbResult<List<Shift>> Gets(SQLiteConnection db)
+		public static NDbResult<List<Shift>> GetShifts(SQLiteConnection db)
 		{
 			var result = new NDbResult<List<Shift>>();
 
@@ -206,16 +206,16 @@ namespace DMT.Models
 			}
 		}
 
-		public static NDbResult<List<Shift>> Gets()
+		public static NDbResult<List<Shift>> GetShifts()
 		{
 			lock (sync)
 			{
 				SQLiteConnection db = Default;
-				return Gets(db);
+				return GetShifts(db);
 			}
 		}
 
-		public static NDbResult<Shift> Get(SQLiteConnection db, string shiftId)
+		public static NDbResult<Shift> GetShift(SQLiteConnection db, string shiftId)
 		{
 			var result = new NDbResult<Shift>();
 
@@ -246,12 +246,12 @@ namespace DMT.Models
 			}
 		}
 
-		public static NDbResult<Shift> Get(string shiftId)
+		public static NDbResult<Shift> GetShift(string shiftId)
 		{
 			lock (sync)
 			{
 				SQLiteConnection db = Default;
-				return Get(db, shiftId);
+				return GetShift(db, shiftId);
 			}
 		}
 

@@ -584,7 +584,7 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static NDbResult<List<Lane>> Gets(SQLiteConnection db)
+		public static NDbResult<List<Lane>> GetLanes(SQLiteConnection db)
 		{
 			var result = new NDbResult<List<Lane>>();
 
@@ -624,16 +624,16 @@ namespace DMT.Models
 			}
 		}
 
-		public static NDbResult<List<Lane>> Gets()
+		public static NDbResult<List<Lane>> GetLanes()
 		{
 			lock (sync)
 			{
 				SQLiteConnection db = Default;
-				return Gets(db);
+				return GetLanes(db);
 			}
 		}
 
-		public static NDbResult<Lane> Get(SQLiteConnection db, string laneId)
+		public static NDbResult<Lane> GetLane(SQLiteConnection db, string laneId)
 		{
 			var result = new NDbResult<Lane>();
 
@@ -667,12 +667,12 @@ namespace DMT.Models
 			}
 		}
 
-		public static NDbResult<Lane> Get(string laneId)
+		public static NDbResult<Lane> GetLane(string laneId)
 		{
 			lock (sync)
 			{
 				SQLiteConnection db = Default;
-				return Get(db, laneId);
+				return GetLane(db, laneId);
 			}
 		}
 
