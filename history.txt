@@ -8,8 +8,12 @@ Update 2020-08-14 #9
 Update 2020-08-14 #8
 - 
 
+[commited]
 Update 2020-08-14 #7
-- 
+- Update Local/DataCenter/TAxTOD service operation #139.
+  - Check API 
+    - SetActiveTSB (Config->TOD/TA) - OK.
+    - ChangeShift (TOD->TA) - OK.
 
 [commited]
 Update 2020-08-14 #6
