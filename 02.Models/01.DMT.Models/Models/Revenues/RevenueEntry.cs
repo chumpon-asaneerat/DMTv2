@@ -15,6 +15,7 @@ using SQLiteNetExtensions.Extensions;
 // required for JsonIgnore attribute.
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
+using System.Reflection;
 
 #endregion
 
@@ -722,10 +723,10 @@ namespace DMT.Models
 		#region Shift
 
 		/// <summary>
-		/// Gets or sets ShiftId.
+		/// Gets or sets Shift Id.
 		/// </summary>
 		[Category("Shift")]
-		[Description("Gets or sets ShiftId.")]
+		[Description("Gets or sets Shift Id.")]
 		[ReadOnly(true)]
 		[PeropertyMapName("ShiftId")]
 		public int ShiftId
@@ -744,33 +745,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets Name TH.
+		/// Gets or sets Shift Name EN.
 		/// </summary>
 		[Category("Shift")]
-		[Description("Gets or sets Name TH.")]
-		[ReadOnly(true)]
-		[Ignore]
-		[PeropertyMapName("ShiftNameTH")]
-		public virtual string ShiftNameTH
-		{
-			get
-			{
-				return _ShiftNameTH;
-			}
-			set
-			{
-				if (_ShiftNameTH != value)
-				{
-					_ShiftNameTH = value;
-					this.RaiseChanged("ShiftNameTH");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets Name EN.
-		/// </summary>
-		[Category("Shift")]
-		[Description("Gets or sets Name EN.")]
+		[Description("Gets or sets Shift Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("ShiftNameEN")]
@@ -789,16 +767,39 @@ namespace DMT.Models
 				}
 			}
 		}
+		/// <summary>
+		/// Gets or sets Shift Name TH.
+		/// </summary>
+		[Category("Shift")]
+		[Description("Gets or sets Shift Name TH.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PeropertyMapName("ShiftNameTH")]
+		public virtual string ShiftNameTH
+		{
+			get
+			{
+				return _ShiftNameTH;
+			}
+			set
+			{
+				if (_ShiftNameTH != value)
+				{
+					_ShiftNameTH = value;
+					this.RaiseChanged("ShiftNameTH");
+				}
+			}
+		}
 
 		#endregion
 
 		#region User
 
 		/// <summary>
-		/// Gets or sets UserId
+		/// Gets or sets User Id
 		/// </summary>
 		[Category("User")]
-		[Description("Gets or sets UserId.")]
+		[Description("Gets or sets User Id.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
 		[PeropertyMapName("UserId")]
@@ -818,10 +819,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets FullNameEN
+		/// Gets or sets Full Name EN.
 		/// </summary>
 		[Category("User")]
-		[Description("Gets or sets User FullName EN.")]
+		[Description("Gets or sets User Full Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("FullNameEN")]
@@ -841,10 +842,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets FullNameTH
+		/// Gets or sets Full Name TH.
 		/// </summary>
 		[Category("User")]
-		[Description("Gets or sets User FullName TH.")]
+		[Description("Gets or sets User Full Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("FullNameTH")]
@@ -869,7 +870,7 @@ namespace DMT.Models
 		#region Supervisor
 
 		/// <summary>
-		/// Gets or sets SupervisorId
+		/// Gets or sets Supervisor Id
 		/// </summary>
 		[Category("Supervisor")]
 		[Description("Gets or sets SupervisorId")]
@@ -892,13 +893,13 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets SupervisorNameEN
+		/// Gets or sets Supervisor Name EN
 		/// </summary>
 		[Category("Supervisor")]
 		[Description("Gets or sets SupervisorNameEN")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("SupervisorNameEN")]
+		[PeropertyMapName("Supervisor Name EN")]
 		public virtual string SupervisorNameEN
 		{
 			get
@@ -915,10 +916,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets SupervisorNameTH
+		/// Gets or sets Supervisor Name TH
 		/// </summary>
 		[Category("Supervisor")]
-		[Description("Gets or sets SupervisorNameTH")]
+		[Description("Gets or sets Supervisor Name TH")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("SupervisorNameTH")]
@@ -1539,7 +1540,7 @@ namespace DMT.Models
 
 		#region Internal Class
 
-		public class FKs : RevenueEntry
+		public class FKs : RevenueEntry, IFKs<RevenueEntry>
 		{
 			#region TSB
 
@@ -1604,17 +1605,7 @@ namespace DMT.Models
 			#region Shift
 
 			/// <summary>
-			/// Gets or sets Name TH.
-			/// </summary>
-			[MaxLength(50)]
-			[PeropertyMapName("ShiftNameTH")]
-			public override string ShiftNameTH
-			{
-				get { return base.ShiftNameTH; }
-				set { base.ShiftNameTH = value; }
-			}
-			/// <summary>
-			/// Gets or sets Name EN.
+			/// Gets or sets Shift Name EN.
 			/// </summary>
 			[MaxLength(50)]
 			[PeropertyMapName("ShiftNameEN")]
@@ -1622,6 +1613,16 @@ namespace DMT.Models
 			{
 				get { return base.ShiftNameEN; }
 				set { base.ShiftNameEN = value; }
+			}
+			/// <summary>
+			/// Gets or sets Shift Name TH.
+			/// </summary>
+			[MaxLength(50)]
+			[PeropertyMapName("ShiftNameTH")]
+			public override string ShiftNameTH
+			{
+				get { return base.ShiftNameTH; }
+				set { base.ShiftNameTH = value; }
 			}
 
 			#endregion
@@ -1654,7 +1655,7 @@ namespace DMT.Models
 			#region Supervisor
 
 			/// <summary>
-			/// Gets or sets SupervisorNameEN
+			/// Gets or sets Supervisor Name EN
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("SupervisorNameEN")]
@@ -1664,7 +1665,7 @@ namespace DMT.Models
 				set { base.SupervisorNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets SupervisorNameTH
+			/// Gets or sets Supervisor Name TH
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("SupervisorNameTH")]
@@ -1677,14 +1678,14 @@ namespace DMT.Models
 			#endregion
 
 			#region Public Methods
-
+			/*
 			public RevenueEntry ToRevenueEntry()
 			{
 				RevenueEntry inst = new RevenueEntry();
 				this.AssignTo(inst); // set all properties to new instance.
 				return inst;
 			}
-
+			*/
 			#endregion
 		}
 
@@ -1698,13 +1699,13 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
@@ -1724,22 +1725,24 @@ namespace DMT.Models
 					cmd += "   AND RevenueEntry.ShiftId = Shift.ShiftId ";
 
 					var rets = NQuery.Query<FKs>(cmd).ToList();
+					var results = rets.ToModels();
+					/*
 					var results = new List<RevenueEntry>();
 					if (null != rets)
 					{
 						rets.ForEach(ret =>
 						{
-							results.Add(ret.ToRevenueEntry());
+							results.Add(ret.ToModel());
 						});
 					}
 
-					result.data = results;
-					result.Success();
+					*/
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<RevenueEntry>();
 				}
 				return result;
 			}
@@ -1751,13 +1754,13 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
@@ -1779,22 +1782,23 @@ namespace DMT.Models
 					cmd += "   AND RevenueEntry.RevenueDate <= ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, begin, end).ToList();
+					var results = rets.ToModels();
+					/*
 					var results = new List<RevenueEntry>();
 					if (null != rets)
 					{
 						rets.ForEach(ret =>
 						{
-							results.Add(ret.ToRevenueEntry());
+							results.Add(ret.ToModel());
 						});
 					}
-
-					result.data = results;
-					result.Success();
+					*/
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<RevenueEntry>();
 				}
 				return result;
 			}

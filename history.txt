@@ -20,8 +20,10 @@ Update 2020-08-14 #35
 Update 2020-08-14 #34
 - 
 
+[commited]
 Update 2020-08-14 #33
-- 
+- Update Local/DataCenter/TAxTOD service operation #165.
+  - RevenueEntry Models update #1.
 
 [commited]
 Update 2020-08-14 #32
