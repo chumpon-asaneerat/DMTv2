@@ -123,6 +123,12 @@ namespace DMT.Models
             this.data = Default();
         }
 
+        public override void ParameterIsNull()
+        {
+            base.ParameterIsNull();
+            this.data = Default();
+        }
+
         public void Success(T data)
         {
             base.Success();
@@ -183,6 +189,12 @@ namespace DMT.Models
         public override void UnknownError()
         {
             base.UnknownError();
+            this.data = Default();
+        }
+
+        public override void ParameterIsNull()
+        {
+            base.ParameterIsNull();
             this.data = Default();
         }
 

@@ -107,11 +107,19 @@ namespace DMT.Services
         public override void ConenctFailed()
         {
             base.ConenctFailed();
+            this.data = Default();
         }
 
         public override void UnknownError()
         {
             base.UnknownError();
+            this.data = Default();
+        }
+
+        public override void ParameterIsNull()
+        {
+            base.ParameterIsNull();
+            this.data = Default();
         }
 
         public override void Success()
@@ -122,6 +130,7 @@ namespace DMT.Services
         public override void Error(Exception ex)
         {
             base.Error(ex);
+            this.data = Default();
         }
 
         #endregion
@@ -129,6 +138,15 @@ namespace DMT.Services
         #region Public Properties
 
         public T data { get; set; }
+
+        #endregion
+
+        #region Static Methods
+
+        public static T Default()
+        {
+            return (typeof(T) == typeof(IList)) ? new T() : default(T);
+        }
 
         #endregion
     }
@@ -155,11 +173,19 @@ namespace DMT.Services
         public override void ConenctFailed()
         {
             base.ConenctFailed();
+            this.data = Default();
         }
 
         public override void UnknownError()
         {
             base.UnknownError();
+            this.data = Default();
+        }
+
+        public override void ParameterIsNull()
+        {
+            base.ParameterIsNull();
+            this.data = Default();
         }
 
         public override void Success()
@@ -170,6 +196,7 @@ namespace DMT.Services
         public override void Error(Exception ex)
         {
             base.Error(ex);
+            this.data = Default();
         }
 
         #endregion
@@ -178,6 +205,15 @@ namespace DMT.Services
 
         public T data { get; set; }
         public O output { get; set; }
+
+        #endregion
+
+        #region Static Methods
+
+        public static T Default()
+        {
+            return (typeof(T) == typeof(IList)) ? new T() : default(T);
+        }
 
         #endregion
     }
