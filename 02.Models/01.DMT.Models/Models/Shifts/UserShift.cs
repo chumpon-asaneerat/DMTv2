@@ -697,7 +697,7 @@ namespace DMT.Models
                 try
                 {
                     var last = GetCurrent(value.UserId);
-                    if (null != last)
+                    if (null != last && null != last.data && !last.errors.hasError)
                     {
                         // not enter revenue entry.
                         result.Error(new Exception("ยังมีกะที่ยังไม่ได้ป้อนรายได้"));

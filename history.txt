@@ -29,8 +29,11 @@ Update 2020-08-14 #12
 Update 2020-08-14 #11
 - 
 
+[commited]
 Update 2020-08-14 #10
-- 
+- Update Local/DataCenter/TAxTOD service operation #132.
+  - Check API 
+    - Collector Begin Shift (TOD/Simulator) - OK.
 
 [commited]
 Update 2020-08-14 #9
