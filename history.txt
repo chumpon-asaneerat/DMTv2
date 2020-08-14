@@ -5,8 +5,10 @@ Update 2020-08-14 #10
 Update 2020-08-14 #9
 - 
 
+[commited]
 Update 2020-08-14 #8
-- 
+- Update Local/DataCenter/TAxTOD service operation #140.
+  - Update User List View in Simulator App.
 
 [commited]
 Update 2020-08-14 #7

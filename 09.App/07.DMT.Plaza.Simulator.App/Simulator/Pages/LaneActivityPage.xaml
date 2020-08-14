@@ -272,35 +272,28 @@
                                                    TextAlignment="Center" />
                                     </Grid>
                                     <DataTemplate.Triggers>
-                                        <DataTrigger Binding="{Binding Path=RoleId}" Value="QFREE">
-                                            <Setter TargetName="border" Property="Background">
-                                                <Setter.Value>
-                                                    <ImageBrush ImageSource="/DMT.Plaza.Simulator.App;component/Images/Cards/Card-Gray.png" />
-                                                </Setter.Value>
-                                            </Setter>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding Path=RoleId}" Value="ADMIN">
+                                        <DataTrigger Binding="{Binding Path=RoleId}" Value="ADMINS">
                                             <Setter TargetName="border" Property="Background">
                                                 <Setter.Value>
                                                     <ImageBrush ImageSource="/DMT.Plaza.Simulator.App;component/Images/Cards/Card-Purple.png" />
                                                 </Setter.Value>
                                             </Setter>
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding Path=RoleId}" Value="AUDIT">
+                                        <DataTrigger Binding="{Binding Path=RoleId}" Value="ACCOUNT">
                                             <Setter TargetName="border" Property="Background">
                                                 <Setter.Value>
                                                     <ImageBrush ImageSource="/DMT.Plaza.Simulator.App;component/Images/Cards/Card-Red.png" />
                                                 </Setter.Value>
                                             </Setter>
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding Path=RoleId}" Value="COLLECTOR">
+                                        <DataTrigger Binding="{Binding Path=RoleId}" Value="TC">
                                             <Setter TargetName="border" Property="Background">
                                                 <Setter.Value>
                                                     <ImageBrush ImageSource="/DMT.Plaza.Simulator.App;component/Images/Cards/Card-Blue.png" />
                                                 </Setter.Value>
                                             </Setter>
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding Path=RoleId}" Value="SUPERVISOR">
+                                        <DataTrigger Binding="{Binding Path=RoleId}" Value="CTC">
                                             <Setter TargetName="border" Property="Background">
                                                 <Setter.Value>
                                                     <ImageBrush ImageSource="/DMT.Plaza.Simulator.App;component/Images/Cards/Card-Green.png" />
