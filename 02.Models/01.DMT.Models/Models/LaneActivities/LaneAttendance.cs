@@ -15,6 +15,7 @@ using SQLiteNetExtensions.Extensions;
 // required for JsonIgnore attribute.
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
+using System.Reflection;
 
 #endregion
 
@@ -935,12 +936,11 @@ namespace DMT.Models
 		{
 			var result = new NDbResult<LaneAttendance>();
 			LaneAttendance inst = Create();
-
+			// TODO: Need to replace with functional extension methods.
 			var tsbRet = TSB.GetCurrent();
 			if (tsbRet.errors.hasError)
 			{
 				result.ParameterIsNull();
-				result.data = null;
 			}
 			else
 			{
@@ -949,8 +949,7 @@ namespace DMT.Models
 				if (null != lane) lane.AssignTo(inst);
 				if (null != supervisor) supervisor.AssignTo(inst);
 
-				result.data = inst;
-				result.Success();
+				result.Success(inst);
 			}
 
 			return result;
@@ -963,20 +962,19 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<LaneAttendance>();
+				result.DbConenctFailed();
 				return result;
 			}
 
 			if (null == shift)
 			{
 				result.ParameterIsNull();
-				result.data = new List<LaneAttendance>();
 				return result;
 			}
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
@@ -1037,8 +1035,7 @@ namespace DMT.Models
 								results.Add(ret.ToLaneAttendance());
 							});
 						}
-						result.data = results;
-						result.Success();
+						result.Success(results);
 					}
 					else
 					{
@@ -1056,14 +1053,13 @@ namespace DMT.Models
 								results.Add(ret.ToLaneAttendance());
 							});
 						}
-						result.data = results;
-						result.Success();
+						result.Success(results);
 					}
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<LaneAttendance>();
 				}
 				return result;
 			}
@@ -1075,19 +1071,18 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<LaneAttendance>();
+				result.DbConenctFailed();
 				return result;
 			}
 
 			if (null == shift)
 			{
 				result.ParameterIsNull();
-				result.data = new List<LaneAttendance>();
 				return result;
 			}
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
@@ -1130,13 +1125,12 @@ namespace DMT.Models
 							results.Add(ret.ToLaneAttendance());
 						});
 					}
-					result.data = results;
-					result.Success();
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<LaneAttendance>();
 				}
 				return result;
 			}
@@ -1148,19 +1142,18 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<LaneAttendance>();
+				result.DbConenctFailed();
 				return result;
 			}
 
 			if (null == lane)
 			{
 				result.ParameterIsNull();
-				result.data = new List<LaneAttendance>();
 				return result;
 			}
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
@@ -1192,13 +1185,12 @@ namespace DMT.Models
 							results.Add(ret.ToLaneAttendance());
 						});
 					}
-					result.data = results;
-					result.Success();
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<LaneAttendance>();
 				}
 
 				return result;
@@ -1211,19 +1203,18 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			if (null == lane)
 			{
 				result.ParameterIsNull();
-				result.data = null;
 				return result;
 			}
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
@@ -1249,13 +1240,13 @@ namespace DMT.Models
 					cmd += "   AND LaneAttendance.End = ? ";
 					var ret = NQuery.Query<FKs>(cmd, lane.LaneId, 
 						DateTime.MinValue).FirstOrDefault();
-					result.data = (null != ret) ? ret.ToLaneAttendance() : null;
-					result.Success();
+					var data = (null != ret) ? ret.ToLaneAttendance() : null;
+					result.Success(data);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = null;
 				}
 
 				return result;
@@ -1268,19 +1259,18 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<LaneAttendance>();
+				result.DbConenctFailed();
 				return result;
 			}
 
 			if (null == date || date == DateTime.MinValue)
 			{
 				result.ParameterIsNull();
-				result.data = new List<LaneAttendance>();
 				return result;
 			}
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
@@ -1313,13 +1303,12 @@ namespace DMT.Models
 							results.Add(ret.ToLaneAttendance());
 						});
 					}
-					result.data = results;
-					result.Success();
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<LaneAttendance>();
 				}
 
 				return result;
@@ -1332,13 +1321,13 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<LaneAttendance>();
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
@@ -1373,13 +1362,12 @@ namespace DMT.Models
 							results.Add(ret.ToLaneAttendance());
 						});
 					}
-					result.data = results;
-					result.Success();
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<LaneAttendance>();
 				}
 
 				return result;

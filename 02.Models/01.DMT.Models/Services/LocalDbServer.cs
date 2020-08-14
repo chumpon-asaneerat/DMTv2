@@ -1340,6 +1340,11 @@ namespace DMT.Services
 			prefix = @"Users";
 			InitView("UserView", prefix);
 
+			// LaneActivities - Embeded resource used . instead / to access sub contents.
+			prefix = @"LaneActivities";
+			InitView("LaneAttendanceView", prefix);
+			InitView("LanePaymentView", prefix);
+
 			// Credits - Embeded resource used . instead / to access sub contents.
 			prefix = @"Credits";
 			InitView("TSBCreditSummarryView", prefix);
