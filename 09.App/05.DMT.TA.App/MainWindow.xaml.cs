@@ -33,13 +33,13 @@ namespace DMT
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            // Enable Web Socket.
+            Services.LocalServiceOperations.Instance.EnableWebSocket();
             // Initial Page Content Manager
             PageContentManager.Instance.ContentChanged += new EventHandler(Instance_ContentChanged);
             PageContentManager.Instance.StatusUpdated += new StatusMessageEventHandler(Instance_StatusUpdated);
             PageContentManager.Instance.OnTick += new EventHandler(Instance_OnTick);
             PageContentManager.Instance.Start();
-            // Init Main Menu
-            //PageContentManager.Instance.Current = new TA.Pages.Menu.MainMenu();
             // Init Sign In
             var page = new Pages.SignInPage();
             page.Setup("SUPERVISOR", "AUDIT", "ADMIN", "QFREE");
@@ -53,6 +53,8 @@ namespace DMT
             PageContentManager.Instance.OnTick -= new EventHandler(Instance_OnTick);
             PageContentManager.Instance.StatusUpdated -= new StatusMessageEventHandler(Instance_StatusUpdated);
             PageContentManager.Instance.ContentChanged -= new EventHandler(Instance_ContentChanged);
+            // Disable Web Socket.
+            Services.LocalServiceOperations.Instance.DisableWebSocket();
         }
 
         #endregion
