@@ -88,7 +88,7 @@ namespace DMT.Services
             try
             {
                 var client = new RestClient(BaseUrl);
-                client.Timeout = 500;
+                //client.Timeout = 500;
                 if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
                 {
                     client.Authenticator = new HttpBasicAuthenticator(username, password);
@@ -110,7 +110,7 @@ namespace DMT.Services
                         Console.WriteLine("Error");
                     }
                     //Console.WriteLine(response.Content);
-                    var obj = response.Content.FromJson<TReturn>();
+                    var obj = response.Content.FromJson<NDbResult<TReturn>>();
                     if (null != obj && obj.GetType() == typeof(NDbResult<TReturn>))
                     {
                         var dbRet = (obj as NDbResult<TReturn>);
@@ -118,7 +118,7 @@ namespace DMT.Services
                     }
                     else
                     {
-                        ret.data = obj;
+                        ret.data = obj.data;
                     }
                 }
                 else
@@ -155,7 +155,7 @@ namespace DMT.Services
             try
             {
                 var client = new RestClient(BaseUrl);
-                client.Timeout = 500;
+                //client.Timeout = 500;
                 if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
                 {
                     client.Authenticator = new HttpBasicAuthenticator(username, password);
@@ -177,7 +177,7 @@ namespace DMT.Services
                         Console.WriteLine("Error");
                     }
                     //Console.WriteLine(response.Content);
-                    var obj = response.Content.FromJson<TReturn>();
+                    var obj = response.Content.FromJson<NDbResult<TReturn, TOut>>();
                     if (null != obj && obj.GetType() == typeof(NDbResult<TReturn, TOut>))
                     {
                         var dbRet = (obj as NDbResult<TReturn, TOut>);
@@ -185,7 +185,7 @@ namespace DMT.Services
                     }
                     else
                     {
-                        ret.data = obj;
+                        ret.data = obj.data;
                     }
                 }
                 else

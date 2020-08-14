@@ -23,8 +23,10 @@ Update 2020-08-14 #4
 Update 2020-08-14 #3
 - 
 
+[commited]
 Update 2020-08-14 #2
-- 
+- Update Local/DataCenter/TAxTOD service operation #134.
+  - Fixed bug in NRestClient.cs.
 
 [commited]
 Update 2020-08-14 #1
