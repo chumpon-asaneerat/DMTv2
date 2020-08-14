@@ -20,8 +20,11 @@ Update 2020-08-14 #25
 Update 2020-08-14 #24
 - 
 
+[commited]
 Update 2020-08-14 #23
-- 
+- Update Local/DataCenter/TAxTOD service operation #155.
+  - Update NDbResult ExtensionMethods #8.
+  - Update NRestResult ExtensionMethods #8.
 
 [commited]
 Update 2020-08-14 #22
