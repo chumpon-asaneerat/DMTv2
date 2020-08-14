@@ -1571,7 +1571,7 @@ namespace DMT.Models
 
 		#region Internal Class
 
-		public class FKs : UserCreditBalance
+		public class FKs : UserCreditBalance, IFKs<UserCreditBalance>
 		{
 			#region TSB
 
@@ -1889,17 +1889,14 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 			if (null == user || null == plazaGroup)
 			{
 				result.ParameterIsNull();
-				result.data = null;
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -1919,29 +1916,15 @@ namespace DMT.Models
 					if (null == ret)
 					{
 						inst = Create();
-
-						inst.TSBId = plazaGroup.TSBId;
-						inst.TSBNameEN = plazaGroup.TSBNameEN;
-						inst.TSBNameTH = plazaGroup.TSBNameTH;
-
-						inst.PlazaGroupId = plazaGroup.PlazaGroupId;
-						inst.PlazaGroupNameEN = plazaGroup.PlazaGroupNameEN;
-						inst.PlazaGroupNameTH = plazaGroup.PlazaGroupNameTH;
-						inst.Direction = plazaGroup.Direction;
-
-						inst.UserId = user.UserId;
-						inst.FullNameEN = user.FullNameEN;
-						inst.FullNameTH = user.FullNameTH;
-
+						plazaGroup.AssignTo(inst);
+						user.AssignTo(inst);
 						inst.State = StateTypes.Initial;
 					}
 					else
 					{
-						inst = ret.ToUserCreditBalance();
+						inst = ret.ToModel();
 					}
-
-					result.data = inst;
-					result.Success();
+					result.Success(inst);
 				}
 				catch (Exception ex)
 				{
@@ -1959,8 +1942,7 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
@@ -1981,11 +1963,8 @@ namespace DMT.Models
 
 					var ret = NQuery.Query<FKs>(cmd,
 						userId, plazaGroupId, StateTypes.Completed).FirstOrDefault();
-
-					UserCreditBalance inst = (null != ret) ? ret.ToUserCreditBalance() : null;
-
-					result.data = inst;
-					result.Success();
+					UserCreditBalance inst = ret.ToModel();
+					result.Success(inst);
 				}
 				catch (Exception ex)
 				{
@@ -2002,14 +1981,12 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<UserCreditBalance>();
+				result.DbConenctFailed();
 				return result;
 			}
 			if (null == tsb)
 			{
 				result.ParameterIsNull();
-				result.data = new List<UserCreditBalance>();
 				return result;
 			}
 
@@ -2026,17 +2003,18 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd,
 						tsb.TSBId, StateTypes.Completed).ToList();
+					var results = rets.ToModels();
+					/*
 					var results = new List<UserCreditBalance>();
 					if (null != rets)
 					{
 						rets.ForEach(ret =>
 						{
-							results.Add(ret.ToUserCreditBalance());
+							results.Add(ret.ToModel());
 						});
 					}
-
-					result.data = results;
-					result.Success();
+					*/
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
@@ -2053,14 +2031,12 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 			if (null == value)
 			{
 				result.ParameterIsNull();
-				result.data = null;
 				return result;
 			}
 

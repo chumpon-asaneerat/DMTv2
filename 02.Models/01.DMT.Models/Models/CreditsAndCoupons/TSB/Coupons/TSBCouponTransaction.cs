@@ -728,7 +728,7 @@ namespace DMT.Models
 
 		#region Internal Class
 
-		public class FKs : TSBCouponTransaction
+		public class FKs : TSBCouponTransaction, IFKs<TSBCouponTransaction>
 		{
 			#region TSB
 
@@ -843,13 +843,13 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				// TODO: Need to replace with functional extension methods.
 				var tsbRet = TSB.GetCurrent();
 				if (null != tsbRet && !tsbRet.errors.hasError)
 				{
@@ -875,15 +875,12 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<TSBCouponTransaction>();
+				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == tsb)
 			{
 				result.ParameterIsNull();
-				result.data = new List<TSBCouponTransaction>();
 				return result;
 			}
 			lock (sync)
@@ -898,21 +895,15 @@ namespace DMT.Models
 					cmd += "   AND TSBCouponTransactionView.FinishFlag = 1 ";
 
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
-					if (null == rets)
+					var results = rets.ToModels();
+					/*
+					var results = new List<TSBCouponTransaction>();
+					rets.ForEach(ret =>
 					{
-						result.data = new List<TSBCouponTransaction>();
-						result.Success();
-					}
-					else
-					{
-						var results = new List<TSBCouponTransaction>();
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToTSBCouponTransaction());
-						});
-						result.data = results;
-						result.Success();
-					}
+						results.Add(ret.ToModel());
+					});
+					*/
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
@@ -929,15 +920,12 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == value)
 			{
 				result.ParameterIsNull();
-				result.data = null;
 				return result;
 			}
 			if (value.TransactionDate == DateTime.MinValue)

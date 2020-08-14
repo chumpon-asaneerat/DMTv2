@@ -478,7 +478,7 @@ namespace DMT.Models
 
 		#region Internal Class
 
-		public class FKs : UserCouponBalance
+		public class FKs : UserCouponBalance, IFKs<UserCouponBalance>
 		{
 			#region TSB
 

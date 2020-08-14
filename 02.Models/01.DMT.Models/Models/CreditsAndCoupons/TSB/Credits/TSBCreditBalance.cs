@@ -1226,7 +1226,7 @@ namespace DMT.Models
 
 		#region Internal Class
 
-		public class FKs : TSBCreditBalance
+		public class FKs : TSBCreditBalance, IFKs<TSBCreditBalance>
 		{
 			#region TSB
 
@@ -1510,8 +1510,7 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 			lock (sync)
@@ -1519,6 +1518,7 @@ namespace DMT.Models
 				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
+					// TODO: Need to replace with functional extension methods.
 					var tsbRet = TSB.GetCurrent();
 					if (null != tsbRet && !tsbRet.errors.hasError)
 					{
@@ -1528,8 +1528,6 @@ namespace DMT.Models
 					else
 					{
 						result.Error(new Exception("Cannot get active TSB."));
-						result.errors.errNum = -20;
-						result.data = null;
 					}
 				}
 				catch (Exception ex)
@@ -1552,14 +1550,12 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 			if (null == tsb)
 			{
 				result.ParameterIsNull();
-				result.data = null;
 				return result;
 			}
 			lock (sync)
@@ -1572,8 +1568,8 @@ namespace DMT.Models
 					  FROM TSBCreditSummarryView
 					 WHERE TSBCreditSummarryView.TSBId = ? ";
 					var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
-					result.data = (null != ret) ? ret.ToTSBCreditBalance() : null;
-					result.Success();
+					var data = ret.ToModel();
+					result.Success(data);
 				}
 				catch (Exception ex)
 				{
@@ -1594,8 +1590,7 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<TSBCreditBalance>();
+				result.DbConenctFailed();
 				return result;
 			}
 			lock (sync)
@@ -1607,16 +1602,18 @@ namespace DMT.Models
 					SELECT *
 					  FROM TSBCreditSummarryView ";
 					var rets = NQuery.Query<FKs>(cmd).ToList();
+					var results = rets.ToModels();
+					/*
 					var results = new List<TSBCreditBalance>();
 					if (null != rets)
 					{
 						rets.ForEach(ret =>
 						{
-							results.Add(ret.ToTSBCreditBalance());
+							results.Add(ret.ToModel());
 						});
 					}
-					result.data = results;
-					result.Success();
+					*/
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{

@@ -1296,7 +1296,7 @@ namespace DMT.Models
 
 		#region Internal Class
 
-		public class FKs : TSBCreditTransaction
+		public class FKs : TSBCreditTransaction, IFKs<TSBCreditTransaction>
 		{
 			#region TSB
 
@@ -1349,15 +1349,15 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<TSBCreditTransaction>();
+				result.DbConenctFailed();
 				return result;
 			}
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
-					MethodBase med = MethodBase.GetCurrentMethod();
+					// TODO: Need to replace with functional extension methods.
 					var tsbRet = TSB.GetCurrent();
 					if (null != tsbRet && !tsbRet.errors.hasError)
 					{
@@ -1367,8 +1367,6 @@ namespace DMT.Models
 					else
 					{
 						result.Error(new Exception("Cannot get active TSB."));
-						result.errors.errNum = -20;
-						result.data = new List<TSBCreditTransaction>();
 					}
 				}
 				catch (Exception ex)
@@ -1391,14 +1389,12 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<TSBCreditTransaction>();
+				result.DbConenctFailed();
 				return result;
 			}
 			if (null == tsb)
 			{
 				result.ParameterIsNull();
-				result.data = new List<TSBCreditTransaction>();
 				return result;
 			}
 			lock (sync)
@@ -1414,22 +1410,15 @@ namespace DMT.Models
 					cmd += "   AND TSBCreditTransaction.TSBId = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
-					if (null == rets)
+					var results = rets.ToModels();
+					/*
+					var results = new List<TSBCreditTransaction>();
+					rets.ForEach(ret =>
 					{
-						result.data = new List<TSBCreditTransaction>();
-						result.Success();
-					}
-					else
-					{
-						var results = new List<TSBCreditTransaction>();
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToTSBCreditTransaction());
-						});
-
-						result.data = results;
-						result.Success();
-					}
+						results.Add(ret.ToTSBCreditTransaction());
+					});
+					*/
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
@@ -1445,6 +1434,7 @@ namespace DMT.Models
 			var result = new NDbResult<TSBCreditTransaction>();
 			lock (sync)
 			{
+				// TODO: Need to replace with functional extension methods.
 				var tsbRet = TSB.GetCurrent();
 				if (null != tsbRet && !tsbRet.errors.hasError)
 				{
@@ -1465,14 +1455,12 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 			if (null == tsb)
 			{
 				result.ParameterIsNull();
-				result.data = null;
 				return result;
 			}
 			lock (sync)
@@ -1499,10 +1487,9 @@ namespace DMT.Models
 					}
 					else
 					{
-						inst = ret.ToTSBCreditTransaction();
+						inst = ret.ToModel();
 					}
-					result.data = inst;
-					result.Success();
+					result.Success(inst);
 				}
 				catch (Exception ex)
 				{
@@ -1519,14 +1506,12 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 			if (null == value)
 			{
 				result.ParameterIsNull();
-				result.data = null;
 				return result;
 			}
 			if (value.TransactionDate == DateTime.MinValue)

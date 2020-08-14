@@ -294,7 +294,7 @@ namespace DMT.Models
 
 		#region Internal Class
 
-		public class FKs : TSBCouponBalance
+		public class FKs : TSBCouponBalance, IFKs<TSBCouponBalance>
 		{
 			#region TSB
 
@@ -379,13 +379,13 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				// TODO: Need to replace with functional extension methods.
 				var tsbRet = TSB.GetCurrent();
 				if (null != tsbRet && !tsbRet.errors.hasError)
 				{
@@ -411,15 +411,12 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == tsb)
 			{
 				result.ParameterIsNull();
-				result.data = null;
 				return result;
 			}
 			lock (sync)
@@ -432,8 +429,8 @@ namespace DMT.Models
 						  FROM TSBCouponBalanceView
 						 WHERE TSBCouponBalanceView.TSBId = ? ";
 					var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
-					result.data = (null != ret) ? ret.ToTSBCouponBalance() : null;
-					result.Success();
+					var data = ret.ToModel();
+					result.Success(data);
 				}
 				catch(Exception ex)
 				{
@@ -454,11 +451,9 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -468,21 +463,15 @@ namespace DMT.Models
 						SELECT * 
 						  FROM TSBCouponBalanceView ";
 					var rets = NQuery.Query<FKs>(cmd).ToList();
-					if (null == rets)
+					var results = rets.ToModels();
+					/*
+					var results = new List<TSBCouponBalance>();
+					rets.ForEach(ret =>
 					{
-						result.data = new List<TSBCouponBalance>();
-						result.Success();
-					}
-					else
-					{
-						var results = new List<TSBCouponBalance>();
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToTSBCouponBalance());
-						});
-						result.data = results;
-						result.Success();
-					}
+						results.Add(ret.ToModel());
+					});
+					*/
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{

@@ -1560,7 +1560,7 @@ namespace DMT.Models
 
 		#region Internal Class
 
-		public class FKs : UserCreditTransaction
+		public class FKs : UserCreditTransaction, IFKs<UserCreditTransaction>
 		{
 			#region TSB
 
@@ -1673,8 +1673,7 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<UserCreditTransaction>();
+				result.DbConenctFailed();
 				return result;
 			}
 
@@ -1683,6 +1682,7 @@ namespace DMT.Models
 				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
+					// TODO: Need to replace with functional extension methods.
 					var tsbRet = TSB.GetCurrent();
 					if (null != tsbRet && !tsbRet.errors.hasError)
 					{
@@ -1692,8 +1692,6 @@ namespace DMT.Models
 					else
 					{
 						result.Error(new Exception("Cannot get active TSB."));
-						result.errors.errNum = -20;
-						result.data = new List<UserCreditTransaction>();
 					}
 				}
 				catch (Exception ex)
@@ -1716,14 +1714,12 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<UserCreditTransaction>();
+				result.DbConenctFailed();
 				return result;
 			}
 			if (null == tsb)
 			{
 				result.ParameterIsNull();
-				result.data = new List<UserCreditTransaction>();
 				return result;
 			}
 
@@ -1748,21 +1744,15 @@ namespace DMT.Models
 					cmd += "   AND UserCredit.TSBId = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
-					if (null == rets)
+					var results = rets.ToModels();
+					/*
+					var results = new List<UserCreditTransaction>();
+					rets.ForEach(ret =>
 					{
-						result.data = new List<UserCreditTransaction>();
-						result.Success();
-					}
-					else
-					{
-						var results = new List<UserCreditTransaction>();
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToUserCreditTransaction());
-						});
-						result.data = results;
-						result.Success();
-					}
+						results.Add(ret.ToModel());
+					});
+					*/
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
@@ -1780,14 +1770,12 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 			if (null == value)
 			{
 				result.ParameterIsNull();
-				result.data = null;
 				return result;
 			}
 			else

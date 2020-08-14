@@ -16,6 +16,7 @@ using SQLiteNetExtensions.Extensions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
 using System.Reflection;
+using System.Windows.Ink;
 
 #endregion
 
@@ -420,7 +421,7 @@ namespace DMT.Models
 
 		#region Internal Class
 
-		public class FKs : TSBCouponSummary
+		public class FKs : TSBCouponSummary, IFKs<TSBCouponSummary>
 		{
 			#region TSB
 
@@ -539,13 +540,13 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				// TODO: Need to replace with functional extension methods.
 				var tsbRet = TSB.GetCurrent();
 				if (null != tsbRet && !tsbRet.errors.hasError)
 				{
@@ -571,15 +572,13 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			if (null == tsb)
 			{
 				result.ParameterIsNull();
-				result.data = new List<TSBCouponSummary>();
 				return result;
 			}
 			lock (sync)
@@ -590,24 +589,17 @@ namespace DMT.Models
 					string cmd = @"
 					SELECT * 
 					  FROM TSBCouponSummarryView
-					 WHERE TSBCouponSummarryView.TSBId = ?
-				";
+					 WHERE TSBCouponSummarryView.TSBId = ? ";
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
-					if (null == rets)
+					var results = rets.ToModels();
+					/*
+					var results = new List<TSBCouponSummary>();
+					rets.ForEach(ret =>
 					{
-						result.data = new List<TSBCouponSummary>();
-						result.Success();
-					}
-					else
-					{
-						var results = new List<TSBCouponSummary>();
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToTSBCouponSummary());
-						});
-						result.data = results;
-						result.Success();
-					}
+						results.Add(ret.ToModel());
+					});
+					*/
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
@@ -630,13 +622,13 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				// TODO: Need to replace with functional extension methods.
 				var tsbRet = TSB.GetCurrent();
 				if (null != tsbRet && !tsbRet.errors.hasError)
 				{
@@ -663,15 +655,13 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			if (null == tsb || null == user)
 			{
 				result.ParameterIsNull();
-				result.data = new List<TSBCouponSummary>();
 				return result;
 			}
 			lock (sync)
@@ -685,21 +675,15 @@ namespace DMT.Models
 					 WHERE TSBCouponSummarryView.TSBId = ?
 					   AND TSBCouponSummarryView.UserId = ? ";
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId, user.UserId).ToList();
-					if (null == rets)
+					var results = rets.ToModels();
+					/*
+					var results = new List<TSBCouponSummary>();
+					rets.ForEach(ret =>
 					{
-						result.data = new List<TSBCouponSummary>();
-						result.Success();
-					}
-					else
-					{
-						var results = new List<TSBCouponSummary>();
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToTSBCouponSummary());
-						});
-						result.data = results;
-						result.Success();
-					}
+						results.Add(ret.ToModel());
+					});
+					*/
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{

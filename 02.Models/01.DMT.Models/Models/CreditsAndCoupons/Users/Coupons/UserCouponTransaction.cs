@@ -491,7 +491,7 @@ namespace DMT.Models
 
 		#region Internal Class
 
-		public class FKs : UserCouponTransaction
+		public class FKs : UserCouponTransaction, IFKs<UserCouponTransaction>
 		{
 			#region TSB
 
@@ -571,13 +571,13 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				// TODO: Need to replace with functional extension methods.
 				var tsbRet = TSB.GetCurrent();
 				if (null != tsbRet && !tsbRet.errors.hasError)
 				{
@@ -587,8 +587,6 @@ namespace DMT.Models
 				else
 				{
 					result.Error(new Exception("Cannot get active TSB."));
-					result.errors.errNum = -20;
-					result.data = null;
 				}
 				return result;
 			}
@@ -605,15 +603,13 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			if (null == tsb)
 			{
 				result.ParameterIsNull();
-				result.data = new List<UserCouponTransaction>();
 				return result;
 			}
 			lock (sync)
@@ -631,21 +627,18 @@ namespace DMT.Models
 					cmd += "   AND UserCouponTransaction.TSBId = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
-					if (null == rets)
+					var results = rets.ToModels();
+					/*
+					var results = new List<TSBCreditBalance>();
+					if (null != rets)
 					{
-						result.data = new List<UserCouponTransaction>();
-						result.Success();
-					}
-					else
-					{
-						var results = new List<UserCouponTransaction>();
 						rets.ForEach(ret =>
 						{
-							results.Add(ret.ToUserCouponTransaction());
+							results.Add(ret.ToModel());
 						});
-						result.data = results;
-						result.Success();
 					}
+					*/
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
@@ -662,13 +655,13 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				// TODO: Need to replace with functional extension methods.
 				var tsbRet = TSB.GetCurrent();
 				if (null != tsbRet && !tsbRet.errors.hasError)
 				{
@@ -690,15 +683,13 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<UserCouponTransaction>();
+				result.DbConenctFailed();
 				return result;
 			}
 
 			if (null == tsb)
 			{
 				result.ParameterIsNull();
-				result.data = new List<UserCouponTransaction>();
 				return result;
 			}
 			lock (sync)
@@ -730,21 +721,18 @@ namespace DMT.Models
 					{
 						rets = NQuery.Query<FKs>(cmd, tsb.TSBId, CouponType.BHT35).ToList();
 					}
-					if (null == rets)
+					var results = rets.ToModels();
+					/*
+					var results = new List<TSBCreditBalance>();
+					if (null != rets)
 					{
-						result.data = new List<UserCouponTransaction>();
-						result.Success();
-					}
-					else
-					{
-						var results = new List<UserCouponTransaction>();
 						rets.ForEach(ret =>
 						{
-							results.Add(ret.ToUserCouponTransaction());
+							results.Add(ret.ToModel());
 						});
-						result.data = results;
-						result.Success();
 					}
+					*/
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
@@ -761,13 +749,13 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<UserCouponTransaction>();
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				// TODO: Need to replace with functional extension methods.
 				var tsbRet = TSB.GetCurrent();
 				if (null != tsbRet && !tsbRet.errors.hasError)
 				{
@@ -777,8 +765,6 @@ namespace DMT.Models
 				else
 				{
 					result.Error(new Exception("Cannot get active TSB."));
-					result.errors.errNum = -20;
-					result.data = null;
 				}
 				return result;
 			}
@@ -791,15 +777,12 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<UserCouponTransaction>();
+				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == tsb)
 			{
 				result.ParameterIsNull();
-				result.data = new List<UserCouponTransaction>();
 				return result;
 			}
 			lock (sync)
@@ -830,21 +813,18 @@ namespace DMT.Models
 					{
 						rets = NQuery.Query<FKs>(cmd, tsb.TSBId, CouponType.BHT80).ToList();
 					}
-					if (null == rets)
+					var results = rets.ToModels();
+					/*
+					var results = new List<TSBCreditBalance>();
+					if (null != rets)
 					{
-						result.data = new List<UserCouponTransaction>();
-						result.Success();
-					}
-					else
-					{
-						var results = new List<UserCouponTransaction>();
 						rets.ForEach(ret =>
 						{
-							results.Add(ret.ToUserCouponTransaction());
+							results.Add(ret.ToModel());
 						});
-						result.data = results;
-						result.Success();
 					}
+					*/
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
@@ -862,15 +842,13 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			if (null == user || null == coupons || coupons.Count <= 0)
 			{
 				result.ParameterIsNull();
-				result.data = null;
 				return result;
 			}
 			lock (sync)
@@ -894,8 +872,8 @@ namespace DMT.Models
 						inst.CouponType = coupon.CouponType;
 						inst.Price = coupon.Price;
 						UserCouponTransaction.Save(inst);
-						result.data = null;
-						result.Success();
+						// TODO: need to check why null.
+						result.Success(null);
 					});
 				}
 				catch (Exception ex)
@@ -913,15 +891,13 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			if (null == user || null == coupons || coupons.Count <= 0)
 			{
 				result.ParameterIsNull();
-				result.data = null;
 				return result;
 			}
 			lock (sync)
@@ -942,8 +918,8 @@ namespace DMT.Models
 						inst.CouponType = coupon.CouponType;
 						inst.Price = coupon.Price;
 						UserCouponTransaction.Save(inst);
-						result.data = null;
-						result.Success();
+						// TODO: Need to check why null.
+						result.Success(null);
 					});
 				}
 				catch (Exception ex)
@@ -961,15 +937,13 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			if (null == coupon)
 			{
 				result.ParameterIsNull();
-				result.data = null;
 				return result;
 			}
 			/*
