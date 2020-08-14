@@ -88,7 +88,7 @@ namespace DMT.Services
             try
             {
                 var client = new RestClient(BaseUrl);
-                //client.Timeout = 500;
+                client.Timeout = 5000;
                 if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
                 {
                     client.Authenticator = new HttpBasicAuthenticator(username, password);
@@ -155,7 +155,7 @@ namespace DMT.Services
             try
             {
                 var client = new RestClient(BaseUrl);
-                //client.Timeout = 500;
+                client.Timeout = 5000;
                 if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
                 {
                     client.Authenticator = new HttpBasicAuthenticator(username, password);
@@ -220,6 +220,7 @@ namespace DMT.Services
             try
             {
                 var client = new RestClient(BaseUrl);
+                client.Timeout = 5000;
                 if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
                 {
                     client.Authenticator = new HttpBasicAuthenticator(username, password);
