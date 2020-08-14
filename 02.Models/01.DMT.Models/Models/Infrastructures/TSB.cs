@@ -270,6 +270,7 @@ namespace DMT.Models
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
 					result.data = new List<TSB>();
 

@@ -17,8 +17,12 @@ Update 2020-08-14 #16
 Update 2020-08-14 #15
 - 
 
+[commited]
 Update 2020-08-14 #14
-- 
+- Update Local/DataCenter/TAxTOD service operation #146.
+  - Plaza Models add log code.
+  - Update NDbResult ExtensionMethods #2.
+  - Update NRestResult ExtensionMethods #2.
 
 [commited]
 Update 2020-08-14 #13

@@ -91,6 +91,7 @@ namespace DMT.Services
     #region NRestResult<T>
 
     public class NRestResult<T> : NRestResult
+        where T : new()
     {
         #region Constructor
 
@@ -137,6 +138,8 @@ namespace DMT.Services
     #region NRestResult<T, O>
 
     public class NRestResult<T, O> : NRestResult
+        where T: new()
+        where O : new()
     {
         #region Constructor
 
@@ -205,6 +208,7 @@ namespace DMT.Services
         }
 
         public static NRestResult<T> ToRest<T>(this NDbResult<T> value)
+            where T : new()
         {
             NRestResult<T> ret = new NRestResult<T>();
 
@@ -223,6 +227,8 @@ namespace DMT.Services
         }
 
         public static NRestResult<T, O> ToRest<T, O>(this NDbResult<T, O> value)
+            where T : new()
+            where O : new()
         {
             NRestResult<T, O> ret = new NRestResult<T, O>();
 
@@ -251,11 +257,14 @@ namespace DMT.Services
         }
 
         public static bool Success<T>(this NRestResult<T> value)
+            where T : new()
         {
             return (null != value && !value.errors.hasError) ? true : false;
         }
 
         public static bool Success<T, O>(this NRestResult<T, O> value)
+            where T : new()
+            where O : new()
         {
             return (null != value && !value.errors.hasError) ? true : false;
         }
@@ -267,33 +276,28 @@ namespace DMT.Services
         public static T Value<T>(this NRestResult<T> value)
             where T : new()
         {
-            T ret;
-            if (typeof(T) == typeof(IList))
-            {
-                ret = (null != value && !value.errors.hasError && null != value.data) ?
-                    value.data : new T();
-            }
-            else
-            {
-                ret = (null != value && !value.errors.hasError) ? value.data : default(T);
-            }
+            T ret = (null != value && !value.errors.hasError && null != value.data) ?
+                value.data : Default<T>();
             return ret;
         }
 
         public static T Value<T, O>(this NRestResult<T, O> value)
             where T : new()
+            where O : new()
         {
-            T ret;
-            if (typeof(T) == typeof(IList))
-            {
-                ret = (null != value && !value.errors.hasError && null != value.data) ?
-                    value.data : new T();
-            }
-            else
-            {
-                ret = (null != value && !value.errors.hasError) ? value.data : default(T);
-            }
+            T ret = (null != value && !value.errors.hasError && null != value.data) ?
+                value.data : Default<T>();
             return ret;
+        }
+
+        #endregion
+
+        #region Private Methods (static)
+
+        public static T Default<T>()
+            where T : new()
+        {
+            return (typeof(T) == typeof(IList)) ? new T() : default(T);
         }
 
         #endregion

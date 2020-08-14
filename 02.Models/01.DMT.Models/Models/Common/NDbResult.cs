@@ -96,6 +96,7 @@ namespace DMT.Models
     #region NDbResult<T>
 
     public class NDbResult<T> : NDbResult
+        where T: new()
     {
         #region Constructor
 
@@ -113,21 +114,25 @@ namespace DMT.Models
         public override void ConenctFailed()
         {
             base.ConenctFailed();
+            this.data = Default();
         }
 
         public override void UnknownError()
         {
             base.UnknownError();
+            this.data = Default();
         }
 
-        public override void Success()
+        public void Success(T data)
         {
             base.Success();
+            this.data = (null != data) ? data : Default();
         }
 
         public override void Error(Exception ex)
         {
             base.Error(ex);
+            this.data = Default();
         }
 
         #endregion
@@ -137,6 +142,15 @@ namespace DMT.Models
         public T data { get; set; }
 
         #endregion
+
+        #region Static Methods
+
+        public static T Default()
+        {
+            return (typeof(T) == typeof(IList)) ? new T() : default(T);
+        }
+
+        #endregion
     }
 
     #endregion
@@ -144,6 +158,8 @@ namespace DMT.Models
     #region NDbResult<T, O>
 
     public class NDbResult<T, O> : NDbResult
+        where T : new()
+        where O : new()
     {
         #region Constructor
 
@@ -161,21 +177,26 @@ namespace DMT.Models
         public override void ConenctFailed()
         {
             base.ConenctFailed();
+            this.data = Default();
         }
 
         public override void UnknownError()
         {
             base.UnknownError();
+            this.data = Default();
         }
 
-        public override void Success()
+        public void Success(T data, O output)
         {
             base.Success();
+            this.data = data;
+            this.output = output;
         }
 
         public override void Error(Exception ex)
         {
             base.Error(ex);
+            this.data = Default();
         }
 
         #endregion
@@ -184,6 +205,15 @@ namespace DMT.Models
 
         public T data { get; set; }
         public O output { get; set; }
+
+        #endregion
+
+        #region Static Methods
+
+        public static T Default()
+        {
+            return (typeof(T) == typeof(IList)) ? new T() : default(T);
+        }
 
         #endregion
     }
@@ -202,11 +232,14 @@ namespace DMT.Models
         }
 
         public static bool Success<T>(this NDbResult<T> value)
+            where T : new()
         {
             return (null != value && !value.errors.hasError) ? true : false;
         }
 
         public static bool Success<T, O>(this NDbResult<T, O> value)
+            where T : new()
+            where O : new()
         {
             return (null != value && !value.errors.hasError) ? true : false;
         }
@@ -218,33 +251,28 @@ namespace DMT.Models
         public static T Value<T>(this NDbResult<T> value)
             where T : new()
         {
-            T ret;
-            if (typeof(T) == typeof(IList))
-            {
-                ret = (null != value && !value.errors.hasError && null != value.data) ?
-                    value.data : new T();
-            }
-            else
-            {
-                ret = (null != value && !value.errors.hasError) ? value.data : default(T);
-            }
+            T ret = (null != value && !value.errors.hasError && null != value.data) ?
+                value.data : Default<T>();
             return ret;
         }
 
         public static T Value<T, O>(this NDbResult<T, O> value)
             where T : new()
+            where O : new()
         {
-            T ret;
-            if (typeof(T) == typeof(IList))
-            {
-                ret = (null != value && !value.errors.hasError && null != value.data) ?
-                    value.data : new T();
-            }
-            else
-            {
-                ret = (null != value && !value.errors.hasError) ? value.data : default(T);
-            }
+            T ret = (null != value && !value.errors.hasError && null != value.data) ?
+                value.data : Default<T>();
             return ret;
+        }
+
+        #endregion
+
+        #region Private Methods (static)
+
+        public static T Default<T>()
+            where T: new()
+        {
+            return (typeof(T) == typeof(IList)) ? new T() : default(T);
         }
 
         #endregion
