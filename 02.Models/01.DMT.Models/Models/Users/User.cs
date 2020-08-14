@@ -95,7 +95,6 @@ namespace DMT.Models
 				}
 			}
 		}
-
 		/// <summary>
 		/// Gets or sets Prefix EN.
 		/// </summary>
@@ -121,7 +120,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("User")]
 		[Description("Gets or sets First Name EN")]
-		[MaxLength(40)]
+		[MaxLength(50)]
 		[PeropertyMapName("FirstNameEN")]
 		public string FirstNameEN
 		{
@@ -219,7 +218,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("User")]
 		[Description("Gets or sets First Name TH")]
-		[MaxLength(40)]
+		[MaxLength(50)]
 		[PeropertyMapName("FirstNameTH")]
 		public string FirstNameTH
 		{

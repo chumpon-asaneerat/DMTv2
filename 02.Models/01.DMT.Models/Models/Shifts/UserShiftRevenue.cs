@@ -40,14 +40,10 @@ namespace DMT.Models
         private string _PlazaGroupNameEN = string.Empty;
         private string _PlazaGroupNameTH = string.Empty;
         private string _Direction = string.Empty;
-        /*
-        private string _PlazaId = string.Empty;
-        private string _PlazaNameEN = string.Empty;
-        private string _PlazaNameTH = string.Empty;
-        */
+
         private int _ShiftId = 0;
-        private string _ShiftNameTH = string.Empty;
         private string _ShiftNameEN = string.Empty;
+        private string _ShiftNameTH = string.Empty;
 
         private string _UserId = string.Empty;
         private string _FullNameEN = string.Empty;
@@ -152,10 +148,10 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets or sets TSBNameEN.
+        /// Gets or sets TSB Name EN.
         /// </summary>
         [Category("TSB")]
-        [Description("Gets or sets TSBNameEN.")]
+        [Description("Gets or sets TSB Name EN.")]
         [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("TSBNameEN")]
@@ -175,10 +171,10 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets or sets TSBNameTH.
+        /// Gets or sets TSB Name TH.
         /// </summary>
         [Category("TSB")]
-        [Description("Gets or sets TSBNameTH.")]
+        [Description("Gets or sets TSB Name TH.")]
         [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("TSBNameTH")]
@@ -203,10 +199,10 @@ namespace DMT.Models
         #region PlazaGroup
 
         /// <summary>
-        /// Gets or sets PlazaGroupId.
+        /// Gets or sets Plaza Group Id.
         /// </summary>
         [Category("Plaza Group")]
-        [Description("Gets or sets PlazaGroupId.")]
+        [Description("Gets or sets Plaza Group Id.")]
         [ReadOnly(true)]
         [MaxLength(10)]
         [PeropertyMapName("PlazaGroupId")]
@@ -226,10 +222,10 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets or sets PlazaGroupNameEN.
+        /// Gets or sets Plaza Group Name EN.
         /// </summary>
         [Category("Plaza Group")]
-        [Description("Gets or sets PlazaGroupNameEN.")]
+        [Description("Gets or sets Plaza Group Name EN.")]
         [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("PlazaGroupNameEN")]
@@ -249,10 +245,10 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets or sets PlazaGroupNameTH.
+        /// Gets or sets Plaza Group Name TH.
         /// </summary>
         [Category("Plaza Group")]
-        [Description("Gets or sets PlazaGroupNameTH.")]
+        [Description("Gets or sets Plaza Group Name TH.")]
         [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("PlazaGroupNameTH")]
@@ -297,87 +293,13 @@ namespace DMT.Models
 
         #endregion
 
-        #region Plaza
-        /*
-        /// <summary>
-        /// Gets or sets PlazaId.
-        /// </summary>
-        [Category("Plaza")]
-        [Description("Gets or sets PlazaId.")]
-        [ReadOnly(true)]
-        [MaxLength(10)]
-        [PeropertyMapName("PlazaId")]
-        public string PlazaId
-        {
-            get
-            {
-                return _PlazaId;
-            }
-            set
-            {
-                if (_PlazaId != value)
-                {
-                    _PlazaId = value;
-                    this.RaiseChanged("PlazaId");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets PlazaNameEN
-        /// </summary>
-        [Category("Plaza")]
-        [Description("Gets or sets PlazaNameEN")]
-        [ReadOnly(true)]
-        [Ignore]
-        [PeropertyMapName("PlazaNameEN")]
-        public virtual string PlazaNameEN
-        {
-            get
-            {
-                return _PlazaNameEN;
-            }
-            set
-            {
-                if (_PlazaNameEN != value)
-                {
-                    _PlazaNameEN = value;
-                    this.RaiseChanged("PlazaNameEN");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets PlazaNameTH
-        /// </summary>
-        [Category("Plaza")]
-        [Description("Gets or sets PlazaNameTH")]
-        [ReadOnly(true)]
-        [Ignore]
-        [PeropertyMapName("PlazaNameTH")]
-        public virtual string PlazaNameTH
-        {
-            get
-            {
-                return _PlazaNameTH;
-            }
-            set
-            {
-                if (_PlazaNameTH != value)
-                {
-                    _PlazaNameTH = value;
-                    this.RaiseChanged("PlazaNameTH");
-                }
-            }
-        }
-        */
-        #endregion
-
         #region User
 
         /// <summary>
-        /// Gets or sets UserId
+        /// Gets or sets User Id
         /// </summary>
         [Category("User")]
-        [Description("Gets or sets UserId.")]
+        [Description("Gets or sets User Id.")]
         [ReadOnly(true)]
         [MaxLength(10)]
         [PeropertyMapName("UserId")]
@@ -397,10 +319,10 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets or sets FullNameEN
+        /// Gets or sets User Full Name EN
         /// </summary>
         [Category("User")]
-        [Description("Gets or sets User FullName EN.")]
+        [Description("Gets or sets User Full Name EN.")]
         [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("FullNameEN")]
@@ -420,10 +342,10 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets or sets FullNameTH
+        /// Gets or sets User Full Name TH
         /// </summary>
         [Category("User")]
-        [Description("Gets or sets User FullName TH.")]
+        [Description("Gets or sets User Full Name TH.")]
         [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("FullNameTH")]
@@ -448,10 +370,10 @@ namespace DMT.Models
         #region Shift
 
         /// <summary>
-        /// Gets or sets ShiftId.
+        /// Gets or sets Shift Id.
         /// </summary>
         [Category("Shift")]
-        [Description("Gets or sets ShiftId.")]
+        [Description("Gets or sets Shift Id.")]
         [ReadOnly(true)]
         [PeropertyMapName("ShiftId")]
         public int ShiftId
@@ -470,33 +392,10 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets or sets Name TH.
+        /// Gets or sets Shift Name EN.
         /// </summary>
         [Category("Shift")]
-        [Description("Gets or sets Name TH.")]
-        [ReadOnly(true)]
-        [Ignore]
-        [PeropertyMapName("ShiftNameTH")]
-        public virtual string ShiftNameTH
-        {
-            get
-            {
-                return _ShiftNameTH;
-            }
-            set
-            {
-                if (_ShiftNameTH != value)
-                {
-                    _ShiftNameTH = value;
-                    this.RaiseChanged("ShiftNameTH");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets Name EN.
-        /// </summary>
-        [Category("Shift")]
-        [Description("Gets or sets Name EN.")]
+        [Description("Gets or sets Shift Name EN.")]
         [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("ShiftNameEN")]
@@ -512,6 +411,29 @@ namespace DMT.Models
                 {
                     _ShiftNameEN = value;
                     this.RaiseChanged("ShiftNameEN");
+                }
+            }
+        }
+        /// <summary>
+        /// Gets or sets Shift Name TH.
+        /// </summary>
+        [Category("Shift")]
+        [Description("Gets or sets Shift Name TH.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [PeropertyMapName("ShiftNameTH")]
+        public virtual string ShiftNameTH
+        {
+            get
+            {
+                return _ShiftNameTH;
+            }
+            set
+            {
+                if (_ShiftNameTH != value)
+                {
+                    _ShiftNameTH = value;
+                    this.RaiseChanged("ShiftNameTH");
                 }
             }
         }
@@ -675,7 +597,7 @@ namespace DMT.Models
             #region TSB
 
             /// <summary>
-            /// Gets or sets TSBNameEN.
+            /// Gets or sets TSB Name EN.
             /// </summary>
             [MaxLength(100)]
             [PeropertyMapName("TSBNameEN")]
@@ -685,7 +607,7 @@ namespace DMT.Models
                 set { base.TSBNameEN = value; }
             }
             /// <summary>
-            /// Gets or sets TSBNameTH.
+            /// Gets or sets TSB Name TH.
             /// </summary>
             [MaxLength(100)]
             [PeropertyMapName("TSBNameTH")]
@@ -700,7 +622,7 @@ namespace DMT.Models
             #region PlazaGroup
 
             /// <summary>
-            /// Gets or sets PlazaGroupNameEN.
+            /// Gets or sets Plaza Group Name EN.
             /// </summary>
             [MaxLength(100)]
             [PeropertyMapName("PlazaGroupNameEN")]
@@ -710,7 +632,7 @@ namespace DMT.Models
                 set { base.PlazaGroupNameEN = value; }
             }
             /// <summary>
-            /// Gets or sets PlazaGroupNameTH.
+            /// Gets or sets Plaza Group Name TH.
             /// </summary>
             [MaxLength(100)]
             [PeropertyMapName("PlazaGroupNameTH")]
@@ -732,45 +654,10 @@ namespace DMT.Models
 
             #endregion
 
-            #region Plaza
-            /*
-            /// <summary>
-            /// Gets or sets PlazaNameEN
-            /// </summary>
-            [MaxLength(100)]
-            [PeropertyMapName("PlazaNameEN")]
-            public override string PlazaNameEN
-            {
-                get { return base.PlazaNameEN; }
-                set { base.PlazaNameEN = value; }
-            }
-            /// <summary>
-            /// Gets or sets PlazaNameTH
-            /// </summary>
-            [MaxLength(100)]
-            [PeropertyMapName("PlazaNameTH")]
-            public override string PlazaNameTH
-            {
-                get { return base.PlazaNameTH; }
-                set { base.PlazaNameTH = value; }
-            }
-            */
-            #endregion
-
             #region Shift
 
             /// <summary>
-            /// Gets or sets Name TH.
-            /// </summary>
-            [MaxLength(50)]
-            [PeropertyMapName("ShiftNameTH")]
-            public override string ShiftNameTH
-            {
-                get { return base.ShiftNameTH; }
-                set { base.ShiftNameTH = value; }
-            }
-            /// <summary>
-            /// Gets or sets Name EN.
+            /// Gets or sets Shift Name EN.
             /// </summary>
             [MaxLength(50)]
             [PeropertyMapName("ShiftNameEN")]
@@ -779,15 +666,25 @@ namespace DMT.Models
                 get { return base.ShiftNameEN; }
                 set { base.ShiftNameEN = value; }
             }
+            /// <summary>
+            /// Gets or sets Shift Name TH.
+            /// </summary>
+            [MaxLength(50)]
+            [PeropertyMapName("ShiftNameTH")]
+            public override string ShiftNameTH
+            {
+                get { return base.ShiftNameTH; }
+                set { base.ShiftNameTH = value; }
+            }
 
             #endregion
 
             #region User
 
             /// <summary>
-            /// Gets or sets FullNameEN
+            /// Gets or sets Full Name EN.
             /// </summary>
-            [MaxLength(100)]
+            [MaxLength(150)]
             [PeropertyMapName("FullNameEN")]
             public override string FullNameEN
             {
@@ -795,9 +692,9 @@ namespace DMT.Models
                 set { base.FullNameEN = value; }
             }
             /// <summary>
-            /// Gets or sets FullNameTH
+            /// Gets or sets Full Name TH.
             /// </summary>
-            [MaxLength(100)]
+            [MaxLength(150)]
             [PeropertyMapName("FullNameTH")]
             public override string FullNameTH
             {

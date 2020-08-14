@@ -1,6 +1,43 @@
 --------------------------------------------------------------------------------------------
-Update 2020-08-14 #30
+Update 2020-08-14 #40
 - 
+
+Update 2020-08-14 #39
+- 
+
+Update 2020-08-14 #38
+- 
+
+Update 2020-08-14 #37
+- 
+
+Update 2020-08-14 #36
+- 
+
+Update 2020-08-14 #35
+- 
+
+Update 2020-08-14 #34
+- 
+
+Update 2020-08-14 #33
+- 
+
+Update 2020-08-14 #32
+- 
+
+Update 2020-08-14 #31
+- 
+
+[commited]
+Update 2020-08-14 #30
+- Update Local/DataCenter/TAxTOD service operation #162.
+  - NTable Models update #2.
+    - Add IFKs interface.
+    - Add extension methods.
+  - User Models update #4.
+  - TSBShift Models update #1.
+  - UserShiftRevenue Models update #1.
 
 [commited]
 Update 2020-08-14 #29

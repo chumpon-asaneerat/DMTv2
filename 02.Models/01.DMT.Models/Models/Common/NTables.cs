@@ -435,4 +435,34 @@ namespace DMT.Models
     }
 
     #endregion
+
+    #region IFKs interface
+
+    /// <summary>
+    /// The IFKs interface.
+    /// </summary>
+    public interface IFKs { }
+
+    #endregion
+
+    #region NTable Extension Methods
+
+    public static class NTableExtensionMethods
+    {
+        /// <summary>
+        /// Convert instance of IFKs To target Model and assigned match properties.
+        /// </summary>
+        /// <typeparam name="T">The target instance type.</typeparam>
+        /// <param name="value">The source to assign properties into new instance.</param>
+        /// <returns>Returns new instance of T model.</returns>
+        public static T ToModel<T>(this IFKs value)
+            where T: NTable, new()
+        {
+            T inst = new T();
+            if (null != value) value.AssignTo(inst);
+            return inst;
+        }
+    }
+
+    #endregion
 }
