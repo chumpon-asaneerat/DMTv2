@@ -14,8 +14,14 @@ Update 2020-08-15 #7
 Update 2020-08-15 #6
 - 
 
+[commited]
 Update 2020-08-15 #5
-- 
+- Update Local/DataCenter/TAxTOD service operation #173.
+  - Add TSBCouponStockBalanceView.sql #1.
+  - Add TSBCouponLaneBalanceView.sql #1.
+  - Add TSBCouponSoldByLaneBalanceView.sql #1.
+  - Add TSBCouponSoldByTSBBalanceView.sql #1.
+  - Update TSBCouponBalanceView.sql #1.
 
 [commited]
 Update 2020-08-15 #4

@@ -211,6 +211,14 @@
     <EmbeddedResource Include="Views\Scripts\Coupons\UserCouponTransactionView.sql" />
     <EmbeddedResource Include="Views\Scripts\Credits\TSBCreditTransactionView.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Scripts\Coupons\TSBCouponStockBalanceView.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Scripts\Coupons\TSBCouponLaneBalanceView.sql" />
+    <EmbeddedResource Include="Views\Scripts\Coupons\TSBCouponSoldByLaneBalanceView.sql" />
+    <EmbeddedResource Include="Views\Scripts\Coupons\TSBCouponSoldByTSBBalanceView.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(SolutionDir)References\runtimes\*.*" "$(TargetDir)\runtimes\*.*" /Y/D/E</PostBuildEvent>

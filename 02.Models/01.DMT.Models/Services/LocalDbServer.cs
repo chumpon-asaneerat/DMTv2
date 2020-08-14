@@ -1367,7 +1367,13 @@ namespace DMT.Services
 			// Coupons - Embeded resource used . instead / to access sub contents.
 			prefix = @"Coupons";
 			InitView("TSBCouponTransactionView", prefix);
+			
+			InitView("TSBCouponStockBalanceView", prefix);
+			InitView("TSBCouponLaneBalanceView", prefix);
+			InitView("TSBCouponSoldByLaneBalanceView", prefix);
+			InitView("TSBCouponSoldByTSBBalanceView", prefix);		
 			InitView("TSBCouponBalanceView", prefix);
+
 			InitView("TSBCouponSummarryView", prefix);
 			InitView("UserCoupon35SummaryView", prefix);
 			InitView("UserCoupon80SummaryView", prefix);
