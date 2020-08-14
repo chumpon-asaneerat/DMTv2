@@ -47,33 +47,38 @@ namespace DMT.Services
 
         #region Virtual Methods
 
-        public virtual void ConenctFailed()
+        public virtual void RestConenctFailed()
         {
-            this.errors.errNum = -1;
-            this.errors.errMsg = "No Web Service connection failed.";
+            var err = ErrNums.RestConenctFailed;
+            this.errors.errNum = (int)err;
+            this.errors.errMsg = ErrConsts.ErrMsg(err);
         }
 
         public virtual void UnknownError()
         {
-            this.errors.errNum = -9999;
-            this.errors.errMsg = "Unknown error.";
+            var err = ErrNums.UnknownError;
+            this.errors.errNum = (int)err;
+            this.errors.errMsg = ErrConsts.ErrMsg(err);
         }
 
         public virtual void ParameterIsNull()
         {
-            this.errors.errNum = -2;
-            this.errors.errMsg = "Parameter is null.";
+            var err = ErrNums.ParameterIsNull;
+            this.errors.errNum = (int)err;
+            this.errors.errMsg = ErrConsts.ErrMsg(err);
         }
 
         public virtual void Success()
         {
-            this.errors.errNum = 0;
-            this.errors.errMsg = "Success.";
+            var err = ErrNums.Success;
+            this.errors.errNum = (int)err;
+            this.errors.errMsg = ErrConsts.ErrMsg(err);
         }
 
         public virtual void Error(Exception ex)
         {
-            this.errors.errNum = -1;
+            var err = ErrNums.Exception;
+            this.errors.errNum = (int)err;
             this.errors.errMsg = ex.Message;
         }
 
@@ -104,9 +109,9 @@ namespace DMT.Services
 
         #region Override Methods
 
-        public override void ConenctFailed()
+        public override void RestConenctFailed()
         {
-            base.ConenctFailed();
+            base.RestConenctFailed();
             this.data = Default();
         }
 
@@ -170,9 +175,9 @@ namespace DMT.Services
 
         #region Override Methods
 
-        public override void ConenctFailed()
+        public override void RestConenctFailed()
         {
-            base.ConenctFailed();
+            base.RestConenctFailed();
             this.data = Default();
         }
 

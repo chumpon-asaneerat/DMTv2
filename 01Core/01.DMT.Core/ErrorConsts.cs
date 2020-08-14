@@ -16,6 +16,8 @@ namespace DMT
         RestConenctFailed = 150,
         // Models - Common (200-210)
         ParameterIsNull = 200,
+        // Common Exception
+        Exception = 900,
         // Unknown (999)
         UnknownError = 999
     }
@@ -29,9 +31,18 @@ namespace DMT
             _msgs = new Dictionary<ErrNums, string>();
             _msgs.Add(ErrNums.Success, "Success.");
             // Local Database
-            _msgs.Add(ErrNums.DbConenctFailed, "Database connection failed..");
-            // Model common
+            _msgs.Add(ErrNums.DbConenctFailed, "Database connection failed.");
+
+            // Web Service Connection
+            _msgs.Add(ErrNums.RestConenctFailed, "Web Service connection failed.");
+
+            // Models - common
             _msgs.Add(ErrNums.ParameterIsNull, "Parameter is null.");
+
+            // Common Exception
+            _msgs.Add(ErrNums.Exception, "Exception detected.");
+
+            // Unknown
             _msgs.Add(ErrNums.UnknownError, "Unknown error.");
         }
 
