@@ -358,6 +358,9 @@ namespace DMT.Services
 
     #region NRestResult Extension Methods
 
+    /// <summary>
+    /// The NRestResult Extension Methods class.
+    /// </summary>
     public static class NRestResultExtensionMethods
     {
         #region Public Methods (static)

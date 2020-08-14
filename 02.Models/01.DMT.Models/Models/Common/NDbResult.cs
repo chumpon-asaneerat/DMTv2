@@ -366,8 +366,11 @@ namespace DMT.Models
 
     #endregion
 
-    #region NDbResult
+    #region NDbResult Extension Methods
 
+    /// <summary>
+    /// The NDbResult Extension Methods class.
+    /// </summary>
     public static class NDbResultExtensionMethods
     {
         #region Public Methods (static)
