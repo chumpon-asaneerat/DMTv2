@@ -26,8 +26,13 @@ Update 2020-08-14 #33
 Update 2020-08-14 #32
 - 
 
+[commited]
 Update 2020-08-14 #31
-- 
+- Update Local/DataCenter/TAxTOD service operation #163.
+  - Update IFKs interface #2.
+  - Plaza Models update #6.
+  - PlazaGroup Models update #4.
+  - Lane Models update #4.
 
 [commited]
 Update 2020-08-14 #30

@@ -439,9 +439,13 @@ namespace DMT.Models
     #region IFKs interface
 
     /// <summary>
-    /// The IFKs interface.
+    /// The IFKs interface of T.
     /// </summary>
-    public interface IFKs { }
+    /// <typeparam name="T"></typeparam>
+    public interface IFKs<T>
+        where T : NTable, new()
+    { 
+    }
 
     #endregion
 
@@ -455,12 +459,32 @@ namespace DMT.Models
         /// <typeparam name="T">The target instance type.</typeparam>
         /// <param name="value">The source to assign properties into new instance.</param>
         /// <returns>Returns new instance of T model.</returns>
-        public static T ToModel<T>(this IFKs value)
+        public static T ToModel<T>(this IFKs<T> value)
             where T: NTable, new()
         {
             T inst = new T();
             if (null != value) value.AssignTo(inst);
             return inst;
+        }
+        /// <summary>
+        /// Convert List of instance of IFKs To target Model and assigned match properties.
+        /// </summary>
+        /// <typeparam name="T">The target instance type.</typeparam>
+        /// <param name="values">The source list.</param>
+        /// <returns>Returns new List of instance of T model.</returns>
+        public static List<T> ToModels<T>(this IEnumerable<IFKs<T>> values)
+            where T : NTable, new()
+        {
+            List<T> insts = new List<T>();
+            if (null != values)
+            {
+                foreach (var value in values)
+                {
+                    T inst = new T();
+                    if (null != value) value.AssignTo(inst);
+                }
+            }
+            return insts;
         }
     }
 

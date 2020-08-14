@@ -210,10 +210,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets TSBNameEN.
+		/// Gets or sets TSB Name EN.
 		/// </summary>
 		[Category("TSB")]
-		[Description("Gets or sets TSBNameEN.")]
+		[Description("Gets or sets TSB Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("TSBNameEN")]
@@ -233,10 +233,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets TSBNameTH.
+		/// Gets or sets TSB Name TH.
 		/// </summary>
 		[Category("TSB")]
-		[Description("Gets or sets TSBNameTH.")]
+		[Description("Gets or sets TSB Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("TSBNameTH")]
@@ -261,10 +261,10 @@ namespace DMT.Models
 		#region PlazaGroup
 
 		/// <summary>
-		/// Gets or sets PlazaGroupId.
+		/// Gets or sets Plaza Group Id.
 		/// </summary>
 		[Category("Plaza Group")]
-		[Description("Gets or sets PlazaGroupId.")]
+		[Description("Gets or sets Plaza Group Id.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
 		[PeropertyMapName("PlazaGroupId")]
@@ -284,10 +284,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets PlazaGroupNameEN.
+		/// Gets or sets Plaza Group Name EN.
 		/// </summary>
 		[Category("Plaza Group")]
-		[Description("Gets or sets PlazaGroupNameEN.")]
+		[Description("Gets or sets Plaza Group Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("PlazaGroupNameEN")]
@@ -307,10 +307,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets PlazaGroupNameTH.
+		/// Gets or sets Plaza Group Name TH.
 		/// </summary>
 		[Category("Plaza Group")]
-		[Description("Gets or sets PlazaGroupNameTH.")]
+		[Description("Gets or sets Plaza Group Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("PlazaGroupNameTH")]
@@ -358,10 +358,10 @@ namespace DMT.Models
 		#region Plaza
 
 		/// <summary>
-		/// Gets or sets PlazaId.
+		/// Gets or sets Plaza Id.
 		/// </summary>
 		[Category("Plaza")]
-		[Description("Gets or sets PlazaId.")]
+		[Description("Gets or sets Plaza Id.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
 		[PeropertyMapName("PlazaId")]
@@ -381,10 +381,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets PlazaNameEN
+		/// Gets or sets Plaza Name EN
 		/// </summary>
 		[Category("Plaza")]
-		[Description("Gets or sets PlazaNameEN")]
+		[Description("Gets or sets Plaza Name EN")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("PlazaNameEN")]
@@ -404,10 +404,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets PlazaNameTH
+		/// Gets or sets Plaza Name TH
 		/// </summary>
 		[Category("Plaza")]
-		[Description("Gets or sets PlazaNameTH")]
+		[Description("Gets or sets Plaza Name TH")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("PlazaNameTH")]
@@ -481,12 +481,12 @@ namespace DMT.Models
 
 		#region Internal Class
 
-		public class FKs : Lane
+		public class FKs : Lane, IFKs<Lane>
 		{
 			#region TSB
 
 			/// <summary>
-			/// Gets or sets TSBNameEN.
+			/// Gets or sets TSB Name EN.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("TSBNameEN")]
@@ -496,7 +496,7 @@ namespace DMT.Models
 				set { base.TSBNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets TSBNameTH.
+			/// Gets or sets TSB Name TH.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("TSBNameTH")]
@@ -511,7 +511,7 @@ namespace DMT.Models
 			#region PlazaGroup
 
 			/// <summary>
-			/// Gets or sets PlazaGroupNameEN.
+			/// Gets or sets Plaza Group Name EN.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("PlazaGroupNameEN")]
@@ -521,7 +521,7 @@ namespace DMT.Models
 				set { base.PlazaGroupNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets PlazaGroupNameTH.
+			/// Gets or sets Plaza Group Name TH.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("PlazaGroupNameTH")]
@@ -546,7 +546,7 @@ namespace DMT.Models
 			#region Plaza
 
 			/// <summary>
-			/// Gets or sets PlazaNameEN
+			/// Gets or sets Plaza Name EN.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("PlazaNameEN")]
@@ -556,7 +556,7 @@ namespace DMT.Models
 				set { base.PlazaNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets PlazaNameTH
+			/// Gets or sets Plaza Name TH.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("PlazaNameTH")]
@@ -569,14 +569,14 @@ namespace DMT.Models
 			#endregion
 
 			#region Public Methods
-
+			/*
 			public Lane ToLane()
 			{
 				Lane inst = new Lane();
 				this.AssignTo(inst); // set all properties to new instance.
 				return inst;
 			}
-
+			*/
 			#endregion
 		}
 
@@ -604,14 +604,17 @@ namespace DMT.Models
 					cmd += "  FROM LaneView ";
 
 					var rets = NQuery.Query<FKs>(cmd).ToList();
+					var results = rets.ToModels();
+					/*
 					var results = new List<Lane>();
 					if (null != rets)
 					{
 						rets.ForEach(ret =>
 						{
-							results.Add(ret.ToLane());
+							results.Add(ret.ToModel());
 						});
 					}
+					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -654,7 +657,7 @@ namespace DMT.Models
 					cmd += " WHERE LaneId = ? ";
 
 					var ret = NQuery.Query<FKs>(cmd, laneId).FirstOrDefault();
-					var data = (null != ret) ? ret.ToLane() : null;
+					var data = (null != ret) ? ret.ToModel() : null;
 					result.Success(data);
 				}
 				catch (Exception ex)
@@ -712,14 +715,17 @@ namespace DMT.Models
 					cmd += "  FROM LaneView ";
 					cmd += " WHERE TSBId = ? ";
 					var rets = NQuery.Query<FKs>(cmd, tsbId).ToList();
+					var results = rets.ToModels();
+					/*
 					var results = new List<Lane>();
 					if (null != rets)
 					{
 						rets.ForEach(ret =>
 						{
-							results.Add(ret.ToLane());
+							results.Add(ret.ToModel());
 						});
 					}
+					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -769,14 +775,17 @@ namespace DMT.Models
 					cmd += "   AND PlazaGroupId = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, tsbId, plazaGroupId).ToList();
+					var results = rets.ToModels();
+					/*
 					var results = new List<Lane>();
 					if (null != rets)
 					{
 						rets.ForEach(ret =>
 						{
-							results.Add(ret.ToLane());
+							results.Add(ret.ToModel());
 						});
 					}
+					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -828,14 +837,17 @@ namespace DMT.Models
 					cmd += "   AND PlazaId = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, tsbId, plazaGroupId, plazaId).ToList();
+					var results = rets.ToModels();
+					/*
 					var results = new List<Lane>();
 					if (null != rets)
 					{
 						rets.ForEach(ret =>
 						{
-							results.Add(ret.ToLane());
+							results.Add(ret.ToModel());
 						});
 					}
+					*/
 					result.Success(results);
 				}
 				catch (Exception ex)

@@ -178,10 +178,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets TSBNameEN.
+		/// Gets or sets TSB Name EN.
 		/// </summary>
 		[Category("TSB")]
-		[Description("Gets or sets TSBNameEN.")]
+		[Description("Gets or sets TSB Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("TSBNameEN")]
@@ -201,10 +201,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets TSBNameTH.
+		/// Gets or sets TSB Name TH.
 		/// </summary>
 		[Category("TSB")]
-		[Description("Gets or sets TSBNameTH.")]
+		[Description("Gets or sets TSB Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("TSBNameTH")]
@@ -278,12 +278,12 @@ namespace DMT.Models
 
 		#region Internal Class
 
-		public class FKs : PlazaGroup
+		public class FKs : PlazaGroup, IFKs<PlazaGroup>
 		{
 			#region TSB
 
 			/// <summary>
-			/// Gets or sets TSBNameEN.
+			/// Gets or sets TSB Name EN.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("TSBNameEN")]
@@ -293,7 +293,7 @@ namespace DMT.Models
 				set { base.TSBNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets TSBNameTH.
+			/// Gets or sets TSB Name TH.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("TSBNameTH")]
@@ -306,14 +306,14 @@ namespace DMT.Models
 			#endregion
 
 			#region Public Methods
-
+			/*
 			public PlazaGroup ToPlazaGroup()
 			{
 				PlazaGroup inst = new PlazaGroup();
 				this.AssignTo(inst); // set all properties to new instance.
 				return inst;
 			}
-
+			*/
 			#endregion
 		}
 
@@ -341,14 +341,17 @@ namespace DMT.Models
 					cmd += "  FROM PlazaGroupView ";
 
 					var rets = NQuery.Query<FKs>(cmd).ToList();
+					var results = rets.ToModels();
+					/*
 					var results = new List<PlazaGroup>();
 					if (null != rets)
 					{
 						rets.ForEach(ret =>
 						{
-							results.Add(ret.ToPlazaGroup());
+							results.Add(ret.ToModel());
 						});
 					}
+					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -390,7 +393,7 @@ namespace DMT.Models
 					cmd += "  FROM PlazaGroupView ";
 					cmd += " WHERE PlazaGroupId = ? ";
 					var ret = NQuery.Query<FKs>(cmd, plazaGroupId).FirstOrDefault();
-					var data = (null != ret) ? ret.ToPlazaGroup() : null;
+					var data = (null != ret) ? ret.ToModel() : null;
 					result.Success(data);
 				}
 				catch (Exception ex)
@@ -442,14 +445,17 @@ namespace DMT.Models
 					cmd += " WHERE TSBId = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, tsbId).ToList();
+					var results = rets.ToModels();
+					/*
 					var results = new List<PlazaGroup>();
 					if (null != rets)
 					{
 						rets.ForEach(ret =>
 						{
-							results.Add(ret.ToPlazaGroup());
+							results.Add(ret.ToModel());
 						});
 					}
+					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
