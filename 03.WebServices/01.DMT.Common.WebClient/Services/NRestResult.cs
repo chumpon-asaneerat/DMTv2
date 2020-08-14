@@ -258,6 +258,16 @@ namespace DMT.Services
 
     public static class NRestResultExtensionMethods
     {
+        #region Public Methods (static)
+
+        public static T Default<T>()
+            where T : new()
+        {
+            return (typeof(T) == typeof(IList)) ? new T() : default(T);
+        }
+
+        #endregion
+
         #region ToRest (from NDbResult)
 
         public static NRestResult ToRest(this NDbResult value)
@@ -362,13 +372,7 @@ namespace DMT.Services
 
         #endregion
 
-        #region Private Methods (static)
-
-        public static T Default<T>()
-            where T : new()
-        {
-            return (typeof(T) == typeof(IList)) ? new T() : default(T);
-        }
+        #region Functionals
 
         #endregion
     }

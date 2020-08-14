@@ -268,6 +268,16 @@ namespace DMT.Models
 
     public static class NDbResultExtensionMethods
     {
+        #region Public Methods (static)
+
+        public static T Default<T>()
+            where T : new()
+        {
+            return (typeof(T) == typeof(IList)) ? new T() : default(T);
+        }
+
+        #endregion
+
         #region Success
 
         public static bool Success(this NDbResult value)
@@ -311,13 +321,7 @@ namespace DMT.Models
 
         #endregion
 
-        #region Private Methods (static)
-
-        public static T Default<T>()
-            where T: new()
-        {
-            return (typeof(T) == typeof(IList)) ? new T() : default(T);
-        }
+        #region Functionals
 
         #endregion
     }
