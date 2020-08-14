@@ -575,10 +575,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets TSBNameEN.
+		/// Gets or sets TSB Name EN.
 		/// </summary>
 		[Category("TSB")]
-		[Description("Gets or sets TSBNameEN.")]
+		[Description("Gets or sets TSB Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("TSBNameEN")]
@@ -598,10 +598,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets TSBNameTH.
+		/// Gets or sets TSB Name TH.
 		/// </summary>
 		[Category("TSB")]
-		[Description("Gets or sets TSBNameTH.")]
+		[Description("Gets or sets TSB Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("TSBNameTH")]
@@ -626,10 +626,10 @@ namespace DMT.Models
 		#region PlazaGroup
 
 		/// <summary>
-		/// Gets or sets PlazaGroupId.
+		/// Gets or sets Plaza Group Id.
 		/// </summary>
 		[Category("Plaza Group")]
-		[Description("Gets or sets PlazaGroupId.")]
+		[Description("Gets or sets Plaza Group Id.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
 		[PeropertyMapName("PlazaGroupId")]
@@ -649,10 +649,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets PlazaGroupNameEN.
+		/// Gets or sets Plaza Group Name EN.
 		/// </summary>
 		[Category("Plaza Group")]
-		[Description("Gets or sets PlazaGroupNameEN.")]
+		[Description("Gets or sets Plaza Group Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("PlazaGroupNameEN")]
@@ -672,10 +672,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets PlazaGroupNameTH.
+		/// Gets or sets Plaza Group Name TH.
 		/// </summary>
 		[Category("Plaza Group")]
-		[Description("Gets or sets PlazaGroupNameTH.")]
+		[Description("Gets or sets Plaza Group Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("PlazaGroupNameTH")]
@@ -873,7 +873,7 @@ namespace DMT.Models
 		/// Gets or sets Supervisor Id
 		/// </summary>
 		[Category("Supervisor")]
-		[Description("Gets or sets SupervisorId")]
+		[Description("Gets or sets Supervisor Id.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
 		[PeropertyMapName("SupervisorId")]
@@ -893,10 +893,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets Supervisor Name EN
+		/// Gets or sets Supervisor Name EN.
 		/// </summary>
 		[Category("Supervisor")]
-		[Description("Gets or sets SupervisorNameEN")]
+		[Description("Gets or sets Supervisor Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("Supervisor Name EN")]
@@ -916,10 +916,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets Supervisor Name TH
+		/// Gets or sets Supervisor Name TH.
 		/// </summary>
 		[Category("Supervisor")]
-		[Description("Gets or sets Supervisor Name TH")]
+		[Description("Gets or sets Supervisor Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("SupervisorNameTH")]
@@ -1545,7 +1545,7 @@ namespace DMT.Models
 			#region TSB
 
 			/// <summary>
-			/// Gets or sets TSBNameEN.
+			/// Gets or sets TSB Name EN.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("TSBNameEN")]
@@ -1555,7 +1555,7 @@ namespace DMT.Models
 				set { base.TSBNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets TSBNameTH.
+			/// Gets or sets TSB Name TH.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("TSBNameTH")]
@@ -1570,7 +1570,7 @@ namespace DMT.Models
 			#region PlazaGroup
 
 			/// <summary>
-			/// Gets or sets PlazaGroupNameEN.
+			/// Gets or sets Plaza Group Name EN.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("PlazaGroupNameEN")]
@@ -1580,7 +1580,7 @@ namespace DMT.Models
 				set { base.PlazaGroupNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets PlazaGroupNameTH.
+			/// Gets or sets Plaza Group Name TH.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("PlazaGroupNameTH")]
@@ -1605,16 +1605,6 @@ namespace DMT.Models
 			#region Shift
 
 			/// <summary>
-			/// Gets or sets Shift Name EN.
-			/// </summary>
-			[MaxLength(50)]
-			[PeropertyMapName("ShiftNameEN")]
-			public override string ShiftNameEN
-			{
-				get { return base.ShiftNameEN; }
-				set { base.ShiftNameEN = value; }
-			}
-			/// <summary>
 			/// Gets or sets Shift Name TH.
 			/// </summary>
 			[MaxLength(50)]
@@ -1624,13 +1614,23 @@ namespace DMT.Models
 				get { return base.ShiftNameTH; }
 				set { base.ShiftNameTH = value; }
 			}
+			/// <summary>
+			/// Gets or sets Shift Name EN.
+			/// </summary>
+			[MaxLength(50)]
+			[PeropertyMapName("ShiftNameEN")]
+			public override string ShiftNameEN
+			{
+				get { return base.ShiftNameEN; }
+				set { base.ShiftNameEN = value; }
+			}
 
 			#endregion
 
 			#region User
 
 			/// <summary>
-			/// Gets or sets FullNameEN
+			/// Gets or sets Full Name EN.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("FullNameEN")]
@@ -1640,7 +1640,7 @@ namespace DMT.Models
 				set { base.FullNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets FullNameTH
+			/// Gets or sets Full Name TH.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("FullNameTH")]
@@ -1655,7 +1655,7 @@ namespace DMT.Models
 			#region Supervisor
 
 			/// <summary>
-			/// Gets or sets Supervisor Name EN
+			/// Gets or sets Supervisor Name EN.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("SupervisorNameEN")]
@@ -1665,7 +1665,7 @@ namespace DMT.Models
 				set { base.SupervisorNameEN = value; }
 			}
 			/// <summary>
-			/// Gets or sets Supervisor Name TH
+			/// Gets or sets Supervisor Name TH.
 			/// </summary>
 			[MaxLength(100)]
 			[PeropertyMapName("SupervisorNameTH")]

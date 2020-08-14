@@ -11,8 +11,14 @@ Update 2020-08-14 #38
 Update 2020-08-14 #37
 - 
 
+[commited]
 Update 2020-08-14 #36
-- 
+- Update Local/DataCenter/TAxTOD service operation #168.
+  - TSBExchangeGroup Models update #1.
+  - TSBExchangeTransaction Models update #1.
+  - LaneAttendance Models update #3.
+  - LanePayment Models update #3.
+  - RevenueEntry Models update #3.
 
 [commited]
 Update 2020-08-14 #35
