@@ -1330,9 +1330,11 @@ namespace DMT.Services
 
 			string prefix;
 
-			// Plaza - Embeded resource used . instead / to access sub contents.
-			prefix = @"Plaza";
+			// Infrastructures - Embeded resource used . instead / to access sub contents.
+			prefix = @"Infrastructures";
+			InitView("PlazaGroupView", prefix);
 			InitView("PlazaView", prefix);
+			InitView("LaneView", prefix);
 
 			// Credits - Embeded resource used . instead / to access sub contents.
 			prefix = @"Credits";

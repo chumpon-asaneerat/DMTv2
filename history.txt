@@ -2,11 +2,22 @@
 Update 2020-08-14 #20
 - 
 
+[commited]
 Update 2020-08-14 #19
-- 
+- Update Local/DataCenter/TAxTOD service operation #151.
+  - Add PlazaGroupView.sql.
+  - Add LaneView.sql.
+  - Update PlazaView.sql.
+  - PlazaGroup Models update #1.
+    - Add log.
+    - Update query.
+  - Lane Models update #1.
+    - Add log.
+    - Update query.
 
 [commited]
 Update 2020-08-14 #18
+- Update Local/DataCenter/TAxTOD service operation #150.
   - Update NDbResult ExtensionMethods #5.
   - Update NRestResult ExtensionMethods #5.
   - Add PlazaView.sql.

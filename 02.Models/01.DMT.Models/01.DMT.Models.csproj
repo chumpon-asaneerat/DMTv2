@@ -167,7 +167,13 @@
     <EmbeddedResource Include="Views\Scripts\Credits\UserCreditSummaryView.sql" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Scripts\Plaza\PlazaView.sql" />
+    <EmbeddedResource Include="Views\Scripts\Infrastructures\PlazaView.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Scripts\Infrastructures\PlazaGroupView.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Scripts\Infrastructures\LaneView.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

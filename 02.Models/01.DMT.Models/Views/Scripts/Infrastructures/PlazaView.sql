@@ -6,8 +6,6 @@ AS
 	  FROM Plaza
 	     , PlazaGroup
 		 , TSB
-	 WHERE Plaza.TSBId = TSB.TSBId
-	   AND PlazaGroup.TSBId = TSB.TSBId
-	   AND Plaza.TSBId = TSB.TSBId
+	 WHERE PlazaGroup.TSBId = TSB.TSBId
 	   AND Plaza.TSBId = TSB.TSBId
 	   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId

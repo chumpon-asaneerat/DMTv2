@@ -15,6 +15,7 @@ using SQLiteNetExtensions.Extensions;
 // required for JsonIgnore attribute.
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
+using System.Reflection;
 
 #endregion
 
@@ -326,20 +327,18 @@ namespace DMT.Models
 
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<PlazaGroup>();
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT PlazaGroup.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "  FROM PlazaGroup, TSB ";
-					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
+					cmd += "SELECT PlazaGroupView.* ";
+					cmd += "  FROM PlazaGroupView ";
 
 					var rets = NQuery.Query<FKs>(cmd).ToList();
 					var results = new List<PlazaGroup>();
@@ -350,13 +349,12 @@ namespace DMT.Models
 							results.Add(ret.ToPlazaGroup());
 						});
 					}
-					result.data = results;
-					result.Success();
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<PlazaGroup>();
 				}
 
 				return result;
@@ -378,29 +376,27 @@ namespace DMT.Models
 
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT PlazaGroup.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "  FROM PlazaGroup, TSB ";
-					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-					cmd += "   AND PlazaGroup.PlazaGroupId = ? ";
+					cmd += "SELECT PlazaGroupView.* ";
+					cmd += "  FROM PlazaGroupView ";
+					cmd += "   AND PlazaGroupView.PlazaGroupId = ? ";
 					var ret = NQuery.Query<FKs>(cmd, plazaGroupId).FirstOrDefault();
-					result.data = (null != ret) ? ret.ToPlazaGroup() : null;
-					result.Success();
+					var data = (null != ret) ? ret.ToPlazaGroup() : null;
+					result.Success(data);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = null;
 				}
 				return result;
 			}
@@ -421,8 +417,7 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<PlazaGroup>();
+				result.DbConenctFailed();
 				return result;
 			}
 
@@ -438,14 +433,13 @@ namespace DMT.Models
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT PlazaGroup.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "  FROM PlazaGroup, TSB ";
-					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-					cmd += "   AND PlazaGroup.TSBId = ? ";
+					cmd += "SELECT PlazaGroupView.* ";
+					cmd += "  FROM PlazaGroupView ";
+					cmd += "   AND PlazaGroupView.TSBId = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, tsbId).ToList();
 					var results = new List<PlazaGroup>();
@@ -456,13 +450,12 @@ namespace DMT.Models
 							results.Add(ret.ToPlazaGroup());
 						});
 					}
-					result.data = results;
-					result.Success();
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<PlazaGroup>();
 
 				}
 				return result;
