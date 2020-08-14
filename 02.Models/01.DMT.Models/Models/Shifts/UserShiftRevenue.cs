@@ -15,6 +15,7 @@ using SQLiteNetExtensions.Extensions;
 // required for JsonIgnore attribute.
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
+using System.Reflection;
 
 #endregion
 
@@ -98,10 +99,10 @@ namespace DMT.Models
         #region UserShift
 
         /// <summary>
-        /// Gets or sets UserShift Id.
+        /// Gets or sets User Shift Id.
         /// </summary>
         [Category("Shift")]
-        [Description("Gets or sets UserShift Id.")]
+        [Description("Gets or sets User Shift Id.")]
         [ReadOnly(true)]
         [PeropertyMapName("UserShiftId")]
         public int UserShiftId
@@ -592,7 +593,7 @@ namespace DMT.Models
 
         #region Internal Class
 
-        public class FKs : UserShiftRevenue
+        public class FKs : UserShiftRevenue, IFKs<UserShiftRevenue>
         {
             #region TSB
 
@@ -705,14 +706,14 @@ namespace DMT.Models
             #endregion
 
             #region Public Methods
-
+            /*
             public UserShiftRevenue ToUserShiftRevenue()
             {
                 UserShiftRevenue inst = new UserShiftRevenue();
                 this.AssignTo(inst); // set all properties to new instance.
                 return inst;
             }
-
+            */
             #endregion
         }
 
@@ -748,8 +749,7 @@ namespace DMT.Models
             SQLiteConnection db = Default;
             if (null == db)
             {
-                result.ConenctFailed();
-                result.data = null;
+                result.DbConenctFailed();
                 return result;
             }
 
@@ -760,6 +760,7 @@ namespace DMT.Models
             }
             lock (sync)
             {
+                MethodBase med = MethodBase.GetCurrentMethod();
                 try
                 {
                     value.RevenueDate = revenueDate;
@@ -769,8 +770,8 @@ namespace DMT.Models
                 }
                 catch (Exception ex)
                 {
+                    med.Err(ex);
                     result.Error(ex);
-                    result.data = null;
                 }
                 return result;
             }
@@ -783,8 +784,7 @@ namespace DMT.Models
             SQLiteConnection db = Default;
             if (null == db)
             {
-                result.ConenctFailed();
-                result.data = null;
+                result.DbConenctFailed();
                 return result;
             }
 
@@ -795,6 +795,7 @@ namespace DMT.Models
             }
             lock (sync)
             {
+                MethodBase med = MethodBase.GetCurrentMethod();
                 try
                 {
                     string cmd = string.Empty;
@@ -815,13 +816,13 @@ namespace DMT.Models
                     cmd += "   AND UserShiftRevenue.PlazaGroupId = ? ";
                     var ret = NQuery.Query<FKs>(cmd, shift.UserShiftId,
                         plazaGroup.PlazaGroupId).FirstOrDefault();
-                    result.data = (null != ret) ? ret.ToUserShiftRevenue() : null;
+                    result.data = (null != ret) ? ret.ToModel() : null;
                     result.Success();
                 }
                 catch (Exception ex)
                 {
+                    med.Err(ex);
                     result.Error(ex);
-                    result.data = null;
                 }
                 return result;
             }

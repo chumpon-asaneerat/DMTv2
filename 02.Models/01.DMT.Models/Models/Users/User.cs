@@ -74,10 +74,10 @@ namespace DMT.Models
 		#region Common
 
 		/// <summary>
-		/// Gets or sets UserId
+		/// Gets or sets User Id.
 		/// </summary>
 		[Category("User")]
-		[Description("Gets or sets UserId")]
+		[Description("Gets or sets User Id.")]
 		[PrimaryKey, MaxLength(10)]
 		[PeropertyMapName("UserId")]
 		public string UserId
@@ -464,7 +464,7 @@ namespace DMT.Models
 
 		#region Internal Class
 
-		public class FKs : User
+		public class FKs : User, IFKs<User>
 		{
 			#region Role
 
@@ -492,14 +492,14 @@ namespace DMT.Models
 			#endregion
 
 			#region Public Methods
-
+			/*
 			public User ToUser()
 			{
 				User inst = new User();
 				this.AssignTo(inst); // set all properties to new instance.
 				return inst;
 			}
-
+			*/
 			#endregion
 		}
 
@@ -527,14 +527,17 @@ namespace DMT.Models
 					cmd += "  FROM UserView ";
 
 					var rets = NQuery.Query<FKs>(cmd).ToList();
+					var results = rets.ToModels();
+					/*
 					var results = new List<User>();
 					if (null != rets)
 					{
 						rets.ForEach(ret =>
 						{
-							results.Add(ret.ToUser());
+							results.Add(ret.ToModel());
 						});
 					}
+					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -576,7 +579,7 @@ namespace DMT.Models
 					cmd += " WHERE UserId = ? ";
 
 					var ret = NQuery.Query<FKs>(cmd, userId).FirstOrDefault();
-					var data = (null != ret) ? ret.ToUser() : null;
+					var data = (null != ret) ? ret.ToModel() : null;
 					result.Success(data);
 				}
 				catch (Exception ex)
@@ -618,15 +621,17 @@ namespace DMT.Models
 					cmd += " WHERE UserId like ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, "%" + userId + "%").ToList();
-
+					var results = rets.ToModels();
+					/*
 					var results = new List<User>();
 					if (null != rets)
 					{
 						rets.ForEach(ret =>
 						{
-							results.Add(ret.ToUser());
+							results.Add(ret.ToModel());
 						});
 					}
+					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -668,14 +673,17 @@ namespace DMT.Models
 					cmd += " WHERE RoleId = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, roleId).ToList();
+					var results = rets.ToModels();
+					/*
 					var results = new List<User>();
 					if (null != rets)
 					{
 						rets.ForEach(ret =>
 						{
-							results.Add(ret.ToUser());
+							results.Add(ret.ToModel());
 						});
 					}
+					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -709,14 +717,17 @@ namespace DMT.Models
 					cmd += "   AND Status = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, groupId, status).ToList();
+					var results = rets.ToModels();
+					/*
 					var results = new List<User>();
 					if (null != rets)
 					{
 						rets.ForEach(ret =>
 						{
-							results.Add(ret.ToUser());
+							results.Add(ret.ToModel());
 						});
 					}
+					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -750,14 +761,17 @@ namespace DMT.Models
 					cmd += "   AND Status = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, roleId, status).ToList();
+					var results = rets.ToModels();
+					/*
 					var results = new List<User>();
 					if (null != rets)
 					{
 						rets.ForEach(ret =>
 						{
-							results.Add(ret.ToUser());
+							results.Add(ret.ToModel());
 						});
 					}
+					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -798,7 +812,7 @@ namespace DMT.Models
 					cmd += "   AND Password = ? ";
 
 					var ret = NQuery.Query<FKs>(cmd, userId, password).FirstOrDefault();
-					var data = (null != ret) ? ret.ToUser() : null;
+					var data = (null != ret) ? ret.ToModel() : null;
 					result.Success(data);
 				}
 				catch (Exception ex)
@@ -836,7 +850,7 @@ namespace DMT.Models
 					cmd += " WHERE CardId = ? ";
 
 					var ret = NQuery.Query<FKs>(cmd, cardId).FirstOrDefault();
-					var data = (null != ret) ? ret.ToUser() : null;
+					var data = (null != ret) ? ret.ToModel() : null;
 					result.Success(data);
 				}
 				catch (Exception ex)

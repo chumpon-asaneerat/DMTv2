@@ -519,7 +519,7 @@ namespace DMT.Models
 
         #region Internal Class
 
-        public class FKs : TSBShift
+        public class FKs : TSBShift, IFKs<TSBShift>
         {
             #region TSB
 
@@ -597,14 +597,14 @@ namespace DMT.Models
             #endregion
 
             #region Public Methods
-
+            /*
             public TSBShift ToTSBShift()
             {
                 TSBShift inst = new TSBShift();
                 this.AssignTo(inst); // set all properties to new instance.
                 return inst;
             }
-
+            */
             #endregion
         }
 
@@ -616,7 +616,7 @@ namespace DMT.Models
         {
             var result = new NDbResult<TSBShift>();
             TSBShift inst = Create();
-
+            // TODO: Need to replace with functional extension methods.
             var tsbRet = TSB.GetCurrent();
             if (tsbRet.errors.hasError)
             {
@@ -661,7 +661,7 @@ namespace DMT.Models
                     cmd += "   AND TSBShift.TSBId = TSB.TSBId ";
                     cmd += "   AND TSBShift.End = ? ";
                     var ret = NQuery.Query<FKs>(cmd, DateTime.MinValue).FirstOrDefault();
-                    var data = (null != ret) ? ret.ToTSBShift() : null;
+                    var data = (null != ret) ? ret.ToModel() : null;
                     result.Success(data);
                 }
                 catch (Exception ex)

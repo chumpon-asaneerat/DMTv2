@@ -15,6 +15,7 @@ using SQLiteNetExtensions.Extensions;
 // required for JsonIgnore attribute.
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
+using System.Reflection;
 
 #endregion
 
@@ -117,10 +118,10 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets or sets TSBNameEN.
+        /// Gets or sets TSB Name EN.
         /// </summary>
         [Category("TSB")]
-        [Description("Gets or sets TSBNameEN.")]
+        [Description("Gets or sets TSB Name EN.")]
         [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("TSBNameEN")]
@@ -140,10 +141,10 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets or sets TSBNameTH.
+        /// Gets or sets TSB Name TH.
         /// </summary>
         [Category("TSB")]
-        [Description("Gets or sets TSBNameTH.")]
+        [Description("Gets or sets TSB Name TH.")]
         [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("TSBNameTH")]
@@ -168,10 +169,10 @@ namespace DMT.Models
         #region Shift
 
         /// <summary>
-        /// Gets or sets ShiftId.
+        /// Gets or sets Shift Id.
         /// </summary>
         [Category("Shift")]
-        [Description("Gets or sets ShiftId.")]
+        [Description("Gets or sets Shift Id.")]
         [ReadOnly(true)]
         [PeropertyMapName("ShiftId")]
         public int ShiftId
@@ -190,33 +191,10 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets or sets Name TH.
+        /// Gets or sets Shift Name EN.
         /// </summary>
         [Category("Shift")]
-        [Description("Gets or sets Name TH.")]
-        [ReadOnly(true)]
-        [Ignore]
-        [PeropertyMapName("ShiftNameTH")]
-        public virtual string ShiftNameTH
-        {
-            get
-            {
-                return _ShiftNameTH;
-            }
-            set
-            {
-                if (_ShiftNameTH != value)
-                {
-                    _ShiftNameTH = value;
-                    this.RaiseChanged("ShiftNameTH");
-                }
-            }
-        }
-        /// <summary>
-        /// Gets or sets Name EN.
-        /// </summary>
-        [Category("Shift")]
-        [Description("Gets or sets Name EN.")]
+        [Description("Gets or sets Shift Name EN.")]
         [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("ShiftNameEN")]
@@ -235,16 +213,39 @@ namespace DMT.Models
                 }
             }
         }
+        /// <summary>
+        /// Gets or sets Shift Name TH.
+        /// </summary>
+        [Category("Shift")]
+        [Description("Gets or sets Shift Name TH.")]
+        [ReadOnly(true)]
+        [Ignore]
+        [PeropertyMapName("ShiftNameTH")]
+        public virtual string ShiftNameTH
+        {
+            get
+            {
+                return _ShiftNameTH;
+            }
+            set
+            {
+                if (_ShiftNameTH != value)
+                {
+                    _ShiftNameTH = value;
+                    this.RaiseChanged("ShiftNameTH");
+                }
+            }
+        }
 
         #endregion
 
         #region User
 
         /// <summary>
-        /// Gets or sets UserId
+        /// Gets or sets User Id
         /// </summary>
         [Category("User")]
-        [Description("Gets or sets UserId.")]
+        [Description("Gets or sets User Id.")]
         [ReadOnly(true)]
         [MaxLength(10)]
         [PeropertyMapName("UserId")]
@@ -264,10 +265,10 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets or sets FullNameEN
+        /// Gets or sets User Full Name EN
         /// </summary>
         [Category("User")]
-        [Description("Gets or sets User FullName EN.")]
+        [Description("Gets or sets User Full Name EN.")]
         [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("FullNameEN")]
@@ -287,10 +288,10 @@ namespace DMT.Models
             }
         }
         /// <summary>
-        /// Gets or sets FullNameTH
+        /// Gets or sets User Full Name TH
         /// </summary>
         [Category("User")]
-        [Description("Gets or sets User FullName TH.")]
+        [Description("Gets or sets User Full Name TH.")]
         [ReadOnly(true)]
         [Ignore]
         [PeropertyMapName("FullNameTH")]
@@ -518,12 +519,12 @@ namespace DMT.Models
 
         #region Internal Class
 
-        public class FKs : UserShift
+        public class FKs : UserShift, IFKs<UserShift>
         {
             #region TSB
 
             /// <summary>
-            /// Gets or sets TSBNameEN.
+            /// Gets or sets TSB Name EN.
             /// </summary>
             [MaxLength(100)]
             [PeropertyMapName("TSBNameEN")]
@@ -533,7 +534,7 @@ namespace DMT.Models
                 set { base.TSBNameEN = value; }
             }
             /// <summary>
-            /// Gets or sets TSBNameTH.
+            /// Gets or sets TSB Name TH.
             /// </summary>
             [MaxLength(100)]
             [PeropertyMapName("TSBNameTH")]
@@ -548,7 +549,7 @@ namespace DMT.Models
             #region Shift
 
             /// <summary>
-            /// Gets or sets Name TH.
+            /// Gets or sets Shift Name TH.
             /// </summary>
             [MaxLength(50)]
             [PeropertyMapName("ShiftNameTH")]
@@ -558,7 +559,7 @@ namespace DMT.Models
                 set { base.ShiftNameTH = value; }
             }
             /// <summary>
-            /// Gets or sets Name EN.
+            /// Gets or sets Shift Name EN.
             /// </summary>
             [MaxLength(50)]
             [PeropertyMapName("ShiftNameEN")]
@@ -573,7 +574,7 @@ namespace DMT.Models
             #region User
 
             /// <summary>
-            /// Gets or sets FullNameEN
+            /// Gets or sets Full Name EN.
             /// </summary>
             [MaxLength(100)]
             [PeropertyMapName("FullNameEN")]
@@ -583,7 +584,7 @@ namespace DMT.Models
                 set { base.FullNameEN = value; }
             }
             /// <summary>
-            /// Gets or sets FullNameTH
+            /// Gets or sets Full Name TH.
             /// </summary>
             [MaxLength(100)]
             [PeropertyMapName("FullNameTH")]
@@ -596,14 +597,14 @@ namespace DMT.Models
             #endregion
 
             #region Public Methods
-
+            /*
             public UserShift ToUserShift()
             {
                 UserShift inst = new UserShift();
                 this.AssignTo(inst); // set all properties to new instance.
                 return inst;
             }
-
+            */
             #endregion
         }
 
@@ -615,12 +616,11 @@ namespace DMT.Models
         {
             var result = new NDbResult<UserShift>();
             UserShift inst = Create();
-
+            // TODO: Need to replace with functional extension methods.
             var tsbRet = TSB.GetCurrent();
             if (tsbRet.errors.hasError)
             {
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -628,8 +628,7 @@ namespace DMT.Models
                 if (null != tsb) tsb.AssignTo(inst);
                 if (null != shift) shift.AssignTo(inst);
                 if (null != supervisor) supervisor.AssignTo(inst);
-                result.data = inst;
-                result.Success();
+                result.Success(inst);
             }
 
             return result;
@@ -641,13 +640,13 @@ namespace DMT.Models
             SQLiteConnection db = Default;
             if (null == db)
             {
-                result.ConenctFailed();
-                result.data = null;
+                result.DbConenctFailed();
                 return result;
             }
 
             lock (sync)
             {
+                MethodBase med = MethodBase.GetCurrentMethod();
                 try
                 {
                     string cmd = string.Empty;
@@ -664,13 +663,13 @@ namespace DMT.Models
                     cmd += "   AND UserShift.End = ? ";
                     var ret = NQuery.Query<FKs>(cmd, userId,
                         DateTime.MinValue).FirstOrDefault();
-                    result.data = (null != ret) ? ret.ToUserShift() : null;
+                    result.data = (null != ret) ? ret.ToModel() : null;
                     result.Success();
                 }
                 catch (Exception ex)
                 {
+                    med.Err(ex);
                     result.Error(ex);
-                    result.data = null;
                 }
                 return result;
             }
@@ -682,7 +681,7 @@ namespace DMT.Models
             SQLiteConnection db = Default;
             if (null == db)
             {
-                result.ConenctFailed();
+                result.DbConenctFailed();
                 return result;
             }
 
@@ -694,6 +693,7 @@ namespace DMT.Models
 
             lock (sync)
             {
+                MethodBase med = MethodBase.GetCurrentMethod();
                 try
                 {
                     var last = GetCurrent(value.UserId);
@@ -709,7 +709,7 @@ namespace DMT.Models
                         value.Begin = DateTime.Now;
 
                     var saveRet = Save(value);
-
+                    // TODO: Need to replace with functional extension methods.
                     result.errors = saveRet.errors;
                     if (!result.errors.hasError)
                     {
@@ -718,6 +718,7 @@ namespace DMT.Models
                 }
                 catch (Exception ex)
                 {
+                    med.Err(ex);
                     result.Error(ex);
                 }
                 return result;
@@ -730,7 +731,7 @@ namespace DMT.Models
             SQLiteConnection db = Default;
             if (null == db)
             {
-                result.ConenctFailed();
+                result.DbConenctFailed();
                 return result;
             }
 
@@ -742,6 +743,7 @@ namespace DMT.Models
 
             lock (sync)
             {
+                MethodBase med = MethodBase.GetCurrentMethod();
                 try
                 {
                     // End shift.
@@ -749,7 +751,7 @@ namespace DMT.Models
                         value.End = DateTime.Now;
 
                     var saveRet = Save(value);
-
+                    // TODO: Need to replace with functional extension methods.
                     result.errors = saveRet.errors;
                     if (!result.errors.hasError)
                     {
@@ -758,6 +760,7 @@ namespace DMT.Models
                 }
                 catch (Exception ex)
                 {
+                    med.Err(ex);
                     result.Error(ex);
                 }
                 return result;
@@ -770,13 +773,13 @@ namespace DMT.Models
             SQLiteConnection db = Default;
             if (null == db)
             {
-                result.ConenctFailed();
-                result.data = new List<UserShift>();
+                result.DbConenctFailed();
                 return result;
             }
 
             lock (sync)
             {
+                MethodBase med = MethodBase.GetCurrentMethod();
                 try
                 {
                     string cmd = string.Empty;
@@ -792,22 +795,23 @@ namespace DMT.Models
                     cmd += "   AND UserShift.UserId = ? ";
 
                     var rets = NQuery.Query<FKs>(cmd, userId).ToList();
+                    var results = rets.ToModels();
+                    /*
                     var results = new List<UserShift>();
                     if (null != rets)
                     {
                         rets.ForEach(ret =>
                         {
-                            results.Add(ret.ToUserShift());
+                            results.Add(ret.ToModel());
                         });
                     }
-
-                    result.data = results;
-                    result.Success();
+                    */
+                    result.Success(results);
                 }
                 catch (Exception ex)
                 {
+                    med.Err(ex);
                     result.Error(ex);
-                    result.data = new List<UserShift>();
                 }
                 return result;
             }
@@ -819,13 +823,13 @@ namespace DMT.Models
             SQLiteConnection db = Default;
             if (null == db)
             {
-                result.ConenctFailed();
-                result.data = new List<UserShift>();
+                result.DbConenctFailed();
                 return result;
             }
 
             lock (sync)
             {
+                MethodBase med = MethodBase.GetCurrentMethod();
                 try
                 {
                     string cmd = string.Empty;
@@ -841,22 +845,23 @@ namespace DMT.Models
                     cmd += "   AND UserShift.End = ? ";
 
                     var rets = NQuery.Query<FKs>(cmd, DateTime.MinValue).ToList();
+                    var results = rets.ToModels();
+                    /*
                     var results = new List<UserShift>();
                     if (null != rets)
                     {
                         rets.ForEach(ret =>
                         {
-                            results.Add(ret.ToUserShift());
+                            results.Add(ret.ToModel());
                         });
                     }
-
-                    result.data = results;
-                    result.Success();
+                    */
+                    result.Success(results);
                 }
                 catch (Exception ex)
                 {
+                    med.Err(ex);
                     result.Error(ex);
-                    result.data = new List<UserShift>();
                 }
                 return result;
             }
