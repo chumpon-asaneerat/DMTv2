@@ -1340,10 +1340,20 @@ namespace DMT.Services
 			prefix = @"Users";
 			InitView("UserView", prefix);
 
+			// Shifts - Embeded resource used . instead / to access sub contents.
+			prefix = @"Shifts";
+			InitView("TSBShiftView", prefix);
+			InitView("UserShiftView", prefix);
+			InitView("UserShiftRevenueView", prefix);
+
 			// LaneActivities - Embeded resource used . instead / to access sub contents.
 			prefix = @"LaneActivities";
 			InitView("LaneAttendanceView", prefix);
 			InitView("LanePaymentView", prefix);
+
+			// Revenues - Embeded resource used . instead / to access sub contents.
+			prefix = @"Revenues";
+			InitView("RevenueEntryView", prefix);
 
 			// Credits - Embeded resource used . instead / to access sub contents.
 			prefix = @"Credits";
