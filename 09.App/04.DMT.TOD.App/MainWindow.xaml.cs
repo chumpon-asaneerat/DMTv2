@@ -33,8 +33,8 @@ namespace DMT
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // Start app manager.
-            //DMTPlazaManager.Instance.Start();
+            // Enable Web Socket.
+            Services.LocalServiceOperations.Instance.EnableWebSocket();
             // Initial Page Content Manager
             PageContentManager.Instance.ContentChanged += new EventHandler(Instance_ContentChanged);
             PageContentManager.Instance.StatusUpdated += new StatusMessageEventHandler(Instance_StatusUpdated);
@@ -51,8 +51,8 @@ namespace DMT
             PageContentManager.Instance.OnTick -= new EventHandler(Instance_OnTick);
             PageContentManager.Instance.StatusUpdated -= new StatusMessageEventHandler(Instance_StatusUpdated);
             PageContentManager.Instance.ContentChanged -= new EventHandler(Instance_ContentChanged);
-            // Shutdown app manager.
-            //DMTPlazaManager.Instance.Shutdown();
+            // Disable Web Socket.
+            Services.LocalServiceOperations.Instance.DisableWebSocket();
         }
 
         #endregion

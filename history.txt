@@ -14,8 +14,10 @@ Update 2020-08-14 #7
 Update 2020-08-14 #6
 - 
 
+[commited]
 Update 2020-08-14 #5
-- 
+- Update Local/DataCenter/TAxTOD service operation #137.
+  - TOD App Set Enable WebSocket.
 
 [commited]
 Update 2020-08-14 #4
