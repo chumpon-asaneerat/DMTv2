@@ -3,9 +3,9 @@ AS
 	SELECT TSBExchangeTransaction.* 
 		 , TSB.TSBNameEN
 		 , TSB.TSBNameTH
-		 , [User].FullNameEN, [User].FullNameTH
+		 , UserView.FullNameEN, UserView.FullNameTH
 	  FROM TSBExchangeTransaction
 		 , TSB
-		 , [User]
+		 , UserView
 	 WHERE TSBExchangeTransaction.TSBId = TSB.TSBId
-	   AND TSBExchangeTransaction.UserId = User.UserId
+	   AND TSBExchangeTransaction.UserId = UserView.UserId

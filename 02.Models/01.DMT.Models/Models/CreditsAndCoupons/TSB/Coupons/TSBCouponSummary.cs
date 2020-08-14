@@ -589,7 +589,7 @@ namespace DMT.Models
 					string cmd = @"
 					SELECT * 
 					  FROM TSBCouponSummarryView
-					 WHERE TSBCouponSummarryView.TSBId = ? ";
+					 WHERE TSBId = ? ";
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
 					var results = rets.ToModels();
 					/*
@@ -672,8 +672,8 @@ namespace DMT.Models
 					string cmd = @"
 					SELECT * 
 					  FROM TSBCouponSummarryView
-					 WHERE TSBCouponSummarryView.TSBId = ?
-					   AND TSBCouponSummarryView.UserId = ? ";
+					 WHERE TSBId = ?
+					   AND UserId = ? ";
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId, user.UserId).ToList();
 					var results = rets.ToModels();
 					/*

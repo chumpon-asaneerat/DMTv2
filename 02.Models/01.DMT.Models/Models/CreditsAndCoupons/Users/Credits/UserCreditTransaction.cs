@@ -1729,19 +1729,9 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT UserCreditTransaction.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-					cmd += "     , User.UserId, User.FullNameEN, User.FullNameTH ";
-					cmd += "     , UserCredit.UserCreditDate ";
-					cmd += "     , UserCredit.State, UserCredit.BagNo, UserCredit.BeltNo ";
-					cmd += "  FROM UserCreditTransaction, TSB, PlazaGroup, User, UserCredit ";
-					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-					cmd += "   AND UserCredit.TSBId = TSB.TSBId ";
-					cmd += "   AND UserCredit.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND UserCredit.UserId = User.UserId ";
-					cmd += "   AND UserCreditTransaction.UserCreditId = UserCredit.UserCreditId ";
-					cmd += "   AND UserCredit.TSBId = ? ";
+					cmd += "SELECT * ";
+					cmd += "  FROM UserCreditTransactionView ";
+					cmd += " WHERE UserCredit.TSBId = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
 					var results = rets.ToModels();

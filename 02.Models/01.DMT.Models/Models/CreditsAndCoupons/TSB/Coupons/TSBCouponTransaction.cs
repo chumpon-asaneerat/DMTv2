@@ -972,8 +972,8 @@ namespace DMT.Models
 					string cmd = string.Empty;
 					cmd += "SELECT * ";
 					cmd += "  FROM TSBCouponTransactionView ";
-					cmd += " WHERE TSBCouponTransactionView.TSBId = ? ";
-					cmd += "   AND TSBCouponTransactionView.FinishFlag = 1 ";
+					cmd += " WHERE TSBId = ? ";
+					cmd += "   AND FinishFlag = 1 ";
 
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
 					var results = rets.ToModels();

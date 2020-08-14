@@ -106,17 +106,17 @@
     <Compile Include="Models\CreditsAndCoupons\Common\Coupons\Enums.cs" />
     <Compile Include="Models\CreditsAndCoupons\TSB\Coupons\TSBCouponSummary.cs" />
     <Compile Include="Models\CreditsAndCoupons\Users\Coupons\UserCouponTransaction.cs" />
-    <EmbeddedResource Include="Views\Scripts\Coupons\TSBCouponSummarryView.sql" />
-    <EmbeddedResource Include="Views\Scripts\Credits\TSBCreditSummarryView.sql" />
-    <EmbeddedResource Include="Views\Scripts\Coupons\UserCouponSummaryView.sql" />
+    <EmbeddedResource Include="Views\Scripts\Coupons\Backup\TSBCouponSummarryView.BAK.sql" />
+    <EmbeddedResource Include="Views\Scripts\Credits\Backup\TSBCreditSummarryView.BAK.sql" />
+    <EmbeddedResource Include="Views\Scripts\Coupons\Backup\UserCouponSummaryView.BAK.sql" />
     <Compile Include="Models\Exchanges\TSBExchangeGroup.cs" />
     <Compile Include="Models\Exchanges\TSBExchangeTransaction.cs" />
-    <EmbeddedResource Include="Views\Scripts\Credits\UserCreditBorrowSummaryView.sql" />
-    <EmbeddedResource Include="Views\Scripts\Credits\UserCreditReturnSummaryView.sql" />
-    <EmbeddedResource Include="Views\Scripts\Coupons\UserCoupon35SummaryView.sql" />
-    <EmbeddedResource Include="Views\Scripts\Coupons\UserCoupon80SummaryView.sql" />
-    <EmbeddedResource Include="Views\Scripts\Coupons\TSBCouponTransactionView.sql" />
-    <EmbeddedResource Include="Views\Scripts\Coupons\TSBCouponBalanceView.sql" />
+    <EmbeddedResource Include="Views\Scripts\Credits\Backup\UserCreditBorrowSummaryView.BAK.sql" />
+    <EmbeddedResource Include="Views\Scripts\Credits\Backup\UserCreditReturnSummaryView.BAK.sql" />
+    <EmbeddedResource Include="Views\Scripts\Coupons\Backup\UserCoupon35SummaryView.BAK.sql" />
+    <EmbeddedResource Include="Views\Scripts\Coupons\Backup\UserCoupon80SummaryView.BAK.sql" />
+    <EmbeddedResource Include="Views\Scripts\Coupons\Backup\TSBCouponTransactionView.BAK.sql" />
+    <EmbeddedResource Include="Views\Scripts\Coupons\Backup\TSBCouponBalanceView.BAK.sql" />
     <Compile Include="Views\SqlScriptManager.cs" />
     <Compile Include="Models\Common\DMT.Searchs.cs" />
     <Compile Include="Models\Common\NSearch.cs" />
@@ -164,7 +164,7 @@
     <EmbeddedResource Include="Views\Scripts\Exchanges\TSBExchangeTransactionView.sql" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Scripts\Credits\UserCreditSummaryView.sql" />
+    <EmbeddedResource Include="Views\Scripts\Credits\Backup\UserCreditSummaryView.BAK.sql" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Scripts\Infrastructures\PlazaView.sql" />
@@ -178,7 +178,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Views\Scripts\Users\UserView.sql" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Scripts\Credits\TSBCreditSummarryView.sql" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Scripts\LaneActivities\LaneAttendanceView.sql" />
     <EmbeddedResource Include="Views\Scripts\LaneActivities\LanePaymentView.sql" />
@@ -188,6 +190,26 @@
     <EmbeddedResource Include="Views\Scripts\Shifts\TSBShiftView.sql" />
     <EmbeddedResource Include="Views\Scripts\Shifts\UserShiftRevenueView.sql" />
     <EmbeddedResource Include="Views\Scripts\Shifts\UserShiftView.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Scripts\Credits\UserCreditBorrowSummaryView.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Scripts\Coupons\UserCouponSummaryView.sql" />
+    <EmbeddedResource Include="Views\Scripts\Coupons\UserCoupon80SummaryView.sql" />
+    <EmbeddedResource Include="Views\Scripts\Coupons\UserCoupon35SummaryView.sql" />
+    <EmbeddedResource Include="Views\Scripts\Coupons\TSBCouponTransactionView.sql" />
+    <EmbeddedResource Include="Views\Scripts\Coupons\TSBCouponSummarryView.sql" />
+    <EmbeddedResource Include="Views\Scripts\Coupons\TSBCouponBalanceView.sql" />
+    <EmbeddedResource Include="Views\Scripts\Credits\UserCreditReturnSummaryView.sql" />
+    <EmbeddedResource Include="Views\Scripts\Credits\UserCreditSummaryView.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Scripts\Credits\UserCreditTransactionView.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Scripts\Coupons\UserCouponTransactionView.sql" />
+    <EmbeddedResource Include="Views\Scripts\Credits\TSBCreditTransactionView.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -427,7 +427,7 @@ namespace DMT.Models
 					string cmd = @"
 						SELECT * 
 						  FROM TSBCouponBalanceView
-						 WHERE TSBCouponBalanceView.TSBId = ? ";
+						 WHERE TSBId = ? ";
 					var ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
 					var data = ret.ToModel();
 					result.Success(data);

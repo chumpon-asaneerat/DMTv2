@@ -618,13 +618,9 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT UserCouponTransaction.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "     , User.FullNameEN, User.FullNameTH ";
-					cmd += "  FROM UserCouponTransaction, TSB, User ";
-					cmd += " WHERE UserCouponTransaction.TSBId = TSB.TSBId ";
-					cmd += "   AND UserCouponTransaction.UserId = User.UserId ";
-					cmd += "   AND UserCouponTransaction.TSBId = ? ";
+					cmd += "SELECT * ";
+					cmd += "  FROM UserCouponTransactionView ";
+					cmd += " WHERE TSBId = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
 					var results = rets.ToModels();
@@ -698,17 +694,13 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT UserCouponTransaction.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "     , User.FullNameEN, User.FullNameTH ";
-					cmd += "  FROM UserCouponTransaction, TSB, User ";
-					cmd += " WHERE UserCouponTransaction.TSBId = TSB.TSBId ";
-					cmd += "   AND UserCouponTransaction.UserId = User.UserId ";
-					cmd += "   AND UserCouponTransaction.TSBId = ? ";
-					cmd += "   AND UserCouponTransaction.CouponType = ? ";
+					cmd += "SELECT * ";
+					cmd += "  FROM UserCouponTransactionView ";
+					cmd += " WHERE TSBId = ? ";
+					cmd += "   AND CouponType = ? ";
 					if (null != user)
 					{
-						cmd += "   AND UserCouponTransaction.UserId = ? ";
+						cmd += "   AND UserId = ? ";
 					}
 
 					List<FKs> rets;
@@ -791,17 +783,13 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT UserCouponTransaction.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "     , User.FullNameEN, User.FullNameTH ";
-					cmd += "  FROM UserCouponTransaction, TSB, User ";
-					cmd += " WHERE UserCouponTransaction.TSBId = TSB.TSBId ";
-					cmd += "   AND UserCouponTransaction.UserId = User.UserId ";
-					cmd += "   AND UserCouponTransaction.TSBId = ? ";
-					cmd += "   AND UserCouponTransaction.CouponType = ? ";
+					cmd += "SELECT * ";
+					cmd += "  FROM UserCouponTransactionView ";
+					cmd += " WHERE TSBId = ? ";
+					cmd += "   AND CouponType = ? ";
 					if (null != user)
 					{
-						cmd += "   AND UserCouponTransaction.UserId = ? ";
+						cmd += "   AND UserId = ? ";
 					}
 					List<FKs> rets;
 					if (null != user)

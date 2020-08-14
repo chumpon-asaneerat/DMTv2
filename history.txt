@@ -17,8 +17,21 @@ Update 2020-08-15 #6
 Update 2020-08-15 #5
 - 
 
+[commited]
 Update 2020-08-15 #4
-- 
+- Update Local/DataCenter/TAxTOD service operation #172.
+  - Update TSBExchangeTransactionView.sql #1.
+  - TSBCouponBalance Models update #3.
+  - TSBCouponSummary Models update #3.
+  - TSBCouponTransaction Models update #3.
+  - TSBCreditBalance Models update #3.
+  - UserCreditBalance Models update #3.
+  - UserCouponTransaction Models update #3.
+  - Backup Coupons sql files.
+  - Backup Credits sql files.
+  - Add TSBCreditTransactionView.sql #1.
+  - Add UserCreditTransactionView.sql #1.
+  - Add UserCouponTransactionView.sql #1.
 
 [commited]
 Update 2020-08-15 #3

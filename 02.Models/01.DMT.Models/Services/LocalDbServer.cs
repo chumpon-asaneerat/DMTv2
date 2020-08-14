@@ -1358,9 +1358,11 @@ namespace DMT.Services
 			// Credits - Embeded resource used . instead / to access sub contents.
 			prefix = @"Credits";
 			InitView("TSBCreditSummarryView", prefix);
+			InitView("TSBCreditTransactionView", prefix);
 			InitView("UserCreditBorrowSummaryView", prefix);
 			InitView("UserCreditReturnSummaryView", prefix);
 			InitView("UserCreditSummaryView", prefix);
+			InitView("UserCreditTransactionView", prefix);
 
 			// Coupons - Embeded resource used . instead / to access sub contents.
 			prefix = @"Coupons";
@@ -1370,6 +1372,7 @@ namespace DMT.Services
 			InitView("UserCoupon35SummaryView", prefix);
 			InitView("UserCoupon80SummaryView", prefix);
 			InitView("UserCouponSummaryView", prefix);
+			InitView("UserCouponTransactionView", prefix);
 
 			// Exchanges - Embeded resource used . instead / to access sub contents.
 			prefix = @"Exchanges";
