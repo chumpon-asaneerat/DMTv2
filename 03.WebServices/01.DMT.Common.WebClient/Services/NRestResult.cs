@@ -185,9 +185,7 @@ namespace DMT.Services
 
     public static class NRestResultExtensionMethods
     {
-        #region NDbResult
-
-        #region ToRest
+        #region ToRest (from NDbResult)
 
         public static NRestResult ToRest(this NDbResult value)
         {
@@ -247,65 +245,6 @@ namespace DMT.Services
 
         #region Success
 
-        public static bool Success(this NDbResult value)
-        {
-            return (null != value && !value.errors.hasError) ? true : false;
-        }
-
-        public static bool Success<T>(this NDbResult<T> value)
-        {
-            return (null != value && !value.errors.hasError) ? true : false;
-        }
-
-        public static bool Success<T, O>(this NDbResult<T, O> value)
-        {
-            return (null != value && !value.errors.hasError) ? true : false;
-        }
-
-        #endregion
-
-        #region Value
-
-        public static T Value<T>(this NDbResult<T> value)
-            where T: new()
-        {
-            T ret;
-            if (typeof(T) == typeof(IList))
-            {
-                ret = (null != value && !value.errors.hasError && null != value.data) ? 
-                    value.data : new T();
-            }
-            else
-            {
-                ret = (null != value && !value.errors.hasError) ? value.data : default(T);
-            }
-            return ret;
-        }
-
-        public static T Value<T, O>(this NDbResult<T, O> value)
-            where T: new()
-        {
-            T ret;
-            if (typeof(T) == typeof(IList))
-            {
-                ret = (null != value && !value.errors.hasError && null != value.data) ?
-                    value.data : new T();
-            }
-            else
-            {
-                ret = (null != value && !value.errors.hasError) ? value.data : default(T);
-            }
-            return ret;
-        }
-
-        #endregion
-
-        #endregion
-
-        #region NRestResult 
-
-        #region Success
-
         public static bool Success(this NRestResult value)
         {
             return (null != value && !value.errors.hasError) ? true : false;
@@ -356,8 +295,6 @@ namespace DMT.Services
             }
             return ret;
         }
-
-        #endregion
 
         #endregion
     }

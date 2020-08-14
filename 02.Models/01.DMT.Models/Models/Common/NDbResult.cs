@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -183,6 +184,68 @@ namespace DMT.Models
 
         public T data { get; set; }
         public O output { get; set; }
+
+        #endregion
+    }
+
+    #endregion
+
+    #region NDbResult
+
+    public static class NDbResultExtensionMethods
+    {
+        #region Success
+
+        public static bool Success(this NDbResult value)
+        {
+            return (null != value && !value.errors.hasError) ? true : false;
+        }
+
+        public static bool Success<T>(this NDbResult<T> value)
+        {
+            return (null != value && !value.errors.hasError) ? true : false;
+        }
+
+        public static bool Success<T, O>(this NDbResult<T, O> value)
+        {
+            return (null != value && !value.errors.hasError) ? true : false;
+        }
+
+        #endregion
+
+        #region Value
+
+        public static T Value<T>(this NDbResult<T> value)
+            where T : new()
+        {
+            T ret;
+            if (typeof(T) == typeof(IList))
+            {
+                ret = (null != value && !value.errors.hasError && null != value.data) ?
+                    value.data : new T();
+            }
+            else
+            {
+                ret = (null != value && !value.errors.hasError) ? value.data : default(T);
+            }
+            return ret;
+        }
+
+        public static T Value<T, O>(this NDbResult<T, O> value)
+            where T : new()
+        {
+            T ret;
+            if (typeof(T) == typeof(IList))
+            {
+                ret = (null != value && !value.errors.hasError && null != value.data) ?
+                    value.data : new T();
+            }
+            else
+            {
+                ret = (null != value && !value.errors.hasError) ? value.data : default(T);
+            }
+            return ret;
+        }
 
         #endregion
     }
