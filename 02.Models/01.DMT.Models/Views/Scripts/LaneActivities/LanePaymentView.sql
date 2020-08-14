@@ -1,11 +1,28 @@
 ﻿CREATE VIEW LanePaymentView
 AS
-	SELECT Plaza.*
+	SELECT LanePayment.*
 		 , TSB.TSBNameEN, TSB.TSBNameTH
 		 , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction
-	  FROM Plaza
-	     , PlazaGroup
+		 , Plaza.PlazaNameEN, Plaza.PlazaNameTH
+		 , Lane.LaneNo
+		 , [User].FullNameEN, [User].FullNameTH
+		 , Payment.PaymentNameEN, Payment.PaymentNameTH
+	  FROM LanePayment
 		 , TSB
+	     , PlazaGroup
+	     , Plaza
+		 , Lane
+		 , [User]
+		 , Payment
 	 WHERE PlazaGroup.TSBId = TSB.TSBId
 	   AND Plaza.TSBId = TSB.TSBId
 	   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId
+	   AND Lane.TSBId = TSB.TSBId
+	   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId
+	   AND Lane.PlazaId = Plaza.PlazaId
+	   AND LanePayment.TSBId = TSB.TSBId
+	   AND LanePayment.PlazaGroupId = PlazaGroup.PlazaGroupId
+	   AND LanePayment.PlazaId = Plaza.PlazaId
+	   AND LanePayment.LaneId = Lane.LaneId
+	   AND LanePayment.UserId = [User].UserId
+	   AND LanePayment.PaymentId = Payment.PaymentId

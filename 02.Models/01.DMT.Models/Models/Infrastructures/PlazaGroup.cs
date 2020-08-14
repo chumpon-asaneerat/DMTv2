@@ -337,7 +337,7 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT PlazaGroupView.* ";
+					cmd += "SELECT * ";
 					cmd += "  FROM PlazaGroupView ";
 
 					var rets = NQuery.Query<FKs>(cmd).ToList();
@@ -386,9 +386,9 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT PlazaGroupView.* ";
+					cmd += "SELECT * ";
 					cmd += "  FROM PlazaGroupView ";
-					cmd += "   AND PlazaGroupView.PlazaGroupId = ? ";
+					cmd += " WHERE PlazaGroupId = ? ";
 					var ret = NQuery.Query<FKs>(cmd, plazaGroupId).FirstOrDefault();
 					var data = (null != ret) ? ret.ToPlazaGroup() : null;
 					result.Success(data);
@@ -437,9 +437,9 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT PlazaGroupView.* ";
+					cmd += "SELECT * ";
 					cmd += "  FROM PlazaGroupView ";
-					cmd += "   AND PlazaGroupView.TSBId = ? ";
+					cmd += " WHERE TSBId = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, tsbId).ToList();
 					var results = new List<PlazaGroup>();

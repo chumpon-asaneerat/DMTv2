@@ -8,8 +8,23 @@ Update 2020-08-14 #29
 Update 2020-08-14 #28
 - 
 
+[commited]
 Update 2020-08-14 #27
-- 
+- Update Local/DataCenter/TAxTOD service operation #159.
+  - Update LaneAttendanceView.sql #2
+  - Update LanePaymentView.sql #2
+  - LaneAttendance Models update #2.
+    - Update Query.
+  - LanePayment Models update #2.
+    - Update Query.
+  - User Models update #3.
+    - Update Query.
+  - PlazaGroup Models update #3.
+    - Update Query.
+  - Plaza Models update #5.
+    - Update Query.
+  - Lane Models update #3.
+    - Update Query.
 
 [commited]
 Update 2020-08-14 #26

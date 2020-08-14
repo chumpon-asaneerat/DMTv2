@@ -979,41 +979,25 @@ namespace DMT.Models
 				{
 					string cmd = string.Empty;
 
-					cmd += "SELECT LaneAttendance.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-					cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-					cmd += "     , Lane.LaneNo ";
-					cmd += "     , User.FullNameEN, User.FullNameTH ";
-					cmd += "  FROM LaneAttendance, TSB, PlazaGroup, Plaza, Lane, User ";
-					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.TSBId = TSB.TSBId ";
-					cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
-					cmd += "   AND LaneAttendance.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND LaneAttendance.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
-					cmd += "   AND LaneAttendance.UserId = User.UserId ";
-					cmd += "   AND LaneAttendance.UserId = ? ";
-					cmd += "   AND (LaneAttendance.Begin >= ? AND LaneAttendance.Begin <= ?)";
-					cmd += "   AND ((LaneAttendance.End >= ? AND LaneAttendance.End <= ?) " +
-						"        OR  LaneAttendance.End = ?)";
+					cmd += "SELECT * ";
+					cmd += "  FROM LaneAttendanceView ";
+					cmd += " WHERE UserId = ? ";
+					cmd += "   AND (Begin >= ? AND Begin <= ?)";
+					cmd += "   AND ((End >= ? AND End <= ?) " +
+						"        OR  End = ?)";
 					if (null != plazaGroup)
 					{
-						cmd += "   AND LaneAttendance.PlazaGroupId = ? ";
+						cmd += "   AND PlazaGroupId = ? ";
 					}
 
 					if (revenueDate == DateTime.MinValue)
 					{
-						cmd += "   AND (LaneAttendance.RevenueDate IS NULL ";
-						cmd += "        OR LaneAttendance.RevenueDate = ?) ";
+						cmd += "   AND (RevenueDate IS NULL ";
+						cmd += "        OR RevenueDate = ?) ";
 					}
 					else
 					{
-						cmd += "   AND LaneAttendance.RevenueDate = ? ";
+						cmd += "   AND RevenueDate = ? ";
 					}
 
 					DateTime end = (shift.End == DateTime.MinValue) ? DateTime.Now : shift.End;
@@ -1087,28 +1071,12 @@ namespace DMT.Models
 				{
 					string cmd = string.Empty;
 
-					cmd += "SELECT LaneAttendance.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-					cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-					cmd += "     , Lane.LaneNo ";
-					cmd += "     , User.FullNameEN, User.FullNameTH ";
-					cmd += "  FROM LaneAttendance, TSB, PlazaGroup, Plaza, Lane, User ";
-					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.TSBId = TSB.TSBId ";
-					cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
-					cmd += "   AND LaneAttendance.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND LaneAttendance.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
-					cmd += "   AND LaneAttendance.UserId = User.UserId ";
-					cmd += "   AND LaneAttendance.UserId = ? ";
-					cmd += "   AND (LaneAttendance.Begin >= ? AND LaneAttendance.Begin <= ?)";
-					cmd += "   AND ((LaneAttendance.End >= ? AND LaneAttendance.End <= ?) " +
-						"        OR  LaneAttendance.End = ?)";
+					cmd += "SELECT * ";
+					cmd += "  FROM LaneAttendanceView ";
+					cmd += " WHERE UserId = ? ";
+					cmd += "   AND (Begin >= ? AND Begin <= ?)";
+					cmd += "   AND ((End >= ? AND End <= ?) " +
+						"        OR  End = ?)";
 
 					DateTime end = (shift.End == DateTime.MinValue) ? DateTime.Now : shift.End;
 
@@ -1157,25 +1125,9 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT LaneAttendance.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-					cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-					cmd += "     , Lane.LaneNo ";
-					cmd += "     , User.FullNameEN, User.FullNameTH ";
-					cmd += "  FROM LaneAttendance, TSB, PlazaGroup, Plaza, Lane, User ";
-					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.TSBId = TSB.TSBId ";
-					cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
-					cmd += "   AND LaneAttendance.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND LaneAttendance.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
-					cmd += "   AND LaneAttendance.UserId = User.UserId ";
-					cmd += "   AND LaneAttendance.LaneId = ? ";
+					cmd += "SELECT * ";
+					cmd += "  FROM LaneAttendanceView ";
+					cmd += " WHERE LaneId = ? ";
 					var rets = NQuery.Query<FKs>(cmd, lane.LaneId).ToList();
 					var results = new List<LaneAttendance>();
 					if (null != rets)
@@ -1218,26 +1170,10 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT LaneAttendance.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-					cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-					cmd += "     , Lane.LaneNo ";
-					cmd += "     , User.FullNameEN, User.FullNameTH ";
-					cmd += "  FROM LaneAttendance, TSB, PlazaGroup, Plaza, Lane, User ";
-					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.TSBId = TSB.TSBId ";
-					cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
-					cmd += "   AND LaneAttendance.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND LaneAttendance.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
-					cmd += "   AND LaneAttendance.UserId = User.UserId ";
-					cmd += "   AND LaneAttendance.LaneId = ? ";
-					cmd += "   AND LaneAttendance.End = ? ";
+					cmd += "SELECT * ";
+					cmd += "  FROM LaneAttendanceView ";
+					cmd += " WHERE LaneId = ? ";
+					cmd += "   AND End = ? ";
 					var ret = NQuery.Query<FKs>(cmd, lane.LaneId, 
 						DateTime.MinValue).FirstOrDefault();
 					var data = (null != ret) ? ret.ToLaneAttendance() : null;
@@ -1274,26 +1210,10 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT LaneAttendance.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-					cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-					cmd += "     , Lane.LaneNo ";
-					cmd += "     , User.FullNameEN, User.FullNameTH ";
-					cmd += "  FROM LaneAttendance, TSB, PlazaGroup, Plaza, Lane, User ";
-					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.TSBId = TSB.TSBId ";
-					cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
-					cmd += "   AND LaneAttendance.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND LaneAttendance.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
-					cmd += "   AND LaneAttendance.UserId = User.UserId ";
-					cmd += "   AND LaneAttendance.Begin >= ? ";
-					cmd += "   AND LaneAttendance.End <= ? ";
+					cmd += "SELECT * ";
+					cmd += "  FROM LaneAttendanceView ";
+					cmd += " WHERE Begin >= ? ";
+					cmd += "   AND End <= ? ";
 					var rets = NQuery.Query<FKs>(cmd, date, DateTime.MinValue).ToList();
 					var results = new List<LaneAttendance>();
 					if (null != rets)
@@ -1315,7 +1235,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static NDbResult<List<LaneAttendance>> GetAllNotHasRevenueEntry()
+		public static NDbResult<List<LaneAttendance>> GetAllNotHasRevenueEntry(TSB tsb)
 		{
 			var result = new NDbResult<List<LaneAttendance>>();
 			SQLiteConnection db = Default;
@@ -1325,35 +1245,26 @@ namespace DMT.Models
 				return result;
 			}
 
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT LaneAttendance.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-					cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-					cmd += "     , Lane.LaneNo ";
-					cmd += "     , User.FullNameEN, User.FullNameTH ";
-					cmd += "  FROM LaneAttendance, TSB, PlazaGroup, Plaza, Lane, User ";
-					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.TSBId = TSB.TSBId ";
-					cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LaneAttendance.TSBId = TSB.TSBId ";
-					cmd += "   AND LaneAttendance.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND LaneAttendance.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LaneAttendance.LaneId = Lane.LaneId ";
-					cmd += "   AND LaneAttendance.UserId = User.UserId ";
-					cmd += "   AND TSB.Active = 1 ";
-					cmd += "   AND (LaneAttendance.RevenueDate = ?";
-					cmd += "    OR  LaneAttendance.RevenueId IS NULL ";
-					cmd += "    OR  LaneAttendance.RevenueId = ?)";
-					var rets = NQuery.Query<FKs>(cmd, DateTime.MinValue, string.Empty).ToList();
+					cmd += "SELECT * ";
+					cmd += "  FROM LaneAttendanceView ";
+					cmd += " WHERE TSBId = ? ";
+					cmd += "   AND (RevenueDate = ?";
+					cmd += "    OR  RevenueId IS NULL ";
+					cmd += "    OR  RevenueId = ?)";
+					var rets = NQuery.Query<FKs>(cmd,
+						tsb.TSBId, DateTime.MinValue, string.Empty).ToList();
 					var results = new List<LaneAttendance>();
 					if (null != rets)
 					{

@@ -923,28 +923,10 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT LanePayment.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-					cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-					cmd += "     , Lane.LaneNo ";
-					cmd += "     , User.FullNameEN, User.FullNameTH ";
-					cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
-					cmd += "  FROM LanePayment, TSB, PlazaGroup, Plaza, Lane, User, Payment ";
-					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.TSBId = TSB.TSBId ";
-					cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
-					cmd += "   AND LanePayment.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND LanePayment.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
-					cmd += "   AND LanePayment.UserId = User.UserId ";
-					cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
-					cmd += "   AND LanePayment.Begin >= ? ";
-					cmd += "   AND LanePayment.End <= ? ";
+					cmd += "SELECT * ";
+					cmd += "  FROM LanePaymentView ";
+					cmd += " WHERE Begin >= ? ";
+					cmd += "   AND End <= ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, shift.Begin, shift.End,
 						DateTime.MinValue).ToList();
@@ -989,27 +971,9 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT LanePayment.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-					cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-					cmd += "     , Lane.LaneNo ";
-					cmd += "     , User.FullNameEN, User.FullNameTH ";
-					cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
-					cmd += "  FROM LanePayment, TSB, PlazaGroup, Plaza, Lane, User, Payment ";
-					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.TSBId = TSB.TSBId ";
-					cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
-					cmd += "   AND LanePayment.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND LanePayment.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
-					cmd += "   AND LanePayment.UserId = User.UserId ";
-					cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
-					cmd += "   AND LanePayment.LaneId = ? ";
+					cmd += "SELECT * ";
+					cmd += "  FROM LanePaymentView ";
+					cmd += " WHERE LaneId = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, lane.LaneId).ToList();
 					var results = new List<LanePayment>();
@@ -1053,28 +1017,10 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT LanePayment.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-					cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-					cmd += "     , Lane.LaneNo ";
-					cmd += "     , User.FullNameEN, User.FullNameTH ";
-					cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
-					cmd += "  FROM LanePayment, TSB, PlazaGroup, Plaza, Lane, User, Payment ";
-					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.TSBId = TSB.TSBId ";
-					cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
-					cmd += "   AND LanePayment.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND LanePayment.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
-					cmd += "   AND LanePayment.UserId = User.UserId ";
-					cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
-					cmd += "   AND LanePayment.LaneId = ? ";
-					cmd += "   AND LanePayment.End = ? ";
+					cmd += "SELECT * ";
+					cmd += "  FROM LanePaymentView ";
+					cmd += " WHERE LaneId = ? ";
+					cmd += "   AND End = ? ";
 
 					var ret = NQuery.Query<FKs>(cmd, lane.LaneId,
 						DateTime.MinValue).FirstOrDefault();
@@ -1112,28 +1058,10 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT LanePayment.* ";
-					cmd += "     , TSB.TSBNameEN, TSB.TSBNameTH ";
-					cmd += "     , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction ";
-					cmd += "     , Plaza.PlazaNameEN, Plaza.PlazaNameTH ";
-					cmd += "     , Lane.LaneNo ";
-					cmd += "     , User.FullNameEN, User.FullNameTH ";
-					cmd += "     , Payment.PaymentNameEN, User.PaymentNameTH ";
-					cmd += "  FROM LanePayment, TSB, PlazaGroup, Plaza, Lane, User, Payment ";
-					cmd += " WHERE PlazaGroup.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.TSBId = TSB.TSBId ";
-					cmd += "   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.TSBId = TSB.TSBId ";
-					cmd += "   AND Lane.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND Lane.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LanePayment.TSBId = TSB.TSBId ";
-					cmd += "   AND LanePayment.PlazaGroupId = PlazaGroup.PlazaGroupId ";
-					cmd += "   AND LanePayment.PlazaId = Plaza.PlazaId ";
-					cmd += "   AND LanePayment.LaneId = Lane.LaneId ";
-					cmd += "   AND LanePayment.UserId = User.UserId ";
-					cmd += "   AND LanePayment.PaymentId = Payment.PaymentId ";
-					cmd += " WHERE LanePayment.Begin >= ? ";
-					cmd += "   AND LanePayment.End <= ? ";
+					cmd += "SELECT * ";
+					cmd += "  FROM LanePaymentView ";
+					cmd += " WHERE Begin >= ? ";
+					cmd += "   AND End <= ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, date,
 						DateTime.MinValue).ToList();

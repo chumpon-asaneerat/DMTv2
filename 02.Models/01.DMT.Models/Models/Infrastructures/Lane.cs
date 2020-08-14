@@ -600,7 +600,7 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT LaneView.* ";
+					cmd += "SELECT * ";
 					cmd += "  FROM LaneView ";
 
 					var rets = NQuery.Query<FKs>(cmd).ToList();
@@ -649,9 +649,9 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT LaneView.* ";
+					cmd += "SELECT * ";
 					cmd += "  FROM LaneView ";
-					cmd += "   AND LaneView.LaneId = ? ";
+					cmd += " WHERE LaneId = ? ";
 
 					var ret = NQuery.Query<FKs>(cmd, laneId).FirstOrDefault();
 					var data = (null != ret) ? ret.ToLane() : null;
@@ -708,9 +708,9 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT LaneView.* ";
+					cmd += "SELECT * ";
 					cmd += "  FROM LaneView ";
-					cmd += "   AND LaneView.TSBId = ? ";
+					cmd += " WHERE TSBId = ? ";
 					var rets = NQuery.Query<FKs>(cmd, tsbId).ToList();
 					var results = new List<Lane>();
 					if (null != rets)
@@ -763,10 +763,10 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT LaneView.* ";
+					cmd += "SELECT * ";
 					cmd += "  FROM LaneView ";
-					cmd += "   AND LaneView.TSBId = ? ";
-					cmd += "   AND LaneView.PlazaGroupId = ? ";
+					cmd += " WHERE TSBId = ? ";
+					cmd += "   AND PlazaGroupId = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, tsbId, plazaGroupId).ToList();
 					var results = new List<Lane>();
@@ -821,11 +821,11 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT LaneView.* ";
+					cmd += "SELECT * ";
 					cmd += "  FROM LaneView ";
-					cmd += "   AND LaneView.TSBId = ? ";
-					cmd += "   AND LaneView.PlazaGroupId = ? ";
-					cmd += "   AND LaneView.PlazaId = ? ";
+					cmd += " WHERE TSBId = ? ";
+					cmd += "   AND PlazaGroupId = ? ";
+					cmd += "   AND PlazaId = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, tsbId, plazaGroupId, plazaId).ToList();
 					var results = new List<Lane>();

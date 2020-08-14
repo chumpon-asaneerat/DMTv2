@@ -409,7 +409,7 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT UserView.* ";
+					cmd += "SELECT * ";
 					cmd += "  FROM UserView ";
 
 					var rets = NQuery.Query<FKs>(cmd).ToList();
@@ -457,9 +457,9 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT UserView.* ";
+					cmd += "SELECT * ";
 					cmd += "  FROM UserView ";
-					cmd += "   AND UserView.UserId = ? ";
+					cmd += " WHERE UserId = ? ";
 
 					var ret = NQuery.Query<FKs>(cmd, userId).FirstOrDefault();
 					var data = (null != ret) ? ret.ToUser() : null;
@@ -499,9 +499,9 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT UserView.* ";
+					cmd += "SELECT * ";
 					cmd += "  FROM UserView ";
-					cmd += "   AND UserView.UserId like ? ";
+					cmd += " WHERE UserId like ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, "%" + userId + "%").ToList();
 
@@ -549,9 +549,9 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT UserView.* ";
+					cmd += "SELECT * ";
 					cmd += "  FROM UserView ";
-					cmd += "   AND UserView.RoleId = ? ";
+					cmd += " WHERE RoleId = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, roleId).ToList();
 					var results = new List<User>();
@@ -589,10 +589,10 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT UserView.* ";
+					cmd += "SELECT * ";
 					cmd += "  FROM UserView ";
-					cmd += "   AND UserView.GroupId = ? ";
-					cmd += "   AND UserView.Status = ? ";
+					cmd += " WHERE GroupId = ? ";
+					cmd += "   AND Status = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, groupId, status).ToList();
 					var results = new List<User>();
@@ -630,10 +630,10 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT UserView.* ";
+					cmd += "SELECT * ";
 					cmd += "  FROM UserView ";
-					cmd += "   AND UserView.RoleId = ? ";
-					cmd += "   AND UserView.Status = ? ";
+					cmd += " WHERE RoleId = ? ";
+					cmd += "   AND Status = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, roleId, status).ToList();
 					var results = new List<User>();
@@ -654,8 +654,7 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
-		// TODO: MD5 password required for login and save.
+		
 		/// <summary>
 		/// Gets by UserId and password.
 		/// </summary>
@@ -664,6 +663,7 @@ namespace DMT.Models
 		/// <returns>Returns found record.</returns>
 		public static NDbResult<User> GetByUserId(string userId, string password)
 		{
+			// TODO: MD5 password required for login and save.
 			var result = new NDbResult<User>();
 			SQLiteConnection db = Default;
 			if (null == db)
@@ -678,10 +678,10 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT UserView.* ";
+					cmd += "SELECT * ";
 					cmd += "  FROM UserView ";
-					cmd += "   AND UserView.UserId = ? ";
-					cmd += "   AND UserView.Password = ? ";
+					cmd += " WHERE UserId = ? ";
+					cmd += "   AND Password = ? ";
 
 					var ret = NQuery.Query<FKs>(cmd, userId, password).FirstOrDefault();
 					var data = (null != ret) ? ret.ToUser() : null;
@@ -717,9 +717,9 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT UserView.* ";
+					cmd += "SELECT * ";
 					cmd += "  FROM UserView ";
-					cmd += "   AND UserView.CardId = ? ";
+					cmd += " WHERE CardId = ? ";
 
 					var ret = NQuery.Query<FKs>(cmd, cardId).FirstOrDefault();
 					var data = (null != ret) ? ret.ToUser() : null;
@@ -736,6 +736,7 @@ namespace DMT.Models
 
 		public static NDbResult<User> SaveUser(User value)
 		{
+			// TODO: MD5 password required for login and save.
 			var result = new NDbResult<User>();
 			SQLiteConnection db = Default;
 			if (null == db)
