@@ -20,8 +20,17 @@ Update 2020-08-15 #5
 Update 2020-08-15 #4
 - 
 
+[commited]
 Update 2020-08-15 #3
-- 
+- Update Local/DataCenter/TAxTOD service operation #171.
+  - TSBCouponTransaction Models update #3.
+  - Update UserCreditSummaryView #1.
+  - Update UserCreditReturnSummaryView #1.
+  - Update UserCreditBorrowSummaryView #1.
+  - Update UserCouponSummaryView #1.
+  - Update UserCoupon35SummaryView #1.
+  - Update UserCoupon80SummaryView #1.
+  - Update TSBCouponTransactionView #1.
 
 [commited]
 Update 2020-08-15 #2

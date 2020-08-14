@@ -4,7 +4,7 @@ AS
 		 , TSB.TSBNameEN
 		 , TSB.TSBNameTH
 		 , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction 
-		 , User.FullNameEN, User.FullNameTH 
+		 , UserView.FullNameEN, UserView.FullNameTH 
 		 , (
 			 SELECT IFNULL(SUM(CountST25), 0) 
 			   FROM UserCreditTransaction 
@@ -137,8 +137,8 @@ AS
 			  WHERE UserCreditTransaction.TransactionType = 2 -- Returns = 2
 				AND UserCreditTransaction.UserCreditId = UserCreditBalance.UserCreditId
 			) AS AmountBHT1000
-	  FROM UserCreditBalance, TSB, PlazaGroup, [User]
+	  FROM UserCreditBalance, TSB, PlazaGroup, UserView
 	 WHERE PlazaGroup.TSBId = TSB.TSBId 
 	   AND UserCreditBalance.TSBId = TSB.TSBId 
 	   AND UserCreditBalance.PlazaGroupId = PlazaGroup.PlazaGroupId 
-	   AND UserCreditBalance.UserId = User.UserId 
+	   AND UserCreditBalance.UserId = UserView.UserId 

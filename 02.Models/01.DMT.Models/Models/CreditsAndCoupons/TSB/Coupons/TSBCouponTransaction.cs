@@ -416,6 +416,87 @@ namespace DMT.Models
 
 		#endregion
 
+		#region User Receive Date
+
+		/// <summary>
+		/// Gets or sets User Receive Date.
+		/// </summary>
+		[Category("User")]
+		[Description(" Gets or sets User Receive Date")]
+		[ReadOnly(true)]
+		[PeropertyMapName("UserReceiveDate")]
+		public DateTime UserReceiveDate
+		{
+			get
+			{
+				return _UserReceivedDate;
+			}
+			set
+			{
+				if (_UserReceivedDate != value)
+				{
+					_UserReceivedDate = value;
+					this.RaiseChanged("UserReceiveDate");
+					this.RaiseChanged("UserReceiveDateString");
+					this.RaiseChanged("UserReceiveTimeString");
+					this.RaiseChanged("UserReceiveDateTimeString");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets User Receive Date String.
+		/// </summary>
+		[Category("User")]
+		[Description("Gets User Receive Date String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string UserReceiveDateString
+		{
+			get
+			{
+				var ret = (this.UserReceiveDate == DateTime.MinValue) ? "" : this.UserReceiveDate.ToThaiDateTimeString("dd/MM/yyyy");
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets User Receive Time String.
+		/// </summary>
+		[Category("User")]
+		[Description("Gets User Receive Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string UserReceiveTimeString
+		{
+			get
+			{
+				var ret = (this.UserReceiveDate == DateTime.MinValue) ? "" : this.UserReceiveDate.ToThaiTimeString();
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets User Receive Date Time String.
+		/// </summary>
+		[Category("User")]
+		[Description("Gets User Receive Date Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string UserReceiveDateTimeString
+		{
+			get
+			{
+				var ret = (this.UserReceiveDate == DateTime.MinValue) ? "" : this.UserReceiveDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+				return ret;
+			}
+			set { }
+		}
+
+		#endregion
+
 		#region Sold
 
 		/// <summary>
