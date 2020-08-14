@@ -51,28 +51,6 @@ namespace MD5Sample
             }
         }
 
-        private void cmdDecrypt_Click(object sender, EventArgs e)
-        {
-            string md5 = txtMD5.Text.Trim();
-            if (string.IsNullOrEmpty(md5))
-            {
-                txtMD5.Focus();
-            }
-
-            if (rbASCII.Checked)
-            {
-                txtOut2.Text = Utils.MD5.ASCII.Decrypt(md5);
-            }
-            else if (rbUTF8v1.Checked)
-            {
-                txtOut2.Text = Utils.MD5.UTF8.Decrypt(md5);
-            }
-            else if (rbUTF8v2.Checked)
-            {
-                txtOut2.Text = Utils.MD5.UTF8v2.Decrypt(md5);
-            }
-        }
-
         #endregion
 
         #region TextBox Handlers
@@ -80,11 +58,6 @@ namespace MD5Sample
         private void txtOri_Enter(object sender, EventArgs e)
         {
             txtOri.SelectAll();
-        }
-
-        private void txtMD5_Enter(object sender, EventArgs e)
-        {
-            txtMD5.SelectAll();
         }
 
         #endregion
@@ -200,16 +173,25 @@ namespace MD5Sample
                 {
                     string ret = string.Empty;
 
+                    /*
                     using (var md5 = cypt.MD5.Create())
                     {
-                        /*
                         ret = BitConverter.ToString(md5.ComputeHash(Encoding.UTF8.GetBytes(value)))
                             .Replace("-", string.Empty).ToLower();
-                        */
-                        ret = BitConverter.ToString(md5.ComputeHash(Encoding.Default.GetBytes(value)))
-                            .Replace("-", string.Empty).ToLower();
                     }
+                    */
 
+                    // Step 1, calculate MD5 hash from input
+                    var md5 = cypt.MD5.Create();
+                    byte[] inputBytes = Encoding.ASCII.GetBytes(value);
+                    byte[] hashBytes = md5.ComputeHash(inputBytes);
+                    // Step 2, convert byte array to hex string
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < hashBytes.Length; i++)
+                    {
+                        sb.Append(hashBytes[i].ToString("x2"));
+                    }
+                    ret = sb.ToString();
                     return ret;
                 }
                 /// <summary>
