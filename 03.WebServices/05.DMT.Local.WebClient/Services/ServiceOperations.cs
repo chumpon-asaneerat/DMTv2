@@ -102,6 +102,7 @@ namespace DMT.Services
             // Init windows service monitor.
             InitWindowsServices();
 
+            HasWebSocket = false; // disable
             Connect();
             Plaza = new LocalOperations();
         }
@@ -149,6 +150,7 @@ namespace DMT.Services
 
         private void Connect()
         {
+            if (!HasWebSocket) return;
             MethodBase med = MethodBase.GetCurrentMethod();
             if (null == _ws)
             {
@@ -188,8 +190,10 @@ namespace DMT.Services
             _ws = null;
         }
 
-        void Reconnect(ushort code, string error)
+        private void Reconnect(ushort code, string error)
         {
+            if (!HasWebSocket)
+                return;
             MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
@@ -233,8 +237,10 @@ namespace DMT.Services
         private void Ws_OnClose(object sender, CloseEventArgs e)
         {
             Disconnect();
+            if (!HasWebSocket)
+                return;
             //TODO: Need Reconnect logic.
-            //Reconnect(e.Code, e.Reason);
+            Reconnect(e.Code, e.Reason);
         }
 
         private void Ws_OnError(object sender, ErrorEventArgs e)
@@ -304,6 +310,22 @@ namespace DMT.Services
 
         #endregion
 
+        #region WebSocket
+
+        public void EnableWebSocket()
+        {
+            HasWebSocket = true;
+            Connect();
+        }
+
+        public void DisableWebSocket()
+        {
+            HasWebSocket = false;
+            Disconnect();
+        }
+
+        #endregion
+
         #endregion
 
         #region Public Properties
@@ -316,6 +338,10 @@ namespace DMT.Services
         /// Gets instance of Plaza Operations.
         /// </summary>
         public LocalOperations Plaza { get; private set; }
+        /// <summary>
+        /// Gets is websocket is enabled.
+        /// </summary>
+        public bool HasWebSocket { get; private set; }
 
         #endregion
 
