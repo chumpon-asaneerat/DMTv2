@@ -2,11 +2,14 @@
 Update 2020-08-15 #10
 - 
 
+[commited]
 Update 2020-08-15 #9
-- 
+- Update Local/DataCenter/TAxTOD service operation #177.
+  - Update MD5 sample project #2.
 
 [commited]
 Update 2020-08-15 #8
+- Update Local/DataCenter/TAxTOD service operation #176.
   - Update LocalDbServer.cs #2
     - Update encrypt password in user init method #2.
 
