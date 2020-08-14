@@ -26,12 +26,14 @@ Update 2020-08-14 #13
 Update 2020-08-14 #12
 - 
 
+[commited]
 Update 2020-08-14 #11
-- 
+- Update Local/DataCenter/TAxTOD service operation #143.
+  - Add new methods in NRestResult ExtensionMethods.
 
 [commited]
 Update 2020-08-14 #10
-- Update Local/DataCenter/TAxTOD service operation #132.
+- Update Local/DataCenter/TAxTOD service operation #142.
   - Check API 
     - Collector Begin Shift (TOD/Simulator) - OK.
 

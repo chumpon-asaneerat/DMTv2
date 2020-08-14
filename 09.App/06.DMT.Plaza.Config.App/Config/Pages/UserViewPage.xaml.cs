@@ -68,8 +68,11 @@ namespace DMT.Config.Pages
             tree.ItemsSource = null;
 
             items.Clear();
+            /*
             var roleRet = ops.Users.GetRoles();
             var roles = (null != roleRet && !roleRet.errors.hasError) ? roleRet.data : null;
+            */
+            var roles = ops.Users.GetRoles().Value();
             if (null != roles)
             {
                 roles.ForEach(role =>
