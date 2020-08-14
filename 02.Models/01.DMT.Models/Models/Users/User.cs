@@ -15,6 +15,7 @@ using SQLiteNetExtensions.Extensions;
 // required for JsonIgnore attribute.
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
+using System.Reflection;
 
 #endregion
 
@@ -398,20 +399,18 @@ namespace DMT.Models
 
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<User>();
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT User.* ";
-					cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
-					cmd += "  FROM User, Role ";
-					cmd += " WHERE User.RoleId = Role.RoleId ";
+					cmd += "SELECT UserView.* ";
+					cmd += "  FROM UserView ";
 
 					var rets = NQuery.Query<FKs>(cmd).ToList();
 					var results = new List<User>();
@@ -422,13 +421,12 @@ namespace DMT.Models
 							results.Add(ret.ToUser());
 						});
 					}
-					result.data = results;
-					result.Success();
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<User>();
 				}
 				return result;
 			}
@@ -449,30 +447,28 @@ namespace DMT.Models
 
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT User.* ";
-					cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
-					cmd += "  FROM User, Role ";
-					cmd += " WHERE User.RoleId = Role.RoleId ";
-					cmd += "   AND User.UserId = ? ";
+					cmd += "SELECT UserView.* ";
+					cmd += "  FROM UserView ";
+					cmd += "   AND UserView.UserId = ? ";
 
 					var ret = NQuery.Query<FKs>(cmd, userId).FirstOrDefault();
-					result.data = (null != ret) ? ret.ToUser() : null;
-					result.Success();
+					var data = (null != ret) ? ret.ToUser() : null;
+					result.Success(data);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = null;
 				}
 				return result;
 			}
@@ -493,21 +489,19 @@ namespace DMT.Models
 
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<User>();
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT User.* ";
-					cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
-					cmd += "  FROM User, Role ";
-					cmd += " WHERE User.RoleId = Role.RoleId ";
-					cmd += "   AND User.UserId like ? ";
+					cmd += "SELECT UserView.* ";
+					cmd += "  FROM UserView ";
+					cmd += "   AND UserView.UserId like ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, "%" + userId + "%").ToList();
 
@@ -519,13 +513,12 @@ namespace DMT.Models
 							results.Add(ret.ToUser());
 						});
 					}
-					result.data = results;
-					result.Success();
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<User>();
 				}
 				return result;
 			}
@@ -546,21 +539,19 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<User>();
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT User.* ";
-					cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
-					cmd += "  FROM User, Role ";
-					cmd += " WHERE User.RoleId = Role.RoleId ";
-					cmd += "   AND User.RoleId = ? ";
+					cmd += "SELECT UserView.* ";
+					cmd += "  FROM UserView ";
+					cmd += "   AND UserView.RoleId = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, roleId).ToList();
 					var results = new List<User>();
@@ -571,13 +562,12 @@ namespace DMT.Models
 							results.Add(ret.ToUser());
 						});
 					}
-					result.data = results;
-					result.Success();
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<User>();
 				}
 				return result;
 			}
@@ -589,22 +579,20 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<User>();
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT User.* ";
-					cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
-					cmd += "  FROM User, Role ";
-					cmd += " WHERE User.RoleId = Role.RoleId ";
-					cmd += "   AND User.GroupId = ? ";
-					cmd += "   AND User.Status = ? ";
+					cmd += "SELECT UserView.* ";
+					cmd += "  FROM UserView ";
+					cmd += "   AND UserView.GroupId = ? ";
+					cmd += "   AND UserView.Status = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, groupId, status).ToList();
 					var results = new List<User>();
@@ -615,13 +603,12 @@ namespace DMT.Models
 							results.Add(ret.ToUser());
 						});
 					}
-					result.data = results;
-					result.Success();
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<User>();
 				}
 				return result;
 			}
@@ -633,22 +620,20 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = new List<User>();
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT User.* ";
-					cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
-					cmd += "  FROM User, Role ";
-					cmd += " WHERE User.RoleId = Role.RoleId ";
-					cmd += "   AND User.RoleId = ? ";
-					cmd += "   AND User.Status = ? ";
+					cmd += "SELECT UserView.* ";
+					cmd += "  FROM UserView ";
+					cmd += "   AND UserView.RoleId = ? ";
+					cmd += "   AND UserView.Status = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, roleId, status).ToList();
 					var results = new List<User>();
@@ -659,13 +644,12 @@ namespace DMT.Models
 							results.Add(ret.ToUser());
 						});
 					}
-					result.data = results;
-					result.Success();
+					result.Success(results);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = new List<User>();
 				}
 				return result;
 			}
@@ -684,31 +668,29 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT User.* ";
-					cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
-					cmd += "  FROM User, Role ";
-					cmd += " WHERE User.RoleId = Role.RoleId ";
-					cmd += "   AND User.UserId = ? ";
-					cmd += "   AND User.Password = ? ";
+					cmd += "SELECT UserView.* ";
+					cmd += "  FROM UserView ";
+					cmd += "   AND UserView.UserId = ? ";
+					cmd += "   AND UserView.Password = ? ";
 
 					var ret = NQuery.Query<FKs>(cmd, userId, password).FirstOrDefault();
-					result.data = (null != ret) ? ret.ToUser() : null;
-					result.Success();
+					var data = (null != ret) ? ret.ToUser() : null;
+					result.Success(data);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = null;
 				}
 				return result;
 			}
@@ -725,30 +707,28 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT User.* ";
-					cmd += "     , Role.RoleNameEN, Role.RoleNameTH, Role.GroupId ";
-					cmd += "  FROM User, Role ";
-					cmd += " WHERE User.RoleId = Role.RoleId ";
-					cmd += "   AND CardId = ? ";
+					cmd += "SELECT UserView.* ";
+					cmd += "  FROM UserView ";
+					cmd += "   AND UserView.CardId = ? ";
 
 					var ret = NQuery.Query<FKs>(cmd, cardId).FirstOrDefault();
-					result.data = (null != ret) ? ret.ToUser() : null;
-					result.Success();
+					var data = (null != ret) ? ret.ToUser() : null;
+					result.Success(data);
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = null;
 				}
 				return result;
 			}
@@ -760,13 +740,13 @@ namespace DMT.Models
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
-				result.ConenctFailed();
-				result.data = null;
+				result.DbConenctFailed();
 				return result;
 			}
 
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					result = Save(value);
@@ -774,8 +754,8 @@ namespace DMT.Models
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					result.Error(ex);
-					result.data = null;
 				}
 				return result;
 			}
