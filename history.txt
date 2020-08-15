@@ -17,11 +17,15 @@ Update 2020-08-15 #16
 Update 2020-08-15 #15
 - 
 
+[commited]
 Update 2020-08-15 #14
-- 
+- Update Local/DataCenter/TAxTOD service operation #182.
+  - Update Utils.MD5 class #3.
 
+[commited]
 Update 2020-08-15 #13
-- 
+- Update Local/DataCenter/TAxTOD service operation #181.
+  - Update Utils.MD5 class #2.
 
 [commited]
 Update 2020-08-15 #12
