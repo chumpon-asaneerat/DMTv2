@@ -23,6 +23,9 @@ namespace DMT.Models
 {
     #region TSBShift
 
+    /// <summary>
+    /// The TSBShift Data Model class.
+    /// </summary>
     [TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
     [Serializable]
     [JsonObject(MemberSerialization.OptOut)]

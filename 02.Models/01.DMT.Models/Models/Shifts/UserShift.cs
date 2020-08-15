@@ -23,6 +23,9 @@ namespace DMT.Models
 {
     #region UserShift
 
+    /// <summary>
+    /// The UserShift Data Model class.
+    /// </summary>
     [TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
     [Serializable]
     [JsonObject(MemberSerialization.OptOut)]
@@ -519,6 +522,9 @@ namespace DMT.Models
 
         #region Internal Class
 
+        /// <summary>
+        /// The internal FKs class for query data.
+        /// </summary>
         public class FKs : UserShift, IFKs<UserShift>
         {
             #region TSB
@@ -595,23 +601,18 @@ namespace DMT.Models
             }
 
             #endregion
-
-            #region Public Methods
-            /*
-            public UserShift ToUserShift()
-            {
-                UserShift inst = new UserShift();
-                this.AssignTo(inst); // set all properties to new instance.
-                return inst;
-            }
-            */
-            #endregion
         }
 
         #endregion
 
         #region Static Methods
 
+        /// <summary>
+        /// Create UserShift.
+        /// </summary>
+        /// <param name="shift">The Shift instance.</param>
+        /// <param name="supervisor">The User instance.</param>
+        /// <returns>Returns UserShift instance.</returns>
         public static NDbResult<UserShift> Create(Shift shift, User supervisor)
         {
             var result = new NDbResult<UserShift>();
@@ -629,7 +630,11 @@ namespace DMT.Models
             result.Success(inst);
             return result;
         }
-
+        /// <summary>
+        /// Gets UserShift by User Id.
+        /// </summary>
+        /// <param name="userId">The User Id.</param>
+        /// <returns>Returns UserShift instance.</returns>
         public static NDbResult<UserShift> GetUserShift(string userId)
         {
             var result = new NDbResult<UserShift>();
@@ -648,7 +653,12 @@ namespace DMT.Models
             result = GetUserShift(tsb.TSBId, userId);
             return result;
         }
-
+        /// <summary>
+        /// Gets UserShift by TSBId and UserId.
+        /// </summary>
+        /// <param name="tsbId">Ths TSB id.</param>
+        /// <param name="userId">The User Id.</param>
+        /// <returns>Returns UserShift instance.</returns>
         public static NDbResult<UserShift> GetUserShift(string tsbId, string userId)
         {
             var result = new NDbResult<UserShift>();
@@ -658,7 +668,6 @@ namespace DMT.Models
                 result.DbConenctFailed();
                 return result;
             }
-
             lock (sync)
             {
                 MethodBase med = MethodBase.GetCurrentMethod();
@@ -670,6 +679,7 @@ namespace DMT.Models
                     cmd += " WHERE TSBId = ? ";
                     cmd += "   AND UserId = ? ";
                     cmd += "   AND End = ? ";
+
                     var ret = NQuery.Query<FKs>(cmd, 
                         tsbId, userId, DateTime.MinValue).FirstOrDefault();
                     result.data = (null != ret) ? ret.ToModel() : null;
@@ -683,7 +693,11 @@ namespace DMT.Models
                 return result;
             }
         }
-
+        /// <summary>
+        /// Begin User Shift.
+        /// </summary>
+        /// <param name="value">The UserShift instance.</param>
+        /// <returns>Returns Begin User Shift Result.</returns>
         public static NDbResult BeginUserShift(UserShift value)
         {
             var result = new NDbResult();
@@ -693,13 +707,11 @@ namespace DMT.Models
                 result.DbConenctFailed();
                 return result;
             }
-
             if (null == value)
             {
                 result.ParameterIsNull();
                 return result;
             }
-
             lock (sync)
             {
                 MethodBase med = MethodBase.GetCurrentMethod();
@@ -734,7 +746,11 @@ namespace DMT.Models
                 return result;
             }
         }
-
+        /// <summary>
+        /// End User Shift.
+        /// </summary>
+        /// <param name="value">The UserShift instance.</param>
+        /// <returns>Returns End User Shift Result.</returns>
         public static NDbResult EndUserShift(UserShift value)
         {
             var result = new NDbResult();
@@ -744,13 +760,11 @@ namespace DMT.Models
                 result.DbConenctFailed();
                 return result;
             }
-
             if (null == value)
             {
                 result.ParameterIsNull();
                 return result;
             }
-
             lock (sync)
             {
                 MethodBase med = MethodBase.GetCurrentMethod();
@@ -776,7 +790,11 @@ namespace DMT.Models
                 return result;
             }
         }
-
+        /// <summary>
+        /// Gets User Shifts (Active TSB).
+        /// </summary>
+        /// <param name="userId">The User Id.</param>
+        /// <returns>Returns List of User Shifts.</returns>
         public static NDbResult<List<UserShift>> GetUserShifts(string userId)
         {
             var result = new NDbResult<List<UserShift>>();
@@ -795,7 +813,12 @@ namespace DMT.Models
             result = GetUserShifts(tsb.TSBId, userId);
             return result;
         }
-
+        /// <summary>
+        /// Gets User Shifts.
+        /// </summary>
+        /// <param name="tsbId">The TSB Id.</param>
+        /// <param name="userId">The User Id.</param>
+        /// <returns>Returns List of User Shifts.</returns>
         public static NDbResult<List<UserShift>> GetUserShifts(string tsbId, string userId)
         {
             var result = new NDbResult<List<UserShift>>();
@@ -805,7 +828,6 @@ namespace DMT.Models
                 result.DbConenctFailed();
                 return result;
             }
-
             lock (sync)
             {
                 MethodBase med = MethodBase.GetCurrentMethod();
@@ -819,16 +841,6 @@ namespace DMT.Models
 
                     var rets = NQuery.Query<FKs>(cmd, tsbId, userId).ToList();
                     var results = rets.ToModels();
-                    /*
-                    var results = new List<UserShift>();
-                    if (null != rets)
-                    {
-                        rets.ForEach(ret =>
-                        {
-                            results.Add(ret.ToModel());
-                        });
-                    }
-                    */
                     result.Success(results);
                 }
                 catch (Exception ex)
@@ -839,7 +851,10 @@ namespace DMT.Models
                 return result;
             }
         }
-
+        /// <summary>
+        /// Gets Un Close User Shifts (Active TSB).
+        /// </summary>
+        /// <returns>Returns List of User Shifts.</returns>
         public static NDbResult<List<UserShift>> GetUnCloseUserShifts()
         {
             var result = new NDbResult<List<UserShift>>();
@@ -858,7 +873,11 @@ namespace DMT.Models
             result = GetUnCloseUserShifts(tsb.TSBId);
             return result;
         }
-
+        /// <summary>
+        /// Gets Un Close User Shifts.
+        /// </summary>
+        /// <param name="tsbid">The TSB Id.</param>
+        /// <returns>Returns List of User Shifts.</returns>
         public static NDbResult<List<UserShift>> GetUnCloseUserShifts(string tsbid)
         {
             var result = new NDbResult<List<UserShift>>();
@@ -868,7 +887,6 @@ namespace DMT.Models
                 result.DbConenctFailed();
                 return result;
             }
-
             lock (sync)
             {
                 MethodBase med = MethodBase.GetCurrentMethod();
@@ -882,16 +900,6 @@ namespace DMT.Models
 
                     var rets = NQuery.Query<FKs>(cmd, tsbid, DateTime.MinValue).ToList();
                     var results = rets.ToModels();
-                    /*
-                    var results = new List<UserShift>();
-                    if (null != rets)
-                    {
-                        rets.ForEach(ret =>
-                        {
-                            results.Add(ret.ToModel());
-                        });
-                    }
-                    */
                     result.Success(results);
                 }
                 catch (Exception ex)
@@ -910,9 +918,18 @@ namespace DMT.Models
 
     #region UserShiftCreate
 
+    /// <summary>
+    /// The UserShiftCreate class.
+    /// </summary>
     public class UserShiftCreate
     {
+        /// <summary>
+        /// Gets or sets Shift.
+        /// </summary>
         public Shift Shift { get; set; }
+        /// <summary>
+        /// Gets or sets User.
+        /// </summary>
         public User User { get; set; }
     }
 
