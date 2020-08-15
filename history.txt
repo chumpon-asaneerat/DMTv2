@@ -61,6 +61,11 @@ Update 2020-08-16 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-08-15 #41
+- Update Local/DataCenter/TAxTOD service operation #203.
+  - Replace 03.DMT.Local.Plaza.Windows.Services (Windows Forms -> WPF).
+
+[commited]
 Update 2020-08-15 #40
 - Prepare history.txt
 - Add TODOs in various files.
