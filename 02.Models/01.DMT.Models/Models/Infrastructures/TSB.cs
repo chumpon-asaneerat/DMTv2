@@ -247,10 +247,14 @@ namespace DMT.Models
 
 		#region Static Methods
 
+		/// <summary>
+		/// Gets TSBs.
+		/// </summary>
+		/// <param name="db">The database connection.</param>
+		/// <returns>Returns List of TSB.</returns>
 		public static NDbResult<List<TSB>> GetTSBs(SQLiteConnection db)
 		{
 			var result = new NDbResult<List<TSB>>();
-
 			if (null == db)
 			{
 				result.DbConenctFailed();
@@ -275,7 +279,10 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets TSBs.
+		/// </summary>
+		/// <returns>Returns List of TSB.</returns>
 		public static NDbResult<List<TSB>> GetTSBs()
 		{
 			lock (sync)
@@ -284,11 +291,15 @@ namespace DMT.Models
 				return GetTSBs(db);
 			}
 		}
-
+		/// <summary>
+		/// Gets TSB By TSB Id.
+		/// </summary>
+		/// <param name="db">The database connection.</param>
+		/// <param name="tsbId">The TSB Id.</param>
+		/// <returns>Returns TSB instance.</returns>
 		public static NDbResult<TSB> GetTSB(SQLiteConnection db, string tsbId)
 		{
 			var result = new NDbResult<TSB>();
-
 			if (null == db)
 			{
 				result.DbConenctFailed();
@@ -313,7 +324,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets TSB By TSB Id.
+		/// </summary>
+		/// <param name="tsbId">The TSB Id.</param>
+		/// <returns>Returns TSB instance.</returns>
 		public static NDbResult<TSB> GetTSB(string tsbId)
 		{
 			lock (sync)
@@ -322,7 +337,6 @@ namespace DMT.Models
 				return GetTSB(db, tsbId);
 			}
 		}
-
 		/// <summary>
 		/// Gets Active TSB.
 		/// </summary>
@@ -357,7 +371,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Set Active by TSB Id.
+		/// </summary>
+		/// <param name="tsbId">The TSB Id.</param>
+		/// <returns>Returns Set Active status.</returns>
 		public static NDbResult SetActive(string tsbId)
 		{
 			var result = new NDbResult();
