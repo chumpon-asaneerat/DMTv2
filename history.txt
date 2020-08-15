@@ -14,8 +14,10 @@ Update 2020-08-15 #37
 Update 2020-08-15 #36
 - 
 
+[commited]
 Update 2020-08-15 #35
-- 
+- Update history.txt
+  - Note: the implements/update/fixed number will reset to 1 after finished to day update
 
 [commited]
 Update 2020-08-15 #34
