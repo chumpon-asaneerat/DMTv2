@@ -1540,6 +1540,9 @@ namespace DMT.Models
 
 		#region Internal Class
 
+		/// <summary>
+		/// The internal FKs class for query data.
+		/// </summary>
 		public class FKs : RevenueEntry, IFKs<RevenueEntry>
 		{
 			#region TSB
@@ -1676,23 +1679,16 @@ namespace DMT.Models
 			}
 
 			#endregion
-
-			#region Public Methods
-			/*
-			public RevenueEntry ToRevenueEntry()
-			{
-				RevenueEntry inst = new RevenueEntry();
-				this.AssignTo(inst); // set all properties to new instance.
-				return inst;
-			}
-			*/
-			#endregion
 		}
 
 		#endregion
 
 		#region Static Methods
 
+		/// <summary>
+		/// Gets all Revenue Enties.
+		/// </summary>
+		/// <returns>Returns List of RevenueEntry.</returns>
 		public static NDbResult<List<RevenueEntry>> GetRevenueEnties()
 		{
 			var result = new NDbResult<List<RevenueEntry>>();
@@ -1702,7 +1698,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -1714,17 +1709,6 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<RevenueEntry>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -1735,7 +1719,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets Revenue Enties by TSBId.
+		/// </summary>
+		/// <param name="tsbid">The TSB Id.</param>
+		/// <returns>Returns List of RevenueEntry.</returns>
 		public static NDbResult<List<RevenueEntry>> GetRevenueEnties(string tsbid)
 		{
 			var result = new NDbResult<List<RevenueEntry>>();
@@ -1745,7 +1733,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -1758,17 +1745,6 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd, tsbid).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<RevenueEntry>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -1779,7 +1755,12 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Find Revenue Enties by revenue date.
+		/// </summary>
+		/// <param name="begin">The Begin Revenue Date Time.</param>
+		/// <param name="end">The End Revenue Date Time.</param>
+		/// <returns>Returns List of RevenueEntry.</returns>
 		public static NDbResult<List<RevenueEntry>> FindByRevnueDate(DateTime begin, DateTime end)
 		{
 			var result = new NDbResult<List<RevenueEntry>>();
@@ -1789,7 +1770,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -1803,16 +1783,6 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd, begin, end).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<RevenueEntry>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -1823,7 +1793,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Find Revenue Enties by date.
+		/// </summary>
+		/// <param name="date">The Revenue Date.</param>
+		/// <returns>Returns List of RevenueEntry.</returns>
 		public static NDbResult<List<RevenueEntry>> FindByRevnueDate(DateTime date)
 		{
 			DateTime begin = date.Date;
