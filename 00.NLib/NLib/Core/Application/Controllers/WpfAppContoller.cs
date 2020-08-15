@@ -199,7 +199,10 @@ namespace NLib
                     _mainWindow.Closing += new CancelEventHandler(_mainWindow_Closing);
                 }
 
-                _mainWindow.Show();
+                if (null != _mainWindow)
+                {
+                    _mainWindow.Show();
+                }
             }
             else
             {

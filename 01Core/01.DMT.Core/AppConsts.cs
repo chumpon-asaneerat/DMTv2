@@ -12,7 +12,7 @@ namespace DMT
         public static string Version = "1";
         public static string Minor = "1";
         public static string Build = "1";
-        public static DateTime LastUpdate = new DateTime(2020, 06, 13, 10, 00, 00);
+        public static DateTime LastUpdate = new DateTime(2020, 08, 15, 10, 00, 00);
 
         public static class Application
         {
@@ -61,7 +61,17 @@ namespace DMT
                 public static string Build = AppConsts.Build;
                 public static DateTime LastUpdate = AppConsts.LastUpdate;
             }
+            public static class DataCenter
+            {
+                public static string ApplicationName = @"DMT Data Center Workbench";
+                // common
+                public static string Version = AppConsts.Version;
+                public static string Minor = AppConsts.Minor;
+                public static string Build = AppConsts.Build;
+                public static DateTime LastUpdate = AppConsts.LastUpdate;
+            }
         }
+
         public static class WindowsService
         {
             public static class Local
