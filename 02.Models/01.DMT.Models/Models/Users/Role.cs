@@ -200,16 +200,19 @@ namespace DMT.Models
 
 		#region Static Methods
 
+		/// <summary>
+		/// Gets Roles.
+		/// </summary>
+		/// <param name="db">The database connection.</param>
+		/// <returns>Returns List of Role.</returns>
 		public static NDbResult<List<Role>> GetRoles(SQLiteConnection db)
 		{
 			var result = new NDbResult<List<Role>>();
-
 			if (null == db)
 			{
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -228,7 +231,10 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets Roles.
+		/// </summary>
+		/// <returns>Returns List of Role.</returns>
 		public static NDbResult<List<Role>> GetRoles()
 		{
 			lock (sync)
@@ -237,17 +243,20 @@ namespace DMT.Models
 				return GetRoles(db);
 			}
 		}
-
+		/// <summary>
+		/// Gets Role.
+		/// </summary>
+		/// <param name="db">The database connection.</param>
+		/// <param name="roleId">The Role Id.</param>
+		/// <returns>Returns Role instance.</returns>
 		public static NDbResult<Role> GetRole(SQLiteConnection db, string roleId)
 		{
 			var result = new NDbResult<Role>();
-
 			if (null == db)
 			{
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -267,7 +276,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets Role.
+		/// </summary>
+		/// <param name="roleId">The Role Id.</param>
+		/// <returns>Returns Role instance.</returns>
 		public static NDbResult<Role> GetRole(string roleId)
 		{
 			lock (sync)
