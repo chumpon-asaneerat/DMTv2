@@ -357,6 +357,9 @@ namespace DMT.Models
 
 		#region Internal Class
 
+		/// <summary>
+		/// The internal FKs class for query data.
+		/// </summary>
 		public class FKs : Plaza, IFKs<Plaza>
 		{
 			#region TSB
@@ -418,33 +421,25 @@ namespace DMT.Models
 			}
 
 			#endregion
-
-			#region Public Methods
-			/*
-			public Plaza ToPlaza()
-			{
-				Plaza inst = new Plaza();
-				this.AssignTo(inst); // set all properties to new instance.
-				return inst;
-			}
-			*/
-			#endregion
 		}
 
 		#endregion
 
 		#region Static Methods
 
+		/// <summary>
+		/// Gets Plazas.
+		/// </summary>
+		/// <param name="db">The database connection.</param>
+		/// <returns>Returns List of Plaza.</returns>
 		public static NDbResult<List<Plaza>> GetPlazas(SQLiteConnection db)
 		{
 			var result = new NDbResult<List<Plaza>>();
-
 			if (null == db)
 			{
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -456,16 +451,6 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<Plaza>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -476,7 +461,10 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets Plazas.
+		/// </summary>
+		/// <returns>Returns List of Plaza.</returns>
 		public static NDbResult<List<Plaza>> GetPlazas()
 		{
 			lock (sync)
@@ -485,17 +473,20 @@ namespace DMT.Models
 				return GetPlazas(db);
 			}
 		}
-
+		/// <summary>
+		/// Gets Plaza.
+		/// </summary>
+		/// <param name="db">The database connection.</param>
+		/// <param name="plazaId">The Plaza Id</param>
+		/// <returns>Returns Plaza instance.</returns>
 		public static NDbResult<Plaza> GetPlaza(SQLiteConnection db, string plazaId)
 		{
 			var result = new NDbResult<Plaza>();
-
 			if (null == db)
 			{
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -517,7 +508,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets Plaza.
+		/// </summary>
+		/// <param name="plazaId">The Plaza Id.</param>
+		/// <returns>Returns Plaza instance.</returns>
 		public static NDbResult<Plaza> GetPlaza(string plazaId)
 		{
 			lock (sync)
@@ -526,7 +521,11 @@ namespace DMT.Models
 				return GetPlaza(db, plazaId);
 			}
 		}
-
+		/// <summary>
+		/// Gets Plazas (By TSB).
+		/// </summary>
+		/// <param name="value">The TSB Instance.</param>
+		/// <returns>Returns List of Plaza.</returns>
 		public static NDbResult<List<Plaza>> GetTSBPlazas(TSB value)
 		{
 			var result = new NDbResult<List<Plaza>>();
@@ -542,7 +541,11 @@ namespace DMT.Models
 				return GetTSBPlazas(value.TSBId);
 			}
 		}
-
+		/// <summary>
+		/// Gets Plazas (By TSB d).
+		/// </summary>
+		/// <param name="tsbId">The TSB Id.</param>
+		/// <returns>Returns List of Plaza.</returns>
 		public static NDbResult<List<Plaza>> GetTSBPlazas(string tsbId)
 		{
 			var result = new NDbResult<List<Plaza>>();
@@ -552,7 +555,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -565,16 +567,6 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd, tsbId).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<Plaza>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
