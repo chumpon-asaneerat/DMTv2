@@ -935,6 +935,12 @@ namespace DMT.Models
 		public static NDbResult<LaneAttendance> Create(Lane lane, User supervisor)
 		{
 			var result = new NDbResult<LaneAttendance>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
 			LaneAttendance inst = Create();
 			var tsb = TSB.GetCurrent().Value();
 			if (null == tsb)
@@ -1247,6 +1253,25 @@ namespace DMT.Models
 			}
 		}
 
+		public static NDbResult<List<LaneAttendance>> GetAllNotHasRevenueEntry()
+		{
+			var result = new NDbResult<List<LaneAttendance>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			var tsb = TSB.GetCurrent().Value();
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+			result = GetAllNotHasRevenueEntry(tsb);
+			return result;
+		}
+
 		public static NDbResult<List<LaneAttendance>> GetAllNotHasRevenueEntry(TSB tsb)
 		{
 			var result = new NDbResult<List<LaneAttendance>>();
@@ -1256,7 +1281,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == tsb)
 			{
 				result.ParameterIsNull();

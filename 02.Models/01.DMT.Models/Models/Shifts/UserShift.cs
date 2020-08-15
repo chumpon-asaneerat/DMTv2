@@ -615,12 +615,37 @@ namespace DMT.Models
         public static NDbResult<UserShift> Create(Shift shift, User supervisor)
         {
             var result = new NDbResult<UserShift>();
+            SQLiteConnection db = Default;
+            if (null == db)
+            {
+                result.DbConenctFailed();
+                return result;
+            }
             UserShift inst = Create();
             var tsb = TSB.GetCurrent().Value();
             if (null != tsb) tsb.AssignTo(inst);
             if (null != shift) shift.AssignTo(inst);
             if (null != supervisor) supervisor.AssignTo(inst);
             result.Success(inst);
+            return result;
+        }
+
+        public static NDbResult<UserShift> GetUserShift(string userId)
+        {
+            var result = new NDbResult<UserShift>();
+            SQLiteConnection db = Default;
+            if (null == db)
+            {
+                result.DbConenctFailed();
+                return result;
+            }
+            var tsb = TSB.GetCurrent().Value();
+            if (null == tsb)
+            {
+                result.ParameterIsNull();
+                return result;
+            }
+            result = GetUserShift(tsb.TSBId, userId);
             return result;
         }
 
@@ -752,6 +777,25 @@ namespace DMT.Models
             }
         }
 
+        public static NDbResult<List<UserShift>> GetUserShifts(string userId)
+        {
+            var result = new NDbResult<List<UserShift>>();
+            SQLiteConnection db = Default;
+            if (null == db)
+            {
+                result.DbConenctFailed();
+                return result;
+            }
+            var tsb = TSB.GetCurrent().Value();
+            if (null == tsb)
+            {
+                result.ParameterIsNull();
+                return result;
+            }
+            result = GetUserShifts(tsb.TSBId, userId);
+            return result;
+        }
+
         public static NDbResult<List<UserShift>> GetUserShifts(string tsbId, string userId)
         {
             var result = new NDbResult<List<UserShift>>();
@@ -794,6 +838,25 @@ namespace DMT.Models
                 }
                 return result;
             }
+        }
+
+        public static NDbResult<List<UserShift>> GetUnCloseUserShifts()
+        {
+            var result = new NDbResult<List<UserShift>>();
+            SQLiteConnection db = Default;
+            if (null == db)
+            {
+                result.DbConenctFailed();
+                return result;
+            }
+            var tsb = TSB.GetCurrent().Value();
+            if (null == tsb)
+            {
+                result.ParameterIsNull();
+                return result;
+            }
+            result = GetUnCloseUserShifts(tsb.TSBId);
+            return result;
         }
 
         public static NDbResult<List<UserShift>> GetUnCloseUserShifts(string tsbid)

@@ -23,7 +23,7 @@ namespace DMT.Services
         [ActionName(RouteConsts.TSB.GetTSBs.Name)]
         public NDbResult<List<TSB>> GetTSBs()
         {
-            var results = TSB.Gets();
+            var results = TSB.GetTSBs();
             return results;
         }
 

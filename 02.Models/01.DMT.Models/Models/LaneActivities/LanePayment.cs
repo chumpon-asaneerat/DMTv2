@@ -881,6 +881,12 @@ namespace DMT.Models
 			Payment payment, DateTime date, decimal amount)
 		{
 			var result = new NDbResult<LanePayment>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
 			LanePayment inst = Create();
 			var tsb = TSB.GetCurrent().Value();
 			if (null == tsb)

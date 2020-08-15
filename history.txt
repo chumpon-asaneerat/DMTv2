@@ -5,8 +5,14 @@ Update 2020-08-15 #20
 Update 2020-08-15 #19
 - 
 
+[commited]
 Update 2020-08-15 #18
-- 
+- Update Local/DataCenter/TAxTOD service operation #186.
+  - Update TSB Controller #1.
+  - Update UserShift Controller #1.
+  - UserShift Models update #4.
+  - LaneAttendance Models update #5.
+  - LanePayment Models update #5.
 
 [commited]
 Update 2020-08-15 #17

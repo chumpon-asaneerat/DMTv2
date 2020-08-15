@@ -51,7 +51,7 @@ namespace DMT.Services
             }
             else
             {
-                result = UserShift.GetCurrent(value.UserId);
+                result = UserShift.GetUserShift(value.UserId);
             }
             return result;
         }
