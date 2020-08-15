@@ -29,8 +29,11 @@ Update 2020-08-15 #32
 Update 2020-08-15 #31
 - 
 
+[commited]
 Update 2020-08-15 #30
-- 
+- Update Local/DataCenter/TAxTOD service operation #195.
+  - Test TOD functions #1.
+    - Change Shift - OK.
 
 [commited]
 Update 2020-08-15 #29
