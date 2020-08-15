@@ -1593,7 +1593,7 @@ namespace DMT.Models
 		/// Gets All TSB Credit Balance.
 		/// </summary>
 		/// <returns>Returns List fo all TSB Credit balance.</returns>
-		public static NDbResult<List<TSBCreditBalance>> Gets()
+		public static NDbResult<List<TSBCreditBalance>> GetTSBCreditBalances()
 		{
 			var result = new NDbResult<List<TSBCreditBalance>>();
 			SQLiteConnection db = Default;

@@ -127,10 +127,10 @@ namespace DMT.Models
 		#region Runtime
 
 		/// <summary>
-		/// Gets or sets Foreground color.
+		/// Gets Foreground color.
 		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color.")]
+		[Description("Gets Foreground color.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]

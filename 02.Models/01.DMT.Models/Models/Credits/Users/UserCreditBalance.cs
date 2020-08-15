@@ -35,12 +35,22 @@ namespace DMT.Models
 	{
 		#region Enum
 
+		/// <summary>
+		/// The User Credit Balance State enum.
+		/// </summary>
 		public enum StateTypes : int
 		{
+			/// <summary>
+			/// Initial
+			/// </summary>
 			Initial = 0,
-			// received bag
+			/// <summary>
+			/// User Received bag.
+			/// </summary>
 			Received = 1,
-			// Returns all credit.
+			/// <summary>
+			/// Returns all credit.
+			/// </summary>
 			Completed = 2
 		}
 
@@ -183,9 +193,11 @@ namespace DMT.Models
 				}
 			}
 		}
-
+		/// <summary>
+		/// Gets Remark Visibility.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets RemarkVisibility.")]
+		[Description("Gets Remark Visibility.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -195,8 +207,11 @@ namespace DMT.Models
 			get { return (_hasRemark) ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Received Bag Visibility.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets ReceivedBagVisibility.")]
+		[Description("Gets Received Bag Visibility.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -211,8 +226,11 @@ namespace DMT.Models
 
 		#region Valid Colors
 
+		/// <summary>
+		/// Gets Foreground color for ST25.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for ST25.")]
+		[Description("Gets Foreground color for ST25.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -221,8 +239,11 @@ namespace DMT.Models
 			get { return (IsValidST25) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for ST50.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for ST50.")]
+		[Description("Gets Foreground color for ST50.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -231,8 +252,11 @@ namespace DMT.Models
 			get { return (IsValidST50) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT1.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT1.")]
+		[Description("Gets Foreground color for BHT1.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -241,8 +265,11 @@ namespace DMT.Models
 			get { return (IsValidBHT1) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT2.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT2.")]
+		[Description("Gets Foreground color for BHT2.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -251,8 +278,11 @@ namespace DMT.Models
 			get { return (IsValidBHT2) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT5.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT5.")]
+		[Description("Gets Foreground color for BHT5.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -261,8 +291,11 @@ namespace DMT.Models
 			get { return (IsValidBHT5) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT10.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT10.")]
+		[Description("Gets Foreground color for BHT10.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -271,8 +304,11 @@ namespace DMT.Models
 			get { return (IsValidBHT10) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT20.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT20.")]
+		[Description("Gets Foreground color for BHT20.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -281,8 +317,11 @@ namespace DMT.Models
 			get { return (IsValidBHT20) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT50.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT50.")]
+		[Description("Gets Foreground color for BHT50.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -291,8 +330,11 @@ namespace DMT.Models
 			get { return (IsValidBHT50) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT100.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT100.")]
+		[Description("Gets Foreground color for BHT100.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -301,8 +343,11 @@ namespace DMT.Models
 			get { return (IsValidBHT100) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT500.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT500.")]
+		[Description("Gets Foreground color for BHT500.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -311,8 +356,11 @@ namespace DMT.Models
 			get { return (IsValidBHT500) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT1000.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT1000.")]
+		[Description("Gets Foreground color for BHT1000.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -1571,6 +1619,9 @@ namespace DMT.Models
 
 		#region Internal Class
 
+		/// <summary>
+		/// The internal FKs class for query data.
+		/// </summary>
 		public class FKs : UserCreditBalance, IFKs<UserCreditBalance>
 		{
 			#region TSB
@@ -1865,23 +1916,18 @@ namespace DMT.Models
 			}
 
 			#endregion
-
-			#region Public Methods
-			/*
-			public UserCreditBalance ToUserCreditBalance()
-			{
-				UserCreditBalance inst = new UserCreditBalance();
-				this.AssignTo(inst); // set all properties to new instance.
-				return inst;
-			}
-			*/
-			#endregion
 		}
 
 		#endregion
 
 		#region Static Methods
 
+		/// <summary>
+		/// Gets User Credit Balance (when balance status is not completed).
+		/// </summary>
+		/// <param name="user">The User instance.</param>
+		/// <param name="plazaGroup">The Plaza Group instance.</param>
+		/// <returns>Returns User Credit Balance.</returns>
 		public static NDbResult<UserCreditBalance> GetActiveUserCreditBalance(
 			User user, PlazaGroup plazaGroup)
 		{
@@ -1911,7 +1957,6 @@ namespace DMT.Models
 
 					var ret = NQuery.Query<FKs>(cmd,
 						user.UserId, plazaGroup.TSBId, StateTypes.Completed).FirstOrDefault();
-
 					UserCreditBalance inst;
 					if (null == ret)
 					{
@@ -1934,7 +1979,12 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets User Credit Balance by UserId and PlazaGroupId (when balance status is not completed).
+		/// </summary>
+		/// <param name="userId">The User Id.</param>
+		/// <param name="plazaGroupId">The Plaza Group Id.</param>
+		/// <returns>Returns User Credit Balance.</returns>
 		public static NDbResult<UserCreditBalance> GetActiveUserCreditBalanceById(
 			string userId, string plazaGroupId)
 		{
@@ -1945,7 +1995,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -1974,7 +2023,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets All User Credit Balances (when balance status is not completed).
+		/// </summary>
+		/// <param name="tsb">The TSB instance.</param>
+		/// <returns>Returns List of User Credit Balance.</returns>
 		public static NDbResult<List<UserCreditBalance>> GetActiveUserCreditBalances(TSB tsb)
 		{
 			var result = new NDbResult<List<UserCreditBalance>>();
@@ -1989,7 +2042,6 @@ namespace DMT.Models
 				result.ParameterIsNull();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -2004,16 +2056,6 @@ namespace DMT.Models
 					var rets = NQuery.Query<FKs>(cmd,
 						tsb.TSBId, StateTypes.Completed).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<UserCreditBalance>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -2024,7 +2066,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Save User Credit Balance.
+		/// </summary>
+		/// <param name="value">The UserCreditBalance instance.</param>
+		/// <returns>Returns save UserCreditBalance instance.</returns>
 		public static NDbResult<UserCreditBalance> SaveUserCreditBalance(UserCreditBalance value)
 		{
 			NDbResult<UserCreditBalance> result = new NDbResult<UserCreditBalance>();
@@ -2039,7 +2085,6 @@ namespace DMT.Models
 				result.ParameterIsNull();
 				return result;
 			}
-
 			lock (sync)
 			{
 				// set date if not assigned.

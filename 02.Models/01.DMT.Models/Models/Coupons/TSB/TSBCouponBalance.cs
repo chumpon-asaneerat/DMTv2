@@ -121,7 +121,7 @@ namespace DMT.Models
 		/// Gets Remark Visibility.
 		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets RemarkVisibility.")]
+		[Description("Gets Remark Visibility.")]
 		[ReadOnly(true)]
 		[Ignore]
 		[PeropertyMapName("RemarkVisibility")]
