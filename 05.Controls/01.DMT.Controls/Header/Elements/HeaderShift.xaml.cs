@@ -52,7 +52,7 @@ namespace DMT.Controls.Header
         private void UpdateUI()
         {
             var ret = ops.Shifts.GetCurrent();
-            var shift = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            var shift = ret.Value();
             if (null != shift)
             {
                 txtShiftDate.Text = shift.Begin.ToThaiDateString();

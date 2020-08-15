@@ -47,7 +47,7 @@ namespace DMT.TA.Controls.Collector.Coupon
 
             var search = Search.Users.ById.Create(trans.UserId);
             var ret = ops.Users.GetById(search);
-            var user = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            var user = ret.Value();
             if (null == user) return;
 
             var win = new DMT.TA.Windows.Coupon.CouponReturnWindow();
@@ -62,10 +62,9 @@ namespace DMT.TA.Controls.Collector.Coupon
 
         public void RefreshList()
         {
-            var tsbRet = ops.TSB.GetCurrent();
-            var tsb = (null != tsbRet && !tsbRet.errors.hasError) ? tsbRet.data : null;
+            var tsb = ops.TSB.GetCurrent().Value();
             var ret = ops.Coupons.GetTSBCouponSummaries(tsb);
-            var coupons = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            var coupons = ret.Value();
             listView.ItemsSource = coupons;
         }
     }

@@ -52,7 +52,7 @@ namespace DMT.Controls.Header
         private void UpdateUI()
         {
             var ret = ops.TSB.GetCurrent();
-            var tsb = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            var tsb = ret.Value();
             if (null != tsb)
             {
                 txtPlazaId.Text = "รหัสด่าน : " + tsb.TSBId;

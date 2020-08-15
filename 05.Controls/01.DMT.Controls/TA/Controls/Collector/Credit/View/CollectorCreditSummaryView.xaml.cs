@@ -115,11 +115,8 @@ namespace DMT.TA.Controls.Collector.Credit.View
 
         private void RefreshUserCredits()
         {
-            var ret = ops.TSB.GetCurrent();
-            _tsb = (null != ret && !ret.errors.hasError) ? ret.data : null;
-
-            var ucRet = ops.Credits.GetActiveUserCreditBalances(_tsb);
-            var userCredits = (null != ucRet && !ucRet.errors.hasError) ? ucRet.data : null;
+            _tsb = ops.TSB.GetCurrent().Value();
+            var userCredits = ops.Credits.GetActiveUserCreditBalances(_tsb).Value();
             listView.ItemsSource = userCredits;
         }
 
