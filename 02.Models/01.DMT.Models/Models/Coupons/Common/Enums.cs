@@ -22,6 +22,9 @@ namespace DMT.Models
 {
     #region CouponType
 
+    /// <summary>
+    /// The Coupon Type enum.
+    /// </summary>
     public enum CouponType : int
     {
         BHT35 = 35,

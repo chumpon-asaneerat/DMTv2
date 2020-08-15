@@ -294,6 +294,9 @@ namespace DMT.Models
 
 		#region Internal Class
 
+		/// <summary>
+		/// The internal FKs class for query data.
+		/// </summary>
 		public class FKs : TSBCouponBalance, IFKs<TSBCouponBalance>
 		{
 			#region TSB
@@ -352,17 +355,6 @@ namespace DMT.Models
 			}
 
 			#endregion
-
-			#region Public Methods
-			/*
-			public TSBCouponBalance ToTSBCouponBalance()
-			{
-				TSBCouponBalance inst = new TSBCouponBalance();
-				this.AssignTo(inst); // set all properties to new instance.
-				return inst;
-			}
-			*/
-			#endregion
 		}
 
 		#endregion
@@ -372,7 +364,9 @@ namespace DMT.Models
 		/// <summary>
 		/// Gets Active TSB Coupon balance.
 		/// </summary>
-		/// <returns>Returns Current Active TSB Coupon balance. If not found returns null.</returns>
+		/// <returns>
+		/// Returns Current Active TSB Coupon balance. If not found returns null.
+		/// </returns>
 		public static NDbResult<TSBCouponBalance> GetTSBBalance()
 		{
 			var result = new NDbResult<TSBCouponBalance>();
@@ -456,13 +450,6 @@ namespace DMT.Models
 						  FROM TSBCouponBalanceView ";
 					var rets = NQuery.Query<FKs>(cmd).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<TSBCouponBalance>();
-					rets.ForEach(ret =>
-					{
-						results.Add(ret.ToModel());
-					});
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
