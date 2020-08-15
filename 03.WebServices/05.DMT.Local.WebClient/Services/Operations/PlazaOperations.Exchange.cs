@@ -175,11 +175,8 @@ namespace DMT.Services
                 if (null == this.TSB)
                     return new List<TSBExchangeTransaction>();
 
-                var exchangeRet = ops.Exchanges.GetTSBExchangeTransactions(this.TSB);
-                var items = (null != exchangeRet && !exchangeRet.errors.hasError) ? 
-                    exchangeRet.data : new List<TSBExchangeTransaction>();
-
-                if (null == this.TSB)
+                var items = ops.Exchanges.GetTSBExchangeTransactions(this.TSB).Value();
+                if (null == items)
                     return new List<TSBExchangeTransaction>();
 
                 var results = items.FindAll(item =>

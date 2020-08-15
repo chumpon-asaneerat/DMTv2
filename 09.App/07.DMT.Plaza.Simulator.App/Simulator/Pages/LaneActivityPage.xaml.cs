@@ -184,8 +184,7 @@ namespace DMT.Simulator.Pages
             gridTools.IsEnabled = true;
 
             // Find UserShift.
-            var ret = ops.UserShifts.GetCurrent(currentUser);
-            currentUser.Shift = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            currentUser.Shift = ops.UserShifts.GetCurrent(currentUser).Value();
 
             if (null == currentUser.Shift)
             {
@@ -220,8 +219,7 @@ namespace DMT.Simulator.Pages
         {
             cbShifts.ItemsSource = null;
 
-            var ret = ops.Shifts.GetShifts();
-            shifts = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            shifts = ops.Shifts.GetShifts().Value();
 
             cbShifts.ItemsSource = shifts;
         }
@@ -231,12 +229,10 @@ namespace DMT.Simulator.Pages
             lstUsers.ItemsSource = null;
 
             users.Clear();
-            var roleRet = ops.Users.GetRole(Search.Roles.ById.Create("TC"));
-            var role = (null != roleRet && !roleRet.errors.hasError) ? roleRet.data : null;
+            var role = ops.Users.GetRole(Search.Roles.ById.Create("TC")).Value();
             if (null != role)
             {
-                var usrRet = ops.Users.GetUsers(role);
-                var usrs = (null != usrRet && !usrRet.errors.hasError) ? usrRet.data : null;
+                var usrs = ops.Users.GetUsers(role).Value();
                 if (null != usrs)
                 {
                     usrs.ForEach(usr =>
@@ -244,8 +240,7 @@ namespace DMT.Simulator.Pages
                         var inst = new UserItem();
                         usr.AssignTo(inst);
                         // load user shift.
-                        var currRet = ops.UserShifts.GetCurrent(usr);
-                        inst.Shift = (null != currRet && !currRet.errors.hasError) ? currRet.data : null;
+                        inst.Shift = ops.UserShifts.GetCurrent(usr).Value();
                         users.Add(inst);
                     });
                 }
@@ -261,12 +256,10 @@ namespace DMT.Simulator.Pages
             lvLanes.ItemsSource = null;
 
             lanes.Clear();
-            var tsbRet = ops.TSB.GetCurrent();
-            var tsb = (null != tsbRet && !tsbRet.errors.hasError) ? tsbRet.data : null;
+            var tsb = ops.TSB.GetCurrent().Value();
             if (null != tsb)
             {
-                var tlRet = ops.TSB.GetTSBLanes(tsb);
-                var tsbLanes = (null != tlRet && !tlRet.errors.hasError) ? tlRet.data : null;
+                var tsbLanes = ops.TSB.GetTSBLanes(tsb).Value();
                 if (null != tsbLanes)
                 {
                     tsbLanes.ForEach(tsbLane =>
@@ -275,8 +268,7 @@ namespace DMT.Simulator.Pages
                         tsbLane.AssignTo(inst);
                         // find Attendance.
                         var search = Search.Lanes.Current.AttendanceByLane.Create(tsbLane);
-                        var attRet = ops.Lanes.GetCurrentAttendancesByLane(search);
-                        inst.Attendance = (null != attRet && !attRet.errors.hasError) ? attRet.data : null;
+                        inst.Attendance = ops.Lanes.GetCurrentAttendancesByLane(search).Value();
                         lanes.Add(inst);
                     });
                 }
@@ -289,23 +281,18 @@ namespace DMT.Simulator.Pages
 
         private void RefreshLaneAttendances()
         {
-            //var tsbshift = ops.Shifts.GetCurrent();
-            //var userShifts = ops.Shifts.GetUserShift(tsbshift);
-            //var items = ops.Lanes.GetAttendancesByShift();
             if (null == currentLane) return;
 
             lvAttendances.ItemsSource = null;
 
             var search = Search.Lanes.Attendances.ByLane.Create(currentLane);
-            var ret = ops.Lanes.GetAttendancesByLane(search);
-            lvAttendances.ItemsSource = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            var attendances = ops.Lanes.GetAttendancesByLane(search).Value();
+            lvAttendances.ItemsSource = attendances;
         }
 
         private void RefreshLanePayments()
         {
-            //var tsbshift = ops.Shifts.GetCurrent();
-            //var userShifts = ops.Shifts.GetUserShift(tsbshift);
-            //var items = ops.Lanes.GetPaymentsByShift();
+
         }
 
         #endregion
@@ -377,15 +364,13 @@ namespace DMT.Simulator.Pages
             var shift = (cbShifts.SelectedItem as Shift);
             if (null == shift) return;
 
-            var ret = ops.UserShifts.Create(shift, currentUser);
-            var inst = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            var inst = ops.UserShifts.Create(shift, currentUser).Value();
 
             DateTime dt = shiftDate.Value.Value;
             inst.Begin = dt;
             ops.UserShifts.BeginUserShift(inst);
 
             RefreshUsers();
-
             RefreshUI();
         }
 
@@ -413,8 +398,7 @@ namespace DMT.Simulator.Pages
             if (!jobDate.Value.HasValue) return;
             if (null != currentLane.Attendance) return; // has attendance.
 
-            var ret = ops.Lanes.CreateAttendance(currentLane, currentUser);
-            var attd = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            var attd = ops.Lanes.CreateAttendance(currentLane, currentUser).Value();
 
             DateTime dt = jobDate.Value.Value;
             // Set Begin Job date.
@@ -427,7 +411,6 @@ namespace DMT.Simulator.Pages
             // update list views
             RefreshLaneAttendances();
             RefreshLanePayments();
-
             RefreshUI();
         }
 

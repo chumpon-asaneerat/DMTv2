@@ -320,8 +320,7 @@ namespace DMT.Services
                 {
                     return null;
                 }
-                var ret = ops.Credits.GetTSBBalance(this.TSB);
-                return (null != ret && !ret.errors.hasError) ? ret.data : null;
+                return ops.Credits.GetTSBBalance(this.TSB).Value();
             }
         }
 
@@ -359,8 +358,7 @@ namespace DMT.Services
             get 
             {
                 if (null == TSB) return null;
-                var ret = ops.Credits.GetInitialTSBCreditTransaction(TSB);
-                return (null != ret && !ret.errors.hasError) ? ret.data : null;
+                return ops.Credits.GetInitialTSBCreditTransaction(TSB).Value();
             }
         }
 
@@ -428,8 +426,7 @@ namespace DMT.Services
 
             this.Transaction = new UserCreditTransaction();
 
-            var ret = ops.Credits.GetTSBBalance(tsb);
-            this.TSBBalance = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            this.TSBBalance = ops.Credits.GetTSBBalance(tsb).Value();
             this.ResultBalance = new TSBCreditBalance();
 
             this.TSBBalance.AssignTo(this.ResultBalance);
@@ -554,8 +551,8 @@ namespace DMT.Services
                     UserBalance.PlazaGroupId = PlazaGroup.PlazaGroupId;
                 }
                 UserBalance.State = UserCreditBalance.StateTypes.Initial;
-                var ret = ops.Credits.SaveUserCreditBalance(UserBalance);
-                int pkid = (null != ret && !ret.errors.hasError) ? ret.data.UserCreditId : 0;
+                var newBalance = ops.Credits.SaveUserCreditBalance(UserBalance).Value();
+                int pkid = (null != newBalance) ? newBalance.UserCreditId : 0;
                 UserBalance.UserCreditId = pkid;
             }
             // Save User Credit Transaction.
@@ -613,8 +610,7 @@ namespace DMT.Services
                 // Check is total borrow is reach zero.
                 var search = Search.UserCredits.GetActiveById.Create(
                     UserBalance.UserId, UserBalance.PlazaGroupId);
-                var ret = ops.Credits.GetActiveUserCreditBalanceById(search);
-                var inst = (null != ret && !ret.errors.hasError) ? ret.data : null;
+                var inst = ops.Credits.GetActiveUserCreditBalanceById(search).Value();
                 if (null != inst)
                 {
                     if (inst.BHTTotal <= decimal.Zero)

@@ -50,7 +50,6 @@ namespace LocalDbServerSample
         {
             // Gets TSBs
             var ret = TSB.GetTSBs();
-            //var ds = (null != ret && !ret.errors.hasError) ? ret.data : null;
             var ds = ret.Value();
             dbgTSB.DataSource = ds;
         }
@@ -59,7 +58,6 @@ namespace LocalDbServerSample
         {
             // Gets Plaza Groups
             var ret = PlazaGroup.GetPlazaGroups();
-            //var ds = (null != ret && !ret.errors.hasError) ? ret.data : null;
             var ds = ret.Value();
             dbgPlazaGroup.DataSource = ds;
         }
@@ -68,7 +66,6 @@ namespace LocalDbServerSample
         {
             // Gets Plazas
             var ret = Plaza.GetPlazas();
-            //var ds = (null != ret && !ret.errors.hasError) ? ret.data : null;
             var ds = ret.Value();
             dbgPlaza.DataSource = ds;
         }
@@ -77,7 +74,6 @@ namespace LocalDbServerSample
         {
             // Gets Lanes
             var ret = Lane.GetLanes();
-            //var ds = (null != ret && !ret.errors.hasError) ? ret.data : null;
             var ds = ret.Value();
             dbgLane.DataSource = ds;
         }
@@ -86,7 +82,6 @@ namespace LocalDbServerSample
         {
             // Gets TSB Credits
             var ret = TSBCreditTransaction.GetTransactions();
-            //var ds = (null != ret && !ret.errors.hasError) ? ret.data : null;
             var ds = ret.Value();
             dbgTSBCredit.DataSource = ds;
         }
@@ -95,7 +90,6 @@ namespace LocalDbServerSample
         {
             // Init TSB Credit.
             var ret = TSBCreditTransaction.GetInitialTransaction();
-            //TSBCreditTransaction inst = (null != ret && !ret.errors.hasError) ? ret.data : null;
             var inst = ret.Value();
             if (null != inst)
             {
@@ -113,7 +107,6 @@ namespace LocalDbServerSample
             }
             // Gets TSB Credits
             var ret2 = TSBCreditTransaction.GetTransactions();
-            //var ds = (null != ret2 && !ret2.errors.hasError) ? ret2.data : null;
             var ds = ret2.Value();
             dbgTSBCredit.DataSource = ds;
         }
@@ -127,7 +120,6 @@ namespace LocalDbServerSample
         private void button20_Click(object sender, EventArgs e)
         {
             var ret = TSB.GetCurrent();
-            //var tsb = (null != ret && !ret.errors.hasError) ? ret.data : null;
             var tsb = ret.Value();
             if (null == tsb) return;
             // Init TSB Coupons.
@@ -176,7 +168,6 @@ namespace LocalDbServerSample
         {
             // Gets TSB Coupons (Received).
             var ret = TSBCouponTransaction.GetTSBCouponTransactions();
-            //var coupons = (null != ret && !ret.errors.hasError) ? ret.data : null;
             var coupons = ret.Value();
             dbgTSBCoupon.DataSource = null;
             if (null != coupons)
@@ -192,7 +183,6 @@ namespace LocalDbServerSample
         {
             // Gets Sold Coupons.
             var ret = TSBCouponTransaction.GetTSBCouponTransactions();
-            //var coupons = (null != ret && !ret.errors.hasError) ? ret.data : null;
             var coupons = ret.Value();
             dbgTSBCoupon.DataSource = null;
             if (null != coupons)
@@ -256,10 +246,8 @@ namespace LocalDbServerSample
         {
             // Gets User 35 Coupons.
             var ret = User.GetUser("14211");
-            //var user = (null != ret && !ret.errors.hasError) ? ret.data : null;
             var user = ret.Value();
             var src = UserCouponTransaction.GetUserBHT35Coupons(user);
-            //var ds = (null != src && !src.errors.hasError) ? src.data : null;
             var ds = src.Value();
             dbgUserCoupon.DataSource = ds;
         }
@@ -268,10 +256,8 @@ namespace LocalDbServerSample
         {
             // Gets User 80 Coupons.
             var ret = User.GetUser("14211");
-            //var user = (null != ret && !ret.errors.hasError) ? ret.data : null;
             var user = ret.Value();
             var src = UserCouponTransaction.GetUserBHT80Coupons(user);
-            //var ds = (null != src && !src.errors.hasError) ? src.data : null;
             var ds = src.Value();
             dbgUserCoupon.DataSource = ds;
         }

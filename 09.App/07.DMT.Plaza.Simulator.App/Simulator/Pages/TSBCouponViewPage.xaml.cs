@@ -126,11 +126,7 @@ namespace DMT.Simulator.Pages
         {
             listView.ItemsSource = null;
 
-            var ret = ops.TSB.GetTSBs();
-            if (null == ret || ret.errors.hasError)
-                return;
-            var tsbs = ret.data;
-
+            var tsbs = ops.TSB.GetTSBs().Value();
             listView.ItemsSource = tsbs;
         }
 
@@ -140,8 +136,7 @@ namespace DMT.Simulator.Pages
 
             if (null != tsb)
             {
-                var ret = ops.Coupons.GetTSBCouponTransactions(tsb);
-                var coupons = (null != ret && !ret.errors.hasError) ? ret.data : null;
+                var coupons = ops.Coupons.GetTSBCouponTransactions(tsb).Value();
                 lvCoupon.ItemsSource = coupons;
             }
         }

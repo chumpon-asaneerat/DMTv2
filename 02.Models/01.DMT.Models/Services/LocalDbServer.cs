@@ -1546,13 +1546,9 @@ namespace DMT.Services
 		{
 			if (null == Db) return;
 
-			var histRet = ViewHistory.GetWithChildren(viewName, false);
-			var hist = (null != histRet && !histRet.errors.hasError) ? histRet.data : null;
-
+			var hist = ViewHistory.GetWithChildren(viewName, false).Value();
 			if (null == hist)
 				return;
-
-			var info = Db.GetTableInfo(viewName);
 
 			string checkViewCmd = "SELECT Name FROM sqlite_master WHERE Type = 'view' AND Name = ?";
 			var rets = Db.Query<ViewInfo>(checkViewCmd, viewName);

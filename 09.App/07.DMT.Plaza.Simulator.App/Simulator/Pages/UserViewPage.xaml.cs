@@ -112,31 +112,11 @@ namespace DMT.Simulator.Pages
             lstUsers.ItemsSource = null;
 
             users.Clear();
-            /*
-            var roles = ops.Users.GetRoles();
-            if (null != roles)
-            {
-                roles.ForEach(role =>
-                {
-                    var usrs = ops.Users.GetUsers(role);
-                    if (null != usrs)
-                    {
-                        usrs.ForEach(usr =>
-                        {
-                            var inst = new UserItem();
-                            usr.AssignTo(inst);
-                            users.Add(inst);
-                        });
-                    }
-                });
-            }
-            */
-            var roltRet = ops.Users.GetRole(Search.Roles.ById.Create("TC"));
-            var role = (null != roltRet && !roltRet.errors.hasError) ? roltRet.data : null;
+
+            var role = ops.Users.GetRole(Search.Roles.ById.Create("TC")).Value();
             if (null != role)
             {
-                var usrRet = ops.Users.GetUsers(role);
-                var usrs = (null != usrRet && !usrRet.errors.hasError) ? usrRet.data : null;
+                var usrs = ops.Users.GetUsers(role).Value();
                 if (null != usrs)
                 {
                     usrs.ForEach(usr =>
@@ -155,9 +135,7 @@ namespace DMT.Simulator.Pages
             lvUserShifts.ItemsSource = null;
 
             if (null == user) return;
-
-            var usrShfRet = ops.UserShifts.GetUserShifts(user);
-            var userShifts = (null != usrShfRet && !usrShfRet.errors.hasError) ? usrShfRet.data : null;
+            var userShifts = ops.UserShifts.GetUserShifts(user).Value();
 
             lvUserShifts.ItemsSource = userShifts;
         }

@@ -23,8 +23,11 @@ Update 2020-08-15 #24
 Update 2020-08-15 #23
 - 
 
+[commited]
 Update 2020-08-15 #22
-- 
+- Update Local/DataCenter/TAxTOD service operation #190.
+  - Update DMT.Local.WebClient project #2.
+  - Update all projects to used Value methods.
 
 [commited]
 Update 2020-08-15 #21
