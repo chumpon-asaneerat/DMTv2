@@ -34,6 +34,7 @@ namespace DMT.Windows
 
         #region Internal Variables
 
+        // TODO: SignIn Supports Smartcard reader.
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private List<string> _roles = new List<string>();
         private User _user = null;

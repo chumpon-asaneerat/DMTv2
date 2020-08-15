@@ -35,6 +35,7 @@ namespace DMT.TA.Windows.Collector.Credit
 
         #region Internal Variables
 
+        // TODO: SignIn Supports Smartcard reader.
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private List<string> _roles = new List<string>();
         private string _userId = null;
