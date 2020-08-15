@@ -36,8 +36,11 @@ Update 2020-08-16 #24
 Update 2020-08-16 #23
 - 
 
+[commited]
 Update 2020-08-16 #22
-- 
+- Update Local/DataCenter/TAxTOD service operation #229.
+  - LaneAttendance Model update #1.
+    - Cleanup and format code.
 
 [commited]
 Update 2020-08-16 #21

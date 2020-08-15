@@ -790,7 +790,10 @@ namespace DMT.Models
 
 		#region Internal Class
 
-		internal class FKs : LaneAttendance, IFKs<LaneAttendance>
+		/// <summary>
+		/// The internal FKs class for query data.
+		/// </summary>
+		public class FKs : LaneAttendance, IFKs<LaneAttendance>
 		{
 			#region TSB
 
@@ -915,23 +918,18 @@ namespace DMT.Models
 			}
 
 			#endregion
-
-			#region Public Methods
-			/*
-			public LaneAttendance ToLaneAttendance()
-			{
-				LaneAttendance inst = new LaneAttendance();
-				this.AssignTo(inst);
-				return inst;
-			}
-			*/
-			#endregion
 		}
 
 		#endregion
 
 		#region Static Methods
 
+		/// <summary>
+		/// Create Lane Attendance.
+		/// </summary>
+		/// <param name="lane">The Lane instance.</param>
+		/// <param name="supervisor">The User instance.</param>
+		/// <returns>Returns LaneAttendance instance.</returns>
 		public static NDbResult<LaneAttendance> Create(Lane lane, User supervisor)
 		{
 			var result = new NDbResult<LaneAttendance>();
@@ -954,10 +952,15 @@ namespace DMT.Models
 				if (null != supervisor) supervisor.AssignTo(inst);
 				result.Success(inst);
 			}
-
 			return result;
 		}
-
+		/// <summary>
+		/// Search.
+		/// </summary>
+		/// <param name="shift">The User Shift instance.</param>
+		/// <param name="plazaGroup">The PlazaGroup instance.</param>
+		/// <param name="revenueDate">The Revenue Date Time.</param>
+		/// <returns>Returns List of LaneAttendance.</returns>
 		public static NDbResult<List<LaneAttendance>> Search(UserShift shift, 
 			PlazaGroup plazaGroup, DateTime revenueDate)
 		{
@@ -968,13 +971,11 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == shift)
 			{
 				result.ParameterIsNull();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -992,7 +993,6 @@ namespace DMT.Models
 					{
 						cmd += "   AND PlazaGroupId = ? ";
 					}
-
 					if (revenueDate == DateTime.MinValue)
 					{
 						cmd += "   AND (RevenueDate IS NULL ";
@@ -1004,7 +1004,6 @@ namespace DMT.Models
 					}
 
 					DateTime end = (shift.End == DateTime.MinValue) ? DateTime.Now : shift.End;
-
 					if (null != plazaGroup)
 					{
 						var rets = NQuery.Query<FKs>(cmd,
@@ -1015,16 +1014,6 @@ namespace DMT.Models
 							plazaGroup.PlazaGroupId,
 							revenueDate).ToList();
 						var results = rets.ToModels();
-						/*
-						var results = new List<LaneAttendance>();
-						if (null != rets)
-						{
-							rets.ForEach(ret =>
-							{
-								results.Add(ret.ToModel());
-							});
-						}
-						*/
 						result.Success(results);
 					}
 					else
@@ -1036,16 +1025,6 @@ namespace DMT.Models
 							DateTime.MinValue,
 							revenueDate).ToList();
 						var results = rets.ToModels();
-						/*
-						var results = new List<LaneAttendance>();
-						if (null != rets)
-						{
-							rets.ForEach(ret =>
-							{
-								results.Add(ret.ToModel());
-							});
-						}
-						*/
 						result.Success(results);
 					}
 				}
@@ -1057,7 +1036,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Search.
+		/// </summary>
+		/// <param name="shift">The User Shift instance.</param>
+		/// <returns>Returns List of LaneAttendance.</returns>
 		public static NDbResult<List<LaneAttendance>> Search(UserShift shift)
 		{
 			var result = new NDbResult<List<LaneAttendance>>();
@@ -1067,7 +1050,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == shift)
 			{
 				result.ParameterIsNull();
@@ -1079,32 +1061,20 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-
 					cmd += "SELECT * ";
 					cmd += "  FROM LaneAttendanceView ";
 					cmd += " WHERE UserId = ? ";
 					cmd += "   AND (Begin >= ? AND Begin <= ?)";
-					cmd += "   AND ((End >= ? AND End <= ?) " +
-						"        OR  End = ?)";
+					cmd += "   AND (   (End >= ? AND End <= ?) " +
+					    "           OR  End = ?)";
 
 					DateTime end = (shift.End == DateTime.MinValue) ? DateTime.Now : shift.End;
-
 					var rets = NQuery.Query<FKs>(cmd, 
 						shift.UserId,
 						shift.Begin, end,
 						shift.Begin, end,
 						DateTime.MinValue).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<LaneAttendance>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -1115,7 +1085,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Search.
+		/// </summary>
+		/// <param name="lane">The Lane instance.</param>
+		/// <returns>Returns List of LaneAttendance.</returns>
 		public static NDbResult<List<LaneAttendance>> Search(Lane lane)
 		{
 			var result = new NDbResult<List<LaneAttendance>>();
@@ -1125,7 +1099,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == lane)
 			{
 				result.ParameterIsNull();
@@ -1142,16 +1115,6 @@ namespace DMT.Models
 					cmd += " WHERE LaneId = ? ";
 					var rets = NQuery.Query<FKs>(cmd, lane.LaneId).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<LaneAttendance>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -1159,11 +1122,55 @@ namespace DMT.Models
 					med.Err(ex);
 					result.Error(ex);
 				}
-
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Search.
+		/// </summary>
+		/// <param name="date">The date to search.</param>
+		/// <returns>Returns List of LaneAttendance.</returns>
+		public static NDbResult<List<LaneAttendance>> Search(DateTime date)
+		{
+			var result = new NDbResult<List<LaneAttendance>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			if (null == date || date == DateTime.MinValue)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * ";
+					cmd += "  FROM LaneAttendanceView ";
+					cmd += " WHERE Begin >= ? ";
+					cmd += "   AND End <= ? ";
+					var rets = NQuery.Query<FKs>(cmd, date, DateTime.MinValue).ToList();
+					var results = rets.ToModels();
+					result.Success(results);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
+		}
+		/// <summary>
+		/// Gets Current Lane Attendance by Lane.
+		/// </summary>
+		/// <param name="lane">The Lane instance.</param>
+		/// <returns>Returns LaneAttendance instance.</returns>
 		public static NDbResult<LaneAttendance> GetCurrentByLane(Lane lane)
 		{
 			var result = new NDbResult<LaneAttendance>();
@@ -1173,7 +1180,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == lane)
 			{
 				result.ParameterIsNull();
@@ -1199,60 +1205,13 @@ namespace DMT.Models
 					med.Err(ex);
 					result.Error(ex);
 				}
-
 				return result;
 			}
 		}
-
-		public static NDbResult<List<LaneAttendance>> Search(DateTime date)
-		{
-			var result = new NDbResult<List<LaneAttendance>>();
-			SQLiteConnection db = Default;
-			if (null == db)
-			{
-				result.DbConenctFailed();
-				return result;
-			}
-
-			if (null == date || date == DateTime.MinValue)
-			{
-				result.ParameterIsNull();
-				return result;
-			}
-			lock (sync)
-			{
-				MethodBase med = MethodBase.GetCurrentMethod();
-				try
-				{
-					string cmd = string.Empty;
-					cmd += "SELECT * ";
-					cmd += "  FROM LaneAttendanceView ";
-					cmd += " WHERE Begin >= ? ";
-					cmd += "   AND End <= ? ";
-					var rets = NQuery.Query<FKs>(cmd, date, DateTime.MinValue).ToList();
-					var results = rets.ToModels();
-					/*
-					var results = new List<LaneAttendance>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
-					result.Success(results);
-				}
-				catch (Exception ex)
-				{
-					med.Err(ex);
-					result.Error(ex);
-				}
-
-				return result;
-			}
-		}
-
+		/// <summary>
+		/// Gets all LaneAttendance that has not enter revenue.
+		/// </summary>
+		/// <returns>Returns List of LaneAttendance.</returns>
 		public static NDbResult<List<LaneAttendance>> GetAllNotHasRevenueEntry()
 		{
 			var result = new NDbResult<List<LaneAttendance>>();
@@ -1271,7 +1230,11 @@ namespace DMT.Models
 			result = GetAllNotHasRevenueEntry(tsb);
 			return result;
 		}
-
+		/// <summary>
+		/// Gets all LaneAttendance that has not enter revenue.
+		/// </summary>
+		/// <param name="tsb">The TSB instance.</param>
+		/// <returns>Returns List of LaneAttendance.</returns>
 		public static NDbResult<List<LaneAttendance>> GetAllNotHasRevenueEntry(TSB tsb)
 		{
 			var result = new NDbResult<List<LaneAttendance>>();
@@ -1286,7 +1249,6 @@ namespace DMT.Models
 				result.ParameterIsNull();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -1302,16 +1264,6 @@ namespace DMT.Models
 					var rets = NQuery.Query<FKs>(cmd,
 						tsb.TSBId, DateTime.MinValue, string.Empty).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<LaneAttendance>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -1327,9 +1279,18 @@ namespace DMT.Models
 		#endregion
 	}
 
+	/// <summary>
+	/// The LaneAttendanceCreate class.
+	/// </summary>
 	public class LaneAttendanceCreate
 	{
+		/// <summary>
+		/// Gets or sets Lane.
+		/// </summary>
 		public Lane Lane { get; set; }
+		/// <summary>
+		/// Gets or sets User.
+		/// </summary>
 		public User User { get; set; }
 	}
 
