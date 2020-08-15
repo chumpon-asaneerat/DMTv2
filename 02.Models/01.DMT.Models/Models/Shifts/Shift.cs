@@ -177,16 +177,19 @@ namespace DMT.Models
 
 		#region Static Methods
 
+		/// <summary>
+		/// Gets Shifts.
+		/// </summary>
+		/// <param name="db">The database connection.</param>
+		/// <returns>Returns List of Shift.</returns>
 		public static NDbResult<List<Shift>> GetShifts(SQLiteConnection db)
 		{
 			var result = new NDbResult<List<Shift>>();
-
 			if (null == db)
 			{
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -205,7 +208,10 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets Shifts.
+		/// </summary>
+		/// <returns>Returns List of Shift.</returns>
 		public static NDbResult<List<Shift>> GetShifts()
 		{
 			lock (sync)
@@ -214,17 +220,20 @@ namespace DMT.Models
 				return GetShifts(db);
 			}
 		}
-
+		/// <summary>
+		/// Gets Shift.
+		/// </summary>
+		/// <param name="db">The database connection.</param>
+		/// <param name="shiftId">The Shift Id.</param>
+		/// <returns>Returns Shift instance.</returns>
 		public static NDbResult<Shift> GetShift(SQLiteConnection db, string shiftId)
 		{
 			var result = new NDbResult<Shift>();
-
 			if (null == db)
 			{
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -240,12 +249,15 @@ namespace DMT.Models
 				{
 					med.Err(ex);
 					result.Error(ex);
-
 				}
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets Shift.
+		/// </summary>
+		/// <param name="shiftId">The Shift Id.</param>
+		/// <returns>Returns Shift instance.</returns>
 		public static NDbResult<Shift> GetShift(string shiftId)
 		{
 			lock (sync)

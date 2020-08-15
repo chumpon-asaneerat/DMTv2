@@ -27,8 +27,11 @@ Update 2020-08-16 #27
 Update 2020-08-16 #26
 - 
 
+[commited]
 Update 2020-08-16 #25
-- 
+- Update Local/DataCenter/TAxTOD service operation #231.
+  - Shift Model update #1.
+    - Cleanup and format code.
 
 [commited]
 Update 2020-08-16 #24
