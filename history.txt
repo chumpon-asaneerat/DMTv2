@@ -18,8 +18,11 @@ Update 2020-08-16 #30
 Update 2020-08-16 #29
 - 
 
+[commited]
 Update 2020-08-16 #28
-- 
+- Update Local/DataCenter/TAxTOD service operation #235.
+  - UserShiftRevenue Model update #1.
+    - Cleanup and format code.
 
 [commited]
 Update 2020-08-16 #27

@@ -593,6 +593,9 @@ namespace DMT.Models
 
         #region Internal Class
 
+        /// <summary>
+        /// The internal FKs class for query data.
+        /// </summary>
         public class FKs : UserShiftRevenue, IFKs<UserShiftRevenue>
         {
             #region TSB
@@ -704,23 +707,18 @@ namespace DMT.Models
             }
 
             #endregion
-
-            #region Public Methods
-            /*
-            public UserShiftRevenue ToUserShiftRevenue()
-            {
-                UserShiftRevenue inst = new UserShiftRevenue();
-                this.AssignTo(inst); // set all properties to new instance.
-                return inst;
-            }
-            */
-            #endregion
         }
 
         #endregion
 
         #region Static Methods
 
+        /// <summary>
+        /// Create Plaza Revenue.
+        /// </summary>
+        /// <param name="shift">The UserShift instance.</param>
+        /// <param name="plazaGroup">The PlazaGroup instance.</param>
+        /// <returns>Returns UserShiftRevenue instance.</returns>
         public static NDbResult<UserShiftRevenue> CreatePlazaRevenue(
             UserShift shift, PlazaGroup plazaGroup)
         {
@@ -741,7 +739,13 @@ namespace DMT.Models
             }
             return result;
         }
-
+        /// <summary>
+        /// Save Plaza Revenue.
+        /// </summary>
+        /// <param name="value">The UserShiftRevenue instance.</param>
+        /// <param name="revenueDate">The Revenue Date.</param>
+        /// <param name="revenueId">The Revenue Id.</param>
+        /// <returns>Returns save UserShiftRevenue instance.</returns>
         public static NDbResult<UserShiftRevenue> SavePlazaRevenue(UserShiftRevenue value,
             DateTime revenueDate, string revenueId)
         {
@@ -752,7 +756,6 @@ namespace DMT.Models
                 result.DbConenctFailed();
                 return result;
             }
-
             if (null == value)
             {
                 result.ParameterIsNull();
@@ -776,7 +779,12 @@ namespace DMT.Models
                 return result;
             }
         }
-
+        /// <summary>
+        /// Gets Plaza Revenue.
+        /// </summary>
+        /// <param name="shift">The Shift instance.</param>
+        /// <param name="plazaGroup">The PlazaGroup instance.</param>
+        /// <returns>Returns UserShiftRevenue instance.</returns>
         public static NDbResult<UserShiftRevenue> GetPlazaRevenue(
             UserShift shift, PlazaGroup plazaGroup)
         {
@@ -787,7 +795,6 @@ namespace DMT.Models
                 result.DbConenctFailed();
                 return result;
             }
-
             if (null == shift || null == plazaGroup)
             {
                 result.ParameterIsNull();
