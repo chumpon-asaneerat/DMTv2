@@ -375,10 +375,16 @@ namespace DMT.Models
     {
         #region Public Methods (static)
 
-        public static T Default<T>()
+        public static T DefaultData<T>()
             where T : new()
         {
             return (typeof(T) == typeof(IList)) ? new T() : default(T);
+        }
+
+        public static O DefaultOutput<O>()
+            where O : new()
+        {
+            return (typeof(O) == typeof(IList)) ? new O() : default(O);
         }
 
         #endregion
@@ -389,7 +395,7 @@ namespace DMT.Models
             where T : new()
         {
             T ret = (null != value && !value.errors.hasError && null != value.data) ?
-                value.data : Default<T>();
+                value.data : DefaultData<T>();
             return ret;
         }
 
@@ -398,7 +404,16 @@ namespace DMT.Models
             where O : new()
         {
             T ret = (null != value && !value.errors.hasError && null != value.data) ?
-                value.data : Default<T>();
+                value.data : DefaultData<T>();
+            return ret;
+        }
+
+        public static O Output<T, O>(this NDbResult<T, O> value)
+            where T : new()
+            where O : new()
+        {
+            O ret = (null != value && !value.errors.hasError && null != value.output) ?
+                value.output : DefaultOutput<O>();
             return ret;
         }
 

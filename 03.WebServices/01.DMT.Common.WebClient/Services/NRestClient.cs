@@ -3,11 +3,13 @@
 //using System.Net;
 
 using DMT.Models;
+using NLib;
 using RestSharp;
 using RestSharp.Authenticators;
 using RestSharp.Serializers.NewtonsoftJson;
 using System;
 using System.Net.Cache;
+using System.Reflection;
 using System.Security.Cryptography;
 
 #endregion
@@ -81,10 +83,12 @@ namespace DMT.Services
         /// </returns>
         public NRestResult<TReturn> Execute<TReturn>(string apiUrl,
             object pObj = null, string username = "", string password = "")
+            where TReturn: new()
         {
             NRestResult<TReturn> ret = new NRestResult<TReturn>();
 
             string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
+            MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
                 var client = new RestClient(BaseUrl);
@@ -124,11 +128,12 @@ namespace DMT.Services
                 else
                 {
                     //Console.WriteLine("Execute no response.");
-                    ret.ConenctFailed();
+                    ret.RestConenctFailed();
                 }
             }
             catch (Exception ex)
             {
+                med.Err(ex);
                 ret.Error(ex);
             }
 
@@ -148,10 +153,13 @@ namespace DMT.Services
         /// </returns>
         public NRestResult<TReturn, TOut> Execute<TReturn, TOut>(string apiUrl,
             object pObj = null, string username = "", string password = "")
+            where TReturn : new()
+            where TOut : new()
         {
             NRestResult<TReturn, TOut> ret = new NRestResult<TReturn, TOut>();
 
             string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
+            MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
                 var client = new RestClient(BaseUrl);
@@ -191,11 +199,12 @@ namespace DMT.Services
                 else
                 {
                     //Console.WriteLine("Execute no response.");
-                    ret.ConenctFailed();
+                    ret.RestConenctFailed();
                 }
             }
             catch (Exception ex)
             {
+                med.Err(ex);
                 ret.Error(ex);
             }
 
@@ -217,6 +226,7 @@ namespace DMT.Services
             NRestResult ret = new NRestResult();
 
             string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
+            MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
                 var client = new RestClient(BaseUrl);
@@ -251,11 +261,12 @@ namespace DMT.Services
                 else
                 {
                     //Console.WriteLine("Execute no response.");
-                    ret.ConenctFailed();
+                    ret.RestConenctFailed();
                 }
             }
             catch (Exception ex)
             {
+                med.Err(ex);
                 ret.Error(ex);
             }
 

@@ -1343,7 +1343,7 @@ namespace DMT.Models
 		/// Gets Active TSB Credit transactions.
 		/// </summary>
 		/// <returns>Returns Current Active TSB Credit transactions. If not found returns null.</returns>
-		public static NDbResult<List<TSBCreditTransaction>> Gets()
+		public static NDbResult<List<TSBCreditTransaction>> GetTransactions()
 		{
 			var result = new NDbResult<List<TSBCreditTransaction>>();
 			SQLiteConnection db = Default;
@@ -1362,7 +1362,7 @@ namespace DMT.Models
 					if (null != tsbRet && !tsbRet.errors.hasError)
 					{
 						var tsb = tsbRet.data;
-						return Gets(tsb);
+						return GetTransactions(tsb);
 					}
 					else
 					{
@@ -1383,7 +1383,7 @@ namespace DMT.Models
 		/// </summary>
 		/// <param name="tsb">The target TSB to get transactions.</param>
 		/// <returns>Returns TSB Credit transactions. If TSB not found returns null.</returns>
-		public static NDbResult<List<TSBCreditTransaction>> Gets(TSB tsb)
+		public static NDbResult<List<TSBCreditTransaction>> GetTransactions(TSB tsb)
 		{
 			var result = new NDbResult<List<TSBCreditTransaction>>();
 			SQLiteConnection db = Default;

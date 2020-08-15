@@ -565,7 +565,7 @@ namespace DMT.Models
 		/// <returns>
 		/// Returns Current Active TSB's User transactions. If not found returns null.
 		/// </returns>
-		public static NDbResult<List<UserCouponTransaction>> Gets()
+		public static NDbResult<List<UserCouponTransaction>> GetTransactions()
 		{
 			var result = new NDbResult<List<UserCouponTransaction>>();
 			SQLiteConnection db = Default;
@@ -582,7 +582,7 @@ namespace DMT.Models
 				if (null != tsbRet && !tsbRet.errors.hasError)
 				{
 					var tsb = tsbRet.data;
-					return Gets(tsb);
+					return GetTransactions(tsb);
 				}
 				else
 				{
@@ -597,7 +597,7 @@ namespace DMT.Models
 		/// </summary>
 		/// <param name="tsb">The target User to get coupon transaction.</param>
 		/// <returns>Returns User transactions. If TSB not found returns null.</returns>
-		public static NDbResult<List<UserCouponTransaction>> Gets(TSB tsb)
+		public static NDbResult<List<UserCouponTransaction>> GetTransactions(TSB tsb)
 		{
 			var result = new NDbResult<List<UserCouponTransaction>>();
 			SQLiteConnection db = Default;

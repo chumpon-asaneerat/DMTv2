@@ -11,8 +11,15 @@ Update 2020-08-15 #18
 Update 2020-08-15 #17
 - 
 
+[commited]
 Update 2020-08-15 #16
-- 
+- Update Local/DataCenter/TAxTOD service operation #186.
+  - Update NDbResult Extension Methods #1.
+  - Update NRestResult Extension Methods #1.
+  - Update NRestClient #1.
+  - Fixed method names in LocalDbServerSample projects.
+  - TSBCreditTransaction Models update #3.
+  - UserCouponTransaction Models update #4.
 
 [commited]
 Update 2020-08-15 #15
