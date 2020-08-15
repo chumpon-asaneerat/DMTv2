@@ -34,10 +34,22 @@ namespace DMT.Models
 	{
 		#region Enum
 
+		/// <summary>
+		/// The User Coupon Transaction Types
+		/// </summary>
 		public enum TransactionTypes
 		{
+			/// <summary>
+			/// Borrow
+			/// </summary>
 			Borrow = 1,
+			/// <summary>
+			/// Return
+			/// </summary>
 			Return = 2,
+			/// <summary>
+			/// Sold
+			/// </summary>
 			Sold = 3
 		}
 
@@ -73,10 +85,6 @@ namespace DMT.Models
 		/// Constructor.
 		/// </summary>
 		public UserCouponTransaction() : base() { }
-
-		#endregion
-
-		#region Private Methods
 
 		#endregion
 
@@ -356,10 +364,10 @@ namespace DMT.Models
 		#region Coupon
 
 		/// <summary>
-		/// Gets or sets coupon book id.
+		/// Gets or sets coupon serial number.
 		/// </summary>
 		[Category("Coupon")]
-		[Description("Gets or sets coupon book id.")]
+		[Description("Gets or sets coupon serial number.")]
 		[ReadOnly(true)]
 		[MaxLength(20)]
 		[PeropertyMapName("CouponId")]
@@ -491,6 +499,9 @@ namespace DMT.Models
 
 		#region Internal Class
 
+		/// <summary>
+		/// The internal FKs class for query data.
+		/// </summary>
 		public class FKs : UserCouponTransaction, IFKs<UserCouponTransaction>
 		{
 			#region TSB
@@ -542,17 +553,6 @@ namespace DMT.Models
 			}
 
 			#endregion
-
-			#region Public Methods
-			/*
-			public UserCouponTransaction ToUserCouponTransaction()
-			{
-				UserCouponTransaction inst = new UserCouponTransaction();
-				this.AssignTo(inst); // set all properties to new instance.
-				return inst;
-			}
-			*/
-			#endregion
 		}
 
 		#endregion
@@ -583,7 +583,6 @@ namespace DMT.Models
 			result = GetTransactions(tsb);
 			return result;
 		}
-
 		/// <summary>
 		/// Gets User Coupon transactions.
 		/// </summary>
@@ -598,7 +597,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == tsb)
 			{
 				result.ParameterIsNull();
@@ -616,16 +614,6 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<TSBCreditBalance>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -636,7 +624,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets List of BHT35 by User (Active TSB).
+		/// </summary>
+		/// <param name="user">The user instance.</param>
+		/// <returns>Returns List of BHT35.</returns>
 		public static NDbResult<List<UserCouponTransaction>> GetUserBHT35Coupons(User user)
 		{
 			var result = new NDbResult<List<UserCouponTransaction>>();
@@ -655,7 +647,12 @@ namespace DMT.Models
 			result = GetUserBHT35Coupons(tsb, user);
 			return result;
 		}
-
+		/// <summary>
+		/// Gets List of BHT35 by User in target TSB.
+		/// </summary>
+		/// <param name="tsb">The target TSB instance.</param>
+		/// <param name="user">The user instance.</param>
+		/// <returns>Returns List of BHT35.</returns>
 		public static NDbResult<List<UserCouponTransaction>> GetUserBHT35Coupons(
 			TSB tsb, User user)
 		{
@@ -697,16 +694,6 @@ namespace DMT.Models
 						rets = NQuery.Query<FKs>(cmd, tsb.TSBId, CouponType.BHT35).ToList();
 					}
 					var results = rets.ToModels();
-					/*
-					var results = new List<TSBCreditBalance>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -717,7 +704,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets List of BHT80 by User (Active TSB).
+		/// </summary>
+		/// <param name="user">The user instance.</param>
+		/// <returns>Returns List of BHT80.</returns>
 		public static NDbResult<List<UserCouponTransaction>> GetUserBHT80Coupons(User user)
 		{
 			var result = new NDbResult<List<UserCouponTransaction>>();
@@ -736,7 +727,12 @@ namespace DMT.Models
 			result = GetUserBHT80Coupons(tsb, user);
 			return result;
 		}
-
+		/// <summary>
+		/// Gets List of BHT80 by User in target TSB.
+		/// </summary>
+		/// <param name="tsb">The target TSB instance.</param>
+		/// <param name="user">The user instance.</param>
+		/// <returns>Returns List of BHT80.</returns>
 		public static NDbResult<List<UserCouponTransaction>> GetUserBHT80Coupons(
 			TSB tsb, User user)
 		{
@@ -777,16 +773,6 @@ namespace DMT.Models
 						rets = NQuery.Query<FKs>(cmd, tsb.TSBId, CouponType.BHT80).ToList();
 					}
 					var results = rets.ToModels();
-					/*
-					var results = new List<TSBCreditBalance>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -797,7 +783,13 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Borrow Coupons by user (Active TSB)
+		/// Call for Update transaction type of coupons from stock to lane.
+		/// </summary>
+		/// <param name="user">The User instance.</param>
+		/// <param name="coupons">The TSB Coupon list.</param>
+		/// <returns>Returns list of coupons borrow by users.</returns>
 		public static NDbResult<TSBCouponTransaction> UserBorrowCoupons(
 			User user, List<TSBCouponTransaction> coupons)
 		{
@@ -808,7 +800,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == user || null == coupons || coupons.Count <= 0)
 			{
 				result.ParameterIsNull();
@@ -847,7 +838,13 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Return Coupons by user (Active TSB)
+		/// Call for Update transaction type of coupons from lane to stock.
+		/// </summary>
+		/// <param name="user">The User instance.</param>
+		/// <param name="coupons">The TSB Coupon list.</param>
+		/// <returns>Returns list of coupons return by users.</returns>
 		public static NDbResult<TSBCouponTransaction> UserReturnCoupons(User user, List<TSBCouponTransaction> coupons)
 		{
 			var result = new NDbResult<TSBCouponTransaction>();
@@ -857,7 +854,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == user || null == coupons || coupons.Count <= 0)
 			{
 				result.ParameterIsNull();
@@ -893,7 +889,12 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Sold Coupon by user (Active TSB)
+		/// Call for Update transaction type of coupon from lane to stock.
+		/// </summary>
+		/// <param name="coupon">The User Coupon Transaction instance.</param>
+		/// <returns>Returns TSB Coupon instance.</returns>
 		public static NDbResult<TSBCouponTransaction> Sold(UserCouponTransaction coupon)
 		{
 			var result = new NDbResult<TSBCouponTransaction>();
@@ -909,6 +910,7 @@ namespace DMT.Models
 				result.ParameterIsNull();
 				return result;
 			}
+			// TODO: UserCouponTransaction Sold method. Implements required.
 			/*
 			lock (sync)
 			{

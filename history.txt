@@ -42,8 +42,11 @@ Update 2020-08-16 #12
 Update 2020-08-16 #11
 - 
 
+[commited]
 Update 2020-08-16 #10
-- 
+- Update Local/DataCenter/TAxTOD service operation #217.
+  - UserCouponTransaction Model update #1.
+    - Cleanup and format code.
 
 [commited]
 Update 2020-08-16 #9
