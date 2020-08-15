@@ -133,6 +133,11 @@ namespace DMT.Services
 		private void InitTables()
 		{
 			if (null == Db) return;
+
+			Db.CreateTable<Config>();
+			Db.CreateTable<ViewHistory>();
+			//Db.CreateTable<UniqueCode>();
+
 			Db.CreateTable<TSB>();
 			Db.CreateTable<PlazaGroup>();
 			Db.CreateTable<Plaza>();
@@ -142,11 +147,9 @@ namespace DMT.Services
 
 			Db.CreateTable<Role>();
 			Db.CreateTable<User>();
+			//Db.CreateTable<LogInLog>();
 
 			Db.CreateTable<Payment>();
-
-			Db.CreateTable<Config>();
-			Db.CreateTable<ViewHistory>();
 
 			Db.CreateTable<TSBShift>();
 			Db.CreateTable<UserShift>();
@@ -164,7 +167,7 @@ namespace DMT.Services
 			Db.CreateTable<UserCreditBalance>();
 			Db.CreateTable<UserCreditTransaction>();
 
-			//Db.CreateTable<UserCoupon>();
+			//Db.CreateTable<UserCouponBalance>();
 			Db.CreateTable<UserCouponTransaction>();
 
 			Db.CreateTable<TSBExchangeTransaction>();

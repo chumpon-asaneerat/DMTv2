@@ -20,13 +20,16 @@ Update 2020-08-16 #38
 Update 2020-08-16 #37
 - 
 
+[commited]
 Update 2020-08-16 #36
-- 
+- Update Local/DataCenter/TAxTOD service operation #241.
+  - User Model update #3.
+    - Fixed but in ApplyNewPassword method.
 
 [commited]
 Update 2020-08-16 #35
 - Update Local/DataCenter/TAxTOD service operation #240.
-  - User Model update #1.
+  - User Model update #2.
     - Add ExpireDays, PasswordDate, AccountStatus property.
     - Add NewPassword, ConfirmPassword property with auto change password property.
 

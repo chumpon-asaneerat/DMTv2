@@ -108,6 +108,8 @@ namespace DMT.Models
 				_ConfirmPassword = string.Empty;
 				// Raise event.
 				this.RaiseChanged("Password");
+				this.RaiseChanged("NewPassword");
+				this.RaiseChanged("ConfirmPassword");
 			}
 		}
 
@@ -547,8 +549,8 @@ namespace DMT.Models
 		[Description("Gets or sets Comfirm Password.")]
 		[Ignore]
 		[JsonIgnore]
-		[PeropertyMapName("ComfirmPassword")]
-		public string ComfirmPassword
+		[PeropertyMapName("ConfirmPassword")]
+		public string ConfirmPassword
 		{
 			get
 			{

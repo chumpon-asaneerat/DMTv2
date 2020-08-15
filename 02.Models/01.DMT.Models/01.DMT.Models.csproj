@@ -104,7 +104,7 @@
     <Compile Include="Models\Common\Utils.cs" />
     <Compile Include="Models\Configuration\UniqueCode.cs" />
     <Compile Include="Models\Configuration\ViewHistory.cs" />
-    <None Include="Models\Coupons\Users\UserCouponBalance.cs" />
+    <Compile Include="Models\Coupons\Users\UserCouponBalance.cs" />
     <Compile Include="Models\Coupons\Common\Enums.cs" />
     <Compile Include="Models\Coupons\TSB\TSBCouponSummary.cs" />
     <Compile Include="Models\Coupons\Users\UserCouponTransaction.cs" />
