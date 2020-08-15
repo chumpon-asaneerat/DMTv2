@@ -233,8 +233,12 @@ namespace DMT.Models
 		{
 			get
 			{
-				return string.Format("{0} {1} {2} {3}", 
-					_PrefixEN, _FirstNameEN, _MiddleNameEN, _LastNameEN).Trim();
+				string ret = string.Empty;
+				if (!string.IsNullOrEmpty(_PrefixEN)) ret += _PrefixEN + " ";
+				if (!string.IsNullOrEmpty(_FirstNameEN)) ret += _FirstNameEN + " ";
+				if (!string.IsNullOrEmpty(_MiddleNameEN)) ret += _MiddleNameEN + " ";
+				if (!string.IsNullOrEmpty(_LastNameEN)) ret += _LastNameEN + " ";
+				return ret.Trim();
 			}
 			set { }
 		}
@@ -331,8 +335,12 @@ namespace DMT.Models
 		{
 			get
 			{
-				return string.Format("{0} {1} {2} {3}",
-					_PrefixTH, _FirstNameTH, _MiddleNameTH, _LastNameTH).Trim();
+				string ret = string.Empty;
+				if (!string.IsNullOrEmpty(_PrefixTH)) ret += _PrefixTH + " ";
+				if (!string.IsNullOrEmpty(_FirstNameTH)) ret += _FirstNameTH + " ";
+				if (!string.IsNullOrEmpty(_MiddleNameTH)) ret += _MiddleNameTH + " ";
+				if (!string.IsNullOrEmpty(_LastNameTH)) ret += _LastNameTH + " ";
+				return ret.Trim();
 			}
 			set { }
 		}

@@ -23,13 +23,16 @@ Update 2020-08-16 #42
 Update 2020-08-16 #41
 - 
 
+[commited]
 Update 2020-08-16 #40
-- 
+- Update Local/DataCenter/TAxTOD service operation #244.
+  - User Model update #5.
+    - Fixed bug in FullNameEN, FullNameTH.
 
 [commited]
 Update 2020-08-16 #39
 - Update Local/DataCenter/TAxTOD service operation #243.
-  - User Model update #4.
+  - User Model update #5.
     - Update UserView.sql (fixed problem when no middle name).
 
 [commited]
