@@ -26,8 +26,11 @@ Update 2020-08-15 #23
 Update 2020-08-15 #22
 - 
 
+[commited]
 Update 2020-08-15 #21
-- 
+- Update Local/DataCenter/TAxTOD service operation #189.
+  - Update DMT.Controls project #3.
+  - Update DMT.Local.WebClient project #1.
 
 [commited]
 Update 2020-08-15 #20

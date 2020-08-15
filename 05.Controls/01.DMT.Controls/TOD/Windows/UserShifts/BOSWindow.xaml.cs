@@ -53,12 +53,10 @@ namespace DMT.TOD.Windows.UserShifts
             Shift shift = cbShift.SelectedItem as Shift;
             if (null != shift)
             {
-                var creRet = ops.UserShifts.Create(shift, _user);
-                UserShift inst = (null != creRet && !creRet.errors.hasError) ? creRet.data : null;
+                UserShift inst = ops.UserShifts.Create(shift, _user).Value();
                 if (null != inst) shift.AssignTo(inst);
 
-                var busrSht = ops.UserShifts.BeginUserShift(inst);
-                bool success = (null != busrSht && !busrSht.errors.hasError);
+                var success = ops.UserShifts.BeginUserShift(inst).Ok;
                 if (!success)
                 {
                     DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
@@ -85,12 +83,10 @@ namespace DMT.TOD.Windows.UserShifts
             if (null != _user)
             {
                 DateTime dt = DateTime.Now;
-                var ret = ops.Shifts.GetShifts();
-                var shifts = (null != ret && !ret.errors.hasError) ? ret.data : null;
+                var shifts = ops.Shifts.GetShifts().Value();
                 cbShift.ItemsSource = shifts;
 
-                var tsbRet = ops.TSB.GetCurrent();
-                var tsb = (null != tsbRet && !tsbRet.errors.hasError) ? tsbRet.data : null;
+                var tsb = ops.TSB.GetCurrent().Value();
                 if (null != tsb)
                 {
                     txtPlaza.Text = tsb.TSBNameTH;

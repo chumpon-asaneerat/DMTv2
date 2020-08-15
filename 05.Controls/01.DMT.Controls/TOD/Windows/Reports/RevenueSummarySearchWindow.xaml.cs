@@ -73,8 +73,7 @@ namespace DMT.TOD.Windows.Reports
         {
             if (!loaded) return;
             if (!dtDate.SelectedDate.HasValue) return;
-            var ret = ops.Revenue.GetRevenues(dtDate.SelectedDate.Value);
-            _revenues = (null != ret && !ret.errors.hasError) ? ret.data : new List<RevenueEntry>();
+            _revenues = ops.Revenue.GetRevenues(dtDate.SelectedDate.Value).Value();
         }
 
         public void Setup(User user)
