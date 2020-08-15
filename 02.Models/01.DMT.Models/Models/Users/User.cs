@@ -32,6 +32,25 @@ namespace DMT.Models
 	//[Table("User")]
 	public class User : NTable<User>
 	{
+		#region Enum
+
+		/// <summary>
+		/// The Account Flags enum.
+		/// </summary>
+		public enum AccountFlags : int
+		{
+			/// <summary>
+			/// Account still valid.
+			/// </summary>
+			Valid = 0,
+			/// <summary>
+			/// Account is invalid.
+			/// </summary>
+			Invalid = 1
+		}
+
+		#endregion
+
 		#region Intenral Variables
 
 		private string _UserId = string.Empty;
@@ -54,6 +73,13 @@ namespace DMT.Models
 		private string _RoleId = string.Empty;
 		private string _RoleNameEN = string.Empty;
 		private string _RoleNameTH = string.Empty;
+		// Expiration
+		private DateTime _PasswordDate = DateTime.MinValue;
+		private int _ExpireDays = 0;
+		private AccountFlags _AccountStatus = AccountFlags.Valid;
+		// Validation (runtime)
+		private string _NewPassword = string.Empty;
+		private string _ConfirmPassword = string.Empty;
 
 		private int _Status = 1;
 		private DateTime _LastUpdate = DateTime.MinValue;
@@ -66,6 +92,24 @@ namespace DMT.Models
 		/// Constructor.
 		/// </summary>
 		public User() : base() { }
+
+		#endregion
+
+		#region Private Methods
+
+		private void ApplyNewPassword()
+		{
+			if (string.IsNullOrEmpty(_NewPassword) || string.IsNullOrEmpty(_ConfirmPassword))
+				return;
+			if (string.CompareOrdinal(_NewPassword, _ConfirmPassword) == 0)
+			{
+				_Password = Utils.MD5.Encrypt(_NewPassword);
+				_NewPassword = string.Empty;
+				_ConfirmPassword = string.Empty;
+				// Raise event.
+				this.RaiseChanged("Password");
+			}
+		}
 
 		#endregion
 
@@ -406,6 +450,116 @@ namespace DMT.Models
 				{
 					_RoleNameTH = value;
 					this.RaiseChanged("RoleNameTH");
+				}
+			}
+		}
+
+		#endregion
+
+		#region Expiration
+
+		/// <summary>
+		/// Gets or sets Password Date.
+		/// </summary>
+		[Category("Expiration")]
+		[Description("Gets or sets Password Date.")]
+		[PeropertyMapName("PasswordDate")]
+		public DateTime PasswordDate
+		{
+			get { return _PasswordDate; }
+			set
+			{
+				if (_PasswordDate != value)
+				{
+					_PasswordDate = value;
+					this.RaiseChanged("PasswordDate");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Expire Days.
+		/// </summary>
+		[Category("Expiration")]
+		[Description("Gets or sets Expire Days.")]
+		[PeropertyMapName("ExpireDays")]
+		public int ExpireDays
+		{
+			get { return _ExpireDays; }
+			set
+			{
+				if (_ExpireDays != value)
+				{
+					_ExpireDays = value;
+					this.RaiseChanged("ExpireDays");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Account Status Flag.
+		/// </summary>
+		[Category("Expiration")]
+		[Description("Gets or sets Account Status Flag.")]
+		[PeropertyMapName("AccountStatus")]
+		public AccountFlags AccountStatus
+		{
+			get { return _AccountStatus; }
+			set
+			{
+				if (_AccountStatus != value)
+				{
+					_AccountStatus = value;
+					this.RaiseChanged("AccountStatus");
+				}
+			}
+		}
+
+		#endregion
+
+		#region Validation
+
+		/// <summary>
+		/// Gets or sets New Password.
+		/// </summary>
+		[Category("Validation")]
+		[Description("Gets or sets New Password.")]
+		[Ignore]
+		[JsonIgnore]
+		[PeropertyMapName("NewPassword")]
+		public string NewPassword
+		{
+			get
+			{
+				return _NewPassword;
+			}
+			set
+			{
+				if (_NewPassword != value)
+				{
+					_NewPassword = value;
+					ApplyNewPassword();
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Confirm Password.
+		/// </summary>
+		[Category("Validation")]
+		[Description("Gets or sets Comfirm Password.")]
+		[Ignore]
+		[JsonIgnore]
+		[PeropertyMapName("ComfirmPassword")]
+		public string ComfirmPassword
+		{
+			get
+			{
+				return _ConfirmPassword;
+			}
+			set
+			{
+				if (_ConfirmPassword != value)
+				{
+					_ConfirmPassword = value;
+					ApplyNewPassword();
 				}
 			}
 		}
