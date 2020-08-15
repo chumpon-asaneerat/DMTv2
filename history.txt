@@ -26,8 +26,11 @@ Update 2020-08-16 #41
 Update 2020-08-16 #40
 - 
 
+[commited]
 Update 2020-08-16 #39
-- 
+- Update Local/DataCenter/TAxTOD service operation #243.
+  - User Model update #4.
+    - Update UserView.sql (fixed problem when no middle name).
 
 [commited]
 Update 2020-08-16 #38
