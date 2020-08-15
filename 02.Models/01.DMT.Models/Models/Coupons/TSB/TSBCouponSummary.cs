@@ -133,7 +133,9 @@ namespace DMT.Models
 				}
 			}
 		}
-
+		/// <summary>
+		/// Gets Remark Visibility.
+		/// </summary>
 		[Category("Runtime")]
 		[Description("Gets or sets RemarkVisibility.")]
 		[ReadOnly(true)]
@@ -421,6 +423,9 @@ namespace DMT.Models
 
 		#region Internal Class
 
+		/// <summary>
+		/// The internal FKs class for query data.
+		/// </summary>
 		public class FKs : TSBCouponSummary, IFKs<TSBCouponSummary>
 		{
 			#region TSB
@@ -513,17 +518,6 @@ namespace DMT.Models
 			}
 
 			#endregion
-
-			#region Public Methods
-			/*
-			public TSBCouponSummary ToTSBCouponSummary()
-			{
-				TSBCouponSummary inst = new TSBCouponSummary();
-				this.AssignTo(inst); // set all properties to new instance.
-				return inst;
-			}
-			*/
-			#endregion
 		}
 
 		#endregion
@@ -552,7 +546,6 @@ namespace DMT.Models
 			result = GetTSBCouponSummaries(tsb);
 			return result;
 		}
-
 		/// <summary>
 		/// Gets TSB Coupon summaries.
 		/// </summary>
@@ -567,7 +560,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == tsb)
 			{
 				result.ParameterIsNull();
@@ -579,18 +571,10 @@ namespace DMT.Models
 				try
 				{
 					string cmd = @"
-					SELECT * 
-					  FROM TSBCouponSummarryView
+					SELECT * FROM TSBCouponSummarryView
 					 WHERE TSBId = ? ";
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<TSBCouponSummary>();
-					rets.ForEach(ret =>
-					{
-						results.Add(ret.ToModel());
-					});
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -601,7 +585,6 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
 		/// <summary>
 		/// Gets TSB Coupon summaries.
 		/// </summary>
@@ -626,7 +609,6 @@ namespace DMT.Models
 			result = GetByUser(tsb, user);
 			return result;
 		}
-
 		/// <summary>
 		/// Gets TSB Coupon summaries.
 		/// </summary>
@@ -642,7 +624,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == tsb || null == user)
 			{
 				result.ParameterIsNull();
@@ -660,13 +641,6 @@ namespace DMT.Models
 					   AND UserId = ? ";
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId, user.UserId).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<TSBCouponSummary>();
-					rets.ForEach(ret =>
-					{
-						results.Add(ret.ToModel());
-					});
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)

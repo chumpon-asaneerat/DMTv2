@@ -117,7 +117,9 @@ namespace DMT.Models
 				}
 			}
 		}
-
+		/// <summary>
+		/// Gets Remark Visibility.
+		/// </summary>
 		[Category("Runtime")]
 		[Description("Gets or sets RemarkVisibility.")]
 		[ReadOnly(true)]
@@ -385,7 +387,6 @@ namespace DMT.Models
 			result = GetTSBBalance(tsb);
 			return result;
 		}
-
 		/// <summary>
 		/// Gets TSB Coupon Balance.
 		/// </summary>
@@ -426,7 +427,6 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
 		/// <summary>
 		/// Gets All TSB Coupon Balance.
 		/// </summary>
