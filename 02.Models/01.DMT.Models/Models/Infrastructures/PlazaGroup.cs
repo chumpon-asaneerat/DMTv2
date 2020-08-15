@@ -278,6 +278,9 @@ namespace DMT.Models
 
 		#region Internal Class
 
+		/// <summary>
+		/// The internal FKs class for query data.
+		/// </summary>
 		public class FKs : PlazaGroup, IFKs<PlazaGroup>
 		{
 			#region TSB
@@ -304,33 +307,25 @@ namespace DMT.Models
 			}
 
 			#endregion
-
-			#region Public Methods
-			/*
-			public PlazaGroup ToPlazaGroup()
-			{
-				PlazaGroup inst = new PlazaGroup();
-				this.AssignTo(inst); // set all properties to new instance.
-				return inst;
-			}
-			*/
-			#endregion
 		}
 
 		#endregion
 
 		#region Static Methods
 
+		/// <summary>
+		/// Gets PlazaGroups.
+		/// </summary>
+		/// <param name="db">The database connection.</param>
+		/// <returns>Returns List of PlazaGroup.</returns>
 		public static NDbResult<List<PlazaGroup>> GetPlazaGroups(SQLiteConnection db)
 		{
 			var result = new NDbResult<List<PlazaGroup>>();
-
 			if (null == db)
 			{
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -342,16 +337,6 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<PlazaGroup>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -363,7 +348,10 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets PlazaGroups.
+		/// </summary>
+		/// <returns>Returns List of PlazaGroup.</returns>
 		public static NDbResult<List<PlazaGroup>> GetPlazaGroups()
 		{
 			lock (sync)
@@ -372,17 +360,20 @@ namespace DMT.Models
 				return GetPlazaGroups(db);
 			}
 		}
-
+		/// <summary>
+		/// Gets PlazaGroup (By PlazaGroupId).
+		/// </summary>
+		/// <param name="db">The database connection.</param>
+		/// <param name="plazaGroupId">The Plaza Group Id.</param>
+		/// <returns>Returns PlazaGroup instance.</returns>
 		public static NDbResult<PlazaGroup> GetPlazaGroup(SQLiteConnection db, string plazaGroupId)
 		{
 			var result = new NDbResult<PlazaGroup>();
-
 			if (null == db)
 			{
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -404,7 +395,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets PlazaGroup (By PlazaGroupId).
+		/// </summary>
+		/// <param name="plazaGroupId">The Plaza Group Id</param>
+		/// <returns>Returns PlazaGroup instance.</returns>
 		public static NDbResult<PlazaGroup> GetPlazaGroup(string plazaGroupId)
 		{
 			lock (sync)
@@ -413,7 +408,11 @@ namespace DMT.Models
 				return GetPlazaGroup(db, plazaGroupId);
 			}
 		}
-
+		/// <summary>
+		/// Gets PlazaGroups (By TSB).
+		/// </summary>
+		/// <param name="value">The TSB instance.</param>
+		/// <returns>Returns List of PlazaGroup.</returns>
 		public static NDbResult<List<PlazaGroup>> GetTSBPlazaGroups(TSB value)
 		{
 			var result = new NDbResult<List<PlazaGroup>>();
@@ -423,17 +422,19 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				return GetTSBPlazaGroups(value.TSBId);
 			}
 		}
-
+		/// <summary>
+		/// Gets PlazaGroups (By TSBId).
+		/// </summary>
+		/// <param name="tsbId">The TSB Id.</param>
+		/// <returns>Returns List of PlazaGroup.</returns>
 		public static NDbResult<List<PlazaGroup>> GetTSBPlazaGroups(string tsbId)
 		{
 			var result = new NDbResult<List<PlazaGroup>>();
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -446,23 +447,12 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd, tsbId).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<PlazaGroup>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
 				{
 					med.Err(ex);
 					result.Error(ex);
-
 				}
 				return result;
 			}

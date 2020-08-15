@@ -15,8 +15,11 @@
 Update 2020-08-16 #20
 - 
 
+[commited]
 Update 2020-08-16 #19
-- 
+- Update Local/DataCenter/TAxTOD service operation #226.
+  - PlazaGroup Model update #1.
+    - Cleanup and format code.
 
 [commited]
 Update 2020-08-16 #18
