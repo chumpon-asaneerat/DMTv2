@@ -574,22 +574,14 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
-			lock (sync)
+			var tsb = TSB.GetCurrent().Value();
+			if (null == tsb)
 			{
-				// TODO: Need to replace with functional extension methods.
-				var tsbRet = TSB.GetCurrent();
-				if (null != tsbRet && !tsbRet.errors.hasError)
-				{
-					var tsb = tsbRet.data;
-					return GetTransactions(tsb);
-				}
-				else
-				{
-					result.Error(new Exception("Cannot get active TSB."));
-				}
+				result.ParameterIsNull();
 				return result;
 			}
+			result = GetTransactions(tsb);
+			return result;
 		}
 
 		/// <summary>
@@ -654,22 +646,14 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
-			lock (sync)
+			var tsb = TSB.GetCurrent().Value();
+			if (null == tsb)
 			{
-				// TODO: Need to replace with functional extension methods.
-				var tsbRet = TSB.GetCurrent();
-				if (null != tsbRet && !tsbRet.errors.hasError)
-				{
-					var tsb = tsbRet.data;
-					return GetUserBHT35Coupons(tsb, user);
-				}
-				else
-				{
-					result.Error(new Exception("Cannot get active TSB."));
-				}
+				result.ParameterIsNull();
 				return result;
 			}
+			result = GetUserBHT35Coupons(tsb, user);
+			return result;
 		}
 
 		public static NDbResult<List<UserCouponTransaction>> GetUserBHT35Coupons(
@@ -682,7 +666,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == tsb)
 			{
 				result.ParameterIsNull();
@@ -744,22 +727,14 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
-			lock (sync)
+			var tsb = TSB.GetCurrent().Value();
+			if (null == tsb)
 			{
-				// TODO: Need to replace with functional extension methods.
-				var tsbRet = TSB.GetCurrent();
-				if (null != tsbRet && !tsbRet.errors.hasError)
-				{
-					var tsb = tsbRet.data;
-					return GetUserBHT80Coupons(tsb, user);
-				}
-				else
-				{
-					result.Error(new Exception("Cannot get active TSB."));
-				}
+				result.ParameterIsNull();
 				return result;
 			}
+			result = GetUserBHT80Coupons(tsb, user);
+			return result;
 		}
 
 		public static NDbResult<List<UserCouponTransaction>> GetUserBHT80Coupons(

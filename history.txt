@@ -8,12 +8,28 @@ Update 2020-08-15 #19
 Update 2020-08-15 #18
 - 
 
+[commited]
 Update 2020-08-15 #17
-- 
+- Update Local/DataCenter/TAxTOD service operation #185.
+  - Update User Controller #1.
+  - Update Shift Controller #1.
+  - NTable Models update #3.
+  - TSBShift Models update #4.
+  - TSBCouponBalance Models update #4.
+  - TSBCouponSummary Models update #4.
+  - TSBCouponTransaction Models update #4.
+  - TSBCreditBalance Models update #4.
+  - TSBCreditTransaction Models update #4.
+  - UserCouponTransaction Models update #5.
+  - UserCreditTransaction Models update #3.
+  - TSBExchangeTransaction Models update #2.
+  - UserShift Models update #3.
+  - LaneAttendance Models update #4.
+  - LanePayment Models update #4.
 
 [commited]
 Update 2020-08-15 #16
-- Update Local/DataCenter/TAxTOD service operation #186.
+- Update Local/DataCenter/TAxTOD service operation #184.
   - Update NDbResult Extension Methods #1.
   - Update NRestResult Extension Methods #1.
   - Update NRestClient #1.

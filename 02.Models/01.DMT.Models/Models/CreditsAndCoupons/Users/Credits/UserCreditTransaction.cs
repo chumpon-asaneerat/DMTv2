@@ -1676,31 +1676,14 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
-			lock (sync)
+			var tsb = TSB.GetCurrent().Value();
+			if (null == tsb)
 			{
-				MethodBase med = MethodBase.GetCurrentMethod();
-				try
-				{
-					// TODO: Need to replace with functional extension methods.
-					var tsbRet = TSB.GetCurrent();
-					if (null != tsbRet && !tsbRet.errors.hasError)
-					{
-						var tsb = tsbRet.data;
-						return GetUserCreditTransactions(tsb);
-					}
-					else
-					{
-						result.Error(new Exception("Cannot get active TSB."));
-					}
-				}
-				catch (Exception ex)
-				{
-					med.Err(ex);
-					result.Error(ex);
-				}
+				result.ParameterIsNull();
 				return result;
 			}
+			result = GetUserCreditTransactions(tsb);
+			return result;
 		}
 
 		/// <summary>

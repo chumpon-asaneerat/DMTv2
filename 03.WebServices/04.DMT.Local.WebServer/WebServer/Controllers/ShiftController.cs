@@ -23,7 +23,7 @@ namespace DMT.Services
         [ActionName(RouteConsts.Shift.GetShifts.Name)]
         public NDbResult<List<Shift>> GetShifts()
         {
-            var results = Shift.Gets();
+            var results = Shift.GetShifts();
             return results;
         }
 
@@ -71,7 +71,7 @@ namespace DMT.Services
         [ActionName(RouteConsts.Shift.GetCurrent.Name)]
         public NDbResult<TSBShift> GetCurrent()
         {
-            var result = TSBShift.GetCurrent();
+            var result = TSBShift.GetTSBShift();
             return result;
         }
 

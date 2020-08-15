@@ -1738,23 +1738,14 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
-			lock (sync)
+			var tsb = TSB.GetCurrent().Value();
+			if (null == tsb)
 			{
-				// TODO: Need to replace with functional extension methods.
-				var tsbRet = TSB.GetCurrent();
-				if (null != tsbRet && !tsbRet.errors.hasError)
-				{
-					var tsb = tsbRet.data;
-					return GetTransactions(tsb);
-				}
-				else
-				{
-					// TODO: Need new exception..
-					result.Error(new Exception("Cannot get active TSB."));
-				}
+				result.ParameterIsNull();
 				return result;
 			}
+			result = GetTransactions(tsb);
+			return result;
 		}
 
 		public static NDbResult<List<TSBExchangeTransaction>> GetTransactions(TSB tsb)
@@ -1766,11 +1757,9 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == tsb)
 			{
 				result.ParameterIsNull();
-				result.data = new List<TSBExchangeTransaction>();
 				return result;
 			}
 			lock (sync)

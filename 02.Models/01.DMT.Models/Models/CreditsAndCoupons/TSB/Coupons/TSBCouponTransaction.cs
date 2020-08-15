@@ -927,22 +927,14 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
-			lock (sync)
+			var tsb = TSB.GetCurrent().Value();
+			if (null == tsb)
 			{
-				// TODO: Need to replace with functional extension methods.
-				var tsbRet = TSB.GetCurrent();
-				if (null != tsbRet && !tsbRet.errors.hasError)
-				{
-					var tsb = tsbRet.data;
-					return GetTSBCouponTransactions(tsb);
-				}
-				else
-				{
-					result.Error(new Exception("Cannot get active TSB."));
-				}
+				result.ParameterIsNull();
 				return result;
 			}
+			result = GetTSBCouponTransactions(tsb);
+			return result;
 		}
 
 		/// <summary>

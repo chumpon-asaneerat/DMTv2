@@ -1352,30 +1352,14 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-			lock (sync)
+			var tsb = TSB.GetCurrent().Value();
+			if (null == tsb)
 			{
-				MethodBase med = MethodBase.GetCurrentMethod();
-				try
-				{
-					// TODO: Need to replace with functional extension methods.
-					var tsbRet = TSB.GetCurrent();
-					if (null != tsbRet && !tsbRet.errors.hasError)
-					{
-						var tsb = tsbRet.data;
-						return GetTransactions(tsb);
-					}
-					else
-					{
-						result.Error(new Exception("Cannot get active TSB."));
-					}
-				}
-				catch (Exception ex)
-				{
-					med.Err(ex);
-					result.Error(ex);
-				}
+				result.ParameterIsNull();
 				return result;
 			}
+			result = GetTransactions(tsb);
+			return result;
 		}
 
 		/// <summary>
@@ -1430,21 +1414,20 @@ namespace DMT.Models
 		public static NDbResult<TSBCreditTransaction> GetInitialTransaction()
 		{
 			var result = new NDbResult<TSBCreditTransaction>();
-			lock (sync)
+			SQLiteConnection db = Default;
+			if (null == db)
 			{
-				// TODO: Need to replace with functional extension methods.
-				var tsbRet = TSB.GetCurrent();
-				if (null != tsbRet && !tsbRet.errors.hasError)
-				{
-					var tsb = tsbRet.data;
-					result = GetInitialTransaction(tsb);
-				}
-				else
-				{
-					result.Error(new Exception("Cannot get active TSB."));
-				}
+				result.DbConenctFailed();
 				return result;
 			}
+			var tsb = TSB.GetCurrent().Value();
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+			result = GetInitialTransaction(tsb);
+			return result;
 		}
 
 		public static NDbResult<TSBCreditTransaction> GetInitialTransaction(TSB tsb)

@@ -882,23 +882,19 @@ namespace DMT.Models
 		{
 			var result = new NDbResult<LanePayment>();
 			LanePayment inst = Create();
-			// TODO: Need to replace with functional extension methods.
-			var tsbRet = TSB.GetCurrent();
-			if (tsbRet.errors.hasError)
+			var tsb = TSB.GetCurrent().Value();
+			if (null == tsb)
 			{
 				result.ParameterIsNull();
-				result.data = null;
 			}
 			else
 			{
-				var tsb = tsbRet.data;
 				if (null != tsb) tsb.AssignTo(inst);
 				if (null != lane) lane.AssignTo(inst);
 				if (null != collector) collector.AssignTo(inst);
 				if (null != payment) payment.AssignTo(inst);
 				inst.PaymentDate = date;
 				inst.Amount = amount;
-
 				result.Success(inst);
 			}
 			return result;

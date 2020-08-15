@@ -32,7 +32,7 @@ namespace DMT.Services
             }
             else
             {
-                result = Role.Get(value.RoleId);
+                result = Role.GetRole(value.RoleId);
 
             }
             return result;
@@ -42,7 +42,7 @@ namespace DMT.Services
         [ActionName(RouteConsts.User.GetRoles.Name)]
         public NDbResult<List<Role>> GetRoles()
         {
-            NDbResult<List<Role>> result = Role.Gets();
+            NDbResult<List<Role>> result = Role.GetRoles();
             return result;
         }
 
@@ -102,7 +102,7 @@ namespace DMT.Services
             }
             else
             {
-                result = Models.User.Get(value.UserId);
+                result = Models.User.GetUser(value.UserId);
 
             }
             return result;

@@ -615,22 +615,38 @@ namespace DMT.Models
         public static NDbResult<TSBShift> Create(Shift shift, User supervisor)
         {
             var result = new NDbResult<TSBShift>();
+            SQLiteConnection db = Default;
+            if (null == db)
+            {
+                result.DbConenctFailed();
+                return result;
+            }
+            var tsb = TSB.GetCurrent().Value();
             TSBShift inst = Create();
-            // TODO: Need to replace with functional extension methods.
-            var tsbRet = TSB.GetCurrent();
-            if (tsbRet.errors.hasError)
+            if (null != tsb) tsb.AssignTo(inst);
+            if (null != shift) shift.AssignTo(inst);
+            if (null != supervisor) supervisor.AssignTo(inst);
+            result.Success(inst);
+
+            return result;
+        }
+
+        public static NDbResult<TSBShift> GetTSBShift()
+        {
+            var result = new NDbResult<TSBShift>();
+            SQLiteConnection db = Default;
+            if (null == db)
+            {
+                result.DbConenctFailed();
+                return result;
+            }
+            var tsb = TSB.GetCurrent().Value();
+            if (null == tsb)
             {
                 result.ParameterIsNull();
+                return result;
             }
-            else
-            {
-                var tsb = tsbRet.data;
-                if (null != tsb) tsb.AssignTo(inst);
-                if (null != shift) shift.AssignTo(inst);
-                if (null != supervisor) supervisor.AssignTo(inst);
-                result.Success(inst);
-            }
-
+            result = GetTSBShift(tsb.TSBId);
             return result;
         }
 
@@ -690,17 +706,12 @@ namespace DMT.Models
                 MethodBase med = MethodBase.GetCurrentMethod();
                 try
                 {
-                    // TODO: Need to replace with functional extension methods.
-                    var lastRet = GetTSBShift(value.TSBId);
-                    if (!lastRet.errors.hasError && null != lastRet.data)
+                    var last = GetTSBShift(value.TSBId).Value();
+                    if (null != last)
                     {
-                        var last = lastRet.data;
-                        if (null != last)
-                        {
-                            // End shift.
-                            last.End = DateTime.Now;
-                            Save(last);
-                        }
+                        // End shift.
+                        last.End = DateTime.Now;
+                        Save(last);
                     }
                     // Begin new shift.
                     value.Begin = DateTime.Now;

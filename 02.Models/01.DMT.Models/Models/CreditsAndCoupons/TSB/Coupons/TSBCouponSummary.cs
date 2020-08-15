@@ -543,22 +543,14 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
-			lock (sync)
+			var tsb = TSB.GetCurrent().Value();
+			if (null == tsb)
 			{
-				// TODO: Need to replace with functional extension methods.
-				var tsbRet = TSB.GetCurrent();
-				if (null != tsbRet && !tsbRet.errors.hasError)
-				{
-					var tsb = tsbRet.data;
-					return GetTSBCouponSummaries(tsb);
-				}
-				else
-				{
-					result.Error(new Exception("Cannot get active TSB."));
-				}
+				result.ParameterIsNull();
 				return result;
 			}
+			result = GetTSBCouponSummaries(tsb);
+			return result;
 		}
 
 		/// <summary>
@@ -625,22 +617,14 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
-			lock (sync)
+			var tsb = TSB.GetCurrent().Value();
+			if (null == tsb)
 			{
-				// TODO: Need to replace with functional extension methods.
-				var tsbRet = TSB.GetCurrent();
-				if (null != tsbRet && !tsbRet.errors.hasError)
-				{
-					var tsb = tsbRet.data;
-					return GetByUser(tsb, user);
-				}
-				else
-				{
-					result.Error(new Exception("Cannot get active TSB."));
-				}
+				result.ParameterIsNull();
 				return result;
 			}
+			result = GetByUser(tsb, user);
+			return result;
 		}
 
 		/// <summary>

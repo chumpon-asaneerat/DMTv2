@@ -616,21 +616,11 @@ namespace DMT.Models
         {
             var result = new NDbResult<UserShift>();
             UserShift inst = Create();
-            // TODO: Need to replace with functional extension methods.
-            var tsbRet = TSB.GetCurrent();
-            if (tsbRet.errors.hasError)
-            {
-                result.ParameterIsNull();
-            }
-            else
-            {
-                var tsb = tsbRet.data;
-                if (null != tsb) tsb.AssignTo(inst);
-                if (null != shift) shift.AssignTo(inst);
-                if (null != supervisor) supervisor.AssignTo(inst);
-                result.Success(inst);
-            }
-
+            var tsb = TSB.GetCurrent().Value();
+            if (null != tsb) tsb.AssignTo(inst);
+            if (null != shift) shift.AssignTo(inst);
+            if (null != supervisor) supervisor.AssignTo(inst);
+            result.Success(inst);
             return result;
         }
 
