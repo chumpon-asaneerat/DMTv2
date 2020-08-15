@@ -14,8 +14,14 @@ Update 2020-08-15 #27
 Update 2020-08-15 #26
 - 
 
+[commited]
 Update 2020-08-15 #25
-- 
+- Update Local/DataCenter/TAxTOD service operation #193.
+  - Re-Update PlazaOperations - Coupon #1.
+  - Re-Update PlazaOperations - Credit #1.
+  - Re-Update PlazaOperations - Lane #1.
+  - Re-Update PlazaOperations - User #1.
+  - Re-Update User Controller #1.
 
 [commited]
 Update 2020-08-15 #24

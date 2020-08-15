@@ -76,7 +76,7 @@ namespace DMT.Config.Pages
                 {
                     RoleItem item = role.CloneTo<RoleItem>();
                     items.Add(item);
-                    var users = ops.Users.GetUsers(item).Value();
+                    var users = ops.Users.GetUsers(role).Value();
                     if (null != users)
                     {
                         users.ForEach(user =>

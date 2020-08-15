@@ -28,12 +28,10 @@ namespace DMT.Services
             {
                 result = new NDbResult<Role>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
                 result = Role.GetRole(value.RoleId);
-
             }
             return result;
         }
@@ -55,7 +53,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<Role>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -79,7 +76,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<User>>();
                 result.ParameterIsNull();
-                result.data = new List<User>();
             }
             else
             {
@@ -98,7 +94,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<User>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -119,12 +114,10 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<User>>();
                 result.ParameterIsNull();
-                result.data = new List<User>();
             }
             else
             {
                 result = Models.User.FindByGroupId(value.GroupId, status);
-
             }
             return result;
         }
@@ -138,7 +131,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<User>>();
                 result.ParameterIsNull();
-                result.data = new List<User>();
             }
             else
             {
@@ -157,12 +149,10 @@ namespace DMT.Services
             {
                 result = new NDbResult<User>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
                 result = Models.User.GetByCardId(value.CardId);
-
             }
             return result;
         }
@@ -176,12 +166,10 @@ namespace DMT.Services
             {
                 result = new NDbResult<User>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
                 result = Models.User.GetByUserId(value.UserId, value.Password);
-
             }
             return result;
         }
@@ -195,7 +183,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<User>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {

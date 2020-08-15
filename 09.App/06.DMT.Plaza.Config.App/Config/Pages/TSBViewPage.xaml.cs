@@ -74,7 +74,7 @@ namespace DMT.Config.Pages
                 TSBItem item = tsb.CloneTo<TSBItem>();
                 items.Add(item);
 
-                var plazas = ops.TSB.GetTSBPlazas(item).Value();
+                var plazas = ops.TSB.GetTSBPlazas(tsb).Value();
                 if (null != plazas)
                 {
                     plazas.ForEach(plaza =>

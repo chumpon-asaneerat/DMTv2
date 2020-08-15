@@ -74,8 +74,8 @@ namespace DMT.Services
 
                 NRestResult<LaneAttendance> ret;
 
-                ret = NRestClient.Create(port: 9000).Execute<LaneAttendance>(
-                    RouteConsts.Lane.CreateAttendance.Url,
+                ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                    .Execute<LaneAttendance>(RouteConsts.Lane.CreateAttendance.Url,
                     new LaneAttendanceCreate()
                     {
                         Lane = lane,
@@ -262,8 +262,8 @@ namespace DMT.Services
 
                 NRestResult<LanePayment> ret;
 
-                ret = NRestClient.Create(port: 9000).Execute<LanePayment>(
-                    RouteConsts.Lane.CreatePayment.Url,
+                ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
+                    .Execute<LanePayment>(RouteConsts.Lane.CreatePayment.Url,
                     new LanePaymentCreate()
                     {
                         Lane = lane,

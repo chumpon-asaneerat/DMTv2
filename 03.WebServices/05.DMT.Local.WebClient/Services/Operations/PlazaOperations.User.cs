@@ -76,14 +76,13 @@ namespace DMT.Services
 
                 if (null != value)
                 {
-                    ret = NRestClient.Create(port: 9000)
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
                         .Execute<Role>(RouteConsts.User.GetRole.Url, value);
                 }
                 else
                 {
                     ret = new NRestResult<Role>();
                     ret.ParameterIsNull();
-                    ret.data = null;
                 }
                 return ret;
             }
@@ -98,7 +97,7 @@ namespace DMT.Services
 
                 NRestResult<List<Role>> ret;
 
-                ret = NRestClient.Create(port: 9000)
+                ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
                     .Execute<List<Role>>(RouteConsts.User.GetRoles.Url, new { });
 
                 return ret;
@@ -116,14 +115,13 @@ namespace DMT.Services
 
                 if (null != value)
                 {
-                    ret = NRestClient.Create(port: 9000)
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
                         .Execute<Role>(RouteConsts.User.SaveRole.Url, value);
                 }
                 else
                 {
                     ret = new NRestResult<Role>();
                     ret.ParameterIsNull();
-                    ret.data = null;
                 }
                 return ret;
             }
@@ -144,14 +142,13 @@ namespace DMT.Services
 
                 if (null != value)
                 {
-                    ret = NRestClient.Create(port: 9000)
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
                         .Execute<List<User>>(RouteConsts.User.GetUsers.Url, value);
                 }
                 else
                 {
                     ret = new NRestResult<List<User>>();
                     ret.ParameterIsNull();
-                    ret.data = new List<User>();
                 }
                 return ret;
             }
@@ -168,14 +165,13 @@ namespace DMT.Services
 
                 if (null != value)
                 {
-                    ret = NRestClient.Create(port: 9000)
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
                         .Execute<User>(RouteConsts.User.GetByCardId.Url, value);
                 }
                 else
                 {
                     ret = new NRestResult<User>();
                     ret.ParameterIsNull();
-                    ret.data = null;
                 }
                 return ret;
             }
@@ -192,14 +188,13 @@ namespace DMT.Services
 
                 if (null != value)
                 {
-                    ret = NRestClient.Create(port: 9000)
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
                         .Execute<User>(RouteConsts.User.GetById.Url, value);
                 }
                 else
                 {
                     ret = new NRestResult<User>();
                     ret.ParameterIsNull();
-                    ret.data = null;
                 }
                 return ret;
             }
@@ -216,14 +211,13 @@ namespace DMT.Services
 
                 if (null != value)
                 {
-                    ret = NRestClient.Create(port: 9000)
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
                         .Execute<List<User>>(RouteConsts.User.SearchByGroupId.Url, value);
                 }
                 else
                 {
                     ret = new NRestResult<List<User>>();
                     ret.ParameterIsNull();
-                    ret.data = new List<User>();
                 }
                 return ret;
             }
@@ -240,14 +234,13 @@ namespace DMT.Services
 
                 if (null != value)
                 {
-                    ret = NRestClient.Create(port: 9000)
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
                         .Execute<List<User>>(RouteConsts.User.SearchById.Url, value);
                 }
                 else
                 {
                     ret = new NRestResult<List<User>>();
                     ret.ParameterIsNull();
-                    ret.data = new List<User>();
                 }
                 return ret;
             }
@@ -264,14 +257,13 @@ namespace DMT.Services
 
                 if (null != value)
                 {
-                    ret = NRestClient.Create(port: 9000)
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
                         .Execute<User>(RouteConsts.User.GetByLogIn.Url, value);
                 }
                 else
                 {
                     ret = new NRestResult<User>();
                     ret.ParameterIsNull();
-                    ret.data = null;
                 }
                 return ret;
             }
@@ -288,14 +280,13 @@ namespace DMT.Services
 
                 if (null != value)
                 {
-                    ret = NRestClient.Create(port: 9000)
+                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
                         .Execute<User>(RouteConsts.User.SaveUser.Url, value);
                 }
                 else
                 {
                     ret = new NRestResult<User>();
                     ret.ParameterIsNull();
-                    ret.data = null;
                 }
                 return ret;
             }
