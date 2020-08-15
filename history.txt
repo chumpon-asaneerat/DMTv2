@@ -39,8 +39,11 @@ Update 2020-08-16 #23
 Update 2020-08-16 #22
 - 
 
+[commited]
 Update 2020-08-16 #21
-- 
+- Update Local/DataCenter/TAxTOD service operation #228.
+  - Payment Model update #1.
+    - Cleanup and format code.
 
 [commited]
 Update 2020-08-16 #20

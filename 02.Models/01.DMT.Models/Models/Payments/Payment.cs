@@ -178,16 +178,19 @@ namespace DMT.Models
 
 		#region Static Methods
 
+		/// <summary>
+		/// Gets Payments.
+		/// </summary>
+		/// <param name="db">The database connection.</param>
+		/// <returns>Returns List of Payment.</returns>
 		public static NDbResult<List<Payment>> GetPayments(SQLiteConnection db)
 		{
 			var result = new NDbResult<List<Payment>>();
-
 			if (null == db)
 			{
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -197,18 +200,19 @@ namespace DMT.Models
 					cmd += "SELECT * FROM Payment ";
 					var data = NQuery.Query<Payment>(cmd);
 					result.Success(data);
-
 				}
 				catch (Exception ex)
 				{
 					med.Err(ex);
 					result.Error(ex);
-
 				}
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets Payments.
+		/// </summary>
+		/// <returns>Returns List of Payment.</returns>
 		public static NDbResult<List<Payment>> GetPayments()
 		{
 			lock (sync)
