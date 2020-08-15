@@ -14,8 +14,11 @@ Update 2020-08-15 #17
 Update 2020-08-15 #16
 - 
 
+[commited]
 Update 2020-08-15 #15
-- 
+- Update Local/DataCenter/TAxTOD service operation #183.
+  - Update LocalDbServer.cs #3
+    - Update password in user init method #3.
 
 [commited]
 Update 2020-08-15 #14
