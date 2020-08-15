@@ -479,8 +479,12 @@ namespace DMT.Models
             {
                 foreach (var value in values)
                 {
-                    T inst = new T();
-                    if (null != value) value.AssignTo(inst);
+                    if (null != value)
+                    {
+                        T inst = new T();
+                        value.AssignTo(inst);
+                        insts.Add(inst);
+                    }
                 }
             }
             return insts;

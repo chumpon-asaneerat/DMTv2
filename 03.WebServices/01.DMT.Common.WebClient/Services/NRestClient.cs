@@ -122,7 +122,7 @@ namespace DMT.Services
                     }
                     else
                     {
-                        ret.data = obj.data;
+                        ret.data = (null != obj) ? obj.data : NDbResult<TReturn>.Default();
                     }
                 }
                 else
@@ -193,7 +193,8 @@ namespace DMT.Services
                     }
                     else
                     {
-                        ret.data = obj.data;
+                        ret.data = (null != obj) ? obj.data : NDbResult<TReturn, TOut>.DefaultData();
+                        ret.output = (null != obj) ? obj.output : NDbResult<TReturn, TOut>.DefaultOutput();
                     }
                 }
                 else

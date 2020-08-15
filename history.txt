@@ -11,8 +11,11 @@ Update 2020-08-15 #28
 Update 2020-08-15 #27
 - 
 
+[commited]
 Update 2020-08-15 #26
-- 
+- Update Local/DataCenter/TAxTOD service operation #194.
+  - NTable Models update #4.
+  - Update NRestClient #2.
 
 [commited]
 Update 2020-08-15 #25
