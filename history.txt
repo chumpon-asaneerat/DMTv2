@@ -2,8 +2,10 @@
 Update 2020-08-15 #40
 - 
 
+[commited]
 Update 2020-08-15 #39
-- 
+- Update Local/DataCenter/TAxTOD service operation #202.
+  - Change Local Database Service app title (debug mode only).
 
 [commited]
 Update 2020-08-15 #38
