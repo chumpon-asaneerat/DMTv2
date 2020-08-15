@@ -375,12 +375,21 @@ namespace DMT.Models
     {
         #region Public Methods (static)
 
+        /// <summary>
+        /// Gets defult value of data.
+        /// </summary>
+        /// <typeparam name="T">Tht data type.</typeparam>
+        /// <returns>Returns default instance. If type is IList new instance returns.</returns>
         public static T DefaultData<T>()
             where T : new()
         {
             return (typeof(T) == typeof(IList)) ? new T() : default(T);
         }
-
+        /// <summary>
+        /// Gets defult value of output.
+        /// </summary>
+        /// <typeparam name="O">The output type.</typeparam>
+        /// <returns>Returns default instance. If type is IList new instance returns.</returns>
         public static O DefaultOutput<O>()
             where O : new()
         {
@@ -391,6 +400,12 @@ namespace DMT.Models
 
         #region Value
 
+        /// <summary>
+        /// Gets Data instance.
+        /// </summary>
+        /// <typeparam name="T">The type for data instance.</typeparam>
+        /// <param name="value">The instance to get data.</param>
+        /// <returns>Returns data instance.</returns>
         public static T Value<T>(this NDbResult<T> value)
             where T : new()
         {
@@ -398,7 +413,13 @@ namespace DMT.Models
                 value.data : DefaultData<T>();
             return ret;
         }
-
+        /// <summary>
+        /// Gets Data instance.
+        /// </summary>
+        /// <typeparam name="T">The type for data instance.</typeparam>
+        /// <typeparam name="O">The type for output instance.</typeparam>
+        /// <param name="value">The instance to get data.</param>
+        /// <returns>Returns data instance.</returns>
         public static T Value<T, O>(this NDbResult<T, O> value)
             where T : new()
             where O : new()
@@ -407,7 +428,13 @@ namespace DMT.Models
                 value.data : DefaultData<T>();
             return ret;
         }
-
+        /// <summary>
+        /// Gets Output instance.
+        /// </summary>
+        /// <typeparam name="T">The type for data instance.</typeparam>
+        /// <typeparam name="O">The type for output instance.</typeparam>
+        /// <param name="value">The instance to get output.</param>
+        /// <returns>Returns output instance.</returns>
         public static O Output<T, O>(this NDbResult<T, O> value)
             where T : new()
             where O : new()
