@@ -342,6 +342,7 @@ namespace DMT.Models
 		[Category("User")]
 		[Description("Gets or sets Password")]
 		[MaxLength(50)]
+		[ReadOnly(true)]
 		[PeropertyMapName("Password")]
 		public string Password
 		{
@@ -465,6 +466,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Expiration")]
 		[Description("Gets or sets Password Date.")]
+		[ReadOnly(true)]
 		[PeropertyMapName("PasswordDate")]
 		public DateTime PasswordDate
 		{
@@ -483,6 +485,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Expiration")]
 		[Description("Gets or sets Expire Days.")]
+		[ReadOnly(true)]
 		[PeropertyMapName("ExpireDays")]
 		public int ExpireDays
 		{
@@ -501,6 +504,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Expiration")]
 		[Description("Gets or sets Account Status Flag.")]
+		[ReadOnly(true)]
 		[PeropertyMapName("AccountStatus")]
 		public AccountFlags AccountStatus
 		{
@@ -522,7 +526,7 @@ namespace DMT.Models
 		/// <summary>
 		/// Gets or sets New Password.
 		/// </summary>
-		[Category("Validation")]
+		[Category("Validation - Runtime")]
 		[Description("Gets or sets New Password.")]
 		[Ignore]
 		[JsonIgnore]
@@ -545,7 +549,7 @@ namespace DMT.Models
 		/// <summary>
 		/// Gets or sets Confirm Password.
 		/// </summary>
-		[Category("Validation")]
+		[Category("Validation - Runtime")]
 		[Description("Gets or sets Comfirm Password.")]
 		[Ignore]
 		[JsonIgnore]

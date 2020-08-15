@@ -17,8 +17,11 @@ Update 2020-08-16 #39
 Update 2020-08-16 #38
 - 
 
+[commited]
 Update 2020-08-16 #37
-- 
+- Update Local/DataCenter/TAxTOD service operation #242.
+  - User Model update #3.
+    - Add readonly attribute in some properties.
 
 [commited]
 Update 2020-08-16 #36
