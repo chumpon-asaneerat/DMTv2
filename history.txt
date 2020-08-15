@@ -5,8 +5,11 @@ Update 2020-08-15 #40
 Update 2020-08-15 #39
 - 
 
+[commited]
 Update 2020-08-15 #38
-- 
+- Update Local/DataCenter/TAxTOD service operation #201.
+  - Change Plaza Config app title.
+  - Change Plaza Simulator app title.
 
 [commited]
 Update 2020-08-15 #37
