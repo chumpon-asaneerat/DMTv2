@@ -34,25 +34,48 @@ namespace DMT.Models
 	{
 		#region Enum
 
+		/// <summary>
+		/// The TSB Exchange Group state enum.
+		/// </summary>
 		public enum StateTypes : int
 		{
-			// Request.
+			/// <summary>
+			/// Request.
+			/// </summary>
 			Request = 1,
-			// Canceled.
+			/// <summary>
+			/// Canceled.
+			/// </summary>
 			Canceled = 2,
-			// Approve.
+			/// <summary>
+			/// Approve.
+			/// </summary>
 			Approve = 3,
-			// Reject.
+			/// <summary>
+			/// Reject.
+			/// </summary>
 			Reject = 4,
-			// Received.
+			/// <summary>
+			/// Received.
+			/// </summary>
 			Received = 5,
-			// Completed (reserved).
+			/// <summary>
+			/// Completed (reserved).
+			/// </summary>
 			Completed = 9
 		}
-
+		/// <summary>
+		/// The Finished Flags
+		/// </summary>
 		public enum FinishedFlags : int
 		{
+			/// <summary>
+			/// Completed
+			/// </summary>
 			Completed = 0,
+			/// <summary>
+			/// Avaliable
+			/// </summary>
 			Avaliable = 1
 		}
 
@@ -312,6 +335,9 @@ namespace DMT.Models
 
 		#region Internal Class
 
+		/// <summary>
+		/// The internal FKs class for query data.
+		/// </summary>
 		public class FKs : TSBExchangeGroup, IFKs<TSBExchangeGroup>
 		{
 			#region TSB
@@ -338,23 +364,17 @@ namespace DMT.Models
 			}
 
 			#endregion
-
-			#region Public Methods
-			/*
-			public TSBExchangeGroup ToTSBExchangeGroup()
-			{
-				TSBExchangeGroup inst = new TSBExchangeGroup();
-				this.AssignTo(inst); // set all properties to new instance.
-				return inst;
-			}
-			*/
-			#endregion
 		}
 
 		#endregion
 
 		#region Static Methods
 
+		/// <summary>
+		/// Save TSB Exchange Group.
+		/// </summary>
+		/// <param name="value">The TSBExchangeGroup instance.</param>
+		/// <returns>Returns save TSBExchangeGroup instance.</returns>
 		public static NDbResult<TSBExchangeGroup> SaveTSBExchangeGroup(TSBExchangeGroup value)
 		{
 			var result = new NDbResult<TSBExchangeGroup>();
@@ -367,7 +387,6 @@ namespace DMT.Models
 			if (null == value)
 			{
 				result.ParameterIsNull();
-
 			}
 			result = Save(value);
 			return result;

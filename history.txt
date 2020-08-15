@@ -27,8 +27,11 @@ Update 2020-08-16 #17
 Update 2020-08-16 #16
 - 
 
+[commited]
 Update 2020-08-16 #15
-- 
+- Update Local/DataCenter/TAxTOD service operation #222.
+  - TSBExchangeGroup Model update #1.
+    - Cleanup and format code.
 
 [commited]
 Update 2020-08-16 #14
