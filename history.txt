@@ -4,8 +4,6 @@
   - The NRestClient need to get host/port from config.
   - TOD need to set config to allow access from another computer.
   - TA need to set config to allow access from another computer.
-  - TAxTOD Client need new workbrench project.
-  - DC Client need new workbrench project.
 
 --------------------------------------------------------------------------------------------
 Update 2020-08-16 #45
@@ -20,8 +18,10 @@ Update 2020-08-16 #43
 Update 2020-08-16 #42
 - 
 
+[commited]
 Update 2020-08-16 #41
-- 
+- Update Local/DataCenter/TAxTOD service operation #245.
+  - Add DMT.Data.Center.Workbench project.
 
 [commited]
 Update 2020-08-16 #40
