@@ -35,25 +35,48 @@ namespace DMT.Models
 	{
 		#region Enum
 
+		/// <summary>
+		/// The TSB Exchange Transaction Types enum.
+		/// </summary>
 		public enum TransactionTypes : int
 		{
-			// Request.
+			/// <summary>
+			/// Request.
+			/// </summary>
 			Request = 1,
-			// Canceled.
+			/// <summary>
+			/// Canceled.
+			/// </summary>
 			Canceled = 2,
-			// Approve.
+			/// <summary>
+			/// Approve.
+			/// </summary>
 			Approve = 3,
-			// Reject.
+			/// <summary>
+			/// Reject.
+			/// </summary>
 			Reject = 4,
-			// Received.
+			/// <summary>
+			/// Received.
+			/// </summary>
 			Received = 5,
-			// Completed (reserved).
+			/// <summary>
+			/// Completed (reserved).
+			/// </summary>
 			Completed = 9
 		}
-
+		/// <summary>
+		/// The Finished Flags enum.
+		/// </summary>
 		public enum FinishedFlags : int
 		{
+			/// <summary>
+			/// Completed.
+			/// </summary>
 			Completed = 0,
+			/// <summary>
+			/// Avaliable.
+			/// </summary>
 			Avaliable = 1
 		}
 
@@ -323,8 +346,11 @@ namespace DMT.Models
 
 		#region Valid Colors
 
+		/// <summary>
+		/// Gets Foreground color for ST25.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for ST25.")]
+		[Description("Gets Foreground color for ST25.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -333,8 +359,11 @@ namespace DMT.Models
 			get { return (IsValidST25) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for ST50.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for ST50.")]
+		[Description("Gets Foreground color for ST50.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -343,8 +372,11 @@ namespace DMT.Models
 			get { return (IsValidST50) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT1.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT1.")]
+		[Description("Gets Foreground color for BHT1.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -353,8 +385,11 @@ namespace DMT.Models
 			get { return (IsValidBHT1) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT2.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT2.")]
+		[Description("Gets Foreground color for BHT2.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -363,8 +398,11 @@ namespace DMT.Models
 			get { return (IsValidBHT2) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT5.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT5.")]
+		[Description("Gets Foreground color for BHT5.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -373,8 +411,11 @@ namespace DMT.Models
 			get { return (IsValidBHT5) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT10.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT10.")]
+		[Description("Gets Foreground color for BHT10.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -383,8 +424,11 @@ namespace DMT.Models
 			get { return (IsValidBHT10) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT20.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT20.")]
+		[Description("Gets Foreground color for BHT20.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -393,8 +437,11 @@ namespace DMT.Models
 			get { return (IsValidBHT20) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT50.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT50.")]
+		[Description("Gets Foreground color for BHT50.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -403,8 +450,11 @@ namespace DMT.Models
 			get { return (IsValidBHT50) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT100.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT100.")]
+		[Description("Gets Foreground color for BHT100.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -413,8 +463,11 @@ namespace DMT.Models
 			get { return (IsValidBHT100) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT500.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT500.")]
+		[Description("Gets Foreground color for BHT500.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -423,8 +476,11 @@ namespace DMT.Models
 			get { return (IsValidBHT500) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT1000.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT1000.")]
+		[Description("Gets Foreground color for BHT1000.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -1661,6 +1717,9 @@ namespace DMT.Models
 
 		#region Internal Class
 
+		/// <summary>
+		/// The internal FKs class for query data.
+		/// </summary>
 		public class FKs : TSBExchangeTransaction, IFKs<TSBExchangeTransaction>
 		{
 			#region TSB
@@ -1712,23 +1771,16 @@ namespace DMT.Models
 			}
 
 			#endregion
-
-			#region Public Methods
-			/*
-			public TSBExchangeTransaction ToTSBExchangeTransaction()
-			{
-				TSBExchangeTransaction inst = new TSBExchangeTransaction();
-				this.AssignTo(inst); // set all properties to new instance.
-				return inst;
-			}
-			*/
-			#endregion
 		}
 
 		#endregion
 
 		#region Static Methods
 
+		/// <summary>
+		/// Gets TSB Exchange Transactions (Active TSB).
+		/// </summary>
+		/// <returns>Returns List of TSB Exchange Transactions.</returns>
 		public static NDbResult<List<TSBExchangeTransaction>> GetTransactions() 
 		{
 			var result = new NDbResult<List<TSBExchangeTransaction>>();
@@ -1747,7 +1799,11 @@ namespace DMT.Models
 			result = GetTransactions(tsb);
 			return result;
 		}
-
+		/// <summary>
+		/// Gets TSB Exchange Transactions.
+		/// </summary>
+		/// <param name="tsb">The TSB instance.</param>
+		/// <returns>Returns List of TSB Exchange Transactions.</returns>
 		public static NDbResult<List<TSBExchangeTransaction>> GetTransactions(TSB tsb)
 		{
 			var result = new NDbResult<List<TSBExchangeTransaction>>();
@@ -1767,7 +1823,6 @@ namespace DMT.Models
 				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
-					// Required to change to view later.
 					string cmd = string.Empty;
 					cmd += "SELECT * ";
 					cmd += "  FROM TSBExchangeTransactionView ";
@@ -1776,13 +1831,6 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<TSBExchangeTransaction>();
-					rets.ForEach(ret =>
-					{
-						results.Add(ret.ToModel());
-					});
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -1793,7 +1841,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Save Transaction.
+		/// </summary>
+		/// <param name="value">The TSBExchangeTransaction instance.</param>
+		/// <returns>Returns save TSBExchangeTransaction instance.</returns>
 		public static NDbResult<TSBExchangeTransaction> SaveTransaction(
 			TSBExchangeTransaction value)
 		{
@@ -1804,12 +1856,10 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == value)
 			{
 				result.ParameterIsNull();
 				return result;
-
 			}
 			result = Save(value);
 			return result;
