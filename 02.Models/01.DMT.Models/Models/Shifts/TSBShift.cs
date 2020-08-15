@@ -519,6 +519,9 @@ namespace DMT.Models
 
         #region Internal Class
 
+        /// <summary>
+        /// The internal FKs class for query data.
+        /// </summary>
         public class FKs : TSBShift, IFKs<TSBShift>
         {
             #region TSB
@@ -595,23 +598,18 @@ namespace DMT.Models
             }
 
             #endregion
-
-            #region Public Methods
-            /*
-            public TSBShift ToTSBShift()
-            {
-                TSBShift inst = new TSBShift();
-                this.AssignTo(inst); // set all properties to new instance.
-                return inst;
-            }
-            */
-            #endregion
         }
 
         #endregion
 
         #region Static Methods
 
+        /// <summary>
+        /// Create.
+        /// </summary>
+        /// <param name="shift">The Shift instance.</param>
+        /// <param name="supervisor">The User instance.</param>
+        /// <returns>Returns instance of TSBShift.</returns>
         public static NDbResult<TSBShift> Create(Shift shift, User supervisor)
         {
             var result = new NDbResult<TSBShift>();
@@ -630,7 +628,10 @@ namespace DMT.Models
 
             return result;
         }
-
+        /// <summary>
+        /// Gets Current TSB Shift.
+        /// </summary>
+        /// <returns>Returns TSBShift instance</returns>
         public static NDbResult<TSBShift> GetTSBShift()
         {
             var result = new NDbResult<TSBShift>();
@@ -649,7 +650,11 @@ namespace DMT.Models
             result = GetTSBShift(tsb.TSBId);
             return result;
         }
-
+        /// <summary>
+        /// Gets TSBShift by TSBId.
+        /// </summary>
+        /// <param name="tsbid">The TSB Id.</param>
+        /// <returns>Returns TSBShift instance</returns>
         public static NDbResult<TSBShift> GetTSBShift(string tsbid)
         {
             var result = new NDbResult<TSBShift>();
@@ -659,7 +664,6 @@ namespace DMT.Models
                 result.DbConenctFailed();
                 return result;
             }
-
             lock (sync)
             {
                 MethodBase med = MethodBase.GetCurrentMethod();
@@ -684,7 +688,11 @@ namespace DMT.Models
                 return result;
             }
         }
-
+        /// <summary>
+        /// Change Shift.
+        /// </summary>
+        /// <param name="value">The TSBShift instance.</param>
+        /// <returns>Returns Change Shift result.</returns>
         public static NDbResult ChangeShift(TSBShift value)
         {
             var result = new NDbResult();
@@ -694,13 +702,11 @@ namespace DMT.Models
                 result.DbConenctFailed();
                 return result;
             }
-
             if (null == value)
             {
                 result.ParameterIsNull();
                 return result;
             }
-
             lock (sync)
             {
                 MethodBase med = MethodBase.GetCurrentMethod();
@@ -739,9 +745,18 @@ namespace DMT.Models
 
     #region TSBShiftCreate
 
+    /// <summary>
+    /// The TSBShiftCreate class.
+    /// </summary>
     public class TSBShiftCreate
     {
+        /// <summary>
+        /// Gets or sets Shift.
+        /// </summary>
         public Shift Shift { get; set; }
+        /// <summary>
+        /// Gets or sets User.
+        /// </summary>
         public User User { get; set; }
     }
 

@@ -24,12 +24,15 @@ Update 2020-08-16 #28
 Update 2020-08-16 #27
 - 
 
+[commited]
 Update 2020-08-16 #26
-- 
+- Update Local/DataCenter/TAxTOD service operation #233.
+  - TSBShift Model update #1.
+    - Cleanup and format code.
 
 [commited]
 Update 2020-08-16 #25
-- Update Local/DataCenter/TAxTOD service operation #231.
+- Update Local/DataCenter/TAxTOD service operation #232.
   - Shift Model update #1.
     - Cleanup and format code.
 
