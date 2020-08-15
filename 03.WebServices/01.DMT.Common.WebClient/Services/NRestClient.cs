@@ -76,13 +76,16 @@ namespace DMT.Services
         /// <typeparam name="TReturn">The Returns object type.</typeparam>
         /// <param name="apiUrl">The action api url.</param>
         /// <param name="pObj">The parameter.</param>
+        /// <param name="timeout">The timeout in ms.</param>
         /// <param name="username">The username.</param>
         /// <param name="password">The password.</param>
         /// <returns>
         /// Returns instance of NRestResult.
         /// </returns>
         public NRestResult<TReturn> Execute<TReturn>(string apiUrl,
-            object pObj = null, string username = "", string password = "")
+            object pObj = null, 
+            int timeout = 5000,
+            string username = "", string password = "")
             where TReturn: new()
         {
             NRestResult<TReturn> ret = new NRestResult<TReturn>();
@@ -92,7 +95,7 @@ namespace DMT.Services
             try
             {
                 var client = new RestClient(BaseUrl);
-                client.Timeout = 5000;
+                client.Timeout = timeout;
                 if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
                 {
                     client.Authenticator = new HttpBasicAuthenticator(username, password);
@@ -111,9 +114,11 @@ namespace DMT.Services
                 {
                     if (response.Content.Contains("rror"))
                     {
-                        Console.WriteLine("Error");
+                        string msg = string.Format(
+                            "Rest Client Content Error - Content: {0}", response.Content);
+                        Console.WriteLine(msg);
+                        med.Err(msg);
                     }
-                    //Console.WriteLine(response.Content);
                     var obj = response.Content.FromJson<NDbResult<TReturn>>();
                     if (null != obj && obj.GetType() == typeof(NDbResult<TReturn>))
                     {
@@ -146,13 +151,16 @@ namespace DMT.Services
         /// <typeparam name="TReturn">The Out object type.</typeparam>
         /// <param name="apiUrl">The action api url.</param>
         /// <param name="pObj">The parameter.</param>
+        /// <param name="timeout">The timeout in ms.</param>
         /// <param name="username">The username.</param>
         /// <param name="password">The password.</param>
         /// <returns>
         /// Returns instance of NRestResult.
         /// </returns>
         public NRestResult<TReturn, TOut> Execute<TReturn, TOut>(string apiUrl,
-            object pObj = null, string username = "", string password = "")
+            object pObj = null,
+            int timeout = 5000,
+            string username = "", string password = "")
             where TReturn : new()
             where TOut : new()
         {
@@ -163,7 +171,7 @@ namespace DMT.Services
             try
             {
                 var client = new RestClient(BaseUrl);
-                client.Timeout = 5000;
+                client.Timeout = timeout;
                 if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
                 {
                     client.Authenticator = new HttpBasicAuthenticator(username, password);
@@ -182,9 +190,11 @@ namespace DMT.Services
                 {
                     if (response.Content.Contains("rror"))
                     {
-                        Console.WriteLine("Error");
+                        string msg = string.Format(
+                            "Rest Client Content Error - Content: {0}", response.Content);
+                        Console.WriteLine(msg);
+                        med.Err(msg);
                     }
-                    //Console.WriteLine(response.Content);
                     var obj = response.Content.FromJson<NDbResult<TReturn, TOut>>();
                     if (null != obj && obj.GetType() == typeof(NDbResult<TReturn, TOut>))
                     {
@@ -216,13 +226,16 @@ namespace DMT.Services
         /// </summary>
         /// <param name="apiUrl">The action api url.</param>
         /// <param name="pObj">The parameter.</param>
+        /// <param name="timeout">The timeout in ms.</param>
         /// <param name="username">The username.</param>
         /// <param name="password">The password.</param>
         /// <returns>
         /// Returns instance of NRestResult object.
         /// </returns>
         public NRestResult Execute(string apiUrl,
-            object pObj = null, string username = "", string password = "")
+            object pObj = null,
+            int timeout = 5000,
+            string username = "", string password = "")
         {
             NRestResult ret = new NRestResult();
 
@@ -231,7 +244,7 @@ namespace DMT.Services
             try
             {
                 var client = new RestClient(BaseUrl);
-                client.Timeout = 5000;
+                client.Timeout = timeout;
                 if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
                 {
                     client.Authenticator = new HttpBasicAuthenticator(username, password);
@@ -250,9 +263,11 @@ namespace DMT.Services
                 {
                     if (response.Content.Contains("rror"))
                     {
-                        Console.WriteLine("Error");
+                        string msg = string.Format(
+                            "Rest Client Content Error - Content: {0}", response.Content);
+                        Console.WriteLine(msg);
+                        med.Err(msg);
                     }
-                    //Console.WriteLine(response.Content);
                     var obj = response.Content.FromJson<NDbResult>();
                     if (null != obj)
                     {

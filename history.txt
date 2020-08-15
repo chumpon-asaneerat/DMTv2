@@ -61,6 +61,12 @@ Update 2020-08-16 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-08-15 #43
+- Update Local/DataCenter/TAxTOD service operation #205.
+  - NRestClient execute method add timeout parameter (default 500 ms).
+  - NRestClient execute method add log code.
+
+[commited]
 Update 2020-08-15 #42
 - Update Local/DataCenter/TAxTOD service operation #204.
   - fixed setting 03.DMT.Local.Plaza.Windows.Services.
