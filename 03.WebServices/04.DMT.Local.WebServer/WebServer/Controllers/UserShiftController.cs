@@ -29,7 +29,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<UserShift>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -101,7 +100,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<UserShift>>();
                 result.ParameterIsNull();
-                result.data = new List<UserShift>();
             }
             else
             {

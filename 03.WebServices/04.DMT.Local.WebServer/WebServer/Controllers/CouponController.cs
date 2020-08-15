@@ -28,7 +28,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<TSBCouponBalance>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -50,7 +49,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<TSBCouponSummary>>();
                 result.ParameterIsNull();
-                result.data = new List<TSBCouponSummary>();
             }
             else
             {
@@ -72,7 +70,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<TSBCouponTransaction>>();
                 result.ParameterIsNull();
-                result.data = new List<TSBCouponTransaction>();
             }
             else
             {
@@ -91,7 +88,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<TSBCouponTransaction>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {

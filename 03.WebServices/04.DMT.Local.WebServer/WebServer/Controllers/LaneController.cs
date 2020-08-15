@@ -30,7 +30,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<LaneAttendance>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -48,13 +47,13 @@ namespace DMT.Services
             {
                 result = new NDbResult<LaneAttendance>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
                 Random rand = new Random();
                 if (string.IsNullOrWhiteSpace(value.JobId))
                 {
+                    // TODO: Autogenerate need to change to auto running number
                     value.JobId = rand.Next(100000).ToString("D5"); // auto generate.
                 }
                 result = LaneAttendance.Save(value);
@@ -71,7 +70,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<LaneAttendance>>();
                 result.ParameterIsNull();
-                result.data = new List<LaneAttendance>();
             }
             else
             {
@@ -89,7 +87,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<LaneAttendance>>();
                 result.ParameterIsNull();
-                result.data = new List<LaneAttendance>();
             }
             else
             {
@@ -107,7 +104,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<LaneAttendance>>();
                 result.ParameterIsNull();
-                result.data = new List<LaneAttendance>();
             }
             else
             {
@@ -125,7 +121,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<LaneAttendance>>();
                 result.ParameterIsNull();
-                result.data = new List<LaneAttendance>();
             }
             else
             {
@@ -143,7 +138,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<LaneAttendance>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -174,7 +168,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<LanePayment>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -193,13 +186,13 @@ namespace DMT.Services
             {
                 result = new NDbResult<LanePayment>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
-                Random rand = new Random();
                 if (string.IsNullOrWhiteSpace(value.ApproveCode))
                 {
+                    // TODO: Autogenerate need to change to auto running number
+                    Random rand = new Random();
                     value.ApproveCode = rand.Next(10000000).ToString("D8"); // auto generate.
                 }
                 result = LanePayment.Save(value);
@@ -216,7 +209,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<LanePayment>>();
                 result.ParameterIsNull();
-                result.data = new List<LanePayment>();
             }
             else
             {
@@ -234,7 +226,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<LanePayment>>();
                 result.ParameterIsNull();
-                result.data = new List<LanePayment>();
             }
             else
             {
@@ -252,7 +243,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<LanePayment>>();
                 result.ParameterIsNull();
-                result.data = new List<LanePayment>();
             }
             else
             {
@@ -270,7 +260,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<LanePayment>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {

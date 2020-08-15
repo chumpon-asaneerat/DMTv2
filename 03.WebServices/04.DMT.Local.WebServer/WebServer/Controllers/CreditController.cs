@@ -28,7 +28,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<TSBCreditBalance>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -50,7 +49,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<TSBCreditTransaction>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -69,7 +67,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<TSBCreditTransaction>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -91,7 +88,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<UserCreditBalance>>();
                 result.ParameterIsNull();
-                result.data = new List<UserCreditBalance>();
             }
             else
             {
@@ -110,7 +106,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<UserCreditBalance>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -130,7 +125,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<UserCreditBalance>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -154,7 +148,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<UserCreditTransaction>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {

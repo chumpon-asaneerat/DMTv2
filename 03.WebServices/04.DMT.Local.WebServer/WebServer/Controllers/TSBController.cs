@@ -63,7 +63,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<TSB>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -85,7 +84,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<Plaza>>();
                 result.ParameterIsNull();
-                result.data = new List<Plaza>();
             }
             else
             {
@@ -103,7 +101,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<Plaza>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -125,7 +122,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<PlazaGroup>>();
                 result.ParameterIsNull();
-                result.data = new List<PlazaGroup>();
             }
             else
             {
@@ -143,7 +139,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<PlazaGroup>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -165,7 +160,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<Lane>>();
                 result.ParameterIsNull();
-                result.data = new List<Lane>();
             }
             else
             {
@@ -183,7 +177,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<Lane>>();
                 result.ParameterIsNull();
-                result.data = new List<Lane>();
             }
             else
             {
@@ -201,7 +194,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<Lane>>();
                 result.ParameterIsNull();
-                result.data = new List<Lane>();
             }
             else
             {
@@ -220,7 +212,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<Lane>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {

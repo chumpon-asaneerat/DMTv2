@@ -20,8 +20,17 @@ Update 2020-08-15 #35
 Update 2020-08-15 #34
 - 
 
+[commited]
 Update 2020-08-15 #33
-- 
+- Update Local/DataCenter/TAxTOD service operation #199.
+  - Re-Update Credit Controller #1.
+  - Re-Update Coupon Controller #1.
+  - Re-Update Exchange Controller #1.
+  - Re-Update Lane Controller #1.
+  - Re-Update Revenue Controller #1.
+  - Re-Update Shift Controller #1.
+  - Re-Update TSB Controller #1.
+  - Re-Update UserShift Controller #1.
 
 [commited]
 Update 2020-08-15 #32

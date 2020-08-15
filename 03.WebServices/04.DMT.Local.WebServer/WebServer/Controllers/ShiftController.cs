@@ -36,7 +36,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<Shift>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -58,7 +57,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<TSBShift>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {

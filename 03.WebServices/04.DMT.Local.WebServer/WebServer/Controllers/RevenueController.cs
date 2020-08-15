@@ -29,7 +29,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<UserShiftRevenue>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -47,7 +46,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<UserShiftRevenue>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -66,7 +64,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<UserShiftRevenue>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -88,7 +85,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<RevenueEntry>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
@@ -98,6 +94,7 @@ namespace DMT.Services
                 }
                 if (value.RevenueId == string.Empty)
                 {
+                    // TODO: Autogenerate need to change to auto running number
                     Random rand = new Random();
                     if (string.IsNullOrWhiteSpace(value.RevenueId))
                     {
@@ -119,7 +116,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<RevenueEntry>>();
                 result.ParameterIsNull();
-                result.data = new List<RevenueEntry>();
             }
             else
             {

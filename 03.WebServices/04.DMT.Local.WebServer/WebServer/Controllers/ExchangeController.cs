@@ -29,7 +29,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<List<TSBExchangeTransaction>>();
                 result.ParameterIsNull();
-                result.data = new List<TSBExchangeTransaction>();
             }
             else
             {
@@ -48,7 +47,6 @@ namespace DMT.Services
             {
                 result = new NDbResult<TSBExchangeTransaction>();
                 result.ParameterIsNull();
-                result.data = null;
             }
             else
             {
