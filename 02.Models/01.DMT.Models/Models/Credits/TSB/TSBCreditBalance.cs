@@ -155,9 +155,11 @@ namespace DMT.Models
 				}
 			}
 		}
-
+		/// <summary>
+		/// Gets or sets Remark Visibility.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets RemarkVisibility.")]
+		[Description("Gets or sets Remark Visibility.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -172,8 +174,11 @@ namespace DMT.Models
 
 		#region Valid Colors
 
+		/// <summary>
+		/// Gets Foreground color for ST25.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for ST25.")]
+		[Description("Gets Foreground color for ST25.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -182,8 +187,11 @@ namespace DMT.Models
 			get { return (IsValidST25) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for ST50.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for ST50.")]
+		[Description("Gets Foreground color for ST50.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -192,8 +200,11 @@ namespace DMT.Models
 			get { return (IsValidST50) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT1.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT1.")]
+		[Description("Gets Foreground color for BHT1.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -202,8 +213,11 @@ namespace DMT.Models
 			get { return (IsValidBHT1) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT2.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT2.")]
+		[Description("Gets Foreground color for BHT2.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -212,8 +226,11 @@ namespace DMT.Models
 			get { return (IsValidBHT2) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT5.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT5.")]
+		[Description("Gets Foreground color for BHT5.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -222,8 +239,11 @@ namespace DMT.Models
 			get { return (IsValidBHT5) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT10.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT10.")]
+		[Description("Gets Foreground color for BHT10.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -232,8 +252,11 @@ namespace DMT.Models
 			get { return (IsValidBHT10) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT20.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT20.")]
+		[Description("Gets Foreground color for BHT20.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -242,8 +265,11 @@ namespace DMT.Models
 			get { return (IsValidBHT20) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT50.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT50.")]
+		[Description("Gets Foreground color for BHT50.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -252,8 +278,11 @@ namespace DMT.Models
 			get { return (IsValidBHT50) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT100.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT100.")]
+		[Description("Gets Foreground color for BHT100.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -262,8 +291,11 @@ namespace DMT.Models
 			get { return (IsValidBHT100) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT500.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT500.")]
+		[Description("Gets Foreground color for BHT500.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -272,8 +304,11 @@ namespace DMT.Models
 			get { return (IsValidBHT500) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT1000.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT1000.")]
+		[Description("Gets Foreground color for BHT1000.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -1226,6 +1261,9 @@ namespace DMT.Models
 
 		#region Internal Class
 
+		/// <summary>
+		/// The internal FKs class for query data.
+		/// </summary>
 		public class FKs : TSBCreditBalance, IFKs<TSBCreditBalance>
 		{
 			#region TSB
@@ -1483,17 +1521,6 @@ namespace DMT.Models
 			}
 
 			#endregion
-
-			#region Public Methods
-			/*
-			public TSBCreditBalance ToTSBCreditBalance()
-			{
-				TSBCreditBalance inst = new TSBCreditBalance();
-				this.AssignTo(inst); // set all properties to new instance.
-				return inst;
-			}
-			*/
-			#endregion
 		}
 
 		#endregion
@@ -1522,7 +1549,6 @@ namespace DMT.Models
 			result = GetCurrent(tsb);
 			return result;
 		}
-
 		/// <summary>
 		/// Gets TSB Credit Balance.
 		/// </summary>
@@ -1563,7 +1589,6 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
 		/// <summary>
 		/// Gets All TSB Credit Balance.
 		/// </summary>
@@ -1587,16 +1612,6 @@ namespace DMT.Models
 					  FROM TSBCreditSummarryView ";
 					var rets = NQuery.Query<FKs>(cmd).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<TSBCreditBalance>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
