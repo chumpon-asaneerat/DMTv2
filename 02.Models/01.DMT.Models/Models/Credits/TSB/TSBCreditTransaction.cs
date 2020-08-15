@@ -35,16 +35,30 @@ namespace DMT.Models
 	{
 		#region Enum
 
+		/// <summary>
+		/// The TSB Credit Transaction Type enum.
+		/// </summary>
 		public enum TransactionTypes : int
 		{
+			/// <summary>
+			/// Initial credit.
+			/// </summary>
 			Initial = 0,
-			// received from account.
+			/// <summary>
+			/// received from account.
+			/// </summary>
 			Received = 1,
-			// return to account.
+			/// <summary>
+			/// return to account.
+			/// </summary>
 			Returns = 2,
-			// Internal Replace (Takeout from TSB)
+			/// <summary>
+			/// Internal Replace (Takeout from TSB)
+			/// </summary>
 			ReplaceOut = 3,
-			// Internal Replace (Replace in TSB)
+			/// <summary>
+			/// Internal Replace (Replace in TSB)
+			/// </summary>
 			ReplaceIn = 4
 		}
 
@@ -253,8 +267,11 @@ namespace DMT.Models
 
 		#region Valid Colors
 
+		/// <summary>
+		/// Gets Foreground color for ST25.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for ST25.")]
+		[Description("Gets Foreground color for ST25.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -263,8 +280,11 @@ namespace DMT.Models
 			get { return (IsValidST25) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for ST50.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for ST50.")]
+		[Description("Gets Foreground color for ST50.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -273,8 +293,11 @@ namespace DMT.Models
 			get { return (IsValidST50) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT1.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT1.")]
+		[Description("Gets Foreground color for BHT1.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -283,8 +306,11 @@ namespace DMT.Models
 			get { return (IsValidBHT1) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT2.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT2.")]
+		[Description("Gets Foreground color for BHT2.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -293,8 +319,11 @@ namespace DMT.Models
 			get { return (IsValidBHT2) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT5.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT5.")]
+		[Description("Gets Foreground color for BHT5.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -303,8 +332,11 @@ namespace DMT.Models
 			get { return (IsValidBHT5) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT10.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT10.")]
+		[Description("Gets Foreground color for BHT10.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -313,8 +345,11 @@ namespace DMT.Models
 			get { return (IsValidBHT10) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT20.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT20.")]
+		[Description("Gets Foreground color for BHT20.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -323,8 +358,11 @@ namespace DMT.Models
 			get { return (IsValidBHT20) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT50.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT50.")]
+		[Description("Gets Foreground color for BHT50.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -333,8 +371,11 @@ namespace DMT.Models
 			get { return (IsValidBHT50) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT100.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT100.")]
+		[Description("Gets Foreground color for BHT100.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -343,8 +384,11 @@ namespace DMT.Models
 			get { return (IsValidBHT100) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT500.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT500.")]
+		[Description("Gets Foreground color for BHT500.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -353,8 +397,11 @@ namespace DMT.Models
 			get { return (IsValidBHT500) ? BlackForeground : RedForeground; }
 			set { }
 		}
+		/// <summary>
+		/// Gets Foreground color for BHT1000.
+		/// </summary>
 		[Category("Runtime")]
-		[Description("Gets or sets Foreground color for BHT1000.")]
+		[Description("Gets Foreground color for BHT1000.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -1296,6 +1343,9 @@ namespace DMT.Models
 
 		#region Internal Class
 
+		/// <summary>
+		/// The internal FKs class for query data.
+		/// </summary>
 		public class FKs : TSBCreditTransaction, IFKs<TSBCreditTransaction>
 		{
 			#region TSB
@@ -1321,17 +1371,6 @@ namespace DMT.Models
 				set { base.TSBNameTH = value; }
 			}
 
-			#endregion
-
-			#region Public Methods
-			/*
-			public TSBCreditTransaction ToTSBCreditTransaction()
-			{
-				TSBCreditTransaction inst = new TSBCreditTransaction();
-				this.AssignTo(inst); // set all properties to new instance.
-				return inst;
-			}
-			*/
 			#endregion
 		}
 
@@ -1361,7 +1400,6 @@ namespace DMT.Models
 			result = GetTransactions(tsb);
 			return result;
 		}
-
 		/// <summary>
 		/// Gets TSB Credit transactions.
 		/// </summary>
@@ -1393,13 +1431,6 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<TSBCreditTransaction>();
-					rets.ForEach(ret =>
-					{
-						results.Add(ret.ToTSBCreditTransaction());
-					});
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -1410,7 +1441,10 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets Initial Transaction (Active TSB).
+		/// </summary>
+		/// <returns>Returns Initial TSBCreditTransaction instance.</returns>
 		public static NDbResult<TSBCreditTransaction> GetInitialTransaction()
 		{
 			var result = new NDbResult<TSBCreditTransaction>();
@@ -1429,7 +1463,11 @@ namespace DMT.Models
 			result = GetInitialTransaction(tsb);
 			return result;
 		}
-
+		/// <summary>
+		/// Gets Initial Transaction of target TSB.
+		/// </summary>
+		/// <param name="tsb">The targe TSB instance.</param>
+		/// <returns>Returns Initial TSBCreditTransaction instance.</returns>
 		public static NDbResult<TSBCreditTransaction> GetInitialTransaction(TSB tsb)
 		{
 			var result = new NDbResult<TSBCreditTransaction>();
@@ -1478,7 +1516,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Save Transaction.
+		/// </summary>
+		/// <param name="value">The transaction instance.</param>
+		/// <returns>Returns save transaction instance.</returns>
 		public static NDbResult<TSBCreditTransaction> SaveTransaction(TSBCreditTransaction value)
 		{
 			var result = new NDbResult<TSBCreditTransaction>();
@@ -1497,9 +1539,7 @@ namespace DMT.Models
 			{
 				value.TransactionDate = DateTime.Now;
 			}
-
 			result = Save(value);
-
 			return result;
 		}
 

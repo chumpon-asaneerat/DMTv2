@@ -36,8 +36,11 @@ Update 2020-08-16 #14
 Update 2020-08-16 #13
 - 
 
+[commited]
 Update 2020-08-16 #12
-- 
+- Update Local/DataCenter/TAxTOD service operation #219.
+  - TSBCreditTransaction Model update #1.
+    - Cleanup and format code.
 
 [commited]
 Update 2020-08-16 #11
