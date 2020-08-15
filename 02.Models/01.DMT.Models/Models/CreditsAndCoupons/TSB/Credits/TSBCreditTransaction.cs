@@ -1389,7 +1389,7 @@ namespace DMT.Models
 					string cmd = string.Empty;
 					cmd += "SELECT * ";
 					cmd += "  FROM TSBCreditTransactionView ";
-					cmd += " WHERE TSBCreditTransaction.TSBId = ? ";
+					cmd += " WHERE TSBId = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
 					var results = rets.ToModels();
@@ -1452,8 +1452,8 @@ namespace DMT.Models
 					string cmd = string.Empty;
 					cmd += "SELECT * ";
 					cmd += "  FROM TSBCreditTransactionView ";
-					cmd += " WHERE TSBCreditTransaction.TSBId = ? ";
-					cmd += "   AND TSBCreditTransaction.TransactionType = ? ";
+					cmd += " WHERE TSBId = ? ";
+					cmd += "   AND TransactionType = ? ";
 
 					var ret = NQuery.Query<FKs>(cmd,
 						tsb.TSBId, TransactionTypes.Initial).FirstOrDefault();

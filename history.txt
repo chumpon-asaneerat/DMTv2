@@ -17,8 +17,12 @@ Update 2020-08-15 #36
 Update 2020-08-15 #35
 - 
 
+[commited]
 Update 2020-08-15 #34
-- 
+- Update Local/DataCenter/TAxTOD service operation #200.
+  - TSBCreditTransaction Models update #5 (Fixed query).
+  - Test Config functions #1.
+    - Credit init- OK.
 
 [commited]
 Update 2020-08-15 #33
