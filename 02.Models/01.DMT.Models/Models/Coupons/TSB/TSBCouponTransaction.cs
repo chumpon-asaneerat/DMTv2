@@ -59,6 +59,9 @@ namespace DMT.Models
 
 		#region Internal Variables
 
+		// server pk.
+		private int _CouponPK = 0;
+
 		private int _TransactionId = 0;
 		private DateTime _TransactionDate = DateTime.MinValue;
 		private TransactionTypes _TransactionType = TransactionTypes.Stock;
@@ -118,6 +121,33 @@ namespace DMT.Models
 				return (!isSold) ? BlackForeground : RedForeground; 
 			}
 			set { }
+		}
+
+		#endregion
+
+		#region Server
+
+		/// <summary>
+		/// Gets or sets CouponPK.
+		/// </summary>
+		[Category("Server")]
+		[Description(" Gets or sets CouponPK.")]
+		[ReadOnly(true)]
+		[PeropertyMapName("CouponPK")]
+		public int CouponPK
+		{
+			get
+			{
+				return _CouponPK;
+			}
+			set
+			{
+				if (_CouponPK != value)
+				{
+					_CouponPK = value;
+					this.RaiseChanged("CouponPK");
+				}
+			}
 		}
 
 		#endregion

@@ -103,10 +103,10 @@
     <Compile Include="Models\Common\NDbResult.cs" />
     <Compile Include="Models\Common\Utils.cs" />
     <Compile Include="Models\Configuration\ViewHistory.cs" />
-    <None Include="Models\CreditsAndCoupons\Users\Coupons\UserCouponBalance.cs" />
-    <Compile Include="Models\CreditsAndCoupons\Common\Coupons\Enums.cs" />
-    <Compile Include="Models\CreditsAndCoupons\TSB\Coupons\TSBCouponSummary.cs" />
-    <Compile Include="Models\CreditsAndCoupons\Users\Coupons\UserCouponTransaction.cs" />
+    <None Include="Models\Coupons\Users\UserCouponBalance.cs" />
+    <Compile Include="Models\Coupons\Common\Enums.cs" />
+    <Compile Include="Models\Coupons\TSB\TSBCouponSummary.cs" />
+    <Compile Include="Models\Coupons\Users\UserCouponTransaction.cs" />
     <EmbeddedResource Include="Views\Scripts\Coupons\Backup\TSBCouponSummarryView.BAK.sql" />
     <EmbeddedResource Include="Views\Scripts\Credits\Backup\TSBCreditSummarryView.BAK.sql" />
     <EmbeddedResource Include="Views\Scripts\Coupons\Backup\UserCouponSummaryView.BAK.sql" />
@@ -122,19 +122,19 @@
     <Compile Include="Models\Common\DMT.Searchs.cs" />
     <Compile Include="Models\Common\NSearch.cs" />
     <Compile Include="Models\Configuration\Config.cs" />
-    <Compile Include="Models\CreditsAndCoupons\TSB\Coupons\TSBCouponBalance.cs" />
-    <Compile Include="Models\CreditsAndCoupons\TSB\Coupons\TSBCouponTransaction.cs" />
-    <Compile Include="Models\CreditsAndCoupons\TSB\Credits\TSBCreditBalance.cs" />
-    <Compile Include="Models\CreditsAndCoupons\TSB\Credits\TSBCreditTransaction.cs" />
-    <Compile Include="Models\CreditsAndCoupons\Users\Credits\UserCreditBalance.cs" />
-    <Compile Include="Models\CreditsAndCoupons\Users\Credits\UserCreditTransaction.cs" />
+    <Compile Include="Models\Coupons\TSB\TSBCouponBalance.cs" />
+    <Compile Include="Models\Coupons\TSB\TSBCouponTransaction.cs" />
+    <Compile Include="Models\Credits\TSB\TSBCreditBalance.cs" />
+    <Compile Include="Models\Credits\TSB\TSBCreditTransaction.cs" />
+    <Compile Include="Models\Credits\Users\UserCreditBalance.cs" />
+    <Compile Include="Models\Credits\Users\UserCreditTransaction.cs" />
     <Compile Include="Models\Infrastructures\Lane.cs" />
     <Compile Include="Models\Infrastructures\Plaza.cs" />
     <Compile Include="Models\Infrastructures\PlazaGroup.cs" />
     <Compile Include="Models\Infrastructures\TSB.cs" />
     <Compile Include="Models\LaneActivities\LaneAttendance.cs" />
     <Compile Include="Models\LaneActivities\LanePayment.cs" />
-    <Compile Include="Models\CreditsAndCoupons\Common\Payments\Payment.cs" />
+    <Compile Include="Models\Payments\Payment.cs" />
     <Compile Include="Models\Revenues\RevenueEntry.cs" />
     <Compile Include="Models\Shifts\Shift.cs" />
     <Compile Include="Models\Shifts\TSBShift.cs" />
@@ -220,6 +220,7 @@
     <EmbeddedResource Include="Views\Scripts\Coupons\TSBCouponSoldByLaneBalanceView.sql" />
     <EmbeddedResource Include="Views\Scripts\Coupons\TSBCouponSoldByTSBBalanceView.sql" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(SolutionDir)References\runtimes\*.*" "$(TargetDir)\runtimes\*.*" /Y/D/E</PostBuildEvent>
