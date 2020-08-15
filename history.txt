@@ -1,3 +1,16 @@
+- Note:
+  - Table User Add (valodation category)
+    - PasswordDate (for change password).
+    - Expiredays (for change password).
+    - IsValid (for check is UserId is still exists on system).
+  - Sync process required to implements property name attribute to match base class.
+  - Implements Smartcard sign in in all SignIn Page/Window.
+  - The NRestClient need to get host/port from config.
+  - TOD need to set config to allow access from another computer.
+  - TA need to set config to allow access from another computer.
+  - TAxTOD Client need new workbrench project.
+  - DC Client need new workbrench project.
+
 --------------------------------------------------------------------------------------------
 Update 2020-08-16 #20
 - 
@@ -50,20 +63,11 @@ Update 2020-08-16 #5
 Update 2020-08-16 #4
 - 
 
+[commited]
 Update 2020-08-16 #3
-- 
-- Note:
-  - Table User Add (valodation category)
-    - PasswordDate (for change password).
-    - Expiredays (for change password).
-    - IsValid (for check is UserId is still exists on system).
-  - Sync process required to implements property name attribute to match base class.
-  - Implements Smartcard sign in in all SignIn Page/Window.
-  - The NRestClient need to get host/port from config.
-  - TOD need to set config to allow access from another computer.
-  - TA need to set config to allow access from another computer.
-  - TAxTOD Client need new workbrench project.
-  - DC Client need new workbrench project.
+- Update Local/DataCenter/TAxTOD service operation #210.
+  - NTable Model update #1.
+    - Cleanup and format code.
 
 [commited]
 Update 2020-08-16 #2

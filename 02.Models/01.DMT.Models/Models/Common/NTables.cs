@@ -206,7 +206,8 @@ namespace DMT.Models
         /// <param name="db">The connection.</param>
         /// <param name="recursive">True for load related nested children.</param>
         /// <returns>Returns List of all records</returns>
-        public static NDbResult<List<T>> GetAllWithChildren(SQLiteConnection db, bool recursive = false)
+        public static NDbResult<List<T>> GetAllWithChildren(SQLiteConnection db, 
+            bool recursive = false)
         {
             var result = new NDbResult<List<T>>();
             if (null == db)
@@ -423,6 +424,7 @@ namespace DMT.Models
         {
             lock (sync)
             {
+                // TODO: Need Implements Delete With Id.
                 SQLiteConnection db = Default;
                 DeleteWithChildren(db, recursive);
             }
