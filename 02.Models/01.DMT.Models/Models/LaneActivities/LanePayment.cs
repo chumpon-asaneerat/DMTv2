@@ -710,6 +710,9 @@ namespace DMT.Models
 
 		#region Internal Class
 
+		/// <summary>
+		/// The internal FKs class for query data.
+		/// </summary>
 		internal class FKs : LanePayment, IFKs<LanePayment>
 		{
 			#region TSB
@@ -860,23 +863,21 @@ namespace DMT.Models
 			}
 
 			#endregion
-
-			#region Public Methods
-			/*
-			public LanePayment ToLanePayment()
-			{
-				LanePayment inst = new LanePayment();
-				this.AssignTo(inst);
-				return inst;
-			}
-			*/
-			#endregion
 		}
 
 		#endregion
 
 		#region Static Methods
 
+		/// <summary>
+		/// Create Lane Payment.
+		/// </summary>
+		/// <param name="lane">The Lane instance.</param>
+		/// <param name="collector">The User instance.</param>
+		/// <param name="payment">The Payment instance.</param>
+		/// <param name="date">The payment date time.</param>
+		/// <param name="amount">The payment amount.</param>
+		/// <returns>Returns LanePayment instance.</returns>
 		public static NDbResult<LanePayment> Create(Lane lane, User collector,
 			Payment payment, DateTime date, decimal amount)
 		{
@@ -905,7 +906,11 @@ namespace DMT.Models
 			}
 			return result;
 		}
-
+		/// <summary>
+		/// Search.
+		/// </summary>
+		/// <param name="shift">The UserShift instance.</param>
+		/// <returns>Returns List of LanePayment.</returns>
 		public static NDbResult<List<LanePayment>> Search(UserShift shift)
 		{
 			var result = new NDbResult<List<LanePayment>>();
@@ -915,13 +920,11 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == shift)
 			{
 				result.ParameterIsNull();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -936,16 +939,6 @@ namespace DMT.Models
 					var rets = NQuery.Query<FKs>(cmd, shift.Begin, shift.End,
 						DateTime.MinValue).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<LanePayment>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -953,11 +946,14 @@ namespace DMT.Models
 					med.Err(ex);
 					result.Error(ex);
 				}
-
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Search.
+		/// </summary>
+		/// <param name="lane">The Lane instance.</param>
+		/// <returns>Returns List of LanePayment.</returns>
 		public static NDbResult<List<LanePayment>> Search(Lane lane)
 		{
 			var result = new NDbResult<List<LanePayment>>();
@@ -967,7 +963,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == lane)
 			{
 				result.ParameterIsNull();
@@ -985,16 +980,6 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd, lane.LaneId).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<LanePayment>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -1002,11 +987,57 @@ namespace DMT.Models
 					med.Err(ex);
 					result.Error(ex);
 				}
-
 				return result;
 			}
 		}
+		/// <summary>
+		/// Search.
+		/// </summary>
+		/// <param name="date">The search date.</param>
+		/// <returns>Returns List of LanePayment.</returns>
+		public static NDbResult<List<LanePayment>> Search(DateTime date)
+		{
+			var result = new NDbResult<List<LanePayment>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			if (null == date || date == DateTime.MinValue)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * ";
+					cmd += "  FROM LanePaymentView ";
+					cmd += " WHERE Begin >= ? ";
+					cmd += "   AND End <= ? ";
 
+					var rets = NQuery.Query<FKs>(cmd, date,
+						DateTime.MinValue).ToList();
+					var results = rets.ToModels();
+					result.Success(results);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
+		}
+		/// <summary>
+		/// Gets Current Lane Payment by Lane.
+		/// </summary>
+		/// <param name="lane">The Lane Instance.</param>
+		/// <returns>Returns LanePayment instance.</returns>
 		public static NDbResult<LanePayment> GetCurrentByLane(Lane lane)
 		{
 			var result = new NDbResult<LanePayment>();
@@ -1016,7 +1047,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			if (null == lane)
 			{
 				result.ParameterIsNull();
@@ -1043,58 +1073,6 @@ namespace DMT.Models
 					med.Err(ex);
 					result.Error(ex);
 				}
-
-				return result;
-			}
-		}
-
-		public static NDbResult<List<LanePayment>> Search(DateTime date)
-		{
-			var result = new NDbResult<List<LanePayment>>();
-			SQLiteConnection db = Default;
-			if (null == db)
-			{
-				result.DbConenctFailed();
-				return result;
-			}
-
-			if (null == date || date == DateTime.MinValue)
-			{
-				result.ParameterIsNull();
-				return result;
-			}
-			lock (sync)
-			{
-				MethodBase med = MethodBase.GetCurrentMethod();
-				try
-				{
-					string cmd = string.Empty;
-					cmd += "SELECT * ";
-					cmd += "  FROM LanePaymentView ";
-					cmd += " WHERE Begin >= ? ";
-					cmd += "   AND End <= ? ";
-
-					var rets = NQuery.Query<FKs>(cmd, date,
-						DateTime.MinValue).ToList();
-					var results = rets.ToModels();
-					/*
-					var results = new List<LanePayment>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
-					result.Success(results);
-				}
-				catch (Exception ex)
-				{
-					med.Err(ex);
-					result.Error(ex);
-				}
-
 				return result;
 			}
 		}
@@ -1102,12 +1080,30 @@ namespace DMT.Models
 		#endregion
 	}
 
+	/// <summary>
+	/// The LanePaymentCreate class.
+	/// </summary>
 	public class LanePaymentCreate
 	{
+		/// <summary>
+		/// Gets or sets Lane.
+		/// </summary>
 		public Lane Lane { get; set; }
+		/// <summary>
+		/// Gets or sets User.
+		/// </summary>
 		public User User { get; set; }
+		/// <summary>
+		/// Gets or sets Payment.
+		/// </summary>
 		public Payment Payment { get; set; }
+		/// <summary>
+		/// Gets or sets Payment date.
+		/// </summary>
 		public DateTime Date { get; set; }
+		/// <summary>
+		/// Gets or sets Payment amount.
+		/// </summary>
 		public decimal Amount { get; set; }
 	}
 

@@ -33,8 +33,11 @@ Update 2020-08-16 #25
 Update 2020-08-16 #24
 - 
 
+[commited]
 Update 2020-08-16 #23
-- 
+- Update Local/DataCenter/TAxTOD service operation #230.
+  - LanePayment Model update #1.
+    - Cleanup and format code.
 
 [commited]
 Update 2020-08-16 #22
