@@ -226,8 +226,7 @@ namespace DMT.TOD.Pages.Reports
                 //_revenueEntry.ShiftEnd = end;
 
                 // assign supervisor.
-                var ret = ops.Shifts.GetCurrent();
-                var sup = (null != ret && !ret.errors.hasError) ? ret.data : null;
+                var sup = ops.Shifts.GetCurrent().Value();
                 if (null != sup)
                 {
                     _revenueEntry.SupervisorId = sup.UserId;
@@ -258,8 +257,7 @@ namespace DMT.TOD.Pages.Reports
             }
 
             // update save data
-            var revRet = ops.Revenue.SaveRevenue(_revenueEntry);
-            var revInst = (null != revRet && !revRet.errors.hasError) ? revRet.data : null;
+            var revInst = ops.Revenue.SaveRevenue(_revenueEntry).Value();
             string revId = (null != revInst) ? revInst.RevenueId : string.Empty;
             if (null != _plazaRevenue)
             {
@@ -281,8 +279,7 @@ namespace DMT.TOD.Pages.Reports
 
             // get all lanes information.
             var search = Search.Lanes.Attendances.ByUserShift.Create(_userShift, null, DateTime.MinValue);
-            var ret = ops.Lanes.GetAttendancesByUserShift(search);
-            var existActivities = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            var existActivities = ops.Lanes.GetAttendancesByUserShift(search).Value();
             if (null == existActivities || existActivities.Count == 0)
             {
                 // no lane activitie in user shift.

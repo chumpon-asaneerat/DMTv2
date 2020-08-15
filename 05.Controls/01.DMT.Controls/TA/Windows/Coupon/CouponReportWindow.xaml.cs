@@ -153,8 +153,7 @@ namespace DMT.TA.Windows.Coupon
                 _revenueEntry.ShiftEnd = end;
 
                 // assign supervisor.
-                var ret = ops.Shifts.GetCurrent();
-                var sup = (null != ret && !ret.errors.hasError) ? ret.data : null;
+                var sup = ops.Shifts.GetCurrent().Value();
                 _revenueEntry.SupervisorId = sup.UserId;
                 _revenueEntry.SupervisorNameEN = sup.FullNameEN;
                 _revenueEntry.SupervisorNameTH = sup.FullNameTH;

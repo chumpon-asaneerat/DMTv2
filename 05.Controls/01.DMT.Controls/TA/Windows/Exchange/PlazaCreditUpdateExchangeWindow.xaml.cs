@@ -34,7 +34,6 @@ namespace DMT.TA.Windows.Exchange
         #endregion
 
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
-        private TSB _tsb = null;
 
         #region Button Handlers
 

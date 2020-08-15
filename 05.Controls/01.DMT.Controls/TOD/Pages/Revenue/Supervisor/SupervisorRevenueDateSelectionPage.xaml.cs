@@ -51,8 +51,7 @@ namespace DMT.TOD.Pages.Revenue
             string userId = txtSearchUserId.Text;
             if (string.IsNullOrEmpty(userId)) return;
 
-            var ret = ops.Users.SearchById(Search.Users.ById.Create(userId));
-            var users = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            var users = ops.Users.SearchById(Search.Users.ById.Create(userId)).Value();
             if (null != users)
             {
                 if (users.Count == 1)
@@ -114,8 +113,7 @@ namespace DMT.TOD.Pages.Revenue
                 return;
             }
             // create new user shift.
-            var usrShf = ops.UserShifts.Create(shift, _user);
-            _userShift = (null != usrShf && !usrShf.errors.hasError) ? usrShf.data : null;
+            _userShift = ops.UserShifts.Create(shift, _user).Value();
 
             var plazaGroup = cbPlazas.SelectedItem as PlazaGroup;
 
@@ -132,8 +130,7 @@ namespace DMT.TOD.Pages.Revenue
             }
 
             var revops = Search.Revenues.PlazaShift.Create(_userShift, plazaGroup);
-            var crevShf = ops.Revenue.CreateRevenueShift(revops);
-            _plazaRevenue = (null != crevShf && !crevShf.errors.hasError) ? crevShf.data : null;
+            _plazaRevenue = ops.Revenue.CreateRevenueShift(revops).Value();
 
             _entryDT = dtEntryDate.SelectedDate.Value;
             _revDT = dtRevDate.SelectedDate.Value;
@@ -160,8 +157,7 @@ namespace DMT.TOD.Pages.Revenue
 
         private void LoadShifts()
         {
-            var ret = ops.Shifts.GetShifts();
-            var shifts = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            var shifts = ops.Shifts.GetShifts().Value();
             cbShifts.ItemsSource = shifts;
         }
 
@@ -170,12 +166,10 @@ namespace DMT.TOD.Pages.Revenue
             cbPlazas.ItemsSource = null;
 
             var plazaGroups = new List<PlazaGroup>();
-            var tsbRet = ops.TSB.GetCurrent();
-            var tsb = (null != tsbRet && !tsbRet.errors.hasError) ? tsbRet.data : null;
+            var tsb = ops.TSB.GetCurrent().Value();
             if (null != tsb)
             {
-                var ret = ops.TSB.GetTSBPlazaGroups(tsb);
-                plazaGroups = (null != ret && !ret.errors.hasError) ? ret.data : null;
+                plazaGroups = ops.TSB.GetTSBPlazaGroups(tsb).Value();
             }
 
             cbPlazas.ItemsSource = plazaGroups;
@@ -197,8 +191,7 @@ namespace DMT.TOD.Pages.Revenue
                 // get all lanes information.
                 var search = Search.Lanes.Attendances.ByUserShift.Create(
                     _userShift, plazaGroup, DateTime.MinValue);
-                var ret = ops.Lanes.GetAttendancesByUserShift(search);
-                _laneActivities = (null != ret && !ret.errors.hasError) ? ret.data : null;
+                _laneActivities = ops.Lanes.GetAttendancesByUserShift(search).Value();
                 if (null == _laneActivities || _laneActivities.Count <= 0)
                 {
                     // no data.

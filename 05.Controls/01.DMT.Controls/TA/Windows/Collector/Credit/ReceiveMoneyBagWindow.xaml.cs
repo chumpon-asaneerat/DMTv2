@@ -62,8 +62,8 @@ namespace DMT.TA.Windows.Collector.Credit
                 return;
             }
 
-            var ret = ops.Users.GetByLogIn(Search.Users.ByLogIn.Create(userId, pwd));
-            var user = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            // TODO: MD5 Required here.
+            var user = ops.Users.GetByLogIn(Search.Users.ByLogIn.Create(userId, pwd)).Value();
             if (null == user || _roles.IndexOf(user.RoleId) == -1)
             {
                 //Console.WriteLine("LogIn Failed");

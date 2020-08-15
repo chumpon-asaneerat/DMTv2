@@ -65,8 +65,7 @@ namespace DMT.Pages
             }
 
             // TODO: MD5 Required here.
-            var ret = ops.Users.GetByLogIn(
-                Search.Users.ByLogIn.Create(userId, pwd));
+            var ret = ops.Users.GetByLogIn(Search.Users.ByLogIn.Create(userId, pwd));
             _user = ret.Value();
 
             if (null == _user || _roles.IndexOf(_user.RoleId) == -1)

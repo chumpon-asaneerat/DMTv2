@@ -75,13 +75,11 @@ namespace DMT.TOD.Pages.Revenue
 
             bool isNew = false;
             var revops = Search.Revenues.PlazaShift.Create(_userShift, plazaGroup);
-            var revshf = ops.Revenue.GetRevenueShift(revops);
-            _plazaRevenue = (null != revshf && !revshf.errors.hasError) ? revshf.data : null;
+            _plazaRevenue = ops.Revenue.GetRevenueShift(revops).Value();
             if (null == _plazaRevenue)
             {
                 // Create new if not found.
-                var crevshf = ops.Revenue.CreateRevenueShift(revops);
-                _plazaRevenue = (null != crevshf && !crevshf.errors.hasError) ? crevshf.data : null;
+                _plazaRevenue = ops.Revenue.CreateRevenueShift(revops).Value();
                 isNew = true;
             }
 
@@ -156,13 +154,10 @@ namespace DMT.TOD.Pages.Revenue
             cbPlazas.ItemsSource = null;
 
             var plazaGroups = new List<PlazaGroup>();
-            var tsbRet = ops.TSB.GetCurrent();
-            var tsb = (null != tsbRet && !tsbRet.errors.hasError) ? tsbRet.data : null;
-
+            var tsb = ops.TSB.GetCurrent().Value();
             if (null != tsb)
             {
-                var ret = ops.TSB.GetTSBPlazaGroups(tsb);
-                plazaGroups = (null != ret && !ret.errors.hasError) ? ret.data : null;
+                plazaGroups = ops.TSB.GetTSBPlazaGroups(tsb).Value();
             }
 
             cbPlazas.ItemsSource = plazaGroups;
@@ -187,8 +182,7 @@ namespace DMT.TOD.Pages.Revenue
                 var search = Search.Lanes.Attendances.ByUserShift.Create(
                     _userShift, plazaGroup, DateTime.MinValue);
 
-                var ret = ops.Lanes.GetAttendancesByUserShift(search);
-                _laneActivities = (null != ret && !ret.errors.hasError) ? ret.data : null;
+                _laneActivities = ops.Lanes.GetAttendancesByUserShift(search).Value();
                 if (null == _laneActivities || _laneActivities.Count <= 0)
                 {
                     // no data.
@@ -215,8 +209,7 @@ namespace DMT.TOD.Pages.Revenue
                 _entryDT = DateTime.Now;
                 txtEntryDate.Text = _entryDT.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
                 // Find user shift.
-                var ret = ops.UserShifts.GetCurrent(_user);
-                _userShift = (null != ret && !ret.errors.hasError) ? ret.data : null;
+                _userShift = ops.UserShifts.GetCurrent(_user).Value();
                 // Load related lane data.
                 RefreshLanes();
             }

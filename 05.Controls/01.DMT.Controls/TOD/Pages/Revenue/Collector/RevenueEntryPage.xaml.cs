@@ -106,9 +106,7 @@ namespace DMT.TOD.Pages.Revenue
                 txtUserName.Text = _userShift.FullNameTH;
 
                 var search = Search.UserCredits.GetActiveById.Create(_userShift.UserId, _plazaGroup.PlazaGroupId);
-
-                var ret = ops.Credits.GetActiveUserCreditBalanceById(search);
-                var userCredit = (null != ret && !ret.errors.hasError) ? ret.data : null;
+                var userCredit = ops.Credits.GetActiveUserCreditBalanceById(search).Value();
                 _revenueEntry = new Models.RevenueEntry();
                 if (null != userCredit)
                 {

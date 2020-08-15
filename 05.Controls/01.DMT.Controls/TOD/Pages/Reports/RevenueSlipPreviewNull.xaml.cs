@@ -47,9 +47,7 @@ namespace DMT.TOD.Pages.Reports
 
         private Models.RevenueEntry _revenueEntry = null;
 
-#pragma warning disable IDE0052 // Remove unread private members
         private bool isNew = false;
-#pragma warning restore IDE0052 // Remove unread private members
 
         #region Button Handlers
 
@@ -68,42 +66,6 @@ namespace DMT.TOD.Pages.Reports
 
             this.rptViewer.Print();
             GoMainMenu();
-
-            #region Old
-            //if (isNew)
-            //{
-            //    bool hasActivitied = SaveRevenueEntry();
-
-            //    if (_revenueEntry.RevenueDate != DateTime.MinValue &&
-            //        _revenueEntry.EntryDate != DateTime.MinValue)
-            //    {
-            //        // print reports only date exists.
-            //        this.rptViewer.Print();
-            //    }
-
-            //    if (!hasActivitied || null == _user)
-            //    {
-            //        GoMainMenu();
-            //        return;
-            //    }
-            //    if (MessageBox.Show(Application.Current.MainWindow,
-            //        "กะปัจจุบันยังป้อนรายได้ไม่ครับ ต้องการป้อนรายได้ตอหรือไม่ ?",
-            //        "DMT - Tour of Duty", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            //    {
-            //        GoRevenuEntry();
-            //    }
-            //    else
-            //    {
-            //        GoMainMenu();
-            //    }
-            //}
-            //else
-            //{
-            //    // print reports.
-            //    this.rptViewer.Print();
-            //    GoMainMenu();
-            //}
-            #endregion
         }
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
@@ -218,8 +180,7 @@ namespace DMT.TOD.Pages.Reports
                 _revenueEntry.ShiftEnd = end;
 
                 // assign supervisor.
-                var ret = ops.Shifts.GetCurrent();
-                var sup = (null != ret && !ret.errors.hasError) ? ret.data : null;
+                var sup = ops.Shifts.GetCurrent().Value();
                 if (null != sup)
                 {
                     _revenueEntry.SupervisorId = sup.UserId;
@@ -246,8 +207,7 @@ namespace DMT.TOD.Pages.Reports
             }
 
             // update save data
-            var revRet = ops.Revenue.SaveRevenue(_revenueEntry);
-            var revInst = (null != revRet && !revRet.errors.hasError) ? revRet.data : null;
+            var revInst = ops.Revenue.SaveRevenue(_revenueEntry).Value();
             string revId = (null != revInst) ? revInst.RevenueId : string.Empty;
             if (null != _plazaRevenue)
             {
@@ -269,8 +229,7 @@ namespace DMT.TOD.Pages.Reports
 
             // get all lanes information.
             var search = Search.Lanes.Attendances.ByUserShift.Create(_userShift, null, DateTime.MinValue);
-            var ret = ops.Lanes.GetAttendancesByUserShift(search);
-            var existActivities = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            var existActivities = ops.Lanes.GetAttendancesByUserShift(search).Value();
             if (null == existActivities || existActivities.Count == 0)
             {
                 // no lane activitie in user shift.

@@ -65,8 +65,7 @@ namespace DMT.TOD.Controls.Revenue.View
             lstLaneJobs.ItemsSource = null;
             if (null == userShift) return;
 
-            var ret = ops.Lanes.GetAllAttendancesByUserShift(userShift);
-            var lanes = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            var lanes = ops.Lanes.GetAllAttendancesByUserShift(userShift).Value();
 
             lstLaneJobs.ItemsSource = lanes;
         }
@@ -76,8 +75,7 @@ namespace DMT.TOD.Controls.Revenue.View
             lstLaneJobs.ItemsSource = null;
             lstUsers.ItemsSource = null;
 
-            var ret = ops.UserShifts.GetUnCloseUserShifts();
-            _userShifts = (null != ret && !ret.errors.hasError) ? ret.data : null;
+            _userShifts = ops.UserShifts.GetUnCloseUserShifts().Value();
 
             lstUsers.ItemsSource = _userShifts;
         }
