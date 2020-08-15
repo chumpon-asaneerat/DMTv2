@@ -61,6 +61,13 @@ Update 2020-08-16 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-08-15 #44
+- Update Local/DataCenter/TAxTOD service operation #205.
+  - Restored 03.DMT.Local.Plaza.Windows.Services (WPF -> Windows Forms). 
+    Has problem with Windows Service with WPF (need more experiment so used Windows Forms
+    instead).
+
+[commited]
 Update 2020-08-15 #43
 - Update Local/DataCenter/TAxTOD service operation #205.
   - NRestClient execute method add timeout parameter (default 500 ms).
