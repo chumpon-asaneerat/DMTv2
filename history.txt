@@ -8,8 +8,20 @@ Update 2020-08-15 #29
 Update 2020-08-15 #28
 - 
 
+[commited]
 Update 2020-08-15 #27
-- 
+- Update Local/DataCenter/TAxTOD service operation #195.
+- Note:
+  - Coupon Table need to add CouponPK column (int) for send back to TAxTOD server.
+  - Table User Add (valodation category)
+    - PasswordDate (for change password).
+    - Expiredays (for change password).
+    - IsValid (for check is UserId is still exists on system).
+  - The NRestClient need to get host/port from config.
+  - TOD need to set config to allow access from another computer.
+  - TA need to set config to allow access from another computer.
+  - TAxTOD Client need new workbrench project.
+  - DC Client need new workbrench project.
 
 [commited]
 Update 2020-08-15 #26
