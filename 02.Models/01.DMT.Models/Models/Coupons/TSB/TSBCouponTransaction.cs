@@ -35,23 +35,44 @@ namespace DMT.Models
 	{
 		#region Enum
 
+		/// <summary>
+		/// The Transaction Types Enum.
+		/// </summary>
 		public enum TransactionTypes : int
 		{
-			// Cancel or Remove
+			/// <summary>
+			/// Cancel or Remove
+			/// </summary>
 			CancelOrRemove = 0,
-			// TSB Stock
+			/// <summary>
+			/// TSB Stock
+			/// </summary>
 			Stock = 1,
-			// Borrow By User on Lane
+			/// <summary>
+			/// Borrow By User on Lane
+			/// </summary>
 			Lane = 2,
-			// Sold By User on Lane
+			/// <summary>
+			/// Sold By User on Lane
+			/// </summary>
 			SoldByLane = 3,
-			// Sold By Supervisor on TSB
+			/// <summary>
+			/// Sold By Supervisor on TSB
+			/// </summary>
 			SoldByTSB = 4
 		}
-
+		/// <summary>
+		/// The Finished Flags Enum.
+		/// </summary>
 		public enum FinishedFlags : int
 		{
+			/// <summary>
+			/// Completed
+			/// </summary>
 			Completed = 0,
+			/// <summary>
+			/// Avaliable
+			/// </summary>
 			Avaliable = 1
 		}
 
@@ -86,7 +107,6 @@ namespace DMT.Models
 		private string _SoldByFullNameTH = string.Empty;
 
 		private FinishedFlags _FinishFlag = FinishedFlags.Avaliable;
-		//private string _Remark = string.Empty;
 
 		private int _Status = 0;
 		private DateTime _LastUpdate = DateTime.MinValue;
@@ -106,6 +126,9 @@ namespace DMT.Models
 
 		#region Runtime
 
+		/// <summary>
+		/// Gets or sets Foreground color.
+		/// </summary>
 		[Category("Runtime")]
 		[Description("Gets or sets Foreground color.")]
 		[ReadOnly(true)]
@@ -764,31 +787,6 @@ namespace DMT.Models
 
 		#endregion
 
-		#region Remark
-		/*
-		/// <summary>
-		/// Gets or sets Remark.
-		/// </summary>
-		[Category("Coupon")]
-		[Description("Gets or sets Remark.")]
-		[MaxLength(255)]
-		[PeropertyMapName("Remark")]
-		public string Remark
-		{
-			get { return _Remark; }
-			set
-			{
-				if (_Remark != value)
-				{
-					_Remark = value;
-					// Raise event.
-					this.RaiseChanged("Remark");
-				}
-			}
-		}
-		*/
-		#endregion
-
 		#region Status (DC)
 
 		/// <summary>
@@ -839,6 +837,9 @@ namespace DMT.Models
 
 		#region Internal Class
 
+		/// <summary>
+		/// The internal FKs class for query data.
+		/// </summary>
 		public class FKs : TSBCouponTransaction, IFKs<TSBCouponTransaction>
 		{
 			#region TSB
@@ -925,17 +926,6 @@ namespace DMT.Models
 			}
 
 			#endregion
-
-			#region Public Methods
-			/*
-			public TSBCouponTransaction ToTSBCouponTransaction()
-			{
-				TSBCouponTransaction inst = new TSBCouponTransaction();
-				this.AssignTo(inst); // set all properties to new instance.
-				return inst;
-			}
-			*/
-			#endregion
 		}
 
 		#endregion
@@ -966,7 +956,6 @@ namespace DMT.Models
 			result = GetTSBCouponTransactions(tsb);
 			return result;
 		}
-
 		/// <summary>
 		/// Gets TSB Coupon transactions (all status).
 		/// </summary>
@@ -999,13 +988,6 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<TSBCouponTransaction>();
-					rets.ForEach(ret =>
-					{
-						results.Add(ret.ToModel());
-					});
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -1016,7 +998,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Save Transaction.
+		/// </summary>
+		/// <param name="value">The transaction instance.</param>
+		/// <returns>Returns Save TSB Coupon transactions.</returns>
 		public static NDbResult<TSBCouponTransaction> SaveTransaction(TSBCouponTransaction value)
 		{
 			var result = new NDbResult<TSBCouponTransaction>();
@@ -1036,7 +1022,6 @@ namespace DMT.Models
 				value.TransactionDate = DateTime.Now;
 			}
 			return TSBCouponTransaction.Save(value);
-
 		}
 
 		#endregion

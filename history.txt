@@ -48,8 +48,11 @@ Update 2020-08-16 #10
 Update 2020-08-16 #9
 - 
 
+[commited]
 Update 2020-08-16 #8
-- 
+- Update Local/DataCenter/TAxTOD service operation #215.
+  - TSBCouponTransaction Model update #1.
+    - Cleanup and format code.
 
 [commited]
 Update 2020-08-16 #7
