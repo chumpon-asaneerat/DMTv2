@@ -215,7 +215,6 @@ namespace DMT.Models
                 result.DbConenctFailed();
                 return result;
             }
-
             lock (sync)
             {
                 MethodBase med = MethodBase.GetCurrentMethod();
@@ -248,7 +247,6 @@ namespace DMT.Models
                 result.DbConenctFailed();
                 return result;
             }
-
             lock (sync)
             {
                 MethodBase med = MethodBase.GetCurrentMethod();
@@ -442,7 +440,7 @@ namespace DMT.Models
     /// <summary>
     /// The IFKs interface of T.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The target type.</typeparam>
     public interface IFKs<T>
         where T : NTable, new()
     { 
@@ -452,6 +450,9 @@ namespace DMT.Models
 
     #region NTable Extension Methods
 
+    /// <summary>
+    /// The NTable Extension Methods.
+    /// </summary>
     public static class NTableExtensionMethods
     {
         /// <summary>

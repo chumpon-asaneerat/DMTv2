@@ -20,7 +20,7 @@ using Newtonsoft.Json.Bson;
 
 namespace DMT.Models
 {
-	#region UserCoupon
+	#region UserCouponBalance
 
 	/// <summary>
 	/// The UserCouponBalance Data Model class.
@@ -28,14 +28,23 @@ namespace DMT.Models
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
 	[Serializable]
 	[JsonObject(MemberSerialization.OptOut)]
-	//[Table("UserCoupon")]
+	//[Table("UserCouponBalance")]
 	public class UserCouponBalance : NTable<UserCouponBalance>
 	{
 		#region Enum
 
+		/// <summary>
+		/// Coupon State Type.
+		/// </summary>
 		public enum StateTypes
 		{
+			/// <summary>
+			/// Borrow
+			/// </summary>
 			Borrow = 1,
+			/// <summary>
+			/// Return
+			/// </summary>
 			Return = 2
 		}
 
@@ -91,10 +100,10 @@ namespace DMT.Models
 		#region Common
 
 		/// <summary>
-		/// Gets or sets UserCouponId
+		/// Gets or sets User Coupon Id.
 		/// </summary>
 		[Category("Common")]
-		[Description("Gets or sets UserCouponId")]
+		[Description("Gets or sets User Coupon Id.")]
 		[PrimaryKey, AutoIncrement]
 		[ReadOnly(true)]
 		[PeropertyMapName("UserCouponId")]
@@ -114,10 +123,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets UserCoupon Date.
+		/// Gets or sets User Coupon Date.
 		/// </summary>
 		[Category("Common")]
-		[Description("Gets or sets UserCredit Date.")]
+		[Description("Gets or sets User Coupon Date.")]
 		[ReadOnly(true)]
 		[PeropertyMapName("UserCouponDate")]
 		public DateTime UserCouponDate
@@ -136,10 +145,10 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets UserCoupon Date String.
+		/// Gets UserC oupon Date String.
 		/// </summary>
 		[Category("Common")]
-		[Description("Gets UserCoupon Date String.")]
+		[Description("Gets User Coupon Date String.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -153,10 +162,10 @@ namespace DMT.Models
 			set { }
 		}
 		/// <summary>
-		/// Gets UserCoupon DateTime String.
+		/// Gets User Coupon DateTime String.
 		/// </summary>
 		[Category("Common")]
-		[Description("Gets UserCoupon DateTime String.")]
+		[Description("Gets User Coupon DateTime String.")]
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
@@ -170,10 +179,10 @@ namespace DMT.Models
 			set { }
 		}
 		/// <summary>
-		/// Gets or sets State.
+		/// Gets or sets Coupon State.
 		/// </summary>
 		[Category("Common")]
-		[Description("Gets or sets State.")]
+		[Description("Gets or sets Coupon State.")]
 		[Browsable(false)]
 		[PeropertyMapName("State")]
 		public StateTypes State
@@ -270,7 +279,7 @@ namespace DMT.Models
 		#region User
 
 		/// <summary>
-		/// Gets or sets User Id
+		/// Gets or sets User Id.
 		/// </summary>
 		[Category("User")]
 		[Description("Gets or sets User Id.")]
@@ -293,7 +302,7 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets User Full Name EN
+		/// Gets or sets User Full Name EN.
 		/// </summary>
 		[Category("User")]
 		[Description("Gets or sets User Full Name EN.")]
@@ -316,7 +325,7 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets User Full Name TH
+		/// Gets or sets User Full Name TH.
 		/// </summary>
 		[Category("User")]
 		[Description("Gets or sets User Full Name TH.")]
@@ -478,6 +487,9 @@ namespace DMT.Models
 
 		#region Internal Class
 
+		/// <summary>
+		/// The internal FKs class for query data.
+		/// </summary>
 		public class FKs : UserCouponBalance, IFKs<UserCouponBalance>
 		{
 			#region TSB
@@ -528,17 +540,6 @@ namespace DMT.Models
 				set { base.FullNameTH = value; }
 			}
 
-			#endregion
-
-			#region Public Methods
-			/*
-			public UserCouponBalance ToUserCouponBalance()
-			{
-				UserCouponBalance inst = new UserCouponBalance();
-				this.AssignTo(inst); // set all properties to new instance.
-				return inst;
-			}
-			*/
 			#endregion
 		}
 
