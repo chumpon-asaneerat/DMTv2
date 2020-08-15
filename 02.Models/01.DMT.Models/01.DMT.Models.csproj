@@ -102,6 +102,7 @@
     <Compile Include="ExtensionMethods\ModelExtensionMethods.cs" />
     <Compile Include="Models\Common\NDbResult.cs" />
     <Compile Include="Models\Common\Utils.cs" />
+    <Compile Include="Models\Configuration\UniqueCode.cs" />
     <Compile Include="Models\Configuration\ViewHistory.cs" />
     <None Include="Models\Coupons\Users\UserCouponBalance.cs" />
     <Compile Include="Models\Coupons\Common\Enums.cs" />
