@@ -72,6 +72,15 @@ namespace DMT.Services
             this.errors.errMsg = ErrConsts.ErrMsg(err);
         }
         /// <summary>
+        /// Set Web Service (REST API) Response Error.
+        /// </summary>
+        public virtual void RestResponseError()
+        {
+            var err = ErrNums.RestResponseError;
+            this.errors.errNum = (int)err;
+            this.errors.errMsg = ErrConsts.ErrMsg(err);
+        }
+        /// <summary>
         /// Set Unknown Error.
         /// </summary>
         public virtual void UnknownError()
@@ -157,6 +166,14 @@ namespace DMT.Services
         public override void RestConenctFailed()
         {
             base.RestConenctFailed();
+            this.data = Default();
+        }
+        /// <summary>
+        /// Set Web Service (REST API) Response Error.
+        /// </summary>
+        public override void RestResponseError()
+        {
+            base.RestResponseError();
             this.data = Default();
         }
         /// <summary>
@@ -257,6 +274,15 @@ namespace DMT.Services
         public override void RestConenctFailed()
         {
             base.RestConenctFailed();
+            this.data = DefaultData();
+            this.output = DefaultOutput();
+        }
+        /// <summary>
+        /// Set Web Service (REST API) Response Error.
+        /// </summary>
+        public override void RestResponseError()
+        {
+            base.RestResponseError();
             this.data = DefaultData();
             this.output = DefaultOutput();
         }

@@ -56,8 +56,13 @@ Update 2020-08-16 #3
 Update 2020-08-16 #2
 - 
 
+[commited]
 Update 2020-08-16 #1
-- 
+- Update Local/DataCenter/TAxTOD service operation #208.
+  - Update NRestClient #1
+    - Execute methods add check status code when received response.
+    - Add exntesion methods for restsharp to check succcess response.
+    - Add new error codes in ErrorConsts.cs.
 
 --------------------------------------------------------------------------------------------
 [commited]

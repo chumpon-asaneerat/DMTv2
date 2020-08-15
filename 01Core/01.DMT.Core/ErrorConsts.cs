@@ -14,6 +14,7 @@ namespace DMT
         DbConenctFailed = 100,
         // Web Service Connection (150-199)
         RestConenctFailed = 150,
+        RestResponseError = 151,
         // Models - Common (200-210)
         ParameterIsNull = 200,
         // Common Exception
@@ -35,6 +36,7 @@ namespace DMT
 
             // Web Service Connection
             _msgs.Add(ErrNums.RestConenctFailed, "Web Service connection failed.");
+            _msgs.Add(ErrNums.RestResponseError, "Web Service response error.");
 
             // Models - common
             _msgs.Add(ErrNums.ParameterIsNull, "Parameter is null.");

@@ -8,6 +8,7 @@ using RestSharp;
 using RestSharp.Authenticators;
 using RestSharp.Serializers.NewtonsoftJson;
 using System;
+using System.Net; // for http status code.
 using System.Net.Cache;
 using System.Reflection;
 using System.Security.Cryptography;
@@ -110,29 +111,33 @@ namespace DMT.Services
                 }
 
                 var response = client.Execute(request);
-                if (null != response && null != response.Content)
+                if (null != response)
                 {
-                    if (response.Content.Contains("rror"))
+                    if (response.IsSuccessful() && null != response.Content)
                     {
-                        string msg = string.Format(
-                            "Rest Client Content Error - Content: {0}", response.Content);
-                        Console.WriteLine(msg);
-                        med.Err(msg);
-                    }
-                    var obj = response.Content.FromJson<NDbResult<TReturn>>();
-                    if (null != obj && obj.GetType() == typeof(NDbResult<TReturn>))
-                    {
-                        var dbRet = (obj as NDbResult<TReturn>);
-                        ret = dbRet.ToRest();
+                        var obj = response.Content.FromJson<NDbResult<TReturn>>();
+                        if (null != obj && obj.GetType() == typeof(NDbResult<TReturn>))
+                        {
+                            var dbRet = obj;
+                            ret = dbRet.ToRest();
+                        }
+                        else
+                        {
+                            ret.data = (null != obj) ? obj.data : NDbResult<TReturn>.Default();
+                        }
                     }
                     else
                     {
-                        ret.data = (null != obj) ? obj.data : NDbResult<TReturn>.Default();
+                        ret.RestResponseError();
+                        string msg = string.Format(
+                            "Rest Client Content Error - Code: {0}, Content: {1}",
+                            (int)response.StatusCode, response.Content);
+                        Console.WriteLine(msg);
+                        med.Err(msg);
                     }
                 }
                 else
                 {
-                    //Console.WriteLine("Execute no response.");
                     ret.RestConenctFailed();
                 }
             }
@@ -186,30 +191,34 @@ namespace DMT.Services
                 }
 
                 var response = client.Execute(request);
-                if (null != response && null != response.Content)
+                if (null != response)
                 {
-                    if (response.Content.Contains("rror"))
+                    if (response.IsSuccessful() && null != response.Content)
                     {
-                        string msg = string.Format(
-                            "Rest Client Content Error - Content: {0}", response.Content);
-                        Console.WriteLine(msg);
-                        med.Err(msg);
-                    }
-                    var obj = response.Content.FromJson<NDbResult<TReturn, TOut>>();
-                    if (null != obj && obj.GetType() == typeof(NDbResult<TReturn, TOut>))
-                    {
-                        var dbRet = (obj as NDbResult<TReturn, TOut>);
-                        ret = dbRet.ToRest();
+                        var obj = response.Content.FromJson<NDbResult<TReturn, TOut>>();
+                        if (null != obj && obj.GetType() == typeof(NDbResult<TReturn, TOut>))
+                        {
+                            var dbRet = obj;
+                            ret = dbRet.ToRest();
+                        }
+                        else
+                        {
+                            ret.data = (null != obj) ? obj.data : NDbResult<TReturn, TOut>.DefaultData();
+                            ret.output = (null != obj) ? obj.output : NDbResult<TReturn, TOut>.DefaultOutput();
+                        }
                     }
                     else
                     {
-                        ret.data = (null != obj) ? obj.data : NDbResult<TReturn, TOut>.DefaultData();
-                        ret.output = (null != obj) ? obj.output : NDbResult<TReturn, TOut>.DefaultOutput();
+                        ret.RestResponseError();
+                        string msg = string.Format(
+                            "Rest Client Content Error - Code: {0}, Content: {1}",
+                            (int)response.StatusCode, response.Content);
+                        Console.WriteLine(msg);
+                        med.Err(msg);
                     }
                 }
                 else
                 {
-                    //Console.WriteLine("Execute no response.");
                     ret.RestConenctFailed();
                 }
             }
@@ -259,24 +268,28 @@ namespace DMT.Services
                 }
 
                 var response = client.Execute(request);
-                if (null != response && null != response.Content)
+                if (null != response)
                 {
-                    if (response.Content.Contains("rror"))
+                    if (response.IsSuccessful() && null != response.Content)
                     {
+                        var obj = response.Content.FromJson<NDbResult>();
+                        if (null != obj)
+                        {
+                            ret = obj.ToRest();
+                        }
+                    }
+                    else
+                    {
+                        ret.RestResponseError();
                         string msg = string.Format(
-                            "Rest Client Content Error - Content: {0}", response.Content);
+                            "Rest Client Content Error - Code: {0}, Content: {1}",
+                            (int)response.StatusCode,  response.Content);
                         Console.WriteLine(msg);
                         med.Err(msg);
-                    }
-                    var obj = response.Content.FromJson<NDbResult>();
-                    if (null != obj)
-                    {
-                        ret = obj.ToRest();
                     }
                 }
                 else
                 {
-                    //Console.WriteLine("Execute no response.");
                     ret.RestConenctFailed();
                 }
             }
@@ -360,6 +373,38 @@ namespace DMT.Services
         }
 
         #endregion
+    }
+
+    #endregion
+
+    #region RestSharp Extension Methods
+
+    /// <summary>
+    /// The RestSharp Extension Methods.
+    /// </summary>
+    public static class RestSharpExtensionMethods
+    {
+        /// <summary>
+        /// Checks is Successful.
+        /// </summary>
+        /// <param name="response">The IRestResponse instance response.</param>
+        /// <returns>Returns true if success.</returns>
+        public static bool IsSuccessful(this IRestResponse response)
+        {
+            return response.StatusCode.IsSuccessful()
+                && response.ResponseStatus == ResponseStatus.Completed;
+        }
+        /// <summary>
+        /// Checks is Successful.
+        /// </summary>
+        /// <param name="responseCode">The http status code.</param>
+        /// <returns>Returns true if success (code 200-399).</returns>
+        public static bool IsSuccessful(this HttpStatusCode responseCode)
+        {
+            int numericResponse = (int)responseCode;
+            return numericResponse >= 200
+                && numericResponse <= 399;
+        }
     }
 
     #endregion
