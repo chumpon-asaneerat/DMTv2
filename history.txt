@@ -61,8 +61,14 @@ Update 2020-08-16 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-08-15 #45
+- Update Local/DataCenter/TAxTOD service operation #207.
+  - Add XX.Backup folder to keep 03.DMT.Local.Plaza.Windows.Services comde both
+    windows forms and wpf to research later.
+
+[commited]
 Update 2020-08-15 #44
-- Update Local/DataCenter/TAxTOD service operation #205.
+- Update Local/DataCenter/TAxTOD service operation #206.
   - Restored 03.DMT.Local.Plaza.Windows.Services (WPF -> Windows Forms). 
     Has problem with Windows Service with WPF (need more experiment so used Windows Forms
     instead).
