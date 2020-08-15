@@ -481,6 +481,9 @@ namespace DMT.Models
 
 		#region Internal Class
 
+		/// <summary>
+		/// The internal FKs class for query data.
+		/// </summary>
 		public class FKs : Lane, IFKs<Lane>
 		{
 			#region TSB
@@ -567,33 +570,25 @@ namespace DMT.Models
 			}
 
 			#endregion
-
-			#region Public Methods
-			/*
-			public Lane ToLane()
-			{
-				Lane inst = new Lane();
-				this.AssignTo(inst); // set all properties to new instance.
-				return inst;
-			}
-			*/
-			#endregion
 		}
 
 		#endregion
 
 		#region Static Methods
 
+		/// <summary>
+		/// Gets Lanes (all TSBs).
+		/// </summary>
+		/// <param name="db">The database connection.</param>
+		/// <returns>Returns List fo Lanes.</returns>
 		public static NDbResult<List<Lane>> GetLanes(SQLiteConnection db)
 		{
 			var result = new NDbResult<List<Lane>>();
-
 			if (null == db)
 			{
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -605,16 +600,6 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<Lane>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -622,11 +607,13 @@ namespace DMT.Models
 					med.Err(ex);
 					result.Error(ex);
 				}
-
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets Lanes (all TSBs).
+		/// </summary>
+		/// <returns>Returns List fo Lanes.</returns>
 		public static NDbResult<List<Lane>> GetLanes()
 		{
 			lock (sync)
@@ -635,17 +622,20 @@ namespace DMT.Models
 				return GetLanes(db);
 			}
 		}
-
+		/// <summary>
+		/// Get Lane.
+		/// </summary>
+		/// <param name="db">The database connection.</param>
+		/// <param name="laneId">The lane Id.</param>
+		/// <returns>Returns instance of Lane.</returns>
 		public static NDbResult<Lane> GetLane(SQLiteConnection db, string laneId)
 		{
 			var result = new NDbResult<Lane>();
-
 			if (null == db)
 			{
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -664,12 +654,15 @@ namespace DMT.Models
 				{
 					med.Err(ex);
 					result.Error(ex);
-
 				}
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Get Lane.
+		/// </summary>
+		/// <param name="laneId">The lane Id.</param>
+		/// <returns>Returns instance of Lane.</returns>
 		public static NDbResult<Lane> GetLane(string laneId)
 		{
 			lock (sync)
@@ -678,7 +671,11 @@ namespace DMT.Models
 				return GetLane(db, laneId);
 			}
 		}
-
+		/// <summary>
+		/// Get Lanes (By TSB).
+		/// </summary>
+		/// <param name="value">The TSB instance.</param>
+		/// <returns>Returns List fo Lanes.</returns>
 		public static NDbResult<List<Lane>> GetTSBLanes(TSB value)
 		{
 			var result = new NDbResult<List<Lane>>();
@@ -688,13 +685,16 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				return GetTSBLanes(value.TSBId);
 			}
 		}
-
+		/// <summary>
+		/// Gets Lanes (By TSBId).
+		/// </summary>
+		/// <param name="tsbId">The TSB Id.</param>
+		/// <returns>Returns List fo Lanes.</returns>
 		public static NDbResult<List<Lane>> GetTSBLanes(string tsbId)
 		{
 			var result = new NDbResult<List<Lane>>();
@@ -704,7 +704,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -716,16 +715,6 @@ namespace DMT.Models
 					cmd += " WHERE TSBId = ? ";
 					var rets = NQuery.Query<FKs>(cmd, tsbId).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<Lane>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -736,7 +725,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets Lanes (By PlazaGroup).
+		/// </summary>
+		/// <param name="value">The PlazaGroup instance.</param>
+		/// <returns>Returns List fo Lanes.</returns>
 		public static NDbResult<List<Lane>> GetPlazaGroupLanes(PlazaGroup value)
 		{
 			var result = new NDbResult<List<Lane>>();
@@ -746,13 +739,17 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				return GetPlazaGroupLanes(value.TSBId, value.PlazaGroupId);
 			}
 		}
-
+		/// <summary>
+		/// Gets Lanes (By TSBId, PlazaGroupId)
+		/// </summary>
+		/// <param name="tsbId">The TSB Id.</param>
+		/// <param name="plazaGroupId">The Plaza Group Id.</param>
+		/// <returns>Returns List fo Lanes.</returns>
 		public static NDbResult<List<Lane>> GetPlazaGroupLanes(string tsbId, string plazaGroupId)
 		{
 			var result = new NDbResult<List<Lane>>();
@@ -762,7 +759,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -776,16 +772,6 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd, tsbId, plazaGroupId).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<Lane>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -796,7 +782,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Gets Lanes (By Plaza).
+		/// </summary>
+		/// <param name="value">The Plaza instance.</param>
+		/// <returns>Returns List fo Lanes.</returns>
 		public static NDbResult<List<Lane>> GetPlazaLanes(Plaza value)
 		{
 			var result = new NDbResult<List<Lane>>();
@@ -806,13 +796,18 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				return GetPlazaLanes(value.TSBId, value.PlazaGroupId, value.PlazaId);
 			}
 		}
-
+		/// <summary>
+		/// Gets Lanes (By TSBId, PlazaGroupId. PlazaId).
+		/// </summary>
+		/// <param name="tsbId">The TSB Id.</param>
+		/// <param name="plazaGroupId">The Plaza Group Id.</param>
+		/// <param name="plazaId">The Plaza Id.</param>
+		/// <returns>Returns List fo Lanes.</returns>
 		public static NDbResult<List<Lane>> GetPlazaLanes(string tsbId, string plazaGroupId, 
 			string plazaId)
 		{
@@ -823,7 +818,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -838,16 +832,6 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd, tsbId, plazaGroupId, plazaId).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<Lane>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
