@@ -20,8 +20,10 @@ Update 2020-08-15 #25
 Update 2020-08-15 #24
 - 
 
+[commited]
 Update 2020-08-15 #23
-- 
+- Update Local/DataCenter/TAxTOD service operation #191.
+  - Remove unused code.
 
 [commited]
 Update 2020-08-15 #22

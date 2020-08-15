@@ -47,8 +47,6 @@ namespace DMT.TOD.Pages.Reports
 
         private Models.RevenueEntry _revenueEntry = null;
 
-        private bool isNew = false;
-
         #region Button Handlers
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
@@ -255,12 +253,7 @@ namespace DMT.TOD.Pages.Reports
                     _revenueEntry.EntryDate == DateTime.MinValue ||
                     _revenueEntry.RevenueDate == DateTime.MinValue)
                 {
-                    isNew = true;
                     InitNewReport();
-                }
-                else
-                {
-                    isNew = false;
                 }
             }
 
