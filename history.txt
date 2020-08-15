@@ -12,8 +12,41 @@
   - DC Client need new workbrench project.
 
 --------------------------------------------------------------------------------------------
-Update 2020-08-16 #30
+Update 2020-08-16 #40
 - 
+
+Update 2020-08-16 #39
+- 
+
+Update 2020-08-16 #38
+- 
+
+Update 2020-08-16 #37
+- 
+
+Update 2020-08-16 #36
+- 
+
+Update 2020-08-16 #35
+- 
+
+Update 2020-08-16 #34
+- 
+
+Update 2020-08-16 #33
+- 
+
+Update 2020-08-16 #32
+- 
+
+Update 2020-08-16 #31
+- 
+
+[commited]
+Update 2020-08-16 #30
+- Update Local/DataCenter/TAxTOD service operation #237.
+  - User Model update #1.
+    - Cleanup and format code.
 
 [commited]
 Update 2020-08-16 #29

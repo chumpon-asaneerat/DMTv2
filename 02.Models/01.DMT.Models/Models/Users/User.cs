@@ -464,6 +464,9 @@ namespace DMT.Models
 
 		#region Internal Class
 
+		/// <summary>
+		/// The internal FKs class for query data.
+		/// </summary>
 		public class FKs : User, IFKs<User>
 		{
 			#region Role
@@ -490,33 +493,37 @@ namespace DMT.Models
 			}
 
 			#endregion
-
-			#region Public Methods
-			/*
-			public User ToUser()
-			{
-				User inst = new User();
-				this.AssignTo(inst); // set all properties to new instance.
-				return inst;
-			}
-			*/
-			#endregion
 		}
 
 		#endregion
 
 		#region Static Methods
 
+		/// <summary>
+		/// Gets Users.
+		/// </summary>
+		/// <returns>Returns List of User.</returns>
+		public static NDbResult<List<User>> GetUsers()
+		{
+			lock (sync)
+			{
+				SQLiteConnection db = Default;
+				return GetUsers(db);
+			}
+		}
+		/// <summary>
+		/// Gets Users.
+		/// </summary>
+		/// <param name="db">The database connection.</param>
+		/// <returns>Returns List of User.</returns>
 		public static NDbResult<List<User>> GetUsers(SQLiteConnection db)
 		{
 			var result = new NDbResult<List<User>>();
-
 			if (null == db)
 			{
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -528,16 +535,6 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<User>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -548,26 +545,33 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
-		public static NDbResult<List<User>> GetUsers()
+		/// <summary>
+		/// Get User by User Id (Exact match).
+		/// </summary>
+		/// <param name="userId">The User Id.</param>
+		/// <returns>Returns User instance.</returns>
+		public static NDbResult<User> GetUser(string userId)
 		{
 			lock (sync)
 			{
 				SQLiteConnection db = Default;
-				return GetUsers(db);
+				return GetUser(db, userId);
 			}
 		}
-
+		/// <summary>
+		/// Get User by User Id (Exact match).
+		/// </summary>
+		/// <param name="db">The database connection.</param>
+		/// <param name="userId">The User Id.</param>
+		/// <returns>Returns User instance.</returns>
 		public static NDbResult<User> GetUser(SQLiteConnection db, string userId)
 		{
 			var result = new NDbResult<User>();
-
 			if (null == db)
 			{
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -590,26 +594,33 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
-		public static NDbResult<User> GetUser(string userId)
+		/// <summary>
+		/// Search By User Id (with SQL Like filter).
+		/// </summary>
+		/// <param name="userId">The User Id.</param>
+		/// <returns>Returns List of User.</returns>
+		public static NDbResult<List<User>> SearchById(string userId)
 		{
 			lock (sync)
 			{
 				SQLiteConnection db = Default;
-				return GetUser(db, userId);
+				return SearchById(db, userId);
 			}
 		}
-
+		/// <summary>
+		/// Search By User Id (with SQL Like filter).
+		/// </summary>
+		/// <param name="db">The database connection.</param>
+		/// <param name="userId">The User Id.</param>
+		/// <returns>Returns List of User.</returns>
 		public static NDbResult<List<User>> SearchById(SQLiteConnection db, string userId)
 		{
 			var result = new NDbResult<List<User>>();
-
 			if (null == db)
 			{
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -622,16 +633,6 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd, "%" + userId + "%").ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<User>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -642,16 +643,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
-		public static NDbResult<List<User>> SearchById(string userId)
-		{
-			lock (sync)
-			{
-				SQLiteConnection db = Default;
-				return SearchById(db, userId);
-			}
-		}
-
+		/// <summary>
+		/// Find Users by Role Id.
+		/// </summary>
+		/// <param name="roleId">The Role Id.</param>
+		/// <returns>Returns List of User.</returns>
 		public static NDbResult<List<User>> FindByRole(string roleId)
 		{
 			var result = new NDbResult<List<User>>();
@@ -661,7 +657,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -674,16 +669,6 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd, roleId).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<User>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -694,51 +679,12 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
-		public static NDbResult<List<User>> FindByGroupId(int groupId, int status)
-		{
-			var result = new NDbResult<List<User>>();
-			SQLiteConnection db = Default;
-			if (null == db)
-			{
-				result.DbConenctFailed();
-				return result;
-			}
-
-			lock (sync)
-			{
-				MethodBase med = MethodBase.GetCurrentMethod();
-				try
-				{
-					string cmd = string.Empty;
-					cmd += "SELECT * ";
-					cmd += "  FROM UserView ";
-					cmd += " WHERE GroupId = ? ";
-					cmd += "   AND Status = ? ";
-
-					var rets = NQuery.Query<FKs>(cmd, groupId, status).ToList();
-					var results = rets.ToModels();
-					/*
-					var results = new List<User>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
-					result.Success(results);
-				}
-				catch (Exception ex)
-				{
-					med.Err(ex);
-					result.Error(ex);
-				}
-				return result;
-			}
-		}
-
+		/// <summary>
+		/// Find Users by Role Id.
+		/// </summary>
+		/// <param name="roleId">The Role Id.</param>
+		/// <param name="status">The Status.</param>
+		/// <returns>Returns List of User.</returns>
 		public static NDbResult<List<User>> FindByRole(string roleId, int status)
 		{
 			var result = new NDbResult<List<User>>();
@@ -748,7 +694,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -762,16 +707,6 @@ namespace DMT.Models
 
 					var rets = NQuery.Query<FKs>(cmd, roleId, status).ToList();
 					var results = rets.ToModels();
-					/*
-					var results = new List<User>();
-					if (null != rets)
-					{
-						rets.ForEach(ret =>
-						{
-							results.Add(ret.ToModel());
-						});
-					}
-					*/
 					result.Success(results);
 				}
 				catch (Exception ex)
@@ -782,13 +717,50 @@ namespace DMT.Models
 				return result;
 			}
 		}
-		
+		/// <summary>
+		/// Find Users by Group Id.
+		/// </summary>
+		/// <param name="groupId">The Group Id.</param>
+		/// <param name="status">The status.</param>
+		/// <returns>Returns List of User.</returns>
+		public static NDbResult<List<User>> FindByGroupId(int groupId, int status)
+		{
+			var result = new NDbResult<List<User>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * ";
+					cmd += "  FROM UserView ";
+					cmd += " WHERE GroupId = ? ";
+					cmd += "   AND Status = ? ";
+
+					var rets = NQuery.Query<FKs>(cmd, groupId, status).ToList();
+					var results = rets.ToModels();
+					result.Success(results);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
+		}
 		/// <summary>
 		/// Gets by UserId and password.
 		/// </summary>
 		/// <param name="userId">The UserId.</param>
 		/// /// <param name="password">The password in MD5.</param>
-		/// <returns>Returns found record.</returns>
+		/// <returns>Returns User instance.</returns>
 		public static NDbResult<User> GetByUserId(string userId, string password)
 		{
 			var result = new NDbResult<User>();
@@ -798,7 +770,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -822,12 +793,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
 		/// <summary>
-		/// Gets by CardId
+		/// Gets by Card Id
 		/// </summary>
 		/// <param name="cardId">The cardId.</param>
-		/// <returns>Returns found record.</returns>
+		/// <returns>Returns User instance.</returns>
 		public static NDbResult<User> GetByCardId(string cardId)
 		{
 			var result = new NDbResult<User>();
@@ -837,7 +807,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -860,7 +829,11 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
+		/// <summary>
+		/// Save User.
+		/// </summary>
+		/// <param name="value">The User instance.</param>
+		/// <returns>Returns User instance.</returns>
 		public static NDbResult<User> SaveUser(User value)
 		{
 			var result = new NDbResult<User>();
@@ -870,7 +843,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
