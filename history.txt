@@ -61,6 +61,10 @@ Update 2020-08-16 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-08-15 #46
+- Merge from origin/TA #3.
+
+[commited]
 Update 2020-08-15 #45
 - Update Local/DataCenter/TAxTOD service operation #207.
   - Add XX.Backup folder to keep 03.DMT.Local.Plaza.Windows.Services comde both
