@@ -33,8 +33,11 @@ Update 2020-08-16 #35
 Update 2020-08-16 #34
 - 
 
+[commited]
 Update 2020-08-16 #33
-- 
+- Update Local/DataCenter/TAxTOD service operation #238.
+  - LogInLog  Model update #1.
+    - init new class for keep log in log.
 
 [commited]
 Update 2020-08-16 #32

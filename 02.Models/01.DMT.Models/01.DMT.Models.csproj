@@ -119,6 +119,7 @@
     <EmbeddedResource Include="Views\Scripts\Coupons\Backup\UserCoupon80SummaryView.BAK.sql" />
     <EmbeddedResource Include="Views\Scripts\Coupons\Backup\TSBCouponTransactionView.BAK.sql" />
     <EmbeddedResource Include="Views\Scripts\Coupons\Backup\TSBCouponBalanceView.BAK.sql" />
+    <Compile Include="Models\Users\LogInLog.cs" />
     <Compile Include="Views\SqlScriptManager.cs" />
     <Compile Include="Models\Common\DMT.Searchs.cs" />
     <Compile Include="Models\Common\NSearch.cs" />
