@@ -23,13 +23,17 @@ Update 2020-08-15 #34
 Update 2020-08-15 #33
 - 
 
+[commited]
 Update 2020-08-15 #32
-- 
+- Update Local/DataCenter/TAxTOD service operation #198.
+  - Test Simulator functions #1.
+    - Lane Attendance (Begin/End) - OK.
+    - Add Coupon (init) - OK.
 
 [commited]
 Update 2020-08-15 #31
 - Update Local/DataCenter/TAxTOD service operation #197.
-  - Test TOD functions #3.
+  - Test TOD functions #2.
     - Collector Begin TOD Shift - OK.
 
 [commited]
