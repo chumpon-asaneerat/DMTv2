@@ -787,11 +787,10 @@ namespace DMT.Models
 		/// Gets by UserId and password.
 		/// </summary>
 		/// <param name="userId">The UserId.</param>
-		/// /// <param name="password">The password.</param>
+		/// /// <param name="password">The password in MD5.</param>
 		/// <returns>Returns found record.</returns>
 		public static NDbResult<User> GetByUserId(string userId, string password)
 		{
-			// TODO: MD5 password required for login and save.
 			var result = new NDbResult<User>();
 			SQLiteConnection db = Default;
 			if (null == db)
@@ -864,7 +863,6 @@ namespace DMT.Models
 
 		public static NDbResult<User> SaveUser(User value)
 		{
-			// TODO: MD5 password required for login and save.
 			var result = new NDbResult<User>();
 			SQLiteConnection db = Default;
 			if (null == db)

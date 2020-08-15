@@ -17,8 +17,10 @@ Update 2020-08-15 #26
 Update 2020-08-15 #25
 - 
 
+[commited]
 Update 2020-08-15 #24
-- 
+- Update Local/DataCenter/TAxTOD service operation #192.
+  - Implements SignIn supports MD5 password.
 
 [commited]
 Update 2020-08-15 #23
