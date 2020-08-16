@@ -6,7 +6,7 @@ using System.Windows;
 using NLib.Services;
 
 //using DMT.Models;
-//using DMT.Services;
+using DMT.Services;
 
 #endregion
 
@@ -33,8 +33,10 @@ namespace DMT
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            // Start Config service.
+            ConfigManager.Instance.Start();
             // Enable Web Socket.
-            Services.LocalServiceOperations.Instance.EnableWebSocket();
+            LocalServiceOperations.Instance.EnableWebSocket();
             // Initial Page Content Manager
             PageContentManager.Instance.ContentChanged += new EventHandler(Instance_ContentChanged);
             PageContentManager.Instance.StatusUpdated += new StatusMessageEventHandler(Instance_StatusUpdated);
@@ -52,7 +54,9 @@ namespace DMT
             PageContentManager.Instance.StatusUpdated -= new StatusMessageEventHandler(Instance_StatusUpdated);
             PageContentManager.Instance.ContentChanged -= new EventHandler(Instance_ContentChanged);
             // Disable Web Socket.
-            Services.LocalServiceOperations.Instance.DisableWebSocket();
+            LocalServiceOperations.Instance.DisableWebSocket();
+            // Stop Config service.
+            ConfigManager.Instance.Shutdown();
         }
 
         #endregion

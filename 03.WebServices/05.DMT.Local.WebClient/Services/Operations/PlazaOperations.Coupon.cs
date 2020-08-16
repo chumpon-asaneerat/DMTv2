@@ -62,11 +62,19 @@ namespace DMT.Services
 
             public NRestResult<TSBCouponBalance> GetTSBBalance(TSB value)
             {
+                // TODO: Config - Remove Later.
+                /*
                 NRestClient.WebProtocol protocol =
                     (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<TSBCouponBalance> ret;
 
@@ -91,10 +99,10 @@ namespace DMT.Services
             public NRestResult<List<TSBCouponSummary>> GetTSBCouponSummaries(TSB value)
             {
                 NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<List<TSBCouponSummary>> ret;
 
@@ -119,10 +127,10 @@ namespace DMT.Services
             public NRestResult<List<TSBCouponTransaction>> GetTSBCouponTransactions(TSB value)
             {
                 NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<List<TSBCouponTransaction>> ret;
 
@@ -143,10 +151,10 @@ namespace DMT.Services
             public NRestResult<TSBCouponTransaction> SaveTransaction(TSBCouponTransaction value)
             {
                 NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<TSBCouponTransaction> ret;
 

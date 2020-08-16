@@ -64,11 +64,19 @@ namespace DMT.Services
 
             public NRestResult<UserShift> Create(Shift shift, User collector)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<UserShift> ret;
                 var inst = new UserShiftCreate()
@@ -84,11 +92,19 @@ namespace DMT.Services
 
             public NRestResult<UserShift> GetCurrent(User value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<UserShift> ret;
                 if (null != value)
@@ -107,11 +123,19 @@ namespace DMT.Services
 
             public NRestResult BeginUserShift(UserShift value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult ret;
                 if (null != value)
@@ -129,11 +153,19 @@ namespace DMT.Services
 
             public NRestResult EndUserShift(UserShift value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult ret;
                 if (null != value)
@@ -151,11 +183,19 @@ namespace DMT.Services
 
             public NRestResult<List<UserShift>> GetUserShifts(User value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<List<UserShift>> ret;
                 ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
@@ -165,11 +205,19 @@ namespace DMT.Services
 
             public NRestResult<List<UserShift>> GetUnCloseUserShifts()
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<List<UserShift>> ret;
                 ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)

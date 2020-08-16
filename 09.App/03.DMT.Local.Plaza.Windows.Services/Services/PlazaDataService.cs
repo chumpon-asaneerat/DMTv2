@@ -54,6 +54,7 @@ namespace DMT.Services
         {
             _running = true;
             _pause = false;
+            ConfigManager.Instance.Start();
             if (null != _server) _server.Start();
         }
         /// <summary>
@@ -80,6 +81,7 @@ namespace DMT.Services
             _running = false;
             _pause = true;
             if (null != _server) _server.Shutdown();
+            ConfigManager.Instance.Shutdown();
         }
 
         #endregion

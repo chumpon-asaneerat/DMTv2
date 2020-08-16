@@ -66,14 +66,21 @@ namespace DMT.Services
 
             public NRestResult<LaneAttendance> CreateAttendance(Lane lane, User supervisor)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<LaneAttendance> ret;
-
                 ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
                     .Execute<LaneAttendance>(RouteConsts.Lane.CreateAttendance.Url,
                     new LaneAttendanceCreate()
@@ -86,14 +93,21 @@ namespace DMT.Services
 
             public NRestResult<LaneAttendance> SaveAttendance(LaneAttendance value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<LaneAttendance> ret;
-
                 if (null != value)
                 {
                     ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
@@ -111,14 +125,21 @@ namespace DMT.Services
             public NRestResult<List<LaneAttendance>> GetAttendancesByDate(
                 Search.Lanes.Attendances.ByDate value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<List<LaneAttendance>> ret;
-
                 if (null != value)
                 {
                     ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
@@ -136,14 +157,21 @@ namespace DMT.Services
             public NRestResult<List<LaneAttendance>> GetAttendancesByUserShift(
                 Search.Lanes.Attendances.ByUserShift value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<List<LaneAttendance>> ret;
-
                 if (null != value)
                 {
                     ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
@@ -161,14 +189,21 @@ namespace DMT.Services
             public NRestResult<List<LaneAttendance>> GetAllAttendancesByUserShift(
                 UserShift value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<List<LaneAttendance>> ret;
-
                 if (null != value)
                 {
                     ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
@@ -186,14 +221,21 @@ namespace DMT.Services
             public NRestResult<List<LaneAttendance>> GetAttendancesByLane(
                 Search.Lanes.Attendances.ByLane value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<List<LaneAttendance>> ret;
-
                 if (null != value)
                 {
                     ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
@@ -211,14 +253,21 @@ namespace DMT.Services
             public NRestResult<LaneAttendance> GetCurrentAttendancesByLane(
                 Search.Lanes.Current.AttendanceByLane value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<LaneAttendance> ret;
-
                 if (null != value)
                 {
                     ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
@@ -235,11 +284,19 @@ namespace DMT.Services
 
             public NRestResult<List<LaneAttendance>> GetAllNotHasRevenueEntry()
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<List<LaneAttendance>> ret;
                 ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
@@ -254,14 +311,21 @@ namespace DMT.Services
             public NRestResult<LanePayment> CreatePayment(Lane lane, User supervisor,
                 Payment payment, DateTime date, decimal amount)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<LanePayment> ret;
-
                 ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
                     .Execute<LanePayment>(RouteConsts.Lane.CreatePayment.Url,
                     new LanePaymentCreate()
@@ -277,14 +341,21 @@ namespace DMT.Services
 
             public NRestResult<LanePayment> SavePayment(LanePayment value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<LanePayment> ret;
-
                 if (null != value)
                 {
                     ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
@@ -302,14 +373,21 @@ namespace DMT.Services
             public NRestResult<List<LanePayment>> GetPaymentsByDate(
                 Search.Lanes.Payments.ByDate value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<List<LanePayment>> ret;
-
                 if (null != value)
                 {
                     ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
@@ -327,14 +405,21 @@ namespace DMT.Services
             public NRestResult<List<LanePayment>> GetPaymentsByUserShift(
                 Search.Lanes.Attendances.ByUserShift value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<List<LanePayment>> ret;
-
                 if (null != value)
                 {
                     ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
@@ -352,14 +437,21 @@ namespace DMT.Services
             public NRestResult<List<LanePayment>> GetPaymentsByLane(
                 Search.Lanes.Attendances.ByLane value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<List<LanePayment>> ret;
-
                 if (null != value)
                 {
                     ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
@@ -377,14 +469,21 @@ namespace DMT.Services
             public NRestResult<LanePayment> GetCurrentPaymentsByLane(
                 Search.Lanes.Current.PaymentByLane value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<LanePayment> ret;
-
                 if (null != value)
                 {
                     ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)

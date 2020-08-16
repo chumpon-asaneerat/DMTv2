@@ -67,11 +67,20 @@ namespace DMT.Services
 
             public NRestResult<List<TSB>> GetTSBs()
             {
+                // TODO: Config - Remove Later.
+                /*
                 NRestClient.WebProtocol protocol = 
                     (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
+
                 var ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
                     .Execute<List<TSB>>(
                     RouteConsts.TSB.GetTSBs.Url, new { });
@@ -80,11 +89,20 @@ namespace DMT.Services
 
             public NRestResult<TSB> GetCurrent()
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
+
                 var ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
                     .Execute<TSB>(RouteConsts.TSB.GetCurrent.Url, new { });
                 return ret;
@@ -92,11 +110,19 @@ namespace DMT.Services
 
             public NRestResult SetActive(TSB value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult ret;
                 if (null != value)
@@ -114,11 +140,19 @@ namespace DMT.Services
 
             public NRestResult<TSB> SaveTSB(TSB value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<TSB> ret;
                 if (null != value)
@@ -140,11 +174,19 @@ namespace DMT.Services
 
             public NRestResult<List<Plaza>> GetTSBPlazas(TSB value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<List<Plaza>> ret;
                 if (null != value)
@@ -163,11 +205,19 @@ namespace DMT.Services
 
             public NRestResult<Plaza> SavePlaza(Plaza value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<Plaza> ret;
                 if (null != value)
@@ -190,11 +240,19 @@ namespace DMT.Services
 
             public NRestResult<List<PlazaGroup>> GetTSBPlazaGroups(TSB value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<List<PlazaGroup>> ret;
 
@@ -214,11 +272,19 @@ namespace DMT.Services
 
             public NRestResult<PlazaGroup> SavePlazaGroup(PlazaGroup value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<PlazaGroup> ret;
 
@@ -242,11 +308,19 @@ namespace DMT.Services
 
             public NRestResult<List<Lane>> GetTSBLanes(TSB value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<List<Lane>> ret;
                 if (null != value)
@@ -265,11 +339,19 @@ namespace DMT.Services
 
             public NRestResult<List<Lane>> GetPlazaLanes(Plaza value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<List<Lane>> ret;
                 if (null != value)
@@ -288,11 +370,19 @@ namespace DMT.Services
 
             public NRestResult<List<Lane>> GetPlazaGroupLanes(PlazaGroup value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<List<Lane>> ret;
                 if (null != value)
@@ -311,11 +401,19 @@ namespace DMT.Services
 
             public NRestResult<Lane> SaveLane(Lane value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<Lane> ret;
 

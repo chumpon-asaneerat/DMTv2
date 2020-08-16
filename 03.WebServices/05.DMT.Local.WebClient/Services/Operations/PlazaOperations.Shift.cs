@@ -66,11 +66,19 @@ namespace DMT.Services
 
             public NRestResult<List<Shift>> GetShifts()
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<List<Shift>> ret;
                 ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
@@ -80,11 +88,19 @@ namespace DMT.Services
 
             public NRestResult<Shift> SaveShift(Shift value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<Shift> ret;
                 if (null != value)
@@ -107,11 +123,19 @@ namespace DMT.Services
 
             public NRestResult<TSBShift> Create(Shift shift, User supervisor)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<TSBShift> ret;
                 var inst = new TSBShiftCreate()
@@ -126,11 +150,19 @@ namespace DMT.Services
 
             public NRestResult<TSBShift> GetCurrent()
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult<TSBShift> ret;
                 ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
@@ -140,11 +172,19 @@ namespace DMT.Services
 
             public NRestResult ChangeShift(TSBShift value)
             {
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
+                // TODO: Config - Remove Later.
+                /*
+                NRestClient.WebProtocol protocol = 
+                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
                 string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
                 int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
+                */
+                NRestClient.WebProtocol protocol =
+                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
 
                 NRestResult ret;
                 if (null != value)

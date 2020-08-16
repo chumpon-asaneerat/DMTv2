@@ -1,4 +1,6 @@
-﻿using System;
+﻿#region Using
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using DMT.Services;
+
+#endregion
 
 namespace DMT.Forms
 {
@@ -21,6 +27,7 @@ namespace DMT.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            ConfigManager.Instance.Start();
             if (null == server)
             {
                 server = new Services.LocalDatabaseWebServer();
@@ -35,6 +42,7 @@ namespace DMT.Forms
                 server.Shutdown();
             }
             server = null;
+            ConfigManager.Instance.Shutdown();
         }
     }
 }

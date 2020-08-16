@@ -36,6 +36,9 @@ namespace DMT
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            // Start Config service.
+            ConfigManager.Instance.Start();
+
             LocalServiceOperations.Instance.ServiceMonitor.ScanConpleted += ServiceMonitor_ScanConpleted;
             LocalServiceOperations.Instance.ServiceMonitor.Start();
 
@@ -56,6 +59,8 @@ namespace DMT
 
             LocalServiceOperations.Instance.ServiceMonitor.Shutdown();
             LocalServiceOperations.Instance.ServiceMonitor.ScanConpleted -= ServiceMonitor_ScanConpleted;
+            // Stop Config service.
+            ConfigManager.Instance.Shutdown();
         }
 
         #endregion

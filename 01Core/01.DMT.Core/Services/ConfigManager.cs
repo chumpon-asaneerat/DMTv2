@@ -7,6 +7,7 @@ using System.Threading;
 using NLib;
 using NLib.IO;
 using Newtonsoft.Json;
+using NLib.Controls.Design;
 
 #endregion
 
@@ -14,8 +15,18 @@ namespace DMT.Services
 {
     #region Plaza Config and related classes
 
+    #region WebServiceConfig
+
+    /// <summary>
+    /// The WebServiceConfig class.
+    /// </summary>
     public class WebServiceConfig
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public WebServiceConfig()
         {
             this.Protocol = "http";
@@ -23,13 +34,40 @@ namespace DMT.Services
             this.PortNumber = 9000;
         }
 
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets protocol.
+        /// </summary>
         public string Protocol { get; set; }
+        /// <summary>
+        /// Gets or sets Host Name or IP Address.
+        /// </summary>
         public string HostName { get; set; }
+        /// <summary>
+        /// Gets or sets port number.
+        /// </summary>
         public int PortNumber { get; set; }
+
+        #endregion
     }
 
+    #endregion
+
+    #region LocalWebServiceConfig
+
+    /// <summary>
+    /// The LocalWebServiceConfig class.
+    /// </summary>
     public class LocalWebServiceConfig
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public LocalWebServiceConfig() 
         {
             this.Http = new WebServiceConfig()
@@ -47,12 +85,36 @@ namespace DMT.Services
             };
         }
 
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets Http service.
+        /// </summary>
         public WebServiceConfig Http { get; set; }
+        /// <summary>
+        /// Gets or sets Web Socket service.
+        /// </summary>
         public WebServiceConfig WebSocket { get; set; }
+
+        #endregion
     }
 
+    #endregion
+
+    #region TAxTODWebServiceConfig
+
+    /// <summary>
+    /// The TAxTODWebServiceConfig class.
+    /// </summary>
     public class TAxTODWebServiceConfig
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public TAxTODWebServiceConfig()
         {
             this.Http = new WebServiceConfig()
@@ -63,11 +125,32 @@ namespace DMT.Services
             };
         }
 
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets Http service.
+        /// </summary>
         public WebServiceConfig Http { get; set; }
+
+        #endregion
     }
 
+    #endregion
+
+    #region DCWebServiceConfig
+
+    /// <summary>
+    /// The DCWebServiceConfig class.
+    /// </summary>
     public class DCWebServiceConfig
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public DCWebServiceConfig()
         {
             this.Http = new WebServiceConfig()
@@ -78,11 +161,32 @@ namespace DMT.Services
             };
         }
 
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets Http service.
+        /// </summary>
         public WebServiceConfig Http { get; set; }
+
+        #endregion
     }
 
+    #endregion
+
+    #region PlazaConfig
+
+    /// <summary>
+    /// The PlazaConfig class.
+    /// </summary>
     public class PlazaConfig
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public PlazaConfig() : base()
         {
             this.Local = new LocalWebServiceConfig();
@@ -90,10 +194,27 @@ namespace DMT.Services
             this.DC = new DCWebServiceConfig();
         }
 
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets Local Service Config.
+        /// </summary>
         public LocalWebServiceConfig Local { get; set; }
+        /// <summary>
+        /// Gets or sets TAxTOD Service Config.
+        /// </summary>
         public TAxTODWebServiceConfig TAxTOD { get; set; }
+        /// <summary>
+        /// Gets or sets DC Service Config.
+        /// </summary>
         public DCWebServiceConfig DC { get; set; }
+
+        #endregion
     }
+
+    #endregion
 
     #endregion
 
@@ -131,6 +252,9 @@ namespace DMT.Services
         #region Internal Variables
 
         private Thread _th = null;
+        private DateTime _lastUpdate = DateTime.MinValue;
+        private int _timeout = 15 * 1000; // timeout in ms.
+
         private string _fileName = NJson.LocalConfigFile("plaza.config.json");
         private PlazaConfig _plazaCfg = new PlazaConfig();
 
@@ -159,16 +283,15 @@ namespace DMT.Services
 
         private void Processing()
         {
-            DateTime dt = DateTime.Now;
             TimeSpan ts;
             while (null != _th && IsRunning &&
                 !ApplicationManager.Instance.IsExit)
             {
-                ts = DateTime.Now - dt;
-                if (ts.TotalMilliseconds > 1000)
+                ts = DateTime.Now - _lastUpdate;
+                if (ts.TotalMilliseconds > _timeout)
                 {
                     UpdateConfig();
-                    dt = DateTime.Now;
+                    _lastUpdate = DateTime.Now;
                 }
             }
             Shutdown();
@@ -180,20 +303,14 @@ namespace DMT.Services
             {
                 if (!NJson.ConfigExists(_fileName))
                 {
-                    if (null == _plazaCfg)
-                    {
-                        _plazaCfg = new PlazaConfig();
-                    }
-                    NJson.SaveToFile(_plazaCfg, _fileName);
+                    if (null == _plazaCfg) _plazaCfg = new PlazaConfig();
                 }
-
-                _plazaCfg = NJson.LoadFromFile<PlazaConfig>(_fileName);
-                if (null == _plazaCfg)
+                else
                 {
-                    // Read file failed.
-                    _plazaCfg = new PlazaConfig();
-                    NJson.SaveToFile(_plazaCfg, _fileName);
+                    _plazaCfg = NJson.LoadFromFile<PlazaConfig>(_fileName);
                 }
+                // save back to file.
+                NJson.SaveToFile(_plazaCfg, _fileName);
             }
         }
 

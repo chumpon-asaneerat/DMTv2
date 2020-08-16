@@ -74,6 +74,8 @@ namespace DMT.Services
     {
         #region Internal Variables
 
+        // TODO: Config - Remove Later.
+        /*
         private string baseAddress = string.Format(@"{0}://{1}:{2}",
             AppConsts.WindowsService.Local.WebServer.Protocol,
             AppConsts.WindowsService.Local.WebServer.HostName,
@@ -84,6 +86,16 @@ namespace DMT.Services
             AppConsts.WindowsService.Local.WebSocket.Protocol,
             AppConsts.WindowsService.Local.WebSocket.HostName,
             AppConsts.WindowsService.Local.WebSocket.PortNumber);
+        */
+        private string baseAddress = string.Format(@"{0}://{1}:{2}",
+            ConfigManager.Instance.Plaza.Local.Http.Protocol,
+            ConfigManager.Instance.Plaza.Local.Http.HostName,
+            ConfigManager.Instance.Plaza.Local.Http.PortNumber);
+
+        private string wsAddress = string.Format(@"{0}://{1}:{2}",
+            ConfigManager.Instance.Plaza.Local.WebSocket.Protocol,
+            ConfigManager.Instance.Plaza.Local.WebSocket.HostName,
+            ConfigManager.Instance.Plaza.Local.WebSocket.PortNumber);
 
         private IDisposable server = null;
         private WebSocketSharp.Server.WebSocketServer wsserver = null;
