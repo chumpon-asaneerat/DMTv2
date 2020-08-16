@@ -45,8 +45,9 @@ namespace DMT.TA.Windows.Collector.Credit
         {
             string userId = txtSearchUserId.Text;
             if (string.IsNullOrEmpty(userId)) return;
-
-            var users = ops.Users.SearchById(Search.Users.ById.Create(userId)).Value();
+            // TODO: Implements UserSearchManager here.
+            var search = Search.Users.ById.Create(userId, "CTC", "TC");
+            var users = ops.Users.SearchById(search).Value();
             if (null != users && null != manager.UserBalance)
             {
                 if (users.Count == 1)

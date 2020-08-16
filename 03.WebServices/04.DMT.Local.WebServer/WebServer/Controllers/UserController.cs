@@ -134,7 +134,7 @@ namespace DMT.Services
             }
             else
             {
-                result = Models.User.SearchById(value.UserId);
+                result = Models.User.SearchById(value.UserId, value.Roles);
 
             }
             return result;

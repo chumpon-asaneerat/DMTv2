@@ -28,7 +28,6 @@ namespace DMT.TA.Controls.Collector.Coupon
         public User User { get; set; }
     }
 
-
     /// <summary>
     /// Interaction logic for CouponReceiveView.xaml
     /// </summary>
@@ -54,9 +53,8 @@ namespace DMT.TA.Controls.Collector.Coupon
             var trans = (null != button) ? button.DataContext as TSBCouponSummary : null;
             if (null == trans) return;
 
-            var search = Search.Users.ById.Create(trans.UserId);
-            var ret = ops.Users.GetById(search);
-            var user = ret.Value();
+            var search = Search.Users.ById.Create(trans.UserId, "TC");
+            var user = ops.Users.GetById(search).Value();
             if (null == user) return;
 
             // Raise Event.
@@ -73,9 +71,8 @@ namespace DMT.TA.Controls.Collector.Coupon
             var trans = (null != button) ? button.DataContext as TSBCouponSummary : null;
             if (null == trans) return;
 
-            var search = Search.Users.ById.Create(trans.UserId);
-            var ret = ops.Users.GetById(search);
-            var user = ret.Value();
+            var search = Search.Users.ById.Create(trans.UserId, "TC");
+            var user = ops.Users.GetById(search).Value();
             if (null == user) return;
 
             var win = new DMT.TA.Windows.Coupon.CouponEditWindow();

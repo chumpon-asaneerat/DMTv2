@@ -23,14 +23,17 @@ Update 2020-08-16 #56
 Update 2020-08-16 #55
 - 
 
+[commited]
 Update 2020-08-16 #54
-- 
+- Update Local/DataCenter/TAxTOD service operation #254.
+  - DMT.Controls update #2.
+    - Update User Search Process #2.
 
 [commited]
 Update 2020-08-16 #53
 - Update Local/DataCenter/TAxTOD service operation #253.
   - DMT.Controls update #1.
-    - Add UserSearchManger.
+    - Update User Search Process #1.
 
 [commited]
 Update 2020-08-16 #52

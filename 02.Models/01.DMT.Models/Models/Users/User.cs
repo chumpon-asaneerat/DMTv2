@@ -766,13 +766,15 @@ namespace DMT.Models
 		/// Search By User Id (with SQL Like filter).
 		/// </summary>
 		/// <param name="userId">The User Id.</param>
+		/// <param name="roles">The roles Id list.</param>
 		/// <returns>Returns List of User.</returns>
-		public static NDbResult<List<User>> SearchById(string userId)
+		public static NDbResult<List<User>> SearchById(string userId, 
+			string[] roles)
 		{
 			lock (sync)
 			{
 				SQLiteConnection db = Default;
-				return SearchById(db, userId);
+				return SearchById(db, userId, roles);
 			}
 		}
 		/// <summary>
@@ -780,8 +782,10 @@ namespace DMT.Models
 		/// </summary>
 		/// <param name="db">The database connection.</param>
 		/// <param name="userId">The User Id.</param>
+		/// <param name="roles">The roles Id list.</param>
 		/// <returns>Returns List of User.</returns>
-		public static NDbResult<List<User>> SearchById(SQLiteConnection db, string userId)
+		public static NDbResult<List<User>> SearchById(SQLiteConnection db, 
+			string userId, string[] roles)
 		{
 			var result = new NDbResult<List<User>>();
 			if (null == db)
@@ -798,7 +802,19 @@ namespace DMT.Models
 					cmd += "SELECT * ";
 					cmd += "  FROM UserView ";
 					cmd += " WHERE UserId like ? ";
-
+					if (null != roles && roles.Length > 0)
+					{
+						cmd += "   AND RoldId IN ( ";
+						for (int i = 0; i < roles.Length; i++)
+						{
+							cmd += string.Format("'{0}'", roles[i]);
+							if (i < roles.Length - 1)
+							{
+								cmd += ", ";
+							}
+						}
+						cmd += "                 ) ";
+					}
 					var rets = NQuery.Query<FKs>(cmd, "%" + userId + "%").ToList();
 					var results = rets.ToModels();
 					result.Success(results);
