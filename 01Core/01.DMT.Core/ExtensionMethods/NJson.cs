@@ -73,6 +73,7 @@ namespace DMT
                 using (StreamWriter file = File.CreateText(fileName))
                 {
                     JsonSerializer serializer = new JsonSerializer();
+                    //serializer.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                     serializer.Formatting = (minimized) ? Formatting.None : Formatting.Indented;
                     serializer.Serialize(file, value);
                 }
@@ -100,6 +101,7 @@ namespace DMT
                 using (StreamReader file = File.OpenText(fileName))
                 {
                     JsonSerializer serializer = new JsonSerializer();
+                    //serializer.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                     result = (T)serializer.Deserialize(file, typeof(T));
                 }
             }

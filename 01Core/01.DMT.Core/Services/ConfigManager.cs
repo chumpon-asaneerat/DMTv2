@@ -20,6 +20,7 @@ namespace DMT.Services
     /// <summary>
     /// The WebServiceConfig class.
     /// </summary>
+    [JsonObject(MemberSerialization.OptOut)]
     public class WebServiceConfig
     {
         #region Constructor
@@ -34,6 +35,40 @@ namespace DMT.Services
             this.PortNumber = 9000;
         }
 
+        #endregion
+
+        #region Override Methods
+        /*
+        /// <summary>
+        /// Equals.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            if (null == obj) return false;
+            return this.GetHashCode() == obj.GetHashCode();
+        }
+        /// <summary>
+        /// GetHashCode.
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            string code = this.GetString();
+            return code.GetHashCode();
+        }
+        /// <summary>
+        /// GetString.
+        /// </summary>
+        /// <returns></returns>
+        public string GetString()
+        {
+            string code = string.Format("{0}://{1}:{2}",
+                this.Protocol, this.HostName, this.PortNumber);
+            return code;
+        }
+        */
         #endregion
 
         #region Public Properties
@@ -61,6 +96,7 @@ namespace DMT.Services
     /// <summary>
     /// The LocalWebServiceConfig class.
     /// </summary>
+    [JsonObject(MemberSerialization.OptOut)]
     public class LocalWebServiceConfig
     {
         #region Constructor
@@ -87,6 +123,40 @@ namespace DMT.Services
 
         #endregion
 
+        #region Override Methods
+        /*
+        /// <summary>
+        /// Equals.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            if (null == obj) return false;
+            return this.GetHashCode() == obj.GetHashCode();
+        }
+        /// <summary>
+        /// GetHashCode.
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            string code = this.GetString();
+            return code.GetHashCode();
+        }
+        /// <summary>
+        /// GetString.
+        /// </summary>
+        /// <returns></returns>
+        public string GetString()
+        {
+            if (null != this.Http)
+                return string.Format("{0}", this.Http.GetString());
+            else return "Local http is null.";
+        }
+        */
+        #endregion
+
         #region Public Properties
 
         /// <summary>
@@ -108,6 +178,7 @@ namespace DMT.Services
     /// <summary>
     /// The TAxTODWebServiceConfig class.
     /// </summary>
+    [JsonObject(MemberSerialization.OptOut)]
     public class TAxTODWebServiceConfig
     {
         #region Constructor
@@ -127,6 +198,40 @@ namespace DMT.Services
 
         #endregion
 
+        #region Override Methods
+        /*
+        /// <summary>
+        /// Equals.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            if (null == obj) return false;
+            return this.GetHashCode() == obj.GetHashCode();
+        }
+        /// <summary>
+        /// GetHashCode.
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            string code = this.GetString();
+            return code.GetHashCode();
+        }
+        /// <summary>
+        /// GetString.
+        /// </summary>
+        /// <returns></returns>
+        public string GetString()
+        {
+            if (null != this.Http)
+                return string.Format("{0}", this.Http.GetString());
+            else return "TAxTOD http is null.";
+        }
+        */
+        #endregion
+
         #region Public Properties
 
         /// <summary>
@@ -144,6 +249,7 @@ namespace DMT.Services
     /// <summary>
     /// The DCWebServiceConfig class.
     /// </summary>
+    [JsonObject(MemberSerialization.OptOut)]
     public class DCWebServiceConfig
     {
         #region Constructor
@@ -163,6 +269,40 @@ namespace DMT.Services
 
         #endregion
 
+        #region Override Methods
+        /*
+        /// <summary>
+        /// Equals.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            if (null == obj) return false;
+            return this.GetHashCode() == obj.GetHashCode();
+        }
+        /// <summary>
+        /// GetHashCode.
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            string code = this.GetString();
+            return code.GetHashCode();
+        }
+        /// <summary>
+        /// GetString.
+        /// </summary>
+        /// <returns></returns>
+        public string GetString()
+        {
+            if (null != this.Http)
+                return string.Format("{0}", this.Http.GetString());
+            else return "DC http is null.";
+        }
+        */
+        #endregion
+
         #region Public Properties
 
         /// <summary>
@@ -180,6 +320,7 @@ namespace DMT.Services
     /// <summary>
     /// The PlazaConfig class.
     /// </summary>
+    [JsonObject(MemberSerialization.OptOut)]
     public class PlazaConfig
     {
         #region Constructor
@@ -194,6 +335,65 @@ namespace DMT.Services
             this.DC = new DCWebServiceConfig();
         }
 
+        #endregion
+
+        #region Override Methods
+        /*
+        /// <summary>
+        /// Equals.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            if (null == obj) return false;
+            return this.GetHashCode() == obj.GetHashCode();
+        }
+        /// <summary>
+        /// GetHashCode.
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return this.GetString().GetHashCode();
+        }
+        /// <summary>
+        /// GetString.
+        /// </summary>
+        /// <returns></returns>
+        public string GetString()
+        {
+            string code = string.Empty;
+            if (null == this.Local)
+            {
+                code += "Local: null" + Environment.NewLine;
+            }
+            else
+            {
+                code += string.Format("Local: {0}", 
+                    this.Local.GetString()) + Environment.NewLine;
+            }
+            if (null == this.TAxTOD)
+            {
+                code += "TAxTOD: null" + Environment.NewLine;
+            }
+            else
+            {
+                code += string.Format("TAxTOD: {0}", 
+                    this.TAxTOD.GetString()) + Environment.NewLine;
+            }
+            if (null == this.DC)
+            {
+                code += "DC: null" + Environment.NewLine;
+            }
+            else
+            {
+                code += string.Format("DC: {0}", 
+                    this.DC.GetString()) + Environment.NewLine;
+            }
+            return code;
+        }
+        */
         #endregion
 
         #region Public Properties
@@ -303,10 +503,10 @@ namespace DMT.Services
             {
                 try
                 {
-                    //var oldCfg = _plazaCfg;
+                    var oldCfg = _plazaCfg;
                     if (!NJson.ConfigExists(_fileName))
                     {
-                        _plazaCfg = new PlazaConfig();
+                        _plazaCfg = null;
                     }
                     else
                     {
@@ -317,12 +517,22 @@ namespace DMT.Services
                     {
                         _plazaCfg = new PlazaConfig();
                         Console.WriteLine("New Config: {0}", _plazaCfg);
+                        NJson.SaveToFile(_plazaCfg, _fileName);
+                        // Raise event.
+                        ConfigChanged.Call(this, EventArgs.Empty);
                     }
                     else
                     {
                         Console.WriteLine("Loaded Config: {0}", _plazaCfg);
+                        /*
+                        if (_plazaCfg.Equals(oldCfg))
+                        {
+                            NJson.SaveToFile(_plazaCfg, _fileName);
+                            // Raise event.
+                            ConfigChanged.Call(this, EventArgs.Empty);
+                        }
+                        */
                     }
-                    NJson.SaveToFile(_plazaCfg, _fileName);
                 }
                 catch (Exception ex)
                 {
@@ -380,6 +590,12 @@ namespace DMT.Services
             get { return _plazaCfg; }
             set { }
         }
+
+        #endregion
+
+        #region Public Events
+
+        public event EventHandler ConfigChanged;
 
         #endregion
     }
