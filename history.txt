@@ -9,16 +9,38 @@ Update 2020-08-16 #60
 - 
 
 Update 2020-08-16 #59
-- 
+- Update Local/DataCenter/TAxTOD service operation #259.
+  - Test TA functions #4.
+    - User Credit - Borrow
+    - User Coupon - Received (Init)
+    - User Coupon - Received (Edit)
+    - User Coupon - Received (Print)
+    - User Coupon - Return/Sold (TA)
+    - User Credit - Receive Bag (Confirm)
+    - User Credit - Return (partial)
+    - Check Plaza Balance
+  - Test TOD functions #3.
+    - Supervisor Change Shift
+    - Collector Begin Shift
+    - Lane Attendance List
+    - Revenue Entry (Collector) Get Bag No, Belt No from TA
+    - Revenue Entry (Collector) End Date
+    - Reports -> Revenue Slip
+    - Reports -> Revenue Summary
+    - Reports -> Empty Slip
+    - Revenue Entry (Supervisor)
 
 Update 2020-08-16 #58
-- 
+- Update Local/DataCenter/TAxTOD service operation #258.
 
 Update 2020-08-16 #57
-- 
+- Update Local/DataCenter/TAxTOD service operation #257.
 
+[commited]
 Update 2020-08-16 #56
-- 
+- Update Local/DataCenter/TAxTOD service operation #256.
+  - DMT.Controls update #4.
+    - Cleanup code.
 
 [commited]
 Update 2020-08-16 #55
@@ -49,20 +71,20 @@ Update 2020-08-16 #51
 [commited]
 Update 2020-08-16 #50
 - Update Local/DataCenter/TAxTOD service operation #252.
-  - Test TOD functions #1.
+  - Test TOD functions #2.
     - Revenue Entry Get Bag No, Belt No from TA. (Collector) - OK.
 
 [commited]
 Update 2020-08-16 #49
 - Update Local/DataCenter/TAxTOD service operation #251.
-  - Test TA functions #1.
+  - Test TA functions #3.
     - User Credit - Receive Bag (Confirm) - OK.
     - User Credit - Return (partial) - OK.
 
 [commited]
 Update 2020-08-16 #48
 - Update Local/DataCenter/TAxTOD service operation #250.
-  - Test TA functions #1.
+  - Test TA functions #2.
     - Check Plaza Balance - OK.
     - User Coupon - Received (Init) - OK.
     - User Coupon - Received (Edit) - OK.

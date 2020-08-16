@@ -48,37 +48,12 @@ namespace DMT.TA.Windows.Collector.Credit
             string userId = txtSearchUserId.Text;
             if (string.IsNullOrEmpty(userId)) return;
 
-            // TODO: Implements UserSearchManager here.
             UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
             var user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
             if (null != user && null != manager.UserBalance)
             {
                 manager.SetUser(user);
             }
-
-            /*
-            var search = Search.Users.ById.Create(userId, "CTC", "TC");
-            var users = ops.Users.SearchById(search).Value();
-            if (null != users && null != manager.UserBalance)
-            {
-                if (users.Count == 1)
-                {
-                    manager.SetUser(users[0]);
-                }
-                else if (users.Count > 1)
-                {
-                    var win = new TA.Windows.Collector.Searchs.CollectorFilterWindow();
-                    win.Owner = Application.Current.MainWindow;
-                    win.Setup(users);
-                    if (win.ShowDialog() == false || null == win.SelectedUser)
-                    {
-                        // No user selected.
-                        return;
-                    }
-                    manager.SetUser(win.SelectedUser);
-                }
-            }
-            */
         }
 
         private void cmdOK_Click(object sender, RoutedEventArgs e)

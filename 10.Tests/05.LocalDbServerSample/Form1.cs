@@ -264,6 +264,7 @@ namespace LocalDbServerSample
 
         private void button17_Click(object sender, EventArgs e)
         {
+            /*
             // Sold
             var dbgrid = dbgUserCoupon;
 
@@ -273,6 +274,7 @@ namespace LocalDbServerSample
             {
                 UserCouponTransaction.Sold(item);
             }
+            */
         }
 
         private void button18_Click(object sender, EventArgs e)

@@ -101,7 +101,6 @@ namespace DMT.TA.Pages.Coupon
             string userId = txtSearchUserId.Text;
             if (string.IsNullOrEmpty(userId)) return;
 
-            // TODO: Implements UserSearchManager here.
             UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
             _user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
             if (null != _user)
@@ -114,41 +113,6 @@ namespace DMT.TA.Pages.Coupon
                 txtUserId.Text = string.Empty;
                 txtUserName.Text = string.Empty;
             }
-
-            /*
-            var search = Search.Users.ById.Create(userId, "CTC", "TC");
-            var users = ops.Users.SearchById(search).Value();
-            if (null != users)
-            {
-                if (users.Count == 1)
-                {
-                    _user = users[0];
-                }
-                else if (users.Count > 1)
-                {
-                    var win = new TA.Windows.Collector.Searchs.CollectorFilterWindow();
-                    win.Owner = Application.Current.MainWindow;
-                    win.Setup(users);
-                    if (win.ShowDialog() == false || null == win.SelectedUser)
-                    {
-                        // No user selected.
-                        return;
-                    }
-                    _user = win.SelectedUser;
-                }
-
-                if (null != _user)
-                {
-                    txtUserId.Text = _user.UserId;
-                    txtUserName.Text = _user.FullNameTH;
-                }
-                else
-                {
-                    txtUserId.Text = string.Empty;
-                    txtUserName.Text = string.Empty;
-                }
-            }
-            */
         }
 
         private void cmdAppend_Click(object sender, RoutedEventArgs e)

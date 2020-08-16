@@ -783,14 +783,18 @@ namespace DMT.Models
 				return result;
 			}
 		}
+
+		#region Unused code (comment out)
+
+		/*
 		/// <summary>
 		/// Borrow Coupons by user (Active TSB)
 		/// Call for Update transaction type of coupons from stock to lane.
 		/// </summary>
 		/// <param name="user">The User instance.</param>
 		/// <param name="coupons">The TSB Coupon list.</param>
-		/// <returns>Returns list of coupons borrow by users.</returns>
-		public static NDbResult<TSBCouponTransaction> UserBorrowCoupons(
+		/// <returns>Returns save result.</returns>
+		public static NDbResult UserBorrowCoupons(
 			User user, List<TSBCouponTransaction> coupons)
 		{
 			var result = new NDbResult<TSBCouponTransaction>();
@@ -826,9 +830,8 @@ namespace DMT.Models
 						inst.CouponType = coupon.CouponType;
 						inst.Price = coupon.Price;
 						UserCouponTransaction.Save(inst);
-						// TODO: need to check why null.
-						result.Success(null);
 					});
+					result.Success();
 				}
 				catch (Exception ex)
 				{
@@ -844,8 +847,9 @@ namespace DMT.Models
 		/// </summary>
 		/// <param name="user">The User instance.</param>
 		/// <param name="coupons">The TSB Coupon list.</param>
-		/// <returns>Returns list of coupons return by users.</returns>
-		public static NDbResult<TSBCouponTransaction> UserReturnCoupons(User user, List<TSBCouponTransaction> coupons)
+		/// <returns>Returns save result.</returns>
+		public static NDbResult UserReturnCoupons(
+			User user, List<TSBCouponTransaction> coupons)
 		{
 			var result = new NDbResult<TSBCouponTransaction>();
 			SQLiteConnection db = Default;
@@ -877,9 +881,8 @@ namespace DMT.Models
 						inst.CouponType = coupon.CouponType;
 						inst.Price = coupon.Price;
 						UserCouponTransaction.Save(inst);
-						// TODO: Need to check why null.
-						result.Success(null);
 					});
+					result.Success();
 				}
 				catch (Exception ex)
 				{
@@ -911,20 +914,21 @@ namespace DMT.Models
 				return result;
 			}
 			// TODO: UserCouponTransaction Sold method. Implements required.
-			/*
-			lock (sync)
-			{
-				coupon.TransactionType = UserCouponTransaction.TransactionTypes.Sold;
-				UserCouponTransaction.Save(coupon);
-				var tsbCoupon = TSBCouponTransaction.FindById(coupon.CouponId);
-				if (null != tsbCoupon)
-				{
-					TSBCouponTransaction.Sold(tsbCoupon);
-				}
-			}
-			*/
-			return result;
+			//lock (sync)
+			//{
+			//	coupon.TransactionType = UserCouponTransaction.TransactionTypes.Sold;
+			//	UserCouponTransaction.Save(coupon);
+			//	var tsbCoupon = TSBCouponTransaction.FindById(coupon.CouponId);
+			//	if (null != tsbCoupon)
+			//	{
+			//		TSBCouponTransaction.Sold(tsbCoupon);
+			//	}
+			//}
+			//return result;
 		}
+		*/
+
+		#endregion
 
 		#endregion
 	}
