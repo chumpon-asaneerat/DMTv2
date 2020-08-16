@@ -46,7 +46,6 @@ namespace DMT.Windows
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            SmartcardManager.Instance.Start();
             SmartcardManager.Instance.UserChanged += Instance_UserChanged;
         }
 
@@ -62,8 +61,11 @@ namespace DMT.Windows
 
         private void Instance_UserChanged(object sender, EventArgs e)
         {
-            _user = SmartcardManager.Instance.User;
-            CheckUser();
+            if (null != SmartcardManager.Instance.User)
+            {
+                _user = SmartcardManager.Instance.User;
+                CheckUser();
+            }
         }
 
         #endregion
@@ -149,6 +151,8 @@ namespace DMT.Windows
         {
             _roles.Clear();
             _roles.AddRange(roles);
+
+            SmartcardManager.Instance.Start();
         }
 
         public User User { get { return _user;} }

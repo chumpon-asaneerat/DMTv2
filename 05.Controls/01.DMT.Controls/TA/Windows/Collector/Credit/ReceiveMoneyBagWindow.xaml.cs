@@ -47,7 +47,6 @@ namespace DMT.TA.Windows.Collector.Credit
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            SmartcardManager.Instance.Start();
             SmartcardManager.Instance.UserChanged += Instance_UserChanged;
         }
 
@@ -64,6 +63,7 @@ namespace DMT.TA.Windows.Collector.Credit
         private void Instance_UserChanged(object sender, EventArgs e)
         {
             var user = SmartcardManager.Instance.User;
+            if (null == user) return;
             CheckUser(user);
         }
 
@@ -92,13 +92,6 @@ namespace DMT.TA.Windows.Collector.Credit
 
             var md5 = Utils.MD5.Encrypt(pwd);
             var user = ops.Users.GetByLogIn(Search.Users.ByLogIn.Create(userId, md5)).Value();
-            if (null == user || _roles.IndexOf(user.RoleId) == -1)
-            {
-                txtMsg.Text = "LogIn Failed";
-                txtUserId.SelectAll();
-                txtUserId.Focus();
-                return;
-            }
             CheckUser(user);
         }
 
@@ -137,7 +130,7 @@ namespace DMT.TA.Windows.Collector.Credit
 
         private void CheckUser(User user)
         {
-            if (null != user && user.UserId != _userId)
+            if (null == user || (null != user && user.UserId != _userId))
             {
                 txtMsg.Text = "LogIn Failed";
                 txtUserId.SelectAll();
@@ -166,6 +159,8 @@ namespace DMT.TA.Windows.Collector.Credit
             _roles.Clear();
             _roles.Add("CTC");
             _roles.Add("TC");
+
+            SmartcardManager.Instance.Start();
         }
 
         #endregion

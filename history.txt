@@ -8,27 +8,29 @@
 Update 2020-08-16 #60
 - 
 
+[commited]
 Update 2020-08-16 #59
 - Update Local/DataCenter/TAxTOD service operation #259.
   - Test TA functions #4.
-    - User Credit - Borrow
-    - User Coupon - Received (Init)
-    - User Coupon - Received (Edit)
-    - User Coupon - Received (Print)
-    - User Coupon - Return/Sold (TA)
-    - User Credit - Receive Bag (Confirm)
-    - User Credit - Return (partial)
-    - Check Plaza Balance
+    - SignOn  (with/without smartcard) - OK
+    - User Credit - Borrow - OK
+    - User Credit - Receive Bag (Confirm with/without smartcard) - OK.
+    - User Credit - Return (partial) - OK
+    - User Coupon - Received (Init) - OK
+    - User Coupon - Received (Edit) - OK
+    - User Coupon - Received (Print) - OK
+    - User Coupon - Return/Sold (TA) - OK
+    - Check Plaza Balance - OK
   - Test TOD functions #3.
-    - Supervisor Change Shift
-    - Collector Begin Shift
-    - Lane Attendance List
-    - Revenue Entry (Collector) Get Bag No, Belt No from TA
-    - Revenue Entry (Collector) End Date
-    - Reports -> Revenue Slip
-    - Reports -> Revenue Summary
-    - Reports -> Empty Slip
-    - Revenue Entry (Supervisor)
+    - Supervisor Change Shift (with/without smartcard) - OK
+    - Collector Begin Shift (with/without smartcard) - OK
+    - Lane Attendance List- OK
+    - Revenue Entry (Collector) Get Bag No, Belt No from TA - OK
+    - Revenue Entry (Collector) End Date - OK
+    - Reports -> Revenue Slip - OK
+    - Reports -> Revenue Summary - OK
+    - Reports -> Empty Slip - OK
+    - Revenue Entry (Supervisor) - OK
 
 [commited]
 Update 2020-08-16 #58

@@ -91,7 +91,7 @@ namespace DMT.TOD.Pages.Menu
 
         private void repSlipNull_Click(object sender, RoutedEventArgs e)
         {
-            Models.RevenueEntry revenueEntry = null;
+            var revenueEntry = new RevenueEntry();
             // Slip Preview
             var page = new Reports.RevenueSlipPreviewNull();
             page.MenuPage = new Menu.MainMenu(); // Set MenPage to main menu.

@@ -241,7 +241,7 @@ namespace DMT.TOD.Pages.Reports
             }
         }
 
-        public void Setup(User user,Models.RevenueEntry revenueEntry)
+        public void Setup(User user, Models.RevenueEntry revenueEntry)
         {
             _user = user;
 

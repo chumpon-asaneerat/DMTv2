@@ -49,7 +49,6 @@ namespace DMT.Pages
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            SmartcardManager.Instance.Start();
             SmartcardManager.Instance.UserChanged += Instance_UserChanged;
         }
 
@@ -153,6 +152,8 @@ namespace DMT.Pages
         {
             _roles.Clear();
             _roles.AddRange(roles);
+
+            SmartcardManager.Instance.Start();
         }
 
         public User User { get { return _user; } }
