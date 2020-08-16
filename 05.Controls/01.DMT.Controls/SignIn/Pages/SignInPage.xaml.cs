@@ -10,6 +10,7 @@ using NLib.Services;
 
 using DMT.Models;
 using DMT.Services;
+using DMT.Controls;
 
 #endregion
 
@@ -44,6 +45,35 @@ namespace DMT.Pages
 
         #endregion
 
+        #region Loaded/Unloaded
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            SmartcardManager.Instance.Start();
+            SmartcardManager.Instance.UserChanged += Instance_UserChanged;
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            SmartcardManager.Instance.UserChanged -= Instance_UserChanged;
+            SmartcardManager.Instance.Shutdown();
+        }
+
+        #endregion
+
+        #region Smartcard Handler(s)
+
+        private void Instance_UserChanged(object sender, EventArgs e)
+        {
+            if (null != SmartcardManager.Instance.User)
+            {
+                _user = SmartcardManager.Instance.User;
+                CheckUser(); ;
+            }
+        }
+
+        #endregion
+
         #region Button Handler(s)
 
         private void cmdOK_Click(object sender, RoutedEventArgs e)
@@ -69,33 +99,8 @@ namespace DMT.Pages
             var ret = ops.Users.GetByLogIn(Search.Users.ByLogIn.Create(userId, md5));
             _user = ret.Value();
 
-            if (null == _user || _roles.IndexOf(_user.RoleId) == -1)
-            {
-                Console.WriteLine("LogIn Failed");
-                txtMsg.Text = "LogIn Failed";
-
-                txtUserId.SelectAll();
-                txtUserId.Focus();
-
-                return;
-            }
-
-            Controls.TAApp.User.Current = _user;
-            // Init Main Menu
-            PageContentManager.Instance.Current = new TA.Pages.Menu.MainMenu();
+            CheckUser();
         }
-
-        #endregion
-
-        #region Public Methods
-
-        public void Setup(params string[] roles)
-        {
-            _roles.Clear();
-            _roles.AddRange(roles);
-        }
-
-        public User User { get { return _user; } }
 
         #endregion
 
@@ -119,6 +124,38 @@ namespace DMT.Pages
                 e.Handled = true;
             }
         }
+
+        #endregion
+
+        #region Private Methods
+
+        private void CheckUser()
+        {
+            if (null == _user || _roles.IndexOf(_user.RoleId) == -1)
+            {
+                txtMsg.Text = "LogIn Failed";
+                txtUserId.SelectAll();
+                txtUserId.Focus();
+                return;
+            }
+
+            SmartcardManager.Instance.Shutdown();
+            Controls.TAApp.User.Current = _user;
+            // Init Main Menu
+            PageContentManager.Instance.Current = new TA.Pages.Menu.MainMenu();
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public void Setup(params string[] roles)
+        {
+            _roles.Clear();
+            _roles.AddRange(roles);
+        }
+
+        public User User { get { return _user; } }
 
         #endregion
     }

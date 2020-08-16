@@ -8,6 +8,7 @@ using System.Windows.Controls;
 
 using DMT.Models;
 using DMT.Services;
+using DMT.Controls;
 
 #endregion
 
@@ -42,6 +43,32 @@ namespace DMT.TA.Windows.Collector.Credit
 
         #endregion
 
+        #region Loaded/Unloaded
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            SmartcardManager.Instance.Start();
+            SmartcardManager.Instance.UserChanged += Instance_UserChanged;
+        }
+
+        private void Window_Unloaded(object sender, RoutedEventArgs e)
+        {
+            SmartcardManager.Instance.UserChanged -= Instance_UserChanged;
+            SmartcardManager.Instance.Shutdown();
+        }
+
+        #endregion
+
+        #region Smartcard Handler(s)
+
+        private void Instance_UserChanged(object sender, EventArgs e)
+        {
+            var user = SmartcardManager.Instance.User;
+            CheckUser(user);
+        }
+
+        #endregion
+
         #region Button Handler(s)
 
         private void cmdOK_Click(object sender, RoutedEventArgs e)
@@ -67,28 +94,17 @@ namespace DMT.TA.Windows.Collector.Credit
             var user = ops.Users.GetByLogIn(Search.Users.ByLogIn.Create(userId, md5)).Value();
             if (null == user || _roles.IndexOf(user.RoleId) == -1)
             {
-                //Console.WriteLine("LogIn Failed");
                 txtMsg.Text = "LogIn Failed";
-
                 txtUserId.SelectAll();
                 txtUserId.Focus();
                 return;
             }
-
-            if (null != user && user.UserId != _userId)
-            {
-                txtMsg.Text = "LogIn Failed";
-
-                txtUserId.SelectAll();
-                txtUserId.Focus();
-                return;
-            }
-
-            this.DialogResult = true;
+            CheckUser(user);
         }
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
         {
+            SmartcardManager.Instance.Shutdown();
             this.DialogResult = false;
         }
 
@@ -117,6 +133,25 @@ namespace DMT.TA.Windows.Collector.Credit
 
         #endregion
 
+        #region Private Methods
+
+        private void CheckUser(User user)
+        {
+            if (null != user && user.UserId != _userId)
+            {
+                txtMsg.Text = "LogIn Failed";
+                txtUserId.SelectAll();
+                txtUserId.Focus();
+                return;
+            }
+            SmartcardManager.Instance.Shutdown();
+            this.DialogResult = true;
+        }
+
+        #endregion
+
+        #region Public Methods
+
         public void Setup(string userId, string msg1, decimal? msg2)
         {
             _userId = userId;
@@ -132,5 +167,7 @@ namespace DMT.TA.Windows.Collector.Credit
             _roles.Add("CTC");
             _roles.Add("TC");
         }
+
+        #endregion
     }
 }

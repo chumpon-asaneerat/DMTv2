@@ -30,8 +30,10 @@ Update 2020-08-16 #59
     - Reports -> Empty Slip
     - Revenue Entry (Supervisor)
 
+[commited]
 Update 2020-08-16 #58
 - Update Local/DataCenter/TAxTOD service operation #258.
+  - Implements smartcard supports in SignIn screens.
 
 [commited]
 Update 2020-08-16 #57

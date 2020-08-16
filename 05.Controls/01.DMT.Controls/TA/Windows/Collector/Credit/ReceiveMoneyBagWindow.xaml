@@ -3,151 +3,166 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d"
-        Title="Receive Money Bag" 
-        Height="320" 
-        Width="500" 
-        ResizeMode="NoResize" 
-        ShowInTaskbar="False" 
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Center" 
-        WindowStartupLocation="CenterOwner">
+        Title="Receive Money Bag"
+        Width="500"
+        Height="320"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner"
+        Loaded="Window_Loaded"
+        Unloaded="Window_Unloaded"
+        mc:Ignorable="d">
     <Grid Background="DimGray">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="25" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="25" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="140"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="5"/>
+            <RowDefinition Height="5" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="140" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="5" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="1"
+              Grid.RowSpan="4"
               Grid.Column="1"
-              Grid.ColumnSpan="3"
-              Grid.RowSpan="4">
-
-        </Grid>
+              Grid.ColumnSpan="3" />
         <StackPanel Grid.Row="1"
-                    Grid.Column="1" Grid.ColumnSpan="2">
-            <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" 
-                           FontSize="30" FontWeight="Bold"
-                           Text="รับถุงเงิน หมายเลข :"/>
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2">
+            <StackPanel Margin="5"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                <TextBlock Foreground="WhiteSmoke"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           Text="รับถุงเงิน หมายเลข :" />
                 <Grid Width="5" />
-                <TextBlock x:Name="txtBagID" Foreground="Red"
-                         FontSize="30" FontWeight="Bold"/>
-                </StackPanel>
-            <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Foreground="WhiteSmoke" 
-                           FontSize="30" FontWeight="Bold"
-                           Text="จำนวนเงิน :"/>
-                <Grid Width="5"/>
-                <TextBlock x:Name="txtAmount"  Foreground="Red"
-                             FontSize="30" FontWeight="Bold"/>
-                <Grid Width="5"/>
-                <TextBlock Foreground="WhiteSmoke" 
-                           FontSize="30" FontWeight="Bold" Text="บาท"/>
+                <TextBlock x:Name="txtBagID"
+                           Foreground="Red"
+                           FontSize="30"
+                           FontWeight="Bold" />
+            </StackPanel>
+            <StackPanel Margin="5"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                <TextBlock Foreground="WhiteSmoke"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           Text="จำนวนเงิน :" />
+                <Grid Width="5" />
+                <TextBlock x:Name="txtAmount"
+                           Foreground="Red"
+                           FontSize="30"
+                           FontWeight="Bold" />
+                <Grid Width="5" />
+                <TextBlock Foreground="WhiteSmoke"
+                           FontSize="30"
+                           FontWeight="Bold"
+                           Text="บาท" />
             </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Row="2"
-                    Grid.Column="1">
+        <StackPanel Grid.Row="2" Grid.Column="1">
             <StackPanel Margin="5">
-                <TextBlock Foreground="WhiteSmoke" 
+                <TextBlock Foreground="WhiteSmoke"
                            FontSize="18"
-                           Text="กรุณาระบุรหัสพนักงาน 5 หลัก"/>
+                           Text="กรุณาระบุรหัสพนักงาน 5 หลัก" />
                 <Grid Height="5" />
-                <TextBox x:Name="txtUserId" 
+                <TextBox x:Name="txtUserId"
                          FontSize="18"
-                         Text="" KeyDown="txtUserId_KeyDown"/>
+                         Text=""
+                         KeyDown="txtUserId_KeyDown" />
                 <Grid Height="5" />
-                <TextBlock Foreground="WhiteSmoke" 
+                <TextBlock Foreground="WhiteSmoke"
                            FontSize="18"
-                           Text="กรุณาป้อนรหัสผ่าน"/>
+                           Text="กรุณาป้อนรหัสผ่าน" />
                 <Grid Height="5" />
-                <PasswordBox x:Name="txtPassword" 
+                <PasswordBox x:Name="txtPassword"
                              FontSize="18"
-                             PasswordChar="*" KeyDown="txtPassword_KeyDown"/>
+                             PasswordChar="*"
+                             KeyDown="txtPassword_KeyDown" />
                 <Grid Height="5" />
             </StackPanel>
         </StackPanel>
         <Grid Grid.Row="2"
               Grid.Column="2"
               Margin="5">
-            <StackPanel Margin="5 0">
+            <StackPanel Margin="5,0">
                 <Grid Height="5" />
                 <Button x:Name="cmdOK"
-                        Foreground="White"
                         HorizontalContentAlignment="Stretch"
                         VerticalContentAlignment="Stretch"
+                        Foreground="White"
                         Click="cmdOK_Click">
                     <Button.Background>
-                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png" />
                     </Button.Background>
                     <DockPanel>
-                        <Grid Width="5"></Grid>
-                        <Image DockPanel.Dock="Left" 
+                        <Grid Width="5" />
+                        <Image Width="50"
                                Height="50"
-                               Width="50"
-                               Source="/DMT.Controls;component/Images/Button/OK.png" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center" />
-                        <StackPanel Orientation="Vertical"
-                                    VerticalAlignment="Center">
-                            <TextBlock FontSize="20" 
-                                       HorizontalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Left"
+                               Source="/DMT.Controls;component/Images/Button/OK.png" />
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                            <TextBlock HorizontalAlignment="Center"
+                                       FontSize="20"
                                        Text="OK"
                                        FontWeight="Bold"
                                        TextAlignment="Center"
-                                       TextWrapping="Wrap">
-                            </TextBlock>
+                                       TextWrapping="Wrap" />
                             <Grid Height="10" />
                         </StackPanel>
                     </DockPanel>
                 </Button>
-                <Grid Height="5"/>
-                <Button x:Name="cmdCancel" 
-                        Foreground="White"
+                <Grid Height="5" />
+                <Button x:Name="cmdCancel"
                         HorizontalContentAlignment="Stretch"
                         VerticalContentAlignment="Stretch"
+                        Foreground="White"
                         Click="cmdCancel_Click">
                     <Button.Background>
-                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png"/>
+                        <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png" />
                     </Button.Background>
                     <DockPanel>
-                        <Grid Width="5"></Grid>
-                        <Image DockPanel.Dock="Left" 
+                        <Grid Width="5" />
+                        <Image Width="50"
                                Height="50"
-                               Width="50"
-                               Source="/DMT.Controls;component/Images/Button/Cancel.png" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center" />
-                        <StackPanel Orientation="Vertical"
-                                    VerticalAlignment="Center">
-                            <TextBlock FontSize="20" 
-                                       HorizontalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Left"
+                               Source="/DMT.Controls;component/Images/Button/Cancel.png" />
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                            <TextBlock HorizontalAlignment="Center"
+                                       FontSize="20"
                                        Text="Cancel"
                                        FontWeight="Bold"
                                        TextAlignment="Center"
-                                       TextWrapping="Wrap">
-                            </TextBlock>
+                                       TextWrapping="Wrap" />
                             <Grid Height="10" />
                         </StackPanel>
                     </DockPanel>
                 </Button>
-                <Grid Height="5"/>
+                <Grid Height="5" />
             </StackPanel>
         </Grid>
-        <StackPanel  Grid.Row="3"
-                     Grid.Column="1"
-                     Margin="5">
-            <TextBlock Name="txtMsg" Foreground="Red" 
-                           FontSize="20" TextAlignment="Center" FontWeight="ExtraBold"
-                           Text=""/>
+        <StackPanel Grid.Row="3"
+                    Grid.Column="1"
+                    Margin="5">
+            <TextBlock Name="txtMsg"
+                       Foreground="Red"
+                       FontSize="20"
+                       TextAlignment="Center"
+                       FontWeight="ExtraBold"
+                       Text="" />
         </StackPanel>
     </Grid>
 </Window>
