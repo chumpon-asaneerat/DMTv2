@@ -357,7 +357,7 @@ namespace DMT.Services
         {
             get
             {
-                if (null == _coupons && null == User)
+                if (null == _coupons || null == User)
                     return new List<TSBCouponTransaction>();
                 return _coupons.FindAll(item =>
                 {
@@ -376,7 +376,7 @@ namespace DMT.Services
         {
             get
             {
-                if (null == _coupons && null == User)
+                if (null == _coupons || null == User)
                     return new List<TSBCouponTransaction>();
                 return _coupons.FindAll(item =>
                 {
@@ -399,7 +399,7 @@ namespace DMT.Services
         {
             get
             {
-                if (null == _coupons && null == User)
+                if (null == _coupons || null == User)
                     return new List<TSBCouponTransaction>();
                 return _coupons.FindAll(item =>
                 {
@@ -417,7 +417,7 @@ namespace DMT.Services
         {
             get
             {
-                if (null == _coupons && null == User)
+                if (null == _coupons || null == User)
                     return new List<TSBCouponTransaction>();
                 return _coupons.FindAll(item =>
                 {
@@ -435,7 +435,7 @@ namespace DMT.Services
         {
             get
             {
-                if (null == _coupons && null == User)
+                if (null == _coupons || null == User)
                     return new List<TSBCouponTransaction>();
                 return _coupons.FindAll(item =>
                 {
@@ -453,7 +453,7 @@ namespace DMT.Services
         {
             get
             {
-                if (null == _coupons && null == User)
+                if (null == _coupons || null == User)
                     return new List<TSBCouponTransaction>();
                 return _coupons.FindAll(item =>
                 {
@@ -475,7 +475,7 @@ namespace DMT.Services
         {
             get
             {
-                if (null == _coupons && null == User)
+                if (null == _coupons || null == User)
                     return new List<TSBCouponTransaction>();
                 return _coupons.FindAll(item =>
                 {
@@ -493,7 +493,7 @@ namespace DMT.Services
         {
             get
             {
-                if (null == _coupons && null == User)
+                if (null == _coupons || null == User)
                     return new List<TSBCouponTransaction>();
                 return _coupons.FindAll(item =>
                 {

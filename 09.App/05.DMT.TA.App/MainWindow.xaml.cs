@@ -42,7 +42,7 @@ namespace DMT
             PageContentManager.Instance.Start();
             // Init Sign In
             var page = new Pages.SignInPage();
-            page.Setup("SUPERVISOR", "AUDIT", "ADMIN", "QFREE");
+            page.Setup("ADMINS", "ACCOUNT", "CTC", "TC");
             PageContentManager.Instance.Current = page;
         }
 

@@ -41,10 +41,18 @@ Update 2020-08-16 #49
 - 
 
 Update 2020-08-16 #48
-- 
+- Update Local/DataCenter/TAxTOD service operation #250.
+  - Test TA functions #1.
+    - User Credit - Receive Bag
+    - User Credit - Return (partial)
+    - User Coupon - Return/Sold (TA).
 
+[commited]
 Update 2020-08-16 #47
-- 
+- Update Local/DataCenter/TAxTOD service operation #249.
+  - Test TA functions #1.
+    - User Credit - Borrow - OK.
+    - User Coupon - Received - OK.
 
 [commited]
 Update 2020-08-16 #46
