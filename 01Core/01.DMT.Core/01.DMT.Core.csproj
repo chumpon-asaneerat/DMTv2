@@ -61,6 +61,7 @@
     <Compile Include="NofifyConsts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RouteConsts.cs" />
+    <Compile Include="Services\ConfigManager.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

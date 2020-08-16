@@ -112,9 +112,9 @@ namespace DMT
             return result;
         }
         /// <summary>
-        /// Gets local json folder path name.
+        /// Gets local data json folder path name.
         /// </summary>
-        static string LocalFolder
+        static string LocalDataFolder
         {
             get
             {
@@ -128,22 +128,58 @@ namespace DMT
             }
         }
         /// <summary>
-        /// Gets full file name for file in json local folder.
+        /// Gets local configs json folder path name.
+        /// </summary>
+        static string LocalConfigFolder
+        {
+            get
+            {
+                string localFilder = Folders.Combine(
+                    Folders.Assemblies.CurrentExecutingAssembly, "configs");
+                if (!Folders.Exists(localFilder))
+                {
+                    Folders.Create(localFilder);
+                }
+                return localFilder;
+            }
+        }
+        /// <summary>
+        /// Gets full file name for file in json data local folder.
         /// </summary>
         /// <param name="fileName">The file name (not include folder).</param>
         /// <returns>Returns full path to access file in json local folder</returns>
-        public static string LocalFile(string fileName)
+        public static string LocalDataFile(string fileName)
         {
-            return Folders.Combine(NJson.LocalFolder, fileName);
+            return Folders.Combine(NJson.LocalDataFolder, fileName);
         }
         /// <summary>
-        /// Checks is local file exists.
+        /// Checks is local data file exists.
         /// </summary>
         /// <param name="fileName">The file name (not include folder).</param>
-        /// <returns>Returns true if file in json local folder</returns>
-        public static bool Exists(string fileName)
+        /// <returns>Returns true if file in json local data folder</returns>
+        public static bool DataExists(string fileName)
         {
-            string localFile = NJson.LocalFile(fileName);
+            string localFile = NJson.LocalDataFile(fileName);
+            return Files.Exists(localFile);
+        }
+
+        /// <summary>
+        /// Gets full file name for file in json local configs folder.
+        /// </summary>
+        /// <param name="fileName">The file name (not include folder).</param>
+        /// <returns>Returns full path to access file in json local folder</returns>
+        public static string LocalConfigFile(string fileName)
+        {
+            return Folders.Combine(NJson.LocalConfigFolder, fileName);
+        }
+        /// <summary>
+        /// Checks is local config file exists.
+        /// </summary>
+        /// <param name="fileName">The file name (not include folder).</param>
+        /// <returns>Returns true if file in json local configs folder</returns>
+        public static bool ConfigExists(string fileName)
+        {
+            string localFile = NJson.LocalConfigFile(fileName);
             return Files.Exists(localFile);
         }
     }
