@@ -209,12 +209,21 @@ namespace DMT.Services
 
         public void Refresh()
         {
-            TSB tsb = null;
-            Summaries = ops.Coupons.GetTSBCouponSummaries(tsb).Value();
-            // get original list.
-            _origins = ops.Coupons.GetTSBCouponTransactions(tsb).Value();
-            // get work list.
-            _coupons = ops.Coupons.GetTSBCouponTransactions(tsb).Value();
+            TSB tsb = ops.TSB.GetCurrent().Value();
+            if (null == tsb)
+            {
+                Summaries = new List<TSBCouponSummary>();
+                _origins = new List<TSBCouponTransaction>();
+                _coupons = new List<TSBCouponTransaction>();
+            }
+            else
+            {
+                Summaries = ops.Coupons.GetTSBCouponSummaries(tsb).Value();
+                // get original list.
+                _origins = ops.Coupons.GetTSBCouponTransactions(tsb).Value();
+                // get work list.
+                _coupons = ops.Coupons.GetTSBCouponTransactions(tsb).Value();
+            }
         }
 
         #endregion
