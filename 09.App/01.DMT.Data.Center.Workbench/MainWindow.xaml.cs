@@ -75,6 +75,21 @@ namespace DMT
 
         #region Button Handlers
 
+        private void cmdGetCoupons_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cmdSendUserLog_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cmdSendRevenue_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         #endregion
     }
 }

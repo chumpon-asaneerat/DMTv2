@@ -22,8 +22,34 @@
                        IsQuickAccessToolBarMenuDropDownVisible="False">
             <!-- Tabs -->
             <Fluent:RibbonTabItem Header="Home">
-                <Fluent:RibbonGroupBox Header="TA" />
-                <Fluent:RibbonGroupBox Header="RabbitMQ" />
+                <Fluent:RibbonGroupBox Header="TA">
+                    <Fluent:Button x:Name="cmdGetCoupons"
+                                   Width="75"
+                                   Header="Gets Coupons"
+                                   Click="cmdGetCoupons_Click">
+                        <Fluent:Button.LargeIcon>
+                            <Image Source="Images/Reports/slip_03.png" />
+                        </Fluent:Button.LargeIcon>
+                    </Fluent:Button>
+                </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Header="RabbitMQ">
+                    <Fluent:Button x:Name="cmdSendUserLog"
+                                   Width="75"
+                                   Header="Send Users Log"
+                                   Click="cmdSendUserLog_Click">
+                        <Fluent:Button.LargeIcon>
+                            <Image Source="Images/Users/send-user.png" />
+                        </Fluent:Button.LargeIcon>
+                    </Fluent:Button>
+                    <Fluent:Button x:Name="cmdSendRevenue"
+                                   Width="75"
+                                   Header="Send Revenue"
+                                   Click="cmdSendRevenue_Click">
+                        <Fluent:Button.LargeIcon>
+                            <Image Source="Images/Reports/reports_01.png" />
+                        </Fluent:Button.LargeIcon>
+                    </Fluent:Button>
+                </Fluent:RibbonGroupBox>
             </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
         <Grid Grid.Row="1">
