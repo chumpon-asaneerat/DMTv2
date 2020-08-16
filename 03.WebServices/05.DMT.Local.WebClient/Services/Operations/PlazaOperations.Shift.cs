@@ -66,14 +66,6 @@ namespace DMT.Services
 
             public NRestResult<List<Shift>> GetShifts()
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -88,14 +80,6 @@ namespace DMT.Services
 
             public NRestResult<Shift> SaveShift(Shift value)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -123,14 +107,6 @@ namespace DMT.Services
 
             public NRestResult<TSBShift> Create(Shift shift, User supervisor)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -150,14 +126,6 @@ namespace DMT.Services
 
             public NRestResult<TSBShift> GetCurrent()
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -172,14 +140,6 @@ namespace DMT.Services
 
             public NRestResult ChangeShift(TSBShift value)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;

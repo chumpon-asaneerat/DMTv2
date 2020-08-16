@@ -66,14 +66,6 @@ namespace DMT.Services
 
             public NRestResult<Role> GetRole(Search.Roles.ById value)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -96,14 +88,6 @@ namespace DMT.Services
 
             public NRestResult<List<Role>> GetRoles()
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -119,14 +103,6 @@ namespace DMT.Services
 
             public NRestResult<Role> SaveRole(Role value)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -153,14 +129,6 @@ namespace DMT.Services
 
             public NRestResult<List<User>> GetUsers(Role value)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -183,14 +151,6 @@ namespace DMT.Services
 
             public NRestResult<User> GetByCardId(Search.Users.ByCardId value)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -213,14 +173,6 @@ namespace DMT.Services
 
             public NRestResult<User> GetById(Search.Users.ById value)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -243,14 +195,6 @@ namespace DMT.Services
 
             public NRestResult<List<User>> SearchByGroupId(Search.Users.ByGroupId value)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -273,14 +217,6 @@ namespace DMT.Services
 
             public NRestResult<List<User>> SearchById(Search.Users.ById value)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -303,14 +239,6 @@ namespace DMT.Services
 
             public NRestResult<User> GetByLogIn(Search.Users.ByLogIn value)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -333,14 +261,6 @@ namespace DMT.Services
 
             public NRestResult<User> SaveUser(User value)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;

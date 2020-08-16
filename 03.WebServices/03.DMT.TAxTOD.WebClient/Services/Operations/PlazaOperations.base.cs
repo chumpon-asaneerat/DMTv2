@@ -55,13 +55,6 @@ namespace DMT.Services
         {
             get
             {
-                // TODO: Config - Remove Later.
-                /*
-                return string.Format(@"{0}://{1}:{2}/",
-                    AppConsts.WindowsService.TAxTOD.WebServer.Protocol,
-                    AppConsts.WindowsService.TAxTOD.WebServer.HostName,
-                    AppConsts.WindowsService.TAxTOD.WebServer.PortNumber);
-                */
                 return string.Format(@"{0}://{1}:{2}/",
                     ConfigManager.Instance.Plaza.TAxTOD.Http.Protocol,
                     ConfigManager.Instance.Plaza.TAxTOD.Http.HostName,

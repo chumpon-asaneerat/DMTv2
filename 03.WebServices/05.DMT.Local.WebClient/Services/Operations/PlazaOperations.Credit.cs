@@ -64,14 +64,6 @@ namespace DMT.Services
 
             public NRestResult<TSBCreditBalance> GetTSBBalance(TSB value)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -99,14 +91,6 @@ namespace DMT.Services
 
             public NRestResult<TSBCreditTransaction> GetInitialTSBCreditTransaction(TSB value)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -131,14 +115,6 @@ namespace DMT.Services
             public NRestResult<TSBCreditTransaction> SaveTSBCreditTransaction(
                 TSBCreditTransaction value)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -166,14 +142,6 @@ namespace DMT.Services
 
             public NRestResult<List<UserCreditBalance>> GetActiveUserCreditBalances(TSB value)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -198,14 +166,6 @@ namespace DMT.Services
             public NRestResult<UserCreditBalance> GetActiveUserCreditBalanceById(
                 Search.UserCredits.GetActiveById value)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -229,14 +189,6 @@ namespace DMT.Services
 
             public NRestResult<UserCreditBalance> SaveUserCreditBalance(UserCreditBalance value)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -265,14 +217,6 @@ namespace DMT.Services
             public NRestResult<UserCreditTransaction> SaveUserCreditTransaction(
                 UserCreditTransaction value)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol = 
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ? 
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;

@@ -82,13 +82,6 @@ namespace DMT.Services
 
         #region Internal Variables
 
-        // TODO: Config - Remove Later.
-        /*
-        private string wsAddress = string.Format(@"{0}://{1}:{2}",
-            AppConsts.WindowsService.Local.WebSocket.Protocol,
-            AppConsts.WindowsService.Local.WebSocket.HostName,
-            AppConsts.WindowsService.Local.WebSocket.PortNumber);
-        */
         private string wsAddress = string.Format(@"{0}://{1}:{2}",
             ConfigManager.Instance.Plaza.Local.WebSocket.Protocol,
             ConfigManager.Instance.Plaza.Local.WebSocket.HostName,

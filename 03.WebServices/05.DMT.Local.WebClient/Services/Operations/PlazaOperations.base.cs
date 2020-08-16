@@ -55,13 +55,6 @@ namespace DMT.Services
         {
             get
             {
-                // TODO: Config - Remove Later.
-                /*
-                return string.Format(@"{0}://{1}:{2}/",
-                    AppConsts.WindowsService.Local.WebServer.Protocol,
-                    AppConsts.WindowsService.Local.WebServer.HostName,
-                    AppConsts.WindowsService.Local.WebServer.PortNumber);
-                */
                 return string.Format(@"{0}://{1}:{2}/",
                     ConfigManager.Instance.Plaza.Local.Http.Protocol,
                     ConfigManager.Instance.Plaza.Local.Http.HostName,

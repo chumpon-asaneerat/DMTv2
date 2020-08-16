@@ -62,14 +62,6 @@ namespace DMT.Services
 
             public NRestResult<TSBCouponBalance> GetTSBBalance(TSB value)
             {
-                // TODO: Config - Remove Later.
-                /*
-                NRestClient.WebProtocol protocol =
-                    (AppConsts.WindowsService.Local.WebServer.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = AppConsts.WindowsService.Local.WebServer.HostName;
-                int portNo = AppConsts.WindowsService.Local.WebServer.PortNumber;
-                */
                 NRestClient.WebProtocol protocol =
                     (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                     NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;

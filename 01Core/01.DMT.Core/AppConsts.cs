@@ -85,22 +85,6 @@ namespace DMT
                 public static string Minor = AppConsts.Minor;
                 public static string Build = AppConsts.Build;
                 public static DateTime LastUpdate = AppConsts.LastUpdate;
-                // TODO: Config - Remove Later.
-                /*
-                public static class WebServer
-                {
-                    public static string Protocol = "http";
-                    public static string HostName = "localhost";
-                    public static int PortNumber = 9000;
-                }
-
-                public static class WebSocket
-                {
-                    public static string Protocol = "ws";
-                    public static string HostName = "localhost";
-                    public static int PortNumber = 9100;
-                }
-                */
             }
 
             public static class DC
@@ -114,15 +98,6 @@ namespace DMT
                 public static string Minor = AppConsts.Minor;
                 public static string Build = AppConsts.Build;
                 public static DateTime LastUpdate = AppConsts.LastUpdate;
-                // TODO: Config - Remove Later.
-                /*
-                public static class WebServer
-                {
-                    public static string Protocol = "http";
-                    public static string HostName = "localhost";
-                    public static int PortNumber = 9000;
-                }
-                */
             }
 
             public static class TAxTOD
@@ -136,15 +111,6 @@ namespace DMT
                 public static string Minor = AppConsts.Minor;
                 public static string Build = AppConsts.Build;
                 public static DateTime LastUpdate = AppConsts.LastUpdate;
-                // TODO: Config - Remove Later.
-                /*
-                public static class WebServer
-                {
-                    public static string Protocol = "http";
-                    public static string HostName = "localhost";
-                    public static int PortNumber = 9000;
-                }
-                */
             }
         }
     }
