@@ -1,12 +1,42 @@
 - Note:
   - Sync process required to implements property name attribute to match base class.
-  - Implements Smartcard sign in in all SignIn Page/Window.
   - The NRestClient need to get host/port from config.
-  - Fixed User Filter in Credit/Coupon/etc screen(s).
 
 --------------------------------------------------------------------------------------------
-Update 2020-08-16 #60
+Update 2020-08-17 #10
 - 
+
+Update 2020-08-17 #9
+- 
+
+Update 2020-08-17 #8
+- 
+
+Update 2020-08-17 #7
+- 
+
+Update 2020-08-17 #6
+- 
+
+Update 2020-08-17 #5
+- 
+
+Update 2020-08-17 #4
+- 
+
+Update 2020-08-17 #3
+- 
+
+Update 2020-08-17 #2
+- 
+
+Update 2020-08-17 #1
+- 
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-08-16 #60
+- Prepare history.txt
 
 [commited]
 Update 2020-08-16 #59
