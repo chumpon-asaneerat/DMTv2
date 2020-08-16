@@ -30,8 +30,10 @@ Update 2020-08-17 #3
 Update 2020-08-17 #2
 - 
 
+[commited]
 Update 2020-08-17 #1
-- 
+- Update Local/DataCenter/TAxTOD service operation #260.
+  - Implements Config Manager #2.
 
 --------------------------------------------------------------------------------------------
 [commited]
