@@ -222,8 +222,15 @@ namespace DMT.TOD.Pages.Reports
                 _revenueEntry.RevenueDate = _revDate; // assigned Revenue date.
 
                 _revenueEntry.Lanes = laneList.Trim();
-                _revenueEntry.ShiftBegin = begin;
-                //_revenueEntry.ShiftEnd = end;
+
+                if (_revenueEntry.ShiftBegin == DateTime.MinValue)
+                {
+                    _revenueEntry.ShiftBegin = begin;
+                }
+                if (_revenueEntry.ShiftEnd == DateTime.MinValue)
+                {
+                    _revenueEntry.ShiftEnd = end;
+                }
 
                 // assign supervisor.
                 var sup = ops.Shifts.GetCurrent().Value();
@@ -250,10 +257,6 @@ namespace DMT.TOD.Pages.Reports
                 {
                     return false;
                 }
-
-                //MessageBox.Show("Entry Date or Revenue Date is not set.",
-                //    "DMT - Tour of Duty");
-                //return false;
             }
 
             // update save data

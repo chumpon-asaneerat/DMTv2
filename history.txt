@@ -34,8 +34,11 @@ Update 2020-08-16 #52
 Update 2020-08-16 #51
 - 
 
+[commited]
 Update 2020-08-16 #50
-- 
+- Update Local/DataCenter/TAxTOD service operation #252.
+  - Test TOD functions #1.
+    - Revenue Entry Get Bag No, Belt No from TA. (Collector) - OK.
 
 [commited]
 Update 2020-08-16 #49
