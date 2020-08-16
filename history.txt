@@ -46,8 +46,17 @@ Update 2020-08-16 #48
 Update 2020-08-16 #47
 - 
 
+[commited]
 Update 2020-08-16 #46
-- 
+- Update Local/DataCenter/TAxTOD service operation #248.
+  - Test TOD functions #1.
+    - Lane Attendance List - OK.
+    - Revenue Entry (Collector) - OK (nedd to check End Shift).
+    - Reports -> Revenue Slip - OK.
+    - Reports -> Revenue Summary - OK.
+    - Reports -> Empty Slip - OK.
+    - Revenue Entry (Supervisor) - OK
+    - Collector Begin Shift - OK.
 
 [commited]
 Update 2020-08-16 #45
