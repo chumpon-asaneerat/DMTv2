@@ -27,7 +27,8 @@ namespace DMT.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            ConfigManager.Instance.Start();
+            // Load Config service.
+            ConfigManager.Instance.LoadConfig();
             if (null == server)
             {
                 server = new Services.LocalDatabaseWebServer();
@@ -42,7 +43,6 @@ namespace DMT.Forms
                 server.Shutdown();
             }
             server = null;
-            ConfigManager.Instance.Shutdown();
         }
     }
 }

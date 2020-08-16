@@ -54,7 +54,9 @@ namespace DMT.Services
         {
             _running = true;
             _pause = false;
-            ConfigManager.Instance.Start();
+            // Load Config service.
+            ConfigManager.Instance.LoadConfig();
+
             if (null != _server) _server.Start();
         }
         /// <summary>
@@ -63,7 +65,6 @@ namespace DMT.Services
         protected override void OnPause()
         {
             _pause = true;
-            //RaterCompactService.Instance.Pause();
         }
         /// <summary>
         /// OnContinue
@@ -71,7 +72,8 @@ namespace DMT.Services
         protected override void OnContinue()
         {
             _pause = false;
-            //RaterCompactService.Instance.Continue();
+            // Load Config service.
+            ConfigManager.Instance.LoadConfig();
         }
         /// <summary>
         /// OnStop.
@@ -81,7 +83,6 @@ namespace DMT.Services
             _running = false;
             _pause = true;
             if (null != _server) _server.Shutdown();
-            ConfigManager.Instance.Shutdown();
         }
 
         #endregion

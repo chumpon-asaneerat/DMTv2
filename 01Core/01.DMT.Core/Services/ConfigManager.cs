@@ -37,26 +37,17 @@ namespace DMT.Services
 
         #endregion
 
-        #region Override Methods
-        /*
+        #region Public Methods
+
         /// <summary>
-        /// Equals.
+        /// IsEquals.
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public override bool Equals(object obj)
+        public bool IsEquals(object obj)
         {
-            if (null == obj) return false;
-            return this.GetHashCode() == obj.GetHashCode();
-        }
-        /// <summary>
-        /// GetHashCode.
-        /// </summary>
-        /// <returns></returns>
-        public override int GetHashCode()
-        {
-            string code = this.GetString();
-            return code.GetHashCode();
+            if (null == obj || !(obj is WebServiceConfig)) return false;
+            return this.GetString() == (obj as WebServiceConfig).GetString();
         }
         /// <summary>
         /// GetString.
@@ -68,7 +59,7 @@ namespace DMT.Services
                 this.Protocol, this.HostName, this.PortNumber);
             return code;
         }
-        */
+        
         #endregion
 
         #region Public Properties
@@ -123,26 +114,17 @@ namespace DMT.Services
 
         #endregion
 
-        #region Override Methods
-        /*
+        #region Public Methods
+
         /// <summary>
-        /// Equals.
+        /// IsEquals.
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public override bool Equals(object obj)
+        public bool IsEquals(object obj)
         {
-            if (null == obj) return false;
-            return this.GetHashCode() == obj.GetHashCode();
-        }
-        /// <summary>
-        /// GetHashCode.
-        /// </summary>
-        /// <returns></returns>
-        public override int GetHashCode()
-        {
-            string code = this.GetString();
-            return code.GetHashCode();
+            if (null == obj || !(obj is LocalWebServiceConfig)) return false;
+            return this.GetString() == (obj as LocalWebServiceConfig).GetString();
         }
         /// <summary>
         /// GetString.
@@ -154,7 +136,7 @@ namespace DMT.Services
                 return string.Format("{0}", this.Http.GetString());
             else return "Local http is null.";
         }
-        */
+        
         #endregion
 
         #region Public Properties
@@ -198,26 +180,17 @@ namespace DMT.Services
 
         #endregion
 
-        #region Override Methods
-        /*
+        #region Public Methods
+
         /// <summary>
-        /// Equals.
+        /// IsEquals.
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public override bool Equals(object obj)
+        public bool IsEquals(object obj)
         {
-            if (null == obj) return false;
-            return this.GetHashCode() == obj.GetHashCode();
-        }
-        /// <summary>
-        /// GetHashCode.
-        /// </summary>
-        /// <returns></returns>
-        public override int GetHashCode()
-        {
-            string code = this.GetString();
-            return code.GetHashCode();
+            if (null == obj || !(obj is TAxTODWebServiceConfig)) return false;
+            return this.GetString() == (obj as TAxTODWebServiceConfig).GetString();
         }
         /// <summary>
         /// GetString.
@@ -229,7 +202,7 @@ namespace DMT.Services
                 return string.Format("{0}", this.Http.GetString());
             else return "TAxTOD http is null.";
         }
-        */
+        
         #endregion
 
         #region Public Properties
@@ -269,26 +242,17 @@ namespace DMT.Services
 
         #endregion
 
-        #region Override Methods
-        /*
+        #region Public Methods
+
         /// <summary>
-        /// Equals.
+        /// IsEquals.
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public override bool Equals(object obj)
+        public bool IsEquals(object obj)
         {
-            if (null == obj) return false;
-            return this.GetHashCode() == obj.GetHashCode();
-        }
-        /// <summary>
-        /// GetHashCode.
-        /// </summary>
-        /// <returns></returns>
-        public override int GetHashCode()
-        {
-            string code = this.GetString();
-            return code.GetHashCode();
+            if (null == obj || !(obj is DCWebServiceConfig)) return false;
+            return this.GetString() == (obj as DCWebServiceConfig).GetString();
         }
         /// <summary>
         /// GetString.
@@ -300,7 +264,7 @@ namespace DMT.Services
                 return string.Format("{0}", this.Http.GetString());
             else return "DC http is null.";
         }
-        */
+        
         #endregion
 
         #region Public Properties
@@ -337,25 +301,17 @@ namespace DMT.Services
 
         #endregion
 
-        #region Override Methods
-        /*
+        #region Public Methods
+
         /// <summary>
-        /// Equals.
+        /// IsEquals.
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public override bool Equals(object obj)
+        public bool IsEquals(object obj)
         {
-            if (null == obj) return false;
-            return this.GetHashCode() == obj.GetHashCode();
-        }
-        /// <summary>
-        /// GetHashCode.
-        /// </summary>
-        /// <returns></returns>
-        public override int GetHashCode()
-        {
-            return this.GetString().GetHashCode();
+            if (null == obj || !(obj is PlazaConfig)) return false;
+            return this.GetString() == (obj as PlazaConfig).GetString();
         }
         /// <summary>
         /// GetString.
@@ -393,7 +349,7 @@ namespace DMT.Services
             }
             return code;
         }
-        */
+        
         #endregion
 
         #region Public Properties
@@ -451,9 +407,9 @@ namespace DMT.Services
 
         #region Internal Variables
 
-        private Thread _th = null;
-        private DateTime _lastUpdate = DateTime.MinValue;
-        private int _timeout = 15 * 1000; // timeout in ms.
+        //private Thread _th = null;
+        //private DateTime _lastUpdate = DateTime.MinValue;
+        //private int _timeout = 15 * 1000; // timeout in ms.
 
         private string _fileName = NJson.LocalConfigFile("plaza.config.json");
         private PlazaConfig _plazaCfg = new PlazaConfig();
@@ -474,13 +430,14 @@ namespace DMT.Services
         /// </summary>
         ~ConfigManager()
         {
-            Shutdown();
+            //Shutdown();
         }
 
         #endregion
 
         #region Private Methods
 
+        /*
         private void Processing()
         {
             TimeSpan ts;
@@ -496,11 +453,13 @@ namespace DMT.Services
             }
             Shutdown();
         }
-
+        */
+        /*
         private void UpdateConfig()
         {
             lock (this)
             {
+                MethodBase med = MethodBase.GetCurrentMethod();
                 try
                 {
                     var oldCfg = _plazaCfg;
@@ -511,40 +470,48 @@ namespace DMT.Services
                     else
                     {
                         _plazaCfg = NJson.LoadFromFile<PlazaConfig>(_fileName);
+                        if (null != oldCfg)
+                        {
+                            // some thing error
+                        }
                     }
+
                     // save back to file.
                     if (null == _plazaCfg)
                     {
-                        _plazaCfg = new PlazaConfig();
-                        Console.WriteLine("New Config: {0}", _plazaCfg);
+                        Console.WriteLine("Config create new.");
+                        _plazaCfg = (null != oldCfg ) ? oldCfg : new PlazaConfig();
                         NJson.SaveToFile(_plazaCfg, _fileName);
                         // Raise event.
                         ConfigChanged.Call(this, EventArgs.Empty);
                     }
                     else
                     {
-                        Console.WriteLine("Loaded Config: {0}", _plazaCfg);
-                        /*
-                        if (_plazaCfg.Equals(oldCfg))
+                        if (!_plazaCfg.IsEquals(oldCfg))
                         {
+                            Console.WriteLine("Config changed by external.");
                             NJson.SaveToFile(_plazaCfg, _fileName);
                             // Raise event.
                             ConfigChanged.Call(this, EventArgs.Empty);
                         }
-                        */
+                        else
+                        {
+                            Console.WriteLine("Config not changed.");
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
+                    med.Err(ex);
                 }
             }
         }
-
+        */
         #endregion
 
         #region Public Methods
 
+        /*
         /// <summary>
         /// Start Service.
         /// </summary>
@@ -572,6 +539,64 @@ namespace DMT.Services
                 catch (ThreadAbortException) { }
             }
             _th = null;
+        }
+        */
+
+        /// <summary>
+        /// Load Config from file.
+        /// </summary>
+        public void LoadConfig()
+        {
+            lock (this)
+            {
+                MethodBase med = MethodBase.GetCurrentMethod();
+                try
+                {
+                    // save back to file.
+                    if (!NJson.ConfigExists(_fileName))
+                    {
+                        if (null == _plazaCfg)
+                        {
+                            _plazaCfg = new PlazaConfig();
+                        }
+                        NJson.SaveToFile(_plazaCfg, _fileName);
+                    }
+                    else
+                    {
+                        _plazaCfg = NJson.LoadFromFile<PlazaConfig>(_fileName);
+                    }
+                    // Raise event.
+                    ConfigChanged.Call(this, EventArgs.Empty);
+                }
+                catch (Exception ex)
+                {
+                    med.Err(ex);
+                }
+            }
+        }
+        /// <summary>
+        /// Save Config to file.
+        /// </summary>
+        public void SaveConfig()
+        {
+            lock (this)
+            {
+                MethodBase med = MethodBase.GetCurrentMethod();
+                try
+                {
+                    // save back to file.
+                    if (null == _plazaCfg)
+                    {
+                        _plazaCfg = new PlazaConfig();
+                    }
+                    NJson.SaveToFile(_plazaCfg, _fileName);
+
+                }
+                catch (Exception ex)
+                {
+                    med.Err(ex);
+                }
+            }
         }
 
         #endregion

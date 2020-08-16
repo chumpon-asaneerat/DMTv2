@@ -33,8 +33,8 @@ namespace DMT
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // Start Config service.
-            ConfigManager.Instance.Start();
+            // Load Config service.
+            ConfigManager.Instance.LoadConfig();
             // Enable Web Socket.
             LocalServiceOperations.Instance.EnableWebSocket();
             // Initial Page Content Manager
@@ -57,8 +57,6 @@ namespace DMT
             PageContentManager.Instance.ContentChanged -= new EventHandler(Instance_ContentChanged);
             // Disable Web Socket.
             LocalServiceOperations.Instance.DisableWebSocket();
-            // Stop Config service.
-            ConfigManager.Instance.Shutdown();
         }
 
         #endregion
