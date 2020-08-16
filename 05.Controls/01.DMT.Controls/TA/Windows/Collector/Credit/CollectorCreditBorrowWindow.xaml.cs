@@ -7,6 +7,8 @@ using System.Windows.Controls;
 
 using DMT.Models;
 using DMT.Services;
+using DMT.Controls;
+
 using NLib.Services;
 using NLib.Reflection;
 using NLib.Reports.Rdlc;
@@ -45,7 +47,16 @@ namespace DMT.TA.Windows.Collector.Credit
         {
             string userId = txtSearchUserId.Text;
             if (string.IsNullOrEmpty(userId)) return;
+
             // TODO: Implements UserSearchManager here.
+            UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
+            var user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
+            if (null != user && null != manager.UserBalance)
+            {
+                manager.SetUser(user);
+            }
+
+            /*
             var search = Search.Users.ById.Create(userId, "CTC", "TC");
             var users = ops.Users.SearchById(search).Value();
             if (null != users && null != manager.UserBalance)
@@ -67,6 +78,7 @@ namespace DMT.TA.Windows.Collector.Credit
                     manager.SetUser(win.SelectedUser);
                 }
             }
+            */
         }
 
         private void cmdOK_Click(object sender, RoutedEventArgs e)

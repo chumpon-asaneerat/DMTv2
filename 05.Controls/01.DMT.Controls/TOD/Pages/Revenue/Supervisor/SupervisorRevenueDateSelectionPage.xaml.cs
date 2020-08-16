@@ -7,6 +7,8 @@ using System.Windows.Controls;
 
 using DMT.Models;
 using DMT.Services;
+using DMT.Controls;
+
 using NLib.Services;
 using NLib.Reflection;
 using DMT.TOD.Windows;
@@ -50,7 +52,19 @@ namespace DMT.TOD.Pages.Revenue
         {
             string userId = txtSearchUserId.Text;
             if (string.IsNullOrEmpty(userId)) return;
+
             // TODO: Implements UserSearchManager here.
+            UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
+            _user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
+            if (null != _user)
+            {
+                srcObj.UserId = _user.UserId;
+                srcObj.FullNameEN = _user.FullNameEN;
+                srcObj.FullNameTH = _user.FullNameTH;
+            }
+
+
+            /*
             var search = Search.Users.ById.Create(userId, "CTC", "TC");
             var users = ops.Users.SearchById(search).Value();
             if (null != users)
@@ -78,6 +92,7 @@ namespace DMT.TOD.Pages.Revenue
                     srcObj.FullNameTH = _user.FullNameTH;
                 }
             }
+            */
         }
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)

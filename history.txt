@@ -20,8 +20,11 @@ Update 2020-08-16 #57
 Update 2020-08-16 #56
 - 
 
+[commited]
 Update 2020-08-16 #55
-- 
+- Update Local/DataCenter/TAxTOD service operation #255.
+  - DMT.Controls update #3.
+    - Update User Search Process #3.
 
 [commited]
 Update 2020-08-16 #54

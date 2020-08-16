@@ -17,19 +17,19 @@ using NLib;
 
 #endregion
 
-namespace DMT.TA.Windows.Collector.Searchs
+namespace DMT.Windows
 {
     /// <summary>
-    /// Interaction logic for CollectorFilterWindow.xaml
+    /// Interaction logic for UserFilterWindow.xaml
     /// </summary>
-    public partial class CollectorFilterWindow : Window
+    public partial class UserFilterWindow : Window
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public CollectorFilterWindow()
+        public UserFilterWindow()
         {
             InitializeComponent();
         }

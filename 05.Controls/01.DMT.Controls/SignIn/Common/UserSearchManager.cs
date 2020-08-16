@@ -67,20 +67,47 @@ namespace DMT.Controls
 
         #endregion
 
-        #region Private Methods
-
-        #endregion
-
         #region Public Methods
 
-        public User Search()
+        public User SelectUser(string userId, params string[] roles)
         {
             User ret = null;
-            
+
+            var search = Search.Users.ById.Create(userId, roles);
+            var users = ops.Users.SearchById(search).Value();
+            if (null != users)
+            {
+                if (users.Count == 1)
+                {
+                    ret = users[0];
+                }
+                else if (users.Count > 1)
+                {
+                    var win = new Windows.UserFilterWindow();
+                    // change title.
+                    if (!string.IsNullOrEmpty(this.Title)) win.Title = this.Title;
+                    win.Owner = Application.Current.MainWindow;
+                    // setup user list for selection.
+                    win.Setup(users);
+                    if (win.ShowDialog() == false || null == win.SelectedUser)
+                    {
+                        // No user selected.
+                        ret = null;
+                    }
+                    else
+                    {
+                        // User selected.
+                        ret = win.SelectedUser;
+                    }
+                }
+            }
             return ret;
         }
 
-        public List<string> Roles { get; set; }
+        /// <summary>
+        /// Gets or sets Popup window title.
+        /// </summary>
+        public string Title { get; set; }
 
         #endregion
     }

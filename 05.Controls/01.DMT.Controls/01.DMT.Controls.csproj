@@ -186,8 +186,8 @@
     <Compile Include="TA\Windows\Collector\Credit\MessageWindow.xaml.cs">
       <DependentUpon>MessageWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TA\Windows\Collector\Searchs\CollectorFilterWindow.xaml.cs">
-      <DependentUpon>CollectorFilterWindow.xaml</DependentUpon>
+    <Compile Include="SignIn\Windows\UserFilterWindow.xaml.cs">
+      <DependentUpon>UserFilterWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TA\Windows\Coupon\CouponEditWindow.xaml.cs">
       <DependentUpon>CouponEditWindow.xaml</DependentUpon>
@@ -575,7 +575,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="TA\Windows\Collector\Searchs\CollectorFilterWindow.xaml">
+    <Page Include="SignIn\Windows\UserFilterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

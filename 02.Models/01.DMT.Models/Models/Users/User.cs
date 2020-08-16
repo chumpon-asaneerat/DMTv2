@@ -804,7 +804,7 @@ namespace DMT.Models
 					cmd += " WHERE UserId like ? ";
 					if (null != roles && roles.Length > 0)
 					{
-						cmd += "   AND RoldId IN ( ";
+						cmd += "   AND RoleId IN ( ";
 						for (int i = 0; i < roles.Length; i++)
 						{
 							cmd += string.Format("'{0}'", roles[i]);

@@ -7,6 +7,8 @@ using System.Windows.Controls;
 
 using DMT.Models;
 using DMT.Services;
+using DMT.Controls;
+
 using NLib.Services;
 using NLib.Reflection;
 using NLib.Reports.Rdlc;
@@ -70,7 +72,12 @@ namespace DMT.TA.Pages.History
         {
             string userId = txtSearchUserId.Text;
             if (string.IsNullOrEmpty(userId)) return;
+
             // TODO: Implements UserSearchManager here.
+            UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
+            _user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
+
+            /*
             var search = Search.Users.ById.Create(userId, "CTC", "TC");
             var users = ops.Users.SearchById(search).Value();
             if (null != users)
@@ -92,6 +99,7 @@ namespace DMT.TA.Pages.History
                     _user = win.SelectedUser;
                 }
             }
+            */
         }
 
         private void cmdCancelRe_Click(object sender, RoutedEventArgs e)
