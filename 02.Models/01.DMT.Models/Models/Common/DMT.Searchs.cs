@@ -94,11 +94,13 @@ namespace DMT.Models
             public class ById : NSearch<ById>
             {
                 public string UserId { get; set; }
-
-                public static ById Create(string userId)
+                public string[] RoleIds { get; set; }
+                // TODO: uncomment params later
+                public static ById Create(string userId, /*params */string[] roleIds)
                 {
                     var ret = new ById();
                     ret.UserId = userId;
+                    ret.RoleIds = roleIds;
                     return ret;
                 }
             }

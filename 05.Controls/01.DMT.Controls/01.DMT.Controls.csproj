@@ -83,6 +83,7 @@
     <Compile Include="Header\Elements\HeaderUser.xaml.cs">
       <DependentUpon>HeaderUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SignIn\Common\UserSearchManager.cs" />
     <Compile Include="SignIn\Pages\SignInPage.xaml.cs">
       <DependentUpon>SignInPage.xaml</DependentUpon>
     </Compile>
