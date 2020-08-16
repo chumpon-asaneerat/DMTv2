@@ -117,6 +117,7 @@ namespace SmartcardM1Test
             lbCardExist.ForeColor = Color.Red;
             lbCardExist.Text = "Card not avaliable.";
             lbSN.Text = "-";
+            txtSN.Text = "";
             lbBlock0.Text = "Block 0: ";
             lbBlock1.Text = "Block 1: ";
             lbBlock2.Text = "Block 2: ";
@@ -131,6 +132,7 @@ namespace SmartcardM1Test
             lbCardExist.ForeColor = Color.Green;
             lbCardExist.Text = "Card avaliable.";
             lbSN.Text = e.SerialNo;
+            txtSN.Text = e.SerialNo.Replace(" ", string.Empty);
         }
 
         private void SmartcardService_OnCardReadBlock(object sender, M1CardReadBlockEventArgs e)
@@ -182,6 +184,8 @@ namespace SmartcardM1Test
             SmartcardService.Release();
             // Update Status
             UpdateStatus();
+
+            MessageBox.Show("Note: This function is still not work properly.");
         }
 
         #endregion

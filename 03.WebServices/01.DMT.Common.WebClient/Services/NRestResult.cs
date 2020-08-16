@@ -127,12 +127,20 @@ namespace DMT.Services
         /// </summary>
         public NRestError errors { get; set; }
         /// <summary>
-        /// Checks if operation has success.
+        /// Checks if operation is success.
         /// </summary>
         public virtual bool Ok 
         { 
             get { return !this.errors.hasError; } 
             set { } 
+        }
+        /// <summary>
+        /// Checks if operation is failed.
+        /// </summary>
+        public virtual bool Failed
+        {
+            get { return this.errors.hasError; }
+            set { }
         }
 
         #endregion

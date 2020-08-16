@@ -74,6 +74,10 @@ namespace DMT.TA.Pages.Plaza
 
             UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
             _user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
+            if (null == _user)
+            {
+                return;
+            }
         }
     }
 }

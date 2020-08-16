@@ -46,13 +46,14 @@
             this.lbConnectStatus = new System.Windows.Forms.Label();
             this.lbConnectStatusMsg = new System.Windows.Forms.Label();
             this.cmdRelease = new System.Windows.Forms.Button();
+            this.txtSN = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lbBlock3
             // 
             this.lbBlock3.AutoSize = true;
             this.lbBlock3.Font = new System.Drawing.Font("Lucida Console", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBlock3.Location = new System.Drawing.Point(144, 346);
+            this.lbBlock3.Location = new System.Drawing.Point(144, 388);
             this.lbBlock3.Name = "lbBlock3";
             this.lbBlock3.Size = new System.Drawing.Size(79, 14);
             this.lbBlock3.TabIndex = 15;
@@ -62,7 +63,7 @@
             // 
             this.lbBlock2.AutoSize = true;
             this.lbBlock2.Font = new System.Drawing.Font("Lucida Console", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBlock2.Location = new System.Drawing.Point(144, 316);
+            this.lbBlock2.Location = new System.Drawing.Point(144, 358);
             this.lbBlock2.Name = "lbBlock2";
             this.lbBlock2.Size = new System.Drawing.Size(79, 14);
             this.lbBlock2.TabIndex = 14;
@@ -72,7 +73,7 @@
             // 
             this.lbBlock1.AutoSize = true;
             this.lbBlock1.Font = new System.Drawing.Font("Lucida Console", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBlock1.Location = new System.Drawing.Point(144, 289);
+            this.lbBlock1.Location = new System.Drawing.Point(144, 331);
             this.lbBlock1.Name = "lbBlock1";
             this.lbBlock1.Size = new System.Drawing.Size(79, 14);
             this.lbBlock1.TabIndex = 13;
@@ -82,7 +83,7 @@
             // 
             this.lbBlock0.AutoSize = true;
             this.lbBlock0.Font = new System.Drawing.Font("Lucida Console", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBlock0.Location = new System.Drawing.Point(144, 262);
+            this.lbBlock0.Location = new System.Drawing.Point(144, 304);
             this.lbBlock0.Name = "lbBlock0";
             this.lbBlock0.Size = new System.Drawing.Size(79, 14);
             this.lbBlock0.TabIndex = 12;
@@ -91,7 +92,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(54, 259);
+            this.label4.Location = new System.Drawing.Point(54, 301);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 17);
             this.label4.TabIndex = 11;
@@ -218,6 +219,7 @@
             // 
             // cmdRelease
             // 
+            this.cmdRelease.Enabled = false;
             this.cmdRelease.Location = new System.Drawing.Point(310, 75);
             this.cmdRelease.Name = "cmdRelease";
             this.cmdRelease.Size = new System.Drawing.Size(136, 50);
@@ -226,11 +228,20 @@
             this.cmdRelease.UseVisualStyleBackColor = true;
             this.cmdRelease.Click += new System.EventHandler(this.cmdRelease_Click);
             // 
+            // txtSN
+            // 
+            this.txtSN.Location = new System.Drawing.Point(142, 259);
+            this.txtSN.Name = "txtSN";
+            this.txtSN.ReadOnly = true;
+            this.txtSN.Size = new System.Drawing.Size(270, 22);
+            this.txtSN.TabIndex = 27;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 430);
+            this.Controls.Add(this.txtSN);
             this.Controls.Add(this.cmdRelease);
             this.Controls.Add(this.lbConnectStatusMsg);
             this.Controls.Add(this.lbConnectStatus);
@@ -281,6 +292,7 @@
         private System.Windows.Forms.Label lbConnectStatus;
         private System.Windows.Forms.Label lbConnectStatusMsg;
         private System.Windows.Forms.Button cmdRelease;
+        private System.Windows.Forms.TextBox txtSN;
     }
 }
 

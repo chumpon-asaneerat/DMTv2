@@ -101,6 +101,19 @@ namespace DMT.Config.Pages
         }
 
         #endregion
+
+        private void cmdSave_Click(object sender, RoutedEventArgs e)
+        {
+            var user = (pgrid.SelectedObject as User);
+            if (null != user)
+            {
+                var ret = ops.Users.SaveUser(user);
+                if (ret.Failed)
+                {
+                    MessageBox.Show("Save User Error.");
+                }
+            }
+        }
     }
 
     public class RoleItem : Role
