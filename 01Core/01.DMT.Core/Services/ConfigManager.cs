@@ -157,7 +157,7 @@ namespace DMT.Services
             {
                 Protocol = "http",
                 HostName = "localhost",
-                PortNumber = 3000
+                PortNumber = 5000
             };
         }
 
@@ -301,16 +301,33 @@ namespace DMT.Services
         {
             lock (this)
             {
-                if (!NJson.ConfigExists(_fileName))
+                try
                 {
-                    if (null == _plazaCfg) _plazaCfg = new PlazaConfig();
+                    //var oldCfg = _plazaCfg;
+                    if (!NJson.ConfigExists(_fileName))
+                    {
+                        _plazaCfg = new PlazaConfig();
+                    }
+                    else
+                    {
+                        _plazaCfg = NJson.LoadFromFile<PlazaConfig>(_fileName);
+                    }
+                    // save back to file.
+                    if (null == _plazaCfg)
+                    {
+                        _plazaCfg = new PlazaConfig();
+                        Console.WriteLine("New Config: {0}", _plazaCfg);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Loaded Config: {0}", _plazaCfg);
+                    }
+                    NJson.SaveToFile(_plazaCfg, _fileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    _plazaCfg = NJson.LoadFromFile<PlazaConfig>(_fileName);
+                    Console.WriteLine(ex);
                 }
-                // save back to file.
-                NJson.SaveToFile(_plazaCfg, _fileName);
             }
         }
 

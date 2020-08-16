@@ -1,6 +1,5 @@
 - Note:
   - Sync process required to implements property name attribute to match base class.
-  - The NRestClient need to get host/port from config.
 
 --------------------------------------------------------------------------------------------
 Update 2020-08-17 #10
@@ -21,8 +20,10 @@ Update 2020-08-17 #6
 Update 2020-08-17 #5
 - 
 
+[commited]
 Update 2020-08-17 #4
-- 
+- Update Local/DataCenter/TAxTOD service operation #263.
+  - Implements Config Manager #5.
 
 [commited]
 Update 2020-08-17 #3
