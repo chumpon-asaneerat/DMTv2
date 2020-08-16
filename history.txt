@@ -2,8 +2,6 @@
   - Sync process required to implements property name attribute to match base class.
   - Implements Smartcard sign in in all SignIn Page/Window.
   - The NRestClient need to get host/port from config.
-  - TOD need to set config to allow access from another computer.
-  - TA need to set config to allow access from another computer.
 
 --------------------------------------------------------------------------------------------
 Update 2020-08-16 #60
@@ -51,8 +49,11 @@ Update 2020-08-16 #47
 Update 2020-08-16 #46
 - 
 
+[commited]
 Update 2020-08-16 #45
-- 
+- Update History.txt's Note
+  - TOD need to set config to allow access from another computer (implementing).
+  - TA need to set config to allow access from another computer (implementing).
 
 [commited]
 Update 2020-08-16 #44
