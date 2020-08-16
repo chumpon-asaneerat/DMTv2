@@ -129,7 +129,8 @@ namespace DMT.TA.Windows.Collector.Credit
                 txtAmount.Text = "0";
 
             _roles.Clear();
-            _roles.Add("COLLECTOR");
+            _roles.Add("CTC");
+            _roles.Add("TC");
         }
     }
 }

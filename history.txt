@@ -37,17 +37,18 @@ Update 2020-08-16 #51
 Update 2020-08-16 #50
 - 
 
+[commited]
 Update 2020-08-16 #49
 - Update Local/DataCenter/TAxTOD service operation #251.
   - Test TA functions #1.
-    - User Credit - Receive Bag
+    - User Credit - Receive Bag (Confirm) - OK.
+    - User Credit - Return (partial) - OK.
 
 [commited]
 Update 2020-08-16 #48
 - Update Local/DataCenter/TAxTOD service operation #250.
   - Test TA functions #1.
     - Check Plaza Balance - OK.
-    - User Credit - Return (partial)
     - User Coupon - Received (Init) - OK.
     - User Coupon - Received (Edit) - OK.
     - User Coupon - Received (Print) - OK.
