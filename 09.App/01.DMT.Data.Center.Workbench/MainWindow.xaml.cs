@@ -10,6 +10,7 @@ using NLib.Services;
 //using DMT.Services;
 
 using Fluent;
+using DMT.TAxTOD.Pages;
 
 #endregion
 
@@ -77,17 +78,17 @@ namespace DMT
 
         private void cmdGetCoupons_Click(object sender, RoutedEventArgs e)
         {
-
+            PageContentManager.Instance.Current = new TAxTOD.Pages.CouponViewPage();
         }
 
         private void cmdSendUserLog_Click(object sender, RoutedEventArgs e)
         {
-
+            PageContentManager.Instance.Current = new TAxTOD.Pages.DemoPage();
         }
 
         private void cmdSendRevenue_Click(object sender, RoutedEventArgs e)
         {
-
+            PageContentManager.Instance.Current = new TAxTOD.Pages.DemoPage();
         }
 
         #endregion
