@@ -11,6 +11,7 @@
                      WindowState="Maximized"
                      Loaded="RibbonWindow_Loaded"
                      Unloaded="RibbonWindow_Unloaded"
+                     Icon="app.ico"
                      mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>

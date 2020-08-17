@@ -37,6 +37,9 @@
   <PropertyGroup>
     <StartupObject>DMT.App</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -211,6 +214,9 @@
     <Resource Include="Images\Users\send-user.png" />
     <Resource Include="Images\Users\upload-user.png" />
     <Resource Include="Images\Users\users.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="app.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
