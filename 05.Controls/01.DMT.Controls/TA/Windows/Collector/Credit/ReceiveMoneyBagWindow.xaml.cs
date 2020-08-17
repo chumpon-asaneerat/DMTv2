@@ -89,6 +89,14 @@ namespace DMT.TA.Windows.Collector.Credit
                 return;
             }
 
+            if (userId != _userId)
+            {
+                txtMsg.Text = "รหัสพนักงาน ไม่ตรงกับ ถุงเงินที่จะรับ";
+                txtUserId.SelectAll();
+                txtUserId.Focus();
+                return;
+            }
+
             var md5 = Utils.MD5.Encrypt(pwd);
             var user = ops.Users.GetByLogIn(Search.Users.ByLogIn.Create(userId, md5)).Value();
             CheckUser(user);
@@ -129,6 +137,7 @@ namespace DMT.TA.Windows.Collector.Credit
 
         private void CheckUser(User user)
         {
+
             if (null == user || (null != user && user.UserId != _userId))
             {
                 txtMsg.Text = "LogIn Failed";
@@ -136,6 +145,7 @@ namespace DMT.TA.Windows.Collector.Credit
                 txtUserId.Focus();
                 return;
             }
+
             SmartcardManager.Instance.Shutdown();
             this.DialogResult = true;
         }

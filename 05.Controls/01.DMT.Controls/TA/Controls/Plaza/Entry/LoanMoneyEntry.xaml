@@ -45,11 +45,11 @@
                                    TextAlignment="Left" 
                                    Text="บาท" 
                                    Width="50"/>
-                        <TextBox Margin="2"
+                        <TextBox x:Name="txtRevolvingFunds" Margin="2"
                                  TextAlignment="Right"
                                  IsEnabled="False"
                                  Text="{Binding RevolvingFunds, StringFormat=N0}"
-                                 Width="90"/>
+                                 Width="90" KeyDown="txtRevolvingFunds_KeyDown"/>
                     </DockPanel>
                     <!-- 2 BHT -->
                     <DockPanel Margin="5 0 5 0">
@@ -63,11 +63,11 @@
                                    TextAlignment="Left" 
                                    Text="บาท" 
                                    Width="50"/>
-                        <TextBox Margin="2"
+                        <TextBox x:Name="txtLoanMoney" Margin="2"
                                  TextAlignment="Right"
                                  IsEnabled="False"
                                  Text="{Binding LoanMoney, StringFormat=N0}"
-                                 Width="90"/>
+                                 Width="90" KeyDown="txtLoanMoney_KeyDown"/>
                     </DockPanel>
                     <!-- 5 BHT -->
                     <DockPanel Margin="5 0 5 0">
@@ -81,11 +81,11 @@
                                    TextAlignment="Left" 
                                    Text="บาท" 
                                    Width="50"/>
-                        <TextBox Margin="2"
+                        <TextBox x:Name="txtLoanMoneyCabinet" Margin="2"
                                  TextAlignment="Right"
                                  IsEnabled="False"
                                  Text="{Binding LoanMoneyCabinet, StringFormat=N0}"
-                                 Width="90"/>
+                                 Width="90" KeyDown="txtLoanMoneyCabinet_KeyDown"/>
                     </DockPanel>
                 </StackPanel>
             </DockPanel>

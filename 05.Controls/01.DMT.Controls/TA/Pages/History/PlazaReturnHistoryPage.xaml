@@ -6,7 +6,7 @@
              xmlns:ctrl="clr-namespace:DMT.TA.Controls.Plaza.Entry"
              xmlns:ctrl2="clr-namespace:DMT.TA.Controls.Plaza.History"
              d:DesignHeight="650"
-             d:DesignWidth="1000"
+             d:DesignWidth="1100"
              mc:Ignorable="d">
     <DockPanel Margin="5">
         <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom">
@@ -192,12 +192,39 @@
                              FontSize="18"
                              Text="" />
                     <Button x:Name="cmdSearch"
-                            Width="60"
-                            Margin="613,4,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Content="ค้นหา"
-                            FontSize="18" Click="cmdSearch_Click" />
+                        Width="220"
+                        Height="50"
+                        Margin="613,4,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        DockPanel.Dock="Right"
+                        Foreground="White"
+                        Click="cmdSearch_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png" />
+                        </Button.Background>
+                        <DockPanel>
+                            <Grid Width="5" />
+                            <Image Width="50"
+                               Height="50"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Left"
+                               Source="/DMT.Controls;component/Images/Button/search2.png" />
+                            <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                                <TextBlock HorizontalAlignment="Center"
+                                       FontSize="20"
+                                       Text="ค้นหา"
+                                       FontWeight="Bold"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap" />
+                                <Grid Height="10" />
+                            </StackPanel>
+                        </DockPanel>
+                    </Button>
+                    
                 </Grid>
 
             </Border>

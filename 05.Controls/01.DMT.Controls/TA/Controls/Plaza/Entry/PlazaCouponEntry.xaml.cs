@@ -39,5 +39,35 @@ namespace DMT.TA.Controls.Plaza.Entry
         }
 
         #endregion
+
+        private void txtCouponBHT35_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                txtCouponTotal.SelectAll();
+                txtCouponTotal.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtCouponBHT80_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                txtCouponTotal.SelectAll();
+                txtCouponTotal.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtCouponTotal_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                txtCouponBHT35.SelectAll();
+                txtCouponBHT35.Focus();
+                e.Handled = true;
+            }
+        }
     }
 }

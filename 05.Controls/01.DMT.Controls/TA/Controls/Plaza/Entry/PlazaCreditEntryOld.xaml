@@ -50,7 +50,7 @@
                         <TextBox Margin="2"
                              TextAlignment="Right"
                              Text="{Binding BHT1}"
-                                 Width="50"/>
+                                 Width="50" />
                     </DockPanel>
                     <!-- 2 BHT -->
                     <DockPanel Margin="5 0 5 0">
@@ -67,7 +67,7 @@
                         <TextBox Margin="2"
                              TextAlignment="Right"
                              Text="{Binding BHT2}"
-                                 Width="50"/>
+                                 Width="50" />
                     </DockPanel>
                     <!-- 5 BHT -->
                     <DockPanel Margin="5 0 5 0">
@@ -84,7 +84,7 @@
                         <TextBox Margin="2"
                              TextAlignment="Right"
                              Text="{Binding BHT5}"
-                                 Width="50"/>
+                                 Width="50" />
                     </DockPanel>
                     <!-- 10 BHT coin -->
                     <DockPanel Margin="5 0 5 0">

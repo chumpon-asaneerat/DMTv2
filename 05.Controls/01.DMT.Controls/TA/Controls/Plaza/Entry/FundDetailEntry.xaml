@@ -70,10 +70,10 @@
                                    DockPanel.Dock="Right"
                                    TextAlignment="Left"
                                    Text="บาท" />
-                        <TextBox Width="90"
+                        <TextBox x:Name="txtExchangeBHT" Width="90"
                                  Margin="2"
                                  TextAlignment="Right"
-                                 Text="{Binding ExchangeBHT, StringFormat=N0}" />
+                                 Text="{Binding ExchangeBHT, StringFormat=N0}" KeyDown="txtExchangeBHT_KeyDown" />
                     </DockPanel>
                     <!-- Borrow BHT -->
                     <DockPanel Margin="5,0,5,0">
@@ -87,10 +87,10 @@
                                    DockPanel.Dock="Right"
                                    TextAlignment="Left"
                                    Text="บาท" />
-                        <TextBox Width="90"
+                        <TextBox x:Name="txtBorrowBHT" Width="90"
                                  Margin="2"
                                  TextAlignment="Right"
-                                 Text="{Binding BorrowBHT, StringFormat=N0}" />
+                                 Text="{Binding BorrowBHT, StringFormat=N0}" KeyDown="txtBorrowBHT_KeyDown" />
                     </DockPanel>
                     <!-- Additional BHT -->
                     <DockPanel Margin="5,0,5,0">
@@ -104,10 +104,10 @@
                                    DockPanel.Dock="Right"
                                    TextAlignment="Left"
                                    Text="บาท" />
-                        <TextBox Width="90"
+                        <TextBox x:Name="txtAdditionalBHT" Width="90"
                                  Margin="2"
                                  TextAlignment="Right"
-                                 Text="{Binding AdditionalBHT, StringFormat=N0}" />
+                                 Text="{Binding AdditionalBHT, StringFormat=N0}" KeyDown="txtAdditionalBHT_KeyDown" />
                     </DockPanel>
                     <Grid Height="5" />
                     <!-- Grand Total BHT -->

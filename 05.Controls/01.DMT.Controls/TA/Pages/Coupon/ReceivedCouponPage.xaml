@@ -77,11 +77,13 @@
                                Foreground="Black"
                                Text="วันที่" />
                     <TextBlock x:Name="couponDate"
-                               Width="200"
+                               Width="160"
+
                                Margin="5"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                FontSize="18" />
+                    <Grid Width="5" />
                     <TextBlock Margin="5"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
@@ -92,15 +94,43 @@
                              Margin="5"
                              HorizontalAlignment="Left"
                              VerticalAlignment="Center"
-                             FontSize="18" />
+                             FontSize="18" KeyDown="txtSearchUserId_KeyDown" />
                     <Grid Width="5" />
                     <Button x:Name="cmdSearchUser"
-                            Width="75"
-                            Content="ค้นหา"
-                            Click="cmdSearchUser_Click" />
+                        Width="220"
+                        Height="50"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        DockPanel.Dock="Right"
+                        Foreground="White"
+                        Click="cmdSearchUser_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png" />
+                        </Button.Background>
+                        <DockPanel>
+                            <Grid Width="5" />
+                            <Image Width="50"
+                               Height="50"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Left"
+                               Source="/DMT.Controls;component/Images/Button/search2.png" />
+                            <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                                <TextBlock HorizontalAlignment="Center"
+                                       FontSize="20"
+                                       Text="ค้นหา"
+                                       FontWeight="Bold"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap" />
+                                <Grid Height="10" />
+                            </StackPanel>
+                        </DockPanel>
+                    </Button>
                     <Grid Width="5" />
                     <TextBlock x:Name="txtUserId"
-                               Width="150"
+                               Width="60"
                                Margin="5"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
@@ -108,13 +138,13 @@
                                Text="" />
                     <Grid Width="5" />
                     <TextBlock x:Name="txtUserName"
-                               Width="250"
+                               Width="200"
                                Margin="5"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                FontSize="18"
                                Text="" />
-                    <Grid Width="5" />
+                    <Grid Width="10" />
                     <Button x:Name="cmdAppend"
                             Width="220"
                             Height="50"

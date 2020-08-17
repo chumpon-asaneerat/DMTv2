@@ -124,6 +124,12 @@ namespace DMT.TA.Pages.Coupon
             {
                 return;
             }
+            else
+            {
+                txtSearchUserId.Text = string.Empty;
+                txtUserId.Text = string.Empty;
+                txtUserName.Text = string.Empty;
+            }
             RefreshList();
         }
 
@@ -144,6 +150,31 @@ namespace DMT.TA.Pages.Coupon
         public void RefreshList()
         {
             grid.RefreshList();
+        }
+
+        private void txtSearchUserId_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                if (!string.IsNullOrEmpty(txtSearchUserId.Text))
+                {
+                    string userId = txtSearchUserId.Text;
+                    if (string.IsNullOrEmpty(userId)) return;
+
+                    UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
+                    _user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
+                    if (null != _user)
+                    {
+                        txtUserId.Text = _user.UserId;
+                        txtUserName.Text = _user.FullNameTH;
+                    }
+                    else
+                    {
+                        txtUserId.Text = string.Empty;
+                        txtUserName.Text = string.Empty;
+                    }
+                }
+            }
         }
     }
 }
