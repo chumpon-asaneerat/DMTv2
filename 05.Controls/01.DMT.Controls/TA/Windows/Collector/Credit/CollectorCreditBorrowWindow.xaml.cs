@@ -45,15 +45,7 @@ namespace DMT.TA.Windows.Collector.Credit
 
         private void cmdSearchUser_Click(object sender, RoutedEventArgs e)
         {
-            string userId = txtSearchUserId.Text;
-            if (string.IsNullOrEmpty(userId)) return;
-
-            UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
-            var user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
-            if (null != user && null != manager.UserBalance)
-            {
-                manager.SetUser(user);
-            }
+            SearchUser();
         }
 
         private void cmdOK_Click(object sender, RoutedEventArgs e)
@@ -157,18 +149,7 @@ namespace DMT.TA.Windows.Collector.Credit
         {
             if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
             {
-                if (!string.IsNullOrEmpty(txtSearchUserId.Text))
-                {
-                    string userId = txtSearchUserId.Text;
-                    if (string.IsNullOrEmpty(userId)) return;
-
-                    UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
-                    var user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
-                    if (null != user && null != manager.UserBalance)
-                    {
-                        manager.SetUser(user);
-                    }
-                }
+                SearchUser();
 
                 txtBagNo.SelectAll();
                 txtBagNo.Focus();
@@ -194,6 +175,22 @@ namespace DMT.TA.Windows.Collector.Credit
                 usrEntry.txtBHT1.SelectAll();
                 usrEntry.txtBHT1.Focus();
                 e.Handled = true;
+            }
+        }
+
+        private void SearchUser()
+        {
+            if (!string.IsNullOrEmpty(txtSearchUserId.Text))
+            {
+                string userId = txtSearchUserId.Text;
+                if (string.IsNullOrEmpty(userId)) return;
+
+                UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
+                var user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
+                if (null != user && null != manager.UserBalance)
+                {
+                    manager.SetUser(user);
+                }
             }
         }
     }

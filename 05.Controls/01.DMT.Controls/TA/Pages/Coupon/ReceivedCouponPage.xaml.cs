@@ -98,21 +98,7 @@ namespace DMT.TA.Pages.Coupon
 
         private void cmdSearchUser_Click(object sender, RoutedEventArgs e)
         {
-            string userId = txtSearchUserId.Text;
-            if (string.IsNullOrEmpty(userId)) return;
-
-            UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
-            _user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
-            if (null != _user)
-            {
-                txtUserId.Text = _user.UserId;
-                txtUserName.Text = _user.FullNameTH;
-            }
-            else
-            {
-                txtUserId.Text = string.Empty;
-                txtUserName.Text = string.Empty;
-            }
+            SearchUser();
         }
 
         private void cmdAppend_Click(object sender, RoutedEventArgs e)
@@ -156,23 +142,28 @@ namespace DMT.TA.Pages.Coupon
         {
             if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
             {
-                if (!string.IsNullOrEmpty(txtSearchUserId.Text))
-                {
-                    string userId = txtSearchUserId.Text;
-                    if (string.IsNullOrEmpty(userId)) return;
+                SearchUser();
+            }
+        }
 
-                    UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
-                    _user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
-                    if (null != _user)
-                    {
-                        txtUserId.Text = _user.UserId;
-                        txtUserName.Text = _user.FullNameTH;
-                    }
-                    else
-                    {
-                        txtUserId.Text = string.Empty;
-                        txtUserName.Text = string.Empty;
-                    }
+        private void SearchUser()
+        {
+            if (!string.IsNullOrEmpty(txtSearchUserId.Text))
+            {
+                string userId = txtSearchUserId.Text;
+                if (string.IsNullOrEmpty(userId)) return;
+
+                UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
+                _user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
+                if (null != _user)
+                {
+                    txtUserId.Text = _user.UserId;
+                    txtUserName.Text = _user.FullNameTH;
+                }
+                else
+                {
+                    txtUserId.Text = string.Empty;
+                    txtUserName.Text = string.Empty;
                 }
             }
         }

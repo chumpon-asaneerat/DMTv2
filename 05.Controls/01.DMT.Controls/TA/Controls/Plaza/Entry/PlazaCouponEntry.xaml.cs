@@ -54,8 +54,8 @@ namespace DMT.TA.Controls.Plaza.Entry
         {
             if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
             {
-                txtCouponTotal.SelectAll();
-                txtCouponTotal.Focus();
+                txtCouponBHT35.SelectAll();
+                txtCouponBHT35.Focus();
                 e.Handled = true;
             }
         }

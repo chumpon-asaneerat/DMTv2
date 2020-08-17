@@ -190,7 +190,7 @@
                              HorizontalAlignment="Left"
                              VerticalAlignment="Center"
                              FontSize="18"
-                             Text="" />
+                             Text="" KeyDown="txtSearchUserId_KeyDown" />
                     <Button x:Name="cmdSearch"
                         Width="220"
                         Height="50"
