@@ -34,6 +34,12 @@ Update 2020-08-18 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-08-17 #22
+- Update Local/DataCenter/TAxTOD service operation #274.
+  - Add TODO for PlazaOperation.base.
+  - Add TODO for NRestClient.
+
+[commited]
 Update 2020-08-17 #21
 - Prepare history.txt.
 

@@ -55,6 +55,7 @@ namespace DMT.Services
         {
             get
             {
+                // TODO: Need to check null config.
                 return string.Format(@"{0}://{1}:{2}/",
                     ConfigManager.Instance.Plaza.TAxTOD.Http.Protocol,
                     ConfigManager.Instance.Plaza.TAxTOD.Http.HostName,
