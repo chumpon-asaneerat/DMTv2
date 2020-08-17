@@ -2,6 +2,38 @@
   - Sync process required to implements property name attribute to match base class.
 
 --------------------------------------------------------------------------------------------
+Update 2020-08-17 #20
+- 
+
+Update 2020-08-17 #19
+- 
+
+Update 2020-08-17 #18
+- 
+
+Update 2020-08-17 #17
+- 
+
+Update 2020-08-17 #16
+- 
+
+Update 2020-08-17 #15
+- 
+
+Update 2020-08-17 #14
+- 
+
+Update 2020-08-17 #13
+- 
+
+Update 2020-08-17 #12
+- 
+
+[commited]
+Update 2020-08-17 #11
+- Update history.txt
+
+[commited]
 Update 2020-08-17 #10
 - Update Local/DataCenter/TAxTOD service operation #268.
   - Data Center Workbench update #2.
