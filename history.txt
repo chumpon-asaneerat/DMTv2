@@ -14,8 +14,10 @@ Update 2020-08-17 #18
 Update 2020-08-17 #17
 - 
 
+[commited]
 Update 2020-08-17 #16
-- 
+- Update Local/DataCenter/TAxTOD service operation #273.
+  - Add Nullable Type ExtensionMethods.
 
 [commited]
 Update 2020-08-17 #15
