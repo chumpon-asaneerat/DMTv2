@@ -11,8 +11,10 @@ Update 2020-08-17 #19
 Update 2020-08-17 #18
 - 
 
+[commited]
 Update 2020-08-17 #17
-- 
+- Update Local/DataCenter/TAxTOD service operation #273.
+  - Remove all BAK sql files.
 
 [commited]
 Update 2020-08-17 #16

@@ -109,17 +109,8 @@
     <Compile Include="Models\Coupons\Common\Enums.cs" />
     <Compile Include="Models\Coupons\TSB\TSBCouponSummary.cs" />
     <Compile Include="Models\Coupons\Users\UserCouponTransaction.cs" />
-    <EmbeddedResource Include="Views\Scripts\Coupons\Backup\TSBCouponSummarryView.BAK.sql" />
-    <EmbeddedResource Include="Views\Scripts\Credits\Backup\TSBCreditSummarryView.BAK.sql" />
-    <EmbeddedResource Include="Views\Scripts\Coupons\Backup\UserCouponSummaryView.BAK.sql" />
     <Compile Include="Models\Exchanges\TSBExchangeGroup.cs" />
     <Compile Include="Models\Exchanges\TSBExchangeTransaction.cs" />
-    <EmbeddedResource Include="Views\Scripts\Credits\Backup\UserCreditBorrowSummaryView.BAK.sql" />
-    <EmbeddedResource Include="Views\Scripts\Credits\Backup\UserCreditReturnSummaryView.BAK.sql" />
-    <EmbeddedResource Include="Views\Scripts\Coupons\Backup\UserCoupon35SummaryView.BAK.sql" />
-    <EmbeddedResource Include="Views\Scripts\Coupons\Backup\UserCoupon80SummaryView.BAK.sql" />
-    <EmbeddedResource Include="Views\Scripts\Coupons\Backup\TSBCouponTransactionView.BAK.sql" />
-    <EmbeddedResource Include="Views\Scripts\Coupons\Backup\TSBCouponBalanceView.BAK.sql" />
     <Compile Include="Models\Users\LogInLog.cs" />
     <Compile Include="Views\SqlScriptManager.cs" />
     <Compile Include="Models\Common\DMT.Searchs.cs" />
@@ -166,9 +157,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Scripts\Exchanges\TSBExchangeTransactionView.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\Scripts\Credits\Backup\UserCreditSummaryView.BAK.sql" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Scripts\Infrastructures\PlazaView.sql" />
