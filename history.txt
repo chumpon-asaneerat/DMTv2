@@ -17,8 +17,10 @@ Update 2020-08-17 #17
 Update 2020-08-17 #16
 - 
 
+[commited]
 Update 2020-08-17 #15
-- 
+- Update Local/DataCenter/TAxTOD service operation #272.
+  - Add TAxTOD Extension Methods.
 
 [commited]
 Update 2020-08-17 #14

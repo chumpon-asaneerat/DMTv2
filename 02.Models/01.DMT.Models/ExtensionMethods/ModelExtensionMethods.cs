@@ -12,19 +12,35 @@ using DMT.Models;
 
 namespace DMT.Models.ExtensionMethods
 {
-    #region Role
-    /*
+    #region TAxTOD Server - Local
+
     /// <summary>
-    /// The Role Extension Methods
+    /// The TAxTOD Extension Methods
     /// </summary>
-    public static class RoleExtensionMethods
+    public static class TAxTODExtensionMethods
     {
-        public static List<User> GetUsers(this Role value)
+        #region Coupons
+
+        public static TSBCouponTransaction ToLocal(this TAServerCouponTransaction value)
         {
-            if (null == value) return new List<User>();
-            return User.FindByRole(value.RoleId);
+            if (null == value) return null;
+            var inst = new TSBCouponTransaction();
+            // TODO: map proeprties.
+
+            return inst;
         }
+
+        public static TAServerCouponTransaction ToServer(this TSBCouponTransaction value)
+        {
+            if (null == value) return null;
+            var inst = new TAServerCouponTransaction();
+            // TODO: map proeprties.
+
+            return inst;
+        }
+
+        #endregion
     }
-    */
+
     #endregion
 }
