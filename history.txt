@@ -2,13 +2,14 @@
   - Sync process required to implements property name attribute to match base class.
 
 --------------------------------------------------------------------------------------------
+[commited]
 Update 2020-08-17 #20
-- 
+- Merge from origin/TA #4.
 
 [commited]
 Update 2020-08-17 #19
 - Merge from origin/master Kik 1.
-- Merge from origin/TA #2.
+- Merge from origin/TA #3.
 
 [commited]
 Update 2020-08-17 #18
