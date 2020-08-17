@@ -5,8 +5,10 @@
 Update 2020-08-17 #20
 - 
 
+[commited]
 Update 2020-08-17 #19
-- 
+- Merge from origin/master Kik 1.
+- Merge from origin/TA #2.
 
 [commited]
 Update 2020-08-17 #18
