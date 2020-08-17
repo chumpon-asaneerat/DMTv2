@@ -26,8 +26,11 @@ Update 2020-08-17 #14
 Update 2020-08-17 #13
 - 
 
+[commited]
 Update 2020-08-17 #12
-- 
+- Update Local/DataCenter/TAxTOD service operation #269.
+  - TAxTOD.WebClient Plaza oprations - Coupons
+    - Add get list api.
 
 [commited]
 Update 2020-08-17 #11
