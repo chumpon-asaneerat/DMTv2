@@ -92,7 +92,7 @@
                         <RowDefinition Height ="50" />
                         <RowDefinition Height ="50" />
                         <RowDefinition Height ="50" />
-                        <RowDefinition Height ="50" />
+                        <RowDefinition Height ="60" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
@@ -219,13 +219,40 @@
                     </ComboBox>
 
 
-                    <Button x:Name="cmdSearch" Grid.Row="3"
-                            Width="100"
-                            Margin="105,0,0,10"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Bottom"
-                            Content="แสดงข้อมูล"
-                            FontSize="18" Click="cmdSearch_Click" />
+                    <Button x:Name="cmdSearchUser"
+                        Width="220"
+                        Height="50"
+                        Grid.Row="3"
+                        Margin="105,0,0,10"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        DockPanel.Dock="Right"
+                        Foreground="White"
+                        Click="cmdSearch_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png" />
+                        </Button.Background>
+                        <DockPanel>
+                            <Grid Width="5" />
+                            <Image Width="50"
+                               Height="50"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Left"
+                               Source="/DMT.Controls;component/Images/Button/search.png" />
+                            <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                                <TextBlock HorizontalAlignment="Center"
+                                       FontSize="20"
+                                       Text="แสดงข้อมูล"
+                                       FontWeight="Bold"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap" />
+                                <Grid Height="10" />
+                            </StackPanel>
+                        </DockPanel>
+                    </Button>
 
                     <TextBlock Grid.Row="3"
                                Margin="440,0,0,0"

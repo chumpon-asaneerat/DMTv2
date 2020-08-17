@@ -50,17 +50,7 @@ namespace DMT.TOD.Pages.Revenue
 
         private void cmdSearchUser_Click(object sender, RoutedEventArgs e)
         {
-            string userId = txtSearchUserId.Text;
-            if (string.IsNullOrEmpty(userId)) return;
-
-            UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
-            _user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
-            if (null != _user)
-            {
-                srcObj.UserId = _user.UserId;
-                srcObj.FullNameEN = _user.FullNameEN;
-                srcObj.FullNameTH = _user.FullNameTH;
-            }
+            SearchUser();
         }
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
@@ -204,5 +194,32 @@ namespace DMT.TOD.Pages.Revenue
             srcObj = new UserCreditBalance();
             this.DataContext = srcObj;
         }
+
+        private void txtSearchUserId_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                SearchUser();
+            }
+        }
+
+        private void SearchUser()
+        {
+            if (!string.IsNullOrEmpty(txtSearchUserId.Text))
+            {
+                string userId = txtSearchUserId.Text;
+                if (string.IsNullOrEmpty(userId)) return;
+
+                UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
+                _user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
+                if (null != _user)
+                {
+                    srcObj.UserId = _user.UserId;
+                    srcObj.FullNameEN = _user.FullNameEN;
+                    srcObj.FullNameTH = _user.FullNameTH;
+                }
+            }
+        }
+
     }
 }

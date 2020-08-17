@@ -6,7 +6,7 @@
         xmlns:ctrl="clr-namespace:DMT.TA.Controls.Plaza.Entry"
         Title="Collector Credit Borrow"
         Width="800"
-        Height="700"
+        Height="750"
         HorizontalAlignment="Center"
         VerticalAlignment="Center"
         ResizeMode="NoResize"
@@ -27,7 +27,7 @@
                 <StackPanel x:Name="panelSearch"
                             Orientation="Horizontal"
                             DockPanel.Dock="Top">
-                    <Grid Height="10" />
+                    <Grid Height="60" />
                     <TextBlock Width="150"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
@@ -41,15 +41,43 @@
                              HorizontalAlignment="Left"
                              VerticalAlignment="Center"
                              FontSize="18"
-                             Text="" />
+                             Text="" KeyDown="txtSearchUserId_KeyDown" />
                     <Grid Width="5" />
                     <Button x:Name="cmdSearchUser"
-                            Width="75"
-                            Content="ค้นหา"
-                            Click="cmdSearchUser_Click" />
+                        Width="220"
+                        Height="50"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        DockPanel.Dock="Right"
+                        Foreground="White"
+                        Click="cmdSearchUser_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/DMT.Controls;component/Images/Button/Button5.png" />
+                        </Button.Background>
+                        <DockPanel>
+                            <Grid Width="5" />
+                            <Image Width="50"
+                               Height="50"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Left"
+                               Source="/DMT.Controls;component/Images/Button/search2.png" />
+                            <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                                <TextBlock HorizontalAlignment="Center"
+                                       FontSize="20"
+                                       Text="ค้นหา"
+                                       FontWeight="Bold"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap" />
+                                <Grid Height="10" />
+                            </StackPanel>
+                        </DockPanel>
+                    </Button>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                    <Grid Height="10" />
+                    <Grid Height="40" />
                     <TextBlock Width="110"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
@@ -83,7 +111,7 @@
                              Text="{Binding FullNameTH}" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Grid Height="10" />
+                    <Grid Height="40" />
                     <TextBlock Width="110"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
@@ -97,7 +125,7 @@
                              HorizontalAlignment="Left"
                              VerticalAlignment="Center"
                              FontSize="18"
-                             Text="{Binding BagNo}" />
+                             Text="{Binding BagNo}" KeyDown="txtBagNo_KeyDown" />
                     <Grid Width="5" />
                     <TextBlock Width="160"
                                HorizontalAlignment="Center"
@@ -112,7 +140,7 @@
                              HorizontalAlignment="Left"
                              VerticalAlignment="Center"
                              FontSize="18"
-                             Text="{Binding BeltNo}" />
+                             Text="{Binding BeltNo}" KeyDown="txtBeltNo_KeyDown" />
                     <Grid Width="5" />
                     <TextBlock Width="40"
                                HorizontalAlignment="Center"

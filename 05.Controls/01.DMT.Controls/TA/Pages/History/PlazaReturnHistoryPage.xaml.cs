@@ -70,11 +70,7 @@ namespace DMT.TA.Pages.History
 
         private void cmdSearch_Click(object sender, RoutedEventArgs e)
         {
-            string userId = txtSearchUserId.Text;
-            if (string.IsNullOrEmpty(userId)) return;
-
-            UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
-            _user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
+            Search();
         }
 
         private void cmdCancelRe_Click(object sender, RoutedEventArgs e)
@@ -102,6 +98,26 @@ namespace DMT.TA.Pages.History
                 {
 
                 }
+            }
+        }
+
+        private void txtSearchUserId_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                Search();
+            }
+        }
+
+        private void Search()
+        {
+            if (!string.IsNullOrEmpty(txtSearchUserId.Text))
+            {
+                string userId = txtSearchUserId.Text;
+                if (string.IsNullOrEmpty(userId)) return;
+
+                UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
+                _user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
             }
         }
     }

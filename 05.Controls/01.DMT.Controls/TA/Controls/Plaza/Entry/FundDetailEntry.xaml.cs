@@ -25,5 +25,35 @@ namespace DMT.TA.Controls.Plaza.Entry
         }
 
         #endregion
+
+        private void txtExchangeBHT_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                txtBorrowBHT.SelectAll();
+                txtBorrowBHT.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtBorrowBHT_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                txtAdditionalBHT.SelectAll();
+                txtAdditionalBHT.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtAdditionalBHT_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                txtExchangeBHT.SelectAll();
+                txtExchangeBHT.Focus();
+                e.Handled = true;
+            }
+        }
     }
 }
