@@ -40,6 +40,11 @@ Update 2020-08-19 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-08-18 #25
+- Update Local/DataCenter/TAxTOD service operation #289.
+  - Update Reflection.Sample project #3.
+
+[commited]
 Update 2020-08-18 #24
 - Update Local/DataCenter/TAxTOD service operation #288.
   - Update Reflection.Sample project #2.

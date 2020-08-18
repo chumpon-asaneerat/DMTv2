@@ -47,7 +47,6 @@ namespace Reflection.Sample
     {
         public string Message { get; set; }
 
-
         public static OutputResult Create(string msg)
         {
             var inst = new OutputResult();
@@ -58,16 +57,28 @@ namespace Reflection.Sample
 
     public class ClassA
     {
-
+        [PeropertyMapName("ID")]
+        public int ID { get; set; }
     }
 
     public class ClassB
     {
-
+        [PeropertyMapName("ID")]
+        public virtual int ID { get; set; }
     }
 
     public class SubClassA : ClassA
     {
 
+    }
+
+    public class SubClassB : ClassB
+    {
+        [PeropertyMapName("ID")]
+        public override int ID 
+        {
+            get { return base.ID;  }
+            set { base.ID = value; }
+        }
     }
 }
