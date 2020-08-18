@@ -34,10 +34,24 @@ namespace Reflection.Sample
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Check Is Subclass
+            // Check Is Subclass (same type)
             pgGeneral.SelectedObject = null;
+            Type baseType = typeof(ClassA);
+            var inst = new ClassA();
+            var result = inst.GetType().IsSubclassOf(baseType);
+            string msg = string.Format("ClassA is Subclass of ClassA:", result);
+            pgGeneral.SelectedObject = OutputResult.Create(msg);
+        }
 
-            pgGeneral.SelectedObject = OutputResult.Create("Success");
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Check Is Subclass (same type)
+            pgGeneral.SelectedObject = null;
+            Type baseType = typeof(ClassA);
+            var inst = new SubClassA();
+            var result = inst.GetType().IsSubclassOf(baseType);
+            string msg = string.Format("SubClassA is Subclass of ClassA:", result);
+            pgGeneral.SelectedObject = OutputResult.Create(msg);
         }
 
         #endregion
