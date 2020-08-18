@@ -43,13 +43,17 @@ Update 2020-08-18 #15
 Update 2020-08-18 #14
 - 
 
+[commited]
 Update 2020-08-18 #13
-- 
+- Copy Assemblies version for RabbitMQ.Client.
+  - RabbitMQ.Client
+  - System.Threading.Channels
+  - System.Threading.Tasks.Extensions
 
 [commited]
 Update 2020-08-18 #12
 - Check Assemblies version for RabbitMQ.Client.
-  - RabbitMQ.Client (OK)
+  - RabbitMQ.Client (Copy)
     - DMT: (none)
     - Nuget: 6.0.0.0
   - System.Buffers (OK)
@@ -64,10 +68,10 @@ Update 2020-08-18 #12
   - System.Runtime.CompilerServices.Unsafe (OK)
     - DMT: 4.0.6.0
     - Nuget: 4.0.6.0
-  - System.Threading.Channels (OK)
+  - System.Threading.Channels (Copy)
     - DMT: (none)
     - Nuget: 4.0.2.0
-  - System.Threading.Tasks.Extensions (OK)
+  - System.Threading.Tasks.Extensions (Copy)
     - DMT: (none)
     - Nuget: 4.2.0.1
 
