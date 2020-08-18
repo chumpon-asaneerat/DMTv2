@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Kik.history.txt = Kik.history.txt
 		MD5Sample.txt = MD5Sample.txt
 		note.to.kik.txt = note.to.kik.txt
+		owin.setting.txt = owin.setting.txt
 		todo.txt = todo.txt
 	EndProjectSection
 EndProject

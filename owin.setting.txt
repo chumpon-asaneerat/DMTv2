@@ -1,0 +1,7 @@
+Note 1: from louis (via netsh)
+http add urlacl url=http://*:9094/ user=Everyone listen = yes
+http add urlacl url=http://+:9094/ user=Everyone
+
+Note 2: from louis (via command line)
+netsh advfirewall firewall add rule dir=in action=allow protocol=TCP localport=9094 name="RTO App" enable=yes profile=Any
+
