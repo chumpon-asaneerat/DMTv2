@@ -39,8 +39,15 @@ Update 2020-08-19 #1
 - 
 
 --------------------------------------------------------------------------------------------
-Update 2020-08-18 #19
+Update 2020-08-18 #20
 - 
+
+[commited]
+Update 2020-08-18 #19
+- Update Local/DataCenter/TAxTOD service operation #283.
+  - DMT.DataCenter.WebClient project
+    - Add RabbitMQ assemblies references.
+    - Add App.Config.
 
 [commited]
 Update 2020-08-18 #18
