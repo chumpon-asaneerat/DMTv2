@@ -37,6 +37,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -68,7 +69,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 59);
+            this.button2.Location = new System.Drawing.Point(12, 56);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(277, 38);
             this.button2.TabIndex = 3;
@@ -117,6 +118,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -134,6 +136,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(658, 565);
             this.panel2.TabIndex = 5;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(12, 100);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(277, 38);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Check Check Subclass (Same Type)";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 
@@ -163,6 +175,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button3;
     }
 }
 

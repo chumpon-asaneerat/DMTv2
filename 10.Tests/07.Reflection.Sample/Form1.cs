@@ -39,18 +39,29 @@ namespace Reflection.Sample
             Type baseType = typeof(ClassA);
             var inst = new ClassA();
             var result = inst.GetType().IsSubclassOf(baseType);
-            string msg = string.Format("ClassA is Subclass of ClassA:", result);
+            string msg = string.Format("ClassA is Subclass of ClassA: {0}", result);
             pgGeneral.SelectedObject = OutputResult.Create(msg);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // Check Is Subclass (same type)
+            // Check Is Subclass (sub class type)
             pgGeneral.SelectedObject = null;
             Type baseType = typeof(ClassA);
             var inst = new SubClassA();
             var result = inst.GetType().IsSubclassOf(baseType);
-            string msg = string.Format("SubClassA is Subclass of ClassA:", result);
+            string msg = string.Format("SubClassA is Subclass of ClassA: {0}", result);
+            pgGeneral.SelectedObject = OutputResult.Create(msg);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // Check Is Subclass (same type but add code to check is same type)
+            pgGeneral.SelectedObject = null;
+            Type baseType = typeof(ClassA);
+            var inst = new ClassA();
+            var result = (inst.GetType() == baseType || inst.GetType().IsSubclassOf(baseType));
+            string msg = string.Format("ClassA is Subclass of ClassA: {0}", result);
             pgGeneral.SelectedObject = OutputResult.Create(msg);
         }
 
