@@ -7,6 +7,7 @@ using System.Collections.Generic;
 
 namespace DMT
 {
+    // TODO: Required to add more error code.
     public enum ErrNums : int
     {
         Success = 0,
@@ -17,6 +18,10 @@ namespace DMT
         RestResponseError = 151,
         // Models - Common (200-210)
         ParameterIsNull = 200,
+        // Models - User (invalid password, invalid role, etc.) (211-230)
+
+        // Models - TSB (Active TSB not found, etc.) (231-240)
+
         // Common Exception
         Exception = 900,
         // Unknown (999)
@@ -27,6 +32,7 @@ namespace DMT
     {
         private static Dictionary<ErrNums, string> _msgs;
 
+        // TODO: Required to add more error message.
         static ErrConsts()
         {
             _msgs = new Dictionary<ErrNums, string>();
