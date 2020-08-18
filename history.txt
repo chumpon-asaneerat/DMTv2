@@ -37,8 +37,19 @@ Update 2020-08-19 #1
 - 
 
 --------------------------------------------------------------------------------------------
-Update 2020-08-18 #15
+Update 2020-08-18 #18
 - 
+
+Update 2020-08-18 #17
+- 
+
+Update 2020-08-18 #16
+- 
+
+[commited]
+Update 2020-08-18 #15
+- Update Local/DataCenter/TAxTOD service operation #281.
+  - Add Examples -> RabbitMQ.app.config.txt
 
 [commited]
 Update 2020-08-18 #14

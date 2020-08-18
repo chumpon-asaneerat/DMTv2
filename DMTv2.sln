@@ -82,6 +82,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{73D84FF1-14AD-43DB-86FA-769E24E925B9}"
 	ProjectSection(SolutionItems) = preProject
 		Examples\MocRabbitMQ.cs = Examples\MocRabbitMQ.cs
+		RabbitMQ.app.config.txt = RabbitMQ.app.config.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.DMT.Controls", "05.Controls\01.DMT.Controls\01.DMT.Controls.csproj", "{AEED7B1C-4E56-4D44-BBD1-A936BE653D4D}"
