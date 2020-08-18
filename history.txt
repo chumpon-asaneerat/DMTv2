@@ -43,8 +43,10 @@ Update 2020-08-18 #18
 Update 2020-08-18 #17
 - 
 
+[commited]
 Update 2020-08-18 #16
-- 
+- Update Local/DataCenter/TAxTOD service operation #282.
+  Remove XX.Backup folder.
 
 [commited]
 Update 2020-08-18 #15
