@@ -37,8 +37,15 @@ Update 2020-08-19 #1
 - 
 
 --------------------------------------------------------------------------------------------
-Update 2020-08-18 #10
+Update 2020-08-18 #11
 - 
+
+[commited]
+Update 2020-08-18 #10
+- Update Local/DataCenter/TAxTOD service operation #280.
+  - Remove some TODO/HACK from NLib.
+    - DDE framework.
+    - Reflection - VariableAccess.
 
 [commited]
 Update 2020-08-18 #9

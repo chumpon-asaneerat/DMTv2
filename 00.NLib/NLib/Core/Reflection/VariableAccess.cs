@@ -663,7 +663,7 @@ namespace NLib.Reflection
             if (type == null)
                 throw new ArgumentNullException("type");
 
-            // HACK: The only way to detect anonymous types right now.
+            // Note: The only way to detect anonymous types right now.
             return Attribute.IsDefined(type,
                 typeof(CompilerGeneratedAttribute), false)
                 && type.IsGenericType
@@ -684,7 +684,7 @@ namespace NLib.Reflection
 
             if (!_isAnonymousTypes.ContainsKey(type))
             {
-                // HACK: The only way to detect anonymous types right now.
+                // Note: The only way to detect anonymous types right now.
                 bool isAnonymousType = Attribute.IsDefined(type,
                     typeof(CompilerGeneratedAttribute), false)
                     && type.IsGenericType

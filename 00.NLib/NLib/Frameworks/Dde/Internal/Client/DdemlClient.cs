@@ -867,7 +867,6 @@ namespace NLib.Dde.Foundation.Client
             // Create a string handle for the item name.
             IntPtr itemHandle = Ddeml.DdeCreateStringHandle(_InstanceId, item, Ddeml.CP_WINANSI);
 
-            // TODO: It might be possible that the request completed synchronously.  
             // Request the data from the server.
             int transactionId = 0;
             IntPtr result = Ddeml.DdeClientTransaction(
@@ -1705,7 +1704,6 @@ namespace NLib.Dde.Foundation.Client
                 int uType, int uFmt, IntPtr hConv, IntPtr hsz1, IntPtr hsz2, IntPtr hData, IntPtr dwData1, IntPtr dwData2)
             {
                 // If the data handle is null then the server did not process the request.
-                // TODO: Some servers may process the request, but return null anyway?
                 if (hData == IntPtr.Zero)
                 {
                     string message = DDE.RequestFailedMessage;

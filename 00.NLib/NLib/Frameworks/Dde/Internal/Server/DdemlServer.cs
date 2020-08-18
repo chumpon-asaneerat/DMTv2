@@ -463,8 +463,6 @@ namespace NLib.Dde.Foundation.Server
                     // If this is the last transaction then free the data handle.
                     if (remaining == 0)
                     {
-                        // TODO: Does the data handle really need to be freed here?
-
                         // Remove the data from the cache because it is no longer needed.
                         _AdviseRequestCache.Remove(key);
                     }

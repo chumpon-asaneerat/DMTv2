@@ -232,7 +232,7 @@ namespace NLib.Dde.Foundation.Advanced.Monitor
         private void OnString(Ddeml.MONHSZSTRUCT mon)
         {
             // Get the string from the hsz string handle.  
-            // TODO: For some reason this does not work correctly.
+            // For some reason this does not work correctly.
             StringBuilder psz = new StringBuilder(Ddeml.MAX_STRING_SIZE);
             int length = Ddeml.DdeQueryString(_Context.InstanceId, mon.hsz, psz, psz.Capacity, Ddeml.CP_WINANSI);
             string str = psz.ToString();
