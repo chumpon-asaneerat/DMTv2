@@ -4,6 +4,8 @@
   - Supervisor Sold coupon should print reports.
   - Implements User credit history view.
   - Implements Coupon borrows/returns view.
+  - Collect Borrow Credit replace message box.
+  - Collect Credit History need User information in search screen.
 
 --------------------------------------------------------------------------------------------
 Update 2020-08-19 #10
@@ -37,8 +39,15 @@ Update 2020-08-19 #1
 - 
 
 --------------------------------------------------------------------------------------------
-Update 2020-08-18 #18
+Update 2020-08-18 #19
 - 
+
+[commited]
+Update 2020-08-18 #18
+- Update Local/DataCenter/TAxTOD service operation #283.
+  - Recompile all projects.
+  - Test TA functions.
+    - Collect Borrow Credit should not save when borrow over than Credit exists in plaza - OK.
 
 [commited]
 Update 2020-08-18 #17
