@@ -30,8 +30,10 @@ Update 2020-08-18 #4
 Update 2020-08-18 #3
 - 
 
+[commited]
 Update 2020-08-18 #2
-- 
+- Update Local/DataCenter/TAxTOD service operation #275.
+  - Add TODO note for Exception hander for smartcard error.
 
 [commited]
 Update 2020-08-18 #1

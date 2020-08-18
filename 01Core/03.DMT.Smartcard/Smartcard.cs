@@ -1758,7 +1758,16 @@ namespace DMT.Smartcard
                     _hModule = Win32Interop.LoadLibraryExW(_pathToDll, IntPtr.Zero, 0x00001000);
                     if (_hModule == IntPtr.Zero)
                     {
+                        // TODO: Smartcard error should occur here.
+                        // Nedd to break and see how to handle its by application.
                         Win32Interop.GetLastErrorAndThrow();
+                    }
+                    else
+                    {
+                        // If above error occur enable below code to check
+                        // when exception raise how application handle if in 
+                        // global exception handler.
+                        //Win32Interop.GetLastErrorAndThrow();
                     }
                 }
 
@@ -1775,6 +1784,7 @@ namespace DMT.Smartcard
                 var inst = new SL600SDK(_thread, _functions);
                 inst.Disposed += Inst_Disposed;
                 Interlocked.Increment(ref _refCounter);
+
                 return inst;
             }
         }
