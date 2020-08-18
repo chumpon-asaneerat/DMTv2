@@ -40,8 +40,9 @@ Update 2020-08-19 #1
 Update 2020-08-18 #15
 - 
 
+[commited]
 Update 2020-08-18 #14
-- 
+- Merge from origin/TA #3.
 
 [commited]
 Update 2020-08-18 #13
