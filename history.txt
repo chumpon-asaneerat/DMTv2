@@ -37,8 +37,13 @@ Update 2020-08-19 #1
 - 
 
 --------------------------------------------------------------------------------------------
-Update 2020-08-18 #5
+Update 2020-08-18 #6
 - 
+
+[commited]
+Update 2020-08-18 #5
+- Update Local/DataCenter/TAxTOD service operation #276.
+- Recomplie all projects - OK.
 
 [commited]
 Update 2020-08-18 #4
