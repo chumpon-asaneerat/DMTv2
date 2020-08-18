@@ -40,6 +40,10 @@ Update 2020-08-19 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-08-18 #22
+- Merge from origin/TA #5.
+
+[commited]
 Update 2020-08-18 #21
 - Update Local/DataCenter/TAxTOD service operation #286.
   - Recheck app web config all projects.
