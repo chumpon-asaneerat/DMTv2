@@ -53,13 +53,25 @@ namespace DMT.Models
 			/// </summary>
 			Returns = 2,
 			/// <summary>
+			/// Exchange In (Received from Account)
+			/// </summary>
+			ExchangeIn = 3,
+			/// <summary>
+			/// Exchange Out (Exchange to Account)
+			/// </summary>
+			ExchangeOut = 4,
+			/// <summary>
+			/// Exchange Return (Exchange to Account)
+			/// </summary>
+			ExchangeReturn = 5,
+			/// <summary>
 			/// Internal Replace (Takeout from TSB)
 			/// </summary>
-			ReplaceOut = 3,
+			ReplaceOut = 6,
 			/// <summary>
 			/// Internal Replace (Replace in TSB)
 			/// </summary>
-			ReplaceIn = 4
+			ReplaceIn = 7
 		}
 
 		#endregion

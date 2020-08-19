@@ -30,8 +30,10 @@ Update 2020-08-19 #6
 Update 2020-08-19 #5
 - 
 
+[commited]
 Update 2020-08-19 #4
-- 
+- Update Local/DataCenter/TAxTOD service operation #294.
+  - TSBCreditTransaction update #1 -> add enum.
 
 [commited]
 Update 2020-08-19 #3
