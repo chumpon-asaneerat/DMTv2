@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Compile.note.txt = Compile.note.txt
 		controller-design.txt = controller-design.txt
 		database-design.txt = database-design.txt
+		Exchange.Process.txt = Exchange.Process.txt
 		history.TA.txt = history.TA.txt
 		history.txt = history.txt
 		Kik.history.txt = Kik.history.txt
