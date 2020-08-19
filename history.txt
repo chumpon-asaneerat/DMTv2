@@ -6,6 +6,10 @@
   - Implements Coupon borrows/returns view.
   - Collect Borrow Credit replace message box.
   - Collect Credit History need User information in search screen.
+  - Request 
+    - Binding Grand total.
+    - Check if both total side (left/right) is match.
+    - Need to check with TSB max balance.
 
 --------------------------------------------------------------------------------------------
 Update 2020-08-19 #10
@@ -29,8 +33,10 @@ Update 2020-08-19 #5
 Update 2020-08-19 #4
 - 
 
+[commited]
 Update 2020-08-19 #3
-- 
+- Update Local/DataCenter/TAxTOD service operation #293.
+  - Update note #1.
 
 [commited]
 Update 2020-08-19 #2
