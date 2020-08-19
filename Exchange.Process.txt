@@ -3,6 +3,8 @@
    - Request -> Appove (by account) -> Change to state 2 and should has approve amount data.
    - Request -> Reject (by account) -> process end here.
 2. Appove
-   - Appove -> Received (by supervisor) -> process end here with received amount data so process completed here.
-   - Appove -> xxx (by supervisor) -> case not received by supervisor so process completed here.
+   - Appove -> Received (by supervisor) -> process end here with received amount data.
+   - Appove -> xxx (by supervisor) -> case not received by supervisor.
+3. Returns
+   - Return -> Completed (by account) ->  process end here with returns amount data.
 

@@ -32,8 +32,10 @@ Update 2020-08-19 #4
 Update 2020-08-19 #3
 - 
 
+[commited]
 Update 2020-08-19 #2
-- 
+- Update Local/DataCenter/TAxTOD service operation #293.
+  - Update Exchange.process.txt #2.
 
 [commited]
 Update 2020-08-19 #1
