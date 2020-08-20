@@ -12,24 +12,23 @@
     - Need to check with TSB max balance.
 
 --------------------------------------------------------------------------------------------
-Update 2020-08-19 #10
+Update 2020-08-20 #5
 - 
 
-Update 2020-08-19 #9
+Update 2020-08-20 #4
 - 
 
-Update 2020-08-19 #8
+Update 2020-08-20 #3
 - 
 
-Update 2020-08-19 #7
+Update 2020-08-20 #2
 - 
 
-Update 2020-08-19 #6
-- 
+[commited]
+Update 2020-08-20 #1
+- Prepare history.txt
 
-Update 2020-08-19 #5
-- 
-
+--------------------------------------------------------------------------------------------
 [commited]
 Update 2020-08-19 #4
 - Update Local/DataCenter/TAxTOD service operation #294.
