@@ -1024,6 +1024,25 @@ namespace DMT.Models
 			return TSBCouponTransaction.Save(value);
 		}
 
+
+		public static NDbResult SyncTransaction(TSBCouponTransaction value)
+		{
+			var result = new NDbResult<TSBCouponTransaction>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			if (null == value)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+
+			return TSBCouponTransaction.Save(value);
+		}
+
 		#endregion
 	}
 

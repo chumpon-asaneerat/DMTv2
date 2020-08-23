@@ -96,6 +96,24 @@ namespace DMT.Services
             return result;
         }
 
+        [HttpPost]
+        [ActionName(RouteConsts.Coupon.SyncTSBCouponTransaction.Name)]
+        public NDbResult SyncTransaction(
+            [FromBody] TSBCouponTransaction value)
+        {
+            NDbResult result;
+            if (null == value)
+            {
+                result = new NDbResult();
+                result.ParameterIsNull();
+            }
+            else
+            {
+                result = TSBCouponTransaction.SyncTransaction(value);
+            }
+            return result;
+        }
+
         #endregion
 
         /*

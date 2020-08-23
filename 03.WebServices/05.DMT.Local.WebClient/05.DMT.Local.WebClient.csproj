@@ -92,6 +92,14 @@
       <Project>{26ba4314-6b80-4a59-9e0d-7c29919bbc6f}</Project>
       <Name>01.DMT.Common.WebClient</Name>
     </ProjectReference>
+    <ProjectReference Include="..\02.DMT.DataCenter.WebClient\02.DMT.DataCenter.WebClient.csproj">
+      <Project>{c4e43b21-4526-4fa8-b588-953b2259e72e}</Project>
+      <Name>02.DMT.DataCenter.WebClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\03.DMT.TAxTOD.WebClient\03.DMT.TAxTOD.WebClient.csproj">
+      <Project>{2175230b-9506-45ee-b3dd-e7b2bc5b3a73}</Project>
+      <Name>03.DMT.TAxTOD.WebClient</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

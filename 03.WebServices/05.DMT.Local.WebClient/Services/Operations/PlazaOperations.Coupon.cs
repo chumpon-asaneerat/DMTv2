@@ -8,6 +8,7 @@ using System.Net;
 using RestSharp;
 
 using DMT.Models;
+using DMT.Models.ExtensionMethods;
 
 #endregion
 
@@ -168,6 +169,30 @@ namespace DMT.Services
                 return ret;
             }
 
+            public NRestResult SyncTransaction(TSBCouponTransaction value)
+            {
+                NRestResult ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                if (null != value)
+                {
+                    ret = client.Execute(
+                        RouteConsts.Coupon.SyncTSBCouponTransaction.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult();
+                    ret.ParameterIsNull();
+                }
+                return ret;
+            }
+
             #endregion
 
             #endregion
@@ -183,6 +208,7 @@ namespace DMT.Services
         #region Internal Variables
 
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
+        private TAxTODOperations server = TODxTAServiceOperations.Instance.Plaza;
 
         private List<TSBCouponTransaction> _origins = null;
         private List<TSBCouponTransaction> _coupons = null;
@@ -210,6 +236,27 @@ namespace DMT.Services
         #region Public Methods
 
         #region Refresh
+
+        public void Sync()
+        {
+            TSB tsb = ops.TSB.GetCurrent().Value();
+            if (null != tsb && null != server)
+            {
+               var ret = server.Coupons.GetTAServerCouponTransactions(
+                   tsb.TSBId, null, null, null);
+                if (ret.Ok)
+                {
+                    var serverCoupons = ret.Value();
+                    if (null != serverCoupons)
+                    {
+                        serverCoupons.ForEach(cp =>
+                        {
+                            var inst = cp.ToLocal();
+                        });
+                    }
+                }
+            }
+        }
 
         public void Refresh()
         {
