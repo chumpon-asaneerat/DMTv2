@@ -66,31 +66,33 @@ namespace DMT.Services
 
             public NRestResult<List<Shift>> GetShifts()
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<Shift>> ret;
-                ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                    .Execute<List<Shift>>(RouteConsts.Shift.GetShifts.Url, new { });
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<Shift>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                ret = client.Execute<List<Shift>>(RouteConsts.Shift.GetShifts.Url, new { });
                 return ret;
             }
 
             public NRestResult<Shift> SaveShift(Shift value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<Shift> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<Shift>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<Shift>(RouteConsts.Shift.SaveShift.Url, value);
+                    ret = client.Execute<Shift>(RouteConsts.Shift.SaveShift.Url, value);
                 }
                 else
                 {
@@ -107,50 +109,53 @@ namespace DMT.Services
 
             public NRestResult<TSBShift> Create(Shift shift, User supervisor)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<TSBShift> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<TSBShift>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 var inst = new TSBShiftCreate()
                 {
                     Shift = shift,
                     User = supervisor
                 };
-                ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                    .Execute<TSBShift>(RouteConsts.Shift.Create.Url, inst);
+                ret = client.Execute<TSBShift>(RouteConsts.Shift.Create.Url, inst);
                 return ret;
             }
 
             public NRestResult<TSBShift> GetCurrent()
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<TSBShift> ret;
-                ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                    .Execute<TSBShift>(RouteConsts.Shift.GetCurrent.Url, new { });
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<TSBShift>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                ret = client.Execute<TSBShift>(RouteConsts.Shift.GetCurrent.Url, new { });
                 return ret;
             }
 
             public NRestResult ChangeShift(TSBShift value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<RevenueEntry>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute(RouteConsts.Shift.ChangeShift.Url, value);
+                    ret = client.Execute(RouteConsts.Shift.ChangeShift.Url, value);
                 }
                 else
                 {
