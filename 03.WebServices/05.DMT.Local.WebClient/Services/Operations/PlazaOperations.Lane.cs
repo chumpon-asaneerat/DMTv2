@@ -66,15 +66,16 @@ namespace DMT.Services
 
             public NRestResult<LaneAttendance> CreateAttendance(Lane lane, User supervisor)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<LaneAttendance> ret;
-                ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                    .Execute<LaneAttendance>(RouteConsts.Lane.CreateAttendance.Url,
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<LaneAttendance>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                ret = client.Execute<LaneAttendance>(RouteConsts.Lane.CreateAttendance.Url,
                     new LaneAttendanceCreate()
                     {
                         Lane = lane,
@@ -85,17 +86,19 @@ namespace DMT.Services
 
             public NRestResult<LaneAttendance> SaveAttendance(LaneAttendance value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<LaneAttendance> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<LaneAttendance>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<LaneAttendance>(RouteConsts.Lane.SaveAttendance.Url, value);
+                    ret = client.Execute<LaneAttendance>(
+                        RouteConsts.Lane.SaveAttendance.Url, value);
                 }
                 else
                 {
@@ -109,17 +112,19 @@ namespace DMT.Services
             public NRestResult<List<LaneAttendance>> GetAttendancesByDate(
                 Search.Lanes.Attendances.ByDate value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<LaneAttendance>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<LaneAttendance>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<LaneAttendance>>(RouteConsts.Lane.GetAttendancesByDate.Url, value);
+                    ret = client.Execute<List<LaneAttendance>>(
+                        RouteConsts.Lane.GetAttendancesByDate.Url, value);
                 }
                 else
                 {
@@ -133,17 +138,19 @@ namespace DMT.Services
             public NRestResult<List<LaneAttendance>> GetAttendancesByUserShift(
                 Search.Lanes.Attendances.ByUserShift value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<LaneAttendance>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<LaneAttendance>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<LaneAttendance>>(RouteConsts.Lane.GetAttendancesByUserShift.Url, value);
+                    ret = client.Execute<List<LaneAttendance>>(
+                        RouteConsts.Lane.GetAttendancesByUserShift.Url, value);
                 }
                 else
                 {
@@ -157,17 +164,19 @@ namespace DMT.Services
             public NRestResult<List<LaneAttendance>> GetAllAttendancesByUserShift(
                 UserShift value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<LaneAttendance>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<LaneAttendance>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<LaneAttendance>>(RouteConsts.Lane.GetAllAttendancesByUserShift.Url, value);
+                    ret = client.Execute<List<LaneAttendance>>(
+                        RouteConsts.Lane.GetAllAttendancesByUserShift.Url, value);
                 }
                 else
                 {
@@ -181,17 +190,19 @@ namespace DMT.Services
             public NRestResult<List<LaneAttendance>> GetAttendancesByLane(
                 Search.Lanes.Attendances.ByLane value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<LaneAttendance>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<LaneAttendance>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<LaneAttendance>>(RouteConsts.Lane.GetAttendancesByLane.Url, value);
+                    ret = client.Execute<List<LaneAttendance>>(
+                        RouteConsts.Lane.GetAttendancesByLane.Url, value);
                 }
                 else
                 {
@@ -205,17 +216,19 @@ namespace DMT.Services
             public NRestResult<LaneAttendance> GetCurrentAttendancesByLane(
                 Search.Lanes.Current.AttendanceByLane value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<LaneAttendance> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<LaneAttendance>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<LaneAttendance>(RouteConsts.Lane.GetCurrentAttendancesByLane.Url, value);
+                    ret = client.Execute<LaneAttendance>(
+                        RouteConsts.Lane.GetCurrentAttendancesByLane.Url, value);
                 }
                 else
                 {
@@ -228,15 +241,17 @@ namespace DMT.Services
 
             public NRestResult<List<LaneAttendance>> GetAllNotHasRevenueEntry()
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<LaneAttendance>> ret;
-                ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                    .Execute<List<LaneAttendance>>(RouteConsts.Lane.GetAllNotHasRevenueEntry.Url, null);
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<LaneAttendance>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                ret = client.Execute<List<LaneAttendance>>(
+                    RouteConsts.Lane.GetAllNotHasRevenueEntry.Url, null);
                 return ret;
             }
 
@@ -247,15 +262,17 @@ namespace DMT.Services
             public NRestResult<LanePayment> CreatePayment(Lane lane, User supervisor,
                 Payment payment, DateTime date, decimal amount)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<LanePayment> ret;
-                ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                    .Execute<LanePayment>(RouteConsts.Lane.CreatePayment.Url,
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<LanePayment>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                ret = client.Execute<LanePayment>(
+                    RouteConsts.Lane.CreatePayment.Url,
                     new LanePaymentCreate()
                     {
                         Lane = lane,
@@ -269,17 +286,19 @@ namespace DMT.Services
 
             public NRestResult<LanePayment> SavePayment(LanePayment value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<LanePayment> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<LanePayment>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<LanePayment>(RouteConsts.Lane.SavePayment.Url, value);
+                    ret = client.Execute<LanePayment>(
+                        RouteConsts.Lane.SavePayment.Url, value);
                 }
                 else
                 {
@@ -293,17 +312,19 @@ namespace DMT.Services
             public NRestResult<List<LanePayment>> GetPaymentsByDate(
                 Search.Lanes.Payments.ByDate value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<LanePayment>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<LanePayment>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<LanePayment>>(RouteConsts.Lane.GetPaymentsByDate.Url, value);
+                    ret = client.Execute<List<LanePayment>>(
+                        RouteConsts.Lane.GetPaymentsByDate.Url, value);
                 }
                 else
                 {
@@ -317,17 +338,19 @@ namespace DMT.Services
             public NRestResult<List<LanePayment>> GetPaymentsByUserShift(
                 Search.Lanes.Attendances.ByUserShift value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<LanePayment>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<LanePayment>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<LanePayment>>(RouteConsts.Lane.GetPaymentsByUserShift.Url, value);
+                    ret = client.Execute<List<LanePayment>>(
+                        RouteConsts.Lane.GetPaymentsByUserShift.Url, value);
                 }
                 else
                 {
@@ -341,17 +364,19 @@ namespace DMT.Services
             public NRestResult<List<LanePayment>> GetPaymentsByLane(
                 Search.Lanes.Attendances.ByLane value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<LanePayment>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<LanePayment>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<LanePayment>>(RouteConsts.Lane.GetPaymentsByLane.Url, value);
+                    ret = client.Execute<List<LanePayment>>(
+                        RouteConsts.Lane.GetPaymentsByLane.Url, value);
                 }
                 else
                 {
@@ -365,17 +390,19 @@ namespace DMT.Services
             public NRestResult<LanePayment> GetCurrentPaymentsByLane(
                 Search.Lanes.Current.PaymentByLane value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<LanePayment> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<LanePayment>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<LanePayment>(RouteConsts.Lane.GetCurrentPaymentsByLane.Url, value);
+                    ret = client.Execute<LanePayment>(
+                        RouteConsts.Lane.GetCurrentPaymentsByLane.Url, value);
                 }
                 else
                 {
