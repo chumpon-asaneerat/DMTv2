@@ -60,7 +60,8 @@ namespace DMT.Services
 
             #region TA Server Coupon Transaction
 
-            public NRestResult<List<TAServerCouponTransaction>> GetTAServerCouponTransactions(string tsbId, string userId, int? transactionType, int? couponType)
+            public NRestResult<List<TAServerCouponTransaction>> GetTAServerCouponTransactions(
+                string tsbId, string userId, int? transactionType, int? couponType)
             {
                 NRestResult<List<TAServerCouponTransaction>> ret;
                 NRestClient client = NRestClient.CreateTAxTODClient();
