@@ -35,7 +35,9 @@ namespace DMT.TAxTOD.Pages
 
         #endregion
 
-        private TAxTODOperations ops = TODxTAServiceOperations.Instance.Plaza;
+        //private TAxTODOperations ops = TODxTAServiceOperations.Instance.Plaza;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
+        private TSBCouponManager manager = new TSBCouponManager();
 
         #region Loaded/Unloaded
 
@@ -56,8 +58,12 @@ namespace DMT.TAxTOD.Pages
         private void LoadCoupons()
         {
             lvCoupons.ItemsSource = null;
+            manager.Sync();
+            manager.Refresh();
+            /*
             var coupons = ops.Coupons.GetTAServerCouponTransactions("311", null, null, null).Value();
-            lvCoupons.ItemsSource = coupons;
+            */
+            lvCoupons.ItemsSource = manager.Coupons;
         }
 
         #endregion

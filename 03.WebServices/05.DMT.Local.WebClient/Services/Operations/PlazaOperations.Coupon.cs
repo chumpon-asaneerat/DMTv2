@@ -252,6 +252,7 @@ namespace DMT.Services
                         serverCoupons.ForEach(cp =>
                         {
                             var inst = cp.ToLocal();
+                            ops.Coupons.SyncTransaction(inst);
                         });
                     }
                 }
@@ -269,6 +270,8 @@ namespace DMT.Services
             }
             else
             {
+                Sync(); // auto sync when refresh.
+
                 Summaries = ops.Coupons.GetTSBCouponSummaries(tsb).Value();
                 // get original list.
                 _origins = ops.Coupons.GetTSBCouponTransactions(tsb).Value();
@@ -362,6 +365,12 @@ namespace DMT.Services
                             origin.FinishFlag != coupon.FinishFlag)
                         {
                             ops.Coupons.SaveTransaction(coupon);
+
+                            if (null != server)
+                            {
+                                var cp = coupon.ToServer();
+                                server.Coupons.SaveTransaction(cp);
+                            }
                         }
                     }
                 });
@@ -376,6 +385,15 @@ namespace DMT.Services
 
         public User User { get; set; }
         public List<TSBCouponSummary> Summaries { get; private set; }
+        public List<TSBCouponTransaction> Coupons
+        {
+            get
+            {
+                if (null == _coupons)
+                    return new List<TSBCouponTransaction>();
+                return _coupons;
+            }
+        }
 
         #region For Borrow/Return between Stock-Lane
 

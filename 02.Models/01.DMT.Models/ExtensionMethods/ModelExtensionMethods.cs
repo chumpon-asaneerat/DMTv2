@@ -74,9 +74,19 @@ namespace DMT.Models.ExtensionMethods
         {
             if (null == value) return null;
             var inst = new TSBCouponTransaction();
-            // TODO: map proeprties.
+            
             inst.TransactionDate = value.TransactionDate.Value();
+            inst.TransactionType = (TSBCouponTransaction.TransactionTypes)value.CouponStatus.Value();
+            inst.CouponId = value.SerialNo;
             inst.CouponPK = value.CouponPK.Value();
+            inst.CouponType = (CouponType)value.CouponType.Value();
+            inst.FinishFlag = (TSBCouponTransaction.FinishedFlags)value.FinishFlag.Value();
+            inst.Price = value.Price.Value();
+            inst.SoldBy = value.SoldBy;
+            inst.SoldDate = value.SoldDate.Value();
+            inst.TSBId = value.TSBId;
+            inst.UserId = value.UserId;
+            inst.UserReceiveDate = value.UserReceiveDate.Value();
 
             return inst;
         }
@@ -85,9 +95,19 @@ namespace DMT.Models.ExtensionMethods
         {
             if (null == value) return null;
             var inst = new TAServerCouponTransaction();
-            // TODO: map proeprties.
+
             inst.TransactionDate = value.TransactionDate.Value();
+            inst.CouponStatus = (int)value.TransactionType;
+            inst.SerialNo = value.CouponId;
             inst.CouponPK = value.CouponPK.Value();
+            inst.CouponType = (int)value.CouponType;
+            inst.FinishFlag = (int)value.FinishFlag;
+            inst.Price = value.Price.Value();
+            inst.SoldBy = value.SoldBy;
+            inst.SoldDate = value.SoldDate.Value();
+            inst.TSBId = value.TSBId;
+            inst.UserId = value.UserId;
+            inst.UserReceiveDate = value.UserReceiveDate.Value();
 
             return inst;
         }

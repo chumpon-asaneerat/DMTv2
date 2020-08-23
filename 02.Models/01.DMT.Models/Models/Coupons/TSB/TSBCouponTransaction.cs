@@ -1027,7 +1027,7 @@ namespace DMT.Models
 
 		public static NDbResult SyncTransaction(TSBCouponTransaction value)
 		{
-			var result = new NDbResult<TSBCouponTransaction>();
+			var result = new NDbResult();
 			SQLiteConnection db = Default;
 			if (null == db)
 			{
@@ -1040,7 +1040,35 @@ namespace DMT.Models
 				return result;
 			}
 
-			return TSBCouponTransaction.Save(value);
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * ";
+					cmd += "  FROM TSBCouponTransactionView ";
+					cmd += " WHERE TSBId = ? ";
+					cmd += "   AND CouponId = ? ";
+					cmd += "   AND FinishFlag = 1 ";
+
+					var ret = NQuery.Query<FKs>(cmd, 
+						value.TSBId, value.CouponId).FirstOrDefault().ToModel();
+					if (null != ret)
+					{
+						// exist so set id for update.
+						value.TransactionId = ret.TransactionId;
+					}
+
+					return TSBCouponTransaction.Save(value);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
 		}
 
 		#endregion
