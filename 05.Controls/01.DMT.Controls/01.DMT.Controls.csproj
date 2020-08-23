@@ -157,6 +157,9 @@
     <Compile Include="TA\Pages\Plaza\PlazaAllCouponPage.xaml.cs">
       <DependentUpon>PlazaAllCouponPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TA\Pages\Reports\CouponSalesReceiptReportPage.xaml.cs">
+      <DependentUpon>CouponSalesReceiptReportPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TA\Pages\Reports\CollectorCouponReceivedReportPage.xaml.cs">
       <DependentUpon>CollectorCouponReceivedReportPage.xaml</DependentUpon>
     </Compile>
@@ -352,7 +355,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="TA\Pages\Reports\CouponSalesReceiptRep.rdlc" />
+    <EmbeddedResource Include="TA\Pages\Reports\CouponSalesReceiptRep.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="TA\Pages\Reports\CollectorCouponReceived.rdlc" />
     <EmbeddedResource Include="TOD\Pages\Reports\RevenueSlipNull.rdlc" />
     <EmbeddedResource Include="TOD\Pages\Reports\RevenueSlipSum.rdlc" />
@@ -525,6 +530,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="TA\Pages\Plaza\PlazaAllCouponPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Pages\Reports\CouponSalesReceiptReportPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
