@@ -71,6 +71,8 @@ namespace DMT.Services
 
         #region Public Methods
 
+        // TODO: Make Execute to static method.
+
         /// <summary>
         /// Execute (POST).
         /// </summary>
@@ -149,6 +151,9 @@ namespace DMT.Services
 
             return ret;
         }
+
+        // TODO: Make Execute to static method.
+
         /// <summary>
         /// Execute (POST).
         /// </summary>
@@ -230,6 +235,9 @@ namespace DMT.Services
 
             return ret;
         }
+
+        // TODO: Make Execute to static method.
+
         /// <summary>
         /// Execute (POST).
         /// </summary>
@@ -358,6 +366,9 @@ namespace DMT.Services
         #endregion
 
         #region Static Methods
+
+
+        // TODO: Create static method should load from config.
 
         /// <summary>
         /// Create new instance of NRestClient.
