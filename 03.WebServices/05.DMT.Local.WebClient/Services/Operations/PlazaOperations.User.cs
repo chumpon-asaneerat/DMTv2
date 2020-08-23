@@ -278,6 +278,7 @@ namespace DMT.Services
                     ret.RestInvalidConfig();
                     return ret;
                 }
+
                 if (null != value)
                 {
                     ret = client.Execute<User>(RouteConsts.User.SaveUser.Url, value);

@@ -36,8 +36,10 @@ Update 2020-08-24 #14
 Update 2020-08-24 #13
 - 
 
+[commited]
 Update 2020-08-24 #12
-- 
+- Update Local/DataCenter/TAxTOD service operation #308.
+  - Local Plaza Operation - UserShift (check config/client is null).
 
 [commited]
 Update 2020-08-24 #11
