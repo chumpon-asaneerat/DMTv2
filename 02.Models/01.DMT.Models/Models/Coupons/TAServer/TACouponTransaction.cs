@@ -14,13 +14,12 @@ namespace DMT.Models
     {
         public int? CouponPK { get; set; }
 
-        public int? TransactionId { get; set; } // save only.
+        //public int? TransactionId { get; set; }
 
         public DateTime? TransactionDate { get; set; }
 
         public string TSBId { get; set; }
 
-        public DateTime? SapChooseDate { get; set; }
         public int? CouponType { get; set; }
         public string SerialNo { get; set; }
         public decimal? Price { get; set; }
@@ -34,5 +33,8 @@ namespace DMT.Models
         public string SoldBy { get; set; }
 
         public int? FinishFlag { get; set; }
+
+        public int? SapChooseFlag { get; set; }
+        public DateTime? SapChooseDate { get; set; }
     }
 }
