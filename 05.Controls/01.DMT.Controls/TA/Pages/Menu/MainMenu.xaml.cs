@@ -105,6 +105,7 @@ namespace DMT.TA.Pages.Menu
             try
             {
                 var page = new Reports.CollectorFundSummaryReportPage();
+                page.Setup(DMT.Controls.TAApp.User.Current);
                 PageContentManager.Instance.Current = page;
             }
             catch (Exception)
