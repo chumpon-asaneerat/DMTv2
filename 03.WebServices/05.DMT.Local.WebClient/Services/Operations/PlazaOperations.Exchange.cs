@@ -62,17 +62,19 @@ namespace DMT.Services
 
             public NRestResult<List<TSBExchangeTransaction>> GetTSBExchangeTransactions(TSB value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<TSBExchangeTransaction>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<TSBExchangeTransaction>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<TSBExchangeTransaction>>(RouteConsts.Exchange.GetTSBExchangeTransactions.Url, value);
+                    ret = client.Execute<List<TSBExchangeTransaction>>(
+                        RouteConsts.Exchange.GetTSBExchangeTransactions.Url, value);
                 }
                 else
                 {
@@ -86,17 +88,19 @@ namespace DMT.Services
             public NRestResult<TSBExchangeTransaction> SaveTSBExchangeTransaction(
                 TSBExchangeTransaction value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<TSBExchangeTransaction> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<TSBExchangeTransaction>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<TSBExchangeTransaction>(RouteConsts.Exchange.SaveTSBExchangeTransaction.Url, value);
+                    ret = client.Execute<TSBExchangeTransaction>(
+                        RouteConsts.Exchange.SaveTSBExchangeTransaction.Url, value);
                 }
                 else
                 {
