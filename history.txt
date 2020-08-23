@@ -39,8 +39,10 @@ Update 2020-08-24 #13
 Update 2020-08-24 #12
 - 
 
+[commited]
 Update 2020-08-24 #11
-- 
+- Update Local/DataCenter/TAxTOD service operation #307.
+  - Local Plaza Operation - User (check config/client is null).
 
 [commited]
 Update 2020-08-24 #10

@@ -66,17 +66,17 @@ namespace DMT.Services
 
             public NRestResult<Role> GetRole(Search.Roles.ById value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<Role> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<Role>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<Role>(RouteConsts.User.GetRole.Url, value);
+                    ret = client.Execute<Role>(RouteConsts.User.GetRole.Url, value);
                 }
                 else
                 {
@@ -88,32 +88,34 @@ namespace DMT.Services
 
             public NRestResult<List<Role>> GetRoles()
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<Role>> ret;
-                ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                    .Execute<List<Role>>(RouteConsts.User.GetRoles.Url, new { });
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<Role>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                ret = client.Execute<List<Role>>(RouteConsts.User.GetRoles.Url, new { });
 
                 return ret;
             }
 
             public NRestResult<Role> SaveRole(Role value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<Role> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<Role>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<Role>(RouteConsts.User.SaveRole.Url, value);
+                    ret = client.Execute<Role>(RouteConsts.User.SaveRole.Url, value);
                 }
                 else
                 {
@@ -129,17 +131,18 @@ namespace DMT.Services
 
             public NRestResult<List<User>> GetUsers(Role value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<User>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<User>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<User>>(RouteConsts.User.GetUsers.Url, value);
+                    ret = client.Execute<List<User>>(RouteConsts.User.GetUsers.Url, value);
                 }
                 else
                 {
@@ -151,17 +154,18 @@ namespace DMT.Services
 
             public NRestResult<User> GetByCardId(Search.Users.ByCardId value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<User> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<User>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<User>(RouteConsts.User.GetByCardId.Url, value);
+                    ret = client.Execute<User>(RouteConsts.User.GetByCardId.Url, value);
                 }
                 else
                 {
@@ -173,17 +177,18 @@ namespace DMT.Services
 
             public NRestResult<User> GetById(Search.Users.ById value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<User> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<User>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<User>(RouteConsts.User.GetById.Url, value);
+                    ret = client.Execute<User>(RouteConsts.User.GetById.Url, value);
                 }
                 else
                 {
@@ -195,17 +200,19 @@ namespace DMT.Services
 
             public NRestResult<List<User>> SearchByGroupId(Search.Users.ByGroupId value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<User>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<User>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<User>>(RouteConsts.User.SearchByGroupId.Url, value);
+                    ret = client.Execute<List<User>>(
+                        RouteConsts.User.SearchByGroupId.Url, value);
                 }
                 else
                 {
@@ -217,17 +224,18 @@ namespace DMT.Services
 
             public NRestResult<List<User>> SearchById(Search.Users.ById value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<User>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<User>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<User>>(RouteConsts.User.SearchById.Url, value);
+                    ret = client.Execute<List<User>>(RouteConsts.User.SearchById.Url, value);
                 }
                 else
                 {
@@ -239,17 +247,18 @@ namespace DMT.Services
 
             public NRestResult<User> GetByLogIn(Search.Users.ByLogIn value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<User> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<User>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<User>(RouteConsts.User.GetByLogIn.Url, value);
+                    ret = client.Execute<User>(RouteConsts.User.GetByLogIn.Url, value);
                 }
                 else
                 {
@@ -261,17 +270,17 @@ namespace DMT.Services
 
             public NRestResult<User> SaveUser(User value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<User> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<User>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<User>(RouteConsts.User.SaveUser.Url, value);
+                    ret = client.Execute<User>(RouteConsts.User.SaveUser.Url, value);
                 }
                 else
                 {
