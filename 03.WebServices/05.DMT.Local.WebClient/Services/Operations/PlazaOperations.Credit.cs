@@ -64,17 +64,19 @@ namespace DMT.Services
 
             public NRestResult<TSBCreditBalance> GetTSBBalance(TSB value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<TSBCreditBalance> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<TSBCreditBalance>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<TSBCreditBalance>(RouteConsts.Credit.GetTSBBalance.Url, value);
+                    ret = client.Execute<TSBCreditBalance>(
+                        RouteConsts.Credit.GetTSBBalance.Url, value);
                 }
                 else
                 {
@@ -91,17 +93,19 @@ namespace DMT.Services
 
             public NRestResult<TSBCreditTransaction> GetInitialTSBCreditTransaction(TSB value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<TSBCreditTransaction> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<TSBCreditTransaction>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<TSBCreditTransaction>(RouteConsts.Credit.GetInitialTSBCreditTransaction.Url, value);
+                    ret = client.Execute<TSBCreditTransaction>(
+                        RouteConsts.Credit.GetInitialTSBCreditTransaction.Url, value);
                 }
                 else
                 {
@@ -115,17 +119,19 @@ namespace DMT.Services
             public NRestResult<TSBCreditTransaction> SaveTSBCreditTransaction(
                 TSBCreditTransaction value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<TSBCreditTransaction> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<TSBCreditTransaction>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<TSBCreditTransaction>(RouteConsts.Credit.SaveTSBCreditTransaction.Url, value);
+                    ret = client.Execute<TSBCreditTransaction>(
+                        RouteConsts.Credit.SaveTSBCreditTransaction.Url, value);
                 }
                 else
                 {
@@ -142,17 +148,19 @@ namespace DMT.Services
 
             public NRestResult<List<UserCreditBalance>> GetActiveUserCreditBalances(TSB value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<UserCreditBalance>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<UserCreditBalance>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<UserCreditBalance>>(RouteConsts.Credit.GetActiveUserCreditBalances.Url, value);
+                    ret = client.Execute<List<UserCreditBalance>>(
+                        RouteConsts.Credit.GetActiveUserCreditBalances.Url, value);
                 }
                 else
                 {
@@ -166,17 +174,19 @@ namespace DMT.Services
             public NRestResult<UserCreditBalance> GetActiveUserCreditBalanceById(
                 Search.UserCredits.GetActiveById value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<UserCreditBalance> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<UserCreditBalance>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<UserCreditBalance>(RouteConsts.Credit.GetActiveUserCreditBalanceById.Url, value);
+                    ret = client.Execute<UserCreditBalance>(
+                        RouteConsts.Credit.GetActiveUserCreditBalanceById.Url, value);
                 }
                 else
                 {
@@ -189,17 +199,19 @@ namespace DMT.Services
 
             public NRestResult<UserCreditBalance> SaveUserCreditBalance(UserCreditBalance value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<UserCreditBalance> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<UserCreditBalance>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<UserCreditBalance>(RouteConsts.Credit.SaveUserCreditBalance.Url, value);
+                    ret = client.Execute<UserCreditBalance>(
+                        RouteConsts.Credit.SaveUserCreditBalance.Url, value);
                 }
                 else
                 {
@@ -217,17 +229,19 @@ namespace DMT.Services
             public NRestResult<UserCreditTransaction> SaveUserCreditTransaction(
                 UserCreditTransaction value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<UserCreditTransaction> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<UserCreditTransaction>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<UserCreditTransaction>(RouteConsts.Credit.SaveUserCreditTransaction.Url, value);
+                    ret = client.Execute<UserCreditTransaction>(
+                        RouteConsts.Credit.SaveUserCreditTransaction.Url, value);
                 }
                 else
                 {
