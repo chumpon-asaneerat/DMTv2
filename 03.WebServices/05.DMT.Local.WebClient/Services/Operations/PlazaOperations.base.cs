@@ -57,6 +57,7 @@ namespace DMT.Services
             {
                 if (null == ConfigManager.Instance.Plaza) return string.Empty;
                 if (null == ConfigManager.Instance.Plaza.Local) return string.Empty;
+                if (null == ConfigManager.Instance.Plaza.Local.Http) return string.Empty;
 
                 return string.Format(@"{0}://{1}:{2}/",
                     ConfigManager.Instance.Plaza.Local.Http.Protocol,

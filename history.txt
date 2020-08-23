@@ -30,8 +30,10 @@ Update 2020-08-24 #16
 Update 2020-08-24 #15
 - 
 
+[commited]
 Update 2020-08-24 #14
-- 
+- Update Local/DataCenter/TAxTOD service operation #310.
+  - DC Plaza Operation - base (check config is null).
 
 [commited]
 Update 2020-08-24 #13

@@ -57,6 +57,7 @@ namespace DMT.Services
             {
                 if (null == ConfigManager.Instance.Plaza) return string.Empty;
                 if (null == ConfigManager.Instance.Plaza.TAxTOD) return string.Empty;
+                if (null == ConfigManager.Instance.Plaza.TAxTOD.Http) return string.Empty;
 
                 return string.Format(@"{0}://{1}:{2}/",
                     ConfigManager.Instance.Plaza.TAxTOD.Http.Protocol,

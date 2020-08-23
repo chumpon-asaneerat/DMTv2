@@ -384,6 +384,8 @@ namespace DMT.Services
         {
             if (null == ConfigManager.Instance.Plaza) return null;
             if (null == ConfigManager.Instance.Plaza.Local) return null;
+            if (null == ConfigManager.Instance.Plaza.Local.Http) return null;
+
             NRestClient.WebProtocol protocol =
                 (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
                 NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
@@ -397,6 +399,7 @@ namespace DMT.Services
         {
             if (null == ConfigManager.Instance.Plaza) return null;
             if (null == ConfigManager.Instance.Plaza.TAxTOD) return null;
+            if (null == ConfigManager.Instance.Plaza.TAxTOD.Http) return null;
 
             NRestClient.WebProtocol protocol =
                 (ConfigManager.Instance.Plaza.TAxTOD.Http.Protocol == "http") ?
@@ -411,6 +414,7 @@ namespace DMT.Services
         {
             if (null == ConfigManager.Instance.Plaza) return null;
             if (null == ConfigManager.Instance.Plaza.DC) return null;
+            if (null == ConfigManager.Instance.Plaza.DC.Http) return null;
 
             NRestClient.WebProtocol protocol =
                 (ConfigManager.Instance.Plaza.DC.Http.Protocol == "http") ?
