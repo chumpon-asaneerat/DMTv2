@@ -25,7 +25,7 @@ namespace DMT.Models.ExtensionMethods
 
         public static DateTime? Value(this DateTime value)
         {
-            return (value == DateTime.MinValue) ? default : value;
+            return (value == DateTime.MinValue) ? new DateTime?() : value;
         }
 
         #endregion
@@ -39,7 +39,7 @@ namespace DMT.Models.ExtensionMethods
 
         public static int? Value(this int value)
         {
-            return (value == int.MinValue) ? default : value;
+            return (value == int.MinValue) ? new int?() : value;
         }
 
         #endregion
@@ -53,7 +53,7 @@ namespace DMT.Models.ExtensionMethods
 
         public static decimal? Value(this decimal value)
         {
-            return (value == decimal.MinValue) ? default : value;
+            return (value == decimal.MinValue) ? new decimal?() : value;
         }
 
         #endregion

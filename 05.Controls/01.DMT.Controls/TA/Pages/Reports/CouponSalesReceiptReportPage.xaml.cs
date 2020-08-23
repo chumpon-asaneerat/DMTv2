@@ -79,11 +79,11 @@ namespace DMT.TA.Pages.Reports
 
             // load C35 items.
             List<TSBCouponTransaction> c35Items = new List<TSBCouponTransaction>();
-            var c35coupons = manager.C35Users;
+            var c35coupons = manager.C35TSBSolds;
             if (null != c35coupons) c35Items.AddRange(c35coupons);
             // load C80 items.
             List<TSBCouponTransaction> c80Items = new List<TSBCouponTransaction>();
-            var c80coupons = manager.C80Users;
+            var c80coupons = manager.C80TSBSolds;
             if (null != c80coupons) c80Items.AddRange(c80coupons);
 
             // assign new data source (main for header)
@@ -120,11 +120,10 @@ namespace DMT.TA.Pages.Reports
             return inst;
         }
 
-        public void Setup(User user, TSBCouponSummary summary)
+        public void Setup(User user)
         {
             _user = user;
-            _summary = summary; 
-            if (null != _summary && null != _user) 
+            if (null != _user) 
             {
                 var model = GetReportModel();
                 if (null == model ||
@@ -133,7 +132,7 @@ namespace DMT.TA.Pages.Reports
                 {
                     DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
                     msg.Owner = Application.Current.MainWindow;
-                    msg.Setup("No result found.", "DMT - Tour of Duty");
+                    msg.Setup("No result found.", "DMT - Toll Admin");
                     if (msg.ShowDialog() == true)
                     {
                         this.rptViewer.ClearReport();

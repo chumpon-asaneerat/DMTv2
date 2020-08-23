@@ -81,16 +81,10 @@ namespace DMT.TA.Pages.Coupon
                 Verified(); // set finish flag if sold and return to stock if unsold.
                 manager.Save();
 
-
-                // Main Menu Page
-                //var page = new Menu.MainMenu();
-                //PageContentManager.Instance.Current = page;
-
                 var page = new Pages.Reports.CouponSalesReceiptReportPage();
                 page.CallerPage = this;
-                page.Setup(manager.User, null);
+                page.Setup(manager.User);
                 PageContentManager.Instance.Current = page;
-
             }
             
         }

@@ -18,8 +18,10 @@ Update 2020-08-24 #20
 Update 2020-08-24 #19
 - 
 
+[commited]
 Update 2020-08-24 #18
-- 
+- Update Local/DataCenter/TAxTOD service operation #314.
+  - Implements Coupon sync process #3.
 
 [commited]
 Update 2020-08-24 #17

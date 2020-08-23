@@ -106,26 +106,25 @@ namespace DMT.Services
                 }
 
                 var url = "api/users/coupons/save";
-                var inst = new
-                {
-                    couponpk = value.CouponPK,
-                    transactiondate = value.TransactionDate,
-                    //transactionid = value.TransactionId,
-                    tsbid = value.TSBId,
-                    coupontype = value.CouponType,
-                    serialno = value.SerialNo,
-                    price = value.Price,
-                    userid = value.UserId,
-                    userreceivedate = value.UserReceiveDate,
-                    Couponstatus = value.CouponStatus,
-                    solddate = value.SoldDate,
-                    soldby = value.SoldBy,
-                    finishflag = value.FinishFlag
-                };
-
                 if (null != value)
                 {
-                    ret = client.Execute<List<TAServerCouponTransaction>>(url, value);
+                    var inst = new
+                    {
+                        couponpk = value.CouponPK,
+                        transactiondate = value.TransactionDate,
+                        //transactionid = value.TransactionId,
+                        tsbid = value.TSBId,
+                        coupontype = value.CouponType,
+                        serialno = value.SerialNo,
+                        price = value.Price,
+                        userid = value.UserId,
+                        userreceivedate = value.UserReceiveDate,
+                        Couponstatus = value.CouponStatus,
+                        solddate = value.SoldDate,
+                        soldby = value.SoldBy,
+                        finishflag = value.FinishFlag
+                    };
+                    ret = client.Execute<List<TAServerCouponTransaction>>(url, inst);
                 }
                 else
                 {
