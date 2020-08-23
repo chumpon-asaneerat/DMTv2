@@ -62,13 +62,14 @@ namespace DMT.Services
 
             public NRestResult<List<TAServerCouponTransaction>> GetTAServerCouponTransactions(string tsbId, string userId, int? transactionType, int? couponType)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.TAxTOD.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.TAxTOD.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.TAxTOD.Http.PortNumber;
-
                 NRestResult<List<TAServerCouponTransaction>> ret;
+                NRestClient client = NRestClient.CreateTAxTODClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<TAServerCouponTransaction>>();
+                    ret.ParameterIsNull();
+                    return ret;
+                }
 
                 var url = "api/users/coupons/getlist";
                 var value = new
@@ -80,8 +81,7 @@ namespace DMT.Services
                 };
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<TAServerCouponTransaction>>(url, value);
+                    ret = client.Execute<List<TAServerCouponTransaction>>(url, value);
                 }
                 else
                 {

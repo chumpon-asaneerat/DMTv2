@@ -81,6 +81,15 @@ namespace DMT.Services
             this.errors.errMsg = ErrConsts.ErrMsg(err);
         }
         /// <summary>
+        /// Set Web Service (REST API) Invalid Config Error.
+        /// </summary>
+        public virtual void RestInvalidConfig()
+        {
+            var err = ErrNums.RestInvalidConfig;
+            this.errors.errNum = (int)err;
+            this.errors.errMsg = ErrConsts.ErrMsg(err);
+        }
+        /// <summary>
         /// Set Unknown Error.
         /// </summary>
         public virtual void UnknownError()
@@ -182,6 +191,14 @@ namespace DMT.Services
         public override void RestResponseError()
         {
             base.RestResponseError();
+            this.data = Default();
+        }
+        /// <summary>
+        /// Set Web Service (REST API) Invalid Config Error.
+        /// </summary>
+        public override void RestInvalidConfig()
+        {
+            base.RestInvalidConfig();
             this.data = Default();
         }
         /// <summary>
@@ -291,6 +308,15 @@ namespace DMT.Services
         public override void RestResponseError()
         {
             base.RestResponseError();
+            this.data = DefaultData();
+            this.output = DefaultOutput();
+        }
+        /// <summary>
+        /// Set Web Service (REST API) Invalid Config Error.
+        /// </summary>
+        public override void RestInvalidConfig()
+        {
+            base.RestInvalidConfig();
             this.data = DefaultData();
             this.output = DefaultOutput();
         }

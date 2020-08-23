@@ -33,8 +33,10 @@ Update 2020-08-24 #5
 Update 2020-08-24 #4
 - 
 
+[commited]
 Update 2020-08-24 #3
-- 
+- Update Local/DataCenter/TAxTOD service operation #299.
+  - NRestResult - Add RestInvalidConfig method.
 
 [commited]
 Update 2020-08-24 #2

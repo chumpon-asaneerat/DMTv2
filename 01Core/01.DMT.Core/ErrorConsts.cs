@@ -16,6 +16,7 @@ namespace DMT
         // Web Service Connection (150-199)
         RestConenctFailed = 150,
         RestResponseError = 151,
+        RestInvalidConfig = 152,
         // Models - Common (200-210)
         ParameterIsNull = 200,
         // Models - User (invalid password, invalid role, etc.) (211-230)
