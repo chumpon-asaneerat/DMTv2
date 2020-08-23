@@ -21,8 +21,10 @@ Update 2020-08-23 #4
 Update 2020-08-23 #3
 - 
 
+[commited]
 Update 2020-08-23 #2
-- 
+- Update Local/DataCenter/TAxTOD service operation #295.
+  - Update TA Server Coupon model #1.
 
 [commited]
 Update 2020-08-23 #1
