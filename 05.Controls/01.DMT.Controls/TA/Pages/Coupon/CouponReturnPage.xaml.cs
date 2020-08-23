@@ -83,7 +83,7 @@ namespace DMT.TA.Pages.Coupon
 
                 var page = new Pages.Reports.CouponSalesReceiptReportPage();
                 page.CallerPage = this;
-                page.Setup(manager.User);
+                page.Setup(manager);
                 PageContentManager.Instance.Current = page;
             }
             

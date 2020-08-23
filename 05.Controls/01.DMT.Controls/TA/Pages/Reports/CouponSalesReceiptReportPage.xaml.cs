@@ -32,8 +32,7 @@ namespace DMT.TA.Pages.Reports
         #endregion
 
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
-        private TSBCouponManager manager = new TSBCouponManager();
-        private User _user = null;
+        private TSBCouponManager _manager = null;
         private TSBCouponSummary _summary = null;
 
         #region Button Handlers
@@ -73,17 +72,13 @@ namespace DMT.TA.Pages.Reports
             List<TSBCouponSummary> items = new List<TSBCouponSummary>();
             if (null != _summary) items.Add(_summary);
 
-            // gets coupon list by type.
-            manager.User = _user;
-            manager.Refresh(); // reload data.
-
             // load C35 items.
             List<TSBCouponTransaction> c35Items = new List<TSBCouponTransaction>();
-            var c35coupons = manager.C35TSBSolds;
+            var c35coupons = (null != _manager)  ? _manager.C35TSBSolds : null;
             if (null != c35coupons) c35Items.AddRange(c35coupons);
             // load C80 items.
             List<TSBCouponTransaction> c80Items = new List<TSBCouponTransaction>();
-            var c80coupons = manager.C80TSBSolds;
+            var c80coupons = (null != _manager) ? _manager.C80TSBSolds : null;
             if (null != c80coupons) c80Items.AddRange(c80coupons);
 
             // assign new data source (main for header)
@@ -120,10 +115,10 @@ namespace DMT.TA.Pages.Reports
             return inst;
         }
 
-        public void Setup(User user)
+        public void Setup(TSBCouponManager manager)
         {
-            _user = user;
-            if (null != _user) 
+            _manager = manager;
+            if (null != _manager) 
             {
                 var model = GetReportModel();
                 if (null == model ||
