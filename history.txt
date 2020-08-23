@@ -15,8 +15,9 @@
 Update 2020-08-23 #5
 - 
 
+[commited]
 Update 2020-08-23 #4
-- 
+- Merge from origin/TA #1.
 
 [commited]
 Update 2020-08-23 #3
