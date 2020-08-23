@@ -67,44 +67,49 @@ namespace DMT.Services
 
             public NRestResult<List<TSB>> GetTSBs()
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
+                NRestResult<List<TSB>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<TSB>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
 
-                var ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                    .Execute<List<TSB>>(
+                ret = client.Execute<List<TSB>>(
                     RouteConsts.TSB.GetTSBs.Url, new { });
                 return ret;
             }
 
             public NRestResult<TSB> GetCurrent()
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
+                NRestResult<TSB> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<TSB>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
 
-                var ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                    .Execute<TSB>(RouteConsts.TSB.GetCurrent.Url, new { });
+                ret = client.Execute<TSB>(RouteConsts.TSB.GetCurrent.Url, new { });
                 return ret;
             }
 
             public NRestResult SetActive(TSB value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute(RouteConsts.TSB.SetActive.Url, value);
+                    ret = client.Execute(RouteConsts.TSB.SetActive.Url, value);
                 }
                 else
                 {
@@ -116,17 +121,18 @@ namespace DMT.Services
 
             public NRestResult<TSB> SaveTSB(TSB value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<TSB> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<TSB>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<TSB>(RouteConsts.TSB.SaveTSB.Url, value);
+                    ret = client.Execute<TSB>(RouteConsts.TSB.SaveTSB.Url, value);
                 }
                 else
                 {
@@ -142,17 +148,18 @@ namespace DMT.Services
 
             public NRestResult<List<Plaza>> GetTSBPlazas(TSB value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<Plaza>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<Plaza>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<Plaza>>(RouteConsts.TSB.GetTSBPlazas.Url, value);
+                    ret = client.Execute<List<Plaza>>(RouteConsts.TSB.GetTSBPlazas.Url, value);
                 }
                 else
                 {
@@ -165,17 +172,18 @@ namespace DMT.Services
 
             public NRestResult<Plaza> SavePlaza(Plaza value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<Plaza> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<Plaza>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<Plaza>(RouteConsts.TSB.SavePlaza.Url, value);
+                    ret = client.Execute<Plaza>(RouteConsts.TSB.SavePlaza.Url, value);
                 }
                 else
                 {
@@ -192,18 +200,19 @@ namespace DMT.Services
 
             public NRestResult<List<PlazaGroup>> GetTSBPlazaGroups(TSB value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<PlazaGroup>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<PlazaGroup>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
 
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<PlazaGroup>>(RouteConsts.TSB.GetTSBPlazaGroups.Url, value);
+                    ret = client.Execute<List<PlazaGroup>>(
+                        RouteConsts.TSB.GetTSBPlazaGroups.Url, value);
                 }
                 else
                 {
@@ -216,18 +225,19 @@ namespace DMT.Services
 
             public NRestResult<PlazaGroup> SavePlazaGroup(PlazaGroup value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<PlazaGroup> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<PlazaGroup>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
 
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<PlazaGroup>(RouteConsts.TSB.SavePlazaGroup.Url, value);
+                    ret = client.Execute<PlazaGroup>(
+                        RouteConsts.TSB.SavePlazaGroup.Url, value);
                 }
                 else
                 {
@@ -244,17 +254,19 @@ namespace DMT.Services
 
             public NRestResult<List<Lane>> GetTSBLanes(TSB value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<Lane>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<Lane>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<Lane>>(RouteConsts.TSB.GetTSBLanes.Url, value);
+                    ret = client.Execute<List<Lane>>(
+                        RouteConsts.TSB.GetTSBLanes.Url, value);
                 }
                 else
                 {
@@ -267,17 +279,19 @@ namespace DMT.Services
 
             public NRestResult<List<Lane>> GetPlazaLanes(Plaza value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<Lane>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<Lane>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<Lane>>(RouteConsts.TSB.GetPlazaLanes.Url, value);
+                    ret = client.Execute<List<Lane>>(
+                        RouteConsts.TSB.GetPlazaLanes.Url, value);
                 }
                 else
                 {
@@ -290,17 +304,19 @@ namespace DMT.Services
 
             public NRestResult<List<Lane>> GetPlazaGroupLanes(PlazaGroup value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<Lane>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<Lane>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<Lane>>(RouteConsts.TSB.GetPlazaGroupLanes.Url, value);
+                    ret = client.Execute<List<Lane>>(
+                        RouteConsts.TSB.GetPlazaGroupLanes.Url, value);
                 }
                 else
                 {
@@ -313,18 +329,18 @@ namespace DMT.Services
 
             public NRestResult<Lane> SaveLane(Lane value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<Lane> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<Lane>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
 
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<Lane>(RouteConsts.TSB.SaveLane.Url, value);
+                    ret = client.Execute<Lane>(RouteConsts.TSB.SaveLane.Url, value);
                 }
                 else
                 {

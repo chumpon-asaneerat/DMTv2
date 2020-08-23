@@ -12,8 +12,40 @@
     - Need to check with TSB max balance.
 
 --------------------------------------------------------------------------------------------
-Update 2020-08-24 #10
+Update 2020-08-24 #20
 - 
+
+Update 2020-08-24 #19
+- 
+
+Update 2020-08-24 #18
+- 
+
+Update 2020-08-24 #17
+- 
+
+Update 2020-08-24 #16
+- 
+
+Update 2020-08-24 #15
+- 
+
+Update 2020-08-24 #14
+- 
+
+Update 2020-08-24 #13
+- 
+
+Update 2020-08-24 #12
+- 
+
+Update 2020-08-24 #11
+- 
+
+[commited]
+Update 2020-08-24 #10
+- Update Local/DataCenter/TAxTOD service operation #306.
+  - Local Plaza Operation - TSB (check config/client is null).
 
 [commited]
 Update 2020-08-24 #9
