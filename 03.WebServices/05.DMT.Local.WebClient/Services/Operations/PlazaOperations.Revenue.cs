@@ -68,17 +68,19 @@ namespace DMT.Services
             public NRestResult<UserShiftRevenue> CreateRevenueShift(
                 Search.Revenues.PlazaShift value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<UserShiftRevenue> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<UserShiftRevenue>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<UserShiftRevenue>(RouteConsts.Revenue.CreatePlazaRevenue.Url, value);
+                    ret = client.Execute<UserShiftRevenue>(
+                        RouteConsts.Revenue.CreatePlazaRevenue.Url, value);
                 }
                 else
                 {
@@ -92,17 +94,19 @@ namespace DMT.Services
             public NRestResult<UserShiftRevenue> SaveRevenueShift(
                 Search.Revenues.SaveRevenueShift value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<UserShiftRevenue> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<UserShiftRevenue>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<UserShiftRevenue>(RouteConsts.Revenue.SavePlazaRevenue.Url, value);
+                    ret = client.Execute<UserShiftRevenue>(
+                        RouteConsts.Revenue.SavePlazaRevenue.Url, value);
                 }
                 else
                 {
@@ -115,17 +119,19 @@ namespace DMT.Services
 
             public NRestResult<UserShiftRevenue> GetRevenueShift(Search.Revenues.PlazaShift value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<UserShiftRevenue> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<UserShiftRevenue>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<UserShiftRevenue>(RouteConsts.Revenue.GetPlazaRevenue.Url, value);
+                    ret = client.Execute<UserShiftRevenue>(
+                        RouteConsts.Revenue.GetPlazaRevenue.Url, value);
                 }
                 else
                 {
@@ -142,17 +148,19 @@ namespace DMT.Services
 
             public NRestResult<RevenueEntry> SaveRevenue(RevenueEntry value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<RevenueEntry> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<RevenueEntry>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<RevenueEntry>(RouteConsts.Revenue.SaveRevenue.Url, value);
+                    ret = client.Execute<RevenueEntry>(
+                        RouteConsts.Revenue.SaveRevenue.Url, value);
                 }
                 else
                 {
@@ -165,17 +173,19 @@ namespace DMT.Services
 
             public NRestResult<List<RevenueEntry>> GetRevenues(DateTime value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<RevenueEntry>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<RevenueEntry>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<RevenueEntry>>(RouteConsts.Revenue.GetRevenues.Url, value);
+                    ret = client.Execute<List<RevenueEntry>>(
+                        RouteConsts.Revenue.GetRevenues.Url, value);
                 }
                 else
                 {
