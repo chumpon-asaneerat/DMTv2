@@ -67,7 +67,7 @@ namespace DMT.Services
                 if (null == client)
                 {
                     ret = new NRestResult<List<TAServerCouponTransaction>>();
-                    ret.ParameterIsNull();
+                    ret.RestInvalidConfig();
                     return ret;
                 }
 

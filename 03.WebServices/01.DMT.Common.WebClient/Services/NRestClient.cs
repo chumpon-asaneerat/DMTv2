@@ -425,7 +425,7 @@ namespace DMT.Services
             string hostName = ConfigManager.Instance.Plaza.DC.Http.HostName;
             int portNo = ConfigManager.Instance.Plaza.DC.Http.PortNumber;
 
-            return new NRestClient(protocol, portNo, hostName);
+            return new NRestClient(protocol, hostName, portNo);
         }
 
         #endregion

@@ -30,8 +30,10 @@ Update 2020-08-24 #6
 Update 2020-08-24 #5
 - 
 
+[commited]
 Update 2020-08-24 #4
-- 
+- Update Local/DataCenter/TAxTOD service operation #300.
+  - Local Plaza Operation - Coupon (check config/client is null).
 
 [commited]
 Update 2020-08-24 #3

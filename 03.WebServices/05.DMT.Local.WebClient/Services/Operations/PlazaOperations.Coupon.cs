@@ -62,18 +62,19 @@ namespace DMT.Services
 
             public NRestResult<TSBCouponBalance> GetTSBBalance(TSB value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<TSBCouponBalance> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<TSBCouponBalance>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
 
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<TSBCouponBalance>(RouteConsts.Coupon.GetTSBBalance.Url, value);
+                    ret = client.Execute<TSBCouponBalance>(
+                        RouteConsts.Coupon.GetTSBBalance.Url, value);
                 }
                 else
                 {
@@ -90,18 +91,19 @@ namespace DMT.Services
 
             public NRestResult<List<TSBCouponSummary>> GetTSBCouponSummaries(TSB value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<TSBCouponSummary>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<TSBCouponSummary>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
 
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<TSBCouponSummary>>(RouteConsts.Coupon.GetTSBCouponSummaries.Url, value);
+                    ret = client.Execute<List<TSBCouponSummary>>(
+                        RouteConsts.Coupon.GetTSBCouponSummaries.Url, value);
                 }
                 else
                 {
@@ -118,18 +120,19 @@ namespace DMT.Services
 
             public NRestResult<List<TSBCouponTransaction>> GetTSBCouponTransactions(TSB value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<List<TSBCouponTransaction>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<TSBCouponTransaction>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
 
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<List<TSBCouponTransaction>>(RouteConsts.Coupon.GetTSBCouponTransactions.Url, value);
+                    ret = client.Execute<List<TSBCouponTransaction>>(
+                        RouteConsts.Coupon.GetTSBCouponTransactions.Url, value);
                 }
                 else
                 {
@@ -142,18 +145,19 @@ namespace DMT.Services
 
             public NRestResult<TSBCouponTransaction> SaveTransaction(TSBCouponTransaction value)
             {
-                NRestClient.WebProtocol protocol =
-                    (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
-                    NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-                string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
-                int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
-
                 NRestResult<TSBCouponTransaction> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<TSBCouponTransaction>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
 
                 if (null != value)
                 {
-                    ret = NRestClient.Create(protocol: protocol, host: hostName, port: portNo)
-                        .Execute<TSBCouponTransaction>(RouteConsts.Coupon.SaveTSBCouponTransaction.Url, value);
+                    ret = client.Execute<TSBCouponTransaction>(
+                        RouteConsts.Coupon.SaveTSBCouponTransaction.Url, value);
                 }
                 else
                 {
