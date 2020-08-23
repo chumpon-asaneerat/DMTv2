@@ -367,10 +367,6 @@ namespace DMT.Services
 
         #region Static Methods
 
-
-        // TODO: Create static method should load from config.
-
-        /*
         /// <summary>
         /// Create new instance of NRestClient.
         /// </summary>
@@ -381,11 +377,8 @@ namespace DMT.Services
         public static NRestClient Create(WebProtocol protocol = WebProtocol.http,
             string host = "localhost", int port = 9000)
         {
-            // TODO: Need to common all from config and replace PlazaOperations methods call.
             return new NRestClient(protocol, host, port);
         }
-        */
-
 
         public static NRestClient CreateLocalClient()
         {

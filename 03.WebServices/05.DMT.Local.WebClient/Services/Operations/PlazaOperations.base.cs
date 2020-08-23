@@ -55,7 +55,9 @@ namespace DMT.Services
         {
             get
             {
-                // TODO: Need to check null config.
+                if (null == ConfigManager.Instance.Plaza) return string.Empty;
+                if (null == ConfigManager.Instance.Plaza.Local) return string.Empty;
+
                 return string.Format(@"{0}://{1}:{2}/",
                     ConfigManager.Instance.Plaza.Local.Http.Protocol,
                     ConfigManager.Instance.Plaza.Local.Http.HostName,

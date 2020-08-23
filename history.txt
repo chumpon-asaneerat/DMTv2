@@ -33,8 +33,11 @@ Update 2020-08-24 #15
 Update 2020-08-24 #14
 - 
 
+[commited]
 Update 2020-08-24 #13
-- 
+- Update Local/DataCenter/TAxTOD service operation #309.
+  - Local Plaza Operation - base (check config is null).
+  - TAxTOD Plaza Operation - base (check config is null).
 
 [commited]
 Update 2020-08-24 #12
