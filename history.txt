@@ -36,8 +36,10 @@ Update 2020-08-24 #4
 Update 2020-08-24 #3
 - 
 
+[commited]
 Update 2020-08-24 #2
-- 
+- Update Local/DataCenter/TAxTOD service operation #298.
+  - NRestClient - Add Create static methods.
 
 [commited]
 Update 2020-08-24 #1

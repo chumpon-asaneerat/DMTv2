@@ -370,6 +370,7 @@ namespace DMT.Services
 
         // TODO: Create static method should load from config.
 
+        /*
         /// <summary>
         /// Create new instance of NRestClient.
         /// </summary>
@@ -382,6 +383,49 @@ namespace DMT.Services
         {
             // TODO: Need to common all from config and replace PlazaOperations methods call.
             return new NRestClient(protocol, host, port);
+        }
+        */
+
+
+        public static NRestClient CreateLocalClient()
+        {
+            if (null == ConfigManager.Instance.Plaza) return null;
+            if (null == ConfigManager.Instance.Plaza.Local) return null;
+            NRestClient.WebProtocol protocol =
+                (ConfigManager.Instance.Plaza.Local.Http.Protocol == "http") ?
+                NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+            string hostName = ConfigManager.Instance.Plaza.Local.Http.HostName;
+            int portNo = ConfigManager.Instance.Plaza.Local.Http.PortNumber;
+
+            return new NRestClient(protocol, hostName, portNo);
+        }
+
+        public static NRestClient CreateTAxTODClient()
+        {
+            if (null == ConfigManager.Instance.Plaza) return null;
+            if (null == ConfigManager.Instance.Plaza.TAxTOD) return null;
+
+            NRestClient.WebProtocol protocol =
+                (ConfigManager.Instance.Plaza.TAxTOD.Http.Protocol == "http") ?
+                NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+            string hostName = ConfigManager.Instance.Plaza.TAxTOD.Http.HostName;
+            int portNo = ConfigManager.Instance.Plaza.TAxTOD.Http.PortNumber;
+
+            return new NRestClient(protocol, hostName, portNo);
+        }
+
+        public static NRestClient CreateDCClient()
+        {
+            if (null == ConfigManager.Instance.Plaza) return null;
+            if (null == ConfigManager.Instance.Plaza.DC) return null;
+
+            NRestClient.WebProtocol protocol =
+                (ConfigManager.Instance.Plaza.DC.Http.Protocol == "http") ?
+                NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+            string hostName = ConfigManager.Instance.Plaza.DC.Http.HostName;
+            int portNo = ConfigManager.Instance.Plaza.DC.Http.PortNumber;
+
+            return new NRestClient(protocol, portNo, hostName);
         }
 
         #endregion
