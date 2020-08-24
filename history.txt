@@ -43,8 +43,11 @@ Update 2020-08-25 #1
 - 
 
 --------------------------------------------------------------------------------------------
+[commited]
 Update 2020-08-24 #25
-- 
+- Update Local/DataCenter/TAxTOD service operation #320.
+  - Clean log code in NRestClient.cs
+  - Implements DC Web Service Client #4.
 
 [commited]
 Update 2020-08-24 #24

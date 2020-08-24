@@ -322,20 +322,11 @@ namespace DMT.Services
             MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
-                med.Info("Call Url: " + BaseUrl);
-
                 var client = new RestClient(BaseUrl);
                 client.Timeout = timeout;
                 if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
                 {
-                    med.Info("Has Authenticator.");
-                    med.Info("User Name: " + username);
-                    med.Info("Password: " + password);
                     client.Authenticator = new HttpBasicAuthenticator(username, password);
-                }
-                else
-                {
-                    med.Info("No Authenticator.");
                 }
 
                 //client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
@@ -344,17 +335,14 @@ namespace DMT.Services
                 request.RequestFormat = DataFormat.Json;
                 if (null != pObj)
                 {
-                    med.Info("Add json body: " + pObj.ToJson());
                     request.AddJsonBody(pObj);
                 }
 
                 var response = client.Execute(request);
                 if (null != response)
                 {
-                    med.Info("Has Response - Code:" + ((int)response.StatusCode).ToString());
                     if (response.IsSuccessful() && null != response.Content)
                     {
-                        med.Info("Success and content exist");
                         ret = response.Content.FromJson<TReturn>();
                     }
                     else
