@@ -93,12 +93,12 @@ namespace DMT
 
         private void cmdCurrency_Click(object sender, RoutedEventArgs e)
         {
-
+            PageContentManager.Instance.Current = new DC.Pages.CurrencyListPage();
         }
 
         private void cmdCoupon_Click(object sender, RoutedEventArgs e)
         {
-
+            PageContentManager.Instance.Current = new DC.Pages.CouponListPage();
         }
 
         #endregion

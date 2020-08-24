@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+
 using DMT.Services;
 
 #endregion
@@ -35,11 +37,15 @@ namespace DMT.DC.Pages
 
         #endregion
 
+        private DCOperations ops = DCServiceOperations.Instance.Plaza;
+
         #region Loaded/Unloaded
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-
+            DCServiceOperations.Instance.UserName = "DMTUSER";
+            DCServiceOperations.Instance.Password = "DMTPASS";
+            LoadCurrencyList();
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
@@ -48,5 +54,10 @@ namespace DMT.DC.Pages
         }
 
         #endregion
+
+        private void LoadCurrencyList()
+        {
+            pgrid.SelectedObject = ops.Masters.GetCurrencyList(31);
+        }
     }
 }

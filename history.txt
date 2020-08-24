@@ -36,8 +36,10 @@ Update 2020-08-24 #24
 Update 2020-08-24 #23
 - 
 
+[commited]
 Update 2020-08-24 #22
-- 
+- Update Local/DataCenter/TAxTOD service operation #318.
+  - Implements DC Web Service Client #3.
 
 [commited]
 Update 2020-08-24 #21

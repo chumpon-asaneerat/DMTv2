@@ -24,7 +24,6 @@ using System.Runtime.InteropServices;
 
 #endregion
 
-
 namespace DMT.Config.Pages
 {
     /// <summary>

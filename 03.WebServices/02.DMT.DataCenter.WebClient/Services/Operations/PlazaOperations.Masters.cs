@@ -26,7 +26,7 @@ namespace DMT.Services
         /// <summary>
         /// Gets Masters Operations.
         /// </summary>
-        public MasterOperations Coupons
+        public MasterOperations Masters
         {
             get
             {
@@ -61,7 +61,7 @@ namespace DMT.Services
             #region Get Currency
 
             public NRestResult<DCCurrencyList> GetCurrencyList(
-                int networkId)
+                int nwId)
             {
                 NRestResult<DCCurrencyList> ret;
                 NRestClient client = NRestClient.CreateDCClient();
@@ -75,10 +75,13 @@ namespace DMT.Services
                 var url = "dmt-scw/api/tod/currencyDenomList";
                 var value = new
                 {
-                    networkId = networkId
+                    networkId = nwId
                 };
 
-                ret = client.Execute<DCCurrencyList>(url, value);
+                string usr = DCServiceOperations.Instance.UserName;
+                string pwd = DCServiceOperations.Instance.Password;
+
+                ret = client.Execute<DCCurrencyList>(url, value, username: usr, password: pwd);
                 return ret;
             }
 
