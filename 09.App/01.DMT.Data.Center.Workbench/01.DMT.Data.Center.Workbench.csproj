@@ -81,8 +81,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DC\Pages\CouponListPage.xaml.cs">
+      <DependentUpon>CouponListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TAxTOD\Pages\CouponViewPage.xaml.cs">
       <DependentUpon>CouponViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DC\Pages\CurrencyListPage.xaml.cs">
+      <DependentUpon>CurrencyListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TAxTOD\Pages\DemoPage.xaml.cs">
       <DependentUpon>DemoPage.xaml</DependentUpon>
@@ -99,7 +105,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="DC\Pages\CouponListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TAxTOD\Pages\CouponViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DC\Pages\CurrencyListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -166,7 +180,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DC\Controls\" />
-    <Folder Include="DC\Pages\" />
     <Folder Include="DC\Windows\" />
     <Folder Include="TAxTOD\Controls\" />
     <Folder Include="TAxTOD\Windows\" />

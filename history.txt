@@ -12,8 +12,40 @@
     - Need to check with TSB max balance.
 
 --------------------------------------------------------------------------------------------
-Update 2020-08-24 #20
+Update 2020-08-24 #30
 - 
+
+Update 2020-08-24 #29
+- 
+
+Update 2020-08-24 #28
+- 
+
+Update 2020-08-24 #27
+- 
+
+Update 2020-08-24 #26
+- 
+
+Update 2020-08-24 #25
+- 
+
+Update 2020-08-24 #24
+- 
+
+Update 2020-08-24 #23
+- 
+
+Update 2020-08-24 #22
+- 
+
+Update 2020-08-24 #21
+- 
+
+[commited]
+Update 2020-08-24 #20
+- Update Local/DataCenter/TAxTOD service operation #316.
+  - Implements DC Web Service Client #1.
 
 [commited]
 Update 2020-08-24 #19

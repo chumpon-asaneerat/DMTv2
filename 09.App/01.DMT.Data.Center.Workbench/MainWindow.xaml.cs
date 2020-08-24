@@ -91,6 +91,16 @@ namespace DMT
             PageContentManager.Instance.Current = new TAxTOD.Pages.DemoPage();
         }
 
+        private void cmdCurrency_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cmdCoupon_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         #endregion
     }
 }

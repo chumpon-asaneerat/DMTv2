@@ -33,7 +33,7 @@
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
                 </Fluent:RibbonGroupBox>
-                <Fluent:RibbonGroupBox Header="RabbitMQ">
+                <Fluent:RibbonGroupBox Header="Data Center">
                     <Fluent:Button x:Name="cmdSendUserLog"
                                    Width="75"
                                    Header="Send Users Log"
@@ -42,6 +42,25 @@
                             <Image Source="Images/Users/send-user.png" />
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
+
+                    <Fluent:Button x:Name="cmdCurrency"
+                                   Width="75"
+                                   Header="Get Currency List"
+                                   Click="cmdCurrency_Click">
+                        <Fluent:Button.LargeIcon>
+                            <Image Source="Images/Reports/reports_01.png" />
+                        </Fluent:Button.LargeIcon>
+                    </Fluent:Button>
+
+                    <Fluent:Button x:Name="cmdCoupon"
+                                   Width="75"
+                                   Header="Get Coupon List"
+                                   Click="cmdCoupon_Click">
+                        <Fluent:Button.LargeIcon>
+                            <Image Source="Images/Reports/reports_01.png" />
+                        </Fluent:Button.LargeIcon>
+                    </Fluent:Button>
+
                     <Fluent:Button x:Name="cmdSendRevenue"
                                    Width="75"
                                    Header="Send Revenue"
