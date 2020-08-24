@@ -11,6 +11,8 @@ using NLib.Services;
 
 using Fluent;
 using DMT.TAxTOD.Pages;
+using DMT.DC.Pages;
+using DMT.Services;
 
 #endregion
 
@@ -37,6 +39,9 @@ namespace DMT
 
         private void RibbonWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            // Load Config service.
+            ConfigManager.Instance.LoadConfig();
+
             // Initial Page Content Manager
             PageContentManager.Instance.ContentChanged += new EventHandler(Instance_ContentChanged);
             PageContentManager.Instance.StatusUpdated += new StatusMessageEventHandler(Instance_StatusUpdated);

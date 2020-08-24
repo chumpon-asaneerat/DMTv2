@@ -60,15 +60,14 @@ namespace DMT.Services
 
             #region Get Currency
 
-            public NRestResult<DCCurrencyList> GetCurrencyList(
+            public DCCurrencyList GetCurrencyList(
                 int nwId)
             {
-                NRestResult<DCCurrencyList> ret;
+                DCCurrencyList ret;
                 NRestClient client = NRestClient.CreateDCClient();
                 if (null == client)
                 {
-                    ret = new NRestResult<DCCurrencyList>();
-                    ret.RestInvalidConfig();
+                    ret = new DCCurrencyList();
                     return ret;
                 }
 
@@ -81,7 +80,7 @@ namespace DMT.Services
                 string usr = DCServiceOperations.Instance.UserName;
                 string pwd = DCServiceOperations.Instance.Password;
 
-                ret = client.Execute<DCCurrencyList>(url, value, username: usr, password: pwd);
+                ret = client.Execute2<DCCurrencyList>(url, value, username: usr, password: pwd);
                 return ret;
             }
 

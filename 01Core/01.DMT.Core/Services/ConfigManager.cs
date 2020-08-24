@@ -236,7 +236,7 @@ namespace DMT.Services
             {
                 Protocol = "http",
                 HostName = "192.168.244.252",
-                PortNumber = 811
+                PortNumber = 8110
             };
         }
 

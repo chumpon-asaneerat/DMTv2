@@ -310,6 +310,76 @@ namespace DMT.Services
             return ret;
         }
 
+        public TReturn Execute2<TReturn>(string apiUrl,
+            object pObj = default,
+            int timeout = 5000,
+            string username = "", string password = "")
+            where TReturn : new()
+        {
+            TReturn ret = new TReturn();
+
+            string actionUrl = (!apiUrl.StartsWith("/")) ? @"/" + apiUrl : apiUrl;
+            MethodBase med = MethodBase.GetCurrentMethod();
+            try
+            {
+                med.Info("Call Url: " + BaseUrl);
+
+                var client = new RestClient(BaseUrl);
+                client.Timeout = timeout;
+                if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
+                {
+                    med.Info("Has Authenticator.");
+                    med.Info("User Name: " + username);
+                    med.Info("Password: " + password);
+                    client.Authenticator = new HttpBasicAuthenticator(username, password);
+                }
+                else
+                {
+                    med.Info("No Authenticator.");
+                }
+
+                //client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
+                client.UseNewtonsoftJson();
+                var request = new RestRequest(actionUrl, Method.POST);
+                request.RequestFormat = DataFormat.Json;
+                if (null != pObj)
+                {
+                    med.Info("Add json body: " + pObj.ToJson());
+                    request.AddJsonBody(pObj);
+                }
+
+                var response = client.Execute(request);
+                if (null != response)
+                {
+                    med.Info("Has Response - Code:" + ((int)response.StatusCode).ToString());
+                    if (response.IsSuccessful() && null != response.Content)
+                    {
+                        med.Info("Success and content exist");
+                        ret = response.Content.FromJson<TReturn>();
+                    }
+                    else
+                    {
+                        string msg = string.Format(
+                            "Rest Client Content Error - Code: {0}, Content: {1}",
+                            (int)response.StatusCode, response.Content);
+                        Console.WriteLine(msg);
+                        med.Err(msg);
+                    }
+                }
+                else
+                {
+                    // Connect Failed
+                    med.Err("Connect Failed.");
+                }
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+            }
+
+            return ret;
+        }
+
         #endregion
 
         #region Public Properties
