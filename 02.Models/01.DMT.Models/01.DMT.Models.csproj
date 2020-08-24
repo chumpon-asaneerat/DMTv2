@@ -109,6 +109,8 @@
     <Compile Include="Models\Coupons\Common\Enums.cs" />
     <Compile Include="Models\Coupons\TSB\TSBCouponSummary.cs" />
     <Compile Include="Models\Coupons\Users\UserCouponTransaction.cs" />
+    <Compile Include="Models\DC\Common.cs" />
+    <Compile Include="Models\DC\DCCurrency.cs" />
     <Compile Include="Models\Exchanges\TSBExchangeGroup.cs" />
     <Compile Include="Models\Exchanges\TSBExchangeTransaction.cs" />
     <Compile Include="Models\Users\LogInLog.cs" />
