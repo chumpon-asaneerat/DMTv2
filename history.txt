@@ -10,6 +10,7 @@
     - Binding Grand total.
     - Check if both total side (left/right) is match.
     - Need to check with TSB max balance.
+  - Coupon process supports multiple selection before operations.
 
 --------------------------------------------------------------------------------------------
 Update 2020-08-25 #10
@@ -36,8 +37,10 @@ Update 2020-08-25 #4
 Update 2020-08-25 #3
 - 
 
+[commited]
 Update 2020-08-25 #2
-- 
+- Update history.txt
+  - add node #1.
 
 [commited]
 Update 2020-08-25 #1
