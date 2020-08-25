@@ -11,6 +11,8 @@
     - Check if both total side (left/right) is match.
     - Need to check with TSB max balance.
   - Coupon process supports multiple selection before operations.
+  - Revenue entry separate logic from UI.
+  - 
 
 --------------------------------------------------------------------------------------------
 Update 2020-08-25 #10
@@ -34,8 +36,10 @@ Update 2020-08-25 #5
 Update 2020-08-25 #4
 - 
 
+[commited]
 Update 2020-08-25 #3
-- 
+- Update history.txt
+  - add node #2.
 
 [commited]
 Update 2020-08-25 #2
