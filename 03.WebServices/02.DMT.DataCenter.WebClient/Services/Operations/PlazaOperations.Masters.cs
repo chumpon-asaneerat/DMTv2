@@ -58,7 +58,7 @@ namespace DMT.Services
 
             #region Public Methods
 
-            #region Get Currency
+            #region Get Currency Demon List
 
             public DCCurrencyList GetCurrencyList(
                 int nwId)
@@ -86,7 +86,7 @@ namespace DMT.Services
 
             #endregion
 
-            #region Get Currency
+            #region Get Coupon List
 
             public DCCouponList GetCouponList(
                 int nwId)
@@ -109,6 +109,36 @@ namespace DMT.Services
                 string pwd = DCServiceOperations.Instance.Password;
 
                 ret = client.Execute2<DCCouponList>(url, value, username: usr, password: pwd);
+                return ret;
+            }
+
+            #endregion
+
+            #region Get Job List
+
+            public DCJobList GetJobList(
+                int nwId, int pzId, string usrId)
+            {
+                DCJobList ret;
+                NRestClient client = NRestClient.CreateDCClient();
+                if (null == client)
+                {
+                    ret = new DCJobList();
+                    return ret;
+                }
+
+                var url = "dmt-scw/api/tod/jobList";
+                var value = new
+                {
+                    networkId = nwId,
+                    plazaId = pzId.
+                    staffId = usrId
+                };
+
+                string usr = DCServiceOperations.Instance.UserName;
+                string pwd = DCServiceOperations.Instance.Password;
+
+                ret = client.Execute2<DCJobList>(url, value, username: usr, password: pwd);
                 return ret;
             }
 
