@@ -28,8 +28,10 @@ Update 2020-08-27 #3
 Update 2020-08-27 #2
 - 
 
+[commited]
 Update 2020-08-27 #1
-- Prepare history.txt
+- Update Local/DataCenter/TAxTOD service operation #321.
+  - Implements DC Web Service Client (coupon api) #1.
 
 --------------------------------------------------------------------------------------------
 [commited]

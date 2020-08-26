@@ -86,6 +86,34 @@ namespace DMT.Services
 
             #endregion
 
+            #region Get Currency
+
+            public DCCouponList GetCouponList(
+                int nwId)
+            {
+                DCCouponList ret;
+                NRestClient client = NRestClient.CreateDCClient();
+                if (null == client)
+                {
+                    ret = new DCCouponList();
+                    return ret;
+                }
+
+                var url = "dmt-scw/api/tod/couponList";
+                var value = new
+                {
+                    networkId = nwId
+                };
+
+                string usr = DCServiceOperations.Instance.UserName;
+                string pwd = DCServiceOperations.Instance.Password;
+
+                ret = client.Execute2<DCCouponList>(url, value, username: usr, password: pwd);
+                return ret;
+            }
+
+            #endregion
+
             #endregion
         }
 
