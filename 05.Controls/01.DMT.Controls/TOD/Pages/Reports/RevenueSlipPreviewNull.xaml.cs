@@ -115,9 +115,9 @@ namespace DMT.TOD.Pages.Reports
             inst.DataSources.Add(mainDS);
 
             // Add parameters (if required).
-            //DateTime today = DateTime.Now;
-            //string printDate = today.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
-            //inst.Parameters.Add(RdlcReportParameter.Create("PrintDate", printDate));
+            DateTime today = DateTime.Now;
+            string printDate = today.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+            inst.Parameters.Add(RdlcReportParameter.Create("PrintDate", printDate));
 
             return inst;
         }
