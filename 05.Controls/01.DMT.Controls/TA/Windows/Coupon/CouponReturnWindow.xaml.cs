@@ -54,37 +54,53 @@ namespace DMT.TA.Windows.Coupon
 
         private void btnNext35_Click(object sender, RoutedEventArgs e)
         {
-            var item = lvUserSold35.SelectedItem as TSBCouponTransaction;
-            if (null == item) return;
-            if (item.TransactionType != TSBCouponTransaction.TransactionTypes.SoldByLane) return;
-            manager.UnsoldByLane(item);
+            var items = lvUserSold35.SelectedItems;
+            if (null == items || items.Count <= 0) return;
+            foreach (TSBCouponTransaction item in items)
+            {
+                if (null == item) return;
+                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
+                manager.UnsoldByLane(item);
+            }
             RefreshBHT35Coupons();
         }
 
         private void btnBack35_Click(object sender, RoutedEventArgs e)
         {
-            var item = lvUserOnHand35.SelectedItem as TSBCouponTransaction;
-            if (null == item) return;
-            if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Lane) return;
-            manager.SoldByLane(item);
+            var items = lvUserOnHand35.SelectedItems;
+            if (null == items || items.Count <= 0) return;
+            foreach (TSBCouponTransaction item in items)
+            {
+                if (null == item) return;
+                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
+                manager.SoldByLane(item);
+            }
             RefreshBHT35Coupons();
         }
 
         private void btnNext80_Click(object sender, RoutedEventArgs e)
         {
-            var item = lvUserSold80.SelectedItem as TSBCouponTransaction;
-            if (null == item) return;
-            if (item.TransactionType != TSBCouponTransaction.TransactionTypes.SoldByLane) return;
-            manager.UnsoldByLane(item);
+            var items = lvUserSold80.SelectedItems;
+            if (null == items || items.Count <= 0) return;
+            foreach (TSBCouponTransaction item in items)
+            {
+                if (null == item) return;
+                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
+                manager.UnsoldByLane(item);
+            }
             RefreshBHT80Coupons();
         }
 
         private void btnBack80_Click(object sender, RoutedEventArgs e)
         {
-            var item = lvUserOnHand80.SelectedItem as TSBCouponTransaction;
-            if (null == item) return;
-            if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Lane) return;
-            manager.SoldByLane(item);
+            var items = lvUserOnHand80.SelectedItems;
+            if (null == items || items.Count <= 0) return;
+            foreach (TSBCouponTransaction item in items)
+            {
+                if (null == item) return;
+                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
+                manager.SoldByLane(item);
+            }
             RefreshBHT80Coupons();
         }
 

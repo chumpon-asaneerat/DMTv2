@@ -10,7 +10,6 @@
     - Binding Grand total.
     - Check if both total side (left/right) is match.
     - Need to check with TSB max balance.
-  - Coupon process supports multiple selection before operations.
   - Revenue entry separate logic from UI.
   - Add currency and coupon List Table (from Solar web service).
   - Update Config app and simulator.
@@ -22,8 +21,10 @@ Update 2020-08-28 #10
 Update 2020-08-28 #9
 - 
 
+[commited]
 Update 2020-08-28 #8
-- 
+- Update Local/DataCenter/TAxTOD service operation #329.
+  - Implements DC Web Service Client (coupon/job/declare api) #8.
 
 [commited]
 Update 2020-08-28 #7

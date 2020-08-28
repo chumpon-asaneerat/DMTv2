@@ -54,35 +54,53 @@ namespace DMT.TA.Windows.Coupon
 
         private void btnNext35_Click(object sender, RoutedEventArgs e)
         {
-            var item = lvTSB35.SelectedItem as TSBCouponTransaction;
-            if (null == item) return;
-            if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
-            manager.Borrow(item);
+            var items = lvTSB35.SelectedItems;
+            if (null == items || items.Count <= 0) return;
+            foreach (TSBCouponTransaction item in items)
+            {
+                if (null == item) return;
+                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
+                manager.Borrow(item);
+            }
             RefreshBHT35Coupons();
         }
 
         private void btnBack35_Click(object sender, RoutedEventArgs e)
         {
-            var item = lvUser35.SelectedItem as TSBCouponTransaction;
-            if (null == item) return;
-            manager.Return(item);
+            var items = lvUser35.SelectedItems;
+            if (null == items || items.Count <= 0) return;
+            foreach (TSBCouponTransaction item in items)
+            {
+                if (null == item) return;
+                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
+                manager.Return(item);
+            }
             RefreshBHT35Coupons();
         }
 
         private void btnNext80_Click(object sender, RoutedEventArgs e)
         {
-            var item = lvTSB80.SelectedItem as TSBCouponTransaction;
-            if (null == item) return;
-            if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
-            manager.Borrow(item);
+            var items = lvTSB80.SelectedItems;
+            if (null == items || items.Count <= 0) return;
+            foreach (TSBCouponTransaction item in items)
+            {
+                if (null == item) return;
+                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
+                manager.Borrow(item);
+            }
             RefreshBHT80Coupons();
         }
 
         private void btnBack80_Click(object sender, RoutedEventArgs e)
         {
-            var item = lvUser80.SelectedItem as TSBCouponTransaction;
-            if (null == item) return;
-            manager.Return(item);
+            var items = lvUser80.SelectedItems;
+            if (null == items || items.Count <= 0) return;
+            foreach (TSBCouponTransaction item in items)
+            {
+                if (null == item) return;
+                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
+                manager.Return(item);
+            }
             RefreshBHT80Coupons();
         }
 
