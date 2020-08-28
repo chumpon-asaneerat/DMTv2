@@ -16,8 +16,24 @@
   - Update Config app and simulator.
 
 --------------------------------------------------------------------------------------------
-Update 2020-08-28 #5
+Update 2020-08-28 #10
 - 
+
+Update 2020-08-28 #9
+- 
+
+Update 2020-08-28 #8
+- 
+
+Update 2020-08-28 #7
+- 
+
+Update 2020-08-28 #6
+- 
+
+[commited]
+Update 2020-08-28 #5
+- Update history.txt
 
 [commited]
 Update 2020-08-28 #4
