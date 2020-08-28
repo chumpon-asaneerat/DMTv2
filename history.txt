@@ -16,12 +16,23 @@
   - Update Config app and simulator.
 
 --------------------------------------------------------------------------------------------
-Update 2020-08-27 #5
+Update 2020-08-28 #5
 - 
 
-Update 2020-08-27 #4
+Update 2020-08-28 #4
 - 
 
+Update 2020-08-28 #3
+- 
+
+Update 2020-08-28 #2
+- 
+
+[commited]
+Update 2020-08-28 #1
+- Merge from kik.
+
+--------------------------------------------------------------------------------------------
 [commited]
 Update 2020-08-27 #3
 - Update Local/DataCenter/TAxTOD service operation #323.
