@@ -15,8 +15,25 @@
   - Update Config app and simulator.
 
 --------------------------------------------------------------------------------------------
-Update 2020-08-28 #10
+Update 2020-08-28 #15
 - 
+
+Update 2020-08-28 #14
+- 
+
+Update 2020-08-28 #13
+- 
+
+Update 2020-08-28 #12
+- 
+
+Update 2020-08-28 #11
+- 
+
+[commited]
+Update 2020-08-28 #10
+- Update Local/DataCenter/TAxTOD service operation #331.
+  - Implements DC Web Service Client (coupon/job/declare api) #10.
 
 [commited]
 Update 2020-08-28 #9
