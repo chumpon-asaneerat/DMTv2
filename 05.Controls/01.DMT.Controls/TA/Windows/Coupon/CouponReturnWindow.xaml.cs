@@ -59,7 +59,7 @@ namespace DMT.TA.Windows.Coupon
             foreach (TSBCouponTransaction item in items)
             {
                 if (null == item) return;
-                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
+                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.SoldByLane) return;
                 manager.UnsoldByLane(item);
             }
             RefreshBHT35Coupons();
@@ -72,7 +72,7 @@ namespace DMT.TA.Windows.Coupon
             foreach (TSBCouponTransaction item in items)
             {
                 if (null == item) return;
-                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
+                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Lane) return;
                 manager.SoldByLane(item);
             }
             RefreshBHT35Coupons();
@@ -85,7 +85,7 @@ namespace DMT.TA.Windows.Coupon
             foreach (TSBCouponTransaction item in items)
             {
                 if (null == item) return;
-                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
+                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.SoldByLane) return;
                 manager.UnsoldByLane(item);
             }
             RefreshBHT80Coupons();
@@ -98,7 +98,7 @@ namespace DMT.TA.Windows.Coupon
             foreach (TSBCouponTransaction item in items)
             {
                 if (null == item) return;
-                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
+                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Lane) return;
                 manager.SoldByLane(item);
             }
             RefreshBHT80Coupons();

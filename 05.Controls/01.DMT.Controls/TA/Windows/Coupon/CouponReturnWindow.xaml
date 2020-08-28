@@ -167,7 +167,7 @@
                           Grid.ColumnSpan="2"
                           Margin="10,7,0.4,0.4"
                           FontSize="18"
-                          SelectionMode="Extended"
+                          SelectionMode="Multiple"
                           ItemsSource="{Binding}">
                     <ListView.View>
                         <GridView>
@@ -184,7 +184,7 @@
                           Grid.Column="2"
                           Grid.ColumnSpan="2"
                           Margin="79.6,7,0.4,0.4"
-                          SelectionMode="Extended"
+                          SelectionMode="Multiple"
                           FontSize="18"
                           ItemsSource="{Binding}">
                     <ListView.View>
@@ -238,7 +238,7 @@
                           Grid.Column="5"
                           Grid.ColumnSpan="2"
                           Margin="0.2,7,79.8,0.4"
-                          SelectionMode="Extended"
+                          SelectionMode="Multiple"
                           FontSize="18"
                           ItemsSource="{Binding}">
                     <ListView.View>
@@ -256,7 +256,7 @@
                           Grid.Column="7"
                           Grid.ColumnSpan="2"
                           Margin="0.2,7,10.2,0.4"
-                          SelectionMode="Extended"
+                          SelectionMode="Multiple"
                           FontSize="18"
                           ItemsSource="{Binding}">
                     <ListView.View>

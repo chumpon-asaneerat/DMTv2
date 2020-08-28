@@ -22,13 +22,13 @@ using System.Linq;
 namespace DMT.TA.Pages.Coupon
 {
     /// <summary>
-    /// Interaction logic for CouponReturnPage.xaml
+    /// Interaction logic for CouponTSBSalePage.xaml
     /// </summary>
-    public partial class CouponReturnPage : UserControl
+    public partial class CouponTSBSalePage : UserControl
     {
         #region Constructor
 
-        public CouponReturnPage()
+        public CouponTSBSalePage()
         {
             InitializeComponent();
         }
@@ -109,7 +109,6 @@ namespace DMT.TA.Pages.Coupon
             foreach (TSBCouponTransaction item in items)
             {
                 if (null == item) return;
-                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
                 manager.UnsoldByTSB(item);
             }
             RefreshBHT35Coupons();
@@ -135,7 +134,6 @@ namespace DMT.TA.Pages.Coupon
             foreach (TSBCouponTransaction item in items)
             {
                 if (null == item) return;
-                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
                 manager.UnsoldByTSB(item);
             }
             RefreshBHT80Coupons();

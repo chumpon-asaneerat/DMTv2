@@ -72,7 +72,6 @@ namespace DMT.TA.Windows.Coupon
             foreach (TSBCouponTransaction item in items)
             {
                 if (null == item) return;
-                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
                 manager.Return(item);
             }
             RefreshBHT35Coupons();
@@ -98,7 +97,6 @@ namespace DMT.TA.Windows.Coupon
             foreach (TSBCouponTransaction item in items)
             {
                 if (null == item) return;
-                if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
                 manager.Return(item);
             }
             RefreshBHT80Coupons();

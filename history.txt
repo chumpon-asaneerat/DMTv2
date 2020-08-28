@@ -18,8 +18,10 @@
 Update 2020-08-28 #10
 - 
 
+[commited]
 Update 2020-08-28 #9
-- 
+- Update Local/DataCenter/TAxTOD service operation #330.
+  - Implements DC Web Service Client (coupon/job/declare api) #9.
 
 [commited]
 Update 2020-08-28 #8

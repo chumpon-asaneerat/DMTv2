@@ -50,8 +50,7 @@ namespace DMT.TA.Pages.Reports
             this.rptViewer.Print();
 
             // Main Menu Page
-            var page = (null != this.CallerPage) ? this.CallerPage : new Menu.MainMenu();
-            PageContentManager.Instance.Current = page;
+            PageContentManager.Instance.Current = new Menu.MainMenu();
         }
 
         #endregion
