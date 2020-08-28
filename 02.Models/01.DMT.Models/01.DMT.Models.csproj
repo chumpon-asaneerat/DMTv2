@@ -114,6 +114,7 @@
     <Compile Include="Models\SCW\SCWCurrency.cs" />
     <Compile Include="Models\Exchanges\TSBExchangeGroup.cs" />
     <Compile Include="Models\Exchanges\TSBExchangeTransaction.cs" />
+    <Compile Include="Models\SCW\SCWDeclare.cs" />
     <Compile Include="Models\SCW\SCWJob.cs" />
     <Compile Include="Models\Users\LogInLog.cs" />
     <Compile Include="Views\SqlScriptManager.cs" />
