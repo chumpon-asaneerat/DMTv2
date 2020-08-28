@@ -106,6 +106,11 @@ namespace DMT
             PageContentManager.Instance.Current = new DC.Pages.CouponListPage();
         }
 
+        private void cmdJob_Click(object sender, RoutedEventArgs e)
+        {
+            PageContentManager.Instance.Current = new DC.Pages.JobListPage();
+        }
+
         #endregion
     }
 }

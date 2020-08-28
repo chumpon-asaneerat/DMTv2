@@ -84,6 +84,9 @@
     <Compile Include="DC\Pages\CouponListPage.xaml.cs">
       <DependentUpon>CouponListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DC\Pages\JobListPage.xaml.cs">
+      <DependentUpon>JobListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TAxTOD\Pages\CouponViewPage.xaml.cs">
       <DependentUpon>CouponViewPage.xaml</DependentUpon>
     </Compile>
@@ -93,6 +96,10 @@
     <Compile Include="TAxTOD\Pages\DemoPage.xaml.cs">
       <DependentUpon>DemoPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="DC\Pages\JobListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

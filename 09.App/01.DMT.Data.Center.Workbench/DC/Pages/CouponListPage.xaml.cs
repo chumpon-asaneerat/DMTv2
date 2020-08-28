@@ -43,8 +43,6 @@ namespace DMT.DC.Pages
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            SCWServiceOperations.Instance.UserName = "DMTUSER";
-            SCWServiceOperations.Instance.Password = "DMTPASS";
             LoadCouponList();
         }
 
@@ -57,6 +55,8 @@ namespace DMT.DC.Pages
 
         private void LoadCouponList()
         {
+            SCWServiceOperations.Instance.UserName = "DMTUSER";
+            SCWServiceOperations.Instance.Password = "DMTPASS";
             pgrid.SelectedObject = ops.Masters.GetCouponList(31);
         }
     }

@@ -61,6 +61,15 @@
                         </Fluent:Button.LargeIcon>
                     </Fluent:Button>
 
+                    <Fluent:Button x:Name="cmdJob"
+                                   Width="75"
+                                   Header="Get Job List"
+                                   Click="cmdJob_Click">
+                        <Fluent:Button.LargeIcon>
+                            <Image Source="Images/Reports/reports_01.png" />
+                        </Fluent:Button.LargeIcon>
+                    </Fluent:Button>
+
                     <Fluent:Button x:Name="cmdSendRevenue"
                                    Width="75"
                                    Header="Send Revenue"

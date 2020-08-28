@@ -24,13 +24,13 @@ using DMT.Services;
 namespace DMT.DC.Pages
 {
     /// <summary>
-    /// Interaction logic for CurrencyListPage.xaml
+    /// Interaction logic for JobListPage.xaml
     /// </summary>
-    public partial class CurrencyListPage : UserControl
+    public partial class JobListPage : UserControl
     {
         #region Constructor
 
-        public CurrencyListPage()
+        public JobListPage()
         {
             InitializeComponent();
         }
@@ -43,7 +43,7 @@ namespace DMT.DC.Pages
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadCurrencyList();
+            LoadJobList();
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
@@ -53,11 +53,11 @@ namespace DMT.DC.Pages
 
         #endregion
 
-        private void LoadCurrencyList()
+        private void LoadJobList()
         {
             SCWServiceOperations.Instance.UserName = "DMTUSER";
             SCWServiceOperations.Instance.Password = "DMTPASS";
-            pgrid.SelectedObject = ops.Masters.GetCurrencyList(31);
+            pgrid.SelectedObject = ops.Masters.GetJobList(31, 3101, "14124");
         }
     }
 }
