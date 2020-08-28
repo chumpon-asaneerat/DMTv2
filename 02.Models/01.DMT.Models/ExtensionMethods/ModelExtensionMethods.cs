@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -113,6 +114,48 @@ namespace DMT.Models.ExtensionMethods
         }
 
         #endregion
+    }
+
+    #endregion
+
+    #region SCW Server <-> Local Extension Methods
+
+    /// <summary>
+    /// The SCW Extension Methods
+    /// </summary>
+    public static class SCWExtensionMethods
+    {
+        public static LaneAttendance ToLocal(this SCWJob value)
+        {
+            if (null == value) return null;
+            var inst = new LaneAttendance();
+
+            //value.laneId;
+            //value.plazaId;
+            //value.networkId;
+            inst.UserId = value.staffId;
+            inst.JobId = value.ToString();
+            inst.Begin = value.bojDateTime.Value();
+            inst.End = value.eojDateTime.Value();
+
+            return inst;
+        }
+
+        public static SCWJob ToServer(this LaneAttendance value)
+        {
+            if (null == value) return null;
+            var inst = new SCWJob();
+
+            //inst.laneId;
+            //inst.plazaId;
+            //inst.networkId;
+            inst.staffId = value.UserId;
+            inst.jobNo = Convert.ToInt32(value.JobId);
+            inst.bojDateTime = value.Begin.Value();
+            inst.eojDateTime = value.End.Value();
+
+            return inst;
+        }
     }
 
     #endregion
