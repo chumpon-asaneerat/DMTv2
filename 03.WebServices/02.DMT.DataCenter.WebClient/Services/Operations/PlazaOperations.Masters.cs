@@ -13,7 +13,7 @@ using DMT.Models;
 
 namespace DMT.Services
 {
-    partial class DCOperations
+    partial class SCWOperations
     {
         #region Internal Variables
 
@@ -60,14 +60,14 @@ namespace DMT.Services
 
             #region Get Currency Demon List
 
-            public DCCurrencyList GetCurrencyList(
+            public SCWCurrencyList GetCurrencyList(
                 int nwId)
             {
-                DCCurrencyList ret;
+                SCWCurrencyList ret;
                 NRestClient client = NRestClient.CreateDCClient();
                 if (null == client)
                 {
-                    ret = new DCCurrencyList();
+                    ret = new SCWCurrencyList();
                     return ret;
                 }
 
@@ -77,10 +77,10 @@ namespace DMT.Services
                     networkId = nwId
                 };
 
-                string usr = DCServiceOperations.Instance.UserName;
-                string pwd = DCServiceOperations.Instance.Password;
+                string usr = SCWServiceOperations.Instance.UserName;
+                string pwd = SCWServiceOperations.Instance.Password;
 
-                ret = client.Execute2<DCCurrencyList>(url, value, username: usr, password: pwd);
+                ret = client.Execute2<SCWCurrencyList>(url, value, username: usr, password: pwd);
                 return ret;
             }
 
@@ -88,14 +88,14 @@ namespace DMT.Services
 
             #region Get Coupon List
 
-            public DCCouponList GetCouponList(
+            public SCWCouponList GetCouponList(
                 int nwId)
             {
-                DCCouponList ret;
+                SCWCouponList ret;
                 NRestClient client = NRestClient.CreateDCClient();
                 if (null == client)
                 {
-                    ret = new DCCouponList();
+                    ret = new SCWCouponList();
                     return ret;
                 }
 
@@ -105,10 +105,10 @@ namespace DMT.Services
                     networkId = nwId
                 };
 
-                string usr = DCServiceOperations.Instance.UserName;
-                string pwd = DCServiceOperations.Instance.Password;
+                string usr = SCWServiceOperations.Instance.UserName;
+                string pwd = SCWServiceOperations.Instance.Password;
 
-                ret = client.Execute2<DCCouponList>(url, value, username: usr, password: pwd);
+                ret = client.Execute2<SCWCouponList>(url, value, username: usr, password: pwd);
                 return ret;
             }
 
@@ -116,14 +116,14 @@ namespace DMT.Services
 
             #region Get Job List
 
-            public DCJobList GetJobList(
+            public SCWJobList GetJobList(
                 int nwId, int pzId, string usrId)
             {
-                DCJobList ret;
+                SCWJobList ret;
                 NRestClient client = NRestClient.CreateDCClient();
                 if (null == client)
                 {
-                    ret = new DCJobList();
+                    ret = new SCWJobList();
                     return ret;
                 }
 
@@ -131,14 +131,14 @@ namespace DMT.Services
                 var value = new
                 {
                     networkId = nwId,
-                    plazaId = pzId.
+                    plazaId = pzId,
                     staffId = usrId
                 };
 
-                string usr = DCServiceOperations.Instance.UserName;
-                string pwd = DCServiceOperations.Instance.Password;
+                string usr = SCWServiceOperations.Instance.UserName;
+                string pwd = SCWServiceOperations.Instance.Password;
 
-                ret = client.Execute2<DCJobList>(url, value, username: usr, password: pwd);
+                ret = client.Execute2<SCWJobList>(url, value, username: usr, password: pwd);
                 return ret;
             }
 

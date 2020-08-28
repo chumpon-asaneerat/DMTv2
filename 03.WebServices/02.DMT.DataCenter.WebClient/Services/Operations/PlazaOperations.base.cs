@@ -14,17 +14,17 @@ using DMT.Models;
 namespace DMT.Services
 {
     /// <summary>
-    /// Data Center Operations class.
+    /// SCW Operations class.
     /// Main class that common all operations into properties.
     /// </summary>
-    public partial class DCOperations
+    public partial class SCWOperations
     {
         #region Static Constructor
 
         /// <summary>
         /// Static Constructor
         /// </summary>
-        static DCOperations()
+        static SCWOperations()
         {
             // Required for HTTPS.
             ServicePointManager.SecurityProtocol =
@@ -42,7 +42,7 @@ namespace DMT.Services
         /// <summary>
         /// Constructor.
         /// </summary>
-        public DCOperations() : base() { }
+        public SCWOperations() : base() { }
 
         #endregion
 
@@ -56,13 +56,13 @@ namespace DMT.Services
             get
             {
                 if (null == ConfigManager.Instance.Plaza) return string.Empty;
-                if (null == ConfigManager.Instance.Plaza.DC) return string.Empty;
-                if (null == ConfigManager.Instance.Plaza.DC.Http) return string.Empty;
+                if (null == ConfigManager.Instance.Plaza.SCW) return string.Empty;
+                if (null == ConfigManager.Instance.Plaza.SCW.Http) return string.Empty;
 
                 return string.Format(@"{0}://{1}:{2}/",
-                    ConfigManager.Instance.Plaza.DC.Http.Protocol,
-                    ConfigManager.Instance.Plaza.DC.Http.HostName,
-                    ConfigManager.Instance.Plaza.DC.Http.PortNumber);
+                    ConfigManager.Instance.Plaza.SCW.Http.Protocol,
+                    ConfigManager.Instance.Plaza.SCW.Http.HostName,
+                    ConfigManager.Instance.Plaza.SCW.Http.PortNumber);
             }
         }
 

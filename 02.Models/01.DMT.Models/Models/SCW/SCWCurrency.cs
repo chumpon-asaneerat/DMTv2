@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DMT.Models
 {
-    public class DCCurrency
+    public class SCWCurrency
     {
         public int currencyId { get; set; }
         public int currencyDenomId { get; set; }
@@ -20,10 +20,10 @@ namespace DMT.Models
         public int denomTypeId { get; set; }
     }
 
-    public class DCCurrencyList
+    public class SCWCurrencyList
     {
-        public List<DCCurrency> list { get; set; }
-        public DCStatus status { get; set; }
+        public List<SCWCurrency> list { get; set; }
+        public SCWStatus status { get; set; }
     }
 }
 

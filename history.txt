@@ -25,8 +25,11 @@ Update 2020-08-28 #4
 Update 2020-08-28 #3
 - 
 
+[commited]
 Update 2020-08-28 #2
-- 
+- Update Local/DataCenter/TAxTOD service operation #324.
+  - Implements DC Web Service Client (coupon/job/declare api) #3.
+  - Rename all class from DC to SCW.
 
 [commited]
 Update 2020-08-28 #1

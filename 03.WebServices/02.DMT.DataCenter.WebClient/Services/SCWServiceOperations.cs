@@ -16,28 +16,28 @@ using System.Security.Permissions;
 
 namespace DMT.Services
 {
-    #region DCServiceOperations
+    #region SCWServiceOperations
 
     /// <summary>
-    /// The Data Center Service Operations class.
+    /// The SCW Service Operations class.
     /// </summary>
-    public partial class DCServiceOperations
+    public partial class SCWServiceOperations
     {
         #region Singelton
 
-        private static DCServiceOperations _instance = null;
+        private static SCWServiceOperations _instance = null;
         /// <summary>
         /// Singelton Access.
         /// </summary>
-        public static DCServiceOperations Instance
+        public static SCWServiceOperations Instance
         {
             get
             {
                 if (null == _instance)
                 {
-                    lock (typeof(DCServiceOperations))
+                    lock (typeof(SCWServiceOperations))
                     {
-                        _instance = new DCServiceOperations();
+                        _instance = new SCWServiceOperations();
                     }
                 }
                 return _instance;
@@ -51,18 +51,18 @@ namespace DMT.Services
         /// <summary>
         /// Constructor.
         /// </summary>
-        private DCServiceOperations() : base()
+        private SCWServiceOperations() : base()
         {
             ServiceMonitor = new NServiceMonitor();
             // Init windows service monitor.
             InitWindowsServices();
 
-            Plaza = new DCOperations();
+            Plaza = new SCWOperations();
         }
         /// <summary>
         /// Destructor.
         /// </summary>
-        ~DCServiceOperations()
+        ~SCWServiceOperations()
         {
             // Shutdown windows service monitor.
             if (null != ServiceMonitor)
@@ -173,7 +173,7 @@ namespace DMT.Services
         /// <summary>
         /// Gets instance of Plaza Operations.
         /// </summary>
-        public DCOperations Plaza { get; private set; }
+        public SCWOperations Plaza { get; private set; }
 
         public string UserName { get; set; }
         public string Password { get; set; }

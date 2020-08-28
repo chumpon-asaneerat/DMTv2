@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DMT.Models
 {
-    public class DCStatus
+    public class SCWStatus
     {
         public string code { get; set; }
         public string message { get; set; }

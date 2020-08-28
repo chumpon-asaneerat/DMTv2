@@ -37,14 +37,14 @@ namespace DMT.DC.Pages
 
         #endregion
 
-        private DCOperations ops = DCServiceOperations.Instance.Plaza;
+        private SCWOperations ops = SCWServiceOperations.Instance.Plaza;
 
         #region Loaded/Unloaded
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            DCServiceOperations.Instance.UserName = "DMTUSER";
-            DCServiceOperations.Instance.Password = "DMTPASS";
+            SCWServiceOperations.Instance.UserName = "DMTUSER";
+            SCWServiceOperations.Instance.Password = "DMTPASS";
             LoadCurrencyList();
         }
 

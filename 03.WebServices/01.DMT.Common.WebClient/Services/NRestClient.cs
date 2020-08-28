@@ -471,14 +471,14 @@ namespace DMT.Services
         public static NRestClient CreateDCClient()
         {
             if (null == ConfigManager.Instance.Plaza) return null;
-            if (null == ConfigManager.Instance.Plaza.DC) return null;
-            if (null == ConfigManager.Instance.Plaza.DC.Http) return null;
+            if (null == ConfigManager.Instance.Plaza.SCW) return null;
+            if (null == ConfigManager.Instance.Plaza.SCW.Http) return null;
 
             NRestClient.WebProtocol protocol =
-                (ConfigManager.Instance.Plaza.DC.Http.Protocol == "http") ?
+                (ConfigManager.Instance.Plaza.SCW.Http.Protocol == "http") ?
                 NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
-            string hostName = ConfigManager.Instance.Plaza.DC.Http.HostName;
-            int portNo = ConfigManager.Instance.Plaza.DC.Http.PortNumber;
+            string hostName = ConfigManager.Instance.Plaza.SCW.Http.HostName;
+            int portNo = ConfigManager.Instance.Plaza.SCW.Http.PortNumber;
 
             return new NRestClient(protocol, hostName, portNo);
         }

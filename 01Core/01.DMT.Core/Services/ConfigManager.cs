@@ -217,20 +217,20 @@ namespace DMT.Services
 
     #endregion
 
-    #region DCWebServiceConfig
+    #region SCWWebServiceConfig
 
     /// <summary>
-    /// The DCWebServiceConfig class.
+    /// The SCWWebServiceConfig class.
     /// </summary>
     [JsonObject(MemberSerialization.OptOut)]
-    public class DCWebServiceConfig
+    public class SCWWebServiceConfig
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public DCWebServiceConfig()
+        public SCWWebServiceConfig()
         {
             this.Http = new WebServiceConfig()
             {
@@ -251,8 +251,8 @@ namespace DMT.Services
         /// <returns></returns>
         public bool IsEquals(object obj)
         {
-            if (null == obj || !(obj is DCWebServiceConfig)) return false;
-            return this.GetString() == (obj as DCWebServiceConfig).GetString();
+            if (null == obj || !(obj is SCWWebServiceConfig)) return false;
+            return this.GetString() == (obj as SCWWebServiceConfig).GetString();
         }
         /// <summary>
         /// GetString.
@@ -296,7 +296,7 @@ namespace DMT.Services
         {
             this.Local = new LocalWebServiceConfig();
             this.TAxTOD = new TAxTODWebServiceConfig();
-            this.DC = new DCWebServiceConfig();
+            this.SCW = new SCWWebServiceConfig();
         }
 
         #endregion
@@ -338,14 +338,14 @@ namespace DMT.Services
                 code += string.Format("TAxTOD: {0}", 
                     this.TAxTOD.GetString()) + Environment.NewLine;
             }
-            if (null == this.DC)
+            if (null == this.SCW)
             {
-                code += "DC: null" + Environment.NewLine;
+                code += "SCW: null" + Environment.NewLine;
             }
             else
             {
                 code += string.Format("DC: {0}", 
-                    this.DC.GetString()) + Environment.NewLine;
+                    this.SCW.GetString()) + Environment.NewLine;
             }
             return code;
         }
@@ -363,9 +363,9 @@ namespace DMT.Services
         /// </summary>
         public TAxTODWebServiceConfig TAxTOD { get; set; }
         /// <summary>
-        /// Gets or sets DC Service Config.
+        /// Gets or sets SCW Service Config.
         /// </summary>
-        public DCWebServiceConfig DC { get; set; }
+        public SCWWebServiceConfig SCW { get; set; }
 
         #endregion
     }
