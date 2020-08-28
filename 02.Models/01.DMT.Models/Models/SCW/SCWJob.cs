@@ -23,7 +23,7 @@ namespace DMT.Models
 
     public class SCWJobList
     {
-        public List<SCWJobList> list { get; set; }
+        public List<SCWJob> list { get; set; }
         public SCWStatus status { get; set; }
     }
 }

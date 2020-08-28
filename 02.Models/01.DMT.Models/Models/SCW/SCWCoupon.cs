@@ -20,7 +20,7 @@ namespace DMT.Models
 
     public class SCWCouponList
     {
-        public List<SCWCouponList> list { get; set; }
+        public List<SCWCoupon> list { get; set; }
         public SCWStatus status { get; set; }
     }
 }
