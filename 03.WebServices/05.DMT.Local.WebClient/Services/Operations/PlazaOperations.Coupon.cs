@@ -336,7 +336,8 @@ namespace DMT.Services
             //if (null == User) return;
             if (value.TransactionType != TSBCouponTransaction.TransactionTypes.Lane) return;
             value.TransactionType = TSBCouponTransaction.TransactionTypes.SoldByLane;
-            //value.UserId = User.UserId;
+            value.SoldBy = User.UserId;
+            value.SoldDate = DateTime.Now;
             //value.UserReceiveDate = DateTime.Now;
         }
 
@@ -345,7 +346,8 @@ namespace DMT.Services
             //if (null == User) return;
             if (value.TransactionType != TSBCouponTransaction.TransactionTypes.SoldByLane) return;
             value.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
-            //value.UserId = string.Empty;
+            value.SoldBy = string.Empty;
+            value.SoldDate = DateTime.MinValue;
             //value.UserReceiveDate = DateTime.MinValue;
         }
 
@@ -391,6 +393,10 @@ namespace DMT.Services
                             origin.SoldBy != coupon.UserId ||
                             origin.FinishFlag != coupon.FinishFlag)
                         {
+                            if (coupon.TransactionType == TSBCouponTransaction.TransactionTypes.Stock)
+                            {
+                                coupon.UserId = string.Empty; // force clear when return to stock.
+                            }
                             saveCoupons.Add(coupon);
                         }
                     }

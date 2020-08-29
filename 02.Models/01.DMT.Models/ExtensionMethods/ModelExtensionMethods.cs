@@ -86,7 +86,14 @@ namespace DMT.Models.ExtensionMethods
             inst.SoldBy = value.SoldBy;
             inst.SoldDate = value.SoldDate.Value();
             inst.TSBId = value.TSBId;
-            inst.UserId = value.UserId;
+            if (inst.TransactionType == TSBCouponTransaction.TransactionTypes.Stock)
+            {
+                inst.UserId = string.Empty;
+            }
+            else
+            {
+                inst.UserId = value.UserId;
+            }
             inst.UserReceiveDate = value.UserReceiveDate.Value();
 
             return inst;
@@ -121,7 +128,14 @@ namespace DMT.Models.ExtensionMethods
             inst.SoldBy = value.SoldBy;
             inst.SoldDate = value.SoldDate.Value();
             inst.TSBId = value.TSBId;
-            inst.UserId = value.UserId;
+            if (value.TransactionType == TSBCouponTransaction.TransactionTypes.Stock)
+            {
+                inst.UserId = string.Empty;
+            }
+            else
+            {
+                inst.UserId = value.UserId;
+            }
             inst.UserReceiveDate = value.UserReceiveDate.Value();
 
             return inst;
