@@ -135,6 +135,7 @@ namespace DMT.TA.Pages.Coupon
 
         public void RefreshList()
         {
+            TSBCouponManager.Sync();
             grid.RefreshList();
         }
 

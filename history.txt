@@ -15,8 +15,11 @@
   - Update Config app and simulator.
 
 --------------------------------------------------------------------------------------------
+[commited]
 Update 2020-08-29 #5
-- 
+- Update Local/DataCenter/TAxTOD service operation #335.
+  - Add Transaction supports #3.
+  - Update view sql file.
 
 [commited]
 Update 2020-08-29 #4
