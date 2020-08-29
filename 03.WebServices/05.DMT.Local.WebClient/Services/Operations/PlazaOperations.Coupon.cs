@@ -193,6 +193,30 @@ namespace DMT.Services
                 return ret;
             }
 
+            public NRestResult SyncTransactions(List<TSBCouponTransaction> values)
+            {
+                NRestResult ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                if (null != values)
+                {
+                    ret = client.Execute(
+                        RouteConsts.Coupon.SyncTSBCouponTransactions.Url, values);
+                }
+                else
+                {
+                    ret = new NRestResult();
+                    ret.ParameterIsNull();
+                }
+                return ret;
+            }
+
             #endregion
 
             #endregion
@@ -249,11 +273,14 @@ namespace DMT.Services
                     var serverCoupons = ret.Value();
                     if (null != serverCoupons)
                     {
+                        /*
                         serverCoupons.ForEach(cp =>
                         {
                             var inst = cp.ToLocal();
                             ops.Coupons.SyncTransaction(inst);
                         });
+                        */
+                        ops.Coupons.SyncTransactions(serverCoupons.ToLocals());
                     }
                 }
             }

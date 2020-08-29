@@ -561,6 +561,12 @@ namespace DMT
                 public const string Url = Coupon.Url + @"/" + Name;
             }
 
+            public static class SyncTSBCouponTransactions
+            {
+                public const string Name = "SyncTSBCouponTransactions";
+                public const string Url = Coupon.Url + @"/" + Name;
+            }
+
             #endregion
         }
 

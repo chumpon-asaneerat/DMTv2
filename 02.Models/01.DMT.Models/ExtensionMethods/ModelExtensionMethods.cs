@@ -92,6 +92,20 @@ namespace DMT.Models.ExtensionMethods
             return inst;
         }
 
+        public static List<TSBCouponTransaction> ToLocals(this List<TAServerCouponTransaction> values)
+        {
+            var rets = new List<TSBCouponTransaction>();
+            if (null != values) 
+            {
+                values.ForEach(inst =>
+                {
+                    rets.Add(inst.ToLocal());
+                });
+            }
+            return rets;
+
+        }
+
         public static TAServerCouponTransaction ToServer(this TSBCouponTransaction value)
         {
             if (null == value) return null;
@@ -111,6 +125,20 @@ namespace DMT.Models.ExtensionMethods
             inst.UserReceiveDate = value.UserReceiveDate.Value();
 
             return inst;
+        }
+
+        public static List<TAServerCouponTransaction> ToServers(this List<TSBCouponTransaction> values)
+        {
+            var rets = new List<TAServerCouponTransaction>();
+            if (null != values)
+            {
+                values.ForEach(inst =>
+                {
+                    rets.Add(inst.ToServer());
+                });
+            }
+            return rets;
+
         }
 
         #endregion

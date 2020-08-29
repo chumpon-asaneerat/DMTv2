@@ -1024,7 +1024,6 @@ namespace DMT.Models
 			return TSBCouponTransaction.Save(value);
 		}
 
-
 		public static NDbResult SyncTransaction(TSBCouponTransaction value)
 		{
 			var result = new NDbResult();
@@ -1066,6 +1065,48 @@ namespace DMT.Models
 				{
 					med.Err(ex);
 					result.Error(ex);
+				}
+				return result;
+			}
+		}
+
+		public static NDbResult SyncTransactions(List<TSBCouponTransaction> values)
+		{
+			var result = new NDbResult();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			if (null == values)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					db.BeginTransaction();
+					/*
+					db.RunInTransaction(() =>
+					{
+					});
+					*/
+					foreach (var r in values)
+					{
+						SyncTransaction(r);
+					}
+					db.Commit();
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+					db.Rollback();
 				}
 				return result;
 			}

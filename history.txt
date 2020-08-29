@@ -21,8 +21,10 @@ Update 2020-08-29 #5
 Update 2020-08-29 #4
 - 
 
+[commited]
 Update 2020-08-29 #3
-- 
+- Update Local/DataCenter/TAxTOD service operation #333.
+  - Add Transaction supports #1.
 
 [commited]
 Update 2020-08-29 #2
