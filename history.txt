@@ -24,8 +24,10 @@ Update 2020-08-29 #4
 Update 2020-08-29 #3
 - 
 
+[commited]
 Update 2020-08-29 #2
-- 
+- Update Local/DataCenter/TAxTOD service operation #332.
+  - Set NRestClient timeout to 1000ms.
 
 [commited]
 Update 2020-08-29 #1

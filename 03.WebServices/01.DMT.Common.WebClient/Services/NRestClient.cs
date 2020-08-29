@@ -87,7 +87,7 @@ namespace DMT.Services
         /// </returns>
         public NRestResult<TReturn> Execute<TReturn>(string apiUrl,
             object pObj = null, 
-            int timeout = 5000,
+            int timeout = 1000,
             string username = "", string password = "")
             where TReturn: new()
         {
@@ -98,6 +98,7 @@ namespace DMT.Services
             try
             {
                 var client = new RestClient(BaseUrl);
+                //client.ReadWriteTimeout = timeout;
                 client.Timeout = timeout;
                 if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
                 {
@@ -169,7 +170,7 @@ namespace DMT.Services
         /// </returns>
         public NRestResult<TReturn, TOut> Execute<TReturn, TOut>(string apiUrl,
             object pObj = null,
-            int timeout = 5000,
+            int timeout = 1000,
             string username = "", string password = "")
             where TReturn : new()
             where TOut : new()
@@ -181,6 +182,7 @@ namespace DMT.Services
             try
             {
                 var client = new RestClient(BaseUrl);
+                //client.ReadWriteTimeout = timeout;
                 client.Timeout = timeout;
                 if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
                 {
@@ -251,7 +253,7 @@ namespace DMT.Services
         /// </returns>
         public NRestResult Execute(string apiUrl,
             object pObj = null,
-            int timeout = 5000,
+            int timeout = 1000,
             string username = "", string password = "")
         {
             NRestResult ret = new NRestResult();
@@ -261,6 +263,7 @@ namespace DMT.Services
             try
             {
                 var client = new RestClient(BaseUrl);
+                //client.ReadWriteTimeout = timeout;
                 client.Timeout = timeout;
                 if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
                 {
@@ -312,7 +315,7 @@ namespace DMT.Services
 
         public TReturn Execute2<TReturn>(string apiUrl,
             object pObj = default,
-            int timeout = 5000,
+            int timeout = 1000,
             string username = "", string password = "")
             where TReturn : new()
         {
@@ -323,6 +326,7 @@ namespace DMT.Services
             try
             {
                 var client = new RestClient(BaseUrl);
+                //client.ReadWriteTimeout = timeout;
                 client.Timeout = timeout;
                 if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
                 {
