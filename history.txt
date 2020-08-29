@@ -47,6 +47,11 @@ Update 2020-08-30 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-08-29 #12
+- Update Local/DataCenter/TAxTOD service operation #340.
+  - Test netsh OK.
+
+[commited]
 Update 2020-08-29 #11
 - Update Local/DataCenter/TAxTOD service operation #339.
   - Update owin server project #4.
