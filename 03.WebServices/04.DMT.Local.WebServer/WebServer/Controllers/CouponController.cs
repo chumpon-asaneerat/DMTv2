@@ -97,6 +97,23 @@ namespace DMT.Services
         }
 
         [HttpPost]
+        [ActionName(RouteConsts.Coupon.SaveTSBCouponTransactions.Name)]
+        public NDbResult SaveTransactions([FromBody] List<TSBCouponTransaction> values)
+        {
+            NDbResult result;
+            if (null == values)
+            {
+                result = new NDbResult();
+                result.ParameterIsNull();
+            }
+            else
+            {
+                result = TSBCouponTransaction.SaveTransactions(values);
+            }
+            return result;
+        }
+
+        [HttpPost]
         [ActionName(RouteConsts.Coupon.SyncTSBCouponTransaction.Name)]
         public NDbResult SyncTransaction(
             [FromBody] TSBCouponTransaction value)
@@ -133,127 +150,5 @@ namespace DMT.Services
         }
 
         #endregion
-
-        /*
-        [HttpPost]
-        [ActionName(RouteConsts.Coupon.GetCurrentTSBCoupons.Name)]
-        public NDbResult<List<TSBCouponTransaction>> GetCurrentTSBCoupons()
-        {
-            return TSBCouponTransaction.GetTSBCoupons();
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Coupon.GetTSBCoupons.Name)]
-        public NDbResult<List<TSBCouponTransaction>> GetTSBCoupons([FromBody] TSB tsb)
-        {
-            return TSBCouponTransaction.GetTSBCoupons(tsb);
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Coupon.GetCurrentTSBSoldCoupons.Name)]
-        public NDbResult<List<TSBCouponTransaction>> GetCurrentTSBSoldCoupons()
-        {
-            return TSBCouponTransaction.GetTSBSoldCoupons();
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Coupon.GetTSBSoldCoupons.Name)]
-        public NDbResult<List<TSBCouponTransaction>> GetTSBSoldCoupons([FromBody] TSB tsb)
-        {
-            return TSBCouponTransaction.GetTSBSoldCoupons(tsb);
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Coupon.GetTSBBHT35Coupons.Name)]
-        public NDbResult<List<TSBCouponTransaction>> GetTSBBHT35Coupons([FromBody] TSB tsb)
-        {
-            return TSBCouponTransaction.GetTSBBHT35Coupons(tsb);
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Coupon.GetTSBBHT80Coupons.Name)]
-        public NDbResult<List<TSBCouponTransaction>> GetTSBBHT80Coupons([FromBody] TSB tsb)
-        {
-            return TSBCouponTransaction.GetTSBBHT80Coupons(tsb);
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Coupon.ToTSBBHT35Coupons.Name)]
-        public NDbResult<List<TSBCouponTransaction>> ToTSBBHT35Coupons(
-            [FromBody] Search.UserCoupons.ToTSBCoupons value)
-        {
-            if (null == value) return new List<TSBCouponTransaction>();
-            return TSBCouponTransaction.ToTSBBHT35Coupons(value.TSB, value.Coupons);
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Coupon.ToTSBBHT80Coupons.Name)]
-        public NDbResult<List<TSBCouponTransaction>> ToTSBBHT80Coupons(
-            [FromBody] Search.UserCoupons.ToTSBCoupons value)
-        {
-            if (null == value) return new List<TSBCouponTransaction>();
-            return TSBCouponTransaction.ToTSBBHT80Coupons(value.TSB, value.Coupons);
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Coupon.GetUserBHT35Coupons.Name)]
-        public NDbResult<List<UserCouponTransaction>> GetUserBHT35Coupons(
-            [FromBody] Search.UserCoupons.ByUser value)
-        {
-            if (null == value) return new List<UserCouponTransaction>();
-            return UserCouponTransaction.GetUserBHT35Coupons(value.TSB, value.User);
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Coupon.GetUserBHT80Coupons.Name)]
-        public NDbResult<List<UserCouponTransaction>> GetUserBHT80Coupons(
-            [FromBody] Search.UserCoupons.ByUser value)
-        {
-            if (null == value) return new List<UserCouponTransaction>();
-            return UserCouponTransaction.GetUserBHT80Coupons(value.TSB, value.User);
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Coupon.SaveTransaction.Name)]
-        public NDbResult<TSBCouponTransaction> SaveTransaction(
-            [FromBody] TSBCouponTransaction value)
-        {
-            if (value.TransactionDate == DateTime.MinValue)
-            {
-                value.TransactionDate = DateTime.Now;
-            }
-            TSBCouponTransaction.Save(value);
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Coupon.GetCurrent.Name)]
-        public NDbResult<List<TSBCouponBalance>> GetCurrent()
-        {
-            return TSBCouponBalance.GetCurrent();
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Coupon.GetTSBCurrent.Name)]
-        public NDbResult<List<TSBCouponBalance>> GetTSBCurrent([FromBody] TSB tsb)
-        {
-            return TSBCouponBalance.GetCurrent(tsb);
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Coupon.UserBorrowCoupons.Name)]
-        public NDbResult UserBorrowCoupons([FromBody] Search.UserCoupons.BorrowCoupons value)
-        {
-            if (null == value) return;
-            UserCouponTransaction.UserBorrowCoupons(value.User, value.Coupons);
-        }
-
-        [HttpPost]
-        [ActionName(RouteConsts.Coupon.UserReturnCoupons.Name)]
-        public NDbResult UserReturnCoupons([FromBody] Search.UserCoupons.ReturnCoupons value)
-        {
-            if (null == value) return;
-            UserCouponTransaction.UserReturnCoupons(value.User, value.Coupons);
-        }
-        */
     }
 }

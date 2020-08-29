@@ -1023,6 +1023,48 @@ namespace DMT.Models
 			}
 			return TSBCouponTransaction.Save(value);
 		}
+		/// <summary>
+		/// Save Transactions.
+		/// </summary>
+		/// <param name="values">The List of transaction instance.</param>
+		/// <returns>Returns NDbResult.</returns>
+		public static NDbResult SaveTransactions(
+			List<TSBCouponTransaction> values)
+		{
+			var result = new NDbResult();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			if (null == values)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					db.BeginTransaction();
+					values.ForEach(value =>
+					{
+						SaveTransaction(value);
+					});
+					db.Commit();
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+
+				return result;
+			}
+		}
 
 		public static NDbResult SyncTransaction(TSBCouponTransaction value)
 		{
@@ -1049,7 +1091,6 @@ namespace DMT.Models
 					cmd += "  FROM TSBCouponTransactionView ";
 					cmd += " WHERE TSBId = ? ";
 					cmd += "   AND CouponId = ? ";
-					cmd += "   AND FinishFlag = 1 ";
 
 					var ret = NQuery.Query<FKs>(cmd, 
 						value.TSBId, value.CouponId).FirstOrDefault().ToModel();
@@ -1091,11 +1132,6 @@ namespace DMT.Models
 				try
 				{
 					db.BeginTransaction();
-					/*
-					db.RunInTransaction(() =>
-					{
-					});
-					*/
 					foreach (var r in values)
 					{
 						SyncTransaction(r);

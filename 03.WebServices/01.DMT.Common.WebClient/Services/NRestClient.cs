@@ -71,8 +71,6 @@ namespace DMT.Services
 
         #region Public Methods
 
-        // TODO: Make Execute to static method.
-
         /// <summary>
         /// Execute (POST).
         /// </summary>
@@ -152,9 +150,6 @@ namespace DMT.Services
 
             return ret;
         }
-
-        // TODO: Make Execute to static method.
-
         /// <summary>
         /// Execute (POST).
         /// </summary>
@@ -237,9 +232,6 @@ namespace DMT.Services
 
             return ret;
         }
-
-        // TODO: Make Execute to static method.
-
         /// <summary>
         /// Execute (POST).
         /// </summary>

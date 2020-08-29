@@ -169,6 +169,30 @@ namespace DMT.Services
                 return ret;
             }
 
+            public NRestResult SaveTransactions(List<TSBCouponTransaction> values)
+            {
+                NRestResult ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                if (null != values)
+                {
+                    ret = client.Execute<NRestResult>(
+                        RouteConsts.Coupon.SaveTSBCouponTransactions.Url, values);
+                }
+                else
+                {
+                    ret = new NRestResult();
+                    ret.ParameterIsNull();
+                }
+                return ret;
+            }
+
             public NRestResult SyncTransaction(TSBCouponTransaction value)
             {
                 NRestResult ret;
@@ -260,31 +284,6 @@ namespace DMT.Services
         #region Public Methods
 
         #region Refresh
-
-        public void Sync()
-        {
-            TSB tsb = ops.TSB.GetCurrent().Value();
-            if (null != tsb && null != server)
-            {
-               var ret = server.Coupons.GetTAServerCouponTransactions(
-                   tsb.TSBId, null, null, null);
-                if (ret.Ok)
-                {
-                    var serverCoupons = ret.Value();
-                    if (null != serverCoupons)
-                    {
-                        /*
-                        serverCoupons.ForEach(cp =>
-                        {
-                            var inst = cp.ToLocal();
-                            ops.Coupons.SyncTransaction(inst);
-                        });
-                        */
-                        ops.Coupons.SyncTransactions(serverCoupons.ToLocals());
-                    }
-                }
-            }
-        }
 
         public void Refresh()
         {
@@ -381,6 +380,7 @@ namespace DMT.Services
         {
             if (null != _coupons)
             {
+                var saveCoupons = new List<TSBCouponTransaction>();
                 _coupons.ForEach(coupon =>
                 {
                     var origin = (null != _origins) ? _origins.Find(x => x.CouponId == coupon.CouponId) : null;
@@ -391,16 +391,21 @@ namespace DMT.Services
                             origin.SoldBy != coupon.UserId ||
                             origin.FinishFlag != coupon.FinishFlag)
                         {
-                            ops.Coupons.SaveTransaction(coupon);
-
-                            if (null != server)
-                            {
-                                var cp = coupon.ToServer();
-                                server.Coupons.SaveTransaction(cp);
-                            }
+                            saveCoupons.Add(coupon);
                         }
                     }
                 });
+
+                ops.Coupons.SaveTransactions(saveCoupons);
+
+                if (null != server)
+                {
+                    saveCoupons.ForEach(coupon =>
+                    {
+                        var cp = coupon.ToServer();
+                        server.Coupons.SaveTransaction(cp);
+                    });
+                }
             }
         }
 
@@ -613,6 +618,30 @@ namespace DMT.Services
         }
 
         #endregion
+
+        #endregion
+
+        #region Static Methods
+
+        public static void Sync()
+        {
+            var ops = LocalServiceOperations.Instance.Plaza;
+            var server = TODxTAServiceOperations.Instance.Plaza;
+            TSB tsb = ops.TSB.GetCurrent().Value();
+            if (null != tsb && null != server)
+            {
+                var ret = server.Coupons.GetTAServerCouponTransactions(
+                    tsb.TSBId, null, null, null);
+                if (ret.Ok)
+                {
+                    var serverCoupons = ret.Value();
+                    if (null != serverCoupons)
+                    {
+                        ops.Coupons.SyncTransactions(serverCoupons.ToLocals());
+                    }
+                }
+            }
+        }
 
         #endregion
     }
