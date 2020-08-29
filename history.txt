@@ -42,8 +42,11 @@ Update 2020-08-30 #3
 Update 2020-08-30 #2
 - 
 
+[commited]
 Update 2020-08-30 #1
-- 
+- Update Local/DataCenter/TAxTOD service operation #341.
+  - Update owin server project #5.
+  - Update owin client project #5.
 
 --------------------------------------------------------------------------------------------
 [commited]
