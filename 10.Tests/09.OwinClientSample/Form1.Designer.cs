@@ -37,6 +37,8 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "Form1";
             this.Text = "Owin Client";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
