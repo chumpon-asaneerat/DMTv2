@@ -15,33 +15,38 @@
   - Update Config app and simulator.
 
 --------------------------------------------------------------------------------------------
-Update 2020-08-30 #10
+Update 2020-08-31 #10
 - 
 
-Update 2020-08-30 #9
+Update 2020-08-31 #9
 - 
 
-Update 2020-08-30 #8
+Update 2020-08-31 #8
 - 
 
-Update 2020-08-30 #7
+Update 2020-08-31 #7
 - 
 
-Update 2020-08-30 #6
+Update 2020-08-31 #6
 - 
 
-Update 2020-08-30 #5
+Update 2020-08-31 #5
 - 
 
-Update 2020-08-30 #4
+Update 2020-08-31 #4
 - 
 
-Update 2020-08-30 #3
+Update 2020-08-31 #3
 - 
 
-Update 2020-08-30 #2
+Update 2020-08-31 #2
 - 
 
+[commited]
+Update 2020-08-31 #1
+- Update history.txt
+
+--------------------------------------------------------------------------------------------
 [commited]
 Update 2020-08-30 #1
 - Update Local/DataCenter/TAxTOD service operation #341.
