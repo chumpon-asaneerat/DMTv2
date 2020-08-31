@@ -243,6 +243,14 @@ namespace DMT.Services
             }
         }
 
+        private void SyncJobList()
+        {
+            // Sync JobList to LaneAttendance
+            if (null == this.User) return;
+            // required networkId, plazaId, userId
+            server.Masters.GetJobList(31, 3101, this.User.UserId);
+        }
+
         #endregion
 
         #region Public Methods
@@ -253,6 +261,8 @@ namespace DMT.Services
         public void Refresh()
         {
             if (null == this.User) return;
+            // Sync JobList to LaneAttendance
+            SyncJobList();
             // Find user shift.
             this.UserShift = ops.UserShifts.GetCurrent(this.User).Value();
             if (null == this.UserShift)
