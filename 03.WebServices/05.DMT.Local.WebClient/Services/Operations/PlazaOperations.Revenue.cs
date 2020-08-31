@@ -253,7 +253,12 @@ namespace DMT.Services
         public void Refresh()
         {
             if (null == this.User) return;
-            if (null == this.PlazaGroups) return;
+            // Find user shift.
+            this.UserShift = ops.UserShifts.GetCurrent(this.User).Value();
+            if (null == this.UserShift)
+            {
+                // user shift not found.
+            }
         }
 
         #endregion

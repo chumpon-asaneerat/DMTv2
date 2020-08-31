@@ -32,6 +32,8 @@ namespace DMT.TOD.Pages.Revenue
         #endregion
 
         private RevenueEntryManager _manager = new RevenueEntryManager();
+
+        // TODO: Remove later.
         /*
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
 
@@ -55,6 +57,7 @@ namespace DMT.TOD.Pages.Revenue
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
+            // TODO: Remove later.
             /*
             // Revenue Entry Page
             var page = new RevenueEntryPage();
@@ -155,6 +158,7 @@ namespace DMT.TOD.Pages.Revenue
 
         private void LoadPlazaGroups()
         {
+            // TODO: Remove later.
             /*
             cbPlazas.ItemsSource = null;
 
@@ -183,6 +187,7 @@ namespace DMT.TOD.Pages.Revenue
 
         private void RefreshLanes()
         {
+            // TODO: Remove later.
             /*
             if (null != _userShift)
             {
@@ -220,6 +225,12 @@ namespace DMT.TOD.Pages.Revenue
             LoadPlazaGroups();
 
             _manager.User = user;
+            if (null != _manager.User)
+            {
+                txtEntryDate.Text = _manager.EntryDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+                _manager.Refresh();
+            }
+            // TODO: Remove later.
             /*
             _user = user;
             if (null != _user)
