@@ -203,4 +203,36 @@ namespace DMT.Services
 
         #endregion
     }
+
+    #region RevenueEntryManager
+
+    /// <summary>
+    /// The RevenueEntryManager class.
+    /// </summary>
+    public class RevenueEntryManager
+    {
+        #region Internal Variables
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public RevenueEntryManager() : base() { }
+
+        #endregion
+
+        #region Public Methods
+
+
+        #endregion
+
+        #region Public Properties
+
+        #endregion
+    }
+
+    #endregion
 }
