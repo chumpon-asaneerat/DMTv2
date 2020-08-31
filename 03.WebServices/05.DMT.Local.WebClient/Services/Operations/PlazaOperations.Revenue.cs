@@ -229,6 +229,11 @@ namespace DMT.Services
 
         #region Public Methods
 
+        public void Refresh()
+        {
+            if (null == User) return;
+            if (null == PlazaGroup) return;
+        }
 
         #endregion
 
@@ -239,9 +244,17 @@ namespace DMT.Services
         /// </summary>
         public User User { get; set; }
         /// <summary>
+        /// Gets or sets plaza group.
+        /// </summary>
+        public PlazaGroup PlazaGroup { get; set; }
+        /// <summary>
         /// Gets related user shift.
         /// </summary>
         public UserShift UserShift { get; internal set; }
+        /// <summary>
+        /// Gets related user shift revenue.
+        /// </summary>
+        public UserShiftRevenue ShiftRevenue { get; internal set; }
         /// <summary>
         /// Gets related LaneAttendance list.
         /// </summary>

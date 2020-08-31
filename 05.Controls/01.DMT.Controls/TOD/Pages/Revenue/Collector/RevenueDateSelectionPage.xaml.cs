@@ -53,6 +53,7 @@ namespace DMT.TOD.Pages.Revenue
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
+            /*
             // Revenue Entry Page
             var page = new RevenueEntryPage();
 
@@ -135,6 +136,7 @@ namespace DMT.TOD.Pages.Revenue
                 _laneActivities, _entryDT, _revDT);
 
             PageContentManager.Instance.Current = page;
+            */
         }
 
         #endregion
@@ -170,6 +172,7 @@ namespace DMT.TOD.Pages.Revenue
 
         private void RefreshLanes()
         {
+            /*
             if (null != _userShift)
             {
                 // get selected plaza group
@@ -197,6 +200,7 @@ namespace DMT.TOD.Pages.Revenue
             {
                 //MessageBox.Show("ไม่พบกะของพนักงาน", "DMT - Tour of Duty");
             }
+            */
         }
 
         // TODO: Refactor Revenue Entry Here.
