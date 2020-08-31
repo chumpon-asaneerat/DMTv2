@@ -67,6 +67,7 @@ namespace DMT.TOD.Pages.Revenue
 
         #endregion
 
+        // TODO: Refactor Revenue Entry Here.
         public void Setup(User sup, User user, UserShift userShift, PlazaGroup plazaGroup,
             UserShiftRevenue plazaRevenue,
             List<LaneAttendance> laneActivities,

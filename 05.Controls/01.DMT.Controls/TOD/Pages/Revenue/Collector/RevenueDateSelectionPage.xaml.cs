@@ -199,6 +199,7 @@ namespace DMT.TOD.Pages.Revenue
             }
         }
 
+        // TODO: Refactor Revenue Entry Here.
         public void Setup(User user)
         {
             LoadPlazaGroups();

@@ -181,7 +181,7 @@ namespace DMT.TOD.Pages.Revenue
                 //MessageBox.Show("ไม่พบกะของพนักงาน", "DMT - Tour of Duty");
             }
         }
-
+        // TODO: Refactor Revenue Entry Here.
         public void Setup(User sup)
         {
             _sup = sup;
