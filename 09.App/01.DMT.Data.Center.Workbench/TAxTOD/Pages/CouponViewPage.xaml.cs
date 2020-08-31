@@ -58,7 +58,7 @@ namespace DMT.TAxTOD.Pages
         private void LoadCoupons()
         {
             lvCoupons.ItemsSource = null;
-            manager.Sync();
+            TSBCouponManager.Sync();
             manager.Refresh();
             /*
             var coupons = ops.Coupons.GetTAServerCouponTransactions("311", null, null, null).Value();
