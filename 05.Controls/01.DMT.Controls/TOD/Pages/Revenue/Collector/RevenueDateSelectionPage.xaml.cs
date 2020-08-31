@@ -31,6 +31,7 @@ namespace DMT.TOD.Pages.Revenue
 
         #endregion
 
+        /*
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
 
         private DateTime _entryDT = DateTime.MinValue;
@@ -40,7 +41,7 @@ namespace DMT.TOD.Pages.Revenue
         private UserShift _userShift = null;
         private UserShiftRevenue _plazaRevenue = null;
         private List<LaneAttendance> _laneActivities = null;
-
+        */
 
         #region Button Handlers
 
@@ -153,6 +154,7 @@ namespace DMT.TOD.Pages.Revenue
 
         private void LoadPlazaGroups()
         {
+            /*
             cbPlazas.ItemsSource = null;
 
             var plazaGroups = new List<PlazaGroup>();
@@ -168,6 +170,7 @@ namespace DMT.TOD.Pages.Revenue
             {
                 cbPlazas.SelectedIndex = 0;
             }
+            */
         }
 
         private void RefreshLanes()
@@ -208,6 +211,7 @@ namespace DMT.TOD.Pages.Revenue
         {
             LoadPlazaGroups();
 
+            /*
             _user = user;
             if (null != _user)
             {
@@ -218,6 +222,7 @@ namespace DMT.TOD.Pages.Revenue
                 // Load related lane data.
                 RefreshLanes();
             }
+            */
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Net;
 using RestSharp;
 
 using DMT.Models;
+using System.Windows.Forms;
 
 #endregion
 
@@ -223,7 +224,10 @@ namespace DMT.Services
         /// <summary>
         /// Constructor.
         /// </summary>
-        public RevenueEntryManager() : base() { }
+        public RevenueEntryManager() : base() 
+        {
+            this.EntryDate = DateTime.Now;
+        }
 
         #endregion
 
@@ -239,6 +243,14 @@ namespace DMT.Services
 
         #region Public Properties
 
+        /// <summary>
+        /// Gets or sets Entry Date.
+        /// </summary>
+        public DateTime EntryDate { get; internal set; }
+        /// <summary>
+        /// Gets or sets Revenue Date.
+        /// </summary>
+        public DateTime RevenueDate { get; set; }
         /// <summary>
         /// Gets or sets User.
         /// </summary>
