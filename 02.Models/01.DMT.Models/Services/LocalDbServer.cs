@@ -1256,6 +1256,28 @@ namespace DMT.Services
 			if (!Role.Exists(item)) Role.Save(item);
 
 			prefix = "นาย";
+			fName = "อดิศร";
+			mName = "";
+			lName = "ทิพยไพศาล";
+			user = new User()
+			{
+				UserId = "00111",
+				PrefixEN = prefix,
+				FirstNameEN = fName,
+				MiddleNameEN = mName,
+				LastNameEN = lName,
+				PrefixTH = prefix,
+				FirstNameTH = fName,
+				MiddleNameTH = mName,
+				LastNameTH = lName,
+				Password = Utils.MD5.Encrypt("1234"),
+				CardId = "",
+				Status = 1,
+				RoleId = item.RoleId
+			};
+			if (!User.Exists(user)) User.Save(user);
+
+			prefix = "นาย";
 			fName = "ภักดี";
 			mName = "";
 			lName = "อมรรุ่งโรจน์";
