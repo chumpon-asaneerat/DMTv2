@@ -238,6 +238,14 @@ namespace DMT.Services
         /// Gets or sets User.
         /// </summary>
         public User User { get; set; }
+        /// <summary>
+        /// Gets related user shift.
+        /// </summary>
+        public UserShift UserShift { get; internal set; }
+        /// <summary>
+        /// Gets related LaneAttendance list.
+        /// </summary>
+        public List<LaneAttendance> Attendances { get; internal set; }
 
         #endregion
 
