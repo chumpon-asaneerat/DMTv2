@@ -31,6 +31,7 @@ namespace DMT.TOD.Pages.Revenue
 
         #endregion
 
+        private RevenueEntryManager _manager = new RevenueEntryManager();
         /*
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
 
@@ -171,6 +172,13 @@ namespace DMT.TOD.Pages.Revenue
                 cbPlazas.SelectedIndex = 0;
             }
             */
+
+            cbPlazas.ItemsSource = null;
+            cbPlazas.ItemsSource = _manager.PlazaGroups;
+            if (null != _manager.PlazaGroups && _manager.PlazaGroups.Count > 0)
+            {
+                cbPlazas.SelectedIndex = 0;
+            }
         }
 
         private void RefreshLanes()
@@ -211,6 +219,7 @@ namespace DMT.TOD.Pages.Revenue
         {
             LoadPlazaGroups();
 
+            _manager.User = user;
             /*
             _user = user;
             if (null != _user)

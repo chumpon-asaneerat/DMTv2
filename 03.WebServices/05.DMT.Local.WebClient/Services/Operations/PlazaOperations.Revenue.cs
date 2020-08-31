@@ -227,16 +227,33 @@ namespace DMT.Services
         public RevenueEntryManager() : base() 
         {
             this.EntryDate = DateTime.Now;
+            LoadPlazaGroups();
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void LoadPlazaGroups()
+        {
+            var tsb = ops.TSB.GetCurrent().Value();
+            if (null != tsb)
+            {
+                this.PlazaGroups = ops.TSB.GetTSBPlazaGroups(tsb).Value();
+            }
         }
 
         #endregion
 
         #region Public Methods
 
+        /// <summary>
+        /// Refresh.
+        /// </summary>
         public void Refresh()
         {
-            if (null == User) return;
-            if (null == PlazaGroup) return;
+            if (null == this.User) return;
+            if (null == this.PlazaGroups) return;
         }
 
         #endregion
@@ -255,6 +272,10 @@ namespace DMT.Services
         /// Gets or sets User.
         /// </summary>
         public User User { get; set; }
+        /// <summary>
+        /// Gets avaliable plaza groups.
+        /// </summary>
+        public List<PlazaGroup> PlazaGroups { get; internal set; }
         /// <summary>
         /// Gets or sets plaza group.
         /// </summary>
