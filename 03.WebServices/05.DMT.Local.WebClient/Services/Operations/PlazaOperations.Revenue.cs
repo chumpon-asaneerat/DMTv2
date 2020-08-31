@@ -213,6 +213,9 @@ namespace DMT.Services
     {
         #region Internal Variables
 
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
+        private SCWOperations server = SCWServiceOperations.Instance.Plaza;
+
         #endregion
 
         #region Constructor
@@ -230,6 +233,23 @@ namespace DMT.Services
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// Gets or sets User.
+        /// </summary>
+        public User User { get; set; }
+
+        #endregion
+
+        #region Static Methods
+
+        /// <summary>
+        /// Sync data from SCW Web Service.
+        /// </summary>
+        public static void Sync()
+        {
+
+        }
 
         #endregion
     }

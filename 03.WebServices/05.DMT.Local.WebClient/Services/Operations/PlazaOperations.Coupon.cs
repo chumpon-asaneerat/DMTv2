@@ -285,6 +285,10 @@ namespace DMT.Services
 
         #region Refresh
 
+        /// <summary>
+        /// Refresh with auto sync data from TAxTOD server to local database 
+        /// before reload new coupon list.
+        /// </summary>
         public void Refresh()
         {
             TSB tsb = ops.TSB.GetCurrent().Value();
@@ -310,6 +314,10 @@ namespace DMT.Services
 
         #region For Borrow/Return between Stock-Lane
 
+        /// <summary>
+        /// Update Coupon Transaction - Assigned to User/Lane.
+        /// </summary>
+        /// <param name="value">The TSB coupon transaction.</param>
         public void Borrow(TSBCouponTransaction value)
         {
             if (null == User) return;
@@ -318,7 +326,10 @@ namespace DMT.Services
             value.UserId = User.UserId;
             value.UserReceiveDate = DateTime.Now;
         }
-
+        /// <summary>
+        /// Update Coupon Transaction - Return coupon (restore back to stock).
+        /// </summary>
+        /// <param name="value">The TSB coupon transaction.</param>
         public void Return(TSBCouponTransaction value)
         {
             if (value.TransactionType != TSBCouponTransaction.TransactionTypes.Lane) return;
@@ -331,6 +342,10 @@ namespace DMT.Services
 
         #region For Lane Sold/Unsold Coupon (User on hand)
 
+        /// <summary>
+        /// Update Coupon Transaction - Sold user coupon.
+        /// </summary>
+        /// <param name="value">The TSB coupon transaction.</param>
         public void SoldByLane(TSBCouponTransaction value)
         {
             //if (null == User) return;
@@ -340,7 +355,10 @@ namespace DMT.Services
             value.SoldDate = DateTime.Now;
             //value.UserReceiveDate = DateTime.Now;
         }
-
+        /// <summary>
+        /// Update Coupon Transaction - Unsold user coupon (restore back to Lane).
+        /// </summary>
+        /// <param name="value">The TSB coupon transaction.</param>
         public void UnsoldByLane(TSBCouponTransaction value)
         {
             //if (null == User) return;
@@ -355,6 +373,10 @@ namespace DMT.Services
 
         #region For Lane Sold/Unsold Coupon (TSB)
 
+        /// <summary>
+        /// Update Coupon Transaction - Sold by TSB.
+        /// </summary>
+        /// <param name="value">The TSB coupon transaction.</param>
         public void SoldByTSB(TSBCouponTransaction value)
         {
             //if (null == User) return;
@@ -364,7 +386,10 @@ namespace DMT.Services
             value.SoldDate = DateTime.Now;
             //value.UserReceiveDate = DateTime.Now;
         }
-
+        /// <summary>
+        /// Update Coupon Transaction - Unsold by TSB (restored back to stock).
+        /// </summary>
+        /// <param name="value">The TSB coupon transaction.</param>
         public void UnsoldByTSB(TSBCouponTransaction value)
         {
             //if (null == User) return;
@@ -378,6 +403,9 @@ namespace DMT.Services
 
         #region Save
 
+        /// <summary>
+        /// Save all transactions (auto sync after saved).
+        /// </summary>
         public void Save()
         {
             if (null != _coupons)
@@ -406,6 +434,7 @@ namespace DMT.Services
 
                 if (null != server)
                 {
+                    // TODO: Need to Wrap with transaction. Server need to implements save array.
                     saveCoupons.ForEach(coupon =>
                     {
                         var cp = coupon.ToServer();
@@ -421,8 +450,17 @@ namespace DMT.Services
 
         #region Public Properties
 
+        /// <summary>
+        /// Gets or sets User.
+        /// </summary>
         public User User { get; set; }
+        /// <summary>
+        /// Gets Coupon Summaries (TSB).
+        /// </summary>
         public List<TSBCouponSummary> Summaries { get; private set; }
+        /// <summary>
+        /// Gets Coupon Transactions (TSB).
+        /// </summary>
         public List<TSBCouponTransaction> Coupons
         {
             get
@@ -435,6 +473,9 @@ namespace DMT.Services
 
         #region For Borrow/Return between Stock-Lane
 
+        /// <summary>
+        /// Gets Coupon 35 BHT Transactions (TSB) in Stock.
+        /// </summary>
         public List<TSBCouponTransaction> C35Stocks
         {
             get
@@ -451,7 +492,9 @@ namespace DMT.Services
                 }).OrderBy(x => x.CouponId).ToList();
             }
         }
-
+        /// <summary>
+        /// Gets Coupon 80 BHT Transactions (TSB) in Stock.
+        /// </summary>
         public List<TSBCouponTransaction> C80Stocks
         {
             get
@@ -468,7 +511,9 @@ namespace DMT.Services
                 }).OrderBy(x => x.CouponId).ToList();
             }
         }
-
+        /// <summary>
+        /// Gets Coupon 35 BHT Transactions (TSB) on Lane.
+        /// </summary>
         public List<TSBCouponTransaction> C35Users
         {
             get
@@ -487,7 +532,9 @@ namespace DMT.Services
                 }).OrderBy(x => x.CouponId).ToList();
             }
         }
-
+        /// <summary>
+        /// Gets Coupon 80 BHT Transactions (TSB) on Lane.
+        /// </summary>
         public List<TSBCouponTransaction> C80Users
         {
             get
@@ -511,6 +558,9 @@ namespace DMT.Services
 
         #region For Lane Sold/Unsold Coupon (User on hand)
 
+        /// <summary>
+        /// Gets Coupon 35 BHT Transactions (TSB) Sold By Lane.
+        /// </summary>
         public List<TSBCouponTransaction> C35UserSolds
         {
             get
@@ -528,7 +578,9 @@ namespace DMT.Services
                 }).OrderBy(x => x.CouponId).ToList();
             }
         }
-
+        /// <summary>
+        /// Gets Coupon 80 BHT Transactions (TSB) Sold By Lane.
+        /// </summary>
         public List<TSBCouponTransaction> C80UserSolds
         {
             get
@@ -546,7 +598,9 @@ namespace DMT.Services
                 }).OrderBy(x => x.CouponId).ToList();
             }
         }
-
+        /// <summary>
+        /// Gets Coupon 35 BHT Transactions (TSB) on hand (user).
+        /// </summary>
         public List<TSBCouponTransaction> C35UserOnHands
         {
             get
@@ -564,7 +618,9 @@ namespace DMT.Services
                 }).OrderBy(x => x.CouponId).ToList();
             }
         }
-
+        /// <summary>
+        /// Gets Coupon 80 BHT Transactions (TSB) on hand (user).
+        /// </summary>
         public List<TSBCouponTransaction> C80UserOnHands
         {
             get
@@ -585,8 +641,11 @@ namespace DMT.Services
 
         #endregion
 
-        #region For Lane Sold/Unsold Coupon (TSB)
+        #region For TSB Sold Coupon
 
+        /// <summary>
+        /// Gets Coupon 35 BHT Transactions (TSB) Sold.
+        /// </summary>
         public List<TSBCouponTransaction> C35TSBSolds
         {
             get
@@ -604,7 +663,9 @@ namespace DMT.Services
                 }).OrderBy(x => x.CouponId).ToList();
             }
         }
-
+        /// <summary>
+        /// Gets Coupon 80 BHT Transactions (TSB) Sold.
+        /// </summary>
         public List<TSBCouponTransaction> C80TSBSolds
         {
             get
@@ -629,6 +690,9 @@ namespace DMT.Services
 
         #region Static Methods
 
+        /// <summary>
+        /// Sync data from TAxTOD Web Service.
+        /// </summary>
         public static void Sync()
         {
             var ops = LocalServiceOperations.Instance.Plaza;
