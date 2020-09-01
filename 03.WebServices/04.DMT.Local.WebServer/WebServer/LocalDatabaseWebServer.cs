@@ -76,7 +76,7 @@ namespace DMT.Services
 
         private string baseAddress = string.Format(@"{0}://{1}:{2}",
             ConfigManager.Instance.Plaza.Local.Http.Protocol,
-            ConfigManager.Instance.Plaza.Local.Http.HostName, // TODO: Change Owin Host Name.
+            "+",
             ConfigManager.Instance.Plaza.Local.Http.PortNumber);
 
         private string wsAddress = string.Format(@"{0}://{1}:{2}",
