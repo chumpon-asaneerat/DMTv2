@@ -262,7 +262,7 @@ namespace DMT.Services
             // check exists and save (insert/update)
             attends.ForEach(attend =>
             {
-
+                Console.WriteLine(attend);
             });
         }
 

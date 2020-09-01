@@ -176,7 +176,8 @@ namespace DMT.Models.ExtensionMethods
             //value.plazaId;
             //value.networkId;
             inst.UserId = value.staffId;
-            inst.JobId = value.ToString();
+            inst.JobId = (value.jobNo.HasValue) ? 
+                value.jobNo.Value.ToString() : string.Empty;
             inst.Begin = value.bojDateTime.Value();
             inst.End = value.eojDateTime.Value();
 
@@ -192,7 +193,8 @@ namespace DMT.Models.ExtensionMethods
             //inst.plazaId;
             //inst.networkId;
             inst.staffId = value.UserId;
-            inst.jobNo = Convert.ToInt32(value.JobId);
+            inst.jobNo = (!string.IsNullOrEmpty(value.JobId)) ? 
+                Convert.ToInt32(value.JobId) : default(int?);
             inst.bojDateTime = value.Begin.Value();
             inst.eojDateTime = value.End.Value();
 
