@@ -252,9 +252,10 @@ namespace DMT.Services
             //    แล้วเอาข้อมูลทั้งหมดมารวมเป็น List เดียวของ 1 Plaza group โดย WS ข้อมูลที่มี จะมีแค่ 
             //    PlazaId, LaneNo, Begin, End, UserId ต้องเอามาหา TSBShift และ UserShift
             //    ซึ่งจะแบ่งเป็น 2 case คื่อมี Shift หรือไม่มี Shift (Supervisro/User ไม่ได้เปิด shift)
-            // 
-            // 
-            // 
+            //    1.1 กรณีไม่มี TSBShift ให้เปิด TSBShift โดยใช้ Supervisor พิเศษ และใช้กรอบเวลามาตรฐานไปก่อน
+            //    1.2 กรณีมี TSBShift แต่ไม่มี UserShift ให้สร้าง UserShift ใหม่ โดยเวลาเริ่มต้นให้เป็นเวลาแรกของ
+            //        Job List begin และเวลาสิ้นสุดให้เป็น เวลาที่ Job List ไม่เกินเวลาของ TSB End Shift
+            //    1.3 กรณีมี ทั้ง TSBShift/UserShift ให้กรอง Job List ตามข้อ 1.2
             // 
             // 
             // 
