@@ -250,20 +250,20 @@ namespace DMT.Services
             if (null == this.User) return;
             // required networkId, plazaId, userId
             var ret = server.Masters.GetJobList(31, 3101, this.User.UserId);
+            var attends = new List<LaneAttendance>();
             if (null != ret && null != ret.list)
             {
                 ret.list.ForEach(inst =>
                 {
-                    /*
-                    inst.jobNo;
-                    inst.laneId;
-                    inst.staffId;
-                    inst.bojDateTime;
-                    inst.eojDateTime;
-                    inst.ToLocal();
-                    */
+                    var attend = inst.ToLocal();
+                    if (null != attend) attends.Add(attend);
                 });
             }
+            // check exists and save (insert/update)
+            attends.ForEach(attend =>
+            {
+
+            });
         }
 
         #endregion
