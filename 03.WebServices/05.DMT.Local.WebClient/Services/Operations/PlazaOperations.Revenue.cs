@@ -256,6 +256,7 @@ namespace DMT.Services
                 ret.list.ForEach(inst =>
                 {
                     var attend = inst.ToLocal();
+                    ops.TSB.GetPlazaLanes();
                     if (null != attend) attends.Add(attend);
                 });
             }
