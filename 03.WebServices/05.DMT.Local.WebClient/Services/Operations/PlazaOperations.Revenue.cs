@@ -246,6 +246,30 @@ namespace DMT.Services
 
         private void SyncJobList()
         {
+            // Case Online:
+            // 1. อ่าน job list จาก WS โดย กรองจาก Plaza Group Id ซึ่งต้องดึง 1 รอบในกรณี
+            //    Plaza Group มี Plaza เดียว และต้องดึงมากกว่า 1 รอบถ้า ใน Plaza group มีมากกว่า 1 Plaza
+            //    แล้วเอาข้อมูลทั้งหมดมารวมเป็น List เดียวของ 1 Plaza group โดย WS ข้อมูลที่มี จะมีแค่ 
+            //    PlazaId, LaneNo, Begin, End, UserId ต้องเอามาหา TSBShift และ UserShift
+            //    ซึ่งจะแบ่งเป็น 2 case คื่อมี Shift หรือไม่มี Shift (Supervisro/User ไม่ได้เปิด shift)
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+
+
+
+
+
+
             // Sync JobList to LaneAttendance
             if (null == this.User) return;
             // required networkId, plazaId, userId
@@ -256,7 +280,7 @@ namespace DMT.Services
                 ret.list.ForEach(inst =>
                 {
                     var attend = inst.ToLocal();
-                    ops.TSB.GetPlazaLanes();
+                    //ops.TSB.GetPlazaLanes();
                     if (null != attend) attends.Add(attend);
                 });
             }
