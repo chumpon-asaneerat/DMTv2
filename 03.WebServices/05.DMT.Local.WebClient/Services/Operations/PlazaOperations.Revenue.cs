@@ -260,13 +260,19 @@ namespace DMT.Services
             //    2.2 กรณีมี TSBShift แต่ไม่มี UserShift ให้สร้าง UserShift ใหม่ โดยเวลาเริ่มต้นให้เป็นเวลาแรกของ
             //        Job List begin และเวลาสิ้นสุดให้เป็น เวลาที่ Job List ไม่เกินเวลาของ TSB End Shift
             //    2.3 กรณีมี ทั้ง TSBShift/UserShift ให้กรอง Job List ตามข้อ 1.2
+            //
             // Case Offline
             // 1. ต้องมี TSBShift/UserShift เนื่องจากต้องมีการระบุจากการทำงานปรกติ
             // 
             // 
             // 
             // 
-            // 
+            // Sync Offline -> Online 
+            // 1. กรณี นี้จะมีการป้อนรายได้ไปแล้ว ซึ่งหมายถึง UserShiftId จะมีข้อมูล RevenueId (auto gen) แล้ว
+            //    ดังนั้น เมื่อทำการ อ่านรายการ Job List ได้ต้องทำการ ตรวจสอบว่า มีกรายการทำ Revenue ไปแล้วกี่รายการ
+            //    ก็ให้เอารายการเหล่านั้น เป็นกรอบในการหารายการ Job ที่เกี่ยวข้องมาก่อน แล้วทำการ ส่ง Update ไปยัง WS
+            //    โดยทำการ check flag sync จากตาราง Lane Attendance, Revenue Entry, Lane Payment
+            //    โดบเมื่อทำการส่งเสร็จให้ mark sync flag ว่าทำการ sync แล้ว
             // 
             // 
 
