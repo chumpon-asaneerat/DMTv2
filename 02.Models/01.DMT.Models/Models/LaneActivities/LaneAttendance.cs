@@ -1276,7 +1276,7 @@ namespace DMT.Models
 			}
 		}
 
-		public static NDbResult<LaneAttendance> IsExists(LaneAttendance value)
+		public static NDbResult<LaneAttendance> SaveLaneAttendance(LaneAttendance value)
 		{
 			var result = new NDbResult<LaneAttendance>();
 
@@ -1295,8 +1295,9 @@ namespace DMT.Models
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
-				try 
+				try
 				{
+					// Search.
 					string cmd = string.Empty;
 					cmd += "SELECT * ";
 					cmd += "  FROM LaneAttendanceView ";
@@ -1308,41 +1309,14 @@ namespace DMT.Models
 					cmd += "   AND Begin = ?";
 					cmd += "   AND JobId = ?";
 					var ret = NQuery.Query<FKs>(cmd,
-						value.TSBId, value.PlazaGroupId, value.PlazaId, 
+						value.TSBId, value.PlazaGroupId, value.PlazaId,
 						value.LaneId, value.UserId, value.JobId).FirstOrDefault();
 					var data = (null != ret) ? ret.ToModel() : null;
-					result.Success(data);
-				}
-				catch (Exception ex) 
-				{
-					med.Err(ex);
-					result.Error(ex);
-				}
-				return result;
-			}
-		}
-
-		public static NDbResult SaveLaneAttendance(LaneAttendance value)
-		{
-			var result = new NDbResult();
-
-			SQLiteConnection db = Default;
-			if (null == db)
-			{
-				result.DbConenctFailed();
-				return result;
-			}
-			if (null == value)
-			{
-				result.ParameterIsNull();
-				return result;
-			}
-
-			lock (sync)
-			{
-				MethodBase med = MethodBase.GetCurrentMethod();
-				try
-				{
+					if (null != data)
+					{
+						value.PKId = data.PKId; // exists so assigned key.
+					}
+					result = LaneAttendance.Save(value);
 				}
 				catch (Exception ex)
 				{
@@ -1374,11 +1348,19 @@ namespace DMT.Models
 				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
+					db.BeginTransaction();
+					foreach (var r in values)
+					{
+						SaveLaneAttendance(r);
+					}
+					db.Commit();
+					result.Success();
 				}
 				catch (Exception ex)
 				{
 					med.Err(ex);
 					result.Error(ex);
+					db.Rollback();
 				}
 				return result;
 			}

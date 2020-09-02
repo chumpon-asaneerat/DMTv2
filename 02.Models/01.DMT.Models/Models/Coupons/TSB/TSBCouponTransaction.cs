@@ -1137,6 +1137,7 @@ namespace DMT.Models
 						SyncTransaction(r);
 					}
 					db.Commit();
+					result.Success();
 				}
 				catch (Exception ex)
 				{
