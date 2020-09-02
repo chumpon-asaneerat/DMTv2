@@ -318,9 +318,9 @@ namespace DMT.Services
             SyncJobList();
             // Find user shift.
             this.UserShift = ops.UserShifts.GetCurrent(this.User).Value();
-            if (null == this.UserShift)
+            if (null != UserShift)
             {
-                // user shift not found.
+                this.RevenueDate = UserShift.Begin.Date;
             }
         }
 

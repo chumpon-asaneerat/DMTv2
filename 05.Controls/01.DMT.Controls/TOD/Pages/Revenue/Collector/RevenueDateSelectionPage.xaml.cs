@@ -172,12 +172,12 @@ namespace DMT.TOD.Pages.Revenue
             {
                 // get selected plaza group
                 _manager.PlazaGroup = cbPlazas.SelectedItem as PlazaGroup;
-                txtRevDate.Text = _manager.UserShift.BeginDateString;
+                txtRevDate.Text = _manager.RevenueDate.ToThaiDateTimeString("dd/MM/yyyy");
+                // reload jobs.
                 _manager.RefreshJobs();
                 if (null == _manager.Attendances || _manager.Attendances.Count <= 0)
                 {
-                    // no data.
-                    grid.Setup(null);
+                    grid.Setup(null); // no attendance data.
                 }
                 else
                 {
@@ -195,6 +195,7 @@ namespace DMT.TOD.Pages.Revenue
             {
                 txtEntryDate.Text = _manager.EntryDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
                 _manager.Refresh();
+                RefreshLanes();
             }
         }
     }
