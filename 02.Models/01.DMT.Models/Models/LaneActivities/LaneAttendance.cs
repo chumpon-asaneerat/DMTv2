@@ -1066,7 +1066,7 @@ namespace DMT.Models
 					cmd += " WHERE UserId = ? ";
 					cmd += "   AND (Begin >= ? AND Begin <= ?)";
 					cmd += "   AND (   (End >= ? AND End <= ?) " +
-					    "           OR  End = ?)";
+						"           OR  End = ?)";
 
 					DateTime end = (shift.End == DateTime.MinValue) ? DateTime.Now : shift.End;
 					var rets = NQuery.Query<FKs>(cmd, 
@@ -1274,6 +1274,17 @@ namespace DMT.Models
 
 				return result;
 			}
+		}
+
+
+		public static NDbResult SaveLaneAttendance(LaneAttendance value)
+		{
+			return new NDbResult();
+		}
+
+		public static NDbResult SaveLaneAttendances(List<LaneAttendance> values)
+		{
+			return new NDbResult();
 		}
 
 		#endregion

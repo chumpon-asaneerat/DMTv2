@@ -57,8 +57,6 @@ namespace DMT.TOD.Pages.Revenue
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Remove later.
-            /*
             // Revenue Entry Page
             var page = new RevenueEntryPage();
 
@@ -73,11 +71,10 @@ namespace DMT.TOD.Pages.Revenue
                     cbPlazas.Focus();
                     return;
                 }
-
-                //MessageBox.Show("กรุณาเลือกด่านของรายได้", "DMT - Tour of Duty");
-                //cbPlazas.Focus();
-                //return;
             }
+
+            // TODO: Remove later.
+            /*
 
             bool isNew = false;
             var revops = Search.Revenues.PlazaShift.Create(_userShift, plazaGroup);

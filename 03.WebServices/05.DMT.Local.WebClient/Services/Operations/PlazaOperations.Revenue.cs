@@ -297,7 +297,8 @@ namespace DMT.Services
                     if (null != attend) attends.Add(attend);
                 });
             }
-            // check exists and save (insert/update)
+            // Save (insert/update)
+            //ops.Lanes.SaveAttendances(attends);
             attends.ForEach(attend =>
             {
                 Console.WriteLine(attend);
@@ -371,18 +372,6 @@ namespace DMT.Services
         /// Gets related LaneAttendance list.
         /// </summary>
         public List<LaneAttendance> Attendances { get; internal set; }
-
-        #endregion
-
-        #region Static Methods
-
-        /// <summary>
-        /// Sync data from SCW Web Service.
-        /// </summary>
-        public static void Sync()
-        {
-
-        }
 
         #endregion
     }
