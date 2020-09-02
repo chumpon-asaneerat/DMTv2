@@ -245,42 +245,40 @@ namespace DMT.Services
             }
         }
 
+        // Case Online:
+        // 1. อ่าน job list จาก WS โดย กรองจาก Plaza Group Id ซึ่งต้องดึง 1 รอบในกรณี
+        //    Plaza Group มี Plaza เดียว และต้องดึงมากกว่า 1 รอบถ้า ใน Plaza group มีมากกว่า 1 Plaza
+        //    แล้วเอาข้อมูลทั้งหมดมารวมเป็น List เดียวของ 1 Plaza group โดย WS ข้อมูลที่มี จะมีแค่ 
+        //    PlazaId, LaneNo, Begin, End, UserId จากนั้นจึงสร้าง หรือ Update Lane Attendance
+        //    โดย ใช้ Key TSBId, PlazaId, LaneId, JobId, UserId และ BeginDate ในการค้นหา
+        //    ว่ามีรายการหรือไม่ ถ้ามีก็ทำการ Update แต่ถ้าไม่พบก็ทำการ insert ใหม่
+        //
+        // 2. ต้องเอามาหา TSBShift และ UserShift
+        //    ซึ่งจะแบ่งเป็น 2 case คื่อมี Shift หรือไม่มี Shift (Supervisro/User ไม่ได้เปิด shift)
+        //    2.1 กรณีไม่มี TSBShift ให้เปิด TSBShift โดยใช้ Supervisor พิเศษ และใช้กรอบเวลามาตรฐานไปก่อน
+        //    2.2 กรณีมี TSBShift แต่ไม่มี UserShift ให้สร้าง UserShift ใหม่ โดยเวลาเริ่มต้นให้เป็นเวลาแรกของ
+        //        Job List begin และเวลาสิ้นสุดให้เป็น เวลาที่ Job List ไม่เกินเวลาของ TSB End Shift
+        //    2.3 กรณีมี ทั้ง TSBShift/UserShift ให้กรอง Job List ตามข้อ 1.2
+        //
+        // Case Offline
+        // 1. ต้องมี TSBShift/UserShift เนื่องจากต้องมีการระบุจากการทำงานปรกติ
+        // 
+        // 
+        // 
+        // 
+        // Sync Offline -> Online 
+        // 1. กรณี นี้จะมีการป้อนรายได้ไปแล้ว ซึ่งหมายถึง UserShiftId จะมีข้อมูล RevenueId (auto gen) แล้ว
+        //    ดังนั้น เมื่อทำการ อ่านรายการ Job List ได้ต้องทำการ ตรวจสอบว่า มีกรายการทำ Revenue ไปแล้วกี่รายการ
+        //    ก็ให้เอารายการเหล่านั้น เป็นกรอบในการหารายการ Job ที่เกี่ยวข้องมาก่อน แล้วทำการ ส่ง Update ไปยัง WS
+        //    โดยทำการ check flag sync จากตาราง Lane Attendance, Revenue Entry, Lane Payment
+        //    โดบเมื่อทำการส่งเสร็จให้ mark sync flag ว่าทำการ sync แล้ว
+
         private void SyncJobList()
         {
-            // Case Online:
-            // 1. อ่าน job list จาก WS โดย กรองจาก Plaza Group Id ซึ่งต้องดึง 1 รอบในกรณี
-            //    Plaza Group มี Plaza เดียว และต้องดึงมากกว่า 1 รอบถ้า ใน Plaza group มีมากกว่า 1 Plaza
-            //    แล้วเอาข้อมูลทั้งหมดมารวมเป็น List เดียวของ 1 Plaza group โดย WS ข้อมูลที่มี จะมีแค่ 
-            //    PlazaId, LaneNo, Begin, End, UserId จากนั้นจึงสร้าง หรือ Update Lane Attendance
-            //    โดย ใช้ Key TSBId, PlazaId, LaneId, JobId, UserId และ BeginDate ในการค้นหา
-            //    ว่ามีรายการหรือไม่ ถ้ามีก็ทำการ Update แต่ถ้าไม่พบก็ทำการ insert ใหม่
-            //
-            // 2. ต้องเอามาหา TSBShift และ UserShift
-            //    ซึ่งจะแบ่งเป็น 2 case คื่อมี Shift หรือไม่มี Shift (Supervisro/User ไม่ได้เปิด shift)
-            //    2.1 กรณีไม่มี TSBShift ให้เปิด TSBShift โดยใช้ Supervisor พิเศษ และใช้กรอบเวลามาตรฐานไปก่อน
-            //    2.2 กรณีมี TSBShift แต่ไม่มี UserShift ให้สร้าง UserShift ใหม่ โดยเวลาเริ่มต้นให้เป็นเวลาแรกของ
-            //        Job List begin และเวลาสิ้นสุดให้เป็น เวลาที่ Job List ไม่เกินเวลาของ TSB End Shift
-            //    2.3 กรณีมี ทั้ง TSBShift/UserShift ให้กรอง Job List ตามข้อ 1.2
-            //
-            // Case Offline
-            // 1. ต้องมี TSBShift/UserShift เนื่องจากต้องมีการระบุจากการทำงานปรกติ
-            // 
-            // 
-            // 
-            // 
-            // Sync Offline -> Online 
-            // 1. กรณี นี้จะมีการป้อนรายได้ไปแล้ว ซึ่งหมายถึง UserShiftId จะมีข้อมูล RevenueId (auto gen) แล้ว
-            //    ดังนั้น เมื่อทำการ อ่านรายการ Job List ได้ต้องทำการ ตรวจสอบว่า มีกรายการทำ Revenue ไปแล้วกี่รายการ
-            //    ก็ให้เอารายการเหล่านั้น เป็นกรอบในการหารายการ Job ที่เกี่ยวข้องมาก่อน แล้วทำการ ส่ง Update ไปยัง WS
-            //    โดยทำการ check flag sync จากตาราง Lane Attendance, Revenue Entry, Lane Payment
-            //    โดบเมื่อทำการส่งเสร็จให้ mark sync flag ว่าทำการ sync แล้ว
-            // 
-            // 
-
-
             // Sync JobList to LaneAttendance
             if (null == this.User) return;
-            // required networkId, plazaId, userId
+
+            // Gets Job List from WS.
             var ret = server.Masters.GetJobList(31, 3101, this.User.UserId);
             var attends = new List<LaneAttendance>();
             if (null != ret && null != ret.list)
