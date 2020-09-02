@@ -297,12 +297,8 @@ namespace DMT.Services
                     if (null != attend) attends.Add(attend);
                 });
             }
-            // Save (insert/update)
-            //ops.Lanes.SaveAttendances(attends);
-            attends.ForEach(attend =>
-            {
-                Console.WriteLine(attend);
-            });
+            // Save (insert/update) all rows.
+            ops.Lanes.SaveAttendances(attends);
         }
 
         #endregion

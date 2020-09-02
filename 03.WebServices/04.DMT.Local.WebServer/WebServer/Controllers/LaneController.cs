@@ -64,6 +64,23 @@ namespace DMT.Services
         }
 
         [HttpPost]
+        [ActionName(RouteConsts.Lane.SaveAttendances.Name)]
+        public NDbResult SaveAttendances([FromBody] List<LaneAttendance> values)
+        {
+            NDbResult result;
+            if (null == values)
+            {
+                result = new NDbResult();
+                result.ParameterIsNull();
+            }
+            else
+            {
+                result = LaneAttendance.SaveLaneAttendances(values);
+            }
+            return result;
+        }
+
+        [HttpPost]
         [ActionName(RouteConsts.Lane.GetAttendancesByDate.Name)]
         public NDbResult<List<LaneAttendance>> GetAttendancesByDate([FromBody] Search.Lanes.Attendances.ByDate value)
         {

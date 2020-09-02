@@ -310,6 +310,12 @@ namespace DMT
                 public const string Url = Lane.Url + @"/" + Name;
             }
 
+            public static class SaveAttendances
+            {
+                public const string Name = "SaveAttendances";
+                public const string Url = Lane.Url + @"/" + Name;
+            }
+
             public static class GetAttendancesByDate
             {
                 public const string Name = "GetAttendancesByDate";

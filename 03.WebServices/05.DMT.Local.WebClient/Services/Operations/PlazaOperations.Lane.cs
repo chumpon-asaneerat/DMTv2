@@ -104,7 +104,30 @@ namespace DMT.Services
                 {
                     ret = new NRestResult<LaneAttendance>();
                     ret.ParameterIsNull();
-                    ret.data = null;
+                }
+                return ret;
+            }
+
+            public NRestResult SaveAttendances(List<LaneAttendance> values)
+            {
+                NRestResult ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<LaneAttendance>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                if (null != values)
+                {
+                    ret = client.Execute(
+                        RouteConsts.Lane.SaveAttendances.Url, values);
+                }
+                else
+                {
+                    ret = new NRestResult();
+                    ret.ParameterIsNull();
                 }
                 return ret;
             }
@@ -130,7 +153,6 @@ namespace DMT.Services
                 {
                     ret = new NRestResult<List<LaneAttendance>>();
                     ret.ParameterIsNull();
-                    ret.data = new List<LaneAttendance>();
                 }
                 return ret;
             }
@@ -156,7 +178,6 @@ namespace DMT.Services
                 {
                     ret = new NRestResult<List<LaneAttendance>>();
                     ret.ParameterIsNull();
-                    ret.data = new List<LaneAttendance>();
                 }
                 return ret;
             }
@@ -182,7 +203,6 @@ namespace DMT.Services
                 {
                     ret = new NRestResult<List<LaneAttendance>>();
                     ret.ParameterIsNull();
-                    ret.data = new List<LaneAttendance>();
                 }
                 return ret;
             }
@@ -208,7 +228,6 @@ namespace DMT.Services
                 {
                     ret = new NRestResult<List<LaneAttendance>>();
                     ret.ParameterIsNull();
-                    ret.data = new List<LaneAttendance>();
                 }
                 return ret;
             }
@@ -234,7 +253,6 @@ namespace DMT.Services
                 {
                     ret = new NRestResult<LaneAttendance>();
                     ret.ParameterIsNull();
-                    ret.data = null;
                 }
                 return ret;
             }
@@ -304,7 +322,6 @@ namespace DMT.Services
                 {
                     ret = new NRestResult<LanePayment>();
                     ret.ParameterIsNull();
-                    ret.data = null;
                 }
                 return ret;
             }
@@ -330,7 +347,6 @@ namespace DMT.Services
                 {
                     ret = new NRestResult<List<LanePayment>>();
                     ret.ParameterIsNull();
-                    ret.data = new List<LanePayment>();
                 }
                 return ret;
             }
@@ -356,7 +372,6 @@ namespace DMT.Services
                 {
                     ret = new NRestResult<List<LanePayment>>();
                     ret.ParameterIsNull();
-                    ret.data = new List<LanePayment>();
                 }
                 return ret;
             }
@@ -382,7 +397,6 @@ namespace DMT.Services
                 {
                     ret = new NRestResult<List<LanePayment>>();
                     ret.ParameterIsNull();
-                    ret.data = new List<LanePayment>();
                 }
                 return ret;
             }
@@ -408,7 +422,6 @@ namespace DMT.Services
                 {
                     ret = new NRestResult<LanePayment>();
                     ret.ParameterIsNull();
-                    ret.data = null;
                 }
                 return ret;
             }
