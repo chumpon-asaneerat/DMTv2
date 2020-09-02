@@ -197,9 +197,10 @@ namespace DMT.Models.ExtensionMethods
             if (null == value) return null;
             var inst = new SCWJob();
 
-            //inst.laneId;
-            //inst.plazaId;
             //inst.networkId;
+            inst.laneId = value.LaneNo;
+            inst.plazaId = (!string.IsNullOrEmpty(value.PlazaId)) ?
+                Convert.ToInt32(value.PlazaId) : default(int?);
             inst.staffId = value.UserId;
             inst.jobNo = (!string.IsNullOrEmpty(value.JobId)) ? 
                 Convert.ToInt32(value.JobId) : default(int?);

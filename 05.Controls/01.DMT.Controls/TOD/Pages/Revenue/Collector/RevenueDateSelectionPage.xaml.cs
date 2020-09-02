@@ -158,25 +158,6 @@ namespace DMT.TOD.Pages.Revenue
 
         private void LoadPlazaGroups()
         {
-            // TODO: Remove later.
-            /*
-            cbPlazas.ItemsSource = null;
-
-            var plazaGroups = new List<PlazaGroup>();
-            var tsb = ops.TSB.GetCurrent().Value();
-            if (null != tsb)
-            {
-                plazaGroups = ops.TSB.GetTSBPlazaGroups(tsb).Value();
-            }
-
-            cbPlazas.ItemsSource = plazaGroups;
-
-            if (null != plazaGroups && plazaGroups.Count > 0)
-            {
-                cbPlazas.SelectedIndex = 0;
-            }
-            */
-
             cbPlazas.ItemsSource = null;
             cbPlazas.ItemsSource = _manager.PlazaGroups;
             if (null != _manager.PlazaGroups && _manager.PlazaGroups.Count > 0)
@@ -187,62 +168,34 @@ namespace DMT.TOD.Pages.Revenue
 
         private void RefreshLanes()
         {
-            // TODO: Remove later.
-            /*
-            if (null != _userShift)
+            if (null != _manager && null != _manager.UserShift)
             {
                 // get selected plaza group
-                var plazaGroup = cbPlazas.SelectedItem as PlazaGroup;
-
-                _revDT = _userShift.Begin.Date; // get date part from UserShift.Begin
-                txtRevDate.Text = _revDT.ToThaiDateTimeString("dd/MM/yyyy");
-
-                // get all lanes information.
-                var search = Search.Lanes.Attendances.ByUserShift.Create(
-                    _userShift, plazaGroup, DateTime.MinValue);
-
-                _laneActivities = ops.Lanes.GetAttendancesByUserShift(search).Value();
-                if (null == _laneActivities || _laneActivities.Count <= 0)
+                _manager.PlazaGroup = cbPlazas.SelectedItem as PlazaGroup;
+                txtRevDate.Text = _manager.UserShift.BeginDateString;
+                _manager.RefreshJobs();
+                if (null == _manager.Attendances || _manager.Attendances.Count <= 0)
                 {
                     // no data.
                     grid.Setup(null);
                 }
                 else
                 {
-                    grid.Setup(_laneActivities);
+                    grid.Setup(_manager.Attendances);
                 }
             }
-            else
-            {
-                //MessageBox.Show("ไม่พบกะของพนักงาน", "DMT - Tour of Duty");
-            }
-            */
         }
 
-        // TODO: Refactor Revenue Entry Here.
         public void Setup(User user)
         {
             LoadPlazaGroups();
 
             _manager.User = user;
-            if (null != _manager.User)
+            if (null != _manager && null != _manager.User)
             {
                 txtEntryDate.Text = _manager.EntryDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
                 _manager.Refresh();
             }
-            // TODO: Remove later.
-            /*
-            _user = user;
-            if (null != _user)
-            {
-                _entryDT = DateTime.Now;
-                txtEntryDate.Text = _entryDT.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
-                // Find user shift.
-                _userShift = ops.UserShifts.GetCurrent(_user).Value();
-                // Load related lane data.
-                RefreshLanes();
-            }
-            */
         }
     }
 }

@@ -324,6 +324,17 @@ namespace DMT.Services
             }
         }
 
+        public void RefreshJobs()
+        {
+            if (null != this.UserShift && null != this.PlazaGroup)
+            {
+                // get all lanes information.
+                var search = Search.Lanes.Attendances.ByUserShift.Create(
+                    this.UserShift, this.PlazaGroup, DateTime.MinValue);
+                this.Attendances = ops.Lanes.GetAttendancesByUserShift(search).Value();
+            }
+        }
+
         #endregion
 
         #region Public Properties
