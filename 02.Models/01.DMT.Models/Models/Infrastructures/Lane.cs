@@ -842,6 +842,44 @@ namespace DMT.Models
 				return result;
 			}
 		}
+		/// <summary>
+		/// Gets Plaza Lane.
+		/// </summary>
+		/// <param name="plazaId">The plaza Id.</param>
+		/// <param name="laneNo">The lane number.</param>
+		/// <returns>Returns match lane.</returns>
+		public static NDbResult<Lane> GetPlazaLane(string plazaId, int laneNo)
+		{
+			var result = new NDbResult<Lane>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * ";
+					cmd += "  FROM LaneView ";
+					cmd += " WHERE PlazaId = ? ";
+					cmd += "   AND LaneNo = ? ";
+
+					var ret = NQuery.Query<FKs>(cmd, plazaId, laneNo).FirstOrDefault();
+					var data = (null != ret) ? ret.ToModel() : null;
+					result.Success(data);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
+		}
 
 		#endregion
 	}

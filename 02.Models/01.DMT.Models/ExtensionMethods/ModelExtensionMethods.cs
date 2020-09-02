@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using DMT.Models;
+using NLib.Reflection;
 
 #endregion
 
@@ -171,11 +172,24 @@ namespace DMT.Models.ExtensionMethods
         {
             if (null == value) return null;
             var inst = new LaneAttendance();
-
-            //value.laneId;
-            //value.plazaId;
             //value.networkId;
+
+            // Gets Lane information.
+            if (value.plazaId.HasValue && value.laneId.HasValue)
+            {
+                var lane = Lane.GetPlazaLane(value.plazaId.Value.ToString(), value.laneId.Value);
+                if (null != lane)
+                {
+                    lane.AssignTo(inst);
+                }
+            }
+            else
+            {
+                inst.LaneNo = 0;
+            }
+            // Gets User information.
             inst.UserId = value.staffId;
+
             inst.JobId = (value.jobNo.HasValue) ? 
                 value.jobNo.Value.ToString() : string.Empty;
             inst.Begin = value.bojDateTime.Value();
