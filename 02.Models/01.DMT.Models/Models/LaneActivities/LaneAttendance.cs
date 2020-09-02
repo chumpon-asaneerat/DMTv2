@@ -1276,15 +1276,112 @@ namespace DMT.Models
 			}
 		}
 
+		public static NDbResult<LaneAttendance> IsExists(LaneAttendance value)
+		{
+			var result = new NDbResult<LaneAttendance>();
+
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			if (null == value)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try 
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * ";
+					cmd += "  FROM LaneAttendanceView ";
+					cmd += " WHERE TSBId = ? ";
+					cmd += "   AND PlazaGroupId = ?";
+					cmd += "   AND PlazaId = ?";
+					cmd += "   AND LaneId = ?";
+					cmd += "   AND UserId = ?";
+					cmd += "   AND Begin = ?";
+					cmd += "   AND JobId = ?";
+					var ret = NQuery.Query<FKs>(cmd,
+						value.TSBId, value.PlazaGroupId, value.PlazaId, 
+						value.LaneId, value.UserId, value.JobId).FirstOrDefault();
+					var data = (null != ret) ? ret.ToModel() : null;
+					result.Success(data);
+				}
+				catch (Exception ex) 
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
+		}
 
 		public static NDbResult SaveLaneAttendance(LaneAttendance value)
 		{
-			return new NDbResult();
+			var result = new NDbResult();
+
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			if (null == value)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
 		}
 
 		public static NDbResult SaveLaneAttendances(List<LaneAttendance> values)
 		{
-			return new NDbResult();
+			var result = new NDbResult();
+
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			if (null == values)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
 		}
 
 		#endregion
