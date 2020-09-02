@@ -165,7 +165,6 @@ namespace DMT.Services
                 {
                     ret = new NRestResult<List<Plaza>>();
                     ret.ParameterIsNull();
-                    ret.data = new List<Plaza>();
                 }
                 return ret;
             }
@@ -189,7 +188,6 @@ namespace DMT.Services
                 {
                     ret = new NRestResult<Plaza>();
                     ret.ParameterIsNull();
-                    ret.data = null;
                 }
                 return ret;
             }
@@ -218,7 +216,6 @@ namespace DMT.Services
                 {
                     ret = new NRestResult<List<PlazaGroup>>();
                     ret.ParameterIsNull();
-                    ret.data = new List<PlazaGroup>();
                 }
                 return ret;
             }
@@ -243,7 +240,6 @@ namespace DMT.Services
                 {
                     ret = new NRestResult<PlazaGroup>();
                     ret.ParameterIsNull();
-                    ret.data = null;
                 }
                 return ret;
             }
@@ -272,7 +268,6 @@ namespace DMT.Services
                 {
                     ret = new NRestResult<List<Lane>>();
                     ret.ParameterIsNull();
-                    ret.data = new List<Lane>();
                 }
                 return ret;
             }
@@ -297,7 +292,30 @@ namespace DMT.Services
                 {
                     ret = new NRestResult<List<Lane>>();
                     ret.ParameterIsNull();
-                    ret.data = new List<Lane>();
+                }
+                return ret;
+            }
+
+            public NRestResult<Lane> GetPlazaLane(Search.Plaza.LaneByNo value)
+            {
+                NRestResult<Lane> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<Lane>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                if (null != value)
+                {
+                    ret = client.Execute<Lane>(
+                        RouteConsts.TSB.GetPlazaLane.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<Lane>();
+                    ret.ParameterIsNull();
                 }
                 return ret;
             }
@@ -322,7 +340,6 @@ namespace DMT.Services
                 {
                     ret = new NRestResult<List<Lane>>();
                     ret.ParameterIsNull();
-                    ret.data = new List<Lane>();
                 }
                 return ret;
             }
@@ -346,7 +363,6 @@ namespace DMT.Services
                 {
                     ret = new NRestResult<Lane>();
                     ret.ParameterIsNull();
-                    ret.data = null;
                 }
                 return ret;
             }

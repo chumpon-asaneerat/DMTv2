@@ -12,6 +12,7 @@ using SQLiteNetExtensions.Extensions;
 using Newtonsoft.Json;
 using NLib;
 using NLib.Reflection;
+using System.Security.Permissions;
 
 #endregion
 
@@ -222,6 +223,23 @@ namespace DMT.Models
                         ret.Lane = lane;
                         return ret;
                     }
+                }
+            }
+        }
+
+        public static class Plaza
+        {
+            public class LaneByNo : NSearch<LaneByNo>
+            {
+                public string PlazaId { get; set; }
+                public int LaneNo { get; set; }
+
+                public static LaneByNo Create(string plazaId, int laneNo)
+                {
+                    var ret = new LaneByNo();
+                    ret.PlazaId = plazaId;
+                    ret.LaneNo = laneNo;
+                    return ret;
                 }
             }
         }

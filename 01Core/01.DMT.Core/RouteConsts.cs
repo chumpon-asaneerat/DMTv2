@@ -91,6 +91,12 @@ namespace DMT
                 public const string Url = TSB.Url + @"/" + Name;
             }
 
+            public static class GetPlazaLane
+            {
+                public const string Name = "GetPlazaLane";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
+
             public static class GetPlazaGroupLanes
             {
                 public const string Name = "GetPlazaGroupLanes";

@@ -186,6 +186,23 @@ namespace DMT.Services
         }
 
         [HttpPost]
+        [ActionName(RouteConsts.TSB.GetPlazaLane.Name)]
+        public NDbResult<Lane> GetPlazaLane([FromBody] Search.Plaza.LaneByNo value)
+        {
+            NDbResult<Lane> result;
+            if (null == value)
+            {
+                result = new NDbResult<Lane>();
+                result.ParameterIsNull();
+            }
+            else
+            {
+                result = Lane.GetPlazaLane(value.PlazaId, value.LaneNo);
+            }
+            return result;
+        }
+
+        [HttpPost]
         [ActionName(RouteConsts.TSB.GetPlazaGroupLanes.Name)]
         public NDbResult<List<Lane>> GetPlazaGroupLanes([FromBody] PlazaGroup value)
         {

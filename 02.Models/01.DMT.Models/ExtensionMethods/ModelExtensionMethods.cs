@@ -171,36 +171,19 @@ namespace DMT.Models.ExtensionMethods
         public static LaneAttendance ToLocal(this SCWJob value)
         {
             if (null == value) return null;
+
             var inst = new LaneAttendance();
             //value.networkId;
 
-            if (value.plazaId.HasValue && value.laneId.HasValue)
+            if (value.plazaId.HasValue)
             {
-                // Gets Lane information.
                 inst.PlazaId = value.plazaId.Value.ToString();
-                inst.LaneNo = value.laneId.Value;
-                var lane = Lane.GetPlazaLane(
-                    value.plazaId.Value.ToString(), value.laneId.Value).Value();
-                if (null != lane)
-                {
-                    lane.AssignTo(inst);
-                }
             }
-            else
+            if (value.laneId.HasValue)
             {
-                inst.LaneNo = 0;
+                inst.LaneNo = value.laneId.Value;
             }
             inst.UserId = value.staffId;
-            if (!string.IsNullOrEmpty(value.staffId))
-            {
-                // Gets User information.
-                var user = User.GetUser(value.staffId);
-                if (null != user)
-                {
-                    inst.UserId = value.staffId;
-                }
-            }
-
             inst.JobId = (value.jobNo.HasValue) ? 
                 value.jobNo.Value.ToString() : string.Empty;
             inst.Begin = value.bojDateTime.Value();

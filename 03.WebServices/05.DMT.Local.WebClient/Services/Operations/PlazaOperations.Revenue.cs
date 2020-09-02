@@ -10,6 +10,7 @@ using RestSharp;
 using DMT.Models;
 using System.Windows.Forms;
 using DMT.Models.ExtensionMethods;
+using NLib.Reflection;
 
 #endregion
 
@@ -277,10 +278,6 @@ namespace DMT.Services
             // 
 
 
-
-
-
-
             // Sync JobList to LaneAttendance
             if (null == this.User) return;
             // required networkId, plazaId, userId
@@ -291,7 +288,14 @@ namespace DMT.Services
                 ret.list.ForEach(inst =>
                 {
                     var attend = inst.ToLocal();
-                    //ops.TSB.GetPlazaLanes();
+                    var lane = ops.TSB.GetPlazaLane(
+                        Search.Plaza.LaneByNo.Create(attend.PlazaId, attend.LaneNo)).Value();
+                    if (null != lane) lane.AssignTo(attend);
+
+                    var user = ops.Users.GetById(
+                        Search.Users.ById.Create(attend.UserId, "CTC", "TC")).Value();
+                    if (null != user) user.AssignTo(attend);
+
                     if (null != attend) attends.Add(attend);
                 });
             }
