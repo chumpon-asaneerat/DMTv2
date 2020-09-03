@@ -55,8 +55,8 @@ namespace DMT.Controls.Header
             var shift = ret.Value();
             if (null != shift)
             {
-                txtShiftDate.Text = shift.Begin.ToThaiDateString();
-                txtShiftTime.Text = shift.Begin.ToThaiTimeString();
+                txtShiftDate.Text = shift.BeginDateString;
+                txtShiftTime.Text = shift.BeginTimeString;
                 txtShiftId.Text = shift.ShiftNameTH;
             }
             else

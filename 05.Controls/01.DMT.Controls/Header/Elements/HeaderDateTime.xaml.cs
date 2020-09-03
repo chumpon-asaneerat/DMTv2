@@ -86,8 +86,8 @@ namespace DMT.Controls.Header
         private void UpdateUI()
         {
             DateTime dt = DateTime.Now;
-            txtCurrentDate.Text = dt.ToThaiDateString();
-            txtCurrentTime.Text = dt.ToThaiTimeString();
+            txtCurrentDate.Text = dt.ToThaiDateTimeString("dd/MM/yyyy");
+            txtCurrentTime.Text = dt.ToThaiDateTimeString("HH:mm:ss");
         }
 
         void timer_Tick(object sender, EventArgs e)

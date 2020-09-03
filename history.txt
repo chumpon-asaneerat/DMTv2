@@ -42,8 +42,9 @@ Update 2020-09-03 #3
 Update 2020-09-03 #2
 - 
 
+[commited]
 Update 2020-09-03 #1
-- 
+- Update Header controls datetime format.
 
 --------------------------------------------------------------------------------------------
 [commited]
