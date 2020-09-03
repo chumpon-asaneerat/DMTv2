@@ -278,8 +278,10 @@ namespace DMT.Services
             // Sync JobList to LaneAttendance
             if (null == this.User) return;
 
+
             // Gets Job List from WS.
-            var ret = server.Masters.GetJobList(31, 3101, this.User.UserId);
+            var ret = server.TOD.GetJobList(31, 3101, this.User.UserId);
+
             var attends = new List<LaneAttendance>();
             if (null != ret && null != ret.list)
             {
