@@ -20,7 +20,9 @@ namespace DMT
         public static JsonSerializerSettings DefaultSettings = new JsonSerializerSettings()
         {
             DateFormatHandling = DateFormatHandling.IsoDateFormat,
-            DateTimeZoneHandling = DateTimeZoneHandling.Local
+            DateTimeZoneHandling = DateTimeZoneHandling.Local,
+            DateParseHandling = DateParseHandling.DateTimeOffset,
+            DateFormatString = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.fff'K'"
         };
 
         /// <summary>
@@ -87,6 +89,7 @@ namespace DMT
                     serializer.Formatting = (minimized) ? Formatting.None : Formatting.Indented;
                     serializer.DateFormatHandling = DateFormatHandling.IsoDateFormat;
                     serializer.DateTimeZoneHandling = DateTimeZoneHandling.Local;
+                    serializer.DateFormatString = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.fff'K'";
                     serializer.Serialize(file, value);
                 }
             }
@@ -116,6 +119,7 @@ namespace DMT
                     //serializer.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                     serializer.DateFormatHandling = DateFormatHandling.IsoDateFormat;
                     serializer.DateTimeZoneHandling = DateTimeZoneHandling.Local;
+                    serializer.DateFormatString = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.fff'K'";
                     result = (T)serializer.Deserialize(file, typeof(T));
                 }
             }
