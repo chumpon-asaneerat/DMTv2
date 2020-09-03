@@ -294,8 +294,6 @@ namespace DMT.Services
         public void Refresh()
         {
             if (null == this.User) return;
-            // Sync JobList to LaneAttendance
-            SyncJobList();
             // Find user shift.
             this.UserShift = ops.UserShifts.GetCurrent(this.User).Value();
             if (null != UserShift)
@@ -308,6 +306,9 @@ namespace DMT.Services
         {
             if (null != this.UserShift && null != this.PlazaGroup)
             {
+                // Sync JobList to LaneAttendance
+                SyncJobList();
+
                 // get all lanes information.
                 var search = Search.Lanes.Attendances.ByUserShift.Create(
                     this.UserShift, this.PlazaGroup, DateTime.MinValue);
@@ -356,7 +357,7 @@ namespace DMT.Services
             }
         }
 
-        public void BuildRevenueEntry()
+        public void NewRevenueEntry()
         {
             if (null == this.UserShift || null == this.PlazaGroup)
             {
@@ -367,7 +368,7 @@ namespace DMT.Services
             var userCredit = ops.Credits.GetActiveUserCreditBalanceById(search).Value();
 
             this.RevenueEntry = new Models.RevenueEntry();
-            
+
             if (null != userCredit)
             {
                 this.RevenueEntry.BagNo = userCredit.BagNo;
@@ -377,6 +378,14 @@ namespace DMT.Services
             {
                 this.RevenueEntry.BagNo = string.Empty;
                 this.RevenueEntry.BeltNo = string.Empty;
+            }
+        }
+
+        public void BuildRevenueEntry()
+        {
+            if (null == this.UserShift || null == this.PlazaGroup || null == this.RevenueEntry)
+            {
+                return;
             }
 
             CreateLaneList();
@@ -446,6 +455,11 @@ namespace DMT.Services
                     ops.Lanes.SaveAttendance(lane);
                 });
             }
+
+            // TODO: Refactor Test Send Declare.
+            SCWDeclare declare = this.RevenueEntry.ToServer();
+            server.TOD.Declare(declare);
+
             // get all lanes information.
             var search = Search.Lanes.Attendances.ByUserShift.Create(
                 this.UserShift, null, DateTime.MinValue);

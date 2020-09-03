@@ -73,6 +73,8 @@ namespace DMT.TOD.Pages.Revenue
             }
             else 
             {
+                _manager.NewRevenueEntry();
+
                 txtRevDate.Text = _manager.RevenueDate.ToThaiDateTimeString("dd/MM/yyyy");
                 txtPlazaName.Text = _manager.PlazaGroup.PlazaGroupNameTH;
 

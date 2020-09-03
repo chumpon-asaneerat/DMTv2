@@ -197,7 +197,7 @@ namespace DMT.Models.ExtensionMethods
             if (null == value) return null;
             var inst = new SCWJob();
 
-            //inst.networkId;
+            //inst.networkId = 31;
             inst.laneId = value.LaneNo;
             inst.plazaId = (!string.IsNullOrEmpty(value.PlazaId)) ?
                 Convert.ToInt32(value.PlazaId) : default(int?);
@@ -206,6 +206,50 @@ namespace DMT.Models.ExtensionMethods
                 Convert.ToInt32(value.JobId) : default(int?);
             inst.bojDateTime = value.Begin.Value();
             inst.eojDateTime = value.End.Value();
+
+            return inst;
+        }
+
+        public static SCWDeclare ToServer(this RevenueEntry value)
+        {
+            if (null == value) return null;
+            var inst = new SCWDeclare();
+            inst.networkId = 31;
+            //inst.plazaId = value.PlazaGroupId;
+            inst.staffId = value.UserId;
+
+            inst.bagNumber = value.BagNo;
+            inst.safetyBeltNumber = value.BeltNo;
+
+            inst.cashTotalAmount = value.TrafficBHTTotal;
+
+            inst.couponTotalAmount = 0;
+
+            inst.couponBookTotalAmount = 0;
+
+            inst.cardAllowTotalAmount = 0;
+
+            inst.qrcodeTotalAmount = 0;
+            inst.emvTotalAmount = 0;
+            inst.cashRemark = value.TrafficRemark;
+
+            inst.otherTotalAmount = value.OtherBHTTotal;
+            inst.otherRemark = value.OtherRemark;
+
+            inst.chiefId = value.SupervisorId;
+            inst.chiefName = value.SupervisorNameTH;
+            //inst.shiftTypeId = ?
+            inst.declareDateTime = value.EntryDate;
+            inst.attendanceDateTime = value.ShiftBegin;
+            inst.departureDateTime = value.ShiftEnd;
+            inst.operationDate = value.RevenueDate;
+            inst.jobList = new List<SCWJobList>();
+            inst.cashList = new List<object>();
+            inst.couponList = new List<object>();
+            inst.couponBookList = new List<object>();
+            inst.cardAllowList = new List<object>();
+            inst.qrcodeList = new List<object>();
+            inst.emvList = new List<object>();
 
             return inst;
         }
