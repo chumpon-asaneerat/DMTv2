@@ -61,7 +61,7 @@ namespace DMT.TOD.Pages.Revenue
             _manager.LoadRevenueShift();
             if (null != _manager.RevenueShift)
             {
-                if (_manager.HasRevenuEntry)
+                if (_manager.HasRevenuShift)
                 {
                     DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
                     msg.Owner = Application.Current.MainWindow;

@@ -332,6 +332,34 @@ namespace DMT.Services
             }
         }
 
+        private void CreateLaneList()
+        {
+            // create lane list.
+            this.Lanes = new List<int>();
+            if (null != this.Attendances)
+            {
+                this.Attendances.ForEach(laneAct =>
+                {
+                    if (!this.Lanes.Contains(laneAct.LaneNo))
+                    {
+                        // add to list
+                        this.Lanes.Add(laneAct.LaneNo);
+                    }
+                });
+            }
+            // Build Lane List String.
+            int iCnt = 0;
+            int iMax = this.Lanes.Count;
+            string laneList = string.Empty;
+            this.Lanes.ForEach(laneNo =>
+            {
+                laneList += laneNo.ToString();
+                if (iCnt < iMax - 1) laneList += ", ";
+                iCnt++;
+            });
+            this.LaneList = laneList;
+        }
+
         public void LoadRevenueShift()
         {
             this.IsNewRevenueShift = false;
@@ -345,7 +373,7 @@ namespace DMT.Services
             }
         }
 
-        public void LoadUserCredit()
+        public void BuildRevenueEntry()
         {
             if (null == this.UserShift || null == this.PlazaGroup)
             {
@@ -354,7 +382,9 @@ namespace DMT.Services
             var search = Search.UserCredits.GetActiveById.Create(
                 this.UserShift.UserId, this.PlazaGroup.PlazaGroupId);
             var userCredit = ops.Credits.GetActiveUserCreditBalanceById(search).Value();
+
             this.RevenueEntry = new Models.RevenueEntry();
+            
             if (null != userCredit)
             {
                 this.RevenueEntry.BagNo = userCredit.BagNo;
@@ -365,8 +395,91 @@ namespace DMT.Services
                 this.RevenueEntry.BagNo = string.Empty;
                 this.RevenueEntry.BeltNo = string.Empty;
             }
-            // assigned plaza.
+
+            CreateLaneList();
+
+            // assigned plaza group.
             this.RevenueEntry.PlazaGroupId = this.PlazaGroup.PlazaGroupId;
+            // update object properties.
+            this.PlazaGroup.AssignTo(this.RevenueEntry); // assigned plaza group name (EN/TH)
+            this.UserShift.AssignTo(this.RevenueEntry); // assigned user full name (EN/TH)
+
+            // assigned date after sync object(s) to RevenueEntry.
+            this.RevenueEntry.EntryDate = this.EntryDate; // assigned Entry date.
+            this.RevenueEntry.RevenueDate = this.RevenueDate; // assigned Revenue date.
+            this.RevenueEntry.Lanes = this.LaneList.Trim();
+
+            // Find begin/end of revenue.
+            DateTime begin = DateTime.MinValue;
+            DateTime end = DateTime.MinValue;
+
+            if (begin == DateTime.MinValue)
+            {
+                begin = this.UserShift.Begin; // Begin time used start of shift.
+            }
+            if (end == DateTime.MinValue)
+            {
+                end = DateTime.Now; // End time used printed date
+            }
+
+            if (this.RevenueEntry.ShiftBegin == DateTime.MinValue)
+            {
+                this.RevenueEntry.ShiftBegin = begin;
+            }
+            if (this.RevenueEntry.ShiftEnd == DateTime.MinValue)
+            {
+                this.RevenueEntry.ShiftEnd = end;
+            }
+            // assign supervisor.
+            var sup = ops.Shifts.GetCurrent().Value();
+            if (null != sup)
+            {
+                this.RevenueEntry.SupervisorId = sup.UserId;
+                this.RevenueEntry.SupervisorNameEN = sup.FullNameEN;
+                this.RevenueEntry.SupervisorNameTH = sup.FullNameTH;
+            }
+        }
+
+        public bool SaveRevenueEntry()
+        {
+            if (null == this.RevenueEntry || null == this.UserShift)
+                return false;
+
+            // update save data
+            var revInst = ops.Revenue.SaveRevenue(this.RevenueEntry).Value();
+            string revId = (null != revInst) ? revInst.RevenueId : string.Empty;
+            if (null != this.RevenueShift)
+            {
+                // save revenue shift (for plaza)
+                var saveOpt = Search.Revenues.SaveRevenueShift.Create(this.RevenueShift,
+                    revId, this.RevenueDate);
+                ops.Revenue.SaveRevenueShift(saveOpt);
+            }
+            // sync key to lane attendance list.
+            if (null != this.Attendances)
+            {
+                this.Attendances.ForEach(lane =>
+                {
+                    lane.RevenueDate = this.RevenueDate;
+                    lane.RevenueId = revId;
+                    ops.Lanes.SaveAttendance(lane);
+                });
+            }
+            // get all lanes information.
+            var search = Search.Lanes.Attendances.ByUserShift.Create(
+                this.UserShift, null, DateTime.MinValue);
+            var existActivities = ops.Lanes.GetAttendancesByUserShift(search).Value();
+            if (null == existActivities || existActivities.Count == 0)
+            {
+                // no lane activitie in user shift.
+                ops.UserShifts.EndUserShift(this.UserShift); // End user job(shift).
+
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         #endregion
@@ -402,6 +515,21 @@ namespace DMT.Services
         /// </summary>
         public List<LaneAttendance> Attendances { get; internal set; }
         /// <summary>
+        /// Checks has lane attendance.
+        /// </summary>
+        public bool HasAttendance
+        {
+            get { return (null != Attendances && Attendances.Count > 0); }
+        }
+        /// <summary>
+        /// Gets Lane Number List.
+        /// </summary>
+        public List<int> Lanes { get; internal set; }
+        /// <summary>
+        /// Gets Lane List string.
+        /// </summary>
+        public string LaneList { get; internal set; }
+        /// <summary>
         /// Gets related user revenue's shift.
         /// </summary>
         public UserShiftRevenue RevenueShift { get; internal set; }
@@ -412,7 +540,7 @@ namespace DMT.Services
         /// <summary>
         /// Checks the current revenue shift is already has revenue entry.
         /// </summary>
-        public bool HasRevenuEntry
+        public bool HasRevenuShift
         {
             get
             {
@@ -434,6 +562,33 @@ namespace DMT.Services
         /// Gets related Revenue Entry.
         /// </summary>
         public RevenueEntry RevenueEntry { get; internal set; }
+        /// <summary>
+        /// Checks is New Revenue Entry.
+        /// </summary>
+        public bool IsNewRevenueEntry
+        {
+            get 
+            {
+                return (null == this.RevenueEntry ||
+                    this.RevenueEntry.RevenueId == string.Empty ||
+                    this.RevenueEntry.EntryDate == DateTime.MinValue ||
+                    this.RevenueEntry.RevenueDate == DateTime.MinValue);
+            }
+        }
+        /// <summary>
+        /// Checks all information to build report is loaded.
+        /// </summary>
+        public bool CanBuildReport
+        {
+            get
+            {
+                return (null != this.UserShift &&
+                    null != this.PlazaGroup &&
+                    null != this.RevenueShift &&
+                    null != this.Attendances &&
+                    null != this.RevenueEntry);
+            }
+        }
 
         #endregion
     }
