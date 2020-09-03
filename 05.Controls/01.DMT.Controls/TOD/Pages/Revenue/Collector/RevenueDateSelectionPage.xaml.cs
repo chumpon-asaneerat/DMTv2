@@ -77,68 +77,56 @@ namespace DMT.TOD.Pages.Revenue
             _manager.LoadRevenueShift();
             if (null != _manager.RevenueShift)
             {
-
+                if (_manager.HasRevenuEntry)
+                {
+                    DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                    msg.Owner = Application.Current.MainWindow;
+                    msg.Setup("กะของพนักงานนี้ ถูกป้อนรายได้แล้ว", "DMT - Tour of Duty");
+                    if (msg.ShowDialog() == true)
+                    {
+                        return;
+                    }
+                }
+                if (!_manager.HasIncompletedLanes)
+                {
+                    DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                    msg.Owner = Application.Current.MainWindow;
+                    msg.Setup("ไม่พบข้อมูลเลนที่ยังไม่ถูกป้อนรายได้", "DMT - Tour of Duty");
+                    if (msg.ShowDialog() == true)
+                    {
+                        return;
+                    }
+                }
             }
             else
             {
-
-            }
-            // TODO: Remove later.
-                /*
-
-                if (null != _plazaRevenue)
+                if (_manager.IsNewRevenueShift)
                 {
-                    if (_plazaRevenue.RevenueDate != DateTime.MinValue)
+                    DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                    msg.Owner = Application.Current.MainWindow;
+                    msg.Setup("ไม่สามารถนำส่งรายได้ เนื่องจากไม่พบข้อมูลการทำงาน", "DMT - Tour of Duty");
+                    if (msg.ShowDialog() == true)
                     {
-                        DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
-                        msg.Owner = Application.Current.MainWindow;
-                        msg.Setup("กะของพนักงานนี้ ถูกป้อนรายได้แล้ว", "DMT - Tour of Duty");
-                        if (msg.ShowDialog() == true)
-                        {
-                            return;
-                        }
-                    }
-                    if (null == _laneActivities || _laneActivities.Count <= 0)
-                    {
-                        DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
-                        msg.Owner = Application.Current.MainWindow;
-                        msg.Setup("ไม่พบข้อมูลเลนที่ยังไม่ถูกป้อนรายได้", "DMT - Tour of Duty");
-                        if (msg.ShowDialog() == true)
-                        {
-                            return;
-                        }
+                        //return;
                     }
                 }
                 else
                 {
-                    if (isNew)
+                    DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                    msg.Owner = Application.Current.MainWindow;
+                    msg.Setup("กะนี้ถูกจัดเก็บรายได้แล้ว.", "DMT - Tour of Duty");
+                    if (msg.ShowDialog() == true)
                     {
-                        DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
-                        msg.Owner = Application.Current.MainWindow;
-                        msg.Setup("ไม่สามารถนำส่งรายได้ เนื่องจากไม่พบข้อมูลการทำงาน", "DMT - Tour of Duty");
-                        if (msg.ShowDialog() == true)
-                        {
-                            //return;
-                        }
+                        //return;
                     }
-                    else
-                    {
-                        DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
-                        msg.Owner = Application.Current.MainWindow;
-                        msg.Setup("กะนี้ถูกจัดเก็บรายได้แล้ว.", "DMT - Tour of Duty");
-                        if (msg.ShowDialog() == true)
-                        {
-                            //return;
-                        }
-                    }
-                    return;
                 }
+                return;
+            }
 
-                page.Setup(_user, _userShift, plazaGroup, _plazaRevenue, 
-                    _laneActivities, _entryDT, _revDT);
+            page.Setup(_user, _userShift, plazaGroup, _plazaRevenue,
+                _laneActivities, _entryDT, _revDT);
 
-                PageContentManager.Instance.Current = page;
-                */
+            PageContentManager.Instance.Current = page;
         }
 
         #endregion

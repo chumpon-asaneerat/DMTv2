@@ -382,6 +382,28 @@ namespace DMT.Services
         /// </summary>
         public bool IsNewRevenueShift { get; internal set; }
         /// <summary>
+        /// Checks the current revenue shift is already has revenue entry.
+        /// </summary>
+        public bool HasRevenuEntry
+        {
+            get 
+            { 
+                return (null != this.RevenueShift && 
+                    this.RevenueShift.RevenueDate != DateTime.MinValue); 
+            }
+        }
+        /// <summary>
+        /// Checks has one or more lane attendance record that not enter revenue entry,
+        /// </summary>
+        public bool HasIncompletedLanes
+        {
+            get
+            {
+                return (null != this.Attendances && this.Attendances.Count > 0);
+            }
+        }
+
+        /// <summary>
         /// Gets related LaneAttendance list.
         /// </summary>
         public List<LaneAttendance> Attendances { get; internal set; }
