@@ -117,6 +117,7 @@ namespace DMT.Models.ExtensionMethods
         public static TAServerCouponTransaction ToServer(this TSBCouponTransaction value)
         {
             if (null == value) return null;
+
             var inst = new TAServerCouponTransaction();
 
             inst.TransactionDate = value.TransactionDate.Value();
@@ -210,45 +211,78 @@ namespace DMT.Models.ExtensionMethods
             return inst;
         }
 
-        public static SCWDeclare ToServer(this RevenueEntry value)
+        public static SCWDeclare ToServer(this RevenueEntry value,
+            List<MCurrency> currencies, List<MCoupon> coupons, 
+            List<LaneAttendance> jobs)
         {
             if (null == value) return null;
+            if (null == currencies) return null;
+            if (null == coupons) return null;
+
             var inst = new SCWDeclare();
             inst.networkId = 31;
             //inst.plazaId = value.PlazaGroupId;
             inst.staffId = value.UserId;
 
+            inst.chiefId = value.SupervisorId;
+            inst.chiefName = value.SupervisorNameTH;
+
             inst.bagNumber = value.BagNo;
             inst.safetyBeltNumber = value.BeltNo;
 
-            inst.cashTotalAmount = value.TrafficBHTTotal;
-
-            inst.couponTotalAmount = 0;
-
-            inst.couponBookTotalAmount = 0;
-
-            inst.cardAllowTotalAmount = 0;
-
-            inst.qrcodeTotalAmount = 0;
-            inst.emvTotalAmount = 0;
-            inst.cashRemark = value.TrafficRemark;
-
-            inst.otherTotalAmount = value.OtherBHTTotal;
-            inst.otherRemark = value.OtherRemark;
-
-            inst.chiefId = value.SupervisorId;
-            inst.chiefName = value.SupervisorNameTH;
             //inst.shiftTypeId = ?
             inst.declareDateTime = value.EntryDate;
             inst.attendanceDateTime = value.ShiftBegin;
             inst.departureDateTime = value.ShiftEnd;
             inst.operationDate = value.RevenueDate;
-            inst.jobList = new List<SCWJobList>();
+            // Traffic
+            inst.cashTotalAmount = value.TrafficBHTTotal;
             inst.cashList = new List<SCWDeclareCash>();
+            if (inst.cashTotalAmount > 0)
+            {
+
+            }
+            // Coupon Sold
+            inst.couponTotalAmount = value.CouponSoldBHTTotal;
             inst.couponList = new List<SCWDeclareCoupon>();
+            if (inst.couponTotalAmount > 0)
+            {
+
+            }
+            // Coupon Usage
+            inst.couponBookTotalAmount = value.CouponUsageBHT30 +
+            value.CouponUsageBHT35 + 
+            value.CouponUsageBHT75 + 
+            value.CouponUsageBHT80;
             inst.couponBookList = new List<SCWDeclareCouponBook>();
+            if (inst.couponBookTotalAmount > 0)
+            {
+
+            }
+            // Free Pass.
+            inst.cardAllowTotalAmount = value.FreePassUsageClassA + 
+                value.FreePassUsageOther;
             inst.cardAllowList = new List<SCWDeclareFreePass>();
+            if (inst.cardAllowTotalAmount > 0)
+            {
+
+            }
+
+            inst.cashRemark = value.TrafficRemark;
+
+            inst.otherTotalAmount = value.OtherBHTTotal;
+            inst.otherRemark = value.OtherRemark;
+
+            inst.jobList = new List<SCWJobList>();
+            if (null != jobs)
+            {
+
+            }
+
+            inst.qrcodeTotalAmount = 0;
             inst.qrcodeList = new List<SCWDeclareQRCode>();
+
+            inst.emvTotalAmount = 0;
             inst.emvList = new List<SCWDeclareEMV>();
 
             return inst;
