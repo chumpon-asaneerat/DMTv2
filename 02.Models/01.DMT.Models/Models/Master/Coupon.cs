@@ -41,6 +41,86 @@ namespace DMT.Models
 
 		#region Public Properties
 
+		/// <summary>
+		/// Gets or sets couponId.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets couponId.")]
+		[PrimaryKey]
+		[PeropertyMapName("couponId")]
+		public int couponId { get; set; }
+		/// <summary>
+		/// Gets or sets couponValue.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets couponValue.")]
+		[PeropertyMapName("couponValue")]
+		public decimal couponValue { get; set; }
+
+		/// <summary>
+		/// Gets or sets abbreviation.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets abbreviation.")]
+		[PeropertyMapName("abbreviation")]
+		public string abbreviation { get; set; }
+		/// <summary>
+		/// Gets or sets description.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets description.")]
+		[PeropertyMapName("description")]
+		public string description { get; set; }
+
+		#endregion
+
+		#region Static Methods
+
+		/// <summary>
+		/// Gets Coupons.
+		/// </summary>
+		/// <param name="db">The database connection.</param>
+		/// <returns>Returns List of Coupon Master.</returns>
+		public static NDbResult<List<MCoupon>> GetCoupons(SQLiteConnection db)
+		{
+			var result = new NDbResult<List<MCoupon>>();
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * FROM MCoupon ";
+					result.Success();
+					var data = NQuery.Query<MCoupon>(cmd);
+					result.Success(data);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
+		}
+		/// <summary>
+		/// Gets Coupons.
+		/// </summary>
+		/// <returns>Returns List of Coupon Master.</returns>
+		public static NDbResult<List<MCoupon>> GetCoupons()
+		{
+			lock (sync)
+			{
+				SQLiteConnection db = Default;
+				return GetCoupons(db);
+			}
+		}
+
 		#endregion
 	}
 }
