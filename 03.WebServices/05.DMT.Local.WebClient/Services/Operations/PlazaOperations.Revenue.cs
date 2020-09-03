@@ -332,9 +332,17 @@ namespace DMT.Services
             }
         }
 
-        public void RefreshRevenueShift()
+        public void LoadRevenueShift()
         {
-
+            this.IsNewRevenueShift = false;
+            var revops = Search.Revenues.PlazaShift.Create(this.UserShift, this.PlazaGroup);
+            this.RevenueShift = ops.Revenue.GetRevenueShift(revops).Value();
+            if (null == this.RevenueShift)
+            {
+                // Create new if not found.
+                this.RevenueShift = ops.Revenue.CreateRevenueShift(revops).Value();
+                this.IsNewRevenueShift = true;
+            }
         }
 
         #endregion
@@ -369,6 +377,10 @@ namespace DMT.Services
         /// Gets related user revenue's shift.
         /// </summary>
         public UserShiftRevenue RevenueShift { get; internal set; }
+        /// <summary>
+        /// Gets is new Revenue Shift.
+        /// </summary>
+        public bool IsNewRevenueShift { get; internal set; }
         /// <summary>
         /// Gets related LaneAttendance list.
         /// </summary>
