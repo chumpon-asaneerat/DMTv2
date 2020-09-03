@@ -31,6 +31,9 @@ namespace DMT.TOD.Pages.Revenue
 
         #endregion
 
+        private RevenueEntryManager _manager = null;
+
+        /*
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
 
         private User _user = null;
@@ -43,7 +46,7 @@ namespace DMT.TOD.Pages.Revenue
         private DateTime _revDate = DateTime.MinValue;
 
         private Models.RevenueEntry _revenueEntry = null;
-
+        */
         #region Button Handlers
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
@@ -66,23 +69,13 @@ namespace DMT.TOD.Pages.Revenue
 
         #endregion
 
-        // TODO: Refactor Revenue Entry Here.
-        public void Setup(User user, UserShift userShift, PlazaGroup plazaGroup,
-            UserShiftRevenue plazaRevenue,
-            List<LaneAttendance> laneActivities,
-            DateTime entryDate, DateTime revDate)
+        public void Setup(RevenueEntryManager manager)
         {
-            _user = user;
-            _userShift = userShift;
-            _plazaGroup = plazaGroup;
-            _plazaRevenue = plazaRevenue;
-            _laneActivities = laneActivities;
+            _manager = manager;
 
-            if (null == _userShift || null == _plazaGroup || null == _plazaRevenue)
+            if (null == _manager || null == _manager.UserShift ||
+                null == _manager.PlazaGroup || null == _manager.RevenueShift)
             {
-                _entryDate = DateTime.MinValue;
-                _revDate = DateTime.MinValue;
-
                 txtRevDate.Text = string.Empty;
                 txtPlazaName.Text = string.Empty;
 
@@ -93,36 +86,17 @@ namespace DMT.TOD.Pages.Revenue
 
                 revEntry.DataContext = null;
             }
-            else
+            else 
             {
-                _entryDate = entryDate;
-                _revDate = revDate;
+                txtRevDate.Text = _manager.RevenueDate.ToThaiDateTimeString("dd/MM/yyyy");
+                txtPlazaName.Text = _manager.PlazaGroup.PlazaGroupNameTH;
 
-                txtRevDate.Text = _revDate.ToThaiDateTimeString("dd/MM/yyyy");
-                txtPlazaName.Text = _plazaGroup.PlazaGroupNameTH;
+                txtShiftName.Text = _manager.UserShift.ShiftNameTH;
 
-                txtShiftName.Text = _userShift.ShiftNameTH;
-                
-                txtUserId.Text = _userShift.UserId;
-                txtUserName.Text = _userShift.FullNameTH;
+                txtUserId.Text = _manager.UserShift.UserId;
+                txtUserName.Text = _manager.UserShift.FullNameTH;
 
-                var search = Search.UserCredits.GetActiveById.Create(_userShift.UserId, _plazaGroup.PlazaGroupId);
-                var userCredit = ops.Credits.GetActiveUserCreditBalanceById(search).Value();
-                _revenueEntry = new Models.RevenueEntry();
-                if (null != userCredit)
-                {
-                    _revenueEntry.BagNo = userCredit.BagNo;
-                    _revenueEntry.BeltNo = userCredit.BeltNo;
-                }
-                else
-                {
-                    _revenueEntry.BagNo = string.Empty;
-                    _revenueEntry.BeltNo = string.Empty;
-                }
-                // assigned plaza.
-                _revenueEntry.PlazaGroupId = _plazaGroup.PlazaGroupId;
-
-                revEntry.DataContext = _revenueEntry;
+                revEntry.DataContext = _manager.RevenueEntry;
             }
         }
     }

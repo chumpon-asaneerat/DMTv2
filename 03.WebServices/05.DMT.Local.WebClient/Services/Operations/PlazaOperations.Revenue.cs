@@ -226,7 +226,7 @@ namespace DMT.Services
         /// <summary>
         /// Constructor.
         /// </summary>
-        public RevenueEntryManager() : base() 
+        public RevenueEntryManager() : base()
         {
             this.EntryDate = DateTime.Now;
             LoadPlazaGroups();
@@ -345,6 +345,30 @@ namespace DMT.Services
             }
         }
 
+        public void LoadUserCredit()
+        {
+            if (null == this.UserShift || null == this.PlazaGroup)
+            {
+                return;
+            }
+            var search = Search.UserCredits.GetActiveById.Create(
+                this.UserShift.UserId, this.PlazaGroup.PlazaGroupId);
+            var userCredit = ops.Credits.GetActiveUserCreditBalanceById(search).Value();
+            this.RevenueEntry = new Models.RevenueEntry();
+            if (null != userCredit)
+            {
+                this.RevenueEntry.BagNo = userCredit.BagNo;
+                this.RevenueEntry.BeltNo = userCredit.BeltNo;
+            }
+            else
+            {
+                this.RevenueEntry.BagNo = string.Empty;
+                this.RevenueEntry.BeltNo = string.Empty;
+            }
+            // assigned plaza.
+            this.RevenueEntry.PlazaGroupId = this.PlazaGroup.PlazaGroupId;
+        }
+
         #endregion
 
         #region Public Properties
@@ -374,6 +398,10 @@ namespace DMT.Services
         /// </summary>
         public UserShift UserShift { get; internal set; }
         /// <summary>
+        /// Gets related LaneAttendance list.
+        /// </summary>
+        public List<LaneAttendance> Attendances { get; internal set; }
+        /// <summary>
         /// Gets related user revenue's shift.
         /// </summary>
         public UserShiftRevenue RevenueShift { get; internal set; }
@@ -386,10 +414,10 @@ namespace DMT.Services
         /// </summary>
         public bool HasRevenuEntry
         {
-            get 
-            { 
-                return (null != this.RevenueShift && 
-                    this.RevenueShift.RevenueDate != DateTime.MinValue); 
+            get
+            {
+                return (null != this.RevenueShift &&
+                    this.RevenueShift.RevenueDate != DateTime.MinValue);
             }
         }
         /// <summary>
@@ -402,11 +430,10 @@ namespace DMT.Services
                 return (null != this.Attendances && this.Attendances.Count > 0);
             }
         }
-
         /// <summary>
-        /// Gets related LaneAttendance list.
+        /// Gets related Revenue Entry.
         /// </summary>
-        public List<LaneAttendance> Attendances { get; internal set; }
+        public RevenueEntry RevenueEntry { get; internal set; }
 
         #endregion
     }

@@ -33,19 +33,6 @@ namespace DMT.TOD.Pages.Revenue
 
         private RevenueEntryManager _manager = new RevenueEntryManager();
 
-        // TODO: Remove later.
-        /*
-        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
-
-        private DateTime _entryDT = DateTime.MinValue;
-        private DateTime _revDT = DateTime.MinValue;
-
-        private User _user = null;
-        private UserShift _userShift = null;
-        private UserShiftRevenue _plazaRevenue = null;
-        private List<LaneAttendance> _laneActivities = null;
-        */
-
         #region Button Handlers
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
@@ -59,9 +46,6 @@ namespace DMT.TOD.Pages.Revenue
         {
             // Revenue Entry Page
             var page = new RevenueEntryPage();
-
-            //var plazaGroup = cbPlazas.SelectedItem as PlazaGroup;
-
             if (null == _manager || null == _manager.PlazaGroup)
             {
                 DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
@@ -123,8 +107,7 @@ namespace DMT.TOD.Pages.Revenue
                 return;
             }
 
-            page.Setup(_user, _userShift, plazaGroup, _plazaRevenue,
-                _laneActivities, _entryDT, _revDT);
+            page.Setup(_manager);
 
             PageContentManager.Instance.Current = page;
         }
