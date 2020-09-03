@@ -22,7 +22,8 @@ namespace DMT
             DateFormatHandling = DateFormatHandling.IsoDateFormat,
             DateTimeZoneHandling = DateTimeZoneHandling.Local,
             DateParseHandling = DateParseHandling.DateTimeOffset,
-            DateFormatString = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.fff'K'"
+            //DateFormatString = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.fff'K'"
+            DateFormatString = "yyyy-MM-ddTHH:mm:ss.fffK"
         };
 
         /// <summary>

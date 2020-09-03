@@ -103,7 +103,7 @@ namespace DMT.Services
                     client.Authenticator = new HttpBasicAuthenticator(username, password);
                 }
                 //client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
-                client.UseNewtonsoftJson();
+                client.UseNewtonsoftJson(NJson.DefaultSettings);
                 var request = new RestRequest(actionUrl, Method.POST);
                 request.RequestFormat = DataFormat.Json;
                 if (null != pObj)
@@ -184,7 +184,7 @@ namespace DMT.Services
                     client.Authenticator = new HttpBasicAuthenticator(username, password);
                 }
                 //client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
-                client.UseNewtonsoftJson();
+                client.UseNewtonsoftJson(NJson.DefaultSettings);
                 var request = new RestRequest(actionUrl, Method.POST);
                 request.RequestFormat = DataFormat.Json;
                 if (null != pObj)
@@ -262,7 +262,7 @@ namespace DMT.Services
                     client.Authenticator = new HttpBasicAuthenticator(username, password);
                 }
                 //client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
-                client.UseNewtonsoftJson();
+                client.UseNewtonsoftJson(NJson.DefaultSettings);
                 var request = new RestRequest(actionUrl, Method.POST);
                 request.RequestFormat = DataFormat.Json;
                 if (null != pObj)
@@ -326,7 +326,7 @@ namespace DMT.Services
                 }
 
                 //client.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
-                client.UseNewtonsoftJson();
+                client.UseNewtonsoftJson(NJson.DefaultSettings);
                 var request = new RestRequest(actionUrl, Method.POST);
                 request.RequestFormat = DataFormat.Json;
                 if (null != pObj)
