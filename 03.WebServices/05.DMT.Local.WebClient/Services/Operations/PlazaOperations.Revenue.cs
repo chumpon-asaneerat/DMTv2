@@ -12,6 +12,8 @@ using System.Windows.Forms;
 using DMT.Models.ExtensionMethods;
 using NLib.Reflection;
 using System.ComponentModel;
+using System.Reflection;
+using NLib;
 
 #endregion
 
@@ -445,6 +447,8 @@ namespace DMT.Services
             if (null == this.RevenueEntry || null == this.UserShift)
                 return false;
 
+            MethodBase med = MethodBase.GetCurrentMethod();
+
             // update save data
             var revInst = ops.Revenue.SaveRevenue(this.RevenueEntry).Value();
             string revId = (null != revInst) ? revInst.RevenueId : string.Empty;
@@ -475,7 +479,13 @@ namespace DMT.Services
             SCWDeclare declare = this.RevenueEntry.ToServer(currencies, coupons, 
                 this.Attendances, this.PlazaIds[0]);
 
-            server.TOD.Declare(declare);
+            var ret = server.TOD.Declare(declare);
+            if (null != ret)
+            {
+                // write log.
+                med.Info(string.Format("declare - code: {0}, msg: {1}", 
+                    ret.code, ret.message));
+            }
 
             // get all lanes information.
             var search = Search.Lanes.Attendances.ByUserShift.Create(

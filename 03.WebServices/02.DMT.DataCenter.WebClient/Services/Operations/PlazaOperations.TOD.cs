@@ -97,6 +97,8 @@ namespace DMT.Services
                 if (null == client)
                 {
                     ret = new SCWStatus();
+                    ret.code = "NULL_CONN";
+                    ret.message = "Client connection is null.";
                     return ret;
                 }
 

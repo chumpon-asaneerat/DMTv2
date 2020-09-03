@@ -1316,6 +1316,18 @@ namespace DMT.Models
 					if (null != data)
 					{
 						value.PKId = data.PKId; // exists so assigned key.
+						if (string.IsNullOrEmpty(value.RevenueId) &&
+							!string.IsNullOrEmpty(data.RevenueId))
+						{
+							// set revenue id
+							value.RevenueId = data.RevenueId;
+						}
+						if (value.RevenueDate == DateTime.MinValue &&
+							data.RevenueDate != DateTime.MinValue)
+						{
+							// set revenue date
+							value.RevenueDate = data.RevenueDate;
+						}
 					}
 					result = LaneAttendance.Save(value);
 				}
