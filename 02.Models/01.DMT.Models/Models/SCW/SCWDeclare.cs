@@ -10,6 +10,36 @@ using System.Threading.Tasks;
 
 namespace DMT.Models
 {
+    public class SCWDeclareCash
+    {
+
+    }
+
+    public class SCWDeclareCoupon
+    {
+
+    }
+
+    public class SCWDeclareCouponBook
+    {
+
+    }
+
+    public class SCWDeclareFreePass
+    {
+
+    }
+
+    public class SCWDeclareQRCode
+    {
+
+    }
+
+    public class SCWDeclareEMV
+    {
+
+    }
+
     public class SCWDeclare
     {
         public int? networkId { get; set; }
@@ -39,12 +69,12 @@ namespace DMT.Models
         public List<SCWJobList> jobList { get; set; }
 
         //TODO: Create Type for each list.
-        public List<object> cashList { get; set; }
-        public List<object> couponList { get; set; }
-        public List<object> couponBookList { get; set; }
-        public List<object> cardAllowList { get; set; }
-        public List<object> qrcodeList { get; set; }
-        public List<object> emvList { get; set; }
+        public List<SCWDeclareCash> cashList { get; set; }
+        public List<SCWDeclareCoupon> couponList { get; set; }
+        public List<SCWDeclareCouponBook> couponBookList { get; set; }
+        public List<SCWDeclareFreePass> cardAllowList { get; set; }
+        public List<SCWDeclareQRCode> qrcodeList { get; set; }
+        public List<SCWDeclareEMV> emvList { get; set; }
     }
 }
 

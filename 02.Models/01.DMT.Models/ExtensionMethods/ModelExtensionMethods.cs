@@ -244,12 +244,12 @@ namespace DMT.Models.ExtensionMethods
             inst.departureDateTime = value.ShiftEnd;
             inst.operationDate = value.RevenueDate;
             inst.jobList = new List<SCWJobList>();
-            inst.cashList = new List<object>();
-            inst.couponList = new List<object>();
-            inst.couponBookList = new List<object>();
-            inst.cardAllowList = new List<object>();
-            inst.qrcodeList = new List<object>();
-            inst.emvList = new List<object>();
+            inst.cashList = new List<SCWDeclareCash>();
+            inst.couponList = new List<SCWDeclareCoupon>();
+            inst.couponBookList = new List<SCWDeclareCouponBook>();
+            inst.cardAllowList = new List<SCWDeclareFreePass>();
+            inst.qrcodeList = new List<SCWDeclareQRCode>();
+            inst.emvList = new List<SCWDeclareEMV>();
 
             return inst;
         }
