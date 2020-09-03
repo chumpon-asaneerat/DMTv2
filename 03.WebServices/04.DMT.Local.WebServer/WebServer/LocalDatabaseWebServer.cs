@@ -89,6 +89,30 @@ namespace DMT.Services
 
         #endregion
 
+        #region Private Methods
+
+        private void InitOwinFirewall()
+        {
+
+        }
+
+        private void ReleaseOwinFirewall()
+        {
+
+        }
+
+        private void InitWebSocketFirewall()
+        {
+
+        }
+
+        private void ReleaseWebSocketFirewall()
+        {
+
+        }
+
+        #endregion
+
         #region Public Methods
 
         public void Start()
@@ -99,10 +123,12 @@ namespace DMT.Services
 
             if (null == server)
             {
+                InitOwinFirewall();
                 server = WebApp.Start<StartUp>(url: baseAddress);
             }
             if (null == wsserver)
             {
+                InitWebSocketFirewall();
                 try
                 {
                     wsserver = new WebSocketSharp.Server.WebSocketServer(wsAddress);
@@ -129,12 +155,14 @@ namespace DMT.Services
                 wsserver.Stop();
             }
             wsserver = null;
+            ReleaseWebSocketFirewall();
 
             if (null != server)
             {
                 server.Dispose();
             }
             server = null;
+            ReleaseOwinFirewall();
 
             // Shutdown database server.
             LocalDbServer.Instance.Shutdown();

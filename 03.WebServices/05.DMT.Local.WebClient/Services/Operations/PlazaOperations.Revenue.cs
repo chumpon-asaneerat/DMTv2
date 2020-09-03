@@ -229,6 +229,11 @@ namespace DMT.Services
         /// </summary>
         public RevenueEntryManager() : base()
         {
+            // TODO: Need user/password from config table or external file.
+
+            SCWServiceOperations.Instance.UserName = "DMTUSER";
+            SCWServiceOperations.Instance.Password = "DMTPASS";
+
             this.EntryDate = DateTime.Now;
             LoadPlazaGroups();
         }
