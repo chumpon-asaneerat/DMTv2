@@ -6,17 +6,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using NLib;
+using NLib.Design;
+using NLib.Reflection;
+
 #endregion
 
 namespace DMT.Models
 {
     public class SCWCurrency
     {
+        [PeropertyMapName("currencyId")]
         public int currencyId { get; set; }
+
+        [PeropertyMapName("currencyDenomId")]
         public int currencyDenomId { get; set; }
+        
+        [PeropertyMapName("abbreviation")]
         public string abbreviation { get; set; }
+        
+        [PeropertyMapName("description")]
         public string description { get; set; }
+        
+        [PeropertyMapName("denomValue")]
         public decimal denomValue { get; set; }
+        
+        [PeropertyMapName("denomTypeId")]
         public int denomTypeId { get; set; }
     }
 

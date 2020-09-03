@@ -6,15 +6,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using NLib;
+using NLib.Design;
+using NLib.Reflection;
+
 #endregion
 
 namespace DMT.Models
 {
     public class SCWCoupon
     {
+        [PeropertyMapName("couponId")]
         public int? couponId { get; set; }
+
+        [PeropertyMapName("couponValue")]
         public decimal? couponValue { get; set; }
+
+        [PeropertyMapName("abbreviation")]
         public string abbreviation { get; set; }
+
+        [PeropertyMapName("description")]
         public string description { get; set; }
     }
 
