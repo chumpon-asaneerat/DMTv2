@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 using DMT.Models;
 using NLib.Reflection;
+using NLib.Utils;
 
 #endregion
 
@@ -211,6 +212,26 @@ namespace DMT.Models.ExtensionMethods
             return inst;
         }
 
+
+        public static SCWDeclareCash Create(this List<MCurrency> currencies, 
+            decimal value, int number)
+        {
+            if (null == currencies) return null;
+            if (number <= 0) return null;
+
+            var match = currencies.Find((obj) => { return obj.denomValue == value; });
+            if (null == match)
+                return null;
+
+            SCWDeclareCash inst = new SCWDeclareCash();
+            inst.currencyDenomId = match.currencyDenomId;
+            inst.currencyId = match.currencyId;
+            inst.denomValue = match.denomValue;
+            inst.number = number;
+            inst.total = inst.denomValue * number;
+            return inst;
+        }
+
         public static SCWDeclare ToServer(this RevenueEntry value,
             List<MCurrency> currencies, List<MCoupon> coupons, 
             List<LaneAttendance> jobs)
@@ -238,9 +259,27 @@ namespace DMT.Models.ExtensionMethods
             // Traffic
             inst.cashTotalAmount = value.TrafficBHTTotal;
             inst.cashList = new List<SCWDeclareCash>();
+
+            Action<List<SCWDeclareCash>, decimal, int> addToCashList = (list, bhtVal, num) => 
+            {
+                if (null == list) return;
+                var item = currencies.Create(bhtVal, num);
+                if (null == item) return;
+                list.Add(item);
+            };
             if (inst.cashTotalAmount > 0)
             {
-
+                addToCashList(inst.cashList, (decimal).25, value.TrafficST25);
+                addToCashList(inst.cashList, (decimal).5, value.TrafficST50);
+                addToCashList(inst.cashList, 1, value.TrafficBHT1);
+                addToCashList(inst.cashList, 2, value.TrafficBHT2);
+                addToCashList(inst.cashList, 5, value.TrafficBHT5);
+                addToCashList(inst.cashList, 10, value.TrafficBHT10);
+                addToCashList(inst.cashList, 20, value.TrafficBHT20);
+                addToCashList(inst.cashList, 50, value.TrafficBHT50);
+                addToCashList(inst.cashList, 100, value.TrafficBHT100);
+                addToCashList(inst.cashList, 500, value.TrafficBHT500);
+                addToCashList(inst.cashList, 1000, value.TrafficBHT1000);
             }
             // Coupon Sold
             inst.couponTotalAmount = value.CouponSoldBHTTotal;

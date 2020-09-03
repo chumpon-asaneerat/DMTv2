@@ -12,7 +12,12 @@ namespace DMT.Models
 {
     public class SCWDeclareCash
     {
+        public int currencyId { get; set; }
+        public int currencyDenomId { get; set; }
+        public decimal denomValue { get; set; }
 
+        public int number { get; set; }
+        public decimal total { get; set; }
     }
 
     public class SCWDeclareCoupon

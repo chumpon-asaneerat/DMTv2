@@ -457,9 +457,13 @@ namespace DMT.Services
             }
 
             // TODO: Need to sync currency and coupon master!!
+            var currencies = ops.Master.GetCurrencies().Value();
+            var coupons = ops.Master.GetCoupons().Value();
 
             // TODO: Refactor Test Send Declare.
-            SCWDeclare declare = this.RevenueEntry.ToServer();
+            SCWDeclare declare = this.RevenueEntry.ToServer(currencies, coupons, 
+                this.Attendances);
+
             server.TOD.Declare(declare);
 
             // get all lanes information.
