@@ -27,6 +27,15 @@ namespace DMT.Models
         public string cashRemark { get; set; }
         public string otherRemark { get; set; }
 
+        public string chiefId { get; set; }
+        public string chiefName { get; set; }
+        public int? shiftTypeId { get; set; }
+
+        public DateTime? declareDateTime { get; set; }
+        public DateTime? attendanceDateTime { get; set; }
+        public DateTime? departureDateTime { get; set; }
+        public DateTime? operationDate { get; set; }
+
         public List<SCWJobList> jobList { get; set; }
 
         //TODO: Create Type for each list.
@@ -43,37 +52,44 @@ namespace DMT.Models
 
 {
     "networkId": 31,
-    "plazaId": 3101,
-    "staffId": "14124",
-    "bagNumber": "12345",
-    "safetyBeltNumber": "A12345",
+    "plazaId": 1,
+    "staffId": "00114",
+    "bagNumber": "232323",
+    "safetyBeltNumber": "232323",
     "cashTotalAmount": 7000,
-    "couponTotalAmount": 160,
-    "couponBookTotalAmount": 1330,
+    "couponTotalAmount": 7000,
+    "couponBookTotalAmount": 20,
     "cardAllowTotalAmount": 0,
     "qrcodeTotalAmount": 0,
     "emvTotalAmount": 0,
     "otherTotalAmount": 5000,
     "cashRemark": "หมายเหตุ เงินสด 7000",
     "otherRemark": "หมายเหตุ เงินอื่นๆ 0 บาท",
+    "chiefId": "00333",
+    "chiefName": "นายทดสอบ ระบบ",
+    "shiftTypeId": 3,
+    "declareDateTime": "2020-09-03T08:10:22.000+07",
+    "attendanceDateTime": "2020-09-03T05:02:00.000+07",
+    "departureDateTime": "2020-09-03T10:10:00.000+07",
+    "operationDate": "2020-09-03T00:00:00.000+07",
     "jobList": [
         {
             "networkId": 31,
-            "plazaId": 3101,
+            "plazaId": 1,
             "laneId": 1,
-            "jobNo": 21,
-            "staffId": "14124",
-            "bojDateTime": "2020-08-15T01:13:09.000Z",
-            "eojDateTime": "2020-08-15T01:13:12.000Z"
+            "jobNo": 39,
+            "staffId": "41023",
+            "bojDateTime": "2020-08-07T13:28:11.000+07",
+            "eojDateTime": "2020-08-07T13:58:34.000+07"
         },
         {
             "networkId": 31,
-            "plazaId": 3101,
+            "plazaId": 1,
             "laneId": 1,
-            "jobNo": 22,
-            "staffId": "14124",
-            "bojDateTime": "2020-08-15T01:16:44.000Z",
-            "eojDateTime": "2020-08-15T01:23:44.000Z"
+            "jobNo": 41,
+            "staffId": "41023",
+            "bojDateTime": "2020-08-07T14:33:14.000+07",
+            "eojDateTime": "2020-08-07T14:43:43.000+07"
         }
     ],
     "cashList": [
@@ -103,9 +119,9 @@ namespace DMT.Models
     "couponBookList": [
         {
             "couponBookId": 1,
-            "couponBookValue": 665,
+            "couponBookValue": 35,
             "number": 2,
-            "total": 1330
+            "total": 70
         }
     ],
     "cardAllowList": [],
