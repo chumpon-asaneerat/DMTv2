@@ -413,13 +413,11 @@ namespace DMT.Services
             {
                 this.RevenueEntry.ShiftEnd = end;
             }
-            // assign supervisor.
-            var sup = ops.Shifts.GetCurrent().Value();
-            if (null != sup)
+            if (null != this.Supervisor)
             {
-                this.RevenueEntry.SupervisorId = sup.UserId;
-                this.RevenueEntry.SupervisorNameEN = sup.FullNameEN;
-                this.RevenueEntry.SupervisorNameTH = sup.FullNameTH;
+                this.RevenueEntry.SupervisorId = this.Supervisor.UserId;
+                this.RevenueEntry.SupervisorNameEN = this.Supervisor.FullNameEN;
+                this.RevenueEntry.SupervisorNameTH = this.Supervisor.FullNameTH;
             }
         }
 
@@ -481,6 +479,10 @@ namespace DMT.Services
         /// Gets or sets User.
         /// </summary>
         public User User { get; set; }
+        /// <summary>
+        /// Gets or sets Chief/Supervisor.
+        /// </summary>
+        public User Supervisor { get; set; }
         /// <summary>
         /// Gets avaliable plaza groups.
         /// </summary>

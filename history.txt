@@ -15,8 +15,40 @@
   - Update Config app and simulator.
 
 --------------------------------------------------------------------------------------------
-Update 2020-09-03 #10
+Update 2020-09-03 #20
 - 
+
+Update 2020-09-03 #19
+- 
+
+Update 2020-09-03 #18
+- 
+
+Update 2020-09-03 #17
+- 
+
+Update 2020-09-03 #16
+- 
+
+Update 2020-09-03 #15
+- 
+
+Update 2020-09-03 #14
+- 
+
+Update 2020-09-03 #13
+- 
+
+Update 2020-09-03 #12
+- 
+
+Update 2020-09-03 #11
+- 
+
+[commited]
+Update 2020-09-03 #10
+- Update Local/DataCenter/TAxTOD service operation #381.
+  - TOD Implements Revenue Entry (sync process) #40.
 
 [commited]
 Update 2020-09-03 #9

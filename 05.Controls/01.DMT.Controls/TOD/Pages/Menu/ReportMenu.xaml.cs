@@ -32,6 +32,7 @@ namespace DMT.TOD.Pages.Menu
         #endregion
 
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
+        private RevenueEntryManager _manager = new RevenueEntryManager();
         private User _user = null;
 
         #region Button Handlers
@@ -114,9 +115,6 @@ namespace DMT.TOD.Pages.Menu
         public void Setup(User user)
         {
             _user = user;
-            if (null != _user)
-            {
-            }
         }
     }
 }

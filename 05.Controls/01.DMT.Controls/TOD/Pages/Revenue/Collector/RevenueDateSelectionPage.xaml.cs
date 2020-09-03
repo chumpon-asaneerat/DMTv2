@@ -31,6 +31,7 @@ namespace DMT.TOD.Pages.Revenue
 
         #endregion
 
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private RevenueEntryManager _manager = new RevenueEntryManager();
 
         #region Button Handlers
@@ -157,8 +158,13 @@ namespace DMT.TOD.Pages.Revenue
         public void Setup(User user)
         {
             LoadPlazaGroups();
-
+            // assign user.
             _manager.User = user;
+            // assign supervisor.
+            var cshf = ops.Shifts.GetCurrent().Value();
+            var sup = ops.Users.GetById(Search.Users.ById.Create(cshf.UserId, "CTC")).Value();
+            _manager.Supervisor = sup;
+
             if (null != _manager && null != _manager.User)
             {
                 txtEntryDate.Text = _manager.EntryDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");

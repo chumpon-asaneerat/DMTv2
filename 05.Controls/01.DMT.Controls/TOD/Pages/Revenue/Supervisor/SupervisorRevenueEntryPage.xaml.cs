@@ -32,6 +32,7 @@ namespace DMT.TOD.Pages.Revenue
         #endregion
 
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
+        private RevenueEntryManager _manager = new RevenueEntryManager();
 
         private User _sup = null;
         private User _user = null;
