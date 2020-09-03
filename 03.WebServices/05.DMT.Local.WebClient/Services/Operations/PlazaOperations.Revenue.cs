@@ -456,6 +456,8 @@ namespace DMT.Services
                 });
             }
 
+            // TODO: Need to sync currency and coupon master!!
+
             // TODO: Refactor Test Send Declare.
             SCWDeclare declare = this.RevenueEntry.ToServer();
             server.TOD.Declare(declare);

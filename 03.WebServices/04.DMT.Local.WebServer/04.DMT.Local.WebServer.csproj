@@ -91,6 +91,7 @@
     <Compile Include="WebServer\Controllers\CouponController.cs" />
     <Compile Include="WebServer\Controllers\CreditController.cs" />
     <Compile Include="WebServer\Controllers\ExchangeController.cs" />
+    <Compile Include="WebServer\Controllers\MasterController.cs" />
     <Compile Include="WebServer\Controllers\UserShiftController.cs" />
     <Compile Include="WebServer\Controllers\LaneController.cs" />
     <Compile Include="WebServer\Controllers\RevenueController.cs" />

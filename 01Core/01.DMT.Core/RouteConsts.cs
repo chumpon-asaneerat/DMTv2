@@ -11,6 +11,35 @@ namespace DMT
 
         #endregion
 
+        #region Master
+
+        public static class Master
+        {
+            public const string Url = RouteConsts.Url + @"/Master";
+
+            #region MCurrency
+
+            public static class GetCurrencies
+            {
+                public const string Name = "GetCurrencies";
+                public const string Url = Master.Url + @"/" + Name;
+            }
+
+            #endregion
+
+            #region MCoupon
+
+            public static class GetCoupons
+            {
+                public const string Name = "GetCoupons";
+                public const string Url = Master.Url + @"/" + Name;
+            }
+
+            #endregion
+        }
+
+        #endregion
+
         #region TSB
 
         public static class TSB
