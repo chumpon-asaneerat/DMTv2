@@ -10,13 +10,12 @@
     - Binding Grand total.
     - Check if both total side (left/right) is match.
     - Need to check with TSB max balance.
-  - Revenue entry separate logic from UI.
-  - Add currency and coupon List Table (from Solar web service).
   - Update Config app and simulator.
 
 --------------------------------------------------------------------------------------------
+[commited]
 Update 2020-09-03 #30
-- 
+- Update history.txt
 
 [commited]
 Update 2020-09-03 #29
