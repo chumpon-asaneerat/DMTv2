@@ -39,17 +39,22 @@ namespace DMT.Models
 
     public class SCWDeclareFreePass
     {
-
+        public int cardAllowId { get; set; }
+        public int number { get; set; }
     }
 
     public class SCWDeclareQRCode
     {
-
+        public string approvalCode { get; set; }
+        public DateTime trxDate { get; set; }
+        public decimal amount { get; set; }
     }
 
     public class SCWDeclareEMV
     {
-
+        public string approvalCode { get; set; }
+        public DateTime trxDate { get; set; }
+        public decimal amount { get; set; }
     }
 
     public class SCWDeclare

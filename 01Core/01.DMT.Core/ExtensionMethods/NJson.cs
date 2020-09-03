@@ -6,6 +6,7 @@ using System.Reflection;
 using NLib;
 using Newtonsoft.Json;
 using NLib.IO;
+using System.Configuration;
 
 #endregion
 
@@ -16,6 +17,12 @@ namespace DMT
     /// </summary>
     public static class NJson
     {
+        public static JsonSerializerSettings DefaultSettings = new JsonSerializerSettings()
+        {
+            DateFormatHandling = DateFormatHandling.IsoDateFormat,
+            DateTimeZoneHandling = DateTimeZoneHandling.Local
+        };
+
         /// <summary>
         /// Convert Object to Json String.
         /// </summary>
@@ -27,7 +34,9 @@ namespace DMT
             string result = string.Empty;
             try
             {
-                result = JsonConvert.SerializeObject(value, (minimized) ? Formatting.None : Formatting.Indented);
+                var settings = NJson.DefaultSettings;
+                result = JsonConvert.SerializeObject(value, 
+                    (minimized) ? Formatting.None : Formatting.Indented, settings);
             }
             catch (Exception ex)
             {
@@ -47,7 +56,8 @@ namespace DMT
             T result = default;
             try
             {
-                result = JsonConvert.DeserializeObject<T>(value);
+                var settings = NJson.DefaultSettings;
+                result = JsonConvert.DeserializeObject<T>(value, settings);
             }
             catch (Exception ex)
             {
@@ -75,6 +85,8 @@ namespace DMT
                     JsonSerializer serializer = new JsonSerializer();
                     //serializer.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                     serializer.Formatting = (minimized) ? Formatting.None : Formatting.Indented;
+                    serializer.DateFormatHandling = DateFormatHandling.IsoDateFormat;
+                    serializer.DateTimeZoneHandling = DateTimeZoneHandling.Local;
                     serializer.Serialize(file, value);
                 }
             }
@@ -102,6 +114,8 @@ namespace DMT
                 {
                     JsonSerializer serializer = new JsonSerializer();
                     //serializer.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                    serializer.DateFormatHandling = DateFormatHandling.IsoDateFormat;
+                    serializer.DateTimeZoneHandling = DateTimeZoneHandling.Local;
                     result = (T)serializer.Deserialize(file, typeof(T));
                 }
             }
