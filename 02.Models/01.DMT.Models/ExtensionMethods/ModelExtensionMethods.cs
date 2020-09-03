@@ -251,15 +251,17 @@ namespace DMT.Models.ExtensionMethods
 
         public static SCWDeclare ToServer(this RevenueEntry value,
             List<MCurrency> currencies, List<MCoupon> coupons, 
-            List<LaneAttendance> jobs)
+            List<LaneAttendance> jobs,
+            int plazaId)
         {
             if (null == value) return null;
             if (null == currencies) return null;
             if (null == coupons) return null;
 
             var inst = new SCWDeclare();
+            // TODO: network id required.
             inst.networkId = 31;
-            //inst.plazaId = value.PlazaGroupId;
+            inst.plazaId = plazaId;
             inst.staffId = value.UserId;
 
             inst.chiefId = value.SupervisorId;
@@ -268,17 +270,23 @@ namespace DMT.Models.ExtensionMethods
             inst.bagNumber = value.BagNo;
             inst.safetyBeltNumber = value.BeltNo;
 
-            //inst.shiftTypeId = ?
+            inst.shiftTypeId = value.ShiftId;
             inst.declareDateTime = value.EntryDate;
             inst.operationDate = value.RevenueDate;
 
             // Lane information - Job List
             inst.attendanceDateTime = value.ShiftBegin;
             inst.departureDateTime = value.ShiftEnd;
-            inst.jobList = new List<SCWJobList>();
+            inst.jobList = new List<SCWJob>();
             if (null != jobs)
             {
-
+                jobs.ForEach(job => 
+                {
+                    var item = job.ToServer();
+                    // TODO: network id required.
+                    item.networkId = inst.networkId;
+                    inst.jobList.Add(item);
+                });
             }
             // Traffic
             inst.cashTotalAmount = value.TrafficBHTTotal;

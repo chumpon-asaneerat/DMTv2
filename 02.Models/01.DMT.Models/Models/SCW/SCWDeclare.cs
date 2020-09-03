@@ -75,7 +75,7 @@ namespace DMT.Models
         public DateTime? departureDateTime { get; set; }
         public DateTime? operationDate { get; set; }
 
-        public List<SCWJobList> jobList { get; set; }
+        public List<SCWJob> jobList { get; set; }
 
         //TODO: Create Type for each list.
         public List<SCWDeclareCash> cashList { get; set; }

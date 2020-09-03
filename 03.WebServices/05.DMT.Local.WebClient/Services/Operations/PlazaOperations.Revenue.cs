@@ -255,12 +255,17 @@ namespace DMT.Services
             if (null == plazas) return;
 
             var attends = new List<LaneAttendance>();
+            this.PlazaIds = new List<int>();
 
             plazas.ForEach(plaza => 
             {
                 // Gets Job List from WS.
-                int nwId = 31;
+                int nwId = 31; // TODO: network id required.
+
                 int plazaId = Convert.ToInt32(plaza.PlazaId);
+                // keep plaza Id.
+                if (!this.PlazaIds.Contains(plazaId)) this.PlazaIds.Add(plazaId);
+
                 var ret = server.TOD.GetJobList(nwId, plazaId, this.User.UserId);
                 if (null != ret && null != ret.list)
                 {
@@ -461,8 +466,9 @@ namespace DMT.Services
             var coupons = ops.Master.GetCoupons().Value();
 
             // TODO: Refactor Test Send Declare.
+            // TODO: Plaza Id required recheck because plaza group has more than one.
             SCWDeclare declare = this.RevenueEntry.ToServer(currencies, coupons, 
-                this.Attendances);
+                this.Attendances, this.PlazaIds[0]);
 
             server.TOD.Declare(declare);
 
@@ -511,6 +517,10 @@ namespace DMT.Services
         /// Gets or sets plaza group.
         /// </summary>
         public PlazaGroup PlazaGroup { get; set; }
+        /// <summary>
+        /// Gets Plaza Id List.
+        /// </summary>
+        public List<int> PlazaIds { get; internal set; }
         /// <summary>
         /// Gets related user shift.
         /// </summary>
