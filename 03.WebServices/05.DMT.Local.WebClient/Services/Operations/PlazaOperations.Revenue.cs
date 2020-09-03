@@ -332,6 +332,11 @@ namespace DMT.Services
             }
         }
 
+        public void RefreshRevenueShift()
+        {
+
+        }
+
         #endregion
 
         #region Public Properties
@@ -361,9 +366,9 @@ namespace DMT.Services
         /// </summary>
         public UserShift UserShift { get; internal set; }
         /// <summary>
-        /// Gets related user shift revenue.
+        /// Gets related user revenue's shift.
         /// </summary>
-        public UserShiftRevenue ShiftRevenue { get; internal set; }
+        public UserShiftRevenue RevenueShift { get; internal set; }
         /// <summary>
         /// Gets related LaneAttendance list.
         /// </summary>

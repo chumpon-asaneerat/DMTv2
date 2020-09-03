@@ -60,8 +60,9 @@ namespace DMT.TOD.Pages.Revenue
             // Revenue Entry Page
             var page = new RevenueEntryPage();
 
-            var plazaGroup = cbPlazas.SelectedItem as PlazaGroup;
-            if (null == plazaGroup)
+            //var plazaGroup = cbPlazas.SelectedItem as PlazaGroup;
+
+            if (null == _manager || null == _manager.PlazaGroup)
             {
                 DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
                 msg.Owner = Application.Current.MainWindow;
