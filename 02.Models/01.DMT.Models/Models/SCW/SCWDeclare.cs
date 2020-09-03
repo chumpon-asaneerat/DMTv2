@@ -22,7 +22,11 @@ namespace DMT.Models
 
     public class SCWDeclareCoupon
     {
+        public int couponId { get; set; }
+        public decimal couponValue { get; set; }
 
+        public int number { get; set; }
+        public decimal total { get; set; }
     }
 
     public class SCWDeclareCouponBook

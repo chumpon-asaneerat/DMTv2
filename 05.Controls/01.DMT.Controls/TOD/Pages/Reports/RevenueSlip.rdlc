@@ -61,8 +61,8 @@
           <DataField>CouponUsageBHT35</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="CouponUsageBHT75">
-          <DataField>CouponUsageBHT75</DataField>
+        <Field Name="CouponUsageBHT70">
+          <DataField>CouponUsageBHT70</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="CouponUsageBHT80">
@@ -3764,14 +3764,14 @@
                   <PaddingBottom>2pt</PaddingBottom>
                 </Style>
               </Textbox>
-              <Textbox Name="CouponUsageBHT75">
+              <Textbox Name="CouponUsageBHT70">
                 <CanGrow>true</CanGrow>
                 <KeepTogether>true</KeepTogether>
                 <Paragraphs>
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=Sum(Fields!CouponUsageBHT75.Value, "main")</Value>
+                        <Value>=Sum(Fields!CouponUsageBHT70.Value, "main")</Value>
                         <Style>
                           <FontFamily>Tahoma</FontFamily>
                           <FontSize>11pt</FontSize>
@@ -3782,7 +3782,7 @@
                     <Style />
                   </Paragraph>
                 </Paragraphs>
-                <rd:DefaultName>CouponUsageBHT75</rd:DefaultName>
+                <rd:DefaultName>CouponUsageBHT70</rd:DefaultName>
                 <Top>1.00292in</Top>
                 <Left>1.34873in</Left>
                 <Height>0.25in</Height>
@@ -3854,7 +3854,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=Sum((Fields!CouponUsageBHT30.Value)+(Fields!CouponUsageBHT35.Value)+(Fields!CouponUsageBHT75.Value)+(Fields!CouponUsageBHT80.Value), "main")</Value>
+                        <Value>=Sum((Fields!CouponUsageBHT30.Value)+(Fields!CouponUsageBHT35.Value)+(Fields!CouponUsageBHT70.Value)+(Fields!CouponUsageBHT80.Value), "main")</Value>
                         <Style>
                           <FontFamily>Tahoma</FontFamily>
                           <FontSize>11pt</FontSize>

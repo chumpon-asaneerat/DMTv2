@@ -92,7 +92,7 @@
                                Width="40"/>
                         <TextBox x:Name="txt70Baht" Margin="2"
                                  TextAlignment="Right"
-                                 Text="{Binding CouponUsageBHT75}"
+                                 Text="{Binding CouponUsageBHT70}"
                                  Width="50" KeyDown="txt70Baht_KeyDown"/>
                     </DockPanel>
                     <!-- 80 BHT -->

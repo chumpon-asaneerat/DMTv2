@@ -212,7 +212,6 @@ namespace DMT.Models.ExtensionMethods
             return inst;
         }
 
-
         public static SCWDeclareCash Create(this List<MCurrency> currencies, 
             decimal value, int number)
         {
@@ -229,6 +228,24 @@ namespace DMT.Models.ExtensionMethods
             inst.denomValue = match.denomValue;
             inst.number = number;
             inst.total = inst.denomValue * number;
+            return inst;
+        }
+
+        public static SCWDeclareCoupon Create(this List<MCoupon> coupons,
+            decimal value, int number)
+        {
+            if (null == coupons) return null;
+            if (number <= 0) return null;
+
+            var match = coupons.Find((obj) => { return obj.couponValue == value; });
+            if (null == match)
+                return null;
+
+            SCWDeclareCoupon inst = new SCWDeclareCoupon();
+            inst.couponId = match.couponId;
+            inst.couponValue = match.couponValue;
+            inst.number = number;
+            inst.total = inst.couponValue * number;
             return inst;
         }
 
@@ -253,13 +270,21 @@ namespace DMT.Models.ExtensionMethods
 
             //inst.shiftTypeId = ?
             inst.declareDateTime = value.EntryDate;
+            inst.operationDate = value.RevenueDate;
+
+            // Lane information - Job List
             inst.attendanceDateTime = value.ShiftBegin;
             inst.departureDateTime = value.ShiftEnd;
-            inst.operationDate = value.RevenueDate;
+            inst.jobList = new List<SCWJobList>();
+            if (null != jobs)
+            {
+
+            }
             // Traffic
             inst.cashTotalAmount = value.TrafficBHTTotal;
+            inst.cashRemark = value.TrafficRemark;
             inst.cashList = new List<SCWDeclareCash>();
-
+            // helper action for traffic
             Action<List<SCWDeclareCash>, decimal, int> addToCashList = (list, bhtVal, num) => 
             {
                 if (null == list) return;
@@ -284,14 +309,23 @@ namespace DMT.Models.ExtensionMethods
             // Coupon Sold
             inst.couponTotalAmount = value.CouponSoldBHTTotal;
             inst.couponList = new List<SCWDeclareCoupon>();
+            // helper action for coupon sold
+            Action<List<SCWDeclareCoupon>, decimal, int> addToCouponList = (list, couponVal, num) =>
+            {
+                if (null == list) return;
+                var item = coupons.Create(couponVal, num);
+                if (null == item) return;
+                list.Add(item);
+            };
             if (inst.couponTotalAmount > 0)
             {
-
+                addToCouponList(inst.couponList, 35, value.CouponSoldBHT35);
+                addToCouponList(inst.couponList, 80, value.CouponSoldBHT80);
             }
             // Coupon Usage
             inst.couponBookTotalAmount = value.CouponUsageBHT30 +
             value.CouponUsageBHT35 + 
-            value.CouponUsageBHT75 + 
+            value.CouponUsageBHT70 + 
             value.CouponUsageBHT80;
             inst.couponBookList = new List<SCWDeclareCouponBook>();
             if (inst.couponBookTotalAmount > 0)
@@ -306,21 +340,13 @@ namespace DMT.Models.ExtensionMethods
             {
 
             }
-
-            inst.cashRemark = value.TrafficRemark;
-
+            // Other
             inst.otherTotalAmount = value.OtherBHTTotal;
             inst.otherRemark = value.OtherRemark;
-
-            inst.jobList = new List<SCWJobList>();
-            if (null != jobs)
-            {
-
-            }
-
+            // QR Code
             inst.qrcodeTotalAmount = 0;
             inst.qrcodeList = new List<SCWDeclareQRCode>();
-
+            // EMV
             inst.emvTotalAmount = 0;
             inst.emvList = new List<SCWDeclareEMV>();
 

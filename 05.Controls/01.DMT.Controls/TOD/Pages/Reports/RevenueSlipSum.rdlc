@@ -656,7 +656,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -1170,7 +1169,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>75</Value>
+                              <Value>70</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1741,7 +1740,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!CouponUsageBHT75.Value</Value>
+                              <Value>=Fields!CouponUsageBHT70.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -2664,8 +2663,8 @@
           <DataField>CouponUsageBHT35</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="CouponUsageBHT75">
-          <DataField>CouponUsageBHT75</DataField>
+        <Field Name="CouponUsageBHT70">
+          <DataField>CouponUsageBHT70</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="CouponUsageBHT80">
