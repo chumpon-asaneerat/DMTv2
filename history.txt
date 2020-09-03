@@ -30,8 +30,11 @@ Update 2020-09-03 #27
 Update 2020-09-03 #26
 - 
 
+[commited]
 Update 2020-09-03 #25
-- 
+- Update Local/DataCenter/TAxTOD service operation #396.
+  - TOD Implements Revenue Entry (sync process) #55.
+- Add Teamviewer.txt
 
 [commited]
 Update 2020-09-03 #24

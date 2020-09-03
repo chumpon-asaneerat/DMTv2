@@ -57,7 +57,7 @@ namespace DMT.DC.Pages
         {
             SCWServiceOperations.Instance.UserName = "DMTUSER";
             SCWServiceOperations.Instance.Password = "DMTPASS";
-            pgrid.SelectedObject = ops.TOD.GetJobList(31, 3101, "14124");
+            pgrid.SelectedObject = ops.TOD.GetJobList(31, 3101, "00111");
         }
     }
 }
