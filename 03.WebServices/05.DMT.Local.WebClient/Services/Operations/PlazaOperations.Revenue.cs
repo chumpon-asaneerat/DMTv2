@@ -478,13 +478,13 @@ namespace DMT.Services
             // TODO: Plaza Id required recheck because plaza group has more than one.
             SCWDeclare declare = this.RevenueEntry.ToServer(currencies, coupons, 
                 this.Attendances, this.PlazaIds[0]);
-
+            med.Info("declare - ");
+            med.Info(declare.ToJson());
             var ret = server.TOD.Declare(declare);
             if (null != ret)
             {
                 // write log.
-                med.Info(string.Format("declare - code: {0}, msg: {1}", 
-                    ret.code, ret.message));
+                med.Info("declare - code: {0}, msg: {1}", ret.code, ret.message);
             }
 
             // get all lanes information.
