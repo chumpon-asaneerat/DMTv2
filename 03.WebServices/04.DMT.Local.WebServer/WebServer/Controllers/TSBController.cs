@@ -93,6 +93,23 @@ namespace DMT.Services
         }
 
         [HttpPost]
+        [ActionName(RouteConsts.TSB.GetPlazaGroupPlazas.Name)]
+        public NDbResult<List<Plaza>> GetPlazaGroupPlazas([FromBody] PlazaGroup value)
+        {
+            NDbResult<List<Plaza>> result;
+            if (null == value)
+            {
+                result = new NDbResult<List<Plaza>>();
+                result.ParameterIsNull();
+            }
+            else
+            {
+                result = Plaza.GetPlazaGroupPlazas(value);
+            }
+            return result;
+        }
+
+        [HttpPost]
         [ActionName(RouteConsts.TSB.SavePlaza.Name)]
         public NDbResult<Plaza> SavePlaza([FromBody] Plaza value)
         {

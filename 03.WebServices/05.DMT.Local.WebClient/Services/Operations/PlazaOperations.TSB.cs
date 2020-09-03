@@ -169,6 +169,29 @@ namespace DMT.Services
                 return ret;
             }
 
+            public NRestResult<List<Plaza>> GetPlazaGroupPlazas(PlazaGroup value)
+            {
+                NRestResult<List<Plaza>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<Plaza>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                if (null != value)
+                {
+                    ret = client.Execute<List<Plaza>>(RouteConsts.TSB.GetPlazaGroupPlazas.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<Plaza>>();
+                    ret.ParameterIsNull();
+                }
+                return ret;
+            }
+
             public NRestResult<Plaza> SavePlaza(Plaza value)
             {
                 NRestResult<Plaza> ret;

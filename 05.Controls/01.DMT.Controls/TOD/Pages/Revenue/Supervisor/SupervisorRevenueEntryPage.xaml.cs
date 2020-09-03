@@ -49,6 +49,8 @@ namespace DMT.TOD.Pages.Revenue
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
+            // TODO: Refactor HERE.
+            /*
             // Slip Preview
             var page = new Reports.RevenueSlipPreview();
             page.MenuPage = new Menu.MainMenu(); // Set MenPage to main menu.
@@ -56,6 +58,7 @@ namespace DMT.TOD.Pages.Revenue
             page.Setup(_user, _userShift, _plazaGroup, _plazaRevenue, _laneActivities,
                 _entryDate, _revDate, _revenueEntry);
             PageContentManager.Instance.Current = page;
+            */
         }
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)

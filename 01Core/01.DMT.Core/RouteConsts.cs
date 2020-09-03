@@ -53,6 +53,12 @@ namespace DMT
                 public const string Url = TSB.Url + @"/" + Name;
             }
 
+            public static class GetPlazaGroupPlazas
+            {
+                public const string Name = "GetPlazaGroupPlazas";
+                public const string Url = TSB.Url + @"/" + Name;
+            }
+
             public static class SavePlaza
             {
                 public const string Name = "SavePlaza";
