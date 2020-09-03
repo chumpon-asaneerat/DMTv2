@@ -314,10 +314,39 @@ namespace DMT.Models.ExtensionMethods
                 addToCashList(inst.cashList, 500, value.TrafficBHT500);
                 addToCashList(inst.cashList, 1000, value.TrafficBHT1000);
             }
-            // Coupon Sold
-            inst.couponTotalAmount = value.CouponSoldBHTTotal;
+            // Coupon Sold (coupon book)
+            inst.couponBookTotalAmount = value.CouponSoldBHTTotal;
+            inst.couponBookList = new List<SCWDeclareCouponBook>();
+            if (inst.couponBookTotalAmount > 0)
+            {
+                if (value.CouponSoldBHT35 > 0)
+                {
+                    inst.couponBookList.Add(new SCWDeclareCouponBook() 
+                    {
+                        couponBookId = 1,
+                        couponBookValue = 35,
+                        number = value.CouponSoldBHT35,
+                        total = value.CouponSoldBHT35Total
+                    });
+                }
+                if (value.CouponSoldBHT80 > 0)
+                {
+                    inst.couponBookList.Add(new SCWDeclareCouponBook()
+                    {
+                        couponBookId = 2,
+                        couponBookValue = 80,
+                        number = value.CouponSoldBHT80,
+                        total = value.CouponSoldBHT80Total
+                    });
+                }
+            }
+            // Coupon Usage (coupon)
+            inst.couponTotalAmount = value.CouponUsageBHT30 +
+                value.CouponUsageBHT35 +
+                value.CouponUsageBHT70 +
+                value.CouponUsageBHT80;
             inst.couponList = new List<SCWDeclareCoupon>();
-            // helper action for coupon sold
+            // helper action for coupon usage
             Action<List<SCWDeclareCoupon>, decimal, int> addToCouponList = (list, couponVal, num) =>
             {
                 if (null == list) return;
@@ -327,18 +356,10 @@ namespace DMT.Models.ExtensionMethods
             };
             if (inst.couponTotalAmount > 0)
             {
-                addToCouponList(inst.couponList, 35, value.CouponSoldBHT35);
-                addToCouponList(inst.couponList, 80, value.CouponSoldBHT80);
-            }
-            // Coupon Usage
-            inst.couponBookTotalAmount = value.CouponUsageBHT30 +
-            value.CouponUsageBHT35 + 
-            value.CouponUsageBHT70 + 
-            value.CouponUsageBHT80;
-            inst.couponBookList = new List<SCWDeclareCouponBook>();
-            if (inst.couponBookTotalAmount > 0)
-            {
-
+                addToCouponList(inst.couponList, 30, value.CouponUsageBHT30);
+                addToCouponList(inst.couponList, 35, value.CouponUsageBHT35);
+                addToCouponList(inst.couponList, 70, value.CouponUsageBHT70);
+                addToCouponList(inst.couponList, 80, value.CouponUsageBHT80);
             }
             // Free Pass.
             inst.cardAllowTotalAmount = value.FreePassUsageClassA + 
