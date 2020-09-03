@@ -86,5 +86,54 @@ namespace DMT.Models
 		public string description { get; set; }
 
 		#endregion
+
+		#region Static Methods
+
+		/// <summary>
+		/// Gets Currencies.
+		/// </summary>
+		/// <param name="db">The database connection.</param>
+		/// <returns>Returns List of Coupon Master.</returns>
+		public static NDbResult<List<MCurrency>> GetCurrencies(SQLiteConnection db)
+		{
+			var result = new NDbResult<List<MCurrency>>();
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * FROM MCurrency ";
+					result.Success();
+					var data = NQuery.Query<MCurrency>(cmd);
+					result.Success(data);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
+		}
+		/// <summary>
+		/// Gets Currencies.
+		/// </summary>
+		/// <returns>Returns List of Coupon Master.</returns>
+		public static NDbResult<List<MCurrency>> GetCurrencies()
+		{
+			lock (sync)
+			{
+				SQLiteConnection db = Default;
+				return GetCurrencies(db);
+			}
+		}
+
+		#endregion
 	}
 }
