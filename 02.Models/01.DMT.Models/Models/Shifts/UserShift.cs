@@ -623,6 +623,7 @@ namespace DMT.Models
                 return result;
             }
             UserShift inst = Create();
+            // TODO: Assign ReCheck.
             var tsb = TSB.GetCurrent().Value();
             if (null != tsb) tsb.AssignTo(inst);
             if (null != shift) shift.AssignTo(inst);

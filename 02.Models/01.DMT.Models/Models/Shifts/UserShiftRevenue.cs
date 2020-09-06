@@ -732,6 +732,7 @@ namespace DMT.Models
             else
             {
                 UserShiftRevenue inst = Create();
+                // TODO: Assign ReCheck.
                 plazaGroup.AssignTo(inst);
                 shift.AssignTo(inst);
                 result.data = inst;

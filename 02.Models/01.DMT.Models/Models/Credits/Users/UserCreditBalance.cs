@@ -1961,6 +1961,7 @@ namespace DMT.Models
 					if (null == ret)
 					{
 						inst = Create();
+						// TODO: Assign ReCheck.
 						plazaGroup.AssignTo(inst);
 						user.AssignTo(inst);
 						inst.State = StateTypes.Initial;

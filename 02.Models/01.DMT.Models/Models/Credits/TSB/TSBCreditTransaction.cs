@@ -1511,6 +1511,7 @@ namespace DMT.Models
 					if (null == ret)
 					{
 						inst = Create();
+						// TODO: Assign ReCheck.
 						tsb.AssignTo(inst);
 						inst.TransactionType = TransactionTypes.Initial;
 					}
