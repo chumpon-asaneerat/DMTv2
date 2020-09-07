@@ -351,6 +351,11 @@ namespace NLib.Reflection
                     scrInfo.BaseType != dstInfo.BaseType)
                     continue; // skip if base type assigned but not same.
 
+                // check dest type allow source type assigned.
+                if (dstInfo.BaseType != null &&
+                    !(scrType == dstInfo.BaseType || scrType.IsSubclassOf(dstInfo.BaseType)))
+                    continue;
+
                 var val = PropertyAccess.GetValue(source, scrInfo.Property.Name);
                 PropertyAccess.SetValue(target, dstInfo.Property.Name, val);
             }
