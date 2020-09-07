@@ -1577,7 +1577,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
 		[ReadOnly(true)]
-		[PropertyMapName("Status")]
+		[PropertyMapName("Status", typeof(UserCreditBalance))]
 		public int Status
 		{
 			get
@@ -1599,7 +1599,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets LastUpdated (Sync to DC).")]
 		[ReadOnly(true)]
-		[PropertyMapName("LastUpdate")]
+		[PropertyMapName("LastUpdate", typeof(UserCreditBalance))]
 		public DateTime LastUpdate
 		{
 			get { return _LastUpdate; }

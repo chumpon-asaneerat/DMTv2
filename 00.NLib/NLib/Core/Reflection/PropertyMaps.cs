@@ -341,21 +341,21 @@ namespace NLib.Reflection
                     continue;
                 if (scrInfo.Property == null || dstInfo.Property == null) 
                     continue;
-                if (scrInfo.Property != dstInfo.Property) 
+                if (scrInfo.Property.PropertyType == null || 
+                    dstInfo.Property.PropertyType == null)
                     continue;
 
                 if (scrInfo.Property.PropertyType != dstInfo.Property.PropertyType) 
                     continue;
 
-                if (scrInfo.BaseType != null && dstInfo.BaseType != null &&   
-                    scrInfo.BaseType != dstInfo.BaseType)
-                    continue; // skip if base type assigned but not same.
-
                 // check dest type allow source type assigned.
                 if (dstInfo.BaseType != null &&
-                    !(scrType == dstInfo.BaseType || scrType.IsSubclassOf(dstInfo.BaseType)))
+                    scrType != dstInfo.BaseType && 
+                    !scrType.IsSubclassOf(dstInfo.BaseType))
+                {
+                    //Console.WriteLine("Mismatch dest owner base type.");
                     continue;
-
+                }
                 var val = PropertyAccess.GetValue(source, scrInfo.Property.Name);
                 PropertyAccess.SetValue(target, dstInfo.Property.Name, val);
             }

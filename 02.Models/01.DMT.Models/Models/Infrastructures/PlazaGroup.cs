@@ -234,7 +234,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
 		[ReadOnly(true)]
-		[PropertyMapName("Status")]
+		[PropertyMapName("Status", typeof(PlazaGroup))]
 		[PropertyOrder(10001)]
 		public int Status
 		{
@@ -257,7 +257,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets LastUpdated (Sync to DC).")]
 		[ReadOnly(true)]
-		[PropertyMapName("LastUpdate")]
+		[PropertyMapName("LastUpdate", typeof(PlazaGroup))]
 		[PropertyOrder(10002)]
 		public DateTime LastUpdate
 		{
