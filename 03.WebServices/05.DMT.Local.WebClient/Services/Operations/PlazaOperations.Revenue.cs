@@ -210,12 +210,12 @@ namespace DMT.Services
         #endregion
     }
 
-    #region RevenueEntryManager
+    #region RevenueEntryManager2
 
     /// <summary>
-    /// The RevenueEntryManager class.
+    /// The RevenueEntryManager2 class.
     /// </summary>
-    public class RevenueEntryManager
+    public class RevenueEntryManager2
     {
         #region Internal Variables
 
@@ -229,7 +229,7 @@ namespace DMT.Services
         /// <summary>
         /// Constructor.
         /// </summary>
-        public RevenueEntryManager() : base()
+        public RevenueEntryManager2() : base()
         {
             // TODO: Need user/password from config table or external file.
 
@@ -619,6 +619,34 @@ namespace DMT.Services
                     null != this.RevenueEntry);
             }
         }
+
+        #endregion
+    }
+
+    #endregion
+
+    #region RevenueEntryManager
+
+    /// <summary>
+    /// The RevenueEntryManager class.
+    /// </summary>
+    public class RevenueEntryManager
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public RevenueEntryManager() : base()
+        {
+            // TODO: Need user/password from config table or external file.
+            SCWServiceOperations.Instance.UserName = "DMTUSER";
+            SCWServiceOperations.Instance.Password = "DMTPASS";
+        }
+
+        #endregion
+
+        #region Public Properties
 
         #endregion
     }
