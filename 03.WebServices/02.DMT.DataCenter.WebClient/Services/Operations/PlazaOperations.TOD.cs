@@ -90,15 +90,16 @@ namespace DMT.Services
 
             #region Send Declare
 
-            public SCWStatus Declare(SCWDeclare value)
+            public SCWDeclareResult Declare(SCWDeclare value)
             {
-                SCWStatus ret;
+                SCWDeclareResult ret;
                 NRestClient client = NRestClient.CreateDCClient();
                 if (null == client)
                 {
-                    ret = new SCWStatus();
-                    ret.code = "NULL_CONN";
-                    ret.message = "Client connection is null.";
+                    ret = new SCWDeclareResult();
+                    ret.status = new SCWStatus();
+                    ret.status.code = "NULL_CONN";
+                    ret.status.message = "Client connection is null.";
                     return ret;
                 }
 
@@ -107,7 +108,7 @@ namespace DMT.Services
                 string usr = SCWServiceOperations.Instance.UserName;
                 string pwd = SCWServiceOperations.Instance.Password;
 
-                ret = client.Execute2<SCWStatus>(url, value, username: usr, password: pwd);
+                ret = client.Execute2<SCWDeclareResult>(url, value, username: usr, password: pwd);
                 return ret;
             }
 

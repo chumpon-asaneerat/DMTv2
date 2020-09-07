@@ -4,6 +4,9 @@ ID: 1731184163 -> RTO
 ID: 185255957 -> DATABASE (SQL Server)
 
 
+sudo mono TCT_App.exe
+password: 1234
+
 
 SELECT * 
   FROM DMT_JOB 

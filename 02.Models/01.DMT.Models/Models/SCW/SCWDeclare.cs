@@ -57,6 +57,11 @@ namespace DMT.Models
         public decimal amount { get; set; }
     }
 
+    public class SCWDeclareResult
+    {
+        public SCWStatus status { get; set; }
+    }
+
     public class SCWDeclare
     {
         public int? networkId { get; set; }
