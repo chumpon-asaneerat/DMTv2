@@ -718,7 +718,6 @@ namespace DMT.Models
                 MethodBase med = MethodBase.GetCurrentMethod();
                 try
                 {
-                    // TODO: Need to replace with functional extension methods.
                     var last = GetUserShift(value.TSBId, value.UserId);
                     if (null != last && null != last.data && !last.errors.hasError)
                     {
@@ -732,7 +731,6 @@ namespace DMT.Models
                         value.Begin = DateTime.Now;
 
                     var saveRet = Save(value);
-                    // TODO: Need to replace with functional extension methods.
                     result.errors = saveRet.errors;
                     if (!result.errors.hasError)
                     {
@@ -776,7 +774,6 @@ namespace DMT.Models
                         value.End = DateTime.Now;
 
                     var saveRet = Save(value);
-                    // TODO: Need to replace with functional extension methods.
                     result.errors = saveRet.errors;
                     if (!result.errors.hasError)
                     {

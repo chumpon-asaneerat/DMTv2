@@ -475,7 +475,7 @@ namespace DMT.Services
             var coupons = ops.Master.GetCoupons().Value();
 
             // TODO: Refactor Test Send Declare.
-            // TODO: Plaza Id required recheck because plaza group has more than one.
+            // Plaza Id send only first match the SCW server will check later.
             SCWDeclare declare = this.RevenueEntry.ToServer(currencies, coupons, 
                 this.Attendances, this.PlazaIds[0]);
             med.Info("declare - ");

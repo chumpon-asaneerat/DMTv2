@@ -85,7 +85,6 @@ namespace DMT.Models
 
         public List<SCWJob> jobList { get; set; }
 
-        //TODO: Create Type for each list.
         public List<SCWDeclareCash> cashList { get; set; }
         public List<SCWDeclareCoupon> couponList { get; set; }
         public List<SCWDeclareCouponBook> couponBookList { get; set; }

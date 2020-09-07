@@ -36,7 +36,6 @@ namespace NLib.Reflection
     /// </summary>
     public class PropertyMapNameAttribute : Attribute
     {
-        // TODO: Required more constructor for supports base type to ignore map type that is not inherited from same base type.
         #region Constructor
 
         /// <summary>
