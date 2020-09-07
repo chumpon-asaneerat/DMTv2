@@ -674,6 +674,18 @@ namespace DMT.Services
         /// Gets or sets Chief/Supervisor.
         /// </summary>
         public User Supervisor { get; set; }
+        /// <summary>
+        /// Gets or sets plaza group.
+        /// </summary>
+        public PlazaGroup PlazaGroup { get; set; }
+        /// <summary>
+        /// Gets related user shift.
+        /// </summary>
+        public UserShift UserShift { get; internal set; }
+        /// <summary>
+        /// Gets related user revenue's shift.
+        /// </summary>
+        public UserShiftRevenue RevenueShift { get; internal set; }
 
         #endregion
     }
