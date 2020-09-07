@@ -1,5 +1,4 @@
 - Note:
-  - Sync process required to implements property name attribute to match base class.
   - Revenue Entry required to returns all credit and coupons before enter revenue.
   - Supervisor Sold coupon should print reports.
   - Implements User credit history view.
@@ -28,8 +27,10 @@ Update 2020-09-07 #7
 Update 2020-09-07 #6
 - 
 
+[commited]
 Update 2020-09-07 #5
-- 
+- Update Local/DataCenter/TAxTOD service operation #412.
+  - TOD Implements Revenue Entry (sync process) #71.
 
 [commited]
 Update 2020-09-07 #4
