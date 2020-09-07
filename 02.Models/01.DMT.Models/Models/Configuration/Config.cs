@@ -55,7 +55,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets Key")]
 		[PrimaryKey, MaxLength(30)]
-		[PeropertyMapName("Key")]
+		[PropertyMapName("Key")]
 		public string Key
 		{
 			get
@@ -77,7 +77,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets Value")]
 		[MaxLength(100)]
-		[PeropertyMapName("Value")]
+		[PropertyMapName("Value")]
 		public string Value
 		{
 			get

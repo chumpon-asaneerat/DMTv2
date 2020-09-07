@@ -125,7 +125,7 @@ namespace DMT.Models
 		[Category("User")]
 		[Description("Gets or sets User Id.")]
 		[PrimaryKey, MaxLength(10)]
-		[PeropertyMapName("UserId")]
+		[PropertyMapName("UserId")]
 		public string UserId
 		{
 			get
@@ -147,7 +147,7 @@ namespace DMT.Models
 		[Category("User")]
 		[Description("Gets or sets Prefix EN.")]
 		[MaxLength(20)]
-		[PeropertyMapName("PrefixEN")]
+		[PropertyMapName("PrefixEN")]
 		public string PrefixEN
 		{
 			get { return _PrefixEN; }
@@ -167,7 +167,7 @@ namespace DMT.Models
 		[Category("User")]
 		[Description("Gets or sets First Name EN")]
 		[MaxLength(50)]
-		[PeropertyMapName("FirstNameEN")]
+		[PropertyMapName("FirstNameEN")]
 		public string FirstNameEN
 		{
 			get { return _FirstNameEN; }
@@ -187,7 +187,7 @@ namespace DMT.Models
 		[Category("User")]
 		[Description("Gets or sets Middle Name EN")]
 		[MaxLength(20)]
-		[PeropertyMapName("MiddleNameEN")]
+		[PropertyMapName("MiddleNameEN")]
 		public string MiddleNameEN
 		{
 			get { return _MiddleNameEN; }
@@ -207,7 +207,7 @@ namespace DMT.Models
 		[Category("User")]
 		[Description("Gets or sets Last Name EN")]
 		[MaxLength(50)]
-		[PeropertyMapName("LastNameEN")]
+		[PropertyMapName("LastNameEN")]
 		public string LastNameEN
 		{
 			get { return _LastNameEN; }
@@ -228,7 +228,7 @@ namespace DMT.Models
 		[Description("Gets or sets FullName EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("FullNameEN")]
+		[PropertyMapName("FullNameEN")]
 		public string FullNameEN
 		{
 			get
@@ -249,7 +249,7 @@ namespace DMT.Models
 		[Category("User")]
 		[Description("Gets or sets Prefix TH.")]
 		[MaxLength(20)]
-		[PeropertyMapName("PrefixTH")]
+		[PropertyMapName("PrefixTH")]
 		public string PrefixTH
 		{
 			get { return _PrefixTH; }
@@ -269,7 +269,7 @@ namespace DMT.Models
 		[Category("User")]
 		[Description("Gets or sets First Name TH")]
 		[MaxLength(50)]
-		[PeropertyMapName("FirstNameTH")]
+		[PropertyMapName("FirstNameTH")]
 		public string FirstNameTH
 		{
 			get { return _FirstNameTH; }
@@ -289,7 +289,7 @@ namespace DMT.Models
 		[Category("User")]
 		[Description("Gets or sets Middle Name TH")]
 		[MaxLength(20)]
-		[PeropertyMapName("MiddleNameTH")]
+		[PropertyMapName("MiddleNameTH")]
 		public string MiddleNameTH
 		{
 			get { return _MiddleNameTH; }
@@ -309,7 +309,7 @@ namespace DMT.Models
 		[Category("User")]
 		[Description("Gets or sets Last Name TH")]
 		[MaxLength(50)]
-		[PeropertyMapName("LastNameTH")]
+		[PropertyMapName("LastNameTH")]
 		public string LastNameTH
 		{
 			get { return _LastNameTH; }
@@ -330,7 +330,7 @@ namespace DMT.Models
 		[Description("Gets or sets FullName TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("FullNameTH")]
+		[PropertyMapName("FullNameTH")]
 		public string FullNameTH
 		{
 			get
@@ -351,7 +351,7 @@ namespace DMT.Models
 		[Description("Gets or sets Password")]
 		[MaxLength(50)]
 		[ReadOnly(true)]
-		[PeropertyMapName("Password")]
+		[PropertyMapName("Password")]
 		public string Password
 		{
 			get
@@ -373,7 +373,7 @@ namespace DMT.Models
 		[Category("User")]
 		[Description("Gets or sets CardId")]
 		[MaxLength(20)]
-		[PeropertyMapName("CardId")]
+		[PropertyMapName("CardId")]
 		public string CardId
 		{
 			get
@@ -402,7 +402,7 @@ namespace DMT.Models
 		[Description("Gets or sets Role Id.")]
 		[ReadOnly(true)]
 		[MaxLength(20)]
-		[PeropertyMapName("RoleId")]
+		[PropertyMapName("RoleId")]
 		public string RoleId
 		{
 			get
@@ -425,7 +425,7 @@ namespace DMT.Models
 		[Description("Gets or sets Role Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("RoleNameEN")]
+		[PropertyMapName("RoleNameEN")]
 		public virtual string RoleNameEN
 		{
 			get
@@ -448,7 +448,7 @@ namespace DMT.Models
 		[Description("Gets or sets Role Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("RoleNameTH")]
+		[PropertyMapName("RoleNameTH")]
 		public virtual string RoleNameTH
 		{
 			get
@@ -475,7 +475,7 @@ namespace DMT.Models
 		[Category("Expiration")]
 		[Description("Gets or sets Password Date.")]
 		[ReadOnly(true)]
-		[PeropertyMapName("PasswordDate")]
+		[PropertyMapName("PasswordDate")]
 		public DateTime PasswordDate
 		{
 			get { return _PasswordDate; }
@@ -494,7 +494,7 @@ namespace DMT.Models
 		[Category("Expiration")]
 		[Description("Gets or sets Expire Days.")]
 		[ReadOnly(true)]
-		[PeropertyMapName("ExpireDays")]
+		[PropertyMapName("ExpireDays")]
 		public int ExpireDays
 		{
 			get { return _ExpireDays; }
@@ -513,7 +513,7 @@ namespace DMT.Models
 		[Category("Expiration")]
 		[Description("Gets or sets Account Status Flag.")]
 		[ReadOnly(true)]
-		[PeropertyMapName("AccountStatus")]
+		[PropertyMapName("AccountStatus")]
 		public AccountFlags AccountStatus
 		{
 			get { return _AccountStatus; }
@@ -538,7 +538,7 @@ namespace DMT.Models
 		[Description("Gets or sets New Password.")]
 		[Ignore]
 		[JsonIgnore]
-		[PeropertyMapName("NewPassword")]
+		[PropertyMapName("NewPassword")]
 		public string NewPassword
 		{
 			get
@@ -561,7 +561,7 @@ namespace DMT.Models
 		[Description("Gets or sets Comfirm Password.")]
 		[Ignore]
 		[JsonIgnore]
-		[PeropertyMapName("ConfirmPassword")]
+		[PropertyMapName("ConfirmPassword")]
 		public string ConfirmPassword
 		{
 			get
@@ -588,7 +588,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
 		[ReadOnly(true)]
-		[PeropertyMapName("Status")]
+		[PropertyMapName("Status")]
 		[PropertyOrder(10001)]
 		public int Status
 		{
@@ -611,7 +611,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets LastUpdated (Sync to DC).")]
 		[ReadOnly(true)]
-		[PeropertyMapName("LastUpdate")]
+		[PropertyMapName("LastUpdate")]
 		[PropertyOrder(10002)]
 		public DateTime LastUpdate
 		{
@@ -643,7 +643,7 @@ namespace DMT.Models
 			/// Gets or sets Role Name EN.
 			/// </summary>
 			[MaxLength(50)]
-			[PeropertyMapName("RoleNameEN")]
+			[PropertyMapName("RoleNameEN")]
 			public override string RoleNameEN
 			{
 				get { return base.RoleNameEN; }
@@ -653,7 +653,7 @@ namespace DMT.Models
 			/// Gets or sets Role Name TH.
 			/// </summary>
 			[MaxLength(50)]
-			[PeropertyMapName("RoleNameTH")]
+			[PropertyMapName("RoleNameTH")]
 			public override string RoleNameTH
 			{
 				get { return base.RoleNameTH; }

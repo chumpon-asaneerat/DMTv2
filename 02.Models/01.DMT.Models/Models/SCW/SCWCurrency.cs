@@ -16,22 +16,22 @@ namespace DMT.Models
 {
     public class SCWCurrency
     {
-        [PeropertyMapName("currencyId")]
+        [PropertyMapName("currencyId")]
         public int currencyId { get; set; }
 
-        [PeropertyMapName("currencyDenomId")]
+        [PropertyMapName("currencyDenomId")]
         public int currencyDenomId { get; set; }
         
-        [PeropertyMapName("abbreviation")]
+        [PropertyMapName("abbreviation")]
         public string abbreviation { get; set; }
         
-        [PeropertyMapName("description")]
+        [PropertyMapName("description")]
         public string description { get; set; }
         
-        [PeropertyMapName("denomValue")]
+        [PropertyMapName("denomValue")]
         public decimal denomValue { get; set; }
         
-        [PeropertyMapName("denomTypeId")]
+        [PropertyMapName("denomTypeId")]
         public int denomTypeId { get; set; }
     }
 

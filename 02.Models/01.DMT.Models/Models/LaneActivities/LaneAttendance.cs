@@ -91,7 +91,7 @@ namespace DMT.Models
 		[Description("Gets or sets PKId")]
 		[ReadOnly(true)]
 		[PrimaryKey]
-		[PeropertyMapName("PKId")]
+		[PropertyMapName("PKId")]
 		public Guid PKId
 		{
 			get
@@ -114,7 +114,7 @@ namespace DMT.Models
 		[Description("Gets or sets JobId")]
 		[ReadOnly(true)]
 		[MaxLength(20)]
-		[PeropertyMapName("JobId")]
+		[PropertyMapName("JobId")]
 		public string JobId
 		{
 			get
@@ -142,7 +142,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSBId.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("TSBId")]
+		[PropertyMapName("TSBId")]
 		public string TSBId
 		{
 			get
@@ -165,7 +165,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSB Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("TSBNameEN")]
+		[PropertyMapName("TSBNameEN")]
 		public virtual string TSBNameEN
 		{
 			get
@@ -188,7 +188,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSB Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("TSBNameTH")]
+		[PropertyMapName("TSBNameTH")]
 		public virtual string TSBNameTH
 		{
 			get
@@ -216,7 +216,7 @@ namespace DMT.Models
 		[Description("Gets or sets Plaza Group Id.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("PlazaGroupId")]
+		[PropertyMapName("PlazaGroupId")]
 		public string PlazaGroupId
 		{
 			get
@@ -239,7 +239,7 @@ namespace DMT.Models
 		[Description("Gets or sets Plaza Group Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("PlazaGroupNameEN")]
+		[PropertyMapName("PlazaGroupNameEN")]
 		public virtual string PlazaGroupNameEN
 		{
 			get
@@ -262,7 +262,7 @@ namespace DMT.Models
 		[Description("Gets or sets Plaza Group Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("PlazaGroupNameTH")]
+		[PropertyMapName("PlazaGroupNameTH")]
 		public virtual string PlazaGroupNameTH
 		{
 			get
@@ -285,7 +285,7 @@ namespace DMT.Models
 		[Description("Gets or sets Direction.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("Direction")]
+		[PropertyMapName("Direction")]
 		public virtual string Direction
 		{
 			get
@@ -313,7 +313,7 @@ namespace DMT.Models
 		[Description("Gets or sets Plaza Id.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("PlazaId")]
+		[PropertyMapName("PlazaId")]
 		public string PlazaId
 		{
 			get
@@ -336,7 +336,7 @@ namespace DMT.Models
 		[Description("Gets or sets Plaza Name EN")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("PlazaNameEN")]
+		[PropertyMapName("PlazaNameEN")]
 		public virtual string PlazaNameEN
 		{
 			get
@@ -359,7 +359,7 @@ namespace DMT.Models
 		[Description("Gets or sets Plaza Name TH")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("PlazaNameTH")]
+		[PropertyMapName("PlazaNameTH")]
 		public virtual string PlazaNameTH
 		{
 			get
@@ -387,7 +387,7 @@ namespace DMT.Models
 		[Description("Gets or sets LaneId")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("LaneId")]
+		[PropertyMapName("LaneId")]
 		public string LaneId
 		{
 			get
@@ -410,7 +410,7 @@ namespace DMT.Models
 		[Description("Gets or sets Lane No.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("LaneNo")]
+		[PropertyMapName("LaneNo")]
 		public virtual int LaneNo
 		{
 			get
@@ -438,7 +438,7 @@ namespace DMT.Models
 		[Description("Gets or sets User Id.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("UserId")]
+		[PropertyMapName("UserId")]
 		public string UserId
 		{
 			get
@@ -461,7 +461,7 @@ namespace DMT.Models
 		[Description("Gets or sets User Full Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("FullNameEN")]
+		[PropertyMapName("FullNameEN")]
 		public virtual string FullNameEN
 		{
 			get
@@ -484,7 +484,7 @@ namespace DMT.Models
 		[Description("Gets or sets User Full Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("FullNameTH")]
+		[PropertyMapName("FullNameTH")]
 		public virtual string FullNameTH
 		{
 			get
@@ -511,7 +511,7 @@ namespace DMT.Models
 		[Category("Shift")]
 		[Description("Gets or sets Begin Date.")]
 		//[ReadOnly(true)]
-		[PeropertyMapName("Begin")]
+		[PropertyMapName("Begin")]
 		public DateTime Begin
 		{
 			get { return _Begin; }
@@ -534,7 +534,7 @@ namespace DMT.Models
 		[Category("Shift")]
 		[Description("Gets or sets End Date.")]
 		//[ReadOnly(true)]
-		[PeropertyMapName("End")]
+		[PropertyMapName("End")]
 		public DateTime End
 		{
 			get { return _End; }
@@ -664,7 +664,7 @@ namespace DMT.Models
 		[Category("Revenue")]
 		[Description("Gets or sets Revenue Date.")]
 		//[ReadOnly(true)]
-		[PeropertyMapName("RevenueDate")]
+		[PropertyMapName("RevenueDate")]
 		public DateTime RevenueDate
 		{
 			get { return _RevenueDate; }
@@ -721,7 +721,7 @@ namespace DMT.Models
 		[Description("Gets or sets RevenueId.")]
 		//[ReadOnly(true)]
 		[MaxLength(20)]
-		[PeropertyMapName("RevenueId")]
+		[PropertyMapName("RevenueId")]
 		public string RevenueId
 		{
 			get { return _RevenueId; }
@@ -746,7 +746,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
 		[ReadOnly(true)]
-		[PeropertyMapName("Status")]
+		[PropertyMapName("Status")]
 		[PropertyOrder(10001)]
 		public int Status
 		{
@@ -769,7 +769,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets LastUpdated (Sync to DC).")]
 		[ReadOnly(true)]
-		[PeropertyMapName("LastUpdate")]
+		[PropertyMapName("LastUpdate")]
 		[PropertyOrder(10002)]
 		public DateTime LastUpdate
 		{
@@ -801,7 +801,7 @@ namespace DMT.Models
 			/// Gets or sets TSB Name EN.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("TSBNameEN")]
+			[PropertyMapName("TSBNameEN")]
 			public override string TSBNameEN
 			{
 				get { return base.TSBNameEN; }
@@ -811,7 +811,7 @@ namespace DMT.Models
 			/// Gets or sets TSB Name TH.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("TSBNameTH")]
+			[PropertyMapName("TSBNameTH")]
 			public override string TSBNameTH
 			{
 				get { return base.TSBNameTH; }
@@ -826,7 +826,7 @@ namespace DMT.Models
 			/// Gets or sets Plaza Group Name EN.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("PlazaGroupNameEN")]
+			[PropertyMapName("PlazaGroupNameEN")]
 			public override string PlazaGroupNameEN
 			{
 				get { return base.PlazaGroupNameEN; }
@@ -836,7 +836,7 @@ namespace DMT.Models
 			/// Gets or sets Plaza Group Name TH.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("PlazaGroupNameTH")]
+			[PropertyMapName("PlazaGroupNameTH")]
 			public override string PlazaGroupNameTH
 			{
 				get { return base.PlazaGroupNameTH; }
@@ -846,7 +846,7 @@ namespace DMT.Models
 			/// Gets or sets Direction.
 			/// </summary>
 			[MaxLength(10)]
-			[PeropertyMapName("Direction")]
+			[PropertyMapName("Direction")]
 			public override string Direction
 			{
 				get { return base.Direction; }
@@ -861,7 +861,7 @@ namespace DMT.Models
 			/// Gets or sets Plaza Name EN.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("PlazaNameEN")]
+			[PropertyMapName("PlazaNameEN")]
 			public override string PlazaNameEN
 			{
 				get { return base.PlazaNameEN; }
@@ -871,7 +871,7 @@ namespace DMT.Models
 			/// Gets or sets Plaza Name TH.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("PlazaNameTH")]
+			[PropertyMapName("PlazaNameTH")]
 			public override string PlazaNameTH
 			{
 				get { return base.PlazaNameTH; }
@@ -885,7 +885,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or set Lane No.
 			/// </summary>
-			[PeropertyMapName("LaneNo")]
+			[PropertyMapName("LaneNo")]
 			public override int LaneNo
 			{
 				get { return base.LaneNo; }
@@ -900,7 +900,7 @@ namespace DMT.Models
 			/// Gets or sets Full Name EN.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("FullNameEN")]
+			[PropertyMapName("FullNameEN")]
 			public override string FullNameEN
 			{
 				get { return base.FullNameEN; }
@@ -910,7 +910,7 @@ namespace DMT.Models
 			/// Gets or sets Full Name TH.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("FullNameTH")]
+			[PropertyMapName("FullNameTH")]
 			public override string FullNameTH
 			{
 				get { return base.FullNameTH; }

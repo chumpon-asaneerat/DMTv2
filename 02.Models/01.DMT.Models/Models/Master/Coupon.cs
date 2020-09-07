@@ -47,14 +47,14 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets couponId.")]
 		[PrimaryKey]
-		[PeropertyMapName("couponId")]
+		[PropertyMapName("couponId")]
 		public int couponId { get; set; }
 		/// <summary>
 		/// Gets or sets couponValue.
 		/// </summary>
 		[Category("Common")]
 		[Description("Gets or sets couponValue.")]
-		[PeropertyMapName("couponValue")]
+		[PropertyMapName("couponValue")]
 		public decimal couponValue { get; set; }
 
 		/// <summary>
@@ -62,14 +62,14 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Common")]
 		[Description("Gets or sets abbreviation.")]
-		[PeropertyMapName("abbreviation")]
+		[PropertyMapName("abbreviation")]
 		public string abbreviation { get; set; }
 		/// <summary>
 		/// Gets or sets description.
 		/// </summary>
 		[Category("Common")]
 		[Description("Gets or sets description.")]
-		[PeropertyMapName("description")]
+		[PropertyMapName("description")]
 		public string description { get; set; }
 
 		#endregion

@@ -81,7 +81,7 @@ namespace DMT.Models
 		[Description("Gets or sets HasRemark.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("Description")]
+		[PropertyMapName("Description")]
 		public string Description
 		{
 			get { return _description; }
@@ -102,7 +102,7 @@ namespace DMT.Models
 		[Description("Gets or sets HasRemark.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("HasRemark")]
+		[PropertyMapName("HasRemark")]
 		public bool HasRemark
 		{
 			get { return _hasRemark; }
@@ -124,7 +124,7 @@ namespace DMT.Models
 		[Description("Gets Remark Visibility.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("RemarkVisibility")]
+		[PropertyMapName("RemarkVisibility")]
 		public System.Windows.Visibility RemarkVisibility
 		{
 			get { return (_hasRemark) ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed; }
@@ -142,7 +142,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSBId.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("TSBId")]
+		[PropertyMapName("TSBId")]
 		public string TSBId
 		{
 			get
@@ -165,7 +165,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSB Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("TSBNameEN")]
+		[PropertyMapName("TSBNameEN")]
 		public virtual string TSBNameEN
 		{
 			get
@@ -188,7 +188,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSB Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("TSBNameTH")]
+		[PropertyMapName("TSBNameTH")]
 		public virtual string TSBNameTH
 		{
 			get
@@ -216,7 +216,7 @@ namespace DMT.Models
 		[Description("Gets or sets number of 35 BHT coupon.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("CouponBHT35")]
+		[PropertyMapName("CouponBHT35")]
 		public virtual int CouponBHT35
 		{
 			get { return _CouponBHT35; }
@@ -239,7 +239,7 @@ namespace DMT.Models
 		[Description("Gets or sets number of 80 BHT coupon.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("CouponBHT80")]
+		[PropertyMapName("CouponBHT80")]
 		public virtual int CouponBHT80
 		{
 			get { return _CouponBHT80; }
@@ -262,7 +262,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[JsonIgnore]
-		[PeropertyMapName("CouponTotal")]
+		[PropertyMapName("CouponTotal")]
 		public int CouponTotal
 		{
 			get { return _CouponTotal; }
@@ -275,7 +275,7 @@ namespace DMT.Models
 		[Description("Gets or sets total value in baht.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("CouponBHTTotal")]
+		[PropertyMapName("CouponBHTTotal")]
 		public virtual decimal CouponBHTTotal
 		{
 			get { return _CouponBHTTotal; }
@@ -307,7 +307,7 @@ namespace DMT.Models
 			/// Gets or sets TSB Name EN.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("TSBNameEN")]
+			[PropertyMapName("TSBNameEN")]
 			public override string TSBNameEN
 			{
 				get { return base.TSBNameEN; }
@@ -317,7 +317,7 @@ namespace DMT.Models
 			/// Gets or sets TSB Name TH.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("TSBNameTH")]
+			[PropertyMapName("TSBNameTH")]
 			public override string TSBNameTH
 			{
 				get { return base.TSBNameTH; }
@@ -331,7 +331,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets number of 35 BHT coupon.
 			/// </summary>
-			[PeropertyMapName("CouponBHT35")]
+			[PropertyMapName("CouponBHT35")]
 			public override int CouponBHT35
 			{
 				get { return base.CouponBHT35; }
@@ -340,7 +340,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets number of 80 BHT coupon.
 			/// </summary>
-			[PeropertyMapName("CouponBHT80")]
+			[PropertyMapName("CouponBHT80")]
 			public override int CouponBHT80
 			{
 				get { return base.CouponBHT80; }
@@ -349,7 +349,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets total value in baht.
 			/// </summary>
-			[PeropertyMapName("CouponBHTTotal")]
+			[PropertyMapName("CouponBHTTotal")]
 			public override decimal CouponBHTTotal
 			{
 				get { return base.CouponBHTTotal; }

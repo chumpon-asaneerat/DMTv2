@@ -173,7 +173,7 @@ namespace DMT.Models
 		[Description("Gets or sets PKId")]
 		[ReadOnly(true)]
 		[PrimaryKey]
-		[PeropertyMapName("PKId")]
+		[PropertyMapName("PKId")]
 		public Guid PKId
 		{
 			get
@@ -195,7 +195,7 @@ namespace DMT.Models
 		[Category("Revenue")]
 		[Description("Gets or sets Entry Date.")]
 		//[ReadOnly(true)]
-		[PeropertyMapName("EntryDate")]
+		[PropertyMapName("EntryDate")]
 		public DateTime EntryDate
 		{
 			get { return _EntryDate; }
@@ -249,7 +249,7 @@ namespace DMT.Models
 		[Category("Revenue")]
 		[Description("Gets or sets Revenue Date.")]
 		//[ReadOnly(true)]
-		[PeropertyMapName("RevenueDate")]
+		[PropertyMapName("RevenueDate")]
 		public DateTime RevenueDate
 		{
 			get { return _RevenueDate; }
@@ -306,7 +306,7 @@ namespace DMT.Models
 		[Description("Gets or sets RevenueId.")]
 		//[ReadOnly(true)]
 		[MaxLength(20)]
-		[PeropertyMapName("RevenueId")]
+		[PropertyMapName("RevenueId")]
 		public string RevenueId
 		{
 			get { return _RevenueId; }
@@ -327,7 +327,7 @@ namespace DMT.Models
 		[Description("Gets or sets Bag Number.")]
 		//[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("BagNo")]
+		[PropertyMapName("BagNo")]
 		public string BagNo
 		{
 			get { return _BagNo; }
@@ -348,7 +348,7 @@ namespace DMT.Models
 		[Description("Gets or sets Belt Number.")]
 		//[ReadOnly(true)]
 		[MaxLength(20)]
-		[PeropertyMapName("BeltNo")]
+		[PropertyMapName("BeltNo")]
 		public string BeltNo
 		{
 			get { return _BeltNo; }
@@ -369,7 +369,7 @@ namespace DMT.Models
 		[Description("Gets or sets Lane Lists.")]
 		//[ReadOnly(true)]
 		[MaxLength(100)]
-		[PeropertyMapName("Lanes")]
+		[PropertyMapName("Lanes")]
 		public string Lanes
 		{
 			get { return _Lanes; }
@@ -390,7 +390,7 @@ namespace DMT.Models
 		[Description("Gets or sets Plaza Names Lists.")]
 		//[ReadOnly(true)]
 		[MaxLength(100)]
-		[PeropertyMapName("PlazaNames")]
+		[PropertyMapName("PlazaNames")]
 		public string PlazaNames
 		{
 			get { return _PlazaNames; }
@@ -410,7 +410,7 @@ namespace DMT.Models
 		[Category("Revenue")]
 		[Description("Gets or sets Shift Begin.")]
 		//[ReadOnly(true)]
-		[PeropertyMapName("ShiftBegin")]
+		[PropertyMapName("ShiftBegin")]
 		public DateTime ShiftBegin
 		{
 			get { return _ShiftBegin; }
@@ -430,7 +430,7 @@ namespace DMT.Models
 		[Category("Revenue")]
 		[Description(" Gets or sets Shift End.")]
 		//[ReadOnly(true)]
-		[PeropertyMapName("ShiftEnd")]
+		[PropertyMapName("ShiftEnd")]
 		public DateTime ShiftEnd
 		{
 			get { return _ShiftEnd; }
@@ -558,7 +558,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSBId.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("TSBId")]
+		[PropertyMapName("TSBId")]
 		public string TSBId
 		{
 			get
@@ -581,7 +581,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSB Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("TSBNameEN")]
+		[PropertyMapName("TSBNameEN")]
 		public virtual string TSBNameEN
 		{
 			get
@@ -604,7 +604,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSB Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("TSBNameTH")]
+		[PropertyMapName("TSBNameTH")]
 		public virtual string TSBNameTH
 		{
 			get
@@ -632,7 +632,7 @@ namespace DMT.Models
 		[Description("Gets or sets Plaza Group Id.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("PlazaGroupId")]
+		[PropertyMapName("PlazaGroupId")]
 		public string PlazaGroupId
 		{
 			get
@@ -655,7 +655,7 @@ namespace DMT.Models
 		[Description("Gets or sets Plaza Group Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("PlazaGroupNameEN")]
+		[PropertyMapName("PlazaGroupNameEN")]
 		public virtual string PlazaGroupNameEN
 		{
 			get
@@ -678,7 +678,7 @@ namespace DMT.Models
 		[Description("Gets or sets Plaza Group Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("PlazaGroupNameTH")]
+		[PropertyMapName("PlazaGroupNameTH")]
 		public virtual string PlazaGroupNameTH
 		{
 			get
@@ -701,7 +701,7 @@ namespace DMT.Models
 		[Description("Gets or sets Direction.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("Direction")]
+		[PropertyMapName("Direction")]
 		public virtual string Direction
 		{
 			get
@@ -728,7 +728,7 @@ namespace DMT.Models
 		[Category("Shift")]
 		[Description("Gets or sets Shift Id.")]
 		[ReadOnly(true)]
-		[PeropertyMapName("ShiftId")]
+		[PropertyMapName("ShiftId")]
 		public int ShiftId
 		{
 			get
@@ -751,7 +751,7 @@ namespace DMT.Models
 		[Description("Gets or sets Shift Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("ShiftNameEN")]
+		[PropertyMapName("ShiftNameEN")]
 		public virtual string ShiftNameEN
 		{
 			get
@@ -774,7 +774,7 @@ namespace DMT.Models
 		[Description("Gets or sets Shift Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("ShiftNameTH")]
+		[PropertyMapName("ShiftNameTH")]
 		public virtual string ShiftNameTH
 		{
 			get
@@ -802,7 +802,7 @@ namespace DMT.Models
 		[Description("Gets or sets User Id.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("UserId")]
+		[PropertyMapName("UserId")]
 		public string UserId
 		{
 			get
@@ -825,7 +825,7 @@ namespace DMT.Models
 		[Description("Gets or sets User Full Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("FullNameEN")]
+		[PropertyMapName("FullNameEN")]
 		public virtual string FullNameEN
 		{
 			get
@@ -848,7 +848,7 @@ namespace DMT.Models
 		[Description("Gets or sets User Full Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("FullNameTH")]
+		[PropertyMapName("FullNameTH")]
 		public virtual string FullNameTH
 		{
 			get
@@ -876,7 +876,7 @@ namespace DMT.Models
 		[Description("Gets or sets Supervisor Id.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("SupervisorId")]
+		[PropertyMapName("SupervisorId")]
 		public string SupervisorId
 		{
 			get
@@ -899,7 +899,7 @@ namespace DMT.Models
 		[Description("Gets or sets Supervisor Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("Supervisor Name EN")]
+		[PropertyMapName("Supervisor Name EN")]
 		public virtual string SupervisorNameEN
 		{
 			get
@@ -922,7 +922,7 @@ namespace DMT.Models
 		[Description("Gets or sets Supervisor Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("SupervisorNameTH")]
+		[PropertyMapName("SupervisorNameTH")]
 		public virtual string SupervisorNameTH
 		{
 			get
@@ -948,7 +948,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Traffic")]
 		[Description("Gets or sets number of .25 baht coin.")]
-		[PeropertyMapName("TrafficST25")]
+		[PropertyMapName("TrafficST25")]
 		public int TrafficST25
 		{
 			get { return _TrafficST25; }
@@ -968,7 +968,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Traffic")]
 		[Description("Gets or sets number of .50 baht coin.")]
-		[PeropertyMapName("TrafficST50")]
+		[PropertyMapName("TrafficST50")]
 		public int TrafficST50
 		{
 			get { return _TrafficST50; }
@@ -988,7 +988,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Traffic")]
 		[Description("Gets or sets number of 1 baht coin.")]
-		[PeropertyMapName("TrafficBHT1")]
+		[PropertyMapName("TrafficBHT1")]
 		public int TrafficBHT1
 		{
 			get { return _TrafficBHT1; }
@@ -1008,7 +1008,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Traffic")]
 		[Description("Gets or sets number of 2 baht coin.")]
-		[PeropertyMapName("TrafficBHT2")]
+		[PropertyMapName("TrafficBHT2")]
 		public int TrafficBHT2
 		{
 			get { return _TrafficBHT2; }
@@ -1028,7 +1028,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Traffic")]
 		[Description("Gets or sets number of 5 baht coin.")]
-		[PeropertyMapName("TrafficBHT5")]
+		[PropertyMapName("TrafficBHT5")]
 		public int TrafficBHT5
 		{
 			get { return _TrafficBHT5; }
@@ -1048,7 +1048,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Traffic")]
 		[Description("Gets or sets number of 10 baht coin.")]
-		[PeropertyMapName("TrafficBHT10")]
+		[PropertyMapName("TrafficBHT10")]
 		public int TrafficBHT10
 		{
 			get { return _TrafficBHT10; }
@@ -1068,7 +1068,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Traffic")]
 		[Description("Gets or sets number of 20 baht bill.")]
-		[PeropertyMapName("TrafficBHT20")]
+		[PropertyMapName("TrafficBHT20")]
 		public int TrafficBHT20
 		{
 			get { return _TrafficBHT20; }
@@ -1088,7 +1088,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Traffic")]
 		[Description("Gets or sets number of 50 baht bill.")]
-		[PeropertyMapName("TrafficBHT50")]
+		[PropertyMapName("TrafficBHT50")]
 		public int TrafficBHT50
 		{
 			get { return _TrafficBHT50; }
@@ -1108,7 +1108,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Traffic")]
 		[Description("Gets or sets number of 100 baht bill.")]
-		[PeropertyMapName("TrafficBHT100")]
+		[PropertyMapName("TrafficBHT100")]
 		public int TrafficBHT100
 		{
 			get { return _TrafficBHT100; }
@@ -1128,7 +1128,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Traffic")]
 		[Description("Gets or sets number of 500 baht bill.")]
-		[PeropertyMapName("TrafficBHT500")]
+		[PropertyMapName("TrafficBHT500")]
 		public int TrafficBHT500
 		{
 			get { return _TrafficBHT500; }
@@ -1148,7 +1148,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Traffic")]
 		[Description("Gets or sets number of 1000 baht bill.")]
-		[PeropertyMapName("TrafficBHT1000")]
+		[PropertyMapName("TrafficBHT1000")]
 		public int TrafficBHT1000
 		{
 			get { return _TrafficBHT1000; }
@@ -1169,7 +1169,7 @@ namespace DMT.Models
 		[Category("Traffic")]
 		[Description("Gets or sets total value in baht.")]
 		[ReadOnly(true)]
-		[PeropertyMapName("TrafficBHTTotal")]
+		[PropertyMapName("TrafficBHTTotal")]
 		public decimal TrafficBHTTotal
 		{
 			get { return _TrafficBHTTotal; }
@@ -1181,7 +1181,7 @@ namespace DMT.Models
 		[Category("Traffic")]
 		[Description("Gets or sets Traffic Remark.")]
 		[MaxLength(255)]
-		[PeropertyMapName("TrafficRemark")]
+		[PropertyMapName("TrafficRemark")]
 		public string TrafficRemark
 		{
 			get { return _TrafficRemark; }
@@ -1205,7 +1205,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Other")]
 		[Description("Gets or sets total value in baht (Other).")]
-		[PeropertyMapName("OtherBHTTotal")]
+		[PropertyMapName("OtherBHTTotal")]
 		public decimal OtherBHTTotal
 		{
 			get { return _OtherBHTTotal; }
@@ -1225,7 +1225,7 @@ namespace DMT.Models
 		[Category("Other")]
 		[Description("Gets or sets Other Remark.")]
 		[MaxLength(255)]
-		[PeropertyMapName("OtherRemark")]
+		[PropertyMapName("OtherRemark")]
 		public string OtherRemark
 		{
 			get { return _OtherRemark; }
@@ -1249,7 +1249,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coupon Usage")]
 		[Description("Gets or sets number of 30 BHT coupon.")]
-		[PeropertyMapName("CouponUsageBHT30")]
+		[PropertyMapName("CouponUsageBHT30")]
 		public int CouponUsageBHT30
 		{
 			get { return _CouponUsageBHT30; }
@@ -1268,7 +1268,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coupon Usage")]
 		[Description("Gets or sets number of 35 BHT coupon.")]
-		[PeropertyMapName("CouponUsageBHT35")]
+		[PropertyMapName("CouponUsageBHT35")]
 		public int CouponUsageBHT35
 		{
 			get { return _CouponUsageBHT35; }
@@ -1287,7 +1287,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coupon Usage")]
 		[Description("Gets or sets number of 70 BHT coupon.")]
-		[PeropertyMapName("CouponUsageBHT70")]
+		[PropertyMapName("CouponUsageBHT70")]
 		public int CouponUsageBHT70
 		{
 			get { return _CouponUsageBHT70; }
@@ -1306,7 +1306,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coupon Usage")]
 		[Description("Gets or sets number of 80 BHT coupon.")]
-		[PeropertyMapName("CouponUsageBHT80")]
+		[PropertyMapName("CouponUsageBHT80")]
 		public int CouponUsageBHT80
 		{
 			get { return _CouponUsageBHT80; }
@@ -1330,7 +1330,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("FreePass")]
 		[Description("Gets or sets number of FreePass Class A (4 wheel).")]
-		[PeropertyMapName("FreePassUsageClassA")]
+		[PropertyMapName("FreePassUsageClassA")]
 		public int FreePassUsageClassA
 		{
 			get { return _FreePassUsageClassA; }
@@ -1349,7 +1349,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("FreePass")]
 		[Description("Gets or sets number of FreePass Other (> 4 wheel).")]
-		[PeropertyMapName("FreePassUsageOther")]
+		[PropertyMapName("FreePassUsageOther")]
 		public int FreePassUsageOther
 		{
 			get { return _FreePassUsageOther; }
@@ -1373,7 +1373,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coupon Sold")]
 		[Description("Gets or sets number of 35 BHT coupon.")]
-		[PeropertyMapName("CouponSoldBHT35")]
+		[PropertyMapName("CouponSoldBHT35")]
 		public int CouponSoldBHT35
 		{
 			get { return _CouponSoldBHT35; }
@@ -1394,7 +1394,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coupon Sold")]
 		[Description("Gets or sets number of 80 BHT coupon.")]
-		[PeropertyMapName("CouponSoldBHT80")]
+		[PropertyMapName("CouponSoldBHT80")]
 		public int CouponSoldBHT80
 		{
 			get { return _CouponSoldBHT80; }
@@ -1414,7 +1414,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coupon Sold")]
 		[Description("Gets or sets number of 35 BHT coupon factor.")]
-		[PeropertyMapName("CouponSoldBHT35Factor")]
+		[PropertyMapName("CouponSoldBHT35Factor")]
 		public decimal CouponSoldBHT35Factor
 		{
 			get { return _CouponSoldBHT35Factor; }
@@ -1434,7 +1434,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Coupon Sold")]
 		[Description("Gets or sets number of 80 BHT coupon factor.")]
-		[PeropertyMapName("CouponSoldBHT80Factor")]
+		[PropertyMapName("CouponSoldBHT80Factor")]
 		public decimal CouponSoldBHT80Factor
 		{
 			get { return _CouponSoldBHT80Factor; }
@@ -1455,7 +1455,7 @@ namespace DMT.Models
 		[Category("Coupon Sold")]
 		[Description("Gets 35 BHT coupon total in BHT.")]
 		[ReadOnly(true)]
-		[PeropertyMapName("CouponSoldBHT35Total")]
+		[PropertyMapName("CouponSoldBHT35Total")]
 		public decimal CouponSoldBHT35Total
 		{
 			get { return _CouponSoldBHT35Total; }
@@ -1467,7 +1467,7 @@ namespace DMT.Models
 		[Category("Coupon Sold")]
 		[Description("Gets 80 BHT coupon total in BHT.")]
 		[ReadOnly(true)]
-		[PeropertyMapName("CouponSoldBHT80Total")]
+		[PropertyMapName("CouponSoldBHT80Total")]
 		public decimal CouponSoldBHT80Total
 		{
 			get { return _CouponSoldBHT80Total; }
@@ -1479,7 +1479,7 @@ namespace DMT.Models
 		[Category("Coupon Sold")]
 		[Description("Gets or sets total value in baht.")]
 		[ReadOnly(true)]
-		[PeropertyMapName("CouponSoldBHTTotal")]
+		[PropertyMapName("CouponSoldBHTTotal")]
 		public decimal CouponSoldBHTTotal
 		{
 			get { return _CouponSoldBHTTotal; }
@@ -1496,7 +1496,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
 		[ReadOnly(true)]
-		[PeropertyMapName("Status")]
+		[PropertyMapName("Status")]
 		[PropertyOrder(10001)]
 		public int Status
 		{
@@ -1519,7 +1519,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets LastUpdated (Sync to DC).")]
 		[ReadOnly(true)]
-		[PeropertyMapName("LastUpdate")]
+		[PropertyMapName("LastUpdate")]
 		[PropertyOrder(10002)]
 		public DateTime LastUpdate
 		{
@@ -1551,7 +1551,7 @@ namespace DMT.Models
 			/// Gets or sets TSB Name EN.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("TSBNameEN")]
+			[PropertyMapName("TSBNameEN")]
 			public override string TSBNameEN
 			{
 				get { return base.TSBNameEN; }
@@ -1561,7 +1561,7 @@ namespace DMT.Models
 			/// Gets or sets TSB Name TH.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("TSBNameTH")]
+			[PropertyMapName("TSBNameTH")]
 			public override string TSBNameTH
 			{
 				get { return base.TSBNameTH; }
@@ -1576,7 +1576,7 @@ namespace DMT.Models
 			/// Gets or sets Plaza Group Name EN.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("PlazaGroupNameEN")]
+			[PropertyMapName("PlazaGroupNameEN")]
 			public override string PlazaGroupNameEN
 			{
 				get { return base.PlazaGroupNameEN; }
@@ -1586,7 +1586,7 @@ namespace DMT.Models
 			/// Gets or sets Plaza Group Name TH.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("PlazaGroupNameTH")]
+			[PropertyMapName("PlazaGroupNameTH")]
 			public override string PlazaGroupNameTH
 			{
 				get { return base.PlazaGroupNameTH; }
@@ -1596,7 +1596,7 @@ namespace DMT.Models
 			/// Gets or sets Direction.
 			/// </summary>
 			[MaxLength(10)]
-			[PeropertyMapName("Direction")]
+			[PropertyMapName("Direction")]
 			public override string Direction
 			{
 				get { return base.Direction; }
@@ -1611,7 +1611,7 @@ namespace DMT.Models
 			/// Gets or sets Shift Name TH.
 			/// </summary>
 			[MaxLength(50)]
-			[PeropertyMapName("ShiftNameTH")]
+			[PropertyMapName("ShiftNameTH")]
 			public override string ShiftNameTH
 			{
 				get { return base.ShiftNameTH; }
@@ -1621,7 +1621,7 @@ namespace DMT.Models
 			/// Gets or sets Shift Name EN.
 			/// </summary>
 			[MaxLength(50)]
-			[PeropertyMapName("ShiftNameEN")]
+			[PropertyMapName("ShiftNameEN")]
 			public override string ShiftNameEN
 			{
 				get { return base.ShiftNameEN; }
@@ -1636,7 +1636,7 @@ namespace DMT.Models
 			/// Gets or sets Full Name EN.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("FullNameEN")]
+			[PropertyMapName("FullNameEN")]
 			public override string FullNameEN
 			{
 				get { return base.FullNameEN; }
@@ -1646,7 +1646,7 @@ namespace DMT.Models
 			/// Gets or sets Full Name TH.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("FullNameTH")]
+			[PropertyMapName("FullNameTH")]
 			public override string FullNameTH
 			{
 				get { return base.FullNameTH; }
@@ -1661,7 +1661,7 @@ namespace DMT.Models
 			/// Gets or sets Supervisor Name EN.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("SupervisorNameEN")]
+			[PropertyMapName("SupervisorNameEN")]
 			public override string SupervisorNameEN
 			{
 				get { return base.SupervisorNameEN; }
@@ -1671,7 +1671,7 @@ namespace DMT.Models
 			/// Gets or sets Supervisor Name TH.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("SupervisorNameTH")]
+			[PropertyMapName("SupervisorNameTH")]
 			public override string SupervisorNameTH
 			{
 				get { return base.SupervisorNameTH; }

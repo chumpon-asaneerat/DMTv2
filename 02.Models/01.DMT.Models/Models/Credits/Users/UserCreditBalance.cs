@@ -157,7 +157,7 @@ namespace DMT.Models
 		[Description("Gets or sets HasRemark.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("Description")]
+		[PropertyMapName("Description")]
 		public string Description
 		{
 			get { return _description; }
@@ -178,7 +178,7 @@ namespace DMT.Models
 		[Description("Gets or sets HasRemark.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("HasRemark")]
+		[PropertyMapName("HasRemark")]
 		public bool HasRemark
 		{
 			get { return _hasRemark; }
@@ -201,7 +201,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
-		[PeropertyMapName("RemarkVisibility")]
+		[PropertyMapName("RemarkVisibility")]
 		public System.Windows.Visibility RemarkVisibility
 		{
 			get { return (_hasRemark) ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed; }
@@ -215,7 +215,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
-		[PeropertyMapName("ReceivedBagVisibility")]
+		[PropertyMapName("ReceivedBagVisibility")]
 		public System.Windows.Visibility ReceivedBagVisibility
 		{
 			get { return (_State == StateTypes.Initial) ? System.Windows.Visibility.Visible : System.Windows.Visibility.Collapsed; }
@@ -381,7 +381,7 @@ namespace DMT.Models
 		[Description("Gets or sets UserCreditId")]
 		[PrimaryKey, AutoIncrement]
 		[ReadOnly(true)]
-		[PeropertyMapName("UserCreditId")]
+		[PropertyMapName("UserCreditId")]
 		public int UserCreditId
 		{
 			get
@@ -403,7 +403,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets UserCredit Date.")]
 		[ReadOnly(true)]
-		[PeropertyMapName("UserCreditDate")]
+		[PropertyMapName("UserCreditDate")]
 		public DateTime UserCreditDate
 		{
 			get { return _UserCreditDate; }
@@ -459,7 +459,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets State.")]
 		[Browsable(false)]
-		[PeropertyMapName("State")]
+		[PropertyMapName("State")]
 		public StateTypes State
 		{
 			get { return _State; }
@@ -481,7 +481,7 @@ namespace DMT.Models
 		[Description("Gets or sets Bag Number.")]
 		//[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("BagNo")]
+		[PropertyMapName("BagNo")]
 		public string BagNo
 		{
 			get { return _BagNo; }
@@ -502,7 +502,7 @@ namespace DMT.Models
 		[Description("Gets or sets Belt Number.")]
 		//[ReadOnly(true)]
 		[MaxLength(20)]
-		[PeropertyMapName("BeltNo")]
+		[PropertyMapName("BeltNo")]
 		public string BeltNo
 		{
 			get { return _BeltNo; }
@@ -528,7 +528,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSBId.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("TSBId")]
+		[PropertyMapName("TSBId")]
 		public string TSBId
 		{
 			get
@@ -551,7 +551,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSB Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("TSBNameEN")]
+		[PropertyMapName("TSBNameEN")]
 		public virtual string TSBNameEN
 		{
 			get
@@ -574,7 +574,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSB Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("TSBNameTH")]
+		[PropertyMapName("TSBNameTH")]
 		public virtual string TSBNameTH
 		{
 			get
@@ -602,7 +602,7 @@ namespace DMT.Models
 		[Description("Gets or sets Plaza Group Id.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("PlazaGroupId")]
+		[PropertyMapName("PlazaGroupId")]
 		public string PlazaGroupId
 		{
 			get
@@ -625,7 +625,7 @@ namespace DMT.Models
 		[Description("Gets or sets Plaza Group Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("PlazaGroupNameEN")]
+		[PropertyMapName("PlazaGroupNameEN")]
 		public virtual string PlazaGroupNameEN
 		{
 			get
@@ -648,7 +648,7 @@ namespace DMT.Models
 		[Description("Gets or sets Plaza Group Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("PlazaGroupNameTH")]
+		[PropertyMapName("PlazaGroupNameTH")]
 		public virtual string PlazaGroupNameTH
 		{
 			get
@@ -671,7 +671,7 @@ namespace DMT.Models
 		[Description("Gets or sets Direction.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("Direction")]
+		[PropertyMapName("Direction")]
 		public virtual string Direction
 		{
 			get
@@ -699,7 +699,7 @@ namespace DMT.Models
 		[Description("Gets or sets User Id.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("UserId")]
+		[PropertyMapName("UserId")]
 		public string UserId
 		{
 			get
@@ -722,7 +722,7 @@ namespace DMT.Models
 		[Description("Gets or sets User Full Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("FullNameEN")]
+		[PropertyMapName("FullNameEN")]
 		public virtual string FullNameEN
 		{
 			get
@@ -745,7 +745,7 @@ namespace DMT.Models
 		[Description("Gets or sets User Full Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("FullNameTH")]
+		[PropertyMapName("FullNameTH")]
 		public virtual string FullNameTH
 		{
 			get
@@ -773,7 +773,7 @@ namespace DMT.Models
 		[Description("Gets or sets number of .25 baht coin.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("CountST25")]
+		[PropertyMapName("CountST25")]
 		[PropertyOrder(10)]
 		public virtual int CountST25
 		{
@@ -801,7 +801,7 @@ namespace DMT.Models
 		[Description("Gets or sets number of .50 baht coin.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("CountST50")]
+		[PropertyMapName("CountST50")]
 		[PropertyOrder(11)]
 		public virtual int CountST50
 		{
@@ -830,7 +830,7 @@ namespace DMT.Models
 		[Description("Gets or sets number of 1 baht coin.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("CountBHT1")]
+		[PropertyMapName("CountBHT1")]
 		[PropertyOrder(12)]
 		public virtual int CountBHT1
 		{
@@ -858,7 +858,7 @@ namespace DMT.Models
 		[Description("Gets or sets number of 2 baht coin.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("CountBHT2")]
+		[PropertyMapName("CountBHT2")]
 		[PropertyOrder(13)]
 		public virtual int CountBHT2
 		{
@@ -886,7 +886,7 @@ namespace DMT.Models
 		[Description("Gets or sets number of 5 baht coin.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("CountBHT5")]
+		[PropertyMapName("CountBHT5")]
 		[PropertyOrder(14)]
 		public virtual int CountBHT5
 		{
@@ -914,7 +914,7 @@ namespace DMT.Models
 		[Description("Gets or sets number of 10 baht coin.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("CountBHT10")]
+		[PropertyMapName("CountBHT10")]
 		[PropertyOrder(15)]
 		public virtual int CountBHT10
 		{
@@ -942,7 +942,7 @@ namespace DMT.Models
 		[Description("Gets or sets number of 20 baht bill.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("CountBHT20")]
+		[PropertyMapName("CountBHT20")]
 		[PropertyOrder(16)]
 		public virtual int CountBHT20
 		{
@@ -970,7 +970,7 @@ namespace DMT.Models
 		[Description("Gets or sets number of 50 baht bill.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("CountBHT50")]
+		[PropertyMapName("CountBHT50")]
 		[PropertyOrder(17)]
 		public virtual int CountBHT50
 		{
@@ -998,7 +998,7 @@ namespace DMT.Models
 		[Description("Gets or sets number of 100 baht bill.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("CountBHT100")]
+		[PropertyMapName("CountBHT100")]
 		[PropertyOrder(18)]
 		public virtual int CountBHT100
 		{
@@ -1026,7 +1026,7 @@ namespace DMT.Models
 		[Description("Gets or sets number of 500 baht bill.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("CountBHT500")]
+		[PropertyMapName("CountBHT500")]
 		[PropertyOrder(19)]
 		public virtual int CountBHT500
 		{
@@ -1054,7 +1054,7 @@ namespace DMT.Models
 		[Description("Gets or sets number of 1000 baht bill.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("CountBHT1000")]
+		[PropertyMapName("CountBHT1000")]
 		[PropertyOrder(20)]
 		public virtual int CountBHT1000
 		{
@@ -1087,7 +1087,7 @@ namespace DMT.Models
 		[Description("Gets or sets amount of .25 baht coin.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("AmountST25")]
+		[PropertyMapName("AmountST25")]
 		[PropertyOrder(21)]
 		public virtual decimal AmountST25
 		{
@@ -1115,7 +1115,7 @@ namespace DMT.Models
 		[Description("Gets or sets amount of .50 baht coin.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("AmountST50")]
+		[PropertyMapName("AmountST50")]
 		[PropertyOrder(22)]
 		public virtual decimal AmountST50
 		{
@@ -1143,7 +1143,7 @@ namespace DMT.Models
 		[Description("Gets or sets amount of 1 baht coin.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("AmountBHT1")]
+		[PropertyMapName("AmountBHT1")]
 		[PropertyOrder(23)]
 		public virtual decimal AmountBHT1
 		{
@@ -1171,7 +1171,7 @@ namespace DMT.Models
 		[Description("Gets or sets amount of 2 baht coin.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("AmountBHT2")]
+		[PropertyMapName("AmountBHT2")]
 		[PropertyOrder(24)]
 		public virtual decimal AmountBHT2
 		{
@@ -1199,7 +1199,7 @@ namespace DMT.Models
 		[Description("Gets or sets amount of 5 baht coin.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("AmountBHT5")]
+		[PropertyMapName("AmountBHT5")]
 		[PropertyOrder(25)]
 		public virtual decimal AmountBHT5
 		{
@@ -1227,7 +1227,7 @@ namespace DMT.Models
 		[Description("Gets or sets amount of 10 baht coin.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("AmountBHT10")]
+		[PropertyMapName("AmountBHT10")]
 		[PropertyOrder(26)]
 		public virtual decimal AmountBHT10
 		{
@@ -1255,7 +1255,7 @@ namespace DMT.Models
 		[Description("Gets or sets amount of 20 baht bill.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("AmountBHT20")]
+		[PropertyMapName("AmountBHT20")]
 		[PropertyOrder(27)]
 		public virtual decimal AmountBHT20
 		{
@@ -1283,7 +1283,7 @@ namespace DMT.Models
 		[Description("Gets or sets amount of 50 baht bill.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("AmountBHT50")]
+		[PropertyMapName("AmountBHT50")]
 		[PropertyOrder(28)]
 		public virtual decimal AmountBHT50
 		{
@@ -1311,7 +1311,7 @@ namespace DMT.Models
 		[Description("Gets or sets amount of 100 baht bill.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("AmountBHT100")]
+		[PropertyMapName("AmountBHT100")]
 		[PropertyOrder(29)]
 		public virtual decimal AmountBHT100
 		{
@@ -1339,7 +1339,7 @@ namespace DMT.Models
 		[Description("Gets or sets amount of 500 baht bill.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("AmountBHT500")]
+		[PropertyMapName("AmountBHT500")]
 		[PropertyOrder(30)]
 		public virtual decimal AmountBHT500
 		{
@@ -1367,7 +1367,7 @@ namespace DMT.Models
 		[Description("Gets or sets amount of 1000 baht bill.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("AmountBHT1000")]
+		[PropertyMapName("AmountBHT1000")]
 		[PropertyOrder(31)]
 		public virtual decimal AmountBHT1000
 		{
@@ -1560,7 +1560,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[JsonIgnore]
 		[Ignore]
-		[PeropertyMapName("BHTTotal")]
+		[PropertyMapName("BHTTotal")]
 		public decimal BHTTotal
 		{
 			get { return _BHTTotal; }
@@ -1577,7 +1577,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
 		[ReadOnly(true)]
-		[PeropertyMapName("Status")]
+		[PropertyMapName("Status")]
 		public int Status
 		{
 			get
@@ -1599,7 +1599,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets LastUpdated (Sync to DC).")]
 		[ReadOnly(true)]
-		[PeropertyMapName("LastUpdate")]
+		[PropertyMapName("LastUpdate")]
 		public DateTime LastUpdate
 		{
 			get { return _LastUpdate; }
@@ -1630,7 +1630,7 @@ namespace DMT.Models
 			/// Gets or sets TSB Name EN.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("TSBNameEN")]
+			[PropertyMapName("TSBNameEN")]
 			public override string TSBNameEN
 			{
 				get { return base.TSBNameEN; }
@@ -1640,7 +1640,7 @@ namespace DMT.Models
 			/// Gets or sets TSB Name TH.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("TSBNameTH")]
+			[PropertyMapName("TSBNameTH")]
 			public override string TSBNameTH
 			{
 				get { return base.TSBNameTH; }
@@ -1655,7 +1655,7 @@ namespace DMT.Models
 			/// Gets or sets Plaza Group Name EN.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("PlazaGroupNameEN")]
+			[PropertyMapName("PlazaGroupNameEN")]
 			public override string PlazaGroupNameEN
 			{
 				get { return base.PlazaGroupNameEN; }
@@ -1665,7 +1665,7 @@ namespace DMT.Models
 			/// Gets or sets Plaza Group Name TH.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("PlazaGroupNameTH")]
+			[PropertyMapName("PlazaGroupNameTH")]
 			public override string PlazaGroupNameTH
 			{
 				get { return base.PlazaGroupNameTH; }
@@ -1675,7 +1675,7 @@ namespace DMT.Models
 			/// Gets or sets Direction.
 			/// </summary>
 			[MaxLength(10)]
-			[PeropertyMapName("Direction")]
+			[PropertyMapName("Direction")]
 			public override string Direction
 			{
 				get { return base.Direction; }
@@ -1690,7 +1690,7 @@ namespace DMT.Models
 			/// Gets or sets Full Name EN.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("FullNameEN")]
+			[PropertyMapName("FullNameEN")]
 			public override string FullNameEN
 			{
 				get { return base.FullNameEN; }
@@ -1700,7 +1700,7 @@ namespace DMT.Models
 			/// Gets or sets Full Name TH.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("FullNameTH")]
+			[PropertyMapName("FullNameTH")]
 			public override string FullNameTH
 			{
 				get { return base.FullNameTH; }
@@ -1714,7 +1714,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets number of .25 baht coin.
 			/// </summary>
-			[PeropertyMapName("CountST25")]
+			[PropertyMapName("CountST25")]
 			public override int CountST25
 			{
 				get { return base.CountST25; }
@@ -1723,7 +1723,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets number of .50 baht coin.
 			/// </summary>
-			[PeropertyMapName("CountST50")]
+			[PropertyMapName("CountST50")]
 			public override int CountST50
 			{
 				get { return base.CountST50; }
@@ -1732,7 +1732,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets number of 1 baht coin.
 			/// </summary>
-			[PeropertyMapName("CountBHT1")]
+			[PropertyMapName("CountBHT1")]
 			public override int CountBHT1
 			{
 				get { return base.CountBHT1; }
@@ -1741,7 +1741,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets number of 2 baht coin.
 			/// </summary>
-			[PeropertyMapName("CountBHT2")]
+			[PropertyMapName("CountBHT2")]
 			public override int CountBHT2
 			{
 				get { return base.CountBHT2; }
@@ -1750,7 +1750,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets number of 5 baht coin.
 			/// </summary>
-			[PeropertyMapName("CountBHT5")]
+			[PropertyMapName("CountBHT5")]
 			public override int CountBHT5
 			{
 				get { return base.CountBHT5; }
@@ -1759,7 +1759,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets number of 10 baht coin.
 			/// </summary>
-			[PeropertyMapName("CountBHT10")]
+			[PropertyMapName("CountBHT10")]
 			public override int CountBHT10
 			{
 				get { return base.CountBHT10; }
@@ -1768,7 +1768,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets number of 20 baht bill.
 			/// </summary>
-			[PeropertyMapName("CountBHT20")]
+			[PropertyMapName("CountBHT20")]
 			public override int CountBHT20
 			{
 				get { return base.CountBHT20; }
@@ -1777,7 +1777,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets number of 50 baht bill.
 			/// </summary>
-			[PeropertyMapName("CountBHT50")]
+			[PropertyMapName("CountBHT50")]
 			public override int CountBHT50
 			{
 				get { return base.CountBHT50; }
@@ -1786,7 +1786,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets number of 100 baht bill.
 			/// </summary>
-			[PeropertyMapName("CountBHT100")]
+			[PropertyMapName("CountBHT100")]
 			public override int CountBHT100
 			{
 				get { return base.CountBHT100; }
@@ -1795,7 +1795,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets number of 500 baht bill.
 			/// </summary>
-			[PeropertyMapName("CountBHT500")]
+			[PropertyMapName("CountBHT500")]
 			public override int CountBHT500
 			{
 				get { return base.CountBHT500; }
@@ -1804,7 +1804,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets number of 1000 baht bill.
 			/// </summary>
-			[PeropertyMapName("CountBHT1000")]
+			[PropertyMapName("CountBHT1000")]
 			public override int CountBHT1000
 			{
 				get { return base.CountBHT1000; }
@@ -1818,7 +1818,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets amount of .25 baht coin.
 			/// </summary>
-			[PeropertyMapName("AmountST25")]
+			[PropertyMapName("AmountST25")]
 			public override decimal AmountST25
 			{
 				get { return base.AmountST25; }
@@ -1827,7 +1827,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets amount of .50 baht coin.
 			/// </summary>
-			[PeropertyMapName("AmountST50")]
+			[PropertyMapName("AmountST50")]
 			public override decimal AmountST50
 			{
 				get { return base.AmountST50; }
@@ -1836,7 +1836,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets amount of 1 baht coin.
 			/// </summary>
-			[PeropertyMapName("AmountBHT1")]
+			[PropertyMapName("AmountBHT1")]
 			public override decimal AmountBHT1
 			{
 				get { return base.AmountBHT1; }
@@ -1845,7 +1845,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets amount of 2 baht coin.
 			/// </summary>
-			[PeropertyMapName("AmountBHT2")]
+			[PropertyMapName("AmountBHT2")]
 			public override decimal AmountBHT2
 			{
 				get { return base.AmountBHT2; }
@@ -1854,7 +1854,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets amount of 5 baht coin.
 			/// </summary>
-			[PeropertyMapName("AmountBHT5")]
+			[PropertyMapName("AmountBHT5")]
 			public override decimal AmountBHT5
 			{
 				get { return base.AmountBHT5; }
@@ -1863,7 +1863,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets amount of 10 baht coin.
 			/// </summary>
-			[PeropertyMapName("AmountBHT10")]
+			[PropertyMapName("AmountBHT10")]
 			public override decimal AmountBHT10
 			{
 				get { return base.AmountBHT10; }
@@ -1872,7 +1872,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets amount of 20 baht bill.
 			/// </summary>
-			[PeropertyMapName("AmountBHT20")]
+			[PropertyMapName("AmountBHT20")]
 			public override decimal AmountBHT20
 			{
 				get { return base.AmountBHT20; }
@@ -1881,7 +1881,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets amount of 50 baht bill.
 			/// </summary>
-			[PeropertyMapName("AmountBHT50")]
+			[PropertyMapName("AmountBHT50")]
 			public override decimal AmountBHT50
 			{
 				get { return base.AmountBHT50; }
@@ -1890,7 +1890,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets amount of 100 baht bill.
 			/// </summary>
-			[PeropertyMapName("AmountBHT100")]
+			[PropertyMapName("AmountBHT100")]
 			public override decimal AmountBHT100
 			{
 				get { return base.AmountBHT100; }
@@ -1899,7 +1899,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets amount of 500 baht bill.
 			/// </summary>
-			[PeropertyMapName("AmountBHT500")]
+			[PropertyMapName("AmountBHT500")]
 			public override decimal AmountBHT500
 			{
 				get { return base.AmountBHT500; }
@@ -1908,7 +1908,7 @@ namespace DMT.Models
 			/// <summary>
 			/// Gets or sets amount of 1000 baht bill.
 			/// </summary>
-			[PeropertyMapName("AmountBHT1000")]
+			[PropertyMapName("AmountBHT1000")]
 			public override decimal AmountBHT1000
 			{
 				get { return base.AmountBHT1000; }

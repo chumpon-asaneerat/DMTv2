@@ -64,7 +64,7 @@ namespace DMT.Models
 		[Description("Gets or sets RoleId")]
 		[ReadOnly(true)]
 		[PrimaryKey, MaxLength(20)]
-		[PeropertyMapName("RoleId")]
+		[PropertyMapName("RoleId")]
 		public string RoleId
 		{
 			get
@@ -85,7 +85,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Role")]
 		[Description("Gets or sets Group Id.")]
-		[PeropertyMapName("GroupId")]
+		[PropertyMapName("GroupId")]
 		public int GroupId
 		{
 			get
@@ -107,7 +107,7 @@ namespace DMT.Models
 		[Category("Role")]
 		[Description("Gets or sets RoleNameEN")]
 		[MaxLength(50)]
-		[PeropertyMapName("RoleNameEN")]
+		[PropertyMapName("RoleNameEN")]
 		public string RoleNameEN
 		{
 			get
@@ -129,7 +129,7 @@ namespace DMT.Models
 		[Category("Role")]
 		[Description("Gets or sets RoleNameTH")]
 		[MaxLength(50)]
-		[PeropertyMapName("RoleNameTH")]
+		[PropertyMapName("RoleNameTH")]
 		public string RoleNameTH
 		{
 			get
@@ -156,7 +156,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
 		[ReadOnly(true)]
-		[PeropertyMapName("Status")]
+		[PropertyMapName("Status")]
 		[PropertyOrder(10001)]
 		public int Status
 		{
@@ -179,7 +179,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets LastUpdated (Sync to DC).")]
 		[ReadOnly(true)]
-		[PeropertyMapName("LastUpdate")]
+		[PropertyMapName("LastUpdate")]
 		[PropertyOrder(10002)]
 		public DateTime LastUpdate
 		{

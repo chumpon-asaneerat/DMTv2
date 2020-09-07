@@ -67,7 +67,7 @@ namespace DMT.Models
 		[Category("Plaza Group")]
 		[Description("Gets or sets PlazaId.")]
 		[PrimaryKey, MaxLength(10)]
-		[PeropertyMapName("PlazaGroupId")]
+		[PropertyMapName("PlazaGroupId")]
 		public string PlazaGroupId
 		{
 			get
@@ -89,7 +89,7 @@ namespace DMT.Models
 		[Category("Plaza Group")]
 		[Description("Gets or sets PlazaGroupNameEN")]
 		[MaxLength(100)]
-		[PeropertyMapName("PlazaGroupNameEN")]
+		[PropertyMapName("PlazaGroupNameEN")]
 		public string PlazaGroupNameEN
 		{
 			get
@@ -111,7 +111,7 @@ namespace DMT.Models
 		[Category("Plaza Group")]
 		[Description("Gets or sets PlazaGroupNameTH")]
 		[MaxLength(100)]
-		[PeropertyMapName("PlazaGroupNameTH")]
+		[PropertyMapName("PlazaGroupNameTH")]
 		public string PlazaGroupNameTH
 		{
 			get
@@ -133,7 +133,7 @@ namespace DMT.Models
 		[Category("Plaza Group")]
 		[Description("Gets or sets Direction")]
 		[MaxLength(10)]
-		[PeropertyMapName("Direction")]
+		[PropertyMapName("Direction")]
 		public string Direction
 		{
 			get
@@ -161,7 +161,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSBId.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("TSBId")]
+		[PropertyMapName("TSBId")]
 		public string TSBId
 		{
 			get
@@ -184,7 +184,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSB Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("TSBNameEN")]
+		[PropertyMapName("TSBNameEN")]
 		public virtual string TSBNameEN
 		{
 			get
@@ -207,7 +207,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSB Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("TSBNameTH")]
+		[PropertyMapName("TSBNameTH")]
 		public virtual string TSBNameTH
 		{
 			get
@@ -234,7 +234,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
 		[ReadOnly(true)]
-		[PeropertyMapName("Status")]
+		[PropertyMapName("Status")]
 		[PropertyOrder(10001)]
 		public int Status
 		{
@@ -257,7 +257,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets LastUpdated (Sync to DC).")]
 		[ReadOnly(true)]
-		[PeropertyMapName("LastUpdate")]
+		[PropertyMapName("LastUpdate")]
 		[PropertyOrder(10002)]
 		public DateTime LastUpdate
 		{
@@ -289,7 +289,7 @@ namespace DMT.Models
 			/// Gets or sets TSB Name EN.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("TSBNameEN")]
+			[PropertyMapName("TSBNameEN")]
 			public override string TSBNameEN
 			{
 				get { return base.TSBNameEN; }
@@ -299,7 +299,7 @@ namespace DMT.Models
 			/// Gets or sets TSB Name TH.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("TSBNameTH")]
+			[PropertyMapName("TSBNameTH")]
 			public override string TSBNameTH
 			{
 				get { return base.TSBNameTH; }

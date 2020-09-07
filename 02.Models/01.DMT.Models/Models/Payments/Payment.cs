@@ -63,7 +63,7 @@ namespace DMT.Models
 		[Description("Gets or sets Payment Id.")]
 		//[ReadOnly(true)]
 		[PrimaryKey, MaxLength(20)]
-		[PeropertyMapName("PaymentId")]
+		[PropertyMapName("PaymentId")]
 		public string PaymentId
 		{
 			get
@@ -85,7 +85,7 @@ namespace DMT.Models
 		[Category("Payment")]
 		[Description("Gets or sets Payment Name EN.")]
 		[MaxLength(50)]
-		[PeropertyMapName("PaymentNameEN")]
+		[PropertyMapName("PaymentNameEN")]
 		public string PaymentNameEN
 		{
 			get
@@ -107,7 +107,7 @@ namespace DMT.Models
 		[Category("Payment")]
 		[Description("Gets or sets Payment Name TH.")]
 		[MaxLength(50)]
-		[PeropertyMapName("PaymentNameTH")]
+		[PropertyMapName("PaymentNameTH")]
 		public string PaymentNameTH
 		{
 			get
@@ -134,7 +134,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
 		[ReadOnly(true)]
-		[PeropertyMapName("Status")]
+		[PropertyMapName("Status")]
 		[PropertyOrder(10001)]
 		public int Status
 		{
@@ -157,7 +157,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets LastUpdated (Sync to DC).")]
 		[ReadOnly(true)]
-		[PeropertyMapName("LastUpdate")]
+		[PropertyMapName("LastUpdate")]
 		[PropertyOrder(10002)]
 		public DateTime LastUpdate
 		{

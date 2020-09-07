@@ -67,7 +67,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets TSBId.")]
 		[PrimaryKey, MaxLength(10)]
-		[PeropertyMapName("TSBId")]
+		[PropertyMapName("TSBId")]
 		public string TSBId
 		{
 			get
@@ -89,7 +89,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets NetworkId.")]
 		[MaxLength(10)]
-		[PeropertyMapName("NetworkId")]
+		[PropertyMapName("NetworkId")]
 		public string NetworkId
 		{
 			get
@@ -111,7 +111,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets TSBNameEN.")]
 		[MaxLength(100)]
-		[PeropertyMapName("TSBNameEN")]
+		[PropertyMapName("TSBNameEN")]
 		public string TSBNameEN
 		{
 			get
@@ -133,7 +133,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets TSBNameTH.")]
 		[MaxLength(100)]
-		[PeropertyMapName("TSBNameTH")]
+		[PropertyMapName("TSBNameTH")]
 		public string TSBNameTH
 		{
 			get
@@ -154,7 +154,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Common")]
 		[Description("Gets or sets Max TSB Credit.")]
-		[PeropertyMapName("MaxCredit")]
+		[PropertyMapName("MaxCredit")]
 		public decimal MaxCredit
 		{
 			get
@@ -176,7 +176,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets is active TSB.")]
 		[ReadOnly(true)]
-		[PeropertyMapName("Active")]
+		[PropertyMapName("Active")]
 		public bool Active
 		{
 			get
@@ -203,7 +203,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
 		[ReadOnly(true)]
-		[PeropertyMapName("Status")]
+		[PropertyMapName("Status")]
 		[PropertyOrder(10001)]
 		public int Status
 		{
@@ -226,7 +226,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets LastUpdated (Sync to DC).")]
 		[ReadOnly(true)]
-		[PeropertyMapName("LastUpdate")]
+		[PropertyMapName("LastUpdate")]
 		[PropertyOrder(10002)]
 		public DateTime LastUpdate
 		{

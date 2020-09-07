@@ -62,7 +62,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets ShiftId.")]
 		[PrimaryKey]
-		[PeropertyMapName("ShiftId")]
+		[PropertyMapName("ShiftId")]
 		public int ShiftId
 		{
 			get
@@ -84,7 +84,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets Name TH.")]
 		[MaxLength(50)]
-		[PeropertyMapName("ShiftNameTH")]
+		[PropertyMapName("ShiftNameTH")]
 		public string ShiftNameTH
 		{
 			get
@@ -106,7 +106,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets Name EN.")]
 		[MaxLength(50)]
-		[PeropertyMapName("ShiftNameEN")]
+		[PropertyMapName("ShiftNameEN")]
 		public string ShiftNameEN
 		{
 			get
@@ -133,7 +133,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
 		[ReadOnly(true)]
-		[PeropertyMapName("Status")]
+		[PropertyMapName("Status")]
 		[PropertyOrder(10001)]
 		public int Status
 		{
@@ -156,7 +156,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets LastUpdated (Sync to DC).")]
 		[ReadOnly(true)]
-		[PeropertyMapName("LastUpdate")]
+		[PropertyMapName("LastUpdate")]
 		[PropertyOrder(10002)]
 		public DateTime LastUpdate
 		{

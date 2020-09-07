@@ -47,42 +47,42 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets currencyDenomId.")]
 		[PrimaryKey]
-		[PeropertyMapName("currencyDenomId")]
+		[PropertyMapName("currencyDenomId")]
 		public int currencyDenomId { get; set; }
 		/// <summary>
 		/// Gets or sets currencyId.
 		/// </summary>
 		[Category("Common")]
 		[Description("Gets or sets currencyId.")]
-		[PeropertyMapName("currencyId")]
+		[PropertyMapName("currencyId")]
 		public int currencyId { get; set; }
 		/// <summary>
 		/// Gets or sets denomTypeId.
 		/// </summary>
 		[Category("Common")]
 		[Description("Gets or sets denomTypeId.")]
-		[PeropertyMapName("denomTypeId")]
+		[PropertyMapName("denomTypeId")]
 		public int denomTypeId { get; set; }
 		/// <summary>
 		/// Gets or sets denomValue.
 		/// </summary>
 		[Category("Common")]
 		[Description("Gets or sets denomValue.")]
-		[PeropertyMapName("denomValue")]
+		[PropertyMapName("denomValue")]
 		public decimal denomValue { get; set; }
 		/// <summary>
 		/// Gets or sets abbreviation.
 		/// </summary>
 		[Category("Common")]
 		[Description("Gets or sets abbreviation.")]
-		[PeropertyMapName("abbreviation")]
+		[PropertyMapName("abbreviation")]
 		public string abbreviation { get; set; }
 		/// <summary>
 		/// Gets or sets description.
 		/// </summary>
 		[Category("Common")]
 		[Description("Gets or sets description.")]
-		[PeropertyMapName("description")]
+		[PropertyMapName("description")]
 		public string description { get; set; }
 
 		#endregion

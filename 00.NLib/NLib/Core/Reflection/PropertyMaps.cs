@@ -29,12 +29,12 @@ using System.Reflection;
 
 namespace NLib.Reflection
 {
-    #region PeropertyMapNameAttribute
+    #region PropertyMapNameAttribute
 
     /// <summary>
-    /// The PeropertyMapName Attribute class.
+    /// The PropertyMapName Attribute class.
     /// </summary>
-    public class PeropertyMapNameAttribute : Attribute
+    public class PropertyMapNameAttribute : Attribute
     {
         // TODO: Required more constructor for supports base type to ignore map type that is not inherited from same base type.
         #region Constructor
@@ -42,13 +42,13 @@ namespace NLib.Reflection
         /// <summary>
         /// Constructor.
         /// </summary>
-        private PeropertyMapNameAttribute() : base() { }
+        private PropertyMapNameAttribute() : base() { }
         /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="name">The map name.</param>
         /// <param name="baseType">The base type.</param>
-        public PeropertyMapNameAttribute(string name, Type baseType) : base()
+        public PropertyMapNameAttribute(string name, Type baseType) : base()
         {
             this.Name = name;
             this.BaseType = baseType;
@@ -57,7 +57,7 @@ namespace NLib.Reflection
         /// Constructor.
         /// </summary>
         /// <param name="name">The map name.</param>
-        public PeropertyMapNameAttribute(string name) : this(name, null) { }
+        public PropertyMapNameAttribute(string name) : this(name, null) { }
 
         #endregion
 
@@ -86,7 +86,7 @@ namespace NLib.Reflection
     {
         #region Internal Variables
 
-        private Dictionary<Type, PeropertyMapName> _map = new Dictionary<Type, PeropertyMapName>();
+        private Dictionary<Type, PropertyMapName> _map = new Dictionary<Type, PropertyMapName>();
 
         #endregion
 
@@ -100,10 +100,10 @@ namespace NLib.Reflection
             {
                 /*
                 // .NET 4.0
-                object[] attrs = prop.GetCustomAttributes(typeof(PeropertyMapNameAttribute), true);
-                if (null != attrs && attrs.Length > 0 && attrs[0] is PeropertyMapNameAttribute)
+                object[] attrs = prop.GetCustomAttributes(typeof(PropertyMapNameAttribute), true);
+                if (null != attrs && attrs.Length > 0 && attrs[0] is PropertyMapNameAttribute)
                 {
-                    PeropertyMapNameAttribute map = attrs[0] as PeropertyMapNameAttribute;
+                    PropertyMapNameAttribute map = attrs[0] as PropertyMapNameAttribute;
                     if (null != map)
                     {
                         PeropertyMapName mapInfo;
@@ -122,20 +122,20 @@ namespace NLib.Reflection
                 }
                 */
                 // .NET 4.5
-                PeropertyMapNameAttribute map = prop.GetCustomAttribute<PeropertyMapNameAttribute>(true);
+                PropertyMapNameAttribute map = prop.GetCustomAttribute<PropertyMapNameAttribute>(true);
                 if (null != map)
                 {
-                    PeropertyMapName mapInfo;
+                    PropertyMapName mapInfo;
                     if (!_map.ContainsKey(type))
                     {
-                        mapInfo = new PeropertyMapName();
+                        mapInfo = new PropertyMapName();
                         _map.Add(type, mapInfo);
                     }
                     else mapInfo = _map[type];
 
                     if (!mapInfo.ContainsKey(map.Name))
                     {
-                        mapInfo.Add(map.Name, prop);
+                        mapInfo.Add(map.Name, new PropertyMapInfo(prop, map.BaseType));
                     }
                 }
             }
@@ -152,7 +152,7 @@ namespace NLib.Reflection
         /// <returns>
         /// Returns PeropertyMapName instance that match target type. If not found returns null.
         /// </returns>
-        public PeropertyMapName this[Type value]
+        public PropertyMapName this[Type value]
         {
             get
             {
@@ -167,16 +167,16 @@ namespace NLib.Reflection
 
     #endregion
 
-    #region PeropertyMapName (internal)
+    #region PropertyMapName (internal)
 
     /// <summary>
-    /// The PeropertyMapName class (internal).
+    /// The PropertyMapName class (internal).
     /// </summary>
-    internal class PeropertyMapName
+    internal class PropertyMapName
     {
         #region Internal Variables
 
-        private Dictionary<string, PropertyInfo> _map = new Dictionary<string, PropertyInfo>();
+        private Dictionary<string, PropertyMapInfo> _map = new Dictionary<string, PropertyMapInfo>();
 
         #endregion
 
@@ -185,14 +185,14 @@ namespace NLib.Reflection
         /// <summary>
         /// Constructor.
         /// </summary>
-        public PeropertyMapName() : base()
+        public PropertyMapName() : base()
         {
             MapNames = new List<string>();
         }
         /// <summary>
         /// Destructor.
         /// </summary>
-        ~PeropertyMapName()
+        ~PropertyMapName()
         {
             if (null != MapNames)
             {
@@ -209,8 +209,8 @@ namespace NLib.Reflection
         /// Add.
         /// </summary>
         /// <param name="name">The map name</param>
-        /// <param name="value">The PropertyInfo instance for specificed map name.</param>
-        public void Add(string name, PropertyInfo value)
+        /// <param name="value">The PeropertyMapInfo instance for specificed map name.</param>
+        public void Add(string name, PropertyMapInfo value)
         {
             if (!_map.ContainsKey(name)) _map.Add(name, value);
             if (!MapNames.Contains(name)) MapNames.Add(name); // keep map name.
@@ -235,9 +235,9 @@ namespace NLib.Reflection
         /// </summary>
         /// <param name="value">The map name.</param>
         /// <returns>
-        /// Returns PropertyInfo instance if found otherwise returns null.
+        /// Returns PeropertyMapInfo instance if found otherwise returns null.
         /// </returns>
-        public PropertyInfo this[string value]
+        public PropertyMapInfo this[string value]
         {
             get
             {
@@ -255,7 +255,50 @@ namespace NLib.Reflection
 
     #endregion
 
-    #region PeropertyMapInfo (internal)
+    #region PropertyMapInfo (internal)
+
+    /// <summary>
+    /// The PropertyMapInfo class (internal)
+    /// </summary>
+    internal class PropertyMapInfo
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public PropertyMapInfo() : base() { }
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="property">The property info.</param>
+        /// <param name="baseType">The owner class base type.</param>
+        public PropertyMapInfo(PropertyInfo property, Type baseType) : base()
+        {
+            this.Property = property;
+            this.BaseType = baseType;
+        }
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="property">The property info.</param>
+        public PropertyMapInfo(PropertyInfo property) : this(property, null) { }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets the property info instance.
+        /// </summary>
+        public PropertyInfo Property { get; set; }
+        /// <summary>
+        /// Gets or sets Base Type (of owner class)
+        /// </summary>
+        public Type BaseType { get; set; }
+
+        #endregion
+    }
 
     #endregion
 
@@ -287,14 +330,29 @@ namespace NLib.Reflection
             if (null == source || null == target) return;
             Type scrType = source.GetType();
             Type dstType = target.GetType();
-            PeropertyMapName scrProp = _caches[scrType];
-            PeropertyMapName dstProp = _caches[dstType];
+            PropertyMapName scrProp = _caches[scrType];
+            PropertyMapName dstProp = _caches[dstType];
+            PropertyMapInfo scrInfo, dstInfo;
             foreach (string name in scrProp.MapNames)
             {
-                if (null == scrProp[name] || null == dstProp[name]) continue;
-                if (scrProp[name].PropertyType != dstProp[name].PropertyType) continue;
-                var val = PropertyAccess.GetValue(source, scrProp[name].Name);
-                PropertyAccess.SetValue(target, dstProp[name].Name, val);
+                scrInfo = scrProp[name];
+                dstInfo = dstProp[name];
+                if (null == scrInfo || null == dstInfo) 
+                    continue;
+                if (scrInfo.Property == null || dstInfo.Property == null) 
+                    continue;
+                if (scrInfo.Property != dstInfo.Property) 
+                    continue;
+
+                if (scrInfo.Property.PropertyType != dstInfo.Property.PropertyType) 
+                    continue;
+
+                if (scrInfo.BaseType != null && dstInfo.BaseType != null &&   
+                    scrInfo.BaseType != dstInfo.BaseType)
+                    continue; // skip if base type assigned but not same.
+
+                var val = PropertyAccess.GetValue(source, scrInfo.Property.Name);
+                PropertyAccess.SetValue(target, dstInfo.Property.Name, val);
             }
         }
         /// <summary>

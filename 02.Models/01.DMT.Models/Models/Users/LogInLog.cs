@@ -95,7 +95,7 @@ namespace DMT.Models
 		[Description(" Gets or sets TransactionId")]
 		[ReadOnly(true)]
 		[PrimaryKey, AutoIncrement]
-		[PeropertyMapName("TransactionId")]
+		[PropertyMapName("TransactionId")]
 		public int TransactionId
 		{
 			get
@@ -117,7 +117,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description(" Gets or sets Transaction Date")]
 		[ReadOnly(true)]
-		[PeropertyMapName("TransactionDate")]
+		[PropertyMapName("TransactionDate")]
 		public DateTime TransactionDate
 		{
 			get
@@ -193,7 +193,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets Transaction Type.")]
 		[ReadOnly(true)]
-		[PeropertyMapName("TransactionType")]
+		[PropertyMapName("TransactionType")]
 		public TransactionTypes TransactionType
 		{
 			get { return _TransactionType; }
@@ -218,7 +218,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSBId.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("TSBId")]
+		[PropertyMapName("TSBId")]
 		public string TSBId
 		{
 			get
@@ -241,7 +241,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSB Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("TSBNameEN")]
+		[PropertyMapName("TSBNameEN")]
 		public virtual string TSBNameEN
 		{
 			get
@@ -264,7 +264,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSB Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("TSBNameTH")]
+		[PropertyMapName("TSBNameTH")]
 		public virtual string TSBNameTH
 		{
 			get
@@ -292,7 +292,7 @@ namespace DMT.Models
 		[Description("Gets or sets User Id.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("UserId")]
+		[PropertyMapName("UserId")]
 		public string UserId
 		{
 			get
@@ -315,7 +315,7 @@ namespace DMT.Models
 		[Description("Gets or sets User Full Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("FullNameEN")]
+		[PropertyMapName("FullNameEN")]
 		public virtual string FullNameEN
 		{
 			get
@@ -338,7 +338,7 @@ namespace DMT.Models
 		[Description("Gets or sets User Full Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("FullNameTH")]
+		[PropertyMapName("FullNameTH")]
 		public virtual string FullNameTH
 		{
 			get
@@ -372,7 +372,7 @@ namespace DMT.Models
 			/// Gets or sets TSB Name EN.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("TSBNameEN")]
+			[PropertyMapName("TSBNameEN")]
 			public override string TSBNameEN
 			{
 				get { return base.TSBNameEN; }
@@ -382,7 +382,7 @@ namespace DMT.Models
 			/// Gets or sets TSB Name TH.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("TSBNameTH")]
+			[PropertyMapName("TSBNameTH")]
 			public override string TSBNameTH
 			{
 				get { return base.TSBNameTH; }
@@ -397,7 +397,7 @@ namespace DMT.Models
 			/// Gets or sets Full Name EN.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("FullNameEN")]
+			[PropertyMapName("FullNameEN")]
 			public override string FullNameEN
 			{
 				get { return base.FullNameEN; }
@@ -407,7 +407,7 @@ namespace DMT.Models
 			/// Gets or sets Full Name TH.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("FullNameTH")]
+			[PropertyMapName("FullNameTH")]
 			public override string FullNameTH
 			{
 				get { return base.FullNameTH; }

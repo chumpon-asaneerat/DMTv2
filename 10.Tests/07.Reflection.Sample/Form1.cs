@@ -82,13 +82,13 @@ namespace Reflection.Sample
 
     public class ClassA
     {
-        [PeropertyMapName("ID")]
+        [PropertyMapName("ID")]
         public int ID { get; set; }
     }
 
     public class ClassB
     {
-        [PeropertyMapName("ID")]
+        [PropertyMapName("ID")]
         public virtual int ID { get; set; }
     }
 
@@ -99,7 +99,7 @@ namespace Reflection.Sample
 
     public class SubClassB : ClassB
     {
-        [PeropertyMapName("ID")]
+        [PropertyMapName("ID")]
         public override int ID 
         {
             get { return base.ID;  }

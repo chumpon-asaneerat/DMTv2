@@ -106,7 +106,7 @@ namespace DMT.Models
 		[Description("Gets or sets User Coupon Id.")]
 		[PrimaryKey, AutoIncrement]
 		[ReadOnly(true)]
-		[PeropertyMapName("UserCouponId")]
+		[PropertyMapName("UserCouponId")]
 		public int UserCouponId
 		{
 			get
@@ -128,7 +128,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets User Coupon Date.")]
 		[ReadOnly(true)]
-		[PeropertyMapName("UserCouponDate")]
+		[PropertyMapName("UserCouponDate")]
 		public DateTime UserCouponDate
 		{
 			get { return _UserCouponDate; }
@@ -184,7 +184,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets Coupon State.")]
 		[Browsable(false)]
-		[PeropertyMapName("State")]
+		[PropertyMapName("State")]
 		public StateTypes State
 		{
 			get { return _State; }
@@ -211,7 +211,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSBId.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("TSBId")]
+		[PropertyMapName("TSBId")]
 		public string TSBId
 		{
 			get
@@ -234,7 +234,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSB Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("TSBNameEN")]
+		[PropertyMapName("TSBNameEN")]
 		public virtual string TSBNameEN
 		{
 			get
@@ -257,7 +257,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSB Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("TSBNameTH")]
+		[PropertyMapName("TSBNameTH")]
 		public virtual string TSBNameTH
 		{
 			get
@@ -285,7 +285,7 @@ namespace DMT.Models
 		[Description("Gets or sets User Id.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("UserId")]
+		[PropertyMapName("UserId")]
 		public string UserId
 		{
 			get
@@ -308,7 +308,7 @@ namespace DMT.Models
 		[Description("Gets or sets User Full Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("FullNameEN")]
+		[PropertyMapName("FullNameEN")]
 		public virtual string FullNameEN
 		{
 			get
@@ -331,7 +331,7 @@ namespace DMT.Models
 		[Description("Gets or sets User Full Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("FullNameTH")]
+		[PropertyMapName("FullNameTH")]
 		public virtual string FullNameTH
 		{
 			get
@@ -359,7 +359,7 @@ namespace DMT.Models
 		[Description("Gets or sets number of 35 BHT coupon.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("CouponBHT35")]
+		[PropertyMapName("CouponBHT35")]
 		public virtual int CouponBHT35
 		{
 			get { return _CouponBHT35; }
@@ -382,7 +382,7 @@ namespace DMT.Models
 		[Description("Gets or sets number of 80 BHT coupon.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("CouponBHT80")]
+		[PropertyMapName("CouponBHT80")]
 		public virtual int CouponBHT80
 		{
 			get { return _CouponBHT80; }
@@ -405,7 +405,7 @@ namespace DMT.Models
 		[ReadOnly(true)]
 		[Ignore]
 		[JsonIgnore]
-		[PeropertyMapName("CouponTotal")]
+		[PropertyMapName("CouponTotal")]
 		public int CouponTotal
 		{
 			get { return _CouponTotal; }
@@ -418,7 +418,7 @@ namespace DMT.Models
 		[Description("Gets or sets total value in baht.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("CouponBHTTotal")]
+		[PropertyMapName("CouponBHTTotal")]
 		public virtual decimal CouponBHTTotal
 		{
 			get { return _CouponBHTTotal; }
@@ -443,7 +443,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
 		[ReadOnly(true)]
-		[PeropertyMapName("Status")]
+		[PropertyMapName("Status")]
 		[PropertyOrder(10001)]
 		public int Status
 		{
@@ -466,7 +466,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets LastUpdated (Sync to DC).")]
 		[ReadOnly(true)]
-		[PeropertyMapName("LastUpdate")]
+		[PropertyMapName("LastUpdate")]
 		[PropertyOrder(10002)]
 		public DateTime LastUpdate
 		{
@@ -498,7 +498,7 @@ namespace DMT.Models
 			/// Gets or sets TSB Name EN.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("TSBNameEN")]
+			[PropertyMapName("TSBNameEN")]
 			public override string TSBNameEN
 			{
 				get { return base.TSBNameEN; }
@@ -508,7 +508,7 @@ namespace DMT.Models
 			/// Gets or sets TSB Name TH.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("TSBNameTH")]
+			[PropertyMapName("TSBNameTH")]
 			public override string TSBNameTH
 			{
 				get { return base.TSBNameTH; }
@@ -523,7 +523,7 @@ namespace DMT.Models
 			/// Gets or sets Full Name EN.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("FullNameEN")]
+			[PropertyMapName("FullNameEN")]
 			public override string FullNameEN
 			{
 				get { return base.FullNameEN; }
@@ -533,7 +533,7 @@ namespace DMT.Models
 			/// Gets or sets Full Name TH.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("FullNameTH")]
+			[PropertyMapName("FullNameTH")]
 			public override string FullNameTH
 			{
 				get { return base.FullNameTH; }

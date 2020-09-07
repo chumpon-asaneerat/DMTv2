@@ -55,7 +55,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets ViewName")]
 		[PrimaryKey, MaxLength(100)]
-		[PeropertyMapName("ViewName")]
+		[PropertyMapName("ViewName")]
 		public string ViewName
 		{
 			get
@@ -76,7 +76,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Common")]
 		[Description("Gets or sets VersionId")]
-		[PeropertyMapName("VersionId")]
+		[PropertyMapName("VersionId")]
 		public int VersionId
 		{
 			get

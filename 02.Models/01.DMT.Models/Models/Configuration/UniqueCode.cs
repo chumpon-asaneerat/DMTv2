@@ -68,7 +68,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets Key")]
 		[PrimaryKey, MaxLength(50)]
-		[PeropertyMapName("Key")]
+		[PropertyMapName("Key")]
 		public string Key
 		{
 			get
@@ -89,7 +89,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Common")]
 		[Description("Gets or sets Mode")]
-		[PeropertyMapName("Mode")]
+		[PropertyMapName("Mode")]
 		public ResetMode Mode
 		{
 			get
@@ -111,7 +111,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets Prefix")]
 		[PrimaryKey, MaxLength(30)]
-		[PeropertyMapName("Prefix")]
+		[PropertyMapName("Prefix")]
 		public string Prefix
 		{
 			get
@@ -132,7 +132,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Common")]
 		[Description("Gets or sets Last Number")]
-		[PeropertyMapName("LastNumber")]
+		[PropertyMapName("LastNumber")]
 		public int LastNumber
 		{
 			get
@@ -154,7 +154,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets Last Update")]
 		[ReadOnly(true)]
-		[PeropertyMapName("LastUpdate")]
+		[PropertyMapName("LastUpdate")]
 		public DateTime LastUpdate
 		{
 			get

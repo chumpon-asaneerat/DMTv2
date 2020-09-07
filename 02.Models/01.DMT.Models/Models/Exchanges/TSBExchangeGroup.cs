@@ -123,7 +123,7 @@ namespace DMT.Models
 		[Description(" Gets or sets PkId")]
 		[ReadOnly(true)]
 		[PrimaryKey, AutoIncrement]
-		[PeropertyMapName("PkId")]
+		[PropertyMapName("PkId")]
 		public int PkId
 		{
 			get
@@ -145,7 +145,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets Exchange GroupId")]
 		[ReadOnly(true)]
-		[PeropertyMapName("GroupId")]
+		[PropertyMapName("GroupId")]
 		public Guid GroupId
 		{
 			get
@@ -167,7 +167,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets State.")]
 		[ReadOnly(true)]
-		[PeropertyMapName("State")]
+		[PropertyMapName("State")]
 		public StateTypes State
 		{
 			get { return _State; }
@@ -186,7 +186,7 @@ namespace DMT.Models
 		[Category("Common")]
 		[Description("Gets or sets Is Finished (0: Completed, 1: Avaliable).")]
 		[ReadOnly(true)]
-		[PeropertyMapName("FinishFlag")]
+		[PropertyMapName("FinishFlag")]
 		public virtual FinishedFlags FinishFlag
 		{
 			get
@@ -214,7 +214,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSBId.")]
 		[ReadOnly(true)]
 		[MaxLength(10)]
-		[PeropertyMapName("TSBId")]
+		[PropertyMapName("TSBId")]
 		public string TSBId
 		{
 			get
@@ -237,7 +237,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSB Name EN.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("TSBNameEN")]
+		[PropertyMapName("TSBNameEN")]
 		public virtual string TSBNameEN
 		{
 			get
@@ -260,7 +260,7 @@ namespace DMT.Models
 		[Description("Gets or sets TSB Name TH.")]
 		[ReadOnly(true)]
 		[Ignore]
-		[PeropertyMapName("TSBNameTH")]
+		[PropertyMapName("TSBNameTH")]
 		public virtual string TSBNameTH
 		{
 			get
@@ -291,7 +291,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets Status (1 = Sync, 0 = Unsync, etc..)")]
 		[ReadOnly(true)]
-		[PeropertyMapName("Status")]
+		[PropertyMapName("Status")]
 		[PropertyOrder(10001)]
 		public int Status
 		{
@@ -314,7 +314,7 @@ namespace DMT.Models
 		[Category("DataCenter")]
 		[Description("Gets or sets LastUpdated (Sync to DC).")]
 		[ReadOnly(true)]
-		[PeropertyMapName("LastUpdate")]
+		[PropertyMapName("LastUpdate")]
 		[PropertyOrder(10002)]
 		public DateTime LastUpdate
 		{
@@ -346,7 +346,7 @@ namespace DMT.Models
 			/// Gets or sets TSB Name EN.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("TSBNameEN")]
+			[PropertyMapName("TSBNameEN")]
 			public override string TSBNameEN
 			{
 				get { return base.TSBNameEN; }
@@ -356,7 +356,7 @@ namespace DMT.Models
 			/// Gets or sets TSB Name TH.
 			/// </summary>
 			[MaxLength(100)]
-			[PeropertyMapName("TSBNameTH")]
+			[PropertyMapName("TSBNameTH")]
 			public override string TSBNameTH
 			{
 				get { return base.TSBNameTH; }
