@@ -128,8 +128,17 @@ namespace DMT.TOD.Pages.Revenue
         private void LoadPlazaGroups()
         {
             cbPlazas.ItemsSource = null;
-            cbPlazas.ItemsSource = _manager.PlazaGroups;
-            if (null != _manager.PlazaGroups && _manager.PlazaGroups.Count > 0)
+
+            var plazaGroups = new List<PlazaGroup>();
+            var tsb = ops.TSB.GetCurrent().Value();
+            if (null != tsb)
+            {
+                plazaGroups = ops.TSB.GetTSBPlazaGroups(tsb).Value();
+            }
+
+            cbPlazas.ItemsSource = plazaGroups;
+
+            if (null != plazaGroups && plazaGroups.Count > 0)
             {
                 cbPlazas.SelectedIndex = 0;
             }
@@ -157,6 +166,8 @@ namespace DMT.TOD.Pages.Revenue
 
         public void Setup(User user)
         {
+            // check and send offline revenue entries to server.
+            RevenueEntryManager.SendRevnues();
             LoadPlazaGroups();
             // assign user.
             _manager.User = user;

@@ -688,6 +688,26 @@ namespace DMT.Services
         public UserShiftRevenue RevenueShift { get; internal set; }
 
         #endregion
+
+        #region Static Methods
+
+        /// <summary>
+        /// Send all unsend revenue entry to server.
+        /// </summary>
+        public static void SendRevnues()
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+            }
+        }
+
+        #endregion
     }
 
     #endregion
