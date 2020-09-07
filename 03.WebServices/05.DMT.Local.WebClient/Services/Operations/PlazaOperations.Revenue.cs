@@ -642,11 +642,38 @@ namespace DMT.Services
             // TODO: Need user/password from config table or external file.
             SCWServiceOperations.Instance.UserName = "DMTUSER";
             SCWServiceOperations.Instance.Password = "DMTPASS";
+
+            this.EntryDate = DateTime.Now;
         }
 
         #endregion
 
+        #region Private Methods
+
+        #endregion
+
+        #region Public Methods
+
+        #endregion
+
         #region Public Properties
+
+        /// <summary>
+        /// Gets or sets Entry Date.
+        /// </summary>
+        public DateTime EntryDate { get; internal set; }
+        /// <summary>
+        /// Gets or sets Revenue Date.
+        /// </summary>
+        public DateTime RevenueDate { get; set; }
+        /// <summary>
+        /// Gets or sets User.
+        /// </summary>
+        public User User { get; set; }
+        /// <summary>
+        /// Gets or sets Chief/Supervisor.
+        /// </summary>
+        public User Supervisor { get; set; }
 
         #endregion
     }
