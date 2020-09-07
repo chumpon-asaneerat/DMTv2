@@ -40,8 +40,10 @@ Update 2020-09-07 #3
 Update 2020-09-07 #2
 - 
 
+[commited]
 Update 2020-09-07 #1
-- 
+- Update Local/DataCenter/TAxTOD service operation #408.
+  - TOD Implements Revenue Entry (sync process) #67.
 
 --------------------------------------------------------------------------------------------
 [commited]

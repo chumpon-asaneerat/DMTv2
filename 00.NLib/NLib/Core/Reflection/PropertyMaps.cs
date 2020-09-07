@@ -47,10 +47,17 @@ namespace NLib.Reflection
         /// Constructor.
         /// </summary>
         /// <param name="name">The map name.</param>
-        public PeropertyMapNameAttribute(string name) : base()
+        /// <param name="baseType">The base type.</param>
+        public PeropertyMapNameAttribute(string name, Type baseType) : base()
         {
             this.Name = name;
+            this.BaseType = baseType;
         }
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="name">The map name.</param>
+        public PeropertyMapNameAttribute(string name) : this(name, null) { }
 
         #endregion
 
@@ -60,6 +67,10 @@ namespace NLib.Reflection
         /// Gets or sets map name.
         /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Gets or sets base type.
+        /// </summary>
+        public Type BaseType { get; set; }
 
         #endregion
     }
@@ -241,6 +252,10 @@ namespace NLib.Reflection
 
         #endregion
     }
+
+    #endregion
+
+    #region PeropertyMapInfo (internal)
 
     #endregion
 
