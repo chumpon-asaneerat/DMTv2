@@ -481,10 +481,18 @@ namespace DMT.Services
             med.Info("declare - ");
             med.Info(declare.ToJson());
             var ret = server.TOD.Declare(declare);
-            if (null != ret)
+
+            bool sendSucces = false;
+            if (null != ret && null != ret.status)
             {
+                sendSucces = (ret.status.code != "S200");
                 // write log.
-                med.Info("declare - code: {0}, msg: {1}", ret.code, ret.message);
+                med.Info("declare - code: {0}, msg: {1}", ret.status.code, ret.status.message);
+            }
+            else 
+            {
+                // send failed.
+                med.Info("declare - code: {0}, msg: {1}", ret.status.code, ret.status.message);
             }
 
             // get all lanes information.
