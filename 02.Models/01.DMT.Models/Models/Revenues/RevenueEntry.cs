@@ -1706,6 +1706,7 @@ namespace DMT.Models
 					string cmd = string.Empty;
 					cmd += "SELECT * ";
 					cmd += "  FROM RevenueEntryView ";
+					//cmd += " WHERE Status = 0 "; // for all unsync (status = 0).
 
 					var rets = NQuery.Query<FKs>(cmd).ToList();
 					var results = rets.ToModels();
@@ -1742,6 +1743,7 @@ namespace DMT.Models
 					cmd += "SELECT * ";
 					cmd += "  FROM RevenueEntryView ";
 					cmd += " WHERE TSBId = ? ";
+					//cmd += "   AND Status = 0 "; // for all unsync (status = 0).
 
 					var rets = NQuery.Query<FKs>(cmd, tsbid).ToList();
 					var results = rets.ToModels();
@@ -1780,6 +1782,7 @@ namespace DMT.Models
 					cmd += "  FROM RevenueEntryView ";
 					cmd += " WHERE RevenueDate >= ? ";
 					cmd += "   AND RevenueDate <= ? ";
+					//cmd += "   AND Status = 0 "; // for all unsync (status = 0).
 
 					var rets = NQuery.Query<FKs>(cmd, begin, end).ToList();
 					var results = rets.ToModels();
@@ -1803,6 +1806,44 @@ namespace DMT.Models
 			DateTime begin = date.Date;
 			DateTime end = date.Date.AddDays(1).AddMilliseconds(-1);
 			return FindByRevnueDate(begin, end);
+		}
+		/// <summary>
+		/// Gets Unsend Revenue Enties by TSBId.
+		/// </summary>
+		/// <param name="tsbid">The TSB Id.</param>
+		/// <returns>Returns List of RevenueEntry.</returns>
+		public static NDbResult<List<RevenueEntry>> GetUnsendRevenueEnties(string tsbid)
+		{
+			var result = new NDbResult<List<RevenueEntry>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * ";
+					cmd += "  FROM RevenueEntryView ";
+					cmd += " WHERE TSBId = ? ";
+					//cmd += "   AND (RevenueId = '' OR RevenueId IS NULL) ";
+					//cmd += "   AND Status = 0 "; // for all unsync (status = 0).
+
+					var rets = NQuery.Query<FKs>(cmd, tsbid).ToList();
+					var results = rets.ToModels();
+					result.Success(results);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
 		}
 
 		#endregion
