@@ -37,12 +37,14 @@ namespace DMT.TOD.Pages.Revenue
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
+            /*
             // Slip Preview
             var page = new Reports.RevenueSlipPreview();
             page.MenuPage = new Menu.MainMenu(); // Set MenPage to main menu.
             page.CallerPage = this; // Set CallerPage for click back.
             page.Setup(_manager);
             PageContentManager.Instance.Current = page;
+            */
         }
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
@@ -56,6 +58,7 @@ namespace DMT.TOD.Pages.Revenue
 
         public void Setup(RevenueEntryManager manager)
         {
+            /*
             _manager = manager;
 
             if (null == _manager || null == _manager.UserShift ||
@@ -85,6 +88,7 @@ namespace DMT.TOD.Pages.Revenue
 
                 revEntry.DataContext = _manager.RevenueEntry;
             }
+            */
         }
     }
 }

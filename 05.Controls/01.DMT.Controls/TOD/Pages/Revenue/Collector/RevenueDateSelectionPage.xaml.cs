@@ -45,6 +45,7 @@ namespace DMT.TOD.Pages.Revenue
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
+            /*
             // Revenue Entry Page
             var page = new RevenueEntryPage();
             if (null == _manager || null == _manager.PlazaGroup)
@@ -111,6 +112,7 @@ namespace DMT.TOD.Pages.Revenue
             page.Setup(_manager);
 
             PageContentManager.Instance.Current = page;
+            */
         }
 
         #endregion
@@ -146,6 +148,7 @@ namespace DMT.TOD.Pages.Revenue
 
         private void RefreshLanes()
         {
+            /*
             if (null != _manager && null != _manager.UserShift)
             {
                 // get selected plaza group
@@ -162,10 +165,12 @@ namespace DMT.TOD.Pages.Revenue
                     grid.Setup(_manager.Attendances);
                 }
             }
+            */
         }
 
         public void Setup(User user)
         {
+            /*
             // check and send offline revenue entries to server.
             RevenueEntryManager.SendRevnues();
             LoadPlazaGroups();
@@ -182,6 +187,7 @@ namespace DMT.TOD.Pages.Revenue
                 _manager.Refresh();
                 RefreshLanes();
             }
+            */
         }
     }
 }
