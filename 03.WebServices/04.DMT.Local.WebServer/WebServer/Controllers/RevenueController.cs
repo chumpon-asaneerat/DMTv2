@@ -125,6 +125,15 @@ namespace DMT.Services
             return result;
         }
 
+        [HttpPost]
+        [ActionName(RouteConsts.Revenue.GetUnsendRevenues.Name)]
+        public NDbResult<List<RevenueEntry>> GetUnsendRevenues()
+        {
+            NDbResult<List<RevenueEntry>> result;
+            result = RevenueEntry.FindUnsendRevenueEnties();
+            return result;
+        }
+
         #endregion
     }
 }

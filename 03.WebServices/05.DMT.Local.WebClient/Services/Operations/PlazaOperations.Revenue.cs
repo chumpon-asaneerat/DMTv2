@@ -202,6 +202,23 @@ namespace DMT.Services
                 return ret;
             }
 
+            public NRestResult<List<RevenueEntry>> GetUnsendRevenues()
+            {
+                NRestResult<List<RevenueEntry>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<RevenueEntry>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                ret = client.Execute<List<RevenueEntry>>(
+                    RouteConsts.Revenue.GetUnsendRevenues.Url, null);
+
+                return ret;
+            }
+
             #endregion
 
             #endregion
@@ -640,6 +657,13 @@ namespace DMT.Services
     /// </summary>
     public class RevenueEntryManager
     {
+        #region Internal Variables
+
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
+        private SCWOperations server = SCWServiceOperations.Instance.Plaza;
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
@@ -705,9 +729,11 @@ namespace DMT.Services
         public static void SendRevnues()
         {
             MethodBase med = MethodBase.GetCurrentMethod();
+            var ops = LocalServiceOperations.Instance.Plaza;
             try
             {
                 // Get Unsend revenue entries.
+                var entries = ops.Revenue.GetUnsendRevenues();
             }
             catch (Exception ex)
             {

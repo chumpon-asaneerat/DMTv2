@@ -474,6 +474,12 @@ namespace DMT
                 public const string Url = Revenue.Url + @"/" + Name;
             }
 
+            public static class GetUnsendRevenues
+            {
+                public const string Name = "GetUnsendRevenues";
+                public const string Url = Revenue.Url + @"/" + Name;
+            }
+
             #endregion
         }
 

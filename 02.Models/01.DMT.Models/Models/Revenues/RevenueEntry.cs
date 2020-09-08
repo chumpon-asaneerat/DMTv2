@@ -1808,11 +1808,10 @@ namespace DMT.Models
 			return FindByRevnueDate(begin, end);
 		}
 		/// <summary>
-		/// Gets Unsend Revenue Enties by TSBId.
+		/// Find Unsend Revenue Enties by date.
 		/// </summary>
-		/// <param name="tsbid">The TSB Id.</param>
 		/// <returns>Returns List of RevenueEntry.</returns>
-		public static NDbResult<List<RevenueEntry>> GetUnsendRevenueEnties(string tsbid)
+		public static NDbResult<List<RevenueEntry>> FindUnsendRevenueEnties()
 		{
 			var result = new NDbResult<List<RevenueEntry>>();
 			SQLiteConnection db = Default;
@@ -1829,11 +1828,10 @@ namespace DMT.Models
 					string cmd = string.Empty;
 					cmd += "SELECT * ";
 					cmd += "  FROM RevenueEntryView ";
-					cmd += " WHERE TSBId = ? ";
-					//cmd += "   AND (RevenueId = '' OR RevenueId IS NULL) ";
-					//cmd += "   AND Status = 0 "; // for all unsync (status = 0).
+					cmd += "   AND (RevenueId <> '' AND RevenueId IS NOT NULL) "; // has revenue id.
+					cmd += "   AND Status = 0 "; // for all unsync (status = 0).
 
-					var rets = NQuery.Query<FKs>(cmd, tsbid).ToList();
+					var rets = NQuery.Query<FKs>(cmd).ToList();
 					var results = rets.ToModels();
 					result.Success(results);
 				}
