@@ -95,8 +95,7 @@ namespace DMT.Services
             MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
-                med.Info("host: {0}", BaseUrl);
-                med.Info("api: {0}", actionUrl);
+                med.Info("api: {0}", BaseUrl + actionUrl);
                 if (null != pObj) med.Info("body: {0}", pObj.ToJson(true));
 
                 var client = new RestClient(BaseUrl);
@@ -182,8 +181,7 @@ namespace DMT.Services
             MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
-                med.Info("host: {0}", BaseUrl);
-                med.Info("api: {0}", actionUrl);
+                med.Info("api: {0}", BaseUrl + actionUrl);
                 if (null != pObj) med.Info("body: {0}", pObj.ToJson(true));
 
                 var client = new RestClient(BaseUrl);
@@ -266,8 +264,7 @@ namespace DMT.Services
             MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
-                med.Info("host: {0}", BaseUrl);
-                med.Info("api: {0}", actionUrl);
+                med.Info("api: {0}", BaseUrl + actionUrl);
                 if (null != pObj) med.Info("body: {0}", pObj.ToJson(true));
 
                 var client = new RestClient(BaseUrl);
@@ -335,8 +332,7 @@ namespace DMT.Services
             MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
-                med.Info("host: {0}", BaseUrl);
-                med.Info("api: {0}", actionUrl);
+                med.Info("api: {0}", BaseUrl + actionUrl);
                 if (null != pObj) med.Info("body: {0}", pObj.ToJson(true));
 
                 var client = new RestClient(BaseUrl);
