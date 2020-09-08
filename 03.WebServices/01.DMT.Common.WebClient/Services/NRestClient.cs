@@ -95,9 +95,9 @@ namespace DMT.Services
             MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
-                med.Info("host: ", BaseUrl);
-                med.Info("api: ", actionUrl);
-                if (null != pObj) med.Info("body: " + pObj.ToJson(true));
+                med.Info("host: {0}", BaseUrl);
+                med.Info("api: {0}", actionUrl);
+                if (null != pObj) med.Info("body: {0}", pObj.ToJson(true));
 
                 var client = new RestClient(BaseUrl);
                 //client.ReadWriteTimeout = timeout;
@@ -118,7 +118,7 @@ namespace DMT.Services
                 var response = client.Execute(request);
                 if (null != response)
                 {
-                    med.Info("result: ", response.Content);
+                    med.Info("result: {0}", response.Content);
 
                     if (response.IsSuccessful() && null != response.Content)
                     {
@@ -182,9 +182,9 @@ namespace DMT.Services
             MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
-                med.Info("host: ", BaseUrl);
-                med.Info("api: ", actionUrl);
-                if (null != pObj) med.Info("body: " + pObj.ToJson(true));
+                med.Info("host: {0}", BaseUrl);
+                med.Info("api: {0}", actionUrl);
+                if (null != pObj) med.Info("body: {0}", pObj.ToJson(true));
 
                 var client = new RestClient(BaseUrl);
                 //client.ReadWriteTimeout = timeout;
@@ -205,7 +205,7 @@ namespace DMT.Services
                 var response = client.Execute(request);
                 if (null != response)
                 {
-                    med.Info("result: ", response.Content);
+                    med.Info("result: {0}", response.Content);
 
                     if (response.IsSuccessful() && null != response.Content)
                     {
@@ -266,9 +266,9 @@ namespace DMT.Services
             MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
-                med.Info("host: ", BaseUrl);
-                med.Info("api: ", actionUrl);
-                if (null != pObj) med.Info("body: " + pObj.ToJson(true));
+                med.Info("host: {0}", BaseUrl);
+                med.Info("api: {0}", actionUrl);
+                if (null != pObj) med.Info("body: {0}", pObj.ToJson(true));
 
                 var client = new RestClient(BaseUrl);
                 //client.ReadWriteTimeout = timeout;
@@ -289,7 +289,7 @@ namespace DMT.Services
                 var response = client.Execute(request);
                 if (null != response)
                 {
-                    med.Info("result: ", response.Content);
+                    med.Info("result: {0}", response.Content);
 
                     if (response.IsSuccessful() && null != response.Content)
                     {
@@ -335,9 +335,9 @@ namespace DMT.Services
             MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
-                med.Info("host: ", BaseUrl);
-                med.Info("api: ", actionUrl);
-                if (null != pObj) med.Info("body: " + pObj.ToJson(true));
+                med.Info("host: {0}", BaseUrl);
+                med.Info("api: {0}", actionUrl);
+                if (null != pObj) med.Info("body: {0}", pObj.ToJson(true));
 
                 var client = new RestClient(BaseUrl);
                 //client.ReadWriteTimeout = timeout;
@@ -359,7 +359,7 @@ namespace DMT.Services
                 var response = client.Execute(request);
                 if (null != response)
                 {
-                    med.Info("result: ", response.Content);
+                    med.Info("result: {0}", response.Content);
 
                     if (response.IsSuccessful() && null != response.Content)
                     {
