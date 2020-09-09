@@ -239,6 +239,9 @@
     <Compile Include="TOD\Controls\Revenue\View\Lane2View.xaml.cs">
       <DependentUpon>Lane2View.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TOD\Controls\Revenue\View\SelectLaneView.xaml.cs">
+      <DependentUpon>SelectLaneView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TOD\Controls\Shift\View\LoginList2View.xaml.cs">
       <DependentUpon>LoginList2View.xaml</DependentUpon>
     </Compile>
@@ -642,6 +645,10 @@
     <Page Include="TOD\Controls\Revenue\View\Lane2View.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TOD\Controls\Revenue\View\SelectLaneView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TOD\Controls\Shift\View\LoginList2View.xaml">
       <Generator>MSBuild:Compile</Generator>

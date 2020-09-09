@@ -267,7 +267,7 @@
                     BorderBrush="Silver"
                     BorderThickness="1">
                 <Grid>
-                    <ctrl:Lane2View x:Name="grid" />
+                    <ctrl:SelectLaneView x:Name="grid" />
                 </Grid>
             </Border>
         </DockPanel>
