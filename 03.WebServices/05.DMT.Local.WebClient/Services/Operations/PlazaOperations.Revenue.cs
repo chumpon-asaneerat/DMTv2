@@ -1316,7 +1316,15 @@ namespace DMT.Services
             inst.Supervisor = this.Supervisor;
             inst.UserShift = this.UserShift;
             inst.PlazaGroup = this.PlazaGroup;
-            inst.Attendances = this.Attendances;
+
+            inst.Attendances = new List<LaneAttendance>();
+            if (null != this.Attendances && this.Attendances.Count > 0)
+            {
+                this.Attendances.ForEach(att => 
+                {
+                    if (att.Selected) inst.Attendances.Add(att);
+                });
+            }
 
             inst.RevenueShift = this.RevenueShift;
 

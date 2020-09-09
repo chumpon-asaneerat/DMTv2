@@ -12,13 +12,10 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="" 
-                                    Width="200">
+                                    Width="50">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <!--
-                                <CheckBox Margin="5, 0" IsChecked="{Binding Favourite}"/>
-                                -->
-                                <CheckBox Margin="5, 0"/>
+                                <CheckBox Margin="5, 0" IsChecked="{Binding Path=Selected}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>   
                     </GridViewColumn>

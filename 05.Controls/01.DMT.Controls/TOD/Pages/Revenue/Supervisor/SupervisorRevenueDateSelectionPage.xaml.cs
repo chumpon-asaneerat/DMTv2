@@ -36,18 +36,6 @@ namespace DMT.TOD.Pages.Revenue
 
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private HistoricalRevenueEntryManager _manager = new HistoricalRevenueEntryManager();
-
-        //private DateTime _entryDT = DateTime.MinValue;
-        //private DateTime _revDT = DateTime.MinValue;
-
-        //private User _sup = null;
-        //private User _user = null;
-
-        //private UserShift _userShift = null;
-        //private UserShiftRevenue _plazaRevenue = null;
-        private List<LaneAttendance> _laneActivities = null;
-
-        //private UserShift srcObj = null;
         private UserCreditBalance _selectUser = new UserCreditBalance();
 
         #region Button Handlers
@@ -207,7 +195,7 @@ namespace DMT.TOD.Pages.Revenue
             _manager.PlazaGroup = cbPlazas.SelectedItem as PlazaGroup;
             _manager.CreateUserShift();
 
-            if (null != _manager.UserShift)
+            if (null != _manager.User)
             {
                 _manager.RefreshJobs();
                 if (!_manager.HasAttendance)

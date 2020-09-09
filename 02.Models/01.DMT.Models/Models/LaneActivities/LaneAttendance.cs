@@ -34,6 +34,8 @@ namespace DMT.Models
 	{
 		#region Intenral Variables
 
+		private bool _selected = false;
+
 		private Guid _PKId = Guid.NewGuid();
 
 		private string _JobId = string.Empty;
@@ -81,6 +83,30 @@ namespace DMT.Models
 		#endregion
 
 		#region Public Properties
+
+		#region Runtime
+
+		/// <summary>
+		/// Gets or sets selected state.
+		/// </summary>
+		[Category("Runtime")]
+		[Description("Gets or sets selected state.")]
+		[Ignore]
+		[PropertyMapName("Selected")]
+		public bool Selected
+		{
+			get { return _selected; }
+			set
+			{
+				if (_selected != value)
+				{
+					_selected = value;
+					this.RaiseChanged("Selected");
+				}
+			}
+		}
+
+		#endregion
 
 		#region Common
 
