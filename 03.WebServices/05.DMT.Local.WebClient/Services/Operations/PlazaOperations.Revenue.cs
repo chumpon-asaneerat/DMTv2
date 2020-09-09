@@ -1266,6 +1266,7 @@ namespace DMT.Services
         /// </summary>
         public void RefreshJobs()
         {
+            /*
             if (null != this.UserShift && null != this.PlazaGroup)
             {
                 MethodBase med = MethodBase.GetCurrentMethod();
@@ -1274,6 +1275,24 @@ namespace DMT.Services
                 var search = Search.Lanes.Attendances.ByUserShift.Create(
                     this.UserShift, this.PlazaGroup, DateTime.MinValue);
                 this.Attendances = ops.Lanes.GetAttendancesByUserShift(search).Value();
+                if (!HasAttendance)
+                {
+                    string msg = "Attendances is null or no lane attendance list.";
+                    med.Info(msg);
+                }
+                else
+                {
+                    string msg = string.Format("Attendances found : No of lanes: {0}", this.Attendances.Count);
+                    med.Info(msg);
+                }
+            }
+            */
+            if (null != this.User)
+            {
+                MethodBase med = MethodBase.GetCurrentMethod();
+
+                // Get all lanes information.
+                this.Attendances = ops.Lanes.GetAllNotHasRevenueEntryByUser(this.User).Value();
                 if (!HasAttendance)
                 {
                     string msg = "Attendances is null or no lane attendance list.";

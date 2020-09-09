@@ -191,6 +191,23 @@ namespace DMT.Services
             return result;
         }
 
+        [HttpPost]
+        [ActionName(RouteConsts.Lane.GetAllNotHasRevenueEntryByUser.Name)]
+        public NDbResult<List<LaneAttendance>> GetAllNotHasRevenueEntryByUser([FromBody] User value)
+        {
+            NDbResult<List<LaneAttendance>> result;
+            if (null == value)
+            {
+                result = new NDbResult<List<LaneAttendance>>();
+                result.ParameterIsNull();
+            }
+            else
+            {
+                result = LaneAttendance.GetAllNotHasRevenueEntryByUser(value);
+            }
+            return result;
+        }
+
         #endregion
 
         #region Lane Payment

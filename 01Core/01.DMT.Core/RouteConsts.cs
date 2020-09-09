@@ -393,6 +393,12 @@ namespace DMT
                 public const string Url = Lane.Url + @"/" + Name;
             }
 
+            public static class GetAllNotHasRevenueEntryByUser
+            {
+                public const string Name = "GetAllNotHasRevenueEntryByUser";
+                public const string Url = Lane.Url + @"/" + Name;
+            }
+
             #endregion
 
             #region Lane Payment

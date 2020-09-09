@@ -1319,6 +1319,54 @@ namespace DMT.Models
 			}
 		}
 
+		public static NDbResult<List<LaneAttendance>> GetAllNotHasRevenueEntryByUser(User user)
+		{
+			var result = new NDbResult<List<LaneAttendance>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			if (null == user)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+			var tsb = TSB.GetCurrent().Value();
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * ";
+					cmd += "  FROM LaneAttendanceView ";
+					cmd += " WHERE TSBId = ? ";
+					cmd += "   AND (RevenueDate = ?";
+					cmd += "    OR  RevenueId IS NULL ";
+					cmd += "    OR  RevenueId = ?) ";
+					cmd += "   AND UserId = ? ";
+					var rets = NQuery.Query<FKs>(cmd,
+						tsb.TSBId, DateTime.MinValue, string.Empty, user.UserId).ToList();
+					var results = rets.ToModels();
+					result.Success(results);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+
+				return result;
+			}
+		}
+
 		public static NDbResult<LaneAttendance> SaveLaneAttendance(LaneAttendance value)
 		{
 			var result = new NDbResult<LaneAttendance>();

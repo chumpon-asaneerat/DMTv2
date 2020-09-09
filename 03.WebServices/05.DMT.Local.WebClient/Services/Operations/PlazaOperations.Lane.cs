@@ -298,6 +298,22 @@ namespace DMT.Services
                 return ret;
             }
 
+            public NRestResult<List<LaneAttendance>> GetAllNotHasRevenueEntryByUser(User value)
+            {
+                NRestResult<List<LaneAttendance>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<LaneAttendance>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                ret = client.Execute<List<LaneAttendance>>(
+                    RouteConsts.Lane.GetAllNotHasRevenueEntryByUser.Url, value);
+                return ret;
+            }
+
             #endregion
 
             #region Lane Payment
