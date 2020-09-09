@@ -32,7 +32,7 @@ namespace DMT.TOD.Pages.Revenue
         #endregion
 
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
-        private RevenueEntryManager _manager = new RevenueEntryManager();
+        private RevenueEntryManager _manager = null;
 
         private User _sup = null;
         private User _user = null;
@@ -51,15 +51,12 @@ namespace DMT.TOD.Pages.Revenue
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
             // TODO: Refactor HERE.
-            /*
             // Slip Preview
             var page = new Reports.RevenueSlipPreview();
             page.MenuPage = new Menu.MainMenu(); // Set MenPage to main menu.
             page.CallerPage = this; // Set CallerPage for click back.
-            page.Setup(_user, _userShift, _plazaGroup, _plazaRevenue, _laneActivities,
-                _entryDate, _revDate, _revenueEntry);
+            page.Setup(_manager);
             PageContentManager.Instance.Current = page;
-            */
         }
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
@@ -71,26 +68,13 @@ namespace DMT.TOD.Pages.Revenue
 
         #endregion
 
-        // TODO: Refactor Revenue Entry Here.
-        public void Setup(User sup, User user, UserShift userShift, PlazaGroup plazaGroup,
-            UserShiftRevenue plazaRevenue,
-            List<LaneAttendance> laneActivities,
-            DateTime entryDate, DateTime revDate)
+        public void Setup(RevenueEntryManager manager)
         {
-            _sup = sup;
-            _user = user;
-            _userShift = userShift;
-            _plazaGroup = plazaGroup;
-            _plazaRevenue = plazaRevenue;
-            _laneActivities = laneActivities;
-            _entryDate = entryDate;
-            _revDate = revDate;
+            _manager = manager;
 
-            if (null == _userShift || null == _plazaGroup || null == _plazaRevenue)
+            if (null == _manager || null == _manager.UserShift ||
+                null == _manager.PlazaGroup || null == _manager.RevenueShift)
             {
-                _entryDate = DateTime.MinValue;
-                _revDate = DateTime.MinValue;
-
                 txtRevDate.Text = string.Empty;
                 txtPlazaName.Text = string.Empty;
 
@@ -103,45 +87,17 @@ namespace DMT.TOD.Pages.Revenue
             }
             else
             {
-                _entryDate = entryDate;
-                _revDate = revDate;
+                _manager.NewRevenueEntry();
 
-                txtRevDate.Text = _revDate.ToThaiDateTimeString("dd/MM/yyyy");
-                txtPlazaName.Text = _plazaGroup.PlazaGroupNameTH;
+                txtRevDate.Text = _manager.RevenueDate.ToThaiDateTimeString("dd/MM/yyyy");
+                txtPlazaName.Text = _manager.PlazaGroup.PlazaGroupNameTH;
 
-                txtShiftName.Text = _userShift.ShiftNameTH;
-                
-                txtUserId.Text = _userShift.UserId;
-                txtUserName.Text = _userShift.FullNameTH;
+                txtShiftName.Text = _manager.UserShift.ShiftNameTH;
 
-                _revenueEntry = new Models.RevenueEntry();
-                _revenueEntry.BagNo = string.Empty;
-                _revenueEntry.BeltNo = string.Empty;
+                txtUserId.Text = _manager.UserShift.UserId;
+                txtUserName.Text = _manager.UserShift.FullNameTH;
 
-                // assigned plaza.
-                _revenueEntry.PlazaGroupId = _plazaGroup.PlazaGroupId;
-
-                // update object properties.
-                _plazaGroup.AssignTo(_revenueEntry); // assigned plaza group name (EN/TH)
-                _userShift.AssignTo(_revenueEntry); // assigned user full name (EN/TH)
-
-                // assigned date after sync object(s) to RevenueEntry.
-                _revenueEntry.EntryDate = _entryDate; // assigned Entry date.
-                _revenueEntry.RevenueDate = _revDate; // assigned Revenue date.
-
-                //_revenueEntry.Lanes = laneList.Trim();
-                _revenueEntry.ShiftBegin = _revDate;
-                _revenueEntry.ShiftEnd = _revDate;
-
-                // assign supervisor.
-                if (null != _sup)
-                {
-                    _revenueEntry.SupervisorId = _sup.UserId;
-                    _revenueEntry.SupervisorNameEN = _sup.FullNameEN;
-                    _revenueEntry.SupervisorNameTH = _sup.FullNameTH;
-                }
-
-                revEntry.DataContext = _revenueEntry;
+                revEntry.DataContext = _manager.RevenueEntry;
             }
         }
     }

@@ -115,11 +115,7 @@ namespace DMT.TOD.Pages.Revenue
 
             // Revenue Entry Page
             var page = new SupervisorRevenueEntryPage();
-            /*
-            page.Setup(_sup, _user, _userShift, plazaGroup, _plazaRevenue,
-            _laneActivities,
-            _entryDT, _revDT);
-            */
+            page.Setup(_manager.Create());
             PageContentManager.Instance.Current = page;
         }
 

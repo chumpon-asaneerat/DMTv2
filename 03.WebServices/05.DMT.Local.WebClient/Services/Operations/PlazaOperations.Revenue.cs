@@ -1197,6 +1197,9 @@ namespace DMT.Services
 
     #region HistoricalRevenueEntryManager
 
+    /// <summary>
+    /// The HistoricalRevenueEntryManager class.
+    /// </summary>
     public class HistoricalRevenueEntryManager
     {
         #region Internal Variables
@@ -1282,6 +1285,23 @@ namespace DMT.Services
                     med.Info(msg);
                 }
             }
+        }
+
+        public RevenueEntryManager Create()
+        {
+            RevenueEntryManager inst = new RevenueEntryManager();
+            
+            inst.EntryDate = this.EntryDate;
+            inst.RevenueDate = this.EntryDate;
+            inst.User = this.User;
+            inst.Supervisor = this.Supervisor;
+            inst.UserShift = this.UserShift;
+            inst.PlazaGroup = this.PlazaGroup;
+            inst.Attendances = this.Attendances;
+
+            inst.RevenueShift = this.RevenueShift;
+
+            return inst;
         }
 
         #endregion
