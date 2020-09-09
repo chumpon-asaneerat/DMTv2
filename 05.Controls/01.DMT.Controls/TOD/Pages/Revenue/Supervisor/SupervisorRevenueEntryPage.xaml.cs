@@ -34,23 +34,10 @@ namespace DMT.TOD.Pages.Revenue
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private RevenueEntryManager _manager = null;
 
-        private User _sup = null;
-        private User _user = null;
-        private UserShift _userShift = null;
-        private PlazaGroup _plazaGroup = null;
-        private UserShiftRevenue _plazaRevenue = null;
-        private List<LaneAttendance> _laneActivities = null;
-
-        private DateTime _entryDate = DateTime.MinValue;
-        private DateTime _revDate = DateTime.MinValue;
-
-        private Models.RevenueEntry _revenueEntry = null;
-
         #region Button Handlers
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Refactor HERE.
             // Slip Preview
             var page = new Reports.RevenueSlipPreview();
             page.MenuPage = new Menu.MainMenu(); // Set MenPage to main menu.
