@@ -182,6 +182,31 @@ namespace DMT.Services
                 return ret;
             }
 
+            public NRestResult<List<LaneAttendance>> GetAttendancesByRevenue(
+                RevenueEntry value)
+            {
+                NRestResult<List<LaneAttendance>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<LaneAttendance>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                if (null != value)
+                {
+                    ret = client.Execute<List<LaneAttendance>>(
+                        RouteConsts.Lane.GetAttendancesByRevenue.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<LaneAttendance>>();
+                    ret.ParameterIsNull();
+                }
+                return ret;
+            }
+
             public NRestResult<List<LaneAttendance>> GetAllAttendancesByUserShift(
                 UserShift value)
             {

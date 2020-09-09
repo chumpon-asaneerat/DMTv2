@@ -363,6 +363,12 @@ namespace DMT
                 public const string Url = Lane.Url + @"/" + Name;
             }
 
+            public static class GetAttendancesByRevenue
+            {
+                public const string Name = "GetAttendancesByRevenue";
+                public const string Url = Lane.Url + @"/" + Name;
+            }
+
             public static class GetAllAttendancesByUserShift
             {
                 public const string Name = "GetAllAttendancesByUserShift";

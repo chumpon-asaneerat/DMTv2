@@ -115,6 +115,23 @@ namespace DMT.Services
         }
 
         [HttpPost]
+        [ActionName(RouteConsts.Lane.GetAttendancesByRevenue.Name)]
+        public NDbResult<List<LaneAttendance>> GetAttendancesByRevenue([FromBody] RevenueEntry value)
+        {
+            NDbResult<List<LaneAttendance>> result;
+            if (null == value)
+            {
+                result = new NDbResult<List<LaneAttendance>>();
+                result.ParameterIsNull();
+            }
+            else
+            {
+                result = LaneAttendance.Search(value);
+            }
+            return result;
+        }
+
+        [HttpPost]
         [ActionName(RouteConsts.Lane.GetAllAttendancesByUserShift.Name)]
         public NDbResult<List<LaneAttendance>> GetAllAttendancesByUserShift([FromBody] UserShift value)
         {

@@ -167,6 +167,7 @@ namespace DMT.TOD.Pages.Revenue
         {
             // check and send offline revenue entries to server.
             RevenueEntryManager.SendRevnues();
+
             LoadPlazaGroups();
             // assign user.
             _manager.User = user;

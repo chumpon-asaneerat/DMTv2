@@ -92,15 +92,6 @@ namespace DMT.Services
                 {
                     value.PKId = Guid.NewGuid();
                 }
-                if (value.RevenueId == string.Empty)
-                {
-                    // TODO: Autogenerate need to change to auto running number
-                    Random rand = new Random();
-                    if (string.IsNullOrWhiteSpace(value.RevenueId))
-                    {
-                        value.RevenueId = rand.Next(100000).ToString("D5"); // auto generate.
-                    }
-                }
                 result = RevenueEntry.Save(value);
             }
             return result;

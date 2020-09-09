@@ -1706,7 +1706,6 @@ namespace DMT.Models
 					string cmd = string.Empty;
 					cmd += "SELECT * ";
 					cmd += "  FROM RevenueEntryView ";
-					//cmd += " WHERE Status = 0 "; // for all unsync (status = 0).
 
 					var rets = NQuery.Query<FKs>(cmd).ToList();
 					var results = rets.ToModels();
@@ -1743,7 +1742,6 @@ namespace DMT.Models
 					cmd += "SELECT * ";
 					cmd += "  FROM RevenueEntryView ";
 					cmd += " WHERE TSBId = ? ";
-					//cmd += "   AND Status = 0 "; // for all unsync (status = 0).
 
 					var rets = NQuery.Query<FKs>(cmd, tsbid).ToList();
 					var results = rets.ToModels();
@@ -1782,7 +1780,6 @@ namespace DMT.Models
 					cmd += "  FROM RevenueEntryView ";
 					cmd += " WHERE RevenueDate >= ? ";
 					cmd += "   AND RevenueDate <= ? ";
-					//cmd += "   AND Status = 0 "; // for all unsync (status = 0).
 
 					var rets = NQuery.Query<FKs>(cmd, begin, end).ToList();
 					var results = rets.ToModels();
@@ -1828,8 +1825,8 @@ namespace DMT.Models
 					string cmd = string.Empty;
 					cmd += "SELECT * ";
 					cmd += "  FROM RevenueEntryView ";
+					cmd += " WHERE Status = 0 "; // for all unsync (status = 0).
 					cmd += "   AND (RevenueId <> '' AND RevenueId IS NOT NULL) "; // has revenue id.
-					cmd += "   AND Status = 0 "; // for all unsync (status = 0).
 
 					var rets = NQuery.Query<FKs>(cmd).ToList();
 					var results = rets.ToModels();

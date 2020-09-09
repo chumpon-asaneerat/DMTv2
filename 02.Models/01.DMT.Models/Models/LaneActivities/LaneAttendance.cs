@@ -1168,6 +1168,48 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
+		/// Search.
+		/// </summary>
+		/// <param name="revenue">The Revenue Entry instance.</param>
+		/// <returns>Returns List of LaneAttendance.</returns>
+		public static NDbResult<List<LaneAttendance>> Search(RevenueEntry revenue)
+		{
+			var result = new NDbResult<List<LaneAttendance>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			if (null == revenue)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * ";
+					cmd += "  FROM LaneAttendanceView ";
+					cmd += " WHERE RevenueId = ? ";
+
+					var rets = NQuery.Query<FKs>(cmd,
+						revenue.RevenueId).ToList();
+					var results = rets.ToModels();
+					result.Success(results);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
+		}
+		/// <summary>
 		/// Gets Current Lane Attendance by Lane.
 		/// </summary>
 		/// <param name="lane">The Lane instance.</param>

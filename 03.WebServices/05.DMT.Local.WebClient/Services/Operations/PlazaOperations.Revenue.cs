@@ -927,7 +927,10 @@ namespace DMT.Services
                 this.RevenueEntry.SupervisorNameTH = this.Supervisor.FullNameTH;
             }
         }
-
+        /// <summary>
+        /// Save Revenue Entry.
+        /// </summary>
+        /// <returns>Returns true if Save and all lane completed and User Shift closed.</returns>
         public bool SaveRevenueEntry()
         {
             if (null == this.RevenueEntry || null == this.UserShift)
@@ -935,7 +938,16 @@ namespace DMT.Services
 
             MethodBase med = MethodBase.GetCurrentMethod();
 
-            // update save data
+            if (this.RevenueEntry.RevenueId == string.Empty)
+            {
+                // TODO: Autogenerate need to change to auto running number
+                Random rand = new Random();
+                if (string.IsNullOrWhiteSpace(this.RevenueEntry.RevenueId))
+                {
+                    this.RevenueEntry.RevenueId = rand.Next(100000).ToString("D5"); // auto generate.
+                }
+            }
+            // Save Revenue Entry.
             var revInst = ops.Revenue.SaveRevenue(this.RevenueEntry).Value();
             string revId = (null != revInst) ? revInst.RevenueId : string.Empty;
             if (null != this.RevenueShift)
@@ -956,44 +968,21 @@ namespace DMT.Services
                 });
             }
 
-            // TODO: Need to sync currency and coupon master!!
-            var currencies = ops.Master.GetCurrencies().Value();
-            var coupons = ops.Master.GetCoupons().Value();
-
-            // TODO: Refactor Test Send Declare.
-            // Plaza Id send only first match the SCW server will check later.
-            SCWDeclare declare = this.RevenueEntry.ToServer(currencies, coupons,
-                this.Attendances, this.PlazaIds[0]);
-            var ret = server.TOD.Declare(declare);
-
-            bool sendSucces = false;
-            if (null != ret && null != ret.status)
-            {
-                sendSucces = (ret.status.code != "S200");
-                // write log.
-                med.Info("declare - code: {0}, msg: {1}", ret.status.code, ret.status.message);
-            }
-            else
-            {
-                // send failed.
-                med.Info("declare error: SCW service connect failed.");
-            }
-
             // get all lanes information.
             var search = Search.Lanes.Attendances.ByUserShift.Create(
                 this.UserShift, null, DateTime.MinValue);
             var existActivities = ops.Lanes.GetAttendancesByUserShift(search).Value();
-            if (null == existActivities || existActivities.Count == 0)
+
+            bool bCloseUserShift = (null == existActivities || existActivities.Count == 0);
+            if (bCloseUserShift)
             {
                 // no lane activitie in user shift.
                 ops.UserShifts.EndUserShift(this.UserShift); // End user job(shift).
+            }
+            // Send data to server to mark sync status.
+            SendRevnue(this.RevenueEntry);
 
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            return !bCloseUserShift;
         }
 
         #endregion
@@ -1126,12 +1115,75 @@ namespace DMT.Services
             try
             {
                 // Get Unsend revenue entries.
-                var entries = ops.Revenue.GetUnsendRevenues();
+                var entries = ops.Revenue.GetUnsendRevenues().Value();
+                if (null != entries && entries.Count > 0)
+                {
+                    bool sendSuccess = true;
+                    entries.ForEach(entry => 
+                    {
+                        if (sendSuccess)
+                        {
+                            sendSuccess = SendRevnue(entry);
+                        }
+                    });
+                }
             }
             catch (Exception ex)
             {
                 med.Err(ex);
             }
+        }
+
+        public static bool SendRevnue(RevenueEntry value)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            var ops = LocalServiceOperations.Instance.Plaza;
+            var server = SCWServiceOperations.Instance.Plaza;
+
+            // TODO: Need to sync currency and coupon master!!
+            var currencies = ops.Master.GetCurrencies().Value();
+            var coupons = ops.Master.GetCoupons().Value();
+            // find lane attendances.
+            var attendances = ops.Lanes.GetAttendancesByRevenue(value).Value();
+            var plazaGroup = new PlazaGroup() 
+            { 
+                TSBId = value.TSBId,
+                PlazaGroupId = value.PlazaGroupId
+            };
+            var plazas = ops.TSB.GetPlazaGroupPlazas(plazaGroup).Value();
+            int plazaId = (null != plazas && plazas.Count > 0) ? Convert.ToInt32(plazas[0].PlazaId) : -1;
+
+            if (plazaId == -1)
+            {
+                med.Info("declare error: Cannot search plaza id.");
+                return false;
+            }
+
+            SCWDeclare declare = value.ToServer(currencies, coupons, attendances, plazaId);
+            var ret = server.TOD.Declare(declare);
+
+            bool sendSucces = false;
+            if (null != ret && null != ret.status)
+            {
+                sendSucces = (ret.status.code == "S200");
+                // write log.
+                med.Info("declare - code: {0}, msg: {1}", ret.status.code, ret.status.message);
+            }
+            else
+            {
+                // send failed.
+                med.Info("declare error: SCW service connect failed.");
+            }
+
+            if (sendSucces)
+            {
+                value.Status = 1; // send OK.
+                value.LastUpdate = DateTime.Now;
+                ops.Revenue.SaveRevenue(value);
+            }
+
+            return sendSucces;
         }
 
         #endregion
