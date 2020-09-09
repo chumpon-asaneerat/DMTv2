@@ -35,19 +35,20 @@ namespace DMT.TOD.Pages.Revenue
         #endregion
 
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
-        private RevenueEntryManager _manager = new RevenueEntryManager();
+        private HistoricalRevenueEntryManager _manager = new HistoricalRevenueEntryManager();
 
-        private DateTime _entryDT = DateTime.MinValue;
-        private DateTime _revDT = DateTime.MinValue;
+        //private DateTime _entryDT = DateTime.MinValue;
+        //private DateTime _revDT = DateTime.MinValue;
 
-        private User _sup = null;
-        private User _user = null;
+        //private User _sup = null;
+        //private User _user = null;
 
         private UserShift _userShift = null;
         private UserShiftRevenue _plazaRevenue = null;
         private List<LaneAttendance> _laneActivities = null;
 
-        private UserCreditBalance srcObj = null;
+        //private UserShift srcObj = null;
+        private UserCreditBalance _selectUser = new UserCreditBalance();
 
         #region Button Handlers
 
@@ -65,7 +66,7 @@ namespace DMT.TOD.Pages.Revenue
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
-            if (null == _user)
+            if (null == _manager.User)
             {
                 DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
                 msg.Owner = Application.Current.MainWindow;
@@ -105,13 +106,13 @@ namespace DMT.TOD.Pages.Revenue
             }
 
             // create new user shift.
-            _userShift = ops.UserShifts.Create(shift, _user).Value();
+            //_userShift = ops.UserShifts.Create(shift, _user).Value();
 
-            var revops = Search.Revenues.PlazaShift.Create(_userShift, plazaGroup);
-            _plazaRevenue = ops.Revenue.CreateRevenueShift(revops).Value();
+            //var revops = Search.Revenues.PlazaShift.Create(_userShift, plazaGroup);
+            //_plazaRevenue = ops.Revenue.CreateRevenueShift(revops).Value();
 
-            _entryDT = dtEntryDate.SelectedDate.Value;
-            _revDT = dtRevDate.SelectedDate.Value;
+            //_entryDT = dtEntryDate.SelectedDate.Value;
+            //_revDT = dtRevDate.SelectedDate.Value;
 
             /*
             // Revenue Entry Page
@@ -155,12 +156,12 @@ namespace DMT.TOD.Pages.Revenue
                 if (string.IsNullOrEmpty(userId)) return;
 
                 UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
-                _user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
-                if (null != _user)
+                _manager.User = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
+                if (null != _manager.User)
                 {
-                    srcObj.UserId = _user.UserId;
-                    srcObj.FullNameEN = _user.FullNameEN;
-                    srcObj.FullNameTH = _user.FullNameTH;
+                    _selectUser.UserId = _manager.User.UserId;
+                    _selectUser.FullNameEN = _manager.User.FullNameEN;
+                    _selectUser.FullNameTH = _manager.User.FullNameTH;
                 }
             }
         }
@@ -196,7 +197,7 @@ namespace DMT.TOD.Pages.Revenue
                 // get selected plaza group
                 var plazaGroup = cbPlazas.SelectedItem as PlazaGroup;
 
-                _revDT = _userShift.Begin.Date; // get date part from UserShift.Begin
+                //_revDT = _userShift.Begin.Date; // get date part from UserShift.Begin
 
                 // get all lanes information.
                 var search = Search.Lanes.Attendances.ByUserShift.Create(
@@ -220,16 +221,15 @@ namespace DMT.TOD.Pages.Revenue
 
         public void Setup(User supervisor)
         {
-            _sup = supervisor;
+            //_sup = supervisor;
             _manager.Supervisor = supervisor;
 
             LoadShifts();
             LoadPlazaGroups();
             dtEntryDate.SelectedDate = DateTime.Now;
             dtRevDate.SelectedDate = DateTime.Now;
-
-            srcObj = new UserCreditBalance();
-            this.DataContext = srcObj;
+            // for binding search user.
+            this.DataContext = _selectUser;
         }
     }
 }

@@ -878,11 +878,6 @@ namespace DMT.Services
             this.RevenueEntry = entry;
         }
 
-        public void NewHistoricalRevenueEntry()
-        {
-
-        }
-
         public void BuildRevenueEntry()
         {
             MethodBase med = MethodBase.GetCurrentMethod();
@@ -1194,6 +1189,107 @@ namespace DMT.Services
 
             return sendSucces;
         }
+
+        #endregion
+    }
+
+    #endregion
+
+    #region HistoricalRevenueEntryManager
+
+    public class HistoricalRevenueEntryManager
+    {
+        #region Internal Variables
+
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
+        private SCWOperations server = SCWServiceOperations.Instance.Plaza;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public HistoricalRevenueEntryManager() : base()
+        {
+            // TODO: Need user/password from config table or external file.
+            SCWServiceOperations.Instance.UserName = "DMTUSER";
+            SCWServiceOperations.Instance.Password = "DMTPASS";
+
+            this.EntryDate = DateTime.Now;
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Create User Shift and Revenue Date.
+        /// </summary>
+        public void CreateUserShift()
+        {
+            if (null == this.User) return;
+            // Find user shift.
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            this.UserShift = ops.UserShifts.Create(this.Shift, this.User).Value();
+            if (null != UserShift)
+            {
+                string msg = string.Format("User Shift found. Begin: {0}, End {1}",
+                    UserShift.Begin.ToDateTimeString(), UserShift.End.ToDateTimeString());
+                med.Info(msg);
+
+                this.RevenueDate = UserShift.Begin.Date;
+            }
+            else
+            {
+                string msg = "User Shift not found.";
+                med.Info(msg);
+            }
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets Entry Date.
+        /// </summary>
+        public DateTime EntryDate { get; internal set; }
+        /// <summary>
+        /// Gets or sets Revenue Date.
+        /// </summary>
+        public DateTime RevenueDate { get; set; }
+        /// <summary>
+        /// Gets or sets User.
+        /// </summary>
+        public User User { get; set; }
+        /// <summary>
+        /// Gets or sets Shift.
+        /// </summary>
+        public Shift Shift { get; set; }
+        /// <summary>
+        /// Gets or sets Chief/Supervisor.
+        /// </summary>
+        public User Supervisor { get; set; }
+        /// <summary>
+        /// Gets or sets plaza group.
+        /// </summary>
+        public PlazaGroup PlazaGroup { get; set; }
+        /// <summary>
+        /// Gets related user shift.
+        /// </summary>
+        public UserShift UserShift { get; internal set; }
+
+        /// <summary>
+        /// Gets related LaneAttendance list.
+        /// </summary>
+        public List<LaneAttendance> Attendances { get; internal set; }
 
         #endregion
     }
