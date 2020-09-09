@@ -170,7 +170,6 @@ namespace DMT.TOD.Pages.Revenue
 
         public void Setup(User user)
         {
-            /*
             // check and send offline revenue entries to server.
             RevenueEntryManager.SendRevnues();
             LoadPlazaGroups();
@@ -184,10 +183,9 @@ namespace DMT.TOD.Pages.Revenue
             if (null != _manager && null != _manager.User)
             {
                 txtEntryDate.Text = _manager.EntryDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
-                _manager.Refresh();
+                //_manager.Refresh();
                 RefreshLanes();
             }
-            */
         }
     }
 }
