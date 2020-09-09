@@ -1233,23 +1233,54 @@ namespace DMT.Services
         /// </summary>
         public void CreateUserShift()
         {
-            if (null == this.User) return;
-            // Find user shift.
+            if (null == this.User || null == this.Shift) return;
             MethodBase med = MethodBase.GetCurrentMethod();
 
+            // Create user shift.
             this.UserShift = ops.UserShifts.Create(this.Shift, this.User).Value();
+            UserShift.Begin = DateTime.Now;
+            UserShift.End = UserShift.Begin;
+
             if (null != UserShift)
             {
                 string msg = string.Format("User Shift found. Begin: {0}, End {1}",
                     UserShift.Begin.ToDateTimeString(), UserShift.End.ToDateTimeString());
                 med.Info(msg);
-
-                this.RevenueDate = UserShift.Begin.Date;
+                // Create User Revenue Shift
+                var revops = Search.Revenues.PlazaShift.Create(this.UserShift, this.PlazaGroup);
+                this.RevenueShift = ops.Revenue.CreateRevenueShift(revops).Value();
             }
             else
             {
-                string msg = "User Shift not found.";
+                string msg = "User Shift cannot create.";
                 med.Info(msg);
+                // Remove User Revenue Shift
+                this.RevenueShift = null;
+            }
+        }
+        /// <summary>
+        /// Refresh User Job List.
+        /// </summary>
+        public void RefreshJobs()
+        {
+            if (null != this.UserShift && null != this.PlazaGroup)
+            {
+                MethodBase med = MethodBase.GetCurrentMethod();
+
+                // Get all lanes information.
+                var search = Search.Lanes.Attendances.ByUserShift.Create(
+                    this.UserShift, this.PlazaGroup, DateTime.MinValue);
+                this.Attendances = ops.Lanes.GetAttendancesByUserShift(search).Value();
+                if (!HasAttendance)
+                {
+                    string msg = "Attendances is null or no lane attendance list.";
+                    med.Info(msg);
+                }
+                else
+                {
+                    string msg = string.Format("Attendances found : No of lanes: {0}", this.Attendances.Count);
+                    med.Info(msg);
+                }
             }
         }
 
@@ -1260,7 +1291,7 @@ namespace DMT.Services
         /// <summary>
         /// Gets or sets Entry Date.
         /// </summary>
-        public DateTime EntryDate { get; internal set; }
+        public DateTime EntryDate { get; set; }
         /// <summary>
         /// Gets or sets Revenue Date.
         /// </summary>
@@ -1290,6 +1321,18 @@ namespace DMT.Services
         /// Gets related LaneAttendance list.
         /// </summary>
         public List<LaneAttendance> Attendances { get; internal set; }
+        /// <summary>
+        /// Checks has lane attendance.
+        /// </summary>
+        public bool HasAttendance
+        {
+            get { return (null != Attendances && Attendances.Count > 0); }
+        }
+
+        /// <summary>
+        /// Gets related user revenue's shift.
+        /// </summary>
+        public UserShiftRevenue RevenueShift { get; internal set; }
 
         #endregion
     }

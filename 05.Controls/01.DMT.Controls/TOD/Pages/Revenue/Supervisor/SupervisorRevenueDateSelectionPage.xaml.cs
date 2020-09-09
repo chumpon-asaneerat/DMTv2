@@ -43,8 +43,8 @@ namespace DMT.TOD.Pages.Revenue
         //private User _sup = null;
         //private User _user = null;
 
-        private UserShift _userShift = null;
-        private UserShiftRevenue _plazaRevenue = null;
+        //private UserShift _userShift = null;
+        //private UserShiftRevenue _plazaRevenue = null;
         private List<LaneAttendance> _laneActivities = null;
 
         //private UserShift srcObj = null;
@@ -106,22 +106,21 @@ namespace DMT.TOD.Pages.Revenue
             }
 
             // create new user shift.
-            //_userShift = ops.UserShifts.Create(shift, _user).Value();
+            _manager.Shift = shift;
+            _manager.PlazaGroup = plazaGroup;
+            _manager.CreateUserShift();
 
-            //var revops = Search.Revenues.PlazaShift.Create(_userShift, plazaGroup);
-            //_plazaRevenue = ops.Revenue.CreateRevenueShift(revops).Value();
+            _manager.EntryDate = dtEntryDate.SelectedDate.Value;
+            _manager.RevenueDate = dtRevDate.SelectedDate.Value;
 
-            //_entryDT = dtEntryDate.SelectedDate.Value;
-            //_revDT = dtRevDate.SelectedDate.Value;
-
-            /*
             // Revenue Entry Page
             var page = new SupervisorRevenueEntryPage();
+            /*
             page.Setup(_sup, _user, _userShift, plazaGroup, _plazaRevenue,
             _laneActivities,
             _entryDT, _revDT);
-            PageContentManager.Instance.Current = page;
             */
+            PageContentManager.Instance.Current = page;
         }
 
         #endregion
@@ -130,6 +129,20 @@ namespace DMT.TOD.Pages.Revenue
 
         private void cbPlazas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            var plazaGroup = cbPlazas.SelectedItem as PlazaGroup;
+            _manager.PlazaGroup = plazaGroup;
+            _manager.CreateUserShift();
+
+            // Load related lane data.
+            RefreshLanes();
+        }
+
+        private void cbShifts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var shift = cbShifts.SelectedItem as Shift;
+            _manager.Shift = shift;
+            _manager.CreateUserShift();
+
             // Load related lane data.
             RefreshLanes();
         }
@@ -162,6 +175,8 @@ namespace DMT.TOD.Pages.Revenue
                     _selectUser.UserId = _manager.User.UserId;
                     _selectUser.FullNameEN = _manager.User.FullNameEN;
                     _selectUser.FullNameTH = _manager.User.FullNameTH;
+
+                    RefreshLanes();
                 }
             }
         }
@@ -192,36 +207,27 @@ namespace DMT.TOD.Pages.Revenue
 
         private void RefreshLanes()
         {
-            if (null != _userShift)
+            // get selected plaza group
+            _manager.PlazaGroup = cbPlazas.SelectedItem as PlazaGroup;
+            _manager.CreateUserShift();
+
+            if (null != _manager.UserShift)
             {
-                // get selected plaza group
-                var plazaGroup = cbPlazas.SelectedItem as PlazaGroup;
-
-                //_revDT = _userShift.Begin.Date; // get date part from UserShift.Begin
-
-                // get all lanes information.
-                var search = Search.Lanes.Attendances.ByUserShift.Create(
-                    _userShift, plazaGroup, DateTime.MinValue);
-                _laneActivities = ops.Lanes.GetAttendancesByUserShift(search).Value();
-                if (null == _laneActivities || _laneActivities.Count <= 0)
+                _manager.RefreshJobs();
+                if (!_manager.HasAttendance)
                 {
                     // no data.
                     grid.Setup(null);
                 }
                 else
                 {
-                    grid.Setup(_laneActivities);
+                    grid.Setup(_manager.Attendances);
                 }
-            }
-            else
-            {
-                //MessageBox.Show("ไม่พบกะของพนักงาน", "DMT - Tour of Duty");
             }
         }
 
         public void Setup(User supervisor)
         {
-            //_sup = supervisor;
             _manager.Supervisor = supervisor;
 
             LoadShifts();
