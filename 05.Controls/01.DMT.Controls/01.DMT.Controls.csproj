@@ -260,9 +260,6 @@
     <Compile Include="TOD\Pages\Reports\RevenueSlipPreview.xaml.cs">
       <DependentUpon>RevenueSlipPreview.xaml</DependentUpon>
     </Compile>
-    <None Include="TOD\Pages\Revenue\Collector\Code1.cs" />
-    <None Include="TOD\Pages\Revenue\Collector\Code2.cs" />
-    <None Include="TOD\Pages\Revenue\Collector\Code3.cs" />
     <Compile Include="TOD\Pages\Revenue\Supervisor\SupervisorRevenueEntryPage.xaml.cs">
       <DependentUpon>SupervisorRevenueEntryPage.xaml</DependentUpon>
     </Compile>

@@ -35,15 +35,18 @@ namespace DMT.TOD.Pages.Revenue
         #endregion
 
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
+        private RevenueEntryManager _manager = new RevenueEntryManager();
 
         private DateTime _entryDT = DateTime.MinValue;
         private DateTime _revDT = DateTime.MinValue;
 
         private User _sup = null;
         private User _user = null;
+
         private UserShift _userShift = null;
         private UserShiftRevenue _plazaRevenue = null;
         private List<LaneAttendance> _laneActivities = null;
+
         private UserCreditBalance srcObj = null;
 
         #region Button Handlers
@@ -86,8 +89,6 @@ namespace DMT.TOD.Pages.Revenue
                 }
                 return;
             }
-            // create new user shift.
-            _userShift = ops.UserShifts.Create(shift, _user).Value();
 
             var plazaGroup = cbPlazas.SelectedItem as PlazaGroup;
 
@@ -103,18 +104,23 @@ namespace DMT.TOD.Pages.Revenue
                 return;
             }
 
+            // create new user shift.
+            _userShift = ops.UserShifts.Create(shift, _user).Value();
+
             var revops = Search.Revenues.PlazaShift.Create(_userShift, plazaGroup);
             _plazaRevenue = ops.Revenue.CreateRevenueShift(revops).Value();
 
             _entryDT = dtEntryDate.SelectedDate.Value;
             _revDT = dtRevDate.SelectedDate.Value;
 
+            /*
             // Revenue Entry Page
             var page = new SupervisorRevenueEntryPage();
             page.Setup(_sup, _user, _userShift, plazaGroup, _plazaRevenue,
             _laneActivities,
             _entryDT, _revDT);
             PageContentManager.Instance.Current = page;
+            */
         }
 
         #endregion
@@ -128,6 +134,36 @@ namespace DMT.TOD.Pages.Revenue
         }
 
         #endregion
+
+        #region TextBox Handlers
+
+        private void txtSearchUserId_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                SearchUser();
+            }
+        }
+
+        #endregion
+
+        private void SearchUser()
+        {
+            if (!string.IsNullOrEmpty(txtSearchUserId.Text))
+            {
+                string userId = txtSearchUserId.Text;
+                if (string.IsNullOrEmpty(userId)) return;
+
+                UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
+                _user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
+                if (null != _user)
+                {
+                    srcObj.UserId = _user.UserId;
+                    srcObj.FullNameEN = _user.FullNameEN;
+                    srcObj.FullNameTH = _user.FullNameTH;
+                }
+            }
+        }
 
         private void LoadShifts()
         {
@@ -182,9 +218,10 @@ namespace DMT.TOD.Pages.Revenue
             }
         }
 
-        public void Setup(User sup)
+        public void Setup(User supervisor)
         {
-            _sup = sup;
+            _sup = supervisor;
+            _manager.Supervisor = supervisor;
 
             LoadShifts();
             LoadPlazaGroups();
@@ -194,32 +231,5 @@ namespace DMT.TOD.Pages.Revenue
             srcObj = new UserCreditBalance();
             this.DataContext = srcObj;
         }
-
-        private void txtSearchUserId_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
-            {
-                SearchUser();
-            }
-        }
-
-        private void SearchUser()
-        {
-            if (!string.IsNullOrEmpty(txtSearchUserId.Text))
-            {
-                string userId = txtSearchUserId.Text;
-                if (string.IsNullOrEmpty(userId)) return;
-
-                UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
-                _user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
-                if (null != _user)
-                {
-                    srcObj.UserId = _user.UserId;
-                    srcObj.FullNameEN = _user.FullNameEN;
-                    srcObj.FullNameTH = _user.FullNameTH;
-                }
-            }
-        }
-
     }
 }

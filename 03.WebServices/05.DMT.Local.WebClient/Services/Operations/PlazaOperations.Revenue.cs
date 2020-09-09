@@ -868,11 +868,19 @@ namespace DMT.Services
                 this.RevenueEntry.BeltNo = string.Empty;
             }
         }
-
+        /// <summary>
+        /// Load Exists Revenue Entry.
+        /// </summary>
+        /// <param name="entry"></param>
         public void LoadRevenueEntry(RevenueEntry entry)
         {
             if (null == entry) return;
             this.RevenueEntry = entry;
+        }
+
+        public void NewHistoricalRevenueEntry()
+        {
+
         }
 
         public void BuildRevenueEntry()
