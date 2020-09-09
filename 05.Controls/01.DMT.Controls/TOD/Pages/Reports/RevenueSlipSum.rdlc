@@ -1384,7 +1384,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!FullNameTH.Value</Value>
+                              <Value>=Fields!CollectorNameTH.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1408,6 +1408,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -2625,6 +2626,22 @@
         </Field>
         <Field Name="BeltNo">
           <DataField>BeltNo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ChiefNameEN">
+          <DataField>ChiefNameEN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ChiefNameTH">
+          <DataField>ChiefNameTH</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CollectorNameEN">
+          <DataField>CollectorNameEN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CollectorNameTH">
+          <DataField>CollectorNameTH</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="CouponSoldBHT35">

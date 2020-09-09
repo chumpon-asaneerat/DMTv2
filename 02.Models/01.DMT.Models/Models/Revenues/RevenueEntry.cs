@@ -63,10 +63,16 @@ namespace DMT.Models
 		private string _UserId = string.Empty;
 		private string _FullNameEN = string.Empty;
 		private string _FullNameTH = string.Empty;
+		// Store when printed.
+		private string _CollectorNameEN = string.Empty;
+		private string _CollectorNameTH = string.Empty;
 
 		private string _SupervisorId = string.Empty;
 		private string _SupervisorNameEN = string.Empty;
 		private string _SupervisorNameTH = string.Empty;
+		// Store when printed.
+		private string _ChiefNameEN = string.Empty;
+		private string _ChiefNameTH = string.Empty;
 
 		// Traffic
 		private int _TrafficST25 = 0;
@@ -864,6 +870,43 @@ namespace DMT.Models
 				}
 			}
 		}
+		/// <summary>
+		/// Gets or sets Collector Name EN (stoed when printed).
+		/// </summary>
+		[Category("User")]
+		[ReadOnly(true)]
+		[MaxLength(150)]
+		[Description("Gets or sets Collector Name EN (stoed when printed).")]
+		[PropertyMapName("CollectorNameEN")]
+		public string CollectorNameEN
+		{
+			get { return _CollectorNameEN; }
+			set
+			{
+				if (null != _CollectorNameEN)
+				{
+					_CollectorNameEN = value;
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Collector Name TH (stoed when printed).
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets Collector Name TH (stoed when printed).")]
+		[MaxLength(150)]
+		[PropertyMapName("CollectorNameTH")]
+		public string CollectorNameTH
+		{
+			get { return _CollectorNameTH; }
+			set
+			{
+				if (null != _CollectorNameTH)
+				{
+					_CollectorNameTH = value;
+				}
+			}
+		}
 
 		#endregion
 
@@ -935,6 +978,42 @@ namespace DMT.Models
 				{
 					_SupervisorNameTH = value;
 					this.RaiseChanged("SupervisorNameTH");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Chief Name EN (stoed when printed).
+		/// </summary>
+		[Category("Supervisor")]
+		[Description("Gets or sets Chief Name EN (stoed when printed).")]
+		[MaxLength(150)]
+		[PropertyMapName("ChiefNameEN")]
+		public string ChiefNameEN
+		{
+			get { return _ChiefNameEN; }
+			set
+			{
+				if (null != _ChiefNameEN)
+				{
+					_ChiefNameEN = value;
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Chief Name TH (stoed when printed).
+		/// </summary>
+		[Category("Supervisor")]
+		[Description("Gets or sets Chief Name TH (stoed when printed).")]
+		[MaxLength(150)]
+		[PropertyMapName("ChiefNameTH")]
+		public string ChiefNameTH
+		{
+			get { return _ChiefNameTH; }
+			set
+			{
+				if (null != _ChiefNameTH)
+				{
+					_ChiefNameTH = value;
 				}
 			}
 		}

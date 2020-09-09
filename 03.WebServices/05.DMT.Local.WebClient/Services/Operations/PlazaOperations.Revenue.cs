@@ -924,11 +924,20 @@ namespace DMT.Services
                 this.RevenueEntry.ShiftEnd = end;
             }
 
+            if (null != this.User)
+            {
+                this.RevenueEntry.CollectorNameEN = this.User.FullNameEN;
+                this.RevenueEntry.CollectorNameTH = this.User.FullNameTH;
+            }
+
             if (null != this.Supervisor)
             {
                 this.RevenueEntry.SupervisorId = this.Supervisor.UserId;
                 this.RevenueEntry.SupervisorNameEN = this.Supervisor.FullNameEN;
                 this.RevenueEntry.SupervisorNameTH = this.Supervisor.FullNameTH;
+
+                this.RevenueEntry.ChiefNameEN = this.Supervisor.FullNameEN;
+                this.RevenueEntry.ChiefNameTH = this.Supervisor.FullNameTH;
             }
         }
         /// <summary>

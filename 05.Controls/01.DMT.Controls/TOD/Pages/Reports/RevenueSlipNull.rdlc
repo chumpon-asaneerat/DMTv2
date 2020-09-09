@@ -25,6 +25,22 @@
           <DataField>BeltNo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="ChiefNameEN">
+          <DataField>ChiefNameEN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ChiefNameTH">
+          <DataField>ChiefNameTH</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CollectorNameEN">
+          <DataField>CollectorNameEN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CollectorNameTH">
+          <DataField>CollectorNameTH</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="CouponSoldBHT35">
           <DataField>CouponSoldBHT35</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -61,8 +77,8 @@
           <DataField>CouponUsageBHT35</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="CouponUsageBHT75">
-          <DataField>CouponUsageBHT75</DataField>
+        <Field Name="CouponUsageBHT70">
+          <DataField>CouponUsageBHT70</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="CouponUsageBHT80">
