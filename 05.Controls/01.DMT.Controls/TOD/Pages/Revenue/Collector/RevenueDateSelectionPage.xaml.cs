@@ -45,7 +45,6 @@ namespace DMT.TOD.Pages.Revenue
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
-            /*
             // Revenue Entry Page
             var page = new RevenueEntryPage();
             if (null == _manager || null == _manager.PlazaGroup)
@@ -60,7 +59,7 @@ namespace DMT.TOD.Pages.Revenue
                 }
             }
 
-            _manager.LoadRevenueShift();
+            _manager.CheckRevenueShift();
             if (null != _manager.RevenueShift)
             {
                 if (_manager.HasRevenuShift)
@@ -112,7 +111,6 @@ namespace DMT.TOD.Pages.Revenue
             page.Setup(_manager);
 
             PageContentManager.Instance.Current = page;
-            */
         }
 
         #endregion

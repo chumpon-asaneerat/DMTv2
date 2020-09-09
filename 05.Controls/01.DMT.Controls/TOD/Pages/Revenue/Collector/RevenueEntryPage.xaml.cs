@@ -58,7 +58,6 @@ namespace DMT.TOD.Pages.Revenue
 
         public void Setup(RevenueEntryManager manager)
         {
-            /*
             _manager = manager;
 
             if (null == _manager || null == _manager.UserShift ||
@@ -88,7 +87,6 @@ namespace DMT.TOD.Pages.Revenue
 
                 revEntry.DataContext = _manager.RevenueEntry;
             }
-            */
         }
     }
 }
