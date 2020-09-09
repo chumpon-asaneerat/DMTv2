@@ -12,8 +12,40 @@
   - Update Config app and simulator.
 
 --------------------------------------------------------------------------------------------
-Update 2020-09-09 #10
+Update 2020-09-09 #20
 - 
+
+Update 2020-09-09 #19
+- 
+
+Update 2020-09-09 #18
+- 
+
+Update 2020-09-09 #17
+- 
+
+Update 2020-09-09 #16
+- 
+
+Update 2020-09-09 #15
+- 
+
+Update 2020-09-09 #14
+- 
+
+Update 2020-09-09 #13
+- 
+
+Update 2020-09-09 #12
+- 
+
+Update 2020-09-09 #11
+- 
+
+[commited]
+Update 2020-09-09 #10
+- Update history.txt
+- TOD Implements Revenue Entry (sync process) #91.
 
 [commited]
 Update 2020-09-09 #9
