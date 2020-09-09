@@ -682,9 +682,103 @@ namespace DMT.Services
 
         #region Private Methods
 
+        private void SyncJobList()
+        {
+            // Sync JobList to LaneAttendance
+            if (null == this.User) return;
+            if (null == this.PlazaGroup) return;
+            var plazas = ops.TSB.GetPlazaGroupPlazas(this.PlazaGroup).Value();
+            if (null == plazas) return;
+
+            var attends = new List<LaneAttendance>();
+            //this.PlazaIds = new List<int>();
+
+            plazas.ForEach(plaza =>
+            {
+                // Gets Job List from WS.
+                int nwId = 31; // TODO: network id required.
+
+                int plazaId = Convert.ToInt32(plaza.PlazaId);
+                // keep plaza Id.
+                //if (!this.PlazaIds.Contains(plazaId)) this.PlazaIds.Add(plazaId);
+
+                var ret = server.TOD.GetJobList(nwId, plazaId, this.User.UserId);
+                if (null != ret && null != ret.list)
+                {
+                    ret.list.ForEach(inst =>
+                    {
+                        var attend = inst.ToLocal();
+                        var lane = ops.TSB.GetPlazaLane(
+                            Search.Plaza.LaneByNo.Create(attend.PlazaId, attend.LaneNo)).Value();
+                        if (null != lane) lane.AssignTo(attend);
+
+                        var user = ops.Users.GetById(
+                            Search.Users.ById.Create(attend.UserId, "CTC", "TC")).Value();
+                        if (null != user) user.AssignTo(attend);
+
+                        if (null != attend) attends.Add(attend);
+                    });
+                }
+            });
+
+            // Save (insert/update) all rows.
+            ops.Lanes.SaveAttendances(attends);
+        }
+
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Check User Shift and Revenue Date.
+        /// </summary>
+        public void CheckUserShift()
+        {
+            if (null == this.User) return;
+            // Find user shift.
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            this.UserShift = ops.UserShifts.GetCurrent(this.User).Value();
+            if (null != UserShift)
+            {
+                string msg = string.Format("User Shift found. Begin: {0}, End {1}",
+                    UserShift.Begin.ToDateTimeString(), UserShift.End.ToDateTimeString());
+                med.Info(msg);
+
+                this.RevenueDate = UserShift.Begin.Date;
+            }
+            else
+            {
+                string msg = "User Shift not found.";
+                med.Info(msg);
+            }
+        }
+        /// <summary>
+        /// Refresh User Job List.
+        /// </summary>
+        public void RefreshJobs()
+        {
+            if (null != this.UserShift && null != this.PlazaGroup)
+            {
+                MethodBase med = MethodBase.GetCurrentMethod();
+                // Sync JobList to LaneAttendance
+                SyncJobList();
+                // Get all lanes information.
+                var search = Search.Lanes.Attendances.ByUserShift.Create(
+                    this.UserShift, this.PlazaGroup, DateTime.MinValue);
+                this.Attendances = ops.Lanes.GetAttendancesByUserShift(search).Value();
+                if (!HasAttendance)
+                {
+                    string msg = "Attendances is null or no lane attendance list.";
+                    med.Info(msg);
+                }
+                else
+                {
+                    string msg = string.Format("Attendances found : No of lanes: {0}", this.Attendances.Count);
+                    med.Info(msg);
+                }
+            }
+        }
 
         #endregion
 
@@ -714,10 +808,23 @@ namespace DMT.Services
         /// Gets related user shift.
         /// </summary>
         public UserShift UserShift { get; internal set; }
+
         /// <summary>
         /// Gets related user revenue's shift.
         /// </summary>
         public UserShiftRevenue RevenueShift { get; internal set; }
+
+        /// <summary>
+        /// Gets related LaneAttendance list.
+        /// </summary>
+        public List<LaneAttendance> Attendances { get; internal set; }
+        /// <summary>
+        /// Checks has lane attendance.
+        /// </summary>
+        public bool HasAttendance
+        {
+            get { return (null != Attendances && Attendances.Count > 0); }
+        }
 
         #endregion
 

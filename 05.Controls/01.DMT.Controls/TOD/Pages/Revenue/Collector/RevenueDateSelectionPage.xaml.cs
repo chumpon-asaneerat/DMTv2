@@ -148,15 +148,13 @@ namespace DMT.TOD.Pages.Revenue
 
         private void RefreshLanes()
         {
-            /*
             if (null != _manager && null != _manager.UserShift)
             {
                 // get selected plaza group
                 _manager.PlazaGroup = cbPlazas.SelectedItem as PlazaGroup;
-                txtRevDate.Text = _manager.RevenueDate.ToThaiDateTimeString("dd/MM/yyyy");
                 // reload jobs.
                 _manager.RefreshJobs();
-                if (null == _manager.Attendances || _manager.Attendances.Count <= 0)
+                if (!_manager.HasAttendance)
                 {
                     grid.Setup(null); // no attendance data.
                 }
@@ -165,7 +163,6 @@ namespace DMT.TOD.Pages.Revenue
                     grid.Setup(_manager.Attendances);
                 }
             }
-            */
         }
 
         public void Setup(User user)
@@ -182,8 +179,12 @@ namespace DMT.TOD.Pages.Revenue
 
             if (null != _manager && null != _manager.User)
             {
+                // Find user shift and Revenue Date.
+                _manager.CheckUserShift();
+                // Update entry date and revenue date.
                 txtEntryDate.Text = _manager.EntryDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
-                //_manager.Refresh();
+                txtRevDate.Text = _manager.RevenueDate.ToThaiDateTimeString("dd/MM/yyyy");
+                // Load Lane BOJ/EOJ List.
                 RefreshLanes();
             }
         }
