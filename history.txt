@@ -1,4 +1,4 @@
-- Note:
+﻿- Note:
   - Revenue Entry required to returns all credit and coupons before enter revenue.
   - Supervisor Sold coupon should print reports.
   - Implements User credit history view.
@@ -12,13 +12,18 @@
   - Update Config app and simulator.
   - Revenue entry required to check
     - shiftTypeId, 
-    - declareDateTime  (must contain time)
+    - declareDateTime  (must contain time) ต้อง check query ตอนดึงกลับมาแสดงด้วย
     - attendanceDateTime (must contain time)
     - departureDateTime (must contain time)
     - operationDate.
 
 
 --------------------------------------------------------------------------------------------
+[commited]
+Update 2020-09-09 #22
+- Update Local/DataCenter/TAxTOD service operation #443.
+  - TOD Implements Revenue Entry (sync process) #103.
+
 [commited]
 Update 2020-09-09 #21
 - Update Local/DataCenter/TAxTOD service operation #442.
