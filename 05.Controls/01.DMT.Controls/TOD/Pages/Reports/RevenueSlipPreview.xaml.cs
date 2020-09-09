@@ -46,7 +46,6 @@ namespace DMT.TOD.Pages.Reports
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
-            /*
             if (null == _manager || null == _manager.RevenueEntry)
             {
                 DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
@@ -93,7 +92,6 @@ namespace DMT.TOD.Pages.Reports
                 this.rptViewer.Print();
                 GoMainMenu();
             }
-            */
         }
 
         private void GoRevenuEntry()
@@ -133,7 +131,6 @@ namespace DMT.TOD.Pages.Reports
                 inst.Definition.EmbededReportName);
             // clear reprot datasource.
             inst.DataSources.Clear();
-            /*
             List<RevenueEntry> items = new List<RevenueEntry>();
             if (null != _manager && null != _manager.RevenueEntry)
             {
@@ -151,13 +148,12 @@ namespace DMT.TOD.Pages.Reports
             DateTime today = DateTime.Now;
             string printDate = today.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
             inst.Parameters.Add(RdlcReportParameter.Create("PrintDate", printDate));
-            */
+
             return inst;
         }
 
         private void InitNewReport()
         {
-            /*
             if (null == _manager || !_manager.CanBuildReport)
             {
                 // some of parameter(s) is null.
@@ -167,13 +163,10 @@ namespace DMT.TOD.Pages.Reports
             {
                 _manager.BuildRevenueEntry();
             }
-            */
         }
 
         private bool SaveRevenueEntry()
         {
-            return false;
-            /*
             if (null == _manager ||
                 _manager.RevenueEntry.RevenueDate == DateTime.MinValue ||
                 _manager.RevenueEntry.EntryDate == DateTime.MinValue)
@@ -188,12 +181,10 @@ namespace DMT.TOD.Pages.Reports
             }
             // Save information.
             return _manager.SaveRevenueEntry();
-            */
         }
 
         public void Setup(RevenueEntryManager manager)
         {
-            /*
             _manager = manager;
 
             if (null != _manager && null != _manager.RevenueEntry)
@@ -229,7 +220,6 @@ namespace DMT.TOD.Pages.Reports
             {
                 this.rptViewer.LoadReport(model);
             }
-            */
         }
     }
 }

@@ -964,8 +964,6 @@ namespace DMT.Services
             // Plaza Id send only first match the SCW server will check later.
             SCWDeclare declare = this.RevenueEntry.ToServer(currencies, coupons,
                 this.Attendances, this.PlazaIds[0]);
-            med.Info("declare - ");
-            //med.Info(declare.ToJson(true));
             var ret = server.TOD.Declare(declare);
 
             bool sendSucces = false;
