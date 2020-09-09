@@ -872,6 +872,7 @@ namespace DMT.Services
         public void LoadRevenueEntry(RevenueEntry entry)
         {
             if (null == entry) return;
+            this.RevenueEntry = entry;
         }
 
         public void BuildRevenueEntry()

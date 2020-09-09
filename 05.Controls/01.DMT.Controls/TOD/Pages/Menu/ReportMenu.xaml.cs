@@ -63,11 +63,9 @@ namespace DMT.TOD.Pages.Menu
             page.MenuPage = this;
             page.CallerPage = this; // Set CallerPage for click back.
 
-            // TODO: Refactor HERE.
-            /*
-            page.Setup(_user, null, null, null, null,
-                DateTime.MinValue, DateTime.MinValue, revenueEntry);
-            */
+            RevenueEntryManager _manager = new RevenueEntryManager();
+            _manager.LoadRevenueEntry(revenueEntry);
+            page.Setup(_manager);
 
             PageContentManager.Instance.Current = page;
         }
