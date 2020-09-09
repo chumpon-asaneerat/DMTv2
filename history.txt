@@ -11,10 +11,19 @@
     - Need to check with TSB max balance.
   - Update Config app and simulator.
   - Revenue entry required to check
-    - shiftTypeId, attendanceDateTime, departureDateTime, operationDate must be unique.
+    - shiftTypeId, 
+    - declareDateTime  (must contain time)
+    - attendanceDateTime (must contain time)
+    - departureDateTime (must contain time)
+    - operationDate.
 
 
 --------------------------------------------------------------------------------------------
+[commited]
+Update 2020-09-09 #21
+- Update Local/DataCenter/TAxTOD service operation #442.
+  - TOD Implements Revenue Entry (sync process) #102.
+
 [commited]
 Update 2020-09-09 #20
 - Update Local/DataCenter/TAxTOD service operation #441.
