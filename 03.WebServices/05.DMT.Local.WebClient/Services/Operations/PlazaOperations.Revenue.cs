@@ -976,7 +976,7 @@ namespace DMT.Services
             else
             {
                 // send failed.
-                med.Info("declare - code: {0}, msg: {1}", ret.status.code, ret.status.message);
+                med.Info("declare error: SCW service connect failed.");
             }
 
             // get all lanes information.
