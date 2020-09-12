@@ -48,7 +48,7 @@ namespace DMT.TA.Pages.Plaza
 
         private void cmdAppend_Click(object sender, RoutedEventArgs e)
         {
-            var win = new Windows.Plaza.PlazaReceivedCreditWindow();
+            var win = new Windows.Plaza.PlazaInternalCreditExchangeWindow();
             win.Owner = Application.Current.MainWindow;
 
             win.Title = "แลกเงินหมุนเวียนภายในด่าน";

@@ -224,6 +224,9 @@
     <Compile Include="TA\Windows\MessageBox\MessageBoxYesNoRed2Window.xaml.cs">
       <DependentUpon>MessageBoxYesNoRed2Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TA\Windows\Plaza\PlazaInternalCreditExchangeWindow.xaml.cs">
+      <DependentUpon>PlazaInternalCreditExchangeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TA\Windows\Plaza\PlazaStockSummaryWindow.xaml.cs">
       <DependentUpon>PlazaStockSummaryWindow.xaml</DependentUpon>
     </Compile>
@@ -625,6 +628,10 @@
     <Page Include="TA\Windows\MessageBox\MessageBoxYesNoRed2Window.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TA\Windows\Plaza\PlazaInternalCreditExchangeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TA\Windows\Plaza\PlazaStockSummaryWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
