@@ -26,6 +26,15 @@ namespace DMT.TA.Windows.Plaza
 
         #endregion
 
+        #region Internal Variables
+
+        private Models.TSBCreditTransaction plazaObj;
+        private Models.TSBCreditTransaction exchangeObj;
+
+        #endregion
+
+        #region Button Handlers
+
         private void cmdOK_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
@@ -35,6 +44,8 @@ namespace DMT.TA.Windows.Plaza
         {
             this.DialogResult = false;
         }
+
+        #endregion
 
         private void UpdateResult()
         {
@@ -77,8 +88,11 @@ namespace DMT.TA.Windows.Plaza
 
         public void Setup()
         {
-            this.plazaEntry.DataContext = new Models.TSBCreditTransaction();
-            this.exchangeEntry.DataContext = new Models.TSBCreditTransaction();
+            plazaObj = new Models.TSBCreditTransaction();
+            exchangeObj = new Models.TSBCreditTransaction();
+
+            this.plazaEntry.DataContext = plazaObj;
+            this.exchangeEntry.DataContext = exchangeObj;
         }
 
         private void Borrow_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
