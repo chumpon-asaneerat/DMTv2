@@ -75,6 +75,11 @@ namespace DMT.TA.Windows.Plaza
         }
         */
 
+        public void Setup()
+        {
+
+        }
+
         private void Borrow_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             UpdateResult();
