@@ -97,7 +97,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="10" />
                 </Grid.ColumnDefinitions>
-                <ctrl:PlazaCreditEntry x:Name="borrowEntry"
+                <ctrl:PlazaCreditEntry x:Name="plazaEntry"
                                 Grid.Column="1"
                                 FontSize="16"
                                 Background="Indigo"
@@ -107,7 +107,7 @@
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center">
                 </Grid>
-                <ctrl:PlazaCreditEntry x:Name="sumEntry"
+                <ctrl:PlazaCreditEntry x:Name="exchangeEntry"
                                 Grid.Column="3"
                                 FontSize="16"
                                 Background="Orange"

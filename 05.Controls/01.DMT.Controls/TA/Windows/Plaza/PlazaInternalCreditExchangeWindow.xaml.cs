@@ -77,7 +77,8 @@ namespace DMT.TA.Windows.Plaza
 
         public void Setup()
         {
-
+            this.plazaEntry.DataContext = new Models.TSBCreditTransaction();
+            this.exchangeEntry.DataContext = new Models.TSBCreditTransaction();
         }
 
         private void Borrow_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
