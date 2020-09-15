@@ -5,7 +5,20 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
+using DMT.Models;
+using DMT.Services;
+using NLib.Services;
+using NLib.Reflection;
+using NLib.Reports.Rdlc;
+using System.Reflection;
+using System.ComponentModel;
+using System.Windows.Interop;
+using NLib;
+using System.Collections;
+using System.Linq;
+
 #endregion
+
 
 namespace DMT.TA.Windows.Plaza
 {
@@ -28,8 +41,9 @@ namespace DMT.TA.Windows.Plaza
 
         #region Internal Variables
 
-        private Models.TSBCreditTransaction plazaObj;
-        private Models.TSBCreditTransaction exchangeObj;
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
+        private TSBCreditTransaction plazaObj;
+        private TSBCreditTransaction exchangeObj;
 
         #endregion
 
@@ -88,8 +102,8 @@ namespace DMT.TA.Windows.Plaza
 
         public void Setup()
         {
-            plazaObj = new Models.TSBCreditTransaction();
-            exchangeObj = new Models.TSBCreditTransaction();
+            plazaObj = new TSBCreditTransaction();
+            exchangeObj = new TSBCreditTransaction();
 
             this.plazaEntry.DataContext = plazaObj;
             this.exchangeEntry.DataContext = exchangeObj;
