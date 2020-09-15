@@ -9,6 +9,8 @@
     - Binding Grand total.
     - Check if both total side (left/right) is match.
     - Need to check with TSB max balance.
+  - Internal Exchange
+    - TSBCreditTransaction Required GroupId for group all by each operation.
   - Update Config app and simulator.
   - Revenue entry required to check
     - shiftTypeId, 
@@ -41,8 +43,10 @@ Update 2020-09-16 #4
 Update 2020-09-16 #3
 - 
 
+[commited]
 Update 2020-09-16 #2
-- 
+- Update TA Credit Exchange #5.
+  - TA Implements Internal Exchange #5.
 
 [commited]
 Update 2020-09-16 #1
