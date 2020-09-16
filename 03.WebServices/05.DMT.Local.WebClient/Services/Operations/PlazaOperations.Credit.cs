@@ -633,4 +633,104 @@ namespace DMT.Services
     }
 
     #endregion
+
+    #region TSBReplaceCreditManager
+
+    public class TSBReplaceCreditManager
+    {
+        #region Internal Variables
+
+        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
+        private TSBCreditTransaction _replaceOut = new TSBCreditTransaction();
+        private TSBCreditTransaction _replaceIn = new TSBCreditTransaction();
+
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public TSBReplaceCreditManager() : base() { }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Save Internal Replace TSB Credit (in/out)
+        /// </summary>
+        public void Save()
+        {
+            if (null == this.TSB) return;
+            if (null == _replaceOut || null == _replaceIn) return;
+            // set group Id and TSB id.
+            Guid groupId = Guid.NewGuid();
+            DateTime dt = DateTime.Now;
+            _replaceOut.TSBId = this.TSB.TSBId;
+            _replaceOut.GroupId = groupId;
+            _replaceOut.TransactionDate = dt;
+            _replaceOut.TransactionType = TSBCreditTransaction.TransactionTypes.ReplaceOut;
+
+            _replaceIn.TSBId = this.TSB.TSBId;
+            _replaceIn.GroupId = groupId;
+            _replaceIn.TransactionDate = dt;
+            _replaceIn.TransactionType = TSBCreditTransaction.TransactionTypes.ReplaceIn;
+
+            ops.Credits.SaveTSBCreditTransaction(_replaceOut);
+            ops.Credits.SaveTSBCreditTransaction(_replaceIn);
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        #region TSB
+
+        /// <summary>
+        /// Gets Current TSB.
+        /// </summary>
+        public TSB TSB { get; set; }
+
+        #endregion
+
+        #region Replace In/Out
+
+        /// <summary>
+        /// Gets Replace Out.
+        /// </summary>
+        public TSBCreditTransaction ReplaceOut
+        {
+            get { return _replaceOut; }
+        }
+        /// <summary>
+        /// Gets Replace In.
+        /// </summary>
+        public TSBCreditTransaction ReplaceIn
+        {
+            get { return _replaceIn; }
+        }
+
+        #endregion
+
+        #region Checks Is Equal amount
+
+        /// <summary>
+        /// Checks Is Equal amount.
+        /// </summary>
+        public bool IsEquals
+        {
+            get
+            {
+                return (_replaceOut.BHTTotal == _replaceIn.BHTTotal);
+            }
+        }
+
+        #endregion
+
+        #endregion
+    }
+
+    #endregion
 }

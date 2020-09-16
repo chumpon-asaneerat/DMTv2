@@ -50,8 +50,8 @@ namespace DMT.TA.Pages.Plaza
         {
             var win = new Windows.Plaza.PlazaInternalCreditExchangeWindow();
             win.Owner = Application.Current.MainWindow;
-
             win.Title = "แลกเงินหมุนเวียนภายในด่าน";
+            win.Setup();
             if (win.ShowDialog() == false)
             {
                 return;

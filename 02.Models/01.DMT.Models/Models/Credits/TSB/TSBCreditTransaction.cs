@@ -67,6 +67,7 @@ namespace DMT.Models
 		#region Internal Variables
 
 		private int _TransactionId = 0;
+		private Guid _GroupId = Guid.Empty;
 		private DateTime _TransactionDate = DateTime.MinValue;
 		private TransactionTypes _TransactionType = TransactionTypes.Initial;
 
@@ -171,6 +172,28 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
+		/// Gets or sets Transaction GroupId
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets Transaction GroupId")]
+		[ReadOnly(true)]
+		[PropertyMapName("GroupId")]
+		public Guid GroupId
+		{
+			get
+			{
+				return _GroupId;
+			}
+			set
+			{
+				if (_GroupId != value)
+				{
+					_GroupId = value;
+					this.RaiseChanged("GroupId");
+				}
+			}
+		}
+		/// <summary>
 		/// Gets or sets Transaction Date.
 		/// </summary>
 		[Category("Common")]
@@ -262,6 +285,20 @@ namespace DMT.Models
 				}
 			}
 		}
+
+		#endregion
+
+		#region Runtime
+
+		/// <summary>
+		/// Gets or sets Description (Runtime).
+		/// </summary>
+		[Category("Runtime")]
+		[Description("Gets or sets Description (Runtime).")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string Description { get; set; }
 
 		#endregion
 
