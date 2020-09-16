@@ -42,13 +42,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(CountST25), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -70,13 +73,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(CountST50), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -98,13 +104,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(CountBHT1), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -126,13 +135,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(CountBHT2), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -154,13 +166,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(CountBHT5), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -182,13 +197,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(CountBHT10), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -210,13 +228,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(CountBHT20), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -238,13 +259,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(CountBHT50), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -266,13 +290,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(CountBHT100), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -294,13 +321,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(CountBHT500), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -322,13 +352,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(CountBHT1000), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -350,13 +383,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(AmountST25), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -378,13 +414,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(AmountST50), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -406,13 +445,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(AmountBHT1), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -434,13 +476,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(AmountBHT2), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -462,13 +507,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(AmountBHT5), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -490,13 +538,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(AmountBHT10), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -518,13 +569,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(AmountBHT20), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -546,13 +600,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(AmountBHT50), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -574,13 +631,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(AmountBHT100), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -602,13 +662,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(AmountBHT500), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -630,13 +693,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Received = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(AmountBHT1000), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) - 
 			(
@@ -658,13 +724,16 @@ AS
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 
 					 OR TSBCreditTransaction.TransactionType = 1
-					) -- Initial = 0, Borrow = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			) -
 			(
 			 SELECT IFNULL(SUM(AdditionalBHT), 0) 
 			   FROM TSBCreditTransaction 
-			  WHERE TSBCreditTransaction.TransactionType = 2 -- Returns = 2
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
 				AND TSBCreditTransaction.TSBId = TSB.TSBId
 			)) AS AdditionalBHTTotal
 	  FROM TSB
