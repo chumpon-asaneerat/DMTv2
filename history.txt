@@ -19,27 +19,38 @@
     - departureDateTime (must contain time)
     - operationDate.
 --------------------------------------------------------------------------------------------
-Update 2020-09-16 #10
+Update 2020-09-17 #10
 - 
 
-Update 2020-09-16 #9
+Update 2020-09-17 #9
 - 
 
-Update 2020-09-16 #8
+Update 2020-09-17 #8
 - 
 
-Update 2020-09-16 #7
+Update 2020-09-17 #7
 - 
 
-Update 2020-09-16 #6
+Update 2020-09-17 #6
 - 
 
-Update 2020-09-16 #5
+Update 2020-09-17 #5
 - 
 
-Update 2020-09-16 #4
+Update 2020-09-17 #4
 - 
 
+Update 2020-09-17 #3
+- 
+
+Update 2020-09-17 #2
+- 
+
+[commited]
+Update 2020-09-17 #1
+- Update history.txt
+
+--------------------------------------------------------------------------------------------
 [commited]
 Update 2020-09-16 #3
 - Update TA Credit Exchange #6.
