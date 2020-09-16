@@ -45,33 +45,21 @@ namespace DMT.Models
 			/// </summary>
 			Initial = 0,
 			/// <summary>
-			/// received from account.
+			/// received from account after account approve and plaza received it.
 			/// </summary>
 			Received = 1,
 			/// <summary>
-			/// return to account.
+			/// return to account after plaza no longer need or reach due date.
 			/// </summary>
 			Returns = 2,
 			/// <summary>
-			/// Exchange In (Received from Account)
-			/// </summary>
-			ExchangeIn = 3,
-			/// <summary>
-			/// Exchange Out (Exchange to Account)
-			/// </summary>
-			ExchangeOut = 4,
-			/// <summary>
-			/// Exchange Return (Exchange to Account)
-			/// </summary>
-			ExchangeReturn = 5,
-			/// <summary>
 			/// Internal Replace (Takeout from TSB)
 			/// </summary>
-			ReplaceOut = 6,
+			ReplaceOut = 11,
 			/// <summary>
 			/// Internal Replace (Replace in TSB)
 			/// </summary>
-			ReplaceIn = 7
+			ReplaceIn = 12
 		}
 
 		#endregion
