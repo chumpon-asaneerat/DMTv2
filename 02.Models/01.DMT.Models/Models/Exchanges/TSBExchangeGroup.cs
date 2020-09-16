@@ -40,7 +40,7 @@ namespace DMT.Models
 		public enum StateTypes : int
 		{
 			/// <summary>
-			/// Request.
+			/// Request by plaza.
 			/// </summary>
 			Request = 1,
 			/// <summary>
@@ -48,19 +48,23 @@ namespace DMT.Models
 			/// </summary>
 			Canceled = 2,
 			/// <summary>
-			/// Approve.
+			/// Approve by account.
 			/// </summary>
 			Approve = 3,
 			/// <summary>
-			/// Reject.
+			/// Reject by account.
 			/// </summary>
 			Reject = 4,
 			/// <summary>
-			/// Received.
+			/// Received by plaza.
 			/// </summary>
 			Received = 5,
 			/// <summary>
-			/// Completed (reserved).
+			/// Return from plaza but account not update status.
+			/// </summary>
+			Return = 6,
+			/// <summary>
+			/// Completed when account received returns credits and update status.
 			/// </summary>
 			Completed = 9
 		}
