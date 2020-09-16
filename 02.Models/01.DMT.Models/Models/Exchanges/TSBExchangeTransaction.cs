@@ -1476,7 +1476,10 @@ namespace DMT.Models
 		//[PropertyMapName("GrandTotalBHT")]
 		public decimal GrandTotalBHT
 		{
-			get { return _ExchangeBHT + _BorrowBHT + GrandTotalBHT; }
+			get 
+			{
+				return _ExchangeBHT + _BorrowBHT + _AdditionalBHT; 
+			}
 			set { }
 		}
 

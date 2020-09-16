@@ -6,7 +6,6 @@
   - Collect Borrow Credit replace message box.
   - Collect Credit History need User information in search screen.
   - Request 
-    - Binding Grand total.
     - Check if both total side (left/right) is match.
     - Need to check with TSB max balance.
   - Internal Exchange
@@ -37,8 +36,10 @@ Update 2020-09-17 #6
 Update 2020-09-17 #5
 - 
 
+[commited]
 Update 2020-09-17 #4
-- 
+- Update TA Credit Exchange #9.
+  - TA Implements Internal Exchange #9.
 
 [commited]
 Update 2020-09-17 #3

@@ -122,17 +122,11 @@
                                    DockPanel.Dock="Right"
                                    TextAlignment="Left"
                                    Text="บาท" />
-                        <!--
                         <TextBox Width="90"
                                  Margin="2"
                                  TextAlignment="Right"
                                  IsEnabled="False"
                                  Text="{Binding GrandTotalBHT, StringFormat=N0}" />
-                        -->
-                        <TextBox Width="90"
-                                 Margin="2"
-                                 TextAlignment="Right"
-                                 IsEnabled="False"/>
                     </DockPanel>
                 </StackPanel>
             </DockPanel>
