@@ -174,17 +174,5 @@ namespace DMT.Services
         }
 
         #endregion
-
-        /*
-
-        [HttpPost]
-        [ActionName(RouteConsts.Credit.GetActiveUserCredit.Name)]
-        public UserCredit GetActiveUserCredit([FromBody] Search.UserCredits.GetActive value)
-        {
-            if (null == value) return null;
-            var ret = UserCredit.GetActive(value.User, value.PlazaGroup);
-            return ret;
-        }
-        */
     }
 }

@@ -18,8 +18,25 @@
     - departureDateTime (must contain time)
     - operationDate.
 --------------------------------------------------------------------------------------------
-Update 2020-09-17 #10
+Update 2020-09-17 #15
 - 
+
+Update 2020-09-17 #14
+- 
+
+Update 2020-09-17 #13
+- 
+
+Update 2020-09-17 #12
+- 
+
+Update 2020-09-17 #11
+- 
+
+[commited]
+Update 2020-09-17 #10
+- Update TA Credit Exchange #15.
+  - TA Implements Internal Exchange #15.
 
 [commited]
 Update 2020-09-17 #9
