@@ -17,15 +17,18 @@
                     <GridViewColumn Header="เวลา" 
                                     DisplayMemberBinding="{Binding Path=TransactionTimeString}" 
                                     Width="80"/>
+                    <!--
                     <GridViewColumn Header="รหัสพนักงาน" 
                                     DisplayMemberBinding="{Binding Path=UserId}" 
                                     Width="95"/>
                     <GridViewColumn Header="ชื่อพนักงาน" 
                                     DisplayMemberBinding="{Binding Path=FullNameTH}" 
                                     Width="250"/>
+                    -->
                     <GridViewColumn Header="จำนวนเงิน" 
                                     DisplayMemberBinding="{Binding Path=BHTTotal}"
                                     Width="150"/>
+                    <!--
                     <GridViewColumn Header="รายละเอียด" 
                                     Width="120">
                         <GridViewColumn.CellTemplate>
@@ -43,6 +46,7 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+                    -->
                 </GridView>
             </ListView.View>
         </ListView>
