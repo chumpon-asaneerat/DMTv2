@@ -119,6 +119,84 @@ namespace DMT.Services
         #endregion
     }
 
+    public class TSBExchangeManager2
+    {
+        #region Internal Variables
+
+        protected LocalOperations ops = LocalServiceOperations.Instance.Plaza;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public TSBExchangeManager2() : base()
+        {
+        }
+        /// <summary>
+        /// Destructor.
+        /// </summary>
+        ~TSBExchangeManager2()
+        {
+
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        #region Save
+
+        public void Save(TSBExchangeTransaction value)
+        {
+            if (null != value)
+            {
+                ops.Exchanges.SaveTSBExchangeTransaction(value);
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets TSB.
+        /// </summary>
+        public TSB TSB { get; set; }
+        /// <summary>
+        /// Gets Request List.
+        /// </summary>
+        public List<TSBExchangeTransaction> Requests
+        {
+            get 
+            {
+                if (null == this.TSB)
+                    return new List<TSBExchangeTransaction>();
+
+                var items = ops.Exchanges.GetTSBExchangeTransactions(this.TSB).Value();
+                if (null == items)
+                    return new List<TSBExchangeTransaction>();
+
+                var results = items.FindAll(item =>
+                {
+                    bool ret = (
+                        item.TransactionType == TSBExchangeTransaction.TransactionTypes.Request &&
+                        item.FinishFlag == TSBExchangeTransaction.FinishedFlags.Avaliable
+                    );
+                    return ret;
+                }).OrderBy(x => x.TransactionId).ToList();
+
+                return results;
+            }
+        }
+
+        #endregion
+    }
+
     public class TSBExchangeManager
     {
         #region Internal Variables
@@ -172,7 +250,7 @@ namespace DMT.Services
         /// </summary>
         public List<TSBExchangeTransaction> Requests
         {
-            get 
+            get
             {
                 if (null == this.TSB)
                     return new List<TSBExchangeTransaction>();
