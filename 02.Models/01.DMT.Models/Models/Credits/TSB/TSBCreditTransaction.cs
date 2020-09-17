@@ -1585,6 +1585,7 @@ namespace DMT.Models
 					cmd += " WHERE TSBId = ? ";
 					cmd += "   AND TransactionDate >= ? ";
 					cmd += "   AND TransactionDate <= ? ";
+					cmd += "   AND TransactionType = ? ";
 
 					var rets = NQuery.Query<FKs>(cmd,
 						tsb.TSBId,

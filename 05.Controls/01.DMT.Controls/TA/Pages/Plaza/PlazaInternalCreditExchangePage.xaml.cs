@@ -56,12 +56,12 @@ namespace DMT.TA.Pages.Plaza
             {
                 return;
             }
+            RefreshList();
         }
 
         private void cmdSearch_Click(object sender, RoutedEventArgs e)
         {
-            var items = ops.Credits.GetReplaceTSBCreditTransaction(dtDate.SelectedDate.Value).Value();
-            this.grid.Setup(items);
+            RefreshList();
         }
 
         #endregion
@@ -85,9 +85,15 @@ namespace DMT.TA.Pages.Plaza
                 loanEntry.IsEnabled = false;
                 loanEntry.DataContext = tsbCredit;
 
-                var items = ops.Credits.GetReplaceTSBCreditTransaction(dtDate.SelectedDate.Value).Value();
-                this.grid.Setup(items);
+                RefreshList();
             }
+        }
+
+        private void RefreshList()
+        {
+            this.grid.Setup(null);
+            var items = ops.Credits.GetReplaceTSBCreditTransaction(dtDate.SelectedDate.Value).Value();
+            this.grid.Setup(items);
         }
     }
 }
