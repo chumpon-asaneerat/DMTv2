@@ -1603,14 +1603,102 @@ namespace DMT.Models
 			}
 		}
 
-		public static void GetTSBRequestTransactions(TSBExchangeGroup value)
+		public static NDbResult<List<TSBCreditTransaction>> GetTSBRequestTransactions(TSBExchangeGroup value)
 		{
+			var result = new NDbResult<List<TSBCreditTransaction>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			var tsb = TSB.GetCurrent().Value();
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+			if (null == value)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * ";
+					cmd += "  FROM TSBCreditTransactionView ";
+					cmd += " WHERE TSBId = ? ";
+					cmd += "   AND TransactionDate >= ? ";
+					cmd += "   AND TransactionDate <= ? ";
+					cmd += "   AND TransactionType = ? ";
 
+					var rets = NQuery.Query<FKs>(cmd,
+						tsb.TSBId,
+						value.Date, value.Date.AddDays(1).AddMilliseconds(-1),
+						TransactionTypes.ReplaceOut).ToList();
+					var results = rets.ToModels();
+					result.Success(results);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
 		}
 
-		public static void GetTSBExchangeTransactions(TSBExchangeGroup value)
+		public static NDbResult<List<TSBCreditTransaction>> GetTSBExchangeTransactions(TSBExchangeGroup value)
 		{
+			var result = new NDbResult<List<TSBCreditTransaction>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			var tsb = TSB.GetCurrent().Value();
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+			if (null == value)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * ";
+					cmd += "  FROM TSBCreditTransactionView ";
+					cmd += " WHERE TSBId = ? ";
+					cmd += "   AND TransactionDate >= ? ";
+					cmd += "   AND TransactionDate <= ? ";
+					cmd += "   AND TransactionType = ? ";
 
+					var rets = NQuery.Query<FKs>(cmd,
+						tsb.TSBId,
+						value.Date, value.Date.AddDays(1).AddMilliseconds(-1),
+						TransactionTypes.ReplaceOut).ToList();
+					var results = rets.ToModels();
+					result.Success(results);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
 		}
 
 		/// <summary>

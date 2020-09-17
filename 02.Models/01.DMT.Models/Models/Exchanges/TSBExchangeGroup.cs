@@ -370,10 +370,22 @@ namespace DMT.Models
 
 		#region Static Methods
 
-		public static void GetTSBExchangeGroupByDate(DateTime value)
-        {
-
-        }
+		public static NDbResult<List<TSBExchangeGroup>> GetTSBExchangeGroupByDate(DateTime value)
+		{
+			var result = new NDbResult<List<TSBExchangeGroup>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			if (null == value)
+			{
+				result.ParameterIsNull();
+			}
+			
+			return result;
+		}
 
 		/// <summary>
 		/// Save TSB Exchange Group.
