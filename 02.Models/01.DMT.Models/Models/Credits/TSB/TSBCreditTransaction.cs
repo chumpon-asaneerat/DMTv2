@@ -1623,6 +1623,7 @@ namespace DMT.Models
 				result.ParameterIsNull();
 				return result;
 			}
+			/*
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -1650,6 +1651,8 @@ namespace DMT.Models
 				}
 				return result;
 			}
+			*/
+			return result;
 		}
 
 		public static NDbResult<List<TSBCreditTransaction>> GetTSBExchangeTransactions(TSBExchangeGroup value)
@@ -1672,6 +1675,7 @@ namespace DMT.Models
 				result.ParameterIsNull();
 				return result;
 			}
+			/*
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
@@ -1699,6 +1703,8 @@ namespace DMT.Models
 				}
 				return result;
 			}
+			*/
+			return result;
 		}
 
 		/// <summary>
