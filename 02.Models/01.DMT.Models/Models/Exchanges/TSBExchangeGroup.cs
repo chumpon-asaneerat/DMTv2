@@ -370,6 +370,11 @@ namespace DMT.Models
 
 		#region Static Methods
 
+		public static void GetTSBExchangeGroupByDate(DateTime value)
+        {
+
+        }
+
 		/// <summary>
 		/// Save TSB Exchange Group.
 		/// </summary>

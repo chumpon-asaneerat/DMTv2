@@ -1602,6 +1602,17 @@ namespace DMT.Models
 				return result;
 			}
 		}
+
+		public static void GetTSBRequestTransactions(TSBExchangeGroup value)
+		{
+
+		}
+
+		public static void GetTSBExchangeTransactions(TSBExchangeGroup value)
+		{
+
+		}
+
 		/// <summary>
 		/// Save Transaction.
 		/// </summary>
