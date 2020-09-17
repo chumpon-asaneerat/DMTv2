@@ -22,30 +22,22 @@ namespace DMT.TA.Controls.Plaza.View
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            PageContentManager.Instance.OnTick += new EventHandler(Instance_OnTick);
+            
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
-            PageContentManager.Instance.OnTick -= new EventHandler(Instance_OnTick);
+            
         }
 
         private void cmdEdit_Click(object sender, RoutedEventArgs e)
         {
-            Button b = sender as Button;
-
+            //Button b = sender as Button;
         }
 
-
-        void Instance_OnTick(object sender, EventArgs e)
+        public void Setup(List<Models.TSBCreditTransaction> items)
         {
-
-        }
-
-
-        public void Setup()
-        {
-
+            this.listView.ItemsSource = items;
         }
     }
 }

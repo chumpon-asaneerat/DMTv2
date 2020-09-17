@@ -58,21 +58,36 @@ namespace DMT.TA.Pages.Plaza
             }
         }
 
+        private void cmdSearch_Click(object sender, RoutedEventArgs e)
+        {
+            var items = ops.Credits.GetReplaceTSBCreditTransaction(dtDate.SelectedDate.Value).Value();
+            this.grid.Setup(items);
+        }
+
         #endregion
 
         public void RefreshPlazaInfo()
         {
+            dtDate.SelectedDate = DateTime.Today;
+            this.DataContext = null;
+
             _tsb = ops.TSB.GetCurrent().Value();
             var tsbCredit = ops.Credits.GetTSBBalance(_tsb).Value();
 
-            this.DataContext = tsbCredit;
-            tsbCredit.Description = "เงินยืมทอน";
-            tsbCredit.HasRemark = false;
-            plaza.IsEnabled = false;
-            plaza.DataContext = tsbCredit;
+            if (null != tsbCredit)
+            {
+                this.DataContext = tsbCredit;
+                tsbCredit.Description = "เงินยืมทอน";
+                tsbCredit.HasRemark = false;
+                plaza.IsEnabled = false;
+                plaza.DataContext = tsbCredit;
 
-            loanEntry.IsEnabled = false;
-            loanEntry.DataContext = tsbCredit;
+                loanEntry.IsEnabled = false;
+                loanEntry.DataContext = tsbCredit;
+
+                var items = ops.Credits.GetReplaceTSBCreditTransaction(dtDate.SelectedDate.Value).Value();
+                this.grid.Setup(items);
+            }
         }
     }
 }

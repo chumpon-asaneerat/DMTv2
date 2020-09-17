@@ -522,6 +522,12 @@ namespace DMT
                 public const string Url = Credit.Url + @"/" + Name;
             }
 
+            public static class GetReplaceTSBCreditTransaction
+            {
+                public const string Name = "GetReplaceTSBCreditTransaction";
+                public const string Url = Credit.Url + @"/" + Name;
+            }
+
             public static class SaveTSBCreditTransaction
             {
                 public const string Name = "SaveTSBCreditTransaction";

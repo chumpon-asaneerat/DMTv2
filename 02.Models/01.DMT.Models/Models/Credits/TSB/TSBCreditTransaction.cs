@@ -1555,6 +1555,53 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
+		/// Gets Replace Transaction of target TSB.
+		/// </summary>
+		/// <param name="value">The Date of Transaction.</param>
+		/// <returns>Returns Initial TSBCreditTransaction instance.</returns>
+		public static NDbResult<List<TSBCreditTransaction>> GetReplaceTransactions(DateTime value)
+		{
+			var result = new NDbResult<List<TSBCreditTransaction>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			var tsb = TSB.GetCurrent().Value();
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * ";
+					cmd += "  FROM TSBCreditTransactionView ";
+					cmd += " WHERE TSBId = ? ";
+					cmd += "   AND TransactionDate >= ? ";
+					cmd += "   AND TransactionDate <= ? ";
+
+					var rets = NQuery.Query<FKs>(cmd,
+						tsb.TSBId,
+						value.Date, value.Date.AddDays(1).AddMilliseconds(-1), 
+						TransactionTypes.ReplaceOut).ToList();
+					var results = rets.ToModels();
+					result.Success(results);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
+		}
+		/// <summary>
 		/// Save Transaction.
 		/// </summary>
 		/// <param name="value">The transaction instance.</param>

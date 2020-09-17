@@ -58,6 +58,23 @@ namespace DMT.Services
         }
 
         [HttpPost]
+        [ActionName(RouteConsts.Credit.GetReplaceTSBCreditTransaction.Name)]
+        public NDbResult<List<TSBCreditTransaction>> GetReplaceTSBCreditTransaction([FromBody] DateTime value)
+        {
+            NDbResult<List<TSBCreditTransaction>> result;
+            if (null == value)
+            {
+                result = new NDbResult<List<TSBCreditTransaction>>();
+                result.ParameterIsNull();
+            }
+            else
+            {
+                result = TSBCreditTransaction.GetReplaceTransactions(value);
+            }
+            return result;
+        }
+
+        [HttpPost]
         [ActionName(RouteConsts.Credit.SaveTSBCreditTransaction.Name)]
         public NDbResult<TSBCreditTransaction> SaveTSBCreditTransaction(
             [FromBody] TSBCreditTransaction value)

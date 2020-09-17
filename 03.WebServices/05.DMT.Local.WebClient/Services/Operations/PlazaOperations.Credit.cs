@@ -116,6 +116,31 @@ namespace DMT.Services
                 return ret;
             }
 
+            public NRestResult<List<TSBCreditTransaction>> GetReplaceTSBCreditTransaction(DateTime value)
+            {
+                NRestResult<List<TSBCreditTransaction>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<TSBCreditTransaction>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                if (null != value)
+                {
+                    ret = client.Execute<List<TSBCreditTransaction>>(
+                        RouteConsts.Credit.GetReplaceTSBCreditTransaction.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<TSBCreditTransaction>>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
+                return ret;
+            }
+
             public NRestResult<TSBCreditTransaction> SaveTSBCreditTransaction(
                 TSBCreditTransaction value)
             {
