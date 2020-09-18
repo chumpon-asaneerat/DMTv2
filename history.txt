@@ -49,8 +49,10 @@ Update 2020-09-19 #1
 - 
 
 --------------------------------------------------------------------------------------------
+[commited]
 Update 2020-09-18 #3
-- 
+- Update TA Credit Exchange #21.
+  - TA Implements Internal Exchange #21.
 
 [commited]
 Update 2020-09-18 #2
