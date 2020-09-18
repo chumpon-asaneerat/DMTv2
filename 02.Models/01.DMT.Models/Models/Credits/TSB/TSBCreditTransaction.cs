@@ -71,9 +71,14 @@ namespace DMT.Models
 		private DateTime _TransactionDate = DateTime.MinValue;
 		private TransactionTypes _TransactionType = TransactionTypes.Initial;
 
+		// TSB
 		private string _TSBId = string.Empty;
 		private string _TSBNameEN = string.Empty;
 		private string _TSBNameTH = string.Empty;
+		// Supervisor
+		private string _SupervisorId = string.Empty;
+		private string _SupervisorNameEN = string.Empty;
+		private string _SupervisorNameTH = string.Empty;
 
 		// Coin/Bill (Count)
 		private int _CntST25 = 0;
@@ -518,6 +523,80 @@ namespace DMT.Models
 				{
 					_TSBNameTH = value;
 					this.RaiseChanged("TSBNameTH");
+				}
+			}
+		}
+
+		#endregion
+
+		#region Supervisor
+
+		/// <summary>
+		/// Gets or sets Supervisor Id
+		/// </summary>
+		[Category("Supervisor")]
+		[Description("Gets or sets Supervisor Id.")]
+		[ReadOnly(true)]
+		[MaxLength(10)]
+		[PropertyMapName("SupervisorId")]
+		public string SupervisorId
+		{
+			get
+			{
+				return _SupervisorId;
+			}
+			set
+			{
+				if (_SupervisorId != value)
+				{
+					_SupervisorId = value;
+					this.RaiseChanged("SupervisorId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Supervisor Name EN.
+		/// </summary>
+		[Category("Supervisor")]
+		[Description("Gets or sets Supervisor Name EN.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PropertyMapName("Supervisor Name EN")]
+		public virtual string SupervisorNameEN
+		{
+			get
+			{
+				return _SupervisorNameEN;
+			}
+			set
+			{
+				if (_SupervisorNameEN != value)
+				{
+					_SupervisorNameEN = value;
+					this.RaiseChanged("SupervisorNameEN");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Supervisor Name TH.
+		/// </summary>
+		[Category("Supervisor")]
+		[Description("Gets or sets Supervisor Name TH.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PropertyMapName("SupervisorNameTH")]
+		public virtual string SupervisorNameTH
+		{
+			get
+			{
+				return _SupervisorNameTH;
+			}
+			set
+			{
+				if (_SupervisorNameTH != value)
+				{
+					_SupervisorNameTH = value;
+					this.RaiseChanged("SupervisorNameTH");
 				}
 			}
 		}
