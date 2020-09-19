@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Compile.note.txt = Compile.note.txt
 		controller-design.txt = controller-design.txt
 		database-design.txt = database-design.txt
+		ERD.note.txt = ERD.note.txt
 		Exchange.Process.txt = Exchange.Process.txt
 		history.TA.txt = history.TA.txt
 		history.txt = history.txt
@@ -118,6 +119,18 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08.OwinServerSample", "10.Tests\08.OwinServerSample\08.OwinServerSample.csproj", "{EE399870-C740-42CB-8359-8242B3214876}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09.OwinClientSample", "10.Tests\09.OwinClientSample\09.OwinClientSample.csproj", "{47E1599D-D61D-467B-98A2-4582E5B40F6C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ERD", "ERD", "{DA2F2B18-1F2A-46B3-8155-D572C1E2DFCC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TOD", "TOD", "{525562A1-1845-4EB9-8338-582DB1D407CB}"
+	ProjectSection(SolutionItems) = preProject
+		ERD\TOD\TOD.json = ERD\TOD\TOD.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TA", "TA", "{BC463232-515C-4A9D-ACC3-9EF7C7AE2086}"
+	ProjectSection(SolutionItems) = preProject
+		ERD\TA\TA.json = ERD\TA\TA.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -273,6 +286,8 @@ Global
 		{9FF5EC7F-071D-4E1A-8981-E567CCD2A8FD} = {340AD3B3-A936-47DE-B5CE-369A279619D1}
 		{EE399870-C740-42CB-8359-8242B3214876} = {340AD3B3-A936-47DE-B5CE-369A279619D1}
 		{47E1599D-D61D-467B-98A2-4582E5B40F6C} = {340AD3B3-A936-47DE-B5CE-369A279619D1}
+		{525562A1-1845-4EB9-8338-582DB1D407CB} = {DA2F2B18-1F2A-46B3-8155-D572C1E2DFCC}
+		{BC463232-515C-4A9D-ACC3-9EF7C7AE2086} = {DA2F2B18-1F2A-46B3-8155-D572C1E2DFCC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3BFB056C-BEA2-46BD-B006-6BD410AF18BC}
