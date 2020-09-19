@@ -1,1 +1,0 @@
-Note: Please Open ERD folder with VSCode (with install ERD Editor)
