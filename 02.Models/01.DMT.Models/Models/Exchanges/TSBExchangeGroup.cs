@@ -35,7 +35,21 @@ namespace DMT.Models
 		#region Enum
 
 		/// <summary>
-		/// The TSB Exchange Group state enum.
+		/// The Request Types.
+		/// </summary>
+		public enum RequestTypes : int
+		{
+			/// <summary>
+			/// Exchange with Account.
+			/// </summary>
+			Account = 1,
+			/// <summary>
+			/// Exchange internal.
+			/// </summary>
+			Internal = 2
+		}
+		/// <summary>
+		/// The Request state enum.
 		/// </summary>
 		public enum StateTypes : int
 		{
@@ -90,6 +104,7 @@ namespace DMT.Models
 		private int _PkId = 0;
 		private Guid _GroupId = Guid.NewGuid();
 
+		private RequestTypes _RequestType = RequestTypes.Account;
 		private StateTypes _State = StateTypes.Request;
 		// TSB
 		private string _TSBId = string.Empty;
