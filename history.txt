@@ -18,18 +18,23 @@
     - departureDateTime (must contain time)
     - operationDate.
 --------------------------------------------------------------------------------------------
-Update 2020-09-21 #5
+Update 2020-09-22 #5
 - 
 
-Update 2020-09-21 #4
+Update 2020-09-22 #4
 - 
 
-Update 2020-09-21 #3
+Update 2020-09-22 #3
 - 
 
-Update 2020-09-21 #2
+Update 2020-09-22 #2
 - 
 
+[commited]
+Update 2020-09-22 #1
+- Update history.txt
+
+--------------------------------------------------------------------------------------------
 [commited]
 Update 2020-09-21 #1
 - Update history.txt
