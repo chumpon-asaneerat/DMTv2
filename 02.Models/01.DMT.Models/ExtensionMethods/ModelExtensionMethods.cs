@@ -274,6 +274,9 @@ namespace DMT.Models.ExtensionMethods
             inst.declareDateTime = value.EntryDate;
             inst.operationDate = value.RevenueDate;
 
+            inst.declareById = value.UserId;
+            inst.declareByName = value.TSBNameTH;
+
             // Lane information - Job List
             inst.attendanceDateTime = value.ShiftBegin;
             inst.departureDateTime = value.ShiftEnd;

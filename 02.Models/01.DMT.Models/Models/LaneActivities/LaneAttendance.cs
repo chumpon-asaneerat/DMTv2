@@ -1015,7 +1015,7 @@ namespace DMT.Models
 					cmd += " WHERE UserId = ? ";
 					cmd += "   AND (Begin >= ? AND Begin <= ?)";
 					cmd += "   AND ((End >= ? AND End <= ?) " +
-						"        OR  End = ?)";
+						"        OR  End = ?) ";
 					if (null != plazaGroup)
 					{
 						cmd += "   AND PlazaGroupId = ? ";
@@ -1029,6 +1029,7 @@ namespace DMT.Models
 					{
 						cmd += "   AND RevenueDate = ? ";
 					}
+					cmd += " ORDER BY UserId, Begin";
 
 					DateTime end = (shift.End == DateTime.MinValue) ? DateTime.Now : shift.End;
 					if (null != plazaGroup)
@@ -1091,9 +1092,10 @@ namespace DMT.Models
 					cmd += "SELECT * ";
 					cmd += "  FROM LaneAttendanceView ";
 					cmd += " WHERE UserId = ? ";
-					cmd += "   AND (Begin >= ? AND Begin <= ?)";
+					cmd += "   AND (Begin >= ? AND Begin <= ?) ";
 					cmd += "   AND (   (End >= ? AND End <= ?) " +
 						"           OR  End = ?)";
+					cmd += " ORDER BY UserId, Begin";
 
 					DateTime end = (shift.End == DateTime.MinValue) ? DateTime.Now : shift.End;
 					var rets = NQuery.Query<FKs>(cmd, 
@@ -1140,6 +1142,8 @@ namespace DMT.Models
 					cmd += "SELECT * ";
 					cmd += "  FROM LaneAttendanceView ";
 					cmd += " WHERE LaneId = ? ";
+					cmd += " ORDER BY UserId, Begin";
+
 					var rets = NQuery.Query<FKs>(cmd, lane.LaneId).ToList();
 					var results = rets.ToModels();
 					result.Success(results);
@@ -1181,6 +1185,8 @@ namespace DMT.Models
 					cmd += "  FROM LaneAttendanceView ";
 					cmd += " WHERE Begin >= ? ";
 					cmd += "   AND End <= ? ";
+					cmd += " ORDER BY UserId, Begin";
+
 					var rets = NQuery.Query<FKs>(cmd, date, DateTime.MinValue).ToList();
 					var results = rets.ToModels();
 					result.Success(results);
@@ -1221,6 +1227,7 @@ namespace DMT.Models
 					cmd += "SELECT * ";
 					cmd += "  FROM LaneAttendanceView ";
 					cmd += " WHERE RevenueId = ? ";
+					cmd += " ORDER BY UserId, Begin";
 
 					var rets = NQuery.Query<FKs>(cmd,
 						revenue.RevenueId).ToList();
@@ -1264,6 +1271,8 @@ namespace DMT.Models
 					cmd += "  FROM LaneAttendanceView ";
 					cmd += " WHERE LaneId = ? ";
 					cmd += "   AND End = ? ";
+					cmd += " ORDER BY UserId, Begin";
+
 					var ret = NQuery.Query<FKs>(cmd, lane.LaneId, 
 						DateTime.MinValue).FirstOrDefault();
 					var data = (null != ret) ? ret.ToModel() : null;
@@ -1329,7 +1338,9 @@ namespace DMT.Models
 					cmd += " WHERE TSBId = ? ";
 					cmd += "   AND (RevenueDate = ?";
 					cmd += "    OR  RevenueId IS NULL ";
-					cmd += "    OR  RevenueId = ?)";
+					cmd += "    OR  RevenueId = ?) ";
+					cmd += " ORDER BY UserId, Begin";
+
 					var rets = NQuery.Query<FKs>(cmd,
 						tsb.TSBId, DateTime.MinValue, string.Empty).ToList();
 					var results = rets.ToModels();
@@ -1378,6 +1389,8 @@ namespace DMT.Models
 					cmd += "    OR  RevenueId IS NULL ";
 					cmd += "    OR  RevenueId = ?) ";
 					cmd += "   AND UserId = ? ";
+					cmd += " ORDER BY UserId, Begin";
+
 					var rets = NQuery.Query<FKs>(cmd,
 						tsb.TSBId, DateTime.MinValue, string.Empty, user.UserId).ToList();
 					var results = rets.ToModels();

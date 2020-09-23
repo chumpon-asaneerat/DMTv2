@@ -11,12 +11,6 @@
   - Internal Exchange
     - TSBCreditTransaction Required GroupId for group all by each operation.
   - Update Config app and simulator.
-  - Revenue entry required to check
-    - shiftTypeId, 
-    - declareDateTime  (must contain time) ต้อง check query ตอนดึงกลับมาแสดงด้วย
-    - attendanceDateTime (must contain time)
-    - departureDateTime (must contain time)
-    - operationDate.
 --------------------------------------------------------------------------------------------
 Update 2020-09-23 #5
 - 
@@ -24,8 +18,10 @@ Update 2020-09-23 #5
 Update 2020-09-23 #4
 - 
 
+[commited]
 Update 2020-09-23 #3
-- 
+- Update TA Credit Exchange #26.
+  - TA Implements Internal Exchange #26.
 
 [commited]
 Update 2020-09-23 #2
