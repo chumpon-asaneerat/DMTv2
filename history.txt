@@ -21,8 +21,9 @@ Update 2020-09-24 #4
 Update 2020-09-24 #3
 - 
 
+[commited]
 Update 2020-09-24 #2
-- 
+- Update history.txt #2
 
 [commited]
 Update 2020-09-24 #1

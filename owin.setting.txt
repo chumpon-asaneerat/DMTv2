@@ -11,3 +11,18 @@ netsh advfirewall firewall add rule dir=in action=allow protocol=TCP localport=8
 netsh http delete urlacl url=http://+:8000/
 netsh advfirewall firewall delete rule name="Owin App"
 
+Note 3: TOD/TA Local Web Service (Inbound Rules)
+
+-- for start run one by one
+netsh http add urlacl url=http://+:9000/ user=Everyone
+netsh advfirewall firewall add rule dir=in action=allow protocol=TCP localport=9000 name="Local Plaza Service (REST)" enable=yes profile=Any
+
+netsh http add urlacl url=http://+:9100/ user=Everyone
+netsh advfirewall firewall add rule dir=in action=allow protocol=TCP localport=9100 name="Local Plaza Service (WS)" enable=yes profile=Any
+
+-- for shutdown run one by one
+netsh http delete urlacl url=http://+:9000/
+netsh advfirewall firewall delete rule name="Local Plaza Service (REST)"
+
+netsh http delete urlacl url=http://+:9100/
+netsh advfirewall firewall delete rule name="Local Plaza Service (WS)"
