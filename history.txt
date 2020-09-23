@@ -12,6 +12,37 @@
     - TSBCreditTransaction Required GroupId for group all by each operation.
   - Update Config app and simulator.
 --------------------------------------------------------------------------------------------
+Update 2020-09-24 #15
+- 
+
+Update 2020-09-24 #14
+- 
+
+Update 2020-09-24 #13
+- 
+
+Update 2020-09-24 #12
+- 
+
+Update 2020-09-24 #11
+- 
+
+Update 2020-09-24 #10
+- 
+
+Update 2020-09-24 #9
+- 
+
+Update 2020-09-24 #8
+- 
+
+Update 2020-09-24 #7
+- 
+
+[commited]
+Update 2020-09-24 #6
+- Update history.txt #4
+
 [commited]
 Update 2020-09-24 #5
 - Merge from origin/TA #1.
