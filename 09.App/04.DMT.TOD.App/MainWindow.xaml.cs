@@ -33,10 +33,6 @@ namespace DMT
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // Load Config service.
-            ConfigManager.Instance.LoadConfig();
-            // Enable Web Socket.
-            LocalServiceOperations.Instance.EnableWebSocket();
             // Initial Page Content Manager
             PageContentManager.Instance.ContentChanged += new EventHandler(Instance_ContentChanged);
             PageContentManager.Instance.StatusUpdated += new StatusMessageEventHandler(Instance_StatusUpdated);

@@ -86,6 +86,11 @@ namespace DMT
 
             #endregion
 
+            // Load Config service.
+            DMT.Services.ConfigManager.Instance.LoadConfig();
+            // Enable Web Socket.
+            DMT.Services.LocalServiceOperations.Instance.EnableWebSocket();
+
             Window window = null;
             window = new MainWindow();
 
