@@ -54,6 +54,7 @@ namespace DMT.TA.Controls.Exchange.View
         private void cmdEdit_Click(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;
+            //TODO: Change to TSB Exchange Group.
             TSBExchangeTransaction item = b.CommandParameter as TSBExchangeTransaction;
             if (null != item)
             {
@@ -93,6 +94,7 @@ namespace DMT.TA.Controls.Exchange.View
         private void cmdExchange_Click(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;
+            //TODO: Change to TSB Exchange Group.
             TSBExchangeTransaction item = b.CommandParameter as TSBExchangeTransaction;
             if (null != item)
             {

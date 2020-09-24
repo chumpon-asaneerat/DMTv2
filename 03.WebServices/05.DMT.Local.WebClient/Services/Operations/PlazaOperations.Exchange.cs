@@ -60,6 +60,7 @@ namespace DMT.Services
 
             #region Exchange Transaction
 
+            //TODO: Change to TSB Exchange Group.
             public NRestResult<List<TSBExchangeTransaction>> GetTSBExchangeTransactions(TSB value)
             {
                 NRestResult<List<TSBExchangeTransaction>> ret;
@@ -84,7 +85,7 @@ namespace DMT.Services
                 }
                 return ret;
             }
-
+            //TODO: Change to TSB Exchange Group.
             public NRestResult<TSBExchangeTransaction> SaveTSBExchangeTransaction(
                 TSBExchangeTransaction value)
             {
@@ -227,6 +228,7 @@ namespace DMT.Services
 
         #region Save
 
+        //TODO: Change to TSB Exchange Group.
         public void Save(TSBExchangeTransaction value)
         {
             if (null != value)
@@ -245,6 +247,9 @@ namespace DMT.Services
         /// Gets or sets TSB.
         /// </summary>
         public TSB TSB { get; set; }
+
+        //TODO: Change to TSB Exchange Group.
+
         /// <summary>
         /// Gets Request List.
         /// </summary>
