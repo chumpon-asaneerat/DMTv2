@@ -181,6 +181,25 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
+		/// Gets or sets Request Type.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets Request Type.")]
+		[ReadOnly(true)]
+		[PropertyMapName("RequestType")]
+		public RequestTypes RequestType
+		{
+			get { return _RequestType; }
+			set
+			{
+				if (_RequestType != value)
+				{
+					_RequestType = value;
+					this.RaiseChanged("RequestType");
+				}
+			}
+		}
+		/// <summary>
 		/// Gets or sets State.
 		/// </summary>
 		[Category("Common")]

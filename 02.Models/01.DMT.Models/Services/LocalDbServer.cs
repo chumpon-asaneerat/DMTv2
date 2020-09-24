@@ -136,7 +136,7 @@ namespace DMT.Services
 
 			Db.CreateTable<Config>();
 			Db.CreateTable<ViewHistory>();
-			//Db.CreateTable<UniqueCode>();
+			Db.CreateTable<UniqueCode>();
 			Db.CreateTable<MCurrency>();
 			Db.CreateTable<MCoupon>();
 
@@ -149,7 +149,7 @@ namespace DMT.Services
 
 			Db.CreateTable<Role>();
 			Db.CreateTable<User>();
-			//Db.CreateTable<LogInLog>();
+			Db.CreateTable<LogInLog>();
 
 			Db.CreateTable<Payment>();
 
@@ -172,6 +172,7 @@ namespace DMT.Services
 			//Db.CreateTable<UserCouponBalance>();
 			Db.CreateTable<UserCouponTransaction>();
 
+			Db.CreateTable<TSBExchangeGroup>();
 			Db.CreateTable<TSBExchangeTransaction>();
 
 			InitDefaults();
