@@ -120,7 +120,7 @@ namespace DMT.Services
                     FileName = System.IO.Path.Combine(path, AppConsts.WindowsService.Local.ExecutableFileName)
                 });
         }
-
+        //TODO: Change to REST Server (on TOXxTA app).
         private void Connect()
         {
             if (!HasWebSocket) return;
@@ -142,7 +142,7 @@ namespace DMT.Services
                 }
             }
         }
-
+        //TODO: Change to REST Server (on TOXxTA app).
         private void Disconnect()
         {
             MethodBase med = MethodBase.GetCurrentMethod();
@@ -162,7 +162,7 @@ namespace DMT.Services
             }
             _ws = null;
         }
-
+        //TODO: Change to REST Server (on TOXxTA app).
         private void Reconnect(ushort code, string error)
         {
             if (!HasWebSocket)
@@ -187,7 +187,7 @@ namespace DMT.Services
         #endregion
 
         #region WS Handlers
-
+        //TODO: Change to REST Server (on TOXxTA app).
         private void Ws_OnMessage(object sender, MessageEventArgs e)
         {
             // Cross thread wrapper.
@@ -206,7 +206,7 @@ namespace DMT.Services
                 OnActiveTSBChanged.Call(this, EventArgs.Empty);
             }
         }
-
+        //TODO: Change to REST Server (on TOXxTA app).
         private void Ws_OnClose(object sender, CloseEventArgs e)
         {
             Disconnect();
@@ -215,7 +215,7 @@ namespace DMT.Services
             //TODO: Need Reconnect logic.
             Reconnect(e.Code, e.Reason);
         }
-
+        //TODO: Change to REST Server (on TOXxTA app).
         private void Ws_OnError(object sender, ErrorEventArgs e)
         {
             Disconnect();
@@ -284,13 +284,13 @@ namespace DMT.Services
         #endregion
 
         #region WebSocket
-
+        //TODO: Change to REST Server (on TOXxTA app).
         public void EnableWebSocket()
         {
             HasWebSocket = true;
             Connect();
         }
-
+        //TODO: Change to REST Server (on TOXxTA app).
         public void DisableWebSocket()
         {
             HasWebSocket = false;
@@ -311,6 +311,9 @@ namespace DMT.Services
         /// Gets instance of Plaza Operations.
         /// </summary>
         public LocalOperations Plaza { get; private set; }
+
+        //TODO: Change to REST Server (on TOXxTA app).
+
         /// <summary>
         /// Gets is websocket is enabled.
         /// </summary>
@@ -320,6 +323,7 @@ namespace DMT.Services
 
         #region Public Events
 
+        //TODO: Change to REST Server (on TOXxTA app).
         public event EventHandler OnActiveTSBChanged;
         public event EventHandler OnChangeShift;
 
