@@ -298,6 +298,39 @@ namespace DMT.Models
 
 		#endregion
 
+		#region Transactions
+
+		/// <summary>
+		/// Gets or sets Request transacton.
+		/// </summary>
+		[Category("Transaction")]
+		[Description("Gets or sets Request transacton.")]
+		[Ignore]
+		public TSBExchangeTransaction Request { get; set; }
+		/// <summary>
+		/// Gets or sets Approve transacton.
+		/// </summary>
+		[Category("Transaction")]
+		[Description("Gets or sets Approve transacton.")]
+		[Ignore]
+		public TSBExchangeTransaction Approve { get; set; }
+		/// <summary>
+		/// Gets or sets Received transacton.
+		/// </summary>
+		[Category("Transaction")]
+		[Description("Gets or sets Received transacton.")]
+		[Ignore]
+		public TSBExchangeTransaction Received { get; set; }
+		/// <summary>
+		/// Gets or sets Returns transacton.
+		/// </summary>
+		[Category("Transaction")]
+		[Description("Gets or sets Returns transacton.")]
+		[Ignore]
+		public TSBExchangeTransaction Return { get; set; }
+
+		#endregion
+
 		#region Status (DC)
 
 		/// <summary>
