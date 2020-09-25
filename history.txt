@@ -11,6 +11,7 @@
   - Internal Exchange
     - TSBCreditTransaction Required GroupId for group all by each operation.
   - Update Config app and simulator.
+  - Need to check model one by one (in new DMT.TA.TODv1 solution)
 --------------------------------------------------------------------------------------------
 Update 2020-09-26 #5
 - 
@@ -25,7 +26,7 @@ Update 2020-09-26 #2
 - 
 
 Update 2020-09-26 #1
-- 
+- Update history.txt
 
 --------------------------------------------------------------------------------------------
 [commited]
