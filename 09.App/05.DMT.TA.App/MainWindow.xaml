@@ -14,8 +14,9 @@
         Loaded="Window_Loaded" 
         Unloaded="Window_Unloaded">
     <Grid Background="DimGray">
-        <DockPanel>
-            <ctrl:AccountHeader DockPanel.Dock="Top" Height="100"></ctrl:AccountHeader>
+        <DockPanel LastChildFill="True">
+            <ctrl:AccountHeader DockPanel.Dock="Top" Height="100"/>
+            <ctrl:TAStatusBar DockPanel.Dock="Bottom" Height="30"/>
             <ContentPresenter x:Name="container"/>
         </DockPanel>
     </Grid>

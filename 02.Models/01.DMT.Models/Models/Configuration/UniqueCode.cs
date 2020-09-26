@@ -110,7 +110,7 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Common")]
 		[Description("Gets or sets Prefix")]
-		[PrimaryKey, MaxLength(30)]
+		[MaxLength(30)]
 		[PropertyMapName("Prefix")]
 		public string Prefix
 		{

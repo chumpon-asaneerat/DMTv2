@@ -10,19 +10,19 @@ using DMT.Services;
 
 #endregion
 
-namespace DMT.Controls.Header
+namespace DMT.Controls.StatusBar
 {
     /// <summary>
-    /// Interaction logic for HeaderDateTime.xaml
+    /// Interaction logic for SCWStatus.xaml
     /// </summary>
-    public partial class HeaderDateTime : UserControl
+    public partial class SCWStatus : UserControl
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public HeaderDateTime()
+        public SCWStatus()
         {
             InitializeComponent();
         }
@@ -31,6 +31,7 @@ namespace DMT.Controls.Header
 
         private DispatcherTimer timer = new DispatcherTimer();
         private NLib.Components.PingManager ping;
+        private bool isOnline = false;
 
         #region Loaded/Unloaded
 
@@ -76,11 +77,11 @@ namespace DMT.Controls.Header
             if (null != e.Reply &&
                 e.Reply.Status == System.Net.NetworkInformation.IPStatus.Success)
             {
-                borderDT.Background = new SolidColorBrush(Colors.Transparent);
+                isOnline = true;
             }
             else
             {
-                borderDT.Background = new SolidColorBrush(Colors.Maroon);
+                isOnline = false;
             }
         }
 
@@ -91,9 +92,16 @@ namespace DMT.Controls.Header
 
         private void UpdateUI()
         {
-            DateTime dt = DateTime.Now;
-            txtCurrentDate.Text = dt.ToThaiDateTimeString("dd/MM/yyyy");
-            txtCurrentTime.Text = dt.ToThaiDateTimeString("HH:mm:ss");
+            if (isOnline)
+            {
+                borderStatus.Background = new SolidColorBrush(Colors.ForestGreen);
+                txtStatus.Text = "Online";
+            }
+            else
+            {
+                borderStatus.Background = new SolidColorBrush(Colors.Maroon);
+                txtStatus.Text = "Offline";
+            }
         }
     }
 }

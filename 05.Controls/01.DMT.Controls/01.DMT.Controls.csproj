@@ -88,6 +88,24 @@
     <Compile Include="SignIn\Pages\SignInPage.xaml.cs">
       <DependentUpon>SignInPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StatusBar\Elements\AppInfoStatus.xaml.cs">
+      <DependentUpon>AppInfoStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StatusBar\Elements\LocalDbStatus.xaml.cs">
+      <DependentUpon>LocalDbStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StatusBar\Elements\SCWStatus.xaml.cs">
+      <DependentUpon>SCWStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StatusBar\Elements\TAServerStatus.xaml.cs">
+      <DependentUpon>TAServerStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StatusBar\TAStatusBar.xaml.cs">
+      <DependentUpon>TAStatusBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StatusBar\TODStatusBar.xaml.cs">
+      <DependentUpon>TODStatusBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TA\Controls\Collector\Coupon\View\CouponReceiveView.xaml.cs">
       <DependentUpon>CouponReceiveView.xaml</DependentUpon>
     </Compile>
@@ -446,6 +464,30 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SignIn\Pages\SignInPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StatusBar\Elements\AppInfoStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StatusBar\Elements\LocalDbStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StatusBar\Elements\SCWStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StatusBar\Elements\TAServerStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StatusBar\TAStatusBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StatusBar\TODStatusBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

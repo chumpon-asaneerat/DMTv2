@@ -10,19 +10,19 @@ using DMT.Services;
 
 #endregion
 
-namespace DMT.Controls.Header
+namespace DMT.Controls.StatusBar
 {
     /// <summary>
-    /// Interaction logic for HeaderDateTime.xaml
+    /// Interaction logic for LocalDbStatus.xaml
     /// </summary>
-    public partial class HeaderDateTime : UserControl
+    public partial class LocalDbStatus : UserControl
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public HeaderDateTime()
+        public LocalDbStatus()
         {
             InitializeComponent();
         }
@@ -31,12 +31,13 @@ namespace DMT.Controls.Header
 
         private DispatcherTimer timer = new DispatcherTimer();
         private NLib.Components.PingManager ping;
+        private bool isOnline = false;
 
         #region Loaded/Unloaded
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            string host = ConfigManager.Instance.Plaza.SCW.Http.HostName;
+            string host = ConfigManager.Instance.Plaza.Local.Http.HostName;
 
             ping = new NLib.Components.PingManager();
             ping.OnReply += Ping_OnReply;
@@ -76,11 +77,11 @@ namespace DMT.Controls.Header
             if (null != e.Reply &&
                 e.Reply.Status == System.Net.NetworkInformation.IPStatus.Success)
             {
-                borderDT.Background = new SolidColorBrush(Colors.Transparent);
+                isOnline = true;
             }
             else
             {
-                borderDT.Background = new SolidColorBrush(Colors.Maroon);
+                isOnline = false;
             }
         }
 
@@ -91,9 +92,16 @@ namespace DMT.Controls.Header
 
         private void UpdateUI()
         {
-            DateTime dt = DateTime.Now;
-            txtCurrentDate.Text = dt.ToThaiDateTimeString("dd/MM/yyyy");
-            txtCurrentTime.Text = dt.ToThaiDateTimeString("HH:mm:ss");
+            if (isOnline)
+            {
+                borderStatus.Background = new SolidColorBrush(Colors.ForestGreen);
+                txtStatus.Text = "Online";
+            }
+            else
+            {
+                borderStatus.Background = new SolidColorBrush(Colors.Maroon);
+                txtStatus.Text = "Offline";
+            }
         }
     }
 }
