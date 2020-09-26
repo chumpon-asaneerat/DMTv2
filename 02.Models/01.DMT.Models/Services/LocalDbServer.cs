@@ -137,6 +137,7 @@ namespace DMT.Services
 			Db.CreateTable<Config>();
 			Db.CreateTable<ViewHistory>();
 			Db.CreateTable<UniqueCode>();
+
 			Db.CreateTable<MCurrency>();
 			Db.CreateTable<MCoupon>();
 
