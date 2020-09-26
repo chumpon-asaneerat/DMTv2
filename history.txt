@@ -22,9 +22,11 @@ Update 2020-09-26 #4
 Update 2020-09-26 #3
 - 
 
+[commited]
 Update 2020-09-26 #2
-- 
+- Remove WebSocket Server/Client Sample projects.
 
+[commited]
 Update 2020-09-26 #1
 - Update history.txt
 
