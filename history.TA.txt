@@ -15,8 +15,10 @@ Update 2020-09-28 #1 (TA)
 - 
 
 --------------------------------------------------------------------------------------------
+[commited]
 Update 2020-09-27 #8 (TA)
-- 
+- Update TA Credit Exchange #42.
+  - UserCoupon's related tables and views seem not in used recheck for remove code.
 
 [commited]
 Update 2020-09-27 #7 (TA)
