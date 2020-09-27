@@ -96,7 +96,7 @@
                                        TextAlignment="Right"
                                        Text="ชื่อพนักงาน :" />
                             <TextBlock x:Name="txtUserName"
-                                       Width="150"
+                                       Width="250"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
                                        FontSize="18"

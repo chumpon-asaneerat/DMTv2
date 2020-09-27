@@ -22,8 +22,10 @@ Update 2020-09-27 #4
 Update 2020-09-27 #3
 - 
 
+[commited]
 Update 2020-09-27 #2
-- 
+- Update TA Credit Exchange #33.
+  - TOD Fixed revenue entry (RevenueDate) and set User Name width in UI.
 
 [commited]
 Update 2020-09-27 #1

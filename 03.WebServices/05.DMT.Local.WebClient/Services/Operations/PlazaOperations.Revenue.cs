@@ -1320,7 +1320,7 @@ namespace DMT.Services
             RevenueEntryManager inst = new RevenueEntryManager();
             
             inst.EntryDate = this.EntryDate;
-            inst.RevenueDate = this.EntryDate;
+            inst.RevenueDate = this.RevenueDate;
             inst.User = this.User;
             inst.Supervisor = this.Supervisor;
             inst.UserShift = this.UserShift;
