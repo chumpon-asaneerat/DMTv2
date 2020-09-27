@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Media;
 
 using NLib;
@@ -533,7 +534,33 @@ namespace DMT.Models
 				return result;
 			}
 
-			return result;
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					DateTime begin = value.Date;
+					DateTime end = value.Date.AddDays(1).AddMilliseconds(-1);
+
+					string cmd = string.Empty;
+					cmd += "SELECT * ";
+					cmd += "  FROM TSBExchangeGroupView ";
+					cmd += " WHERE TSBId = ? ";
+					cmd += "   AND FinishFlag = 1 ";
+					cmd += "   AND RequestDate >= ? ";
+					cmd += "   AND RequestDate <= ? ";
+
+					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId, begin, end).ToList();
+					var results = rets.ToModels();
+					result.Success(results);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
 		}
 
 		/// <summary>

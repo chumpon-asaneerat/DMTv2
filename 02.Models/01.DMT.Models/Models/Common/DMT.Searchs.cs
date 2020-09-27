@@ -418,7 +418,7 @@ namespace DMT.Models
                 //public TSB TSB { get; set; }
                 public DateTime Date { get; set; }
 
-                public static ByDate DateTime(/*TSB tsb, */DateTime dt)
+                public static ByDate Create(/*TSB tsb, */DateTime dt)
                 {
                     var ret = new ByDate();
                     //ret.TSB = tsb;

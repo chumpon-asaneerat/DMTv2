@@ -222,7 +222,9 @@
     <EmbeddedResource Include="Views\Scripts\Coupons\TSBCouponSoldByLaneBalanceView.sql" />
     <EmbeddedResource Include="Views\Scripts\Coupons\TSBCouponSoldByTSBBalanceView.sql" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Scripts\Exchanges\TSBExchangeGroupView.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(SolutionDir)References\runtimes\*.*" "$(TargetDir)\runtimes\*.*" /Y/D/E</PostBuildEvent>

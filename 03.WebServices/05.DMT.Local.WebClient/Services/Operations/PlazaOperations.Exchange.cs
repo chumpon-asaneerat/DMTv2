@@ -60,7 +60,7 @@ namespace DMT.Services
 
             #region Exchange Transaction
 
-            public NRestResult<List<TSBExchangeGroup>> GetTSBExchangeGroups(TSB value)
+            public NRestResult<List<TSBExchangeGroup>> GetTSBExchangeGroups(Search.Exchanges.ByDate value)
             {
                 NRestResult<List<TSBExchangeGroup>> ret;
                 NRestClient client = NRestClient.CreateLocalClient();
@@ -146,6 +146,31 @@ namespace DMT.Services
 
         #region Public Methods
 
+        #region RefreshRequest
+
+        public void RefreshRequest(DateTime dt)
+        {
+            /*
+            if (null == this.TSB)
+                this.Requests = new List<TSBExchangeGroup>();
+
+            var items = ops.Exchanges.GetTSBExchangeGroups(this.TSB).Value();
+            if (null == items)
+                this.Requests = new List<TSBExchangeGroup>();
+
+            this.Requests = items.FindAll(item =>
+            {
+                bool ret = (
+                    item.State == TSBExchangeGroup.StateTypes.Request &&
+                    item.FinishFlag == TSBExchangeGroup.FinishedFlags.Avaliable
+                );
+                return ret;
+            }).OrderBy(x => x.RequestDate).ToList();
+            */
+        }
+
+        #endregion
+
         #region Save
 
         public void Save(TSBExchangeGroup value)
@@ -170,36 +195,10 @@ namespace DMT.Services
         /// Gets or sets Supervisor.
         /// </summary>
         public User Supervisor { get; set; }
-
-        //TODO: Requird to call methods before access propery and order by RequestDate.
-        /*
         /// <summary>
         /// Gets Request List.
         /// </summary>
-        public List<TSBExchangeGroup> Requests
-        {
-            get
-            {
-                if (null == this.TSB)
-                    return new List<TSBExchangeGroup>();
-
-                var items = ops.Exchanges.GetTSBExchangeGroups(this.TSB).Value();
-                if (null == items)
-                    return new List<TSBExchangeGroup>();
-
-                var results = items.FindAll(item =>
-                {
-                    bool ret = (
-                        item.State == TSBExchangeGroup.StateTypes.Request &&
-                        item.FinishFlag == TSBExchangeGroup.FinishedFlags.Avaliable
-                    );
-                    return ret;
-                }).OrderBy(x => x.TransactionId).ToList();
-
-                return results;
-            }
-        }
-        */
+        public List<TSBExchangeGroup> Requests { get; private set; }
 
         #endregion
     }

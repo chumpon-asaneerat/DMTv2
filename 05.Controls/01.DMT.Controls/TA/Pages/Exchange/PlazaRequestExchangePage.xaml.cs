@@ -41,6 +41,16 @@ namespace DMT.TA.Pages.Exchange
 
         private void cmdRequest_Click(object sender, RoutedEventArgs e)
         {
+            var win = new Windows.Exchange.PlazaCreditRequestExchangeWindow();
+            win.Title = "คำร้องขอการแลกเปลี่ยนเงิน";
+            win.Owner = Application.Current.MainWindow;
+
+            if (win.ShowDialog() == false)
+            {
+                return;
+            }
+
+
             //TODO: Re-Implements Request Exchange.
             /*
             TSBExchangeGroup group = new TSBExchangeGroup();
