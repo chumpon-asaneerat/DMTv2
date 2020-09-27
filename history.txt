@@ -19,8 +19,10 @@ Update 2020-09-27 #5
 Update 2020-09-27 #4
 - 
 
+[commited]
 Update 2020-09-27 #3
-- 
+- Update TA Credit Exchange #34.
+  - Update internal exchange process, mode and GUI.
 
 [commited]
 Update 2020-09-27 #2

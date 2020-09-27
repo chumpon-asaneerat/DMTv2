@@ -560,7 +560,7 @@ namespace DMT.Models
 		[Category("Supervisor")]
 		[Description("Gets or sets Supervisor Name EN.")]
 		[ReadOnly(true)]
-		[Ignore]
+		[MaxLength(150)]
 		[PropertyMapName("Supervisor Name EN")]
 		public virtual string SupervisorNameEN
 		{
@@ -583,7 +583,7 @@ namespace DMT.Models
 		[Category("Supervisor")]
 		[Description("Gets or sets Supervisor Name TH.")]
 		[ReadOnly(true)]
-		[Ignore]
+		[MaxLength(150)]
 		[PropertyMapName("SupervisorNameTH")]
 		public virtual string SupervisorNameTH
 		{

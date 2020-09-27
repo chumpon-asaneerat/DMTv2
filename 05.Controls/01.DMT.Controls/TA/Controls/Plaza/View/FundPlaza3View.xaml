@@ -17,14 +17,12 @@
                     <GridViewColumn Header="เวลา" 
                                     DisplayMemberBinding="{Binding Path=TransactionTimeString}" 
                                     Width="80"/>
-                    <!--
                     <GridViewColumn Header="รหัสพนักงาน" 
-                                    DisplayMemberBinding="{Binding Path=UserId}" 
+                                    DisplayMemberBinding="{Binding Path=SupervisorId}" 
                                     Width="95"/>
                     <GridViewColumn Header="ชื่อพนักงาน" 
-                                    DisplayMemberBinding="{Binding Path=FullNameTH}" 
+                                    DisplayMemberBinding="{Binding Path=SupervisorNameTH}" 
                                     Width="250"/>
-                    -->
                     <GridViewColumn Header="จำนวนเงิน" 
                                     DisplayMemberBinding="{Binding Path=BHTTotal}"
                                     Width="150"/>

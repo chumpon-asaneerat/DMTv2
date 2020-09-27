@@ -696,11 +696,17 @@ namespace DMT.Services
             _replaceOut.TSBId = this.TSB.TSBId;
             _replaceOut.GroupId = groupId;
             _replaceOut.TransactionDate = dt;
+            _replaceOut.SupervisorId = this.Supervisor.UserId;
+            _replaceOut.SupervisorNameEN = this.Supervisor.FullNameEN;
+            _replaceOut.SupervisorNameTH = this.Supervisor.FullNameTH;
             _replaceOut.TransactionType = TSBCreditTransaction.TransactionTypes.ReplaceOut;
 
             _replaceIn.TSBId = this.TSB.TSBId;
             _replaceIn.GroupId = groupId;
             _replaceIn.TransactionDate = dt;
+            _replaceIn.SupervisorId = this.Supervisor.UserId;
+            _replaceIn.SupervisorNameEN = this.Supervisor.FullNameEN;
+            _replaceIn.SupervisorNameTH = this.Supervisor.FullNameTH;
             _replaceIn.TransactionType = TSBCreditTransaction.TransactionTypes.ReplaceIn;
 
             ops.Credits.SaveTSBCreditTransaction(_replaceOut);
@@ -717,6 +723,10 @@ namespace DMT.Services
         /// Gets Current TSB.
         /// </summary>
         public TSB TSB { get; set; }
+        /// <summary>
+        /// Gets Supervisor.
+        /// </summary>
+        public User Supervisor { get; set; }
 
         #endregion
 

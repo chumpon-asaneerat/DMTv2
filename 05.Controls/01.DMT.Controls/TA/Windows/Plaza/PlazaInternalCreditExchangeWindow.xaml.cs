@@ -74,6 +74,8 @@ namespace DMT.TA.Windows.Plaza
         {
             // Set TSB.
             _manager.TSB = ops.TSB.GetCurrent().Value();
+            // Set Current Supervisor
+            _manager.Supervisor = DMT.Controls.TAApp.User.Current;
             // Set description (Replace out)
             _manager.ReplaceOut.Description = "เงินขอแลกออก";
             this.plazaEntry.DataContext = _manager.ReplaceOut;
