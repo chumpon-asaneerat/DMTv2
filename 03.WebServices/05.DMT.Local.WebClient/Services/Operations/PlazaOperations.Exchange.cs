@@ -60,52 +60,50 @@ namespace DMT.Services
 
             #region Exchange Transaction
 
-            //TODO: Change to TSB Exchange Group.
-            public NRestResult<List<TSBExchangeTransaction>> GetTSBExchangeTransactions(TSB value)
+            public NRestResult<List<TSBExchangeGroup>> GetTSBExchangeGroups(TSB value)
             {
-                NRestResult<List<TSBExchangeTransaction>> ret;
+                NRestResult<List<TSBExchangeGroup>> ret;
                 NRestClient client = NRestClient.CreateLocalClient();
                 if (null == client)
                 {
-                    ret = new NRestResult<List<TSBExchangeTransaction>>();
+                    ret = new NRestResult<List<TSBExchangeGroup>>();
                     ret.RestInvalidConfig();
                     return ret;
                 }
 
                 if (null != value)
                 {
-                    ret = client.Execute<List<TSBExchangeTransaction>>(
-                        RouteConsts.Exchange.GetTSBExchangeTransactions.Url, value);
+                    ret = client.Execute<List<TSBExchangeGroup>>(
+                        RouteConsts.Exchange.GetTSBExchangeGroups.Url, value);
                 }
                 else
                 {
-                    ret = new NRestResult<List<TSBExchangeTransaction>>();
+                    ret = new NRestResult<List<TSBExchangeGroup>>();
                     ret.ParameterIsNull();
-                    ret.data = new List<TSBExchangeTransaction>();
                 }
                 return ret;
             }
-            //TODO: Change to TSB Exchange Group.
-            public NRestResult<TSBExchangeTransaction> SaveTSBExchangeTransaction(
-                TSBExchangeTransaction value)
+
+            public NRestResult<TSBExchangeGroup> SaveTSBExchangeGroup(
+                TSBExchangeGroup value)
             {
-                NRestResult<TSBExchangeTransaction> ret;
+                NRestResult<TSBExchangeGroup> ret;
                 NRestClient client = NRestClient.CreateLocalClient();
                 if (null == client)
                 {
-                    ret = new NRestResult<TSBExchangeTransaction>();
+                    ret = new NRestResult<TSBExchangeGroup>();
                     ret.RestInvalidConfig();
                     return ret;
                 }
 
                 if (null != value)
                 {
-                    ret = client.Execute<TSBExchangeTransaction>(
-                        RouteConsts.Exchange.SaveTSBExchangeTransaction.Url, value);
+                    ret = client.Execute<TSBExchangeGroup>(
+                        RouteConsts.Exchange.SaveTSBExchangeGroup.Url, value);
                 }
                 else
                 {
-                    ret = new NRestResult<TSBExchangeTransaction>();
+                    ret = new NRestResult<TSBExchangeGroup>();
                     ret.ParameterIsNull();
                     ret.data = null;
                 }
@@ -115,84 +113,6 @@ namespace DMT.Services
             #endregion
 
             #endregion
-        }
-
-        #endregion
-    }
-
-    public class TSBExchangeManager2
-    {
-        #region Internal Variables
-
-        protected LocalOperations ops = LocalServiceOperations.Instance.Plaza;
-
-        #endregion
-
-        #region Constructor
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        public TSBExchangeManager2() : base()
-        {
-        }
-        /// <summary>
-        /// Destructor.
-        /// </summary>
-        ~TSBExchangeManager2()
-        {
-
-        }
-
-        #endregion
-
-        #region Public Methods
-
-        #region Save
-
-        public void Save(TSBExchangeTransaction value)
-        {
-            if (null != value)
-            {
-                ops.Exchanges.SaveTSBExchangeTransaction(value);
-            }
-        }
-
-        #endregion
-
-        #endregion
-
-        #region Public Properties
-
-        /// <summary>
-        /// Gets or sets TSB.
-        /// </summary>
-        public TSB TSB { get; set; }
-        /// <summary>
-        /// Gets Request List.
-        /// </summary>
-        public List<TSBExchangeTransaction> Requests
-        {
-            get 
-            {
-                if (null == this.TSB)
-                    return new List<TSBExchangeTransaction>();
-
-                var items = ops.Exchanges.GetTSBExchangeTransactions(this.TSB).Value();
-                if (null == items)
-                    return new List<TSBExchangeTransaction>();
-
-                var results = items.FindAll(item =>
-                {
-                    bool ret = (
-                        item.TransactionType == TSBExchangeTransaction.TransactionTypes.Request &&
-                        item.FinishFlag == TSBExchangeTransaction.FinishedFlags.Avaliable
-                    );
-                    return ret;
-                }).OrderBy(x => x.TransactionId).ToList();
-
-                return results;
-            }
         }
 
         #endregion
@@ -228,12 +148,11 @@ namespace DMT.Services
 
         #region Save
 
-        //TODO: Change to TSB Exchange Group.
-        public void Save(TSBExchangeTransaction value)
+        public void Save(TSBExchangeGroup value)
         {
             if (null != value)
             {
-                ops.Exchanges.SaveTSBExchangeTransaction(value);
+                ops.Exchanges.SaveTSBExchangeGroup(value);
             }
         }
 
@@ -252,27 +171,25 @@ namespace DMT.Services
         /// </summary>
         public User Supervisor { get; set; }
 
-        //TODO: Change to TSB Exchange Group.
-
         /// <summary>
         /// Gets Request List.
         /// </summary>
-        public List<TSBExchangeTransaction> Requests
+        public List<TSBExchangeGroup> Requests
         {
             get
             {
                 if (null == this.TSB)
-                    return new List<TSBExchangeTransaction>();
+                    return new List<TSBExchangeGroup>();
 
-                var items = ops.Exchanges.GetTSBExchangeTransactions(this.TSB).Value();
+                var items = ops.Exchanges.GetTSBExchangeGroups(this.TSB).Value();
                 if (null == items)
-                    return new List<TSBExchangeTransaction>();
+                    return new List<TSBExchangeGroup>();
 
                 var results = items.FindAll(item =>
                 {
                     bool ret = (
-                        item.TransactionType == TSBExchangeTransaction.TransactionTypes.Request &&
-                        item.FinishFlag == TSBExchangeTransaction.FinishedFlags.Avaliable
+                        item.State == TSBExchangeGroup.StateTypes.Request &&
+                        item.FinishFlag == TSBExchangeGroup.FinishedFlags.Avaliable
                     );
                     return ret;
                 }).OrderBy(x => x.TransactionId).ToList();

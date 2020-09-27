@@ -106,12 +106,12 @@ namespace DMT.Models
 
 		private RequestTypes _RequestType = RequestTypes.Account;
 		private StateTypes _State = StateTypes.Request;
+		private FinishedFlags _FinishFlag = FinishedFlags.Avaliable;
+		private DateTime _RequestDate = DateTime.MinValue;
 		// TSB
 		private string _TSBId = string.Empty;
 		private string _TSBNameEN = string.Empty;
 		private string _TSBNameTH = string.Empty;
-
-		private FinishedFlags _FinishFlag = FinishedFlags.Avaliable;
 
 		private int _Status = 0;
 		private DateTime _LastUpdate = DateTime.MinValue;
@@ -239,6 +239,82 @@ namespace DMT.Models
 					this.RaiseChanged("FinishFlag");
 				}
 			}
+		}
+		/// <summary>
+		/// Gets or sets Request Date.
+		/// </summary>
+		[Category("Common")]
+		[Description(" Gets or sets Request Date")]
+		[ReadOnly(true)]
+		[PropertyMapName("RequestDate")]
+		public DateTime RequestDate
+		{
+			get
+			{
+				return _RequestDate;
+			}
+			set
+			{
+				if (_RequestDate != value)
+				{
+					_RequestDate = value;
+					this.RaiseChanged("RequestDate");
+					this.RaiseChanged("RequestDateString");
+					this.RaiseChanged("RequestTimeString");
+					this.RaiseChanged("RequestDateTimeString");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets Request Date String.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets Request Date String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string RequestDateString
+		{
+			get
+			{
+				var ret = (this.RequestDate == DateTime.MinValue) ? "" : this.RequestDate.ToThaiDateTimeString("dd/MM/yyyy");
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets Request Time String.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets Request Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string RequestTimeString
+		{
+			get
+			{
+				var ret = (this.RequestDate == DateTime.MinValue) ? "" : this.RequestDate.ToThaiTimeString();
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets Request Date Time String.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets Request Date Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string RequestDateTimeString
+		{
+			get
+			{
+				var ret = (this.RequestDate == DateTime.MinValue) ? "" : this.RequestDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+				return ret;
+			}
+			set { }
 		}
 
 		#endregion

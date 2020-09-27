@@ -656,17 +656,17 @@ namespace DMT
             public const string Name = "Exchange";
             public const string Url = RouteConsts.Url + @"/" + Name;
 
-            #region Exchange Transaction
+            #region TSBExchangeGroup
 
-            public static class GetTSBExchangeTransactions
+            public static class GetTSBExchangeGroups
             {
-                public const string Name = "GetTSBExchangeTransactions";
+                public const string Name = "GetTSBExchangeGroups";
                 public const string Url = Exchange.Url + @"/" + Name;
             }
 
-            public static class SaveTSBExchangeTransaction
+            public static class SaveTSBExchangeGroup
             {
-                public const string Name = "SaveTSBExchangeTransaction";
+                public const string Name = "SaveTSBExchangeGroup";
                 public const string Url = Exchange.Url + @"/" + Name;
             }
 

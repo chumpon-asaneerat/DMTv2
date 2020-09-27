@@ -55,9 +55,8 @@ namespace DMT.TA.Windows.Exchange
             this.Mode = mode;
             if (null != group)
             {
-                //TODO: Check TSB Exchange Group binding.
-                requestEntry.DataContext = group;
-                requestDetailEntry.DataContext = group;
+                requestEntry.DataContext = group.Request;
+                requestDetailEntry.DataContext = group.Request;
             }
         }
 

@@ -20,8 +20,8 @@ namespace DMT.Services
         #region Exchange Transaction
 
         [HttpPost]
-        [ActionName(RouteConsts.Exchange.GetTSBExchangeTransactions.Name)]
-        public NDbResult<List<TSBExchangeTransaction>> GetTSBExchangeTransactions(
+        [ActionName(RouteConsts.Exchange.GetTSBExchangeGroups.Name)]
+        public NDbResult<List<TSBExchangeTransaction>> GetTSBExchangeGroups(
             [FromBody] TSB value)
         {
             NDbResult<List<TSBExchangeTransaction>> result;
@@ -32,14 +32,14 @@ namespace DMT.Services
             }
             else
             {
-                result = TSBExchangeTransaction.GetTransactions(value);
+                result = TSBExchangeGroup.GetTSBExchangeGroups(value);
             }
             return result;
         }
 
         [HttpPost]
-        [ActionName(RouteConsts.Exchange.SaveTSBExchangeTransaction.Name)]
-        public NDbResult<TSBExchangeTransaction> SaveTSBExchangeTransaction(
+        [ActionName(RouteConsts.Exchange.SaveTSBExchangeGroup.Name)]
+        public NDbResult<TSBExchangeTransaction> SaveTSBExchangeGroup(
             [FromBody] TSBExchangeTransaction value)
         {
             NDbResult<TSBExchangeTransaction> result;
@@ -54,7 +54,7 @@ namespace DMT.Services
                 {
                     value.TransactionDate = DateTime.Now;
                 }
-                result = TSBExchangeTransaction.SaveTransaction(value);
+                result = TSBExchangeGroup.SaveTSBExchangeGroup(value);
             }
             return result;
         }
