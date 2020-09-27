@@ -41,6 +41,7 @@ namespace DMT.TA.Pages.Exchange
 
         private void cmdRequest_Click(object sender, RoutedEventArgs e)
         {
+            /*
             TSBExchangeGroup group = new TSBExchangeGroup();
             group.State = TSBExchangeGroup.StateTypes.Request;
             tran.TransactionDate = DateTime.Now;
@@ -93,7 +94,7 @@ namespace DMT.TA.Pages.Exchange
                 tran.FinishFlag = TSBExchangeTransaction.FinishedFlags.Completed;
                 ops.Exchanges.SaveTSBExchangeTransaction(tran);
             }
-
+            */
             // Request list.
             grid.RefreshList(_tsb);
         }
