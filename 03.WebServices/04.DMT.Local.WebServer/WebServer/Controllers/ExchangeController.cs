@@ -21,38 +21,38 @@ namespace DMT.Services
 
         [HttpPost]
         [ActionName(RouteConsts.Exchange.GetTSBExchangeGroups.Name)]
-        public NDbResult<List<TSBExchangeTransaction>> GetTSBExchangeGroups(
-            [FromBody] TSB value)
+        public NDbResult<List<TSBExchangeGroup>> GetTSBExchangeGroups(
+            [FromBody] Search.Exchanges.ByDate value)
         {
-            NDbResult<List<TSBExchangeTransaction>> result;
+            NDbResult<List<TSBExchangeGroup>> result;
             if (null == value)
             {
-                result = new NDbResult<List<TSBExchangeTransaction>>();
+                result = new NDbResult<List<TSBExchangeGroup>>();
                 result.ParameterIsNull();
             }
             else
             {
-                result = TSBExchangeGroup.GetTSBExchangeGroups(value);
+                result = TSBExchangeGroup.GetTSBExchangeGroupByDate(value.Date);
             }
             return result;
         }
 
         [HttpPost]
         [ActionName(RouteConsts.Exchange.SaveTSBExchangeGroup.Name)]
-        public NDbResult<TSBExchangeTransaction> SaveTSBExchangeGroup(
-            [FromBody] TSBExchangeTransaction value)
+        public NDbResult<TSBExchangeGroup> SaveTSBExchangeGroup(
+            [FromBody] TSBExchangeGroup value)
         {
-            NDbResult<TSBExchangeTransaction> result;
+            NDbResult<TSBExchangeGroup> result;
             if (null == value)
             {
-                result = new NDbResult<TSBExchangeTransaction>();
+                result = new NDbResult<TSBExchangeGroup>();
                 result.ParameterIsNull();
             }
             else
             {
-                if (value.TransactionDate == DateTime.MinValue)
+                if (value.RequestDate == DateTime.MinValue)
                 {
-                    value.TransactionDate = DateTime.Now;
+                    value.RequestDate = DateTime.Now;
                 }
                 result = TSBExchangeGroup.SaveTSBExchangeGroup(value);
             }

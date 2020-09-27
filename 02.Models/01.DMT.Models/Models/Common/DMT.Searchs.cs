@@ -407,5 +407,29 @@ namespace DMT.Models
 
     #endregion
 
+    #region Exchange
+
+    partial class Search
+    {
+        public static class Exchanges
+        {
+            public class ByDate : NSearch<ByDate>
+            {
+                //public TSB TSB { get; set; }
+                public DateTime Date { get; set; }
+
+                public static ByDate DateTime(/*TSB tsb, */DateTime dt)
+                {
+                    var ret = new ByDate();
+                    //ret.TSB = tsb;
+                    ret.Date = dt;
+                    return ret;
+                }
+            }
+        }
+    }
+
+    #endregion
+
     #endregion
 }
