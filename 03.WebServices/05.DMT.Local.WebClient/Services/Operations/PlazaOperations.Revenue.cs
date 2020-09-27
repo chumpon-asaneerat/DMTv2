@@ -895,7 +895,7 @@ namespace DMT.Services
             this.RevenueEntry.PlazaGroupId = this.PlazaGroup.PlazaGroupId;
             // update object properties.
             this.PlazaGroup.AssignTo(this.RevenueEntry); // assigned plaza group name (EN/TH)
-            this.UserShift.AssignTo(this.RevenueEntry); // assigned user full name (EN/TH)
+            this.UserShift.AssignTo(this.RevenueEntry); // assigned user shift
 
             // assigned date after sync object(s) to RevenueEntry.
             this.RevenueEntry.EntryDate = this.EntryDate; // assigned Entry date.

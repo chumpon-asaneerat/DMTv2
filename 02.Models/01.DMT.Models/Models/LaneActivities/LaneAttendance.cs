@@ -486,7 +486,7 @@ namespace DMT.Models
 		[Category("User")]
 		[Description("Gets or sets User Full Name EN.")]
 		[ReadOnly(true)]
-		[Ignore]
+		[MaxLength(150)]
 		[PropertyMapName("FullNameEN")]
 		public virtual string FullNameEN
 		{
@@ -509,7 +509,7 @@ namespace DMT.Models
 		[Category("User")]
 		[Description("Gets or sets User Full Name TH.")]
 		[ReadOnly(true)]
-		[Ignore]
+		[MaxLength(150)]
 		[PropertyMapName("FullNameTH")]
 		public virtual string FullNameTH
 		{
@@ -919,31 +919,6 @@ namespace DMT.Models
 			}
 
 			#endregion
-
-			#region User
-
-			/// <summary>
-			/// Gets or sets Full Name EN.
-			/// </summary>
-			[MaxLength(100)]
-			[PropertyMapName("FullNameEN")]
-			public override string FullNameEN
-			{
-				get { return base.FullNameEN; }
-				set { base.FullNameEN = value; }
-			}
-			/// <summary>
-			/// Gets or sets Full Name TH.
-			/// </summary>
-			[MaxLength(100)]
-			[PropertyMapName("FullNameTH")]
-			public override string FullNameTH
-			{
-				get { return base.FullNameTH; }
-				set { base.FullNameTH = value; }
-			}
-
-			#endregion
 		}
 
 		#endregion
@@ -954,9 +929,9 @@ namespace DMT.Models
 		/// Create Lane Attendance.
 		/// </summary>
 		/// <param name="lane">The Lane instance.</param>
-		/// <param name="supervisor">The User instance.</param>
+		/// <param name="collector">The User instance.</param>
 		/// <returns>Returns LaneAttendance instance.</returns>
-		public static NDbResult<LaneAttendance> Create(Lane lane, User supervisor)
+		public static NDbResult<LaneAttendance> Create(Lane lane, User collector)
 		{
 			var result = new NDbResult<LaneAttendance>();
 			SQLiteConnection db = Default;
@@ -976,7 +951,7 @@ namespace DMT.Models
 				// TODO: Assign ReCheck.
 				if (null != tsb) tsb.AssignTo(inst);
 				if (null != lane) lane.AssignTo(inst);
-				if (null != supervisor) supervisor.AssignTo(inst);
+				if (null != collector) collector.AssignTo(inst);
 				result.Success(inst);
 			}
 			return result;

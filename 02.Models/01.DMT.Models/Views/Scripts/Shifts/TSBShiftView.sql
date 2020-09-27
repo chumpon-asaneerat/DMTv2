@@ -3,11 +3,11 @@ AS
 	SELECT TSBShift.*
 		 , TSB.TSBNameEN, TSB.TSBNameTH
 		 , [Shift].ShiftNameEN, [Shift].ShiftNameTH
-		 , UserView.FullNameEN, UserView.FullNameTH
+		 --, UserView.FullNameEN, UserView.FullNameTH
 	  FROM TSBShift
 		 , TSB
 	     , [Shift]
-		 , UserView
+		 --, UserView
 	 WHERE TSBShift.TSBId = TSB.TSBId
 	   AND TSBShift.ShiftId = [Shift].ShiftId
-	   AND TSBShift.UserId = UserView.UserId
+	   --AND TSBShift.UserId = UserView.UserId

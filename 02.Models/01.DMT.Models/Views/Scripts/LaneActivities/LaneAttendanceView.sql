@@ -5,13 +5,13 @@ AS
 		 , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction
 		 , Plaza.PlazaNameEN, Plaza.PlazaNameTH
 		 , Lane.LaneNo
-		 , UserView.FullNameEN, UserView.FullNameTH
+		 --, UserView.FullNameEN, UserView.FullNameTH
 	  FROM LaneAttendance
 		 , TSB
 	     , PlazaGroup
 	     , Plaza
 		 , Lane
-		 , UserView
+		 --, UserView
 	 WHERE PlazaGroup.TSBId = TSB.TSBId
 	   AND Plaza.TSBId = TSB.TSBId
 	   AND Plaza.PlazaGroupId = PlazaGroup.PlazaGroupId
@@ -22,4 +22,4 @@ AS
 	   AND LaneAttendance.PlazaGroupId = PlazaGroup.PlazaGroupId
 	   AND LaneAttendance.PlazaId = Plaza.PlazaId
 	   AND LaneAttendance.LaneId = Lane.LaneId
-	   AND LaneAttendance.UserId = UserView.UserId
+	   --AND LaneAttendance.UserId = UserView.UserId

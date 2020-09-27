@@ -61,9 +61,6 @@ namespace DMT.Models
 		private string _ShiftNameEN = string.Empty;
 
 		private string _UserId = string.Empty;
-		private string _FullNameEN = string.Empty;
-		private string _FullNameTH = string.Empty;
-		// Store when printed.
 		private string _CollectorNameEN = string.Empty;
 		private string _CollectorNameTH = string.Empty;
 
@@ -825,60 +822,14 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets Full Name EN.
-		/// </summary>
-		[Category("User")]
-		[Description("Gets or sets User Full Name EN.")]
-		[ReadOnly(true)]
-		[Ignore]
-		[PropertyMapName("FullNameEN")]
-		public virtual string FullNameEN
-		{
-			get
-			{
-				return _FullNameEN;
-			}
-			set
-			{
-				if (_FullNameEN != value)
-				{
-					_FullNameEN = value;
-					this.RaiseChanged("FullNameEN");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets Full Name TH.
-		/// </summary>
-		[Category("User")]
-		[Description("Gets or sets User Full Name TH.")]
-		[ReadOnly(true)]
-		[Ignore]
-		[PropertyMapName("FullNameTH")]
-		public virtual string FullNameTH
-		{
-			get
-			{
-				return _FullNameTH;
-			}
-			set
-			{
-				if (_FullNameTH != value)
-				{
-					_FullNameTH = value;
-					this.RaiseChanged("FullNameTH");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets Collector Name EN (stoed when printed).
+		/// Gets or sets Collector Name EN.
 		/// </summary>
 		[Category("User")]
 		[ReadOnly(true)]
 		[MaxLength(150)]
-		[Description("Gets or sets Collector Name EN (stoed when printed).")]
+		[Description("Gets or sets Collector Name EN.")]
 		[PropertyMapName("CollectorNameEN")]
-		public string CollectorNameEN
+		public virtual string CollectorNameEN
 		{
 			get { return _CollectorNameEN; }
 			set
@@ -890,13 +841,13 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets or sets Collector Name TH (stoed when printed).
+		/// Gets or sets Collector Name TH.
 		/// </summary>
 		[Category("User")]
-		[Description("Gets or sets Collector Name TH (stoed when printed).")]
+		[Description("Gets or sets Collector Name TH.")]
 		[MaxLength(150)]
 		[PropertyMapName("CollectorNameTH")]
-		public string CollectorNameTH
+		public virtual string CollectorNameTH
 		{
 			get { return _CollectorNameTH; }
 			set
@@ -1705,56 +1656,6 @@ namespace DMT.Models
 			{
 				get { return base.ShiftNameEN; }
 				set { base.ShiftNameEN = value; }
-			}
-
-			#endregion
-
-			#region User
-
-			/// <summary>
-			/// Gets or sets Full Name EN.
-			/// </summary>
-			[MaxLength(100)]
-			[PropertyMapName("FullNameEN")]
-			public override string FullNameEN
-			{
-				get { return base.FullNameEN; }
-				set { base.FullNameEN = value; }
-			}
-			/// <summary>
-			/// Gets or sets Full Name TH.
-			/// </summary>
-			[MaxLength(100)]
-			[PropertyMapName("FullNameTH")]
-			public override string FullNameTH
-			{
-				get { return base.FullNameTH; }
-				set { base.FullNameTH = value; }
-			}
-
-			#endregion
-
-			#region Supervisor
-
-			/// <summary>
-			/// Gets or sets Supervisor Name EN.
-			/// </summary>
-			[MaxLength(100)]
-			[PropertyMapName("SupervisorNameEN")]
-			public override string SupervisorNameEN
-			{
-				get { return base.SupervisorNameEN; }
-				set { base.SupervisorNameEN = value; }
-			}
-			/// <summary>
-			/// Gets or sets Supervisor Name TH.
-			/// </summary>
-			[MaxLength(100)]
-			[PropertyMapName("SupervisorNameTH")]
-			public override string SupervisorNameTH
-			{
-				get { return base.SupervisorNameTH; }
-				set { base.SupervisorNameTH = value; }
 			}
 
 			#endregion
