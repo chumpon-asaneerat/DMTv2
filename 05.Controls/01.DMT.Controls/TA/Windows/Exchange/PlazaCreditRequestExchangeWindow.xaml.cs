@@ -50,12 +50,15 @@ namespace DMT.TA.Windows.Exchange
 
         #region Public Methods
 
-        //TODO: Change to TSB Exchange Group.
-        public void Setup(ExchangeWindowMode mode, TSBExchangeTransaction transaction)
+        public void Setup(ExchangeWindowMode mode, TSBExchangeGroup group)
         {
             this.Mode = mode;
-            requestEntry.DataContext = transaction;
-            requestDetailEntry.DataContext = transaction;
+            if (null != group)
+            {
+                //TODO: Check TSB Exchange Group binding.
+                requestEntry.DataContext = group;
+                requestDetailEntry.DataContext = group;
+            }
         }
 
         #endregion

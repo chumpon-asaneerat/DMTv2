@@ -54,14 +54,14 @@ namespace DMT.TA.Controls.Exchange.View
         private void cmdEdit_Click(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;
-            //TODO: Change to TSB Exchange Group.
-            TSBExchangeTransaction item = b.CommandParameter as TSBExchangeTransaction;
-            if (null != item)
+
+            var group = b.CommandParameter as TSBExchangeGroup;
+            if (null != group)
             {
                 var win = new Windows.Exchange.PlazaCreditRequestExchangeWindow();
                 win.Title = "คำร้องขอการแลกเปลี่ยนเงิน";
                 win.Owner = Application.Current.MainWindow;
-                win.Setup(Windows.Exchange.ExchangeWindowMode.Edit, item);
+                win.Setup(Windows.Exchange.ExchangeWindowMode.Edit, group);
 
                 if (win.ShowDialog() == false)
                 {
@@ -70,20 +70,22 @@ namespace DMT.TA.Controls.Exchange.View
 
                 if (win.Mode == Windows.Exchange.ExchangeWindowMode.Edit)
                 {
-                    if (item.TransactionType != TSBExchangeTransaction.TransactionTypes.Request)
+                    if (group.State != TSBExchangeGroup.StateTypes.Request)
                         return; // invalid transaction type.
-                    ops.Exchanges.SaveTSBExchangeTransaction(item);
+                    //TODO: Check save function.
+                    //ops.Exchanges.SaveTSBExchangeTransaction(item);
                 }
                 else if (win.Mode == Windows.Exchange.ExchangeWindowMode.Cancel)
                 {
-                    if (item.TransactionType != TSBExchangeTransaction.TransactionTypes.Request)
+                    if (group.State != TSBExchangeGroup.StateTypes.Request)
                         return; // invalid transaction type.
 
-                    if (item.TransactionId == 0)
+                    if (group.PkId == 0)
                         return; // data is not saved so ignore it.
-                    item.TransactionType = TSBExchangeTransaction.TransactionTypes.Canceled;
-                    item.FinishFlag = TSBExchangeTransaction.FinishedFlags.Completed;
-                    ops.Exchanges.SaveTSBExchangeTransaction(item);
+                    group.State = TSBExchangeGroup.StateTypes.Canceled;
+                    group.FinishFlag = TSBExchangeGroup.FinishedFlags.Completed;
+                    //TODO: Check save function.
+                    //ops.Exchanges.SaveTSBExchangeTransaction(item);
                 }
 
                 // Request list.

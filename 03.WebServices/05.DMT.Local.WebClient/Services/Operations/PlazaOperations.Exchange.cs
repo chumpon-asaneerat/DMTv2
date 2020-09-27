@@ -247,6 +247,10 @@ namespace DMT.Services
         /// Gets or sets TSB.
         /// </summary>
         public TSB TSB { get; set; }
+        /// <summary>
+        /// Gets or sets Supervisor.
+        /// </summary>
+        public User Supervisor { get; set; }
 
         //TODO: Change to TSB Exchange Group.
 

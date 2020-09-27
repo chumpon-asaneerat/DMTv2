@@ -35,23 +35,24 @@ namespace DMT.TA.Pages.Exchange
 
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private TSB _tsb = null;
+        private TSBExchangeManager manager = new TSBExchangeManager();
 
         #region Button Handlers
 
         private void cmdRequest_Click(object sender, RoutedEventArgs e)
         {
-            TSBExchangeTransaction tran = new TSBExchangeTransaction();
-            tran.TransactionType = TSBExchangeTransaction.TransactionTypes.Request;
+            TSBExchangeGroup group = new TSBExchangeGroup();
+            group.State = TSBExchangeGroup.StateTypes.Request;
             tran.TransactionDate = DateTime.Now;
             // Set TSB
-            tran.TSBId = _tsb.TSBId;
-            tran.TSBNameEN = _tsb.TSBNameEN;
-            tran.TSBNameTH = _tsb.TSBNameTH;
+            group.TSBId = _tsb.TSBId;
+            group.TSBNameEN = _tsb.TSBNameEN;
+            group.TSBNameTH = _tsb.TSBNameTH;
             // Set user.
             var user = DMT.Controls.TAApp.User.Current;
-            tran.UserId = user.UserId;
-            tran.FullNameEN = user.FullNameEN;
-            tran.FullNameTH = user.FullNameTH;
+            group.SupervisorId = user.UserId;
+            group.SupervisorNameEN = user.FullNameEN;
+            group.SupervisorNameTH = user.FullNameTH;
 
             var win = new Windows.Exchange.PlazaCreditRequestExchangeWindow();
             win.Title = "คำร้องขอการแลกเปลี่ยนเงิน";
