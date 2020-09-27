@@ -721,7 +721,7 @@ namespace DMT.Models
 		[Category("User")]
 		[Description("Gets or sets User Full Name EN.")]
 		[ReadOnly(true)]
-		[Ignore]
+		[MaxLength(150)]
 		[PropertyMapName("FullNameEN")]
 		public virtual string FullNameEN
 		{
@@ -744,7 +744,7 @@ namespace DMT.Models
 		[Category("User")]
 		[Description("Gets or sets User Full Name TH.")]
 		[ReadOnly(true)]
-		[Ignore]
+		[MaxLength(150)]
 		[PropertyMapName("FullNameTH")]
 		public virtual string FullNameTH
 		{
@@ -1680,31 +1680,6 @@ namespace DMT.Models
 			{
 				get { return base.Direction; }
 				set { base.Direction = value; }
-			}
-
-			#endregion
-
-			#region User
-
-			/// <summary>
-			/// Gets or sets Full Name EN.
-			/// </summary>
-			[MaxLength(100)]
-			[PropertyMapName("FullNameEN")]
-			public override string FullNameEN
-			{
-				get { return base.FullNameEN; }
-				set { base.FullNameEN = value; }
-			}
-			/// <summary>
-			/// Gets or sets Full Name TH.
-			/// </summary>
-			[MaxLength(100)]
-			[PropertyMapName("FullNameTH")]
-			public override string FullNameTH
-			{
-				get { return base.FullNameTH; }
-				set { base.FullNameTH = value; }
 			}
 
 			#endregion

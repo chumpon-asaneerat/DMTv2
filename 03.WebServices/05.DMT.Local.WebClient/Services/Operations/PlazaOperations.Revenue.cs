@@ -935,9 +935,6 @@ namespace DMT.Services
                 this.RevenueEntry.SupervisorId = this.Supervisor.UserId;
                 this.RevenueEntry.SupervisorNameEN = this.Supervisor.FullNameEN;
                 this.RevenueEntry.SupervisorNameTH = this.Supervisor.FullNameTH;
-
-                this.RevenueEntry.ChiefNameEN = this.Supervisor.FullNameEN;
-                this.RevenueEntry.ChiefNameTH = this.Supervisor.FullNameTH;
             }
         }
         /// <summary>

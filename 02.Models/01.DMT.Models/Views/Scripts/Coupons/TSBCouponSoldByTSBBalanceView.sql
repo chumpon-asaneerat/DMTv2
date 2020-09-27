@@ -9,7 +9,7 @@ AS
 			  WHERE TSBCouponTransaction.TransactionType = 4 -- SoldByTSB = 4
 				AND TSBCouponTransaction.TSBId = TSB.TSBId
 				AND TSBCouponTransaction.CouponType = 35
-				AND TSBCouponTransaction.FinishFlag = 1
+				AND TSBCouponTransaction.FinishFlag = 0 -- Completed
 		   ) AS CouponBHT35
 		 , (
 		     -- Count No of Coupon 80
@@ -18,7 +18,7 @@ AS
 			  WHERE TSBCouponTransaction.TransactionType = 4 -- SoldByTSB = 4
 				AND TSBCouponTransaction.TSBId = TSB.TSBId
 				AND TSBCouponTransaction.CouponType = 80
-				AND TSBCouponTransaction.FinishFlag = 1
+				AND TSBCouponTransaction.FinishFlag = 0 -- Completed
 		   ) AS CouponBHT80
 		 , (
 		     -- Calc Price of Coupon 35
@@ -27,7 +27,7 @@ AS
 			  WHERE TSBCouponTransaction.TransactionType = 4 -- SoldByTSB = 4
 				AND TSBCouponTransaction.TSBId = TSB.TSBId
 				AND TSBCouponTransaction.CouponType = 35
-				AND TSBCouponTransaction.FinishFlag = 1
+				AND TSBCouponTransaction.FinishFlag = 0 -- Completed
 		   ) AS PriceBHT35
 		 , (
 		     -- Calc Price of Coupon 80
@@ -36,7 +36,7 @@ AS
 			  WHERE TSBCouponTransaction.TransactionType = 4 -- SoldByTSB = 4
 				AND TSBCouponTransaction.TSBId = TSB.TSBId
 				AND TSBCouponTransaction.CouponType = 80
-				AND TSBCouponTransaction.FinishFlag = 1
+				AND TSBCouponTransaction.FinishFlag = 0 -- Completed
 		   ) AS PriceBHT80
 		 , (
 		     -- Calc Price of Coupon all types
@@ -44,10 +44,6 @@ AS
 			   FROM TSBCouponTransaction 
 			  WHERE TSBCouponTransaction.TransactionType = 4 -- SoldByTSB = 4
 				AND TSBCouponTransaction.TSBId = TSB.TSBId
-				--AND (   
-				--        TSBCouponTransaction.CouponType = 35 
-				--     OR TSBCouponTransaction.CouponType = 80
-				--	)
-				AND TSBCouponTransaction.FinishFlag = 1
+				AND TSBCouponTransaction.FinishFlag = 0 -- Completed
 		   ) AS CouponBHTTotal
 	  FROM TSB

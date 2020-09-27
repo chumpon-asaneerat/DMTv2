@@ -1408,7 +1408,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -2628,14 +2627,6 @@
           <DataField>BeltNo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="ChiefNameEN">
-          <DataField>ChiefNameEN</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ChiefNameTH">
-          <DataField>ChiefNameTH</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="CollectorNameEN">
           <DataField>CollectorNameEN</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -2711,14 +2702,6 @@
         <Field Name="FreePassUsageOther">
           <DataField>FreePassUsageOther</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="FullNameEN">
-          <DataField>FullNameEN</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="FullNameTH">
-          <DataField>FullNameTH</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Lanes">
           <DataField>Lanes</DataField>

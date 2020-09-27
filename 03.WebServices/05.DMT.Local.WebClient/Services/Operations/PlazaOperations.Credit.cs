@@ -566,6 +566,8 @@ namespace DMT.Services
                 if (string.IsNullOrWhiteSpace(UserBalance.UserId) && null != User)
                 {
                     UserBalance.UserId = User.UserId;
+                    UserBalance.FullNameEN = User.FirstNameEN;
+                    UserBalance.FullNameTH = User.FirstNameTH;
                 }
 
                 if (null != PlazaGroup)
@@ -594,6 +596,8 @@ namespace DMT.Services
                 if (string.IsNullOrWhiteSpace(Transaction.UserId))
                 {
                     Transaction.UserId = UserBalance.UserId;
+                    Transaction.FullNameEN = UserBalance.FullNameEN;
+                    Transaction.FullNameTH = UserBalance.FullNameTH;
                 }
 
                 ops.Credits.SaveUserCreditTransaction(Transaction);
@@ -668,7 +672,6 @@ namespace DMT.Services
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private TSBCreditTransaction _replaceOut = new TSBCreditTransaction();
         private TSBCreditTransaction _replaceIn = new TSBCreditTransaction();
-
 
         #endregion
 

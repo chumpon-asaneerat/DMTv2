@@ -67,9 +67,6 @@ namespace DMT.Models
 		private string _SupervisorId = string.Empty;
 		private string _SupervisorNameEN = string.Empty;
 		private string _SupervisorNameTH = string.Empty;
-		// Store when printed.
-		private string _ChiefNameEN = string.Empty;
-		private string _ChiefNameTH = string.Empty;
 
 		// Traffic
 		private int _TrafficST25 = 0;
@@ -892,7 +889,7 @@ namespace DMT.Models
 		[Category("Supervisor")]
 		[Description("Gets or sets Supervisor Name EN.")]
 		[ReadOnly(true)]
-		[Ignore]
+		[MaxLength(150)]
 		[PropertyMapName("Supervisor Name EN")]
 		public virtual string SupervisorNameEN
 		{
@@ -915,7 +912,7 @@ namespace DMT.Models
 		[Category("Supervisor")]
 		[Description("Gets or sets Supervisor Name TH.")]
 		[ReadOnly(true)]
-		[Ignore]
+		[MaxLength(150)]
 		[PropertyMapName("SupervisorNameTH")]
 		public virtual string SupervisorNameTH
 		{
@@ -929,42 +926,6 @@ namespace DMT.Models
 				{
 					_SupervisorNameTH = value;
 					this.RaiseChanged("SupervisorNameTH");
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets Chief Name EN (stoed when printed).
-		/// </summary>
-		[Category("Supervisor")]
-		[Description("Gets or sets Chief Name EN (stoed when printed).")]
-		[MaxLength(150)]
-		[PropertyMapName("ChiefNameEN")]
-		public string ChiefNameEN
-		{
-			get { return _ChiefNameEN; }
-			set
-			{
-				if (null != _ChiefNameEN)
-				{
-					_ChiefNameEN = value;
-				}
-			}
-		}
-		/// <summary>
-		/// Gets or sets Chief Name TH (stoed when printed).
-		/// </summary>
-		[Category("Supervisor")]
-		[Description("Gets or sets Chief Name TH (stoed when printed).")]
-		[MaxLength(150)]
-		[PropertyMapName("ChiefNameTH")]
-		public string ChiefNameTH
-		{
-			get { return _ChiefNameTH; }
-			set
-			{
-				if (null != _ChiefNameTH)
-				{
-					_ChiefNameTH = value;
 				}
 			}
 		}

@@ -18,8 +18,10 @@ Update 2020-09-28 #1 (TA)
 Update 2020-09-27 #8 (TA)
 - 
 
+[commited]
 Update 2020-09-27 #7 (TA)
-- 
+- Update TA Credit Exchange #41.
+  - Request Exchange process refactor #7.
 
 [commited]
 Update 2020-09-27 #6 (TA)

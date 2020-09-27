@@ -426,7 +426,7 @@ namespace DMT.Models
 		[Category("User")]
 		[Description("Gets or sets User Full Name EN.")]
 		[ReadOnly(true)]
-		[Ignore]
+		[MaxLength(150)]
 		[PropertyMapName("FullNameEN")]
 		public virtual string FullNameEN
 		{
@@ -449,7 +449,7 @@ namespace DMT.Models
 		[Category("User")]
 		[Description("Gets or sets User Full Name TH.")]
 		[ReadOnly(true)]
-		[Ignore]
+		[MaxLength(150)]
 		[PropertyMapName("FullNameTH")]
 		public virtual string FullNameTH
 		{
@@ -581,7 +581,7 @@ namespace DMT.Models
 		[Category("Sold")]
 		[Description("Gets or sets Sold User Full Name EN.")]
 		[ReadOnly(true)]
-		[Ignore]
+		[MaxLength(150)]
 		[PropertyMapName("SoldByFullNameEN")]
 		public virtual string SoldByFullNameEN
 		{
@@ -604,7 +604,7 @@ namespace DMT.Models
 		[Category("Sold")]
 		[Description("Gets or sets Sold User Full Name TH.")]
 		[ReadOnly(true)]
-		[Ignore]
+		[MaxLength(150)]
 		[PropertyMapName("SoldByFullNameTH")]
 		public virtual string SoldByFullNameTH
 		{
@@ -863,66 +863,6 @@ namespace DMT.Models
 			{
 				get { return base.TSBNameTH; }
 				set { base.TSBNameTH = value; }
-			}
-
-			#endregion
-
-			#region User
-
-			/// <summary>
-			/// Gets or sets Full Name EN.
-			/// </summary>
-			[MaxLength(100)]
-			[PropertyMapName("FullNameEN")]
-			public override string FullNameEN
-			{
-				get { return base.FullNameEN; }
-				set { base.FullNameEN = value; }
-			}
-			/// <summary>
-			/// Gets or sets Full Name TH.
-			/// </summary>
-			[MaxLength(100)]
-			[PropertyMapName("FullNameTH")]
-			public override string FullNameTH
-			{
-				get { return base.FullNameTH; }
-				set { base.FullNameTH = value; }
-			}
-
-			#endregion
-
-			#region Sold
-
-			/// <summary>
-			/// Gets or sets SoldBy
-			/// </summary>
-			[MaxLength(10)]
-			[PropertyMapName("SoldBy")]
-			public override string SoldBy
-			{
-				get { return base.SoldBy; }
-				set { base.SoldBy = value; }
-			}
-			/// <summary>
-			/// Gets or sets SoldBy Full Name EN.
-			/// </summary>
-			[MaxLength(100)]
-			[PropertyMapName("SoldByFullNameEN.")]
-			public override string SoldByFullNameEN
-			{
-				get { return base.SoldByFullNameEN; }
-				set { base.SoldByFullNameEN = value; }
-			}
-			/// <summary>
-			/// Gets or sets SoldBy Full Name TH.
-			/// </summary>
-			[MaxLength(100)]
-			[PropertyMapName("SoldByFullNameTH")]
-			public override string SoldByFullNameTH
-			{
-				get { return base.SoldByFullNameTH; }
-				set { base.SoldByFullNameTH = value; }
 			}
 
 			#endregion

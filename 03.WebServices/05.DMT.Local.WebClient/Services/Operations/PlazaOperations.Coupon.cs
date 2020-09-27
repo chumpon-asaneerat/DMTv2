@@ -324,6 +324,8 @@ namespace DMT.Services
             if (value.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
             value.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
             value.UserId = User.UserId;
+            value.FullNameEN = User.FullNameEN;
+            value.FullNameTH = User.FullNameTH;
             value.UserReceiveDate = DateTime.Now;
         }
         /// <summary>
@@ -335,6 +337,8 @@ namespace DMT.Services
             if (value.TransactionType != TSBCouponTransaction.TransactionTypes.Lane) return;
             value.TransactionType = TSBCouponTransaction.TransactionTypes.Stock;
             value.UserId = string.Empty;
+            value.FullNameEN = string.Empty;
+            value.FullNameTH = string.Empty;
             value.UserReceiveDate = DateTime.MinValue;
         }
 
@@ -352,6 +356,8 @@ namespace DMT.Services
             if (value.TransactionType != TSBCouponTransaction.TransactionTypes.Lane) return;
             value.TransactionType = TSBCouponTransaction.TransactionTypes.SoldByLane;
             value.SoldBy = User.UserId;
+            value.SoldByFullNameEN = User.FullNameEN;
+            value.SoldByFullNameTH = User.FullNameTH;
             value.SoldDate = DateTime.Now;
             //value.UserReceiveDate = DateTime.Now;
         }
@@ -365,6 +371,8 @@ namespace DMT.Services
             if (value.TransactionType != TSBCouponTransaction.TransactionTypes.SoldByLane) return;
             value.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
             value.SoldBy = string.Empty;
+            value.SoldByFullNameEN = string.Empty;
+            value.SoldByFullNameTH = string.Empty;
             value.SoldDate = DateTime.MinValue;
             //value.UserReceiveDate = DateTime.MinValue;
         }
@@ -383,6 +391,8 @@ namespace DMT.Services
             if (value.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
             value.TransactionType = TSBCouponTransaction.TransactionTypes.SoldByTSB;
             value.SoldBy = User.UserId;
+            value.SoldByFullNameEN = User.FullNameEN;
+            value.SoldByFullNameTH = User.FullNameTH;
             value.SoldDate = DateTime.Now;
             //value.UserReceiveDate = DateTime.Now;
         }
@@ -396,6 +406,8 @@ namespace DMT.Services
             if (value.TransactionType != TSBCouponTransaction.TransactionTypes.SoldByTSB) return;
             value.TransactionType = TSBCouponTransaction.TransactionTypes.Stock;
             value.SoldBy = User.UserId;
+            value.SoldByFullNameEN = User.FullNameEN;
+            value.SoldByFullNameTH = User.FullNameTH;
             value.SoldDate = DateTime.MinValue;
         }
 
@@ -424,6 +436,8 @@ namespace DMT.Services
                             if (coupon.TransactionType == TSBCouponTransaction.TransactionTypes.Stock)
                             {
                                 coupon.UserId = string.Empty; // force clear when return to stock.
+                                coupon.FullNameEN = string.Empty;
+                                coupon.FullNameTH = string.Empty;
                             }
                             saveCoupons.Add(coupon);
                         }

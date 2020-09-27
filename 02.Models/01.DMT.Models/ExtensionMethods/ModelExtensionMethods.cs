@@ -86,15 +86,31 @@ namespace DMT.Models.ExtensionMethods
             inst.FinishFlag = (TSBCouponTransaction.FinishedFlags)value.FinishFlag.Value();
             inst.Price = value.Price.Value();
             inst.SoldBy = value.SoldBy;
+            var soldUsr = (!string.IsNullOrWhiteSpace(value.SoldBy)) ? 
+                User.GetUser(value.SoldBy).Value() : null;
+            if (null != soldUsr)
+            {
+                inst.SoldByFullNameEN = soldUsr.FullNameEN;
+                inst.SoldByFullNameTH = soldUsr.FullNameTH;
+            }
             inst.SoldDate = value.SoldDate.Value();
             inst.TSBId = value.TSBId;
             if (inst.TransactionType == TSBCouponTransaction.TransactionTypes.Stock)
             {
                 inst.UserId = string.Empty;
+                inst.FullNameEN = string.Empty;
+                inst.FullNameTH = string.Empty;
             }
             else
             {
                 inst.UserId = value.UserId;
+                var user = (!string.IsNullOrWhiteSpace(value.UserId)) ?
+                    User.GetUser(value.UserId).Value() : null;
+                if (null != user)
+                {
+                    inst.FullNameEN = user.FullNameEN;
+                    inst.FullNameTH = user.FullNameTH;
+                }
             }
             inst.UserReceiveDate = value.UserReceiveDate.Value();
 

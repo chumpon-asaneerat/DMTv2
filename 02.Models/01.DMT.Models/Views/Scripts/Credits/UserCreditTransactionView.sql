@@ -3,12 +3,14 @@ AS
 	SELECT UserCreditTransaction.*
 	     , TSB.TSBNameEN, TSB.TSBNameTH
 		 , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction
-	     , UserView.FullNameEN, UserView.FullNameTH 
-		 , UserCredit.UserCreditDate
-		 , UserCredit.[State], UserCredit.BagNo, UserCredit.BeltNo
-	  FROM UserCreditTransaction, TSB, PlazaGroup, UserView, UserCredit
+	     --, UserView.FullNameEN, UserView.FullNameTH 
+		 , UserCreditBalance.UserCreditDate
+		 , UserCreditBalance.[State], UserCreditBalance.BagNo, UserCreditBalance.BeltNo
+	  FROM UserCreditTransaction, TSB, PlazaGroup
+	     --, UserView
+		 , UserCreditBalance
 	 WHERE PlazaGroup.TSBId = TSB.TSBId
-	   AND UserCredit.TSBId = TSB.TSBId
-	   AND UserCredit.PlazaGroupId = PlazaGroup.PlazaGroupId
-	   AND UserCredit.UserId = UserView.UserId
-	   AND UserCouponTransaction.UserCreditId = UserCredit.UserCreditId
+	   AND UserCreditBalance.TSBId = TSB.TSBId
+	   AND UserCreditBalance.PlazaGroupId = PlazaGroup.PlazaGroupId
+	   AND UserCreditTransaction.UserId = UserCreditBalance.UserId
+	   AND UserCreditTransaction.UserCreditId = UserCreditBalance.UserCreditId
