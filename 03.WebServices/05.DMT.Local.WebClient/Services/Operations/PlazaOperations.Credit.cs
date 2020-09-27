@@ -562,7 +562,6 @@ namespace DMT.Services
             if (null != UserBalance && UserBalance.UserCreditId == 0)
             {
                 // not inserted so insert new record.
-
                 if (string.IsNullOrWhiteSpace(UserBalance.UserId) && null != User)
                 {
                     UserBalance.UserId = User.UserId;
@@ -632,11 +631,29 @@ namespace DMT.Services
             {
                 Transaction.UserCreditId = UserBalance.UserCreditId;
                 Transaction.TransactionType = UserCreditTransaction.TransactionTypes.Return;
+
+                // Set TSB/PlazaGroup/User's Name (EN/TH).
+                if (string.IsNullOrWhiteSpace(Transaction.TSBId))
+                {
+                    Transaction.TSBId = UserBalance.TSBId;
+                }
+                if (string.IsNullOrWhiteSpace(Transaction.PlazaGroupId))
+                {
+                    Transaction.PlazaGroupId = UserBalance.PlazaGroupId;
+                }
+                if (string.IsNullOrWhiteSpace(Transaction.UserId))
+                {
+                    Transaction.UserId = UserBalance.UserId;
+                    Transaction.FullNameEN = UserBalance.FullNameEN;
+                    Transaction.FullNameTH = UserBalance.FullNameTH;
+                }
+
                 ops.Credits.SaveUserCreditTransaction(Transaction);
 
                 // Check is total borrow is reach zero.
                 var search = Search.UserCredits.GetActiveById.Create(
                     UserBalance.UserId, UserBalance.PlazaGroupId);
+
                 var inst = ops.Credits.GetActiveUserCreditBalanceById(search).Value();
                 if (null != inst)
                 {
@@ -670,8 +687,6 @@ namespace DMT.Services
         #region Internal Variables
 
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
-        private TSBCreditTransaction _replaceOut = new TSBCreditTransaction();
-        private TSBCreditTransaction _replaceIn = new TSBCreditTransaction();
 
         #endregion
 
@@ -680,7 +695,11 @@ namespace DMT.Services
         /// <summary>
         /// Constructor.
         /// </summary>
-        public TSBReplaceCreditManager() : base() { }
+        public TSBReplaceCreditManager() : base() 
+        {
+            this.ReplaceIn = new TSBCreditTransaction();
+            this.ReplaceOut = new TSBCreditTransaction();
+        }
 
         #endregion
 
@@ -692,28 +711,28 @@ namespace DMT.Services
         public void Save()
         {
             if (null == this.TSB) return;
-            if (null == _replaceOut || null == _replaceIn) return;
+            if (null == this.ReplaceOut || null == this.ReplaceIn) return;
             // set group Id and TSB id.
             Guid groupId = Guid.NewGuid();
             DateTime dt = DateTime.Now;
-            _replaceOut.TSBId = this.TSB.TSBId;
-            _replaceOut.GroupId = groupId;
-            _replaceOut.TransactionDate = dt;
-            _replaceOut.SupervisorId = this.Supervisor.UserId;
-            _replaceOut.SupervisorNameEN = this.Supervisor.FullNameEN;
-            _replaceOut.SupervisorNameTH = this.Supervisor.FullNameTH;
-            _replaceOut.TransactionType = TSBCreditTransaction.TransactionTypes.ReplaceOut;
+            this.ReplaceOut.TSBId = this.TSB.TSBId;
+            this.ReplaceOut.GroupId = groupId;
+            this.ReplaceOut.TransactionDate = dt;
+            this.ReplaceOut.SupervisorId = this.Supervisor.UserId;
+            this.ReplaceOut.SupervisorNameEN = this.Supervisor.FullNameEN;
+            this.ReplaceOut.SupervisorNameTH = this.Supervisor.FullNameTH;
+            this.ReplaceOut.TransactionType = TSBCreditTransaction.TransactionTypes.ReplaceOut;
 
-            _replaceIn.TSBId = this.TSB.TSBId;
-            _replaceIn.GroupId = groupId;
-            _replaceIn.TransactionDate = dt;
-            _replaceIn.SupervisorId = this.Supervisor.UserId;
-            _replaceIn.SupervisorNameEN = this.Supervisor.FullNameEN;
-            _replaceIn.SupervisorNameTH = this.Supervisor.FullNameTH;
-            _replaceIn.TransactionType = TSBCreditTransaction.TransactionTypes.ReplaceIn;
+            this.ReplaceIn.TSBId = this.TSB.TSBId;
+            this.ReplaceIn.GroupId = groupId;
+            this.ReplaceIn.TransactionDate = dt;
+            this.ReplaceIn.SupervisorId = this.Supervisor.UserId;
+            this.ReplaceIn.SupervisorNameEN = this.Supervisor.FullNameEN;
+            this.ReplaceIn.SupervisorNameTH = this.Supervisor.FullNameTH;
+            this.ReplaceIn.TransactionType = TSBCreditTransaction.TransactionTypes.ReplaceIn;
 
-            ops.Credits.SaveTSBCreditTransaction(_replaceOut);
-            ops.Credits.SaveTSBCreditTransaction(_replaceIn);
+            ops.Credits.SaveTSBCreditTransaction(this.ReplaceOut);
+            ops.Credits.SaveTSBCreditTransaction(this.ReplaceIn);
         }
 
         #endregion
@@ -738,17 +757,11 @@ namespace DMT.Services
         /// <summary>
         /// Gets Replace Out.
         /// </summary>
-        public TSBCreditTransaction ReplaceOut
-        {
-            get { return _replaceOut; }
-        }
+        public TSBCreditTransaction ReplaceOut { get; private set; }
         /// <summary>
         /// Gets Replace In.
         /// </summary>
-        public TSBCreditTransaction ReplaceIn
-        {
-            get { return _replaceIn; }
-        }
+        public TSBCreditTransaction ReplaceIn { get; private set; }
 
         #endregion
 
@@ -761,7 +774,7 @@ namespace DMT.Services
         {
             get
             {
-                return (_replaceOut.BHTTotal == _replaceIn.BHTTotal);
+                return (this.ReplaceOut.BHTTotal == this.ReplaceIn.BHTTotal);
             }
         }
 

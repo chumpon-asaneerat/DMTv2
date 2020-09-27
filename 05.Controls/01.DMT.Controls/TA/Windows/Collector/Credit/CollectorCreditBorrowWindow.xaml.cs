@@ -120,14 +120,13 @@ namespace DMT.TA.Windows.Collector.Credit
         public void Setup(TSB tsb, UserCreditBalance credit)
         {
             manager.Setup(tsb, credit);
-            if (manager.IsNew)
+
+            if (manager.UserBalance.UserCreditId == 0)
             {
-                if (manager.UserBalance.UserCreditId == 0)
-                {
-                    panelSearch.Visibility = Visibility.Visible;
-                }
-                else panelSearch.Visibility = Visibility.Collapsed;
+                panelSearch.Visibility = Visibility.Visible;
             }
+            else panelSearch.Visibility = Visibility.Collapsed;
+
             LoadPlazaGroups();
 
             this.DataContext = manager.UserBalance;

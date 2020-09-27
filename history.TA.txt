@@ -11,8 +11,10 @@ Update 2020-09-28 #3 (TA)
 Update 2020-09-28 #2 (TA)
 - 
 
+[commited]
 Update 2020-09-28 #1 (TA)
-- 
+- Update TA Credit Exchange #43.
+  - Fixed CollectorCreditBorrow screen hide search button when borrow again.
 
 --------------------------------------------------------------------------------------------
 [commited]
