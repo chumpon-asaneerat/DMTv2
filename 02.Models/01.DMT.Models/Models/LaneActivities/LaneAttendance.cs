@@ -948,7 +948,6 @@ namespace DMT.Models
 			}
 			else
 			{
-				// TODO: Assign ReCheck.
 				if (null != tsb) tsb.AssignTo(inst);
 				if (null != lane) lane.AssignTo(inst);
 				if (null != collector) collector.AssignTo(inst);

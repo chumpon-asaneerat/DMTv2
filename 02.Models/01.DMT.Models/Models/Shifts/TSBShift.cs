@@ -599,7 +599,6 @@ namespace DMT.Models
             }
             var tsb = TSB.GetCurrent().Value();
             TSBShift inst = Create();
-            // TODO: Assign ReCheck.
             if (null != tsb) tsb.AssignTo(inst);
             if (null != shift) shift.AssignTo(inst);
             if (null != supervisor) supervisor.AssignTo(inst);

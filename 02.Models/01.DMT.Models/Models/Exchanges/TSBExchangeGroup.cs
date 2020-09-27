@@ -102,7 +102,7 @@ namespace DMT.Models
 		#region Internal Variables
 
 		private int _PkId = 0;
-		private Guid _GroupId = Guid.NewGuid();
+		private Guid _GroupId = Guid.Empty;
 
 		private RequestTypes _RequestType = RequestTypes.Account;
 		private StateTypes _State = StateTypes.Request;
@@ -526,7 +526,13 @@ namespace DMT.Models
 			{
 				result.ParameterIsNull();
 			}
-			
+			var tsb = TSB.GetCurrent().Value();
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+
 			return result;
 		}
 
@@ -548,7 +554,33 @@ namespace DMT.Models
 			{
 				result.ParameterIsNull();
 			}
+			if (value.GroupId == Guid.Empty)
+			{
+				value.GroupId = Guid.NewGuid();
+			}
 			result = Save(value);
+			// save each transaction
+			if (null != value.Request)
+			{
+				value.Request.GroupId = value.GroupId;
+				TSBExchangeTransaction.Save(value.Request);
+			}
+			if (null != value.Approve)
+			{
+				value.Approve.GroupId = value.GroupId;
+				TSBExchangeTransaction.Save(value.Approve);
+			}
+			if (null != value.Received)
+			{
+				value.Received.GroupId = value.GroupId;
+				TSBExchangeTransaction.Save(value.Received);
+			}
+			if (null != value.Return)
+			{
+				value.Return.GroupId = value.GroupId;
+				TSBExchangeTransaction.Save(value.Return);
+			}
+
 			return result;
 		}
 
