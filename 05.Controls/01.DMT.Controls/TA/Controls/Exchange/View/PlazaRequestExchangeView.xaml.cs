@@ -232,7 +232,11 @@ namespace DMT.TA.Controls.Exchange.View
         {
             _tsb = tsb;
             manager.TSB = _tsb;
+
+            //TODO: Re-Implements Call methods before bind.
+            /*
             listView.ItemsSource = manager.Requests;
+            */
         }
     }
 }
