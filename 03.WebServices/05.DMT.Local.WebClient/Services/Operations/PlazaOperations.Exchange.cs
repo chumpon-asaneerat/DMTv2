@@ -148,6 +148,14 @@ namespace DMT.Services
 
         #region RefreshRequest
 
+
+        // ================= NOTE =================
+        //
+        // Required to Get All Requsets on TSB not by datetime.
+        // But in Reutrns required DateTime to filter so need option to call.
+        //
+        // ================= NOTE =================
+
         public void RefreshRequest(DateTime dt)
         {
             /*

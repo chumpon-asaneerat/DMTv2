@@ -41,6 +41,7 @@ namespace DMT.TA.Pages.Exchange
 
         private void cmdRequest_Click(object sender, RoutedEventArgs e)
         {
+            // TEST----BEGIN
             var win = new Windows.Exchange.PlazaCreditRequestExchangeWindow();
             win.Title = "คำร้องขอการแลกเปลี่ยนเงิน";
             win.Owner = Application.Current.MainWindow;
@@ -49,6 +50,10 @@ namespace DMT.TA.Pages.Exchange
             {
                 return;
             }
+            // TEST----END
+
+            // Required to Get All Requsets on TSB not by datetime.
+            // But in Reutrns required DateTime to filter so need option to call.
 
 
             //TODO: Re-Implements Request Exchange.
