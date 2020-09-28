@@ -54,7 +54,6 @@ namespace DMT.TA.Controls.Exchange.View
         private void cmdEdit_Click(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;
-
             var group = b.CommandParameter as TSBExchangeGroup;
             if (null != manager && null != group)
             {
@@ -100,27 +99,30 @@ namespace DMT.TA.Controls.Exchange.View
         private void cmdApprove_Click(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;
-            //TODO: Change to TSB Exchange Group.
-            TSBExchangeTransaction item = b.CommandParameter as TSBExchangeTransaction;
-            if (null != manager && null != item)
+            TSBExchangeGroup group = b.CommandParameter as TSBExchangeGroup;
+            if (null != manager && null != group)
             {
-                // direct approve.
+                // prepare approve.
+                manager.PrepareApprove(group);
+                // save approve.
+                manager.SaveApprove(group);
+                // Request list.
+                RefreshList();
             }
         }
 
         private void cmdExchange_Click(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;
-            //TODO: Change to TSB Exchange Group.
-            TSBExchangeTransaction item = b.CommandParameter as TSBExchangeTransaction;
-            if (null != manager && null != item)
+            TSBExchangeGroup group = b.CommandParameter as TSBExchangeGroup;
+            if (null != manager && null != group)
             {
                 _isEdit = true;
 
                 var win = new DMT.TA.Windows.Exchange.PlazaCreditUpdateExchangeWindow();
                 win.Owner = Application.Current.MainWindow;
                 win.Title = "ยืนยันข้อมูลการแลกเปลี่ยนเงิน";
-                win.Setup(item);
+                win.Setup(group);
                 if (win.ShowDialog() == false)
                 {
                     _isEdit = false;

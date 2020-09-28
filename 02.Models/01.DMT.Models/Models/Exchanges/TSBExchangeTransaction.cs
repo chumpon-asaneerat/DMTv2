@@ -65,6 +65,10 @@ namespace DMT.Models
 			/// </summary>
 			Received = 5,
 			/// <summary>
+			/// Return from plaza but account not update status.
+			/// </summary>
+			Return = 6,
+			/// <summary>
 			/// Completed (reserved).
 			/// </summary>
 			Completed = 9
@@ -1914,7 +1918,7 @@ namespace DMT.Models
 						}
 						else
 						{
-							cmd += "   AND State = ? ";
+							cmd += "   AND TransactionType = ? ";
 							ret = NQuery.Query<FKs>(cmd, tsb.TSBId, groupId, type).FirstOrDefault();
 						}
 					}
@@ -1926,7 +1930,7 @@ namespace DMT.Models
 						}
 						else
 						{
-							cmd += "   AND State = ? ";
+							cmd += "   AND TransactionType = ? ";
 							ret = NQuery.Query<FKs>(cmd, tsb.TSBId, type).FirstOrDefault();
 						}
 					}

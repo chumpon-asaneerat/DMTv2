@@ -1228,26 +1228,31 @@ namespace DMT.Models
 			{
 				value.GroupId = Guid.NewGuid();
 			}
-			result = Save(value);
+			result = Save(value); // save group.
+
 			// save each transaction
 			if (null != value.Request)
 			{
 				value.Request.GroupId = value.GroupId;
+				value.Request.TransactionType = TSBExchangeTransaction.TransactionTypes.Request;
 				TSBExchangeTransaction.Save(value.Request);
 			}
 			if (null != value.Approve)
 			{
 				value.Approve.GroupId = value.GroupId;
+				value.Approve.TransactionType = TSBExchangeTransaction.TransactionTypes.Approve;
 				TSBExchangeTransaction.Save(value.Approve);
 			}
 			if (null != value.Received)
 			{
 				value.Received.GroupId = value.GroupId;
+				value.Received.TransactionType = TSBExchangeTransaction.TransactionTypes.Received;
 				TSBExchangeTransaction.Save(value.Received);
 			}
 			if (null != value.Return)
 			{
 				value.Return.GroupId = value.GroupId;
+				value.Return.TransactionType = TSBExchangeTransaction.TransactionTypes.Return;
 				TSBExchangeTransaction.Save(value.Return);
 			}
 

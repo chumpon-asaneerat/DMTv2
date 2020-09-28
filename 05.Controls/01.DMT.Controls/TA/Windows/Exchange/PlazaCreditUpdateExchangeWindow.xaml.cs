@@ -51,13 +51,13 @@ namespace DMT.TA.Windows.Exchange
 
         #region Public Methods
 
-        public void Setup(TSBExchangeTransaction transaction)
+        public void Setup(TSBExchangeGroup value)
         {
             /*
-            //srcEntry.DataContext = item.Plaza;
-            requestEntry.DataContext = item.Request;
-            approveEntry.DataContext = item.Approve;
-            exchangeEntry.DataContext = item.Exchange;
+            //srcEntry.DataContext = value.TSB;
+            requestEntry.DataContext = value.Request;
+            approveEntry.DataContext = value.Approve;
+            exchangeEntry.DataContext = value.Exchange;
             */
         }
 

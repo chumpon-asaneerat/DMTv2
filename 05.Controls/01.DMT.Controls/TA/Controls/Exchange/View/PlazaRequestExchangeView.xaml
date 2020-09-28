@@ -34,7 +34,7 @@
                                     DisplayMemberBinding="{Binding Path=AdditionalBHT}" 
                                     Width="100"/>
                     <GridViewColumn Header="สถานะ" 
-                                    DisplayMemberBinding="{Binding Path=TransactionType}" 
+                                    DisplayMemberBinding="{Binding Path=State}" 
                                     Width="100"/>
                     <GridViewColumn Header="แก้ไข/รับแลก" 
                                     Width="360">
@@ -51,17 +51,17 @@
                                             CommandParameter="{Binding}"
                                             Width="100"/>
                                     <Grid Width="5"/>
-                                    <Button x:Name="cmdApprove" 
-                                            Content="อนุมัติ" 
-                                            IsEnabled="{Binding Path=CanEdit}"
-                                            Click="cmdApprove_Click"
-                                            CommandParameter="{Binding}"
-                                            Width="100"/>
-                                    <Grid Width="5"/>
                                     <Button x:Name="cmdExchange" 
                                             Content="รับแลก" 
                                             IsEnabled="{Binding Path=CanExchange}"
                                             Click="cmdExchange_Click"
+                                            CommandParameter="{Binding}"
+                                            Width="100"/>
+                                    <Grid Width="25"/>
+                                    <Button x:Name="cmdApprove" 
+                                            Content="อนุมัติ" 
+                                            IsEnabled="{Binding Path=CanEdit}"
+                                            Click="cmdApprove_Click"
                                             CommandParameter="{Binding}"
                                             Width="100"/>
                                     <Grid Width="5"/>
