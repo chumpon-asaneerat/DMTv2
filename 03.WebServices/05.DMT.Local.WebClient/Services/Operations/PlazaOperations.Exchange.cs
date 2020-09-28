@@ -58,8 +58,33 @@ namespace DMT.Services
             #endregion
 
             #region Public Methods
+            //
 
             #region Exchange Transaction
+
+            public NRestResult<List<TSBExchangeGroup>> GetRequestApproveTSBExchangeGroups(TSB value)
+            {
+                NRestResult<List<TSBExchangeGroup>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<TSBExchangeGroup>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                if (null != value)
+                {
+                    ret = client.Execute<List<TSBExchangeGroup>>(
+                        RouteConsts.Exchange.GetRequestApproveTSBExchangeGroups.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<TSBExchangeGroup>>();
+                    ret.ParameterIsNull();
+                }
+                return ret;
+            }
 
             public NRestResult<List<TSBExchangeGroup>> GetTSBExchangeGroups(Search.Exchanges.Filter value)
             {
@@ -147,28 +172,25 @@ namespace DMT.Services
 
         #region Public Methods
 
-        #region GetRequests
+        #region GetRequestApproves
 
         /// <summary>
-        /// Gets Request List.
+        /// Gets Request or Approve List.
         /// </summary>
-        public List<TSBExchangeGroup> GetRequests()
+        public List<TSBExchangeGroup> GetRequestApproves()
         {
             if (null == this.TSB)
                 return new List<TSBExchangeGroup>();
 
-            var filter = Search.Exchanges.Filter.Create(this.TSB);
-            filter.State = TSBExchangeGroup.StateTypes.Request;
-            filter.FinishedFlag = TSBExchangeGroup.FinishedFlags.Avaliable;
-
-            var items = ops.Exchanges.GetTSBExchangeGroups(filter).Value();
+            var items = ops.Exchanges.GetRequestApproveTSBExchangeGroups(this.TSB).Value();
             if (null == items)
                 return new List<TSBExchangeGroup>();
 
             var results = items.FindAll(item =>
             {
                 bool ret = (
-                    item.State == TSBExchangeGroup.StateTypes.Request &&
+                    (item.State == TSBExchangeGroup.StateTypes.Request ||
+                     item.State == TSBExchangeGroup.StateTypes.Approve) &&
                     item.FinishFlag == TSBExchangeGroup.FinishedFlags.Avaliable
                 );
                 return ret;

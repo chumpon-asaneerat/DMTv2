@@ -57,49 +57,17 @@ namespace DMT.TA.Pages.Exchange
             }
             else if (win.Mode == Windows.Exchange.ExchangeWindowMode.Edit)
             {
+                if (exchange.PkId == 0) return; // not exists in database so do nothing.
                 manager.Save(exchange);
             }
             else if (win.Mode == Windows.Exchange.ExchangeWindowMode.Cancel)
             {
+                if (exchange.PkId == 0) return; // not exists in database so do nothing.
                 manager.Cancel(exchange);
                 manager.Save(exchange);
             }
-
-                //TODO: Re-Implements Request Exchange.
-                /*
-
-                if (win.Mode == Windows.Exchange.ExchangeWindowMode.New)
-                {
-                    if (tran.TransactionType != TSBExchangeTransaction.TransactionTypes.Request)
-                        return; // invalid transaction type.
-                    // New required to generate group Guid.
-                    tran.GroupId = Guid.NewGuid();
-
-                    ops.Exchanges.SaveTSBExchangeTransaction(tran);
-                }
-                else if (win.Mode == Windows.Exchange.ExchangeWindowMode.Edit)
-                {
-                    if (tran.TransactionType != TSBExchangeTransaction.TransactionTypes.Request)
-                        return; // invalid transaction type.
-                    if (tran.TransactionId == 0)
-                        return; // data is not saved so ignore it.
-
-                    ops.Exchanges.SaveTSBExchangeTransaction(tran);
-                }
-                else if (win.Mode == Windows.Exchange.ExchangeWindowMode.Cancel)
-                {
-                    if (tran.TransactionType != TSBExchangeTransaction.TransactionTypes.Request)
-                        return; // invalid transaction type.
-
-                    if (tran.TransactionId == 0)
-                        return; // data is not saved so ignore it.
-                    tran.TransactionType = TSBExchangeTransaction.TransactionTypes.Canceled;
-                    tran.FinishFlag = TSBExchangeTransaction.FinishedFlags.Completed;
-                    ops.Exchanges.SaveTSBExchangeTransaction(tran);
-                }
-                */
-                // Request list.
-                grid.RefreshList(_tsb);
+            // Request list.
+            grid.RefreshList();
         }
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
@@ -129,8 +97,7 @@ namespace DMT.TA.Pages.Exchange
             loanEntry.IsEnabled = false;
             loanEntry.DataContext = tsbCredit;
 
-            // Request list.
-            grid.RefreshList(_tsb);
+            grid.Setup(manager);
         }
     }
 }

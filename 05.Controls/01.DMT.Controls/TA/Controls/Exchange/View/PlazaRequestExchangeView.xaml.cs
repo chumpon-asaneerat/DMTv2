@@ -35,9 +35,7 @@ namespace DMT.TA.Controls.Exchange.View
 
         private bool _isEdit = false;
         private DateTime _lastupdated = DateTime.MinValue;
-        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
-        private TSB _tsb = null;
-        private TSBExchangeManager manager = new TSBExchangeManager();
+        private TSBExchangeManager manager = null;
 
         #region Loaded/Unloaded
 
@@ -53,82 +51,12 @@ namespace DMT.TA.Controls.Exchange.View
 
         #endregion
 
-        private void cmdExchange_Click(object sender, RoutedEventArgs e)
-        {
-            Button b = sender as Button;
-            //TODO: Change to TSB Exchange Group.
-            TSBExchangeTransaction item = b.CommandParameter as TSBExchangeTransaction;
-            if (null != item)
-            {
-                _isEdit = true;
-
-                var win = new DMT.TA.Windows.Exchange.PlazaCreditUpdateExchangeWindow();
-                win.Owner = Application.Current.MainWindow;
-                win.Title = "ยืนยันข้อมูลการแลกเปลี่ยนเงิน";
-                win.Setup(item);
-                if (win.ShowDialog() == false)
-                {
-                    _isEdit = false;
-                    return;
-                }
-
-                _isEdit = false;
-
-                /*
-                item.IsEditing = true;
-
-                var win = new DMT.TA.Windows.Exchange.PlazaFundRequestExchangeWindow();
-                win.Owner = Application.Current.MainWindow;
-
-                // backup descriptions
-                var d1 = item.Request.Description;
-                var d2 = item.Exchange.Description;
-
-                // replace descriptions
-                item.Request.Description = "รายการขอแลกเงินจากด่าน";
-                item.Request.HasRemark = true;
-
-                item.Approve.Description = "รายการอนุมัติจากบัญชี";
-                item.Approve.HasRemark = true;
-
-                item.Exchange.Description = "จ่ายออก ธนบัตร/เหรียญ";
-
-                win.Title = "ยืนยันข้อมูลการแลกเปลี่ยนเงิน";
-                win.Setup(item);
-                if (win.ShowDialog() == false)
-                {
-                    // restore descriptions
-                    item.Request.Description = d1;
-                    item.Exchange.Description = d2;
-                    item.IsEditing = false;
-                    return;
-                }
-
-                item.IsEditing = false;
-
-                // append to plaza fund.
-                AppendPlazaFund(item);
-                // remove current item and update plaza balance.
-                if (null != _items)
-                {
-                    lock (this)
-                    {
-                        _items.Remove(item);
-                    }
-                }
-
-                // refresh the items list.
-                listView.Items.Refresh();
-                */
-            }
-        }
-
         private void cmdEdit_Click(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;
 
             var group = b.CommandParameter as TSBExchangeGroup;
-            if (null != group)
+            if (null != manager && null != group)
             {
                 _isEdit = true;
 
@@ -164,9 +92,55 @@ namespace DMT.TA.Controls.Exchange.View
                     //TODO: Check save function.
                     //ops.Exchanges.SaveTSBExchangeTransaction(item);
                 }
-
                 // Request list.
-                RefreshList(_tsb);
+                RefreshList();
+            }
+        }
+
+        private void cmdApprove_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            //TODO: Change to TSB Exchange Group.
+            TSBExchangeTransaction item = b.CommandParameter as TSBExchangeTransaction;
+            if (null != manager && null != item)
+            {
+                // direct approve.
+            }
+        }
+
+        private void cmdExchange_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+            //TODO: Change to TSB Exchange Group.
+            TSBExchangeTransaction item = b.CommandParameter as TSBExchangeTransaction;
+            if (null != manager && null != item)
+            {
+                _isEdit = true;
+
+                var win = new DMT.TA.Windows.Exchange.PlazaCreditUpdateExchangeWindow();
+                win.Owner = Application.Current.MainWindow;
+                win.Title = "ยืนยันข้อมูลการแลกเปลี่ยนเงิน";
+                win.Setup(item);
+                if (win.ShowDialog() == false)
+                {
+                    _isEdit = false;
+                    return;
+                }
+
+                _isEdit = false;
+                // Request list.
+                RefreshList();
+
+                /*
+                // replace descriptions
+                item.Request.Description = "รายการขอแลกเงินจากด่าน";
+                item.Request.HasRemark = true;
+
+                item.Approve.Description = "รายการอนุมัติจากบัญชี";
+                item.Approve.HasRemark = true;
+
+                item.Exchange.Description = "จ่ายออก ธนบัตร/เหรียญ";
+                */
             }
         }
 
@@ -176,16 +150,22 @@ namespace DMT.TA.Controls.Exchange.View
             if (ts.TotalSeconds >= 10)
             {
                 if (_isEdit) return; // in editing so not refresh screen.
-                RefreshList(_tsb);
+                RefreshList();
                 _lastupdated = DateTime.Now;
             }
         }
 
-        public void RefreshList(TSB tsb)
+        public void RefreshList()
         {
-            _tsb = tsb;
-            manager.TSB = _tsb;
-            listView.ItemsSource = manager.GetRequests();
+            listView.ItemsSource = null;
+            if (null == manager) return;
+            listView.ItemsSource = manager.GetRequestApproves();
+        }
+
+        public void Setup(TSBExchangeManager value)
+        {
+            manager = value;
+            RefreshList();
         }
     }
 }

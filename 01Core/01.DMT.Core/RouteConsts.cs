@@ -658,6 +658,12 @@ namespace DMT
 
             #region TSBExchangeGroup
 
+            public static class GetRequestApproveTSBExchangeGroups
+            {
+                public const string Name = "GetRequestApproveTSBExchangeGroups";
+                public const string Url = Exchange.Url + @"/" + Name;
+            }
+
             public static class GetTSBExchangeGroups
             {
                 public const string Name = "GetRequestTSBExchangeGroups";

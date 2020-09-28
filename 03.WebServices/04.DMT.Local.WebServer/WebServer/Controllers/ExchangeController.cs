@@ -20,6 +20,24 @@ namespace DMT.Services
         #region Exchange Transaction
 
         [HttpPost]
+        [ActionName(RouteConsts.Exchange.GetRequestApproveTSBExchangeGroups.Name)]
+        public NDbResult<List<TSBExchangeGroup>> GetRequestApproveTSBExchangeGroups(
+            [FromBody] TSB value)
+        {
+            NDbResult<List<TSBExchangeGroup>> result;
+            if (null == value)
+            {
+                result = new NDbResult<List<TSBExchangeGroup>>();
+                result.ParameterIsNull();
+            }
+            else
+            {
+                result = TSBExchangeGroup.GetRequestApproveTSBExchangeGroups(value);
+            }
+            return result;
+        }
+
+        [HttpPost]
         [ActionName(RouteConsts.Exchange.GetTSBExchangeGroups.Name)]
         public NDbResult<List<TSBExchangeGroup>> GetTSBExchangeGroups(
             [FromBody] Search.Exchanges.Filter value)

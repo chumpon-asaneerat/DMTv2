@@ -1113,6 +1113,48 @@ namespace DMT.Models
 
 		#region Static Methods
 
+		public static NDbResult<List<TSBExchangeGroup>> GetRequestApproveTSBExchangeGroups(TSB tsb)
+		{
+			var result = new NDbResult<List<TSBExchangeGroup>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * ";
+					cmd += "  FROM TSBExchangeGroupView ";
+					cmd += " WHERE TSBId = ? ";
+					cmd += "   AND (State = ? OR State = ?)";
+					cmd += "   AND FinishFlag = ? ";
+
+					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId,
+						StateTypes.Request, StateTypes.Approve,
+						FinishedFlags.Avaliable).ToList();
+					var results = rets.ToModels();
+					result.Success(results);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
+		}
+
 		public static NDbResult<List<TSBExchangeGroup>> GetTSBExchangeGroups(TSB tsb, 
 			StateTypes state, FinishedFlags flag, DateTime reqBegin, DateTime reqEnd)
 		{
