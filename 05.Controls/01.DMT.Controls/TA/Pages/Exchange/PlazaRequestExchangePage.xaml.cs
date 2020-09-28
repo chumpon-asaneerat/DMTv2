@@ -51,20 +51,13 @@ namespace DMT.TA.Pages.Exchange
                 return;
             }
 
-            if (win.Mode == Windows.Exchange.ExchangeWindowMode.New)
+            if (win.Mode == Windows.Exchange.ExchangeWindowMode.Cancel)
             {
-                manager.Save(exchange);
+                manager.CancelRequest(exchange);
             }
-            else if (win.Mode == Windows.Exchange.ExchangeWindowMode.Edit)
+            else
             {
-                if (exchange.PkId == 0) return; // not exists in database so do nothing.
-                manager.Save(exchange);
-            }
-            else if (win.Mode == Windows.Exchange.ExchangeWindowMode.Cancel)
-            {
-                if (exchange.PkId == 0) return; // not exists in database so do nothing.
-                manager.Cancel(exchange);
-                manager.Save(exchange);
+                manager.SaveRequest(exchange);
             }
             // Request list.
             grid.RefreshList();

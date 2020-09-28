@@ -170,6 +170,76 @@ namespace DMT.Services
 
         #endregion
 
+        #region Private Methods
+
+        private TSBExchangeTransaction CloneTransaction(TSBExchangeTransaction src)
+        {
+            if (null == src)
+            {
+                return null;
+            }
+            var dst = new TSBExchangeTransaction();
+            CopyTransaction(src, dst);
+            return dst;
+        }
+
+        private void CopyTransaction(TSBExchangeTransaction src, TSBExchangeTransaction dst)
+        {
+            if (null == src || null == dst) return;
+            // Transaction
+            dst.GroupId = src.GroupId;
+            dst.TransactionDate = DateTime.Now;
+            // Amount
+            dst.AmountST25 = src.AmountST25;
+            dst.AmountST50 = src.AmountST50;
+            dst.AmountBHT1 = src.AmountBHT1;
+            dst.AmountBHT2 = src.AmountBHT2;
+            dst.AmountBHT5 = src.AmountBHT5;
+            dst.AmountBHT10 = src.AmountBHT10;
+            dst.AmountBHT20 = src.AmountBHT20;
+            dst.AmountBHT50 = src.AmountBHT50;
+            dst.AmountBHT100 = src.AmountBHT100;
+            dst.AmountBHT500 = src.AmountBHT500;
+            dst.AmountBHT1000 = src.AmountBHT1000;
+            // Count
+            dst.CountST25 = src.CountST25;
+            dst.CountST50 = src.CountST50;
+            dst.CountBHT1 = src.CountBHT1;
+            dst.CountBHT2 = src.CountBHT2;
+            dst.CountBHT5 = src.CountBHT5;
+            dst.CountBHT10 = src.CountBHT10;
+            dst.CountBHT20 = src.CountBHT20;
+            dst.CountBHT50 = src.CountBHT50;
+            dst.CountBHT100 = src.CountBHT100;
+            dst.CountBHT500 = src.CountBHT500;
+            dst.CountBHT1000 = src.CountBHT1000;
+            // TSB
+            dst.TSBId = src.TSBId;
+            dst.TSBNameEN = src.TSBNameEN;
+            dst.TSBNameTH = src.TSBNameTH;
+            // User
+            dst.UserId = src.UserId;
+            dst.FullNameEN = src.FullNameEN;
+            dst.FullNameTH = src.FullNameTH;
+            // Amount
+            dst.ExchangeBHT = src.ExchangeBHT;
+            dst.BorrowBHT = src.BorrowBHT;
+            dst.AdditionalBHT = src.AdditionalBHT;
+            // Period
+            dst.PeriodBegin = src.PeriodBegin;
+            dst.PeriodEnd = src.PeriodEnd;
+        }
+
+        private void Save(TSBExchangeGroup value)
+        {
+            if (null != value)
+            {
+                ops.Exchanges.SaveTSBExchangeGroup(value);
+            }
+        }
+
+        #endregion
+
         #region Public Methods
 
         #region GetRequestApproves
@@ -208,6 +278,7 @@ namespace DMT.Services
             var result = new TSBExchangeGroup();
 
             // Set Exchange Group Information.
+            result.PkId = 0;
             result.RequestDate = DateTime.Now;
             result.State = TSBExchangeGroup.StateTypes.Request;
             result.FinishFlag = TSBExchangeGroup.FinishedFlags.Avaliable;
@@ -232,40 +303,72 @@ namespace DMT.Services
             return result;
         }
 
-        public void Cancel(TSBExchangeGroup value)
+        public void CancelRequest(TSBExchangeGroup value)
         {
             if (null == value) return;
+            if (value.PkId == 0) return;
             // Set Exchange Group state to Completed.
             value.State = TSBExchangeGroup.StateTypes.Canceled;
             // Set Transaction Completed.
             value.Request.FinishFlag = TSBExchangeTransaction.FinishedFlags.Completed;
+            // Save Group and Transaction.
+            this.Save(value);
         }
 
-        public void Approve(TSBExchangeGroup value)
+        public void SaveRequest(TSBExchangeGroup value)
         {
             if (null == value) return;
+            if (value.State != TSBExchangeGroup.StateTypes.Request) return;
+            // Save Group and Transaction.
+            this.Save(value);
         }
 
-        public void Received(TSBExchangeGroup value)
+        public void PrepareApprove(TSBExchangeGroup value)
         {
-            if (null == value) return;
-        }
+            if (null == value || null == value.Request) return;
+            // Gets Request transaction from database.
 
-        public void Returns(TSBExchangeGroup value)
-        {
-            if (null == value) return;
-        }
-
-        #endregion
-
-        #region Save
-
-        public void Save(TSBExchangeGroup value)
-        {
-            if (null != value)
+            // clone from request transaction.
+            if (null == value.Approve)
             {
-                ops.Exchanges.SaveTSBExchangeGroup(value);
+                value.Approve = CloneTransaction(value.Request);
             }
+        }
+
+        public void CancelApprove(TSBExchangeGroup value)
+        {
+            /*
+            if (null != value.Approve && value.Approve.TransactionId != 0)
+            {
+                // data in database so set finished flag.
+                value.Approve.FinishFlag = TSBExchangeTransaction.FinishedFlags.Completed;
+                // Save Group and Transaction.
+                Save(value);
+            }
+            value.Approve = null;
+            */
+        }
+
+        public void SaveApprove(TSBExchangeGroup value)
+        {
+            if (null == value || null == value.Approve) return;
+            if (value.State != TSBExchangeGroup.StateTypes.Request) return;
+            // Change state
+            value.State = TSBExchangeGroup.StateTypes.Approve;
+
+            value.Approve.TransactionDate = DateTime.Now;
+            value.Approve.TransactionType = TSBExchangeTransaction.TransactionTypes.Approve;
+            // Transaction - TSB
+            value.Approve.TSBId = TSB.TSBId;
+            value.Approve.TSBNameEN = TSB.TSBNameEN;
+            value.Approve.TSBNameEN = TSB.TSBNameEN;
+            // Transaction - User (Supervisor)
+            value.Approve.UserId = Supervisor.UserId;
+            value.Approve.FullNameEN = Supervisor.FullNameEN;
+            value.Approve.FullNameTH = Supervisor.FullNameTH;
+
+            // Save Group and Transaction.
+            this.Save(value);
         }
 
         #endregion

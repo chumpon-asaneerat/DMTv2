@@ -1810,20 +1810,125 @@ namespace DMT.Models
 				result.ParameterIsNull();
 				return result;
 			}
+			result = GetTransactions(tsb, Guid.Empty);
+			return result;
+		}
+		/// <summary>
+		/// Gets TSB Exchange Transactions by group Id.
+		/// </summary>
+		/// <param name="tsb">The TSB instance.</param>
+		/// <param name="groupId">The Group Id.</param>
+		/// <returns>Returns List of TSB Exchange Transactions.</returns>
+		public static NDbResult<List<TSBExchangeTransaction>> GetTransactions(TSB tsb, Guid groupId)
+		{
+			var result = new NDbResult<List<TSBExchangeTransaction>>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
 			lock (sync)
 			{
 				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
+					List<FKs> rets;
+
 					string cmd = string.Empty;
 					cmd += "SELECT * ";
 					cmd += "  FROM TSBExchangeTransactionView ";
-					cmd += " WHERE TSBExchangeTransactionView.TSBId = ? ";
-					cmd += "   AND TSBExchangeTransactionView.FinishFlag = 1 ";
+					cmd += " WHERE TSBId = ? ";
+					if (groupId != Guid.Empty)
+					{
+						cmd += "   AND GroupId = ? ";
+						//cmd += "   AND FinishFlag = 1 ";
 
-					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
+						rets = NQuery.Query<FKs>(cmd, tsb.TSBId, groupId).ToList();
+					}
+					else
+					{
+						rets = NQuery.Query<FKs>(cmd, tsb.TSBId).ToList();
+					}
+
 					var results = rets.ToModels();
 					result.Success(results);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
+		}
+		/// <summary>
+		/// Gets TSB Exchange Transactions by group Id and state.
+		/// </summary>
+		/// <param name="tsb">The TSB instance.</param>
+		/// <param name="groupId">The Group Id.</param>
+		/// <param name="state">The state.</param>
+		/// <returns>Returns List of TSB Exchange Transactions.</returns>
+		public static NDbResult<TSBExchangeTransaction> GetTransaction(TSB tsb, Guid groupId, 
+			TSBExchangeGroup.StateTypes state)
+		{
+			var result = new NDbResult<TSBExchangeTransaction>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			if (null == tsb)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					FKs ret;
+
+					string cmd = string.Empty;
+					cmd += "SELECT * ";
+					cmd += "  FROM TSBExchangeTransactionView ";
+					cmd += " WHERE TSBId = ? ";
+					//cmd += "   AND FinishFlag = 1 ";
+					if (groupId != Guid.Empty)
+					{
+						cmd += "   AND GroupId = ? ";
+						if (state == TSBExchangeGroup.StateTypes.None)
+						{
+							ret = NQuery.Query<FKs>(cmd, tsb.TSBId, groupId).FirstOrDefault();
+						}
+						else
+						{
+							cmd += "   AND State = ? ";
+							ret = NQuery.Query<FKs>(cmd, tsb.TSBId, groupId, state).FirstOrDefault();
+						}
+					}
+					else
+					{
+						if (state == TSBExchangeGroup.StateTypes.None)
+						{
+							ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
+						}
+						else
+						{
+							cmd += "   AND State = ? ";
+							ret = NQuery.Query<FKs>(cmd, tsb.TSBId, state).FirstOrDefault();
+						}
+					}
+
+					var val = (null != ret) ? ret.ToModel() : null;
+					result.Success(val);
 				}
 				catch (Exception ex)
 				{
