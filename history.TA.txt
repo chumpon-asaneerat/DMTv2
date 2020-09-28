@@ -1,6 +1,41 @@
 Note: Check Ubuntu connect to SQL Server.
 
 --------------------------------------------------------------------------------------------
+Update 2020-09-29 #10 (TA)
+-
+
+Update 2020-09-29 #9 (TA)
+-
+
+Update 2020-09-29 #8 (TA)
+-
+
+Update 2020-09-29 #7 (TA)
+-
+
+Update 2020-09-29 #6 (TA)
+-
+
+Update 2020-09-29 #5 (TA)
+-
+
+Update 2020-09-29 #4 (TA)
+-
+
+Update 2020-09-29 #3 (TA)
+-
+
+Update 2020-09-29 #2 (TA)
+-
+
+Update 2020-09-29 #1 (TA)
+-
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-09-28 #14 (TA)
+- Prepare history.TA.txt.
+
 [commited]
 Update 2020-09-28 #13 (TA)
 - Update TA Credit Exchange #55.
