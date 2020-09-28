@@ -377,13 +377,27 @@ namespace DMT.Services
 
         public void PrepareApprove(TSBExchangeGroup value)
         {
-            if (null == value || null == value.Request) return;
-            // Gets Request transaction from database.
+            if (null == value) return;
 
-            // clone from request transaction.
+            // Gets Request transaction from database.
+            if (null == value.Request)
+            {
+                var filter = Search.Exchanges.Transactions.Filter.Create(this.TSB, value.GroupId,
+                    TSBExchangeTransaction.TransactionTypes.Request);
+                value.Request = ops.Exchanges.GetTSBExchangeTransaction(filter).Value();
+                if (null == value.Request) return;
+            }
+            // Gets Approve transaction from database.
             if (null == value.Approve)
             {
-                value.Approve = CloneTransaction(value.Request);
+                var filter = Search.Exchanges.Transactions.Filter.Create(this.TSB, value.GroupId,
+                    TSBExchangeTransaction.TransactionTypes.Approve);
+                value.Approve = ops.Exchanges.GetTSBExchangeTransaction(filter).Value();
+                // clone from request transaction if not exists.
+                if (null == value.Approve)
+                {
+                    value.Approve = CloneTransaction(value.Request);
+                }
             }
         }
 

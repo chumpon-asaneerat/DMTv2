@@ -43,7 +43,7 @@ namespace DMT.Models
 			/// <summary>
 			/// None (for filter only).
 			/// </summary>
-			None = -1;
+			None = -1,
 			/// <summary>
 			/// Request.
 			/// </summary>
