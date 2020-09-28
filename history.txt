@@ -13,6 +13,28 @@
   - Update Config app and simulator.
   - Need to check model one by one (in new DMT.TA.TODv1 solution)
 --------------------------------------------------------------------------------------------
+Update 2020-09-29 #5
+- 
+
+Update 2020-09-29 #4
+- 
+
+Update 2020-09-29 #3
+- 
+
+Update 2020-09-29 #2
+- 
+
+Update 2020-09-29 #1
+- 
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-09-28 #2
+- Prepare history.txt.
+- Update TA Credit Exchange #56.
+  - Request Exchange process refactor #20.
+
 [commited]
 Update 2020-09-28 #1
 - Merge from origin/TA #1.
