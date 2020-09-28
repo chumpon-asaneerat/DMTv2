@@ -8,6 +8,7 @@ using System.Net;
 using RestSharp;
 
 using DMT.Models;
+using System.CodeDom;
 
 #endregion
 
@@ -60,7 +61,7 @@ namespace DMT.Services
 
             #region Exchange Transaction
 
-            public NRestResult<List<TSBExchangeGroup>> GetTSBExchangeGroups(Search.Exchanges.ByDate value)
+            public NRestResult<List<TSBExchangeGroup>> GetTSBExchangeGroups(Search.Exchanges.Filter value)
             {
                 NRestResult<List<TSBExchangeGroup>> ret;
                 NRestClient client = NRestClient.CreateLocalClient();
@@ -146,27 +147,25 @@ namespace DMT.Services
 
         #region Public Methods
 
-        #region RefreshRequest
+        #region GetRequests
 
-
-        // ================= NOTE =================
-        //
-        // Required to Get All Requsets on TSB not by datetime.
-        // But in Reutrns required DateTime to filter so need option to call.
-        //
-        // ================= NOTE =================
-
-        public void RefreshRequest(DateTime dt)
+        /// <summary>
+        /// Gets Request List.
+        /// </summary>
+        public List<TSBExchangeGroup> GetRequests()
         {
-            /*
             if (null == this.TSB)
-                this.Requests = new List<TSBExchangeGroup>();
+                return new List<TSBExchangeGroup>();
 
-            var items = ops.Exchanges.GetTSBExchangeGroups(this.TSB).Value();
+            var filter = Search.Exchanges.Filter.Create(this.TSB);
+            filter.State = TSBExchangeGroup.StateTypes.Request;
+            filter.FinishedFlag = TSBExchangeGroup.FinishedFlags.Avaliable;
+
+            var items = ops.Exchanges.GetTSBExchangeGroups(filter).Value();
             if (null == items)
-                this.Requests = new List<TSBExchangeGroup>();
+                return new List<TSBExchangeGroup>();
 
-            this.Requests = items.FindAll(item =>
+            var results = items.FindAll(item =>
             {
                 bool ret = (
                     item.State == TSBExchangeGroup.StateTypes.Request &&
@@ -174,7 +173,65 @@ namespace DMT.Services
                 );
                 return ret;
             }).OrderBy(x => x.RequestDate).ToList();
-            */
+
+            return results;
+        }
+
+        #endregion
+
+        #region New Request
+
+        public TSBExchangeGroup NewRequest()
+        {
+            var result = new TSBExchangeGroup();
+
+            // Set Exchange Group Information.
+            result.RequestDate = DateTime.Now;
+            result.State = TSBExchangeGroup.StateTypes.Request;
+            result.FinishFlag = TSBExchangeGroup.FinishedFlags.Avaliable;
+            // Exchange Group - TSB
+            result.TSBId = TSB.TSBId;
+            result.TSBNameEN = TSB.TSBNameEN;
+            result.TSBNameEN = TSB.TSBNameEN;
+
+            // Set Request Transaction.
+            result.Request = new TSBExchangeTransaction();
+            result.Request.TransactionDate = result.RequestDate;
+            result.Request.TransactionType = TSBExchangeTransaction.TransactionTypes.Request;
+            // Transaction - TSB
+            result.Request.TSBId = TSB.TSBId;
+            result.Request.TSBNameEN = TSB.TSBNameEN;
+            result.Request.TSBNameEN = TSB.TSBNameEN;
+            // Transaction - User (Supervisor)
+            result.Request.UserId = Supervisor.UserId;
+            result.Request.FullNameEN = Supervisor.FullNameEN;
+            result.Request.FullNameTH = Supervisor.FullNameTH;
+
+            return result;
+        }
+
+        public void Cancel(TSBExchangeGroup value)
+        {
+            if (null == value) return;
+            // Set Exchange Group state to Completed.
+            value.State = TSBExchangeGroup.StateTypes.Canceled;
+            // Set Transaction Completed.
+            value.Request.FinishFlag = TSBExchangeTransaction.FinishedFlags.Completed;
+        }
+
+        public void Approve(TSBExchangeGroup value)
+        {
+            if (null == value) return;
+        }
+
+        public void Received(TSBExchangeGroup value)
+        {
+            if (null == value) return;
+        }
+
+        public void Returns(TSBExchangeGroup value)
+        {
+            if (null == value) return;
         }
 
         #endregion
@@ -203,10 +260,6 @@ namespace DMT.Services
         /// Gets or sets Supervisor.
         /// </summary>
         public User Supervisor { get; set; }
-        /// <summary>
-        /// Gets Request List.
-        /// </summary>
-        public List<TSBExchangeGroup> Requests { get; private set; }
 
         #endregion
     }

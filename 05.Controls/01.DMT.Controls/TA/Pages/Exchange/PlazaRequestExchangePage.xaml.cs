@@ -41,41 +41,11 @@ namespace DMT.TA.Pages.Exchange
 
         private void cmdRequest_Click(object sender, RoutedEventArgs e)
         {
-            // TEST----BEGIN
             var win = new Windows.Exchange.PlazaCreditRequestExchangeWindow();
             win.Title = "คำร้องขอการแลกเปลี่ยนเงิน";
             win.Owner = Application.Current.MainWindow;
-
-            if (win.ShowDialog() == false)
-            {
-                return;
-            }
-            // TEST----END
-
-            // Required to Get All Requsets on TSB not by datetime.
-            // But in Reutrns required DateTime to filter so need option to call.
-
-
-            //TODO: Re-Implements Request Exchange.
-            /*
-            TSBExchangeGroup group = new TSBExchangeGroup();
-            group.State = TSBExchangeGroup.StateTypes.Request;
-            tran.TransactionDate = DateTime.Now;
-            // Set TSB
-            group.TSBId = _tsb.TSBId;
-            group.TSBNameEN = _tsb.TSBNameEN;
-            group.TSBNameTH = _tsb.TSBNameTH;
-            // Set user.
-            var user = DMT.Controls.TAApp.User.Current;
-            group.SupervisorId = user.UserId;
-            group.SupervisorNameEN = user.FullNameEN;
-            group.SupervisorNameTH = user.FullNameTH;
-
-            var win = new Windows.Exchange.PlazaCreditRequestExchangeWindow();
-            win.Title = "คำร้องขอการแลกเปลี่ยนเงิน";
-            win.Owner = Application.Current.MainWindow;
-            win.Setup(Windows.Exchange.ExchangeWindowMode.New,  tran);
-
+            var exchange = manager.NewRequest();
+            win.Setup(Windows.Exchange.ExchangeWindowMode.New, exchange);
             if (win.ShowDialog() == false)
             {
                 return;
@@ -83,36 +53,53 @@ namespace DMT.TA.Pages.Exchange
 
             if (win.Mode == Windows.Exchange.ExchangeWindowMode.New)
             {
-                if (tran.TransactionType != TSBExchangeTransaction.TransactionTypes.Request)
-                    return; // invalid transaction type.
-                // New required to generate group Guid.
-                tran.GroupId = Guid.NewGuid();
-
-                ops.Exchanges.SaveTSBExchangeTransaction(tran);
+                manager.Save(exchange);
             }
             else if (win.Mode == Windows.Exchange.ExchangeWindowMode.Edit)
             {
-                if (tran.TransactionType != TSBExchangeTransaction.TransactionTypes.Request)
-                    return; // invalid transaction type.
-                if (tran.TransactionId == 0)
-                    return; // data is not saved so ignore it.
-
-                ops.Exchanges.SaveTSBExchangeTransaction(tran);
+                manager.Save(exchange);
             }
             else if (win.Mode == Windows.Exchange.ExchangeWindowMode.Cancel)
             {
-                if (tran.TransactionType != TSBExchangeTransaction.TransactionTypes.Request)
-                    return; // invalid transaction type.
-
-                if (tran.TransactionId == 0)
-                    return; // data is not saved so ignore it.
-                tran.TransactionType = TSBExchangeTransaction.TransactionTypes.Canceled;
-                tran.FinishFlag = TSBExchangeTransaction.FinishedFlags.Completed;
-                ops.Exchanges.SaveTSBExchangeTransaction(tran);
+                manager.Cancel(exchange);
+                manager.Save(exchange);
             }
-            */
-            // Request list.
-            grid.RefreshList(_tsb);
+
+                //TODO: Re-Implements Request Exchange.
+                /*
+
+                if (win.Mode == Windows.Exchange.ExchangeWindowMode.New)
+                {
+                    if (tran.TransactionType != TSBExchangeTransaction.TransactionTypes.Request)
+                        return; // invalid transaction type.
+                    // New required to generate group Guid.
+                    tran.GroupId = Guid.NewGuid();
+
+                    ops.Exchanges.SaveTSBExchangeTransaction(tran);
+                }
+                else if (win.Mode == Windows.Exchange.ExchangeWindowMode.Edit)
+                {
+                    if (tran.TransactionType != TSBExchangeTransaction.TransactionTypes.Request)
+                        return; // invalid transaction type.
+                    if (tran.TransactionId == 0)
+                        return; // data is not saved so ignore it.
+
+                    ops.Exchanges.SaveTSBExchangeTransaction(tran);
+                }
+                else if (win.Mode == Windows.Exchange.ExchangeWindowMode.Cancel)
+                {
+                    if (tran.TransactionType != TSBExchangeTransaction.TransactionTypes.Request)
+                        return; // invalid transaction type.
+
+                    if (tran.TransactionId == 0)
+                        return; // data is not saved so ignore it.
+                    tran.TransactionType = TSBExchangeTransaction.TransactionTypes.Canceled;
+                    tran.FinishFlag = TSBExchangeTransaction.FinishedFlags.Completed;
+                    ops.Exchanges.SaveTSBExchangeTransaction(tran);
+                }
+                */
+                // Request list.
+                grid.RefreshList(_tsb);
         }
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
@@ -128,6 +115,9 @@ namespace DMT.TA.Pages.Exchange
         {
             _tsb = ops.TSB.GetCurrent().Value();
             var tsbCredit = ops.Credits.GetTSBBalance(_tsb).Value();
+            // Set TSB and Supervisor.
+            manager.TSB = _tsb;
+            manager.Supervisor = DMT.Controls.TAApp.User.Current;
 
             this.DataContext = tsbCredit;
 

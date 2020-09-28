@@ -660,7 +660,7 @@ namespace DMT
 
             public static class GetTSBExchangeGroups
             {
-                public const string Name = "GetTSBExchangeGroups";
+                public const string Name = "GetRequestTSBExchangeGroups";
                 public const string Url = Exchange.Url + @"/" + Name;
             }
 

@@ -413,16 +413,42 @@ namespace DMT.Models
     {
         public static class Exchanges
         {
-            public class ByDate : NSearch<ByDate>
+            public class Filter : NSearch<Filter>
             {
-                //public TSB TSB { get; set; }
-                public DateTime Date { get; set; }
+                private static readonly DateTime MINDATE = DateTime.MinValue;
 
-                public static ByDate Create(/*TSB tsb, */DateTime dt)
+                public TSB TSB { get; set; }
+
+                public TSBExchangeGroup.StateTypes State { get; set; }
+                public TSBExchangeGroup.FinishedFlags FinishedFlag { get; set; }
+
+                public DateTime ReqBegin { get; set; }
+                public DateTime ReqEnd { get; set; }
+
+                public static Filter Create(TSB tsb, 
+                    TSBExchangeGroup.StateTypes state = TSBExchangeGroup.StateTypes.None,
+                    TSBExchangeGroup.FinishedFlags flag = TSBExchangeGroup.FinishedFlags.None)
                 {
-                    var ret = new ByDate();
-                    //ret.TSB = tsb;
-                    ret.Date = dt;
+                    var ret = new Filter();
+                    ret.TSB = tsb;
+                    ret.State = state;
+                    ret.FinishedFlag = flag;
+                    ret.ReqBegin = DateTime.MinValue;
+                    ret.ReqEnd = DateTime.MinValue;
+                    return ret;
+                }
+
+                public static Filter Create(TSB tsb,
+                    DateTime reqBegin, DateTime reqEnd,
+                    TSBExchangeGroup.StateTypes state = TSBExchangeGroup.StateTypes.None,
+                    TSBExchangeGroup.FinishedFlags flag = TSBExchangeGroup.FinishedFlags.None)
+                {
+                    var ret = new Filter();
+                    ret.TSB = tsb;
+                    ret.State = state;
+                    ret.FinishedFlag = flag;
+                    ret.ReqBegin = reqBegin;
+                    ret.ReqEnd = reqEnd;
                     return ret;
                 }
             }

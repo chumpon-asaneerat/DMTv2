@@ -22,7 +22,7 @@ namespace DMT.Services
         [HttpPost]
         [ActionName(RouteConsts.Exchange.GetTSBExchangeGroups.Name)]
         public NDbResult<List<TSBExchangeGroup>> GetTSBExchangeGroups(
-            [FromBody] Search.Exchanges.ByDate value)
+            [FromBody] Search.Exchanges.Filter value)
         {
             NDbResult<List<TSBExchangeGroup>> result;
             if (null == value)
@@ -32,7 +32,8 @@ namespace DMT.Services
             }
             else
             {
-                result = TSBExchangeGroup.GetTSBExchangeGroupByDate(value.Date);
+                result = TSBExchangeGroup.GetTSBExchangeGroups(value.TSB, value.State, value.FinishedFlag,
+                    value.ReqBegin, value.ReqEnd);
             }
             return result;
         }

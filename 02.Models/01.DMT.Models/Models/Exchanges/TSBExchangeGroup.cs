@@ -55,6 +55,10 @@ namespace DMT.Models
 		public enum StateTypes : int
 		{
 			/// <summary>
+			/// None. Used for ignore search in query.
+			/// </summary>
+			None = -1,
+			/// <summary>
 			/// Request by plaza.
 			/// </summary>
 			Request = 1,
@@ -89,6 +93,10 @@ namespace DMT.Models
 		public enum FinishedFlags : int
 		{
 			/// <summary>
+			/// None. Used for ignore search in query.
+			/// </summary>
+			None = -1,
+			/// <summary>
 			/// Completed
 			/// </summary>
 			Completed = 0,
@@ -113,6 +121,24 @@ namespace DMT.Models
 		private string _TSBId = string.Empty;
 		private string _TSBNameEN = string.Empty;
 		private string _TSBNameTH = string.Empty;
+		// Request Transaction (runtime)
+		private int _TransactionId = 0;
+		private DateTime _TransactionDate = DateTime.MinValue;
+		private TSBExchangeTransaction.TransactionTypes _TransactionType = TSBExchangeTransaction.TransactionTypes.Request;
+		// Request User (runtime)
+		private string _UserId = string.Empty;
+		private string _FullNameEN = string.Empty;
+		private string _FullNameTH = string.Empty;
+		// Request Amounts (runtime)
+		private decimal _ExchangeBHT = decimal.Zero;
+		private decimal _BorrowBHT = decimal.Zero;
+		private decimal _AdditionalBHT = decimal.Zero;
+		// Request Period (runtime)
+		private DateTime? _PeriodBegin = new DateTime?();
+		private DateTime? _PeriodEnd = new DateTime?();
+		// Request Remark (runtime)
+		private string _Remark = string.Empty;
+
 
 		private int _Status = 0;
 		private DateTime _LastUpdate = DateTime.MinValue;
@@ -394,6 +420,474 @@ namespace DMT.Models
 
 		#endregion
 
+		#region Runtime (request transaction)
+
+		#region Common
+
+		/// <summary>
+		/// Gets or sets TransactionId
+		/// </summary>
+		[Category("Common")]
+		[Description(" Gets or sets TransactionId")]
+		[Ignore]
+		[PropertyMapName("TransactionId")]
+		public virtual int TransactionId
+		{
+			get
+			{
+				return _TransactionId;
+			}
+			set
+			{
+				if (_TransactionId != value)
+				{
+					_TransactionId = value;
+					this.RaiseChanged("TransactionId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Transaction Date.
+		/// </summary>
+		[Category("Common")]
+		[Description(" Gets or sets Transaction Date")]
+		[Ignore]
+		[PropertyMapName("TransactionDate")]
+		public virtual DateTime TransactionDate
+		{
+			get
+			{
+				return _TransactionDate;
+			}
+			set
+			{
+				if (_TransactionDate != value)
+				{
+					_TransactionDate = value;
+					this.RaiseChanged("TransactionDate");
+					this.RaiseChanged("TransactionDateString");
+					this.RaiseChanged("TransactionTimeString");
+					this.RaiseChanged("TransactionDateTimeString");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets Transaction Date String.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets Transaction Date String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string TransactionDateString
+		{
+			get
+			{
+				var ret = (this.TransactionDate == DateTime.MinValue) ? "" : this.TransactionDate.ToThaiDateTimeString("dd/MM/yyyy");
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets Transaction Time String.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets Transaction Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string TransactionTimeString
+		{
+			get
+			{
+				var ret = (this.TransactionDate == DateTime.MinValue) ? "" : this.TransactionDate.ToThaiTimeString();
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets Transaction Date Time String.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets Transaction Date Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string TransactionDateTimeString
+		{
+			get
+			{
+				var ret = (this.TransactionDate == DateTime.MinValue) ? "" : this.TransactionDate.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets or sets Transaction Type.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets Transaction Type.")]
+		[Ignore]
+		[PropertyMapName("TransactionType")]
+		public virtual TSBExchangeTransaction.TransactionTypes TransactionType
+		{
+			get { return _TransactionType; }
+			set
+			{
+				if (_TransactionType != value)
+				{
+					_TransactionType = value;
+					this.RaiseChanged("TransactionType");
+				}
+			}
+		}
+
+		#endregion
+
+		#region User
+
+		/// <summary>
+		/// Gets or sets User Id
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets User Id.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PropertyMapName("UserId")]
+		public virtual string UserId
+		{
+			get
+			{
+				return _UserId;
+			}
+			set
+			{
+				if (_UserId != value)
+				{
+					_UserId = value;
+					this.RaiseChanged("UserId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets User Full Name EN
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets User Full Name EN.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PropertyMapName("FullNameEN")]
+		public virtual string FullNameEN
+		{
+			get
+			{
+				return _FullNameEN;
+			}
+			set
+			{
+				if (_FullNameEN != value)
+				{
+					_FullNameEN = value;
+					this.RaiseChanged("FullNameEN");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets User Full Name TH
+		/// </summary>
+		[Category("User")]
+		[Description("Gets or sets User Full Name TH.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PropertyMapName("FullNameTH")]
+		public virtual string FullNameTH
+		{
+			get
+			{
+				return _FullNameTH;
+			}
+			set
+			{
+				if (_FullNameTH != value)
+				{
+					_FullNameTH = value;
+					this.RaiseChanged("FullNameTH");
+				}
+			}
+		}
+
+		#endregion
+
+		#region Exchange/Borrow/Additional
+
+		/// <summary>
+		/// Gets or sets amount Exchange BHT.
+		/// </summary>
+		[Category("Summary (Amount)")]
+		[Description("Gets or sets amount Exchange BHT.")]
+		[Ignore]
+		[PropertyMapName("ExchangeBHT")]
+		public virtual decimal ExchangeBHT
+		{
+			get { return _ExchangeBHT; }
+			set
+			{
+				if (_ExchangeBHT != value)
+				{
+					_ExchangeBHT = value;
+					// Raise event.
+					this.RaiseChanged("ExchangeBHT");
+					this.RaiseChanged("GrandTotalBHT");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets amount Borrow BHT.
+		/// </summary>
+		[Category("Summary (Amount)")]
+		[Description("Gets or sets amount Borrow BHT.")]
+		[Ignore]
+		[PropertyMapName("BorrowBHT")]
+		public virtual decimal BorrowBHT
+		{
+			get { return _BorrowBHT; }
+			set
+			{
+				if (_BorrowBHT != value)
+				{
+					_BorrowBHT = value;
+					// Raise event.
+					this.RaiseChanged("BorrowBHT");
+					this.RaiseChanged("GrandTotalBHT");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets amount Additional BHT.
+		/// </summary>
+		[Category("Summary (Amount)")]
+		[Description("Gets or sets amount Additional BHT.")]
+		[Ignore]
+		[PropertyMapName("AdditionalBHT")]
+		public virtual decimal AdditionalBHT
+		{
+			get { return _AdditionalBHT; }
+			set
+			{
+				if (_AdditionalBHT != value)
+				{
+					_AdditionalBHT = value;
+					// Raise event.
+					this.RaiseChanged("AdditionalBHT");
+					this.RaiseChanged("GrandTotalBHT");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Grand Total in baht.
+		/// </summary>
+		[Category("Summary (Amount)")]
+		[Description("Gets or sets Grand Total in baht.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		//[PropertyMapName("GrandTotalBHT")]
+		public decimal GrandTotalBHT
+		{
+			get
+			{
+				return _ExchangeBHT + _BorrowBHT + _AdditionalBHT;
+			}
+			set { }
+		}
+
+		#endregion
+
+		#region Period
+
+		/// <summary>
+		/// Gets or sets Period Begin Date.
+		/// </summary>
+		[Category("Period")]
+		[Description(" Gets or sets Period Begin Date")]
+		[Ignore]
+		[PropertyMapName("PeriodBegin")]
+		public virtual DateTime? PeriodBegin
+		{
+			get
+			{
+				return _PeriodBegin;
+			}
+			set
+			{
+				if (_PeriodBegin != value)
+				{
+					_PeriodBegin = value;
+					this.RaiseChanged("PeriodBegin");
+					this.RaiseChanged("PeriodBeginDateString");
+					this.RaiseChanged("PeriodBeginTimeString");
+					this.RaiseChanged("PeriodBeginDateTimeString");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets Period Begin Date String.
+		/// </summary>
+		[Category("Period")]
+		[Description("Gets Period Begin Date String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string PeriodBeginDateString
+		{
+			get
+			{
+				var ret = (!this.PeriodBegin.HasValue) ? "" : this.PeriodBegin.Value.ToThaiDateTimeString("dd/MM/yyyy");
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets Period Begin Time String.
+		/// </summary>
+		[Category("Period")]
+		[Description("Gets Period Begin Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string PeriodBeginTimeString
+		{
+			get
+			{
+				var ret = (!this.PeriodBegin.HasValue) ? "" : this.PeriodBegin.Value.ToThaiTimeString();
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets Period Begin Date Time String.
+		/// </summary>
+		[Category("Period")]
+		[Description("Gets Period Begin Date Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string PeriodBeginDateTimeString
+		{
+			get
+			{
+				var ret = (!this.PeriodBegin.HasValue) ? "" : this.PeriodBegin.Value.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+				return ret;
+			}
+			set { }
+		}
+
+		/// <summary>
+		/// Gets or sets Period End Date.
+		/// </summary>
+		[Category("Period")]
+		[Description(" Gets or sets Period End Date")]
+		[Ignore]
+		[PropertyMapName("PeriodEnd")]
+		public virtual DateTime? PeriodEnd
+		{
+			get
+			{
+				return _PeriodEnd;
+			}
+			set
+			{
+				if (_PeriodEnd != value)
+				{
+					_PeriodEnd = value;
+					this.RaiseChanged("PeriodEnd");
+					this.RaiseChanged("PeriodEndDateString");
+					this.RaiseChanged("PeriodEndTimeString");
+					this.RaiseChanged("PeriodEndDateTimeString");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets Period End Date String.
+		/// </summary>
+		[Category("Period")]
+		[Description("Gets Period End Date String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string PeriodEndDateString
+		{
+			get
+			{
+				var ret = (!this.PeriodEnd.HasValue) ? "" : this.PeriodEnd.Value.ToThaiDateTimeString("dd/MM/yyyy");
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets Period End Time String.
+		/// </summary>
+		[Category("Period")]
+		[Description("Gets Period End Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string PeriodEndTimeString
+		{
+			get
+			{
+				var ret = (!this.PeriodEnd.HasValue) ? "" : this.PeriodEnd.Value.ToThaiTimeString();
+				return ret;
+			}
+			set { }
+		}
+		/// <summary>
+		/// Gets Period End Date Time String.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets Period End Date Time String.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string PeriodEndDateTimeString
+		{
+			get
+			{
+				var ret = (!this.PeriodEnd.HasValue) ? "" : this.PeriodEnd.Value.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+				return ret;
+			}
+			set { }
+		}
+
+		#endregion
+
+		#region Remark
+
+		/// <summary>
+		/// Gets or sets  Remark.
+		/// </summary>
+		[Category("Remark")]
+		[Description("Gets or sets  Remark.")]
+		[Ignore]
+		[PropertyMapName("Remark")]
+		public virtual string Remark
+		{
+			get { return _Remark; }
+			set
+			{
+				if (_Remark != value)
+				{
+					_Remark = value;
+					// Raise event.
+					this.RaiseChanged("Remark");
+				}
+			}
+		}
+
+		#endregion
+
+		#endregion
+
 		#region Transactions
 
 		/// <summary>
@@ -508,13 +1002,119 @@ namespace DMT.Models
 			}
 
 			#endregion
+
+			#region Runtime (request transaction)
+
+			#region Common
+
+			[PropertyMapName("TransactionId")]
+			public override int TransactionId
+			{
+				get { return base.TransactionId; }
+				set { base.TransactionId = value; }
+			}
+			[PropertyMapName("TransactionDate")]
+			public override DateTime TransactionDate
+			{
+				get { return base.TransactionDate; }
+				set { base.TransactionDate = value; }
+			}
+			[PropertyMapName("TransactionType")]
+			public override TSBExchangeTransaction.TransactionTypes TransactionType
+			{
+				get { return base.TransactionType; }
+				set { base.TransactionType = value; }
+			}
+
+			#endregion
+
+			#region User
+
+			[MaxLength(10)]
+			[PropertyMapName("UserId")]
+			public override string UserId
+			{
+				get { return base.UserId; }
+				set { base.UserId = value; }
+			}
+			[MaxLength(150)]
+			[PropertyMapName("FullNameEN")]
+			public override string FullNameEN
+			{
+				get { return base.FullNameEN; }
+				set { base.FullNameEN = value; }
+			}
+			[MaxLength(150)]
+			[PropertyMapName("FullNameTH")]
+			public override string FullNameTH
+			{
+				get { return base.FullNameTH; }
+				set { base.FullNameTH = value; }
+			}
+
+			#endregion
+
+			#region Exchange/Borrow/Additional
+
+			[PropertyMapName("ExchangeBHT")]
+			public override decimal ExchangeBHT
+			{
+				get { return base.ExchangeBHT; }
+				set { base.ExchangeBHT = value; }
+			}
+			[PropertyMapName("BorrowBHT")]
+			public override decimal BorrowBHT
+			{
+				get { return base.BorrowBHT; }
+				set { base.BorrowBHT = value; }
+			}
+			[PropertyMapName("AdditionalBHT")]
+			public override decimal AdditionalBHT
+			{
+				get { return base.AdditionalBHT; }
+				set { base.AdditionalBHT = value; }
+			}
+
+			#endregion
+
+			#region Period
+
+			[PropertyMapName("PeriodBegin")]
+			public override DateTime? PeriodBegin
+			{
+				get { return base.PeriodBegin; }
+				set { base.PeriodBegin = value; }
+			}
+			[PropertyMapName("PeriodEnd")]
+			public override DateTime? PeriodEnd
+			{
+				get { return base.PeriodEnd; }
+				set { base.PeriodEnd = value; }
+			}
+
+			#endregion
+
+			#region Remark
+
+			[MaxLength(255)]
+			[PropertyMapName("Remark")]
+			public override string Remark
+			{
+				get { return base.Remark; }
+				set { base.Remark = value; }
+			}
+
+			#endregion
+
+			#endregion
 		}
 
 		#endregion
 
 		#region Static Methods
 
-		public static NDbResult<List<TSBExchangeGroup>> GetTSBExchangeGroupByDate(DateTime value)
+		public static NDbResult<List<TSBExchangeGroup>> GetTSBExchangeGroups(TSB tsb, 
+			StateTypes state, FinishedFlags flag, DateTime reqBegin, DateTime reqEnd)
 		{
 			var result = new NDbResult<List<TSBExchangeGroup>>();
 			SQLiteConnection db = Default;
@@ -523,11 +1123,6 @@ namespace DMT.Models
 				result.DbConenctFailed();
 				return result;
 			}
-			if (null == value)
-			{
-				result.ParameterIsNull();
-			}
-			var tsb = TSB.GetCurrent().Value();
 			if (null == tsb)
 			{
 				result.ParameterIsNull();
@@ -539,18 +1134,25 @@ namespace DMT.Models
 				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
-					DateTime begin = value.Date;
-					DateTime end = value.Date.AddDays(1).AddMilliseconds(-1);
-
 					string cmd = string.Empty;
 					cmd += "SELECT * ";
 					cmd += "  FROM TSBExchangeGroupView ";
 					cmd += " WHERE TSBId = ? ";
-					cmd += "   AND FinishFlag = 1 ";
-					cmd += "   AND RequestDate >= ? ";
-					cmd += "   AND RequestDate <= ? ";
+					cmd += "   AND FinishFlag = ? ";
+					if (state != StateTypes.None)
+					{
+						cmd += "   AND State = ? ";
+					}
+					if (reqBegin != DateTime.MinValue)
+					{
+						cmd += "   AND RequestDate >= ? ";
+						if (reqEnd != DateTime.MinValue)
+						{
+							cmd += "   AND RequestDate <= ? ";
+						}
+					}
 
-					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId, begin, end).ToList();
+					var rets = NQuery.Query<FKs>(cmd, tsb.TSBId, flag, state, reqBegin, reqEnd).ToList();
 					var results = rets.ToModels();
 					result.Success(results);
 				}
@@ -562,7 +1164,6 @@ namespace DMT.Models
 				return result;
 			}
 		}
-
 		/// <summary>
 		/// Save TSB Exchange Group.
 		/// </summary>

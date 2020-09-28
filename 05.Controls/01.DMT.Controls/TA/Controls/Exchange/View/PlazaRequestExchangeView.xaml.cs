@@ -33,6 +33,8 @@ namespace DMT.TA.Controls.Exchange.View
 
         #endregion
 
+        private bool _isEdit = false;
+        private DateTime _lastupdated = DateTime.MinValue;
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private TSB _tsb = null;
         private TSBExchangeManager manager = new TSBExchangeManager();
@@ -51,48 +53,6 @@ namespace DMT.TA.Controls.Exchange.View
 
         #endregion
 
-        private void cmdEdit_Click(object sender, RoutedEventArgs e)
-        {
-            Button b = sender as Button;
-
-            var group = b.CommandParameter as TSBExchangeGroup;
-            if (null != group)
-            {
-                var win = new Windows.Exchange.PlazaCreditRequestExchangeWindow();
-                win.Title = "คำร้องขอการแลกเปลี่ยนเงิน";
-                win.Owner = Application.Current.MainWindow;
-                win.Setup(Windows.Exchange.ExchangeWindowMode.Edit, group);
-
-                if (win.ShowDialog() == false)
-                {
-                    return;
-                }
-
-                if (win.Mode == Windows.Exchange.ExchangeWindowMode.Edit)
-                {
-                    if (group.State != TSBExchangeGroup.StateTypes.Request)
-                        return; // invalid transaction type.
-                    //TODO: Check save function.
-                    //ops.Exchanges.SaveTSBExchangeTransaction(item);
-                }
-                else if (win.Mode == Windows.Exchange.ExchangeWindowMode.Cancel)
-                {
-                    if (group.State != TSBExchangeGroup.StateTypes.Request)
-                        return; // invalid transaction type.
-
-                    if (group.PkId == 0)
-                        return; // data is not saved so ignore it.
-                    group.State = TSBExchangeGroup.StateTypes.Canceled;
-                    group.FinishFlag = TSBExchangeGroup.FinishedFlags.Completed;
-                    //TODO: Check save function.
-                    //ops.Exchanges.SaveTSBExchangeTransaction(item);
-                }
-
-                // Request list.
-                RefreshList(_tsb);
-            }
-        }
-
         private void cmdExchange_Click(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;
@@ -100,14 +60,19 @@ namespace DMT.TA.Controls.Exchange.View
             TSBExchangeTransaction item = b.CommandParameter as TSBExchangeTransaction;
             if (null != item)
             {
+                _isEdit = true;
+
                 var win = new DMT.TA.Windows.Exchange.PlazaCreditUpdateExchangeWindow();
                 win.Owner = Application.Current.MainWindow;
                 win.Title = "ยืนยันข้อมูลการแลกเปลี่ยนเงิน";
                 win.Setup(item);
                 if (win.ShowDialog() == false)
                 {
+                    _isEdit = false;
                     return;
                 }
+
+                _isEdit = false;
 
                 /*
                 item.IsEditing = true;
@@ -157,86 +122,70 @@ namespace DMT.TA.Controls.Exchange.View
                 */
             }
         }
-        /*
-        private void AppendPlazaFund(Models.FundExchange item)
-        {
-            _plaza.BHT1 = _plaza.BHT1 - item.Exchange.BHT1 + item.Request.BHT1;
-            _plaza.BHT2 = _plaza.BHT2 - item.Exchange.BHT2 + item.Request.BHT2;
-            _plaza.BHT5 = _plaza.BHT5 - item.Exchange.BHT5 + item.Request.BHT5;
-            _plaza.BHT10c = _plaza.BHT10c - item.Exchange.BHT10c + item.Request.BHT10c;
-            _plaza.BHT20 = _plaza.BHT20 - item.Exchange.BHT20 + item.Request.BHT20;
-            _plaza.BHT50 = _plaza.BHT50 - item.Exchange.BHT50 + item.Request.BHT50;
-            _plaza.BHT100 = _plaza.BHT100 - item.Exchange.BHT100 + item.Request.BHT100;
-            _plaza.BHT500 = _plaza.BHT500 - item.Exchange.BHT500 + item.Request.BHT500;
-            _plaza.BHT1000 = _plaza.BHT1000 - item.Exchange.BHT1000 + item.Request.BHT1000;
-        }
 
-        private void Approve(Models.FundExchange item)
+        private void cmdEdit_Click(object sender, RoutedEventArgs e)
         {
-            item.Approve.BHT1 = item.Request.BHT1;
-            item.Approve.BHT2 = item.Request.BHT2;
-            item.Approve.BHT5 = item.Request.BHT5;
-            item.Approve.BHT10c = item.Request.BHT10c;
-            item.Approve.BHT20 = item.Request.BHT20;
-            item.Approve.BHT50 = item.Request.BHT50;
-            item.Approve.BHT100 = item.Request.BHT100;
-            item.Approve.BHT500 = item.Request.BHT500;
-            item.Approve.BHT1000 = item.Request.BHT1000;
+            Button b = sender as Button;
+
+            var group = b.CommandParameter as TSBExchangeGroup;
+            if (null != group)
+            {
+                _isEdit = true;
+
+                var win = new Windows.Exchange.PlazaCreditRequestExchangeWindow();
+                win.Title = "คำร้องขอการแลกเปลี่ยนเงิน";
+                win.Owner = Application.Current.MainWindow;
+                win.Setup(Windows.Exchange.ExchangeWindowMode.Edit, group);
+
+                if (win.ShowDialog() == false)
+                {
+                    _isEdit = false;
+                    return;
+                }
+
+                _isEdit = false;
+
+                if (win.Mode == Windows.Exchange.ExchangeWindowMode.Edit)
+                {
+                    if (group.State != TSBExchangeGroup.StateTypes.Request)
+                        return; // invalid transaction type.
+                    //TODO: Check save function.
+                    //ops.Exchanges.SaveTSBExchangeTransaction(item);
+                }
+                else if (win.Mode == Windows.Exchange.ExchangeWindowMode.Cancel)
+                {
+                    if (group.State != TSBExchangeGroup.StateTypes.Request)
+                        return; // invalid transaction type.
+
+                    if (group.PkId == 0)
+                        return; // data is not saved so ignore it.
+                    group.State = TSBExchangeGroup.StateTypes.Canceled;
+                    group.FinishFlag = TSBExchangeGroup.FinishedFlags.Completed;
+                    //TODO: Check save function.
+                    //ops.Exchanges.SaveTSBExchangeTransaction(item);
+                }
+
+                // Request list.
+                RefreshList(_tsb);
+            }
         }
-        */
-        private DateTime _lastupdated = DateTime.Now;
 
         void Instance_OnTick(object sender, EventArgs e)
         {
-            /*
-            // update status.
-            if (null != _items && _items.Count > 0)
+            var ts = DateTime.Now - _lastupdated;
+            if (ts.TotalSeconds >= 10)
             {
-                Models.FundExchange[] items = null;
-                lock (this)
-                {
-                    items = _items.ToArray();
-                }
-
-                var ts = DateTime.Now - _lastupdated;
-                var bChanged = false;
-                if (ts.TotalSeconds >= 10)
-                {
-                    if (null != items)
-                    {
-                        foreach (var item in items)
-                        {
-                            // Change status.
-                            if (!item.IsEditing && item.StatusId == 0)
-                            {
-                                bChanged = true;
-                                item.StatusId = 1;
-                                Approve(item); // approve
-                                break;
-                            }
-                        }
-                    }
-
-                    _lastupdated = DateTime.Now;
-                    // refresh the items list.
-                    if (bChanged)
-                    {
-                        listView.Items.Refresh();
-                    }
-                }
+                if (_isEdit) return; // in editing so not refresh screen.
+                RefreshList(_tsb);
+                _lastupdated = DateTime.Now;
             }
-            */
         }
 
         public void RefreshList(TSB tsb)
         {
             _tsb = tsb;
             manager.TSB = _tsb;
-
-            //TODO: Re-Implements Call methods before bind.
-            /*
-            listView.ItemsSource = manager.Requests;
-            */
+            listView.ItemsSource = manager.GetRequests();
         }
     }
 }

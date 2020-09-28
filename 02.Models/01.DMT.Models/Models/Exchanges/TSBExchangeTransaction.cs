@@ -45,7 +45,7 @@ namespace DMT.Models
 			/// </summary>
 			Request = 1,
 			/// <summary>
-			/// Canceled.
+			/// Canceled (unused).
 			/// </summary>
 			Canceled = 2,
 			/// <summary>
@@ -53,7 +53,7 @@ namespace DMT.Models
 			/// </summary>
 			Approve = 3,
 			/// <summary>
-			/// Reject.
+			/// Reject (unused).
 			/// </summary>
 			Reject = 4,
 			/// <summary>
@@ -130,8 +130,8 @@ namespace DMT.Models
 		private decimal _BorrowBHT = decimal.Zero;
 		private decimal _AdditionalBHT = decimal.Zero;
 
-		private DateTime _PeriodBegin = DateTime.MinValue;
-		private DateTime _PeriodEnd = DateTime.MinValue;
+		private DateTime? _PeriodBegin = new DateTime?();
+		private DateTime? _PeriodEnd = new DateTime?();
 
 		private string _Remark = string.Empty;
 
@@ -176,6 +176,20 @@ namespace DMT.Models
 		#endregion
 
 		#region Public Properties
+
+		#region Runtime
+
+		/// <summary>
+		/// Gets or sets Description (Runtime).
+		/// </summary>
+		[Category("Runtime")]
+		[Description("Gets or sets Description (Runtime).")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string Description { get; set; }
+
+		#endregion
 
 		#region Common
 
@@ -1494,7 +1508,7 @@ namespace DMT.Models
 		[Description(" Gets or sets Period Begin Date")]
 		[ReadOnly(true)]
 		[PropertyMapName("PeriodBegin")]
-		public virtual DateTime PeriodBegin
+		public virtual DateTime? PeriodBegin
 		{
 			get
 			{
@@ -1524,7 +1538,7 @@ namespace DMT.Models
 		{
 			get
 			{
-				var ret = (this.PeriodBegin == DateTime.MinValue) ? "" : this.PeriodBegin.ToThaiDateTimeString("dd/MM/yyyy");
+				var ret = (!this.PeriodBegin.HasValue) ? "" : this.PeriodBegin.Value.ToThaiDateTimeString("dd/MM/yyyy");
 				return ret;
 			}
 			set { }
@@ -1541,7 +1555,7 @@ namespace DMT.Models
 		{
 			get
 			{
-				var ret = (this.PeriodBegin == DateTime.MinValue) ? "" : this.PeriodBegin.ToThaiTimeString();
+				var ret = (!this.PeriodBegin.HasValue) ? "" : this.PeriodBegin.Value.ToThaiTimeString();
 				return ret;
 			}
 			set { }
@@ -1558,7 +1572,7 @@ namespace DMT.Models
 		{
 			get
 			{
-				var ret = (this.PeriodBegin == DateTime.MinValue) ? "" : this.PeriodBegin.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+				var ret = (!this.PeriodBegin.HasValue) ? "" : this.PeriodBegin.Value.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
 				return ret;
 			}
 			set { }
@@ -1571,7 +1585,7 @@ namespace DMT.Models
 		[Description(" Gets or sets Period End Date")]
 		[ReadOnly(true)]
 		[PropertyMapName("PeriodEnd")]
-		public virtual DateTime PeriodEnd
+		public virtual DateTime? PeriodEnd
 		{
 			get
 			{
@@ -1601,7 +1615,7 @@ namespace DMT.Models
 		{
 			get
 			{
-				var ret = (this.PeriodEnd == DateTime.MinValue) ? "" : this.PeriodEnd.ToThaiDateTimeString("dd/MM/yyyy");
+				var ret = (!this.PeriodEnd.HasValue) ? "" : this.PeriodEnd.Value.ToThaiDateTimeString("dd/MM/yyyy");
 				return ret;
 			}
 			set { }
@@ -1618,7 +1632,7 @@ namespace DMT.Models
 		{
 			get
 			{
-				var ret = (this.PeriodEnd == DateTime.MinValue) ? "" : this.PeriodEnd.ToThaiTimeString();
+				var ret = (!this.PeriodEnd.HasValue) ? "" : this.PeriodEnd.Value.ToThaiTimeString();
 				return ret;
 			}
 			set { }
@@ -1635,7 +1649,7 @@ namespace DMT.Models
 		{
 			get
 			{
-				var ret = (this.PeriodEnd == DateTime.MinValue) ? "" : this.PeriodEnd.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+				var ret = (!this.PeriodEnd.HasValue) ? "" : this.PeriodEnd.Value.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
 				return ret;
 			}
 			set { }
