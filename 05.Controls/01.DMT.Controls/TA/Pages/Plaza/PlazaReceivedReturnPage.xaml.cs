@@ -58,11 +58,18 @@ namespace DMT.TA.Pages.Plaza
             {
                 return;
             }
+
+            RefreshPlazaInfo();
         }
 
         #endregion
 
-        public void RefreshPlazaInfo()
+        public void Setup()
+        {
+            RefreshPlazaInfo();
+        }
+
+        private void RefreshPlazaInfo()
         {
             _tsb = ops.TSB.GetCurrent().Value();
             var tsbCredit = ops.Credits.GetTSBBalance(_tsb).Value();

@@ -41,7 +41,7 @@ namespace DMT.TA.Pages.Menu
             {
                 // Exchange Fund Page.
                 var page = new Pages.Exchange.PlazaRequestExchangePage();
-                page.RefreshPlazaInfo();
+                page.Setup();
                 PageContentManager.Instance.Current = page;
             }
             catch (Exception)
@@ -70,7 +70,7 @@ namespace DMT.TA.Pages.Menu
             {
                 // Plaza Fund Received
                 var page = new DMT.TA.Pages.Plaza.PlazaReceivedReturnPage();
-                page.RefreshPlazaInfo();
+                page.Setup();
                 PageContentManager.Instance.Current = page;
             }
             catch (Exception)
@@ -96,7 +96,7 @@ namespace DMT.TA.Pages.Menu
         private void exchangeMoney_Click(object sender, RoutedEventArgs e)
         {
             var page = new DMT.TA.Pages.Plaza.PlazaInternalCreditExchangePage();
-            page.RefreshPlazaInfo();
+            page.Setup();
             PageContentManager.Instance.Current = page;
         }
         // Implement #1 - no report (currently used image) รายงานสรุปการยืมเงินทอน

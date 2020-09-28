@@ -11,6 +11,7 @@ using NLib.Services;
 using NLib.Reflection;
 using NLib.Reports.Rdlc;
 using System.Reflection;
+using NLib;
 
 #endregion
 
@@ -98,6 +99,8 @@ namespace DMT.TA.Controls.Exchange.View
                 }
                 // Request list.
                 RefreshList();
+                // Raise Event.
+                PlazaBalanceUpdated.Call(this, EventArgs.Empty);
             }
         }
 
@@ -113,6 +116,8 @@ namespace DMT.TA.Controls.Exchange.View
                 manager.SaveApprove(group);
                 // Request list.
                 RefreshList();
+                // Raise Event.
+                PlazaBalanceUpdated.Call(this, EventArgs.Empty);
             }
         }
 
@@ -139,6 +144,8 @@ namespace DMT.TA.Controls.Exchange.View
                 _isEdit = false;
                 // Request list.
                 RefreshList();
+                // Raise Event.
+                PlazaBalanceUpdated.Call(this, EventArgs.Empty);
             }
         }
 
@@ -165,5 +172,7 @@ namespace DMT.TA.Controls.Exchange.View
             manager = value;
             RefreshList();
         }
+
+        public event EventHandler PlazaBalanceUpdated;
     }
 }

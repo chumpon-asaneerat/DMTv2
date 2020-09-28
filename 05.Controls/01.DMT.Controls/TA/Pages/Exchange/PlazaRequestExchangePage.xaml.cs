@@ -33,9 +33,32 @@ namespace DMT.TA.Pages.Exchange
 
         #endregion
 
+        #region Loaded/Unloaded
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            grid.PlazaBalanceUpdated += Grid_PlazaBalanceUpdated;
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            grid.PlazaBalanceUpdated += Grid_PlazaBalanceUpdated;
+        }
+
+        #endregion
+        
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private TSB _tsb = null;
         private TSBExchangeManager manager = new TSBExchangeManager();
+
+        #region Grid Update Handler
+
+        private void Grid_PlazaBalanceUpdated(object sender, EventArgs e)
+        {
+            RefreshPlazaInfo();
+        }
+
+        #endregion
 
         #region Button Handlers
 
@@ -61,6 +84,7 @@ namespace DMT.TA.Pages.Exchange
             }
             // Request list.
             grid.RefreshList();
+            RefreshPlazaInfo();
         }
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
@@ -72,13 +96,21 @@ namespace DMT.TA.Pages.Exchange
 
         #endregion
 
-        public void RefreshPlazaInfo()
+        public void Setup()
         {
             _tsb = ops.TSB.GetCurrent().Value();
-            var tsbCredit = ops.Credits.GetTSBBalance(_tsb).Value();
             // Set TSB and Supervisor.
             manager.TSB = _tsb;
             manager.Supervisor = DMT.Controls.TAApp.User.Current;
+
+            grid.Setup(manager);
+
+            RefreshPlazaInfo();
+        }
+
+        private void RefreshPlazaInfo()
+        {
+            var tsbCredit = ops.Credits.GetTSBBalance(_tsb).Value();
 
             this.DataContext = tsbCredit;
 
@@ -89,8 +121,6 @@ namespace DMT.TA.Pages.Exchange
 
             loanEntry.IsEnabled = false;
             loanEntry.DataContext = tsbCredit;
-
-            grid.Setup(manager);
         }
     }
 }

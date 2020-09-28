@@ -37,6 +37,20 @@ namespace DMT.TA.Pages.Plaza
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private TSB _tsb = null;
 
+        #region Loaded/Unloaded
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        #endregion
+
         #region Button Handlers
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
@@ -57,6 +71,7 @@ namespace DMT.TA.Pages.Plaza
                 return;
             }
             RefreshList();
+            RefreshPlazaInfo();
         }
 
         private void cmdSearch_Click(object sender, RoutedEventArgs e)
@@ -66,14 +81,19 @@ namespace DMT.TA.Pages.Plaza
 
         #endregion
 
-        public void RefreshPlazaInfo()
+        public void Setup()
         {
             dtDate.SelectedDate = DateTime.Today;
-            this.DataContext = null;
 
+            RefreshList();
+            RefreshPlazaInfo();
+        }
+
+        private void RefreshPlazaInfo()
+        {
+            this.DataContext = null;
             _tsb = ops.TSB.GetCurrent().Value();
             var tsbCredit = ops.Credits.GetTSBBalance(_tsb).Value();
-
             if (null != tsbCredit)
             {
                 this.DataContext = tsbCredit;
@@ -84,8 +104,6 @@ namespace DMT.TA.Pages.Plaza
 
                 loanEntry.IsEnabled = false;
                 loanEntry.DataContext = tsbCredit;
-
-                RefreshList();
             }
         }
 
