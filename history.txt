@@ -14,6 +14,11 @@
   - Need to check model one by one (in new DMT.TA.TODv1 solution)
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-09-28 #1
+- Merge from origin/TA #1.
+
+--------------------------------------------------------------------------------------------
+[commited]
 Update 2020-09-27 #5
 - Update TA Credit Exchange #35.
   - Request Exchange process refactor #1.
