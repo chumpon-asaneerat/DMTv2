@@ -9,6 +9,7 @@ using RestSharp;
 
 using DMT.Models;
 using System.CodeDom;
+using System.Data;
 
 #endregion
 
@@ -224,47 +225,49 @@ namespace DMT.Services
 
         #region Private Methods
 
-        private TSBExchangeTransaction CloneTransaction(TSBExchangeTransaction src)
+        private TSBExchangeTransaction CloneTransaction(TSBExchangeTransaction src, bool setZero = false)
         {
             if (null == src)
             {
                 return null;
             }
             var dst = new TSBExchangeTransaction();
-            CopyTransaction(src, dst);
+            CopyTransaction(src, dst, setZero);
             return dst;
         }
 
-        private void CopyTransaction(TSBExchangeTransaction src, TSBExchangeTransaction dst)
+        private void CopyTransaction(TSBExchangeTransaction src, TSBExchangeTransaction dst, bool setZero = false)
         {
             if (null == src || null == dst) return;
             // Transaction
             dst.GroupId = src.GroupId;
             dst.TransactionDate = DateTime.Now;
             // Amount
-            dst.AmountST25 = src.AmountST25;
-            dst.AmountST50 = src.AmountST50;
-            dst.AmountBHT1 = src.AmountBHT1;
-            dst.AmountBHT2 = src.AmountBHT2;
-            dst.AmountBHT5 = src.AmountBHT5;
-            dst.AmountBHT10 = src.AmountBHT10;
-            dst.AmountBHT20 = src.AmountBHT20;
-            dst.AmountBHT50 = src.AmountBHT50;
-            dst.AmountBHT100 = src.AmountBHT100;
-            dst.AmountBHT500 = src.AmountBHT500;
-            dst.AmountBHT1000 = src.AmountBHT1000;
-            // Count
-            dst.CountST25 = src.CountST25;
-            dst.CountST50 = src.CountST50;
-            dst.CountBHT1 = src.CountBHT1;
-            dst.CountBHT2 = src.CountBHT2;
-            dst.CountBHT5 = src.CountBHT5;
-            dst.CountBHT10 = src.CountBHT10;
-            dst.CountBHT20 = src.CountBHT20;
-            dst.CountBHT50 = src.CountBHT50;
-            dst.CountBHT100 = src.CountBHT100;
-            dst.CountBHT500 = src.CountBHT500;
-            dst.CountBHT1000 = src.CountBHT1000;
+            dst.AmountST25 = (!setZero) ? src.AmountST25 : decimal.Zero;
+            dst.AmountST50 = (!setZero) ? src.AmountST50 : decimal.Zero;
+            dst.AmountBHT1 = (!setZero) ? src.AmountBHT1 : decimal.Zero;
+            dst.AmountBHT2 = (!setZero) ? src.AmountBHT2 : decimal.Zero;
+            dst.AmountBHT5 = (!setZero) ? src.AmountBHT5 : decimal.Zero;
+            dst.AmountBHT10 = (!setZero) ? src.AmountBHT10 : decimal.Zero;
+            dst.AmountBHT20 = (!setZero) ? src.AmountBHT20 : decimal.Zero;
+            dst.AmountBHT50 = (!setZero) ? src.AmountBHT50 : decimal.Zero;
+            dst.AmountBHT100 = (!setZero) ? src.AmountBHT100 : decimal.Zero;
+            dst.AmountBHT500 = (!setZero) ? src.AmountBHT500 : decimal.Zero;
+            dst.AmountBHT1000 = (!setZero) ? src.AmountBHT1000 : decimal.Zero;
+            // Count - no need because auto calc in model class.
+            /*
+            dst.CountST25 = (!setZero) ? src.CountST25 : 0;
+            dst.CountST50 = (!setZero) ? src.CountST50 : 0;
+            dst.CountBHT1 = (!setZero) ? src.CountBHT1 : 0;
+            dst.CountBHT2 = (!setZero) ? src.CountBHT2 : 0;
+            dst.CountBHT5 = (!setZero) ? src.CountBHT5 : 0;
+            dst.CountBHT10 = (!setZero) ? src.CountBHT10 : 0;
+            dst.CountBHT20 = (!setZero) ? src.CountBHT20 : 0;
+            dst.CountBHT50 = (!setZero) ? src.CountBHT50 : 0;
+            dst.CountBHT100 = (!setZero) ? src.CountBHT100 : 0;
+            dst.CountBHT500 = (!setZero) ? src.CountBHT500 : 0;
+            dst.CountBHT1000 = (!setZero) ? src.CountBHT1000 : 0;
+            */
             // TSB
             dst.TSBId = src.TSBId;
             dst.TSBNameEN = src.TSBNameEN;
@@ -274,12 +277,24 @@ namespace DMT.Services
             dst.FullNameEN = src.FullNameEN;
             dst.FullNameTH = src.FullNameTH;
             // Amount
-            dst.ExchangeBHT = src.ExchangeBHT;
-            dst.BorrowBHT = src.BorrowBHT;
-            dst.AdditionalBHT = src.AdditionalBHT;
+            dst.ExchangeBHT = (!setZero) ? src.ExchangeBHT : decimal.Zero;
+            dst.BorrowBHT = (!setZero) ? src.BorrowBHT : decimal.Zero;
+            dst.AdditionalBHT = (!setZero) ? src.AdditionalBHT : decimal.Zero;
             // Period
             dst.PeriodBegin = src.PeriodBegin;
             dst.PeriodEnd = src.PeriodEnd;
+            /*
+            if (dst.BorrowBHT > decimal.Zero)
+            {
+                dst.PeriodBegin = src.PeriodBegin;
+                dst.PeriodEnd = src.PeriodEnd;
+            }
+            else
+            {
+                dst.PeriodBegin = new DateTime?();
+                dst.PeriodEnd = new DateTime?();
+            }
+            */
         }
 
         private void Save(TSBExchangeGroup value)
@@ -355,6 +370,17 @@ namespace DMT.Services
             return result;
         }
 
+        public void LoadRequest(TSBExchangeGroup value)
+        {
+            if (null == value) return;
+            if (null == value.Request)
+            {
+                var filter = Search.Exchanges.Transactions.Filter.Create(this.TSB, value.GroupId,
+                    TSBExchangeTransaction.TransactionTypes.Request);
+                value.Request = ops.Exchanges.GetTSBExchangeTransaction(filter).Value();
+            }
+        }
+
         public void CancelRequest(TSBExchangeGroup value)
         {
             if (null == value) return;
@@ -375,6 +401,17 @@ namespace DMT.Services
             this.Save(value);
         }
 
+        public void LoadApprove(TSBExchangeGroup value)
+        {
+            if (null == value) return;
+            if (null == value.Approve)
+            {
+                var filter = Search.Exchanges.Transactions.Filter.Create(this.TSB, value.GroupId,
+                    TSBExchangeTransaction.TransactionTypes.Approve);
+                value.Approve = ops.Exchanges.GetTSBExchangeTransaction(filter).Value();
+            }
+        }
+
         public void PrepareApprove(TSBExchangeGroup value)
         {
             if (null == value) return;
@@ -382,21 +419,18 @@ namespace DMT.Services
             // Gets Request transaction from database.
             if (null == value.Request)
             {
-                var filter = Search.Exchanges.Transactions.Filter.Create(this.TSB, value.GroupId,
-                    TSBExchangeTransaction.TransactionTypes.Request);
-                value.Request = ops.Exchanges.GetTSBExchangeTransaction(filter).Value();
+                LoadRequest(value);
                 if (null == value.Request) return;
             }
             // Gets Approve transaction from database.
             if (null == value.Approve)
             {
-                var filter = Search.Exchanges.Transactions.Filter.Create(this.TSB, value.GroupId,
-                    TSBExchangeTransaction.TransactionTypes.Approve);
-                value.Approve = ops.Exchanges.GetTSBExchangeTransaction(filter).Value();
+                LoadApprove(value);
                 // clone from request transaction if not exists.
                 if (null == value.Approve)
                 {
                     value.Approve = CloneTransaction(value.Request);
+                    value.Approve.TransactionType = TSBExchangeTransaction.TransactionTypes.Approve;
                 }
             }
         }
@@ -432,6 +466,94 @@ namespace DMT.Services
             value.Approve.UserId = Supervisor.UserId;
             value.Approve.FullNameEN = Supervisor.FullNameEN;
             value.Approve.FullNameTH = Supervisor.FullNameTH;
+
+            // Save Group and Transaction.
+            this.Save(value);
+        }
+
+        public void LoadReceived(TSBExchangeGroup value)
+        {
+            if (null == value) return;
+            // Load Received and Exchange transaction.
+            if (null == value.Received)
+            {
+                var filter = Search.Exchanges.Transactions.Filter.Create(this.TSB, value.GroupId,
+                    TSBExchangeTransaction.TransactionTypes.Received);
+                value.Received = ops.Exchanges.GetTSBExchangeTransaction(filter).Value();
+            }
+            if (null == value.Exchange)
+            {
+                var filter = Search.Exchanges.Transactions.Filter.Create(this.TSB, value.GroupId,
+                    TSBExchangeTransaction.TransactionTypes.Exchange);
+                value.Exchange = ops.Exchanges.GetTSBExchangeTransaction(filter).Value();
+            }
+        }
+
+        public void PrepareReceived(TSBExchangeGroup value)
+        {
+            if (null == value) return;
+
+            // Gets Request transaction from database.
+            if (null == value.Request)
+            {
+                LoadRequest(value);
+                if (null == value.Request) return;
+            }
+            // Gets Approve transaction from database.
+            if (null == value.Approve)
+            {
+                LoadApprove(value);
+                if (null == value.Approve) return;
+            }
+            // Gets Received and Exchange transaction from database.
+            if (null == value.Received || null == value.Exchange)
+            {
+                LoadReceived(value);
+                // clone from request transaction if not exists.
+                if (null == value.Received)
+                {
+                    value.Received = CloneTransaction(value.Approve);
+                    value.Received.TransactionType = TSBExchangeTransaction.TransactionTypes.Received;
+                }
+                // clone from request transaction if not exists (and set all amount/count to zero).
+                if (null == value.Exchange)
+                {
+                    value.Exchange = CloneTransaction(value.Approve, true);
+                    value.Exchange.TransactionType = TSBExchangeTransaction.TransactionTypes.Exchange;
+                }
+            }
+        }
+
+        public void SaveReceived(TSBExchangeGroup value)
+        {
+            if (null == value || null == value.Approve) return;
+            if (value.State != TSBExchangeGroup.StateTypes.Approve) return;
+            DateTime dt = DateTime.Now;
+            // Change state
+            value.State = TSBExchangeGroup.StateTypes.Received;
+            // Received Transaction - Common
+            value.Received.TransactionDate = dt;
+            value.Received.TransactionType = TSBExchangeTransaction.TransactionTypes.Received;
+            // Received Transaction - TSB
+            value.Received.TSBId = TSB.TSBId;
+            value.Received.TSBNameEN = TSB.TSBNameEN;
+            value.Received.TSBNameEN = TSB.TSBNameEN;
+            // Received Transaction - User (Supervisor)
+            value.Received.UserId = Supervisor.UserId;
+            value.Received.FullNameEN = Supervisor.FullNameEN;
+            value.Received.FullNameTH = Supervisor.FullNameTH;
+
+            // Exchange Transaction - Common
+            value.Exchange.TransactionDate = dt;
+            value.Exchange.TransactionType = TSBExchangeTransaction.TransactionTypes.Exchange;
+            // Exchange Transaction - TSB
+            value.Exchange.TSBId = TSB.TSBId;
+            value.Exchange.TSBNameEN = TSB.TSBNameEN;
+            value.Exchange.TSBNameEN = TSB.TSBNameEN;
+            // Exchange Transaction - User (Supervisor)
+            value.Exchange.UserId = Supervisor.UserId;
+            value.Exchange.FullNameEN = Supervisor.FullNameEN;
+            value.Exchange.FullNameTH = Supervisor.FullNameTH;
 
             // Save Group and Transaction.
             this.Save(value);

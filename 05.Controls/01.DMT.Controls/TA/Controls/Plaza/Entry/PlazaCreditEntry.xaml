@@ -105,7 +105,6 @@
                                  TextAlignment="Right"
                                  Foreground="{Binding BHT10Foreground}"
                                  Text="{Binding AmountBHT10, StringFormat=N0}" KeyDown="txtBHT10_KeyDown" />
-
                     </DockPanel>
                     <!-- 20 BHT -->
                     <DockPanel Margin="5,0,5,0">

@@ -57,6 +57,13 @@ namespace DMT.TA.Controls.Exchange.View
             var group = b.CommandParameter as TSBExchangeGroup;
             if (null != manager && null != group)
             {
+                if (null == group.Request) manager.LoadRequest(group);
+                if (null == group.Request)
+                {
+                    MessageBox.Show("Cannot load request transaction.");
+                    return;
+                }
+
                 _isEdit = true;
 
                 var win = new Windows.Exchange.PlazaCreditRequestExchangeWindow();
@@ -76,8 +83,7 @@ namespace DMT.TA.Controls.Exchange.View
                 {
                     if (group.State != TSBExchangeGroup.StateTypes.Request)
                         return; // invalid transaction type.
-                    //TODO: Check save function.
-                    //ops.Exchanges.SaveTSBExchangeTransaction(item);
+                    manager.SaveRequest(group);
                 }
                 else if (win.Mode == Windows.Exchange.ExchangeWindowMode.Cancel)
                 {
@@ -88,8 +94,7 @@ namespace DMT.TA.Controls.Exchange.View
                         return; // data is not saved so ignore it.
                     group.State = TSBExchangeGroup.StateTypes.Canceled;
                     group.FinishFlag = TSBExchangeGroup.FinishedFlags.Completed;
-                    //TODO: Check save function.
-                    //ops.Exchanges.SaveTSBExchangeTransaction(item);
+                    manager.SaveRequest(group);
                 }
                 // Request list.
                 RefreshList();
@@ -122,27 +127,18 @@ namespace DMT.TA.Controls.Exchange.View
                 var win = new DMT.TA.Windows.Exchange.PlazaCreditUpdateExchangeWindow();
                 win.Owner = Application.Current.MainWindow;
                 win.Title = "ยืนยันข้อมูลการแลกเปลี่ยนเงิน";
-                win.Setup(group);
+                win.Setup(manager, group);
                 if (win.ShowDialog() == false)
                 {
                     _isEdit = false;
                     return;
                 }
+                // save received/exchange transaction.
+                manager.SaveReceived(group);
 
                 _isEdit = false;
                 // Request list.
                 RefreshList();
-
-                /*
-                // replace descriptions
-                item.Request.Description = "รายการขอแลกเงินจากด่าน";
-                item.Request.HasRemark = true;
-
-                item.Approve.Description = "รายการอนุมัติจากบัญชี";
-                item.Approve.HasRemark = true;
-
-                item.Exchange.Description = "จ่ายออก ธนบัตร/เหรียญ";
-                */
             }
         }
 

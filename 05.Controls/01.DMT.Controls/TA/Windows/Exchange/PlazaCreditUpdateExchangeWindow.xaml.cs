@@ -34,6 +34,7 @@ namespace DMT.TA.Windows.Exchange
         #endregion
 
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
+        private TSBExchangeManager manager = null;
 
         #region Button Handlers
 
@@ -51,14 +52,38 @@ namespace DMT.TA.Windows.Exchange
 
         #region Public Methods
 
-        public void Setup(TSBExchangeGroup value)
+        public void Setup(TSBExchangeManager value, TSBExchangeGroup group)
         {
-            /*
-            //srcEntry.DataContext = value.TSB;
-            requestEntry.DataContext = value.Request;
-            approveEntry.DataContext = value.Approve;
-            exchangeEntry.DataContext = value.Exchange;
-            */
+            manager = value;
+            if (null == manager || null == group) return;
+
+            // request from plaza.
+            if (null == group.Request) 
+                manager.LoadRequest(group);
+            if (null == group.Request) 
+                return; // load failed
+            group.Request.Description = "รายการขอแลกเงินจากด่าน";
+            requestEntry.DataContext = group.Request;
+            
+            // approve from account.
+            if (null == group.Approve) 
+                manager.LoadApprove(group);
+            if (null == group.Approve) 
+                return; // load failed
+                group.Approve.Description = "รายการอนุมัติจากบัญชี";
+            approveEntry.DataContext = group.Approve;
+
+            // check received/exchange transaction.
+            if (null == group.Received || null == group.Exchange) 
+                manager.PrepareReceived(group);
+            if (null == group.Received || null == group.Exchange) 
+                return; // load failed
+            // reveived from account->plaza
+            group.Received.Description = "เงินที่ได้รับจริง";
+            trueReciveEntry.DataContext = group.Received;
+            // exchange from plaza->account
+            group.Exchange.Description = "จ่ายออก ธนบัตร/เหรียญ";
+            exchangeEntry.DataContext = group.Exchange;
         }
 
         #endregion

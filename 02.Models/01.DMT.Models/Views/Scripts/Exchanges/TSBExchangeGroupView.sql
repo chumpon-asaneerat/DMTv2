@@ -1,12 +1,13 @@
 ﻿CREATE VIEW TSBExchangeGroupView
 AS
-	-- Transaction Types:
+	-- State Types:
 	-- Request = 1
 	-- Canceled = 2
 	-- Approve = 3
 	-- Reject = 4
 	-- Received = 5
-	-- Return = 6
+	-- Exchange = 6 
+	-- Return = 7
 	-- Completed = 9
 	SELECT TSBExchangeGroup.* 
 		 , TSB.TSBNameEN

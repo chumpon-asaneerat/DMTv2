@@ -25,13 +25,13 @@
                                     DisplayMemberBinding="{Binding Path=FullNameTH}" 
                                     Width="220"/>
                     <GridViewColumn Header="เงินขอแลก" 
-                                    DisplayMemberBinding="{Binding Path=ExchangeBHT}" 
+                                    DisplayMemberBinding="{Binding Path=ExchangeBHT, StringFormat={}{0:N0}}" 
                                     Width="100"/>
                     <GridViewColumn Header="เงินยืมเพิ่ม" 
-                                    DisplayMemberBinding="{Binding Path=BorrowBHT}" 
+                                    DisplayMemberBinding="{Binding Path=BorrowBHT, StringFormat={}{0:N0}}" 
                                     Width="100"/>
                     <GridViewColumn Header="เพิ่มวงเงิน" 
-                                    DisplayMemberBinding="{Binding Path=AdditionalBHT}" 
+                                    DisplayMemberBinding="{Binding Path=AdditionalBHT, StringFormat={}{0:N0}}" 
                                     Width="100"/>
                     <GridViewColumn Header="สถานะ" 
                                     DisplayMemberBinding="{Binding Path=State}" 

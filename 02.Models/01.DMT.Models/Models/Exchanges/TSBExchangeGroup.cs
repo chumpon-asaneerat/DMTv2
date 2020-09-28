@@ -79,9 +79,13 @@ namespace DMT.Models
 			/// </summary>
 			Received = 5,
 			/// <summary>
+			/// Exchange (send back to account dept.)
+			/// </summary>
+			Exchange = 6,
+			/// <summary>
 			/// Return from plaza but account not update status.
 			/// </summary>
-			Return = 6,
+			Return = 7,
 			/// <summary>
 			/// Completed when account received returns credits and update status.
 			/// </summary>
@@ -242,6 +246,8 @@ namespace DMT.Models
 				{
 					_State = value;
 					this.RaiseChanged("State");
+					this.RaiseChanged("CanEdit");
+					this.RaiseChanged("CanExchange");
 				}
 			}
 		}
@@ -422,13 +428,40 @@ namespace DMT.Models
 
 		#region Runtime (request transaction)
 
+		#region UI Enable
+
+		/// <summary>
+		/// Gets Can Edit.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets Can Edit.")]
+		[Ignore]
+		public bool CanEdit
+		{
+			get { return (_State == StateTypes.Request);  }
+			set { }
+		}
+		/// <summary>
+		/// Gets Can Exchange.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets Can Exchange.")]
+		[Ignore]
+		public bool CanExchange
+		{
+			get { return (_State == StateTypes.Approve); }
+			set { }
+		}
+
+		#endregion
+
 		#region Common
 
 		/// <summary>
 		/// Gets or sets TransactionId
 		/// </summary>
 		[Category("Common")]
-		[Description(" Gets or sets TransactionId")]
+		[Description("Gets or sets TransactionId")]
 		[Ignore]
 		[PropertyMapName("TransactionId")]
 		public virtual int TransactionId
@@ -450,7 +483,7 @@ namespace DMT.Models
 		/// Gets or sets Transaction Date.
 		/// </summary>
 		[Category("Common")]
-		[Description(" Gets or sets Transaction Date")]
+		[Description("Gets or sets Transaction Date")]
 		[Ignore]
 		[PropertyMapName("TransactionDate")]
 		public virtual DateTime TransactionDate
@@ -912,6 +945,13 @@ namespace DMT.Models
 		[Ignore]
 		public TSBExchangeTransaction Received { get; set; }
 		/// <summary>
+		/// Gets or sets Exchange transacton.
+		/// </summary>
+		[Category("Transaction")]
+		[Description("Gets or sets Exchange transacton.")]
+		[Ignore]
+		public TSBExchangeTransaction Exchange { get; set; }
+		/// <summary>
 		/// Gets or sets Returns transacton.
 		/// </summary>
 		[Category("Transaction")]
@@ -1206,6 +1246,54 @@ namespace DMT.Models
 				return result;
 			}
 		}
+
+
+		private static TSBCreditTransaction CloneTransaction(TSBExchangeTransaction value, bool isMinuis = false)
+		{
+			int sign = (isMinuis) ? -1 : 1;
+			TSBCreditTransaction inst = new TSBCreditTransaction();
+
+			// Common
+			inst.TransactionDate = value.TransactionDate;
+			inst.GroupId = value.GroupId;
+			// TSB.
+			inst.TSBId = value.TSBId;
+			inst.TSBNameEN = value.TSBNameEN;
+			inst.TSBNameTH = value.TSBNameTH;
+			// Supervisor.
+			inst.SupervisorId = value.UserId;
+			inst.SupervisorNameEN = value.FullNameEN;
+			inst.SupervisorNameTH = value.FullNameTH;
+			// Amount
+			inst.AmountST25 = sign * value.AmountST25;
+			inst.AmountST50 = sign * value.AmountST50;
+			inst.AmountBHT1 = sign * value.AmountBHT1;
+			inst.AmountBHT2 = sign * value.AmountBHT2;
+			inst.AmountBHT5 = sign * value.AmountBHT5;
+			inst.AmountBHT10 = sign * value.AmountBHT10;
+			inst.AmountBHT20 = sign * value.AmountBHT20;
+			inst.AmountBHT50 = sign * value.AmountBHT50;
+			inst.AmountBHT100 = sign * value.AmountBHT100;
+			inst.AmountBHT500 = sign * value.AmountBHT500;
+			inst.AmountBHT1000 = sign * value.AmountBHT1000;
+			// Count - no need because auto calc in model class.
+			/*
+			inst.CountST25 = sign * value.CountST25;
+			inst.CountST50 = sign * value.CountST50;
+			inst.CountBHT1 = sign * value.CountBHT1;
+			inst.CountBHT2 = sign * value.CountBHT2;
+			inst.CountBHT5 = sign * value.CountBHT5;
+			inst.CountBHT10 = sign * value.CountBHT10;
+			inst.CountBHT20 = sign * value.CountBHT20;
+			inst.CountBHT50 = sign * value.CountBHT50;
+			inst.CountBHT100 = sign * value.CountBHT100;
+			inst.CountBHT500 = sign * value.CountBHT500;
+			inst.CountBHT1000 = sign * value.CountBHT1000;
+			*/
+
+			return inst;
+		}
+
 		/// <summary>
 		/// Save TSB Exchange Group.
 		/// </summary>
@@ -1245,9 +1333,35 @@ namespace DMT.Models
 			}
 			if (null != value.Received)
 			{
+				bool updateCredit = (value.Received.TransactionId == 0); // add new.
 				value.Received.GroupId = value.GroupId;
 				value.Received.TransactionType = TSBExchangeTransaction.TransactionTypes.Received;
 				TSBExchangeTransaction.Save(value.Received);
+				if (updateCredit)
+				{
+					TSBCreditTransaction tran = CloneTransaction(value.Received);
+					// Set property here.
+					tran.TransactionType = TSBCreditTransaction.TransactionTypes.Received;
+					// Additional keep only received
+					tran.AdditionalBHT = value.Received.AdditionalBHT;
+					// Save.
+					TSBCreditTransaction.Save(tran);
+				}
+			}
+			if (null != value.Exchange)
+			{
+				bool updateCredit = (value.Exchange.TransactionId == 0); // add new.
+				value.Exchange.GroupId = value.GroupId;
+				value.Exchange.TransactionType = TSBExchangeTransaction.TransactionTypes.Exchange;
+				TSBExchangeTransaction.Save(value.Exchange);
+				if (updateCredit)
+				{
+					TSBCreditTransaction tran = CloneTransaction(value.Exchange, true);
+					// Set property here.
+					tran.TransactionType = TSBCreditTransaction.TransactionTypes.Received;
+					// Save.
+					TSBCreditTransaction.Save(tran);
+				}
 			}
 			if (null != value.Return)
 			{

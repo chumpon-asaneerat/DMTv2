@@ -65,9 +65,13 @@ namespace DMT.Models
 			/// </summary>
 			Received = 5,
 			/// <summary>
+			/// Exchange (send back to account dept.)
+			/// </summary>
+			Exchange = 6,
+			/// <summary>
 			/// Return from plaza but account not update status.
 			/// </summary>
-			Return = 6,
+			Return = 7,
 			/// <summary>
 			/// Completed (reserved).
 			/// </summary>
