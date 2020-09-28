@@ -676,6 +676,18 @@ namespace DMT
                 public const string Url = Exchange.Url + @"/" + Name;
             }
 
+            public static class GetTSBExchangeTransactions
+            {
+                public const string Name = "GetTSBExchangeTransactions";
+                public const string Url = Exchange.Url + @"/" + Name;
+            }
+
+            public static class GetTSBExchangeTransaction
+            {
+                public const string Name = "GetTSBExchangeTransaction";
+                public const string Url = Exchange.Url + @"/" + Name;
+            }
+
             #endregion
         }
 

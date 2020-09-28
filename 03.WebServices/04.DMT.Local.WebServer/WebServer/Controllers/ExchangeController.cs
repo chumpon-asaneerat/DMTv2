@@ -78,6 +78,42 @@ namespace DMT.Services
             return result;
         }
 
+        [HttpPost]
+        [ActionName(RouteConsts.Exchange.GetTSBExchangeTransactions.Name)]
+        public NDbResult<List<TSBExchangeTransaction>> GetTSBExchangeTransactions(
+            [FromBody] Search.Exchanges.Transactions.Filter value)
+        {
+            NDbResult<List<TSBExchangeTransaction>> result;
+            if (null == value)
+            {
+                result = new NDbResult<List<TSBExchangeTransaction>>();
+                result.ParameterIsNull();
+            }
+            else
+            {
+                result = TSBExchangeTransaction.GetTransactions(value.TSB, value.GroupId);
+            }
+            return result;
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Exchange.GetTSBExchangeTransaction.Name)]
+        public NDbResult<TSBExchangeTransaction> GetTSBExchangeTransaction(
+            [FromBody] Search.Exchanges.Transactions.Filter value)
+        {
+            NDbResult<TSBExchangeTransaction> result;
+            if (null == value)
+            {
+                result = new NDbResult<TSBExchangeTransaction>();
+                result.ParameterIsNull();
+            }
+            else
+            {
+                result = TSBExchangeTransaction.GetTransaction(value.TSB, value.GroupId, value.TransactionType);
+            }
+            return result;
+        }
+
         #endregion
     }
 }

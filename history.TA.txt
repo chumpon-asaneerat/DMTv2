@@ -1,3 +1,5 @@
+Note: Check Ubuntu connect to SQL Server.
+
 --------------------------------------------------------------------------------------------
 Update 2020-09-28 #10 (TA)
 -
@@ -5,8 +7,10 @@ Update 2020-09-28 #10 (TA)
 Update 2020-09-28 #9 (TA)
 -
 
+[commited]
 Update 2020-09-28 #8 (TA)
--
+- Update TA Credit Exchange #50.
+  - Request Exchange process refactor #14.
 
 [commited]
 Update 2020-09-28 #7 (TA)

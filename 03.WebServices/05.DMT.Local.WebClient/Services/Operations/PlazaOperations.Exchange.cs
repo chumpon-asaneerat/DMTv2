@@ -136,6 +136,58 @@ namespace DMT.Services
                 return ret;
             }
 
+            public NRestResult<List<TSBExchangeTransaction>> GetTSBExchangeTransactions(
+                Search.Exchanges.Transactions.Filter value)
+            {
+                NRestResult<List<TSBExchangeTransaction>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<TSBExchangeTransaction>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                if (null != value)
+                {
+                    ret = client.Execute<List<TSBExchangeTransaction>>(
+                        RouteConsts.Exchange.GetTSBExchangeTransactions.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<List<TSBExchangeTransaction>>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
+                return ret;
+            }
+
+            public NRestResult<TSBExchangeTransaction> GetTSBExchangeTransaction(
+                Search.Exchanges.Transactions.Filter value)
+            {
+                NRestResult<TSBExchangeTransaction> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<TSBExchangeTransaction>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                if (null != value)
+                {
+                    ret = client.Execute<TSBExchangeTransaction>(
+                        RouteConsts.Exchange.GetTSBExchangeTransaction.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<TSBExchangeTransaction>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
+                return ret;
+            }
+
             #endregion
 
             #endregion

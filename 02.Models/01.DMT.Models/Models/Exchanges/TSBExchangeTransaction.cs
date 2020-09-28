@@ -41,6 +41,10 @@ namespace DMT.Models
 		public enum TransactionTypes : int
 		{
 			/// <summary>
+			/// None (for filter only).
+			/// </summary>
+			None = -1;
+			/// <summary>
 			/// Request.
 			/// </summary>
 			Request = 1,
@@ -1872,10 +1876,10 @@ namespace DMT.Models
 		/// </summary>
 		/// <param name="tsb">The TSB instance.</param>
 		/// <param name="groupId">The Group Id.</param>
-		/// <param name="state">The state.</param>
+		/// <param name="type">The Transaction Type.</param>
 		/// <returns>Returns List of TSB Exchange Transactions.</returns>
-		public static NDbResult<TSBExchangeTransaction> GetTransaction(TSB tsb, Guid groupId, 
-			TSBExchangeGroup.StateTypes state)
+		public static NDbResult<TSBExchangeTransaction> GetTransaction(TSB tsb, Guid groupId,
+			TSBExchangeTransaction.TransactionTypes type)
 		{
 			var result = new NDbResult<TSBExchangeTransaction>();
 			SQLiteConnection db = Default;
@@ -1904,26 +1908,26 @@ namespace DMT.Models
 					if (groupId != Guid.Empty)
 					{
 						cmd += "   AND GroupId = ? ";
-						if (state == TSBExchangeGroup.StateTypes.None)
+						if (type == TSBExchangeTransaction.TransactionTypes.None)
 						{
 							ret = NQuery.Query<FKs>(cmd, tsb.TSBId, groupId).FirstOrDefault();
 						}
 						else
 						{
 							cmd += "   AND State = ? ";
-							ret = NQuery.Query<FKs>(cmd, tsb.TSBId, groupId, state).FirstOrDefault();
+							ret = NQuery.Query<FKs>(cmd, tsb.TSBId, groupId, type).FirstOrDefault();
 						}
 					}
 					else
 					{
-						if (state == TSBExchangeGroup.StateTypes.None)
+						if (type == TSBExchangeTransaction.TransactionTypes.None)
 						{
 							ret = NQuery.Query<FKs>(cmd, tsb.TSBId).FirstOrDefault();
 						}
 						else
 						{
 							cmd += "   AND State = ? ";
-							ret = NQuery.Query<FKs>(cmd, tsb.TSBId, state).FirstOrDefault();
+							ret = NQuery.Query<FKs>(cmd, tsb.TSBId, type).FirstOrDefault();
 						}
 					}
 

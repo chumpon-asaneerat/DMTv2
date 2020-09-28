@@ -415,8 +415,6 @@ namespace DMT.Models
         {
             public class Filter : NSearch<Filter>
             {
-                private static readonly DateTime MINDATE = DateTime.MinValue;
-
                 public TSB TSB { get; set; }
 
                 public TSBExchangeGroup.StateTypes State { get; set; }
@@ -450,6 +448,26 @@ namespace DMT.Models
                     ret.ReqBegin = reqBegin;
                     ret.ReqEnd = reqEnd;
                     return ret;
+                }
+            }
+
+            public static class Transactions
+            {
+                public class Filter : NSearch<Filter>
+                {
+                    public TSB TSB { get; set; }
+                    public Guid GroupId { get; set; }
+                    public TSBExchangeTransaction.TransactionTypes TransactionType { get; set; }
+
+                    public static Filter Create(TSB tsb, Guid groupId,
+                        TSBExchangeTransaction.TransactionTypes transactionType)
+                    {
+                        var ret = new Filter();
+                        ret.TSB = tsb;
+                        ret.GroupId = groupId;
+                        ret.TransactionType = transactionType;
+                        return ret;
+                    }
                 }
             }
         }
