@@ -21,11 +21,70 @@
   - Implements screen related to EMV/QRCode (in RevenueEntry, EMV/QRCode view).
   - Implements screen User Shift View (รายชื่อพนักงานเช้ากะ) - verify if implemented.
 --------------------------------------------------------------------------------------------
-Update 2020-09-29 #5
+Ported DMTv2 to DMT.TAxTODv1 #20
 - 
 
-Update 2020-09-29 #4
+Ported DMTv2 to DMT.TAxTODv1 #19
 - 
+
+Ported DMTv2 to DMT.TAxTODv1 #18
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #17
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #16
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #15
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #14
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #13
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #12
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #11
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #10
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #9
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #8
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #7
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #6
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #5
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #4
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #3
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #2
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #1
+- 
+
+--------------------------------------------------------------------------------------------
+[commited]
+Update 2020-09-29 #4
+- Prepare history.txt.
 
 [commited]
 Update 2020-09-29 #3
