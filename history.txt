@@ -20,6 +20,16 @@
   - Implements EMV/QRCode load from SCW api and update to local database.
   - Implements screen related to EMV/QRCode (in RevenueEntry, EMV/QRCode view).
   - Implements screen User Shift View (รายชื่อพนักงานเช้ากะ) - verify if implemented.
+  - last files checked in Request Exchange process refactor is 
+    - LoanMoney2Entry.xaml (Controls) check binding to BorrowBHT that need to check property 
+      in TSBCreditBalance, TSBCreditTransaction.
+    - PlazaRequestExchangePage.xaml (Controls) the main page that used LoanMoney2Entry control.
+    - TSBExchangeGroup.cs (Models) in SaveTSBExchangeGroup methods need to save only one received 
+      TSBCreditTransaction by calc all value i.e (Borrow.Count1BHT - Exchange.Count1BHT) and save to
+      transaction to used in TSBCreditSummary view later.
+    - TSBCreditSummarryView.sql (Views) need to add column for BorrowBHT, AdditionBHT (already exists).
+    - TSBCreditTransaction.cs (Models) need to add property BorrowBHT and update BHTTotal (calculation code).
+    - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
 --------------------------------------------------------------------------------------------
 Ported DMTv2 to DMT.TAxTODv1 #20
 - 
@@ -82,6 +92,11 @@ Ported DMTv2 to DMT.TAxTODv1 #1
 - 
 
 --------------------------------------------------------------------------------------------
+[commited]
+Update 2020-09-29 #5
+- Update history.txt #3
+  - Add note for last files checked in Request Exchange process refactor.
+
 [commited]
 Update 2020-09-29 #4
 - Prepare history.txt.
