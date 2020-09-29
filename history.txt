@@ -82,8 +82,9 @@ Ported DMTv2 to DMT.TAxTODv1 #5
 Ported DMTv2 to DMT.TAxTODv1 #4
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #3
-- 
+- Prepare list of DMT.Model todo files for both project for mark ported completed.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #2
