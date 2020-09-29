@@ -85,8 +85,11 @@ Ported DMTv2 to DMT.TAxTODv1 #4
 Ported DMTv2 to DMT.TAxTODv1 #3
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #2
-- 
+- Ported DMT.Core project checked.
+-  DMT.Core project defind conditional compilation symbols: USE_PROGRAM_DATA;
+- Ported DMT.Smartcard project checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #1
