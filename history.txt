@@ -27,8 +27,10 @@ Update 2020-09-29 #5
 Update 2020-09-29 #4
 - 
 
+[commited]
 Update 2020-09-29 #3
-- 
+- Note: from this commit history.txt will update not in date order until ported process completed. 
+  This will ported all code from DMTv2 to DMT.TAxTODv1
 
 [commited]
 Update 2020-09-29 #2
