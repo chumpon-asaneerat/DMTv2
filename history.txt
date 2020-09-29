@@ -88,8 +88,10 @@ Ported DMTv2 to DMT.TAxTODv1 #3
 Ported DMTv2 to DMT.TAxTODv1 #2
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #1
-- 
+- Prepare list of todo files for both solutions for mark ported completed.
+- Reorganize folder for technical documents and database design documents.
 
 --------------------------------------------------------------------------------------------
 [commited]
