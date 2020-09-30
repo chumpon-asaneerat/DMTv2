@@ -30,6 +30,7 @@
     - TSBCreditSummarryView.sql (Views) need to add column for BorrowBHT, AdditionBHT (already exists).
     - TSBCreditTransaction.cs (Models) need to add property BorrowBHT and update BHTTotal (calculation code).
     - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
+  - ใบเสร็จขายคูปอง ที่ TA ยังไม่มีจำนวนเงิน แสดง ตอนท้ายรายการ
 --------------------------------------------------------------------------------------------
 Ported DMTv2 to DMT.TAxTODv1 #30
 - 
@@ -49,8 +50,10 @@ Ported DMTv2 to DMT.TAxTODv1 #26
 Ported DMTv2 to DMT.TAxTODv1 #25
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #24
-- 
+- update history.txt
+  - append note in head of file.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #23
