@@ -70,8 +70,12 @@ Ported DMTv2 to DMT.TAxTODv1 #9
 Ported DMTv2 to DMT.TAxTODv1 #8
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #7
-- 
+- Ported DMT.Models project checked #4.
+  - DMT.Models.LaneActivities all files checked.
+  - DMT.Models.Master all files checked.
+  - DMT.Models.Payments all files checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #6
