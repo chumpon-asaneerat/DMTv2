@@ -76,8 +76,13 @@ Ported DMTv2 to DMT.TAxTODv1 #7
 Ported DMTv2 to DMT.TAxTODv1 #6
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #5
-- 
+- Ported DMT.Models project checked #2.
+  - DMT.ExtensionMethods
+    - NullableType.ExtensionMethods ported.
+    - SCW.ExtensionMethods not ported.
+    - TAxTOD.ExtensionMethods not ported.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #4
