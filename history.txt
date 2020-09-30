@@ -58,8 +58,12 @@ Ported DMTv2 to DMT.TAxTODv1 #23
 Ported DMTv2 to DMT.TAxTODv1 #22
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #21
-- 
+- DMT.Controls ported #4.
+  - Remove all files in Common folder.
+  - Remove all files in Styles folder.
+  - generic.xaml file in Themes folder checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #20
