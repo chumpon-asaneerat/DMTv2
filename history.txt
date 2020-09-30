@@ -55,8 +55,12 @@ Ported DMTv2 to DMT.TAxTODv1 #14
 Ported DMTv2 to DMT.TAxTODv1 #13
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #12
-- 
+- Ported DMT.Models project checked #9.
+  - DMT.Services LocalDbServer.cs checked.
+  - DMT View Scripts all files checked.
+-  DMT.Models project defind conditional compilation symbols: USE_PROGRAM_DATA;
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #11
