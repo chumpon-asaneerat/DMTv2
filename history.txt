@@ -47,8 +47,9 @@ Ported DMTv2 to DMT.TAxTODv1 #27
 Ported DMTv2 to DMT.TAxTODv1 #26
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #25
-- 
+- Add Example UML diagram (Open in VS Code).
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #24
