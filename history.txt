@@ -52,8 +52,18 @@ Ported DMTv2 to DMT.TAxTODv1 #15
 Ported DMTv2 to DMT.TAxTODv1 #14
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #13
-- 
+- Ported Rest Client
+  - NRestClient.cs checked.
+  - NRestResult.cs checked.
+- Ported LocalDatabaseWebService checked.
+- Ported Local Web Service Controllers
+  - MasterController.cs checked.
+  - ShiftController.cs checked.
+  - TSBController.cs checked.
+  - UserController.cs checked.
+- DMT.Local.RestServer project remove Old1 from Controllers folder.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #12
