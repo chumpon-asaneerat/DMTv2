@@ -46,8 +46,12 @@ Ported DMTv2 to DMT.TAxTODv1 #17
 Ported DMTv2 to DMT.TAxTODv1 #16
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #15
-- 
+- Fixed Local Web Service Controllers
+  - CreditController.cs ported but some methods is comment out.
+  - ExchangeController.cs ported but some methods is comment out.
+  - LaneController.cs ported some methods is comment out.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #14
