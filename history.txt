@@ -40,8 +40,10 @@ Ported DMTv2 to DMT.TAxTODv1 #19
 Ported DMTv2 to DMT.TAxTODv1 #18
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #17
-- 
+- DMT.Controls ported #1.
+  - Images all files checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #16
