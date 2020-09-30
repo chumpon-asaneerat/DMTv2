@@ -31,8 +31,39 @@
     - TSBCreditTransaction.cs (Models) need to add property BorrowBHT and update BHTTotal (calculation code).
     - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
 --------------------------------------------------------------------------------------------
-Ported DMTv2 to DMT.TAxTODv1 #20
+Ported DMTv2 to DMT.TAxTODv1 #30
 - 
+
+Ported DMTv2 to DMT.TAxTODv1 #29
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #28
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #27
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #26
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #25
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #24
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #23
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #22
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #21
+- 
+
+[commited]
+Ported DMTv2 to DMT.TAxTODv1 #20
+- Prepare history.txt
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #19
