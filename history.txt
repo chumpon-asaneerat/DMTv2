@@ -34,8 +34,10 @@
 Ported DMTv2 to DMT.TAxTODv1 #20
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #19
-- 
+- DMT.Controls ported #3.
+  - StatusBar controls and related elements checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #18
