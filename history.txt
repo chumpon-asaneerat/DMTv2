@@ -49,8 +49,14 @@ Ported DMTv2 to DMT.TAxTODv1 #16
 Ported DMTv2 to DMT.TAxTODv1 #15
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #14
-- 
+- DMT.Core RouteConsts.cs completed ported all routes.
+- Ported Local Web Service Controllers
+  - CouponController.cs checked.
+  - CreditController.cs ported but not check.
+  - ExchangeController.cs ported but not check.
+  - LaneController.cs ported but not check.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #13
