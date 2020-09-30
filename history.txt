@@ -64,8 +64,18 @@ Ported DMTv2 to DMT.TAxTODv1 #11
 Ported DMTv2 to DMT.TAxTODv1 #10
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #9
-- 
+- Ported DMT.Models project checked #6.
+  - Remove Old1 folder.
+- DMT.Core project.
+  - RouteConsts.cs add new Notify route class.
+- DMT.TA.RestServer project.
+  - Add NotifyController.cs
+  - Remove Controllers Old1 folder.
+- DMT.TOD.RestServer project.
+  - Add NotifyController.cs
+  - Remove Controllers Old1 folder.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #8
