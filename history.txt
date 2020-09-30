@@ -58,8 +58,10 @@ Ported DMTv2 to DMT.TAxTODv1 #13
 Ported DMTv2 to DMT.TAxTODv1 #12
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #11
-- 
+- Ported DMT.Models project checked #8.
+  - DMT.Models.SCW all files checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #10
