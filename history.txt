@@ -52,8 +52,9 @@ Ported DMTv2 to DMT.TAxTODv1 #25
 Ported DMTv2 to DMT.TAxTODv1 #24
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #23
-- 
+- build all project and check database schema - OK. 
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #22
