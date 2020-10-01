@@ -50,8 +50,19 @@ Ported DMTv2 to DMT.TAxTODv1 #61
 Ported DMTv2 to DMT.TAxTODv1 #60
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #49
-- 
+- DMT.Controls ported #10.
+  - TA Controls Collector Credit
+    - View
+      - CollectorCreditSummaryView.xaml checked.
+      - CollectorCreditSummaryView.xaml.cs checked.
+  - TA Controls Collector Exchange
+    - View
+      - AccountRequestExchangeView.xaml checked.
+      - AccountRequestExchangeView.xaml.cs checked.
+      - PlazaRequestExchangeView.xaml checked.
+      - PlazaRequestExchangeView.xaml.cs checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #48
