@@ -59,8 +59,13 @@ Ported DMTv2 to DMT.TAxTODv1 #48
 Ported DMTv2 to DMT.TAxTODv1 #47
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #46
-- 
+- DMT.Controls ported #7.
+  - SignIn Page - SignInPage.xaml checked.
+  - SignIn Page - SignInPage.xaml.cs checked.
+  - User Filter Window - UserFilterWindow.xaml checked.
+  - User Filter Window - UserFilterWindow.xaml.cs checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #45
@@ -149,8 +154,8 @@ Ported DMTv2 to DMT.TAxTODv1 #29
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #28
 - DMT.Controls ported #6.
-  - SignIn Windows - SignInWindows.xaml checked.
-  - SignIn Windows - SignInWindows.xaml.cs checked.
+  - SignIn Window - SignInWindow.xaml checked.
+  - SignIn Window - SignInWindow.xaml.cs checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #27
