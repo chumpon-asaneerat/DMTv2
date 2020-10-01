@@ -53,8 +53,18 @@ Ported DMTv2 to DMT.TAxTODv1 #60
 Ported DMTv2 to DMT.TAxTODv1 #49
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #48
-- 
+- DMT.Controls ported #9.
+  - TA Controls Collector Coupon
+    - Entry
+      - CollectorCouponBorrowEntry.xaml checked.
+      - CollectorCouponBorrowEntry.xaml.cs checked.
+    - View
+      - CouponReceiveView.xaml checked.
+      - CouponReceiveView.xaml.cs checked.
+      - CouponReturnView.xaml checked.
+      - CouponReturnView.xaml.cs checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #47
