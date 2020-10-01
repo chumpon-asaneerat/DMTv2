@@ -38,8 +38,22 @@ Ported DMTv2 to DMT.TAxTODv1 #60
 Ported DMTv2 to DMT.TAxTODv1 #59
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #58
-- 
+- DMT.Controls ported #19.
+  - TOD Windows MessageBox
+    - MessageBoxWindow.xaml checked.
+    - MessageBoxWindow.xaml.cs checked.
+    - MessageBoxYesNoWindow.xaml checked.
+    - MessageBoxYesNoWindow.xaml.cs checked.
+  - TOD Windows Reports
+    - RevenueSlipSearchWindow.xaml checked.
+    - RevenueSlipSearchWindow.xaml.cs checked.
+    - RevenueSummarySearchWindow.xaml checked.
+    - RevenueSummarySearchWindow.xaml.cs checked.
+  - TOD Windows UserShifts
+    - BOSWindow.xaml checked.
+    - BOSWindow.xaml.cs checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #57
