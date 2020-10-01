@@ -59,7 +59,6 @@ namespace DMT.Services
             #endregion
 
             #region Public Methods
-            //
 
             #region Exchange Transaction
 

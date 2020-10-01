@@ -47,8 +47,10 @@ Ported DMTv2 to DMT.TAxTODv1 #37
 Ported DMTv2 to DMT.TAxTODv1 #36
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #35
-- 
+- RestAPI - Refactor #7.
+  - Prepare refactor list #7.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #34
