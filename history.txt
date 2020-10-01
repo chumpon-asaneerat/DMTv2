@@ -41,8 +41,28 @@ Ported DMTv2 to DMT.TAxTODv1 #54
 Ported DMTv2 to DMT.TAxTODv1 #53
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #52
-- 
+- DMT.Controls ported #13.
+  - TA Pages Plaza 
+    - PlazaAllCouponPage.xaml checked.
+    - PlazaAllCouponPage.xaml.cs checked.
+    - PlazaCouponReceivedReturnPage.xaml checked.
+    - PlazaCouponReceivedReturnPage.xaml.cs checked.
+    - PlazaInternalCreditExchangePage.xaml checked.
+    - PlazaInternalCreditExchangePage.xaml.cs checked.
+    - PlazaReceivedReturnPage.xaml checked.
+    - PlazaReceivedReturnPage.xaml.cs checked.
+  - TA Pages Reports
+    - CollectorCouponReceived.rdlc checked
+    - CollectorCouponReceivedReportPage.xaml checked.
+    - CollectorCouponReceivedReportPage.xaml.cs checked.
+    - CollectorFundSummaryRep.rdlc checked
+    - CollectorFundSummaryReportPage.xaml checked.
+    - CollectorFundSummaryReportPage.xaml.cs checked.
+    - CouponSalesReceiptRep.rdlc checked
+    - CouponSalesReceiptReportPage.xaml checked.
+    - CouponSalesReceiptReportPage.xaml.cs checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #51
