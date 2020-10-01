@@ -227,7 +227,7 @@ namespace DMT.Services
         #endregion
     }
 
-    #region RevenueEntryManager2
+    #region RevenueEntryManager2 - unused
 
     /// <summary>
     /// The RevenueEntryManager2 class.
