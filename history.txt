@@ -38,8 +38,31 @@ Ported DMTv2 to DMT.TAxTODv1 #55
 Ported DMTv2 to DMT.TAxTODv1 #54
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #53
-- 
+- DMT.Controls ported #14.
+  - TA Windows Collector - Credit 
+    - CollectorCreditBorrowWindow.xaml checked.
+    - CollectorCreditBorrowWindow.xaml.cs checked.
+    - CollectorCreditReturnWindow.xaml checked.
+    - CollectorCreditReturnWindow.xaml.cs checked.
+    - MessageWindow.xaml checked.
+    - MessageWindow.xaml.cs checked.
+    - ReceiveMoneyBagWindow.xaml checked.
+    - ReceiveMoneyBagWindow.xaml.cs checked.
+  - TA Windows Coupon 
+    - CouponEditWindow.xaml checked.
+    - CouponEditWindow.xaml.cs checked.
+    - CouponReportWindow.xaml checked.
+    - CouponReportWindow.xaml.cs checked.
+    - CouponReturnWindow.xaml checked.
+    - CouponReturnWindow.xaml.cs checked.
+  - TA Windows Exchange 
+    - ExchangeWindowMode.cs checked.
+    - PlazaCreditRequestExchangeWindow.xaml checked.
+    - PlazaCreditRequestExchangeWindow.xaml.cs checked.
+    - PlazaCreditUpdateExchangeWindow.xaml checked.
+    - PlazaCreditUpdateExchangeWindow.xaml.cs checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #52
