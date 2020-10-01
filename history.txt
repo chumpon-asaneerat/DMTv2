@@ -56,8 +56,16 @@ Ported DMTv2 to DMT.TAxTODv1 #49
 Ported DMTv2 to DMT.TAxTODv1 #48
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #47
-- 
+- DMT.Controls ported #8.
+  - Copy all controls files for check later.
+  - TA Main Menu Page - MainMenu.xaml checked.
+  - TA Main Menu Page - MainMenu.xaml.cs checked.
+  - TA Report Menu Page - ReportMenu.xaml checked.
+  - TA Report Menu Page - ReportMenu.xaml.cs checked.
+  - TA Pages Reports CollectorFundSummaryReportPageOld page - CollectorFundSummaryReportPageOld.xaml removed.
+  - TA Pages Reports CollectorFundSummaryReportPageOld page - CollectorFundSummaryReportPageOld.xaml.cs removed.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #46
