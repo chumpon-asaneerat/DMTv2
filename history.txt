@@ -50,8 +50,10 @@ Ported DMTv2 to DMT.TAxTODv1 #46
 Ported DMTv2 to DMT.TAxTODv1 #45
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #44
-- 
+- Add Technical Notes:
+  - Add DMT.Core.todo.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #43
