@@ -35,8 +35,10 @@
 Ported DMTv2 to DMT.TAxTODv1 #60
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #59
-- 
+- DMT.Controls ported #20.
+  - Check recompile project.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #58
