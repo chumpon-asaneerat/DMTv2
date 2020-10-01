@@ -56,8 +56,9 @@ Ported DMTv2 to DMT.TAxTODv1 #44
 Ported DMTv2 to DMT.TAxTODv1 #43
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #42
-- 
+- Update Wpf RabbitMQ Sample project #2.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #41
