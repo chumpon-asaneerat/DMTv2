@@ -41,8 +41,25 @@ Ported DMTv2 to DMT.TAxTODv1 #59
 Ported DMTv2 to DMT.TAxTODv1 #58
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #57
--
+- DMT.Controls ported #18.
+  - TOD Pages Revenue
+    - Collector
+      - RevenueDateSelectionPage.xaml checked.
+      - RevenueDateSelectionPage.xaml.cs checked.
+      - RevenueEntryPage.xaml checked.
+      - RevenueEntryPage.xaml.cs checked.
+    - Supervisor
+      - SupervisorRevenueDateSelectionPage.xaml checked.
+      - SupervisorRevenueDateSelectionPage.xaml.cs checked.
+      - SupervisorRevenueEntryPage.xaml checked.
+      - SupervisorRevenueEntryPage.xaml.cs checked.
+  - TOD Pages TollAdmin
+    - ChangeShiftPage.xaml checked.
+    - ChangeShiftPage.xaml.cs checked.
+    - EMVQRCodePage.xaml checked.
+    - EMVQRCodePage.xaml.cs checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #56
