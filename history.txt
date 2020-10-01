@@ -44,8 +44,27 @@ Ported DMTv2 to DMT.TAxTODv1 #58
 Ported DMTv2 to DMT.TAxTODv1 #57
 -
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #56
-- 
+- DMT.Controls ported #17.
+  - TOD Pages LogInList
+    - LoginListPage.xaml checked.
+    - LoginListPage.xaml.cs checked.
+  - TOD Pages Menu
+    - MainMenu.xaml checked.
+    - MainMenu.xaml.cs checked.
+    - ReportMenu.xaml checked.
+    - ReportMenu.xaml.cs checked.
+  - TOD Pages Reports
+    - DailyRevenueSummaryPreview.xaml checked.
+    - DailyRevenueSummaryPreview.xaml.cs checked.
+    - RevenueSlip.rdlc checked.
+    - RevenueSlipNull.rdlc checked.
+    - RevenueSlipPreview.xaml checked.
+    - RevenueSlipPreview.xaml.cs checked.
+    - RevenueSlipPreviewNull.xaml checked.
+    - RevenueSlipPreviewNull.xaml.cs checked.
+    - RevenueSlipSum.rdlc checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #55
