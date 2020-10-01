@@ -32,8 +32,41 @@
     - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
   - ใบเสร็จขายคูปอง ที่ TA ยังไม่มีจำนวนเงิน แสดง ตอนท้ายรายการ
 --------------------------------------------------------------------------------------------
-Ported DMTv2 to DMT.TAxTODv1 #40
+Ported DMTv2 to DMT.TAxTODv1 #50
 - 
+
+Ported DMTv2 to DMT.TAxTODv1 #49
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #48
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #47
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #46
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #45
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #44
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #43
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #42
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #41
+- 
+
+[commited]
+Ported DMTv2 to DMT.TAxTODv1 #40
+- Add Technical Notes:
+  - Add Compile.note.txt
+  - Add RabbitMQ.app.config.txt
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #39
