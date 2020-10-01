@@ -32,23 +32,53 @@
     - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
   - ใบเสร็จขายคูปอง ที่ TA ยังไม่มีจำนวนเงิน แสดง ตอนท้ายรายการ
 --------------------------------------------------------------------------------------------
-Ported DMTv2 to DMT.TAxTODv1 #65
+Ported DMTv2 to DMT.TAxTODv1 #55
 - 
 
-Ported DMTv2 to DMT.TAxTODv1 #64
+Ported DMTv2 to DMT.TAxTODv1 #54
 - 
 
-Ported DMTv2 to DMT.TAxTODv1 #63
+Ported DMTv2 to DMT.TAxTODv1 #53
 - 
 
-Ported DMTv2 to DMT.TAxTODv1 #62
+Ported DMTv2 to DMT.TAxTODv1 #52
 - 
 
-Ported DMTv2 to DMT.TAxTODv1 #61
+Ported DMTv2 to DMT.TAxTODv1 #51
 - 
 
-Ported DMTv2 to DMT.TAxTODv1 #60
-- 
+[commited]
+Ported DMTv2 to DMT.TAxTODv1 #50
+- DMT.Controls ported #11.
+  - TA Controls History
+    - View
+      - PlazaFundHistoryView.xaml checked.
+      - PlazaFundHistoryView.xaml.cs checked.
+  - TA Controls Plaza
+    - Entry
+      - FundDetailEntry.xaml checked.
+      - FundDetailEntry.xaml.cs checked.
+      - LoanMoney2Entry.xaml checked.
+      - LoanMoney2Entry.xaml.cs checked.
+      - LoanMoneyEntry.xaml checked.
+      - LoanMoneyEntry.xaml.cs checked.
+      - PlazaCouponEntry.xaml checked.
+      - PlazaCouponEntry.xaml.cs checked.
+      - PlazaCreditEntry.xaml checked.
+      - PlazaCreditEntry.xaml.cs checked.
+      - PlazaCreditEntryTotal.xaml checked.
+      - PlazaCreditEntryTotal.xaml.cs checked.
+    - View
+      - FundPlaza2View.xaml checked.
+      - FundPlaza2View.xaml.cs checked.
+      - FundPlaza3View.xaml checked.
+      - FundPlaza3View.xaml.cs checked.
+      - PlazaAllCouponView.xaml checked.
+      - PlazaAllCouponView.xaml.cs checked.
+      - PlazaCouponView.xaml checked.
+      - PlazaCouponView.xaml.cs checked.
+      - PlazaFundView.xaml checked.
+      - PlazaFundView.xaml.cs checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #49
@@ -57,7 +87,7 @@ Ported DMTv2 to DMT.TAxTODv1 #49
     - View
       - CollectorCreditSummaryView.xaml checked.
       - CollectorCreditSummaryView.xaml.cs checked.
-  - TA Controls Collector Exchange
+  - TA Controls Exchange
     - View
       - AccountRequestExchangeView.xaml checked.
       - AccountRequestExchangeView.xaml.cs checked.
