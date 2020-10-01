@@ -44,8 +44,10 @@ Ported DMTv2 to DMT.TAxTODv1 #28
 Ported DMTv2 to DMT.TAxTODv1 #27
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #26
-- 
+- DMT.Controls ported #5.
+  - SignIn Common - SmartcardManager.cs checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #25
