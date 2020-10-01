@@ -38,8 +38,11 @@ Ported DMTv2 to DMT.TAxTODv1 #30
 Ported DMTv2 to DMT.TAxTODv1 #29
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #28
-- 
+- DMT.Controls ported #6.
+  - SignIn Windows - SignInWindows.xaml checked.
+  - SignIn Windows - SignInWindows.xaml.cs checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #27
