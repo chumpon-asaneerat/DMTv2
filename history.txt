@@ -32,8 +32,59 @@
     - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
   - ใบเสร็จขายคูปอง ที่ TA ยังไม่มีจำนวนเงิน แสดง ตอนท้ายรายการ
 --------------------------------------------------------------------------------------------
-Ported DMTv2 to DMT.TAxTODv1 #55
+Ported DMTv2 to DMT.TAxTODv1 #60
 - 
+
+Ported DMTv2 to DMT.TAxTODv1 #59
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #58
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #57
+-
+
+Ported DMTv2 to DMT.TAxTODv1 #56
+- 
+
+[commited]
+Ported DMTv2 to DMT.TAxTODv1 #55
+- DMT.Controls ported #16.
+  - TOD Controls Revenue
+    - Entry
+      - CouponDMTEntry.xaml checked.
+      - CouponDMTEntry.xaml.cs checked.
+      - CouponRevenueEntry.xaml checked.
+      - CouponRevenueEntry.xaml.cs checked.
+      - CouponUsageEntry.xaml checked.
+      - CouponUsageEntry.xaml.cs checked.
+      - EMVEntry.xaml checked.
+      - EMVEntry.xaml.cs checked.
+      - OtherEntry.xaml checked.
+      - OtherEntry.xaml.cs checked.
+      - QRCodeEntry.xaml checked.
+      - QRCodeEntry.xaml.cs checked.
+      - RevenueEntry.xaml checked.
+      - RevenueEntry.xaml.cs checked.
+      - TrafficEntry.xaml checked.
+      - TrafficEntry.xaml.cs checked.
+    - View
+      - EMVQRCodeView.xaml checked.
+      - EMVQRCodeView.xaml.cs checked.
+      - Lane2View.xaml checked.
+      - Lane2View.xaml.cs checked.
+      - LaneView.xaml checked.
+      - LaneView.xaml.cs checked.
+      - SelectLaneView.xaml checked.
+      - SelectLaneView.xaml.cs checked.
+  - TOD Controls Shift
+    - View
+      - LoginList2View.xaml checked.
+      - LoginList2View.xaml.cs checked.
+      - ShiftView.xaml checked.
+      - ShiftView.xaml.cs checked.
+      - SlipView.xaml checked.
+      - SlipView.xaml.cs checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #54
