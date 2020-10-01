@@ -35,8 +35,21 @@
 Ported DMTv2 to DMT.TAxTODv1 #55
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #54
-- 
+- DMT.Controls ported #15.
+  - TA Windows MessageBox
+    - MessageBoxYesNoRed2Window.xaml checked.
+    - MessageBoxYesNoRed2Window.xaml.cs checked.
+    - MessageBoxYesNoRed3Window.xaml checked.
+    - MessageBoxYesNoRed3Window.xaml.cs checked.
+  - TA Windows Plaza
+    - PlazaInternalCreditExchangeWindow.xaml checked.
+    - PlazaInternalCreditExchangeWindow.xaml.cs checked.
+    - PlazaReceivedCreditWindow.xaml checked.
+    - PlazaReceivedCreditWindow.xaml.cs checked.
+    - PlazaStockSummaryWindow.xaml checked.
+    - PlazaStockSummaryWindow.xaml.cs checked.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #53
