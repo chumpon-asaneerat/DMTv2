@@ -41,8 +41,9 @@ Ported DMTv2 to DMT.TAxTODv1 #64
 Ported DMTv2 to DMT.TAxTODv1 #63
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #62
-- 
+- Update Wpf.AvalonEdit.Sample project #2.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #61
