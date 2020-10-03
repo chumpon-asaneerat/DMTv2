@@ -41,8 +41,13 @@ Ported DMTv2 to DMT.TAxTODv1 #69
 Ported DMTv2 to DMT.TAxTODv1 #68
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #67
-- 
+- Update RouteConts.cs #2.
+- DMT.TA.RestServer
+  - Update NotifyController.cs.
+- DMT.TOD.RestServer
+  - Update NotifyController.cs.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #66
