@@ -35,8 +35,9 @@
 Ported DMTv2 to DMT.TAxTODv1 #65
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #64
-- 
+- Update DMT.Controls.todo (for refactor) #1.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #63
