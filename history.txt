@@ -32,8 +32,24 @@
     - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
   - ใบเสร็จขายคูปอง ที่ TA ยังไม่มีจำนวนเงิน แสดง ตอนท้ายรายการ
 --------------------------------------------------------------------------------------------
+Ported DMTv2 to DMT.TAxTODv1 #80
+-
+
+Ported DMTv2 to DMT.TAxTODv1 #79
+-
+
+Ported DMTv2 to DMT.TAxTODv1 #78
+-
+
+Ported DMTv2 to DMT.TAxTODv1 #77
+-
+
+Ported DMTv2 to DMT.TAxTODv1 #76
+-
+
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #75
-- 
+- Update RouteConts.cs #10.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #74
