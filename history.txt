@@ -41,8 +41,10 @@ Ported DMTv2 to DMT.TAxTODv1 #79
 Ported DMTv2 to DMT.TAxTODv1 #78
 -
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #77
--
+- Update RouteConts.cs #12.
+- Update Wpf.Owin.Rest.Server.Sample project #2.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #76
