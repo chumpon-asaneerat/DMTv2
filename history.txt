@@ -38,8 +38,9 @@ Ported DMTv2 to DMT.TAxTODv1 #90
 Ported DMTv2 to DMT.TAxTODv1 #89
 -
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #88
--
+- Update Wpf.Sqlite.Sample project #4.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #87
