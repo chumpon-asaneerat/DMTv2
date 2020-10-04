@@ -44,8 +44,11 @@ Ported DMTv2 to DMT.TAxTODv1 #78
 Ported DMTv2 to DMT.TAxTODv1 #77
 -
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #76
--
+- Update RouteConts.cs #11.
+- Add Wpf.Owin.Rest.Server.Sample project.
+- Remove 04.LocalWebServerFunctionTest project from DMTv2.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #75
