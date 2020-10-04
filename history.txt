@@ -38,8 +38,10 @@ Ported DMTv2 to DMT.TAxTODv1 #85
 Ported DMTv2 to DMT.TAxTODv1 #84
 -
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #83
--
+- Update RouteConts.cs #18 (pending).
+- Add Wpf.TextBlock.Format.Sample project.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #82
