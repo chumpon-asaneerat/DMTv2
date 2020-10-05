@@ -44,8 +44,10 @@ Ported DMTv2 to DMT.TAxTODv1 #98
 Ported DMTv2 to DMT.TAxTODv1 #97
 -
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #96
--
+- Update RouteConts.cs #23
+  - All Rest Server Enable Cors and Authorize middleware.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #95
