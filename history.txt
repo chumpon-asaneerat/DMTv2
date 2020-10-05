@@ -35,8 +35,11 @@
 Ported DMTv2 to DMT.TAxTODv1 #90
 -
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #89
--
+- Update All Owin Self Host Server projects
+  - add supports Swagger document.
+- Update reference assemblies (new version).
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #88
