@@ -38,8 +38,12 @@ Ported DMTv2 to DMT.TAxTODv1 #100
 Ported DMTv2 to DMT.TAxTODv1 #99
 -
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #98
--
+- Update RouteConts.cs #25
+  - All Rest Server 
+    - controller class add Authorize attribute.
+    - some controller's method(s) add AllowAnonymous attribute.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #97
