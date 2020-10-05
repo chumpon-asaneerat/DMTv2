@@ -41,8 +41,10 @@ Ported DMTv2 to DMT.TAxTODv1 #99
 Ported DMTv2 to DMT.TAxTODv1 #98
 -
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #97
--
+- Update RouteConts.cs #24
+  - All Rest Server used Authentication middleware.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #96
