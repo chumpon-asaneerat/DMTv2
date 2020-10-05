@@ -35,8 +35,10 @@
 Ported DMTv2 to DMT.TAxTODv1 #100
 -
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #99
--
+- Update RouteConts.cs #26
+  - Update Wpf.Owin.Rest.Server.Sample project (add supports Authentication).
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #98
