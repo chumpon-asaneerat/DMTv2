@@ -53,8 +53,11 @@ Ported DMTv2 to DMT.TAxTODv1 #105
 Ported DMTv2 to DMT.TAxTODv1 #104
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #103
-- 
+- Update RouteConts.cs #29
+  - All Rest Server update StartUp class 
+    - Add example code for Custom Map Route's Controller and Action.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #102
