@@ -47,8 +47,14 @@ Ported DMTv2 to DMT.TAxTODv1 #117
 Ported DMTv2 to DMT.TAxTODv1 #116
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #115
-- 
+- Update RouteConts.cs #41
+  - Remove unused assemblies from all RestServer projects.
+  - Recompile all RestServer projects.
+    - Update Local Server code use new StartUp class.
+    - Update TA Server code use new StartUp class.
+    - Update TOD Server code use new StartUp class.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #114
