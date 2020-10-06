@@ -50,8 +50,11 @@ Ported DMTv2 to DMT.TAxTODv1 #106
 Ported DMTv2 to DMT.TAxTODv1 #105
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #104
-- 
+- Update RouteConts.cs #30
+  - Update Wpf.Owin.Rest.Server.Sample project
+    - Rename methods in Calculator2Controller for check method name is not same as ActionName attribute.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #103
