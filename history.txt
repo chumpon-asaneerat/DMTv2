@@ -56,8 +56,11 @@ Ported DMTv2 to DMT.TAxTODv1 #104
 Ported DMTv2 to DMT.TAxTODv1 #103
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #102
-- 
+- Update RouteConts.cs #28
+  - Update Wpf.Owin.Rest.Server.Sample project
+    - Add Test code for Custom Map Route's Controller and Action.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #101
