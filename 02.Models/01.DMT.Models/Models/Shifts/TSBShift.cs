@@ -698,7 +698,10 @@ namespace DMT.Models
                         Save(last);
                     }
                     // Begin new shift.
-                    value.Begin = DateTime.Now;
+                    if (value.Begin == DateTime.MinValue)
+                    {
+                        value.Begin = DateTime.Now;
+                    }
                     var saveRet = Save(value);
 
                     result.errors = saveRet.errors;

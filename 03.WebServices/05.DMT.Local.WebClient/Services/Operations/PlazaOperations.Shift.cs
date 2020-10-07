@@ -142,7 +142,7 @@ namespace DMT.Services
                 return ret;
             }
 
-            public NRestResult ChangeShift(TSBShift value)
+            public NRestResult ChangeShift(TSBShift value, List<Plaza> plazas)
             {
                 NRestResult ret;
                 NRestClient client = NRestClient.CreateLocalClient();
@@ -155,7 +155,22 @@ namespace DMT.Services
 
                 if (null != value)
                 {
+                    // set date
+                    value.Begin = DateTime.Now;
                     ret = client.Execute(RouteConsts.Shift.ChangeShift.Url, value);
+                    if (ret.Ok && null != plazas && plazas.Count > 0)
+                    {
+                        // send to server
+                        SCWOperations server = SCWServiceOperations.Instance.Plaza;
+                        var inst = new SCWChiefOfDuty();
+                        inst.networkId = 31; // TODO: network id required.
+                        inst.plazaId = Convert.ToInt32(plazas[0].PlazaId);
+                        inst.staffId = value.UserId;
+                        inst.staffTypeId = 1;
+                        inst.beginDateTime = value.Begin;
+                        // send.
+                        server.TOD.SaveChiefOfDuty(inst);
+                    }
                 }
                 else
                 {

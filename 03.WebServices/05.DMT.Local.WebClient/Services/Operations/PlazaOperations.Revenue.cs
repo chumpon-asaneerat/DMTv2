@@ -697,7 +697,6 @@ namespace DMT.Services
             {
                 // Gets Job List from WS.
                 int nwId = 31; // TODO: network id required.
-
                 int plazaId = Convert.ToInt32(plaza.PlazaId);
                 // keep plaza Id.
                 if (!this.PlazaIds.Contains(plazaId)) this.PlazaIds.Add(plazaId);

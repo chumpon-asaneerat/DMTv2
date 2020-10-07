@@ -41,8 +41,12 @@ Ported DMTv2 to DMT.TAxTODv1 #124
 Ported DMTv2 to DMT.TAxTODv1 #123
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #122
-- 
+- DMTv2 update DC service #3.
+  - Get EMV/QRCode List implements.
+  - SaveChiefOfDuty implements.
+  - TOD App now call SaveChiefOfDuty when change shift.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #121

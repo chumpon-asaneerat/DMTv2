@@ -34,6 +34,7 @@ namespace DMT.TOD.Pages.TollAdmin
         #endregion
 
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
+
         private User _user = null;
 
         private List<LaneAttendance> _laneActivities = null;
@@ -57,7 +58,9 @@ namespace DMT.TOD.Pages.TollAdmin
             {
                 TSBShift inst = ops.Shifts.Create(shift, _user).Value();
                 if (null != inst) shift.AssignTo(inst);
-                ops.Shifts.ChangeShift(inst);
+                var tsb = ops.TSB.GetCurrent().Value();
+                var plazas = (null != tsb) ? ops.TSB.GetTSBPlazas(tsb).Value() : null;
+                ops.Shifts.ChangeShift(inst, plazas);
             }
             // Main Menu Page
             var page = new Menu.MainMenu();
