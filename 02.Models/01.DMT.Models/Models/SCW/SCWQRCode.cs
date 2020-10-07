@@ -16,6 +16,8 @@ namespace DMT.Models
         public decimal? amount { get; set; }
         public string approvCode { get; set; }
         public string refNo { get; set; }
+        public string staffId { get; set; }
+        public int laneId { get; set; }
     }
 
     public class SCWQRCodeResult

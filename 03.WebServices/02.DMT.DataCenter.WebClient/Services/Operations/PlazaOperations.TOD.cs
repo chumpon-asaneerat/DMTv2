@@ -187,6 +187,34 @@ namespace DMT.Services
 
             #endregion
 
+            #region Save Chief Of Duty
+
+            public SCWChiefOfDutyResult SaveChiefOfDuty(SCWChiefOfDuty value)
+            {
+                SCWChiefOfDutyResult ret;
+                NRestClient client = NRestClient.CreateDCClient();
+                if (null == client)
+                {
+                    ret = new SCWChiefOfDutyResult();
+                    ret.status = new SCWStatus();
+                    ret.status.code = "NULL_CONN";
+                    ret.status.message = "Client connection is null.";
+                    return ret;
+                }
+
+                var url = "dmt-scw/api/tod/saveCheifDuty";
+                // ประเภทพนักงาน 1=chief, 2=sup so always set to 1.
+                value.staffTypeId = 1;
+
+                string usr = SCWServiceOperations.Instance.UserName;
+                string pwd = SCWServiceOperations.Instance.Password;
+
+                ret = client.Execute2<SCWChiefOfDutyResult>(url, value, username: usr, password: pwd);
+                return ret;
+            }
+
+            #endregion
+
             #endregion
         }
 
