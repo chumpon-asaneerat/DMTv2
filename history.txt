@@ -41,12 +41,14 @@ Ported DMTv2 to DMT.TAxTODv1 #129
 Ported DMTv2 to DMT.TAxTODv1 #128
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #127
-- 
+- Update DMTv2 Local Web Server project #3
+  - Update LocalDatabaseWebService.cs add save message to file.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #126
-- UpdateDMTv2 Local Web Server project #2
+- Update DMTv2 Local Web Server project #2
   - Add RabbitMQClient.cs
   - Update ConfigManager.cs in DMT.Core
   - Update LocalDatabaseWebService.cs.

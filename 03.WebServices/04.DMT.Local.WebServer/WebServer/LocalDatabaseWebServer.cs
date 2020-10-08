@@ -16,7 +16,9 @@ using WebSocketSharp.Net;
 using WebSocketSharp.Server;
 using System.Reflection;
 using NLib;
+using NLib.IO;
 using System.Net;
+using System.IO;
 
 #endregion
 
@@ -92,6 +94,53 @@ namespace DMT.Services
 
         #endregion
 
+        /// <summary>
+        /// Gets local message json folder path name.
+        /// </summary>
+        static string LocalMessageFolder
+        {
+            get
+            {
+                string localFilder = Folders.Combine(
+                    Folders.Assemblies.CurrentExecutingAssembly, "messages");
+                if (!Folders.Exists(localFilder))
+                {
+                    Folders.Create(localFilder);
+                }
+                return localFilder;
+            }
+        }
+        /// <summary>
+        /// Gets local TA message json folder path name.
+        /// </summary>
+        static string LocalTAMessageFolder
+        {
+            get
+            {
+                string localFilder = Folders.Combine(LocalMessageFolder, "TA");
+                if (!Folders.Exists(localFilder))
+                {
+                    Folders.Create(localFilder);
+                }
+                return localFilder;
+            }
+        }
+        /// <summary>
+        /// Gets local TA message json folder path name.
+        /// </summary>
+        static string LocalTODMessageFolder
+        {
+            get
+            {
+                string localFilder = Folders.Combine(LocalMessageFolder, "TOD");
+                if (!Folders.Exists(localFilder))
+                {
+                    Folders.Create(localFilder);
+                }
+                return localFilder;
+            }
+        }
+
         #region Private Methods
 
         private void InitOwinFirewall()
@@ -116,16 +165,46 @@ namespace DMT.Services
 
         private void TaaMQclient_OnMessageArrived(object sender, QueueMessageEventArgs e)
         {
+            MethodBase med = MethodBase.GetCurrentMethod();
             // Create file.
-
-            // Save Staff List
+            string fileName = "msg-" + DateTime.Now.ToString("yyyyMMdd-HHmmss.ffffff") + ".txt";
+            string fullFileName = Path.Combine(LocalTAMessageFolder, fileName);
+            // Save message.
+            try
+            {
+                using (var stream = File.CreateText(fullFileName))
+                {
+                    stream.Write(e.Message);
+                    stream.Flush();
+                    stream.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+            }
         }
 
         private void TodMQclient_OnMessageArrived(object sender, QueueMessageEventArgs e)
         {
+            MethodBase med = MethodBase.GetCurrentMethod();
             // Create file.
-
-            // Save Staff List
+            string fileName = "msg-" + DateTime.Now.ToString("yyyyMMdd-HHmmss.ffffff") + ".txt";
+            string fullFileName = Path.Combine(LocalTODMessageFolder, fileName);
+            // Save message.
+            try
+            {
+                using (var stream = File.CreateText(fullFileName))
+                {
+                    stream.Write(e.Message);
+                    stream.Flush();
+                    stream.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+            }
         }
 
         #endregion
