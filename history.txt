@@ -35,8 +35,10 @@
 Ported DMTv2 to DMT.TAxTODv1 #125
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #124
-- 
+- DMTv2 Local Web Server project add RabbitMQ related assemblies.
+- DMT.TAxTODv1 Add DMT RabbitMQ Client project.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #123
