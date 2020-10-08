@@ -38,8 +38,10 @@ Ported DMTv2 to DMT.TAxTODv1 #130
 Ported DMTv2 to DMT.TAxTODv1 #129
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #128
-- 
+- Update DMTv2 Local Web Server project #4
+  - fixed bug in RabbitMQClient.cs create factory.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #127

@@ -115,8 +115,6 @@ namespace DMT.Services
             this.UserName = "guest";
             this.Password = "dmtDmt@2020";
             this.VirtualHost = "/"; // default
-
-            CreateFactory();
         }
         /// <summary>
         /// Destructor.
@@ -141,7 +139,7 @@ namespace DMT.Services
                 // VirtualHost Note:
                 // "/" -> default
                 // "cbe" -> required on production!!!!
-                VirtualHost = (!string.IsNullOrWhiteSpace(this.VirtualHost)) ? this.VirtualHost : "/",
+                VirtualHost = this.VirtualHost,
                 RequestedConnectionTimeout = TimeSpan.FromSeconds(1)
             };
         }
@@ -149,11 +147,6 @@ namespace DMT.Services
         private void CloseFactory()
         {
             this.Disconnect(); // free channel and connection.
-            if (null != this._factory)
-            {
-                // No close or dispose method.
-            }
-            this._factory = null;
         }
 
         private void MessageReceiverOnRabbitMqRecvMessage(string szMessage)
@@ -174,6 +167,7 @@ namespace DMT.Services
             MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
+                if (null == this._factory) CreateFactory(); // create factory.
                 this._connection = (null != this._factory) ? this._factory.CreateConnection() : null;
                 this._channel = (null != this._connection) ? this._connection.CreateModel() : null;
             }
@@ -239,6 +233,12 @@ namespace DMT.Services
             this._connection = null;
 
             #endregion
+
+            if (null != this._factory)
+            {
+                // No close or dispose method.
+            }
+            this._factory = null;
         }
         /// <summary>
         /// Listen.

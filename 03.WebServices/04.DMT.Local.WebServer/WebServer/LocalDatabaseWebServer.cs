@@ -229,6 +229,7 @@ namespace DMT.Services
                     ConfigManager.Instance.Plaza.TARabbitMQ.RabbitMQ : null;
                 if (null != MQConfig && MQConfig.Enabled)
                 {
+                    med.Info("Rabbit Host Info: " + MQConfig.GetString());
                     try
                     {
                         taaMQclient = new RabbitMQClient();
@@ -237,7 +238,16 @@ namespace DMT.Services
                         taaMQclient.UserName = MQConfig.UserName;
                         taaMQclient.Password = MQConfig.Password;
                         taaMQclient.OnMessageArrived += TaaMQclient_OnMessageArrived;
-                        taaMQclient.Connect();
+                        if (taaMQclient.Connect() && taaMQclient.Listen(MQConfig.QueueName))
+                        {
+                            med.Info("Success connected to : " + MQConfig.GetString());
+                            med.Info("Listen to Queue: " + MQConfig.QueueName);
+                        }
+                        else
+                        {
+                            med.Err("failed connected to : " + MQConfig.HostName);
+                        }
+                        
                     }
                     catch (Exception ex)
                     {
@@ -251,6 +261,7 @@ namespace DMT.Services
                     ConfigManager.Instance.Plaza.TODRabbitMQ.RabbitMQ : null;
                 if (null != MQConfig && MQConfig.Enabled)
                 {
+                    med.Info("Rabbit Host Info: " + MQConfig.GetString());
                     try
                     {
                         todMQclient = new RabbitMQClient();
@@ -259,7 +270,15 @@ namespace DMT.Services
                         todMQclient.UserName = MQConfig.UserName;
                         todMQclient.Password = MQConfig.Password;
                         todMQclient.OnMessageArrived += TodMQclient_OnMessageArrived;
-                        todMQclient.Connect();
+                        if (todMQclient.Connect() && todMQclient.Listen(MQConfig.QueueName))
+                        {
+                            med.Info("Success connected to : " + MQConfig.GetString());
+                            med.Info("Listen to Queue: " + MQConfig.QueueName);
+                        }
+                        else
+                        {
+                            med.Err("failed connected to : " + MQConfig.HostName);
+                        }
                     }
                     catch (Exception ex)
                     {
