@@ -117,7 +117,8 @@ namespace DMT.TA.Windows.Coupon
                     var item = list[0] as TSBCouponTransaction;
                     if (null == item) return;
                     if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
-                    item.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
+                    //item.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
+                    manager.Borrow(item);
                     txtFilter35.Text = string.Empty;
                     RefreshBHT35Coupons();
                 }
@@ -135,7 +136,8 @@ namespace DMT.TA.Windows.Coupon
                     var item = list[0] as TSBCouponTransaction;
                     if (null == item) return;
                     if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
-                    item.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
+                    //item.TransactionType = TSBCouponTransaction.TransactionTypes.Lane;
+                    manager.Borrow(item);
                     txtFilter80.Text = string.Empty;
                     RefreshBHT80Coupons();
                 }

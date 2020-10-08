@@ -38,8 +38,9 @@ Ported DMTv2 to DMT.TAxTODv1 #125
 Ported DMTv2 to DMT.TAxTODv1 #124
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #123
-- 
+- DMTv2 update coupon textbox enter not property update coupon list.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #122

@@ -154,7 +154,8 @@ namespace DMT.TA.Pages.Coupon
                     var item = list[0] as TSBCouponTransaction;
                     if (null == item) return;
                     if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
-                    item.TransactionType = TSBCouponTransaction.TransactionTypes.SoldByTSB;
+                    //item.TransactionType = TSBCouponTransaction.TransactionTypes.SoldByTSB;
+                    manager.SoldByTSB(item);
                     txtFilter35.Text = string.Empty;
                     RefreshBHT35Coupons();
                 }
@@ -172,7 +173,8 @@ namespace DMT.TA.Pages.Coupon
                     var item = list[0] as TSBCouponTransaction;
                     if (null == item) return;
                     if (item.TransactionType != TSBCouponTransaction.TransactionTypes.Stock) return;
-                    item.TransactionType = TSBCouponTransaction.TransactionTypes.SoldByTSB;
+                    //item.TransactionType = TSBCouponTransaction.TransactionTypes.SoldByTSB;
+                    manager.SoldByTSB(item);
                     txtFilter80.Text = string.Empty;
                     RefreshBHT80Coupons();
                 }
