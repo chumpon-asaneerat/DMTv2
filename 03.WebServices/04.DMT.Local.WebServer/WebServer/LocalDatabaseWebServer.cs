@@ -102,7 +102,7 @@ namespace DMT.Services
             get
             {
                 string localFilder = Folders.Combine(
-                    Folders.Assemblies.CurrentExecutingAssembly, "messages");
+                    Folders.Assemblies.CurrentExecutingAssembly, "rabbit.mq.msgs");
                 if (!Folders.Exists(localFilder))
                 {
                     Folders.Create(localFilder);
@@ -163,18 +163,16 @@ namespace DMT.Services
 
         }
 
-        private void TaaMQclient_OnMessageArrived(object sender, QueueMessageEventArgs e)
+        private void WriteFile(string fullFileName, string message)
         {
+            if (string.IsNullOrEmpty(message)) return;
             MethodBase med = MethodBase.GetCurrentMethod();
-            // Create file.
-            string fileName = "msg-" + DateTime.Now.ToString("yyyyMMdd-HHmmss.ffffff") + ".txt";
-            string fullFileName = Path.Combine(LocalTAMessageFolder, fileName);
             // Save message.
             try
             {
                 using (var stream = File.CreateText(fullFileName))
                 {
-                    stream.Write(e.Message);
+                    stream.Write(message);
                     stream.Flush();
                     stream.Close();
                 }
@@ -185,26 +183,34 @@ namespace DMT.Services
             }
         }
 
-        private void TodMQclient_OnMessageArrived(object sender, QueueMessageEventArgs e)
+        private void WriteTAFile(string message)
         {
-            MethodBase med = MethodBase.GetCurrentMethod();
             // Create file.
-            string fileName = "msg-" + DateTime.Now.ToString("yyyyMMdd-HHmmss.ffffff") + ".txt";
+            string fileName = "msg." + DateTime.Now.ToString("yyyy.MM.dd-HH.mm.ss.ffffff") + ".txt";
+            string fullFileName = Path.Combine(LocalTAMessageFolder, fileName);
+            // Save message.
+            WriteFile(fullFileName, message);
+        }
+
+        private void WriteTODFile(string message)
+        {
+            // Create file.
+            string fileName = "msg." + DateTime.Now.ToString("yyyy.MM.dd-HH.mm.ss.ffffff") + ".txt";
             string fullFileName = Path.Combine(LocalTODMessageFolder, fileName);
             // Save message.
-            try
-            {
-                using (var stream = File.CreateText(fullFileName))
-                {
-                    stream.Write(e.Message);
-                    stream.Flush();
-                    stream.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                med.Err(ex);
-            }
+            WriteFile(fullFileName, message);
+        }
+
+        private void TaaMQclient_OnMessageArrived(object sender, QueueMessageEventArgs e)
+        {
+            // Save message.
+            WriteTAFile(e.Message);
+        }
+
+        private void TodMQclient_OnMessageArrived(object sender, QueueMessageEventArgs e)
+        {
+            // Save message.
+            WriteTODFile(e.Message);
         }
 
         #endregion
