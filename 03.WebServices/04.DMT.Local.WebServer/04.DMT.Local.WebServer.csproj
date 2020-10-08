@@ -128,6 +128,7 @@
     <Compile Include="WebServer\Controllers\TSBController.cs" />
     <Compile Include="WebServer\Controllers\UserController.cs" />
     <Compile Include="WebServer\LocalDatabaseWebServer.cs" />
+    <Compile Include="WebServer\RabbitMQ\RabbitMQClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\00.NLib\NLib\NLib.csproj">

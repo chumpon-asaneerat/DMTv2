@@ -87,6 +87,9 @@ namespace DMT.Services
         private IDisposable server = null;
         private WebSocketSharp.Server.WebSocketServer wsserver = null;
 
+        private RabbitMQClient taaMQclient = null;
+        private RabbitMQClient todMQclient = null;
+
         #endregion
 
         #region Private Methods
@@ -111,6 +114,20 @@ namespace DMT.Services
 
         }
 
+        private void TaaMQclient_OnMessageArrived(object sender, QueueMessageEventArgs e)
+        {
+            // Create file.
+
+            // Save Staff List
+        }
+
+        private void TodMQclient_OnMessageArrived(object sender, QueueMessageEventArgs e)
+        {
+            // Create file.
+
+            // Save Staff List
+        }
+
         #endregion
 
         #region Public Methods
@@ -126,6 +143,52 @@ namespace DMT.Services
                 InitOwinFirewall();
                 server = WebApp.Start<StartUp>(url: baseAddress);
             }
+
+            if (null == taaMQclient)
+            {
+                var MQConfig = (null != ConfigManager.Instance.Plaza.TARabbitMQ) ? 
+                    ConfigManager.Instance.Plaza.TARabbitMQ.RabbitMQ : null;
+                if (null != MQConfig && MQConfig.Enabled)
+                {
+                    try
+                    {
+                        taaMQclient = new RabbitMQClient();
+                        taaMQclient.HostName = MQConfig.HostName;
+                        taaMQclient.VirtualHost = MQConfig.VirtualHost;
+                        taaMQclient.UserName = MQConfig.UserName;
+                        taaMQclient.Password = MQConfig.Password;
+                        taaMQclient.OnMessageArrived += TaaMQclient_OnMessageArrived;
+                        taaMQclient.Connect();
+                    }
+                    catch (Exception ex)
+                    {
+                        med.Err(ex);
+                    }
+                }
+            }
+            if (null == todMQclient)
+            {
+                var MQConfig = (null != ConfigManager.Instance.Plaza.TODRabbitMQ) ?
+                    ConfigManager.Instance.Plaza.TODRabbitMQ.RabbitMQ : null;
+                if (null != MQConfig && MQConfig.Enabled)
+                {
+                    try
+                    {
+                        todMQclient = new RabbitMQClient();
+                        todMQclient.HostName = MQConfig.HostName;
+                        todMQclient.VirtualHost = MQConfig.VirtualHost;
+                        todMQclient.UserName = MQConfig.UserName;
+                        todMQclient.Password = MQConfig.Password;
+                        todMQclient.OnMessageArrived += TodMQclient_OnMessageArrived;
+                        todMQclient.Connect();
+                    }
+                    catch (Exception ex)
+                    {
+                        med.Err(ex);
+                    }
+                }
+            }
+
             if (null == wsserver)
             {
                 InitWebSocketFirewall();
@@ -156,6 +219,20 @@ namespace DMT.Services
             }
             wsserver = null;
             ReleaseWebSocketFirewall();
+
+            if (null != taaMQclient)
+            {
+                taaMQclient.OnMessageArrived -= TaaMQclient_OnMessageArrived;
+                taaMQclient.Disconnect();
+            }
+            taaMQclient = null;
+
+            if (null != todMQclient)
+            {
+                todMQclient.OnMessageArrived -= TodMQclient_OnMessageArrived;
+                todMQclient.Disconnect();
+            }
+            todMQclient = null;
 
             if (null != server)
             {

@@ -44,8 +44,15 @@ Ported DMTv2 to DMT.TAxTODv1 #128
 Ported DMTv2 to DMT.TAxTODv1 #127
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #126
-- 
+- UpdateDMTv2 Local Web Server project #2
+  - Add RabbitMQClient.cs
+  - Update ConfigManager.cs in DMT.Core
+  - Update LocalDatabaseWebService.cs.
+- Update DMT.TAxTODv1 DMT RabbitMQ Client project #2
+  - Add RabbitMQClient.cs
+  - Update ConfigManager.cs in DMT.Core
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #125
