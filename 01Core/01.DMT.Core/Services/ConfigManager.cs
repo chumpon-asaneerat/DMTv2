@@ -119,8 +119,8 @@ namespace DMT.Services
         /// <returns></returns>
         public string GetString()
         {
-            string code = string.Format("Host:{0}, VHost:{1}, QueueName: {2}",
-                this.HostName, this.VirtualHost, this.QueueName);
+            string code = string.Format("Host:{0}, Port: {1}, VHost:{2}, QueueName: {3}",
+                this.HostName, this.PortNumber, this.VirtualHost, this.QueueName);
             return code;
         }
 
@@ -133,6 +133,14 @@ namespace DMT.Services
         /// </summary>
         public string HostName { get; set; }
         /// <summary>
+        /// Gets or sets Port Number.
+        /// </summary>
+        public int PortNumber { get; set; }
+        /// <summary>
+        /// Gets or sets Virtual Host Name.
+        /// </summary>
+        public string VirtualHost { get; set; }
+        /// <summary>
         /// Gets or sets User Name.
         /// </summary>
         public string UserName { get; set; }
@@ -140,10 +148,6 @@ namespace DMT.Services
         /// Gets or sets Password.
         /// </summary>
         public string Password { get; set; }
-        /// <summary>
-        /// Gets or sets Virtual Host Name.
-        /// </summary>
-        public string VirtualHost { get; set; }
         /// <summary>
         /// Gets or sets Queue Name.
         /// </summary>
@@ -372,7 +376,8 @@ namespace DMT.Services
         {
             this.RabbitMQ = new RabbitMQServiceConfig()
             {
-                HostName = "192.168.244.252:15672",
+                HostName = "192.168.244.252",
+                PortNumber = 15672,
                 VirtualHost = "cbe",
                 QueueName = "qp.parameters.th03x009.taa01",
                 UserName = "taa",
@@ -437,7 +442,8 @@ namespace DMT.Services
         {
             this.RabbitMQ = new RabbitMQServiceConfig()
             {
-                HostName = "192.168.244.252:15672",
+                HostName = "192.168.244.252",
+                PortNumber = 15672,
                 VirtualHost = "cbe",
                 QueueName = "qp.parameters.th03x009.tod01",
                 UserName = "tod",

@@ -110,18 +110,13 @@ namespace DMT.Services
         /// </summary>
         public RabbitMQClient() : base()
         {
-            // Factory (Moc)
-            this.HostName = "evthai.info";
-            this.UserName = "guest";
-            this.Password = "dmtDmt@2020";
-            this.VirtualHost = "/"; // default
         }
         /// <summary>
         /// Destructor.
         /// </summary>
         ~RabbitMQClient()
         {
-            CloseFactory();
+            this.Disconnect();
         }
 
         #endregion
@@ -136,17 +131,13 @@ namespace DMT.Services
                 HostName = this.HostName,
                 UserName = this.UserName,
                 Password = this.Password,
+                Port = this.PortNumber,
                 // VirtualHost Note:
                 // "/" -> default
                 // "cbe" -> required on production!!!!
                 VirtualHost = this.VirtualHost,
                 RequestedConnectionTimeout = TimeSpan.FromSeconds(1)
             };
-        }
-
-        private void CloseFactory()
-        {
-            this.Disconnect(); // free channel and connection.
         }
 
         private void MessageReceiverOnRabbitMqRecvMessage(string szMessage)
@@ -271,6 +262,10 @@ namespace DMT.Services
         /// Gets or sets Host Name or IP Address.
         /// </summary>
         public string HostName { get; set; }
+        /// <summary>
+        /// Gets or sets Port Number.
+        /// </summary>
+        public int PortNumber { get; set; }
         /// <summary>
         /// Gets or sets Virtual Host Name (default is '/').
         /// </summary>

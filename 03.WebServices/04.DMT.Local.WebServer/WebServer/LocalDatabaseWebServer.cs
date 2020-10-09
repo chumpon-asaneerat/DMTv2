@@ -235,11 +235,13 @@ namespace DMT.Services
                     ConfigManager.Instance.Plaza.TARabbitMQ.RabbitMQ : null;
                 if (null != MQConfig && MQConfig.Enabled)
                 {
+                    //WriteTAFile("init");
                     med.Info("Rabbit Host Info: " + MQConfig.GetString());
                     try
                     {
                         taaMQclient = new RabbitMQClient();
                         taaMQclient.HostName = MQConfig.HostName;
+                        taaMQclient.PortNumber = MQConfig.PortNumber;
                         taaMQclient.VirtualHost = MQConfig.VirtualHost;
                         taaMQclient.UserName = MQConfig.UserName;
                         taaMQclient.Password = MQConfig.Password;
@@ -267,11 +269,13 @@ namespace DMT.Services
                     ConfigManager.Instance.Plaza.TODRabbitMQ.RabbitMQ : null;
                 if (null != MQConfig && MQConfig.Enabled)
                 {
+                    //WriteTODFile("init");
                     med.Info("Rabbit Host Info: " + MQConfig.GetString());
                     try
                     {
                         todMQclient = new RabbitMQClient();
                         todMQclient.HostName = MQConfig.HostName;
+                        taaMQclient.PortNumber = MQConfig.PortNumber;
                         todMQclient.VirtualHost = MQConfig.VirtualHost;
                         todMQclient.UserName = MQConfig.UserName;
                         todMQclient.Password = MQConfig.Password;
