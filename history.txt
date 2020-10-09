@@ -56,8 +56,10 @@ Ported DMTv2 to DMT.TAxTODv1 #134
 Ported DMTv2 to DMT.TAxTODv1 #133
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #132
-- 
+- Update DMTv2 Local Web Server project #7
+  - Add RabbitMQ Messages.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #131

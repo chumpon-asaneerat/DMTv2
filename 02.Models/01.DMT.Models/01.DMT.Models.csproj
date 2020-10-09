@@ -111,6 +111,7 @@
     <Compile Include="Models\Coupons\Common\Enums.cs" />
     <Compile Include="Models\Coupons\TSB\TSBCouponSummary.cs" />
     <Compile Include="Models\Coupons\Users\UserCouponTransaction.cs" />
+    <Compile Include="Models\RabbitMQ\RabbitMQ.cs" />
     <Compile Include="Models\SCW\Common.cs" />
     <Compile Include="Models\SCW\SCWChiefOfDuty.cs" />
     <Compile Include="Models\SCW\SCWCoupon.cs" />
