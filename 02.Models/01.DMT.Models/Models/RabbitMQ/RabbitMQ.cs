@@ -53,7 +53,7 @@ namespace DMT.Models
         /// </summary>
         public string staffFirstName { get; set; }
         /// <summary>
-        /// Gets or sets Staff Last Name.
+        /// Gets or sets Staff Middle Name.
         /// </summary>
         public string staffMiddleName { get; set; }
         /// <summary>
@@ -72,6 +72,26 @@ namespace DMT.Models
         /// Gets or sets Card S/N.
         /// </summary>
         public string cardSerialNo { get; set; }
+
+        public static User ToLocal(RabbitMQStaff value)
+        {
+            if (null == value) return null;
+            User ret = new User();
+
+            ret.UserId = value.staffId;
+            ret.PrefixEN = value.title;
+            ret.FirstNameEN = value.staffFirstName;
+            ret.MiddleNameEN = value.staffMiddleName;
+            ret.LastNameEN = value.staffFamilyName;
+            ret.PrefixTH = value.title;
+            ret.FirstNameTH = value.staffFirstName;
+            ret.MiddleNameEN = value.staffMiddleName;
+            ret.LastNameTH = value.staffFamilyName;
+            ret.Password = value.password;
+            ret.CardId = value.cardSerialNo;
+
+            return ret;
+        }
     }
 
     /// <summary>

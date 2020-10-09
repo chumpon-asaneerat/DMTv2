@@ -53,8 +53,10 @@ Ported DMTv2 to DMT.TAxTODv1 #135
 Ported DMTv2 to DMT.TAxTODv1 #134
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #133
-- 
+- Update DMTv2 Local Web Server project #8
+  - Add RabbitMQStaff implements static method ToLocal.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #132
