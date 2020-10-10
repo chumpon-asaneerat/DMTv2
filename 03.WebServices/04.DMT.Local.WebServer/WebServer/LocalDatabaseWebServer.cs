@@ -19,6 +19,7 @@ using NLib;
 using NLib.IO;
 using System.Net;
 using System.IO;
+using System.Threading.Tasks;
 
 #endregion
 
@@ -180,6 +181,41 @@ namespace DMT.Services
             catch (Exception ex)
             {
                 med.Err(ex);
+            }
+
+            // Update to database
+            var msg = message.FromJson<Models.RabbitMQMessage>();
+            if (null != msg)
+            {
+                if (msg.parameterName == "STAFF")
+                {
+                    var mq = message.FromJson<Models.RabbitMQStaffMessage>();
+                    if (null != mq)
+                    {
+                        var staffs = Models.RabbitMQStaff.ToLocals(mq.staff);
+                        if (null != staffs && staffs.Count > 0)
+                        {
+                            Task.Run(() => 
+                            {
+                                staffs.ForEach(staff =>
+                                {
+                                });
+                            });
+                        }
+                    }
+                    else
+                    {
+                        med.Info("Cannot convert to STAFF message.");
+                    }
+                }
+                else
+                {
+                    med.Info("message is STAFF message.");
+                }
+            }
+            else
+            {
+                med.Info("message is null or cannot convert to json object.");
             }
         }
 

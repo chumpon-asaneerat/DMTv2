@@ -16,6 +16,7 @@ using SQLiteNetExtensions.Extensions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Bson;
 using System.Reflection;
+using System.Web.Http.ModelBinding;
 
 #endregion
 
@@ -1042,6 +1043,58 @@ namespace DMT.Models
 				}
 				return result;
 			}
+		}
+
+
+		public static NDbResult SaveUsers(List<User> users)
+		{
+			var result = new NDbResult();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			if (null == users || users.Count <= 0)
+			{
+				result.ParameterIsNull();
+				return result;
+			}
+			lock (sync)
+			{
+				try
+				{
+					db.BeginTransaction();
+					users.ForEach(user => 
+					{
+						User match = User.GetUser(user.UserId).Value();
+						if (null == match)
+						{
+							Save(user); // insert
+						}
+						else
+						{
+							match.UserId = user.UserId;
+							match.PrefixEN = user.PrefixEN;
+							match.PrefixTH = user.PrefixTH;
+							match.FirstNameEN = user.FirstNameEN;
+							match.FirstNameTH = user.FirstNameTH;
+							match.MiddleNameEN = user.MiddleNameEN;
+							match.MiddleNameTH = user.MiddleNameTH;
+							match.LastNameEN = user.LastNameEN;
+							match.LastNameTH = user.LastNameTH;
+							match.Password = user.Password;
+						}
+					});
+					db.Commit();
+				}
+				catch (Exception ex)
+				{
+					db.Rollback();
+				}
+				return result;
+			}
+
 		}
 
 		#endregion
