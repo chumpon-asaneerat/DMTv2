@@ -47,8 +47,9 @@ Ported DMTv2 to DMT.TAxTODv1 #137
 Ported DMTv2 to DMT.TAxTODv1 #136
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #135
-- 
+- Add Wpf.IO.Sample project.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #134
