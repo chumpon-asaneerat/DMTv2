@@ -65,8 +65,16 @@ namespace DMT.Pages
         {
             if (null != SmartcardManager.Instance.User)
             {
-                _user = SmartcardManager.Instance.User;
-                CheckUser(); ;
+                if (tabs.SelectedIndex == 0)
+                {
+                    _user = SmartcardManager.Instance.User;
+                    CheckUser();
+                }
+                else if (tabs.SelectedIndex == 1)
+                {
+                    txtNewPassword.SelectAll();
+                    txtNewPassword.Focus();
+                }
             }
         }
 
@@ -76,6 +84,7 @@ namespace DMT.Pages
 
         private void cmdOK_Click(object sender, RoutedEventArgs e)
         {
+            if (tabs.SelectedIndex != 0) return;
             txtMsg.Text = string.Empty;
 
             string userId = txtUserId.Text.Trim();
@@ -100,12 +109,32 @@ namespace DMT.Pages
             CheckUser();
         }
 
+        private void cmdChangePwd_Click(object sender, RoutedEventArgs e)
+        {
+            tabs.SelectedIndex = 1;
+        }
+
+        private void cmdOK2_Click(object sender, RoutedEventArgs e)
+        {
+            // Call change password.
+            if (ChangePassword())
+            {
+                tabs.SelectedIndex = 0;
+            }
+        }
+
+        private void cmdCancel2_Click(object sender, RoutedEventArgs e)
+        {
+            tabs.SelectedIndex = 0;
+        }
+
         #endregion
 
         #region TextBox Keydown
 
         private void txtUserId_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
+            if (tabs.SelectedIndex != 0) return;
             if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
             {
                 txtPassword.SelectAll();
@@ -116,9 +145,53 @@ namespace DMT.Pages
 
         private void txtPassword_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
+            if (tabs.SelectedIndex != 0) return;
             if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
             {
                 cmdOK.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtUserId2_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (tabs.SelectedIndex != 1) return;
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                txtPassword2.SelectAll();
+                txtPassword2.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtPassword2_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (tabs.SelectedIndex != 1) return;
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                txtNewPassword.SelectAll();
+                txtNewPassword.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtNewPassword_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (tabs.SelectedIndex != 1) return;
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                txtConfirmPassword.SelectAll();
+                txtConfirmPassword.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void txtConfirmPassword_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (tabs.SelectedIndex != 1) return;
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                cmdOK2.Focus();
                 e.Handled = true;
             }
         }
@@ -141,6 +214,13 @@ namespace DMT.Pages
             Controls.TAApp.User.Current = _user;
             // Init Main Menu
             PageContentManager.Instance.Current = new TA.Pages.Menu.MainMenu();
+        }
+
+        private bool ChangePassword()
+        {
+            bool ret = true;
+
+            return ret;
         }
 
         #endregion
