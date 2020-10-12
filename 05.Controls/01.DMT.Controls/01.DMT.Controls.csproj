@@ -64,6 +64,7 @@
     <Compile Include="Common\MenuGroupCaption.xaml.cs">
       <DependentUpon>MenuGroupCaption.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Header\AppNotifyService.cs" />
     <Compile Include="Header\CurrentTA.cs" />
     <Compile Include="Header\Elements\HeaderSupervisor.xaml.cs">
       <DependentUpon>HeaderSupervisor.xaml</DependentUpon>

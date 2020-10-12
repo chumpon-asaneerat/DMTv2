@@ -11,7 +11,6 @@ using DMT.Services;
 
 #endregion
 
-
 namespace DMT.Controls
 {
     public static class TAApp

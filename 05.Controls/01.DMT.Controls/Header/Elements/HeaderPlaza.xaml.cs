@@ -39,12 +39,12 @@ namespace DMT.Controls.Header
             txtPlazaId.Visibility = Visibility.Collapsed;
 
             UpdateUI();
-            LocalServiceOperations.Instance.OnActiveTSBChanged += Instance_OnActiveTSBChanged;
+            AppNofifyService.Instance.OnActiveTSBChanged += Instance_OnActiveTSBChanged;
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
-            LocalServiceOperations.Instance.OnActiveTSBChanged -= Instance_OnActiveTSBChanged;
+            AppNofifyService.Instance.OnActiveTSBChanged -= Instance_OnActiveTSBChanged;
         }
 
         #endregion

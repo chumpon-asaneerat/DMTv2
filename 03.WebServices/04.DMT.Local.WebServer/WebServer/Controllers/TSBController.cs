@@ -48,8 +48,41 @@ namespace DMT.Services
             else
             {
                 result = TSB.SetActive(value.TSBId);
-                // Raise event.
-                LocalDbServer.Instance.ActiveTSBChanged();
+                if (!result.errors.hasError)
+                {
+                    var plaza = ConfigManager.Instance.Plaza;
+                    if (null != plaza)
+                    {
+                        var taApp = plaza.TAApp;
+                        var todApp = plaza.TODApp;
+                        if (null != taApp && null != taApp.Http)
+                        {
+                            var http = taApp.Http;
+                            NRestClient.WebProtocol protocol = (http.Protocol == "http") ?
+                                NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                            string hostName = http.HostName;
+                            int portNo = http.PortNumber;
+                            var client = new NRestClient(protocol, hostName, portNo);
+                            if (null != client)
+                            {
+                                client.Execute2<NRestResult>(RouteConsts.Notify.ActiveChanged.Url, new { });
+                            }
+                        }
+                        if (null != todApp && null != todApp.Http)
+                        {
+                            var http = todApp.Http;
+                            NRestClient.WebProtocol protocol = (http.Protocol == "http") ?
+                                NRestClient.WebProtocol.http : NRestClient.WebProtocol.https;
+                            string hostName = http.HostName;
+                            int portNo = http.PortNumber;
+                            var client = new NRestClient(protocol, hostName, portNo);
+                            if (null != client)
+                            {
+                                client.Execute2<NRestResult>(RouteConsts.Notify.ActiveChanged.Url, new { });
+                            }
+                        }
+                    }
+                }
             }
             return result;
         }

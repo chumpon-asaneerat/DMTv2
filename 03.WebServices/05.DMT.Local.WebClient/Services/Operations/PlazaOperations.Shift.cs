@@ -148,7 +148,7 @@ namespace DMT.Services
                 NRestClient client = NRestClient.CreateLocalClient();
                 if (null == client)
                 {
-                    ret = new NRestResult<List<RevenueEntry>>();
+                    ret = new NRestResult();
                     ret.RestInvalidConfig();
                     return ret;
                 }

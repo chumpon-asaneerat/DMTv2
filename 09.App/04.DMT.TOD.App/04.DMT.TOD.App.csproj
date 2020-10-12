@@ -134,6 +134,10 @@
       <Project>{0040f19e-4885-4267-9404-61c8dc150f5f}</Project>
       <Name>05.DMT.Local.WebClient</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\03.WebServices\07.DMT.TOD.RestServer\07.DMT.TOD.RestServer.csproj">
+      <Project>{313dcc84-b2ff-46c4-b7a4-ae5a0bcfd1b2}</Project>
+      <Name>07.DMT.TOD.RestServer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\05.Controls\01.DMT.Controls\01.DMT.Controls.csproj">
       <Project>{aeed7b1c-4e56-4d44-bbd1-a936be653d4d}</Project>
       <Name>01.DMT.Controls</Name>

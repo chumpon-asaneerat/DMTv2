@@ -66,7 +66,6 @@ namespace DMT.Services
             // Init windows service monitor.
             InitWindowsServices();
 
-            Connect();
             Plaza = new LocalOperations();
         }
         /// <summary>
@@ -74,7 +73,6 @@ namespace DMT.Services
         /// </summary>
         ~LocalServiceOperations()
         {
-            Disconnect();
             // Shutdown windows service monitor.
             if (null != ServiceMonitor)
             {
@@ -110,111 +108,7 @@ namespace DMT.Services
                     FileName = System.IO.Path.Combine(path, AppConsts.WindowsService.Local.ExecutableFileName)
                 });
         }
-        //TODO: Change to REST Server (on TOXxTA app).
-        private void Connect()
-        {
-            MethodBase med = MethodBase.GetCurrentMethod();
-            /*
-            if (null == _ws)
-            {
-                try
-                {
-                    _ws = new WebSocket(wsAddress + "/nofify");
-                    _ws.OnMessage += Ws_OnMessage;
-                    _ws.OnError += Ws_OnError;
-                    _ws.OnClose += Ws_OnClose;
-                    _ws.Connect();
-                }
-                catch (Exception ex)
-                {
-                    med.Err(ex);
-                    _ws = null;
-                }
-            }
-            */
-        }
-        //TODO: Change to REST Server (on TOXxTA app).
-        private void Disconnect()
-        {
-            MethodBase med = MethodBase.GetCurrentMethod();
-            /*
-            try
-            {
-                if (null != _ws)
-                {
-                    _ws.OnClose -= Ws_OnClose;
-                    _ws.OnError -= Ws_OnError;
-                    _ws.OnMessage -= Ws_OnMessage;
-                    _ws.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                med.Err(ex);
-            }
-            _ws = null;
-            */
-        }
-        //TODO: Change to REST Server (on TOXxTA app).
-        private void Reconnect(ushort code, string error)
-        {
-            MethodBase med = MethodBase.GetCurrentMethod();
-            /*
-            try
-            {
-                if (code != (ushort)CloseStatusCode.Normal)
-                {
-                    if (null != _ws)
-                    {
-                        _ws.Connect();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                med.Err(ex);
-            }
-            */
-        }
 
-        #endregion
-
-        #region WS Handlers
-        /*
-        //TODO: Change to REST Server (on TOXxTA app).
-        private void Ws_OnMessage(object sender, MessageEventArgs e)
-        {
-            // Cross thread wrapper.
-            string msg = e.Data;
-            if (string.IsNullOrWhiteSpace(msg)) return;
-            string[] msgs = msg.Split(':');
-            string evtName = (null != msgs && msgs.Length > 0) ? msgs[0] : string.Empty;
-            if (string.IsNullOrWhiteSpace(evtName)) return;
-
-            if (evtName == NofifyConsts.ChangeShift)
-            {
-                OnChangeShift.Call(this, EventArgs.Empty);
-            }
-            else if (evtName == NofifyConsts.ActiveTSBChanged)
-            {
-                OnActiveTSBChanged.Call(this, EventArgs.Empty);
-            }
-        }
-        //TODO: Change to REST Server (on TOXxTA app).
-        private void Ws_OnClose(object sender, CloseEventArgs e)
-        {
-            Disconnect();
-            if (!HasWebSocket)
-                return;
-            //TODO: Need Reconnect logic.
-            Reconnect(e.Code, e.Reason);
-        }
-        //TODO: Change to REST Server (on TOXxTA app).
-        private void Ws_OnError(object sender, ErrorEventArgs e)
-        {
-            Disconnect();
-        }
-        */
         #endregion
 
         #region Public Methods
@@ -289,14 +183,6 @@ namespace DMT.Services
         /// Gets instance of Plaza Operations.
         /// </summary>
         public LocalOperations Plaza { get; private set; }
-
-        #endregion
-
-        #region Public Events
-
-        //TODO: Change to REST Server (on TOXxTA app).
-        public event EventHandler OnActiveTSBChanged;
-        public event EventHandler OnChangeShift;
 
         #endregion
     }

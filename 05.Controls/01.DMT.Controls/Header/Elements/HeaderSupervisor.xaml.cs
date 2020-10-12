@@ -37,14 +37,14 @@ namespace DMT.Controls.Header
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateUI();
-            LocalServiceOperations.Instance.OnChangeShift += Instance_OnChangeShift;
-            LocalServiceOperations.Instance.OnActiveTSBChanged += Instance_OnActiveTSBChanged;
+            AppNofifyService.Instance.OnChangeShift += Instance_OnChangeShift;
+            AppNofifyService.Instance.OnActiveTSBChanged += Instance_OnActiveTSBChanged;
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
-            LocalServiceOperations.Instance.OnActiveTSBChanged -= Instance_OnActiveTSBChanged;
-            LocalServiceOperations.Instance.OnChangeShift -= Instance_OnChangeShift;
+            AppNofifyService.Instance.OnActiveTSBChanged -= Instance_OnActiveTSBChanged;
+            AppNofifyService.Instance.OnChangeShift -= Instance_OnChangeShift;
         }
 
         #endregion

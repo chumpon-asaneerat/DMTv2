@@ -11,12 +11,9 @@
   - Internal Exchange
     - TSBCreditTransaction Required GroupId for group all by each operation.
   - Update Config app and simulator.
-  - Need to check model one by one (in new DMT.TA.TODv1 solution)
   - RevenueEntry Table/Mode
     - Add field IsHistorical (สำหรับป้อนรายได้ย้อนหลัง)
     - Checks if not  IsHistorical and Lanes is string.Empty need to call SCW api to get lanes (JobList)
-  - Implements TAAppNotifyServer, TODAppNotifyServer for replace WebSocket.
-  - Implements Rabbit for Get UserList.
   - Implements EMV/QRCode load from SCW api and update to local database.
   - Implements screen related to EMV/QRCode (in RevenueEntry, EMV/QRCode view).
   - Implements screen User Shift View (รายชื่อพนักงานเช้ากะ) - verify if implemented.
@@ -38,8 +35,10 @@ Ported DMTv2 to DMT.TAxTODv1 #150
 Ported DMTv2 to DMT.TAxTODv1 #149
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #148
-- 
+- Update DMTv2 implements TA,TOD App notify server/client #3 (completed).
+- Update owin related assemblies (new version).
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #147

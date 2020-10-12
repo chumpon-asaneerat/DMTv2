@@ -692,5 +692,28 @@ namespace DMT
         }
 
         #endregion
+
+        #region Notify
+        
+        public static class Notify
+        {
+            public const string Url = RouteConsts.Url + @"/Notify";
+
+            public static class ActiveChanged
+            {
+                public const string Name = "ActiveChanged";
+                public const string Url = Notify.Url + @"/" + Name;
+            }
+
+            public static class ShiftChanged
+            {
+                public const string Name = "ShiftChanged";
+                public const string Url = Notify.Url + @"/" + Name;
+            }
+        }
+
+
+
+        #endregion
     }
 }

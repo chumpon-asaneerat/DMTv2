@@ -1912,23 +1912,6 @@ namespace DMT.Services
 
 		#endregion
 
-		#region Public Methods (Event raiser)
-
-		public void ChangeShift()
-		{
-			// TODO: Need to call TAApp
-			//OnChangeShift.Call(this, EventArgs.Empty);
-
-		}
-
-		public void ActiveTSBChanged()
-		{
-			// TODO: Need to call TAApp, TODApp
-			//OnActiveTSBChanged.Call(this, EventArgs.Empty);
-		}
-
-		#endregion
-
 		#region Public Properties
 
 		/// <summary>
@@ -1947,9 +1930,6 @@ namespace DMT.Services
 		public event System.EventHandler OnConnected;
 		public event System.EventHandler OnDisconnected;
 		public event System.EventHandler OnConectError;
-
-		//public event System.EventHandler OnChangeShift;
-		//public event System.EventHandler OnActiveTSBChanged;
 
 		#endregion
 	}

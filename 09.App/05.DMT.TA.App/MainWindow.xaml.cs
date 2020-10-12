@@ -29,10 +29,19 @@ namespace DMT
 
         #endregion
 
+        private TAWebServer appServ = null;
+
         #region Load/Unload
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            // Start App Notify Server.
+            appServ = new TAWebServer();
+            appServ.Start();
+
+            TANofifyService.Instance.OnActiveTSBChanged += Instance_OnActiveTSBChanged;
+            TANofifyService.Instance.OnChangeShift += Instance_OnChangeShift;
+
             // Initial Page Content Manager
             PageContentManager.Instance.ContentChanged += new EventHandler(Instance_ContentChanged);
             PageContentManager.Instance.StatusUpdated += new StatusMessageEventHandler(Instance_StatusUpdated);
@@ -51,6 +60,29 @@ namespace DMT
             PageContentManager.Instance.OnTick -= new EventHandler(Instance_OnTick);
             PageContentManager.Instance.StatusUpdated -= new StatusMessageEventHandler(Instance_StatusUpdated);
             PageContentManager.Instance.ContentChanged -= new EventHandler(Instance_ContentChanged);
+
+            TANofifyService.Instance.OnActiveTSBChanged -= Instance_OnActiveTSBChanged;
+            TANofifyService.Instance.OnChangeShift -= Instance_OnChangeShift;
+
+            if (null != appServ)
+            {
+                appServ.Shutdown();
+            }
+            appServ = null;
+        }
+
+        #endregion
+
+        #region Notify Service Handlers
+
+        private void Instance_OnActiveTSBChanged(object sender, EventArgs e)
+        {
+            AppNofifyService.Instance.RaiseActiveTSBChanged();
+        }
+
+        private void Instance_OnChangeShift(object sender, EventArgs e)
+        {
+            AppNofifyService.Instance.RaiseChangeShift();
         }
 
         #endregion
