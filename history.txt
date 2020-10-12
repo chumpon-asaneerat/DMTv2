@@ -50,8 +50,11 @@ Ported DMTv2 to DMT.TAxTODv1 #146
 Ported DMTv2 to DMT.TAxTODv1 #145
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #144
-- 
+- Update DMTv2 ported from DMT.TAxTODv1
+  - DMT.Core -> CommandLine class.
+  - DMT.Local.WebServer -> add init/release firewall code.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #143
