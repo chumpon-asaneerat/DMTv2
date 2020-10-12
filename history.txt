@@ -12,7 +12,6 @@
     - TSBCreditTransaction Required GroupId for group all by each operation.
   - Update Config app and simulator.
   - RevenueEntry Table/Mode
-    - Add field IsHistorical (สำหรับป้อนรายได้ย้อนหลัง)
     - Checks if not  IsHistorical and Lanes is string.Empty need to call SCW api to get lanes (JobList)
   - Implements EMV/QRCode load from SCW api and update to local database.
   - Implements screen related to EMV/QRCode (in RevenueEntry, EMV/QRCode view).
@@ -29,8 +28,40 @@
     - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
   - ใบเสร็จขายคูปอง ที่ TA ยังไม่มีจำนวนเงิน แสดง ตอนท้ายรายการ
 --------------------------------------------------------------------------------------------
-Ported DMTv2 to DMT.TAxTODv1 #150
+Ported DMTv2 to DMT.TAxTODv1 #160
 - 
+
+Ported DMTv2 to DMT.TAxTODv1 #159
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #158
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #157
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #156
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #155
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #154
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #153
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #152
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #151
+- 
+
+[commited]
+Ported DMTv2 to DMT.TAxTODv1 #150
+- Update RevenueEntry Table and Model
+  - Add IsHistorical field.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #149
