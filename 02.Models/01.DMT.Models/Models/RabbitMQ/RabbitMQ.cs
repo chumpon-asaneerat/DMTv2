@@ -89,7 +89,7 @@ namespace DMT.Models
             ret.LastNameTH = value.staffFamilyName;
             ret.Password = value.password;
             ret.CardId = value.cardSerialNo;
-            //ret.GroupId = value.group;
+            ret.GroupId = value.group;
 
             return ret;
         }

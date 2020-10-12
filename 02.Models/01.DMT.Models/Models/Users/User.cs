@@ -72,6 +72,7 @@ namespace DMT.Models
 		private string _CardId = string.Empty;
 
 		private string _RoleId = string.Empty;
+		private int _GroupId = 0;
 		private string _RoleNameEN = string.Empty;
 		private string _RoleNameTH = string.Empty;
 		// Expiration
@@ -420,6 +421,29 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
+		/// Gets or sets GroupId
+		/// </summary>
+		[Category("Role")]
+		[Description("Gets or sets GroupId.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PropertyMapName("GroupId")]
+		public virtual int GroupId
+		{
+			get
+			{
+				return _GroupId;
+			}
+			set
+			{
+				if (_GroupId != value)
+				{
+					_GroupId = value;
+					this.RaiseChanged("GroupId");
+				}
+			}
+		}
+		/// <summary>
 		/// Gets or sets Role Name EN.
 		/// </summary>
 		[Category("Role")]
@@ -640,6 +664,15 @@ namespace DMT.Models
 		{
 			#region Role
 
+			/// <summary>
+			/// Gets or sets GroupId.
+			/// </summary>
+			[PropertyMapName("GroupId")]
+			public override int GroupId
+			{
+				get { return base.GroupId; }
+				set { base.GroupId = value; }
+			}
 			/// <summary>
 			/// Gets or sets Role Name EN.
 			/// </summary>
@@ -1065,6 +1098,9 @@ namespace DMT.Models
 				try
 				{
 					db.BeginTransaction();
+
+					var roles = Models.Role.GetRoles().Value();
+					
 					users.ForEach(user => 
 					{
 						User match = User.GetUser(user.UserId).Value();
@@ -1084,6 +1120,8 @@ namespace DMT.Models
 							match.LastNameEN = user.LastNameEN;
 							match.LastNameTH = user.LastNameTH;
 							match.Password = user.Password;
+
+							Save(match); // update
 						}
 					});
 					db.Commit();

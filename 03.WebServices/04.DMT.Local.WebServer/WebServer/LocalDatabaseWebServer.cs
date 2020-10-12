@@ -20,6 +20,7 @@ using NLib.IO;
 using System.Net;
 using System.IO;
 using System.Threading.Tasks;
+using DMT.Models;
 
 #endregion
 
@@ -197,9 +198,7 @@ namespace DMT.Services
                         {
                             Task.Run(() => 
                             {
-                                staffs.ForEach(staff =>
-                                {
-                                });
+                                Models.User.SaveUsers(staffs);
                             });
                         }
                     }

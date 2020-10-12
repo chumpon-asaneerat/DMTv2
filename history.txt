@@ -53,8 +53,9 @@ Ported DMTv2 to DMT.TAxTODv1 #145
 Ported DMTv2 to DMT.TAxTODv1 #144
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #143
-- 
+- Update DMTv2 RabbitMQ supports save user to local database (NOT TEST).
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #142
