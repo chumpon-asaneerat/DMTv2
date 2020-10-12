@@ -56,8 +56,9 @@ Ported DMTv2 to DMT.TAxTODv1 #144
 Ported DMTv2 to DMT.TAxTODv1 #143
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #142
-- 
+- Update DMTv2 SignIn to supports change password #3.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #141

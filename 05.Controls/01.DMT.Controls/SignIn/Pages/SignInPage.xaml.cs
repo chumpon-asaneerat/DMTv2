@@ -240,7 +240,54 @@ namespace DMT.Pages
 
         private bool ChangePassword()
         {
-            bool ret = true;
+            bool ret = false;
+
+            var md5 = Utils.MD5.Encrypt(txtPassword2.Password);
+            var usrRet = ops.Users.GetByLogIn(Search.Users.ByLogIn.Create(txtUserId2.Text, md5));
+            _user = usrRet.Value();
+
+            if (null == _user)
+            {
+                txtMsg2.Text = "Staff Not Found.";
+                txtUserId2.SelectAll();
+                txtUserId2.Focus();
+                return ret;
+            }
+            var oldPwd = Utils.MD5.Encrypt(txtPassword2.Password);
+            if (_user.Password != oldPwd)
+            {
+                txtMsg2.Text = "Old Password not match.";
+                txtPassword2.SelectAll();
+                txtPassword2.Focus();
+                return ret;
+            }
+
+            var newPwd = Utils.MD5.Encrypt(txtNewPassword.Password);
+            var confPwd = Utils.MD5.Encrypt(txtConfirmPassword.Password);
+            if (newPwd != confPwd)
+            {
+                txtMsg2.Text = "Confirm Password mismatch.";
+                txtConfirmPassword.SelectAll();
+                txtConfirmPassword.Focus();
+                return ret;
+            }
+
+            _user.Password = newPwd; // change password.
+            var saveRet = ops.Users.SaveUser(_user);
+            if (!saveRet.Ok)
+            {
+                txtMsg2.Text = "Save failed.";
+                txtUserId2.SelectAll();
+                txtUserId2.Focus();
+                return ret;
+            }
+            ret = true;
+
+            // send to server
+            SCWOperations server = SCWServiceOperations.Instance.Plaza;
+            var inst = new SCWChangePassword();
+            // send.
+            server.TOD.ChangePassword(inst);
 
             return ret;
         }

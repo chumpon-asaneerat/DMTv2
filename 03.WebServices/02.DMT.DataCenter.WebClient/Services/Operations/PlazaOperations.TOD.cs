@@ -215,6 +215,32 @@ namespace DMT.Services
 
             #endregion
 
+            #region Change Password
+
+            public SCWChangePasswordResult ChangePassword(SCWChangePassword value)
+            {
+                SCWChangePasswordResult ret;
+                NRestClient client = NRestClient.CreateDCClient();
+                if (null == client)
+                {
+                    ret = new SCWChangePasswordResult();
+                    ret.status = new SCWStatus();
+                    ret.status.code = "NULL_CONN";
+                    ret.status.message = "Client connection is null.";
+                    return ret;
+                }
+
+                var url = "dmt-scw/api/tod/changePassword";
+
+                string usr = SCWServiceOperations.Instance.UserName;
+                string pwd = SCWServiceOperations.Instance.Password;
+
+                ret = client.Execute2<SCWChangePasswordResult>(url, value, username: usr, password: pwd);
+                return ret;
+            }
+
+            #endregion
+
             #endregion
         }
 
