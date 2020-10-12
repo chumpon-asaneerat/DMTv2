@@ -72,6 +72,14 @@ namespace DMT.Models
         /// Gets or sets Card S/N.
         /// </summary>
         public string cardSerialNo { get; set; }
+        /// <summary>
+        /// Gets or sets password update datetime.
+        /// </summary>
+        public DateTime passwordUpdateDatetime { get; set; }
+        /// <summary>
+        /// Gets or sets status.
+        /// </summary>
+        public string status { get; set; }
 
         public static User ToLocal(RabbitMQStaff value)
         {
@@ -97,11 +105,26 @@ namespace DMT.Models
         public static List<User> ToLocals(List<RabbitMQStaff> values)
         {
             List<User> rets = new List<User>();
+            var roles = Role.GetRoles().Value();
             if (null != values && values.Count > 0)
             {
                 values.ForEach(c => 
                 {
                     User inst = ToLocal(c);
+
+                    if (null != roles)
+                    {
+                        var role = roles.Find(x => x.GroupId == inst.GroupId);
+                        if (null != role)
+                        {
+                            inst.RoleId = role.RoleId;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Not Found Group: " + inst.GroupId);
+                        }
+                    }
+
                     if (null != inst) rets.Add(inst);
                 });
             }

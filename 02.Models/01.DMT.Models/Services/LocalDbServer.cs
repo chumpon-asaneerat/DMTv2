@@ -1234,7 +1234,7 @@ namespace DMT.Services
 				RoleId = "ADMINS",
 				RoleNameEN = "Administrator",
 				RoleNameTH = "ผู้ดูแลระบบ",
-				GroupId = 1
+				GroupId = 10
 			};
 			if (!Role.Exists(item)) Role.Save(item);
 
@@ -1268,8 +1268,8 @@ namespace DMT.Services
 			{
 				RoleId = "ACCOUNT",
 				RoleNameEN = "Account",
-				RoleNameTH = "ฝ่ายบัญขี",
-				GroupId = 12
+				RoleNameTH = "บัญชี",
+				GroupId = 63
 			};
 			if (!Role.Exists(item)) Role.Save(item);
 
@@ -1325,8 +1325,8 @@ namespace DMT.Services
 			{
 				RoleId = "CTC",
 				RoleNameEN = "Chief Toll Collector",
-				RoleNameTH = "หัวหน้ากะ",
-				GroupId = 4
+				RoleNameTH = "หัวหน้าพนักงานจัดเก็บค่าผ่านทาง",
+				GroupId = 40
 			};
 			if (!Role.Exists(item)) Role.Save(item);
 
@@ -1427,7 +1427,7 @@ namespace DMT.Services
 				RoleId = "TC",
 				RoleNameEN = "Toll Collector",
 				RoleNameTH = "พนักงาน",
-				GroupId = 2
+				GroupId = 20
 			};
 			if (!Role.Exists(item)) Role.Save(item);
 
@@ -1628,6 +1628,97 @@ namespace DMT.Services
 				RoleId = item.RoleId
 			};
 			if (!User.Exists(user)) User.Save(user);
+
+			#endregion
+
+			#region MT_ADMIN
+
+			item = new Role()
+			{
+				RoleId = "MT_ADMIN",
+				RoleNameEN = "Maintenance Administrator",
+				RoleNameTH = "ทีมซ่อมบำรุง กลุ่ม Admin",
+				GroupId = 10
+			};
+			if (!Role.Exists(item)) Role.Save(item);
+
+			#endregion
+
+			#region MT_TECH
+
+			item = new Role()
+			{
+				RoleId = "MT_TECH",
+				RoleNameEN = "Maintenance Technical",
+				RoleNameTH = "ทีมซ่อมบำรุง กลุ่มช่าง",
+				GroupId = 51
+			};
+			if (!Role.Exists(item)) Role.Save(item);
+
+			#endregion
+
+			#region CTC_MGR
+
+			item = new Role()
+			{
+				RoleId = "CTC_MGR",
+				RoleNameEN = "Chief Toll Manager",
+				RoleNameTH = "หัวหน้าแผนก",
+				GroupId = 49
+			};
+			if (!Role.Exists(item)) Role.Save(item);
+
+			#endregion
+
+			#region FINANCE
+
+			item = new Role()
+			{
+				RoleId = "FINANCE",
+				RoleNameEN = "Finance",
+				RoleNameTH = "การเงิน",
+				GroupId = 64
+			};
+			if (!Role.Exists(item)) Role.Save(item);
+
+			#endregion
+
+			#region SV
+
+			item = new Role()
+			{
+				RoleId = "SV",
+				RoleNameEN = "Supervisor",
+				RoleNameTH = "พนักงานควบคุม",
+				GroupId = 30
+			};
+			if (!Role.Exists(item)) Role.Save(item);
+
+			#endregion
+
+			#region RAD_MGR
+
+			item = new Role()
+			{
+				RoleId = "RAD_MGR",
+				RoleNameEN = "Revenue Audit Division (Manager)",
+				RoleNameTH = "แผนกตรวจสอบรายได้ค่าผ่านทาง (Manager)",
+				GroupId = 60
+			};
+			if (!Role.Exists(item)) Role.Save(item);
+
+			#endregion
+
+			#region RAD_SUP
+
+			item = new Role()
+			{
+				RoleId = "RAD_SUP",
+				RoleNameEN = "Revenue Audit Division (Supervisor)",
+				RoleNameTH = "แผนกตรวจสอบรายได้ค่าผ่านทาง (Supervisor)",
+				GroupId = 61
+			};
+			if (!Role.Exists(item)) Role.Save(item);
 
 			#endregion
 		}

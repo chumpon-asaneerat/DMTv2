@@ -55,8 +55,12 @@ Ported DMTv2 to DMT.TAxTODv1 #153
 Ported DMTv2 to DMT.TAxTODv1 #152
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #151
-- 
+- Update DMTv2 and DMT.TAxTODv1
+  - Change Role's GroupId.
+  - RabbitMQ (DMTv2) now correctly update to local database.
+  - RabbitMQ (DMTv2) RabbitMQStaff class add properties.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #150
