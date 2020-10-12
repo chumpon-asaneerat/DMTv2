@@ -944,7 +944,7 @@ namespace DMT.Services
                     }
                     else
                     {
-                        // TODO: Check When file is exists but size is zero so config is null.
+                        // Check When file is exists but size is zero so config is null.
                         _plazaCfg = NJson.LoadFromFile<PlazaConfig>(_fileName);
                     }
                     // Raise event.

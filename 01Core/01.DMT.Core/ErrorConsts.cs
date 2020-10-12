@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace DMT
 {
-    // TODO: Required to add more error code.
+    // Required to add more error code.
     public enum ErrNums : int
     {
         Success = 0,
@@ -33,7 +33,7 @@ namespace DMT
     {
         private static Dictionary<ErrNums, string> _msgs;
 
-        // TODO: Required to add more error message.
+        // Required to add more error message.
         static ErrConsts()
         {
             _msgs = new Dictionary<ErrNums, string>();

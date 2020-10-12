@@ -487,11 +487,10 @@ namespace DMT.Services
                 });
             }
 
-            // TODO: Need to sync currency and coupon master!!
+            // Need to sync currency and coupon master!!
             var currencies = ops.Master.GetCurrencies().Value();
             var coupons = ops.Master.GetCoupons().Value();
 
-            // TODO: Refactor Test Send Declare.
             // Plaza Id send only first match the SCW server will check later.
             SCWDeclare declare = this.RevenueEntry.ToServer(currencies, coupons, 
                 this.Attendances, this.PlazaIds[0]);
@@ -1150,7 +1149,7 @@ namespace DMT.Services
             var ops = LocalServiceOperations.Instance.Plaza;
             var server = SCWServiceOperations.Instance.Plaza;
 
-            // TODO: Need to sync currency and coupon master!!
+            // Need to sync currency and coupon master!!
             var currencies = ops.Master.GetCurrencies().Value();
             var coupons = ops.Master.GetCoupons().Value();
             // find lane attendances.

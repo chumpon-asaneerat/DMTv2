@@ -32,8 +32,10 @@
 Ported DMTv2 to DMT.TAxTODv1 #150
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #149
-- 
+- Update DMTv2 cleanup code.
+  - Remove some TODO.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #148

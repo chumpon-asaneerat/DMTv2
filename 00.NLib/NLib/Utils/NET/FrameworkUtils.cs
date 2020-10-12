@@ -28,7 +28,7 @@ namespace NLib.Utils
     {
         #region Public Method(s)
 
-        // TODO - Port install/uninstall utils for windows service.
+        // Port install/uninstall utils for windows service.
 
         #endregion
 
