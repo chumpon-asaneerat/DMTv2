@@ -65,15 +65,16 @@ namespace DMT.Pages
         {
             if (null != SmartcardManager.Instance.User)
             {
+                _user = SmartcardManager.Instance.User;
                 if (tabs.SelectedIndex == 0)
                 {
-                    _user = SmartcardManager.Instance.User;
                     CheckUser();
                 }
                 else if (tabs.SelectedIndex == 1)
                 {
-                    txtNewPassword.SelectAll();
-                    txtNewPassword.Focus();
+                    txtUserId2.Text = _user.UserId;
+                    txtPassword2.SelectAll();
+                    txtPassword2.Focus();
                 }
             }
         }
@@ -111,6 +112,13 @@ namespace DMT.Pages
 
         private void cmdChangePwd_Click(object sender, RoutedEventArgs e)
         {
+            txtPassword.Password = string.Empty;
+
+            txtUserId2.Text = string.Empty;
+            txtPassword2.Password = string.Empty;
+            txtNewPassword.Password = string.Empty;
+            txtConfirmPassword.Password = string.Empty;
+
             tabs.SelectedIndex = 1;
         }
 
@@ -119,12 +127,26 @@ namespace DMT.Pages
             // Call change password.
             if (ChangePassword())
             {
+                txtPassword.Password = string.Empty;
+
+                txtUserId2.Text = string.Empty;
+                txtPassword2.Password = string.Empty;
+                txtNewPassword.Password = string.Empty;
+                txtConfirmPassword.Password = string.Empty;
+
                 tabs.SelectedIndex = 0;
             }
         }
 
         private void cmdCancel2_Click(object sender, RoutedEventArgs e)
         {
+            txtPassword.Password = string.Empty;
+
+            txtUserId2.Text = string.Empty;
+            txtPassword2.Password = string.Empty;
+            txtNewPassword.Password = string.Empty;
+            txtConfirmPassword.Password = string.Empty;
+
             tabs.SelectedIndex = 0;
         }
 
