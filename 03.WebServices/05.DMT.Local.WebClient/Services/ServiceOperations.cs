@@ -14,8 +14,6 @@ using NLib.ServiceProcess;
 
 using RestSharp;
 
-using WebSocketSharp;
-
 using DMT.Models;
 using System.Reflection;
 
@@ -55,13 +53,6 @@ namespace DMT.Services
 
         #region Internal Variables
 
-        private string wsAddress = string.Format(@"{0}://{1}:{2}",
-            ConfigManager.Instance.Plaza.Local.WebSocket.Protocol,
-            ConfigManager.Instance.Plaza.Local.WebSocket.HostName,
-            ConfigManager.Instance.Plaza.Local.WebSocket.PortNumber);
-
-        private WebSocket _ws = null;
-
         #endregion
 
         #region Constructor and Destructor
@@ -75,7 +66,6 @@ namespace DMT.Services
             // Init windows service monitor.
             InitWindowsServices();
 
-            HasWebSocket = false; // disable
             Connect();
             Plaza = new LocalOperations();
         }
@@ -123,8 +113,8 @@ namespace DMT.Services
         //TODO: Change to REST Server (on TOXxTA app).
         private void Connect()
         {
-            if (!HasWebSocket) return;
             MethodBase med = MethodBase.GetCurrentMethod();
+            /*
             if (null == _ws)
             {
                 try
@@ -141,11 +131,13 @@ namespace DMT.Services
                     _ws = null;
                 }
             }
+            */
         }
         //TODO: Change to REST Server (on TOXxTA app).
         private void Disconnect()
         {
             MethodBase med = MethodBase.GetCurrentMethod();
+            /*
             try
             {
                 if (null != _ws)
@@ -161,13 +153,13 @@ namespace DMT.Services
                 med.Err(ex);
             }
             _ws = null;
+            */
         }
         //TODO: Change to REST Server (on TOXxTA app).
         private void Reconnect(ushort code, string error)
         {
-            if (!HasWebSocket)
-                return;
             MethodBase med = MethodBase.GetCurrentMethod();
+            /*
             try
             {
                 if (code != (ushort)CloseStatusCode.Normal)
@@ -182,11 +174,13 @@ namespace DMT.Services
             {
                 med.Err(ex);
             }
+            */
         }
 
         #endregion
 
         #region WS Handlers
+        /*
         //TODO: Change to REST Server (on TOXxTA app).
         private void Ws_OnMessage(object sender, MessageEventArgs e)
         {
@@ -220,7 +214,7 @@ namespace DMT.Services
         {
             Disconnect();
         }
-
+        */
         #endregion
 
         #region Public Methods
@@ -283,22 +277,6 @@ namespace DMT.Services
 
         #endregion
 
-        #region WebSocket
-        //TODO: Change to REST Server (on TOXxTA app).
-        public void EnableWebSocket()
-        {
-            HasWebSocket = true;
-            Connect();
-        }
-        //TODO: Change to REST Server (on TOXxTA app).
-        public void DisableWebSocket()
-        {
-            HasWebSocket = false;
-            Disconnect();
-        }
-
-        #endregion
-
         #endregion
 
         #region Public Properties
@@ -311,13 +289,6 @@ namespace DMT.Services
         /// Gets instance of Plaza Operations.
         /// </summary>
         public LocalOperations Plaza { get; private set; }
-
-        //TODO: Change to REST Server (on TOXxTA app).
-
-        /// <summary>
-        /// Gets is websocket is enabled.
-        /// </summary>
-        public bool HasWebSocket { get; private set; }
 
         #endregion
 

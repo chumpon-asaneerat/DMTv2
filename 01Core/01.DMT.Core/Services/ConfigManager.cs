@@ -183,13 +183,6 @@ namespace DMT.Services
                 HostName = "localhost",
                 PortNumber = 9000
             };
-
-            this.WebSocket = new WebServiceConfig()
-            {
-                Protocol = "ws",
-                HostName = "localhost",
-                PortNumber = 9100
-            };
         }
 
         #endregion
@@ -225,10 +218,6 @@ namespace DMT.Services
         /// Gets or sets Http service.
         /// </summary>
         public WebServiceConfig Http { get; set; }
-        /// <summary>
-        /// Gets or sets Web Socket service.
-        /// </summary>
-        public WebServiceConfig WebSocket { get; set; }
 
         #endregion
     }
@@ -345,6 +334,130 @@ namespace DMT.Services
             else return "DC http is null.";
         }
         
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets Http service.
+        /// </summary>
+        public WebServiceConfig Http { get; set; }
+
+        #endregion
+    }
+
+    #endregion
+
+    #region TAAppConfig
+
+    /// <summary>
+    /// The TAAppConfig class.
+    /// </summary>
+    [JsonObject(MemberSerialization.OptOut)]
+    public class TAAppConfig
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public TAAppConfig()
+        {
+            this.Http = new WebServiceConfig()
+            {
+                Protocol = "http",
+                HostName = "localhost",
+                PortNumber = 9001
+            };
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// IsEquals.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public bool IsEquals(object obj)
+        {
+            if (null == obj || !(obj is TAAppConfig)) return false;
+            return this.GetString() == (obj as TAAppConfig).GetString();
+        }
+        /// <summary>
+        /// GetString.
+        /// </summary>
+        /// <returns></returns>
+        public string GetString()
+        {
+            if (null != this.Http)
+                return string.Format("{0}", this.Http.GetString());
+            else return "TA App http is null.";
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets Http service.
+        /// </summary>
+        public WebServiceConfig Http { get; set; }
+
+        #endregion
+    }
+
+    #endregion
+
+    #region TODAppConfig
+
+    /// <summary>
+    /// The TAAppConfig class.
+    /// </summary>
+    [JsonObject(MemberSerialization.OptOut)]
+    public class TODAppConfig
+    {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public TODAppConfig()
+        {
+            this.Http = new WebServiceConfig()
+            {
+                Protocol = "http",
+                HostName = "localhost",
+                PortNumber = 9002
+            };
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// IsEquals.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public bool IsEquals(object obj)
+        {
+            if (null == obj || !(obj is TODAppConfig)) return false;
+            return this.GetString() == (obj as TODAppConfig).GetString();
+        }
+        /// <summary>
+        /// GetString.
+        /// </summary>
+        /// <returns></returns>
+        public string GetString()
+        {
+            if (null != this.Http)
+                return string.Format("{0}", this.Http.GetString());
+            else return "TOD App http is null.";
+        }
+
         #endregion
 
         #region Public Properties
@@ -511,6 +624,8 @@ namespace DMT.Services
             this.SCW = new SCWWebServiceConfig();
             this.TARabbitMQ = new TARabbitServiceConfig();
             this.TODRabbitMQ = new TODRabbitServiceConfig();
+            this.TAApp = new TAAppConfig();
+            this.TODApp = new TODAppConfig();
         }
 
         #endregion
@@ -579,6 +694,24 @@ namespace DMT.Services
                 code += string.Format("TODRabbitMQ: {0}",
                     this.TODRabbitMQ.GetString()) + Environment.NewLine;
             }
+            if (null == this.TAApp)
+            {
+                code += "TAApp: null" + Environment.NewLine;
+            }
+            else
+            {
+                code += string.Format("TAApp: {0}",
+                    this.TAApp.GetString()) + Environment.NewLine;
+            }
+            if (null == this.TODApp)
+            {
+                code += "TODApp: null" + Environment.NewLine;
+            }
+            else
+            {
+                code += string.Format("TODApp: {0}",
+                    this.TODApp.GetString()) + Environment.NewLine;
+            }
             return code;
         }
         
@@ -606,6 +739,14 @@ namespace DMT.Services
         /// Gets or sets TOD Rabbit MQ Service Config.
         /// </summary>
         public TODRabbitServiceConfig TODRabbitMQ { get; set; }
+        /// <summary>
+        /// Gets or sets TA App Service Config (for notify).
+        /// </summary>
+        public TAAppConfig TAApp { get; set; }
+        /// <summary>
+        /// Gets or sets TOD App Service Config (for notify).
+        /// </summary>
+        public TODAppConfig TODApp { get; set; }
 
         #endregion
     }

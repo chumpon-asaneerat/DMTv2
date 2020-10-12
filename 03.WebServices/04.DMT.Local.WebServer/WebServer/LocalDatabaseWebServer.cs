@@ -10,10 +10,6 @@ using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using System.Web.Http;
 using System.Web.Http.Validation;
-// web socket
-using WebSocketSharp;
-using WebSocketSharp.Net;
-using WebSocketSharp.Server;
 using System.Reflection;
 using NLib;
 using NLib.IO;
@@ -83,13 +79,7 @@ namespace DMT.Services
             "+",
             ConfigManager.Instance.Plaza.Local.Http.PortNumber);
 
-        private string wsAddress = string.Format(@"{0}://{1}:{2}",
-            ConfigManager.Instance.Plaza.Local.WebSocket.Protocol,
-            ConfigManager.Instance.Plaza.Local.WebSocket.HostName, // TODO: Change Owin Host Name.
-            ConfigManager.Instance.Plaza.Local.WebSocket.PortNumber);
-
         private IDisposable server = null;
-        private WebSocketSharp.Server.WebSocketServer wsserver = null;
 
         private RabbitMQClient taaMQclient = null;
         private RabbitMQClient todMQclient = null;
@@ -329,36 +319,10 @@ namespace DMT.Services
                     }
                 }
             }
-
-            if (null == wsserver)
-            {
-                try
-                {
-                    wsserver = new WebSocketSharp.Server.WebSocketServer(wsAddress);
-                    // Add web socket service
-                    wsserver.AddWebSocketService<Behaviors.NotifyBehavior>("/nofify");
-                    wsserver.Start();
-                    if (wsserver.IsListening)
-                    {
-                        //string msg = string.Format("Listening on port {0}, and providing WebSocket services:", httpsv.Port);
-                        //lbStatus.Text = msg;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    med.Err(ex);
-                }
-            }
         }
 
         public void Shutdown()
         {
-            if (null != wsserver)
-            {
-                wsserver.Stop();
-            }
-            wsserver = null;
-
             if (null != taaMQclient)
             {
                 taaMQclient.OnMessageArrived -= TaaMQclient_OnMessageArrived;

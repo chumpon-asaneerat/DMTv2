@@ -51,8 +51,6 @@ namespace DMT
             PageContentManager.Instance.OnTick -= new EventHandler(Instance_OnTick);
             PageContentManager.Instance.StatusUpdated -= new StatusMessageEventHandler(Instance_StatusUpdated);
             PageContentManager.Instance.ContentChanged -= new EventHandler(Instance_ContentChanged);
-            // Disable Web Socket.
-            LocalServiceOperations.Instance.DisableWebSocket();
         }
 
         #endregion

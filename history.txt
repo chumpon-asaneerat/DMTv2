@@ -47,8 +47,10 @@ Ported DMTv2 to DMT.TAxTODv1 #147
 Ported DMTv2 to DMT.TAxTODv1 #146
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #145
-- 
+- Update DMTv2 implements TA,TOD App notify server/client #1.
+  - remove websocket.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #144
