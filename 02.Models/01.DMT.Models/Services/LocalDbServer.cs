@@ -1916,13 +1916,15 @@ namespace DMT.Services
 
 		public void ChangeShift()
 		{
-			OnChangeShift.Call(this, EventArgs.Empty);
+			// TODO: Need to call TAApp
+			//OnChangeShift.Call(this, EventArgs.Empty);
 
 		}
 
 		public void ActiveTSBChanged()
 		{
-			OnActiveTSBChanged.Call(this, EventArgs.Empty);
+			// TODO: Need to call TAApp, TODApp
+			//OnActiveTSBChanged.Call(this, EventArgs.Empty);
 		}
 
 		#endregion
@@ -1946,8 +1948,8 @@ namespace DMT.Services
 		public event System.EventHandler OnDisconnected;
 		public event System.EventHandler OnConectError;
 
-		public event System.EventHandler OnChangeShift;
-		public event System.EventHandler OnActiveTSBChanged;
+		//public event System.EventHandler OnChangeShift;
+		//public event System.EventHandler OnActiveTSBChanged;
 
 		#endregion
 	}

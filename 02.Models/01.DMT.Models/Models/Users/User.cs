@@ -1078,7 +1078,6 @@ namespace DMT.Models
 			}
 		}
 
-
 		public static NDbResult SaveUsers(List<User> users)
 		{
 			var result = new NDbResult();
@@ -1095,6 +1094,7 @@ namespace DMT.Models
 			}
 			lock (sync)
 			{
+				MethodBase med = MethodBase.GetCurrentMethod();
 				try
 				{
 					db.BeginTransaction();
@@ -1128,6 +1128,7 @@ namespace DMT.Models
 				}
 				catch (Exception ex)
 				{
+					med.Err(ex);
 					db.Rollback();
 				}
 				return result;
