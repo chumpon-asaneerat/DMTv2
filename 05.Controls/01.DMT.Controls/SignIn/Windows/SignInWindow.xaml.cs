@@ -284,7 +284,13 @@ namespace DMT.Windows
             // send to server
             SCWOperations server = SCWServiceOperations.Instance.Plaza;
             var inst = new SCWChangePassword();
+            inst.staffId = _user.UserId;
+            inst.password = oldPwd;
+            inst.newPassword = newPwd;
+            inst.confirmNewPassword = confPwd;
             // send.
+            SCWServiceOperations.Instance.UserName = "DMTUSER";
+            SCWServiceOperations.Instance.Password = "DMTPASS";
             server.TOD.ChangePassword(inst);
 
             return ret;

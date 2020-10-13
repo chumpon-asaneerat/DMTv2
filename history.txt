@@ -52,8 +52,11 @@ Ported DMTv2 to DMT.TAxTODv1 #154
 Ported DMTv2 to DMT.TAxTODv1 #153
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #152
-- 
+- Update DMTv2 and DMT.TAxTODv1
+  - TOD and TA app set app menifest for admin request.
+  - SignIn Page/Window add Auth User/Pwd
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #151
