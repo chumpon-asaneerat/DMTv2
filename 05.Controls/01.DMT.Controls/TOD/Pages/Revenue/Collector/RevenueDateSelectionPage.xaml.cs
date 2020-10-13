@@ -108,6 +108,15 @@ namespace DMT.TOD.Pages.Revenue
                 return;
             }
 
+            if (!_manager.IsReturnBag)
+            {
+                DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                msg.Owner = Application.Current.MainWindow;
+                msg.Setup("ระบบตรวจพบว่ายังไม่มีการคืนถุงเงิน กรุณาคืนถุงเงินก่อนป้อนรายได้.", "DMT - Tour of Duty");
+                msg.ShowDialog();
+                return;
+            }
+
             page.Setup(_manager);
 
             PageContentManager.Instance.Current = page;

@@ -865,6 +865,16 @@ namespace DMT.Services
                 this.RevenueEntry.BagNo = string.Empty;
                 this.RevenueEntry.BeltNo = string.Empty;
             }
+
+            if (this.RevenueEntry.RevenueId == string.Empty)
+            {
+                // TODO: Autogenerate need to change to auto running number
+                Random rand = new Random();
+                if (string.IsNullOrWhiteSpace(this.RevenueEntry.RevenueId))
+                {
+                    this.RevenueEntry.RevenueId = rand.Next(100000).ToString("D5"); // auto generate.
+                }
+            }
         }
         /// <summary>
         /// Load Exists Revenue Entry.
@@ -1063,6 +1073,24 @@ namespace DMT.Services
         /// Gets is new Revenue Shift.
         /// </summary>
         public bool IsNewRevenueShift { get; internal set; }
+        /// <summary>
+        /// Checks Is Return Bag.
+        /// </summary>
+        public bool IsReturnBag
+        {
+            get
+            {
+                // Set UserCredits's Revenue Id
+                var usrSearch = Search.UserCredits.GetActiveById.Create(
+                    this.UserShift.UserId, this.PlazaGroup.PlazaGroupId);
+                var userCredit = ops.Credits.GetNoRevenueEntryUserCreditBalanceById(usrSearch).Value();
+                if (null != userCredit && userCredit.State == UserCreditBalance.StateTypes.Completed)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
         /// <summary>
         /// Checks the current revenue shift is already has revenue entry.
         /// </summary>
