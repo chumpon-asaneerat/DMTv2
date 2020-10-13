@@ -222,6 +222,32 @@ namespace DMT.Services
                 return ret;
             }
 
+            public NRestResult<UserCreditBalance> GetNoRevenueEntryUserCreditBalanceById(
+                Search.UserCredits.GetActiveById value)
+            {
+                NRestResult<UserCreditBalance> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<UserCreditBalance>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                if (null != value)
+                {
+                    ret = client.Execute<UserCreditBalance>(
+                        RouteConsts.Credit.GetNoRevenueEntryUserCreditBalanceById.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<UserCreditBalance>();
+                    ret.ParameterIsNull();
+                    ret.data = null;
+                }
+                return ret;
+            }
+
             public NRestResult<UserCreditBalance> SaveUserCreditBalance(UserCreditBalance value)
             {
                 NRestResult<UserCreditBalance> ret;

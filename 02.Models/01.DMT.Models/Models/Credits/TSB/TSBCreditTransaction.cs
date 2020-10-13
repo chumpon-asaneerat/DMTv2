@@ -107,6 +107,8 @@ namespace DMT.Models
 
 		private decimal _BHTTotal = decimal.Zero;
 
+		private decimal _ExchangeBHT = decimal.Zero;
+		private decimal _BorrowBHT = decimal.Zero;
 		private decimal _AdditionalBHT = decimal.Zero;
 
 		private string _Remark = string.Empty;
@@ -1382,15 +1384,55 @@ namespace DMT.Models
 
 		#endregion
 
-		#region Additional
+		#region Exchange/Borrow/Additional
 
+		/// <summary>
+		/// Gets or sets amount Exchange BHT.
+		/// </summary>
+		[Category("Summary (Amount)")]
+		[Description("Gets or sets amount Exchange BHT.")]
+		[PropertyMapName("ExchangeBHT")]
+		[PropertyOrder(51)]
+		public virtual decimal ExchangeBHT
+		{
+			get { return _ExchangeBHT; }
+			set
+			{
+				if (_ExchangeBHT != value)
+				{
+					_ExchangeBHT = value;
+					// Raise event.
+					this.RaiseChanged("ExchangeBHT");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets amount Borrow BHT.
+		/// </summary>
+		[Category("Summary (Amount)")]
+		[Description("Gets or sets amount Borrow BHT.")]
+		[PropertyMapName("BorrowBHT")]
+		[PropertyOrder(52)]
+		public virtual decimal BorrowBHT
+		{
+			get { return _BorrowBHT; }
+			set
+			{
+				if (_BorrowBHT != value)
+				{
+					_BorrowBHT = value;
+					// Raise event.
+					this.RaiseChanged("BorrowBHT");
+				}
+			}
+		}
 		/// <summary>
 		/// Gets or sets amount Additional BHT.
 		/// </summary>
-		[Category("Additional (Amount)")]
+		[Category("Summary (Amount)")]
 		[Description("Gets or sets amount Additional BHT.")]
 		[PropertyMapName("AdditionalBHT")]
-		[PropertyOrder(51)]
+		[PropertyOrder(53)]
 		public virtual decimal AdditionalBHT
 		{
 			get { return _AdditionalBHT; }

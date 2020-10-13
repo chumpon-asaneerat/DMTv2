@@ -550,6 +550,12 @@ namespace DMT
                 public const string Url = Credit.Url + @"/" + Name;
             }
 
+            public static class GetNoRevenueEntryUserCreditBalanceById
+            {
+                public const string Name = "GetNoRevenueEntryUserCreditBalanceById";
+                public const string Url = Credit.Url + @"/" + Name;
+            }
+
             public static class SaveUserCreditBalance
             {
                 public const string Name = "SaveUserCreditBalance";

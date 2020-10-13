@@ -67,6 +67,7 @@ namespace DMT.Models
 		private StateTypes _State = StateTypes.Initial;
 		private string _BagNo = string.Empty;
 		private string _BeltNo = string.Empty;
+		private string _RevenueId = string.Empty;
 
 		private string _TSBId = string.Empty;
 		private string _TSBNameEN = string.Empty;
@@ -513,6 +514,27 @@ namespace DMT.Models
 					_BeltNo = value;
 					// Raise event.
 					this.RaiseChanged("BeltNo");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets Revenue Id.
+		/// </summary>
+		[Category("Common")]
+		[Description("Gets or sets Revenue Id.")]
+		//[ReadOnly(true)]
+		[MaxLength(20)]
+		[PropertyMapName("RevenueId")]
+		public string RevenueId
+		{
+			get { return _RevenueId; }
+			set
+			{
+				if (_RevenueId != value)
+				{
+					_RevenueId = value;
+					// Raise event.
+					this.RaiseChanged("RevenueId");
 				}
 			}
 		}
@@ -1928,6 +1950,7 @@ namespace DMT.Models
 					  FROM UserCreditSummaryView
 					 WHERE UserId = ?
 					   AND TSBId = ? 
+					   AND (RevenueId IS NULL OR RevenueId = '')
 					   AND State <> ? ";
 
 					var ret = NQuery.Query<FKs>(cmd,
@@ -1983,7 +2006,53 @@ namespace DMT.Models
 					  FROM UserCreditSummaryView
 					 WHERE UserId = ?
 					   AND PlazaGroupId = ? 
+					   AND (RevenueId IS NULL OR RevenueId = '')
 					   AND State <> ? ";
+
+					var ret = NQuery.Query<FKs>(cmd,
+						userId, plazaGroupId, StateTypes.Completed).FirstOrDefault();
+					UserCreditBalance inst = ret.ToModel();
+					result.Success(inst);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
+		}
+		/// <summary>
+		/// Get No Revenue Entry UserCredit Balance By Id
+		/// </summary>
+		/// <param name="userId">The User Id.</param>
+		/// <param name="plazaGroupId">The Plaza Group Id.</param>
+		/// <returns>Returns User Credit Balance.</returns>
+		public static NDbResult<UserCreditBalance> GetNoRevenueEntryUserCreditBalanceById(
+			string userId, string plazaGroupId)
+		{
+			var result = new NDbResult<UserCreditBalance>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					if (string.IsNullOrWhiteSpace(userId) ||
+						string.IsNullOrWhiteSpace(plazaGroupId)) return null;
+
+					string cmd = @"
+					SELECT *
+					  FROM UserCreditSummaryView
+					 WHERE UserId = ?
+					   AND PlazaGroupId = ? 
+					   AND (RevenueId IS NULL OR RevenueId = '')
+					   AND State = ? ";
 
 					var ret = NQuery.Query<FKs>(cmd,
 						userId, plazaGroupId, StateTypes.Completed).FirstOrDefault();
@@ -2026,6 +2095,7 @@ namespace DMT.Models
 					SELECT *
 					  FROM UserCreditSummaryView
 					 WHERE TSBId = ? 
+					   AND (RevenueId IS NULL OR RevenueId = '')
 					   AND State <> ? ";
 
 					var rets = NQuery.Query<FKs>(cmd,

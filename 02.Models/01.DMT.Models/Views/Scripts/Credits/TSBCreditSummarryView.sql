@@ -720,6 +720,40 @@ AS
 				AND UserCreditTransaction.UserCreditId = UserCreditBalance.UserCreditId
 			)) AS AmountBHT1000
 		 , ((
+			 SELECT IFNULL(SUM(ExchangeBHT), 0) 
+			   FROM TSBCreditTransaction 
+			  WHERE (   TSBCreditTransaction.TransactionType = 0 
+					 OR TSBCreditTransaction.TransactionType = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
+				AND TSBCreditTransaction.TSBId = TSB.TSBId
+			) -
+			(
+			 SELECT IFNULL(SUM(ExchangeBHT), 0) 
+			   FROM TSBCreditTransaction 
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
+				AND TSBCreditTransaction.TSBId = TSB.TSBId
+			)) AS ExchangeBHTTotal
+		 , ((
+			 SELECT IFNULL(SUM(BorrowBHT), 0) 
+			   FROM TSBCreditTransaction 
+			  WHERE (   TSBCreditTransaction.TransactionType = 0 
+					 OR TSBCreditTransaction.TransactionType = 1
+					 OR TSBCreditTransaction.TransactionType = 12
+					) -- Initial = 0, Received = 1, Replace In = 12
+				AND TSBCreditTransaction.TSBId = TSB.TSBId
+			) -
+			(
+			 SELECT IFNULL(SUM(BorrowBHT), 0) 
+			   FROM TSBCreditTransaction 
+			  WHERE (   TSBCreditTransaction.TransactionType = 2
+					 OR TSBCreditTransaction.TransactionType = 11
+			        ) -- Returns = 2, Replace Out = 11
+				AND TSBCreditTransaction.TSBId = TSB.TSBId
+			)) AS BorrowBHTTotal
+		 , ((
 			 SELECT IFNULL(SUM(AdditionalBHT), 0) 
 			   FROM TSBCreditTransaction 
 			  WHERE (   TSBCreditTransaction.TransactionType = 0 

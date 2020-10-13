@@ -11,8 +11,6 @@
   - Internal Exchange
     - TSBCreditTransaction Required GroupId for group all by each operation.
   - Update Config app and simulator.
-  - RevenueEntry Table/Mode
-    - Checks if not  IsHistorical and Lanes is string.Empty need to call SCW api to get lanes (JobList)
   - Implements EMV/QRCode load from SCW api and update to local database.
   - Implements screen related to EMV/QRCode (in RevenueEntry, EMV/QRCode view).
   - Implements screen User Shift View (รายชื่อพนักงานเช้ากะ) - verify if implemented.
@@ -23,8 +21,6 @@
     - TSBExchangeGroup.cs (Models) in SaveTSBExchangeGroup methods need to save only one received 
       TSBCreditTransaction by calc all value i.e (Borrow.Count1BHT - Exchange.Count1BHT) and save to
       transaction to used in TSBCreditSummary view later.
-    - TSBCreditSummarryView.sql (Views) need to add column for BorrowBHT, AdditionBHT (already exists).
-    - TSBCreditTransaction.cs (Models) need to add property BorrowBHT and update BHTTotal (calculation code).
     - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
   - ใบเสร็จขายคูปอง ที่ TA ยังไม่มีจำนวนเงิน แสดง ตอนท้ายรายการ
 --------------------------------------------------------------------------------------------
@@ -49,8 +45,10 @@ Ported DMTv2 to DMT.TAxTODv1 #155
 Ported DMTv2 to DMT.TAxTODv1 #154
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #153
-- 
+- Update DMTv2
+  - Fixed UserCreditBalance.cs -> Add GetNoRevenueEntryUserCreditBalanceById method.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #152

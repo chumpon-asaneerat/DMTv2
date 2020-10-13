@@ -71,6 +71,8 @@ namespace DMT.Models
 
 		// Summary
 		private decimal _UserBHTTotal = decimal.Zero;
+		private decimal _ExchangeBHTTotal = decimal.Zero;
+		private decimal _BorrowBHTTotal = decimal.Zero;
 		private decimal _AdditionalBHTTotal = decimal.Zero;
 
 		#endregion
@@ -1211,6 +1213,50 @@ namespace DMT.Models
 			set { }
 		}
 		/// <summary>
+		/// Gets or sets exchange in baht.
+		/// </summary>
+		[Category("Summary")]
+		[Description("Gets or sets exchange in baht.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PropertyMapName("ExchangeBHTTotal")]
+		public virtual decimal ExchangeBHTTotal
+		{
+			get { return _ExchangeBHTTotal; }
+			set
+			{
+				if (_ExchangeBHTTotal != value)
+				{
+					_ExchangeBHTTotal = value;
+					// Raise event.
+					this.RaiseChanged("ExchangeBHTTotal");
+					this.RaiseChanged("CreditFlowBHTTotal");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets borrow in baht.
+		/// </summary>
+		[Category("Summary")]
+		[Description("Gets or sets borrow/return in baht.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PropertyMapName("BorrowBHTTotal")]
+		public virtual decimal BorrowBHTTotal
+		{
+			get { return _BorrowBHTTotal; }
+			set
+			{
+				if (_BorrowBHTTotal != value)
+				{
+					_BorrowBHTTotal = value;
+					// Raise event.
+					this.RaiseChanged("BorrowBHTTotal");
+					this.RaiseChanged("CreditFlowBHTTotal");
+				}
+			}
+		}
+		/// <summary>
 		/// Gets or sets additional borrow in baht.
 		/// </summary>
 		[Category("Summary")]
@@ -1499,10 +1545,28 @@ namespace DMT.Models
 
 			#endregion
 
-			#region Additional
+			#region Exchange/Borrow/Additional/User(borrow/returns)
 
 			/// <summary>
-			/// Gets or sets additional borrow in baht.
+			/// Gets or sets exchange in baht.
+			/// </summary>
+			[PropertyMapName("ExchangeBHTTotal")]
+			public override decimal ExchangeBHTTotal
+			{
+				get { return base.ExchangeBHTTotal; }
+				set { base.ExchangeBHTTotal = value; }
+			}
+			/// <summary>
+			/// Gets or sets borrow in baht.
+			/// </summary>
+			[PropertyMapName("BorrowBHTTotal")]
+			public override decimal BorrowBHTTotal
+			{
+				get { return base.BorrowBHTTotal; }
+				set { base.BorrowBHTTotal = value; }
+			}
+			/// <summary>
+			/// Gets or sets additional in baht.
 			/// </summary>
 			[PropertyMapName("AdditionalBHTTotal")]
 			public override decimal AdditionalBHTTotal

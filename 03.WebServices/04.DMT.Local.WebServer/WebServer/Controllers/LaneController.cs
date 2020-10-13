@@ -50,14 +50,11 @@ namespace DMT.Services
             }
             else
             {
-                /*
                 Random rand = new Random();
                 if (string.IsNullOrWhiteSpace(value.JobId))
                 {
-                    // TODO: Autogenerate need to change to auto running number
                     value.JobId = rand.Next(100000).ToString("D5"); // auto generate.
                 }
-                */
                 result = LaneAttendance.SaveLaneAttendance(value);
             }
             return result;
@@ -244,7 +241,6 @@ namespace DMT.Services
             {
                 if (string.IsNullOrWhiteSpace(value.ApproveCode))
                 {
-                    // TODO: Autogenerate need to change to auto running number
                     Random rand = new Random();
                     value.ApproveCode = rand.Next(10000000).ToString("D8"); // auto generate.
                 }

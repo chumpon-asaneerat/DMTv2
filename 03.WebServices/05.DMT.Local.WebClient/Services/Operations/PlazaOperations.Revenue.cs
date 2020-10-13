@@ -844,7 +844,7 @@ namespace DMT.Services
             }
             var search = Search.UserCredits.GetActiveById.Create(
                 this.UserShift.UserId, this.PlazaGroup.PlazaGroupId);
-            var userCredit = ops.Credits.GetActiveUserCreditBalanceById(search).Value();
+            var userCredit = ops.Credits.GetNoRevenueEntryUserCreditBalanceById(search).Value();
 
             this.RevenueEntry = new Models.RevenueEntry();
 
@@ -955,6 +955,14 @@ namespace DMT.Services
                     this.RevenueEntry.RevenueId = rand.Next(100000).ToString("D5"); // auto generate.
                 }
             }
+
+            // Set UserCredits's Revenue Id
+            var usrSearch = Search.UserCredits.GetActiveById.Create(
+                this.UserShift.UserId, this.PlazaGroup.PlazaGroupId);
+            var userCredit = ops.Credits.GetNoRevenueEntryUserCreditBalanceById(usrSearch).Value();
+            userCredit.RevenueId = this.RevenueEntry.RevenueId;
+            ops.Credits.SaveUserCreditBalance(userCredit);
+
             // Save Revenue Entry.
             var revInst = ops.Revenue.SaveRevenue(this.RevenueEntry).Value();
             string revId = (null != revInst) ? revInst.RevenueId : string.Empty;

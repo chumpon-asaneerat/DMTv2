@@ -133,6 +133,25 @@ namespace DMT.Services
         }
 
         [HttpPost]
+        [ActionName(RouteConsts.Credit.GetNoRevenueEntryUserCreditBalanceById.Name)]
+        public NDbResult<UserCreditBalance> GetNoRevenueEntryUserCreditBalanceById(
+            [FromBody] Search.UserCredits.GetActiveById value)
+        {
+            NDbResult<UserCreditBalance> result;
+            if (null == value)
+            {
+                result = new NDbResult<UserCreditBalance>();
+                result.ParameterIsNull();
+            }
+            else
+            {
+                result = UserCreditBalance.GetNoRevenueEntryUserCreditBalanceById(
+                    value.UserId, value.PlazaGroupId);
+            }
+            return result;
+        }
+
+        [HttpPost]
         [ActionName(RouteConsts.Credit.SaveUserCreditBalance.Name)]
         public NDbResult<UserCreditBalance> SaveUserCreditBalance(
             [FromBody] UserCreditBalance value)
