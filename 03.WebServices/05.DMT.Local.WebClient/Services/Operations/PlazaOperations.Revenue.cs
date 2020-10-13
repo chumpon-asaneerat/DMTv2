@@ -221,6 +221,58 @@ namespace DMT.Services
 
             #endregion
 
+            #region Unique Code
+
+            public NRestResult<UniqueCode> GetUniqueId(string value)
+            {
+                NRestResult<UniqueCode> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<UniqueCode>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                if (null != value)
+                {
+                    ret = client.Execute<UniqueCode>(
+                        RouteConsts.Revenue.GetUniqueId.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<UniqueCode>();
+                    ret.ParameterIsNull();
+                }
+                return ret;
+            }
+
+            public NRestResult<UniqueCode> IncreaseUniqueId(string value)
+            {
+                NRestResult<UniqueCode> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<UniqueCode>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                if (null != value)
+                {
+                    ret = client.Execute<UniqueCode>(
+                        RouteConsts.Revenue.IncreaseUniqueId.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult<UniqueCode>();
+                    ret.ParameterIsNull();
+                }
+                return ret;
+            }
+
+            #endregion
+
             #endregion
         }
 
@@ -866,15 +918,19 @@ namespace DMT.Services
                 this.RevenueEntry.BeltNo = string.Empty;
             }
 
+            /*
             if (this.RevenueEntry.RevenueId == string.Empty)
             {
-                // TODO: Autogenerate need to change to auto running number
-                Random rand = new Random();
+                var unique = ops.Revenue.GetUniqueId("RevenueEntry").Value();
                 if (string.IsNullOrWhiteSpace(this.RevenueEntry.RevenueId))
                 {
-                    this.RevenueEntry.RevenueId = rand.Next(100000).ToString("D5"); // auto generate.
+                    string yr = DateTime.Now.ToThaiDateTimeString("yy");
+                    string autoId = (null != unique) ? yr + unique.LastNumber.ToString("D5") : string.Empty; // auto generate.
+                    this.RevenueEntry.RevenueId = autoId;
+                    Console.WriteLine(autoId);
                 }
             }
+            */
         }
         /// <summary>
         /// Load Exists Revenue Entry.
@@ -958,11 +1014,13 @@ namespace DMT.Services
 
             if (this.RevenueEntry.RevenueId == string.Empty)
             {
-                // TODO: Autogenerate need to change to auto running number
-                Random rand = new Random();
+                var unique = ops.Revenue.GetUniqueId("RevenueEntry").Value();
                 if (string.IsNullOrWhiteSpace(this.RevenueEntry.RevenueId))
                 {
-                    this.RevenueEntry.RevenueId = rand.Next(100000).ToString("D5"); // auto generate.
+                    string yr = DateTime.Now.ToThaiDateTimeString("yy");
+                    string autoId = (null != unique) ? yr + unique.LastNumber.ToString("D5") : string.Empty; // auto generate.
+                    this.RevenueEntry.RevenueId = autoId;
+                    ops.Revenue.IncreaseUniqueId("RevenueEntry");
                 }
             }
 

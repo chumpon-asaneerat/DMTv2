@@ -125,6 +125,44 @@ namespace DMT.Services
             return result;
         }
 
+        [HttpPost]
+        [ActionName(RouteConsts.Revenue.GetUniqueId.Name)]
+        public NDbResult<UniqueCode> GetUniqueId([FromBody] string value)
+        {
+            NDbResult<UniqueCode> result;
+
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                result = new NDbResult<UniqueCode>();
+                result.ParameterIsNull();
+            }
+            else
+            {
+                result = UniqueCode.GetUniqueId(value);
+            }
+
+            return result;
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Revenue.IncreaseUniqueId.Name)]
+        public NDbResult<UniqueCode> IncreaseUniqueId([FromBody] string value)
+        {
+            NDbResult<UniqueCode> result;
+
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                result = new NDbResult<UniqueCode>();
+                result.ParameterIsNull();
+            }
+            else
+            {
+                result = UniqueCode.IncreaseUniqueId(value);
+            }
+
+            return result;
+        }
+
         #endregion
     }
 }

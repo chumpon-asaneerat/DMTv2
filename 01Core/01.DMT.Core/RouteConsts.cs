@@ -493,6 +493,22 @@ namespace DMT
             }
 
             #endregion
+
+            #region UniqueId
+
+            public static class GetUniqueId
+            {
+                public const string Name = "GetUniqueId";
+                public const string Url = Revenue.Url + @"/" + Name;
+            }
+
+            public static class IncreaseUniqueId
+            {
+                public const string Name = "IncreaseUniqueId";
+                public const string Url = Revenue.Url + @"/" + Name;
+            }
+
+            #endregion
         }
 
         #endregion

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 
 using NLib;
 using NLib.Design;
@@ -175,6 +176,104 @@ namespace DMT.Models
 
 		#region Static Methods
 
+		public static NDbResult<UniqueCode> GetUniqueId(string key)
+		{
+			var result = new NDbResult<UniqueCode>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					if (string.IsNullOrWhiteSpace(key))
+					{
+						result.ParameterIsNull();
+						return result;
+					}
+
+					string cmd = @"
+					SELECT *
+					  FROM UniqueCode
+					 WHERE Key = ? ";
+
+					var ret = NQuery.Query<UniqueCode>(cmd,
+						key).FirstOrDefault();
+					var inst = ret;
+					if (null == ret)
+					{
+						// not found key
+						inst = new UniqueCode();
+						inst.Key = key;
+						inst.Mode = ResetMode.Yearly;
+						inst.LastUpdate = DateTime.Now;
+						inst.LastNumber = 1;
+						Save(inst);
+					}
+
+					if (null != inst)
+					{
+						int year = DateTime.Now.Year;
+						if (inst.LastUpdate.Year != year)
+						{
+							// not same year.
+							inst.LastUpdate = DateTime.Now;
+							inst.LastNumber = 1;
+							Save(inst);
+						}
+					}
+
+					result.Success(inst);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
+
+		}
+
+		public static NDbResult<UniqueCode> IncreaseUniqueId(string key)
+		{
+			var result = new NDbResult<UniqueCode>();
+			SQLiteConnection db = Default;
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					var inst = GetUniqueId(key).Value();
+					if (null != inst)
+					{
+						inst.LastNumber = inst.LastNumber + 1;
+						Save(inst);
+
+						result.Success(inst);
+					}
+					else
+					{
+						result.Error(new Exception("No instance found."));
+					}
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
+		}
 
 		#endregion
 	}
