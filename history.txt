@@ -36,8 +36,10 @@ Ported DMTv2 to DMT.TAxTODv1 #158
 Ported DMTv2 to DMT.TAxTODv1 #157
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #156
-- 
+- Update DMTv2
+  - TOD/TA App move Notify Service to app.xaml.cs.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #155

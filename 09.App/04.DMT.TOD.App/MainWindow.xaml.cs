@@ -29,16 +29,10 @@ namespace DMT
 
         #endregion
 
-        private TODWebServer appServ = null;
-
         #region Load/Unload
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // Start App Notify Server.
-            var appServ = new TODWebServer();
-            appServ.Start();
-
             TODNofifyService.Instance.OnActiveTSBChanged += Instance_OnActiveTSBChanged;
             TODNofifyService.Instance.OnChangeShift += Instance_OnChangeShift;
 
@@ -61,12 +55,6 @@ namespace DMT
 
             TODNofifyService.Instance.OnActiveTSBChanged -= Instance_OnActiveTSBChanged;
             TODNofifyService.Instance.OnChangeShift -= Instance_OnChangeShift;
-
-            if (null != appServ)
-            {
-                appServ.Shutdown();
-            }
-            appServ = null;
         }
 
         #endregion

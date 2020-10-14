@@ -29,16 +29,12 @@ namespace DMT
 
         #endregion
 
-        private TAWebServer appServ = null;
+        
 
         #region Load/Unload
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // Start App Notify Server.
-            appServ = new TAWebServer();
-            appServ.Start();
-
             TANofifyService.Instance.OnActiveTSBChanged += Instance_OnActiveTSBChanged;
             TANofifyService.Instance.OnChangeShift += Instance_OnChangeShift;
 
@@ -63,12 +59,6 @@ namespace DMT
 
             TANofifyService.Instance.OnActiveTSBChanged -= Instance_OnActiveTSBChanged;
             TANofifyService.Instance.OnChangeShift -= Instance_OnChangeShift;
-
-            if (null != appServ)
-            {
-                appServ.Shutdown();
-            }
-            appServ = null;
         }
 
         #endregion
