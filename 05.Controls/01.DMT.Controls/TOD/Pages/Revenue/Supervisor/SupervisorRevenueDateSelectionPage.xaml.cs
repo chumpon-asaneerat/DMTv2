@@ -212,6 +212,9 @@ namespace DMT.TOD.Pages.Revenue
 
         public void Setup(User supervisor)
         {
+            // check and send offline revenue entries to server.
+            RevenueEntryManager.SendRevnues();
+
             _manager.Supervisor = supervisor;
 
             LoadShifts();

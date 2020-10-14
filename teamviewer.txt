@@ -4,6 +4,13 @@ ID: 1731184163 -> RTO
 ID: 185255957 -> DATABASE (SQL Server) database server passowd : dmtdev123
 
 
+IP Address.
+Db 172.30.192.8
+Rabbit 172.30.192.9
+Rto 172.30.192.10
+Bis scw vrs 172.30.192.11
+Tod 172.39.192.12
+
 sudo mono TCT_App.exe
 password: 1234
 

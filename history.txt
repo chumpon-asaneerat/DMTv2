@@ -23,6 +23,8 @@
       transaction to used in TSBCreditSummary view later.
     - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
   - ใบเสร็จขายคูปอง ที่ TA ยังไม่มีจำนวนเงิน แสดง ตอนท้ายรายการ
+  - ป้อนย้อนหลังต้องส่งเวลา declare ไปด้วย
+  - Plaza ต้องเพิ่ม Plaza Id. จาก 3115 ส่งแค่ 15
 --------------------------------------------------------------------------------------------
 Ported DMTv2 to DMT.TAxTODv1 #160
 - 
@@ -33,8 +35,10 @@ Ported DMTv2 to DMT.TAxTODv1 #159
 Ported DMTv2 to DMT.TAxTODv1 #158
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #157
-- 
+- Update history.txt
+- Supervisor Revenue Entry now call SendRevenues (resend offline data).
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #156
