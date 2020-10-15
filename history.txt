@@ -23,6 +23,7 @@
       transaction to used in TSBCreditSummary view later.
     - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
   - ใบเสร็จขายคูปอง ที่ TA ยังไม่มีจำนวนเงิน แสดง ตอนท้ายรายการ
+  - When update coupon DMT.Server error in DateTime conversion need to reckeck formatDateTime in nlib-mssql.
 --------------------------------------------------------------------------------------------
 Ported DMTv2 to DMT.TAxTODv1 #165
 - 
@@ -30,8 +31,9 @@ Ported DMTv2 to DMT.TAxTODv1 #165
 Ported DMTv2 to DMT.TAxTODv1 #164
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #163
-- 
+- Update history.txt
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #162
