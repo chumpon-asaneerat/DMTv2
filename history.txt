@@ -27,10 +27,18 @@
   - Plaza ต้องเพิ่ม Plaza Id. จาก 3115 ส่งแค่ 15
 --------------------------------------------------------------------------------------------
 Ported DMTv2 to DMT.TAxTODv1 #160
-- 
 
+
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #159
-- 
+- Fixed SCW PlazaId #2.
+  - Lane Model add SCWPlazaId property.
+  - LaneAttendance Model add SCWPlazaId property.
+  - LanePayment Model add SCWPlazaId property.
+  - Plaza, Lane, LaneAttendance, LanePayment model chance SCWPlazaId data type from string to int.
+  - Update LocalDbServer.cs chance init SCWPlazaId values from string to int.
+  - SCWExtensionMethods SCWJob <-> LaneAttendance (ToLocal/ToServer) methods update.
+  - SCWExtensionMethods RevenueEntry -> SCWDeclare (ToServer) method update.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #158

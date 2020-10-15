@@ -50,6 +50,7 @@ namespace DMT.Models
 		private string _Direction = string.Empty;
 
 		private string _PlazaId = string.Empty;
+		private int _SCWPlazaId = 0;
 		private string _PlazaNameEN = string.Empty;
 		private string _PlazaNameTH = string.Empty;
 
@@ -381,6 +382,29 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
+		/// Gets or sets SCW Plaza Id
+		/// </summary>
+		[Category("Plaza")]
+		[Description("Gets or sets SCW Plaza Id")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PropertyMapName("SCWPlazaId")]
+		public virtual int SCWPlazaId
+		{
+			get
+			{
+				return _SCWPlazaId;
+			}
+			set
+			{
+				if (_SCWPlazaId != value)
+				{
+					_SCWPlazaId = value;
+					this.RaiseChanged("SCWPlazaId");
+				}
+			}
+		}
+		/// <summary>
 		/// Gets or sets Plaza Name EN
 		/// </summary>
 		[Category("Plaza")]
@@ -548,6 +572,15 @@ namespace DMT.Models
 
 			#region Plaza
 
+			/// <summary>
+			/// Gets or sets SCW Plaza Id.
+			/// </summary>
+			[PropertyMapName("SCWPlazaId")]
+			public override int SCWPlazaId
+			{
+				get { return base.SCWPlazaId; }
+				set { base.SCWPlazaId = value; }
+			}
 			/// <summary>
 			/// Gets or sets Plaza Name EN.
 			/// </summary>

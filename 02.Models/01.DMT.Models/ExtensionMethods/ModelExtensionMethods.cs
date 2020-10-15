@@ -186,17 +186,25 @@ namespace DMT.Models.ExtensionMethods
     /// </summary>
     public static class SCWExtensionMethods
     {
+        #region SCWJob <-> LaneAttendance
+
         public static LaneAttendance ToLocal(this SCWJob value)
         {
             if (null == value) return null;
 
             var inst = new LaneAttendance();
             //value.networkId;
-
+            Plaza plaza = null;
             if (value.plazaId.HasValue)
             {
-                inst.PlazaId = value.plazaId.Value.ToString();
+                plaza = Plaza.GetPlazaBySCWPlazaId(value.plazaId.Value).Value();
             }
+            if (null == plaza)
+            {
+                return null;
+            }
+
+            inst.PlazaId = plaza.PlazaId;
             if (value.laneId.HasValue)
             {
                 inst.LaneNo = value.laneId.Value;
@@ -215,10 +223,10 @@ namespace DMT.Models.ExtensionMethods
             if (null == value) return null;
             var inst = new SCWJob();
 
-            //inst.networkId = 31;
+            // TODO: network id required.
+            inst.networkId = 31;
             inst.laneId = value.LaneNo;
-            inst.plazaId = (!string.IsNullOrEmpty(value.PlazaId)) ?
-                Convert.ToInt32(value.PlazaId) : default(int?);
+            inst.plazaId = value.SCWPlazaId;
             inst.staffId = value.UserId;
             inst.jobNo = (!string.IsNullOrEmpty(value.JobId)) ? 
                 Convert.ToInt32(value.JobId) : default(int?);
@@ -228,6 +236,11 @@ namespace DMT.Models.ExtensionMethods
             return inst;
         }
 
+        #endregion
+
+        #region RevenueEntry -> SCWDeclare
+
+        // Cash
         public static SCWDeclareCash Create(this List<MCurrency> currencies, 
             decimal value, int number)
         {
@@ -246,7 +259,7 @@ namespace DMT.Models.ExtensionMethods
             inst.total = inst.denomValue * number;
             return inst;
         }
-
+        // Coupon
         public static SCWDeclareCoupon Create(this List<MCoupon> coupons,
             decimal value, int number)
         {
@@ -264,7 +277,7 @@ namespace DMT.Models.ExtensionMethods
             inst.total = inst.couponValue * number;
             return inst;
         }
-
+        // Declare
         public static SCWDeclare ToServer(this RevenueEntry value,
             List<MCurrency> currencies, List<MCoupon> coupons, 
             List<LaneAttendance> jobs,
@@ -401,6 +414,8 @@ namespace DMT.Models.ExtensionMethods
             return inst;
         }
     }
+
+    #endregion
 
     #endregion
 }

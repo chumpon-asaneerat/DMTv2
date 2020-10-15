@@ -164,7 +164,7 @@ namespace DMT.Services
                         SCWOperations server = SCWServiceOperations.Instance.Plaza;
                         var inst = new SCWChiefOfDuty();
                         inst.networkId = 31; // TODO: network id required.
-                        inst.plazaId = Convert.ToInt32(plazas[0].PlazaId);
+                        inst.plazaId = Convert.ToInt32(plazas[0].SCWPlazaId);
                         inst.staffId = value.UserId;
                         inst.staffTypeId = 1;
                         inst.beginDateTime = value.Begin;

@@ -403,7 +403,7 @@ namespace DMT.Services
 			plaza = new Plaza()
 			{
 				PlazaId = "3101",
-				SCWPlazaId = "01",
+				SCWPlazaId = 1,
 				PlazaNameEN = "DIN DAENG 1",
 				PlazaNameTH = "ดินแดง 1",
 				TSBId = item.TSBId,
@@ -467,7 +467,7 @@ namespace DMT.Services
 			plaza = new Plaza()
 			{
 				PlazaId = "3102",
-				SCWPlazaId = "02",
+				SCWPlazaId = 2,
 				PlazaNameEN = "DIN DAENG 2",
 				PlazaNameTH = "ดินแดง 2",
 				TSBId = item.TSBId,
@@ -583,7 +583,7 @@ namespace DMT.Services
 			plaza = new Plaza()
 			{
 				PlazaId = "3103",
-				SCWPlazaId = "03",
+				SCWPlazaId = 3,
 				PlazaNameEN = "SUTHISARN",
 				PlazaNameTH = "สุทธิสาร",
 				TSBId = item.TSBId,
@@ -667,7 +667,7 @@ namespace DMT.Services
 			plaza = new Plaza()
 			{
 				PlazaId = "3104",
-				SCWPlazaId = "04",
+				SCWPlazaId = 4,
 				PlazaNameEN = "LAD PRAO INBOUND",
 				PlazaNameTH = "ลาดพร้าว ขาเข้า",
 				TSBId = item.TSBId,
@@ -745,7 +745,7 @@ namespace DMT.Services
 			plaza = new Plaza()
 			{
 				PlazaId = "3105",
-				SCWPlazaId = "05",
+				SCWPlazaId = 5,
 				PlazaNameEN = "LAD PRAO OUTBOUND",
 				PlazaNameTH = "ลาดพร้าว ขาออก",
 				TSBId = item.TSBId,
@@ -830,7 +830,7 @@ namespace DMT.Services
 			plaza = new Plaza()
 			{
 				PlazaId = "3106",
-				SCWPlazaId = "06",
+				SCWPlazaId = 6,
 				PlazaNameEN = "RATCHADA PHISEK 1",
 				PlazaNameTH = "รัชดาภิเษก 1",
 				TSBId = item.TSBId,
@@ -849,7 +849,7 @@ namespace DMT.Services
 			plaza = new Plaza()
 			{
 				PlazaId = "3107",
-				SCWPlazaId = "07",
+				SCWPlazaId = 7,
 				PlazaNameEN = "RATCHADA PHISEK 2",
 				PlazaNameTH = "รัชดาภิเษก 2",
 				TSBId = item.TSBId,
@@ -898,7 +898,7 @@ namespace DMT.Services
 			plaza = new Plaza()
 			{
 				PlazaId = "3108",
-				SCWPlazaId = "08",
+				SCWPlazaId = 8,
 				PlazaNameEN = "BANGKHEN",
 				PlazaNameTH = "บางเขน",
 				TSBId = item.TSBId,
@@ -947,7 +947,7 @@ namespace DMT.Services
 			plaza = new Plaza()
 			{
 				PlazaId = "3109",
-				SCWPlazaId = "09",
+				SCWPlazaId = 9,
 				PlazaNameEN = "CHANGEWATTANA 1",
 				PlazaNameTH = "แจ้งวัฒนะ 1",
 				TSBId = item.TSBId,
@@ -966,7 +966,7 @@ namespace DMT.Services
 			plaza = new Plaza()
 			{
 				PlazaId = "3110",
-				SCWPlazaId = "10",
+				SCWPlazaId = 10,
 				PlazaNameEN = "CHANGEWATTANA 2",
 				PlazaNameTH = "แจ้งวัฒนะ 2",
 				TSBId = item.TSBId,
@@ -1015,7 +1015,7 @@ namespace DMT.Services
 			plaza = new Plaza()
 			{
 				PlazaId = "3111",
-				SCWPlazaId = "11",
+				SCWPlazaId = 11,
 				PlazaNameEN = "LAKSI INBOUND",
 				PlazaNameTH = "หลักสี่ ขาเข้า",
 				TSBId = item.TSBId,
@@ -1048,7 +1048,7 @@ namespace DMT.Services
 			plaza = new Plaza()
 			{
 				PlazaId = "3112",
-				SCWPlazaId = "12",
+				SCWPlazaId = 12,
 				PlazaNameEN = "LAKSI OUTBOUND",
 				PlazaNameTH = "หลักสี่ ขาออก",
 				TSBId = item.TSBId,
@@ -1097,7 +1097,7 @@ namespace DMT.Services
 			plaza = new Plaza()
 			{
 				PlazaId = "3113",
-				SCWPlazaId = "13",
+				SCWPlazaId = 13,
 				PlazaNameEN = "DON MUANG 1",
 				PlazaNameTH = "ดอนเมือง 1",
 				TSBId = item.TSBId,
@@ -1116,7 +1116,7 @@ namespace DMT.Services
 			plaza = new Plaza()
 			{
 				PlazaId = "3114",
-				SCWPlazaId = "14",
+				SCWPlazaId = 14,
 				PlazaNameEN = "DON MUANG 2",
 				PlazaNameTH = "ดอนเมือง 2",
 				TSBId = item.TSBId,
@@ -1165,7 +1165,7 @@ namespace DMT.Services
 			plaza = new Plaza()
 			{
 				PlazaId = "3115",
-				SCWPlazaId = "15",
+				SCWPlazaId = 15,
 				PlazaNameEN = "ANUSORN SATHAN 1",
 				PlazaNameTH = "อนุสรน์สถาน 1",
 				TSBId = item.TSBId,
@@ -1184,7 +1184,7 @@ namespace DMT.Services
 			plaza = new Plaza()
 			{
 				PlazaId = "3116",
-				SCWPlazaId = "16",
+				SCWPlazaId = 16,
 				PlazaNameEN = "ANUSORN SATHAN 2",
 				PlazaNameTH = "อนุสรน์สถาน 2",
 				TSBId = item.TSBId,

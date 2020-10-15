@@ -35,7 +35,7 @@ namespace DMT.Models
 		#region Intenral Variables
 
 		private string _PlazaId = string.Empty;
-		private string _SCWPlazaId = string.Empty;
+		private int _SCWPlazaId = 0;
 		private string _PlazaNameEN = string.Empty;
 		private string _PlazaNameTH = string.Empty;
 
@@ -93,9 +93,8 @@ namespace DMT.Models
 		/// </summary>
 		[Category("Plaza")]
 		[Description("Gets or sets SCWPlazaId.")]
-		[MaxLength(10)]
 		[PropertyMapName("SCWPlazaId")]
-		public string SCWPlazaId
+		public int SCWPlazaId
 		{
 			get
 			{
@@ -550,7 +549,7 @@ namespace DMT.Models
 		/// <param name="db">The database connection.</param>
 		/// <param name="scwPlazaId">The SCW Plaza Id</param>
 		/// <returns>Returns Plaza instance.</returns>
-		public static NDbResult<Plaza> GetPlazaBySCWPlazaId(SQLiteConnection db, string scwPlazaId)
+		public static NDbResult<Plaza> GetPlazaBySCWPlazaId(SQLiteConnection db, int scwPlazaId)
 		{
 			var result = new NDbResult<Plaza>();
 			if (null == db)
@@ -584,7 +583,7 @@ namespace DMT.Models
 		/// </summary>
 		/// <param name="scwPlazaId">The SCW Plaza Id.</param>
 		/// <returns>Returns Plaza instance.</returns>
-		public static NDbResult<Plaza> GetPlazaBySCWPlazaId(string scwPlazaId)
+		public static NDbResult<Plaza> GetPlazaBySCWPlazaId(int scwPlazaId)
 		{
 			lock (sync)
 			{
