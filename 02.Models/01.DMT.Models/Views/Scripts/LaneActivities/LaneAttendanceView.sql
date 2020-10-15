@@ -3,7 +3,7 @@ AS
 	SELECT LaneAttendance.*
 		 , TSB.TSBNameEN, TSB.TSBNameTH
 		 , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction
-		 , Plaza.PlazaNameEN, Plaza.PlazaNameTH
+		 , Plaza.SCWPlazaId, Plaza.PlazaNameEN, Plaza.PlazaNameTH
 		 , Lane.LaneNo
 		 --, UserView.FullNameEN, UserView.FullNameTH
 	  FROM LaneAttendance

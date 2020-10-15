@@ -32,8 +32,16 @@ Ported DMTv2 to DMT.TAxTODv1 #160
 Ported DMTv2 to DMT.TAxTODv1 #159
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #158
-- 
+- Fixed SCW PlazaId #1.
+  - Plaza Add SCWPlazaId property.
+  - Plaza Add GetPlazaBySCWPlazaId methods.
+  - Update PlazaView.sql add SCWPlazaId column.
+  - Update LaneView.sql add SCWPlazaId column.
+  - Update LaneAttendanceView.sql add SCWPlazaId column.
+  - Update LanePaymentView.sql add SCWPlazaId column.
+  - Update LocalDbServer.cs add init SCWPlazaId values.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #157

@@ -35,6 +35,7 @@ namespace DMT.Models
 		#region Intenral Variables
 
 		private string _PlazaId = string.Empty;
+		private string _SCWPlazaId = string.Empty;
 		private string _PlazaNameEN = string.Empty;
 		private string _PlazaNameTH = string.Empty;
 
@@ -84,6 +85,28 @@ namespace DMT.Models
 				{
 					_PlazaId = value;
 					this.RaiseChanged("PlazaId");
+				}
+			}
+		}
+		/// <summary>
+		/// Gets or sets SCWPlazaId.
+		/// </summary>
+		[Category("Plaza")]
+		[Description("Gets or sets SCWPlazaId.")]
+		[MaxLength(10)]
+		[PropertyMapName("SCWPlazaId")]
+		public string SCWPlazaId
+		{
+			get
+			{
+				return _SCWPlazaId;
+			}
+			set
+			{
+				if (_SCWPlazaId != value)
+				{
+					_SCWPlazaId = value;
+					this.RaiseChanged("SCWPlazaId");
 				}
 			}
 		}
@@ -519,6 +542,54 @@ namespace DMT.Models
 			{
 				SQLiteConnection db = Default;
 				return GetPlaza(db, plazaId);
+			}
+		}
+		/// <summary>
+		/// Gets Plaza by SCW Id.
+		/// </summary>
+		/// <param name="db">The database connection.</param>
+		/// <param name="scwPlazaId">The SCW Plaza Id</param>
+		/// <returns>Returns Plaza instance.</returns>
+		public static NDbResult<Plaza> GetPlazaBySCWPlazaId(SQLiteConnection db, string scwPlazaId)
+		{
+			var result = new NDbResult<Plaza>();
+			if (null == db)
+			{
+				result.DbConenctFailed();
+				return result;
+			}
+			lock (sync)
+			{
+				MethodBase med = MethodBase.GetCurrentMethod();
+				try
+				{
+					string cmd = string.Empty;
+					cmd += "SELECT * ";
+					cmd += "  FROM PlazaView ";
+					cmd += " WHERE SCWPlazaId = ? ";
+					var ret = NQuery.Query<FKs>(cmd, scwPlazaId).FirstOrDefault();
+					var data = (null != ret) ? ret.ToModel() : null;
+					result.Success(data);
+				}
+				catch (Exception ex)
+				{
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
+		}
+		/// <summary>
+		/// Gets Plaza by SCW Id.
+		/// </summary>
+		/// <param name="scwPlazaId">The SCW Plaza Id.</param>
+		/// <returns>Returns Plaza instance.</returns>
+		public static NDbResult<Plaza> GetPlazaBySCWPlazaId(string scwPlazaId)
+		{
+			lock (sync)
+			{
+				SQLiteConnection db = Default;
+				return GetPlazaBySCWPlazaId(db, scwPlazaId);
 			}
 		}
 		/// <summary>

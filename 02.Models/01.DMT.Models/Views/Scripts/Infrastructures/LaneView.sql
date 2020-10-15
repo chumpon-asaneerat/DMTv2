@@ -3,7 +3,7 @@ AS
 	SELECT Lane.*
 		 , TSB.TSBNameEN, TSB.TSBNameTH
 		 , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction
-		 , Plaza.PlazaNameEN, Plaza.PlazaNameTH
+		 , Plaza.SCWPlazaId, Plaza.PlazaNameEN, Plaza.PlazaNameTH
 	  FROM Lane
 	     , Plaza
 	     , PlazaGroup
