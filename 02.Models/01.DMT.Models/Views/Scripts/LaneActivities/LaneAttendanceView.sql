@@ -1,6 +1,6 @@
 ﻿CREATE VIEW LaneAttendanceView
 AS
-	SELECT LaneAttendance.*
+	SELECT DISTINCT LaneAttendance.*
 		 , TSB.TSBNameEN, TSB.TSBNameTH
 		 , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction
 		 , Plaza.SCWPlazaId, Plaza.PlazaNameEN, Plaza.PlazaNameTH

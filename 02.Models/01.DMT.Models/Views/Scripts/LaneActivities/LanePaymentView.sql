@@ -1,6 +1,6 @@
 ﻿CREATE VIEW LanePaymentView
 AS
-	SELECT LanePayment.*
+	SELECT DISTINCT LanePayment.*
 		 , TSB.TSBNameEN, TSB.TSBNameTH
 		 , PlazaGroup.PlazaGroupNameEN, PlazaGroup.PlazaGroupNameTH, PlazaGroup.Direction
 		 , Plaza.SCWPlazaId, Plaza.PlazaNameEN, Plaza.PlazaNameTH

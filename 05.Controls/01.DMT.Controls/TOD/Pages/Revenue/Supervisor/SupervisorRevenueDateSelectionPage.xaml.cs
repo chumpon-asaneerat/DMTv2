@@ -98,7 +98,7 @@ namespace DMT.TOD.Pages.Revenue
             _manager.PlazaGroup = plazaGroup;
             _manager.CreateUserShift();
 
-            _manager.EntryDate = dtEntryDate.SelectedDate.Value;
+            //_manager.EntryDate = DateTime.Now;
             _manager.RevenueDate = dtRevDate.SelectedDate.Value;
 
             // Revenue Entry Page
@@ -169,6 +169,10 @@ namespace DMT.TOD.Pages.Revenue
         {
             var shifts = ops.Shifts.GetShifts().Value();
             cbShifts.ItemsSource = shifts;
+            if (null != shifts && shifts.Count > 0)
+            {
+                cbShifts.SelectedIndex = 0;
+            }
         }
 
         private void LoadPlazaGroups()
@@ -216,10 +220,11 @@ namespace DMT.TOD.Pages.Revenue
             RevenueEntryManager.SendRevnues();
 
             _manager.Supervisor = supervisor;
+            _manager.EntryDate = DateTime.Now;
 
             LoadShifts();
             LoadPlazaGroups();
-            dtEntryDate.SelectedDate = DateTime.Now;
+            dtEntryDate.SelectedDate = _manager.EntryDate;
             dtRevDate.SelectedDate = DateTime.Now;
             // for binding search user.
             this.DataContext = _selectUser;
