@@ -36,8 +36,12 @@ Ported DMTv2 to DMT.TAxTODv1 #163
 Ported DMTv2 to DMT.TAxTODv1 #162
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #161
-- 
+- Update Fixed SCW PlazaId to DMT.TAxTODv1 #1.
+  - Update LaneView.sql.
+  - Update LaneAttendanceView.sql.
+  - Update LanePaymentView.sql.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #160
