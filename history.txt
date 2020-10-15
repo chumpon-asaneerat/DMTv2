@@ -33,8 +33,12 @@ Ported DMTv2 to DMT.TAxTODv1 #164
 Ported DMTv2 to DMT.TAxTODv1 #163
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #162
-- 
+- Update Fixed SCW PlazaId to DMT.TAxTODv1 #2.
+  - SupervisorRevenueDateSelectionPage ported (need recheck).
+  - Ported Plaza, Lane, LaneAttendance, LanePayment model.
+  - Ported init data in LocalDbServer.cs
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #161
