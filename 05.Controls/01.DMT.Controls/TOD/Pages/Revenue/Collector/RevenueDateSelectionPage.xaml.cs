@@ -72,15 +72,22 @@ namespace DMT.TOD.Pages.Revenue
                         return;
                     }
                 }
-                if (!_manager.HasIncompletedLanes)
+                if (DMT.Controls.AppStatus.SCWOnline)
                 {
-                    DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
-                    msg.Owner = Application.Current.MainWindow;
-                    msg.Setup("ไม่พบข้อมูลเลนที่ยังไม่ถูกป้อนรายได้", "DMT - Tour of Duty");
-                    if (msg.ShowDialog() == true)
+                    if (!_manager.HasIncompletedLanes)
                     {
-                        return;
+                        DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                        msg.Owner = Application.Current.MainWindow;
+                        msg.Setup("ไม่พบข้อมูลเลนที่ยังไม่ถูกป้อนรายได้", "DMT - Tour of Duty");
+                        if (msg.ShowDialog() == true)
+                        {
+                            return;
+                        }
                     }
+                }
+                else
+                {
+                    // Allow Offline enter.
                 }
             }
             else

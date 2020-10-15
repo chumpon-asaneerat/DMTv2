@@ -83,6 +83,7 @@ namespace DMT.Controls.StatusBar
             {
                 isOnline = false;
             }
+            AppStatus.SCWOnline = isOnline;
         }
 
         void timer_Tick(object sender, EventArgs e)

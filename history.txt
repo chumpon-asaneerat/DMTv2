@@ -28,8 +28,10 @@
 Ported DMTv2 to DMT.TAxTODv1 #165
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #164
-- 
+- DMTv2 Fixed TOD bug
+  - Fixed when offline allow to enter revenue entry.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #163
