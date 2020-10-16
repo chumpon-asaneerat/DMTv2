@@ -310,6 +310,12 @@ namespace DMT
                 public const string Url = UserShift.Url + @"/" + Name;
             }
 
+            public static class SaveUserShift
+            {
+                public const string Name = "SaveUserShift";
+                public const string Url = UserShift.Url + @"/" + Name;
+            }
+
             public static class GetUserShifts
             {
                 public const string Name = "GetUserShifts";

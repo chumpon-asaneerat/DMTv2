@@ -155,6 +155,29 @@ namespace DMT.Services
                 return ret;
             }
 
+            public NRestResult SaveUserShift(UserShift value)
+            {
+                NRestResult ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                if (null != value)
+                {
+                    ret = client.Execute(RouteConsts.UserShift.SaveUserShift.Url, value);
+                }
+                else
+                {
+                    ret = new NRestResult();
+                    ret.ParameterIsNull();
+                }
+                return ret;
+            }
+
             public NRestResult<List<UserShift>> GetUserShifts(User value)
             {
                 NRestResult<List<UserShift>> ret;

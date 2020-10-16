@@ -37,8 +37,12 @@ Ported DMTv2 to DMT.TAxTODv1 #168
 Ported DMTv2 to DMT.TAxTODv1 #167
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #166
-- 
+- DMTv2 Fixed TOD bug #2
+  - Add SaveUserShift methods in both Server/Client code.
+  - RevenueManager add ByChief property and update code in SaveRevenue method.
+  - RevenueManager fixed RevenueDate (add time part).
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #165

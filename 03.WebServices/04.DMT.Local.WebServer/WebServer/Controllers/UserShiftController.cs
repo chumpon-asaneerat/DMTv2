@@ -92,6 +92,24 @@ namespace DMT.Services
         }
 
         [HttpPost]
+        [ActionName(RouteConsts.UserShift.SaveUserShift.Name)]
+        public NDbResult SaveUserShift([FromBody] UserShift value)
+        {
+            NDbResult result;
+
+            if (null == value)
+            {
+                result = new NDbResult<Shift>();
+                result.ParameterIsNull();
+            }
+            else
+            {
+                result = UserShift.Save(value);
+            }
+            return result;
+        }
+
+        [HttpPost]
         [ActionName(RouteConsts.UserShift.GetUserShifts.Name)]
         public NDbResult<List<UserShift>> GetUserShifts([FromBody] User value)
         {

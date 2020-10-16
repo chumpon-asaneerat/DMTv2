@@ -727,6 +727,7 @@ namespace DMT.Services
             SCWServiceOperations.Instance.UserName = "DMTUSER";
             SCWServiceOperations.Instance.Password = "DMTPASS";
 
+            this.ByChief = false;
             this.EntryDate = DateTime.Now;
         }
 
@@ -897,7 +898,26 @@ namespace DMT.Services
             }
             var search = Search.UserCredits.GetActiveById.Create(
                 this.UserShift.UserId, this.PlazaGroup.PlazaGroupId);
-            var userCredit = ops.Credits.GetNoRevenueEntryUserCreditBalanceById(search).Value();
+
+            UserCreditBalance userCredit = null;
+            if (!this.ByChief)
+            {
+                userCredit = ops.Credits.GetNoRevenueEntryUserCreditBalanceById(search).Value();
+            }
+            else
+            {
+                // By chief create empty balance - not saved but temp for disaply.
+                userCredit = new UserCreditBalance();
+                userCredit.State = UserCreditBalance.StateTypes.Completed; // set completed state.
+                userCredit.BagNo = string.Empty;
+                userCredit.BeltNo = string.Empty;
+                userCredit.TSBId = this.UserShift.TSBId;
+                userCredit.TSBNameEN = this.UserShift.TSBNameEN;
+                userCredit.TSBNameTH = this.UserShift.TSBNameTH;
+                userCredit.UserId = this.UserShift.UserId;
+                userCredit.FullNameEN = this.UserShift.FullNameEN;
+                userCredit.FullNameTH = this.UserShift.FullNameTH;
+            }
 
             this.RevenueEntry = new Models.RevenueEntry();
 
@@ -964,7 +984,10 @@ namespace DMT.Services
 
             // assigned date after sync object(s) to RevenueEntry.
             this.RevenueEntry.EntryDate = this.EntryDate; // assigned Entry date.
-            this.RevenueEntry.RevenueDate = this.RevenueDate; // assigned Revenue date.
+            var dtNow = DateTime.Now;
+            this.RevenueEntry.RevenueDate = new DateTime(
+                this.RevenueDate.Year, this.RevenueDate.Month, this.RevenueDate.Year,
+                dtNow.Hour, dtNow.Minute, dtNow.Second, dtNow.Millisecond);
             this.RevenueEntry.Lanes = this.LaneList.Trim();
 
             // Find begin/end of revenue.
@@ -1028,9 +1051,30 @@ namespace DMT.Services
             // Set UserCredits's Revenue Id
             var usrSearch = Search.UserCredits.GetActiveById.Create(
                 this.UserShift.UserId, this.PlazaGroup.PlazaGroupId);
-            var userCredit = ops.Credits.GetNoRevenueEntryUserCreditBalanceById(usrSearch).Value();
-            userCredit.RevenueId = this.RevenueEntry.RevenueId;
-            ops.Credits.SaveUserCreditBalance(userCredit);
+
+            UserCreditBalance userCredit = null;
+            if (!this.ByChief)
+            {
+                userCredit = ops.Credits.GetNoRevenueEntryUserCreditBalanceById(usrSearch).Value();
+                userCredit.RevenueId = this.RevenueEntry.RevenueId;
+                ops.Credits.SaveUserCreditBalance(userCredit);
+            }
+            else
+            {
+                // By chief create empty balance - update from Revenue Entry and save.
+                userCredit = new UserCreditBalance();
+                userCredit.State = UserCreditBalance.StateTypes.Completed; // set completed state.
+                userCredit.BagNo = this.RevenueEntry.BagNo;
+                userCredit.BeltNo = this.RevenueEntry.BeltNo;
+                userCredit.TSBId = this.UserShift.TSBId;
+                userCredit.TSBNameEN = this.UserShift.TSBNameEN;
+                userCredit.TSBNameTH = this.UserShift.TSBNameTH;
+                userCredit.UserId = this.UserShift.UserId;
+                userCredit.FullNameEN = this.UserShift.FullNameEN;
+                userCredit.FullNameTH = this.UserShift.FullNameTH;
+                userCredit.RevenueId = this.RevenueEntry.RevenueId;
+                ops.Credits.SaveUserCreditBalance(userCredit);
+            }
 
             // Save Revenue Entry.
             var revInst = ops.Revenue.SaveRevenue(this.RevenueEntry).Value();
@@ -1059,10 +1103,18 @@ namespace DMT.Services
             var existActivities = ops.Lanes.GetAttendancesByUserShift(search).Value();
 
             bool bCloseUserShift = (null == existActivities || existActivities.Count == 0);
-            if (bCloseUserShift)
+
+            if (!this.ByChief)
             {
-                // no lane activitie in user shift.
-                ops.UserShifts.EndUserShift(this.UserShift); // End user job(shift).
+                if (bCloseUserShift)
+                {
+                    // no lane activitie in user shift.
+                    ops.UserShifts.EndUserShift(this.UserShift); // End user job(shift).
+                }
+            }
+            else
+            {
+                ops.UserShifts.SaveUserShift(this.UserShift); // direct save.
             }
             // Send data to server to mark sync status.
             SendRevnue(this.RevenueEntry);
@@ -1074,6 +1126,10 @@ namespace DMT.Services
 
         #region Public Properties
 
+        /// <summary>
+        /// Gets or sets is revenue by chief.
+        /// </summary>
+        public bool ByChief { get; internal set; }
         /// <summary>
         /// Gets or sets Entry Date.
         /// </summary>
@@ -1451,7 +1507,8 @@ namespace DMT.Services
         public RevenueEntryManager Create()
         {
             RevenueEntryManager inst = new RevenueEntryManager();
-            
+
+            inst.ByChief = true; // set revenue entry by chief
             inst.EntryDate = this.EntryDate;
             inst.RevenueDate = this.RevenueDate;
             inst.User = this.User;
