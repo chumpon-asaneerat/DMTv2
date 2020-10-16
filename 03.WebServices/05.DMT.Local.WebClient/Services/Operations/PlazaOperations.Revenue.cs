@@ -14,6 +14,7 @@ using NLib.Reflection;
 using System.ComponentModel;
 using System.Reflection;
 using NLib;
+using System.Runtime.InteropServices;
 
 #endregion
 
@@ -338,7 +339,7 @@ namespace DMT.Services
                 // Gets Job List from WS.
                 int nwId = 31; // TODO: network id required.
 
-                int plazaId = Convert.ToInt32(plaza.PlazaId);
+                int plazaId = plaza.SCWPlazaId;
                 // keep plaza Id.
                 if (!this.PlazaIds.Contains(plazaId)) this.PlazaIds.Add(plazaId);
 
@@ -748,7 +749,7 @@ namespace DMT.Services
             {
                 // Gets Job List from WS.
                 int nwId = 31; // TODO: network id required.
-                int plazaId = Convert.ToInt32(plaza.PlazaId);
+                int plazaId = plaza.SCWPlazaId;
                 // keep plaza Id.
                 if (!this.PlazaIds.Contains(plazaId)) this.PlazaIds.Add(plazaId);
 
@@ -1254,7 +1255,7 @@ namespace DMT.Services
                 PlazaGroupId = value.PlazaGroupId
             };
             var plazas = ops.TSB.GetPlazaGroupPlazas(plazaGroup).Value();
-            int plazaId = (null != plazas && plazas.Count > 0) ? Convert.ToInt32(plazas[0].PlazaId) : -1;
+            int plazaId = (null != plazas && plazas.Count > 0) ? plazas[0].SCWPlazaId : -1;
 
             if (plazaId == -1)
             {
@@ -1340,7 +1341,7 @@ namespace DMT.Services
             {
                 // Gets Job List from WS.
                 int nwId = 31; // TODO: network id required.
-                int plazaId = Convert.ToInt32(plaza.PlazaId);
+                int plazaId = plaza.SCWPlazaId;
                 // keep plaza Id.
                 if (!this.PlazaIds.Contains(plazaId)) this.PlazaIds.Add(plazaId);
 
