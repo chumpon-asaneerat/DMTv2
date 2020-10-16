@@ -34,8 +34,9 @@ Ported DMTv2 to DMT.TAxTODv1 #169
 Ported DMTv2 to DMT.TAxTODv1 #168
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #167
-- 
+- Update TODO in cardAllowList currently not implements.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #166

@@ -399,7 +399,7 @@ namespace DMT.Models.ExtensionMethods
             inst.cardAllowList = new List<SCWDeclareFreePass>();
             if (inst.cardAllowTotalAmount > 0)
             {
-
+                // TODO: required to create table cardAllowList.
             }
             // Other
             inst.otherTotalAmount = value.OtherBHTTotal;
