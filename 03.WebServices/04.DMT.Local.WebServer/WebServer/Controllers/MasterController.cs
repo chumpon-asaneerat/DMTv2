@@ -27,6 +27,14 @@ namespace DMT.Services
             return results;
         }
 
+        [HttpPost]
+        [ActionName(RouteConsts.Master.SaveMCurrencies.Name)]
+        public NDbResult SaveMCurrencies([FromBody] List<MCurrency> values)
+        {
+            var results = MCurrency.SaveMCurrencies(values);
+            return results;
+        }
+
         #endregion
 
         #region MCoupon
@@ -39,6 +47,14 @@ namespace DMT.Services
             return results;
         }
 
+        [HttpPost]
+        [ActionName(RouteConsts.Master.SaveMCoupons.Name)]
+        public NDbResult SaveMCoupons([FromBody] List<MCoupon> values)
+        {
+            var results = MCoupon.SaveMCoupons(values);
+            return results;
+        }
+
         #endregion
 
         #region MCardAllow
@@ -48,6 +64,14 @@ namespace DMT.Services
         public NDbResult<List<MCardAllow>> GetCardAllows()
         {
             var results = MCardAllow.GetCardAllows();
+            return results;
+        }
+
+        [HttpPost]
+        [ActionName(RouteConsts.Master.SaveMCardAllows.Name)]
+        public NDbResult SaveMCardAllows([FromBody] List<MCardAllow> values)
+        {
+            var results = MCardAllow.SaveMCardAllows(values);
             return results;
         }
 

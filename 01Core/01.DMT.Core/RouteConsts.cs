@@ -25,6 +25,12 @@ namespace DMT
                 public const string Url = Master.Url + @"/" + Name;
             }
 
+            public static class SaveMCurrencies
+            {
+                public const string Name = "SaveMCurrencies";
+                public const string Url = Master.Url + @"/" + Name;
+            }
+
             #endregion
 
             #region MCoupon
@@ -35,6 +41,12 @@ namespace DMT
                 public const string Url = Master.Url + @"/" + Name;
             }
 
+            public static class SaveMCoupons
+            {
+                public const string Name = "SaveMCoupons";
+                public const string Url = Master.Url + @"/" + Name;
+            }
+
             #endregion
 
             #region MCardAllow
@@ -42,6 +54,12 @@ namespace DMT
             public static class GetCardAllows
             {
                 public const string Name = "GetCardAllows";
+                public const string Url = Master.Url + @"/" + Name;
+            }
+
+            public static class SaveMCardAllows
+            {
+                public const string Name = "SaveMCardAllows";
                 public const string Url = Master.Url + @"/" + Name;
             }
 

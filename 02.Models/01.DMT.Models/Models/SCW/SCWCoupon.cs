@@ -17,10 +17,10 @@ namespace DMT.Models
     public class SCWCoupon
     {
         [PropertyMapName("couponId")]
-        public int? couponId { get; set; }
+        public int couponId { get; set; }
 
         [PropertyMapName("couponValue")]
-        public decimal? couponValue { get; set; }
+        public decimal couponValue { get; set; }
 
         [PropertyMapName("abbreviation")]
         public string abbreviation { get; set; }

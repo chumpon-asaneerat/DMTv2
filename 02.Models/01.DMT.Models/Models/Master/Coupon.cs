@@ -121,6 +121,33 @@ namespace DMT.Models
 			}
 		}
 
+		public static NDbResult SaveMCoupons(List<MCoupon> values)
+		{
+			lock (sync)
+			{
+				SQLiteConnection db = Default;
+				MethodBase med = MethodBase.GetCurrentMethod();
+				var result = new NDbResult();
+				try
+				{
+					db.BeginTransaction();
+					values.ForEach(value =>
+					{
+						MCoupon.Save(value);
+					});
+					db.Commit();
+					result.Success();
+				}
+				catch (Exception ex)
+				{
+					db.Rollback();
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
+		}
+
 		#endregion
 	}
 }

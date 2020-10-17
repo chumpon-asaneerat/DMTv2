@@ -37,8 +37,14 @@ Ported DMTv2 to DMT.TAxTODv1 #173
 Ported DMTv2 to DMT.TAxTODv1 #172
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #171
-- 
+- MCurrency, MCoupon, MCardAllow add save (List) methods.
+- Update Master Routes.
+- Add Server Implementation for Save Master List.
+- Add Client Implementation for Save Master List.
+- Add Sync Master method in RevenueManager class.
+- Add Sync Masters in Revenue Entry date selection pages.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #170

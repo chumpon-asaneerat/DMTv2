@@ -181,6 +181,8 @@ namespace DMT.TOD.Pages.Revenue
 
         public void Setup(User user)
         {
+            RevenueEntryManager.SyncMasters(); // Sync Currency/Coupon/CardAllow list.
+
             // check and send offline revenue entries to server.
             RevenueEntryManager.SendRevnues();
 

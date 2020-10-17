@@ -113,6 +113,33 @@ namespace DMT.Models
 			}
 		}
 
+		public static NDbResult SaveMCardAllows(List<MCardAllow> values)
+		{
+			lock (sync)
+			{
+				SQLiteConnection db = Default;
+				MethodBase med = MethodBase.GetCurrentMethod();
+				var result = new NDbResult();
+				try
+				{
+					db.BeginTransaction();
+					values.ForEach(value => 
+					{
+						MCardAllow.Save(value);
+					});
+					db.Commit();
+					result.Success();
+				}
+				catch (Exception ex)
+				{
+					db.Rollback();
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
+		}
+
 		#endregion
 	}
 }

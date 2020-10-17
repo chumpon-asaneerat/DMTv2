@@ -134,6 +134,33 @@ namespace DMT.Models
 			}
 		}
 
+		public static NDbResult SaveMCurrencies(List<MCurrency> values)
+		{
+			lock (sync)
+			{
+				SQLiteConnection db = Default;
+				MethodBase med = MethodBase.GetCurrentMethod();
+				var result = new NDbResult();
+				try
+				{
+					db.BeginTransaction();
+					values.ForEach(value =>
+					{
+						MCurrency.Save(value);
+					});
+					db.Commit();
+					result.Success();
+				}
+				catch (Exception ex)
+				{
+					db.Rollback();
+					med.Err(ex);
+					result.Error(ex);
+				}
+				return result;
+			}
+		}
+
 		#endregion
 	}
 }

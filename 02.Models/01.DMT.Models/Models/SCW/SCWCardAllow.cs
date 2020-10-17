@@ -17,7 +17,7 @@ namespace DMT.Models
 	public class SCWCardAllow
 	{
 		[PropertyMapName("cardAllowId")]
-		public int currencyId { get; set; }
+		public int cardAllowId { get; set; }
 
 		[PropertyMapName("abbreviation")]
 		public string abbreviation { get; set; }

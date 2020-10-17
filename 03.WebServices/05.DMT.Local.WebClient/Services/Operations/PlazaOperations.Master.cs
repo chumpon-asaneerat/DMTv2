@@ -81,6 +81,22 @@ namespace DMT.Services
                 return ret;
             }
 
+            public NRestResult SaveMCurrencies(List<MCurrency> values)
+            {
+                NRestResult ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                ret = client.Execute(
+                    RouteConsts.Master.SaveMCurrencies.Url, values);
+                return ret;
+            }
+
             #endregion
 
             #region MCoupon
@@ -101,9 +117,25 @@ namespace DMT.Services
                 return ret;
             }
 
+            public NRestResult SaveMCoupons(List<MCoupon> values)
+            {
+                NRestResult ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                ret = client.Execute(
+                    RouteConsts.Master.SaveMCoupons.Url, values);
+                return ret;
+            }
+
             #endregion
 
-            #region MCoupon
+            #region MCardAllow
 
             public NRestResult<List<MCardAllow>> GetCardAllows()
             {
@@ -118,6 +150,22 @@ namespace DMT.Services
 
                 ret = client.Execute<List<MCardAllow>>(
                     RouteConsts.Master.GetCardAllows.Url, new { });
+                return ret;
+            }
+
+            public NRestResult SaveMCardAllows(List<MCardAllow> values)
+            {
+                NRestResult ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                ret = client.Execute(
+                    RouteConsts.Master.SaveMCardAllows.Url, values);
                 return ret;
             }
 

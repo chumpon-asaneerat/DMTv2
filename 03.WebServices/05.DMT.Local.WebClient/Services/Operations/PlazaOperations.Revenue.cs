@@ -280,429 +280,6 @@ namespace DMT.Services
         #endregion
     }
 
-    #region RevenueEntryManager2 - unused
-
-    /// <summary>
-    /// The RevenueEntryManager2 class.
-    /// </summary>
-    public class RevenueEntryManager2
-    {
-        #region Internal Variables
-
-        private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
-        private SCWOperations server = SCWServiceOperations.Instance.Plaza;
-
-        #endregion
-
-        #region Constructor
-
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        public RevenueEntryManager2() : base()
-        {
-            // TODO: Need user/password from config table or external file.
-
-            SCWServiceOperations.Instance.UserName = "DMTUSER";
-            SCWServiceOperations.Instance.Password = "DMTPASS";
-
-            this.EntryDate = DateTime.Now;
-            LoadPlazaGroups();
-        }
-
-        #endregion
-
-        #region Private Methods
-
-        private void LoadPlazaGroups()
-        {
-            var tsb = ops.TSB.GetCurrent().Value();
-            if (null != tsb)
-            {
-                this.PlazaGroups = ops.TSB.GetTSBPlazaGroups(tsb).Value();
-            }
-        }
-
-        private void SyncJobList()
-        {
-            // Sync JobList to LaneAttendance
-            if (null == this.User) return;
-            if (null == this.PlazaGroup) return;
-            var plazas = ops.TSB.GetPlazaGroupPlazas(this.PlazaGroup).Value();
-            if (null == plazas) return;
-
-            var attends = new List<LaneAttendance>();
-            this.PlazaIds = new List<int>();
-
-            plazas.ForEach(plaza => 
-            {
-                // Gets Job List from WS.
-                int nwId = 31; // TODO: network id required.
-
-                int plazaId = plaza.SCWPlazaId;
-                // keep plaza Id.
-                if (!this.PlazaIds.Contains(plazaId)) this.PlazaIds.Add(plazaId);
-
-                var ret = server.TOD.GetJobList(nwId, plazaId, this.User.UserId);
-                if (null != ret && null != ret.list)
-                {
-                    ret.list.ForEach(inst =>
-                    {
-                        var attend = inst.ToLocal();
-                        var lane = ops.TSB.GetPlazaLane(
-                            Search.Plaza.LaneByNo.Create(attend.PlazaId, attend.LaneNo)).Value();
-                        if (null != lane) lane.AssignTo(attend);
-
-                        var user = ops.Users.GetById(
-                            Search.Users.ById.Create(attend.UserId, "CTC", "TC")).Value();
-                        if (null != user) user.AssignTo(attend);
-
-                        if (null != attend) attends.Add(attend);
-                    });
-                }
-            });
-
-            // Save (insert/update) all rows.
-            ops.Lanes.SaveAttendances(attends);
-        }
-
-        #endregion
-
-        #region Public Methods
-
-        /// <summary>
-        /// Refresh.
-        /// </summary>
-        public void Refresh()
-        {
-            if (null == this.User) return;
-            // Find user shift.
-            this.UserShift = ops.UserShifts.GetCurrent(this.User).Value();
-            if (null != UserShift)
-            {
-                this.RevenueDate = UserShift.Begin.Date;
-            }
-        }
-
-        public void RefreshJobs()
-        {
-            if (null != this.UserShift && null != this.PlazaGroup)
-            {
-                // Sync JobList to LaneAttendance
-                SyncJobList();
-
-                // get all lanes information.
-                var search = Search.Lanes.Attendances.ByUserShift.Create(
-                    this.UserShift, this.PlazaGroup, DateTime.MinValue);
-                this.Attendances = ops.Lanes.GetAttendancesByUserShift(search).Value();
-            }
-        }
-
-        private void CreateLaneList()
-        {
-            // create lane list.
-            this.Lanes = new List<int>();
-            if (null != this.Attendances)
-            {
-                this.Attendances.ForEach(laneAct =>
-                {
-                    if (!this.Lanes.Contains(laneAct.LaneNo))
-                    {
-                        // add to list
-                        this.Lanes.Add(laneAct.LaneNo);
-                    }
-                });
-            }
-            // Build Lane List String.
-            int iCnt = 0;
-            int iMax = this.Lanes.Count;
-            string laneList = string.Empty;
-            this.Lanes.ForEach(laneNo =>
-            {
-                laneList += laneNo.ToString();
-                if (iCnt < iMax - 1) laneList += ", ";
-                iCnt++;
-            });
-            this.LaneList = laneList;
-        }
-
-        public void LoadRevenueShift()
-        {
-            this.IsNewRevenueShift = false;
-            var revops = Search.Revenues.PlazaShift.Create(this.UserShift, this.PlazaGroup);
-            this.RevenueShift = ops.Revenue.GetRevenueShift(revops).Value();
-            if (null == this.RevenueShift)
-            {
-                // Create new if not found.
-                this.RevenueShift = ops.Revenue.CreateRevenueShift(revops).Value();
-                this.IsNewRevenueShift = true;
-            }
-        }
-
-        public void NewRevenueEntry()
-        {
-            if (null == this.UserShift || null == this.PlazaGroup)
-            {
-                return;
-            }
-            var search = Search.UserCredits.GetActiveById.Create(
-                this.UserShift.UserId, this.PlazaGroup.PlazaGroupId);
-            var userCredit = ops.Credits.GetActiveUserCreditBalanceById(search).Value();
-
-            this.RevenueEntry = new Models.RevenueEntry();
-
-            if (null != userCredit)
-            {
-                this.RevenueEntry.BagNo = userCredit.BagNo;
-                this.RevenueEntry.BeltNo = userCredit.BeltNo;
-            }
-            else
-            {
-                this.RevenueEntry.BagNo = string.Empty;
-                this.RevenueEntry.BeltNo = string.Empty;
-            }
-        }
-
-        public void BuildRevenueEntry()
-        {
-            if (null == this.UserShift || null == this.PlazaGroup || null == this.RevenueEntry)
-            {
-                return;
-            }
-
-            CreateLaneList();
-
-            // assigned plaza group.
-            this.RevenueEntry.PlazaGroupId = this.PlazaGroup.PlazaGroupId;
-            // update object properties.
-            this.PlazaGroup.AssignTo(this.RevenueEntry); // assigned plaza group name (EN/TH)
-            this.UserShift.AssignTo(this.RevenueEntry); // assigned user full name (EN/TH)
-
-            // assigned date after sync object(s) to RevenueEntry.
-            this.RevenueEntry.EntryDate = this.EntryDate; // assigned Entry date.
-            this.RevenueEntry.RevenueDate = this.RevenueDate; // assigned Revenue date.
-            this.RevenueEntry.Lanes = this.LaneList.Trim();
-
-            // Find begin/end of revenue.
-            DateTime begin = DateTime.MinValue;
-            DateTime end = DateTime.MinValue;
-
-            if (begin == DateTime.MinValue)
-            {
-                begin = this.UserShift.Begin; // Begin time used start of shift.
-            }
-            if (end == DateTime.MinValue)
-            {
-                end = DateTime.Now; // End time used printed date
-            }
-
-            if (this.RevenueEntry.ShiftBegin == DateTime.MinValue)
-            {
-                this.RevenueEntry.ShiftBegin = begin;
-            }
-            if (this.RevenueEntry.ShiftEnd == DateTime.MinValue)
-            {
-                this.RevenueEntry.ShiftEnd = end;
-            }
-            if (null != this.Supervisor)
-            {
-                this.RevenueEntry.SupervisorId = this.Supervisor.UserId;
-                this.RevenueEntry.SupervisorNameEN = this.Supervisor.FullNameEN;
-                this.RevenueEntry.SupervisorNameTH = this.Supervisor.FullNameTH;
-            }
-        }
-
-        public bool SaveRevenueEntry()
-        {
-            if (null == this.RevenueEntry || null == this.UserShift)
-                return false;
-
-            MethodBase med = MethodBase.GetCurrentMethod();
-
-            // update save data
-            var revInst = ops.Revenue.SaveRevenue(this.RevenueEntry).Value();
-            string revId = (null != revInst) ? revInst.RevenueId : string.Empty;
-            if (null != this.RevenueShift)
-            {
-                // save revenue shift (for plaza)
-                var saveOpt = Search.Revenues.SaveRevenueShift.Create(this.RevenueShift,
-                    revId, this.RevenueDate);
-                ops.Revenue.SaveRevenueShift(saveOpt);
-            }
-            // sync key to lane attendance list.
-            if (null != this.Attendances)
-            {
-                this.Attendances.ForEach(lane =>
-                {
-                    lane.RevenueDate = this.RevenueDate;
-                    lane.RevenueId = revId;
-                    ops.Lanes.SaveAttendance(lane);
-                });
-            }
-
-            // Need to sync currency and coupon master!!
-            var currencies = ops.Master.GetCurrencies().Value();
-            var coupons = ops.Master.GetCoupons().Value();
-            var cardAllows = ops.Master.GetCardAllows().Value();
-
-            // Plaza Id send only first match the SCW server will check later.
-            SCWDeclare declare = this.RevenueEntry.ToServer(currencies, coupons, cardAllows,
-                this.Attendances, this.PlazaIds[0]);
-            med.Info("declare - ");
-            //med.Info(declare.ToJson(true));
-            var ret = server.TOD.Declare(declare);
-
-            bool sendSucces = false;
-            if (null != ret && null != ret.status)
-            {
-                sendSucces = (ret.status.code != "S200");
-                // write log.
-                med.Info("declare - code: {0}, msg: {1}", ret.status.code, ret.status.message);
-            }
-            else 
-            {
-                // send failed.
-                med.Info("declare - code: {0}, msg: {1}", ret.status.code, ret.status.message);
-            }
-
-            // get all lanes information.
-            var search = Search.Lanes.Attendances.ByUserShift.Create(
-                this.UserShift, null, DateTime.MinValue);
-            var existActivities = ops.Lanes.GetAttendancesByUserShift(search).Value();
-            if (null == existActivities || existActivities.Count == 0)
-            {
-                // no lane activitie in user shift.
-                ops.UserShifts.EndUserShift(this.UserShift); // End user job(shift).
-
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        #endregion
-
-        #region Public Properties
-
-        /// <summary>
-        /// Gets or sets Entry Date.
-        /// </summary>
-        public DateTime EntryDate { get; internal set; }
-        /// <summary>
-        /// Gets or sets Revenue Date.
-        /// </summary>
-        public DateTime RevenueDate { get; set; }
-        /// <summary>
-        /// Gets or sets User.
-        /// </summary>
-        public User User { get; set; }
-        /// <summary>
-        /// Gets or sets Chief/Supervisor.
-        /// </summary>
-        public User Supervisor { get; set; }
-        /// <summary>
-        /// Gets avaliable plaza groups.
-        /// </summary>
-        public List<PlazaGroup> PlazaGroups { get; internal set; }
-        /// <summary>
-        /// Gets or sets plaza group.
-        /// </summary>
-        public PlazaGroup PlazaGroup { get; set; }
-        /// <summary>
-        /// Gets Plaza Id List.
-        /// </summary>
-        public List<int> PlazaIds { get; internal set; }
-        /// <summary>
-        /// Gets related user shift.
-        /// </summary>
-        public UserShift UserShift { get; internal set; }
-        /// <summary>
-        /// Gets related LaneAttendance list.
-        /// </summary>
-        public List<LaneAttendance> Attendances { get; internal set; }
-        /// <summary>
-        /// Checks has lane attendance.
-        /// </summary>
-        public bool HasAttendance
-        {
-            get { return (null != Attendances && Attendances.Count > 0); }
-        }
-        /// <summary>
-        /// Gets Lane Number List.
-        /// </summary>
-        public List<int> Lanes { get; internal set; }
-        /// <summary>
-        /// Gets Lane List string.
-        /// </summary>
-        public string LaneList { get; internal set; }
-        /// <summary>
-        /// Gets related user revenue's shift.
-        /// </summary>
-        public UserShiftRevenue RevenueShift { get; internal set; }
-        /// <summary>
-        /// Gets is new Revenue Shift.
-        /// </summary>
-        public bool IsNewRevenueShift { get; internal set; }
-        /// <summary>
-        /// Checks the current revenue shift is already has revenue entry.
-        /// </summary>
-        public bool HasRevenuShift
-        {
-            get
-            {
-                return (null != this.RevenueShift &&
-                    this.RevenueShift.RevenueDate != DateTime.MinValue);
-            }
-        }
-        /// <summary>
-        /// Checks has one or more lane attendance record that not enter revenue entry,
-        /// </summary>
-        public bool HasIncompletedLanes
-        {
-            get
-            {
-                return (null != this.Attendances && this.Attendances.Count > 0);
-            }
-        }
-        /// <summary>
-        /// Gets related Revenue Entry.
-        /// </summary>
-        public RevenueEntry RevenueEntry { get; internal set; }
-        /// <summary>
-        /// Checks is New Revenue Entry.
-        /// </summary>
-        public bool IsNewRevenueEntry
-        {
-            get 
-            {
-                return (null == this.RevenueEntry ||
-                    this.RevenueEntry.RevenueId == string.Empty ||
-                    this.RevenueEntry.EntryDate == DateTime.MinValue ||
-                    this.RevenueEntry.RevenueDate == DateTime.MinValue);
-            }
-        }
-        /// <summary>
-        /// Checks all information to build report is loaded.
-        /// </summary>
-        public bool CanBuildReport
-        {
-            get
-            {
-                return (null != this.UserShift &&
-                    null != this.PlazaGroup &&
-                    null != this.RevenueShift &&
-                    null != this.Attendances &&
-                    null != this.RevenueEntry);
-            }
-        }
-
-        #endregion
-    }
-
-    #endregion
-
     #region RevenueEntryManager
 
     /// <summary>
@@ -987,7 +564,7 @@ namespace DMT.Services
             this.RevenueEntry.EntryDate = this.EntryDate; // assigned Entry date.
             var dtNow = DateTime.Now;
             this.RevenueEntry.RevenueDate = new DateTime(
-                this.RevenueDate.Year, this.RevenueDate.Month, this.RevenueDate.Year,
+                this.RevenueDate.Year, this.RevenueDate.Month, this.RevenueDate.Day,
                 dtNow.Hour, dtNow.Minute, dtNow.Second, dtNow.Millisecond);
             this.RevenueEntry.Lanes = this.LaneList.Trim();
 
@@ -1348,6 +925,70 @@ namespace DMT.Services
             return sendSucces;
         }
 
+        public static void SyncMasters()
+        {
+            var ops = LocalServiceOperations.Instance.Plaza;
+            var server = SCWServiceOperations.Instance.Plaza;
+
+            // TODO: Need user/password from config table or external file.
+            SCWServiceOperations.Instance.UserName = "DMTUSER";
+            SCWServiceOperations.Instance.Password = "DMTPASS";
+            int nw = 31;
+
+            var currencies = server.Masters.GetCurrencyList(nw);
+            if (null != currencies && null != currencies.list && null != currencies.status && 
+                currencies.status.code == "S200")
+            {
+                List<MCurrency> mCurrencies = new List<MCurrency>();
+                currencies.list.ForEach(scw =>
+                {
+                    var inst = new MCurrency();
+                    inst.currencyId = scw.currencyId;
+                    inst.denomTypeId = scw.denomTypeId;
+                    inst.currencyDenomId = scw.currencyDenomId;
+                    inst.denomValue = scw.denomValue;
+                    inst.abbreviation = scw.abbreviation;
+                    inst.description = scw.description;
+                    mCurrencies.Add(inst);
+                });
+
+                ops.Master.SaveMCurrencies(mCurrencies);
+            }
+            var coupon = server.Masters.GetCouponList(nw);
+            if (null != coupon && null != coupon.list && null != coupon.status &&
+                coupon.status.code == "S200")
+            {
+                List<MCoupon> mCoupons = new List<MCoupon>();
+                coupon.list.ForEach(scw =>
+                {
+                    var inst = new MCoupon();
+                    inst.couponId = scw.couponId;
+                    inst.couponValue = scw.couponValue;
+                    inst.abbreviation = scw.abbreviation;
+                    inst.description = scw.description;
+                    mCoupons.Add(inst);
+                });
+
+                ops.Master.SaveMCoupons(mCoupons);
+            }
+            var cardAllows = server.Masters.GetCardAllowList(nw);
+            if (null != cardAllows && null != cardAllows.list && null != cardAllows.status &&
+                cardAllows.status.code == "S200")
+            {
+                List<MCardAllow> mCardAllows = new List<MCardAllow>();
+                cardAllows.list.ForEach(scw =>
+                {
+                    var inst = new MCardAllow();
+                    inst.cardAllowId = scw.cardAllowId;
+                    inst.abbreviation = scw.abbreviation;
+                    inst.description = scw.description;
+                    mCardAllows.Add(inst);
+                });
+
+                ops.Master.SaveMCardAllows(mCardAllows);
+            }
+        }
+
         #endregion
     }
 
@@ -1466,27 +1107,6 @@ namespace DMT.Services
         /// </summary>
         public void RefreshJobs()
         {
-            /*
-            if (null != this.UserShift && null != this.PlazaGroup)
-            {
-                MethodBase med = MethodBase.GetCurrentMethod();
-
-                // Get all lanes information.
-                var search = Search.Lanes.Attendances.ByUserShift.Create(
-                    this.UserShift, this.PlazaGroup, DateTime.MinValue);
-                this.Attendances = ops.Lanes.GetAttendancesByUserShift(search).Value();
-                if (!HasAttendance)
-                {
-                    string msg = "Attendances is null or no lane attendance list.";
-                    med.Info(msg);
-                }
-                else
-                {
-                    string msg = string.Format("Attendances found : No of lanes: {0}", this.Attendances.Count);
-                    med.Info(msg);
-                }
-            }
-            */
             if (null != this.User)
             {
                 MethodBase med = MethodBase.GetCurrentMethod();
