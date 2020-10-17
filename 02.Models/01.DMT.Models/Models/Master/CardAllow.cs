@@ -116,26 +116,3 @@ namespace DMT.Models
 		#endregion
 	}
 }
-
-/*
-
-{
-	"list": [
-		{
-			"cardAllowId": 1,
-			"abbreviation": "Card DMT P1",
-			"description": "บัตร DMT (ป 1)"
-		},
-		{
-			"cardAllowId": 2,
-			"abbreviation": "Card DMT P2",
-			"description": "บัตร DMT (ป 2)"
-		}
-	],
-	"status": {
-		"code": "S200",
-		"message": "Success"
-	}
-}
-
-*/

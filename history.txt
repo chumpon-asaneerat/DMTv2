@@ -28,8 +28,10 @@
 Ported DMTv2 to DMT.TAxTODv1 #170
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #169
-- 
+- Add SCWCardAllow class.
+- Implements SCW GetCardAllows operations.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #168

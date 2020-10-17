@@ -114,6 +114,34 @@ namespace DMT.Services
 
             #endregion
 
+            #region Get Card Allow List
+
+            public SCWCardAllowList GetCardAllowList(
+                int nwId)
+            {
+                SCWCardAllowList ret;
+                NRestClient client = NRestClient.CreateDCClient();
+                if (null == client)
+                {
+                    ret = new SCWCardAllowList();
+                    return ret;
+                }
+
+                var url = "dmt-scw/api/tod/cardAllowList";
+                var value = new
+                {
+                    networkId = nwId
+                };
+
+                string usr = SCWServiceOperations.Instance.UserName;
+                string pwd = SCWServiceOperations.Instance.Password;
+
+                ret = client.Execute2<SCWCardAllowList>(url, value, username: usr, password: pwd);
+                return ret;
+            }
+
+            #endregion
+
             #endregion
         }
 
