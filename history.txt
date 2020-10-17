@@ -25,8 +25,27 @@
   - ใบเสร็จขายคูปอง ที่ TA ยังไม่มีจำนวนเงิน แสดง ตอนท้ายรายการ
   - When update coupon DMT.Server error in DateTime conversion need to reckeck formatDateTime in nlib-mssql.
 --------------------------------------------------------------------------------------------
-Ported DMTv2 to DMT.TAxTODv1 #170
+Ported DMTv2 to DMT.TAxTODv1 #175
 - 
+
+Ported DMTv2 to DMT.TAxTODv1 #174
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #173
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #172
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #171
+- 
+
+[commited]
+Ported DMTv2 to DMT.TAxTODv1 #170
+- Update RouteConsts.cs
+- Local Server implements API GetCardAllows.
+- SCWDeclare.ToServer add cardAllows parameters and implements add CardAllowList items.
+- LocalDbServer add MCardAllow and Init data.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #169

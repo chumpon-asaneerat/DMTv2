@@ -36,6 +36,16 @@ namespace DMT
             }
 
             #endregion
+
+            #region MCardAllow
+
+            public static class GetCardAllows
+            {
+                public const string Name = "GetCardAllows";
+                public const string Url = Master.Url + @"/" + Name;
+            }
+
+            #endregion
         }
 
         #endregion

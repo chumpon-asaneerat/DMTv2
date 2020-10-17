@@ -140,6 +140,7 @@ namespace DMT.Services
 
 			Db.CreateTable<MCurrency>();
 			Db.CreateTable<MCoupon>();
+			Db.CreateTable<MCardAllow>();
 
 			Db.CreateTable<TSB>();
 			Db.CreateTable<PlazaGroup>();
@@ -183,6 +184,7 @@ namespace DMT.Services
 		{
 			InitMCurrency();
 			InitMCoupon();
+			InitMCardAllow();
 			InitTSBAndPlazaAndLanes();
 			InitShifts();
 			InitRoleAndUsers();
@@ -359,6 +361,29 @@ namespace DMT.Services
 				description = "80 บาท"
 			};
 			if (!MCoupon.Exists(item)) MCoupon.Save(item);
+		}
+
+		private void InitMCardAllow()
+        {
+			if (null == Db) return;
+
+			if (Db.Table<MCardAllow>().Count() > 0) return; // already exists.
+
+			MCardAllow item;
+			item = new MCardAllow()
+			{
+				cardAllowId = 1,
+				abbreviation = "Card DMT P1",
+				description = "บัตร DMT (ป 1)"
+			};
+			if (!MCardAllow.Exists(item)) MCardAllow.Save(item);
+			item = new MCardAllow()
+			{
+				cardAllowId = 2,
+				abbreviation = "Card DMT P2",
+				description = "บัตร DMT (ป 2)"
+			};
+			if (!MCardAllow.Exists(item)) MCardAllow.Save(item);
 		}
 
 		private void InitTSBAndPlazaAndLanes()

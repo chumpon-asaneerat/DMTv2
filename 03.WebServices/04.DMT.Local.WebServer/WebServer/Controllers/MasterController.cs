@@ -40,5 +40,17 @@ namespace DMT.Services
         }
 
         #endregion
+
+        #region MCardAllow
+
+        [HttpPost]
+        [ActionName(RouteConsts.Master.GetCardAllows.Name)]
+        public NDbResult<List<MCardAllow>> GetCardAllows()
+        {
+            var results = MCardAllow.GetCardAllows();
+            return results;
+        }
+
+        #endregion
     }
 }

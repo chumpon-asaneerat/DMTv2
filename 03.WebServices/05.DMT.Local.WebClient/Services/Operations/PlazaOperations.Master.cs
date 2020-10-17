@@ -103,6 +103,26 @@ namespace DMT.Services
 
             #endregion
 
+            #region MCoupon
+
+            public NRestResult<List<MCardAllow>> GetCardAllows()
+            {
+                NRestResult<List<MCardAllow>> ret;
+                NRestClient client = NRestClient.CreateLocalClient();
+                if (null == client)
+                {
+                    ret = new NRestResult<List<MCardAllow>>();
+                    ret.RestInvalidConfig();
+                    return ret;
+                }
+
+                ret = client.Execute<List<MCardAllow>>(
+                    RouteConsts.Master.GetCardAllows.Url, new { });
+                return ret;
+            }
+
+            #endregion
+
             #endregion
         }
 

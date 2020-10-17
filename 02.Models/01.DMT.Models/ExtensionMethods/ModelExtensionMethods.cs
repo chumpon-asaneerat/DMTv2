@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using DMT.Models;
+using Newtonsoft.Json.Serialization;
 using NLib.Reflection;
 using NLib.Utils;
 
@@ -279,13 +280,14 @@ namespace DMT.Models.ExtensionMethods
         }
         // Declare
         public static SCWDeclare ToServer(this RevenueEntry value,
-            List<MCurrency> currencies, List<MCoupon> coupons, 
+            List<MCurrency> currencies, List<MCoupon> coupons, List<MCardAllow> cardAllows,
             List<LaneAttendance> jobs,
             int plazaId)
         {
             if (null == value) return null;
             if (null == currencies) return null;
             if (null == coupons) return null;
+            if (null == cardAllows) return null;
 
             var inst = new SCWDeclare();
             // TODO: network id required.
@@ -399,7 +401,18 @@ namespace DMT.Models.ExtensionMethods
             inst.cardAllowList = new List<SCWDeclareFreePass>();
             if (inst.cardAllowTotalAmount > 0)
             {
-                // TODO: required to create table cardAllowList.
+                if (value.FreePassUsageClassA > 0)
+                    inst.cardAllowList.Add(new SCWDeclareFreePass() 
+                    { 
+                        cardAllowId = 1, 
+                        number = value.FreePassUsageClassA 
+                    });
+                if (value.FreePassUsageOther > 0)
+                    inst.cardAllowList.Add(new SCWDeclareFreePass() 
+                    { 
+                        cardAllowId = 2, 
+                        number = value.FreePassUsageOther 
+                    });
             }
             // Other
             inst.otherTotalAmount = value.OtherBHTTotal;

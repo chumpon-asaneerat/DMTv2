@@ -543,9 +543,10 @@ namespace DMT.Services
             // Need to sync currency and coupon master!!
             var currencies = ops.Master.GetCurrencies().Value();
             var coupons = ops.Master.GetCoupons().Value();
+            var cardAllows = ops.Master.GetCardAllows().Value();
 
             // Plaza Id send only first match the SCW server will check later.
-            SCWDeclare declare = this.RevenueEntry.ToServer(currencies, coupons, 
+            SCWDeclare declare = this.RevenueEntry.ToServer(currencies, coupons, cardAllows,
                 this.Attendances, this.PlazaIds[0]);
             med.Info("declare - ");
             //med.Info(declare.ToJson(true));
@@ -1303,7 +1304,7 @@ namespace DMT.Services
             // Need to sync currency and coupon master!!
             var currencies = ops.Master.GetCurrencies().Value();
             var coupons = ops.Master.GetCoupons().Value();
-            var cardAllows ops.Master.GetCardAllows().Value();
+            var cardAllows = ops.Master.GetCardAllows().Value();
 
             // find lane attendances.
             var attendances = ops.Lanes.GetAttendancesByRevenue(value).Value();
@@ -1321,7 +1322,7 @@ namespace DMT.Services
                 return false;
             }
 
-            SCWDeclare declare = value.ToServer(currencies, coupons, attendances, plazaId);
+            SCWDeclare declare = value.ToServer(currencies, coupons, cardAllows, attendances, plazaId);
             var ret = server.TOD.Declare(declare);
 
             bool sendSucces = false;
