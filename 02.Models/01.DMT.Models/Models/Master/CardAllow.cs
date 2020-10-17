@@ -22,41 +22,33 @@ using System.Reflection;
 namespace DMT.Models
 {
 	/// <summary>
-	/// The MCoupon Data Model class.
+	/// The MCardAllow Data Model class.
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
 	[Serializable]
 	[JsonObject(MemberSerialization.OptOut)]
-	//[Table("MCoupon")]
-	public class MCoupon : NTable<MCoupon>
+	//[Table("MCardAllow")]
+	public class MCardAllow : NTable<MCardAllow>
 	{
 		#region Constructor
 
 		/// <summary>
 		/// Constructor.
 		/// </summary>
-		public MCoupon() : base() { }
+		public MCardAllow() : base() { }
 
 		#endregion
 
 		#region Public Properties
 
 		/// <summary>
-		/// Gets or sets couponId.
+		/// Gets or sets cardAllowId.
 		/// </summary>
 		[Category("Common")]
-		[Description("Gets or sets couponId.")]
+		[Description("Gets or sets cardAllowId.")]
 		[PrimaryKey]
-		[PropertyMapName("couponId")]
-		public int couponId { get; set; }
-		/// <summary>
-		/// Gets or sets couponValue.
-		/// </summary>
-		[Category("Common")]
-		[Description("Gets or sets couponValue.")]
-		[PropertyMapName("couponValue")]
-		public decimal couponValue { get; set; }
-
+		[PropertyMapName("cardAllowId")]
+		public int cardAllowId { get; set; }
 		/// <summary>
 		/// Gets or sets abbreviation.
 		/// </summary>
@@ -77,13 +69,13 @@ namespace DMT.Models
 		#region Static Methods
 
 		/// <summary>
-		/// Gets Coupons.
+		/// Gets Card Allows.
 		/// </summary>
 		/// <param name="db">The database connection.</param>
-		/// <returns>Returns List of Coupon Master.</returns>
-		public static NDbResult<List<MCoupon>> GetCoupons(SQLiteConnection db)
+		/// <returns>Returns List of Card Allow Master.</returns>
+		public static NDbResult<List<MCardAllow>> GetCardAllows(SQLiteConnection db)
 		{
-			var result = new NDbResult<List<MCoupon>>();
+			var result = new NDbResult<List<MCardAllow>>();
 			if (null == db)
 			{
 				result.DbConenctFailed();
@@ -95,9 +87,9 @@ namespace DMT.Models
 				try
 				{
 					string cmd = string.Empty;
-					cmd += "SELECT * FROM MCoupon ";
+					cmd += "SELECT * FROM MCardAllow ";
 					result.Success();
-					var data = NQuery.Query<MCoupon>(cmd);
+					var data = NQuery.Query<MCardAllow>(cmd);
 					result.Success(data);
 				}
 				catch (Exception ex)
@@ -109,18 +101,41 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
-		/// Gets Coupons.
+		/// Gets Card Allows.
 		/// </summary>
-		/// <returns>Returns List of Coupon Master.</returns>
-		public static NDbResult<List<MCoupon>> GetCoupons()
+		/// <returns>Returns List of Card Allow Master.</returns>
+		public static NDbResult<List<MCardAllow>> GetCardAllows()
 		{
 			lock (sync)
 			{
 				SQLiteConnection db = Default;
-				return GetCoupons(db);
+				return GetCardAllows(db);
 			}
 		}
 
 		#endregion
 	}
 }
+
+/*
+
+{
+	"list": [
+		{
+			"cardAllowId": 1,
+			"abbreviation": "Card DMT P1",
+			"description": "บัตร DMT (ป 1)"
+		},
+		{
+			"cardAllowId": 2,
+			"abbreviation": "Card DMT P2",
+			"description": "บัตร DMT (ป 2)"
+		}
+	],
+	"status": {
+		"code": "S200",
+		"message": "Success"
+	}
+}
+
+*/

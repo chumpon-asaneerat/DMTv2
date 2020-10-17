@@ -22,7 +22,7 @@ using System.Reflection;
 namespace DMT.Models
 {
 	/// <summary>
-	/// The TSB Data Model class.
+	/// The MCurrency Data Model class.
 	/// </summary>
 	[TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
 	[Serializable]

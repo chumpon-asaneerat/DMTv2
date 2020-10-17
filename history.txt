@@ -31,8 +31,11 @@ Ported DMTv2 to DMT.TAxTODv1 #170
 Ported DMTv2 to DMT.TAxTODv1 #169
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #168
-- 
+- Update MCardAllow model class.
+- Fixed comment in MCurrency model class.
+- Fixed comment in MCoupon model class.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #167

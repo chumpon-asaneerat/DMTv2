@@ -1303,6 +1303,8 @@ namespace DMT.Services
             // Need to sync currency and coupon master!!
             var currencies = ops.Master.GetCurrencies().Value();
             var coupons = ops.Master.GetCoupons().Value();
+            var cardAllows ops.Master.GetCardAllows().Value();
+
             // find lane attendances.
             var attendances = ops.Lanes.GetAttendancesByRevenue(value).Value();
             var plazaGroup = new PlazaGroup() 
