@@ -289,15 +289,15 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.4in</Width>
+                  <Width>1.3375in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.1in</Width>
+                  <Width>2.0375in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.4in</Height>
+                  <Height>0.35in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -310,8 +310,8 @@
                                 <TextRun>
                                   <Value>รายละเอียด</Value>
                                   <Style>
-                                    <FontFamily>tahoma</FontFamily>
-                                    <FontSize>18pt</FontSize>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>14pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -324,7 +324,7 @@
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -345,8 +345,8 @@
                                 <TextRun>
                                   <Value>หมายเลขเล่มคูปอง</Value>
                                   <Style>
-                                    <FontFamily>tahoma</FontFamily>
-                                    <FontSize>18pt</FontSize>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>14pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -372,7 +372,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.4in</Height>
+                  <Height>0.35in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -399,7 +399,7 @@
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -420,8 +420,9 @@
                                 <TextRun>
                                   <Value>=Fields!CouponId.Value</Value>
                                   <Style>
-                                    <FontFamily>tahoma</FontFamily>
-                                    <FontSize>18pt</FontSize>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>14pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -469,9 +470,9 @@
             </TablixRowHierarchy>
             <DataSetName>C35</DataSetName>
             <Top>0.04002in</Top>
-            <Left>0.17583in</Left>
-            <Height>0.8in</Height>
-            <Width>3.5in</Width>
+            <Left>0.26333in</Left>
+            <Height>0.7in</Height>
+            <Width>3.375in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -482,15 +483,15 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.4in</Width>
+                  <Width>1.3375in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.1in</Width>
+                  <Width>2.0375in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.4in</Height>
+                  <Height>0.35in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -503,8 +504,8 @@
                                 <TextRun>
                                   <Value>รายละเอียด</Value>
                                   <Style>
-                                    <FontFamily>tahoma</FontFamily>
-                                    <FontSize>18pt</FontSize>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>14pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -517,7 +518,7 @@
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -538,8 +539,8 @@
                                 <TextRun>
                                   <Value>หมายเลขเล่มคูปอง</Value>
                                   <Style>
-                                    <FontFamily>tahoma</FontFamily>
-                                    <FontSize>18pt</FontSize>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>14pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -565,7 +566,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.4in</Height>
+                  <Height>0.35in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -590,7 +591,7 @@
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
-                              <Style>Solid</Style>
+                              <Style>None</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -611,8 +612,9 @@
                                 <TextRun>
                                   <Value>=Fields!CouponId.Value</Value>
                                   <Style>
-                                    <FontFamily>tahoma</FontFamily>
-                                    <FontSize>18pt</FontSize>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>14pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -660,9 +662,9 @@
             </TablixRowHierarchy>
             <DataSetName>C80</DataSetName>
             <Top>0.04002in</Top>
-            <Left>3.86225in</Left>
-            <Height>0.8in</Height>
-            <Width>3.5in</Width>
+            <Left>3.94975in</Left>
+            <Height>0.7in</Height>
+            <Width>3.375in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -671,13 +673,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>2.25006cm</Height>
+        <Height>1.95902cm</Height>
         <Style />
       </Body>
-      <Width>20.6502cm</Width>
+      <Width>19.26188cm</Width>
       <Page>
         <PageHeader>
-          <Height>2.97749in</Height>
+          <Height>2.89416in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -691,25 +693,28 @@
                       <Value>พนักงานเก็บเงิน</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                         <FontWeight>Normal</FontWeight>
                         <TextDecoration>None</TextDecoration>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
               <Top>2.00227in</Top>
-              <Left>0.17558in</Left>
+              <Left>0.26308in</Left>
               <Height>0.25in</Height>
-              <Width>1.19791in</Width>
+              <Width>1.05208in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -726,26 +731,29 @@
                       <Value>ชื่อด่าน</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                         <FontWeight>Normal</FontWeight>
                         <TextDecoration>None</TextDecoration>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
               <Top>2.28165in</Top>
-              <Left>0.17558in</Left>
+              <Left>0.26308in</Left>
               <Height>0.25in</Height>
-              <Width>1.19791in</Width>
+              <Width>1.05208in</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -762,26 +770,29 @@
                       <Value>รหัสพนักงาน</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                         <FontWeight>Normal</FontWeight>
                         <TextDecoration>None</TextDecoration>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
               <Top>2.00227in</Top>
-              <Left>3.86225in</Left>
+              <Left>3.94975in</Left>
               <Height>0.25in</Height>
-              <Width>1.19791in</Width>
+              <Width>1.05208in</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -798,26 +809,29 @@
                       <Value>วันที่เวลา</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                         <FontWeight>Normal</FontWeight>
                         <TextDecoration>None</TextDecoration>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
               <Top>2.28165in</Top>
-              <Left>3.86225in</Left>
+              <Left>3.94975in</Left>
               <Height>0.25in</Height>
-              <Width>1.19791in</Width>
+              <Width>1.05208in</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -829,7 +843,7 @@
               <Value>tollway</Value>
               <Sizing>Fit</Sizing>
               <Top>0.40381cm</Top>
-              <Left>0.24671cm</Left>
+              <Left>0.46896cm</Left>
               <Height>1.88737cm</Height>
               <Width>2.35534cm</Width>
               <ZIndex>4</ZIndex>
@@ -849,7 +863,7 @@
                       <Value>คูปอง 35 บาท</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                         <TextDecoration>None</TextDecoration>
@@ -860,10 +874,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>2.68979in</Top>
-              <Left>0.17583in</Left>
+              <Top>2.61479in</Top>
+              <Left>0.26333in</Left>
               <Height>0.25in</Height>
-              <Width>1.19766in</Width>
+              <Width>1.05208in</Width>
               <ZIndex>5</ZIndex>
               <Style>
                 <Border>
@@ -885,7 +899,7 @@
                       <Value>คูปอง 80 บาท</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                         <TextDecoration>None</TextDecoration>
@@ -896,10 +910,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>2.68979in</Top>
-              <Left>3.86225in</Left>
+              <Top>2.61479in</Top>
+              <Left>3.94975in</Left>
               <Height>0.25in</Height>
-              <Width>1.19791in</Width>
+              <Width>1.05208in</Width>
               <ZIndex>6</ZIndex>
               <Style>
                 <Border>
@@ -920,17 +934,19 @@
                     <TextRun>
                       <Value>=First(Fields!TSBNameTH.Value, "main")</Value>
                       <Style>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>TSBNameTH</rd:DefaultName>
               <Top>2.28165in</Top>
-              <Left>1.40917in</Left>
+              <Left>1.37167in</Left>
               <Height>0.25in</Height>
               <Width>2.26666in</Width>
               <ZIndex>7</ZIndex>
@@ -938,6 +954,7 @@
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -953,17 +970,19 @@
                     <TextRun>
                       <Value>=Parameters!couponDate.Value</Value>
                       <Style>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>couponDate</rd:DefaultName>
               <Top>2.28165in</Top>
-              <Left>5.0925in</Left>
+              <Left>5.055in</Left>
               <Height>0.25in</Height>
               <Width>2.26666in</Width>
               <ZIndex>8</ZIndex>
@@ -971,6 +990,7 @@
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -987,8 +1007,8 @@
                       <Value>บริษัท ทางยกระดับดอนเมือง จำกัด (มหาชน)</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
-                        <FontFamily>Tahoma</FontFamily>
-                        <FontSize>20pt</FontSize>
+                        <FontFamily>Calibri</FontFamily>
+                        <FontSize>14pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                         <TextDecoration>None</TextDecoration>
                       </Style>
@@ -1001,8 +1021,8 @@
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
               <Top>0.15898in</Top>
-              <Left>1.09387in</Left>
-              <Height>0.36458in</Height>
+              <Left>1.18137in</Left>
+              <Height>0.35in</Height>
               <Width>6.10933in</Width>
               <ZIndex>9</ZIndex>
               <Style>
@@ -1025,8 +1045,8 @@
                       <Value>ใบรับค่าธรรมเนียมการขายคูปองผ่านทางหลวงพิเศษ</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
-                        <FontFamily>Tahoma</FontFamily>
-                        <FontSize>18pt</FontSize>
+                        <FontFamily>Calibri</FontFamily>
+                        <FontSize>14pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                         <TextDecoration>None</TextDecoration>
                       </Style>
@@ -1038,9 +1058,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>0.91992in</Top>
-              <Left>1.09387in</Left>
-              <Height>0.36458in</Height>
+              <Top>0.90742in</Top>
+              <Left>1.18137in</Left>
+              <Height>0.35in</Height>
               <Width>6.10933in</Width>
               <ZIndex>10</ZIndex>
               <Style>
@@ -1063,8 +1083,8 @@
                       <Value>โทร 1233</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
-                        <FontFamily>Tahoma</FontFamily>
-                        <FontSize>18pt</FontSize>
+                        <FontFamily>Calibri</FontFamily>
+                        <FontSize>14pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                         <TextDecoration>None</TextDecoration>
                       </Style>
@@ -1077,8 +1097,8 @@
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Top>0.53124in</Top>
-              <Left>1.09387in</Left>
-              <Height>0.36458in</Height>
+              <Left>1.18137in</Left>
+              <Height>0.35in</Height>
               <Width>6.10933in</Width>
               <ZIndex>11</ZIndex>
               <Style>
@@ -1101,8 +1121,8 @@
                       <Value>ทางหลวงหมายเลข 31</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
-                        <FontFamily>Tahoma</FontFamily>
-                        <FontSize>18pt</FontSize>
+                        <FontFamily>Calibri</FontFamily>
+                        <FontSize>14pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                         <TextDecoration>None</TextDecoration>
                       </Style>
@@ -1114,9 +1134,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>1.29582in</Top>
-              <Left>1.09387in</Left>
-              <Height>0.36458in</Height>
+              <Top>1.28332in</Top>
+              <Left>1.18137in</Left>
+              <Height>0.35in</Height>
               <Width>6.10933in</Width>
               <ZIndex>12</ZIndex>
               <Style>
@@ -1139,7 +1159,7 @@
                       <Value>เล่ม</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                         <TextDecoration>None</TextDecoration>
@@ -1150,8 +1170,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>2.68979in</Top>
-              <Left>6.11788in</Left>
+              <Top>2.61479in</Top>
+              <Left>5.34288in</Left>
               <Height>0.25in</Height>
               <Width>0.39583in</Width>
               <ZIndex>13</ZIndex>
@@ -1175,7 +1195,7 @@
                       <Value>เล่ม</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                         <TextDecoration>None</TextDecoration>
@@ -1186,8 +1206,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>2.68979in</Top>
-              <Left>2.28846in</Left>
+              <Top>2.61479in</Top>
+              <Left>1.65096in</Left>
               <Height>0.25in</Height>
               <Width>0.39583in</Width>
               <ZIndex>14</ZIndex>
@@ -1211,26 +1231,29 @@
                       <Value>เลขที่ </Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                         <FontWeight>Normal</FontWeight>
                         <TextDecoration>None</TextDecoration>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
               <Top>1.7106in</Top>
-              <Left>0.82583in</Left>
+              <Left>0.26308in</Left>
               <Height>0.25in</Height>
-              <Width>0.56042in</Width>
+              <Width>1.05208in</Width>
               <ZIndex>15</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -1246,17 +1269,19 @@
                     <TextRun>
                       <Value>=First(Fields!UserId.Value, "main")</Value>
                       <Style>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>UserId</rd:DefaultName>
               <Top>2.00227in</Top>
-              <Left>5.0925in</Left>
+              <Left>5.055in</Left>
               <Height>0.25in</Height>
               <Width>2.26666in</Width>
               <ZIndex>16</ZIndex>
@@ -1264,6 +1289,7 @@
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -1279,17 +1305,19 @@
                     <TextRun>
                       <Value>=First(Fields!FullNameTH.Value, "main")</Value>
                       <Style>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>FullNameTH</rd:DefaultName>
               <Top>2.00227in</Top>
-              <Left>1.40917in</Left>
+              <Left>1.37167in</Left>
               <Height>0.25in</Height>
               <Width>2.26666in</Width>
               <ZIndex>17</ZIndex>
@@ -1297,6 +1325,7 @@
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -1312,24 +1341,27 @@
                     <TextRun>
                       <Value>=Parameters!runningNumber.Value</Value>
                       <Style>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>couponDate</rd:DefaultName>
               <Top>1.70125in</Top>
-              <Left>1.44275in</Left>
+              <Left>1.37167in</Left>
               <Height>0.25in</Height>
-              <Width>2.23308in</Width>
+              <Width>2.26666in</Width>
               <ZIndex>18</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -1344,22 +1376,30 @@
                   <TextRuns>
                     <TextRun>
                       <Value>=Sum(Fields!CountCouponBHT35.Value, "main")</Value>
-                      <Style />
+                      <Style>
+                        <FontFamily>Calibri</FontFamily>
+                        <FontSize>11pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <Format>#,##0</Format>
+                      </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>CountCouponBHT35</rd:DefaultName>
-              <Top>2.68in</Top>
-              <Left>1.42167in</Left>
+              <Top>2.61479in</Top>
+              <Left>1.37167in</Left>
               <Height>0.25in</Height>
-              <Width>0.79735in</Width>
+              <Width>0.25in</Width>
               <ZIndex>19</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -1374,22 +1414,30 @@
                   <TextRuns>
                     <TextRun>
                       <Value>=Sum(Fields!CountCouponBHT80.Value, "main")</Value>
-                      <Style />
+                      <Style>
+                        <FontFamily>Calibri</FontFamily>
+                        <FontSize>11pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <Format>#,##0</Format>
+                      </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>CountCouponBHT80</rd:DefaultName>
-              <Top>2.68833in</Top>
-              <Left>5.105in</Left>
+              <Top>2.61479in</Top>
+              <Left>5.055in</Left>
               <Height>0.25in</Height>
-              <Width>0.94344in</Width>
+              <Width>0.25in</Width>
               <ZIndex>20</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -1404,7 +1452,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>1in</Height>
+          <Height>1.25in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1418,25 +1466,28 @@
                       <Value>ราคา</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                         <FontWeight>Normal</FontWeight>
                         <TextDecoration>None</TextDecoration>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>0.025in</Top>
-              <Left>0.51523in</Left>
+              <Top>0.04167in</Top>
+              <Left>1.15983in</Left>
               <Height>0.25in</Height>
-              <Width>0.54166in</Width>
+              <Width>0.39583in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -1453,26 +1504,29 @@
                       <Value>ราคา</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                         <FontWeight>Normal</FontWeight>
                         <TextDecoration>None</TextDecoration>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>0.025in</Top>
-              <Left>4.2019in</Left>
+              <Top>0.04167in</Top>
+              <Left>4.831in</Left>
               <Height>0.25in</Height>
-              <Width>0.54166in</Width>
+              <Width>0.39583in</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -1489,26 +1543,29 @@
                       <Value>บาท</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                         <FontWeight>Normal</FontWeight>
                         <TextDecoration>None</TextDecoration>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>0.025in</Top>
-              <Left>3.05861in</Left>
+              <Top>0.04167in</Top>
+              <Left>2.22596in</Left>
               <Height>0.25in</Height>
-              <Width>0.54166in</Width>
+              <Width>0.39583in</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -1525,26 +1582,103 @@
                       <Value>บาท</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                         <FontWeight>Normal</FontWeight>
                         <TextDecoration>None</TextDecoration>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>0.025in</Top>
-              <Left>6.74528in</Left>
+              <Top>0.04167in</Top>
+              <Left>5.91788in</Left>
               <Height>0.25in</Height>
-              <Width>0.54166in</Width>
+              <Width>0.39583in</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="AmountCouponBHT35">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!AmountCouponBHT35.Value, "main")</Value>
+                      <Style>
+                        <FontFamily>Calibri</FontFamily>
+                        <FontSize>11pt</FontSize>
+                        <Format>#,##0</Format>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>AmountCouponBHT35</rd:DefaultName>
+              <Top>0.04167in</Top>
+              <Left>1.59667in</Left>
+              <Height>0.25in</Height>
+              <Width>0.58788in</Width>
+              <ZIndex>4</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="AmountCouponBHT36">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!AmountCouponBHT80.Value, "main")</Value>
+                      <Style>
+                        <FontFamily>Calibri</FontFamily>
+                        <FontSize>11pt</FontSize>
+                        <Format>#,##0</Format>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>AmountCouponBHT35</rd:DefaultName>
+              <Top>0.04167in</Top>
+              <Left>5.28in</Left>
+              <Height>0.25in</Height>
+              <Width>0.58788in</Width>
+              <ZIndex>5</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -1561,26 +1695,29 @@
                       <Value>ราคารวม (VAT Included)</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                         <FontWeight>Normal</FontWeight>
                         <TextDecoration>None</TextDecoration>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>0.5276in</Top>
-              <Left>0.51523in</Left>
+              <Top>0.35115in</Top>
+              <Left>1.15983in</Left>
               <Height>0.25in</Height>
-              <Width>1.9375in</Width>
-              <ZIndex>4</ZIndex>
+              <Width>1.62in</Width>
+              <ZIndex>6</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -1597,86 +1734,29 @@
                       <Value>บาท</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
-                        <FontFamily>Tahoma</FontFamily>
+                        <FontFamily>Calibri</FontFamily>
                         <FontSize>11pt</FontSize>
                         <FontWeight>Normal</FontWeight>
                         <TextDecoration>None</TextDecoration>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>0.5276in</Top>
-              <Left>6.32665in</Left>
+              <Top>0.35115in</Top>
+              <Left>4.831in</Left>
               <Height>0.25in</Height>
-              <Width>0.54166in</Width>
-              <ZIndex>5</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="AmountCouponBHT35String">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!AmountCouponBHT35String.Value, "main")</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>AmountCouponBHT35String</rd:DefaultName>
-              <Top>0.2875in</Top>
-              <Left>1.09387in</Left>
-              <Height>0.225in</Height>
-              <Width>1.98386in</Width>
-              <ZIndex>6</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="AmountCouponBHT80String">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!AmountCouponBHT80String.Value, "main")</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>AmountCouponBHT80String</rd:DefaultName>
-              <Top>0.2875in</Top>
-              <Left>4.7755in</Left>
-              <Height>0.225in</Height>
-              <Width>2.00172in</Width>
+              <Width>0.39583in</Width>
               <ZIndex>7</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -1691,82 +1771,66 @@
                   <TextRuns>
                     <TextRun>
                       <Value>=First(Fields!CouponBHTTotalString.Value, "main")</Value>
-                      <Style />
+                      <Style>
+                        <FontFamily>Calibri</FontFamily>
+                        <FontSize>11pt</FontSize>
+                      </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>CouponBHTTotalString</rd:DefaultName>
-              <Top>0.5401in</Top>
-              <Left>2.52217in</Left>
+              <Top>0.66989in</Top>
+              <Left>2.18722in</Left>
               <Height>0.25in</Height>
-              <Width>3.73503in</Width>
+              <Width>3.2364in</Width>
               <ZIndex>8</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Textbox Name="AmountCouponBHT35">
+            <Textbox Name="CouponBHTTotal">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!AmountCouponBHT35.Value, "main")</Value>
-                      <Style />
+                      <Value>=Sum(Fields!CouponBHTTotal.Value, "main")</Value>
+                      <Style>
+                        <FontFamily>Calibri</FontFamily>
+                        <FontSize>11pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <Format>#,##0</Format>
+                      </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
-              <rd:DefaultName>AmountCouponBHT35</rd:DefaultName>
-              <Top>0.04167in</Top>
-              <Left>1.10273in</Left>
-              <Height>0.225in</Height>
-              <Width>1.875in</Width>
+              <rd:DefaultName>CouponBHTTotal</rd:DefaultName>
+              <Top>0.35115in</Top>
+              <Left>2.8215in</Left>
+              <Height>0.25in</Height>
+              <Width>1.96783in</Width>
               <ZIndex>9</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="AmountCouponBHT36">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!AmountCouponBHT80.Value, "main")</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>AmountCouponBHT35</rd:DefaultName>
-              <Top>0.0375in</Top>
-              <Left>4.8175in</Left>
-              <Height>0.225in</Height>
-              <Width>1.875in</Width>
-              <ZIndex>10</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
