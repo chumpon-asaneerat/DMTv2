@@ -39,8 +39,11 @@ Ported DMTv2 to DMT.TAxTODv1 #177
 Ported DMTv2 to DMT.TAxTODv1 #176
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #175
-- 
+- Need to port TSBCouponSummary from DMTv2.
+- Update App version and build.
+- Update coupon receipt report from Kik.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #174
