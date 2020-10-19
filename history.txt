@@ -22,7 +22,7 @@
       TSBCreditTransaction by calc all value i.e (Borrow.Count1BHT - Exchange.Count1BHT) and save to
       transaction to used in TSBCreditSummary view later.
     - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
-  - ใบเสร็จขายคูปอง ที่ TA ยังไม่มีจำนวนเงิน แสดง ตอนท้ายรายการ
+  - ใบเสร็จขายคูปอง ที่ TA ขาดเรื่อง Running Number
 --------------------------------------------------------------------------------------------
 Ported DMTv2 to DMT.TAxTODv1 #180
 - 
@@ -42,8 +42,9 @@ Ported DMTv2 to DMT.TAxTODv1 #176
 Ported DMTv2 to DMT.TAxTODv1 #175
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #174
-- 
+- TA App Coupon Receipt report add Count/Amount
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #173

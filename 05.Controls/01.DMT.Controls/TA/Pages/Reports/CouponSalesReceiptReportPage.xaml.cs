@@ -34,6 +34,7 @@ namespace DMT.TA.Pages.Reports
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private TSBCouponManager _manager = null;
         private TSBCouponSummary _summary = null;
+        private string _runningNumber = string.Empty;
 
         #region Button Handlers
 
@@ -68,8 +69,7 @@ namespace DMT.TA.Pages.Reports
             // clear reprot datasource.
             inst.DataSources.Clear();
 
-            List<TSBCouponSummary> items = new List<TSBCouponSummary>();
-            if (null != _summary) items.Add(_summary);
+            var tsb = ops.TSB.GetCurrent().Value();
 
             // load C35 items.
             List<TSBCouponTransaction> c35Items = new List<TSBCouponTransaction>();
@@ -79,6 +79,33 @@ namespace DMT.TA.Pages.Reports
             List<TSBCouponTransaction> c80Items = new List<TSBCouponTransaction>();
             var c80coupons = (null != _manager) ? _manager.C80TSBSolds : null;
             if (null != c80coupons) c80Items.AddRange(c80coupons);
+
+            // create and calculate main summary list.
+            List<TSBCouponSummary> items = new List<TSBCouponSummary>();
+            
+            _summary = new TSBCouponSummary();
+            _summary.UserId = _manager.User.UserId;
+            _summary.FullNameEN = _manager.User.FullNameEN;
+            _summary.FullNameTH = _manager.User.FullNameTH;
+            _summary.TSBId = tsb.TSBId;
+            _summary.TSBNameEN = tsb.TSBNameEN;
+            _summary.TSBNameTH = tsb.TSBNameTH;
+
+            _summary.CountCouponBHT35 = c35Items.Count;
+            _summary.CountCouponBHT80 = c80Items.Count;
+            decimal a35 = decimal.Zero;
+            c35Items.ForEach(c35 =>
+            {
+                a35 += c35.Price;
+            });
+            decimal a80 = decimal.Zero;
+            c80Items.ForEach(c80 =>
+            {
+                a80 += c80.Price;
+            });
+            _summary.AmountCouponBHT35 = a35;
+            _summary.AmountCouponBHT80 = a80;
+            if (null != _summary) items.Add(_summary);
 
             // assign new data source (main for header)
             RdlcReportDataSource mainDS = new RdlcReportDataSource();
@@ -102,6 +129,7 @@ namespace DMT.TA.Pages.Reports
             inst.DataSources.Add(c80DS);
 
             // Add parameters (if required).
+
             // Coupon Received Date.
             DateTime today = DateTime.Today;            
             //string couponDate = today.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
@@ -110,6 +138,9 @@ namespace DMT.TA.Pages.Reports
             // Supervisor (Current User)
             string supervisorFullName = DMT.Controls.TAApp.User.Current.FullNameTH;
             inst.Parameters.Add(RdlcReportParameter.Create("supervisorFullName", supervisorFullName));
+
+            _runningNumber = "630000x"; // TODO: Implements Running Number for Receipt.
+            inst.Parameters.Add(RdlcReportParameter.Create("runningNumber", _runningNumber));
 
             return inst;
         }

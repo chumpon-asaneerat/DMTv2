@@ -449,10 +449,13 @@ namespace DMT.Services
                 if (null != server)
                 {
                     // TODO: Need to Wrap with transaction. Server need to implements save array.
+                    bool isOK = true;
                     saveCoupons.ForEach(coupon =>
                     {
+                        if (!isOK) return; // ignore if cannot send to server.
                         var cp = coupon.ToServer();
-                        server.Coupons.SaveTransaction(cp);
+                        var ret = server.Coupons.SaveTransaction(cp);
+                        isOK = ret.Ok;
                     });
                 }
             }

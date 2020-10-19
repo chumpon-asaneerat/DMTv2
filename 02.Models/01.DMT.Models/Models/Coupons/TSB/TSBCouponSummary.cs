@@ -56,6 +56,10 @@ namespace DMT.Models
 		private int _CountCouponTotal = 0;
 		private decimal _CouponBHTTotal = decimal.Zero;
 
+		private string _AmountCouponBHT35String = string.Empty;
+		private string _AmountCouponBHT80String = string.Empty;
+		private string _CouponBHTTotalString = string.Empty;
+
 		#endregion
 
 		#region Constructor
@@ -80,8 +84,14 @@ namespace DMT.Models
 		private void CalcAmountTotal()
 		{
 			_CouponBHTTotal = _AmountCouponBHT35 + _AmountCouponBHT80;
+			_AmountCouponBHT35String = NLib.Utils.StringUtils.ToThaiCurrency(_AmountCouponBHT35);
+			_AmountCouponBHT80String = NLib.Utils.StringUtils.ToThaiCurrency(_AmountCouponBHT80);
+			_CouponBHTTotalString = NLib.Utils.StringUtils.ToThaiCurrency(_CouponBHTTotal);
 			// Raise event.
 			this.RaiseChanged("CouponBHTTotal");
+			this.RaiseChanged("AmountCouponBHT35");
+			this.RaiseChanged("AmountCouponBHT80");
+			this.RaiseChanged("CouponBHTTotalString");
 		}
 
 		#endregion
@@ -368,6 +378,19 @@ namespace DMT.Models
 			}
 		}
 		/// <summary>
+		/// Gets or sets Amount of 35 BHT coupon in string.
+		/// </summary>
+		[Category("Coupon")]
+		[Description("Gets or sets Amount of 35 BHT coupon in string.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PropertyMapName("AmountCouponBHT35String")]
+		public virtual string AmountCouponBHT35String
+		{
+			get { return _AmountCouponBHT35String; }
+			set { }
+		}
+		/// <summary>
 		/// Gets or sets Amount of 80 BHT coupon.
 		/// </summary>
 		[Category("Coupon")]
@@ -388,6 +411,19 @@ namespace DMT.Models
 					this.RaiseChanged("AmountCouponBHT80");
 				}
 			}
+		}
+		/// <summary>
+		/// Gets or sets Amount of 80 BHT coupon in string.
+		/// </summary>
+		[Category("Coupon")]
+		[Description("Gets or sets Amount of 80 BHT coupon in string.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PropertyMapName("AmountCouponBHT80String")]
+		public virtual string AmountCouponBHT80String
+		{
+			get { return _AmountCouponBHT80String; }
+			set { }
 		}
 		/// <summary>
 		/// Gets calculate coupon total (book count).
@@ -414,6 +450,19 @@ namespace DMT.Models
 		public virtual decimal CouponBHTTotal
 		{
 			get { return _CouponBHTTotal; }
+			set { }
+		}
+		/// <summary>
+		/// Gets or sets total value in baht in string.
+		/// </summary>
+		[Category("Coupon")]
+		[Description("Gets or sets total value in baht in string.")]
+		[ReadOnly(true)]
+		[Ignore]
+		[PropertyMapName("CouponBHTTotalString")]
+		public virtual string CouponBHTTotalString
+		{
+			get { return _CouponBHTTotalString; }
 			set { }
 		}
 

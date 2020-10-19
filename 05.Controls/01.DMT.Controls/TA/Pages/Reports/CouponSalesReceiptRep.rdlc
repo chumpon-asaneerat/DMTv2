@@ -39,9 +39,9 @@
           <DataField>CouponType</DataField>
           <rd:TypeName>DMT.Models.CouponType</rd:TypeName>
         </Field>
-        <Field Name="Factor">
-          <DataField>Factor</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+        <Field Name="CouponTypeString">
+          <DataField>CouponTypeString</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="FullNameEN">
           <DataField>FullNameEN</DataField>
@@ -54,6 +54,10 @@
         <Field Name="LastUpdate">
           <DataField>LastUpdate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Price">
+          <DataField>Price</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="Status">
           <DataField>Status</DataField>
@@ -120,9 +124,9 @@
           <DataField>CouponType</DataField>
           <rd:TypeName>DMT.Models.CouponType</rd:TypeName>
         </Field>
-        <Field Name="Factor">
-          <DataField>Factor</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+        <Field Name="CouponTypeString">
+          <DataField>CouponTypeString</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="FullNameEN">
           <DataField>FullNameEN</DataField>
@@ -135,6 +139,10 @@
         <Field Name="LastUpdate">
           <DataField>LastUpdate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Price">
+          <DataField>Price</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="Status">
           <DataField>Status</DataField>
@@ -197,9 +205,17 @@
           <DataField>AmountCouponBHT35</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="AmountCouponBHT35String">
+          <DataField>AmountCouponBHT35String</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="AmountCouponBHT80">
           <DataField>AmountCouponBHT80</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="AmountCouponBHT80String">
+          <DataField>AmountCouponBHT80String</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="CountCouponBHT35">
           <DataField>CountCouponBHT35</DataField>
@@ -216,6 +232,10 @@
         <Field Name="CouponBHTTotal">
           <DataField>CouponBHTTotal</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="CouponBHTTotalString">
+          <DataField>CouponBHTTotalString</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Description">
           <DataField>Description</DataField>
@@ -654,7 +674,7 @@
         <Height>2.25006cm</Height>
         <Style />
       </Body>
-      <Width>19.5cm</Width>
+      <Width>20.6502cm</Width>
       <Page>
         <PageHeader>
           <Height>2.97749in</Height>
@@ -841,9 +861,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
               <Top>2.68979in</Top>
-              <Left>0.17558in</Left>
+              <Left>0.17583in</Left>
               <Height>0.25in</Height>
-              <Width>1.08333in</Width>
+              <Width>1.19766in</Width>
               <ZIndex>5</ZIndex>
               <Style>
                 <Border>
@@ -879,7 +899,7 @@
               <Top>2.68979in</Top>
               <Left>3.86225in</Left>
               <Height>0.25in</Height>
-              <Width>1.45833in</Width>
+              <Width>1.19791in</Width>
               <ZIndex>6</ZIndex>
               <Style>
                 <Border>
@@ -1167,7 +1187,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
               <Top>2.68979in</Top>
-              <Left>1.91346in</Left>
+              <Left>2.28846in</Left>
               <Height>0.25in</Height>
               <Width>0.39583in</Width>
               <ZIndex>14</ZIndex>
@@ -1188,7 +1208,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>เลขที่ Receipt Running No</Value>
+                      <Value>เลขที่ </Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
                         <FontFamily>Tahoma</FontFamily>
@@ -1203,9 +1223,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
               <Top>1.7106in</Top>
-              <Left>0.17583in</Left>
+              <Left>0.82583in</Left>
               <Height>0.25in</Height>
-              <Width>1.84375in</Width>
+              <Width>0.56042in</Width>
               <ZIndex>15</ZIndex>
               <Style>
                 <Border>
@@ -1283,6 +1303,99 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
+            <Textbox Name="couponDate2">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!runningNumber.Value</Value>
+                      <Style>
+                        <FontFamily>Tahoma</FontFamily>
+                        <FontSize>11pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>couponDate</rd:DefaultName>
+              <Top>1.70125in</Top>
+              <Left>1.44275in</Left>
+              <Height>0.25in</Height>
+              <Width>2.23308in</Width>
+              <ZIndex>18</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="CountCouponBHT35">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Sum(Fields!CountCouponBHT35.Value, "main")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>CountCouponBHT35</rd:DefaultName>
+              <Top>2.68in</Top>
+              <Left>1.42167in</Left>
+              <Height>0.25in</Height>
+              <Width>0.79735in</Width>
+              <ZIndex>19</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="CountCouponBHT80">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Sum(Fields!CountCouponBHT80.Value, "main")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>CountCouponBHT80</rd:DefaultName>
+              <Top>2.68833in</Top>
+              <Left>5.105in</Left>
+              <Height>0.25in</Height>
+              <Width>0.94344in</Width>
+              <ZIndex>20</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -1317,7 +1430,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
               <Top>0.025in</Top>
-              <Left>1.01523in</Left>
+              <Left>0.51523in</Left>
               <Height>0.25in</Height>
               <Width>0.54166in</Width>
               <Style>
@@ -1352,7 +1465,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
               <Top>0.025in</Top>
-              <Left>4.7019in</Left>
+              <Left>4.2019in</Left>
               <Height>0.25in</Height>
               <Width>0.54166in</Width>
               <ZIndex>1</ZIndex>
@@ -1388,7 +1501,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
               <Top>0.025in</Top>
-              <Left>2.43361in</Left>
+              <Left>3.05861in</Left>
               <Height>0.25in</Height>
               <Width>0.54166in</Width>
               <ZIndex>2</ZIndex>
@@ -1424,7 +1537,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
               <Top>0.025in</Top>
-              <Left>6.12028in</Left>
+              <Left>6.74528in</Left>
               <Height>0.25in</Height>
               <Width>0.54166in</Width>
               <ZIndex>3</ZIndex>
@@ -1460,7 +1573,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
               <Top>0.5276in</Top>
-              <Left>1.01523in</Left>
+              <Left>0.51523in</Left>
               <Height>0.25in</Height>
               <Width>1.9375in</Width>
               <ZIndex>4</ZIndex>
@@ -1496,10 +1609,160 @@
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
               <Top>0.5276in</Top>
-              <Left>4.32665in</Left>
+              <Left>6.32665in</Left>
               <Height>0.25in</Height>
               <Width>0.54166in</Width>
               <ZIndex>5</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="AmountCouponBHT35String">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!AmountCouponBHT35String.Value, "main")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>AmountCouponBHT35String</rd:DefaultName>
+              <Top>0.2875in</Top>
+              <Left>1.09387in</Left>
+              <Height>0.225in</Height>
+              <Width>1.98386in</Width>
+              <ZIndex>6</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="AmountCouponBHT80String">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!AmountCouponBHT80String.Value, "main")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>AmountCouponBHT80String</rd:DefaultName>
+              <Top>0.2875in</Top>
+              <Left>4.7755in</Left>
+              <Height>0.225in</Height>
+              <Width>2.00172in</Width>
+              <ZIndex>7</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="CouponBHTTotalString">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!CouponBHTTotalString.Value, "main")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>CouponBHTTotalString</rd:DefaultName>
+              <Top>0.5401in</Top>
+              <Left>2.52217in</Left>
+              <Height>0.25in</Height>
+              <Width>3.73503in</Width>
+              <ZIndex>8</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="AmountCouponBHT35">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!AmountCouponBHT35.Value, "main")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>AmountCouponBHT35</rd:DefaultName>
+              <Top>0.04167in</Top>
+              <Left>1.10273in</Left>
+              <Height>0.225in</Height>
+              <Width>1.875in</Width>
+              <ZIndex>9</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="AmountCouponBHT36">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!AmountCouponBHT80.Value, "main")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>AmountCouponBHT35</rd:DefaultName>
+              <Top>0.0375in</Top>
+              <Left>4.8175in</Left>
+              <Height>0.225in</Height>
+              <Width>1.875in</Width>
+              <ZIndex>10</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1536,6 +1799,10 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="runningNumber">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -1551,6 +1818,11 @@
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>supervisorFullName</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>runningNumber</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
