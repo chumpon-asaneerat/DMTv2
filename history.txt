@@ -31,8 +31,9 @@ Ported DMTv2 to DMT.TAxTODv1 #180
 Ported DMTv2 to DMT.TAxTODv1 #179
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #178
-- 
+- Update declare API operation date need to send date only.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #177

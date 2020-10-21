@@ -303,7 +303,7 @@ namespace DMT.Models.ExtensionMethods
 
             inst.shiftTypeId = value.ShiftId;
             inst.declareDateTime = value.EntryDate;
-            inst.operationDate = value.RevenueDate;
+            inst.operationDate = value.RevenueDate.Date; // date part only.
 
             inst.declareById = value.UserId;
             inst.declareByName = value.TSBNameTH;
