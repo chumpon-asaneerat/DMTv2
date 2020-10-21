@@ -36,8 +36,9 @@ Ported DMTv2 to DMT.TAxTODv1 #178
 Ported DMTv2 to DMT.TAxTODv1 #177
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #176
-- 
+- Update declare API Coupon Ussage need to send Amount to Solar.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #175

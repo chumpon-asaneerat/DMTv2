@@ -375,10 +375,10 @@ namespace DMT.Models.ExtensionMethods
                 }
             }
             // Coupon Usage (coupon)
-            inst.couponTotalAmount = value.CouponUsageBHT30 +
-                value.CouponUsageBHT35 +
-                value.CouponUsageBHT70 +
-                value.CouponUsageBHT80;
+            inst.couponTotalAmount = (value.CouponUsageBHT30 * 30) +
+                (value.CouponUsageBHT35 * 35)+
+                (value.CouponUsageBHT70 * 70)+
+                (value.CouponUsageBHT80 * 80);
             inst.couponList = new List<SCWDeclareCoupon>();
             // helper action for coupon usage
             Action<List<SCWDeclareCoupon>, decimal, int> addToCouponList = (list, couponVal, num) =>
@@ -418,10 +418,10 @@ namespace DMT.Models.ExtensionMethods
             inst.otherTotalAmount = value.OtherBHTTotal;
             inst.otherRemark = value.OtherRemark;
             // QR Code
-            inst.qrcodeTotalAmount = 0;
+            inst.qrcodeTotalAmount = 0; // Amount in BHT
             inst.qrcodeList = new List<SCWDeclareQRCode>();
             // EMV
-            inst.emvTotalAmount = 0;
+            inst.emvTotalAmount = 0; // Amount in BHT
             inst.emvList = new List<SCWDeclareEMV>();
 
             return inst;
