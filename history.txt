@@ -24,12 +24,29 @@
     - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
   - ใบเสร็จขายคูปอง ที่ TA ขาดเรื่อง Running Number
   - TOD need to implements EMV/QRCode before Oct. fri 23/2020
+  - Need to update TSBCouponSummarryView.sql to include coupon sold.
 --------------------------------------------------------------------------------------------
+Ported DMTv2 to DMT.TAxTODv1 #185
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #184
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #183
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #182
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #181
+- 
+
 Ported DMTv2 to DMT.TAxTODv1 #180
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #179
-- 
+- Prepare history.txt
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #178
