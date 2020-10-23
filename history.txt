@@ -1,5 +1,4 @@
 ﻿- Note:
-  - Revenue Entry required to returns all credit and coupons before enter revenue.
   - Supervisor Sold coupon should print reports.
   - Implements User credit history view.
   - Implements Coupon borrows/returns view.
@@ -24,7 +23,6 @@
     - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
   - ใบเสร็จขายคูปอง ที่ TA ขาดเรื่อง Running Number
   - TOD need to implements EMV/QRCode before Oct. fri 23/2020
-  - Need to update TSBCouponSummarryView.sql to include coupon sold.
 --------------------------------------------------------------------------------------------
 Ported DMTv2 to DMT.TAxTODv1 #185
 - 
@@ -35,8 +33,9 @@ Ported DMTv2 to DMT.TAxTODv1 #184
 Ported DMTv2 to DMT.TAxTODv1 #183
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #182
-- 
+- Update history.txt
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #181
