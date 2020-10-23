@@ -88,7 +88,7 @@ namespace DMT.Services
 
 		#region Internal Variables
 
-		private int HistoryVersion = 1;
+		private int HistoryVersion = 2;
 
 		#endregion
 

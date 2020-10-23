@@ -41,8 +41,11 @@ Ported DMTv2 to DMT.TAxTODv1 #182
 Ported DMTv2 to DMT.TAxTODv1 #181
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #180
-- 
+- Update TSBCouponSummarryView.sql 
+  - add transactiontype to fixed miscalculation coupon sold by lane.
+- LocalDbServer change View HistoryVersion = 2
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #179
