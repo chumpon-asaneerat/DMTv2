@@ -32,9 +32,35 @@ namespace DMT.TOD.Pages.TollAdmin
         #endregion
 
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
+        private SCWOperations server = SCWServiceOperations.Instance.Plaza;
         private User _user = null;
+        private TSB _tsb = null;
 
         #region Button Handlers
+
+        private void cmdSearch_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: network id required.
+            int nwId = 31;
+            DateTime dt1 = DateTime.Now.Date;
+            DateTime dt2 = dt1.AddDays(1);
+            if (null != _user && null != _tsb)
+            {
+                var plazas = ops.TSB.GetTSBPlazas(_tsb).Value();
+                if (null != plazas && plazas.Count > 0)
+                {
+                    int pzId = plazas[0].SCWPlazaId;
+                    // Required common class to keep all list and sort by date.
+                    var emvList = server.TOD.GetEMVList(nwId, pzId, _user.UserId, dt1, dt2);
+                    var qrList = server.TOD.GetQRCodeList(nwId, pzId, _user.UserId, dt1, dt2);
+                }
+            }
+        }
+
+        private void cmdClear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
@@ -55,8 +81,10 @@ namespace DMT.TOD.Pages.TollAdmin
         public void Setup(User user)
         {
             _user = user;
-            if (null != _user)
+            _tsb = ops.TSB.GetCurrent().Value();
+            if (null != _user && null != _tsb)
             {
+                
             }
         }
     }
