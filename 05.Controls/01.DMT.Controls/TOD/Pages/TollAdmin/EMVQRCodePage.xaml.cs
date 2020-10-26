@@ -10,6 +10,8 @@ using DMT.Services;
 using NLib.Services;
 using NLib.Reflection;
 
+using DMT.Controls;
+
 #endregion
 
 namespace DMT.TOD.Pages.TollAdmin
@@ -36,7 +38,27 @@ namespace DMT.TOD.Pages.TollAdmin
         private User _user = null;
         private TSB _tsb = null;
 
+        private HistoricalRevenueEntryManager _manager = new HistoricalRevenueEntryManager();
+        private UserCreditBalance _selectUser = new UserCreditBalance();
+
+        #region TextBox Handlers
+
+        private void txtSearchUserId_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter || e.Key == System.Windows.Input.Key.Return)
+            {
+                SearchUser();
+            }
+        }
+
+        #endregion
+
         #region Button Handlers
+
+        private void cmdSearchUser_Click(object sender, RoutedEventArgs e)
+        {
+            SearchUser();
+        }
 
         private void cmdSearch_Click(object sender, RoutedEventArgs e)
         {
@@ -78,13 +100,38 @@ namespace DMT.TOD.Pages.TollAdmin
 
         #endregion
 
+        private void SearchUser()
+        {
+            if (!string.IsNullOrEmpty(txtSearchUserId.Text))
+            {
+                string userId = txtSearchUserId.Text;
+                if (string.IsNullOrEmpty(userId)) return;
+
+                UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
+                _manager.User = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
+                if (null != _manager.User)
+                {
+                    _selectUser.UserId = _manager.User.UserId;
+                    _selectUser.FullNameEN = _manager.User.FullNameEN;
+                    _selectUser.FullNameTH = _manager.User.FullNameTH;
+
+                    //RefreshLanes();
+                }
+            }
+        }
+
+ 
         public void Setup(User user)
         {
             _user = user;
             _tsb = ops.TSB.GetCurrent().Value();
             if (null != _user && null != _tsb)
             {
-                
+                _manager.User = user;
+                _manager.EntryDate = DateTime.Now;
+
+                dtEntryDate.SelectedDate = _manager.EntryDate;
+                this.DataContext = _selectUser;
             }
         }
     }
