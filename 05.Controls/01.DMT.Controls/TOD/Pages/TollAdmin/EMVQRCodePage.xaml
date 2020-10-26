@@ -21,7 +21,7 @@
                     <StackPanel Orientation="Horizontal">
                         <Grid Width="5" Height="50" />
                         <StackPanel Orientation="Horizontal">
-                            <RadioButton Width="80" 
+                            <RadioButton x:Name="rbEMV"  Width="80" 
                                          HorizontalAlignment="Center"
                                          VerticalAlignment="Center"
                                          Content="EMV"
@@ -30,7 +30,7 @@
                                          GroupName="EMVQR"
                                          IsChecked="True">
                             </RadioButton>
-                            <RadioButton Width="120"
+                            <RadioButton x:Name="rbQRCode" Width="120"
                                          HorizontalAlignment="Center"
                                          VerticalAlignment="Center"
                                          Content="QR Code"
