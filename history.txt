@@ -22,10 +22,11 @@
       transaction to used in TSBCreditSummary view later.
     - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
   - ใบเสร็จขายคูปอง ที่ TA ขาดเรื่อง Running Number
-  - EMVQRCodePage required to changed UI to DateTime picker and add search user button. 
 --------------------------------------------------------------------------------------------
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #185
-- 
+- TOD implements EMV/QRCode #3.
+  - Sync EMVQRCodePage from Kik.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #184
