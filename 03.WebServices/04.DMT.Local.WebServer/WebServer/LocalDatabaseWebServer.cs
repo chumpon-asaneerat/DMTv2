@@ -183,7 +183,8 @@ namespace DMT.Services
         private void WriteTAFile(string message)
         {
             // Create file.
-            string fileName = "msg." + DateTime.Now.ToString("yyyy.MM.dd-HH.mm.ss.ffffff") + ".json";
+            string fileName = "msg." + DateTime.Now.ToString("yyyy.MM.dd-HH.mm.ss.ffffff", 
+                System.Globalization.DateTimeFormatInfo.InvariantInfo) + ".json";
             string fullFileName = Path.Combine(LocalTAMessageFolder, fileName);
             // Save message.
             WriteFile(fullFileName, message);
@@ -192,7 +193,8 @@ namespace DMT.Services
         private void WriteTODFile(string message)
         {
             // Create file.
-            string fileName = "msg." + DateTime.Now.ToString("yyyy.MM.dd-HH.mm.ss.ffffff") + ".json";
+            string fileName = "msg." + DateTime.Now.ToString("yyyy.MM.dd-HH.mm.ss.ffffff",
+                System.Globalization.DateTimeFormatInfo.InvariantInfo) + ".json";
             string fullFileName = Path.Combine(LocalTODMessageFolder, fileName);
             // Save message.
             WriteFile(fullFileName, message);

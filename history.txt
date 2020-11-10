@@ -47,8 +47,11 @@ Ported DMTv2 to DMT.TAxTODv1 #189
 Ported DMTv2 to DMT.TAxTODv1 #188
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #187
-- 
+- Update LocalDatabaseWebServer.cs
+  Apply invariant format for WriteTAFile method.
+  Apply invariant format for WriteTODFile method.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #186
