@@ -22,6 +22,7 @@
       transaction to used in TSBCreditSummary view later.
     - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
   - ใบเสร็จขายคูปอง ที่ TA ขาดเรื่อง Running Number
+  - เพิ่มสิทธิ ADMIN ในหน้าค้นหาของ TOD และการเข้าหน้าจออื่น ๆ ตามสมควร
 --------------------------------------------------------------------------------------------
 Ported DMTv2 to DMT.TAxTODv1 #195
 - 
@@ -41,8 +42,9 @@ Ported DMTv2 to DMT.TAxTODv1 #191
 Ported DMTv2 to DMT.TAxTODv1 #190
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #189
-- 
+- Update note for add role for TOD/TA.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #188
