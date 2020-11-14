@@ -22,8 +22,24 @@
     - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
   - ใบเสร็จขายคูปอง ที่ TA ขาดเรื่อง Running Number
 --------------------------------------------------------------------------------------------
-Ported DMTv2 to DMT.TAxTODv1 #195
+Ported DMTv2 to DMT.TAxTODv1 #200
 - 
+
+Ported DMTv2 to DMT.TAxTODv1 #199
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #198
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #197
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #196
+- 
+
+[commited]
+Ported DMTv2 to DMT.TAxTODv1 #195
+- DMTv2 all report preview set zomm mode to PageWidth.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #194

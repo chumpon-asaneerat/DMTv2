@@ -164,7 +164,13 @@ namespace DMT.TA.Pages.Menu
             DMT.Controls.TAApp.User.Current = null;
 
             var page = new DMT.Pages.SignInPage();
-            page.Setup("CTC", "ACCOUNT", "ADMINS");
+            page.Setup(
+                "ADMINS",
+                "ACCOUNT",
+                "CTC_MGR", "CTC", /*"TC",*/
+                "MT_ADMIN", "MT_TECH",
+                "FINANCE", "SV",
+                "RAD_MGR", "RAD_SUP");
             PageContentManager.Instance.Current = page;
         }
 
