@@ -382,8 +382,25 @@ namespace DMT.Models
 					_IsHistorical = value;
 					// Raise event.
 					this.RaiseChanged("IsHistorical");
+					this.RaiseChanged("IsHistoricalDisplayText");
 				}
 			}
+		}
+		/// <summary>
+		/// Gets Is Historical Display Text.
+		/// </summary>
+		[Category("Revenue")]
+		[Description("Gets Is Historical Display Text.")]
+		[ReadOnly(true)]
+		[JsonIgnore]
+		[Ignore]
+		public string IsHistoricalDisplayText 
+		{
+			get 
+			{
+				return (this.IsHistorical) ? "ป้อนย้อนหลัง" : "";
+			}
+			set { }
 		}
 		/// <summary>
 		/// Gets or sets Lane Lists.

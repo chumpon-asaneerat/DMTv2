@@ -10,7 +10,6 @@
   - Internal Exchange
     - TSBCreditTransaction Required GroupId for group all by each operation.
   - Update Config app and simulator.
-  - Implements EMV/QRCode load from SCW api and update to local database.
   - Implements screen related to EMV/QRCode (in RevenueEntry, EMV/QRCode view).
   - Implements screen User Shift View (รายชื่อพนักงานเช้ากะ) - verify if implemented.
   - last files checked in Request Exchange process refactor is 
@@ -36,8 +35,10 @@ Ported DMTv2 to DMT.TAxTODv1 #193
 Ported DMTv2 to DMT.TAxTODv1 #192
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #191
-- 
+- DMTv2 Add Historical Text (Remark) in TOD
+  - SlipView add Remark column.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #190
