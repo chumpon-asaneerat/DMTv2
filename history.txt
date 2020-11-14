@@ -29,8 +29,9 @@ Ported DMTv2 to DMT.TAxTODv1 #204
 Ported DMTv2 to DMT.TAxTODv1 #203
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #202
-- 
+- Update app version and deploy to test site.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #201

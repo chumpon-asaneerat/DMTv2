@@ -140,7 +140,7 @@ namespace DMT.Services
                     plazaId = pzId,
                     staffId = usrId,
                     startDateTime = start,
-                    endtDateTime = end
+                    endDateTime = end
                 };
 
                 string usr = SCWServiceOperations.Instance.UserName;
@@ -175,7 +175,7 @@ namespace DMT.Services
                     plazaId = pzId,
                     staffId = usrId,
                     startDateTime = start,
-                    endtDateTime = end
+                    endDateTime = end
                 };
 
                 string usr = SCWServiceOperations.Instance.UserName;
