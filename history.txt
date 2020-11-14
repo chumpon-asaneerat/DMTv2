@@ -39,8 +39,11 @@ Ported DMTv2 to DMT.TAxTODv1 #192
 Ported DMTv2 to DMT.TAxTODv1 #191
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #190
-- 
+- DMTv2 Add JobId (Job No) in TOD
+  - SelectLaneView add JobId column
+  - Lane2View add JobId column
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #189

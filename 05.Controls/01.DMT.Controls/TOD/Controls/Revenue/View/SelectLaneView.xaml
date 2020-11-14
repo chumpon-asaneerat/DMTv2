@@ -31,6 +31,9 @@
                     <GridViewColumn Header="ชื่อพนักงาน" 
                                     DisplayMemberBinding="{Binding Path=FullNameTH}" 
                                     Width="250"/>
+                    <GridViewColumn Header="Job No." 
+                                    DisplayMemberBinding="{Binding Path=JobId}" 
+                                    Width="100"/>
                     <GridViewColumn Header="เลน" 
                                     DisplayMemberBinding="{Binding Path=LaneId}" 
                                     Width="60"/>
