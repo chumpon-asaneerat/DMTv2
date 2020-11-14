@@ -37,6 +37,28 @@ namespace DMT.TOD.Pages.Revenue
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
         {
+            if (!revEntry.HasBagNo)
+            {
+                DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                msg.Owner = Application.Current.MainWindow;
+                msg.Setup("กรุณาระบุ หมายเลขถุงเงิน", "DMT - Tour of Duty");
+                if (msg.ShowDialog() == true)
+                {
+                }
+                revEntry.FocusBagNo();
+                return;
+            }
+            if (!revEntry.HasBeltNo)
+            {
+                DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                msg.Owner = Application.Current.MainWindow;
+                msg.Setup("กรุณาระบุ หมายเลขเข็มขัดนิรภัย", "DMT - Tour of Duty");
+                if (msg.ShowDialog() == true)
+                {
+                }
+                revEntry.FocusBeltNo();
+                return;
+            }
             // Slip Preview
             var page = new Reports.RevenueSlipPreview();
             page.MenuPage = new Menu.MainMenu(); // Set MenPage to main menu.

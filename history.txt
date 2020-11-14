@@ -29,8 +29,10 @@ Ported DMTv2 to DMT.TAxTODv1 #195
 Ported DMTv2 to DMT.TAxTODv1 #194
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #193
-- 
+- DMTv2 Revenue Entry add messagebox in TOD
+  - Message for no BagNo, BeltNo
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #192

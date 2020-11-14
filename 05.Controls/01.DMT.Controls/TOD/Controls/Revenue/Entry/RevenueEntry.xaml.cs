@@ -60,5 +60,20 @@ namespace DMT.TOD.Controls.Revenue.Entry
                 e.Handled = true;
             }
         }
+
+        public void FocusBagNo()
+        {
+            txtBagNo.Focus();
+            txtBagNo.SelectAll();
+        }
+
+        public void FocusBeltNo()
+        {
+            txtBeltNo.Focus();
+            txtBeltNo.SelectAll();
+        }
+
+        public bool HasBagNo { get { return !string.IsNullOrWhiteSpace(txtBagNo.Text); } }
+        public bool HasBeltNo { get { return !string.IsNullOrWhiteSpace(txtBeltNo.Text); } }
     }
 }
