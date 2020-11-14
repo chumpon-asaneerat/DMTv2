@@ -241,6 +241,10 @@ namespace DMT.TOD.Pages.TollAdmin
  
         public void Setup(User user)
         {
+            // TODO: Need user/password from config table or external file.
+            SCWServiceOperations.Instance.UserName = "DMTUSER";
+            SCWServiceOperations.Instance.Password = "DMTPASS";
+
             //_user = user;
             _tsb = ops.TSB.GetCurrent().Value();
             if (null != _tsb)

@@ -46,7 +46,9 @@ namespace DMT.TOD.Controls.Revenue.Entry
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            // TODO: Need user/password from config table or external file.
+            SCWServiceOperations.Instance.UserName = "DMTUSER";
+            SCWServiceOperations.Instance.Password = "DMTPASS";
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)

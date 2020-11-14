@@ -26,8 +26,10 @@ Ported DMTv2 to DMT.TAxTODv1 #205
 Ported DMTv2 to DMT.TAxTODv1 #204
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #203
-- 
+- Implements EMV/QRCode page #4.
+  - Fixed code miss SCW Auth User/Pwd when call get emv/qrcode.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #202
