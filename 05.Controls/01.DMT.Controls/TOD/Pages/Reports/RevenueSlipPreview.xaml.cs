@@ -148,6 +148,9 @@ namespace DMT.TOD.Pages.Reports
             DateTime today = DateTime.Now;
             string printDate = today.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
             inst.Parameters.Add(RdlcReportParameter.Create("PrintDate", printDate));
+            string histText = ((null != _manager && null != _manager.RevenueEntry && _manager.RevenueEntry.IsHistorical)) ?
+                "(นำส่งย้อนหลัง)" : "";
+            inst.Parameters.Add(RdlcReportParameter.Create("HistoryText", histText));
 
             return inst;
         }

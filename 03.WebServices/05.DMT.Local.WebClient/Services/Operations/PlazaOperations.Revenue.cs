@@ -553,6 +553,8 @@ namespace DMT.Services
             }
 
             CreateLaneList();
+            // Check is historical
+            this.RevenueEntry.IsHistorical = this.ByChief;
 
             // assigned plaza group.
             this.RevenueEntry.PlazaGroupId = this.PlazaGroup.PlazaGroupId;
@@ -1138,6 +1140,7 @@ namespace DMT.Services
             inst.Supervisor = this.Supervisor;
             inst.UserShift = this.UserShift;
             inst.PlazaGroup = this.PlazaGroup;
+
 
             inst.Attendances = new List<LaneAttendance>();
             if (null != this.Attendances && this.Attendances.Count > 0)

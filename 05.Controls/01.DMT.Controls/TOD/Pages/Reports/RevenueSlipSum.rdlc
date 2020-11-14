@@ -1314,7 +1314,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Rownumber(Nothing)</Value>
+                              <Value>=IIf(Fields!IsHistorical.Value, "*", "") &amp; Rownumber(Nothing)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1338,6 +1338,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -2702,6 +2703,14 @@
         <Field Name="FreePassUsageOther">
           <DataField>FreePassUsageOther</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IsHistorical">
+          <DataField>IsHistorical</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="IsHistoricalDisplayText">
+          <DataField>IsHistoricalDisplayText</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Lanes">
           <DataField>Lanes</DataField>

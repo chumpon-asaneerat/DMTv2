@@ -32,8 +32,13 @@ Ported DMTv2 to DMT.TAxTODv1 #194
 Ported DMTv2 to DMT.TAxTODv1 #193
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #192
-- 
+- DMTv2 Add Historical Text (Remark) in TOD#2
+  - Update RevenueSlip.rdlc
+  - Update RevenueSlipSum.rdlc
+  - Update RevenueManager (for assign IsHistorical property in RevenueEntry class).
+  - Update SlipView control.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #191

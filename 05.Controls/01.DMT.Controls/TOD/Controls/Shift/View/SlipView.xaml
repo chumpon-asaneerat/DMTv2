@@ -15,10 +15,10 @@
                                     Width="100"/>
                     <GridViewColumn Header="ชื่อพนักงาน" 
                                     DisplayMemberBinding="{Binding Path=CollectorNameTH}" 
-                                    Width="250"/>
+                                    Width="210"/>
                     <GridViewColumn Header="หมายเหตุ" 
                                     DisplayMemberBinding="{Binding Path=IsHistoricalDisplayText}" 
-                                    Width="150"/>
+                                    Width="110"/>
                     <!--
                     <GridViewColumn Header="ถุงเงิน" 
                                     DisplayMemberBinding="{Binding Path=BagNo}" 
