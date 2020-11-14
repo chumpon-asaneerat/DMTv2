@@ -20,11 +20,27 @@
     - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
   - ใบเสร็จขายคูปอง ที่ TA ขาดเรื่อง Running Number
 --------------------------------------------------------------------------------------------
+Ported DMTv2 to DMT.TAxTODv1 #210
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #209
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #208
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #207
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #206
+- 
+
 Ported DMTv2 to DMT.TAxTODv1 #205
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #204
-- 
+- Prepare history.txt
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #203
