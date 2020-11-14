@@ -10,8 +10,6 @@
   - Internal Exchange
     - TSBCreditTransaction Required GroupId for group all by each operation.
   - Update Config app and simulator.
-  - Implements screen related to EMV/QRCode (in RevenueEntry, EMV/QRCode view).
-  - Implements screen User Shift View (รายชื่อพนักงานเช้ากะ) - verify if implemented.
   - last files checked in Request Exchange process refactor is 
     - LoanMoney2Entry.xaml (Controls) check binding to BorrowBHT that need to check property 
       in TSBCreditBalance, TSBCreditTransaction.
@@ -34,8 +32,9 @@ Ported DMTv2 to DMT.TAxTODv1 #203
 Ported DMTv2 to DMT.TAxTODv1 #202
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #201
-- 
+- Update Note remove completed tasks.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #200
