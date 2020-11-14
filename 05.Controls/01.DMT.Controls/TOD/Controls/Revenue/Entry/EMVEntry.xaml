@@ -7,7 +7,8 @@
              d:DesignHeight="450" 
              d:DesignWidth="800"            
              Loaded="UserControl_Loaded"
-             Unloaded="UserControl_Unloaded">
+             Unloaded="UserControl_Unloaded"
+             DataContextChanged="UserControl_DataContextChanged">
     <Grid>
         <Border BorderBrush="AliceBlue" 
                 BorderThickness="1">
@@ -40,7 +41,8 @@
                                VerticalAlignment="Center"
                                Text="จำนวนรวม : " HorizontalAlignment="Left" Width="80"/>
                         <TextBox Name="txtQty"  Height="23" 
-                                Text="" Margin="89,18,0,18" HorizontalAlignment="Left" Width="80"/>
+                                Text="" Margin="89,18,0,18" HorizontalAlignment="Left" Width="80"
+                                 IsReadOnly="True"/>
                         <TextBlock Margin="178,22,0,22"
                                VerticalAlignment="Center"
                                Text="รายการ" HorizontalAlignment="Left" Width="55"/>
@@ -49,7 +51,8 @@
                                VerticalAlignment="Center"
                                Text="ยอดเงินรวม : "  HorizontalAlignment="Left" Width="80"/>
                         <TextBox Name="txtTotal"  Height="23" 
-                                Text="" Margin="323,18,0,18" HorizontalAlignment="Left"  Width="80"/>
+                                Text="" Margin="323,18,0,18" HorizontalAlignment="Left"  Width="80"
+                                 IsReadOnly="True"/>
                         <TextBlock Margin="411,22,0,22"
                                VerticalAlignment="Center"
                                Text="บาท" HorizontalAlignment="Left" Width="50"/>
@@ -96,15 +99,27 @@
                     <ListView x:Name="listView" FontSize="18" ItemsSource="{Binding}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Approval Code" 
-                                    DisplayMemberBinding="{Binding Path=ApprovalCode}" 
-                                    Width="150"/>
                                 <GridViewColumn Header="วันที่" 
-                                    DisplayMemberBinding="{Binding Path=DateQRDateString}" 
+                                    DisplayMemberBinding="{Binding Path=trxDateTimeString}" 
                                     Width="200"/>
+                                <GridViewColumn Header="ช่องทาง" 
+                                    DisplayMemberBinding="{Binding Path=laneId}" 
+                                    Width="80"/>
+                                <GridViewColumn Header="รหัสพนักงาน" 
+                                    DisplayMemberBinding="{Binding Path=staffId}" 
+                                    Width="100"/>
+                                <GridViewColumn Header="ชื่อพนักงาน" 
+                                    DisplayMemberBinding="{Binding Path=staffNameTh}" 
+                                    Width="220"/>
                                 <GridViewColumn Header="จำนวนเงิน" 
-                                    DisplayMemberBinding="{Binding Path=Qty}" 
-                                    Width="150"/>
+                                    DisplayMemberBinding="{Binding Path=amount}" 
+                                    Width="120"/>
+                                <GridViewColumn Header="เลขที่อ้างอิง" 
+                                    DisplayMemberBinding="{Binding Path=refNo}" 
+                                    Width="220"/>
+                                <GridViewColumn Header="Approval Code" 
+                                    DisplayMemberBinding="{Binding Path=approvCode}" 
+                                    Width="140"/>
                             </GridView>
                         </ListView.View>
                     </ListView>

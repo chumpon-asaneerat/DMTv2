@@ -504,6 +504,7 @@ namespace DMT.Services
             }
 
             this.RevenueEntry = new Models.RevenueEntry();
+            UpdateRevenueEntry();
 
             if (null != userCredit)
             {
@@ -522,20 +523,6 @@ namespace DMT.Services
                 this.RevenueEntry.BagNo = string.Empty;
                 this.RevenueEntry.BeltNo = string.Empty;
             }
-
-            /*
-            if (this.RevenueEntry.RevenueId == string.Empty)
-            {
-                var unique = ops.Revenue.GetUniqueId("RevenueEntry").Value();
-                if (string.IsNullOrWhiteSpace(this.RevenueEntry.RevenueId))
-                {
-                    string yr = DateTime.Now.ToThaiDateTimeString("yy");
-                    string autoId = (null != unique) ? yr + unique.LastNumber.ToString("D5") : string.Empty; // auto generate.
-                    this.RevenueEntry.RevenueId = autoId;
-                    Console.WriteLine(autoId);
-                }
-            }
-            */
         }
         /// <summary>
         /// Load Exists Revenue Entry.
@@ -547,21 +534,14 @@ namespace DMT.Services
             this.RevenueEntry = entry;
         }
 
-        public void BuildRevenueEntry()
+        private void UpdateRevenueEntry()
         {
-            MethodBase med = MethodBase.GetCurrentMethod();
-
             if (null == this.UserShift || null == this.PlazaGroup || null == this.RevenueEntry)
             {
-                string msg = "PlazaGroup or User Shift or Revenue Entry is null.";
-                med.Info(msg);
                 return;
             }
-
-            CreateLaneList();
             // Check is historical
             this.RevenueEntry.IsHistorical = this.ByChief;
-
             // assigned plaza group.
             this.RevenueEntry.PlazaGroupId = this.PlazaGroup.PlazaGroupId;
             // update object properties.
@@ -574,6 +554,8 @@ namespace DMT.Services
             this.RevenueEntry.RevenueDate = new DateTime(
                 this.RevenueDate.Year, this.RevenueDate.Month, this.RevenueDate.Day,
                 dtNow.Hour, dtNow.Minute, dtNow.Second, dtNow.Millisecond);
+
+            CreateLaneList();
             this.RevenueEntry.Lanes = this.LaneList.Trim();
 
             // Find begin/end of revenue.
@@ -610,6 +592,20 @@ namespace DMT.Services
                 this.RevenueEntry.SupervisorNameEN = this.Supervisor.FullNameEN;
                 this.RevenueEntry.SupervisorNameTH = this.Supervisor.FullNameTH;
             }
+        }
+
+        public void BuildRevenueEntry()
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            if (null == this.UserShift || null == this.PlazaGroup || null == this.RevenueEntry)
+            {
+                string msg = "PlazaGroup or User Shift or Revenue Entry is null.";
+                med.Info(msg);
+                return;
+            }
+
+            UpdateRevenueEntry();
         }
         /// <summary>
         /// Save Revenue Entry.

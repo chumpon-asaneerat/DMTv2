@@ -26,6 +26,8 @@ namespace DMT.TOD.Controls.Revenue.Entry
 
         #endregion
 
+        private Models.RevenueEntry entry;
+
         #region Loaded/Unloaded
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -39,6 +41,26 @@ namespace DMT.TOD.Controls.Revenue.Entry
         }
 
         #endregion
+
+        private void UserControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            entry = this.DataContext as Models.RevenueEntry;
+            if (null != entry)
+            {
+                /*
+                if (entry.IsHistorical)
+                {
+                    tabQRCode.Visibility = Visibility.Collapsed;
+                    tabEMV.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    tabQRCode.Visibility = Visibility.Visible;
+                    tabEMV.Visibility = Visibility.Visible;
+                }
+                */
+            }
+        }
 
         private void txtBagNo_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
@@ -71,6 +93,12 @@ namespace DMT.TOD.Controls.Revenue.Entry
         {
             txtBeltNo.Focus();
             txtBeltNo.SelectAll();
+        }
+
+        public void RefreshItems()
+        {
+            qrcodeEntry.LoadItems();
+            emvEntry.LoadItems();
         }
 
         public bool HasBagNo { get { return !string.IsNullOrWhiteSpace(txtBagNo.Text); } }

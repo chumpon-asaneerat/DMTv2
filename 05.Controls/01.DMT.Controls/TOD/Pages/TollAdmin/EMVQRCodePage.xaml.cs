@@ -226,10 +226,14 @@ namespace DMT.TOD.Pages.TollAdmin
                     "RAD_MGR", "RAD_SUP");
                 if (null != _selectUser)
                 {
+                    txtUserId.Text = _selectUser.UserId;
+                    txtName.Text = _selectUser.FullNameTH;
                     RefreshEMV_QRCODE();
                 }
                 else
                 {
+                    txtUserId.Text = string.Empty;
+                    txtName.Text = string.Empty;
                     grid.Setup(); // setup null list.
                 }
             }
