@@ -343,7 +343,13 @@ namespace DMT.Services
                         if (null != lane) lane.AssignTo(attend);
 
                         var user = ops.Users.GetById(
-                            Search.Users.ById.Create(attend.UserId, "CTC", "TC")).Value();
+                            Search.Users.ById.Create(attend.UserId, 
+                                "ADMINS",
+                                "ACCOUNT",
+                                "CTC_MGR", "CTC", "TC",
+                                "MT_ADMIN", "MT_TECH",
+                                "FINANCE", "SV",
+                                "RAD_MGR", "RAD_SUP")).Value();
                         if (null != user) user.AssignTo(attend);
 
                         if (null != attend) attends.Add(attend);
@@ -1058,7 +1064,13 @@ namespace DMT.Services
                         if (null != lane) lane.AssignTo(attend);
 
                         var user = ops.Users.GetById(
-                            Search.Users.ById.Create(attend.UserId, "CTC", "TC")).Value();
+                            Search.Users.ById.Create(attend.UserId,
+                                "ADMINS",
+                                "ACCOUNT",
+                                "CTC_MGR", "CTC", "TC",
+                                "MT_ADMIN", "MT_TECH",
+                                "FINANCE", "SV",
+                                "RAD_MGR", "RAD_SUP")).Value();
                         if (null != user) user.AssignTo(attend);
 
                         if (null != attend) attends.Add(attend);

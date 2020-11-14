@@ -185,7 +185,13 @@ namespace DMT.TA.Windows.Collector.Credit
                 if (string.IsNullOrEmpty(userId)) return;
 
                 UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
-                var user = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
+                var user = UserSearchManager.Instance.SelectUser(userId, 
+                    "ADMINS",
+                    "ACCOUNT",
+                    "CTC_MGR", "CTC", "TC",
+                    "MT_ADMIN", "MT_TECH",
+                    "FINANCE", "SV",
+                    "RAD_MGR", "RAD_SUP");
                 if (null != user && null != manager.UserBalance)
                 {
                     manager.SetUser(user);

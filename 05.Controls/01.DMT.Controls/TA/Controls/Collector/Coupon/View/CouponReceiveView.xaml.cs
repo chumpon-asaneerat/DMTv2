@@ -53,7 +53,13 @@ namespace DMT.TA.Controls.Collector.Coupon
             var trans = (null != button) ? button.DataContext as TSBCouponSummary : null;
             if (null == trans) return;
 
-            var search = Search.Users.ById.Create(trans.UserId, "TC");
+            var search = Search.Users.ById.Create(trans.UserId, 
+                "ADMINS",
+                "ACCOUNT",
+                "CTC_MGR", "CTC", "TC",
+                "MT_ADMIN", "MT_TECH",
+                "FINANCE", "SV",
+                "RAD_MGR", "RAD_SUP");
             var user = ops.Users.GetById(search).Value();
             if (null == user) return;
 
@@ -71,7 +77,13 @@ namespace DMT.TA.Controls.Collector.Coupon
             var trans = (null != button) ? button.DataContext as TSBCouponSummary : null;
             if (null == trans) return;
 
-            var search = Search.Users.ById.Create(trans.UserId, "TC");
+            var search = Search.Users.ById.Create(trans.UserId, 
+                "ADMINS",
+                "ACCOUNT",
+                "CTC_MGR", "CTC", "TC",
+                "MT_ADMIN", "MT_TECH",
+                "FINANCE", "SV",
+                "RAD_MGR", "RAD_SUP");
             var user = ops.Users.GetById(search).Value();
             if (null == user) return;
 

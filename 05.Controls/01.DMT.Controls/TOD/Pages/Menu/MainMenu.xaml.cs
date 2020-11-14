@@ -35,7 +35,12 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("TC");
+            signinWin.Setup("ADMINS",
+                    "ACCOUNT",
+                    "CTC_MGR", "CTC", "TC",
+                    "MT_ADMIN", "MT_TECH",
+                    "FINANCE", "SV",
+                    "RAD_MGR", "RAD_SUP");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -56,7 +61,12 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("TC");
+            signinWin.Setup("ADMINS",
+                    "ACCOUNT",
+                    "CTC_MGR", "CTC", "TC",
+                    "MT_ADMIN", "MT_TECH",
+                    "FINANCE", "SV",
+                    "RAD_MGR", "RAD_SUP");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -74,7 +84,12 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("CTC");
+            signinWin.Setup("ADMINS",
+                    "ACCOUNT",
+                    "CTC_MGR", "CTC", /*"TC",*/
+                    "MT_ADMIN", "MT_TECH",
+                    "FINANCE", "SV",
+                    "RAD_MGR", "RAD_SUP");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -90,7 +105,12 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("CTC");
+            signinWin.Setup("ADMINS",
+                    "ACCOUNT",
+                    "CTC_MGR", "CTC", /*"TC",*/
+                    "MT_ADMIN", "MT_TECH",
+                    "FINANCE", "SV",
+                    "RAD_MGR", "RAD_SUP");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -108,7 +128,12 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("CTC", "ACCOUNT", "ADMINS");
+            signinWin.Setup("ADMINS",
+                    "ACCOUNT",
+                    "CTC_MGR", "CTC", /*"TC",*/
+                    "MT_ADMIN", "MT_TECH",
+                    "FINANCE", "SV",
+                    "RAD_MGR", "RAD_SUP");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -126,7 +151,12 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("TC", "CTC", "ACCOUNT", "ADMINS");
+            signinWin.Setup("ADMINS",
+                    "ACCOUNT",
+                    "CTC_MGR", "CTC", /*"TC",*/
+                    "MT_ADMIN", "MT_TECH",
+                    "FINANCE", "SV",
+                    "RAD_MGR", "RAD_SUP");
             if (signinWin.ShowDialog() == false)
             {
                 return;
@@ -142,7 +172,12 @@ namespace DMT.TOD.Pages.Menu
         {
             var signinWin = new SignInWindow();
             signinWin.Owner = Application.Current.MainWindow;
-            signinWin.Setup("TC", "CTC", "ACCOUNT", "ADMINS");
+            signinWin.Setup("ADMINS",
+                    "ACCOUNT",
+                    "CTC_MGR", "CTC", /*"TC",*/
+                    "MT_ADMIN", "MT_TECH",
+                    "FINANCE", "SV",
+                    "RAD_MGR", "RAD_SUP");
             if (signinWin.ShowDialog() == false)
             {
                 return;

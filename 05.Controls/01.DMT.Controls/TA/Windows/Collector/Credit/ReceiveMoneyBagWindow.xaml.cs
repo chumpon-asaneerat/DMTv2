@@ -166,8 +166,18 @@ namespace DMT.TA.Windows.Collector.Credit
                 txtAmount.Text = "0";
 
             _roles.Clear();
+
+            _roles.Add("ADMINS");
+            _roles.Add("ACCOUNT");
+            _roles.Add("CTC_MGR");
             _roles.Add("CTC");
             _roles.Add("TC");
+            _roles.Add("MT_ADMIN");
+            _roles.Add("MT_TECH");
+            _roles.Add("FINANCE");
+            _roles.Add("SV");
+            _roles.Add("RAD_MGR");
+            _roles.Add("RAD_SUP");
 
             SmartcardManager.Instance.Start();
         }

@@ -153,7 +153,13 @@ namespace DMT.TOD.Pages.Revenue
                 if (string.IsNullOrEmpty(userId)) return;
 
                 UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
-                _manager.User = UserSearchManager.Instance.SelectUser(userId, "CTC", "TC");
+                _manager.User = UserSearchManager.Instance.SelectUser(userId,
+                    "ADMINS",
+                    "ACCOUNT",
+                    "CTC_MGR", "CTC", "TC",
+                    "MT_ADMIN", "MT_TECH",
+                    "FINANCE", "SV",
+                    "RAD_MGR", "RAD_SUP");
                 if (null != _manager.User)
                 {
                     _selectUser.UserId = _manager.User.UserId;
