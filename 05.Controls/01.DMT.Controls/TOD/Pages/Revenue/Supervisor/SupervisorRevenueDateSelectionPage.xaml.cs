@@ -225,6 +225,8 @@ namespace DMT.TOD.Pages.Revenue
             RevenueEntryManager.SyncMasters(); // Sync Currency/Coupon/CardAllow list.
 
             // check and send offline revenue entries to server.
+            // TODO: Generate to Revenue files.
+            // This step should removed and used scanning files timer insetad.
             RevenueEntryManager.SendRevnues();
 
             _manager.Supervisor = supervisor;

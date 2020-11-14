@@ -703,6 +703,7 @@ namespace DMT.Services
                 ops.UserShifts.SaveUserShift(this.UserShift); // direct save.
             }
             // Send data to server to mark sync status.
+            // TODO: Generate to Revenue file.
             SendRevnue(this.RevenueEntry);
 
             return !bCloseUserShift;
@@ -906,6 +907,11 @@ namespace DMT.Services
                 med.Info("declare error: Cannot search plaza id.");
                 return false;
             }
+
+            // TODO: Change to generate revenue.
+            // 1. generate declare revenue file.
+            // 2. update status flag.
+            // 3. file will wait until timer scan to send to SCW.
 
             SCWDeclare declare = value.ToServer(currencies, coupons, cardAllows, attendances, plazaId);
             var ret = server.TOD.Declare(declare);

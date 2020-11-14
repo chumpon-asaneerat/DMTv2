@@ -31,8 +31,9 @@ Ported DMTv2 to DMT.TAxTODv1 #199
 Ported DMTv2 to DMT.TAxTODv1 #198
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #197
-- 
+- Update TODO for all Revenue -> declare call.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #196
