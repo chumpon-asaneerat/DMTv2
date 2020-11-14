@@ -56,7 +56,6 @@
                                     FontSize="20"
                                     SelectedDateChanged="dtEntryDate_SelectedDateChanged" />
                         <Grid Width="5" />
-                        <!--
                         <TextBlock Width="80"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
@@ -73,7 +72,10 @@
                                  FontSize="18"
                                  Text=""
                                  TextAlignment="Center"
-                                 TextWrapping="Wrap" />
+                                 TextWrapping="Wrap" 
+                                 KeyDown="txtLaneNo_KeyDown"
+                                 GotFocus="txtLaneNo_GotFocus"
+                                 LostFocus="txtLaneNo_LostFocus"/>
                         <Grid Width="5" />
                         <Button x:Name="cmdClear"
                                 Width="220"
@@ -107,7 +109,6 @@
                                 </StackPanel>
                             </DockPanel>
                         </Button>
-                        -->
                     </StackPanel>
                 </Border>
 

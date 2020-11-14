@@ -40,6 +40,8 @@ namespace DMT.TOD.Pages.TollAdmin
         private User _selectUser = null;
         private TSB _tsb = null;
 
+        private string _laneFilter = string.Empty;
+
         #region TextBox Handlers
 
         private void txtSearchUserId_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -74,9 +76,39 @@ namespace DMT.TOD.Pages.TollAdmin
             RefreshEMV_QRCODE();
         }
 
+        private void txtLaneNo_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            var currFilter = txtLaneNo.Text.Trim();
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                if (_laneFilter != currFilter)
+                {
+                    _laneFilter = currFilter;
+                    RefreshEMV_QRCODE();
+                }
+            }
+        }
+
+        private void txtLaneNo_GotFocus(object sender, RoutedEventArgs e)
+        {
+            _laneFilter = txtLaneNo.Text.Trim();
+        }
+
+        private void txtLaneNo_LostFocus(object sender, RoutedEventArgs e)
+        {
+            var currFilter = txtLaneNo.Text.Trim();
+            if (_laneFilter != currFilter)
+            {
+                _laneFilter = currFilter;
+                RefreshEMV_QRCODE();
+            }
+        }
+
         private void cmdClear_Click(object sender, RoutedEventArgs e)
         {
             dtEntryDate.SelectedDate = DateTime.Now.Date;
+            txtLaneNo.Text = string.Empty;
+            RefreshEMV_QRCODE();
         }
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
@@ -94,6 +126,18 @@ namespace DMT.TOD.Pages.TollAdmin
         }
 
         #endregion
+
+        private int? GetLaneFilter()
+        {
+            int? ret = new int?();
+            if (string.IsNullOrEmpty(txtLaneNo.Text)) return ret;
+            int num;
+            if (int.TryParse(txtLaneNo.Text.Trim(), out num))
+            {
+                ret = new int?(num);
+            }
+            return ret;
+        }
 
         private void RefreshEMV_QRCODE()
         {
@@ -130,6 +174,12 @@ namespace DMT.TOD.Pages.TollAdmin
                         });
 
                         var sortList = EMVList.OrderBy(o => o.trxDateTime).Distinct().ToList();
+                        var filter = GetLaneFilter();
+                        if (filter.HasValue)
+                        {
+                            // Filter only specificed lane no.
+                            sortList = sortList.Where(o => o.laneId == filter.Value).ToList();
+                        }
                         grid.Setup(sortList);
                     }
                     else
@@ -147,6 +197,12 @@ namespace DMT.TOD.Pages.TollAdmin
                         });
 
                         var sortList = QRCODEList.OrderBy(o => o.trxDateTime).Distinct().ToList();
+                        var filter = GetLaneFilter();
+                        if (filter.HasValue)
+                        {
+                            // Filter only specificed lane no.
+                            sortList = sortList.Where(o => o.laneId == filter.Value).ToList();
+                        }
                         grid.Setup(sortList);
                     }
                 }

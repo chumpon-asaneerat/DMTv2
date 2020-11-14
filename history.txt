@@ -25,8 +25,9 @@
 Ported DMTv2 to DMT.TAxTODv1 #200
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #199
-- 
+- Implements EMV/QRCode page #2.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #198
