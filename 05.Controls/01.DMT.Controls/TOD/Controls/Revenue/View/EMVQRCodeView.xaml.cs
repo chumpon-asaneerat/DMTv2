@@ -35,5 +35,20 @@ namespace DMT.TOD.Controls.Revenue.View
         }
 
         #endregion
+
+        public void Setup()
+        {
+            listView.ItemsSource = null;
+        }
+
+        public void Setup(List<Models.SCWEMV> emvList)
+        {
+            listView.ItemsSource = emvList;
+        }
+
+        public void Setup(List<Models.SCWQRCode> qrcodeList)
+        {
+            listView.ItemsSource = qrcodeList;
+        }
     }
 }

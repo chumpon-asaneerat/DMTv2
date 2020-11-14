@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -35,11 +36,9 @@ namespace DMT.TOD.Pages.TollAdmin
 
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private SCWOperations server = SCWServiceOperations.Instance.Plaza;
-        private User _user = null;
+        //private User _user = null;
+        private User _selectUser = null;
         private TSB _tsb = null;
-
-        private HistoricalRevenueEntryManager _manager = new HistoricalRevenueEntryManager();
-        private UserCreditBalance _selectUser = new UserCreditBalance();
 
         #region TextBox Handlers
 
@@ -60,28 +59,24 @@ namespace DMT.TOD.Pages.TollAdmin
             SearchUser();
         }
 
-        private void cmdSearch_Click(object sender, RoutedEventArgs e)
+        private void rbEMV_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: network id required.
-            int nwId = 31;
-            DateTime dt1 = DateTime.Now.Date;
-            DateTime dt2 = dt1.AddDays(1);
-            if (null != _user && null != _tsb)
-            {
-                var plazas = ops.TSB.GetTSBPlazas(_tsb).Value();
-                if (null != plazas && plazas.Count > 0)
-                {
-                    int pzId = plazas[0].SCWPlazaId;
-                    // Required common class to keep all list and sort by date.
-                    var emvList = server.TOD.GetEMVList(nwId, pzId, _user.UserId, dt1, dt2);
-                    var qrList = server.TOD.GetQRCodeList(nwId, pzId, _user.UserId, dt1, dt2);
-                }
-            }
+            RefreshEMV_QRCODE();
+        }
+
+        private void rbQRCode_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshEMV_QRCODE();
+        }
+
+        private void dtEntryDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            RefreshEMV_QRCODE();
         }
 
         private void cmdClear_Click(object sender, RoutedEventArgs e)
         {
-
+            dtEntryDate.SelectedDate = DateTime.Now.Date;
         }
 
         private void cmdOk_Click(object sender, RoutedEventArgs e)
@@ -100,6 +95,64 @@ namespace DMT.TOD.Pages.TollAdmin
 
         #endregion
 
+        private void RefreshEMV_QRCODE()
+        {
+            if (!dtEntryDate.SelectedDate.HasValue)
+            {
+                dtEntryDate.Focus();
+                return;
+            }
+
+            // TODO: network id required.
+            int nwId = 31;
+            DateTime dt1 = dtEntryDate.SelectedDate.Value.Date;
+            DateTime dt2 = dt1.AddDays(1);
+
+            grid.Setup();
+
+            if (null != _selectUser && null != _tsb)
+            {
+                var plazas = ops.TSB.GetTSBPlazas(_tsb).Value();
+                if (null != plazas && plazas.Count > 0)
+                {
+                    if (rbEMV.IsChecked.Value)
+                    {
+                        // EMV
+                        var EMVList = new List<SCWEMV>();
+                        plazas.ForEach(plaza => 
+                        {
+                            int pzId = plaza.SCWPlazaId;
+                            var emvList = server.TOD.GetEMVList(nwId, pzId, _selectUser.UserId, dt1, dt2);
+                            if (null != emvList && null != emvList.list)
+                            {
+                                EMVList.AddRange(emvList.list);
+                            }
+                        });
+
+                        var sortList = EMVList.OrderBy(o => o.trxDateTime).Distinct().ToList();
+                        grid.Setup(sortList);
+                    }
+                    else
+                    {
+                        // QR Code
+                        var QRCODEList = new List<SCWQRCode>();
+                        plazas.ForEach(plaza =>
+                        {
+                            int pzId = plaza.SCWPlazaId;
+                            var qrList = server.TOD.GetQRCodeList(nwId, pzId, _selectUser.UserId, dt1, dt2);
+                            if (null != qrList && null != qrList.list)
+                            {
+                                QRCODEList.AddRange(qrList.list);
+                            }
+                        });
+
+                        var sortList = QRCODEList.OrderBy(o => o.trxDateTime).Distinct().ToList();
+                        grid.Setup(sortList);
+                    }
+                }
+            }
+        }
+
         private void SearchUser()
         {
             if (!string.IsNullOrEmpty(txtSearchUserId.Text))
@@ -108,36 +161,32 @@ namespace DMT.TOD.Pages.TollAdmin
                 if (string.IsNullOrEmpty(userId)) return;
 
                 UserSearchManager.Instance.Title = "กรุณาเลือกพนักงานเก็บเงิน";
-                _manager.User = UserSearchManager.Instance.SelectUser(userId,
+                _selectUser = UserSearchManager.Instance.SelectUser(userId,
                     "ADMINS", 
                     "ACCOUNT",
                     "CTC_MGR", "CTC", "TC",
                     "MT_ADMIN", "MT_TECH", 
                     "FINANCE", "SV", 
                     "RAD_MGR", "RAD_SUP");
-                if (null != _manager.User)
+                if (null != _selectUser)
                 {
-                    _selectUser.UserId = _manager.User.UserId;
-                    _selectUser.FullNameEN = _manager.User.FullNameEN;
-                    _selectUser.FullNameTH = _manager.User.FullNameTH;
-
-                    //RefreshLanes();
+                    RefreshEMV_QRCODE();
+                }
+                else
+                {
+                    grid.Setup(); // setup null list.
                 }
             }
         }
-
  
         public void Setup(User user)
         {
-            _user = user;
+            //_user = user;
             _tsb = ops.TSB.GetCurrent().Value();
-            if (null != _user && null != _tsb)
+            if (null != _tsb)
             {
-                _manager.User = user;
-                _manager.EntryDate = DateTime.Now;
-
-                dtEntryDate.SelectedDate = _manager.EntryDate;
-                this.DataContext = _selectUser;
+                dtEntryDate.SelectedDate = DateTime.Now.Date;
+                grid.Setup(); // setup null list.
             }
         }
     }
