@@ -19,9 +19,26 @@
       transaction to used in TSBCreditSummary view later.
     - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
   - ใบเสร็จขายคูปอง ที่ TA ขาดเรื่อง Running Number
+  - ป้อนรายได้ย้อนหลัง เวลาในการหา EMV/QRCode จะมาจากการเลือก Job ซึ่งต้องต่อเนื่องกัน
 --------------------------------------------------------------------------------------------
-Ported DMTv2 to DMT.TAxTODv1 #210
+Ported DMTv2 to DMT.TAxTODv1 #215
 - 
+
+Ported DMTv2 to DMT.TAxTODv1 #214
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #213
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #212
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #211
+- 
+
+[commited]
+Ported DMTv2 to DMT.TAxTODv1 #210
+- Update Note.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #209
