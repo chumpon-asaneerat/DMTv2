@@ -35,8 +35,11 @@ Ported DMTv2 to DMT.TAxTODv1 #207
 Ported DMTv2 to DMT.TAxTODv1 #206
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #205
-- 
+- TOD Update
+  - Reorder Job View columns.
+  - Reorder EMV/QRCode View columns.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #204

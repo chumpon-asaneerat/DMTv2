@@ -102,6 +102,12 @@
                     <ListView x:Name="listView" FontSize="18" ItemsSource="{Binding}" Grid.RowSpan="2">
                         <ListView.View>
                             <GridView>
+                                <GridViewColumn Header="เลขที่อ้างอิง" 
+                                    DisplayMemberBinding="{Binding Path=refNo}" 
+                                    Width="220"/>
+                                <GridViewColumn Header="Approval Code" 
+                                    DisplayMemberBinding="{Binding Path=approvCode}" 
+                                    Width="140"/>
                                 <GridViewColumn Header="วันที่" 
                                     DisplayMemberBinding="{Binding Path=trxDateTimeString}" 
                                     Width="200"/>
@@ -117,12 +123,6 @@
                                 <GridViewColumn Header="จำนวนเงิน" 
                                     DisplayMemberBinding="{Binding Path=amount}" 
                                     Width="120"/>
-                                <GridViewColumn Header="เลขที่อ้างอิง" 
-                                    DisplayMemberBinding="{Binding Path=refNo}" 
-                                    Width="220"/>
-                                <GridViewColumn Header="Approval Code" 
-                                    DisplayMemberBinding="{Binding Path=approvCode}" 
-                                    Width="140"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
