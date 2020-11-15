@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.IO;
 
 using RestSharp;
 
@@ -14,10 +15,10 @@ using NLib.Reflection;
 using System.ComponentModel;
 using System.Reflection;
 using NLib;
+using NLib.IO;
 using System.Runtime.InteropServices;
 
 #endregion
-
 
 namespace DMT.Services
 {
@@ -698,9 +699,8 @@ namespace DMT.Services
             {
                 ops.UserShifts.SaveUserShift(this.UserShift); // direct save.
             }
-            // Send data to server to mark sync status.
-            // TODO: Generate to Revenue file.
-            SendRevnue(this.RevenueEntry);
+            // Generte Revenue (declare) File and mark sync status.
+            GenerateRevnueFile(this.RevenueEntry);
 
             return !bCloseUserShift;
         }
@@ -848,26 +848,49 @@ namespace DMT.Services
         #region Static Methods
 
         /// <summary>
-        /// Send all unsend revenue entry to server.
+        /// Gets local scw message json folder path name.
         /// </summary>
-        public static void SendRevnues()
+        public static string LocalSCWMessageFolder
         {
+            get
+            {
+                string localFilder = Folders.Combine(
+                    Folders.Assemblies.CurrentExecutingAssembly, "scw");
+                if (!Folders.Exists(localFilder))
+                {
+                    Folders.Create(localFilder);
+                }
+                return localFilder;
+            }
+        }
+        /// <summary>
+        /// Gets local TA declare message json folder path name.
+        /// </summary>
+        public static string LocalTODDeclareolder
+        {
+            get
+            {
+                string localFilder = Folders.Combine(LocalSCWMessageFolder, "declare");
+                if (!Folders.Exists(localFilder))
+                {
+                    Folders.Create(localFilder);
+                }
+                return localFilder;
+            }
+        }
+
+        private static void WriteFile(string fullFileName, string message)
+        {
+            if (string.IsNullOrEmpty(message)) return;
             MethodBase med = MethodBase.GetCurrentMethod();
-            var ops = LocalServiceOperations.Instance.Plaza;
+            // Save message.
             try
             {
-                // Get Unsend revenue entries.
-                var entries = ops.Revenue.GetUnsendRevenues().Value();
-                if (null != entries && entries.Count > 0)
+                using (var stream = File.CreateText(fullFileName))
                 {
-                    bool sendSuccess = true;
-                    entries.ForEach(entry => 
-                    {
-                        if (sendSuccess)
-                        {
-                            sendSuccess = SendRevnue(entry);
-                        }
-                    });
+                    stream.Write(message);
+                    stream.Flush();
+                    stream.Close();
                 }
             }
             catch (Exception ex)
@@ -876,63 +899,67 @@ namespace DMT.Services
             }
         }
 
-        public static bool SendRevnue(RevenueEntry value)
+        private static void WriteDeclareFile(string revenueId, string userId, string message)
+        {
+            // Create file.
+            string fileName = "declare." + 
+                DateTime.Now.ToString("yyyy.MM.dd-HH.mm.ss.ffffff", System.Globalization.DateTimeFormatInfo.InvariantInfo) +
+                "." + revenueId +
+                "." + userId +
+                ".json";
+            string fullFileName = Path.Combine(LocalTODDeclareolder, fileName);
+            // Save message.
+            WriteFile(fullFileName, message);
+        }
+
+        public static bool GenerateRevnueFile(RevenueEntry value)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
-
-            var ops = LocalServiceOperations.Instance.Plaza;
-            var server = SCWServiceOperations.Instance.Plaza;
-
-            // Need to sync currency and coupon master!!
-            var currencies = ops.Master.GetCurrencies().Value();
-            var coupons = ops.Master.GetCoupons().Value();
-            var cardAllows = ops.Master.GetCardAllows().Value();
-
-            // find lane attendances.
-            var attendances = ops.Lanes.GetAttendancesByRevenue(value).Value();
-            var plazaGroup = new PlazaGroup() 
-            { 
-                TSBId = value.TSBId,
-                PlazaGroupId = value.PlazaGroupId
-            };
-            var plazas = ops.TSB.GetPlazaGroupPlazas(plazaGroup).Value();
-            int plazaId = (null != plazas && plazas.Count > 0) ? plazas[0].SCWPlazaId : -1;
-
-            if (plazaId == -1)
+            try
             {
-                med.Info("declare error: Cannot search plaza id.");
-                return false;
-            }
+                var ops = LocalServiceOperations.Instance.Plaza;
+                
+                var tsb = ops.TSB.GetCurrent().Value();
+                // Need to sync currency and coupon master!!
+                var currencies = ops.Master.GetCurrencies().Value();
+                var coupons = ops.Master.GetCoupons().Value();
+                var cardAllows = ops.Master.GetCardAllows().Value();
+                var emv = RevenueEntryManager.GetEMVList(tsb, value);
+                var qrCode = RevenueEntryManager.GetQRCodeList(tsb, value);
 
-            // TODO: Change to generate revenue.
-            // 1. generate declare revenue file.
-            // 2. update status flag.
-            // 3. file will wait until timer scan to send to SCW.
+                // find lane attendances.
+                var attendances = ops.Lanes.GetAttendancesByRevenue(value).Value();
+                var plazaGroup = new PlazaGroup()
+                {
+                    TSBId = value.TSBId,
+                    PlazaGroupId = value.PlazaGroupId
+                };
+                var plazas = ops.TSB.GetPlazaGroupPlazas(plazaGroup).Value();
+                int plazaId = (null != plazas && plazas.Count > 0) ? plazas[0].SCWPlazaId : -1;
 
-            SCWDeclare declare = value.ToServer(currencies, coupons, cardAllows, attendances, plazaId);
-            var ret = server.TOD.Declare(declare);
+                if (plazaId == -1)
+                {
+                    med.Info("declare error: Cannot search plaza id.");
+                    return false;
+                }
 
-            bool sendSucces = false;
-            if (null != ret && null != ret.status)
-            {
-                sendSucces = (ret.status.code == "S200");
-                // write log.
-                med.Info("declare - code: {0}, msg: {1}", ret.status.code, ret.status.message);
-            }
-            else
-            {
-                // send failed.
-                med.Info("declare error: SCW service connect failed.");
-            }
-
-            if (sendSucces)
-            {
-                value.Status = 1; // send OK.
+                // Create declare json file.
+                SCWDeclare declare = value.ToServer(currencies, coupons, cardAllows, 
+                    attendances, emv, qrCode, plazaId);
+                WriteDeclareFile(value.RevenueId, value.UserId, declare.ToJson());
+                
+                // Update local database status.
+                value.Status = 1; // generated json file OK.
                 value.LastUpdate = DateTime.Now;
                 ops.Revenue.SaveRevenue(value);
-            }
 
-            return sendSucces;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                return false;
+            }
         }
 
         public static void SyncMasters()

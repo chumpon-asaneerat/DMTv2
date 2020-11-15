@@ -282,6 +282,8 @@ namespace DMT.Models.ExtensionMethods
         public static SCWDeclare ToServer(this RevenueEntry value,
             List<MCurrency> currencies, List<MCoupon> coupons, List<MCardAllow> cardAllows,
             List<LaneAttendance> jobs,
+            List<SCWEMV> emvs,
+            List<SCWQRCode> qrcodes,
             int plazaId)
         {
             if (null == value) return null;
@@ -420,9 +422,41 @@ namespace DMT.Models.ExtensionMethods
             // QR Code
             inst.qrcodeTotalAmount = 0; // Amount in BHT
             inst.qrcodeList = new List<SCWDeclareQRCode>();
+            if (null != qrcodes && qrcodes.Count > 0)
+            {
+                qrcodes.ForEach(item => 
+                {
+                    if (item.trxDateTime.HasValue && item.amount.HasValue)
+                    {
+                        inst.qrcodeList.Add(new SCWDeclareQRCode() 
+                        {
+                            trxDate = item.trxDateTime.Value,
+                            approvalCode = item.approvCode,
+                            amount = item.amount.Value
+                        });
+                        inst.qrcodeTotalAmount += item.amount.Value;
+                    }
+                });
+            }
             // EMV
             inst.emvTotalAmount = 0; // Amount in BHT
             inst.emvList = new List<SCWDeclareEMV>();
+            if (null != emvs && emvs.Count > 0)
+            {
+                emvs.ForEach(item => 
+                {
+                    if (item.trxDateTime.HasValue && item.amount.HasValue)
+                    {
+                        inst.emvList.Add(new SCWDeclareEMV()
+                        {
+                            trxDate = item.trxDateTime.Value,
+                            approvalCode = item.approvCode,
+                            amount = item.amount.Value
+                        });
+                        inst.emvTotalAmount += item.amount.Value;
+                    }
+                });
+            }
 
             return inst;
         }
