@@ -999,6 +999,120 @@ namespace DMT.Services
             }
         }
 
+        public static List<SCWEMV> GetEMVList(TSB tsb, RevenueEntry entry)
+        {
+            if (null == entry)
+            {
+                return new List<SCWEMV>();
+            }
+            DateTime dt1, dt2;
+            if (entry.IsHistorical)
+            {
+                dt1 = entry.RevenueDate.Date;
+                dt2 = dt1.AddDays(1);
+            }
+            else
+            {
+                dt1 = entry.ShiftBegin;
+                dt2 = (entry.ShiftEnd == DateTime.MinValue) ? DateTime.Now : entry.ShiftEnd;
+            }
+
+            return GetEMVList(tsb, entry.UserId, dt1, dt2);
+        }
+
+        public static List<SCWEMV> GetEMVList(TSB tsb, string userId, DateTime start, DateTime end)
+        {
+            LocalOperations ops = LocalServiceOperations.Instance.Plaza;
+            SCWOperations server = SCWServiceOperations.Instance.Plaza;
+            // TODO: Need user/password from config table or external file.
+            SCWServiceOperations.Instance.UserName = "DMTUSER";
+            SCWServiceOperations.Instance.Password = "DMTPASS";
+            // TODO: network id required.
+            int nwId = 31;
+            List<SCWEMV> results = new List<SCWEMV>();
+            if (null != tsb && !string.IsNullOrWhiteSpace(userId))
+            {
+                List<SCWEMV> items = new List<SCWEMV>();
+                var plazas = ops.TSB.GetTSBPlazas(tsb).Value();
+                if (null != plazas && plazas.Count > 0) 
+                {
+                    plazas.ForEach(plaza =>
+                    {
+                        int pzId = plaza.SCWPlazaId;
+                        var emvList = server.TOD.GetEMVList(nwId, pzId, userId, start, end);
+                        if (null != emvList && null != emvList.list)
+                        {
+                            items.AddRange(emvList.list);
+                        }
+                    });
+
+                    results = items.OrderBy(o => o.trxDateTime).Distinct().ToList();
+                }
+                else
+                {
+                    results = new List<SCWEMV>();
+                }
+            }
+            return results;
+        }
+
+        public static List<SCWQRCode> GetQRCodeList(TSB tsb, RevenueEntry entry)
+        {
+            if (null == entry)
+            {
+                return new List<SCWQRCode>();
+            }
+            DateTime dt1, dt2;
+            if (entry.IsHistorical)
+            {
+                dt1 = entry.RevenueDate.Date;
+                dt2 = dt1.AddDays(1);
+            }
+            else
+            {
+                dt1 = entry.ShiftBegin;
+                dt2 = (entry.ShiftEnd == DateTime.MinValue) ? DateTime.Now : entry.ShiftEnd;
+            }
+
+            return GetQRCodeList(tsb, entry.UserId, dt1, dt2);
+        }
+
+        public static List<SCWQRCode> GetQRCodeList(TSB tsb, string userId, DateTime start, DateTime end)
+        {
+            LocalOperations ops = LocalServiceOperations.Instance.Plaza;
+            SCWOperations server = SCWServiceOperations.Instance.Plaza;
+            // TODO: Need user/password from config table or external file.
+            SCWServiceOperations.Instance.UserName = "DMTUSER";
+            SCWServiceOperations.Instance.Password = "DMTPASS";
+            // TODO: network id required.
+            int nwId = 31;
+            List<SCWQRCode> results = new List<SCWQRCode>();
+            if (null != tsb && !string.IsNullOrWhiteSpace(userId))
+            {
+                List<SCWQRCode> items = new List<SCWQRCode>();
+                var plazas = ops.TSB.GetTSBPlazas(tsb).Value();
+                if (null != plazas && plazas.Count > 0)
+                {
+                    plazas.ForEach(plaza =>
+                    {
+                        int pzId = plaza.SCWPlazaId;
+                        var qrList = server.TOD.GetQRCodeList(nwId, pzId, userId, start, end);
+                        if (null != qrList && null != qrList.list)
+                        {
+                            items.AddRange(qrList.list);
+                        }
+                    });
+
+                    results = items.OrderBy(o => o.trxDateTime).Distinct().ToList();
+                }
+                else 
+                {
+                    results = new List<SCWQRCode>();
+                }
+            }
+            return results;
+        }
+
         #endregion
     }
 

@@ -32,8 +32,12 @@ Ported DMTv2 to DMT.TAxTODv1 #208
 Ported DMTv2 to DMT.TAxTODv1 #207
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #206
-- 
+- Implements EMV/QRCode page #5.
+  - Implements common code to call GetEMVList/GetQRCodeList in RevenueEntryManager.
+  - Refactor code for EMV/QRCode view (RevenueEntry controls).
+  - EMVQRCodePage Refactor.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #205

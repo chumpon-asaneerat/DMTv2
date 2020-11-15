@@ -147,64 +147,35 @@ namespace DMT.TOD.Pages.TollAdmin
                 return;
             }
 
-            // TODO: network id required.
-            int nwId = 31;
             DateTime dt1 = dtEntryDate.SelectedDate.Value.Date;
             DateTime dt2 = dt1.AddDays(1);
-
             grid.Setup();
-
             if (null != _selectUser && null != _tsb)
             {
                 var plazas = ops.TSB.GetTSBPlazas(_tsb).Value();
-                if (null != plazas && plazas.Count > 0)
+                if (rbEMV.IsChecked.Value) 
                 {
-                    if (rbEMV.IsChecked.Value)
+                    // EMV
+                    var sortList = RevenueEntryManager.GetEMVList(_tsb, _selectUser.UserId, dt1, dt2);
+                    var filter = GetLaneFilter();
+                    if (filter.HasValue)
                     {
-                        // EMV
-                        var EMVList = new List<SCWEMV>();
-                        plazas.ForEach(plaza => 
-                        {
-                            int pzId = plaza.SCWPlazaId;
-                            var emvList = server.TOD.GetEMVList(nwId, pzId, _selectUser.UserId, dt1, dt2);
-                            if (null != emvList && null != emvList.list)
-                            {
-                                EMVList.AddRange(emvList.list);
-                            }
-                        });
-
-                        var sortList = EMVList.OrderBy(o => o.trxDateTime).Distinct().ToList();
-                        var filter = GetLaneFilter();
-                        if (filter.HasValue)
-                        {
-                            // Filter only specificed lane no.
-                            sortList = sortList.Where(o => o.laneId == filter.Value).ToList();
-                        }
-                        grid.Setup(sortList);
+                        // Filter only specificed lane no.
+                        sortList = sortList.Where(o => o.laneId == filter.Value).ToList();
                     }
-                    else
+                    grid.Setup(sortList);
+                }
+                else 
+                {
+                    // QRCode
+                    var sortList = RevenueEntryManager.GetQRCodeList(_tsb, _selectUser.UserId, dt1, dt2);
+                    var filter = GetLaneFilter();
+                    if (filter.HasValue)
                     {
-                        // QR Code
-                        var QRCODEList = new List<SCWQRCode>();
-                        plazas.ForEach(plaza =>
-                        {
-                            int pzId = plaza.SCWPlazaId;
-                            var qrList = server.TOD.GetQRCodeList(nwId, pzId, _selectUser.UserId, dt1, dt2);
-                            if (null != qrList && null != qrList.list)
-                            {
-                                QRCODEList.AddRange(qrList.list);
-                            }
-                        });
-
-                        var sortList = QRCODEList.OrderBy(o => o.trxDateTime).Distinct().ToList();
-                        var filter = GetLaneFilter();
-                        if (filter.HasValue)
-                        {
-                            // Filter only specificed lane no.
-                            sortList = sortList.Where(o => o.laneId == filter.Value).ToList();
-                        }
-                        grid.Setup(sortList);
+                        // Filter only specificed lane no.
+                        sortList = sortList.Where(o => o.laneId == filter.Value).ToList();
                     }
+                    grid.Setup(sortList);
                 }
             }
         }
@@ -241,10 +212,6 @@ namespace DMT.TOD.Pages.TollAdmin
  
         public void Setup(User user)
         {
-            // TODO: Need user/password from config table or external file.
-            SCWServiceOperations.Instance.UserName = "DMTUSER";
-            SCWServiceOperations.Instance.Password = "DMTPASS";
-
             //_user = user;
             _tsb = ops.TSB.GetCurrent().Value();
             if (null != _tsb)
