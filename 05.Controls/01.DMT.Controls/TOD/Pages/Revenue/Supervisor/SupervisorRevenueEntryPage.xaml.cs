@@ -70,12 +70,14 @@ namespace DMT.TOD.Pages.Revenue
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
         {
-            // Main Menu Page
-            var page = new Menu.MainMenu();
+            // Goto Caller Page
+            var page = (null != this.CallerPage) ? this.CallerPage : new Menu.MainMenu();
             PageContentManager.Instance.Current = page;
         }
 
         #endregion
+
+        public ContentControl CallerPage { get; set; }
 
         public void Setup(RevenueEntryManager manager)
         {

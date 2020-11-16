@@ -143,6 +143,7 @@ namespace DMT.TOD.Pages.Revenue
 
             // Revenue Entry Page
             var page = new SupervisorRevenueEntryPage();
+            page.CallerPage = this;
             page.Setup(_manager.Create());
             PageContentManager.Instance.Current = page;
         }

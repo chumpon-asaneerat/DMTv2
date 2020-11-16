@@ -20,7 +20,6 @@
     - PlazaOperations.Exchange.cs (Local.WebClient) need to check why save to invalid column.
   - ใบเสร็จขายคูปอง ที่ TA ขาดเรื่อง Running Number
   - อ่าน DMT User/Pwd จาก config หรือ database.
-  - หน้าจอป้อนรายได้ย้อนหลัง ต้องสามารถกลับมาหน้าจอ เลือก job ได้
   - TA มีปัญหาตอนบันทึกช้าถ้าข้อมูลเยอะ ๆ
 --------------------------------------------------------------------------------------------
 Ported DMTv2 to DMT.TAxTODv1 #220
@@ -32,8 +31,9 @@ Ported DMTv2 to DMT.TAxTODv1 #219
 Ported DMTv2 to DMT.TAxTODv1 #218
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #217
-- 
+- Change Supervisor Revenue Entry when cancel go back to Supervisor Date Selection Page.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #216
