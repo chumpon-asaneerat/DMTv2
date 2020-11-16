@@ -24,8 +24,11 @@
 Ported DMTv2 to DMT.TAxTODv1 #215
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #214
-- 
+- Update History Revenue Entry related process #2
+  - Add check job that has no end of shift.
+  - Update app version.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #213

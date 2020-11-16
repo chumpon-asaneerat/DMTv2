@@ -1049,6 +1049,11 @@ namespace DMT.Services
                 {
                     dt1 = manager.Attendances[0].Begin;
                     dt2 = manager.Attendances[manager.Attendances.Count - 1].End;
+                    // Check case job has no End Of Job.
+                    if (dt2 == DateTime.MinValue)
+                    {
+                        dt2 = manager.Attendances[manager.Attendances.Count - 1].Begin;
+                    }
                 }
             }
             else
@@ -1116,6 +1121,11 @@ namespace DMT.Services
                 {
                     dt1 = manager.Attendances[0].Begin;
                     dt2 = manager.Attendances[manager.Attendances.Count - 1].End;
+                    // Check case job has no End Of Job.
+                    if (dt2 == DateTime.MinValue)
+                    {
+                        dt2 = manager.Attendances[manager.Attendances.Count - 1].Begin;
+                    }
                 }
             }
             else
