@@ -92,7 +92,7 @@ namespace DMT.TOD.Pages.Revenue
                 txtUserId.Text = string.Empty;
                 txtUserName.Text = string.Empty;
 
-                revEntry.DataContext = null;
+                revEntry.Setup(null);
             }
             else
             {
@@ -106,7 +106,7 @@ namespace DMT.TOD.Pages.Revenue
                 txtUserId.Text = _manager.UserShift.UserId;
                 txtUserName.Text = _manager.UserShift.FullNameTH;
 
-                revEntry.DataContext = _manager.RevenueEntry;
+                revEntry.Setup(_manager);
             }
         }
     }

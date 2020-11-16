@@ -33,8 +33,10 @@ Ported DMTv2 to DMT.TAxTODv1 #213
 Ported DMTv2 to DMT.TAxTODv1 #212
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #211
-- 
+- Update all Revenue Entry controls
+  - Add setup method with RevenueEntryManager as parameter.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #210

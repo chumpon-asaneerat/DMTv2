@@ -37,6 +37,7 @@ namespace DMT.TOD.Controls.Revenue.Entry
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
         private SCWOperations server = SCWServiceOperations.Instance.Plaza;
         private TSB _tsb = null;
+        private RevenueEntryManager _manager;
         private Models.RevenueEntry entry;
         private List<SCWQRCode> items = new List<SCWQRCode>();
         private int rowCnt = 0;
@@ -58,7 +59,6 @@ namespace DMT.TOD.Controls.Revenue.Entry
 
         private void UserControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            entry = this.DataContext as Models.RevenueEntry;
             if (null != entry)
             {
                 if (entry.IsHistorical)
@@ -74,6 +74,13 @@ namespace DMT.TOD.Controls.Revenue.Entry
             {
                 UpdateSummary();
             }
+        }
+
+        public void Setup(RevenueEntryManager manager)
+        {
+            _manager = manager;
+            entry = (null != _manager) ? _manager.RevenueEntry : null;
+            this.DataContext = entry;
         }
 
         public void LoadItems()

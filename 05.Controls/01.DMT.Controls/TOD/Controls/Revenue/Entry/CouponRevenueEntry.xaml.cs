@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
+using DMT.Services;
+
 #endregion
 
 namespace DMT.TOD.Controls.Revenue.Entry
@@ -25,6 +27,9 @@ namespace DMT.TOD.Controls.Revenue.Entry
         }
 
         #endregion
+
+        private RevenueEntryManager _manager;
+        private Models.RevenueEntry entry;
 
         #region Loaded/Unloaded
 
@@ -69,5 +74,12 @@ namespace DMT.TOD.Controls.Revenue.Entry
         }
 
         #endregion
+
+        public void Setup(RevenueEntryManager manager)
+        {
+            _manager = manager;
+            entry = (null != _manager) ? _manager.RevenueEntry : null;
+            this.DataContext = entry;
+        }
     }
 }

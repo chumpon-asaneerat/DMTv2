@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
+using DMT.Services;
+
 #endregion
 
 namespace DMT.TOD.Controls.Revenue.Entry
@@ -26,6 +28,7 @@ namespace DMT.TOD.Controls.Revenue.Entry
 
         #endregion
 
+        private RevenueEntryManager _manager;
         private Models.RevenueEntry entry;
 
         #region Loaded/Unloaded
@@ -44,7 +47,6 @@ namespace DMT.TOD.Controls.Revenue.Entry
 
         private void UserControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            entry = this.DataContext as Models.RevenueEntry;
             if (null != entry)
             {
                 /*
@@ -99,6 +101,23 @@ namespace DMT.TOD.Controls.Revenue.Entry
         {
             qrcodeEntry.LoadItems();
             emvEntry.LoadItems();
+        }
+
+        public void Setup(RevenueEntryManager manager)
+        {
+            _manager = manager;
+            entry = (null != _manager) ? _manager.RevenueEntry : null;
+            this.DataContext = entry;
+
+            this.trafficRevenue.Setup(manager);
+            this.otherRevenue.Setup(manager);
+            this.couponDMT.Setup(manager);
+            this.couponRevenue.Setup(manager);
+            this.couponUsage.Setup(manager);
+            this.emvEntry.Setup(manager);
+            this.qrcodeEntry.Setup(manager);
+
+            RefreshItems();
         }
 
         public bool HasBagNo { get { return !string.IsNullOrWhiteSpace(txtBagNo.Text); } }
