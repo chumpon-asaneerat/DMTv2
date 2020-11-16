@@ -85,14 +85,14 @@ namespace DMT.TOD.Controls.Revenue.Entry
 
         public void LoadItems()
         {
-            if (null == entry)
+            if (null == _manager && null == entry)
             {
                 return;
             }
 
             this.listView.ItemsSource = null;
             if (null == _tsb) _tsb = ops.TSB.GetCurrent().Value();
-            var sortList = RevenueEntryManager.GetEMVList(_tsb, entry);
+            var sortList = RevenueEntryManager.GetEMVList(_tsb, _manager, entry);
             if (null != sortList && sortList.Count > 0)
             {
                 rowCnt = sortList.Count;

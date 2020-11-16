@@ -30,8 +30,11 @@ Ported DMTv2 to DMT.TAxTODv1 #214
 Ported DMTv2 to DMT.TAxTODv1 #213
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #212
-- 
+- Update History Revenue Entry related process
+  - Add Check continuous job(s).
+  - Update all EMV/QRCode call api.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #211

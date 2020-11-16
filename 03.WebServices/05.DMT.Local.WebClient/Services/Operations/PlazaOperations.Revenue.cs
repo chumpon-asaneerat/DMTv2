@@ -700,7 +700,7 @@ namespace DMT.Services
                 ops.UserShifts.SaveUserShift(this.UserShift); // direct save.
             }
             // Generte Revenue (declare) File and mark sync status.
-            GenerateRevnueFile(this.RevenueEntry);
+            GenerateRevnueFile(this);
 
             return !bCloseUserShift;
         }
@@ -912,27 +912,30 @@ namespace DMT.Services
             WriteFile(fullFileName, message);
         }
 
-        public static bool GenerateRevnueFile(RevenueEntry value)
+        public static bool GenerateRevnueFile(RevenueEntryManager value)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
                 var ops = LocalServiceOperations.Instance.Plaza;
-                
+
+                if (null == value || null == value.RevenueEntry) return false;
+                var entry = value.RevenueEntry;
+
                 var tsb = ops.TSB.GetCurrent().Value();
                 // Need to sync currency and coupon master!!
                 var currencies = ops.Master.GetCurrencies().Value();
                 var coupons = ops.Master.GetCoupons().Value();
                 var cardAllows = ops.Master.GetCardAllows().Value();
-                var emv = RevenueEntryManager.GetEMVList(tsb, value);
-                var qrCode = RevenueEntryManager.GetQRCodeList(tsb, value);
+                var emv = RevenueEntryManager.GetEMVList(tsb, value, value.RevenueEntry);
+                var qrCode = RevenueEntryManager.GetQRCodeList(tsb, value, value.RevenueEntry);
 
                 // find lane attendances.
-                var attendances = ops.Lanes.GetAttendancesByRevenue(value).Value();
+                var attendances = ops.Lanes.GetAttendancesByRevenue(entry).Value();
                 var plazaGroup = new PlazaGroup()
                 {
-                    TSBId = value.TSBId,
-                    PlazaGroupId = value.PlazaGroupId
+                    TSBId = entry.TSBId,
+                    PlazaGroupId = entry.PlazaGroupId
                 };
                 var plazas = ops.TSB.GetPlazaGroupPlazas(plazaGroup).Value();
                 int plazaId = (null != plazas && plazas.Count > 0) ? plazas[0].SCWPlazaId : -1;
@@ -944,14 +947,14 @@ namespace DMT.Services
                 }
 
                 // Create declare json file.
-                SCWDeclare declare = value.ToServer(currencies, coupons, cardAllows, 
+                SCWDeclare declare = entry.ToServer(currencies, coupons, cardAllows, 
                     attendances, emv, qrCode, plazaId);
-                WriteDeclareFile(value.RevenueId, value.UserId, declare.ToJson());
-                
+                WriteDeclareFile(entry.RevenueId, entry.UserId, declare.ToJson());
+
                 // Update local database status.
-                value.Status = 1; // generated json file OK.
-                value.LastUpdate = DateTime.Now;
-                ops.Revenue.SaveRevenue(value);
+                entry.Status = 1; // generated json file OK.
+                entry.LastUpdate = DateTime.Now;
+                ops.Revenue.SaveRevenue(entry);
 
                 return true;
             }
@@ -1026,17 +1029,27 @@ namespace DMT.Services
             }
         }
 
-        public static List<SCWEMV> GetEMVList(TSB tsb, RevenueEntry entry)
+        public static List<SCWEMV> GetEMVList(TSB tsb, 
+            RevenueEntryManager manager, RevenueEntry entry)
         {
-            if (null == entry)
+            if (null == manager && null == entry)
             {
                 return new List<SCWEMV>();
             }
             DateTime dt1, dt2;
             if (entry.IsHistorical)
             {
-                dt1 = entry.RevenueDate.Date;
-                dt2 = dt1.AddDays(1);
+                // Note. On this step the attendance should be order continuous without skip job between.
+                if (null == manager.Attendances || manager.Attendances.Count <= 0)
+                {
+                    // No job list so no EMV avaliable.
+                    return new List<SCWEMV>();
+                }
+                else
+                {
+                    dt1 = manager.Attendances[0].Begin;
+                    dt2 = manager.Attendances[manager.Attendances.Count - 1].End;
+                }
             }
             else
             {
@@ -1083,17 +1096,27 @@ namespace DMT.Services
             return results;
         }
 
-        public static List<SCWQRCode> GetQRCodeList(TSB tsb, RevenueEntry entry)
+        public static List<SCWQRCode> GetQRCodeList(TSB tsb, 
+            RevenueEntryManager manager, RevenueEntry entry)
         {
-            if (null == entry)
+            if (null == manager && null == entry)
             {
                 return new List<SCWQRCode>();
             }
             DateTime dt1, dt2;
             if (entry.IsHistorical)
             {
-                dt1 = entry.RevenueDate.Date;
-                dt2 = dt1.AddDays(1);
+                // Note. On this step the attendance should be order continuous without skip job between.
+                if (null == manager.Attendances || manager.Attendances.Count <= 0)
+                {
+                    // No job list so no QR Code avaliable.
+                    return new List<SCWQRCode>();
+                }
+                else
+                {
+                    dt1 = manager.Attendances[0].Begin;
+                    dt2 = manager.Attendances[manager.Attendances.Count - 1].End;
+                }
             }
             else
             {
@@ -1295,7 +1318,6 @@ namespace DMT.Services
             inst.Supervisor = this.Supervisor;
             inst.UserShift = this.UserShift;
             inst.PlazaGroup = this.PlazaGroup;
-
 
             inst.Attendances = new List<LaneAttendance>();
             if (null != this.Attendances && this.Attendances.Count > 0)

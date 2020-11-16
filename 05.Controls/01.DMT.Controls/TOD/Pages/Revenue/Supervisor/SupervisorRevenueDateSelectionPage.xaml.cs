@@ -93,6 +93,46 @@ namespace DMT.TOD.Pages.Revenue
                 return;
             }
 
+            bool isContinuous = true;
+            if (null != _manager.Attendances && _manager.Attendances.Count > 0)
+            {
+                // Create indexes list.
+                int idx = 0;
+                List<int> indexs = new List<int>();
+                foreach (var att in _manager.Attendances)
+                {
+                    if (att.Selected) indexs.Add(idx);
+                    idx++;
+                }
+                // Check Continuous
+                if (null != indexs && indexs.Count > 0)
+                {
+                    // 3, 4, 5, 7
+                    int currIndex = indexs[0] - 1; // set init value to first minus 1 for check in loop.
+                    foreach (int val in indexs)
+                    {
+                        if (val - 1 > currIndex)
+                        {
+                            isContinuous = false;
+                            break;
+                        }
+                        currIndex = val; // update new current index.
+                    }
+                }
+            }
+
+            if (!isContinuous)
+            {
+                DMT.Windows.MessageBoxWindow msg = new DMT.Windows.MessageBoxWindow();
+                msg.Owner = Application.Current.MainWindow;
+                msg.Setup("การเลือกรายการ ต้องเป็นรายการต่อเเนื่องกันเท่านั้น", "DMT - Tour of Duty");
+                if (msg.ShowDialog() == true)
+                {
+                    cbPlazas.Focus();
+                }
+                return;
+            }
+
             // create new user shift.
             _manager.Shift = shift;
             _manager.PlazaGroup = plazaGroup;
