@@ -21,8 +21,24 @@
   - ใบเสร็จขายคูปอง ที่ TA ขาดเรื่อง Running Number
   - อ่าน DMT User/Pwd จาก config หรือ database.
 --------------------------------------------------------------------------------------------
-Ported DMTv2 to DMT.TAxTODv1 #215
+Ported DMTv2 to DMT.TAxTODv1 #220
 - 
+
+Ported DMTv2 to DMT.TAxTODv1 #219
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #218
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #217
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #216
+- 
+
+[commited]
+Ported DMTv2 to DMT.TAxTODv1 #215
+- Prepare history.txt
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #214
