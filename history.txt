@@ -22,8 +22,39 @@
   - อ่าน DMT User/Pwd จาก config หรือ database.
   - TA มีปัญหาตอนบันทึกช้าถ้าข้อมูลเยอะ ๆ
 --------------------------------------------------------------------------------------------
-Ported DMTv2 to DMT.TAxTODv1 #220
+Ported DMTv2 to DMT.TAxTODv1 #230
 - 
+
+Ported DMTv2 to DMT.TAxTODv1 #229
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #228
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #227
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #226
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #225
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #224
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #223
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #222
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #221
+- 
+
+[commited]
+Ported DMTv2 to DMT.TAxTODv1 #220
+- Update RemakeV1 #2
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #219
