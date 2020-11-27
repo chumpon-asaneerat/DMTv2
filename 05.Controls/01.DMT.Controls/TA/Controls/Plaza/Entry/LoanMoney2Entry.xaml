@@ -56,7 +56,7 @@
                         <TextBlock Margin="2"
                                DockPanel.Dock="Left" 
                                TextAlignment="Right"
-                               Text="เงินยืมเพิ่ม"
+                               Text="เงินยืม"
                                Width="100"/>
                         <TextBlock Margin="2" 
                                    DockPanel.Dock="Right"  
