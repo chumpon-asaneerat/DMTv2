@@ -6,43 +6,44 @@
              mc:Ignorable="d" 
              d:DesignHeight="750" 
              d:DesignWidth="1500">
-    <TabControl Background="Transparent" FontSize="18">
-        <TabItem Header="Main Menu">
-            <ScrollViewer HorizontalScrollBarVisibility="Auto"
+    <ScrollViewer HorizontalScrollBarVisibility="Auto"
                   VerticalScrollBarVisibility="Auto"
                   HorizontalContentAlignment="Center"
                   VerticalContentAlignment="Center">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="20"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="20"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="20"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="20"/>
-                    </Grid.ColumnDefinitions>
-                    <!-- Group 1 : Received -->
-                    <Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="3"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+            <!-- Group 1 : Received -->
+            <Grid Grid.Column="1" Grid.Row="1" Grid.RowSpan="4"
               Margin="5 0 5 0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="75"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="5"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="5"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="5"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="75"/>
+                    <RowDefinition Height="175"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="175"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="175"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="175"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="360*"/>
+                    <ColumnDefinition Width="360*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" 
                        FontSize="48"
                        Foreground="WhiteSmoke"
                        Background="DarkOrange"
@@ -51,254 +52,256 @@
                        TextAlignment="Center"
                        Text="จัดการ เงินยืมทอน / คูปอง ภายในด่าน"/>
 
-                        <Button x:Name="exchangeBankNote" 
+                <Button x:Name="exchangeBankNote" 
                         Grid.Column="0" Grid.Row="1" 
                         Margin="0 0 5 0"
                         Click="exchangeBankNote_Click">
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="DarkOrange"/>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="DarkOrange"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="DarkRed"/>
                                     <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="DarkRed"/>
-                                            <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                            <DockPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock FontSize="42" 
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <DockPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    TextWrapping="Wrap">
                                    <Run Text="ยืม/แลกเงินยืมทอน" />
                                         <LineBreak />
                                    <Run Text="ฝ่ายบัญชี" />
-                                    </TextBlock>
-                                </StackPanel>
-                            </DockPanel>
-                        </Button>
-                        <Button x:Name="plazaReceivedCoupon"                        
+                            </TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+                <Button x:Name="plazaReceivedCoupon"                        
                         Grid.Column="2" Grid.Row="1"
                         Margin="5 0 0 0"
                         Click="plazaReceivedCoupon_Click">
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="DarkOrange"/>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="DarkOrange"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="DarkRed"/>
                                     <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="DarkRed"/>
-                                            <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                            <DockPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock FontSize="42" 
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <DockPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    TextWrapping="Wrap">
                                    <Run Text="หัวหน้า" />
                                         <LineBreak />
                                    <Run Text="ขายคูปอง" />
-                                    </TextBlock>
-                                </StackPanel>
-                            </DockPanel>
-                        </Button>
-                        <Button x:Name="refundBankNote"                        
+                            </TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+                <Button x:Name="refundBankNote"                        
                         Grid.Column="0" Grid.Row="3"
                         Margin="0 0 5 0"
                         Click="refundBankNote_Click" >
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="DarkOrange"/>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="DarkOrange"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="DarkRed"/>
                                     <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="DarkRed"/>
-                                            <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                            <DockPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock FontSize="42" 
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <DockPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    TextWrapping="Wrap">
                                    <Run Text="คืนเงินยืมทอน" />
                                     <LineBreak />
                                    <Run Text="ฝ่ายบัญชี" />
-                                    </TextBlock>
-                                </StackPanel>
-                            </DockPanel>
-                        </Button>
-                        <Button x:Name="plazaAllCoupon"                        
+                            </TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+                <Button x:Name="plazaAllCoupon"                        
                         Grid.Column="2" Grid.Row="3"
                         Margin="5,0,0,0"
                         Click="plazaAllCoupon_Click">
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="DarkOrange"/>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="DarkOrange"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="DarkRed"/>
                                     <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="DarkRed"/>
-                                            <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                            <DockPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock FontSize="42" 
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <DockPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    TextWrapping="Wrap">
                             <Run Text="ประวัติ" />
                             <LineBreak />
                             <Run Text="การขายคูปอง" />
-                                    </TextBlock>
-                                </StackPanel>
-                            </DockPanel>
-                        </Button>
-                        <Button x:Name="exchangeMoney"                        
+                            </TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+                <Button x:Name="exchangeMoney"                        
                         Grid.Column="0" Grid.Row="5"
                         Margin="0 0 5 0"
                         Click="exchangeMoney_Click" >
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="DarkOrange"/>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="DarkOrange"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="DarkRed"/>
                                     <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="DarkRed"/>
-                                            <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                            <DockPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock FontSize="42" 
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <DockPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    TextWrapping="Wrap">
                                    <Run Text="แลกเงินหมุนเวียน" />
                                     <LineBreak />
                                    <Run Text="ภายในด่าน" />
-                                    </TextBlock>
-                                </StackPanel>
-                            </DockPanel>
-                        </Button>
+                            </TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
 
-                        <Button x:Name="collectorFundReport"
+                <Button x:Name="collectorFundReport"
                         Grid.Column="1" Grid.Row="5" 
                         Margin="5 0 0 0"
                         Click="collectorFundReport_Click">
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="DarkOrange"/>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="DarkOrange"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="DarkRed"/>
                                     <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="DarkRed"/>
-                                            <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                            <DockPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock FontSize="42" 
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <DockPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    TextWrapping="Wrap">
                                 <Run Text="รายงานสรุปการ" />
                                     <LineBreak />
                                    <Run Text="ยืมเงินทอน" />
-                                    </TextBlock>
-                                </StackPanel>
-                            </DockPanel>
-                        </Button>
-                    </Grid>
+                            </TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+            </Grid>
 
-                    <!-- Group 4 : Collector returns coupon  -->
-                    <Grid Grid.Column="2" Grid.Row="1" Grid.RowSpan="3"
+            <!-- Group 4 : Collector returns coupon  -->
+            <Grid Grid.Column="2" Grid.Row="1" Grid.RowSpan="4"
               Margin="5 0 5 0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="75"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="5"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="5"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="5"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="75"/>
+                    <RowDefinition Height="175"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="175"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="175"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="175"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="360*"/>
+                    <ColumnDefinition Width="360*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" 
                        FontSize="48"
                        Foreground="WhiteSmoke"
                        Background="Orchid"
@@ -306,231 +309,261 @@
                        VerticalAlignment="Center"
                        TextAlignment="Center"
                        Text="จัดการเงินยืมทอน / คูปองพนักงาน"/>
-                        <Button x:Name="collectorFund"
+                <Button x:Name="collectorFund"
                         Grid.Column="0" Grid.Row="1" 
                         Margin="0 0 5 0"
                         Click="collectorFund_Click">
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="Orchid"/>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Orchid"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Purple"/>
                                     <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="Purple"/>
-                                            <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                            <DockPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock FontSize="42" 
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <DockPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    TextWrapping="Wrap">
                             <Run Text="เงินยืมทอน" />
-                                    </TextBlock>
-                                </StackPanel>
-                            </DockPanel>
-                        </Button>
-                        <Button x:Name="collectorReveivedCoupon"
+                            </TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+                <Button x:Name="collectorReveivedCoupon"
                         Grid.Column="1" Grid.Row="1" 
                         Margin="5 0 0 0"
                         Click="collectorReveivedCoupon_Click">
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="Orchid"/>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Orchid"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Purple"/>
                                     <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="Purple"/>
-                                            <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                            <DockPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock FontSize="42" 
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <DockPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    TextWrapping="Wrap">
                             <Run Text="รับคูปอง" />
-                                    </TextBlock>
-                                </StackPanel>
-                            </DockPanel>
-                        </Button>
-                        <Button x:Name="changeBorrowingHistory"
+                            </TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+                <Button x:Name="changeBorrowingHistory"
                         Grid.Column="0" Grid.Row="3" 
                         Margin="0 0 5 0"
                         Click="changeBorrowingHistory_Click">
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="Orchid"/>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Orchid"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Purple"/>
                                     <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="Purple"/>
-                                            <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                            <DockPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock FontSize="42" 
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <DockPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    TextWrapping="Wrap">
                             <Run Text="ประวัติ" />
                             <LineBreak />
                             <Run Text="แลกเงินยืมทอน" />
-                                    </TextBlock>
-                                </StackPanel>
-                            </DockPanel>
-                        </Button>
-                        <Button x:Name="collectorReturnCoupon"
+                            </TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+                <Button x:Name="collectorReturnCoupon"
                         Grid.Column="1" Grid.Row="3" 
                         Margin="5 0 0 0"
                         Click="collectorReturnCoupon_Click">
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="Orchid"/>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Orchid"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Purple"/>
                                     <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="Purple"/>
-                                            <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                            <DockPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock FontSize="42" 
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <DockPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    TextWrapping="Wrap">
                             <Run Text="คืนคูปอง" />
-                                    </TextBlock>
-                                </StackPanel>
-                            </DockPanel>
-                        </Button>
+                            </TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
 
-                        <Button x:Name="plazaAllStock"                        
+                <Button x:Name="plazaAllStock"                        
                         Grid.Column="0" Grid.Row="5"
                         Margin="0,0,5,0"
                         Click="plazaAllStock_Click">
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="RoyalBlue"/>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="RoyalBlue"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="DarkBlue"/>
                                     <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="DarkBlue"/>
-                                            <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                            <DockPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock FontSize="42" 
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <DockPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    TextWrapping="Wrap">
                             <Run Text="เช็คยอดด่าน" />
-                                    </TextBlock>
-                                </StackPanel>
-                            </DockPanel>
-                        </Button>
-                        <Button x:Name="logout"
+                            </TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+                <Button x:Name="logout"
                     Grid.Column="2" Grid.Row="5" 
                     Margin="5 0 0 0"
                     Click="logout_Click">
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="Indigo"/>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Indigo"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Blue"/>
                                     <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="Blue"/>
-                                            <Setter Property="Foreground" Value="WhiteSmoke"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                            <DockPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock FontSize="42" 
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <DockPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="42" 
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    TextWrapping="Wrap">
                             <Run Text="ออกจากระบบ" />
-                                    </TextBlock>
-                                </StackPanel>
-                            </DockPanel>
-                        </Button>
-                    </Grid>
-                </Grid>
-            </ScrollViewer>
-        </TabItem>
-        <TabItem Header="Setting">
-            
-        </TabItem>
-    </TabControl>
+                            </TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+                <Button x:Name="Setup"
+                    Grid.Column="2" Grid.Row="7" 
+                    Margin="5 0 0 0">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Indigo"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Blue"/>
+                                    <Setter Property="Foreground" Value="WhiteSmoke"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <DockPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="42" 
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap">
+                            <Run Text="ตั้งค่า" />
+                            </TextBlock>
+                        </StackPanel>
+                    </DockPanel>
+                </Button>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
 </UserControl>
