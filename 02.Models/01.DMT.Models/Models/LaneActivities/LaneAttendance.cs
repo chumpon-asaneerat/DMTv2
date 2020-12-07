@@ -1444,10 +1444,11 @@ namespace DMT.Models
 					cmd += "   AND LaneId = ? ";
 					cmd += "   AND UserId = ? ";
 					cmd += "   AND JobId = ? ";
+					cmd += "   AND Begin = ? ";
 
 					var ret = NQuery.Query<FKs>(cmd,
 						value.TSBId, value.PlazaGroupId, value.PlazaId,
-						value.LaneId, value.UserId, value.JobId).FirstOrDefault();
+						value.LaneId, value.UserId, value.JobId, value.Begin).FirstOrDefault();
 					var data = (null != ret) ? ret.ToModel() : null;
 					if (null != data)
 					{
