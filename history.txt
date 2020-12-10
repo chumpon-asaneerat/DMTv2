@@ -30,8 +30,12 @@ Ported DMTv2 to DMT.TAxTODv1 #230
 Ported DMTv2 to DMT.TAxTODv1 #229
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #228
-- 
+- DMT.TAxTODv1 Rework #4
+  - DMT.Core project 
+    - Rename common.cs to InstallStatus.cs.
+    - Update AppConsts.cs -> rename application name (TA/Account).
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #227
