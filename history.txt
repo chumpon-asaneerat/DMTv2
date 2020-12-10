@@ -39,8 +39,13 @@ Ported DMTv2 to DMT.TAxTODv1 #227
 Ported DMTv2 to DMT.TAxTODv1 #226
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #225
-- 
+- DMT.TAxTODv1 Rework #1
+  - DMT.Models project set all files build action to none. 
+  - DMT.Controls project remove (temporary) Original folder.
+  - Unload TOD App project.
+  - Unload TA App project.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #224
