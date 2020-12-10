@@ -33,8 +33,11 @@ Ported DMTv2 to DMT.TAxTODv1 #229
 Ported DMTv2 to DMT.TAxTODv1 #228
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #227
-- 
+- DMT.TAxTODv1 Rework #3
+  - DMT.Core project - NJson used local path as root folder (used in ConfigManager.cs).
+  - DMT.Models project - LocalDbServer used local path as root folder.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #226
