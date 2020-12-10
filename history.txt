@@ -36,8 +36,11 @@ Ported DMTv2 to DMT.TAxTODv1 #228
 Ported DMTv2 to DMT.TAxTODv1 #227
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #226
-- 
+- DMT.TAxTODv1 Rework #2
+  - Reload TOD App project and remove Plaza Header UI.
+  - Reload TA App project and remove Plaza Header UI.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #225
