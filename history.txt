@@ -27,8 +27,22 @@
 Ported DMTv2 to DMT.TAxTODv1 #230
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #229
-- 
+- DMTv2
+  - DMT.Core project
+    - Update Version information.
+- DMT.TAxTODv1 Rework #5
+  - DMT.Core project
+    - AppConts.cs add new Application Info for Data Management App.
+    - Update Version information.
+  - DMT.Plaza.Config.App
+    - Change folder name Config->UI
+  - DMT.Plaza.Simulator.App
+    - Reload project.
+    - Change folder name Config->UI
+  - DMT.Plaza.Data.Management.App project.
+    - Init new project with UI.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #228
