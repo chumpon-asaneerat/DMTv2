@@ -48,8 +48,12 @@ Ported DMTv2 to DMT.TAxTODv1 #234
 Ported DMTv2 to DMT.TAxTODv1 #233
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #232
-- 
+- DMT.TAxTODv1 Rework #7
+  - DMT.Plaza.Data.Management.App project.
+    - Add Statusbar Elements (Control) -> ClientIPInfoBar.
+    - Update Statusbar Control -> add IP address.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #231
