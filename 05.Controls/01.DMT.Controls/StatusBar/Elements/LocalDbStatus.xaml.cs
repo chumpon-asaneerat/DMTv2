@@ -29,7 +29,7 @@ namespace DMT.Controls.StatusBar
 
         #endregion
 
-        private DispatcherTimer timer = new DispatcherTimer();
+        private DispatcherTimer timer = null;
         private NLib.Components.PingManager ping;
         private bool isOnline = false;
 
@@ -65,6 +65,7 @@ namespace DMT.Controls.StatusBar
 
             if (null != timer)
             {
+                timer.Tick -= timer_Tick;
                 timer.Stop();
             }
             timer = null;

@@ -31,7 +31,7 @@ namespace DMT.Controls.Header
         #endregion
 
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
-        private DispatcherTimer timer = new DispatcherTimer();
+        private DispatcherTimer timer = null;
 
         #region Loaded/Unloaded
 
@@ -49,6 +49,7 @@ namespace DMT.Controls.Header
         {
             if (null != timer)
             {
+                timer.Tick -= timer_Tick;
                 timer.Stop();
             }
             timer = null;

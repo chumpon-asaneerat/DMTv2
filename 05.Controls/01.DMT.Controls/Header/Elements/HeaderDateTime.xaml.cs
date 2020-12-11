@@ -29,7 +29,7 @@ namespace DMT.Controls.Header
 
         #endregion
 
-        private DispatcherTimer timer = new DispatcherTimer();
+        private DispatcherTimer timer = null;
         private NLib.Components.PingManager ping;
 
         #region Loaded/Unloaded
@@ -64,6 +64,7 @@ namespace DMT.Controls.Header
 
             if (null != timer)
             {
+                timer.Tick -= timer_Tick;
                 timer.Stop();
             }
             timer = null;

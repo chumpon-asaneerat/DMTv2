@@ -51,8 +51,22 @@ Ported DMTv2 to DMT.TAxTODv1 #233
 Ported DMTv2 to DMT.TAxTODv1 #232
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #231
-- 
+- DMTv2
+  - DMT.Controls project
+    - HeaderDateTime fixed Timer init and unload code.
+    - HeaderUser fixed Timer init and unload code.
+    - LocalDbStatus fixed Timer init and unload code.
+    - SCWStatus fixed Timer init and unload code.
+    - TAServerStatus fixed Timer init and unload code.
+- DMT.TAxTODv1 Rework #6
+  - DMT.Models project.
+    - LocalDbServer.cs add Connected proeprty.
+  - DMT.Plaza.Data.Management.App project.
+    - Add Statusbar Elements (Control) -> Local DB status.
+    - Add Statusbar Control
+    - Update MainWindow -> add Statusbar.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #230
