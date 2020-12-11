@@ -24,8 +24,39 @@
   - หลังป้อนรายได้ควร update กลับไปยัง UserCredit/RevenueShift ด้วย
   - ดูว่ายุบ RevenueShift กับ RevenueEntry ด้วยกันได้หรือไม่
 --------------------------------------------------------------------------------------------
-Ported DMTv2 to DMT.TAxTODv1 #230
+Ported DMTv2 to DMT.TAxTODv1 #240
 - 
+
+Ported DMTv2 to DMT.TAxTODv1 #239
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #238
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #237
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #236
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #235
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #234
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #233
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #232
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #231
+- 
+
+[commited]
+Ported DMTv2 to DMT.TAxTODv1 #230
+- Prepare history.txt
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #229
