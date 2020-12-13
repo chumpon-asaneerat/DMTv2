@@ -27,8 +27,13 @@
 Ported DMTv2 to DMT.TAxTODv1 #240
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #239
-- 
+- DMT.TAxTODv1 Rework #14
+  - DMT.Controls project
+    - Add ClientInfoStatus control.
+    - Rework TAStatusBar control.
+    - Rework TODStatusBar control.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #238
