@@ -30,8 +30,14 @@ Ported DMTv2 to DMT.TAxTODv1 #240
 Ported DMTv2 to DMT.TAxTODv1 #239
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #238
-- 
+- DMT.TAxTODv1 Rework #13
+  - DMT.Controls project
+    - Rework AppInfoStatus control.
+    - Rework LocalDbStatus control.
+    - Rework SCWStatus control.
+    - Rework TAServerStatus control.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #237
