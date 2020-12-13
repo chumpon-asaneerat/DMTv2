@@ -51,8 +51,10 @@ Ported DMTv2 to DMT.TAxTODv1 #243
 Ported DMTv2 to DMT.TAxTODv1 #242
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #241
-- 
+- DMT.TAxTODv1 Rework #16
+  - Add Wpf.ContentPresenter.Sample Project.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #240
