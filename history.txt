@@ -36,8 +36,16 @@ Ported DMTv2 to DMT.TAxTODv1 #238
 Ported DMTv2 to DMT.TAxTODv1 #237
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #236
-- 
+- DMT.TAxTODv1 Rework #11
+  - DMT.Controls project
+    - Rework HeaderDateTime control #2.
+    - Rework HeaderUser control.
+    - Rework HeaderSupervisor control -> change name to HeaderChief.
+    - Rework HeaderShift control.
+    - Rework HeaderPlaza control.
+    - Rework HeaderLogo control.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #235
