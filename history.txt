@@ -39,8 +39,11 @@ Ported DMTv2 to DMT.TAxTODv1 #237
 Ported DMTv2 to DMT.TAxTODv1 #236
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #235
-- 
+- DMT.TAxTODv1 Rework #11
+  - DMT.Controls project
+    - Rework HeaderDateTime control.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #234
