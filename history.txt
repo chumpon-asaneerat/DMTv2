@@ -24,8 +24,43 @@
   - หลังป้อนรายได้ควร update กลับไปยัง UserCredit/RevenueShift ด้วย
   - ดูว่ายุบ RevenueShift กับ RevenueEntry ด้วยกันได้หรือไม่
 --------------------------------------------------------------------------------------------
-Ported DMTv2 to DMT.TAxTODv1 #240
+Ported DMTv2 to DMT.TAxTODv1 #250
 - 
+
+Ported DMTv2 to DMT.TAxTODv1 #249
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #248
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #247
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #246
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #245
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #244
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #243
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #242
+- 
+
+Ported DMTv2 to DMT.TAxTODv1 #241
+- 
+
+[commited]
+Ported DMTv2 to DMT.TAxTODv1 #240
+- DMT.TAxTODv1 Rework #15
+  - TA App project.
+    - Rework MainWindow.cs -> show header/statusbar
+  - TOD App project.
+    - Rework MainWindow.cs -> show header/statusbar
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #239
