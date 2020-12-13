@@ -45,8 +45,13 @@ Ported DMTv2 to DMT.TAxTODv1 #235
 Ported DMTv2 to DMT.TAxTODv1 #234
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #233
-- 
+- DMT.TAxTODv1 Rework #8
+  - TOD App
+    - Init folder for UI.
+  - TA App
+    - Init folder for UI.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #232
