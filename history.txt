@@ -42,8 +42,14 @@ Ported DMTv2 to DMT.TAxTODv1 #236
 Ported DMTv2 to DMT.TAxTODv1 #235
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #234
-- 
+- DMT.TAxTODv1 Rework #10
+  - TOD App
+    - Init MainMenu Page #1.
+    - Init ReportMenu Page #1.
+  - TA App
+    - Init MainMenu Page #1.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #233
