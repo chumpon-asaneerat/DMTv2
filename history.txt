@@ -33,8 +33,13 @@ Ported DMTv2 to DMT.TAxTODv1 #239
 Ported DMTv2 to DMT.TAxTODv1 #238
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #237
-- 
+- DMT.TAxTODv1 Rework #12
+  - DMT.Controls project
+    - Rework PlazaHeader control.
+    - Rework TAHeader control.
+    - Remove all Header related user control form OldV2 folder.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #236
