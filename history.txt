@@ -48,8 +48,11 @@ Ported DMTv2 to DMT.TAxTODv1 #244
 Ported DMTv2 to DMT.TAxTODv1 #243
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #242
-- 
+- DMT.TAxTODv1 Rework #17
+  - DMT.Core project.
+    - Rework RouteConsts.cs (v4).
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #241
