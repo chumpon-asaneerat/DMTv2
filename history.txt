@@ -33,8 +33,11 @@ Ported DMTv2 to DMT.TAxTODv1 #249
 Ported DMTv2 to DMT.TAxTODv1 #248
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #247
-- 
+- DMT.TAxTODv1 Rework #22
+  - Update Wpf.ContentPresenter.Controls Project #5.
+  - Update Wpf.ContentPresenter.Sample Project #5.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #246
