@@ -66,8 +66,21 @@ Ported DMTv2 to DMT.TAxTODv1 #258
 Ported DMTv2 to DMT.TAxTODv1 #257
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #256
-- 
+- DMT.TAxTODv1 Rework #28
+  - DMT.Models project.
+    - Rework NSearch.cs.
+    - Update RabbitMQ models -> rework ToLocal(s) method.
+    - Rework ViewHistory.cs
+    - Rework Role.cs
+      - remove status field
+      - remove lastupdate field.
+    - Rework User.cs
+      - remove status field
+      - remove lastupdate field.
+    - Rework SqlScriptManager.cs
+    - Rework UserView.sql
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #255
