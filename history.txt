@@ -27,8 +27,14 @@
 Ported DMTv2 to DMT.TAxTODv1 #255
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #254
-- 
+- DMT.TAxTODv1 Rework #27
+  - DMT.RabbitMQ.Client project.
+    - Remove unused Original folder and files.
+  - DMT.RestClient project.
+    - NRestClient.cs update xml comments.
+    - NRestResult.cs update xml comments.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #253
