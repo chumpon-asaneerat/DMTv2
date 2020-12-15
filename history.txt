@@ -51,8 +51,13 @@ Ported DMTv2 to DMT.TAxTODv1 #263
 Ported DMTv2 to DMT.TAxTODv1 #262
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #261
-- 
+- DMT.TAxTODv1 Rework #31
+  - DMT.Models project.
+    - Rework User.cs -> add GroupId property in FK class.
+    - MCurrency, MCoupon, MCardAllow add xml comment in Save(s) method.
+    - Remove Role.cs, User.cs from original folder.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #260
