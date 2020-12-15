@@ -32,6 +32,7 @@ namespace DMT.TOD.Pages.Job
         #endregion
 
         private LocalOperations ops = LocalServiceOperations.Instance.Plaza;
+        private RevenueEntryManager _manager = new RevenueEntryManager();
         private User _user = null;
 
         #region Button Handlers
@@ -45,6 +46,13 @@ namespace DMT.TOD.Pages.Job
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
         {
+            //TODO: Required to reload jobs
+            /*
+            // get selected plaza group
+            _manager.PlazaGroup = cbPlazas.SelectedItem as PlazaGroup;
+            // reload jobs.
+            _manager.RefreshJobs();
+            */
             grid.RefreshUsers();
         }
 

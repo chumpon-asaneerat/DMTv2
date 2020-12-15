@@ -57,8 +57,10 @@ Ported DMTv2 to DMT.TAxTODv1 #261
 Ported DMTv2 to DMT.TAxTODv1 #260
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #259
-- 
+- DMTv2 update code
+  - LoginListPage prepare code (comment out) for refresh job list.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #258
