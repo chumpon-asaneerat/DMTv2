@@ -33,8 +33,13 @@ Ported DMTv2 to DMT.TAxTODv1 #254
 Ported DMTv2 to DMT.TAxTODv1 #253
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #252
-- 
+- DMT.TAxTODv1 Rework #26
+  - DMT.Core project.
+    - Rework ConfigManager.cs (RabbitMQ init properties).
+  - DMT.Local.RestServer project.
+    - Rework LocalDatabaseWebServer.cs (Update xml comment).
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #251
