@@ -30,8 +30,11 @@ Ported DMTv2 to DMT.TAxTODv1 #255
 Ported DMTv2 to DMT.TAxTODv1 #254
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #253
-- 
+- DMT.TAxTODv1 Rework #26
+  - DMT.Core project.
+    - Rework ConfigManager.cs (SCW init properties).
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #252
