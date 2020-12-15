@@ -60,8 +60,16 @@ Ported DMTv2 to DMT.TAxTODv1 #260
 Ported DMTv2 to DMT.TAxTODv1 #259
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #258
-- 
+- DMT.TAxTODv1 Rework #30
+  - DMT.Models project.
+    - Rework all master models.
+    - Rework Shift.cs
+      - remove status field
+      - remove lastupdate field.
+    - LocalDbServer.cs add init MCurrency, MCoupon, Shift, Role, User default data
+      - Note user default data remove Status and Add AccountStatus, IsDummy init value.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #257
