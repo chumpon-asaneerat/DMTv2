@@ -39,8 +39,11 @@ Ported DMTv2 to DMT.TAxTODv1 #252
 Ported DMTv2 to DMT.TAxTODv1 #251
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #250
-- 
+- DMT.TAxTODv1 Rework #24
+  - DMT.Models project.
+    - Rework DMT.Search.cs #1.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #249
