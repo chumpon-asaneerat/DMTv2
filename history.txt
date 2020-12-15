@@ -42,8 +42,13 @@ Ported DMTv2 to DMT.TAxTODv1 #251
 Ported DMTv2 to DMT.TAxTODv1 #250
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #249
-- 
+- DMT.TAxTODv1 Rework #23
+  - DMT.Models project.
+    - Rework NTables.cs.
+    - Rework NQueries.cs.
+    - Update LocalDbServer.cs (update code related to NTable and NQuery).
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #248
