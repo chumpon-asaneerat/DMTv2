@@ -314,7 +314,7 @@ namespace DMT.Services
 
         #region Private Methods
 
-        private void SyncJobList()
+        public void SyncJobList()
         {
             // Sync JobList to LaneAttendance
             if (null == this.User) return;

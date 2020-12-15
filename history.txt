@@ -54,8 +54,10 @@ Ported DMTv2 to DMT.TAxTODv1 #262
 Ported DMTv2 to DMT.TAxTODv1 #261
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #260
-- 
+- DMTv2 Update
+  - fixed problem in job list page (not work need to recheck).
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #259

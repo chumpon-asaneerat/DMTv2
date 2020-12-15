@@ -46,23 +46,35 @@ namespace DMT.TOD.Pages.Job
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: Required to reload jobs
-            /*
-            // get selected plaza group
-            _manager.PlazaGroup = cbPlazas.SelectedItem as PlazaGroup;
-            // reload jobs.
-            _manager.RefreshJobs();
-            */
-            grid.RefreshUsers();
+            Refresh();
         }
 
         #endregion
+
+        private void Refresh()
+        {
+            var tsb = ops.TSB.GetCurrent().Value();
+            if (null == tsb) return;
+            var plazaGroups = ops.TSB.GetTSBPlazaGroups(tsb).Value();
+            if (null != plazaGroups)
+            {
+                plazaGroups.ForEach(plazaGroup =>
+                {
+                    // set required data
+                    _manager.User = _user;
+                    _manager.PlazaGroup = plazaGroup;
+                    // reload jobs.
+                    _manager.SyncJobList();
+                });
+            }
+            grid.RefreshUsers();
+        }
 
         public void Setup(User user)
         {
             _user = user;
             grid.Setup(_user);
-            grid.RefreshUsers();
+            Refresh();
         }
     }
 }
