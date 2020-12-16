@@ -42,8 +42,20 @@ Ported DMTv2 to DMT.TAxTODv1 #266
 Ported DMTv2 to DMT.TAxTODv1 #265
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #264
-- 
+- DMT.TAxTODv1 Rework #34
+  - DMT.Models project.
+    - Rework Role.cs
+      - Remove TODO in Rolw.cs -> SaveUsers method.
+    - Rework Shift.cs
+      - Remove TODO in Shift.cs -> SaveUsers method.
+    - Rework PlazaGroupView.sql
+    - Rework PlazaView.sql
+    - Rework LaneView.sql
+    - Update LocalDbServer.cs 
+      - add init PlazaGroupView, PlazaView, LaneView.
+      - Change InitView method to assign view versionid one by one.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #263
