@@ -110,10 +110,6 @@ namespace DMT.Services
 
         public void Start()
         {
-            MethodBase med = MethodBase.GetCurrentMethod();
-            // Start database server.
-            LocalDbServer.Instance.Start();
-
             if (null == server)
             {
                 InitOwinFirewall();
@@ -129,9 +125,6 @@ namespace DMT.Services
             }
             server = null;
             ReleaseOwinFirewall();
-
-            // Shutdown database server.
-            LocalDbServer.Instance.Shutdown();
         }
 
         #endregion

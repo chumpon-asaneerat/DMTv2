@@ -27,8 +27,28 @@
 Ported DMTv2 to DMT.TAxTODv1 #270
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #269
-- 
+- DMT.TAxTODv1 Rework #39
+  - DMT.Core project
+    - Update AppConsts.cs -> update version and lastupdate.
+  - DMT.TA.RestServer project.
+    - Update TAWebServer.cs remove start/shutdown LocalDbServer.
+  - DMT.TOD.RestServer project.
+    - Update TODWebServer.cs remove start/shutdown LocalDbServer.
+  - DMT.TA.App project.
+    - Update app.xaml.cs add Start/Shutdown TAWebServer code.
+  - DMT.TOD.App project.
+    - Update app.xaml.cs add Start/Shutdown TODWebServer code.
+  - Wpf.Owin.Rest.Server.Sample project
+    - Update MapRoute code #2.
+- DMTv2 Update
+  - DMT.Core project
+    - Update AppConsts.cs -> update version and lastupdate.
+  - DMT.TA.RestServer project.
+    - Update TAWebServer.cs remove start/shutdown LocalDbServer.
+  - DMT.TOD.RestServer project.
+    - Update TODWebServer.cs remove start/shutdown LocalDbServer.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #268
