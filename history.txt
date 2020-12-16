@@ -48,8 +48,30 @@ Ported DMTv2 to DMT.TAxTODv1 #264
 Ported DMTv2 to DMT.TAxTODv1 #263
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #262
-- 
+- DMT.TAxTODv1 Rework #32
+  - DMT.Models project.
+    - Rework TSB.cs
+      - remove status field
+      - remove lastupdate field.
+      - add SaveTSB static method.
+    - Rework PlazaGroup.cs
+      - remove status field
+      - remove lastupdate field.
+      - add SavePlazaGroup static method.
+    - Rework Plaza.cs
+      - remove status field
+      - remove lastupdate field.
+      - add SavePlaza static method.
+    - Rework Lane.cs
+      - remove status field
+      - remove lastupdate field.
+      - add Lane static method.
+    - Rework User.cs
+      - ported all static methods from DMTv2 and rename to proper name.
+    - Update LocalDbServer.cs 
+      - add init TSB/PlazaGroup/Plaza/Lane Table.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #261
