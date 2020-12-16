@@ -30,8 +30,11 @@ Ported DMTv2 to DMT.TAxTODv1 #270
 Ported DMTv2 to DMT.TAxTODv1 #269
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #268
-- 
+- DMT.TAxTODv1 Rework #38
+  - Wpf.Owin.Rest.Server.Sample project
+    - Update MapRoute code.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #267
