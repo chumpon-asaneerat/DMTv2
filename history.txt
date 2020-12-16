@@ -51,8 +51,32 @@ Ported DMTv2 to DMT.TAxTODv1 #273
 Ported DMTv2 to DMT.TAxTODv1 #272
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #271
-- 
+- DMT.TAxTODv1 Rework #40
+  - DMT.Core project
+    - Update RouteConsts.cs.
+      - Add Client route
+        - Register
+        - Unregister
+      - Add Notify route
+        - TSBChanged
+        - ShiftChanged
+  - DMT.Models project
+    - Add Client.cs -> Register/Unregister TA/TOD App for callback when TSBChanged/ShiftChanged.
+    - LocalDbServer.cs -> init Client Table.
+  - DMT.Local.RestServer project
+    - Add ClientController.cs -> base controller class.
+    - Add ClientController.Register.cs -> Register action implementation.
+    - Add ClientController.Unregister.cs -> Unregister action implementation.
+    - Update LocalDatabaseWebServer.cs
+      - Add MapRoute method.
+      - Add code map route for Client Controller -> Register action
+      - Add code map route for Client Controller -> Unregister action
+  - DMT.Plaza.Config.App project
+    - Update MainWindow.xaml.cs -> remove unused event handelrs.
+  - DMT.Plaza.Simulator.App project
+    - Update MainWindow.xaml.cs -> remove unused event handelrs.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #270
