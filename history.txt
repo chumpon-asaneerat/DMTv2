@@ -48,8 +48,39 @@ Ported DMTv2 to DMT.TAxTODv1 #274
 Ported DMTv2 to DMT.TAxTODv1 #273
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #272
-- 
+- DMT.TAxTODv1 Rework #41
+  - DMT.Core project
+    - Update RouteConsts.cs -> Add region in using section.
+  - DMT.Models project
+    - Add RuntimeManager.cs.
+  - DMT.Local.RestServer project
+    - Update ClientController.Register.cs -> Change Return Type to NDbResult.
+    - Update ClientController.Unregister.cs -> Change Return Type to NDbResult.
+  - DMT.TA.RestServer project
+    - Add NotifyController.cs -> base controller class.
+    - Add NotifyController.TSBChanged.cs -> TSBChanged action implementation.
+    - Add NotifyController.ShiftChanged.cs -> ShiftChanged action implementation.
+    - Update TAWebServer.cs
+      - Add MapRoute method.
+      - Add code map route for Notify Controller -> TSBChanged action
+      - Add code map route for Notify Controller -> ShiftChanged action
+  - DMT.TOD.RestServer project
+    - Add NotifyController.cs -> base controller class.
+    - Add NotifyController.TSBChanged.cs -> TSBChanged action implementation.
+    - Add NotifyController.ShiftChanged.cs -> ShiftChanged action implementation.
+    - Update TODWebServer.cs
+      - Add MapRoute method.
+      - Add code map route for Notify Controller -> TSBChanged action
+      - Add code map route for Notify Controller -> ShiftChanged action
+  - DMT.Controls project
+    - Update HeaderChief.xaml.cs -> Used RuntimeManager event handler(s).
+    - Update HeaderPlaza.xaml.cs -> Used RuntimeManager event handler(s).
+    - Update HeaderShift.xaml.cs -> Used RuntimeManager event handler(s).
+    - Update HeaderUser.xaml.cs -> Use CurrenTA class.
+    - Update CurrentTA.cs -> add xaml comment.
+    - Set CurrentTA.cs build action to compile.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #271
