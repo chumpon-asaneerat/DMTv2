@@ -39,8 +39,16 @@ Ported DMTv2 to DMT.TAxTODv1 #267
 Ported DMTv2 to DMT.TAxTODv1 #266
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #265
-- 
+- DMT.TAxTODv1 Rework #35
+  - DMT.Models project.
+    - Rework User.cs
+      - Add PasswordDateString, PasswordTimeString, PasswordDateTimeString property.
+    - Rework TSBShift.cs.
+    - Rework TSBShiftView.sql.
+    - Update LocalDbServer.cs 
+      - add init TSBShiftView.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #264
