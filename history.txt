@@ -39,8 +39,23 @@ Ported DMTv2 to DMT.TAxTODv1 #277
 Ported DMTv2 to DMT.TAxTODv1 #276
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #275
-- 
+- DMT.TAxTODv1 Rework #44
+  - DMT.Models project
+    - Rework Config.cs.
+    - Rework UniqueCode.cs.
+    - Update LocalDbServer.cs
+      - Add ConfigKeys class with some keys.
+      - Add Create Table code
+        - Config
+        - UniqueCode
+        - TSBShift
+      - Init Config data.
+      - Init Infrastructure data. -> all lanes added and some plaza group id changed.
+  - DMT.TA.RestServer project.
+    - Fixed change mispell TANofifyService to TANotifyService in all files.
+  - Recompile all -> DB generate checked OK.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #274
