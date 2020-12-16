@@ -36,8 +36,29 @@ Ported DMTv2 to DMT.TAxTODv1 #268
 Ported DMTv2 to DMT.TAxTODv1 #267
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #266
-- 
+- DMT.TAxTODv1 Rework #36
+  - DMT.Core project.
+    - Rework ConfigManager.cs
+  - DMT.Local.RestServer project.
+    - Update LocalDatabaseWebService.cs
+  - DMT.RestClient project.
+    - Update NRestClient.cs
+  - DMT.TA.RestServer project.
+    - Update TAWebServer.cs
+  - DMT.TOD.RestServer project.
+    - Update TODWebServer.cs
+  - DMT.Controls project.
+    - Update LocalDbStatus.xaml.cs
+    - Update SCWStatus.xaml.cs
+    - Update TAServerStatus.xaml.cs
+  - DMT.TA.App project.
+    - Update app.xaml.cs
+    - Update MainWindow.xaml.cs
+  - DMT.TOD.App project.
+    - Update app.xaml.cs
+    - Update MainWindow.xaml.cs
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #265
