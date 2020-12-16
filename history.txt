@@ -45,8 +45,25 @@ Ported DMTv2 to DMT.TAxTODv1 #275
 Ported DMTv2 to DMT.TAxTODv1 #274
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #273
-- 
+- DMT.TAxTODv1 Rework #42
+  - DMT.Models project
+    - Remove all files in original folder.
+  - DMT.RestServer project
+    - Remove all files in original folder.
+  - DMT.TA.RestServer project
+    - Add TANotifyService.cs.
+    - Update NotifyController.TSBChanged.cs -> TSBChanged action call TANotifyService for notify changed.
+    - Update NotifyController.ShiftChanged.cs -> ShiftChanged action call TANotifyService for notify changed.
+  - DMT.TOD.RestServer project
+    - Add TODNotifyService.cs.
+    - Update NotifyController.TSBChanged.cs -> TSBChanged action call TODNotifyService for notify changed.
+    - Update NotifyController.ShiftChanged.cs -> ShiftChanged action call TODNotifyService for notify changed.
+  - DMT.TA.App project
+    - Update MainWindow.xaml.cs -> Implements TANotifyService handler.
+  - DMT.TOD.App project
+    - Update MainWindow.xaml.cs -> Implements TODNotifyService handler.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #272
