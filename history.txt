@@ -45,8 +45,24 @@ Ported DMTv2 to DMT.TAxTODv1 #265
 Ported DMTv2 to DMT.TAxTODv1 #264
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #263
-- 
+- DMT.TAxTODv1 Rework #33
+  - DMT.Models project.
+    - Add TODO in User.cs -> SaveUsers method.
+    - Add TODO in Lane.cs -> SaveUsers method.
+    - Rework Role.cs
+      - Add SaveRole static method.
+      - Add TODO in Rolw.cs -> SaveUsers method.
+    - Rework Shift.cs
+      - Add SaveShift static method.
+      - Add TODO in Shift.cs -> SaveUsers method.
+    - Rework PlazaGroup.cs
+      - Fixed Save method name.
+    - Rework Plaza.cs
+      - Fixed Save method name.
+    - Rework Lane.cs
+      - Fixed Save method name.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #262
