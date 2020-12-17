@@ -33,8 +33,13 @@ Ported DMTv2 to DMT.TAxTODv1 #289
 Ported DMTv2 to DMT.TAxTODv1 #288
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #287
-- 
+- DMT.TAxTODv1 Rework #55
+  - DMT.Core project.
+    - Update AppConsts.cs.
+  - DMT.Plaza.Service.Manager.App project.
+    - Completed Simple task for start/shutdown service.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #286
