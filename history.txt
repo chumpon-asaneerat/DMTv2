@@ -30,8 +30,16 @@ Ported DMTv2 to DMT.TAxTODv1 #280
 Ported DMTv2 to DMT.TAxTODv1 #279
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #278
-- 
+- DMT.TAxTODv1 Rework #45
+  - DMT.RestClient project.
+    - Rework for refactor Rest api classes and operations #2.
+      - Add Plaza.cs for Local Plaza Service access rest api operations.
+      - Add SCW.cs for SCW Server access rest api operations.
+      - Add TAxTOD.cs for TAxTOD Server access rest api operations.
+      - Add TA.cs for TA application web server access rest api operations.
+      - Add TOD.cs for TOD application web server access rest api operations.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #277
