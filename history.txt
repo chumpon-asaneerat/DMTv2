@@ -30,8 +30,13 @@ Ported DMTv2 to DMT.TAxTODv1 #295
 Ported DMTv2 to DMT.TAxTODv1 #294
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #293
-- 
+- DMT.TAxTODv1 Rework #59
+  - DMT.RestServer project.
+    - DMTRestServerStartUp.cs
+      - AddAuthorizationHeaderParameterOperationFilter class
+        - Fixed bug in Apply method to create parameter list if operation.parameters is null.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #292
