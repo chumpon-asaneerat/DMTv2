@@ -48,8 +48,12 @@ Ported DMTv2 to DMT.TAxTODv1 #284
 Ported DMTv2 to DMT.TAxTODv1 #283
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #282
-- 
+- DMT.TAxTODv1 Rework #50
+  - DMT.Models project.
+    - Move ConfigKeys class LocalDbServer.cs to Config.cs.
+    - RuntimeManager.cs -> comment out all properties need to rethink how to access data from database in app scope.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #281
