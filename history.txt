@@ -45,8 +45,18 @@ Ported DMTv2 to DMT.TAxTODv1 #285
 Ported DMTv2 to DMT.TAxTODv1 #284
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #283
-- 
+- DMT.TAxTODv1 Rework #51
+  - DMT.Core project.
+    - Update ConfigManager.cs 
+      - Add DMTConfig class (network, tsb, terminal)
+      - All WebServer config add UserName and Password property.
+      - TSB.cs remove MaxBalance property -> need another table for setting Bank note limit.
+  - DMT.Models project.
+    - Remove Config.cs.
+    - LocalDbServer.cs remove all config table related code.
+    - RuntimeManager.cs -> remove all properties.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #282
