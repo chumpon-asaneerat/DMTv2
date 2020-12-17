@@ -36,8 +36,16 @@ Ported DMTv2 to DMT.TAxTODv1 #293
 Ported DMTv2 to DMT.TAxTODv1 #292
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #291
-- 
+- DMT.TAxTODv1 Rework #57
+  - DMT.Local.RestServer project.
+    - Implements Infrastructure 
+      - TSB controller implement Gets action.
+      - PlazaGroup controller implement Gets action.
+      - Plaza controller implement Gets action.
+      - Lane controller implement Gets action.
+    - LocalDatabaseWebServer.cs -> Re-implements code to map routes #2.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #290
