@@ -36,8 +36,11 @@ Ported DMTv2 to DMT.TAxTODv1 #278
 Ported DMTv2 to DMT.TAxTODv1 #277
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #276
-- 
+- DMT.TAxTODv1 Rework #45
+  - DMT.RestClient project.
+    - Rework for refactor Rest api classes and operations #1.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #275
