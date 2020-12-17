@@ -36,8 +36,10 @@ Ported DMTv2 to DMT.TAxTODv1 #288
 Ported DMTv2 to DMT.TAxTODv1 #287
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #286
-- 
+- DMT.TAxTODv1 Rework #54
+  - Add DMT.Plaza.Service.Manager.App project.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #285
