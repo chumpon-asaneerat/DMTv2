@@ -33,8 +33,11 @@ Ported DMTv2 to DMT.TAxTODv1 #294
 Ported DMTv2 to DMT.TAxTODv1 #293
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #292
-- 
+- DMT.TAxTODv1 Rework #58
+  - DMT.Local.RestServer project.
+    - Infrastructure.Controller.cs - Update xml comment.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #291
