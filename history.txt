@@ -30,8 +30,10 @@ Ported DMTv2 to DMT.TAxTODv1 #290
 Ported DMTv2 to DMT.TAxTODv1 #289
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #288
-- 
+  - DMT.Plaza.Service.Manager.App project.
+    - Set application icon.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #287
