@@ -27,8 +27,11 @@
 Ported DMTv2 to DMT.TAxTODv1 #280
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #279
-- 
+- DMT.TAxTODv1 Rework #48
+  - DMT.Core project.
+    - Add LocalServiceManager.cs for install/uninstall/checkstatus of windows service.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #278
