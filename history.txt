@@ -39,8 +39,11 @@ Ported DMTv2 to DMT.TAxTODv1 #287
 Ported DMTv2 to DMT.TAxTODv1 #286
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #285
-- 
+- DMT.TAxTODv1 Rework #53
+  - Remove DMT.Plaza.Data.Management.App project
+  - Add DMT.Plaza.WorkBench.App project
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #284
