@@ -39,8 +39,24 @@ Ported DMTv2 to DMT.TAxTODv1 #292
 Ported DMTv2 to DMT.TAxTODv1 #291
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #290
-- 
+- DMT.TAxTODv1 Rework #56
+  - DMT.Core project.
+    - Refactor all routes const folder and file name.
+  - DMT.RestServer project.
+    - DMTRestServerStartUp.cs
+      - Add Helper class (provide helper method for map controller's action route).
+  - DMT.Local.RestServer project.
+    - Refactor all Client controller, actions folder and file name.
+    - Implements Infrastructure controllers, actions.
+    - LocalDatabaseWebServer.cs -> Re-implements code to map routes.
+  - DMT.TA.RestServer project.
+    - Refactor all Notify controller, actions folder and file name.
+    - TAWebServer.cs -> Re-implements code to map routes.
+  - DMT.TOD.RestServer project.
+    - Refactor all Notify controller, actions folder and file name.
+    - TODWebServer.cs -> Re-implements code to map routes.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #289
