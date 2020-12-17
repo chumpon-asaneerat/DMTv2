@@ -33,8 +33,11 @@ Ported DMTv2 to DMT.TAxTODv1 #279
 Ported DMTv2 to DMT.TAxTODv1 #278
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #277
-- 
+- DMT.TAxTODv1 Rework #46
+  - DMT.Controls project.
+    - Remove all files in Originalv2 folder.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #276
