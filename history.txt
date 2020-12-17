@@ -51,8 +51,13 @@ Ported DMTv2 to DMT.TAxTODv1 #283
 Ported DMTv2 to DMT.TAxTODv1 #282
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #281
-- 
+- DMT.TAxTODv1 Rework #49
+  - DMT.Local.RestServer project.
+    - remove all files in original folders.
+  - DMT.Controls project.
+    - remove all files in original folders.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #280
