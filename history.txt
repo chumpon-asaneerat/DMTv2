@@ -42,8 +42,38 @@ Ported DMTv2 to DMT.TAxTODv1 #286
 Ported DMTv2 to DMT.TAxTODv1 #285
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #284
-- 
+- DMT.TAxTODv1 Rework #52
+  - Update RestAPI design todo file(s).
+  - DMT.Core project.
+    - Remove RouteConsts.cs
+    - Restucture RouteConsts code.
+      - Add RouteConsts.cs -> base class.
+      - Client routes
+        - Add Client.Controller.cs
+        - Add Register.cs (action route).
+        - Add Unregister.cs (action route).
+      - Notify routes
+        - Add Notify.Controller.cs
+        - Add TSBChanged.cs (action route).
+        - Add ShiftChanged.cs (action route).
+      - Infrastructure routes
+        - Add Infrastructure.Controller.cs (for all TSB/PlazaGroup/Plaza/Lane base class).
+        - TSB routes
+          - Add Gets.cs (action route).
+          - Add Current.cs (action route).
+          - Add SetActive.cs (action route).
+          - Add Save.cs (action route).
+        - PlazaGroup routes
+          - Add Gets.cs (action route).
+          - Add Save.cs (action route).
+        - Plaza routes
+          - Add Gets.cs (action route).
+          - Add Save.cs (action route).
+        - Lane routes
+          - Add Gets.cs (action route).
+          - Add Save.cs (action route).
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #283
