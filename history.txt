@@ -39,8 +39,12 @@ Ported DMTv2 to DMT.TAxTODv1 #297
 Ported DMTv2 to DMT.TAxTODv1 #296
 - 
 
+[commited]
 Ported DMTv2 to DMT.TAxTODv1 #295
-- 
+- Init new solution DMT.TAxTODv2
+  - Add References DLLs from DMT.TAxTODv1.
+  - Add Nlib project from DMT.TAxTODv1.
+  - Add Nlib.Reports project from DMT.TAxTODv1.
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #294
