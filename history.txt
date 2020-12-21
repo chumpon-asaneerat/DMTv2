@@ -45,8 +45,13 @@ Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #335
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #334
 - 
 
+[commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #333
-- 
+- DMT.TAxTODv2
+  - DMT.TA.App project.
+    - Update App.xaml.cs - Add Start/Shutdown local database
+  - DMT.TOD.App project.
+    - Update App.xaml.cs - Add Start/Shutdown local database
 
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #332
