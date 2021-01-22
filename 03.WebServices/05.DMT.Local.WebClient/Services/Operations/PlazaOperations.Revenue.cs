@@ -1047,6 +1047,9 @@ namespace DMT.Services
                 }
                 else
                 {
+                    // NOTE:::
+                    // THIS CODE USE FOR MATCH EMV IN HISTORICAL MODE
+                    /// NEED TO PORT
                     dt1 = manager.Attendances[0].Begin;
                     dt2 = manager.Attendances[manager.Attendances.Count - 1].End;
                     // Check case job has no End Of Job.
