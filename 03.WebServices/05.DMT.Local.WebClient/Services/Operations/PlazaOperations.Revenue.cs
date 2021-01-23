@@ -1219,6 +1219,9 @@ namespace DMT.Services
             if (null == this.User) return;
             if (null == this.PlazaGroup) return;
             var plazas = ops.TSB.GetPlazaGroupPlazas(this.PlazaGroup).Value();
+            var plazas2 = new List<Plaza>();
+            plazas2.AddRange(plazas);
+
             if (null == plazas) return;
 
             var attends = new List<LaneAttendance>();
@@ -1237,7 +1240,30 @@ namespace DMT.Services
                 {
                     ret.list.ForEach(inst =>
                     {
-                        var attend = inst.ToLocal();
+                        // Bug cannot call ToLocal here because is not has database connection.
+                        //var attend = inst.ToLocal();
+
+                        var attend = new LaneAttendance();
+
+                        Plaza plaza2 = null;
+                        //value.networkId;
+                        if (inst.plazaId.HasValue)
+                        {
+                            plaza2 = plazas2.Find(pz2 => { return pz2.SCWPlazaId == inst.plazaId.Value; });
+                        }
+                        if (null == plaza2) return;
+                        attend.PlazaId = plaza2.PlazaId;
+                        if (inst.laneId.HasValue)
+                        {
+                            attend.LaneNo = inst.laneId.Value;
+                        }
+                        attend.UserId = inst.staffId;
+                        attend.JobId = (inst.jobNo.HasValue) ?
+                            inst.jobNo.Value.ToString() : string.Empty;
+                        attend.Begin = inst.bojDateTime.Value();
+                        attend.End = inst.eojDateTime.Value();
+
+
                         var lane = ops.TSB.GetPlazaLane(
                             Search.Plaza.LaneByNo.Create(attend.PlazaId, attend.LaneNo)).Value();
                         if (null != lane) lane.AssignTo(attend);
