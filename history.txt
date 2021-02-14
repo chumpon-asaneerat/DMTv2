@@ -43,8 +43,10 @@ Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1635
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1634
 - 
 
+[commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1633
-- 
+- DMT.TAxTODv3
+  - Update history.txt.
 
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1632
@@ -54,7 +56,7 @@ Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1632
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1631
 - DMT.TAxTODv3
-  - DMT.TOD.App
+  - DMT.TA.App
     - Implements Credit History #12.
 
 [commited]
@@ -64,55 +66,55 @@ Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1630
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1629
 - DMT.TAxTODv3
-  - DMT.TOD.App
+  - DMT.TA.App
     - Implements Credit History #11.
 
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1628
 - DMT.TAxTODv3
-  - DMT.TOD.App
+  - DMT.TA.App
     - Implements Credit History #10.
 
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1627
 - DMT.TAxTODv3
-  - DMT.TOD.App
+  - DMT.TA.App
     - Implements Credit History #9.
 
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1626
 - DMT.TAxTODv3
-  - DMT.TOD.App
+  - DMT.TA.App
     - Implements Credit History #8.
 
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1625
 - DMT.TAxTODv3
-  - DMT.TOD.App
+  - DMT.TA.App
     - Implements Credit History #7.
 
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1624
 - DMT.TAxTODv3
-  - DMT.TOD.App
+  - DMT.TA.App
     - Implements Credit History #6.
 
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1623
 - DMT.TAxTODv3
-  - DMT.TOD.App
+  - DMT.TA.App
     - Implements Credit History #5.
 
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1622
 - DMT.TAxTODv3
-  - DMT.TOD.App
+  - DMT.TA.App
     - Implements Credit History #4.
 
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1621
 - DMT.TAxTODv3
-  - DMT.TOD.App
+  - DMT.TA.App
     - Implements Credit History #3.
 
 [commited]
@@ -122,13 +124,13 @@ Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1620
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1619
 - DMT.TAxTODv3
-  - DMT.TOD.App
+  - DMT.TA.App
     - Implements Credit History #2.
 
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1618
 - DMT.TAxTODv3
-  - DMT.TOD.App
+  - DMT.TA.App
     - Implements Credit History #1.
 
 [commited]
@@ -536,14 +538,6 @@ Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1557
     - Ported TAxTOD from v3.
 
 [commited]
-Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1557
-- DMT.TAxTODv4
-  - DMT.Models project.
-    - Ported RabbitMQ from v3.
-    - Ported SCW from v3.
-    - Ported TAxTOD from v3.
-
-[commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1556
 - DMT.TAxTODv4
   - DMT.Models project.
@@ -907,7 +901,7 @@ Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1495
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1494
 - DMT.TAxTODv3
-  - Update todos.
+  - Update todos.+
   - Update history.txt note.
 
 [commited]
@@ -4402,7 +4396,7 @@ Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1062
   - DMT.Account.App
     - Update TSBCreditEntry Control #5.
   - DMT.TA.App
-    - Update TSBCreditEntry Control #4.
+    - Update TSBCreditEntry Control #5.
     - Add UserCreditEntry Control.
 
 [commited]
@@ -4831,7 +4825,6 @@ Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1001
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #1000
 - Prepare history.txt
-
 
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #999
@@ -6434,7 +6427,7 @@ Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #807
       - Add TOD.Controller.cs
       - Add TOD.Shift.Controller.cs
       - Update TOD.Notify.Controller.cs
-
+     
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #806
 - DMT.TAxTODv3
@@ -10809,6 +10802,7 @@ Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #332
 
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #331
+- DMT.TAxTODv2
   - DMT.Controls project.
     - Remove LocalDbStatus StatusBar element.
     - Add TALocalDbStatus StatusBar element.
@@ -11081,7 +11075,7 @@ Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #302
   - Rename DMT.TA.RestServer project to DMT.TA.Rest.Server.
   - Rename DMT.RestClient project to DMT.Rest.Client.
   - Add DMT.SCW.Rest.Client project.
-
+  
 [commited]
 Ported DMTv2 to DMT.TA.TODv1, DMT.TA.TODv2 #301
 - DMT.TAxTODv2 add projects
@@ -11276,7 +11270,7 @@ Ported DMTv2 to DMT.TAxTODv1 #279
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #278
-- DMT.TAxTODv1 Rework #45
+- DMT.TAxTODv1 Rework #47
   - DMT.RestClient project.
     - Rework for refactor Rest api classes and operations #2.
       - Add Plaza.cs for Local Plaza Service access rest api operations.
@@ -11571,7 +11565,7 @@ Ported DMTv2 to DMT.TAxTODv1 #257
 - DMT.TAxTODv1 Rework #29
   - DMT.Models project.
     - Rework all SCW models (ported from DMTv2).
-
+  
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #256
 - DMT.TAxTODv1 Rework #28
@@ -12453,7 +12447,7 @@ Ported DMTv2 to DMT.TAxTODv1 #101
 
 [commited]
 Ported DMTv2 to DMT.TAxTODv1 #100
-- Update RouteConts.cs #26
+- Update RouteConts.cs #27
   - All Rest Server 
     - Add MapHttpAttributeRoutes for supports route mapping by attribute.
 
@@ -13168,59 +13162,253 @@ Ported DMTv2 to DMT.TAxTODv1 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
-Update 2020-09-29 #5
-- Update history.txt #3
+Update 2020-09-29 #6
+- Update history.txt #4.
   - Add note for last files checked in Request Exchange process refactor.
 
 [commited]
-Update 2020-09-29 #4
+Update 2020-09-29 #5
 - Prepare history.txt.
 
 [commited]
-Update 2020-09-29 #3
+Update 2020-09-29 #4
 - Note: from this commit history.txt will update not in date order until ported process completed. 
   This will ported all code from DMTv2 to DMT.TAxTODv1
 
 [commited]
-Update 2020-09-29 #2
-- Update history.txt #2
+Update 2020-09-29 #3
+- Update history.txt #3
 - Add ubuntu.txt.
 
 [commited]
+Update 2020-09-29 #2
+- Update history.txt #2
+  - Required to track changed in DMTv2 project on 2020-09-28 to update code.
+
+[commited]
 Update 2020-09-29 #1
-- Update history.txt.
-  - Add Note.
+- Update history.txt
 
 --------------------------------------------------------------------------------------------
-[commited]
-Update 2020-09-28 #2
-- Prepare history.txt.
-- Update TA Credit Exchange #56.
-  - Request Exchange process refactor #20.
-
 [commited]
 Update 2020-09-28 #1
-- Merge from origin/TA #1.
+- Update DMT.TA.TODv1 #58
+    - update TSBCreditTransaction add SupervisorNameTH, SupervisorNameEN column.
+    - update UserCreditBalance, UserCreditTransaction add FullNameTH, FullNameEN column.
+    - update TSBCouponTransaction add FullNameTH, FullNameEN, SoldByFullNameEN, SoldByFullNameTH column.
+    - update UserCouponBalance, UserCouponTransaction add FullNameTH, FullNameEN column.
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-09-27 #29
+- Prepare history.txt
+
+[commited]
+Update 2020-09-27 #28
+- Update DMT.TA.TODv1 #57
+  - Update DMT Models project #26.
+
+[commited]
+Update 2020-09-27 #27
+- Update DMT.TA.TODv1 #56
+  - Update DMT Models project #25.
+    - TSBShift model ported static methods.
+    - UserShift model ported static methods.
+    - ported ShiftController for Shift, TSBShift and UserShift Rest API #1 (completed).
+
+[commited]
+Update 2020-09-27 #26
+- Update DMT.TA.TODv1 #55
+  - Update DMT Models project #24.
+    - Update TSBController format code region.
+    - Update MasterController format code region.
+    - Update UserController for Role and User Rest API #1 (completed).
+
+[commited]
+Update 2020-09-27 #25
+- Update DMT.TA.TODv1 #54
+  - Update DMT Models project #23.
+    - ported Search (Role) classes.
+    - ported Search (User) classes.
+
+[commited]
+Update 2020-09-27 #24
+- Update DMT.TA.TODv1 #53
+  - Update DMT Controls project #1.
+    - prepare folders.
+
+[commited]
+Update 2020-09-27 #23
+- Update DMT.TA.TODv1 #52
+  - Update DMT Models project #22.
+    - Update RouteConts for Master Rest API #1.
+    - Update MasterController for MCurrency Rest API #1 (completed).
+    - Update MasterController for MCoupon Rest API #1 (completed).
+
+[commited]
+Update 2020-09-27 #22
+- Update DMT.TA.TODv1 #51
+  - Update DMT Models project #21.
+    - Update RouteConts for TSB Rest API #5.
+    - Update TSBController for Lane Rest API #1 (completed).
+
+[commited]
+Update 2020-09-27 #21
+- Update DMT.TA.TODv1 #50
+  - Update DMT Models project #20.
+    - Update RouteConts for TSB Rest API #4.
+    - Update TSBController for Plaza Rest API #1 (completed).
+
+[commited]
+Update 2020-09-27 #20
+- Update DMT.TA.TODv1 #49
+  - Update DMT Models project #19.
+    - Update RouteConts for TSB Rest API #3.
+    - Update TSBController for PlazaGroup Rest API #1 (completed).
+
+[commited]
+Update 2020-09-27 #19
+- Update DMT.TA.TODv1 #48
+  - Update DMT Models project #18.
+    - Update RouteConts for TSB Rest API #2.
+    - Update TSBController for TSB Rest API #2 (completed).
+
+[commited]
+Update 2020-09-27 #18
+- Update DMT.TA.TODv1 #47
+  - Update DMT Models project #17.
+    - Update RouteConts for TSB Rest API #1.
+    - Update TSBController for TSB Rest API #1.
+
+[commited]
+Update 2020-09-27 #17
+- Update DMT.TA.TODv1 #46
+  - Update DMT Models project #16.
+    - Add Nullable Extension Methods.
+    - Add SCW Extension Methods.
+    - Add TAxTOD Extension Methods.
+
+[commited]
+Update 2020-09-27 #16
+- Update DMT.TA.TODv1 #45
+  - Update DMT Models project #15.
+    - ported RevenueEntry (comment out all static methods).
+    - ported RevenueEntry view. script and related code.
+    - update RevenueEntry Table add CollectorNameTH, CollectorNameEN, SupervisorNameTH, SupervisorNameEN column.
+    - update RevenueEntry View script remove UserView join.
+    - Update Data Dictionay document and update content.
+
+[commited]
+Update 2020-09-27 #15
+- Update DMT.TA.TODv1 #44
+  - Update DMT Models project #14.
+    - update UserShiftRevenue view fixed bug in query.
+    - update LanePayment fixed bug in LaneId, LaneNo property.
+
+[commited]
+Update 2020-09-27 #14
+- Update DMT.TA.TODv1 #43
+  - Update DMT Models project #13.
+    - Update Data Dictionay document and update content.
+
+[commited]
+Update 2020-09-27 #13
+- Update DMT.TA.TODv1 #42
+  - Update DMT Models project #12.
+    - ported LaneAttendance, LanePayment (comment out all static methods)
+    - update LaneAttendance, LanePayment Table add FullNameTH, FullNameEN column.
+    - ported LaneAttendance, LanePayment View script and related code.
+    - update LaneAttendance, LanePayment View script remove UserView join.
+
+[commited]
+Update 2020-09-27 #12
+- Update DMT.TA.TODv1 #41
+  - Update DMT Models project #11.
+    - ported UserShiftRevenue (comment out all static methods)
+    - update UserShiftRevenue Table add FullNameTH, FullNameEN column.
+
+[commited]
+Update 2020-09-27 #11
+- Update DMT.TA.TODv1 #40
+  - Update DMT Models project #10.
+    - TSBShift Table add FullNameTH, FullNameEN column.
+    - UserShift Table add FullNameTH, FullNameEN column.
+    - update TSBShift View script remove UserView join.
+    - update UserShift View script remove UserView join.
+    - update UserShiftRevenue View script remove UserView join.
+    - ported InitTSBAndPlazaAndLanes.
+    - ported InitRoleAndUsers.
+
+
+[commited]
+Update 2020-09-27 #10
+- Update DMT.TA.TODv1 #39
+  - Update DMT Models project #9.
+    - ported InitRoleAndUsers.
+    - User model add IsDummy property.
+    - Add Data Dictionay document and update content.
+    - Add ER Diagram document.
+
+[commited]
+Update 2020-09-27 #9
+- Update DMT.TA.TODv1 #38
+  - Update DMT Models project #8.
+    - ported Payment (comment out all static methods).
+    - ported InitMCurrency.
+    - ported InitMCoupon.
+    - ported InitShifts.
+    - ported InitPayments.
+    - ported InitConfigs.
+
+[commited]
+Update 2020-09-27 #8
+- Update DMT.TA.TODv1 #37
+  - Update DMT Models project #7.
+    - ported MCurrency (comment out all static methods).
+    - ported MCoupon (comment out all static methods).
+
+[commited]
+Update 2020-09-27 #7
+- Update DMT.TA.TODv1 #36
+  - Update DMT Models project #6.
+    - ported TSBShift (comment out all static methods).
+    - ported UserShift (comment out all static methods).
+    - ported TSBShift View script and related code.
+    - ported UserShift View script and related code.
+    - ported UserShiftRevenue View script and related code.
+
+[commited]
+Update 2020-09-27 #6
+- Update DMT.TA.TODv1 #35
+  - Update DMT Models project #5.
+    - ported Shift (comment out all static methods).
+
+[commited]
 Update 2020-09-27 #5
-- Update TA Credit Exchange #35.
-  - Request Exchange process refactor #1.
+- Update DMT.TA.TODv1 #34
+  - Update DMT Models project #4.
+    - ported PlazaGroup View script and related code.
+    - ported Plaza View script and related code.
+    - ported Lane View script and related code.
 
 [commited]
 Update 2020-09-27 #4
-- Update TA Credit Exchange #34.
+- Update DMT.TA.TODv1 #33
+  - Update DMT Models project #3.
+    - ported User View script and related code.
 
 [commited]
 Update 2020-09-27 #3
-- Update TA Credit Exchange #34.
-  - Update internal exchange process, mode and GUI.
+- Update DMT.TA.TODv1 #31
+  - Update DMT Models project #2.
+    - ported TSB, PlazaGroup, Plaza, Lane (comment out all static methods).
+    - ported Role, User, LogInLog (comment out all static methods).
 
 [commited]
 Update 2020-09-27 #2
-- Update TA Credit Exchange #33.
-  - TOD Fixed revenue entry (RevenueDate) and set User Name width in UI.
+- Update DMT.TA.TODv1 #30
+  - Update DMT Models project #1.
+    - ported all models (set compile to none).
 
 [commited]
 Update 2020-09-27 #1
@@ -13228,18 +13416,105 @@ Update 2020-09-27 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-09-26 #19
+- Update DMT.TA.TODv1 #29
+  - DMT Controls project.
+    - Add StatusBar related controls.
+
+[commited]
+Update 2020-09-26 #18
+- Update DMT.TA.TODv1 #28
+  - DMT Controls project.
+    - Add Header related controls.
+
+[commited]
+Update 2020-09-26 #17
+- Update DMT.TA.TODv1 #27
+  - DMT Controls project.
+    - Add images.
+  - TA App
+    - Add UnhandledException handler
+  - TOD App
+    - Add UnhandledException handler
+
+[commited]
+Update 2020-09-26 #16
+- Update DMT.TA.TODv1 #26
+  - Add app projects.
+
+[commited]
+Update 2020-09-26 #15
+- Update DMT.TA.TODv1 #25
+  - Add DMT Controls project.
+
+[commited]
+Update 2020-09-26 #14
+- Update DMT.TA.TODv1 #24
+  - Update ScrollViewer Sample #3.
+
+[commited]
+Update 2020-09-26 #13
+- Update DMT.TA.TODv1 #23
+  - Update CommandLine class.
+
+[commited]
+Update 2020-09-26 #12
+- Update DMT.TA.TODv1 #22
+  - Supports auto add/delete firewall for all owin self host servers.
+
+[commited]
+Update 2020-09-26 #11
+- Update DMT.TA.TODv1 #21
+  - Add DMT TA RestServer project.
+  - Add DMT TOD RestServer project.
+
+[commited]
+Update 2020-09-26 #10
+- Update DMT.TA.TODv1 #20
+  - Rename DMT RestServer to DMT Local.RestServer project.
+
+[commited]
+Update 2020-09-26 #9
+- Update DMT.TA.TODv1 #19
+  - Add DMT RestServer project.
+
+[commited]
+Update 2020-09-26 #8
+- Update DMT.TA.TODv1 #18
+  - Add DMT Local Web Service project.
+
+[commited]
+Update 2020-09-26 #7
+- Update DMT.TA.TODv1 #17
+  - Add DMT RestClient project.
+
+[commited]
+Update 2020-09-26 #6
+- Update DMT.TA.TODv1 #16
+- Update Wpf Sample.
+  - Update ScrollViewer Sample #2.
+  - Update EnterAsTab Sample #2.
+
+[commited]
+Update 2020-09-26 #5
+- Update DMT.TA.TODv1 #15
+  - Add DMT.Core project.
+
+[commited]
 Update 2020-09-26 #4
-- Update TA Credit Exchange #32.
-  - TA Implements Internal Exchange #32.
+- Update DMT.TA.TODv1 #14
+  - Add DMT.Models project.
 
 [commited]
 Update 2020-09-26 #3
-- Update TA Credit Exchange #31.
-  - TA Implements Internal Exchange #31.
+- Update DMT.TA.TODv1 #13
+  - Add SQLLite-Net-PCL and SQLLite-Net.Extension dlls.
 
 [commited]
 Update 2020-09-26 #2
-- Remove WebSocket Server/Client Sample projects.
+- Add Wpf Sample.
+  - Update ScrollViewer Sample #1.
+  - Update EnterAsTab Sample #1.
 
 [commited]
 Update 2020-09-26 #1
@@ -13247,12 +13522,75 @@ Update 2020-09-26 #1
 
 --------------------------------------------------------------------------------------------
 [commited]
+Update 2020-09-25 #17
+- Remove Test proejct to test INotifyPropertyChanged
+
+[commited]
+Update 2020-09-25 #16
+- Add Test proejct to test INotifyPropertyChanged
+
+[commited]
+Update 2020-09-25 #15
+- Prepare history.txt
+
+[commited]
+Update 2020-09-25 #14
+- Update DMT.TA.TODv1 #12
+  - Add SmartcardM1Test project.
+
+[commited]
+Update 2020-09-25 #13
+- Update DMT.TA.TODv1 #11
+
+[commited]
+Update 2020-09-25 #12
+- Update DMT.TA.TODv1 #10
+
+[commited]
+Update 2020-09-25 #11
+- Update DMT.TA.TODv1 #9
+  - Add required tools folder.
+
+[commited]
+Update 2020-09-25 #10
+- Update DMT.TA.TODv1 #8
+
+[commited]
+Update 2020-09-25 #9
+- Update DMT.TA.TODv1 #7
+
+[commited]
+Update 2020-09-25 #8
+- Update DMT.TA.TODv1 #6
+  - Add DMT.Smartcard project.
+
+[commited]
+Update 2020-09-25 #7
+- Update DMT.TA.TODv1 #5
+
+[commited]
+Update 2020-09-25 #6
+- Update DMT.TA.TODv1 #4
+  - Add WPF Toolkit dlls.
+
+[commited]
+Update 2020-09-25 #5
+- Update DMT.TA.TODv1 #3
+  - Add Owin, RabbitMQ and some common dlls.
+
+[commited]
+Update 2020-09-25 #4
+- Update DMT.TA.TODv1 #2
+  - Add NLib and NLib.Reports project.
+
+[commited]
 Update 2020-09-25 #3
-- Update history.txt #3
+- Update DMT.TA.TODv1 #1
+  - Add Report Viewer reference dlls.
 
 [commited]
 Update 2020-09-25 #2
-- Update history.txt #2
+- Ported to DMT.TA.TODv1 solution.
 
 [commited]
 Update 2020-09-25 #1
